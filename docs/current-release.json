@@ -1,46 +1,83 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261121-kill-review",
-  "sourceTag": "vps/20261121-kill-review",
-  "hotfix": {
-    "tag": "hotfix/20261121-clan-event-progress",
-    "report": "docs/hotfix-clan-event-progress-20261121.txt",
-    "runtimeFile": "games/heroes-of-ether/src/server/clans/daily-quests/actions.js",
-    "sha256": "8d3f84227e291ee7cf9413a20707848d9f435bc080193aa9ca10c067a83af76a",
-    "appliedWithoutRestartAtUtc": "2026-11-21T18:32:03Z"
-  },
-  "sourceCommit": "3c98024eb386de9500f41c2798393311840b5044",
-  "verifiedSourceFiles": 3302,
-  "excludedHistoricalTestLogs": 5,
+  "gameRelease": "20261122-arena-reliability",
+  "sourceTag": "release/20261122-arena-reliability",
+  "sourceCommit": "bbd64c1f70d6f899fb2b5ec69635a3f4a454e622",
+  "previousRelease": "20261121-kill-review",
   "independentAdminRelease": "20261117-player-feedback",
   "unreleasedLocalBranch": "work/local-unreleased-20261121",
-  "runtimeChangesDuringRepositorySetup": false,
-  "mainAdditionalChanges": "Repository tooling/documentation and VM import resolution in a unit-test fixture only",
-  "databaseCompatibility": "Mongo documentFormat1 is required; do not roll back to an older adapter",
+  "localRunningGameUpdated": false,
+  "entryReopenedAtUtc": "2026-11-21T19:45:11.267Z",
+  "runtime": {
+    "gamePid": 180895,
+    "adminPid": 1163,
+    "restarts": [
+      0,
+      0
+    ],
+    "mongoConnected": true
+  },
+  "manifest": {
+    "files": 81,
+    "sha256": "7a7b7f2b904cbc6d05d0a1cd198621eebb0dc543af985aa9ce78c59a4d651691"
+  },
+  "report": "games/heroes-of-ether/docs/arena-reliability-20261122.txt",
+  "localEvidence": "artifacts/arena-reliability-20261121",
+  "databaseCompatibility": "Mongo documentFormat1 is required; preserve the single writer, WAL/fsync and snapshot export validation",
   "verification": {
-    "configuration": "pass",
+    "windowsFull": {
+      "tests": 2193,
+      "passed": 2189,
+      "failed": 0,
+      "skippedOptInAtlas": 4
+    },
+    "actualLinuxFull": {
+      "tests": 2193,
+      "passed": 2189,
+      "failed": 0,
+      "skippedOptInAtlas": 4
+    },
+    "cleanInstallTargeted": {
+      "tests": 27,
+      "passed": 27
+    },
+    "browsers": [
+      "Chrome",
+      "Firefox",
+      "WebKit"
+    ],
+    "browserPageErrors": 0,
+    "http": {
+      "publicFiles": 16,
+      "origins": [
+        "SSH tunnel 3102",
+        "HTTPS"
+      ],
+      "exact": true
+    },
     "structure": {
-      "scripts": 996,
-      "references": 5176,
+      "scripts": 1004,
+      "references": 5209,
       "renames": 247
     },
-    "initialFull": {
-      "tests": 2175,
-      "passed": 2168,
-      "failed": 3,
-      "skipped": 4
-    },
-    "affectedTestFilesAfterFix": {
-      "tests": 26,
-      "passed": 26,
-      "failed": 0
-    },
-    "repositoryCheckTests": {
-      "tests": 5,
-      "passed": 5
-    }
+    "fullBackupAndAtlasBefore": true,
+    "fullWorldAndAuxiliaryAtlasAfter": true,
+    "exactExpectedWorldTransition": true,
+    "beforeRevision": 3014399,
+    "revisionAfter": 3014400,
+    "afterDigest": "c6ac6bbada5735d9df78566ee6128f023b8013345523ad00b89de89a8cbe2bf2",
+    "profiles": 1492,
+    "clans": 134,
+    "removedErroneousClanCups": 134,
+    "removedErroneousPersonalCups": 1101,
+    "walletsAndCurrencyHistoriesUnchanged": true,
+    "inventoryUnchanged": true
   },
   "followUps": [
-    "Scheduled backup at 2026-11-21 20:19 VPS journal time failed with MONGO_CONCURRENT_READ. Preserve the consistency check; no backup repair or game restart was performed in this repository task."
+    "No equivalent load test proves all lag or RSS issues resolved; historical 18-19 November episodes lack detailed traces.",
+    "No verified cheating evidence for the three reported players in available data. Kill suspicion review remains manual; no trained neural model claimed.",
+    "Room names have not been changed; owner requested proposals.",
+    "Local experimental branch and its running processes remain separate from the deployed VPS version.",
+    "Initial test/fixture failures are retained in validation-notes.txt; final successful runs do not erase them."
   ]
 }
