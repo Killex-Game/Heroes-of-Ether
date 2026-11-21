@@ -1,157 +1,224 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261122-mongo-journal-read",
-  "sourceTag": "release/20261122-mongo-journal-read",
-  "sourceCommit": "00b8cf54b29e60539d2d139cd398a454c3a81d85",
-  "previousRelease": "20261122-kill-checkpoints",
+  "gameRelease": "20261122-owner-gift-avatars",
+  "sourceTag": "release/20261122-owner-gift-avatars",
+  "sourceCommit": "8f25275780fbee251358e54e29f63247cb8b79be",
+  "previousRelease": "20261122-mongo-journal-read",
   "independentAdminRelease": "20261117-player-feedback",
   "unreleasedLocalBranch": "work/local-unreleased-20261121",
   "localRunningGameUpdated": false,
-  "entryReopenedAtUtc": "2026-11-21T20:38:19.972Z",
+  "entryReopenedAtUtc": "2026-11-21T21:51:35.362Z",
   "runtime": {
-    "gamePid": 187863,
+    "gamePid": 197400,
     "adminPid": 1163,
-    "restarts": [
-      0,
-      0
-    ],
-    "mongoConnected": true
+    "mongoConnected": true,
+    "serviceState": "ActiveState=active\nMainPID=197400\nNRestarts=0\n\nActiveState=active\nMainPID=1163\nNRestarts=0\n"
+  },
+  "machineSettings": {
+    "availableVcpu": 12,
+    "cpuQuotaBefore": 300,
+    "cpuQuotaAfter": 600,
+    "persistent": true,
+    "memoryMaxGiB": 7,
+    "memoryUnchanged": true
   },
   "manifest": {
-    "files": 8,
-    "sha256": "badf50a68e88606e0c6421dda0fd9154f20821ad562f245df764cb3e3b4af3de"
+    "files": 39,
+    "sha256": "f57c40ff8e9fbc0e34b29a0bdab9cd405e435c07df0b61779642ad10e93733ad"
   },
-  "includedPreviousChange": {
-    "sourceCommit": "3a1b14e115e65f9da478918412e452790d3e0ea3",
-    "manifestSha256": "10508bec4bac7f6c4b4f4595ac34c318c1cdc5788a39dc20d66cc365ed8a3061",
-    "note": "Kill layout and player flags included; timer-only checkpoint change was insufficient, superseded by pinned WAL synchronization."
-  },
-  "report": "games/heroes-of-ether/docs/kill-checkpoints-20261122.txt",
-  "localEvidence": "artifacts/mongo-journal-read-20261122",
-  "previousEvidence": "artifacts/kill-owner-load-20261122",
-  "databaseCompatibility": "Mongo documentFormat1 required; preserve single writer, WAL/fsync and snapshot export validation",
+  "report": "games/heroes-of-ether/docs/owner-gifts-search-capacity-20261122.txt",
+  "localEvidence": "artifacts/owner-gift-avatars-20261122",
+  "databaseCompatibility": "Mongo documentFormat1, single writer, per-commit fsync and Atlas synchronization unchanged",
   "verification": {
-    "targetedWindows": {
-      "tests": 17,
-      "passed": 17
+    "linux": {
+      "tests": 2207,
+      "passed": 2203,
+      "failed": 0,
+      "skippedOptInAtlas": 4
     },
-    "targetedActualLinux": {
-      "tests": 44,
-      "passed": 44
-    },
-    "windowsFull": {
-      "tests": 2202,
-      "passed": 2197,
-      "failed": 1,
+    "windows": {
+      "tests": 2207,
+      "passed": 2201,
+      "failed": 2,
       "skippedOptInAtlas": 4,
-      "note": "EPERM rename in existing progression fixture; full test file repeated15/15 without code changes. Original failure retained."
+      "note": "EPERM rename in existing fixtures. Repeat32/31/1EPERM in a different case; initial failed cases passed. Full Windows is not green."
     },
-    "repeatWindows": {
-      "tests": 15,
-      "passed": 15
-    },
-    "actualAtlasWorker": {
-      "tests": 1,
-      "passed": 1,
-      "scope": "Unique temporary test database; sync, worker failure/reacquisition, final shutdown and reopen"
+    "changedTargetedWindows": {
+      "tests": 7,
+      "passed": 7
     },
     "browsers": [
-      "Chrome",
-      "Firefox",
-      "WebKit"
+      "chromium",
+      "firefox",
+      "webkit"
     ],
-    "browserRoleViewportCombinations": 18,
-    "browserPageErrors": 0,
+    "pageErrors": [],
     "http": {
-      "publicFiles": 4,
-      "origins": [
-        "game3000",
-        "admin3103",
-        "SSH tunnel3102",
-        "HTTPS"
-      ],
+      "checks": 84,
       "exact": true
     },
     "structure": {
-      "scripts": 1006,
-      "references": 5216,
-      "renames": 247
+      "scripts": 1009,
+      "references": 5245
     },
-    "fullBackupAndAtlasBefore": true,
-    "fullWorldAndAuxiliaryAtlasAfter": true,
-    "allWorldAndAuxiliaryFieldsUnchanged": true,
-    "beforeRevision": 3025106,
-    "revisionAfter": 3025106,
-    "afterDigest": "14234676a96e322afacd31991dc91c9dc14a7e573599e414013fc45f6100ebcc",
+    "backupAndCompleteAtlasBefore": true,
+    "completeAtlasAfter": true,
+    "calendarReplayExact": true,
+    "allOtherFieldsEqual": true,
+    "wholeStateUnchanged": true,
+    "beforeRevision": 3057143,
+    "afterRevision": 3057143,
+    "digest": "8d71582510d613dd97424c7dae61d78a356041736c716af41f7be69233f83bd0",
     "profiles": 1493,
     "clans": 134
   },
   "observations": {
     "before": {
-      "seconds": 60.067,
+      "seconds": 61.055,
       "arena": [
+        3,
+        6
+      ],
+      "total": [
+        9,
+        9
+      ],
+      "hz": [
+        19.53,
+        19.93
+      ],
+      "workP95": [
+        18.79,
+        22.26
+      ],
+      "intervalP95": [
+        51.85,
+        59.35
+      ],
+      "intervalP99": [
+        77.43,
+        80.43
+      ],
+      "intervalMax": 1025.06,
+      "eventLoopMax": 1030.75,
+      "rss": [
+        3234,
+        4140
+      ],
+      "batches": [
+        0,
+        1
+      ],
+      "actions": [
         0,
         0
       ],
-      "lobby": [
-        7,
+      "cpuCores": 1.570803275734993,
+      "throttledSeconds": 12.755265,
+      "throttledPeriods": 60,
+      "periods": 610,
+      "checkpointChanges": 2
+    },
+    "sixCpuTrial": {
+      "samples": 37,
+      "seconds": 180.347,
+      "cpuCores": 1.3910851192423495,
+      "throttledSeconds": 0.190705,
+      "throttledPeriods": 4,
+      "periods": 1803,
+      "arena": [
+        2,
+        5
+      ],
+      "online": [
+        8,
         8
       ],
-      "checkpoints": 2,
-      "cpuCores": 1.0002340220087569,
-      "throttledSeconds": 4.25572
-    },
-    "timerOnlyAttempt": {
-      "seconds": 60.063,
-      "checkpoints": 2
+      "checkpointChanges": 2,
+      "settled": {
+        "seconds": 120.248,
+        "hz": [
+          19.95,
+          20
+        ],
+        "workP95": [
+          19.2,
+          20.27
+        ],
+        "intervalP95": [
+          51.86,
+          57.99
+        ],
+        "intervalMax": 103.63,
+        "rss": [
+          3409,
+          4376
+        ],
+        "actions": [
+          0,
+          0
+        ],
+        "batches": [
+          0,
+          1
+        ]
+      },
+      "mongo": true
     },
     "after": {
-      "seconds": 180.228,
-      "checkpoints": 1
-    },
-    "afterSettled": {
-      "seconds": 120.162,
+      "samples": 37,
+      "seconds": 180.302,
+      "cpuCores": 0.8186003483045113,
+      "throttledSeconds": 0,
+      "throttledPeriods": 0,
+      "periods": 1803,
       "arena": [
-        1,
+        0,
         1
       ],
-      "lobby": [
-        3,
-        4
+      "online": [
+        1,
+        3
       ],
-      "hz": [
-        19.87,
-        19.97
-      ],
-      "workP95": [
-        7.51,
-        14.52
-      ],
-      "intervalP95": [
-        51.34,
-        69.26
-      ],
-      "rssMiB": [
-        1937,
-        3367
-      ],
-      "maxQueuedActions": 0,
-      "maxArenaBatches": 0,
-      "mongo": {
-        "allConnected": true,
-        "firstRevision": 3025113,
-        "lastRevision": 3026275,
-        "lastSyncedAt": "2026-11-21T20:41:29.933Z"
-      }
+      "checkpointChanges": 1,
+      "settled": {
+        "seconds": 120.23,
+        "hz": [
+          19.95,
+          20
+        ],
+        "workP95": [
+          0.95,
+          8.11
+        ],
+        "intervalP95": [
+          50.85,
+          51.45
+        ],
+        "intervalMax": 154.61,
+        "rss": [
+          2007,
+          3309
+        ],
+        "actions": [
+          0,
+          0
+        ],
+        "batches": [
+          0,
+          0
+        ]
+      },
+      "mongo": true
     },
-    "limitation": "Sequential observations after restarts, different online load; not an equivalent A/B test. First60seconds after reopening excluded from settled summary because update rate includes the maintenance window. Full measurements are retained."
+    "limitation": "Sequential windows with differing live load, not equivalent A/B or proof of target capacity; first60s excluded from settled values."
   },
   "followUps": [
-    "Sequential post-restart observations with different online load are not an equivalent A/B test; no proof all lag/RSS issues are resolved.",
-    "Historical18–19Nov and21Nov22:00MSK lack precise per-action traces; avoid claiming an exact cause for each event.",
-    "Kill model is not trained; suspicious input rhythms go to manual review. No verified cheating evidence for the three reported players.",
-    "Room names unchanged; proposals are Роса/Искра/Заря.",
-    "Local experimental branch and running processes remain separate.",
-    "FileZilla resolves current to the release directory; reconnect through the saved site after deployments. Direct uploads must also be incorporated into Git."
+    "RSS remains several GiB; full profiles/history and checkpoint design need bounded active-data storage.",
+    "Physics remains in the main coordinator; 300000+ simultaneous users require room ownership/process distribution and capacity tests.",
+    "No proven macro evidence for reported players. Existing Kill model is not trained; suspicious rhythms require manual review.",
+    "No actual avatar grants or bans were made during verification.",
+    "Local experimental branch and its running processes remain unchanged.",
+    "FileZilla saved site resolves current; reconnect after release changes."
   ]
 }

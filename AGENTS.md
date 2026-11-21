@@ -1,3 +1,12 @@
+## Подарочные аватары, поиск, HUD и ресурс CPU — УСТАНОВЛЕНО22.11.2026
+
+- VPS current20261122-owner-gift-avatars/game197400/admin1163; вход открыт2026-11-21T21:51:35.362Z. Adminpin20261117-player-feedback сохранять, админка не останавливалась. Код8f25275780fbee251358e54e29f63247cb8b79be. Локальная экспериментальная ветка/процессы прежние.
+- Два приватных ownerGiftаватара: только владелец из карточки игрока, WAL/audit/replay/arena-guard, без магазина/промо/massgrant/auto-equip. SharedportraitFits и lazy64–1024WebP; исходники сохранены. Эффи поверх генератора с×; отступ питомца12px; SVGТурбо и общий слот. Поиск игроков с глобальными местами/10результатами, сбросом и прежними дневными наградами; без новогоpoll.
+- Sealedbatchcheckpoint64→256 при прежних4МиБ/300с/final/fsync/Atlas30с. Хост12CPU/24GiB: gameCPUQuota300→600% persistent+runtime после180спробы, RAM7GiB прежняя. Throttling60/610периодов ранее→4/1803впробе; разныйонлайн, неA/B. RSSнесколькоGiB остаётся открытым. Подробности docs/scaling-two-million-accounts.txt.
+- Linux2207/2203/0/4skip; Windowsfull2207/2201/2EPERM/4skip, повтор32/31/1EPERMдругойслучай, исходныеfailedсценариипрошли. Changed7/7. Chrome/Firefox/WebKitфинал0errors; первыеfixture/WebKitreload/shortlayoutошибки сохранены.1009JS5245refs, manifest39/f57c40ff8e9fbc0e34b29a0bdab9cd405e435c07df0b61779642ad10e93733ad,HTTP84/84.
+- Полныйbackup/Atlasдо/после/мир/aux проверены: 1493/134,rev3057143→3057143,digest8d71582510d613dd97424c7dae61d78a356041736c716af41f7be69233f83bd0; wholeStateUnchanged=true. Копии не удалялись. Отчёт artifacts/owner-gift-avatars-20261122/report.txt, краткий docs/current-release.json.
+- Путник75:85израсходованныхбустеров/120с; ИГРОКвлобби; не доказательство скрипта, точных историческихинтерваловнет. Реальныхбанов/аватарныхвыдач/новостиKillнет. Послефинальногозамера фоновогонаблюдениянет.
+
 ## Kill, синхронизация Atlas и доступ VPS — УСТАНОВЛЕНО 22.11.2026
 
 - VPS current20261122-mongo-journal-read, game187863/admin1163/NRestarts0/0. Вход открыт 2026-11-21T20:38:19.972Z, hold снят; admin не останавливался, pin/release20261117-player-feedback сохранять. Локальная экспериментальная игра/ветка не обновлялась. Код00b8cf54b29e60539d2d139cd398a454c3a81d85, передача docs/current-release.json.
