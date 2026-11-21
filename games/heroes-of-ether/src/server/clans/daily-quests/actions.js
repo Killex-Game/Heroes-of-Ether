@@ -2,6 +2,10 @@
 const { BOOSTERS } = require('../../boosters/booster-catalog');
 const pets = new Set(['pet_fire','pet_claw','pet_glove','pet_carrot']);
 const hits = new Set(['hazards','hazardHits','freezeHits','hookHits']);
+// Every event item counts as rare. Potions contribute only to total uses.
+// Never synthesize metric names from an open-ended catalog.
+const tierMetrics = new Map([['common','commonUses'],['advanced','advancedUses'],
+  ['rare','rareUses'],['event','rareUses'],['clan','clanUses']]);
 // Clan objectives have their own life cursor. Personal quest rotation, completion
 // and opponent limits cannot suppress otherwise valid clan actions.
 function deltas(session,event,playerId) {
@@ -17,7 +21,8 @@ function deltas(session,event,playerId) {
     if(pets.has(event.boosterId))return {allBoosterUses:1,rareUses:1};
     const booster=BOOSTERS.get(event.boosterId);
     if(!booster)return {};
-    return {boosterUses:1,allBoosterUses:1,[booster.tier+'Uses']:1,
+    const tierMetric = tierMetrics.get(booster.tier);
+    return {boosterUses:1,allBoosterUses:1,...(tierMetric ? {[tierMetric]:1} : {}),
       ...(booster.kind==='shield'?{shieldUses:1}:{})};
   }
   if(event.type!=='clanArenaAction' || event.sequence<=(session.sequence||0))return {};

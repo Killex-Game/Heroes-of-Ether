@@ -2,6 +2,13 @@
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
   "gameRelease": "20261121-kill-review",
   "sourceTag": "vps/20261121-kill-review",
+  "hotfix": {
+    "tag": "hotfix/20261121-clan-event-progress",
+    "report": "docs/hotfix-clan-event-progress-20261121.txt",
+    "runtimeFile": "games/heroes-of-ether/src/server/clans/daily-quests/actions.js",
+    "sha256": "8d3f84227e291ee7cf9413a20707848d9f435bc080193aa9ca10c067a83af76a",
+    "appliedWithoutRestartAtUtc": "2026-11-21T18:32:03Z"
+  },
   "sourceCommit": "3c98024eb386de9500f41c2798393311840b5044",
   "verifiedSourceFiles": 3302,
   "excludedHistoricalTestLogs": 5,
