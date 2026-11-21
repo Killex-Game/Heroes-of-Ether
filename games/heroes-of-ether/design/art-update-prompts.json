@@ -1,0 +1,421 @@
+{
+  "tool": "Built-in image_gen",
+  "updated": "2026-10-20",
+  "notes": "Crest frames and symbols: pure gold, no gems or amethyst. Equal visual scale. Provided Premium and bucks replacements are used unchanged apart from display resolution.",
+  "jobs": [
+    {
+      "id": "banner-vip",
+      "transparent": false,
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: ads-marketing. Create a finished edge-to-edge wide landscape 2:1 game advertising illustration for a VIP gold account in Sferorumiya. Reference image is STYLE reference only: glossy sculpted bright gold, rich violet enamel, sharp faceted bevels, crisp dark plum outlines, warm highlights, hand-painted dimensional fantasy mobile-game quality. A gorgeous golden crown with purple diamond and gold coins, small friendly golden dragon at the right. Rich golden palace magic backdrop continues fully to every edge; left third calmer for HTML text overlay. Highly polished coherent painting, no text, no letters, no borders, no UI buttons, no transparent margins. Gold dominant.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-f0488ba9-9abc-49d3-a799-54ecaacac8dd.png"
+    },
+    {
+      "id": "banner-premium",
+      "transparent": false,
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: ads-marketing. Create a finished edge-to-edge wide landscape 2:1 game advertising illustration for a Premium amethyst account in Sferorumiya. Reference image STYLE only: glossy sculpted bright gold, deeply saturated amethyst enamel, sharply faceted gemstones, warm gilded bevels and dark plum outlines. Large luxurious purple medallion with gold star and bright amethyst gem at right, sparkling gem crystals and royal purple drapery, enchanting violet palace light. Left third calmer for HTML overlay. Clearly purple/amethyst dominant, full continuous background covers every edge. No text, letters, UI buttons, decorative outer border or transparent margins.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-809b607f-37bc-427d-b4a9-cd94fa1d85f9.png"
+    },
+    {
+      "id": "banner-pets",
+      "transparent": false,
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: ads-marketing. Finished edge-to-edge wide landscape 2:1 fantasy browser game event banner for adorable PETS. Four clearly different friendly little animal characters grouped together: a fluffy cat, a cute baby dragon, a small golden lion cub, a fluffy rabbit with long ears. Characters are free-standing, not inside circles. Same polished dimensional hand-painted fantasy game style as the reference crown: rich jewel tones, warm gold highlights, dark plum outlines, beautiful faceted highlights and charming expressive faces. A magical sunlit meadow and small violet crystals, background goes all the way to edges. Leave a little calm upper-left area for HTML heading. No words, letters, UI buttons, no outer border, no transparency.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ed97bfe7-9bf2-451c-af90-fbd5da98fa56.png"
+    },
+    {
+      "id": "warheads-v2",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Downloads/Алый ракетный бустер.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: stylized-concept. New inventory booster icon for Sferorumiya: exactly THREE rockets in a compact dynamic fan formation, all flying towards upper right. Use image 1 as the exact rocket design reference: red fins, white/red body, bright gold nose and fittings, blue round porthole, warm flame. Use image 2 only for polished sculpted gold bevels, saturation and sharp plum outlines. Three full matching rockets, central slightly larger, each clearly recognizable, not seven rockets. Rich dimensional hand-painted game art, clean readable silhouette, truly transparent background and margin, no text, no frame. Preserve rocket colors and design.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9171fbeb-b743-4d56-bf85-e0f6380d0ac9.png"
+    },
+    {
+      "id": "f01_round",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f01_round.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Круглый медальон. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a69c5524-21b7-4767-b171-ceef7a0bd124.png"
+    },
+    {
+      "id": "f02_oval",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f02_oval.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Овальный картуш. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-08455743-c813-487f-99c1-2f532b74d1d3.png"
+    },
+    {
+      "id": "f03_heater",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f03_heater.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Рыцарский щит. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-708016ee-308c-437f-a8e2-abd80456668e.png"
+    },
+    {
+      "id": "f04_broad",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f04_broad.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Щит бастиона. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-51fb51b1-1660-4c16-8140-383d276f7e03.png"
+    },
+    {
+      "id": "f05_kite",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f05_kite.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Высокий щит. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2bd41d81-d353-4019-af2e-fd7ea2f79dde.png"
+    },
+    {
+      "id": "f06_diamond",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f06_diamond.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Гранёный оберег. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-086f11b8-f5e3-4ae8-bb34-4bc41b312258.png"
+    },
+    {
+      "id": "f07_octagon",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f07_octagon.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Орденский медальон. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2b10ab7e-5a2f-4917-98b6-d3e7f0dd9788.png"
+    },
+    {
+      "id": "f08_cartouche",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f08_cartouche.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Фигурный картуш. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-3561c3dd-c0d6-4408-a49a-c86cf20c3765.png"
+    },
+    {
+      "id": "f09_royal",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f09_royal.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Королевский щит. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-5c225b2d-9b00-4af3-bf97-75dc8e11dafa.png"
+    },
+    {
+      "id": "f10_grand",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/f10_grand.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production sprite for a layered clan crest constructor. Image 1 is the EDIT TARGET: Великий герб. Image 2 is STYLE only. Redraw the full decorative frame with richly sculpted radiant gold, dark plum ink outlines, NO gemstones of any kind, NO purple, NO amethyst, only gold metal, bright sharp chisel bevels, white-yellow highlights and warm amber recesses with dimensional polish like the crown, but PLAIN GOLD only, ignoring all crown jewels. Not flat SVG style. Preserve the precise silhouette, position, proportions and opening of image 1; every part at the same relative canvas coordinates. Absolutely empty transparent central opening, no colored shield fill, no emblem inside it. Keep transparent outside. No other subjects, no text, no extra ornaments outside the original outline. Square canvas, no cropping. This must remain an interchangeable FRAME layer; its center shows an independent color layer behind it.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-5bf6d8ba-2eb9-4ceb-bdbf-453b740bb59b.png"
+    },
+    {
+      "id": "s01_crown",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s01_crown.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Корона. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2e296eda-e949-4037-b7af-dfa92e244668.png"
+    },
+    {
+      "id": "s02_lion",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s02_lion.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Лев. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-cc4cd923-2358-4f19-bd27-8e6d4387ee0c.png"
+    },
+    {
+      "id": "s03_wolf",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s03_wolf.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Волк. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-fcad4186-1425-4c11-9a69-5eed1413e803.png"
+    },
+    {
+      "id": "s04_dragon",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s04_dragon.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Дракон. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-7078aca3-c23a-4264-8a6b-8803a7011778.png"
+    },
+    {
+      "id": "s05_phoenix",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s05_phoenix.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Феникс. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-bc1950c5-1601-415a-905d-f7f0cf5edec3.png"
+    },
+    {
+      "id": "s06_eagle",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s06_eagle.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Орёл. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-6afedede-e681-4187-bf33-235f36153676.png"
+    },
+    {
+      "id": "s07_stag",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s07_stag.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Олень. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-babdc794-4377-47da-8907-d8b5a2d67ba7.png"
+    },
+    {
+      "id": "s08_owl",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s08_owl.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Сова. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-74615434-c4b4-4c31-9d5d-8f1a783013b8.png"
+    },
+    {
+      "id": "s09_griffin",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s09_griffin.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Грифон. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b57c0ee3-edbb-44e1-b822-9513a5f65d82.png"
+    },
+    {
+      "id": "s10_crossed_swords",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s10_crossed_swords.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Скрещённые мечи. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-93996c1d-1e3e-411e-9210-3e3c4a80c3a1.png"
+    },
+    {
+      "id": "s11_battle_axe",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s11_battle_axe.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Секира. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-50fb6624-c76b-48ee-93a7-cb38ac515e3e.png"
+    },
+    {
+      "id": "s12_tower",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s12_tower.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Башня. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-13ee7945-818a-4a83-92c2-6e3d0d20a645.png"
+    },
+    {
+      "id": "s13_compass_star",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s13_compass_star.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Путеводная звезда. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d7af02c2-5335-4d59-aeb6-dfdc0b53a5c9.png"
+    },
+    {
+      "id": "s14_crescent",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s14_crescent.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Полумесяц. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-57737ae2-00c5-4f08-b712-8bbc04941533.png"
+    },
+    {
+      "id": "s15_sun",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s15_sun.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Солнце. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-fc8a263f-4805-4279-a5dd-0b7c5b6035a8.png"
+    },
+    {
+      "id": "s16_flame",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s16_flame.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Пламя. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-69f927b1-dc37-4695-ab4b-3b44f317f993.png"
+    },
+    {
+      "id": "s17_crystal",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s17_crystal.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Кристалл. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-14d8542a-fdd8-4642-a1fd-337bea6a3cdf.png"
+    },
+    {
+      "id": "s18_oak",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s18_oak.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Дуб. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c4017fc3-c23b-4478-b805-67aa3f96b367.png"
+    },
+    {
+      "id": "s19_key",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s19_key.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Ключ. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-0aa3952f-2707-4987-8b4a-aeb21ea656ea.png"
+    },
+    {
+      "id": "s20_ether_orb",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/crest-style-references/s20_ether_orb.png",
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: style-transfer. Production heraldic emblem sprite for a clan crest constructor. Image 1 is EDIT TARGET: Сфера эфира. Image 2 is STYLE reference only. Redraw the emblem in the richly sculpted radiant PURE GOLD style of that crown: dimensional metal, sharp chisel facets, polished golden yellow creamy highlights, amber shadows, dark brown outline, NO purple, NO amethyst, NO jewels or precious stones anywhere; pure golden relief with gold/amber shadows. Preserve subject, silhouette, pose, composition and location on square canvas of target. Keep emblem at the exact same relative bounds, roughly central 60% of square canvas. No background, no shield, no frame, no text. Genuine transparency. Beautiful crafted game icon, never flat vector.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-66461e2d-727b-4bad-a7ec-ce7c829e3441.png"
+    },
+    {
+      "id": "gender-male",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production fantasy game gender selection icon, Mars male symbol circle with arrow pointing upper right. One immediately recognizable male symbol with no letters. Rich sculpted gold bevel, glossy sapphire blue enamel inlay and small tasteful highlights. Match the attached crown's polished dimensional cartoon fantasy style, dark plum edge, sharp golden chisel highlights. Symbol only, large centered, genuine transparent background, square canvas, no frame, no text, no background.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-cb6ba40d-a4c9-41d3-8e09-0a46a581620e.png"
+    },
+    {
+      "id": "gender-female",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production fantasy game gender selection icon, Venus female symbol circle with short cross below. One immediately recognizable female symbol with no letters. Rich sculpted gold bevel, glossy rose pink enamel inlay and small tasteful highlights. Match the attached crown's polished dimensional cartoon fantasy style, dark plum edge, sharp golden chisel highlights. Symbol only, large centered, genuine transparent background, square canvas, no frame, no text, no background.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2e4d87f3-1697-4681-b779-e589ef50ac2b.png"
+    },
+    {
+      "id": "food-1",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: stylized-concept. Tiny collectible food / ether sprite for a fantasy arena game. A single emerald green faceted round jewel droplet, framed only by a delicate golden rim, richly saturated, dimensional crisp facets, creamy specular gleam and a dark clean outline like the attached golden crown. Simple readable silhouette from above, centered occupying 85 percent of square image. No letters, no other objects, no shadow on ground, no trailing particles. Genuine transparent background. Must read beautifully even 16 pixels wide.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-65eb5814-6b3f-4261-a0e3-14e12ffa6202.png"
+    },
+    {
+      "id": "food-3",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: stylized-concept. Tiny collectible food / ether sprite for a fantasy arena game. A single sapphire blue oval faceted magical pearl, framed only by a delicate golden rim, richly saturated, dimensional crisp facets, creamy specular gleam and a dark clean outline like the attached golden crown. Simple readable silhouette from above, centered occupying 85 percent of square image. No letters, no other objects, no shadow on ground, no trailing particles. Genuine transparent background. Must read beautifully even 16 pixels wide.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d01de10f-2aef-4bfd-9a2b-00df23cda29a.png"
+    },
+    {
+      "id": "food-5",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: stylized-concept. Tiny collectible food / ether sprite for a fantasy arena game. A single ruby red rounded diamond crystal, framed only by a delicate golden rim, richly saturated, dimensional crisp facets, creamy specular gleam and a dark clean outline like the attached golden crown. Simple readable silhouette from above, centered occupying 85 percent of square image. No letters, no other objects, no shadow on ground, no trailing particles. Genuine transparent background. Must read beautifully even 16 pixels wide.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ea6193e4-4ffd-4c42-8016-87f633f5699a.png"
+    },
+    {
+      "id": "food-10",
+      "transparent": true,
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-554883f7-ee9a-4b88-a51e-37b8ec2fd326.png"
+      ],
+      "prompt": "Use case: stylized-concept. Tiny collectible food / ether sprite for a fantasy arena game. A single amber orange radiant faceted jewel, framed only by a delicate golden rim, richly saturated, dimensional crisp facets, creamy specular gleam and a dark clean outline like the attached golden crown. Simple readable silhouette from above, centered occupying 85 percent of square image. No letters, no other objects, no shadow on ground, no trailing particles. Genuine transparent background. Must read beautifully even 16 pixels wide.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e4be5e9d-2c83-47b4-9eb8-52a07833b070.png"
+    },
+    {
+      "id": "banner-premium-v2",
+      "transparent": false,
+      "refs": [
+        "C:/Users/semen/Downloads/Императорская корона с аметистами.png"
+      ],
+      "prompt": "Use case: ads-marketing. Wide 2:1 illustration filling a fantasy browser game's Premium account banner. Use attached imperial amethyst crown as exact SUBJECT reference: purple velvet, sculpted radiant gold, pearls and purple gems. Place a large crown on the right two-thirds, with elegant amethyst palace crystal light and golden silk behind. Keep left third calmer darker purple for separately overlaid HTML title. Luxurious bright dimensional cartoon fantasy game style. Edge-to-edge continuous full colored background. No lettering, no words, no border, no buttons, no UI, no transparent margin.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b7d52d37-d4e6-4cc6-a7bd-a9ce0da7b0c0.png"
+    }
+  ],
+  "provided": [
+    {
+      "id": "premium",
+      "source": "C:/Users/semen/Downloads/Императорская корона с аметистами.png"
+    },
+    {
+      "id": "bucks",
+      "source": "C:/Users/semen/Downloads/Изумрудные банкноты с золотой орбитой.png"
+    },
+    {
+      "id": "rocket",
+      "source": "C:/Users/semen/Downloads/Алый ракетный бустер.png"
+    }
+  ]
+}
