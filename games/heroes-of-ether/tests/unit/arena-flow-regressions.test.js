@@ -48,9 +48,9 @@ test("Все 11 атак применяются подряд, не наслед�
       )();
     p.boosterReadyAt = 6000;
     use(5000);
-    assert.throws(() => use(5299), /мгновение/);
+    use(5000);
     use(5300);
-    assert.equal(p.boosterUses[id], 2, id);
+    assert.equal(p.boosterUses[id], 3, id);
     assert.equal(p.boosterReadyAt, 6000, id + " must not change another cooldown");
     p.boosterReadyAt = 0;
     use(5600);

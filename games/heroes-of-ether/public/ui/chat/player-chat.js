@@ -64,13 +64,13 @@
       this.input.addEventListener("input", () => this.lock());
       this.lock();
     }
-    reset() {
+    reset(preserveDraft = false) {
       clearTimeout(this.muteTimer);
       this.mutedUntil = 0;
       this.generation++;
       this.messages = [];
       this.log.replaceChildren(this.empty);
-      this.input.value = "";
+      if (!preserveDraft) this.input.value = "";
       this.retry = null;
       this.busy = false;
       this.status.textContent = "";
@@ -260,9 +260,10 @@
         this.toggle.append(dot);
       }
     }
-    start() {
+    start(profileId) {
       this.disconnect();
-      this.panel.reset();
+      this.panel.reset(!!profileId && profileId === this.draftOwner);
+      this.draftOwner = profileId;
       this.unread = false;
       this.expand(false);
     }

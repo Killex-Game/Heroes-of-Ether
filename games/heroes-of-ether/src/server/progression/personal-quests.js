@@ -1,6 +1,6 @@
 "use strict";
 const { createHash, randomInt, randomUUID } = require("node:crypto");
-const { BoosterError, BOOSTERS } = require("../boosters/booster-catalog");
+const { BoosterError, BOOSTERS, boosterRarity } = require("../boosters/booster-catalog");
 const { POOLS } = require("./title-chest-rewards");
 const treasury = require("./treasury-capacity");
 const bonuses = require("./chest-bonuses");
@@ -265,7 +265,8 @@ function progress(p, event, at, activeEvent, receiptDraft) {
     if (event.metric === 'boosterUses') {
       const booster = BOOSTERS.get(event.boosterId);
       if (!booster && !['pet_fire','pet_claw','pet_glove','pet_carrot'].includes(event.boosterId)) return;
-      if (booster) changes[booster.tier + 'Uses'] = 1;
+      const rarity = booster && boosterRarity(booster);
+      if (['common', 'advanced', 'rare', 'clan'].includes(rarity)) changes[rarity + 'Uses'] = 1;
       if (booster?.kind === 'shield') changes.shieldUses = 1;
       if (booster?.id === 'candy') changes.lifeCandyUses = 1;
     }

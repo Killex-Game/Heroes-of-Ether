@@ -15,7 +15,12 @@
       this.permanent = button("", () => this.open(), "menu-tile sf-button sf-secondary alchemy-permanent");
       this.permanent.id = "etherGeneratorButton";
       this.permanent.append(img(R.asset("generator"), "menu-icon"), el("strong", "", "Эфирный генератор"));
-      document.getElementById("eventsSection").after(this.permanent);
+      let tools = document.querySelector(".lobby-generator-tools");
+      if (!tools) {
+        tools = el("div", "lobby-generator-tools");
+        document.querySelector("#lobby .lobby-header").append(tools);
+      }
+      tools.prepend(this.permanent);
       for (const b of [this.trigger, this.permanent]) { b.setAttribute("aria-haspopup", "dialog"); b.setAttribute("aria-controls", "alchemyDialog"); }
       this.dialog = el("dialog", "alchemy-lab"); this.dialog.id = "alchemyDialog"; this.dialog.dataset.layout = "fullscreen";
       this.dialog.setAttribute("aria-labelledby", "alchemyTitle");
@@ -121,7 +126,7 @@
       this.exchange.disabled = this.busy || s.natural < R.NATURAL_PER_EXCHANGE;
       for (const [id, node] of this.ingredientCounts) node.textContent = number(s.ingredients[id]);
       for (const [id, b] of this.potions) {
-        b.dataset.learned = String(s.learned.includes(id)); b.dataset.selected = String(s.equipped === id);
+        b.dataset.learned = String(s.learned.includes(id)); b.dataset.selected = String(R.equipped(s).includes(id));
         b.lastElementChild.textContent = s.potions[id] ? number(s.potions[id]) : "";
         b.setAttribute("aria-label", R.get(id).name + (s.learned.includes(id) ? ", в запасе " + number(s.potions[id]) : ", рецепт не изучен"));
       }
@@ -129,8 +134,9 @@
         const p = R.get(id), enough = p.ingredients.every(i => (s.ingredients[i.id] || 0) >= i.count);
         const brew = card.querySelector('[data-action="brew"]'); brew.disabled = this.busy || !active || !enough;
         brew.textContent = !active ? "Варка доступна во время события" : "Сварить × " + p.yield;
-        const equip = card.querySelector('[data-action="equip"]'); equip.disabled = this.busy || !s.potions[id] || s.equipped === id;
-        equip.textContent = s.equipped === id ? "Выбрано в слот Z" : "В слот Z";
+        const queue = R.equipped(s), index = queue.indexOf(id);
+        const equip = card.querySelector('[data-action="equip"]'); equip.disabled = this.busy || !s.potions[id] || (index < 0 && queue.length >= R.MAX_ACTIVE);
+        equip.textContent = index >= 0 ? `Z: ${index + 1} · Убрать` : "В очередь Z";
         for (const row of card.querySelectorAll(".alchemy-recipe-cost")) {
           const cost = p.ingredients.find(i => i.id === row.dataset.ingredient);
           row.dataset.enough = String((s.ingredients[cost.id] || 0) >= cost.count);
@@ -213,6 +219,11 @@
     async act(action, potionId) {
       if (this.busy || !this.owner.isLobby()) return;
       const data = { action, ...(potionId && { potionId }), ...(action === "brew" && { runId: this.state()?.runId }) };
+      if (action === "equip") {
+        const queue = R.equipped(this.state());
+        data.potionIds = queue.includes(potionId) ? queue.filter(id => id !== potionId) : [...queue, potionId];
+        delete data.potionId;
+      }
       const key = JSON.stringify(data), requestId = this.requests.get(key) || window.KillexRequestIds.create(); this.requests.set(key, requestId);
       const visit = this.visit;
       const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 12000);

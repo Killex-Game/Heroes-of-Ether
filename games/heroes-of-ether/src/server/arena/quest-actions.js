@@ -20,7 +20,7 @@ function record(arena, player, metric, target = null, boosterId = null, amount =
   if (['splitParts','clanPoisonHits','petShield'].includes(metric)) {
     if(player.clanActionLife!==player.lifeId){player.clanActionLife=player.lifeId;player.clanActionSequence=0;}
     enqueue(arena, {type:'clanArenaAction',playerId:player.id,lifeId:player.lifeId,sequence:++player.clanActionSequence,metric,
-      ...(target?{targetProfileId:target.profileId}:{}),...(amount!==null?{amount}:{}),...(boosterId?{boosterId}:{})});
+      ...(target?{targetProfileId:target.profileId || target.departedProfileId}:{}),...(amount!==null?{amount}:{}),...(boosterId?{boosterId}:{})});
     return;
   }
   if (player.questActionLife !== player.lifeId) {
@@ -32,7 +32,7 @@ function record(arena, player, metric, target = null, boosterId = null, amount =
     sequence: ++player.questActionSequence, metric,
     ...(boosterId ? { boosterId } : {}),
     ...(source ? { source } : {}),
-    ...(target ? { targetProfileId: target.profileId } : {}),
+    ...(target ? { targetProfileId: target.profileId || target.departedProfileId } : {}),
     ...(amount !== null ? {amount} : {}),
   });
 }

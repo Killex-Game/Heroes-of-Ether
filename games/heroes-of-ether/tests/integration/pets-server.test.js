@@ -108,7 +108,7 @@ test("pet HTTP economy and WebSocket authority: replay, Origin, arena lock, Q/R 
   assert.equal(p.pet.stock.fire, 4);
   const repeat = { ...use, requestId: randomUUID(), sequence: 2 };
   time = 4299;
-  assert.equal((await reply(repeat)).ok, false);
+  assert.equal((await reply({...repeat,spawnSerial:999})).ok, false);
   assert.equal(p.pet.stock.fire, 4);
   assert.equal(
     (await reply({ ...repeat, ability: "secondary", requestId: randomUUID() })).ok,
@@ -134,6 +134,7 @@ test("pet HTTP economy and WebSocket authority: replay, Origin, arena lock, Q/R 
     mergeAt: Infinity,
   }));
   app.arena.syncParts(p);
+  p.nextMassDecayAt = Infinity;
   // This test isolates the pet gift: random hazards must not burst its fixture cells.
   app.arena.hazards.items = [];
   app.arena.hazards.nextAt = Infinity;

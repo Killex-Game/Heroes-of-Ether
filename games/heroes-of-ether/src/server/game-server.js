@@ -311,12 +311,15 @@ function createGameServer({
         retryAfter: result.retryAfter,
       });
   }
-  function requireLobby(token) {
+  function requireLobby(token, { allowEndedRead = false } = {}) {
     requireRunning();
     const profile = profiles.find(token);
     if (!profile) throw new BoosterError("Сначала открой лобби.", 401);
     requirePlayable(profile, wallNow());
-    if (profileConnections.has(profile.id))
+    const connection = profileConnections.get(profile.id), player = connection?.arena.players.get(connection.playerId);
+    const endedRead = allowEndedRead && connection?.lastLifeResult &&
+      (!player || ((player.dead || player.isRemnant) && connection.lastLifeResult.id === player.lifeId));
+    if (connection && !endedRead)
       throw Object.assign(
         new BoosterError("Это действие доступно только в лобби. Профиль уже на арене.", 409),
         { code: "ARENA_ACTIVE" },
@@ -878,7 +881,7 @@ function createGameServer({
           return reply(200, profiles.socialState(token));
         }
         if (apiUrl.pathname === "/api/social/gifts" && req.method === "GET") {
-          requireLobby(sessionToken(req));
+          requireLobby(sessionToken(req), { allowEndedRead: true });
           const player = profiles.byId(apiUrl.searchParams.get("playerId"));
           if (!player) throw new BoosterError("Игрок не найден.", 404);
           return reply(200, require("./profiles/gift-history").page(player,
@@ -889,7 +892,7 @@ function createGameServer({
           return reply(200, require("./profiles/game-news").view(profiles));
         }
         if (apiUrl.pathname.startsWith("/api/players/") && req.method === "GET") {
-          requireLobby(sessionToken(req));
+          requireLobby(sessionToken(req), { allowEndedRead: true });
           return reply(200, {
             player: profiles.publicPlayer(apiUrl.pathname.slice("/api/players/".length)),
           });
@@ -1653,7 +1656,7 @@ function createGameServer({
               const benefits = accounts.benefits(profile, profiles.now());
               if (
                 !(BOOSTERS.get(message.boosterId)?.kind === "potion" &&
-                  require("./events/ether-alchemy").rules.get(message.boosterId)?.id === p.potionEquipped) &&
+                  (p.potionQueue || [p.potionEquipped]).includes(require("./events/ether-alchemy").rules.get(message.boosterId)?.id)) &&
                 !p.quickSlots?.some(
                   (id, index) =>
                     id === message.boosterId && loadout.unlocked(index, benefits, profile.level),
@@ -2154,6 +2157,10 @@ function createGameServer({
   registrationTimer.unref();
   const competitionTimer = setInterval(() => {
     if (closing) return;
+    const occupiedChatRooms = new Set();
+    for (const ws of wss.clients)
+      if (ws.readyState === WebSocket.OPEN && ws.arenaId) occupiedChatRooms.add(ws.arenaId);
+    chat.pruneEmptyArenas(occupiedChatRooms, wallNow());
     try {
       chat.syncProgress();
     } catch (error) {

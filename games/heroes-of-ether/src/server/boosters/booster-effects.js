@@ -24,6 +24,8 @@ class BoosterEffects {
     const a = this.arena,
       id = a.bodyId(p, body);
     this.tickSwordBurns(p, now);
+    body = a.bodies(p).find((part) => a.bodyId(p, part) === id);
+    if (p.dead || !body) return false;
     const capped = a.bodies(p).length >= a.maxParts;
     if (capped) {
       if (splitLimitDamage > 0) {
@@ -97,6 +99,7 @@ class BoosterEffects {
   }
   splitToLimit(p, now, onSplit) {
     this.tickSwordBurns(p, now);
+    if (p.dead) return false;
     const groups = this.arena.bodies(p).map((body) => ({ body, count: 1 }));
     let slots = this.arena.maxParts - groups.length,
       changed = false;
@@ -133,7 +136,14 @@ class BoosterEffects {
   }
   apply(p, b, now, body = this.arena.mainBody(p)) {
     if (b.kind === "sword") {
+      const id = this.arena.bodyId(p, body);
       this.tickSwordBurns(p, now);
+      body = this.arena.bodies(p).find(part => this.arena.bodyId(p, part) === id);
+      if (p.dead || !body) return;
+      if (body.mass <= BOOSTERS.get("fire").destroyAtOrBelowMass) {
+        this.removeBurnedBody(p, body, now);
+        return;
+      }
       const partId = this.arena.bodyId(p, body);
       p.swordBurns.push({
         partId,
@@ -177,6 +187,7 @@ class BoosterEffects {
   tick(p, now) {
     const a = this.arena;
     this.tickSwordBurns(p, now);
+    if (p.dead) return;
     // Обрабатываем секунды по порядку: результат не зависит от частоты тиков.
     const damage = p.damageTicks || [];
     while (true) {
@@ -291,11 +302,12 @@ class BoosterEffects {
       delete p.effects.fire_sword;
       return;
     }
-    const a = this.arena,
-      parts = new Map(a.bodies(p).map((part) => [a.bodyId(p, part), part]));
+    const a = this.arena;
     p.swordBurns = (p.swordBurns || []).filter((e) => {
-      const part = parts.get(e.partId);
-      if (!part) return false; // Поглощённый шар не передаёт огонь остальным.
+      // Removing a part can collapse the final part back into the player model.
+      // Resolve its stable id again, rather than retaining the removed object.
+      const part = a.bodies(p).find((body) => a.bodyId(p, body) === e.partId);
+      if (p.dead || !part) return false; // Поглощённый шар не передаёт огонь остальным.
       const due = Math.floor(
         e.budget * Math.min(1, Math.max(0, now - e.start) / (e.until - e.start)),
       );
@@ -303,6 +315,10 @@ class BoosterEffects {
       part.mass = Math.max(RULES.MIN_PART_MASS, part.mass - loss);
       part.radius = radius(part.mass);
       e.applied = due;
+      if (loss > 0 && part.mass <= BOOSTERS.get("fire").destroyAtOrBelowMass) {
+        this.removeBurnedBody(p, part, now);
+        return false;
+      }
       return now < e.until;
     });
     a.syncParts(p);
@@ -372,7 +388,7 @@ class BoosterEffects {
   burn(p, body, now, fraction = 0.5, powerFactor = 1) {
     const a = this.arena;
     const resistance = arenaPets.damageFactor(p);
-    if (resistance * powerFactor < 1 || body.mass > BOOSTERS.get("fire").destroyAtOrBelowMass) {
+    if (body.mass > BOOSTERS.get("fire").destroyAtOrBelowMass) {
       const damageFraction =
         body.mass > BOOSTERS.get("fire").destroyAtOrBelowMass ? fraction : powerFactor;
       body.mass = Math.max(
@@ -383,6 +399,11 @@ class BoosterEffects {
       a.syncParts(p);
       return;
     }
+    this.removeBurnedBody(p, body, now);
+  }
+  removeBurnedBody(p, body, now) {
+    const a = this.arena;
+    if (p.dead || !a.bodies(p).includes(body)) return;
     a.combat.contacts.push({
       type: "partRemoved",
       reason: "fire",

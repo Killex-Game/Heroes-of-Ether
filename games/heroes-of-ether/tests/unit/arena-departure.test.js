@@ -15,7 +15,7 @@ function scene() {
   });
   return { arena, p };
 }
-test("Модель после выхода сохраняет части на 15 секунд, затем исчезает за секунду", () => {
+test("Модель после выхода сохраняет части на 15 секунд, после чего удаляется", () => {
   const { arena, p } = scene();
   p.parts = [
     { id: p.mainPartId, x: 700, y: 800, mass: 600, radius: radiusForMass(600), vx: 20, vy: 10 },
@@ -43,17 +43,17 @@ test("Модель после выхода сохраняет части на 15
     ),
   );
   arena.ether = [{ id: "food", x: 700, y: 800, radius: 5, value: 10 }];
-  arena.step(19999);
+  arena.step(18999);
   assert.equal(remnant.mass, 1000);
   assert.equal(arena.ether.length, 1, "модель не собирает еду");
   assert.deepEqual(arena.progressEvents, [], "не получает время жизни и прогресс");
-  let visible = arena.snapshot(19999);
+  let visible = arena.snapshot(18999);
   assert.equal(visible.players[0].departure.remainingMs, 1001);
   assert.deepEqual(visible.leaderboard, []);
-  arena.step(20500);
-  visible = arena.snapshot(20500);
+  arena.step(19500);
+  visible = arena.snapshot(19500);
   assert.deepEqual(visible.players[0].departure, { remainingMs: 500, fadeMs: 1000 });
-  arena.step(21000);
+  arena.step(20000);
   assert.equal(arena.players.size, 0);
 });
 test("Модель и новая жизнь одного владельца не поглощают друг друга; соперник может съесть модель", () => {
@@ -116,15 +116,15 @@ test("Модель поглощает соперников до конца 15 с
   assert.equal(events[0].gain, 80);
   assert.equal(remnant.mass, 1080);
   assert.equal(other.dead, true);
-  assert.equal(remnant.removeAt, 21000, "поглощение не продлевает оставшееся время");
+  assert.equal(remnant.removeAt, 20000, "поглощение не продлевает оставшееся время");
   const late = arena.addPlayer(20000, "late");
   Object.assign(late, { x: remnant.x, y: remnant.y, protectedUntil: 0 });
   assert.deepEqual(
     arena.resolveAbsorptions(20000),
     [],
-    "во время исчезновения новых поглощений нет",
+    "после 15 секунд новых поглощений нет",
   );
-  arena.step(21000);
+  arena.step(20000);
   assert.equal(arena.players.has(remnant.id), false);
   assert.equal(late.dead, false);
 });

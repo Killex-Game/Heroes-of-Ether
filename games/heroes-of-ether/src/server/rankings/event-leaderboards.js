@@ -230,7 +230,7 @@ function view(store, profile, page = 1) {
       : store.data.eventDailyRankingResults?.[resultKey(run.id, day)];
   const entries = result?.entries || leaders(store.data, run, day),
     top = entries.slice(0, 100);
-  const pages = Math.max(1, Math.ceil(top.length / 5)),
+  const pages = Math.max(1, Math.ceil(top.length / 10)),
     current = Math.max(1, Math.min(pages, Number.isInteger(Number(page)) ? Number(page) : 1));
   const identity = (entry) => {
     const p = store.byId(entry.id);
@@ -250,7 +250,7 @@ function view(store, profile, page = 1) {
     pages,
     total: entries.length,
     mine: entries.find((r) => r.id === profile.id) || null,
-    rows: top.slice((current - 1) * 5, current * 5).map(identity),
+    rows: top.slice((current - 1) * 10, current * 10).map(identity),
   };
 }
 function validate(data) {

@@ -264,8 +264,8 @@ function earnXp(
   amount = Math.floor(giftUnits / 100);
   if (s.session) s.session.giftXpRemainder = giftUnits % 100;
   const activePotion = p.alchemy?.active;
-  const potionXp = activePotion?.lifeId === s.session?.id
-    ? require("../../../public/shared/alchemy-rules").get(activePotion?.id)?.modifiers.xp || 0 : 0;
+  const potionXp = activePotion && s.session && activePotion.lifeId === s.session.id
+    ? require("../../../public/shared/alchemy-rules").combine(activePotion.ids || [activePotion.id]).xp || 0 : 0;
   if (potionXp && s.session) {
     const units = amount * Math.round(potionXp * 100) + (s.session.alchemyXpRemainder || 0);
     amount += Math.floor(units / 100);

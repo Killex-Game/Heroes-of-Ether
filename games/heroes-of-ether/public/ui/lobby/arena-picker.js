@@ -76,6 +76,7 @@
       }
     }
     choose(id) {
+      if (!this.owner.isLobby()) return;
       this.selected = id;
       try {
         if (id) localStorage.setItem(this.key(), id);
@@ -85,6 +86,7 @@
       }
       this.updateTitle();
       this.dialog.close();
+      this.owner.join?.();
     }
     updateTitle() {
       const group = window.KillexArenaNames.groupForLevel(this.owner.getProfile()?.level);

@@ -42,10 +42,10 @@ test("Огонь сообщает точную часть и место унич
 test("Снятие массы Огнём без уничтожения части не вызывает затухание", () => {
   const arena = new Arena({ etherCount: 0 }),
     p = arena.addPlayer(0, "fire");
-  p.mass = 100;
-  p.radius = radiusForMass(100);
+  p.mass = 1000;
+  p.radius = radiusForMass(1000);
   arena.boosterEffects.burn(p, p, 5000);
-  assert.equal(p.mass, 50);
+  assert.equal(p.mass, 500);
   assert.equal(p.dead, false);
   assert.deepEqual(arena.combat.contacts, []);
 });

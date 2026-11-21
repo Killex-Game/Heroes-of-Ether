@@ -106,7 +106,7 @@ test("E по WebSocket: бабочка перед шапкой, повторы, 
   time = 500;
   assert.equal((await send(client, use)).replay, true);
   assert.equal(p.effects.easter_egg, 10000);
-  assert.equal((await send(client, { ...use, requestId: randomUUID() })).ok, false);
+  assert.equal((await send(client, { ...use, spawnSerial: 999, requestId: randomUUID() })).ok, false);
   for (const remaining of [1, 0]) {
     time += 11000;
     assert.equal((await send(client, hat)).ok, false);

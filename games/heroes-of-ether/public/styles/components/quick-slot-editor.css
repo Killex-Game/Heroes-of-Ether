@@ -160,6 +160,24 @@
 .booster-quick .turbo-slot {
   margin-left: 0;
 }
+/* Turbo is a time budget, not a cooldown: retain its icon and T label. */
+.booster-quick .turbo-slot .booster-slot-cooldown {
+  inset: auto 3px 5px;
+  min-height: 15px;
+}
+.booster-quick .turbo-slot .booster-slot-cooldown::before { display: none; }
+.booster-quick .turbo-slot .booster-cooldown-seconds { font-size: 11px; line-height: 14px; }
+.booster-quick .turbo-symbol { display: block; transform: translateY(-5px); }
+.potion-order-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; }
+@media (min-width: 961px) and (hover: hover) and (pointer: fine) {
+  body .booster-quick { width: min(560px, calc(100vw - 40px)); gap: 7px; }
+  body .booster-quick:has(> :is(.pet-ability, .accessory-ability):not([hidden])) {
+    width: min(680px, calc(100vw - 40px));
+  }
+  body .booster-quick .booster-slot { border-color: #f4c46d; background-color: #fff0c5; box-shadow: 0 1px 3px #38251c77, inset 0 0 0 1px #fff8e3; }
+  body .booster-quick .booster-slot-key { color: #382448; font-size: 13px; font-weight: 800; text-shadow: 0 1px #fff; }
+  body .booster-quick .booster-slot-count { color: #173c51; font-size: 15px; font-weight: 800; text-shadow: 0 1px #fff; }
+}
 .booster-quick:has(> :is(.pet-ability, .accessory-ability):not([hidden])) {
   grid-template-columns: none;
   grid-auto-columns: minmax(0, 1fr);

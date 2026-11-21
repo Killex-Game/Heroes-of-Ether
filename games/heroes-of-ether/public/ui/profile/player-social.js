@@ -381,7 +381,7 @@
     }
     const grid = el("div", "social-gift-grid");
     box.body.append(grid);
-    const available = catalog;
+    const available = catalog.filter(item => !item.eventId || item.unlocked !== false);
     let category;
     for (const item of available) {
       if (category !== item.category) {
@@ -477,7 +477,6 @@
       window.KillexControls.state(choose, locked || (own?.wallet?.[item.currency] || 0) < item.price);
       if (choose.disabled) choose.title = locked ? item.unlockHint : "Недостаточно валюты";
       card.append(img, el("strong", "", item.name), el("small", "", item.description), choose);
-      if (item.eventId) card.append(el("small", "social-gift-unlock", locked ? item.unlockHint : "Право дарить открыто навсегда"));
       card.title = item.description;
       grid.append(card);
     }

@@ -6,7 +6,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, () => {
   "use strict";
   function cooldown(item, me, elapsed = 0, rules = {}) {
-    if (!item || !me || item.kind === "mass") return { ms: 0, duration: 1 };
+    if (!item || !me || item.kind === "mass" || rules.cooldownsEnabled === false) return { ms: 0, duration: 1 };
     const remaining = (value) => Math.max(0, (Number(value) || 0) - Math.max(0, elapsed));
     if (item.kind === "shield")
       return {

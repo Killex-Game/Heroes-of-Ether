@@ -85,13 +85,15 @@ body.account-premium #previewName {
     0 1px 0 #ffedff,
     0 0 7px #d658ff88;
 }
-.leader-row:not(.leader-self) .name-vip {
+.leader-row:not(.leader-self) .name-vip,
+:is(#clanDialog, #clanPreviewDialog) .clan-member-info .name-vip {
   color: #ad5100;
   text-shadow:
     0 1px 0 #fff6cc,
     0 0 5px #ffd12e88;
 }
-.leader-row:not(.leader-self) .name-premium {
+.leader-row:not(.leader-self) .name-premium,
+:is(#clanDialog, #clanPreviewDialog) .clan-member-info .name-premium {
   color: #9a09ca;
   text-shadow:
     0 1px 0 #fff1ff,

@@ -52,10 +52,10 @@ test('immediate disconnect saves the last booster and the next arena entry conti
  f.app.tick();assert.equal(f.row().progress,2);
 });
 
-test('advanced booster updates both orders; rejected cooldown and a failed progress write cannot lose or duplicate it',async t=>{
+test('advanced booster updates both orders; rejected stale life and a failed progress write cannot lose or duplicate it',async t=>{
  const f=await setup(t),c=await f.connect();f.app.tick();f.advance(50);
  const first=await f.cast(c,'donut');assert.equal(first.result.ok,true);
- assert.equal((await f.cast(c,'donut')).result.ok,false);
+ assert.equal((await f.cast(c,'donut',{...first.command,requestId:randomUUID(),spawnSerial:999})).result.ok,false);
  const save=f.store.save;
  f.store.save=()=>{throw Error('fixture disk failure');};
  f.app.tick();assert.equal(f.row().progress,0);

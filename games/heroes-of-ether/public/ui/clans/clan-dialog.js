@@ -901,6 +901,8 @@
         ),
       );
       const badge = window.KillexIdentity.createMedal(p);
+      info.firstElementChild.classList.toggle("name-premium", !!p.account?.premium);
+      info.firstElementChild.classList.toggle("name-vip", !p.account?.premium && !!p.account?.vip);
       if (badge) info.firstElementChild.prepend(badge);
       row.append(avatar, info);
       if (["head", "manager", "officer"].includes(p.role)) {

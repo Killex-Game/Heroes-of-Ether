@@ -711,9 +711,8 @@ test("бустер даёт каждой части пять порций по 5
   a.boosterEffects.split(p, a.mainBody(p), 2, 1000);
   const before = a.bodies(p).map((b) => b.mass);
   a.prepareBooster(p.id, { boosterId: "easter_egg", spawnSerial: p.spawnSerial }, 5000)();
-  assert.throws(
+  assert.doesNotThrow(
     () => a.prepareBooster(p.id, { boosterId: "easter_egg", spawnSerial: p.spawnSerial }, 6000),
-    /уже действует/,
   );
   a.boosterEffects.tick(p, 6000);
   assert.equal(p.mass, 1000);

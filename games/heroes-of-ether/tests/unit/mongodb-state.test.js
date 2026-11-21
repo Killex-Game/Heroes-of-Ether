@@ -81,6 +81,18 @@ test("MongoDB snapshot round-trips receipts, buckets, root fields and auxiliary 
   assert.equal(hash({ b: 1, a: 2 }), hash({ a: 2, b: 1 }));
   assert.throws(() => unpack([...snapshot.docs.values()].slice(1), snapshot), /CHECKSUM/);
 });
+test('online export pins a snapshot session and still rejects inconsistent or expired reads', async()=>{
+  const {MongoState}=require('../../src/server/persistence/mongodb-state');
+  const packed=pack(world()),manifest={...packed,docs:undefined},session={endSession:async()=>{}};
+  let expired=false,moved=false,reads=0,closed=0;
+  const state={metrics:require('../../src/server/persistence/mongodb-metrics').observeMongo(),
+    reader:{connect:async()=>{},startSession:options=>{assert.deepEqual(options,{snapshot:true});reads=0;return session;},close:async()=>{closed++;}},
+    readMeta:{findOne:async(q,o)=>{assert.equal(o.session,session);assert.equal(o.readConcern.level,'snapshot');return ++reads===2&&moved?{...manifest,generation:2}:manifest;}},
+    readState:{find:(q,o)=>{assert.equal(o.session,session);return{async *[Symbol.asyncIterator](){if(expired)throw Object.assign(Error('expired'),{code:239});yield* packed.docs.values();}};}}};
+  assert.deepEqual((await MongoState.prototype.read.call(state,{snapshot:true})).world,world());
+  moved=true;await assert.rejects(MongoState.prototype.read.call(state,{snapshot:true}),{code:'MONGO_CONCURRENT_READ'});
+  moved=false;expired=true;await assert.rejects(MongoState.prototype.read.call(state,{snapshot:true}),{code:239});assert.equal(closed,3);
+});
 test("Wallet delta does not resend archives; removals and unsafe keys are retained", () => {
   const original = world(),
     next = structuredClone(original);

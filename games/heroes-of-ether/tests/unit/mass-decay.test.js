@@ -23,11 +23,14 @@ function scene(mass) {
   });
   return { arena, p };
 }
-test("Естественное сгорание удвоено: 0,1854% / 0,309%, округление вверх и прежние пороги", () => {
+test("Естественное сгорание удвоено: 0,1854% / 0,309%, округление вверх и нижняя граница 20 и прежний темп выше 1000", () => {
   for (const [mass, loss] of [
     [10, 0],
-    [999, 0],
-    [1000, 0],
+    [20, 0],
+    [21, 1],
+    [150, 1],
+    [999, 2],
+    [1000, 2],
     [1001, 1],
     [1500, 3],
     [5000, 10],
@@ -57,15 +60,15 @@ test("Сгорание раз в 2 секунды, переход на мень�
   assert.equal(p.mass, 117569);
   assert.equal(arena.progressEvents.find((e) => e.type === "massPeak").mass, 117569);
 });
-test("Пропущенные интервалы считаются последовательно; ниже 1000 сгорания нет", () => {
+test("Пропущенные интервалы считаются последовательно; сгорание продолжается до 20", () => {
   const { arena, p } = scene(5000);
   arena.decayMass(p, 12000);
   assert.equal(p.mass, 4940);
   const small = scene(1001);
   small.arena.decayMass(small.p, 10000);
-  assert.equal(small.p.mass, 1000);
+  assert.equal(small.p.mass, 992);
   small.arena.decayMass(small.p, 1e12);
-  assert.equal(small.p.mass, 1000);
+  assert.equal(small.p.mass, 20);
 });
 test("Деление не меняет суммарную потерю; главный шар — крупнейший, жизнь и расход слотов сохраняются", () => {
   const { arena, p } = scene(5000);

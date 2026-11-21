@@ -84,17 +84,17 @@ test("Меч снова поджигает тот же шар после вых�
   arena.boosterEffects.tick(b, 16000);
   assert.equal(b.swordBurns.length, 0);
 });
-test("Пятисекундная перезарядка меча проверяется сервером, клиентом и не блокирует другие бустеры", () => {
+test("Повтор меча без перезарядки обновляет единственный клинок", () => {
   const { arena, a } = scene(),
     message = { boosterId: sword.id, spawnSerial: a.spawnSerial, aimX: 2000, aimY: 1000 };
   const commit = arena.prepareBooster(a.id, message, 5000);
   assert.equal(a.boosterItemReadyAt.fire_sword, undefined);
   commit();
-  assert.throws(() => arena.prepareBooster(a.id, message, 9999), /5 секунд/);
+  assert.doesNotThrow(() => arena.prepareBooster(a.id, message, 5000));
   assert.doesNotThrow(() => arena.prepareBooster(a.id, { ...message, boosterId: "rocket" }, 6000));
   const me = arena.snapshot(6000).players.find((p) => p.id === a.id);
   const item = publicCatalog().items.find((b) => b.id === sword.id);
-  assert.deepEqual(cooldown(item, me, 500), { ms: 3500, duration: 5000 });
+  assert.equal(cooldown(item, me, 500, publicCatalog().rules).ms, 0);
   assert.equal(item.heldMs, 10000);
   arena.prepareBooster(a.id, message, 10000)();
   assert.equal(arena.combat.swords.length, 1);
@@ -105,14 +105,15 @@ test("Пятисекундная перезарядка меча проверя�
 test("Разделение горящего шара сохраняет остаток урона и срок между его потомками", () => {
   for (const kind of ["space", "rocket"]) {
     const { arena, b } = scene();
+    b.mass=10000; b.radius=radiusForMass(b.mass);
     arena.boosterEffects.apply(b, sword, 5000);
     if (kind === "space") arena.splitPlayer(b, { spawnSerial: b.spawnSerial, sequence: 1 }, 5500);
     else arena.boosterEffects.split(b, b, 3, 5500, true);
-    assert.equal(b.mass, 900);
+    assert.equal(b.mass, 9000);
     assert.ok(b.swordBurns.length >= 2);
     arena.boosterEffects.tick(b, 6000);
-    assert.equal(b.mass, 800);
-    assert.ok(arena.bodies(b).every((p) => p.mass >= 2));
+    assert.equal(b.mass, 8000);
+    assert.ok(arena.bodies(b).every((p) => p.mass > 300));
   }
 });
 test("Слияние сохраняет остаток поджога, не начисляя 20% от общей массы заново", () => {
@@ -146,7 +147,7 @@ test("Поглощение горящей части не переносит п�
   assert.equal(b.swordBurns.length, 0);
   assert.equal(b.effects.fire_sword, undefined);
 });
-test("Частота обновления не меняет итог поджога; минимальная масса остаётся 2", () => {
+test("Частота обновления не меняет итог поджога; малый горящий шар исчезает", () => {
   for (const step of [16, 50, 1000, 5000]) {
     const { arena, b } = scene();
     arena.boosterEffects.apply(b, sword, 5000);
@@ -158,6 +159,6 @@ test("Частота обновления не меняет итог поджо�
     b.radius = radiusForMass(2);
     arena.boosterEffects.tick(b, 20000);
     assert.equal(b.mass, 2);
-    assert.equal(b.dead, false);
+    assert.equal(b.dead, true);
   }
 });

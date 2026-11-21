@@ -7,6 +7,7 @@ const alchemy = require("../../../public/shared/alchemy-rules");
 // Числовые эффекты и цены взяты из каталога и справочника. Общие правила
 // первого прототипа отделены от них, чтобы впоследствии менять баланс явно.
 const BOOSTER_RULES = Object.freeze({
+  COOLDOWNS_ENABLED: false,
   COOLDOWN_MS: 1000,
   MASS_REPEAT_MS: 100,
   SHIELD_COOLDOWN_MS: 15000,
@@ -120,7 +121,7 @@ const implementations = {
   sponge: { kind: "sponge", target: "self", durationMs: 5000 },
   fire: {
     kind: "fire",
-    destroyAtOrBelowMass: 50,
+    destroyAtOrBelowMass: 300,
     flightSpeed: 200,
     flightMs: 3000,
     maxDistance: 600,
@@ -262,6 +263,8 @@ Object.assign(usage, {
     "Все ваши части притягивают игроков и еду вокруг. Захваченного соперника плавно переносит к более крупным частям, до самого большого шара.",
   fire_sword: "Поджигает соперника, от огня он теряет 20% от массы.",
 });
+// Event is an acquisition category; every present and future event item is rare.
+function boosterRarity(item) { return item.tier === "event" ? "rare" : item.tier; }
 const BOOSTERS = new Map(
   [
     ...catalog.items,
@@ -281,6 +284,7 @@ const BOOSTERS = new Map(
     item.id,
     Object.freeze({
       ...item,
+      rarity: boosterRarity(item),
       purchaseLevel: item.tier === "rare" ? 25 : item.tier === "advanced" ? 12 : 1,
       useLevel: item.tier === "clan" ? 12 : 1,
       icon: progressionArt.booster(item.id) || item.icon,
@@ -320,7 +324,9 @@ function publicCatalog() {
       }) => ({
         id,
         name,
-        tier,
+        tier: boosterRarity({ tier }),
+        category: tier,
+        eventOnly: tier === "event",
         effect,
         icon,
         ready,
@@ -352,10 +358,11 @@ function publicCatalog() {
     tiers: {
       ...catalog.tiers,
       clan: { name: "Клановые", rarity_color: "#d6a44a" },
-      event: { name: "Событийные", rarity_color: "#e9a326" },
+      event: { ...catalog.tiers.rare },
       potion: { name: "Зелья", rarity_color: "#43a898" },
     },
     rules: {
+      cooldownsEnabled: BOOSTER_RULES.COOLDOWNS_ENABLED,
       cooldownMs: BOOSTER_RULES.COOLDOWN_MS,
       massRepeatMs: BOOSTER_RULES.MASS_REPEAT_MS,
       shieldCooldownMs: BOOSTER_RULES.SHIELD_COOLDOWN_MS,
@@ -370,4 +377,4 @@ class BoosterError extends Error {
     this.status = status;
   }
 }
-module.exports = { BOOSTERS, BOOSTER_RULES, BoosterError, publicCatalog };
+module.exports = { BOOSTERS, BOOSTER_RULES, BoosterError, publicCatalog, boosterRarity };

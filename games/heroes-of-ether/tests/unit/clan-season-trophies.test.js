@@ -2,10 +2,27 @@
 const test = require("node:test"),
   assert = require("node:assert/strict"),
   { randomUUID } = require("node:crypto");
-const { setup } = require("../fixtures/season-trophies"),
+const { setup: createFixture } = require("../fixtures/season-trophies"),
   rules = require("../../public/shared/clan-competition-rules"),
   trophies = require("../../src/server/clans/clan-season-trophies"),
   { BOOSTERS } = require("../../src/server/boosters/booster-catalog");
+function played(f) {
+  for (const clan of Object.values(f.profiles.data.clans))
+    require('../../src/server/clans/battle-history').append(clan,
+      {id:'opponent-'+clan.id,name:'Соперник',prefix:'TEST'},1,0,f.now());
+}
+function setup(options) { const f=createFixture(options);played(f);return f; }
+test('Кубки не выдаются клану без битвы; бой прошлого сезона не даёт новый кубок',()=>{
+  const f=createFixture(),head=f.heads[0],before={...f.p(head).wallet};
+  f.time('2026-12-31T21:00:00Z');f.profiles.refreshCompetition();
+  assert.deepEqual(f.c(head).competition.trophies,[]);assert.equal(f.p(head).wallet.bucks,before.bucks);
+  assert.equal(f.p(head).activity.values.cup_keeper,0);
+  const g=setup(),h=g.heads[0];g.time('2026-12-31T21:00:00Z');g.profiles.refreshCompetition();
+  assert.equal(g.c(h).competition.trophies.length,1);
+  const wallet={...g.p(h).wallet};g.time('2027-06-30T21:00:00Z');g.profiles.refreshCompetition();
+  assert.equal(g.c(h).competition.trophies.length,1);assert.equal(g.p(h).wallet.bucks,wallet.bucks);
+  assert.equal(g.p(h).activity.values.cup_keeper,1);
+});
 test("Кубки: все шесть наград, каждый участник, сохранённый максимум после понижения, повтор не платит", () => {
   const f = setup({ count: 6 });
   const wallets = [];
@@ -131,6 +148,8 @@ test("Скидка: лучший кубок, серверная цена, пов
   assert.deepEqual(f.p(member).seasonTrophies, retained);
   assert.equal(f.profiles.view(f.p(member)).seasonBenefits.discount, 15);
   assert.equal(f.p(member).wallet.bucks, wallet.bucks);
+  f.time('2027-01-02T12:00:00Z');
+  played(f);
   f.time("2027-06-30T21:00:00Z");
   f.profiles.refreshCompetition();
   assert.equal(f.c(head).competition.trophies.length, 2);

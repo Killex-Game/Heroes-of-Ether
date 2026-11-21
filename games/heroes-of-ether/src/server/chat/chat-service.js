@@ -9,6 +9,7 @@ const { benefits } = require("../accounts/account-benefits");
 const { ChatModeration } = require("./chat-moderation");
 const LIMIT = 100;
 const CLAN_RETENTION_MS = 48 * 60 * 60 * 1000;
+const ARENA_IDLE_RETENTION_MS = 15 * 60 * 1000;
 class ChatService {
   constructor({ filePath = null, now = () => Date.now(), journal = false } = {}) {
     this.filePath = filePath;
@@ -18,6 +19,7 @@ class ChatService {
     this.clanFor = () => undefined;
     this.arena = [];
     this.arenaRooms = new Map();
+    this.arenaEmptySince = new Map();
     this.clans = {};
     this.achievementCounts = {};
     this.messageReceipts = {};
@@ -106,6 +108,16 @@ class ChatService {
     if (clans !== this.clans) this.persist(clans);
     this.clans = clans;
     this.nextExpiryAt = nextExpiry;
+  }
+  pruneEmptyArenas(occupiedRooms, at = this.now()) {
+    for (const id of new Set(['arena-1', ...this.arenaRooms.keys(), ...this.arenaEmptySince.keys()])) {
+      if (occupiedRooms.has(id)) { this.arenaEmptySince.delete(id); continue; }
+      if (!this.arenaEmptySince.has(id)) this.arenaEmptySince.set(id, at);
+      if (at - this.arenaEmptySince.get(id) < ARENA_IDLE_RETENTION_MS) continue;
+      if (id === 'arena-1') this.arena.length = 0;
+      else this.arenaRooms.delete(id);
+      this.arenaEmptySince.delete(id);
+    }
   }
   syncProgress() {
     let failure;

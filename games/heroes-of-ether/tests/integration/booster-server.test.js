@@ -268,6 +268,19 @@ test("Покупка на арене запрещена для всего про
   assert.equal((await bought.json()).profile.wallet.coins, 990);
 });
 
+test('public profile read after a finished life is authorized; writes and live-player reads stay locked',async t=>{
+ const {app,url,session,buy,connect}=await setup(t),a=await session(),b=await session();
+ const client=await connect(a.cookie),server=[...app.wss.clients][0],p=app.arena.players.get(client.id);
+ const read=cookie=>fetch(url+'/api/players/'+b.profile.id,{headers:{Cookie:cookie||''}});
+ assert.equal((await read()).status,401);assert.equal((await read(a.cookie)).status,409);
+ p.dead=true;assert.equal((await read(a.cookie)).status,409,'An unsaved death is not an ended life');
+ server.lastLifeResult={id:p.lifeId};
+ const result=await read(a.cookie);assert.equal(result.status,200);assert.equal((await result.json()).player.id,b.profile.id);
+ assert.equal((await buy(a.cookie,'candy')).status,409);
+ p.dead=false;assert.equal((await read(a.cookie)).status,409);
+ client.ws.close();
+});
+
 test("Запрос покупки, начатый до входа, проверяется после получения полного тела", async (t) => {
   const { app, url, session, connect } = await setup(t),
     a = await session();

@@ -23,7 +23,7 @@ const root = path.resolve(__dirname, "../..");
     await state.client.connect();
     if (command === "init")
       await state.initialize(readLocal(path.join(root, "data"), true).snapshot);
-    const remote = await state.read();
+    const remote = await state.read({ snapshot: command === 'export' });
     let exportDigest;
     if (command === "verify") {
       const local = readLocal(path.join(root, "data"), true);

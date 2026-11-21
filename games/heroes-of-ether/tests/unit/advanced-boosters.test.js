@@ -95,7 +95,7 @@ test("Огонь достигает 550 единиц со скоростью п�
     arena.combat.update(8001);
     assert.equal(shot.x - start, 600);
     assert.equal(arena.combat.shots.length, 0);
-    assert.equal(b.mass, contactDistance < 600 ? 50 : 100);
+    assert.equal(b.dead, contactDistance < 600);
   }
 });
 
@@ -168,7 +168,7 @@ test("Яды: сроки 15/10 с, обновление текущей базо�
   arena.boosterEffects.tick(b, 60000);
   assert.equal(b.mass, 555);
 });
-test("Меч складывает поджоги, яд действует независимо и сохраняет минимум массы", () => {
+test("Меч складывает поджоги, яд действует независимо, шар до 300 сгорает", () => {
   const { arena, a, b } = scene(1000);
   hit(arena, a, b, "poison");
   hit(arena, a, b, "fire_sword");
@@ -179,8 +179,8 @@ test("Меч складывает поджоги, яд действует нез
   assert.equal(b.mass, 250);
   for (let i = 0; i < 5; i++) hit(arena, a, b, "fire_sword", 26000);
   arena.boosterEffects.tick(b, 27000);
-  assert.equal(b.mass, 2);
-  assert.equal(b.dead, false);
+  assert.equal(b.dead, true);
+  assert.equal(arena.combatEvents.filter(e=>e.type==="burned").length, 1);
 });
 test("Замок продлевается, блокирует еду и поглощение, разрешает собственную массу", () => {
   const { arena, a, b } = scene(1000);
@@ -306,19 +306,21 @@ test("Шило снимает любой щит, сохраняя перезар
   assert.doesNotThrow(() => launch(arena, b, "golden_shield", 6000));
 });
 
-test("Шило без щита не сбрасывает общую перезарядку; действующее ускорение сохраняется", () => {
+test("Шило без щита сохраняет ускорение; новое применение обновляет срок", () => {
   const { arena, a, b } = scene();
   launch(arena, b, "speed", 5000);
   hit(arena, a, b, "awl", 5500);
-  assert.equal(b.boosterReadyAt, 6000);
+  assert.equal(b.boosterReadyAt, 0);
   assert.equal(b.effects.speed, 20000);
   launch(arena, b, "sphere", 5500);
   const readyAt = b.boosterReadyAt;
   hit(arena, a, b, "awl", 5501);
   assert.equal(b.boosterReadyAt, readyAt);
   assert.equal(b.effects.speed, 20000);
-  assert.throws(() => launch(arena, b, "speed", 5501), /перезаряжаются/);
-  assert.throws(() => launch(arena, b, "speed", 6000), /уже действует/);
+  launch(arena, b, "speed", 5501);
+  assert.equal(b.effects.speed, 20501);
+  launch(arena, b, "speed", 6000);
+  assert.equal(b.effects.speed, 21000);
 });
 test("Клановый щит отражает повторно, скорость 200 и исходный срок сохраняются", () => {
   const { arena, a, b } = scene(10);
@@ -462,7 +464,7 @@ test("Губка снимает ожидание, не переносит час
   );
   assert.ok(b.parts.every((part) => part.mergeAt <= 5000));
   assert.equal(b.mergeAt, 5000);
-  assert.throws(() => launch(arena, b, "sponge", 6000), /уже действует/);
+  assert.doesNotThrow(() => launch(arena, b, "sponge", 6000));
   for (let at = 5000; at <= 11000; at += 1000) arena.step(at);
   assert.deepEqual(
     b.parts.map(({ id, x, y, mass, vx, vy }) => ({ id, x, y, mass, vx, vy })),

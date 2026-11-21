@@ -3,7 +3,7 @@ const rules = require("../../../public/shared/alchemy-rules");
 const { BOOSTER_RULES } = require("../boosters/booster-catalog");
 const gifts = require("../profiles/gift-effects");
 const neutral = Object.freeze({});
-const modifiers = p => rules.get(p?.potion?.id)?.modifiers || neutral;
+const modifiers = p => p?.potion ? (p.potion.modifiers ||= rules.combine(rules.activeIds(p.potion))) : neutral;
 function prepare(p, booster, now, allowPulse = true) {
   const mods = modifiers(p);
   const pulse = !!(allowPulse && mods.pulseMs && p.potion.readyAt <= now &&

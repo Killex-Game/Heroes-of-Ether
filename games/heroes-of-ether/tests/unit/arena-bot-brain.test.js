@@ -18,6 +18,7 @@ function place(p, mass, x, y = 800) {
     targetY: y,
     protectedUntil: 0,
     stopped: true,
+    nextMassDecayAt: Infinity,
   });
 }
 function setup() {
@@ -182,29 +183,29 @@ test("Total twenty-use budget is shared, clan boosters are rejected, respawn res
   brain.forget(bot);
   assert.equal(brain.lives.size, 0);
 });
-test("Rejected shields, spawn attacks, mass caps and cooldowns never consume supplies", () => {
+test("Spawn attacks and mass caps never consume supplies; repeated shields and poison remain charged", () => {
   const { arena, brain, bot, state } = setup();
   const tryUse = (id, at) =>
     brain.use(bot, { b: BOOSTERS.get(id), aim: { x: 1000, y: 800 } }, state, at);
-  state.bag = ["mine", "poison", "candy", "sphere", "sphere"];
+  state.bag = ["mine", "poison", "poison", "candy", "sphere", "sphere"];
   bot.protectedUntil = 5000;
   assert.equal(tryUse("mine", 3000), null);
   assert.equal(state.used, 0);
   bot.protectedUntil = 0;
   assert.ok(tryUse("mine", 6000));
-  assert.equal(tryUse("poison", 6050), null);
+  assert.ok(tryUse("poison", 6000));
   place(bot, massLimitForLevel(bot.level), 700);
   assert.equal(tryUse("candy", 7000), null);
   assert.ok(tryUse("sphere", 7100));
-  assert.equal(tryUse("sphere", 8000), null);
-  assert.equal(state.used, 2);
+  assert.ok(tryUse("sphere", 7100));
+  assert.equal(state.used, 4);
   const prepare = arena.prepareBooster;
   arena.prepareBooster = () => {
     throw Error("unexpected failure");
   };
   assert.throws(() => tryUse("poison", 9000), /unexpected failure/);
   arena.prepareBooster = prepare;
-  assert.equal(state.used, 2);
+  assert.equal(state.used, 4);
 });
 test("Projectile aim leads observed movement, respects range and ignores protected targets", () => {
   const { arena, brain, bot, enemy, state } = setup();

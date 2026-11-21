@@ -94,6 +94,7 @@
       const offers = this.available();
       this.offerCount = offers.length;
       this.trigger.hidden = offers.length === 0;
+      if (!offers.length && this.dialog.open) this.dialog.close();
       this.trigger.dataset.empty = String(!offers.length);
       this.preview = profile?.promotionPreview || null;
       if (this.preview && !this.previewStartedAt) this.previewStartedAt = Date.now() + this.clockOffset;

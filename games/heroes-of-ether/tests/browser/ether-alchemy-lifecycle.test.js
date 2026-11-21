@@ -13,12 +13,14 @@ async function until(check) { for (let i=0;i<160;i++) { if (check()) return; awa
   p.loginReward={date:require("../../src/server/accounts/account-benefits").loginRewardDay(f.now()),day:1};
   p.alchemy={version:1,natural:150000,ingredients:Object.fromEntries(rules.ingredients.map(i=>[i.id,100])),learned:["strength"],equipped:"strength"};
   p.inventory.alchemy_strength=5;
+  p.inventory.alchemy_swiftness=p.inventory.alchemy_knowledge=3;
   const app=createGameServer({profiles:f.store,events:f.manager,arena:new Arena({etherCount:0}),wallNow:f.now,testBots:{enabled:false}});
   let browser;
   try {
    app.httpServer.listen(0,"127.0.0.1"); await once(app.httpServer,"listening"); const url="http://127.0.0.1:"+app.httpServer.address().port;
    browser=await engines[engine].launch({headless:true,...(engine==="chromium"?{channel:"chrome"}:{})});
    const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true});
+   await require('../helpers/browser-established-profile').prepareContext(context);
    await context.addCookies([{name:"sferorumiya_session",value:f.user.token,url}]);
    const page=await context.newPage(), errors=[], earlyArt=new Set(); page.on("pageerror",e=>errors.push(e.message));
    page.on("request",request=>{if(request.url().includes('/assets/events/ether-alchemy/'))earlyArt.add(request.url().split('/').at(-1))});
@@ -53,16 +55,34 @@ async function until(check) { for (let i=0;i<160;i++) { if (check()) return; awa
     await page.screenshot({path:path.join(output,engine+'-permanent-lobby-'+width+'.png')});
    }
    await page.setViewportSize({width:390,height:844});
+   await page.locator('#inventorySection').tap();
+   for(const id of ['swiftness','knowledge']) {
+    const choose=page.locator(`[data-booster-id="alchemy_${id}"] .potion-order-controls .booster-action`);
+    await choose.tap(); await until(()=>f.p().alchemy.queue?.includes(id));
+   }
+   const knowledge=page.locator('[data-booster-id="alchemy_knowledge"] .potion-order-controls');
+   await knowledge.getByRole('button',{name:/Раньше/}).tap();
+   await until(()=>f.p().alchemy.queue?.join(',')==='strength,knowledge,swiftness');
+   await page.screenshot({path:path.join(output,engine+'-potion-queue.png')});
+   await page.evaluate(()=>document.querySelector('dialog[data-mode="inventory"]').close());
    await page.locator("#etherGeneratorButton").tap(); await page.locator("#alchemyBook").tap();
    assert.equal(await brew.isDisabled(),true);
    await page.evaluate(()=>document.getElementById("alchemyDialog").close());
-   await page.locator("#playButton").tap(); await page.locator("#arena").waitFor({state:"visible"});
+   await page.locator('#arenaPickerButton').tap();
+   await page.locator('#arenaPickerDialog .arena-auto').tap();
+   await page.locator("#arena").waitFor({state:"visible"});
    const player=[...app.arena.players.values()].find(row=>row.profileId===f.p().id); assert(player); player.protectedUntil=0;
    const z=page.locator("#potionSlotZ"); await z.waitFor({state:"visible"});
-   assert.match(await page.locator("#boosterBudget").textContent(),/Зелье: 1 раз/);
+   assert.match(await page.locator("#boosterBudget").textContent(),/Z: до 3 разных зелий/);
    await page.waitForFunction(()=>!document.getElementById("potionSlotZ").disabled);
    const before=f.p().inventory.alchemy_strength; await z.tap(); await until(()=>player.potion?.id==="strength");
    assert.equal(f.p().inventory.alchemy_strength,before-1);
+   for(const id of ['knowledge','swiftness']) {
+    await page.waitForFunction(()=>!document.getElementById('potionSlotZ').disabled);
+    await z.tap(); await until(()=>player.potion?.ids?.includes(id));
+    assert.equal(f.p().inventory['alchemy_'+id],2);
+   }
+   assert.deepEqual(player.potion.ids,['strength','knowledge','swiftness']);
    await page.waitForFunction(()=>document.getElementById("potionSlotZ").disabled);
    await page.keyboard.press("KeyZ"); await page.waitForTimeout(150); assert.equal(f.p().inventory.alchemy_strength,before-1);
    assert.equal(await page.locator("#alchemyDialog").getAttribute("data-animate"),"false");
@@ -78,7 +98,7 @@ async function until(check) { for (let i=0;i<160;i++) { if (check()) return; awa
    await page.waitForFunction(()=>!document.getElementById("potionSlotZ").disabled);
    await page.keyboard.press("KeyZ"); await until(()=>next.potion?.id==="strength");
    assert.equal(f.p().inventory.alchemy_strength,before-2);
-   assert.deepEqual(errors,[]); results.push({engine,mobileBrewRetry:true,offEvent:true,touchZ:true,keyboardZNextLife:true,beforeOpen,errors});
+   assert.deepEqual(errors,[]); results.push({engine,mobileBrewRetry:true,offEvent:true,touchZ:true,threeEffects:true,inventoryOrder:true,autoArenaEntry:true,keyboardZNextLife:true,beforeOpen,errors});
    await context.close();
   } finally { await browser?.close(); await app.close(); }
  }

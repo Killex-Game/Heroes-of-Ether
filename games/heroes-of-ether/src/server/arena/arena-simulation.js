@@ -80,8 +80,8 @@ const boosterLimitForLevel = (level) =>
 // Предел отдельного шара; общая масса всех частей отдельно не ограничивается.
 const { massLimitForLevel } = require("./player-limits");
 function massDecayLoss(mass) {
-  if (mass <= 1000) return 0;
-  const floor = mass > 120000 ? 120000 : 1000;
+  if (mass <= RULES.START_MASS) return 0;
+  const floor = mass > 120000 ? 120000 : mass > 1000 ? 1000 : RULES.START_MASS;
   // Удвоенная естественная потеря; округляем один раз после применения ставки.
   return Math.min(mass - floor, Math.ceil((mass * (mass > 120000 ? 15 : 9) * 206) / 1000000));
 }
@@ -121,7 +121,8 @@ const cleanName = (name) =>
     .join("");
 
 function canAbsorb(eater, victim, now) {
-  if (eater.isRemnant && now >= eater.removeAt - RULES.DEPARTURE_FADE_MS) return false;
+  if ((eater.isRemnant && now >= eater.removeAt) ||
+      (victim.isRemnant && now >= victim.removeAt)) return false;
   const eaterProfile = eater.profileId || eater.departedProfileId,
     victimProfile = victim.profileId || victim.departedProfileId;
   if ((eater.isRemnant || victim.isRemnant) && eaterProfile && eaterProfile === victimProfile)
@@ -312,7 +313,7 @@ class Arena {
     remnant.departedProfileId = p.profileId;
     delete remnant.profileId;
     remnant.isRemnant = true;
-    remnant.removeAt = now + RULES.DEPARTURE_LINGER_MS + RULES.DEPARTURE_FADE_MS;
+    remnant.removeAt = now + RULES.DEPARTURE_LINGER_MS;
     remnant.stopped = true;
     remnant.moveDirection = null;
     remnant.targetX = remnant.x;
@@ -431,10 +432,13 @@ class Arena {
     p.nextMassDecayAt += periods * RULES.MASS_DECAY_MS;
     // Пропущенные интервалы считаются последовательно от уменьшающейся массы.
     const reduction = 100 - (100 - accessories.bonus(p.outfit, "decayReduction")) * (1 - (alchemy.modifiers(p).decay || 0));
-    for (let i = 0; i < periods && p.mass > 1000; i++) {
+    if (reduction >= 100) return;
+    for (let i = 0; i < periods && p.mass > RULES.START_MASS; i++) {
       const units = massDecayLoss(p.mass) * (100 - reduction) + (p.massDecayRemainder || 0);
       p.massDecayRemainder = units % 100;
-      this.loseMass(p, Math.floor(units / 100));
+      const lost = this.loseMass(p, Math.min(p.mass - RULES.START_MASS, Math.floor(units / 100)));
+      // All remaining parts may already be at their physical minimum.
+      if (!lost && units >= 100) break;
     }
   }
   splitPlayer(p, message, now) {
@@ -453,6 +457,7 @@ class Arena {
     )
       return false;
     this.boosterEffects.tickSwordBurns(p, now);
+    if (p.dead) return false;
     this.prepareMergeTimers(p);
     if (!p.parts)
       p.parts = [
@@ -761,13 +766,17 @@ class Arena {
     if (message.spawnSerial !== p.spawnSerial)
       throw new BoosterError("После возрождения выбери бустер заново.");
     if (booster.kind === "potion") {
-      if (p.potion) throw new BoosterError("В этой жизни зелье уже использовано.", 409);
-      const id = require("../../../public/shared/alchemy-rules").get(booster.id).id;
+      const rules = require("../../../public/shared/alchemy-rules"), id = rules.get(booster.id).id;
+      const ids = rules.activeIds(p.potion);
+      if (ids.includes(id)) throw new BoosterError("Это зелье уже действует.", 409);
+      if (ids.length >= rules.MAX_ACTIVE) throw new BoosterError("В этой жизни уже действуют три зелья.", 409);
       return () => {
         // Close the observed interval before activation: earlier time must not
         // receive a newly drunk potion's bonus in the next 30-second payout.
         this.accrueMass(p, now);
-        p.potion = { id, readyAt: now };
+        const active = [...ids, id];
+        p.potion = { id: active[0], ids: active, readyAt: p.potion?.readyAt ?? now,
+          modifiers: rules.combine(active) };
         if (p.massAccrual) p.massAccrual.potionXpPercent = 100 + Math.round((alchemy.modifiers(p).xp || 0) * 100);
         p.boostersUsed++;
         p.boosterUses[booster.id] = 1;
@@ -782,7 +791,7 @@ class Arena {
     )
       throw new BoosterError("Лимит этого слота на эту жизнь исчерпан.", 409);
     const sharedCooldown = booster.sharedCooldownMs ?? BOOSTER_RULES.COOLDOWN_MS;
-    const hasCooldown = booster.kind !== "mass" && booster.kind !== "shield" && sharedCooldown > 0;
+    const hasCooldown = BOOSTER_RULES.COOLDOWNS_ENABLED && booster.kind !== "mass" && booster.kind !== "shield" && sharedCooldown > 0;
     if (hasCooldown && p.boosterReadyAt > now)
       throw new BoosterError("Бустеры перезаряжаются одну секунду.", 409);
     if (booster.kind === "mass" && this.mainBody(p).mass >= massLimitForLevel(p.level))
@@ -790,7 +799,7 @@ class Arena {
         "Достигнут предел массы главного шара для вашего уровня. Предмет сохранён.",
         409,
       );
-    if (p.boosterItemReadyAt[booster.id] > now)
+    if (BOOSTER_RULES.COOLDOWNS_ENABLED && p.boosterItemReadyAt[booster.id] > now)
       throw new BoosterError(
         booster.id === "fire_sword"
           ? "Огненный меч перезаряжается 5 секунд после применения."
@@ -826,9 +835,9 @@ class Arena {
       booster.kind === "shield"
         ? p.effects[booster.id] > now && p.shieldReadyAt[booster.id] > now
         : this.hasEffect(target, booster.kind, now);
-    if (booster.kind === "shield" && effectActive)
+    if (BOOSTER_RULES.COOLDOWNS_ENABLED && booster.kind === "shield" && effectActive)
       throw new BoosterError("Повтор этого щита доступен через 15 секунд после применения.", 409);
-    if (!launch && booster.kind !== "mass" && effectActive)
+    if (BOOSTER_RULES.COOLDOWNS_ENABLED && !launch && booster.kind !== "mass" && effectActive)
       throw new BoosterError("Такой эффект уже действует. Предмет сохранён.");
     if (booster.kind === "sponge" && !p.parts)
       throw new BoosterError("Для Губки нужны разделённые части. Предмет сохранён.");
@@ -855,7 +864,7 @@ class Arena {
           for (const id of Object.keys(p.effects))
             if (BOOSTERS.get(id)?.kind === "shield") delete p.effects[id];
           p.shieldReadyAt = {
-            [booster.id]: now + BOOSTER_RULES.SHIELD_COOLDOWN_MS,
+            [booster.id]: now + (BOOSTER_RULES.COOLDOWNS_ENABLED ? BOOSTER_RULES.SHIELD_COOLDOWN_MS : 0),
           };
         }
         const effect = giftEffects.adjust(
@@ -874,7 +883,7 @@ class Arena {
       }
       if (hasCooldown) p.boosterReadyAt = now + sharedCooldown;
       alchemy.commit(p, alchemyCast, now);
-      if (booster.cooldownMs) p.boosterItemReadyAt[booster.id] = now + booster.cooldownMs;
+      if (BOOSTER_RULES.COOLDOWNS_ENABLED && booster.cooldownMs) p.boosterItemReadyAt[booster.id] = now + booster.cooldownMs;
       p.boostersUsed++;
       require("./quest-actions").record(this, p, "boosterUses", null, booster.id, null, accessory ? 'accessory' : 'inventory');
       if (!accessory) p.boosterUses[booster.id] = (p.boosterUses[booster.id] || 0) + 1;
@@ -1162,7 +1171,7 @@ class Arena {
     for (const eater of snapshot) {
       if (eater.radius <= minimumRadius * RULES.ABSORB_SIZE_RATIO || consumed.has(eater.cellId) ||
           eater.effects?.lock > now ||
-          (eater.isRemnant && now >= eater.removeAt - RULES.DEPARTURE_FADE_MS))
+          (eater.isRemnant && now >= eater.removeAt))
         continue;
       let firstVictim = 0;
       if (candidates && orderedRadii) {
@@ -1200,6 +1209,7 @@ class Arena {
           lifeId: victim.lifeId,
           durationSeconds: Math.max(0, Math.floor((now - victim.lifeStartedAt) / 1000)),
           killer: {
+            id: eater.profileId || eater.departedProfileId || null,
             name: eater.name,
             clanPrefix: eater.clanPrefix,
             level: eater.level,
@@ -1252,7 +1262,11 @@ class Arena {
     for (const p of this.players.values()) if (!p.dead) this.boosterEffects.tick(p, now);
     this.combat.update(now);
     for (const p of this.players.values()) {
-      if (p.dead || p.isRemnant) continue;
+      if (p.dead) continue;
+      if (p.isRemnant) {
+        this.combat.movePull(p, now);
+        continue;
+      }
       this.decayMass(p, now);
       if (p.moveDirection) {
         p.stopped = false;
@@ -1380,7 +1394,8 @@ class Arena {
           lifeSeconds: Math.max(0, Math.floor((now - p.lifeStartedAt) / 1000)),
           lifeElapsedMs: Math.max(0, now - p.lifeStartedAt),
           pet: arenaPets.snapshot(p, now),
-          potion: p.potion ? { id: p.potion.id, readyInMs: Math.max(0, p.potion.readyAt - now) } : null,
+          potion: p.potion ? { id: p.potion.id, ids: [...require("../../../public/shared/alchemy-rules").activeIds(p.potion)],
+            readyInMs: Math.max(0, p.potion.readyAt - now) } : null,
           accessoryAbilities: accessoryAbilities.snapshot(p),
           boostersUsed: p.boostersUsed,
           boosterUses: { ...p.boosterUses },

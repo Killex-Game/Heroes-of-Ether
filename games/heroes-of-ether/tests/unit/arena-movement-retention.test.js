@@ -6,7 +6,7 @@ const test = require("node:test"),
 function scene() {
   const arena = new Arena({ etherCount: 0, world: { width: 10000, height: 10000 } }),
     p = arena.addPlayer(0, "moving");
-  Object.assign(p, { x: 5000, y: 5000, targetX: 5000, targetY: 5000, protectedUntil: 0 });
+  Object.assign(p, { x: 5000, y: 5000, targetX: 5000, targetY: 5000, protectedUntil: 0, nextMassDecayAt: Infinity });
   return { arena, p };
 }
 

@@ -22,11 +22,18 @@
         </g>
       </svg>
     </div>
-    <div class="effi-lobby-bubble" aria-hidden="true"><strong>Эффи</strong><p></p></div>`;
-  header.append(root);
+    <div class="effi-lobby-bubble"><strong>Эффи</strong><p></p><button class="effi-lobby-dismiss" type="button">Выйти</button></div>`;
+  const tools = document.querySelector(".lobby-generator-tools") || document.createElement("div");
+  tools.className = "lobby-generator-tools";
+  const reserved = document.createElement("div");
+  reserved.className = "lobby-generator-reserved";
+  reserved.setAttribute("aria-hidden", "true");
+  tools.append(reserved, root);
+  header.append(tools);
   const copy = root.querySelector("p"), words = greeting.split(" ");
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  let timer = null, position = 0, away = false, visible = false;
+  let timer = null, position = 0, away = false, visible = false, dismissed = false;
+  root.querySelector(".effi-lobby-dismiss").addEventListener("click", () => { dismissed = true; sync(); });
   function word() {
     timer = null;
     if (!visible) return;
@@ -35,7 +42,7 @@
     if (position < words.length) timer = setTimeout(word, 170);
   }
   function sync() {
-    visible = !away && !document.hidden && document.body.dataset.screen === "lobby" &&
+    visible = !dismissed && !away && !document.hidden && document.body.dataset.screen === "lobby" &&
       !window.KillexBoot?.active && !window.KillexMaintenance?.blocked && !document.querySelector("dialog[open]");
     root.dataset.active = String(visible);
     clearTimeout(timer); timer = null;

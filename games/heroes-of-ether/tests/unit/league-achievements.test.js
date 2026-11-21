@@ -4,7 +4,7 @@ const test = require("node:test"),
   fs = require("node:fs"),
   path = require("node:path");
 const { randomUUID } = require("node:crypto");
-const { setup } = require("../fixtures/season-trophies"),
+const { setup, recordBattle } = require("../fixtures/season-trophies"),
   { temporary } = require("../temp");
 const { ProfileStore } = require("../../src/server/profiles/profile-store");
 const activity = require("../../src/server/progression/activity-achievements"),
@@ -158,6 +158,7 @@ test("Кубки: награда учитывается у всех текущи
   for (const who of [idle, left]) f.act(who, "apply", { clanId: f.c(u).id });
   f.act(left, "leave", { clanId: f.c(u).id });
   for (const [i, rank] of [2, 5, 5, 5, 5, 5].entries()) {
+    recordBattle(f);
     f.c(u).competition.league = rank;
     f.profiles.save(f.profiles.data);
     f.time(f.profiles.data.competition.season.end);

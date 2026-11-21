@@ -18,7 +18,14 @@ test('all casts preserve frozen life, pet and absorption histories while awards 
   for(const b of all)p.inventory[b.id]=10;
   const base=freeze(store.data),original=structuredClone(base);
   for(const b of all){
-    const batch=createProfileBatch(base),request='cast-draft-'+b.id+'-0001';
+    let castBase=base,castProfile=p;
+    if(b.kind==='potion'){
+      castBase=structuredClone(base);
+      castProfile=store.find(user.token,castBase);
+      castProfile.alchemy.equipped=b.id.replace(/^alchemy_/,'');
+      freeze(castBase);
+    }
+    const batch=createProfileBatch(castBase),request='cast-draft-'+b.id+'-0001';
     const result=store.consume(user.token,b.id,request,'cast:'+b.id,()=>({mass:30000,lifeId:'cast-draft-life'}),true,batch);
     sealProfileBatch(batch);
     assert.equal(result.replay,false);
@@ -26,8 +33,8 @@ test('all casts preserve frozen life, pet and absorption histories while awards 
     assert.equal(next.inventory[b.id],9);assert.equal(next.progress.boosterUses,100);
     assert.equal(next.progress.claimed.boosters,1);assert.ok(next.greatness>99);
     for(const key of ['session','lastLife','recentVictims','absorptionVictims'])
-      assert.strictEqual(next.progress[key],p.progress[key]);
-    assert.strictEqual(next.pets,p.pets);
+      assert.strictEqual(next.progress[key],castProfile.progress[key]);
+    assert.strictEqual(next.pets,castProfile.pets);
     assert.deepEqual(base,original);
     const replay=store.consume(user.token,b.id,request,'cast:'+b.id,()=>{throw Error('replayed validation');},true,{next:batch.next});
     assert.equal(replay.replay,true);

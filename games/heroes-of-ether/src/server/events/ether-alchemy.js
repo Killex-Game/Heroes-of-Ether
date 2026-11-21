@@ -12,6 +12,7 @@ function view(profile, manager, at) {
   return { active: !!run, runId: run?.id || null, endsAt: run ? Math.min(run.endsAt, run.stoppedAt ?? Infinity) : null,
     natural: saved.natural, exchangeCount: Math.floor(saved.natural / rules.NATURAL_PER_EXCHANGE),
     ingredients: { ...saved.ingredients }, learned: [...saved.learned], equipped: saved.equipped,
+    queue: [...rules.equipped(saved)],
     potions: Object.fromEntries(rules.potions.map(p => [p.id, profile.inventory[p.boosterId] || 0])),
   };
 }
@@ -54,12 +55,15 @@ function progress(profile, manager, event, at) {
 }
 function mutate(store, token, input, batch) {
   if (!object(input) || !["brew", "equip", "exchange"].includes(input.action) ||
-      Object.keys(input).some(k => !["action", "requestId", "potionId", "runId"].includes(k)))
+      Object.keys(input).some(k => !["action", "requestId", "potionId", "potionIds", "runId"].includes(k)))
     throw new BoosterError("Неизвестное действие лаборатории.");
   const potion = rules.get(input.potionId);
-  if (input.action !== "exchange" && input.potionId !== null && !potion)
+  if (input.action !== "exchange" && input.potionIds === undefined && input.potionId !== null && !potion)
     throw new BoosterError("Неизвестное зелье.");
-  const signature = JSON.stringify(["alchemy", input.action, input.potionId ?? null, input.runId ?? null]);
+  const queue = input.potionIds;
+  if (queue !== undefined && (input.action !== "equip" || !validIds(queue)))
+    throw new BoosterError("Выбери до трёх разных зелий.");
+  const signature = JSON.stringify(["alchemy", input.action, queue ?? input.potionId ?? null, input.runId ?? null]);
   return store.transactProfile(token, input.requestId, signature, p => {
     const at = store.now(), next = { ...(p.alchemy || empty) };
     if (input.action === "exchange") {
@@ -67,8 +71,11 @@ function mutate(store, token, input, batch) {
       p.wallet.bucks = add(p.wallet.bucks, rules.CONCENTRATED_PER_EXCHANGE);
       next.natural -= rules.NATURAL_PER_EXCHANGE;
     } else if (input.action === "equip") {
-      if (potion && !(p.inventory[potion.boosterId] > 0)) throw new BoosterError("Этого зелья нет в запасе.", 409);
-      next.equipped = potion?.id || null;
+      const selected = queue ? [...queue] : potion ? [potion.id] : [];
+      if (selected.some(id => !(p.inventory[rules.get(id).boosterId] > 0)))
+        throw new BoosterError("Этого зелья нет в запасе.", 409);
+      next.queue = selected;
+      next.equipped = selected[0] || null;
     } else {
       const run = runAt(store.events, at);
       if (!run || run.id !== input.runId) throw new BoosterError("Зельеварение доступно во время Эфирной алхимии.", 409);
@@ -80,10 +87,14 @@ function mutate(store, token, input, batch) {
       for (const ingredient of potion.ingredients) next.ingredients[ingredient.id] -= ingredient.count;
       p.inventory[potion.boosterId] = count;
       if (!next.learned.includes(potion.id)) next.learned = [...next.learned, potion.id];
-      next.equipped ||= potion.id;
+      if (!rules.equipped(next).length) { next.equipped = potion.id; next.queue = [potion.id]; }
     }
     p.alchemy = next;
   }, undefined, undefined, batch);
+}
+function validIds(ids) {
+  return Array.isArray(ids) && ids.length <= rules.MAX_ACTIVE && new Set(ids).size === ids.length &&
+    ids.every(id => rules.potions.some(p => p.id === id));
 }
 function validate(profile) {
   const s = profile.alchemy;
@@ -93,8 +104,10 @@ function validate(profile) {
       !Array.isArray(s.learned) || new Set(s.learned).size !== s.learned.length ||
       s.learned.some(id => !rules.potions.some(p => p.id === id)) ||
       !(s.equipped === null || rules.potions.some(p => p.id === s.equipped)) ||
+      (s.queue !== undefined && (!validIds(s.queue) || (s.queue[0] || null) !== s.equipped)) ||
       (s.active != null && (!object(s.active) || typeof s.active.lifeId !== "string" ||
-        !rules.potions.some(p => p.id === s.active.id))))
+        !rules.potions.some(p => p.id === s.active.id) ||
+        (s.active.ids !== undefined && (!validIds(s.active.ids) || s.active.ids[0] !== s.active.id)))))
     throw Error("Повреждены данные алхимии.");
 }
 module.exports = { manifest: rules.manifest, rules, view, runAt, progress, mutate, validate };

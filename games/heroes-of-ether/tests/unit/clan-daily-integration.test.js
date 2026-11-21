@@ -141,7 +141,7 @@ test('21:00 read waits for queued pre-deadline progress before paying or replaci
   assert.equal(f.board().quests[0].progress,1);f.at(end);f.clanApi.state(f.a.token);assert.equal(f.store.find(f.a.token).wallet.crystals,before);
   f.store.clanQuestSettlementReady=()=>true;f.store.refreshCompetition();assert.equal(f.store.find(f.a.token).wallet.crystals,before+500);assert(f.board().settledAt);
 });
-test('announced seasons pause tasks, owner only, stop and restart accumulate prizes without repeats',t=>{
+test('announced seasons pause tasks, owner only; seasons without battles do not award trophies',t=>{
   const f=fixture(t);const access={isOwner:a=>a.id===f.a.profile.id},actor={id:f.a.profile.id};
   const announce=name=>admin.apply(f.store,access,actor,{action:'announce',immediate:true,name,endsAt:start+3600000,revision:f.store.data.clanQuests.revision,reason:'Проверка',requestId:randomUUID()});
   assert.throws(()=>admin.apply(f.store,access,{id:'stranger'},{}),/владелец/);
@@ -151,8 +151,9 @@ test('announced seasons pause tasks, owner only, stop and restart accumulate pri
   assert.equal(f.clanApi.state(f.a.token).competition.mode,'quests');assert.equal(f.clanApi.state(f.a.token).competition.dailyQuests.active,true);assert.equal(f.store.data.competition.season.settled,true);
   const count=f.store.data.clans[f.id].competition.trophies.length;
   announce('Второй');f.at(start+3600000);f.store.refreshCompetition();
-  assert.equal(f.store.data.clans[f.id].competition.trophies.length,count+1);
-  f.store.refreshCompetition();assert.equal(f.store.data.clans[f.id].competition.trophies.length,count+1);
+  assert.equal(count,0);
+  assert.equal(f.store.data.clans[f.id].competition.trophies.length,0);
+  f.store.refreshCompetition();assert.equal(f.store.data.clans[f.id].competition.trophies.length,0);
 });
 
 test('revised clan actions have independent cursors, include pets, retain paid-only inventory tasks and every freeze hit',t=>{

@@ -30,7 +30,7 @@ function command(p, id, target) {
   return { boosterId: id, spawnSerial: p.spawnSerial, aimX: target?.x, aimY: target?.y };
 }
 
-test("Атакующие бустеры: повтор через 300 мс, смена вида без общей задержки", () => {
+test("Атакующие бустеры: повтор без задержки при сохранении лимита применений", () => {
   const { arena, a, b } = scene();
   const ids = [
     "glove",
@@ -50,7 +50,7 @@ test("Атакующие бустеры: повтор через 300 мс, см�
     assert.equal(item.cooldownMs, 300, id);
     assert.equal(item.sharedCooldownMs, 0, id);
     arena.prepareBooster(a.id, command(a, id, b), 5000)();
-    assert.throws(() => arena.prepareBooster(a.id, command(a, id, b), 5299), /мгновение/, id);
+    assert.doesNotThrow(() => arena.prepareBooster(a.id, command(a, id, b), 5000), id);
     assert.equal(a.boosterUses[id], 1, id);
   }
   for (const id of ids) {
@@ -68,7 +68,7 @@ test("Подготовка не запускает таймер до успеш�
   const apply = arena.prepareBooster(a.id, command(a, "hook", b), 5000);
   assert.equal(a.boosterItemReadyAt.hook, undefined);
   apply();
-  assert.equal(a.boosterItemReadyAt.hook, 5300);
+  assert.equal(a.boosterItemReadyAt.hook, undefined);
 });
 test("22 карточки сохраняют правила каталога и используют новые PNG; исходные SVG сохранены", () => {
   const directory = path.join(__dirname, "../../public/assets/boosters");
@@ -162,7 +162,7 @@ test("Все улучшенные и редкие комплекты: новая
     require("../../src/server/progression/experience-progression").freshProgress(25);
   store.find(token).wallet.crystals = 500;
   const operations = [];
-  for (const item of publicCatalog().items.filter((b) => ["advanced", "rare"].includes(b.tier))) {
+  for (const item of publicCatalog().items.filter((b) => ["advanced", "rare"].includes(b.tier) && !b.eventOnly)) {
     const amount = item.tier === "advanced" ? 10 : 20;
     assert.deepEqual(item.price, {
       currency: "crystals",
@@ -272,7 +272,7 @@ for (const [id, amount] of [
     arena.prepareBooster(a.id, command(a, id), 5000)();
     assert.equal(a.mass, 20 + amount);
     assert.equal(a.radius, radiusForMass(20 + amount));
-    assert.throws(() => arena.prepareBooster(a.id, command(a, id), 5099), /мгновение/);
+    assert.doesNotThrow(() => arena.prepareBooster(a.id, command(a, id), 5000));
     arena.prepareBooster(a.id, command(a, id), 5100)();
     assert.equal(a.mass, 20 + 2 * amount);
   });
@@ -286,7 +286,7 @@ test("Ускорение даёт ровно +50% и заканчивается 
   assert.ok(Math.abs((a.x - 500) / (b.x - 700) - 1.5) < 1e-8);
   assert.equal(arena.hasEffect(a, "speed", 19999), true);
   assert.equal(arena.hasEffect(a, "speed", 20000), false);
-  assert.throws(() => arena.prepareBooster(a.id, command(a, "speed"), 6000), /уже действует/);
+  assert.doesNotThrow(() => arena.prepareBooster(a.id, command(a, "speed"), 6000));
   const x = a.x;
   a.lastMoveAt = 20000;
   arena.step(20000);
@@ -388,14 +388,14 @@ test("Все границы лимита бустеров: независимы�
   }
 });
 
-test("Смена щитов A→B→A без ожидания; яд сохраняет секунду", () => {
+test("Смена и повтор щитов и яда без ожидания", () => {
   const { arena, a, b } = scene();
   arena.prepareBooster(a.id, command(a, "speed"), 5000)();
   arena.prepareBooster(a.id, command(a, "candy"), 5000)();
   arena.prepareBooster(a.id, command(a, "colorful_shield"), 5000)();
   arena.prepareBooster(a.id, command(a, "sphere"), 5000)();
-  assert.throws(() => arena.prepareBooster(a.id, command(a, "sphere"), 5000), /через 15 секунд/);
-  assert.throws(() => arena.prepareBooster(a.id, command(a, "poison", b), 5999), /перезаряжаются/);
+  assert.doesNotThrow(() => arena.prepareBooster(a.id, command(a, "sphere"), 5000));
+  assert.doesNotThrow(() => arena.prepareBooster(a.id, command(a, "poison", b), 5000));
   arena.prepareBooster(a.id, command(a, "poison", b), 6000)();
   arena.prepareBooster(a.id, command(a, "colorful_shield"), 6000)();
   assert.equal(a.effects.sphere, undefined);
@@ -403,22 +403,22 @@ test("Смена щитов A→B→A без ожидания; яд сохран
   assert.equal(a.effects.colorful_shield, undefined);
   assert.equal(a.effects.golden_shield, 41000);
   arena.prepareBooster(a.id, command(a, "colorful_shield"), 6000)();
-  assert.deepEqual(a.shieldReadyAt, { colorful_shield: 21000 });
+  assert.deepEqual(a.shieldReadyAt, { colorful_shield: 6000 });
 });
 
-test("Каждый щит повторяется ровно через 15 с, обновляет защиту и не тратится раньше", () => {
+test("Каждый щит повторяется сразу, обновляет защиту и расходует одно применение", () => {
   for (const id of ["colorful_shield", "sphere", "golden_shield", "clan_shield"]) {
     const { arena, a } = scene();
     arena.prepareBooster(a.id, command(a, id), 5000)();
-    assert.throws(() => arena.prepareBooster(a.id, command(a, id), 19999), /через 15 секунд/);
+    assert.doesNotThrow(() => arena.prepareBooster(a.id, command(a, id), 5000));
     assert.equal(a.boosterUses[id], 1);
     arena.prepareBooster(a.id, command(a, id), 20000)();
     assert.equal(a.boosterUses[id], 2);
     assert.equal(a.effects[id], 20000 + BOOSTERS.get(id).durationMs);
-    assert.equal(a.shieldReadyAt[id], 35000);
+    assert.equal(a.shieldReadyAt[id], 20000);
     assert.equal(
       arena.snapshot(20000).players.find((p) => p.id === a.id).shieldCooldowns[id],
-      15000,
+      undefined,
     );
   }
 });

@@ -277,8 +277,7 @@ class ArenaHazards {
     const players = [...a.players.values()].filter(
       (p) =>
         !p.dead &&
-        p.protectedUntil <= now &&
-        (!p.isRemnant || now < p.removeAt - RULES.DEPARTURE_FADE_MS),
+        (!p.isRemnant || now < p.removeAt),
     );
     let dirty = true,
       records,

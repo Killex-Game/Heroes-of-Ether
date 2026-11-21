@@ -221,7 +221,7 @@ test("event top: prize boundaries, fixed rewards with VIP/Premium, bots excluded
   bot.easter.runs[f.run.id].found[0] = 100000;
   bot.easter.runs[f.run.id].dailyFound[R.dayAt(START)] = 100000;
   assert.equal(R.view(f.store, f.p()).total, 101);
-  assert.equal(R.view(f.store, f.p(), 999).page, 20);
+  assert.equal(R.view(f.store, f.p(), 999).page, 10);
   f.setTime(R.dayEnd(R.dayAt(START)));
   f.store.refreshCompetition();
   for (const [rank, coins, crystals, bucks, tickets] of [

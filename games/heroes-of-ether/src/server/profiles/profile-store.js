@@ -59,6 +59,7 @@ const pets = require("../pets/pet-service");
 const accounts = require("../accounts/account-benefits");
 const appearance = require("./league-appearance");
 const personalTrophies = require("./season-trophy-history");
+const trophyCorrection = require("../clans/trophy-correction-20261122");
 const virtualProducts = require("../../../public/shared/virtual-product-catalog");
 const promotions = require("../shop/promotion-offers");
 const clanCompetition = require("../clans/clan-competition-service"),
@@ -530,6 +531,7 @@ class ProfileStore {
       clanCompetition.validate(data);
       clanQuests.validate(data);
       this.trophyMigrationPending = personalTrophies.migrate(data);
+      this.trophyCorrectionPending = !!trophyCorrection.plan(data);
       dailyRankings.validateWorld(data);
       eventRankings.validate(data);
       require("../clans/clan-service").validateWorld(data);
@@ -606,6 +608,7 @@ class ProfileStore {
       this.arenaPreparer = new (require("./arena-progress-preparer").ArenaProgressPreparer)();
   }
   prepareSnapshot(next, at = this.now(), context, previous = this.data) {
+    if (this.trophyCorrectionPending) next = trophyCorrection.apply(next, at);
     if (this.questRulesMigrationPending) {
       let profiles = next.profiles;
       const changed = [];
@@ -755,6 +758,7 @@ class ProfileStore {
     this.markMigrationsSaved();
   }
   markMigrationsSaved() {
+    this.trophyCorrectionPending = false;
     this.questRulesMigrationPending = false;
     this.petsMigrationPending = false;
     this.rouletteMigrationPending = false;
@@ -1039,6 +1043,7 @@ class ProfileStore {
       ),
       outfit: accessoryAccess.outfit(profile),
       potionEquipped: profile.alchemy?.equipped || null,
+      potionQueue: [...alchemy.rules.equipped(profile.alchemy)],
       level: profile.level,
       clanPrefix: clan?.prefix || "",
       clanId: clan?.id || null,
@@ -1871,6 +1876,7 @@ class ProfileStore {
       this.appearanceMigrationPending ||
       this.leagueMigrationPending ||
       this.trophyMigrationPending ||
+      this.trophyCorrectionPending ||
       this.loadoutMigrationPending ||
       this.transactionsMigrationPending ||
       this.achievementStagesMigrationPending ||
@@ -2061,9 +2067,15 @@ class ProfileStore {
         if (BOOSTERS.get(id).kind === "potion") {
           if (!prepared?.lifeId || p.progress.session?.id !== prepared.lifeId)
             throw new BoosterError("Эта жизнь уже завершена. Зелье сохранено.", 409);
-          if (p.alchemy?.active?.lifeId === prepared.lifeId)
-            throw new BoosterError("В этой жизни зелье уже использовано.", 409);
-          p.alchemy = { ...p.alchemy, active: { lifeId: prepared.lifeId, id: alchemy.rules.get(id).id } };
+          const potionId = alchemy.rules.get(id).id;
+          const used = p.alchemy?.active?.lifeId === prepared.lifeId ? alchemy.rules.activeIds(p.alchemy.active) : [];
+          if (used.includes(potionId) || used.length >= alchemy.rules.MAX_ACTIVE)
+            throw new BoosterError("Можно применить только три разных зелья за жизнь.", 409);
+          const next = alchemy.rules.equipped(p.alchemy).find(key =>
+            !used.includes(key) && p.inventory[alchemy.rules.get(key).boosterId] > 0);
+          if (next !== potionId) throw new BoosterError("Используй следующее зелье из выбранного набора.", 409);
+          const ids = [...used, potionId];
+          p.alchemy = { ...p.alchemy, active: { lifeId: prepared.lifeId, id: ids[0], ids } };
         }
         if (id === "easter_egg") easter.consume(p, this.now());
         p.inventory[id]--;

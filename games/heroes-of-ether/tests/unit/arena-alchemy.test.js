@@ -12,12 +12,16 @@ function fixture() {
     { boosterId: id, spawnSerial: p.spawnSerial, ...extra }, at)();
   return { arena, p, use };
 }
-test("one potion for entire life, successful consumption only, reset on new life", () => {
+test("up to three distinct potions coexist for a life and reset on respawn", () => {
   const { arena, p, use } = fixture();
   const apply = arena.prepareBooster(p.id, { boosterId: "alchemy_strength", spawnSerial: p.spawnSerial }, 3000);
   assert.equal(p.potion, null);
   apply(); assert.equal(p.potion.id, "strength");
-  assert.throws(() => use("alchemy_swiftness"), /уже использовано/);
+  use("alchemy_swiftness");
+  use("alchemy_knowledge");
+  assert.deepEqual(p.potion.ids, ["strength", "swiftness", "knowledge"]);
+  assert.throws(() => use("alchemy_strength"));
+  assert.throws(() => use("alchemy_satiety"));
   assert.throws(() => arena.prepareBooster(p.id, { boosterId: "alchemy_swiftness", spawnSerial: 0 }, 3000));
   arena.resetPlayer(p, 4000); assert.equal(p.potion, null);
   use("alchemy_swiftness", 7000); assert.equal(p.potion.id, "swiftness");

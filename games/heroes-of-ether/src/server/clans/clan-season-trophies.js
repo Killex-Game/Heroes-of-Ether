@@ -33,6 +33,12 @@ function finish(data, season, byId) {
   for (const clan of Object.values(data.clans)) {
     const state = clan.competition;
     if (state.trophies.some((trophy) => trophy.seasonId === season.id)) continue;
+    // Membership or an unmatched league group alone cannot earn a season cup.
+    const fought = (clan.battleHistory || []).some(battle =>
+      battle.endedAt > season.start && battle.endedAt <= season.end &&
+      battle.sides?.length === 2 && battle.sides.some(side => side.id === clan.id));
+    const previous = data.competition?.lastBattle?.[clan.id];
+    if (!fought && !(previous?.opponent?.id && previous.endedAt > season.start && previous.endedAt <= season.end)) continue;
     const league = state.seasonPeak.league,
       trophy = {
         seasonId: season.id,

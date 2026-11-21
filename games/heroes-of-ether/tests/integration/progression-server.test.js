@@ -66,6 +66,7 @@ const position = (p, mass, x = 800, y = 800) =>
     targetX: x,
     targetY: y,
     protectedUntil: 0,
+    nextMassDecayAt: Infinity, // Isolate XP/absorption accounting; decay has separate coverage.
   });
 async function settled() {
   await new Promise((resolve) => setTimeout(resolve, 25));
@@ -794,7 +795,7 @@ test("Выход оставляет одну съедобную модель, п
   assert.equal(remnants().length, 0);
 });
 
-test("Обрыв оставляет модель на 15 секунд плюс плавное исчезновение, без фонового прогресса", async (t) => {
+test("Обрыв оставляет модель ровно на 15 секунд, без фонового прогресса", async (t) => {
   const { app, session, connect, disconnect, at } = await setup(t),
     a = await session(),
     ca = await connect(a);
@@ -804,13 +805,13 @@ test("Обрыв оставляет модель на 15 секунд плюс �
   const saved = structuredClone(app.profiles.find(a.token).progress),
     remnant = [...app.arena.players.values()].find((p) => p.isRemnant);
   assert.ok(remnant);
+  at(19500);
+  app.tick();
+  assert.equal(app.arena.snapshot(19500).players[0].departure.remainingMs, 500);
   at(19999);
   app.tick();
-  assert.equal(app.arena.snapshot(19999).players[0].departure.remainingMs, 1001);
-  at(20500);
-  app.tick();
-  assert.equal(app.arena.snapshot(20500).players[0].departure.remainingMs, 500);
-  at(21000);
+  assert.equal(app.arena.snapshot(19999).players[0].departure.remainingMs, 1);
+  at(20000);
   app.tick();
   assert.equal(app.arena.players.size, 0);
   assert.deepEqual(app.profiles.find(a.token).progress, saved);
@@ -842,7 +843,7 @@ for (const exit of ["leaveLife", "disconnect"])
     const victim = app.profiles.find(b.token).progress;
     assert.equal(cb.p.dead, true);
     assert.equal(remnant.mass, 1080);
-    assert.equal(remnant.removeAt, 21000);
+    assert.equal(remnant.removeAt, 20000);
     assert.equal(victim.lastLife.reason, "absorbed");
     assert.equal(victim.lastLife.killer.name, ca.p.name);
     assert.equal(victim.lastLife.earnedXp, 7);

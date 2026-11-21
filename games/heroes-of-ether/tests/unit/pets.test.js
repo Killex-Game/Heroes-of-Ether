@@ -588,7 +588,7 @@ test("Zaya carrot shares food, permits a full main part and rejects full players
   assert.equal(p.pet.sequence, 2);
 });
 
-test("Питомцевые запасы имеют отдельные 300 мс, повтор запроса не продлевает таймер", () => {
+test("Питомцевые запасы применяются без задержки, повтор запроса не расходует заряд", () => {
   for (const kind of ["fire", "claw", "glove", "carrot"]) {
     const { arena, p } = arenaFixture(kind === "carrot" ? "zaya" : "manya");
     p.pet.stock[kind] = 3;
@@ -597,13 +597,13 @@ test("Питомцевые запасы имеют отдельные 300 мс, 
     const first = message(p, ability);
     pets.use(arena, p, first, 5000);
     const repeat = message(p, ability, 2);
-    assert.throws(() => pets.use(arena, p, repeat, 5299), /повтором/, kind);
+    assert.equal(pets.use(arena, p, first, 5000).replay, true);
     assert.equal(p.pet.stock[kind], 2, kind);
     assert.equal(pets.use(arena, p, first, 5299).replay, true);
-    assert.equal(pets.snapshot(p, 5299).cooldowns[kind], 1);
-    pets.use(arena, p, repeat, 5300);
+    assert.equal(pets.snapshot(p, 5299).cooldowns[kind], 0);
+    pets.use(arena, p, repeat, 5000);
     assert.equal(p.pet.stock[kind], 1, kind);
-    assert.equal(pets.snapshot(p, 5300).cooldowns[kind], 300);
+    assert.equal(pets.snapshot(p, 5000).cooldowns[kind], 0);
   }
 });
 
@@ -615,17 +615,18 @@ test("Огонь Q, коготь R и следующая перчатка R пр
   pets.use(arena, p, message(p, "secondary", 3), 5000);
   assert.equal(p.pet.stock.claw, 0);
   assert.equal(p.pet.stock.glove, 10);
-  assert.throws(() => pets.use(arena, p, message(p, "secondary", 4), 5299), /повтором/);
+  pets.use(arena, p, message(p, "secondary", 4), 5000);
+  assert.equal(p.pet.stock.glove, 9);
 });
 
-test("Обычный и питомцевый огонь не обходят таймер сменой источника", () => {
+test("Обычный и питомцевый огонь применяются без задержки с раздельным расходом", () => {
   const { arena, p } = arenaFixture();
   const ordinary = { boosterId: "fire", spawnSerial: p.spawnSerial, aimX: 900, aimY: 500 };
   pets.use(arena, p, message(p, "fire", 1), 5000);
-  assert.throws(() => arena.prepareBooster(p.id, ordinary, 5299), /мгновение/);
+  assert.doesNotThrow(() => arena.prepareBooster(p.id, ordinary, 5000));
   arena.prepareBooster(p.id, ordinary, 5300)();
-  assert.equal(pets.snapshot(p, 5300).cooldowns.fire, 300);
-  assert.throws(() => pets.use(arena, p, message(p, "fire", 2), 5599), /повтором/);
+  assert.equal(pets.snapshot(p, 5300).cooldowns.fire, 0);
+  assert.throws(() => pets.use(arena, p, message(p, "fire", 1), 5300), /обработан/);
   pets.use(arena, p, message(p, "fire", 2), 5600);
   assert.equal(p.pet.stock.fire, 9);
 });
@@ -669,7 +670,7 @@ test("Огонь питомца уничтожает малую часть и з
 });
 test("Огонь питомца соблюдает порог смерти, защиту появления, щиты и сопротивление обычного огня", () => {
   for (const mode of ["normal", "spawn", "shield", "resistance"]) {
-    for (const mass of [2, 20, 49, 50, 51, 100]) {
+    for (const mass of [2, 20, 49, 50, 51, 100, 299, 300, 301, 600]) {
       const outcomes = [];
       for (const petFire of [false, true]) {
         const { arena, p, target } = arenaFixture("drakosha", 0);
@@ -691,7 +692,7 @@ test("Огонь питомца соблюдает порог смерти, за
           )();
         arena.combat.update(2000);
         outcomes.push({ mass: target.mass, dead: target.dead, events: arena.combatEvents.length });
-        if (mode === "normal" || mode === "shield") assert.equal(target.dead, mass <= 50);
+        if (mode === "normal" || mode === "shield") assert.equal(target.dead, mass <= 300);
       }
       assert.deepEqual(outcomes[0], outcomes[1], `${mode}, mass=${mass}`);
     }

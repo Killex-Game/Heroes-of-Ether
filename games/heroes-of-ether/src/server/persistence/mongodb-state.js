@@ -229,15 +229,18 @@ class MongoState {
       await session.endSession();
     }
   }
-  async read() {
+  async read({ snapshot = false } = {}) {
     // All state writes atomically advance the manifest generation. Majority
     // reads in one causal session, fenced by identical manifests before/after,
     // are accepted only if no writer changed the snapshot during the cursor.
     // This avoids both transaction lifetime and snapshot-history expiration
     // on slow cold transfers. A concurrent change fails closed, never mixes
     // revisions. acquire() separately CAS-checks this generation and lease.
-    const session = this.reader.startSession({ causalConsistency: true });
-    const options = { session, readPreference: 'primary', readConcern: { level: 'majority' },
+    // Online exports pin one majority-committed cluster timestamp across the
+    // manifest and cursor, while the writer continues normally. Startup keeps
+    // the generation fence required by acquire(). Snapshot expiry fails closed.
+    const session = this.reader.startSession(snapshot ? { snapshot: true } : { causalConsistency: true });
+    const options = { session, readPreference: 'primary', readConcern: { level: snapshot ? 'snapshot' : 'majority' },
       maxTimeMS: 540000, signal: AbortSignal.timeout(540000) };
     let manifest;
     const documents = [];

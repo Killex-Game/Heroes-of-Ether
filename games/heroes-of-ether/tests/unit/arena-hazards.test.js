@@ -198,16 +198,17 @@ for (const easter of [false, true])
     assert.equal(p.mass, 3250);
     assert.equal(a.progressEvents.filter(e => e.type === "easterPickup").length, easter ? 1 : 0);
   });
-test("spawn protection still prevents consuming hazards and eggs", () => {
+test("spawn protection permits collecting hazards and eggs while retaining PvP protection", () => {
   for (const easter of [false, true]) {
     const { a, p, h, item } = scene(easter);
     mass(a, p, 500);
     Object.assign(p, { x: item.x, y: item.y });
     p.protectedUntil = 4000;
     h.collect(3000);
-    assert.ok(h.items.includes(item));
-    assert.equal(p.parts, null);
-    assert.equal(a.progressEvents.filter(e => e.type === "easterPickup").length, 0);
+    assert.ok(!h.items.includes(item));
+    assert.equal(p.mass, 550);
+    assert.equal(p.protectedUntil, 4000);
+    assert.equal(a.progressEvents.filter(e => e.type === "easterPickup").length, easter ? 1 : 0);
   }
 });
 

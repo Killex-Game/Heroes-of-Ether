@@ -75,18 +75,18 @@ test("training, other pets and exhausted Leva preserve ordinary thorn split", ()
     assert.equal(a.bodies(p).length, 3);
   }
 });
-test("spawn protection does not spend Leva allowance; Lock still allows thorns", () => {
+test("spawn protection permits thorn collection and spends Leva allowance; Lock still allows thorns", () => {
   const { a, p, eat } = scene(100);
   p.protectedUntil = 2000;
   eat();
-  assert.equal(p.pet.thornMeals, 10);
-  assert.equal(p.mass, 1000);
+  assert.equal(p.pet.thornMeals, 9);
+  assert.equal(p.mass, 1050);
   p.protectedUntil = 0;
   p.effects.lock = 5000;
   eat();
-  assert.equal(p.pet.thornMeals, 9);
+  assert.equal(p.pet.thornMeals, 8);
   assert.equal(a.bodies(p).length, 1);
-  assert.equal(p.mass, 1050);
+  assert.equal(p.mass, 1100);
   assert.equal(p.effects.lock, 5000);
 });
 test("Easter hazards honor Leva and Zaya protection, preserve egg credit and mass, and split after exhaustion", () => {

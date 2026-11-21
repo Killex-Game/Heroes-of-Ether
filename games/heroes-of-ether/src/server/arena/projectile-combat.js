@@ -434,7 +434,7 @@ class Combat {
       }
       let parts = 0;
       arena.boosterEffects.splitToLimit(target, now, count => parts += count);
-      if(parts && target.id!==shot.ownerId && !target.isRemnant)
+      if(parts && target.id!==shot.ownerId)
         require('./quest-actions').record(arena,this.alive(shot.ownerId,shot.ownerLife),'splitParts',target,null,parts);
       return;
     }
@@ -553,7 +553,7 @@ class Combat {
       return;
     }
     if (booster.kind === "rocket" || booster.kind === "divide") {
-      if (booster.id === "rocket" && target.id !== shot.ownerId && !target.isRemnant)
+      if (booster.id === "rocket" && target.id !== shot.ownerId)
         require("./quest-actions").record(arena, this.alive(shot.ownerId, shot.ownerLife), "rocketHits", target);
       // Presentation only: shield reflection/protection above never triggers an explosion.
       if (booster.id === "mine")
@@ -574,20 +574,20 @@ class Combat {
         booster.minHitMass,
         booster.splitLimitDamage,
       );
-      if(divided && target.id!==shot.ownerId && !target.isRemnant)
+      if(divided && target.id!==shot.ownerId)
         require('./quest-actions').record(arena,this.alive(shot.ownerId,shot.ownerLife),'splitParts',target,null,arena.bodies(target).length-beforeParts+1);
       return;
     }
     if (["poison", "sword", "lock", "cake"].includes(booster.kind)) {
       arena.boosterEffects.apply(target, booster, now, part);
-      if(booster.kind==='poison' && target.id!==shot.ownerId && !target.isRemnant)
+      if(booster.kind==='poison' && target.id!==shot.ownerId)
         require('./quest-actions').record(arena,this.alive(shot.ownerId,shot.ownerLife),'clanPoisonHits',target);
-      if (booster.id === "poison" && target.id !== shot.ownerId && !target.isRemnant)
+      if (booster.id === "poison" && target.id !== shot.ownerId)
         require("./quest-actions").record(arena, this.alive(shot.ownerId, shot.ownerLife), "poisonHits", target);
       return;
     }
     if (booster.kind === "push") {
-      if (target.isRemnant || target.effects.web > now) return;
+      if (target.effects.web > now) return;
       if (target.id !== shot.ownerId) require("./quest-actions").record(arena, this.alive(shot.ownerId, shot.ownerLife), "pushHits", target);
       this.pulls.set(target.id, {
         life: target.lifeId,
@@ -608,7 +608,7 @@ class Combat {
       }
       const moving = booster.pullTarget === "self" ? owner : target,
         anchor = moving === owner ? target : owner;
-      if (moving.isRemnant || moving.effects.web > now) return;
+      if (moving.effects.web > now) return;
       // Repeated hits arrive before the movement phase: finish the elapsed
       // movement rather than repeatedly resetting an unapplied tick.
       this.movePull(moving, now);
@@ -651,7 +651,7 @@ class Combat {
         );
       if (until <= now) return;
       target.effects[booster.id] = Math.max(target.effects[booster.id] || 0, until);
-      if (booster.id === "freeze" && target.id !== shot.ownerId && !target.isRemnant)
+      if (booster.id === "freeze" && target.id !== shot.ownerId)
         require("./quest-actions").record(arena, this.alive(shot.ownerId, shot.ownerLife), "freezeHits", target);
       (target.effectStrengths ||= {})[booster.id] = booster.multiplier;
       if (booster.kind === "root") {
@@ -1028,7 +1028,7 @@ class Combat {
       return state.source;
     };
     for (const p of this.arena.players.values()) {
-      if (p.id === owner.id || p.dead || p.isRemnant) continue;
+      if (p.id === owner.id || p.dead || (p.isRemnant && now >= p.removeAt)) continue;
       if (p.effects.web > now) {
         for (const part of this.arena.bodies(p)) captures.delete(part);
         continue;

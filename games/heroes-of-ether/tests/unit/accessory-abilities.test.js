@@ -83,7 +83,7 @@ test("ошибка применения не забирает заряд; каж
   arena.gainMass(p, 1000 - p.mass);
   arena.boosterEffects.split(p, arena.mainBody(p), 2, 0);
   p.effects.easter_egg = 1000;
-  assert.throws(() => A.use(arena, p, message, 0), /уже действует/);
+  assert.throws(() => A.use(arena, p, {...message, spawnSerial: 999}, 0), /жизни/);
   assert.equal(A.snapshot(p)[0].count, 3);
   delete p.effects.easter_egg;
   const before = arena.bodies(p).map((b) => b.mass);

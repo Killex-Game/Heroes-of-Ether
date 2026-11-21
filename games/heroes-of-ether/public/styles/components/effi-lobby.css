@@ -1,22 +1,29 @@
 /* The greeting has its own header column, above the right navigation. */
-#lobby .lobby-header:has(.effi-lobby) {
+#lobby .lobby-header:has(.lobby-generator-tools) {
   grid-template-columns: minmax(280px, min(540px, 37cqw)) minmax(260px, 1fr) clamp(220px, 21cqw, 300px);
   gap: 16px;
   padding-right: 0;
 }
 .effi-lobby {
+  position: absolute;
+  top: 82px;
+  right: 0;
   display: flex;
   align-items: center;
   width: 100%;
   min-width: 0;
   gap: 0;
-  padding-top: 14px;
+  padding-top: 0;
   pointer-events: none;
 }
+.lobby-generator-tools { position: relative; min-width: 0; min-height: 222px; align-self: start; }
+.lobby-generator-tools #etherGeneratorButton { width: 100%; min-height: 48px; margin: 0; padding-right: 42px; }
+.lobby-generator-reserved { min-height: 60px; }
+.effi-lobby-dismiss { pointer-events: auto; margin-top: 8px; padding: 4px 12px; border: 1px solid #c7a362; border-radius: 8px; color: #294e4e; background: #fffaf0; cursor: pointer; }
 .effi-lobby-character {
   position: relative;
-  flex: 0 0 82px;
-  height: 123px;
+  flex: 0 0 66px;
+  height: 99px;
   animation: effi-lobby-float 3.6s ease-in-out infinite;
 }
 .effi-lobby-character img, .effi-lobby-eyes {
@@ -31,7 +38,7 @@
   position: relative;
   flex: 1;
   min-width: 0;
-  margin: 36px 0 0 -5px;
+  margin: 0 0 0 -5px;
   padding: 11px 13px;
   border: 1px solid #c7a362;
   border-radius: 14px;
@@ -63,7 +70,8 @@
   .effi-lobby-bubble p { font-size: 14px; }
 }
 @media (max-width: 960px) {
-  #lobby .lobby-header:has(.effi-lobby) { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  #lobby .lobby-header:has(.lobby-generator-tools) { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .lobby-generator-tools { justify-self: end; width: min(300px, 100%); }
   .effi-lobby { justify-self: end; width: min(300px, 100%); padding-top: 0; }
   .effi-lobby-character { flex-basis: 66px; height: 99px; }
   .effi-lobby-bubble { margin-top: 0; }

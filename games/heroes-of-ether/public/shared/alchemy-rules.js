@@ -58,8 +58,19 @@
   ];
   const ingredientMap = new Map(ingredients.map(i => [i.id, i]));
   const potionMap = new Map(potions.flatMap(p => [[p.id, p], [p.boosterId, p]]));
+  const equipped = saved => saved?.queue || (saved?.equipped ? [saved.equipped] : []);
+  const activeIds = active => active?.ids || (active?.id ? [active.id] : []);
+  function combine(ids) {
+    const result = {};
+    for (const id of new Set(ids)) for (const [key, value] of Object.entries(potionMap.get(id)?.modifiers || {})) {
+      result[key] = ["pulseMs", "ingredientEvery"].includes(key)
+        ? Math.min(result[key] || Infinity, value) : (result[key] || 0) + value;
+    }
+    return result;
+  }
   function freeze(value) { for (const item of Object.values(value)) if (item && typeof item === "object") freeze(item); return Object.freeze(value); }
-  return freeze({ ingredients, potions, asset, get: id => potionMap.get(id), ingredient: id => ingredientMap.get(id),
+  return freeze({ ingredients, potions, asset, equipped, activeIds, combine, MAX_ACTIVE: 3,
+    get: id => potionMap.get(id), ingredient: id => ingredientMap.get(id),
     NATURAL_PER_EXCHANGE: 100000, CONCENTRATED_PER_EXCHANGE: 10, MAX_PICKUPS: 24, PICKUP_RADIUS: 14,
     manifest: { schemaVersion: 1, id: "ether-alchemy", title: "Эфирная алхимия",
       description: "Собирай ингредиенты на арене и вари зелья для новых приключений. Эфирный генератор превращает природный эфир в концентрированный.",

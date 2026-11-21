@@ -329,6 +329,12 @@
     const formatted = window.KillexIdentity.formatDuration(seconds);
     if ($("lifeTime").textContent !== formatted) $("lifeTime").textContent = formatted;
   }
+  let lifeLobbyTimer = null, lifeLobbyDeadline = 0, lifeLobbyId = null;
+  function autoLifeLobby() {
+    if (lifeResult?.id === lifeLobbyId && lifeLobbyDeadline && Date.now() >= lifeLobbyDeadline)
+      leaveArena("Ты в лобби. Опыт завершённой жизни сохранён.");
+  }
+  document.addEventListener("visibilitychange", autoLifeLobby);
   function showLifeResult(message) {
     if (
       !message.result ||
@@ -339,6 +345,12 @@
     if (message.profile) boosterUI?.updateProfile(message.profile);
     clearLeaveConfirmation();
     lifeResult = message.result;
+    if (lifeLobbyId !== lifeResult.id) {
+      clearTimeout(lifeLobbyTimer);
+      lifeLobbyId = lifeResult.id;
+      lifeLobbyDeadline = Date.now() + 120000;
+      lifeLobbyTimer = setTimeout(autoLifeLobby, 120000);
+    }
     arenaAudio.lifeEnded(lifeResult);
     resetInput(true);
     boosterUI?.respawn();
@@ -353,6 +365,15 @@
       : lifeResult.reason === "burned"
         ? "Вас сожгли"
         : `Тебя поглотил ${window.KillexIdentity.label(lifeResult.killer || { name: "Соперник" })}`;
+    if (!voluntary && lifeResult.killer?.id) {
+      const link = document.createElement("button");
+      link.type = "button";
+      link.className = "sf-button sf-secondary life-killer-profile";
+      link.textContent = "Профиль соперника";
+      const killerId = lifeResult.killer.id;
+      link.onclick = () => window.KillexPlayerProfile.open(killerId);
+      $("lifeKiller").append(" ", link);
+    }
     $("lifeDuration").textContent = window.KillexIdentity.formatDuration(
       lifeResult.durationSeconds,
     );
@@ -508,6 +529,9 @@
     arenaChat?.disconnect();
     clearLeaveConfirmation();
     lifeResult = null;
+    clearTimeout(lifeLobbyTimer);
+    lifeLobbyTimer = lifeLobbyId = null;
+    lifeLobbyDeadline = 0;
     lifeClock = null;
     $("lifeResultDialog").close();
     $("connectionLostDialog").close();
@@ -643,7 +667,7 @@
     let attempt;
     try {
       const scheme = location.protocol === "https:" ? "wss:" : "ws:";
-      arenaChat?.start();
+      arenaChat?.start(boosterUI.profile.id);
       attempt = new WebSocket(`${scheme}//${location.host}${reservation.wsPath}`, [
         window.KillexArenaWire.PROTOCOL,
         window.KillexArenaWire.PRIVATE_STATE_PROTOCOL,
@@ -667,7 +691,7 @@
     connectTimer = setTimeout(() => {
       if (socket === attempt && phase === "connecting") {
         showConnectionLost(
-          "Сервер не прислал состояние арены. Проверь npm start и попробуй ещё раз.",
+          "Ответ арены задерживается. Вернись в лобби и попробуй подключиться ещё раз.",
         );
       }
     }, CONNECT_TIMEOUT_MS);
@@ -2121,7 +2145,7 @@
         phase === "lobby" &&
         ui.lobbyStatus.textContent.includes("загрузить профиль")
       )
-        setLobbyStatus("Арена подключится только после нажатия «Играть».");
+        setLobbyStatus("Нажми «Играть» или выбери арену для входа.");
     },
   });
   window.KillexBoot?.setRetry(() => boosterUI.load(true));
@@ -2176,6 +2200,7 @@
     notice: (text) => boosterUI.showArenaMessage(text),
   });
   arenaPicker = new window.KillexArenaPicker({
+    join: () => joinArena(),
     isLobby: () => phase === "lobby",
     getProfile: () => boosterUI?.profile,
   });

@@ -211,7 +211,7 @@ test("Повторный вход в ту же комнату создаёт о�
   assert.equal(listed.playing, 3);
   assert.equal(new Set([active.id, ...remnants.map((p) => p.id)]).size, 3);
   assert.ok(remnants.every((p) => !p.profileId && p.departedProfileId === a.profile.id));
-  env.advance(14001);
+  env.advance(13001);
   env.app.tick();
   assert.equal((await env.api(a, "/api/arenas")).body.arenas[0].playing, 2);
   assert.equal(active.dead, false);

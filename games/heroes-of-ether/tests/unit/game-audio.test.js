@@ -294,7 +294,7 @@ test("Shield sound does not change special Fire, Awl or Cake behaviour", () => {
       id === "rocket" ? 1 : 0,
       id,
     );
-    if (id === "fire") assert.equal(target.mass, 100);
+    if (id === "fire") assert.equal(target.dead, true);
     if (id === "awl") assert.equal(a.hasEffect(target, "shield", 3000), false);
     if (id === "rocket") assert.equal(target.mass, 200);
   }

@@ -3,7 +3,7 @@ const test = require("node:test"),
   assert = require("node:assert/strict"),
   fs = require("node:fs"),
   path = require("node:path");
-const { setup } = require("../fixtures/season-trophies"),
+const { setupWithBattle: setup, recordBattle } = require("../fixtures/season-trophies"),
   { temporary } = require("../temp"),
   { ProfileStore } = require("../../src/server/profiles/profile-store");
 
@@ -13,6 +13,7 @@ test("Личные кубки: сохраняются после выхода, �
     member = f.user();
   f.act(member, "apply", { clanId: f.c(head).id });
   for (let i = 0; i < 2; i++) {
+    recordBattle(f);
     f.c(head).competition.league = 5;
     f.profiles.save(f.profiles.data);
     f.time(f.profiles.data.competition.season.end);

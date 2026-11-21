@@ -646,7 +646,7 @@
       const items = this.catalog.items
         .filter(
           (item) =>
-            (this.mode !== "shop" || !["clan", "event", "potion"].includes(item.tier)) &&
+            (this.mode !== "shop" || (!item.eventOnly && !["clan", "event", "potion"].includes(item.tier))) &&
             (this.mode !== "inventory" || (item.ready && this.profile.inventory[item.id] > 0)),
         )
         .sort(
@@ -753,10 +753,22 @@
             action.title = "Недостаточно валюты";
           if (this.purchasesBlocked()) action.title = "Покупки доступны только вне арены";
         } else if (item.tier === "potion") {
-          action = button("booster-action sf-button", "В лабораторию", () => {
-            this.dialog.close(); document.dispatchEvent(new CustomEvent("killex:alchemy-open", { detail: window.KillexAlchemyRules.get(item.id).id }));
-          });
-          action.disabled = this.purchasesBlocked();
+          const rules = window.KillexAlchemyRules, id = rules.get(item.id).id;
+          const queue = [...rules.equipped(this.profile.alchemy)], index = queue.indexOf(id);
+          action = make("div", "potion-order-controls");
+          const choose = button("booster-action sf-button", index < 0 ? "В очередь Z" : `Z: ${index + 1} · Убрать`,
+            () => this.savePotionQueue(index < 0 ? [...queue, id] : queue.filter(key => key !== id)));
+          choose.disabled = this.purchasesBlocked() || !!this.potionSaving || (index < 0 && queue.length >= rules.MAX_ACTIVE);
+          action.append(choose);
+          if (index >= 0) for (const [direction, label] of [[-1, "Раньше"], [1, "Позже"]]) {
+            const move = button("sf-button sf-secondary", direction < 0 ? "←" : "→", () => {
+              const next = [...queue]; [next[index], next[index + direction]] = [next[index + direction], next[index]];
+              this.savePotionQueue(next);
+            });
+            move.setAttribute("aria-label", `${label}: ${item.name}`);
+            move.disabled = choose.disabled || index + direction < 0 || index + direction >= queue.length;
+            action.append(move);
+          }
         } else {
           const index = this.slots.indexOf(item.id);
           const levelLocked = !window.KillexLoadout.itemAllowed(item, this.profile.level);
@@ -1077,7 +1089,7 @@
       this.updatePotion(me);
       const budget =
         me && performance.now() < this.budgetUntil
-          ? (this.potionButton.hidden ? `До ${me.boosterLimit} применений каждого слота` : `Слоты: до ${me.boosterLimit} раз · Зелье: 1 раз`)
+          ? (this.potionButton.hidden ? `До ${me.boosterLimit} применений каждого слота` : `Слоты: до ${me.boosterLimit} раз · Z: до 3 разных зелий`)
           : "";
       if (this.budget.textContent !== budget) this.budget.textContent = budget;
       this.slotButtons.forEach((control, i) => {
@@ -1149,29 +1161,53 @@
         }
       });
     }
+    nextPotion(me) {
+      const rules = window.KillexAlchemyRules, used = rules.activeIds(me?.potion);
+      if (used.length >= rules.MAX_ACTIVE) return null;
+      return rules.equipped(this.profile?.alchemy).find(id => !used.includes(id) &&
+        this.profile?.inventory[rules.get(id).boosterId] > 0) || null;
+    }
+    async savePotionQueue(queue) {
+      if (this.potionSaving || this.purchasesBlocked()) return;
+      const key = JSON.stringify(queue);
+      const operation = this.potionRetry?.key === key ? this.potionRetry.operation :
+        { action: "equip", potionIds: queue, requestId: requestId() };
+      this.potionRetry = { key, operation }; this.potionSaving = true; this.render();
+      try {
+        const result = await fetchJson("/api/alchemy/action", { method: "POST",
+          headers: { "Content-Type": "application/json" }, body: JSON.stringify(operation) });
+        this.potionRetry = null;
+        this.updateProfile(result.profile);
+      } catch (error) {
+        if (error.serverResponse) this.potionRetry = null;
+        this.status(error.message, true);
+      } finally { this.potionSaving = false; this.render(); }
+    }
     updatePotion(me) {
-      const id = me?.potion?.id || this.profile?.alchemy?.equipped;
+      const used = window.KillexAlchemyRules.activeIds(me?.potion), next = this.nextPotion(me);
+      const id = next || used.at(-1);
       const potion = window.KillexAlchemyRules.get(id);
       const owned = potion ? this.profile?.inventory[potion.boosterId] || 0 : 0;
       const visible = !!potion && (!!owned || !!me?.potion);
       if (this.potionButton.hidden !== !visible) this.potionButton.hidden = !visible;
       if (!visible) return;
-      const pending = this.activations.has(potion.boosterId);
-      const state = [id, owned, !!me?.potion, pending].join(":");
+      const pending = [...this.activations.keys()].some(id => this.item(id)?.kind === "potion");
+      const state = [id, owned, used.join(","), pending].join(":");
       if (state !== this.potionRenderKey) {
         this.potionRenderKey = state;
         const image = make("img"); image.src = potion.image; image.alt = "";
-        this.potionButton.replaceChildren(image, make("span", "booster-slot-key", "Z"), make("span", "booster-slot-count", me?.potion ? "✓" : String(owned)));
-        this.potionButton.title = potion.name + ". " + potion.effect;
-        this.potionButton.setAttribute("aria-label", potion.name + (me?.potion ? ", действует до конца жизни" : ", клавиша Z"));
+        this.potionButton.replaceChildren(image, make("span", "booster-slot-key", "Z"), make("span", "booster-slot-count", next ? String(owned) : "✓"));
+        this.potionButton.title = (next ? "Следующее: " + potion.name + ". " + potion.effect + "\n" : "") +
+          "Действуют: " + (used.map(id => window.KillexAlchemyRules.get(id).name).join(", ") || "нет");
+        this.potionButton.setAttribute("aria-label", next ? potion.name + ", клавиша Z" : "Все выбранные зелья действуют до конца жизни");
       }
-      const disabled = !me || !!me.potion || !owned || pending || this.game.inputBlocked();
+      const disabled = !me || !next || !owned || pending || this.game.inputBlocked();
       if (this.potionButton.disabled !== disabled) this.potionButton.disabled = disabled;
     }
     usePotion() {
       if (!this.game.isArena() || this.game.inputBlocked() || this.dialog.open) return;
-      const me = this.game.getMe(), potion = window.KillexAlchemyRules.get(this.profile?.alchemy?.equipped);
-      if (!me || me.potion || !potion || !this.profile.inventory[potion.boosterId]) return;
+      const me = this.game.getMe(), potion = window.KillexAlchemyRules.get(this.nextPotion(me));
+      if (!me || !potion || [...this.activations.keys()].some(id => this.item(id)?.kind === "potion")) return;
       this.activate(this.item(potion.boosterId));
     }
     useSlot(i) {

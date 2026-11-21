@@ -4,7 +4,10 @@ const test = require("node:test"),
   assert = require("node:assert/strict");
 const { cooldown, label } = require("../../public/shared/booster-cooldowns");
 const { publicCatalog } = require("../../src/server/boosters/booster-catalog");
-const catalog = publicCatalog(),
+// Legacy timing remains readable for old snapshots; current rules disable it.
+const catalog = publicCatalog();
+catalog.rules.cooldownsEnabled = true;
+const
   item = (id) => catalog.items.find((b) => b.id === id);
 test("Таймер щита независим от срока эффекта, плавно убывает и учитывает серверный сброс", () => {
   const me = {

@@ -55,6 +55,7 @@ test("Explicitly enabled bot supplies survive a failed save once, broadcast norm
     targetX: 300,
     targetY: 300,
     mass: 10,
+    nextMassDecayAt: Infinity, // Measure the candy gain independently of natural decay.
     radius: radiusForMass(10),
     protectedUntil: 0,
   });

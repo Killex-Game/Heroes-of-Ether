@@ -44,4 +44,11 @@ function setup({ filePath = null, count = 1, start = "2026-12-31T20:59:00Z" } = 
     c: (u) => profiles.data.clans[profiles.find(u.token).clanId],
   };
 }
-module.exports = { setup };
+function recordBattle(f) {
+  const at = Math.max(f.now(), f.profiles.data.competition.season.start + 1);
+  for (const clan of Object.values(f.profiles.data.clans))
+    require('../../src/server/clans/battle-history').append(clan,
+      { id: 'opponent-' + clan.id, name: 'Соперник', prefix: 'TEST' }, 1, 0, at);
+}
+function setupWithBattle(options) { const f = setup(options); recordBattle(f); return f; }
+module.exports = { setup, setupWithBattle, recordBattle };
