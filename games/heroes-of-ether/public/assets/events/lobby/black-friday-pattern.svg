@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f3d995"/><stop offset=".4" stop-color="#a37538"/><stop offset=".72" stop-color="#edcd83"/><stop offset="1" stop-color="#6e502d"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#eff4f1"/><stop offset=".35" stop-color="#94a9ab"/><stop offset=".6" stop-color="#d5dfd9"/><stop offset="1" stop-color="#5b747b"/>
+    </linearGradient>
+    <g id="token">
+      <circle r="30" fill="#adc4c0" fill-opacity=".06" stroke="url(#silver)" stroke-width="3"/>
+      <circle r="24" fill="none" stroke="url(#silver)" stroke-width="1"/>
+      <g fill="url(#silver)"><ellipse cx="-14" cy="-4" rx="4" ry="6" transform="rotate(-25 -14 -4)"/><ellipse cx="-6" cy="-13" rx="4" ry="6"/><ellipse cx="6" cy="-13" rx="4" ry="6"/><ellipse cx="14" cy="-4" rx="4" ry="6" transform="rotate(25 14 -4)"/>
+        <path d="M-12 8C-10 4-7 3-4-2Q0-7 4-2C7 3 10 4 12 8Q15 18 7 17Q0 12-7 17Q-15 18-12 8Z"/>
+      </g>
+    </g>
+    <g id="seal" stroke="url(#gold)" fill="none">
+      <path d="M0-15Q3-3 15 0Q3 3 0 15Q-3 3-15 0Q-3-3 0-15Z"/>
+      <path d="M0-6 4 0 0 6-4 0Z" fill="url(#gold)"/>
+    </g>
+    <g id="card" stroke="url(#gold)" fill="none">
+      <rect x="-19" y="-28" width="38" height="56" rx="7" stroke-width="1.5"/>
+      <rect x="-15" y="-24" width="30" height="48" rx="5" stroke-width=".6"/>
+      <path d="M0-13 8 0 0 13-8 0Z" fill="url(#gold)" fill-opacity=".3"/>
+      <path d="M-10-18h4m-2-2v4M6 18h4m-2-2v4"/>
+    </g>
+  </defs>
+  <g opacity=".10" stroke="url(#gold)" fill="none" stroke-width="1">
+    <path d="M-240 0 0 240 240 0 480 240 720 0M-240 480 0 240 240 480 480 240 720 480M0-240 240 0 480-240M0 720 240 480 480 720"/>
+    <path d="M0 8 232 240 0 472M480 8 248 240 480 472"/>
+  </g>
+  <g opacity=".22">
+    <use href="#token" transform="translate(119 122) rotate(-15)"/>
+    <use href="#token" transform="translate(362 362) rotate(15) scale(.8)"/>
+    <use href="#card" transform="translate(360 120) rotate(22)"/>
+    <use href="#card" transform="translate(120 360) rotate(-18)"/>
+    <use href="#seal" transform="translate(240 240)"/>
+    <use href="#seal"/><use href="#seal" transform="translate(480)"/>
+    <use href="#seal" transform="translate(0 480)"/><use href="#seal" transform="translate(480 480)"/>
+  </g>
+  <g fill="#efd59a" opacity=".24"><circle cx="240" cy="74" r="1.5"/><circle cx="74" cy="240" r="1.5"/><circle cx="406" cy="240" r="1.5"/><circle cx="240" cy="406" r="1.5"/></g>
+</svg>

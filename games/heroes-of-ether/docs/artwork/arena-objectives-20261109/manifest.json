@@ -1,0 +1,24 @@
+[
+  {
+    "id": "order-timer",
+    "kind": "icon",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-d1a0e024-dae0-465d-9f7b-50801e4e0f5d.png",
+    "prompt": "Use case: stylized-concept. A single inventory icon: elegant fantasy mechanical stopwatch timer for Heroes of Ether game, polished warm gold bezel, small winding crown on top and side start button, round deep midnight petrol enamel dial, ivory minute ticks and two clear gold hands. Match the reference illustration's richly painted fantasy game materials, crisp dark silhouette, broad gradients and controlled glossy highlights, but no crystals or snowflake. Front view, slightly dimensional thick metal casing. Simple readable at 48 pixels, no tiny filigree, no numbers, no lettering, no badge or plaque (the lower-right numerical badge is added separately in UI). Complete object with 7% transparent margin on all sides, centered square, genuinely transparent background, no scenery, no cast shadow outside object. No purple achievement medal frame.",
+    "saved": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\docs\\artwork\\arena-objectives-20261109\\order-timer.png",
+    "output": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\public\\assets\\events\\black-friday\\order-timer.webp",
+    "tool": "image_gen (built-in)",
+    "sha256": "41ca7b315db692934e62bf8db09d725fbdb1d593184892b3e5f374861112a0eb",
+    "outputSha256": "06caa3f06014986c36dc5c1c24c4f6982a289cf9b26cc3e08f268c24a6d3ce82"
+  },
+  {
+    "id": "friday_case",
+    "kind": "achievement",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-4f1a088c-217d-4b64-b3cf-78e11ede2494.png",
+    "prompt": "Use case: stylized-concept. New fantasy achievement interior illustration for Heroes of Ether, called Case. Reference 1 is the exact Black Friday chest identity: curved deep petrol-teal lid, black wooden body, gold reinforced bands, silver PAW shaped lock. Show that recognizable chest OPEN with tilted lid, a restrained warm light from inside and a few canonical gold star-embossed coins visible. Three-quarter front view, charming polished fantasy painted game icon. Reference2 is color/render quality guidance only. On dark graphite petrol circular enamel disk, entire primary object inside center 70% of square. NO outer gold medal frame at all (canonical frame will be composited later), no purple, no letters, no numbers, no text. Transparent outside circular backing. Thick readable shapes, controlled highlights, crisp silhouette, readable at48px. Use this exact chest rather than generic gift box. Square.",
+    "saved": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\docs\\artwork\\arena-objectives-20261109\\friday_case.png",
+    "output": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\public\\assets\\achievements\\illustrated-v2\\friday_case.webp",
+    "tool": "image_gen (built-in)",
+    "sha256": "9d515241d108870365a691e6ec522b42a18444427302caf545274f6043119e6d",
+    "outputSha256": "57954f7f38429bf022c5fcbd9dd3160a8b828a71ff655a01e73cc547d56f00e7"
+  }
+]

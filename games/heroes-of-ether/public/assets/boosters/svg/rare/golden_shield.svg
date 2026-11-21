@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="golden_shield-title golden_shield-desc">
+<title id="golden_shield-title">Золотой щит</title>
+<desc id="golden_shield-desc">Редкий бустер. Защищает игрока на 35 секунд. Полностью золотой щит с большим фиолетовым кристаллом.</desc>
+<defs><linearGradient id="golden_shield-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="golden_shield-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="golden_shield-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="golden_shield-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="golden_shield-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="golden_shield-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="golden_shield-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="golden_shield-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="golden_shield-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="golden_shield-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="golden_shield-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="golden_shield-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M128 35 Q163 55 204 53 L201 132 Q196 177 128 223 Q60 177 55 132 L52 53 Q93 55 128 35 Z" fill="url(#golden_shield-gold)"/>
+<path d="M128 52 Q158 67 190 67 L188 130 Q183 166 128 207 Q73 166 68 130 L66 67 Q98 67 128 52 Z" fill="#E4A53B" stroke-width="5"/>
+<path d="M128 60 Q154 73 182 74 L180 129 Q177 157 128 197 Q79 157 76 129 L74 74 Q102 73 128 60 Z" fill="url(#golden_shield-gold)" stroke="none"/>
+<path d="M128 65 L128 194 Q170 159 176 129 L179 78 Q152 76 128 65Z" fill="#D38B2A" stroke="none"/>
+<path d="M63 62 L66 126 Q69 149 87 168" fill="none" stroke="#FFF5BB" stroke-width="6"/>
+<path d="M137 211 Q184 174 194 139" fill="none" stroke="#A96026" stroke-width="4"/>
+<path d="M128 69 L164 116 L128 170 L92 116 Z" fill="url(#golden_shield-brown)" stroke-width="5"/>
+<path d="M128 76 L157 115 L128 160 L99 115 Z" fill="url(#golden_shield-plum)" stroke-width="5"/>
+<path d="M128 82 L128 151 L105 115 Z" fill="#CFACFA" stroke="none"/>
+<path d="M128 84 L150 115 L128 122 Z" fill="#9D67D3" stroke="none"/>
+<path d="M128 123 L149 118 L128 152 Z" fill="#654183" stroke="none"/>
+<path d="M120 99 L113 111" fill="none" stroke="#F1D8FF" stroke-width="5"/>
+<path d="M86 89 L88 109 M170 89 L168 109" fill="none" stroke="#FFE897" stroke-width="5"/>
+<circle cx="128" cy="183" r="5" fill="#FFDD75" stroke="#A86627" stroke-width="4"/>
+</g>
+</svg>

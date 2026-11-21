@@ -1,0 +1,106 @@
+dialog.daily-ranking-notice {
+  box-sizing: border-box;
+  width: min(540px, calc(100vw - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 24px);
+  padding: 12px;
+  overflow: auto;
+  border: 2px solid #ddb155;
+  border-radius: 18px;
+  background: linear-gradient(140deg, #fbf6e9, #e9d9b5);
+  color: #57365f;
+  box-shadow:
+    0 18px 65px #22142566,
+    inset 0 0 0 3px #fff8e8;
+}
+.daily-ranking-notice::backdrop {
+  background: #1e142b88;
+}
+.daily-ranking-notice .clan-heading {
+  margin: 0;
+}
+.daily-ranking-notice h2 {
+  font-size: 22px;
+}
+.daily-ranking-notice-date {
+  margin: 14px 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.daily-ranking-notice-list {
+  display: grid;
+  gap: 10px;
+}
+.daily-ranking-notice-prize {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 13px;
+  border: 1px solid #d5ae61;
+  border-radius: 12px;
+  background: #fffaf0c9;
+}
+.daily-ranking-notice-medal {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+.daily-ranking-notice-place {
+  color: #93601c;
+  font-size: 18px;
+}
+.daily-ranking-notice h3 {
+  margin: 3px 0;
+  font-size: 14px;
+}
+.daily-ranking-notice-regalia {
+  margin: 4px 0 8px;
+  font-size: 12px;
+}
+.daily-ranking-notice-rewards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.daily-ranking-notice-rewards span {
+  padding: 4px 7px;
+  border-radius: 6px;
+  background: #efe2bc;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.daily-ranking-notice-note {
+  margin: 13px 4px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.daily-ranking-notice-error {
+  color: #a02b43;
+  font-size: 12px;
+}
+.daily-ranking-notice-error:empty {
+  display: none;
+}
+.daily-ranking-notice > .sf-button {
+  display: block;
+  width: 190px;
+  max-width: 100%;
+  min-height: 42px;
+  margin: 12px auto 2px;
+}
+@media (max-width: 420px) {
+  .daily-ranking-notice h2 {
+    font-size: 18px;
+  }
+  .daily-ranking-notice-prize {
+    padding: 10px;
+    gap: 9px;
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+  .daily-ranking-notice-medal {
+    width: 52px;
+    height: 52px;
+  }
+}

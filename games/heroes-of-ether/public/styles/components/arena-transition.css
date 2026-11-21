@@ -1,0 +1,35 @@
+/* Opaque, inexpensive curtain. No blur or heavyweight artwork during loading. */
+body dialog.arena-transition {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 24px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: radial-gradient(ellipse at center, #263b43, #101822 76%) !important;
+  color: #ffe7a8 !important;
+  overflow: hidden !important;
+  transform: none !important;
+}
+body dialog.arena-transition::backdrop { background: #101822; }
+body dialog.arena-transition::before, body dialog.arena-transition::after { display: none !important; }
+.arena-transition-content { height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; text-align: center; }
+.arena-transition-content > strong { font-size: clamp(24px, 4vw, 34px); letter-spacing: .03em; }
+.arena-transition-content > p { margin: 0; color: #d6dce4; font-size: 15px; }
+.arena-transition-content > button {
+  margin-top: 8px; min-width: 130px; min-height: 38px; padding: 7px 22px;
+  border: 1px solid #c9a755; border-radius: 12px;
+  background: linear-gradient(#384950, #1e2b34); color: #ffe7a8;
+  box-shadow: inset 0 1px #ffffff24, 0 2px #070d15; cursor: pointer;
+}
+.arena-transition-content > button:focus-visible { outline: 2px solid #ffe7a8; outline-offset: 3px; }
+.arena-transition-orbit { width: 88px; height: 88px; display: grid; place-items: center; border: 1px solid #bfa364; border-radius: 50%; position: relative; }
+.arena-transition-orbit > span { font-size: 44px; line-height: 1; color: #ffdf8d; }
+.arena-transition-orbit::after { content: ""; position: absolute; inset: -8px; border: 3px solid transparent; border-top-color: #f5d689; border-bottom-color: #607e88; border-radius: 50%; animation: arena-transition-orbit 1.6s linear infinite; }
+@keyframes arena-transition-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .arena-transition-orbit::after { animation: none; } }

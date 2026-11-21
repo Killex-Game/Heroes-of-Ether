@@ -1,0 +1,255 @@
+{
+  "entries": [
+    {
+      "id": "s01_crown",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4a633022-9d0e-4dcc-afcf-37f2c0792f67.png",
+      "sha256": "5e7f23b0775ac06dfa3a4f9517b2e6805667e02f4c58dc2551960b4c2aa15a50",
+      "outputSha256": {
+        "128": "7611687f87126e6302b738337e84fd3f3149b0cc99175362c1601c5efe7db447",
+        "512": "d9b7046569d4ea71678626780f866d64ef90638807aa051cb031d0b1b7716be5"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Five-pointed open golden crown. Preserve all five pointed finials, their heights, curved arms and open oval headband. Make the overlapping narrow etched bands fewer and broader; moderately simplify, do not remove points."
+    },
+    {
+      "id": "s02_lion",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-f665d86a-180f-4753-a353-720597365c39.png",
+      "sha256": "6e4d7748eed05d60397c0f595f6e3bc4b09de8241c91b1bfb9f42a6ff3bb97a3",
+      "outputSha256": {
+        "128": "ea41e3d4e3f9291802ad7c441a0156bcf73aabe851ec86cafbfd816ec4c149dd",
+        "512": "ceedbfaac140a887d6c0662a879cfc73da7138e06218995ee94eafbff2d628f5"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: front-facing lion head: preserve the mane silhouette, but reduce its tiny nested tufts; keep same face."
+    },
+    {
+      "id": "s03_wolf",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4df93a4d-d992-4081-8ac0-6531efc15879.png",
+      "sha256": "cccd1c27d7b51ca2fdb52f3456f463e5716a7af13a3f40f9a3662da87762f9ba",
+      "outputSha256": {
+        "128": "5442bfc3b6a5fdf18f7ff647af25a6736ecc9d97440b6dcb52fa453a2d6df59c",
+        "512": "7479f0b8aa436205506def386e865b60a1f128cb0da5f01718cfa7dec680447e"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: front-facing wolf head with pointed ears: same face and silhouette, fewer tiny fur tufts."
+    },
+    {
+      "id": "s04_dragon",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-004cfe83-6585-4134-bc6c-cdf73a52ac26.png",
+      "sha256": "ea9565442f951661fb258af513212786ca6d43f27ca812eb21d56259223dc6e6",
+      "outputSha256": {
+        "128": "76104cef52a743b39343a5bef12d5b272fc20f0f3cb39cb58fae1d2cb9305d78",
+        "512": "f42dec59dd4dc3e43b3845d5bda177df99e29caf57205f4630cc2192b549db8b"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: left-facing dragon head: preserve horns, mouth, neck and silhouette, fewer small scale marks."
+    },
+    {
+      "id": "s05_phoenix",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-bde107b1-2c79-495d-93a1-3b1d54c4934e.png",
+      "sha256": "b80f17ef1b12b011658ac7c0f74eb61861e45853a915c8116fa945f6da1117b7",
+      "outputSha256": {
+        "128": "fa099d5883f8661fc600dc3cc54d597df6022e1ac663dbbd89269712306144ec",
+        "512": "70fb32fd7d5d3bdf32d05086f95d14724b3001e086206b297d279e164716dbd6"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: golden phoenix with open upswept wings and long flame tail: preserve pose and feather tiers, reduce tiny layers on body and wings."
+    },
+    {
+      "id": "s06_eagle",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-33125c16-5c7d-4275-9cc5-ddc504be6eec.png",
+      "sha256": "91ad15e7c701c9bedac39c718253acd8374ebb51dbdf11b7672e2f97615f4b5c",
+      "outputSha256": {
+        "128": "d2574599f99f69353af63fb9565b5910c94c516a8be932aa1b5f603d23cd95ca",
+        "512": "6b1cc6ed815b561b94557ee84ec4120a1eb8035a8370bf5d5152f17524d73337"
+      },
+      "prompt": "Use case: precise-object-edit. Edit target: attached existing golden eagle clan emblem for fantasy game. Keep EXACT same single-headed eagle design, spread-wing pose, outer silhouette, feather directions, head shape, talons, palette, 3D embossed gold material, centered full-body composition. The user does NOT want a different symbol, flat vector, cartoon or redesign. Only simplify excess INTERNAL microdetail: reduce the many tiny nested feathers to fewer broader feather panels, remove minute engraved lines and speckled specular highlights. Retain the main wing feather tiers, chest, tail and talons, keep soft clear broad beveled gold shading. Moderate simplification ~30% less fine detail; still premium painted game icon identical in identity to source. No frame, no letters, no crown, no extra objects, no glow. Transparent background true alpha; entire symbol intact, generous transparent border. Square."
+    },
+    {
+      "id": "s07_stag",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-95352785-d167-46b0-87f6-b71c080442ac.png",
+      "sha256": "f2530a537de27f5a1f0948e561e4fa253adc69d5073af5d81adb7ae0abd3ab83",
+      "outputSha256": {
+        "128": "68268e13909a96a02b330c4c1b58c8e79b21c98581188404f90fde4531f071ce",
+        "512": "9522ab96e505ea3e24c710684a02592841dd79364c97b14d849e03af08fd80d9"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: front facing stag head with branched antlers: preserve every main branch and head shape, simplify internal fur locks and sharp small highlights."
+    },
+    {
+      "id": "s08_owl",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-11dc4c44-538a-4ad4-bfcc-9a9f1176e760.png",
+      "sha256": "646fae83f3cefdba37ae942afb8b93c48c6269c54bcc355312dcb22f535481bd",
+      "outputSha256": {
+        "128": "b29e6d38a5558505fa87c4f8acd430795ee76d778de7c031cb8fd9e4398d14cc",
+        "512": "800a496bc04e05564b157b4349d0fd4c2450935cf166c27e192e1e8bd5c8d197"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: front facing golden owl: keep full body, large eyes, ear tufts and talons; consolidate tiny nested body feathers into fewer larger feathers, retain the same owl."
+    },
+    {
+      "id": "s09_griffin",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d340304b-0633-4558-a160-be5e3fe28a45.png",
+      "sha256": "99aaf992bc9ac5d96859c6ec98811684ed2bb6d2c1f7553cbfa69eefcd3820af",
+      "outputSha256": {
+        "128": "d03612f4c8a278c87dc72294ceb49ddcf393e8af8898095a2f8d92309b56ca4d",
+        "512": "43fa652872ce346f307174c2be5372839fa61922719e3accd940e9a262834809"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: rearing winged griffin facing left: preserve all legs, claws, curved tail and wing pose, remove excess microtufts and fine feathers on chest and neck."
+    },
+    {
+      "id": "s10_crossed_swords",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-86a11e91-3783-43dd-aed0-7a12d41db2d4.png",
+      "sha256": "b41d4fda090a96b90d04302dc2e2ec92a34f918885b525448a0bb06e3ab23665",
+      "outputSha256": {
+        "128": "f8968e88119f5cfa1b8842426e146d7750c2ee4df3a19378c3c771a96f72637c",
+        "512": "5cff42ab5916886d65307f688d73c5fbff6a5b063cb982b642c499ca8cd6c032"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Two identical golden swords crossing diagonally in a clean X. Keep straight symmetrical blades, crossing order and guards. Reduce tiny grip grooves and small faceted ornament lines, retain broad bevels and correct geometry."
+    },
+    {
+      "id": "s11_battle_axe",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b07a5315-2579-4ba0-97bb-11fda8878298.png",
+      "sha256": "ac75fb95043e98964d827d9d002a812ad346877e481df5cf653d56b25d59777f",
+      "outputSha256": {
+        "128": "b5939f5cf843c98b70186fbd51b155101a38069e8e4b894cde7756b809f6a730",
+        "512": "8be24df4a2c07e0854d610df01f60c9f28e5d1daea3d7a51b048d17c37f58c7c"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Upright double-headed golden battle axe. Keep two symmetric crescent blades, central pointed top and lower pommel. Reduce inset nested curves and handle crosshatching into few broad readable accents."
+    },
+    {
+      "id": "s12_tower",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-50d3bf9b-072e-4c94-84c5-b2091ea2dd30.png",
+      "sha256": "a707cbd12a207bd381e0fb623d44f3655917125c89984710ff7f4c4ca62d117d",
+      "outputSha256": {
+        "128": "06bb9993bd34f5d1671a3c68454922125d6d17cb46fa45334216e327679782c4",
+        "512": "646a686cc16436a3e03e8ed4e9098b61617303efa4498668f2a62a23fe84ab78"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Golden castle tower. Keep crenellations, curved tapering tower, single upper window and large open archway. Reduce brick-grid microdetail and repeated narrow bevel highlights, retain large structural stone courses."
+    },
+    {
+      "id": "s13_compass_star",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-14d8bd7b-6729-482d-9680-5d643a217730.png",
+      "sha256": "db9135bd29429dbfdca956a8eb4bd7632d1e55a45e03c201c0552099e3795144",
+      "outputSha256": {
+        "128": "6b0f9f6beb9e9ab15ba3cd12f1c12d508262eb499181046bb08ad402577b1569",
+        "512": "9ca5bd12795a76d0134235da447e9835a1c9f4b8673f266fbe59549fb940e7a6"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Eight-point compass star. Keep EXACT original eight points and their long/short alternation, clean central convergence and orientation. Fewer secondary facets, soft broad bevels, restrained highlights."
+    },
+    {
+      "id": "s14_crescent",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-fa53bffe-ce50-4a60-be9c-23fc1a8d98a4.png",
+      "sha256": "849b9a8c2b807d35bc2848954e270994071d9a9f5807071c0fcd50176a223ba2",
+      "outputSha256": {
+        "128": "f6fa72af09fb0a4b3647594135acd5c45e83819007d4fec8f9b797ab80307395",
+        "512": "7251a83f5dc1759eba302c116fc81c4e7803e2b1e1e9207cebdcb9c9c485b49f"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Golden crescent moon with a small four-point star inside opening. Preserve their separation, curvature, orientation and silhouette. Simplify fine inner contours, softly sculpted bevel shading."
+    },
+    {
+      "id": "s15_sun",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-097107b6-3d81-4fae-8b8d-67bfa4bc9303.png",
+      "sha256": "e3929a22fbdec27c6b1f9a6896c9edb53cd70749d2b78e53a0f6159e597c3264",
+      "outputSha256": {
+        "128": "3253558d13bec129e84d855101c36cbfbece83e46a131644f50d692b910ec128",
+        "512": "8b80435b1a67a387ee3c109dd452d306af8337bf3f730792b71bda622a92711f"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Golden sun with a smooth blank convex circular center (NO FACE) and sixteen alternating straight and wavy rays. Keep exact ray count, arrangement, circle and overall outline. Simplify thin concentric rims and narrow ray facets; broad clear gold planes. Do not add facial features."
+    },
+    {
+      "id": "s16_flame",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b21a5314-3b87-491c-8c4f-9bd8b1961bba.png",
+      "sha256": "396d1133391a6c157651ddf072c33f168ad1dc9833f7993f077370319f7c0e26",
+      "outputSha256": {
+        "128": "72ec01470f401eea3ede415f2a88e0f94e265a297432155e4eefdac6c7e2f58c",
+        "512": "925197453bf3ed7fab548e4675231a928693fab2779aedb9e55a5617b6f96abb"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Golden flame emblem. Keep main flame lobes and teardrop negative spaces. Reduce nested hairline flame ridges, broad sculpted surfaces and gentle highlights."
+    },
+    {
+      "id": "s17_crystal",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-04d14acd-b8b8-4898-913f-f920fcf57c45.png",
+      "sha256": "0a53d9c0745531303fae924366321ee7553f1ab3b5e2bbf8dd49af672afb690f",
+      "outputSha256": {
+        "128": "d31ede47a60ce67a7cd55b0275572ed6dd3ca4dce9e71054a009146f90528f76",
+        "512": "a8907c851f63bc5a6de1f244ad1b57d14677dea46793c58b9f4c7c8da8ee6f9e"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Single faceted golden crystal emblem. Preserve outline, point directions and main facet arrangement; fewer secondary facet divisions, broad gently lit surfaces."
+    },
+    {
+      "id": "s18_oak",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-729c2a77-b839-44dd-80b3-90d8f6a6cdf6.png",
+      "sha256": "48098e2252ee65fe83a23f6af9d887b2128e3b383c451aef53546c9374ce1f13",
+      "outputSha256": {
+        "128": "0efb831e8d7f3bb88db738c4f5923aa46c1630b414c6cf21d459fb0d517790a3",
+        "512": "9fb8dcacde7f23810adb6ed201bc390b7928a53c48be4d3cb42b1cb70ecf5273"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: full golden oak tree with roots: preserve broad canopy outline and branch layout, use fewer larger recognizable oak leaves and fewer carved lines inside trunk and roots."
+    },
+    {
+      "id": "s19_key",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2575e684-8766-438e-a228-451d6483656a.png",
+      "sha256": "8dc8abfed73fa0670083cd98161f1336acf55733dd3f87bf7d9bf03422f375ec",
+      "outputSha256": {
+        "128": "980b7b22e771c8f91313855655688ae777aee47cfea7b2fa8caa6a8511dd0f77",
+        "512": "148808e04969570ccd8a9b6e0cfdbda08a49218dbdd2db814bef20ce2e36a7ff"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Diagonal ornate golden key. Keep orientation, ring head, straight shaft and exact tooth layout. Simplify engraving and thin concentric contouring, preserve recognizable ornate outline."
+    },
+    {
+      "id": "s20_ether_orb",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-42cfcc10-7cab-4f44-aa02-581831f2019f.png",
+      "sha256": "1149b23014ce5a6845e60692ef33ad95e8764e3e2f35c8871074a11afe754043",
+      "outputSha256": {
+        "128": "9bb3bc97224b0f9045067faac817ebf9e7612a3f1e661e5139f1b15e51e7652a",
+        "512": "f34c65d02529fc6aee5c0eb7796a452ff3c35a2cc95442dcb90a9eefead59cb2"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Golden armillary/orbit sphere. Keep central sphere and the same interlocking orbital rings, their orientations and front/back ordering. Remove overly thin engraved rims, reduce tiny glints and double contours; geometrically consistent crossings."
+    },
+    {
+      "id": "s21_lily",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-8ea12c3f-de6c-4338-9b70-911182283d04.png",
+      "sha256": "2238b2f64f89a017d0b83cd37cb1f876f2cecb3fa7cc9697592acfdceeb32239",
+      "outputSha256": {
+        "128": "db3546c46895e5226ebefcf5e565cfb41e7b63b4608247d72ce3c5d9e721f554",
+        "512": "634af86ee57629ce3378a6f80f26a8630fc4b8ecdc6bf87ed8eb19b49a0916cd"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Golden heraldic fleur-de-lis. Keep exact three petals, curled side lobes, center collar and lower flourish. Simplify narrow internal ridges and hairline highlights, use broad softly sculpted bevels."
+    },
+    {
+      "id": "s22_bear",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-401f164d-e5c1-43a0-baeb-4b1dcf927290.png",
+      "sha256": "d750d5d3d45c0a8a0288e532cb3425afa6cf3986782cd2b0f15b682cfe1c04b8",
+      "outputSha256": {
+        "128": "4117a0f50aab8e2c032f7dfa7c3e03a0b788f44dac8e369df092e96fe8f79175",
+        "512": "64c00ba9171fb295cf457b3f69b7a378d40247bb91064f53f2a4cc8a33d52ac4"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: front-facing bear head: preserve broad muzzle, round ears, face proportions and outline, fewer larger fur locks and broad soft highlights."
+    },
+    {
+      "id": "s23_unicorn",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9b9316bb-c313-465e-84ca-d5c6af7336ca.png",
+      "sha256": "24fb96bb61cc012323e852bd0a250466390cb4c410db2a5974d8ad78268180e9",
+      "outputSha256": {
+        "128": "485a4aa0679526ea5e8eb11e7ef961449f912774cac2244c838a8213d0ae0df9",
+        "512": "57aaaa299e83496c884f48c7c0a62417e858e439f2014ae0578a1952154e67e8"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: left-facing unicorn head: same horn, ears and flowing mane outline; only simplify closely spaced mane strands and soften glaring tiny specular edges, no change of character."
+    },
+    {
+      "id": "s24_kraken",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c4cf2b31-4601-4479-8892-9bf38c1616c6.png",
+      "sha256": "5bfa470193d5e3535dee3d368dbc3b8b7d8555f0f0e57e8c19f43fe2695649b7",
+      "outputSha256": {
+        "128": "59010c5f70cfd46f81365596254337ddc0de947076d36a13ceac44f2efa97e0e",
+        "512": "cf64584c60efb2fbfb470c6ddfebcf3f316f2c79a68ab348248160b0eb71e6db"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached existing golden fantasy game clan symbol. Preserve its exact identity, outer silhouette, pose, proportions, facial expression, all identifying motifs, centered square composition and dimensional golden sculpted game-art style. Only reduce EXCESS internal fine detail about 25-30%: consolidate tiny ridges/tufts/engraved marks into broader smooth sculpted sections, remove pinprick highlights. Retain clear eyes, main facial features and large bevels with soft gold light. Do not turn it into flat vector art, cartoon, clipart or a different design. Do not add anything. Transparent background true alpha, no glow or backdrop, full symbol visible with margins. Specific symbol: symmetric kraken / octopus: keep original number, exact direction and curl of all tentacles and same pointed head. Reduce tiny suction-cup detail and soften glare, keeping cups as broader sparse accents."
+    },
+    {
+      "id": "s25_rose",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-64f308f8-bc1d-4f2a-84ec-c3c2a7e96589.png",
+      "sha256": "67d87518f75a6248dde60e2c3d9b87c5f789338329b8529c835b4d7aa8df727a",
+      "outputSha256": {
+        "128": "09b10476b7243d940e38615847f5350665cbef4d29ab5e9bbb063da730fd2615",
+        "512": "6d004ae07319d7e923fd34480654e41f524613c64b9326e72d8d55c512501b21"
+      },
+      "prompt": "Use case: precise-object-edit. Edit the attached original gold heraldic symbol for a fantasy game. Preserve its exact subject, silhouette, orientation, proportions and recognizable structure. Simplify only excess internal detail and thin engraved lines, soften harsh white specular streaks, remove tiny texture/noise. Keep dimensional embossed warm gold, broad clean sculpted surfaces, amber shadows and restrained creamy highlights. Same premium hand-painted Prizm game style, NOT flat vector, not clipart, not realistic metal photograph. No redesign, no added jewels, ornaments, shield or frame. Whole object, centered square with 10% clear margin, no letters, no text, no glow. Genuine transparent background. Front-facing golden heraldic rosette, five large heart-shaped petals and five pointed sepals behind, round central boss. Keep exact number and arrangement, NO stem or new leaves. Simplify nested petal ridges, retain five broad softly sculpted petals, gold only, subtle highlights."
+    }
+  ],
+  "unchanged": []
+}

@@ -1,0 +1,1215 @@
+{
+  "mode": "preview",
+  "at": "2026-10-28T21:01:12.201Z",
+  "checks": [
+    {
+      "version": "original",
+      "engine": "chromium",
+      "offline": true,
+      "apiRequests": 0,
+      "renderedAssets": [
+        {
+          "url": "/assets/arena-simple/collectibles/egg-red.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            34,
+            13,
+            220,
+            240
+          ],
+          "opaquePixels": 32951
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-blue.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            13,
+            220,
+            240
+          ],
+          "opaquePixels": 32632
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-green.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            16,
+            219,
+            239
+          ],
+          "opaquePixels": 31751
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-sun.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            34,
+            10,
+            222,
+            245
+          ],
+          "opaquePixels": 34505
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/thorn.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            4,
+            4,
+            252,
+            253
+          ],
+          "opaquePixels": 38787
+        },
+        {
+          "url": "/assets/arena-simple/ether-drop.webp",
+          "width": 128,
+          "height": 128,
+          "alphaBounds": [
+            10,
+            11,
+            117,
+            116
+          ],
+          "opaquePixels": 8951
+        },
+        {
+          "url": "/assets/arena-simple/accessories/rabbit-ears.webp",
+          "width": 512,
+          "height": 512,
+          "alphaBounds": [
+            13,
+            140,
+            498,
+            498
+          ],
+          "opaquePixels": 83821
+        },
+        {
+          "url": "/assets/arena-simple/accessories/carrot-bow.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            62,
+            11,
+            449,
+            243
+          ],
+          "opaquePixels": 67891
+        },
+        {
+          "url": "/assets/arena-simple/accessories/royal_bow_tie.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            47,
+            12,
+            464,
+            243
+          ],
+          "opaquePixels": 71106
+        },
+        {
+          "url": "/assets/arena-simple/accessories/novice_hat.webp",
+          "width": 512,
+          "height": 435,
+          "alphaBounds": [
+            12,
+            77,
+            498,
+            422
+          ],
+          "opaquePixels": 111468
+        }
+      ],
+      "backgrounds": [
+        "astral",
+        "meadow",
+        "easter-meadow"
+      ],
+      "errors": []
+    },
+    {
+      "version": "visual",
+      "engine": "chromium",
+      "offline": true,
+      "apiRequests": 0,
+      "renderedAssets": [
+        {
+          "url": "/assets/arena-simple/collectibles/egg-red.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            35,
+            14,
+            221,
+            242
+          ],
+          "opaquePixels": 33110
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-blue.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            14,
+            219,
+            241
+          ],
+          "opaquePixels": 32914
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-green.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            37,
+            16,
+            218,
+            240
+          ],
+          "opaquePixels": 31965
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-sun.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            35,
+            11,
+            221,
+            244
+          ],
+          "opaquePixels": 34055
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/thorn.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            4,
+            4,
+            251,
+            251
+          ],
+          "opaquePixels": 35902
+        },
+        {
+          "url": "/assets/arena-simple/ether-drop.webp",
+          "width": 128,
+          "height": 128,
+          "alphaBounds": [
+            10,
+            11,
+            117,
+            116
+          ],
+          "opaquePixels": 8951
+        },
+        {
+          "url": "/assets/arena-simple/accessories/rabbit-ears.webp",
+          "width": 512,
+          "height": 512,
+          "alphaBounds": [
+            14,
+            67,
+            498,
+            498
+          ],
+          "opaquePixels": 104518
+        },
+        {
+          "url": "/assets/arena-simple/accessories/carrot-bow.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            61,
+            12,
+            451,
+            242
+          ],
+          "opaquePixels": 67146
+        },
+        {
+          "url": "/assets/arena-simple/accessories/royal_bow_tie.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            56,
+            12,
+            455,
+            243
+          ],
+          "opaquePixels": 66697
+        },
+        {
+          "url": "/assets/arena-simple/accessories/novice_hat.webp",
+          "width": 512,
+          "height": 435,
+          "alphaBounds": [
+            24,
+            14,
+            487,
+            421
+          ],
+          "opaquePixels": 122628
+        }
+      ],
+      "backgrounds": [
+        "astral",
+        "meadow",
+        "easter-meadow"
+      ],
+      "errors": []
+    },
+    {
+      "version": "prism",
+      "engine": "chromium",
+      "offline": true,
+      "apiRequests": 0,
+      "renderedAssets": [
+        {
+          "url": "/assets/arena-simple/collectibles/egg-red.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            35,
+            14,
+            220,
+            243
+          ],
+          "opaquePixels": 32583
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-blue.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            37,
+            14,
+            219,
+            242
+          ],
+          "opaquePixels": 32136
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-green.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            17,
+            219,
+            239
+          ],
+          "opaquePixels": 31419
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-sun.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            31,
+            11,
+            225,
+            245
+          ],
+          "opaquePixels": 35130
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/thorn.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            10,
+            4,
+            246,
+            252
+          ],
+          "opaquePixels": 32529
+        },
+        {
+          "url": "/assets/arena-simple/ether-drop.webp",
+          "width": 128,
+          "height": 128,
+          "alphaBounds": [
+            10,
+            11,
+            117,
+            116
+          ],
+          "opaquePixels": 8951
+        },
+        {
+          "url": "/assets/arena-simple/accessories/rabbit-ears.webp",
+          "width": 512,
+          "height": 512,
+          "alphaBounds": [
+            12,
+            154,
+            498,
+            499
+          ],
+          "opaquePixels": 90804
+        },
+        {
+          "url": "/assets/arena-simple/accessories/carrot-bow.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            12,
+            475,
+            243
+          ],
+          "opaquePixels": 75565
+        },
+        {
+          "url": "/assets/arena-simple/accessories/royal_bow_tie.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            42,
+            12,
+            468,
+            243
+          ],
+          "opaquePixels": 69426
+        },
+        {
+          "url": "/assets/arena-simple/accessories/novice_hat.webp",
+          "width": 512,
+          "height": 435,
+          "alphaBounds": [
+            13,
+            94,
+            498,
+            421
+          ],
+          "opaquePixels": 103827
+        }
+      ],
+      "backgrounds": [
+        "astral",
+        "meadow",
+        "easter-meadow"
+      ],
+      "errors": []
+    },
+    {
+      "version": "original",
+      "engine": "firefox",
+      "offline": true,
+      "apiRequests": 0,
+      "renderedAssets": [
+        {
+          "url": "/assets/arena-simple/collectibles/egg-red.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            34,
+            13,
+            220,
+            240
+          ],
+          "opaquePixels": 32951
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-blue.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            13,
+            220,
+            240
+          ],
+          "opaquePixels": 32632
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-green.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            16,
+            219,
+            239
+          ],
+          "opaquePixels": 31751
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-sun.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            34,
+            10,
+            222,
+            245
+          ],
+          "opaquePixels": 34505
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/thorn.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            4,
+            4,
+            252,
+            253
+          ],
+          "opaquePixels": 38787
+        },
+        {
+          "url": "/assets/arena-simple/ether-drop.webp",
+          "width": 128,
+          "height": 128,
+          "alphaBounds": [
+            10,
+            11,
+            117,
+            116
+          ],
+          "opaquePixels": 8951
+        },
+        {
+          "url": "/assets/arena-simple/accessories/rabbit-ears.webp",
+          "width": 512,
+          "height": 512,
+          "alphaBounds": [
+            13,
+            140,
+            498,
+            498
+          ],
+          "opaquePixels": 83821
+        },
+        {
+          "url": "/assets/arena-simple/accessories/carrot-bow.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            62,
+            11,
+            449,
+            243
+          ],
+          "opaquePixels": 67891
+        },
+        {
+          "url": "/assets/arena-simple/accessories/royal_bow_tie.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            47,
+            12,
+            464,
+            243
+          ],
+          "opaquePixels": 71106
+        },
+        {
+          "url": "/assets/arena-simple/accessories/novice_hat.webp",
+          "width": 512,
+          "height": 435,
+          "alphaBounds": [
+            12,
+            77,
+            498,
+            422
+          ],
+          "opaquePixels": 111468
+        }
+      ],
+      "backgrounds": [
+        "astral",
+        "meadow",
+        "easter-meadow"
+      ],
+      "errors": []
+    },
+    {
+      "version": "visual",
+      "engine": "firefox",
+      "offline": true,
+      "apiRequests": 0,
+      "renderedAssets": [
+        {
+          "url": "/assets/arena-simple/collectibles/egg-red.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            35,
+            14,
+            221,
+            242
+          ],
+          "opaquePixels": 33110
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-blue.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            14,
+            219,
+            241
+          ],
+          "opaquePixels": 32914
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-green.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            37,
+            16,
+            218,
+            240
+          ],
+          "opaquePixels": 31965
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-sun.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            35,
+            11,
+            221,
+            244
+          ],
+          "opaquePixels": 34055
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/thorn.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            4,
+            4,
+            251,
+            251
+          ],
+          "opaquePixels": 35902
+        },
+        {
+          "url": "/assets/arena-simple/ether-drop.webp",
+          "width": 128,
+          "height": 128,
+          "alphaBounds": [
+            10,
+            11,
+            117,
+            116
+          ],
+          "opaquePixels": 8951
+        },
+        {
+          "url": "/assets/arena-simple/accessories/rabbit-ears.webp",
+          "width": 512,
+          "height": 512,
+          "alphaBounds": [
+            14,
+            67,
+            498,
+            498
+          ],
+          "opaquePixels": 104518
+        },
+        {
+          "url": "/assets/arena-simple/accessories/carrot-bow.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            61,
+            12,
+            451,
+            242
+          ],
+          "opaquePixels": 67146
+        },
+        {
+          "url": "/assets/arena-simple/accessories/royal_bow_tie.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            56,
+            12,
+            455,
+            243
+          ],
+          "opaquePixels": 66697
+        },
+        {
+          "url": "/assets/arena-simple/accessories/novice_hat.webp",
+          "width": 512,
+          "height": 435,
+          "alphaBounds": [
+            24,
+            14,
+            487,
+            421
+          ],
+          "opaquePixels": 122628
+        }
+      ],
+      "backgrounds": [
+        "astral",
+        "meadow",
+        "easter-meadow"
+      ],
+      "errors": []
+    },
+    {
+      "version": "prism",
+      "engine": "firefox",
+      "offline": true,
+      "apiRequests": 0,
+      "renderedAssets": [
+        {
+          "url": "/assets/arena-simple/collectibles/egg-red.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            35,
+            14,
+            220,
+            243
+          ],
+          "opaquePixels": 32583
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-blue.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            37,
+            14,
+            219,
+            242
+          ],
+          "opaquePixels": 32136
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-green.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            17,
+            219,
+            239
+          ],
+          "opaquePixels": 31419
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-sun.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            31,
+            11,
+            225,
+            245
+          ],
+          "opaquePixels": 35130
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/thorn.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            10,
+            4,
+            246,
+            252
+          ],
+          "opaquePixels": 32529
+        },
+        {
+          "url": "/assets/arena-simple/ether-drop.webp",
+          "width": 128,
+          "height": 128,
+          "alphaBounds": [
+            10,
+            11,
+            117,
+            116
+          ],
+          "opaquePixels": 8951
+        },
+        {
+          "url": "/assets/arena-simple/accessories/rabbit-ears.webp",
+          "width": 512,
+          "height": 512,
+          "alphaBounds": [
+            12,
+            154,
+            498,
+            499
+          ],
+          "opaquePixels": 90804
+        },
+        {
+          "url": "/assets/arena-simple/accessories/carrot-bow.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            12,
+            475,
+            243
+          ],
+          "opaquePixels": 75565
+        },
+        {
+          "url": "/assets/arena-simple/accessories/royal_bow_tie.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            42,
+            12,
+            468,
+            243
+          ],
+          "opaquePixels": 69426
+        },
+        {
+          "url": "/assets/arena-simple/accessories/novice_hat.webp",
+          "width": 512,
+          "height": 435,
+          "alphaBounds": [
+            13,
+            94,
+            498,
+            421
+          ],
+          "opaquePixels": 103827
+        }
+      ],
+      "backgrounds": [
+        "astral",
+        "meadow",
+        "easter-meadow"
+      ],
+      "errors": []
+    },
+    {
+      "version": "original",
+      "engine": "webkit",
+      "offline": true,
+      "apiRequests": 0,
+      "renderedAssets": [
+        {
+          "url": "/assets/arena-simple/collectibles/egg-red.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            34,
+            13,
+            220,
+            240
+          ],
+          "opaquePixels": 32951
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-blue.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            13,
+            220,
+            240
+          ],
+          "opaquePixels": 32632
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-green.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            16,
+            219,
+            239
+          ],
+          "opaquePixels": 31751
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-sun.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            34,
+            10,
+            222,
+            245
+          ],
+          "opaquePixels": 34505
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/thorn.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            4,
+            4,
+            252,
+            253
+          ],
+          "opaquePixels": 38787
+        },
+        {
+          "url": "/assets/arena-simple/ether-drop.webp",
+          "width": 128,
+          "height": 128,
+          "alphaBounds": [
+            10,
+            11,
+            117,
+            116
+          ],
+          "opaquePixels": 8951
+        },
+        {
+          "url": "/assets/arena-simple/accessories/rabbit-ears.webp",
+          "width": 512,
+          "height": 512,
+          "alphaBounds": [
+            13,
+            140,
+            498,
+            498
+          ],
+          "opaquePixels": 83821
+        },
+        {
+          "url": "/assets/arena-simple/accessories/carrot-bow.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            62,
+            11,
+            449,
+            243
+          ],
+          "opaquePixels": 67891
+        },
+        {
+          "url": "/assets/arena-simple/accessories/royal_bow_tie.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            47,
+            12,
+            464,
+            243
+          ],
+          "opaquePixels": 71106
+        },
+        {
+          "url": "/assets/arena-simple/accessories/novice_hat.webp",
+          "width": 512,
+          "height": 435,
+          "alphaBounds": [
+            12,
+            77,
+            498,
+            422
+          ],
+          "opaquePixels": 111468
+        }
+      ],
+      "backgrounds": [
+        "astral",
+        "meadow",
+        "easter-meadow"
+      ],
+      "errors": []
+    },
+    {
+      "version": "visual",
+      "engine": "webkit",
+      "offline": true,
+      "apiRequests": 0,
+      "renderedAssets": [
+        {
+          "url": "/assets/arena-simple/collectibles/egg-red.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            35,
+            14,
+            221,
+            242
+          ],
+          "opaquePixels": 33110
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-blue.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            14,
+            219,
+            241
+          ],
+          "opaquePixels": 32914
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-green.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            37,
+            16,
+            218,
+            240
+          ],
+          "opaquePixels": 31965
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-sun.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            35,
+            11,
+            221,
+            244
+          ],
+          "opaquePixels": 34055
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/thorn.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            4,
+            4,
+            251,
+            251
+          ],
+          "opaquePixels": 35902
+        },
+        {
+          "url": "/assets/arena-simple/ether-drop.webp",
+          "width": 128,
+          "height": 128,
+          "alphaBounds": [
+            10,
+            11,
+            117,
+            116
+          ],
+          "opaquePixels": 8951
+        },
+        {
+          "url": "/assets/arena-simple/accessories/rabbit-ears.webp",
+          "width": 512,
+          "height": 512,
+          "alphaBounds": [
+            14,
+            67,
+            498,
+            498
+          ],
+          "opaquePixels": 104518
+        },
+        {
+          "url": "/assets/arena-simple/accessories/carrot-bow.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            61,
+            12,
+            451,
+            242
+          ],
+          "opaquePixels": 67146
+        },
+        {
+          "url": "/assets/arena-simple/accessories/royal_bow_tie.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            56,
+            12,
+            455,
+            243
+          ],
+          "opaquePixels": 66697
+        },
+        {
+          "url": "/assets/arena-simple/accessories/novice_hat.webp",
+          "width": 512,
+          "height": 435,
+          "alphaBounds": [
+            24,
+            14,
+            487,
+            421
+          ],
+          "opaquePixels": 122628
+        }
+      ],
+      "backgrounds": [
+        "astral",
+        "meadow",
+        "easter-meadow"
+      ],
+      "errors": []
+    },
+    {
+      "version": "prism",
+      "engine": "webkit",
+      "offline": true,
+      "apiRequests": 0,
+      "renderedAssets": [
+        {
+          "url": "/assets/arena-simple/collectibles/egg-red.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            35,
+            14,
+            220,
+            243
+          ],
+          "opaquePixels": 32583
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-blue.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            37,
+            14,
+            219,
+            242
+          ],
+          "opaquePixels": 32136
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-green.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            17,
+            219,
+            239
+          ],
+          "opaquePixels": 31419
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/egg-sun.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            31,
+            11,
+            225,
+            245
+          ],
+          "opaquePixels": 35130
+        },
+        {
+          "url": "/assets/arena-simple/collectibles/thorn.webp",
+          "width": 256,
+          "height": 256,
+          "alphaBounds": [
+            10,
+            4,
+            246,
+            252
+          ],
+          "opaquePixels": 32529
+        },
+        {
+          "url": "/assets/arena-simple/ether-drop.webp",
+          "width": 128,
+          "height": 128,
+          "alphaBounds": [
+            10,
+            11,
+            117,
+            116
+          ],
+          "opaquePixels": 8951
+        },
+        {
+          "url": "/assets/arena-simple/accessories/rabbit-ears.webp",
+          "width": 512,
+          "height": 512,
+          "alphaBounds": [
+            12,
+            154,
+            498,
+            499
+          ],
+          "opaquePixels": 90804
+        },
+        {
+          "url": "/assets/arena-simple/accessories/carrot-bow.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            36,
+            12,
+            475,
+            243
+          ],
+          "opaquePixels": 75565
+        },
+        {
+          "url": "/assets/arena-simple/accessories/royal_bow_tie.webp",
+          "width": 512,
+          "height": 256,
+          "alphaBounds": [
+            42,
+            12,
+            468,
+            243
+          ],
+          "opaquePixels": 69426
+        },
+        {
+          "url": "/assets/arena-simple/accessories/novice_hat.webp",
+          "width": 512,
+          "height": 435,
+          "alphaBounds": [
+            13,
+            94,
+            498,
+            421
+          ],
+          "opaquePixels": 103827
+        }
+      ],
+      "backgrounds": [
+        "astral",
+        "meadow",
+        "easter-meadow"
+      ],
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "boosterFilesUnchanged": true,
+  "boosterFilesUnchangedAfter": true
+}

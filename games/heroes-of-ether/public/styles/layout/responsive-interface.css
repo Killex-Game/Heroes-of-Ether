@@ -1,0 +1,1514 @@
+/* Перенос и прокрутка без zoom: одинаковые доступные кнопки в основных движках. */
+:root {
+  --interface-gap: 12px;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  touch-action: manipulation;
+}
+#lobby #editProfile {
+  width: 28px;
+  height: 28px;
+  flex-basis: 28px;
+}
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/* У поиска остаются каретка и рамка поля, без внешнего фиолетового выделения. */
+input[type="search"]:focus-visible,
+.booster-search:focus-visible {
+  outline: none;
+}
+.sf-button,
+.sf-tab {
+  box-sizing: border-box;
+  min-width: 0;
+}
+.sf-button {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+#lobby #playButton.sf-button,
+#clanDialog .clan-battle-play.sf-button {
+  --sf-default: var(
+    --ui-art-controls-button_play_default-svg,
+    url("../../assets/ui/svg/controls/button_play_default.svg")
+  );
+  --sf-hover: var(
+    --ui-art-controls-button_play_hover-svg,
+    url("../../assets/ui/svg/controls/button_play_hover.svg")
+  );
+  --sf-pressed: var(
+    --ui-art-controls-button_play_pressed-svg,
+    url("../../assets/ui/svg/controls/button_play_pressed.svg")
+  );
+  color: #fffef0;
+  text-shadow: 0 1px 2px #00451b;
+  font-weight: 750;
+  min-height: 44px;
+}
+#clanDialog .clan-battle-play.sf-button {
+  font-size: 18px;
+}
+/* Цвет берётся из текущей темы самой кнопки; стандартная тема остаётся зелёной. */
+html[data-ui-theme]:not([data-ui-theme="default"]) #lobby #playButton.sf-button,
+html[data-ui-theme]:not([data-ui-theme="default"]) .arena-chat .arena-chat-toggle.sf-button,
+html[data-ui-theme]:not([data-ui-theme="default"]) .arena-chat .chat-send.sf-button,
+#clanDialog[data-ui-theme]:not([data-ui-theme="default"]) .clan-battle-play.sf-button {
+  --sf-default: var(--ui-art-controls-button_secondary_default-svg);
+  --sf-hover: var(--ui-art-controls-button_secondary_hover-svg);
+  --sf-pressed: var(--ui-art-controls-button_secondary_pressed-svg);
+  text-shadow: 0 1px 2px #382519;
+}
+html[data-ui-theme]:not([data-ui-theme="default"]) .arena-chat .sf-button {
+  color: #fffef0;
+}
+
+/* У высоких карточек прокручивается содержимое; заголовок и закрытие доступны. */
+dialog.interface-window,
+#achievementsDialog.interface-window,
+#topsDialog.interface-window {
+  box-sizing: border-box;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+}
+dialog.interface-window[open] {
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+}
+.interface-window .interface-content,
+.interface-window .interface-content.showcase-scroll {
+  overflow: auto;
+  min-width: 0;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ui-c-ba9159, #ba9159) var(--ui-c-f6e6c8, #f6e6c8);
+  overscroll-behavior: contain;
+}
+.interface-content.showcase-scroll::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  height: 8px;
+}
+.interface-content.showcase-scroll::-webkit-scrollbar-thumb {
+  background: var(--ui-c-ba9159, #ba9159);
+  border-radius: 8px;
+}
+/* Витрины сохраняют нативную прокрутку колёсиком, клавишами и жестами. */
+:is(
+  #boosterDialog,
+  #skinsDialog,
+  #wardrobeDialog,
+  #donationDialog,
+  #chestConfirmDialog,
+  #chestRewardDialog
+),
+:is(
+    #boosterDialog,
+    #skinsDialog,
+    #wardrobeDialog,
+    #donationDialog,
+    #chestConfirmDialog,
+    #chestRewardDialog
+  )
+  * {
+  scrollbar-width: none;
+  scrollbar-gutter: auto;
+}
+:is(
+  #boosterDialog,
+  #skinsDialog,
+  #wardrobeDialog,
+  #donationDialog,
+  #chestConfirmDialog,
+  #chestRewardDialog
+)::-webkit-scrollbar,
+:is(
+    #boosterDialog,
+    #skinsDialog,
+    #wardrobeDialog,
+    #donationDialog,
+    #chestConfirmDialog,
+    #chestRewardDialog
+  )
+  *::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.interface-page {
+  width: 100%;
+  min-width: 0;
+}
+dialog.compact-window {
+  box-sizing: border-box;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px) !important;
+  overflow: auto !important;
+}
+.interface-window .interface-header > :is(.clan-heading, .booster-heading) {
+  height: auto;
+  min-height: 46px;
+  gap: 10px;
+}
+dialog :is(.clan-heading, .personal-heading) h2 {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+dialog :is(.booster-close, .personal-close, .chest-modal-close) {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  flex-basis: 34px;
+  flex-shrink: 0;
+}
+@media (max-height: 560px) {
+  dialog :is(.booster-close, .personal-close, .chest-modal-close) {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    flex-basis: 30px;
+  }
+}
+.interface-window .sf-tab,
+#boosterDialog.interface-window :is(.booster-tabs, .booster-filters) .sf-tab {
+  height: auto;
+  min-height: 40px !important;
+  white-space: normal;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+.interface-window :is(.booster-tabs, .booster-filters, .clan-nav, .donation-tabs, .cosmetics-tabs) {
+  align-items: stretch;
+}
+/* One spacing rhythm for the shop's navigation, categories and rarity filters. */
+#boosterDialog.interface-window .interface-toolbar {
+  --shop-nav-width: min(calc((100% - 8px) / 1.8), calc(100% - 288px));
+  grid-template-columns: var(--shop-nav-width) minmax(280px, 1fr);
+  gap: 8px;
+}
+#boosterDialog.interface-window :is(.booster-tabs, .shop-categories, .booster-filters) {
+  gap: 8px;
+  margin: 0;
+}
+#boosterDialog.interface-window .booster-toolbar {
+  margin: 0;
+}
+/* Второй ряд использует ширину трёх вкладок первого, оставляя место справа. */
+#boosterDialog.interface-window .shop-categories {
+  grid-template-columns: repeat(5, minmax(0, calc((var(--shop-nav-width) - 16px) / 3)));
+}
+#boosterDialog.interface-window :is(.booster-tabs, .shop-categories) .sf-tab {
+  height: 40px;
+  min-height: 40px !important;
+  padding: 6px 8px !important;
+  font-size: 12px;
+}
+@media (max-width: 700px) {
+  #boosterDialog.interface-window .interface-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #boosterDialog.interface-window .interface-toolbar .booster-wallet {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  #boosterDialog.interface-window :is(.booster-tabs, .shop-categories) {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#boosterDialog.interface-window .booster-grid {
+  grid-template-columns: repeat(auto-fill, min(100%, 200px));
+  justify-content: start;
+}
+#boosterDialog.interface-window .booster-empty {
+  grid-column: 1 / -1;
+}
+.interface-window .donation-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.interface-window .donation-card {
+  padding: 6px;
+  gap: 3px;
+}
+.donation-card-heading {
+  min-height: 40px;
+}
+#achievementsDialog .achievement-pages {
+  flex-wrap: wrap;
+}
+.interface-window .account-plans {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+.interface-window .skin-library #skinList {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr));
+}
+.interface-window .account-avatar-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 95px), 1fr));
+}
+.interface-window .booster-action {
+  min-height: 42px;
+  height: auto;
+  padding: 10px 14px;
+}
+.interface-window .booster-art-slot {
+  max-width: 100%;
+}
+.interface-window
+  :is(.booster-card, .donation-card, .account-plan, .skin-library, .wardrobe-library) {
+  min-width: 0;
+}
+#boosterDialog.interface-window :is(.chest-grid, .clan-owned-chests) {
+  grid-template-columns: repeat(auto-fit, min(100%, 240px));
+  justify-content: center;
+  gap: 12px;
+}
+#boosterDialog.interface-window :is(.chest-card, .clan-owned-chest) {
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+}
+#boosterDialog.interface-window .clan-owned-chest {
+  height: 252px;
+}
+#boosterDialog.interface-window .clan-owned-chest > strong {
+  min-height: 36px;
+  line-height: 18px;
+}
+#boosterDialog.interface-window .clan-owned-chest > img {
+  flex-shrink: 0;
+}
+#boosterDialog.interface-window .clan-owned-chests > p {
+  grid-column: 1 / -1;
+}
+#topsDialog .tops-sort {
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+}
+#topsDialog :is(.tops-nav, .tops-sort) > button {
+  height: auto;
+  min-height: 40px;
+  white-space: normal;
+}
+#topsDialog .ranking-players-table {
+  grid-template-rows: repeat(10, minmax(42px, 1fr));
+  overflow: auto;
+}
+/* Дневные призы рядом с таблицей игроков. */
+#topsDialog .daily-ranking-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 152px;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: 6px 12px;
+}
+#topsDialog .daily-ranking-board > .tops-sort {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.daily-ranking-prizes {
+  grid-column: 2;
+  grid-row: 2 / 5;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+.daily-ranking-prizes .daily-ranking-prize {
+  width: 152px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  padding: 4px 6px;
+  gap: 5px;
+}
+.daily-prize-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  white-space: nowrap;
+}
+.daily-prize-heading img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+.daily-ranking-prizes .event-ranking-reward {
+  display: grid;
+  grid-template-columns: max-content;
+  justify-content: center;
+  gap: 1px;
+  font-variant-numeric: tabular-nums;
+}
+.daily-ranking-prizes .event-ranking-reward > span {
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+.daily-ranking-prizes .event-ranking-reward img {
+  width: 17px;
+  height: 17px;
+}
+#topsDialog .daily-ranking-board .ranking-players-table {
+  grid-column: 1;
+  grid-row: 2;
+  grid-template-rows: repeat(10, minmax(0, 1fr));
+  overflow: visible;
+  margin: 0;
+}
+#topsDialog .daily-ranking-board :is(.clan-pager, .clan-my-rank) {
+  grid-column: 1;
+  margin: 0;
+}
+#topsDialog .daily-ranking-board .daily-rank-medal img {
+  display: block;
+}
+@media (max-width: 600px) {
+  #topsDialog .daily-ranking-board {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+    gap: 4px;
+  }
+  #topsDialog .daily-ranking-board > .tops-sort {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  #topsDialog .daily-ranking-board > .tops-sort button {
+    grid-column: span 2;
+    min-height: 28px !important;
+    height: 32px;
+    padding: 3px;
+  }
+  #topsDialog .daily-ranking-board > .tops-sort button:nth-child(-n + 2) {
+    grid-column: span 3;
+    height: 28px;
+  }
+  .daily-ranking-prizes {
+    grid-column: 1;
+    grid-row: 2;
+    flex-direction: row;
+    gap: 4px;
+  }
+  .daily-ranking-prizes .daily-ranking-prize {
+    width: 116px;
+    max-width: calc((100% - 8px) / 3);
+    padding: 4px;
+    gap: 3px;
+    font-size: 10px;
+  }
+  .daily-prize-heading img {
+    width: 32px;
+    height: 32px;
+  }
+  .daily-ranking-prizes .event-ranking-reward img {
+    width: 15px;
+    height: 15px;
+  }
+  #topsDialog .daily-ranking-board .ranking-players-table {
+    grid-row: 3;
+  }
+}
+@media (max-height: 650px), (max-width: 600px) {
+  #topsDialog.has-daily-ranking {
+    gap: 4px;
+  }
+  #topsDialog.has-daily-ranking .tops-nav > button {
+    min-height: 30px !important;
+    height: 30px;
+    padding: 3px;
+  }
+  #topsDialog.has-daily-ranking :is(.tops-nav, .tops-sort) > button {
+    padding: 2px 4px !important;
+    line-height: 1.1;
+  }
+  #topsDialog .daily-ranking-board button.clan-ranking-player {
+    grid-template-columns: 20px 22px minmax(0, 1fr) auto;
+    gap: 5px;
+    padding: 0 4px;
+    font-size: 11px;
+  }
+  #topsDialog .daily-ranking-board :is(.player-avatar, .daily-rank-medal, .daily-rank-medal img) {
+    width: 20px;
+    height: 20px;
+  }
+  #topsDialog .daily-ranking-board .player-account-badge {
+    width: 12px;
+    height: 12px;
+    right: -4px;
+    top: -3px;
+  }
+  #topsDialog .daily-ranking-board .clan-pager button {
+    min-height: 28px;
+    height: 28px;
+    padding: 2px 12px;
+  }
+  #topsDialog .daily-ranking-board .clan-my-rank {
+    font-size: 11px;
+  }
+}
+@media (max-height: 460px) and (min-width: 601px) {
+  #topsDialog .daily-ranking-board {
+    grid-template-columns: minmax(0, 1fr) min(45%, 310px);
+    gap: 3px 8px;
+  }
+  #topsDialog .daily-ranking-board .tops-sort > button {
+    min-height: 28px !important;
+    height: 28px;
+    padding: 2px;
+    font-size: 11px;
+  }
+  .daily-ranking-prizes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-self: start;
+    gap: 4px;
+  }
+  .daily-ranking-prizes .daily-ranking-prize {
+    width: 100%;
+    padding: 3px;
+    gap: 2px;
+  }
+  .daily-prize-heading img {
+    width: 32px;
+    height: 32px;
+  }
+  .daily-ranking-prizes .event-ranking-reward {
+    font-size: 11px;
+  }
+  .daily-ranking-prizes .event-ranking-reward img {
+    width: 14px;
+    height: 14px;
+  }
+  #topsDialog .daily-ranking-board .clan-pager {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  #topsDialog .daily-ranking-board .clan-my-rank {
+    grid-column: 2;
+    grid-row: 4;
+  }
+  #topsDialog .daily-ranking-board .ranking-players-table {
+    grid-row: 2 / 5;
+  }
+  .daily-ranking-prizes {
+    grid-row: 2;
+  }
+}
+#achievementsDialog .achievement-grid {
+  --achievement-card-width: 132px;
+  --achievement-card-height: 132px;
+  grid-template-columns: repeat(var(--achievement-columns, 1), var(--achievement-card-width));
+  grid-template-rows: repeat(var(--achievement-rows, 1), var(--achievement-card-height));
+  grid-auto-rows: var(--achievement-card-height);
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  margin: 8px 0;
+}
+#achievementsDialog .achievement-card {
+  box-sizing: border-box;
+  width: var(--achievement-card-width);
+  height: var(--achievement-card-height);
+  min-height: 0;
+  padding: 5px;
+  gap: 2px;
+}
+#achievementsDialog .achievement-emblem {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+@media (max-width: 1100px) {
+  .interface-window .donation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 540px) {
+  .interface-window .donation-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+#achievementsDialog .career-milestones {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 6px;
+  max-height: none;
+  overflow: visible;
+}
+#achievementsDialog .achievement-detail[data-achievement-detail="career"] {
+  min-height: 0;
+}
+@media (max-width: 999px) {
+  #achievementsDialog .career-milestones {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  #achievementsDialog .career-milestones {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#achievementsDialog .achievement-detail {
+  min-height: 0;
+  max-height: none;
+  height: auto;
+  overflow: visible;
+}
+#achievementsDialog .achievement-filters {
+  flex-wrap: wrap;
+}
+#achievementsDialog .achievement-filters select {
+  max-width: 100%;
+}
+body[data-screen="lobby"] #settingsMenu {
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 80px);
+  overflow: auto;
+}
+#landscapeHint {
+  display: none !important;
+}
+
+/* Окно аккаунтов занимает ровно столько высоты, сколько нужно двум карточкам. */
+#accountDialog.interface-window {
+  width: min(940px, calc(100vw - 24px));
+  height: fit-content;
+  padding: 10px;
+  align-content: start;
+}
+#accountDialog.interface-window[open],
+#achievementsDialog.interface-window[open] {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 8px;
+}
+#accountDialog .interface-content,
+#achievementsDialog .interface-content {
+  grid-row: 2;
+}
+#accountDialog .interface-page,
+#achievementsDialog .interface-page {
+  padding-bottom: 0;
+}
+#accountDialog .interface-footer,
+#achievementsDialog .interface-footer {
+  grid-row: 3;
+}
+#accountDialog .interface-footer:has(.account-message:empty),
+#achievementsDialog .interface-footer:has(.clan-status:empty) {
+  display: none;
+}
+#accountDialog .account-intro {
+  margin: 2px 0 10px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+#accountDialog .account-plans {
+  margin: 0;
+  gap: 12px;
+}
+#accountDialog .account-plan {
+  padding: 12px 14px;
+  border-radius: 14px;
+}
+#accountDialog .account-plan-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 60px;
+}
+#accountDialog .account-emblem {
+  width: 60px;
+  height: 60px;
+  flex: 0 0 60px;
+}
+#accountDialog .account-plan h3 {
+  text-align: left;
+  margin: 0;
+}
+#accountDialog .account-active-badge {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  margin: 0;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+#accountDialog .account-plan ul {
+  margin: 8px 0;
+  padding-left: 17px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+#accountDialog .account-expiry {
+  margin: auto 0 8px;
+  padding-top: 6px;
+  font-size: 11px;
+}
+#accountDialog .account-plan button {
+  min-height: 40px;
+}
+.account-plan-tabs,
+.achievement-panel-tabs {
+  display: none;
+}
+@media (max-width: 650px) {
+  #accountDialog .account-plan-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  #accountDialog[data-selected-account="vip"] .account-plan.premium,
+  #accountDialog[data-selected-account="premium"] .account-plan.vip {
+    display: none;
+  }
+  #accountDialog .account-plans {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-height: 640px) {
+  #accountDialog .account-plan {
+    padding: 10px 12px;
+  }
+  #accountDialog .account-emblem {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+  #accountDialog .account-plan-heading {
+    min-height: 48px;
+  }
+  #accountDialog .account-plan ul {
+    margin: 6px 0;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  #accountDialog .account-expiry {
+    margin-bottom: 6px;
+    padding-top: 4px;
+  }
+}
+
+/* Фиксированные карточки в четырёх рядах; низкое окно прокручивается по вертикали. */
+#achievementsDialog .interface-header > .clan-heading {
+  margin: 0;
+}
+#achievementsDialog .achievement-sort select {
+  width: 118px;
+}
+#achievementsDialog .achievement-toolbar {
+  padding: 5px 8px;
+  gap: 6px;
+}
+#achievementsDialog .achievement-selectors {
+  gap: 8px;
+}
+#achievementsDialog .achievement-sort {
+  gap: 5px;
+  font-size: 10px;
+}
+#achievementsDialog .achievement-filters {
+  gap: 6px 8px;
+}
+#achievementsDialog .achievement-filters label {
+  font-size: 10px;
+}
+#achievementsDialog .achievement-detail {
+  padding: 6px 8px;
+}
+#achievementsDialog .achievement-description {
+  margin: 0;
+  flex: 1;
+  font-size: 11px;
+  line-height: 1.3;
+}
+#achievementsDialog .achievement-detail-heading {
+  margin-bottom: 6px;
+}
+#achievementsDialog .achievement-detail-heading h3 {
+  font-size: 16px;
+  line-height: 1.2;
+}
+#achievementsDialog .achievement-detail-progress {
+  margin-bottom: 4px;
+}
+#achievementsDialog .achievement-milestones {
+  margin-top: 6px;
+}
+#achievementsDialog .achievement-milestones li {
+  padding: 4px;
+  gap: 2px;
+  line-height: 1.2;
+}
+#achievementsDialog .career-rank-art {
+  width: 40px;
+  height: 40px;
+}
+#achievementsDialog .achievement-milestones .greatness-icon {
+  width: 14px;
+  height: 14px;
+}
+#achievementsDialog .milestone-reward {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+#achievementsDialog .milestone-chest-art {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+#achievementsDialog .achievement-detail .honor-track {
+  height: 10px;
+}
+#achievementsDialog .achievement-pages {
+  margin: 4px 0 8px;
+  align-items: center;
+}
+#achievementsDialog .achievement-showcase {
+  display: flow-root;
+}
+/* Вертикальная плашка титула сохраняет порядок и на телефоне, и на компьютере. */
+#achievementsDialog .honor-sidebar {
+  min-width: 0;
+  padding: 12px;
+}
+#achievementsDialog .honor-hero {
+  flex-direction: column;
+  gap: 0;
+  text-align: center;
+  margin-bottom: 6px;
+}
+#achievementsDialog .honor-copy {
+  flex: none;
+  width: 100%;
+}
+#achievementsDialog .honor-trophy {
+  width: 132px;
+  height: 132px;
+  flex: 0 0 auto;
+  margin: 4px auto;
+}
+#achievementsDialog .honor-name {
+  margin: 4px 0;
+  font-size: 22px;
+}
+#achievementsDialog .honor-eyebrow {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+#achievementsDialog .honor-advancement {
+  margin-top: 0;
+}
+#achievementsDialog .honor-advancement > strong {
+  margin-bottom: 6px;
+}
+#achievementsDialog .honor-rewards {
+  display: block;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+#achievementsDialog .honor-reward-title {
+  margin: 0 0 8px;
+}
+#achievementsDialog .honor-gift {
+  margin: 5px 0;
+  gap: 8px;
+  font-size: 12px;
+}
+#achievementsDialog .honor-chest-state {
+  margin: 6px 0;
+}
+#achievementsDialog .honor-chest-preview summary {
+  min-height: 28px;
+}
+#achievementsDialog .honor-chests-button {
+  min-height: 36px;
+  margin-top: 6px;
+}
+@media (min-width: 701px) {
+  #achievementsDialog .achievements-layout {
+    grid-template-columns: 232px minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+@media (max-width: 700px) {
+  #achievementsDialog .achievements-layout {
+    display: block;
+  }
+  #achievementsDialog .achievement-panel-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  #achievementsDialog [data-panel="showcase"] :is(.honor-sidebar, .achievement-detail),
+  #achievementsDialog
+    [data-panel="detail"]
+    :is(
+      .honor-sidebar,
+      .achievement-toolbar,
+      .achievement-grid,
+      .achievement-showcase > .achievement-pages
+    ),
+  #achievementsDialog [data-panel="honor"] .achievement-showcase {
+    display: none;
+  }
+  #achievementsDialog .clan-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 3px 8px;
+  }
+  #achievementsDialog .clan-heading h2 {
+    font-size: 20px;
+  }
+  #achievementsDialog .booster-close {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  #achievementsDialog .honor-sidebar {
+    width: 280px;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+  #achievementsDialog .achievement-pages button {
+    min-height: 28px;
+  }
+  #achievementsDialog .achievement-selectors {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #achievementsDialog .achievement-sort {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+  #achievementsDialog .achievement-sort select {
+    width: 100%;
+    min-width: 0;
+  }
+}
+@media (max-width: 360px) {
+  #achievementsDialog.interface-window {
+    width: calc(100vw - 8px);
+    max-width: calc(100vw - 8px);
+    padding: 6px;
+  }
+  #achievementsDialog .interface-content {
+    padding-inline: 2px;
+  }
+  #achievementsDialog .achievement-grid {
+    padding: 4px;
+  }
+}
+@media (max-width: 700px) and (max-height: 650px) {
+  #accountDialog.interface-window[open] {
+    padding: 8px;
+    gap: 4px;
+  }
+  #accountDialog .interface-header > .clan-heading {
+    min-height: 40px;
+    padding: 2px 8px;
+  }
+  #accountDialog .interface-content {
+    padding-block: 0;
+  }
+  #accountDialog .account-plan {
+    padding-block: 8px;
+  }
+  #accountDialog .account-emblem {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+  #accountDialog .account-plan-heading {
+    min-height: 36px;
+  }
+  #accountDialog .account-plan h3 {
+    font-size: 18px;
+  }
+  #accountDialog .account-intro {
+    margin-bottom: 6px;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+}
+/* На низких экранах сжимаем иллюстрацию и отступы, сохраняя вертикальную композицию. */
+@media (max-height: 650px) {
+  #achievementsDialog .honor-sidebar {
+    padding: 8px;
+  }
+  #achievementsDialog .honor-trophy {
+    width: 80px;
+    height: 80px;
+    margin-block: 2px;
+  }
+  #achievementsDialog .honor-hero {
+    margin-bottom: 2px;
+  }
+  #achievementsDialog .honor-eyebrow {
+    line-height: 1.2;
+  }
+  #achievementsDialog .honor-name {
+    font-size: 20px;
+    margin-block: 2px;
+  }
+  #achievementsDialog .honor-degree {
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  #achievementsDialog .honor-advancement {
+    margin-top: 0;
+  }
+  #achievementsDialog .honor-advancement > strong {
+    margin-bottom: 2px;
+    line-height: 1.35;
+  }
+  #achievementsDialog .honor-track {
+    height: 11px;
+  }
+  #achievementsDialog .honor-greatness {
+    margin-block: 2px;
+  }
+  #achievementsDialog .honor-career-link {
+    min-height: 26px;
+    padding-block: 3px;
+  }
+  #achievementsDialog .honor-rewards {
+    margin-top: 4px;
+    padding-top: 4px;
+  }
+  #achievementsDialog .honor-rewards h4 {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 2px;
+  }
+  #achievementsDialog .honor-reward-title {
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  #achievementsDialog .honor-gift {
+    margin-block: 2px;
+  }
+  #achievementsDialog .honor-gift .greatness-icon {
+    width: 26px;
+    height: 26px;
+  }
+  #achievementsDialog .honor-chest-state {
+    margin-block: 4px;
+  }
+  #achievementsDialog .honor-chest-preview summary {
+    min-height: 26px;
+    padding-block: 3px;
+  }
+  #achievementsDialog .honor-chests-button {
+    min-height: 32px;
+    padding-block: 4px;
+    margin-top: 4px;
+  }
+  #achievementsDialog .honor-gift .chest-art {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+}
+@media (max-width: 700px) and (max-height: 650px) {
+  #achievementsDialog .honor-sidebar {
+    padding: 6px;
+  }
+  #achievementsDialog .honor-trophy {
+    width: 60px;
+    height: 60px;
+  }
+  #achievementsDialog .honor-gift .greatness-icon {
+    width: 22px;
+    height: 22px;
+  }
+  #achievementsDialog .honor-gift .chest-art {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+  #achievementsDialog .honor-chest-state {
+    line-height: 1.3;
+  }
+}
+
+/* Все три раздела конструктора занимают одинаковую область. */
+#clanDialog .clan-crest-choices {
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+#clanDialog .clan-crest-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+@media (max-width: 620px) {
+  #clanDialog .clan-crest-choices {
+    aspect-ratio: 3 / 7;
+    grid-template-rows: repeat(7, minmax(0, 1fr));
+  }
+}
+
+/* Панели содержат уже оформленные кнопки/карточки: дополнительная подложка не нужна. */
+:is(
+  .cosmetics-tabs,
+  .booster-tabs,
+  .booster-filters,
+  .donation-tabs,
+  .clan-nav,
+  .clan-crest-tabs,
+  .shop-categories,
+  .chest-categories,
+  .interface-toolbar,
+  .interface-footer,
+  .cosmetics-actions,
+  .achievement-toolbar,
+  .achievement-grid,
+  .booster-grid,
+  .donation-grid,
+  .chest-grid,
+  .chests-section,
+  .skin-owned-sets,
+  .account-avatar-grid,
+  .clan-crest-choices,
+  .lobby-loadout,
+  .booster-quick
+) {
+  background: transparent !important;
+  border-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Клан: три колонки на широком экране, естественная высота при нехватке места. */
+#clanDialog.interface-window,
+#clanDialog.clan-editor-open {
+  zoom: 1;
+  width: 100%;
+  height: 100dvh;
+  max-width: 100vw;
+  max-height: 100dvh;
+}
+#clanDialog .clan-nav {
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+#clanDialog .clan-banner > * {
+  min-width: 0;
+}
+:is(#clanDialog, #clanPreviewDialog) .clan-member {
+  position: relative;
+}
+:is(#clanDialog, #clanPreviewDialog) .clan-member-profile {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+}
+:is(#clanDialog, #clanPreviewDialog) .clan-member-profile:hover {
+  box-shadow: inset 0 0 0 2px #cc9b44;
+}
+#clanDialog .clan-member-gear {
+  position: relative;
+  z-index: 2;
+}
+#clanDialog .clan-name-line {
+  flex-wrap: wrap;
+}
+#clanDialog .clan-home-grid > .clan-panel {
+  overflow: auto;
+}
+#clanDialog .clan-battle-heading h3 {
+  min-width: 0;
+}
+#clanDialog .clan-battle-prizes {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Короткое окно, в том числе масштаб браузера 125–200%: не сплющиваем лобби. */
+@media (max-height: 650px) and (min-width: 961px) {
+  body[data-screen="lobby"] {
+    overflow-y: auto;
+    height: auto;
+  }
+  #lobby {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+  #lobby .lobby-inner {
+    height: 650px;
+    flex: none;
+  }
+}
+@media (max-width: 960px) {
+  .clan-form-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body[data-screen="lobby"] {
+    height: auto;
+    min-height: 100dvh;
+    overflow-y: auto;
+  }
+  #lobby {
+    height: auto;
+    min-height: 100dvh;
+    padding: 12px;
+    overflow: visible;
+    display: block;
+  }
+  #lobby .lobby-inner {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    container-type: inline-size;
+    gap: 14px;
+  }
+  #lobby .lobby-header {
+    grid-template-columns: minmax(0, 1fr);
+    padding-right: 0;
+    gap: 12px;
+  }
+  #lobby .profile-card {
+    width: min(500px, calc(100% - 48px));
+    min-height: 78px;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  #lobby .profile-card .profile-circle {
+    width: 42px;
+    height: 42px;
+  }
+  #lobby .profile-card #previewName {
+    font-size: 18px;
+  }
+  #lobby .profile-copy small {
+    font-size: 10px;
+  }
+  #lobby #walletStatus {
+    gap: 8px;
+  }
+  #lobby .sf-currency-wallet .sf-currency {
+    height: 48px;
+  }
+  #lobby .sf-currency-value {
+    font-size: clamp(13px, 2.8vw, 21px);
+  }
+  #lobby .currency-add {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+  #lobby .player-progress {
+    height: auto;
+    min-height: 52px;
+    grid-template-rows: auto 10px;
+  }
+  #lobby .progress-summary {
+    flex-wrap: wrap;
+    gap: 4px 10px;
+  }
+  #lobby .progress-summary > * {
+    white-space: normal;
+  }
+  #lobby .progress-actions .sf-tab {
+    min-width: 110px;
+    min-height: 38px !important;
+  }
+  #lobby .showcase-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(170px, 0.55fr);
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+  #lobby .showcase {
+    grid-column: 1;
+    grid-row: 1;
+    grid-template-rows: 270px auto auto auto;
+    height: auto;
+  }
+  #lobby .skin-stage {
+    container-type: normal;
+    gap: 10px;
+  }
+  #lobby .skin-art {
+    width: min(48vw, 220px);
+    transform: translateY(18px);
+  }
+  #lobby .skin-arrow {
+    width: 36px;
+    height: 36px;
+    transform: translateY(18px);
+  }
+  #lobby .side-nav {
+    grid-column: 2;
+    grid-row: 1;
+    height: auto;
+    grid-template-rows: none;
+    grid-auto-rows: 48px;
+    gap: 8px;
+  }
+  #lobby .side-nav .menu-tile {
+    min-height: 48px;
+    padding: 8px 12px;
+  }
+  #lobby .side-nav .menu-tile::before {
+    border-width: 18px 24px;
+  }
+  #lobby .menu-tile strong {
+    font-size: 15px;
+    white-space: normal;
+  }
+  #lobby .menu-icon {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+  #lobby .lobby-accessory-slots {
+    height: auto;
+    min-height: 44px;
+    transform: none;
+  }
+  #lobby .lobby-accessory-slot {
+    min-height: 44px;
+    padding: 5px 8px;
+  }
+  #lobby #playButton {
+    height: 48px;
+    min-height: 48px;
+    font-size: 23px;
+  }
+  #lobby .promo-column {
+    grid-column: 1/-1;
+    grid-row: 2;
+    height: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto;
+  }
+  #lobby .promo-slot {
+    min-height: 135px;
+    padding: 24px 12px 12px;
+  }
+  #lobby .promo-slot h2 {
+    font-size: 20px;
+  }
+  body[data-screen="lobby"] .settings-area {
+    top: 20px;
+    right: 18px;
+    bottom: auto;
+  }
+  body[data-screen="lobby"] #settingsButton {
+    width: 36px;
+    height: 36px;
+  }
+  #clanDialog[data-view="home"] :is(.interface-page, .clan-content) {
+    height: auto;
+  }
+  #clanDialog[data-view="home"] .clan-content {
+    grid-template-rows: auto auto;
+  }
+  #clanDialog .clan-home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #clanDialog .clan-home-grid > .clan-panel {
+    height: auto;
+    min-height: 360px;
+    overflow: visible;
+  }
+  #clanDialog .clan-battle-panel {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+  #clanDialog .clan-banner {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  #clanDialog .clan-banner-actions {
+    grid-column: 1/-1;
+    width: 100%;
+  }
+  #clanDialog :is(.clan-battle-member-list, .clan-league-table) {
+    max-height: 440px;
+  }
+}
+@media (max-width: 620px) {
+  .clan-crest-builder {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 12px;
+  }
+  .clan-crest-preview > img {
+    max-width: 160px;
+  }
+  #lobby .profile-card {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+  #lobby .profile-insignia {
+    grid-column: 1/-1;
+    justify-content: center;
+  }
+  #lobby .profile-card #previewName {
+    font-size: 17px;
+  }
+  #lobby .player-progress {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 10px auto;
+  }
+  #lobby .progress-actions {
+    grid-column: 1;
+    grid-row: 3;
+    justify-content: end;
+  }
+  #lobby .showcase-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+  }
+  #lobby .showcase {
+    grid-column: 1;
+    grid-row: 1;
+    grid-template-rows: 260px auto auto auto;
+  }
+  #lobby .skin-art {
+    width: min(52vw, 210px);
+  }
+  #lobby .side-nav {
+    grid-column: 1;
+    grid-row: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: minmax(52px, auto);
+  }
+  #lobby .side-nav .menu-tile {
+    padding: 8px 10px;
+    gap: 5px;
+  }
+  #lobby .menu-tile strong {
+    font-size: 13px;
+  }
+  #lobby .menu-icon {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+  }
+  #lobby .promo-column {
+    grid-column: 1;
+    grid-row: 3;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #lobby .promo-slot {
+    min-height: 155px;
+  }
+  .interface-window :is(.skin-collection-layout, .wardrobe-layout, .achievements-layout) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #boosterDialog .interface-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #boosterDialog .interface-toolbar .booster-wallet {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  #boosterDialog :is(.booster-tabs, .booster-filters),
+  .interface-window :is(.clan-nav, .cosmetics-tabs) {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #clanDialog .clan-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #clanDialog .clan-home-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #clanDialog .clan-home-grid > .clan-panel {
+    padding: 12px;
+    min-height: 0;
+  }
+  #clanDialog .clan-banner {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 12px;
+    gap: 12px;
+  }
+  #clanDialog .clan-banner-identity {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 8px;
+  }
+  #clanDialog .clan-banner-identity > .clan-crest {
+    width: 48px;
+    height: 48px;
+  }
+  #clanDialog .clan-banner-actions {
+    grid-column: 1;
+  }
+  #clanDialog .clan-battle-prizes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #clanDialog .clan-personal-reward {
+    width: 100%;
+    grid-template-columns: 56px minmax(0, 1fr);
+    padding: 10px;
+  }
+  #clanDialog .clan-personal-reward-art {
+    width: 56px;
+    height: 56px;
+  }
+  #clanDialog .clan-personal-reward-claim {
+    min-width: 100px;
+  }
+  .clan-crest-choices {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Резервируем место под полный внешний контур рамки в строке рейтинга. */
+#topsDialog .ranking-board .ranking-players-table {
+  grid-template-rows: none;
+  grid-auto-rows: minmax(60px, max-content);
+  overflow: auto;
+  align-content: start;
+}
+#topsDialog .ranking-board button.clan-ranking-player {
+  min-height: 60px;
+  grid-template-columns: 30px 56px minmax(0, 1fr) auto;
+  padding: 5px 8px;
+  gap: 8px;
+}
+#topsDialog .ranking-board .player-avatar {
+  width: 36px;
+  height: 36px;
+  justify-self: center;
+}
+@media (max-height: 800px), (max-width: 600px) {
+  #topsDialog .ranking-board .ranking-players-table {
+    grid-auto-rows: minmax(50px, max-content);
+  }
+  #topsDialog .ranking-board button.clan-ranking-player {
+    min-height: 50px;
+    grid-template-columns: 22px 46px minmax(0, 1fr) auto;
+    gap: 5px;
+    padding: 4px;
+  }
+  #topsDialog .ranking-board .player-avatar {
+    width: 30px;
+    height: 30px;
+  }
+}

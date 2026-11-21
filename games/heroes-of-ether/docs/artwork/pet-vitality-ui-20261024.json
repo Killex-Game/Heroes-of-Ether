@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-24",
+  "method": "Built-in image_gen tool; transparent images exported to WebP with alpha preserved. Roulette decorations edited as native SVG.",
+  "provenance": "New generated artwork. Style references are existing project assets; this entry does not assert independent commercial rights to those earlier reference assets.",
+  "assets": [
+    {
+      "file": "public/assets/pets/boosters/carrot-v2.webp",
+      "source": "../../artifacts/pet-vitality-ui-20261024/carrot-source.png",
+      "reference": "public/assets/pets/boosters/clawed-glove.webp",
+      "prompt": "Use case: stylized-concept. Create ONE new game booster icon: a delicious magical carrot. The supplied image is STYLE REFERENCE ONLY, do not draw a glove. Match its polished richly shaded fantasy casual-game 3D painted look, bold readable silhouette, warm gold edge highlights, saturated colors and jewel-like finish. Single plump orange carrot tapering toward lower left, lush sculpted emerald-green leaves toward upper right, a restrained small gold collar around the base of the leaves with one tiny purple inset. Rounded orange body with subtle natural carrot grooves, warm glossy highlights and deep amber shaded side. No face, no text, no letters, no frame, no badge, no background or floor. Center the entire carrot with generous safe transparent padding, all leaves and tip fully visible. Clear silhouette readable as a small 48px inventory booster. Actual transparent alpha background."
+    },
+    {
+      "file": "public/assets/clan-crests/v2/s21_lily.webp",
+      "source": "../../artifacts/pet-vitality-ui-20261024/lily-source.png",
+      "reference": "public/assets/clan-crests/v2/s01_crown.webp",
+      "prompt": "Use case stylized-concept. Create one new heraldic emblem for a fantasy game clan crest: a classic elegant fleur-de-lis (heraldic lily), three stylized petals and a small binding band. The attached gold crown is a STYLE REFERENCE ONLY, do not draw a crown. Match the polished bevelled sculptural gold, rich amber shadows, brilliant pale gold edge highlights and clean readable casual-game fantasy illustration. Perfectly symmetric frontal fleur-de-lis, thick relief golden metal, subtle engraved central ridge, no jewels, no text, no shield, no frame, no floor or environment. Entire small emblem centered in a square transparent image with comfortable margin around every tip. Actual transparent alpha background. Comparable visual size and boldness to reference crown."
+    },
+    {
+      "file": "public/assets/ui/quest-scroll-v2.webp",
+      "source": "../../artifacts/pet-vitality-ui-20261024/quest-scroll-source.png",
+      "reference": "public/assets/pets/boosters/clawed-glove.webp",
+      "prompt": "Use case: stylized-concept. Create one polished fantasy casual-game QUESTS menu icon: a compact rolled ivory parchment scroll, curled at the top and bottom, with elegant thick polished golden ends and a small deep purple wax seal with a raised golden check mark in the lower right. Two small purple ink check marks and short decorative strokes on the parchment, not letters or readable text. Supplied glove is STYLE REFERENCE ONLY: match rich 3D painted bevels, saturated royal purple and luminous gold, warm amber shadows, clean bold outline, glossy highlights. Three-quarter view with parchment face clearly readable. No hands, no quill, no extra items, no frame, no background, no floor. Whole scroll fully inside frame with safe padding, compact strong silhouette readable at 32px. Actual transparent background."
+    }
+  ],
+  "nativeSvg": [
+    "public/assets/roulette/wheel.svg",
+    "public/assets/roulette/hub-v2.svg",
+    "public/assets/roulette/pointer-v2.svg"
+  ]
+}

@@ -1,0 +1,50 @@
+ЗВУКИ ДЛЯ ПРОСЛУШИВАНИЯ — 27 октября 2026
+
+Статус: кандидаты для оценки владельцем. В игру не внедрены.
+Все использованные исходники опубликованы авторами под CC0 1.0 Universal.
+Покупка лицензии, отдельное разрешение и обязательная атрибуция не требуются.
+https://creativecommons.org/publicdomain/zero/1.0/
+Проверка: страницы каждого автора и license.txt для Kenney. Копии страниц находятся в evidence/ рабочей папки.
+Три Freesound-записи — HQ MP3 previews; это не исходные lossless WAV. Превью перекодированы в WAV для совместимости.
+Обработка: нормализация, обрезка, плавные короткие края. Часть вариантов смонтирована из нескольких CC0-сэмплов.
+Точные интервалы, высота тона, уровни, пути источников и контрольные суммы находятся в manifest.json.
+
+Авторы и первоисточники:
+RPG Audio — Kenney
+https://kenney.nl/assets/rpg-audio
+CC0-1.0; commercial use: yes; attribution required: no
+
+Interface Sounds — Kenney
+https://kenney.nl/assets/interface-sounds
+CC0-1.0; commercial use: yes; attribution required: no
+
+Music Jingles — Kenney
+https://kenney.nl/assets/music-jingles
+CC0-1.0; commercial use: yes; attribution required: no
+
+Shop door bell.wav — 775noise
+https://freesound.org/people/775noise/sounds/494565/
+CC0-1.0; commercial use: yes; attribution required: no
+
+Opening Backpack — veronicalyn
+https://freesound.org/people/veronicalyn/sounds/444915/
+CC0-1.0; commercial use: yes; attribution required: no
+
+curtain opening.wav — fryzu82
+https://freesound.org/people/fryzu82/sounds/142301/
+CC0-1.0; commercial use: yes; attribution required: no
+
+Pop sounds — EZduzziteh
+https://opengameart.org/content/pop-sounds-0
+CC0-1.0; commercial use: yes; attribution required: no
+
+Space Ship Shield Sounds — bart
+https://opengameart.org/content/space-ship-shield-sounds
+CC0-1.0; commercial use: yes; attribution required: no
+
+Happy and Sad Tuba Fanfare — Trex0n / Cal McEachern
+https://opengameart.org/content/happy-and-sad-tuba-fanfare
+CC0-1.0; commercial use: yes; attribution required: no
+
+Следующий этап после оценки: выбрать звуки и согласовать подключение.
+Новое звание: предусмотреть окно «Поделиться» / «Отлично»; интеграция публикации VK позже.

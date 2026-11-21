@@ -1,0 +1,40 @@
+.effi-helper {
+  position: fixed;
+  z-index: 50;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  width: min(560px, calc(100vw - 32px));
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+.effi-character { width: 140px; height: auto; flex: none; filter: drop-shadow(0 3px 10px #073c3b33); }
+.effi-bubble {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  max-height: min(380px, calc(100dvh - 60px));
+  overflow-y: auto;
+  pointer-events: auto;
+  padding: 18px;
+  border: 2px solid #80b8a0;
+  border-radius: 20px 20px 20px 4px;
+  background: #f5fff7;
+  color: #234e44;
+  box-shadow: 0 8px 26px #102f3633;
+}
+.effi-name { display: block; padding-right: 24px; font-size: 18px; }
+.effi-copy { white-space: pre-line; margin: 9px 0 14px; font-size: 15px; line-height: 1.5; min-height: 45px; }
+.effi-close { position: absolute; right: 7px; top: 7px; width: 32px; height: 32px; border: 0; background: transparent; color: inherit; font-size: 24px; cursor: pointer; }
+.effi-accessible { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); margin: 0; }
+.effi-talking .effi-character { animation: effi-speaking 1.6s ease-in-out infinite; }
+@keyframes effi-speaking { 50% { transform: translateY(-7px) rotate(2deg); } }
+html[data-page-visible="false"] .effi-character { animation-play-state: paused; }
+@media (max-width: 550px) {
+  .effi-helper { gap: 5px; left: 10px; bottom: 12px; width: calc(100vw - 20px); }
+  .effi-character { width: 78px; }
+  .effi-bubble { padding: 13px; }
+  .effi-copy { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .effi-character { animation: none!important; } }

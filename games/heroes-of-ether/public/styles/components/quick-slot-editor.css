@@ -1,0 +1,233 @@
+/* Редактор быстрых слотов и состояние перетаскивания. */
+/* Шесть постоянных ячеек: геометрия не меняется при активации аккаунта. */
+#lobby .lobby-loadout {
+  width: min(100%, 448px);
+  justify-self: center;
+  padding: 6px 9px 8px;
+  border: 1px solid #bc914f;
+  border-radius: 13px;
+  background: linear-gradient(
+    135deg,
+    var(--ui-c-fff9e9e8, #fff9e9e8),
+    var(--ui-c-f2dfbdeb, #f2dfbdeb)
+  );
+  box-shadow: inset 0 0 0 2px #fff4d5;
+}
+.loadout-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #573564;
+  margin: 0 3px 4px;
+  font-size: 11px;
+}
+.loadout-slots {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+.lobby-loadout {
+  position: relative;
+}
+.loadout-slot[draggable="true"] {
+  cursor: grab;
+}
+.loadout-slot[data-dragging="true"] {
+  opacity: 0.55;
+  cursor: grabbing;
+}
+.loadout-slot[data-drop-target="true"] {
+  outline: 2px solid #c99a3c;
+  outline-offset: 1px;
+  filter: brightness(1.1);
+}
+.loadout-feedback {
+  position: absolute;
+  z-index: 6;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 100%;
+  padding: 5px 10px;
+  border: 1px solid #bc914f;
+  border-radius: 8px;
+  background: var(--ui-c-fff5de, #fff5de);
+  color: #573564;
+  font-size: 11px;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--ui-c-35233a22, #35233a22);
+  pointer-events: none;
+}
+.loadout-feedback[data-error="true"] {
+  color: #8a2a41;
+}
+.loadout-slots .loadout-slot {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 0;
+}
+.loadout-slot[data-account-slot="vip"] {
+  --account-slot-edge: #dc960b;
+  --account-slot-light: #fff1a3;
+  --account-slot-shade: #a45b12;
+  --account-slot-glow: var(--vip-glow, #ffc51f99);
+}
+.loadout-slot[data-account-slot="premium"] {
+  --account-slot-edge: #a732d8;
+  --account-slot-light: #f8d3ff;
+  --account-slot-shade: #692390;
+  --account-slot-glow: var(--premium-glow, #dc70ff88);
+}
+.loadout-slot[data-account-slot]::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 1px;
+  border: 2px solid var(--account-slot-edge);
+  border-top-color: var(--account-slot-light);
+  border-bottom-color: var(--account-slot-shade);
+  border-radius: 16%;
+  box-shadow:
+    inset 0 0 0 1px var(--account-slot-light),
+    0 0 0 1px var(--account-slot-edge);
+  pointer-events: none;
+}
+.loadout-slot[data-account-slot][data-locked="false"]::before {
+  box-shadow:
+    inset 0 0 0 1px var(--account-slot-light),
+    0 0 0 1px var(--account-slot-edge),
+    0 0 5px 1px var(--account-slot-glow),
+    0 0 12px 2px var(--account-slot-glow);
+}
+.loadout-slot .booster-slot-key {
+  left: auto;
+  right: 12%;
+  top: 5%;
+  font: 700 10px var(--game-font);
+}
+.loadout-placeholder {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding-bottom: 3px;
+  font-size: 26px;
+  color: #a87e45;
+}
+.loadout-lock {
+  position: absolute;
+  z-index: 3;
+  left: 8%;
+  right: 8%;
+  bottom: 9%;
+  padding: 2px 0;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 7px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #fff2d1;
+  background: var(--ui-c-694474e8, #694474e8);
+  pointer-events: none;
+}
+.booster-slot[data-locked="true"] img {
+  opacity: 0.3;
+}
+.booster-slot[data-locked="true"] .booster-slot-count {
+  visibility: hidden;
+}
+/* Семь бустеров и Турбо остаются одним горизонтальным рядом. */
+.booster-quick {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  width: min(498px, calc(100vw - 24px));
+  gap: 6px;
+}
+.booster-quick .booster-slot {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .booster-quick .booster-slot {
+    cursor: default;
+  }
+}
+.booster-quick .turbo-slot {
+  margin-left: 0;
+}
+.booster-quick:has(> :is(.pet-ability, .accessory-ability):not([hidden])) {
+  grid-template-columns: none;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+}
+@media (min-height: 461px), (orientation: portrait) {
+  .booster-quick:has(> :is(.pet-ability, .accessory-ability):not([hidden])) {
+    width: min(600px, calc(100vw - 24px));
+  }
+}
+#lobby .loadout-heading {
+  justify-content: center;
+  text-align: center;
+}
+@media (max-height: 560px) {
+  #lobby .lobby-loadout {
+    max-width: 340px;
+    padding: 3px 7px 5px;
+    border-radius: 9px;
+  }
+  .loadout-heading {
+    margin-bottom: 2px;
+    font-size: 9px;
+  }
+  .loadout-slots {
+    gap: 4px;
+  }
+  .loadout-slot .booster-slot-key {
+    font-size: 8px;
+  }
+  .loadout-slot .booster-slot-count {
+    font-size: 9px;
+  }
+  .loadout-lock {
+    font-size: 6px;
+    padding: 1px 0;
+  }
+}
+@media (max-width: 400px) {
+  .booster-quick .booster-slot {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+  }
+  .booster-quick .booster-slot-count {
+    font-size: 9px;
+  }
+  .booster-quick .loadout-lock {
+    font-size: 6px;
+  }
+  .booster-quick .turbo-symbol {
+    font-size: 26px;
+  }
+}
+@media (max-height: 460px) and (orientation: landscape) {
+  .booster-quick {
+    left: 252px;
+    right: 116px;
+    width: auto;
+    transform: none;
+  }
+}
+@media (max-height: 460px) and (max-width: 720px) and (orientation: landscape) {
+  .booster-quick {
+    left: 50%;
+    right: auto;
+    width: calc(100vw - 24px);
+    bottom: 128px;
+    transform: translateX(-50%);
+  }
+}

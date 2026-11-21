@@ -1,0 +1,177 @@
+dialog.title-earned-dialog {
+  box-sizing: border-box;
+  width: min(460px, calc(100vw - 24px));
+  max-width: none;
+  padding: 12px;
+  border: 2px solid #ddb155;
+  border-radius: 18px;
+  background: var(--ui-c-fff5dd, #fff5dd);
+  color: var(--ui-c-57365f, #57365f);
+  box-shadow:
+    0 18px 65px #22142566,
+    inset 0 0 0 3px #fff8e8;
+  text-align: center;
+}
+.title-earned-dialog::backdrop {
+  background: #15172499;
+}
+.title-earned-dialog .clan-heading {
+  margin: 0;
+}
+.title-earned-dialog h2 {
+  font-size: 22px;
+}
+.title-earned-art {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin: 12px auto 0;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 10px #e6b54488);
+  animation: title-earned-shine 2.8s ease-in-out infinite alternate;
+}
+.title-earned-name {
+  font-size: 28px;
+  margin: 6px 0;
+  color: #986018;
+}
+.title-earned-reward {
+  max-width: 355px;
+  margin: 8px auto 16px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.title-earned-status {
+  margin: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.title-earned-status:empty {
+  display: none;
+}
+.title-earned-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px 0 2px;
+}
+.title-earned-actions .sf-button {
+  width: 150px;
+  min-height: 40px;
+}
+@keyframes title-earned-shine {
+  to {
+    filter: drop-shadow(0 3px 15px #e6b544cc);
+  }
+}
+@media (max-width: 420px) {
+  .title-earned-dialog h2 {
+    font-size: 19px;
+  }
+  .title-earned-actions .sf-button {
+    width: 138px;
+  }
+}
+@media (max-height: 540px) {
+  .title-earned-art {
+    width: 92px;
+    height: 92px;
+    margin-top: 6px;
+  }
+  .title-earned-name {
+    font-size: 24px;
+    margin: 2px;
+  }
+  .title-earned-reward {
+    margin: 6px auto;
+    font-size: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .title-earned-art {
+    animation: none;
+  }
+}
+
+.collection-earned-dialog .collection-earned-prizes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 14px 0 20px;
+}
+.collection-earned-prize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 4px;
+  border: 1px solid #dcae55;
+  border-radius: 12px;
+  background: #fffaf0;
+  color: #67421e;
+  min-width: 0;
+}
+.collection-earned-prize img {
+  width: 100%;
+  max-width: 112px;
+  height: 112px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px #a76c2633);
+}
+.collection-earned-prize strong {
+  font-size: 13px;
+}
+.collection-earned-prize small {
+  font-size: 11px;
+}
+.collection-earned-dialog > .sf-button {
+  min-width: 150px;
+  min-height: 40px;
+}
+@media (max-width: 420px), (max-height: 480px) {
+  .collection-earned-prize img {
+    height: 76px;
+  }
+  .collection-earned-dialog .collection-earned-prizes {
+    gap: 6px;
+    margin: 8px 0 12px;
+  }
+  .collection-earned-prize strong {
+    font-size: 11px;
+  }
+}
+
+dialog.title-earned-dialog:not(.collection-earned-dialog) { width:min(770px,calc(100vw - 24px)); }
+.title-earned-stage { display:grid; grid-template-columns:210px 1fr; gap:16px; align-items:center; padding:18px 6px 8px; }
+.title-earned-medal { min-width:0; }
+.title-earned-stage .title-earned-art { width:180px; height:180px; animation:title-medal-arrive .7s ease-out both; }
+.title-earned-stage .title-earned-name { font-size:26px; }
+.title-earned-prizes { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; animation:title-prizes-arrive .55s .65s ease-out both; }
+.title-earned-prize { min-width:0; border:1px solid #c5a05b80; border-radius:12px; padding:7px 4px; background:#fff7df66; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.title-earned-prize img { width:70px; height:65px; object-fit:contain; }
+.title-earned-prize strong { font-size:11px; line-height:1.25; }
+.title-earned-prize small { font-size:10px; opacity:.75; }
+.title-earned-dialog .title-earned-reward { max-width:650px; font-size:12px; }
+dialog.title-share-dialog { box-sizing:border-box; width:min(490px,calc(100vw - 24px)); padding:14px; border:2px solid #c7a15d; border-radius:18px; background:var(--prism-light,#fff5dd); text-align:center; }
+.title-share-picture { width:min(100%,calc(100dvh - 290px)); margin:12px auto 0; }
+.title-share-picture img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:contain; margin:0; }
+.title-share-copy { color:var(--prism-ink,#3e304e); line-height:1.55; font-size:16px; font-weight:600; margin:16px 4px 10px; }
+.title-share-note { display:block; margin:8px; color:var(--prism-ink,#3e304e); opacity:.8; }
+.title-share-dialog > button { min-width:150px; }
+@media (max-height: 500px) and (min-width: 601px) {
+  dialog.title-share-dialog[open] {
+    display:grid;
+    width:min(740px,calc(100vw - 24px));
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:8px 16px;
+  }
+  .title-share-dialog > .clan-heading { grid-column:1 / -1; margin:0; }
+  .title-share-picture { grid-column:1; grid-row:2 / 5; width:min(100%,calc(100dvh - 128px)); margin:0 auto; }
+  .title-share-copy { grid-column:2; margin:0; font-size:14px; align-self:center; }
+  .title-share-note { grid-column:2; margin:0; }
+  .title-share-dialog > button { grid-column:2; align-self:end; }
+}
+@keyframes title-medal-arrive { from{opacity:0;transform:scale(.55) rotate(-8deg)} to{opacity:1;transform:none} }
+@keyframes title-prizes-arrive { from{opacity:0;transform:translateX(22px)} to{opacity:1;transform:none} }
+@media(max-width:560px) { .title-earned-stage { grid-template-columns:1fr; gap:8px; padding:8px 0; } .title-earned-stage .title-earned-art { width:110px;height:110px;margin:0 auto; } .title-earned-prize img { width:55px;height:48px; } .title-earned-stage .title-earned-name { margin:0; } }
+@media(prefers-reduced-motion:reduce) { .title-earned-stage .title-earned-art,.title-earned-prizes { animation:none; } }

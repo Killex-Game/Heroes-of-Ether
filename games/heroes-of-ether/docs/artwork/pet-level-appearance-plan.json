@@ -1,0 +1,66 @@
+{
+  "status": "proposal",
+  "date": "2026-10-24",
+  "scope": "Appearance concept only. Does not change abilities or current pet assets.",
+  "rules": [
+    "Six appearances per pet: levels 0 through 5.",
+    "Preserve face, species, coat/scale color, body proportions and identifiable silhouette at every level.",
+    "Each level adds a visible accessory or upgrades an existing accessory; do not scatter more gemstones everywhere.",
+    "Keep face, ears, horns, wings, paws and tail readable with safe margins.",
+    "Draw the same body pose and canvas anchor for every level; accessories never change collision size.",
+    "One shared base drawing plus aligned transparent accessory layers; export precomposed WebP for arena/UI.",
+    "Arena variants must read at 48-64 pixels; large portraits may retain secondary embroidery.",
+    "Level 5 may have a restrained static highlight; any animation is optional and respects reduced motion.",
+    "Show current level consistently in development, lobby and arena. Only preview future appearances in the development UI."
+  ],
+  "pets": [
+    {
+      "id": "zaya",
+      "theme": "Лесная волшебница",
+      "levels": [
+        "Без украшений, естественная светлая шерсть",
+        "Небольшой сиреневый бант",
+        "Золотая брошь-морковка на банте",
+        "Короткая накидка с вышивкой листьев",
+        "Тонкая диадема-листочки и браслет",
+        "Нарядная накидка и крупнее диадема, мягкие золотистые искры"
+      ]
+    },
+    {
+      "id": "leva",
+      "theme": "Маленький король",
+      "levels": [
+        "Без короны и плаща, естественная грива",
+        "Бордовый шейный платок",
+        "Золотой медальон",
+        "Короткий королевский плащ",
+        "Корона и золотые застёжки",
+        "Полная мантия с меховой отделкой, улучшенная корона и наплечники"
+      ]
+    },
+    {
+      "id": "drakosha",
+      "theme": "Хранитель пламени",
+      "levels": [
+        "Природные рога, крылья и чешуя, без накладной брони",
+        "Ремешок с бронзовой застёжкой",
+        "Наручи и декоративное кольцо на хвосте",
+        "Небольшой нагрудник с эмблемой пламени",
+        "Наплечники и накладки у основания крыльев",
+        "Золотистый боевой венец, узорчатая броня и мягкий жар по её краям"
+      ]
+    },
+    {
+      "id": "manya",
+      "theme": "Звёздная чародейка",
+      "levels": [
+        "Пушистая шерсть, без короны и ожерелья",
+        "Лавандовая лента на шее",
+        "Золотая подвеска-сердце",
+        "Короткая бархатная накидка",
+        "Тиара и тонкий браслет",
+        "Звёздная диадема, вышитая мантия и редкие светящиеся звёздочки"
+      ]
+    }
+  ]
+}

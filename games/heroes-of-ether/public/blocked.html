@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Доступ к игре - Герои Эфира</title>
+    <link rel="stylesheet" href="/styles/owner-admin.css?v=20261113-killex" />
+    <script src="/shared/platform-contract.js?v=20261113-killex" defer></script>
+    <script src="/shared/control-state.js?v=20261113-killex" defer></script>
+    <script src="/ui/blocked-account.js?v=20261114-ban-details-24" defer></script>
+  </head>
+  <body>
+    <header class="topbar access-header">
+      <div class="access-heading">
+        <span class="access-emblem" aria-hidden="true">
+          <img src="/assets/ui/svg/identity/access-lock.svg" alt="" width="68" height="68" />
+        </span>
+        <div class="access-heading-text">
+          <p class="eyebrow">ГЕРОИ ЭФИРА</p>
+          <h1>Доступ к игре</h1>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="card login">
+        <h2 id="title">Проверяем аккаунт…</h2>
+        <p id="banId" class="identifier" hidden></p>
+        <p id="reason"></p>
+        <p id="moderator" class="identifier" hidden></p>
+        <p id="until" class="muted"></p>
+        <button id="check" class="primary">Проверить доступ</button>
+        <p id="status" role="status"></p>
+      </section>
+    </main>
+  </body>
+</html>

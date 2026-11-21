@@ -1,0 +1,106 @@
+{
+  "tool": "image_gen.imagegen",
+  "processing": "Alpha bounds trim, 92% inset, Lanczos resizing and lossless WebP. No recoloring or composition edits outside image_gen.",
+  "artwork": [
+    {
+      "tier": "common",
+      "original": "docs/artwork/booster-pouches-20261114/common-source.png",
+      "source": "exec-a3a123d1-bf66-450a-a39b-da8f34045089.png",
+      "sha256": "1d004b1f4252a84ff690a1f4736a2983ac936a4c8460bef1c94d4c8bf55ea6d2",
+      "width": 1312,
+      "height": 1199,
+      "outputs": [
+        {
+          "path": "public/assets/boosters/bundles-v1/128/common.webp",
+          "bytes": 19118,
+          "sha256": "ccf87e46d114de3a880cbd8f9088fe61d7cb7c8fefbd14c46da1433a34d8553f"
+        },
+        {
+          "path": "public/assets/boosters/bundles-v1/256/common.webp",
+          "bytes": 57184,
+          "sha256": "b9b9271305da616b9cf5786e0fb26dad120b928eda2cbc81e86823a77481ca2f"
+        },
+        {
+          "path": "public/assets/boosters/bundles-v1/512/common.webp",
+          "bytes": 181102,
+          "sha256": "3d2be4d25d0685ba8bd8021242a1bcd73404f7eb7175bbb12a8d651b3ea7fced"
+        }
+      ]
+    },
+    {
+      "tier": "advanced",
+      "original": "docs/artwork/booster-pouches-20261114/advanced-source.png",
+      "source": "exec-50d2df06-c8ab-43e3-b508-7f9b8fb5684c.png",
+      "sha256": "69e3490c3aa7b0f4a0d341a14863504aa364e3e43520a09c893c23c83a0b422c",
+      "width": 1402,
+      "height": 1122,
+      "outputs": [
+        {
+          "path": "public/assets/boosters/bundles-v1/128/advanced.webp",
+          "bytes": 22874,
+          "sha256": "068935a3ec472b23f655b176dd350eb422825a3d253a22aada58a29042ae14b3"
+        },
+        {
+          "path": "public/assets/boosters/bundles-v1/256/advanced.webp",
+          "bytes": 68924,
+          "sha256": "c084c415b32507780cf5b6fe3c71d47a584d88eeceb64441850dcfbf6d6f8dbb"
+        },
+        {
+          "path": "public/assets/boosters/bundles-v1/512/advanced.webp",
+          "bytes": 219900,
+          "sha256": "3cf8402842bf32311b529546c14aa67e5f99ad79c4481c2bac681232874c5367"
+        }
+      ]
+    },
+    {
+      "tier": "rare",
+      "original": "docs/artwork/booster-pouches-20261114/rare-source.png",
+      "source": "exec-944be261-b83d-49d6-8e89-b456d7a0c7ee.png",
+      "sha256": "543cd1f1f6b84335a647e11f456f9ae0e393154a0fbba1eceb5b8a8d4ad14ca0",
+      "width": 1312,
+      "height": 1199,
+      "outputs": [
+        {
+          "path": "public/assets/boosters/bundles-v1/128/rare.webp",
+          "bytes": 23526,
+          "sha256": "1afe9315aa1d20c03996d72d2bc94fc79ef92cc84eb344b5a44a5778927afd39"
+        },
+        {
+          "path": "public/assets/boosters/bundles-v1/256/rare.webp",
+          "bytes": 69698,
+          "sha256": "cb2402876c367604fa75f9bd5383d6dcd920fc718e56401a51d56b55d81752f1"
+        },
+        {
+          "path": "public/assets/boosters/bundles-v1/512/rare.webp",
+          "bytes": 222216,
+          "sha256": "379b73662bd2d420ed85ce64424b2a2bceb3505a1aa6e7f896fdffb7f54cfb53"
+        }
+      ]
+    },
+    {
+      "tier": "clan",
+      "original": "docs/artwork/booster-pouches-20261114/clan-source.png",
+      "source": "exec-d57b28a2-e7b8-47da-9a79-cd18889f5ae9.png",
+      "sha256": "2a16d49805240faebb8e12177e706ce02e8dffbf7e5dfbea2ba09392765e6a7c",
+      "width": 1254,
+      "height": 1254,
+      "outputs": [
+        {
+          "path": "public/assets/boosters/bundles-v1/128/clan.webp",
+          "bytes": 24670,
+          "sha256": "e1a9f1c3c609b27140001acaffb8083c1b622fc0f4ef672f3859abcb3a0cf9f2"
+        },
+        {
+          "path": "public/assets/boosters/bundles-v1/256/clan.webp",
+          "bytes": 75084,
+          "sha256": "76079c0d6efddb9848074589ebf3cc1299a58d5a9a8a9cece09d0e6d6875551b"
+        },
+        {
+          "path": "public/assets/boosters/bundles-v1/512/clan.webp",
+          "bytes": 242620,
+          "sha256": "116e79ef4cc007580a5a11c6b14cb8f8a101719eae2ba911769558a45806503a"
+        }
+      ]
+    }
+  ]
+}

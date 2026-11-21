@@ -1,0 +1,84 @@
+#releaseNotesDialog {
+  box-sizing: border-box; width: min(850px, calc(100vw - 24px));
+  height: calc(100dvh - 24px); max-height: calc(100dvh - 24px);
+  padding: 18px 24px 12px; border: 2px solid #b08b50; border-radius: 14px;
+  background: linear-gradient(90deg,#ead8b6,#fff8e8 5%,#fff8e8 95%,#ead8b6);
+  color: #3d3529; box-shadow: inset 0 0 0 5px #d7bb8740,0 20px 70px #0008; overflow: hidden;
+}
+#releaseNotesDialog[open] { display: grid; grid-template-rows: auto minmax(0,1fr) 40px 112px auto auto; gap: 8px; }
+.news-masthead { position: relative; text-align: center; padding: 0 28px 10px; border-bottom: 4px double #9e8358; }
+.news-edition { font: 10px/1.4 system-ui,sans-serif; letter-spacing: .15em; }
+.news-masthead h2 { font: bold 32px/1.15 Georgia,serif; margin: 5px 0 0; color: #2e4655; }
+.news-masthead .booster-close { position: absolute; top: -7px; right: -13px; }
+.news-article { min-width: 0; min-height: 0; padding: 14px 10px 10px 4px; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #ac8444 #eee0c4; scrollbar-gutter: stable; }
+.news-article::-webkit-scrollbar { width: 8px; height: 8px; }
+.news-article::-webkit-scrollbar-track { background: #eee0c4; border-radius: 8px; }
+.news-article::-webkit-scrollbar-thumb { background: #ac8444; border: 2px solid #eee0c4; border-radius: 8px; }
+.news-article:focus-visible { outline: 2px solid #b08b50; outline-offset: -2px; border-radius: 5px; }
+.news-date { display: block; font: 12px system-ui,sans-serif; color: #756342; }
+.news-article h3 { font: bold 25px/1.2 Georgia,serif; margin: 8px 0 13px; overflow-wrap: anywhere; }
+.news-copy { font: 16px/1.55 Georgia,serif; white-space: pre-line; overflow-wrap: anywhere; }
+.news-copy p { margin: 0 0 12px; }
+.news-copy p:last-child { margin-bottom: 0; }
+.news-event-figure { float: left; width: 43%; margin: 0 20px 12px 0; padding: 0 0 7px; border-bottom: 1px solid #b5a07a; }
+.news-event-figure img { display: block; width: 100%; height: 190px; object-fit: cover; border-radius: 5px; }
+.news-event-figure figcaption { margin-top: 5px; font: italic 12px Georgia,serif; }
+.news-article[data-layout="right"] .news-event-figure { float: right; margin: 0 0 12px 20px; }
+.news-article[data-layout="banner"] .news-event-figure,
+.news-article[data-layout="columns"] .news-event-figure { float: none; width: 100%; margin: 0 0 14px; }
+.news-article[data-layout="banner"] .news-event-figure img,
+.news-article[data-layout="columns"] .news-event-figure img { height: auto; max-height: 260px; aspect-ratio: 3/1; }
+.news-article[data-layout="columns"] .news-copy { column-count: 2; column-gap: 28px; column-rule: 1px solid #c5af8b; }
+.news-section-tile .menu-notification-dot { position: absolute; top: 6px; right: 6px; }
+.news-event-link { clear: both; display: block; margin: 16px auto 0; min-height: 36px; font-size: 13px; }
+.news-article::after { content: ""; display: block; clear: both; }
+.news-empty { display: grid; place-content: center; height: 100%; margin: 0; text-align: center; font: italic 18px Georgia,serif; }
+.news-pager { display: flex; gap: 12px; justify-content: flex-end; align-items: center; border-top: 1px solid #b5a07a; font-size: 12px; }
+.news-pager button { min-width: 40px; min-height: 32px; padding: 0 12px; font-size: 24px; line-height: 1; }
+.news-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+#releaseNotesDialog .news-section-tile {
+  position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+  min-width: 0; min-height: 0; padding: 12px 14px; border: 2px solid #a78c54; border-radius: 12px;
+  background: linear-gradient(0deg,rgba(12,31,43,.95),rgba(12,31,43,.12) 95%),image-set(url("../../assets/news/v1/news-tile.webp") 1x,url("../../assets/news/v1/news.webp") 2x) center/cover;
+  color: #fff6de; text-align: left; font: bold 22px/1.1 Georgia,serif; text-shadow: 0 2px 4px #000;
+  box-shadow: 0 2px 4px #553b2729; cursor: pointer;
+}
+#releaseNotesDialog .news-section-tile[data-category="event"] { background-image: linear-gradient(0deg,rgba(12,31,43,.95),rgba(12,31,43,.12) 95%),image-set(url("../../assets/news/v1/event-tile.webp") 1x,url("../../assets/news/v1/event.webp") 2x); }
+#releaseNotesDialog .news-section-tile[data-category="release"] { background-image: linear-gradient(0deg,rgba(12,31,43,.95),rgba(12,31,43,.12) 95%),image-set(url("../../assets/news/v1/release-tile.webp") 1x,url("../../assets/news/v1/release.webp") 2x); }
+#releaseNotesDialog .news-section-tile small { margin-top: 5px; font: 11px/1.2 system-ui,sans-serif; color: #f9e5b6; }
+#releaseNotesDialog .news-section-tile[aria-pressed="true"] { border-color: #edbc4d; box-shadow: inset 0 0 0 1px #fff4c2,0 0 0 2px #b08b5050; }
+#releaseNotesDialog .news-section-tile:focus-visible { outline: 3px solid #38617a; outline-offset: 2px; }
+.release-notes-footer { display: flex; align-items: center; justify-content: flex-end; gap: 8px; min-height: 18px; }
+.release-notes-footer button { min-height: 30px; padding: 3px 18px; font-size: 12px; }
+.release-notes-version { font-size: 12px; color: #604c2b; }
+.news-status { margin: 0; font-size: 12px; text-align: center; }
+.news-status:empty { display: none; }
+@media (max-width: 520px) {
+  .news-article[data-layout="columns"] .news-copy { column-count: 1; }
+  #releaseNotesDialog { padding: 12px 14px 10px; }
+  #releaseNotesDialog[open] { grid-template-rows: auto minmax(0,1fr) 36px 82px auto auto; gap: 6px; }
+  .news-masthead { padding-bottom: 8px; }
+  .news-masthead h2 { font-size: 25px; }
+  .news-masthead .booster-close { right: -7px; }
+  .news-event-figure { width: 46%; margin-right: 12px; }
+  .news-event-figure img { height: 120px; }
+  .news-article h3 { font-size: 21px; }
+  .news-copy { font-size: 15px; line-height: 1.5; }
+  .news-tabs { gap: 7px; }
+  #releaseNotesDialog .news-section-tile { padding: 9px 6px; font-size: clamp(10px,3.25vw,16px); border-radius: 9px; }
+  #releaseNotesDialog .news-section-tile small { font-size: 9px; }
+}
+@media (max-height: 520px) {
+  #releaseNotesDialog { padding: 9px 16px; }
+  #releaseNotesDialog[open] { grid-template-rows: auto minmax(0,1fr) 32px 64px auto auto; gap: 4px; }
+  .news-edition { display: none; }
+  .news-masthead { padding-bottom: 5px; }
+  .news-masthead h2 { font-size: 23px; margin: 0; }
+  .news-event-figure img { height: 100px; }
+  .news-article { padding-block: 8px; }
+  .news-article h3 { font-size: 20px; }
+  .news-copy { font-size: 14px; }
+  #releaseNotesDialog .news-section-tile { padding-block: 7px; font-size: clamp(10px,3.25vw,18px); }
+  #releaseNotesDialog .news-section-tile small { display: none; }
+  .release-notes-footer, .release-notes-footer button { min-height: 26px; }
+}

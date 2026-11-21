@@ -1,0 +1,492 @@
+/* Индикаторы клана и игроков, ровные фильтры и десять строк рейтинга в окне. */
+.clan-applications-button {
+  position: relative;
+  overflow: visible;
+}
+.clan-application-badge {
+  position: absolute;
+  top: -10px;
+  right: 8px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff3cb;
+  border-radius: 20px;
+  background: linear-gradient(var(--ui-c-ff597e, #ff597e), var(--ui-c-c31655, #c31655));
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 2px 4px var(--ui-c-71325844, #71325844);
+}
+.clan-crest-choice {
+  position: relative;
+}
+.clan-crest-level-lock {
+  position: absolute;
+  z-index: 2;
+  bottom: 3px;
+  right: 3px;
+  padding: 2px 5px;
+  border-radius: 6px;
+  color: #fff9e5;
+  background: var(--ui-c-58316c, #58316c);
+  font: 700 11px var(--game-font);
+  white-space: nowrap;
+}
+.clan-crest-choice.clan-crest-locked {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+.player-online-indicator {
+  position: absolute;
+  z-index: 3;
+  right: -3px;
+  bottom: -2px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff6df;
+  border-radius: 50%;
+  background: #92909b;
+  box-shadow: 0 1px 3px #34253e66;
+}
+.player-online-indicator[data-online="true"] {
+  background: radial-gradient(circle at 30% 25%, #b4ff6e, #24bd54 65%);
+  box-shadow:
+    0 0 4px #35d36199,
+    0 1px 3px #34253e66;
+}
+.level-reward {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 5px;
+}
+.level-reward img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+#topsDialog.interface-window {
+  width: min(1200px, calc(100vw - 24px));
+  height: min(1000px, calc(100dvh - 24px));
+  gap: 8px;
+}
+#topsDialog .ranking-board {
+  max-width: none;
+}
+#topsDialog .interface-content {
+  padding: 0;
+}
+#topsDialog .tops-nav,
+#topsDialog .tops-sort {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-template-columns: none;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+}
+#topsDialog :is(.tops-nav, .tops-sort) > button {
+  min-width: 0;
+  width: 100%;
+  height: 38px;
+  margin: 0;
+  padding: 5px 8px;
+  box-sizing: border-box;
+}
+#topsDialog .ranking-board > .clan-muted {
+  margin: 7px 0;
+}
+#topsDialog .ranking-players-table {
+  display: grid;
+  grid-template-rows: repeat(10, minmax(0, 1fr));
+  align-content: start;
+  overflow: hidden;
+}
+#topsDialog button.clan-ranking-player {
+  min-height: 0;
+  height: 100%;
+  padding: 3px 10px;
+  grid-template-columns: 30px 40px minmax(0, 1fr) auto;
+  gap: 12px;
+}
+#topsDialog .player-avatar {
+  width: 36px;
+  height: 36px;
+}
+#topsDialog .clan-pager {
+  margin-top: 5px;
+}
+#topsDialog .clan-status {
+  margin: 0;
+  min-height: 0;
+}
+#topsDialog .interface-footer:has(.clan-status:empty) {
+  display: none;
+}
+#topsDialog:has(.interface-footer .clan-status:empty) {
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+/* Ten clans share the available height; paging never needs a second scrollbar. */
+#topsDialog .ranking-clans-table {
+  display: grid;
+  grid-template-rows: repeat(10, minmax(0, 1fr));
+  gap: 4px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+#topsDialog .ranking-clans-table .clan-ranking-row {
+  min-height: 0;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 3px 8px;
+  grid-template-columns: 24px 38px minmax(0, 1fr) auto;
+  gap: 8px;
+}
+#topsDialog .ranking-clans-table .clan-ranking-row:has(.clan-join) {
+  grid-template-columns: 24px 38px minmax(0, 1fr) auto auto;
+}
+#topsDialog .ranking-clans-table .clan-crest {
+  width: 100%;
+  height: 100%;
+  max-width: 38px;
+  max-height: 38px;
+  min-height: 0;
+  object-fit: contain;
+}
+#topsDialog .ranking-clans-table .clan-join {
+  min-height: 0;
+  height: min(34px, 100%);
+  padding: 3px 6px;
+}
+@media (max-height: 700px) {
+  #topsDialog.interface-window:has(.ranking-clans-table) {
+    padding: 8px;
+    gap: 5px;
+  }
+  #topsDialog:has(.ranking-clans-table) .clan-heading {
+    height: 38px;
+    min-height: 38px;
+  }
+  #topsDialog:has(.ranking-clans-table) :is(.tops-nav, .tops-sort) > button {
+    height: 30px;
+    min-height: 30px;
+    padding-block: 3px;
+  }
+  #topsDialog:has(.ranking-clans-table) .clan-search {
+    margin: 3px 0;
+  }
+  #topsDialog:has(.ranking-clans-table) .clan-search :is(input, button),
+  #topsDialog:has(.ranking-clans-table) .clan-pager button {
+    height: 32px;
+    min-height: 32px;
+    padding-block: 3px;
+    line-height: 20px;
+  }
+  #topsDialog .ranking-clans-table {
+    gap: 3px;
+  }
+  #topsDialog .ranking-clans-table .clan-ranking-row {
+    padding-block: 1px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 760px) {
+  #topsDialog .ranking-clans-table .clan-ranking-row,
+  #topsDialog .ranking-clans-table .clan-ranking-row:has(.clan-join) {
+    grid-template-columns: 18px 28px minmax(0, 1fr) auto;
+    grid-template-rows: minmax(0, 1fr);
+    column-gap: 5px;
+    row-gap: 0;
+    padding: 2px 5px;
+    font-size: 12px;
+  }
+  #topsDialog .ranking-clans-table .clan-ranking-row:has(.clan-join) {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+  #topsDialog .ranking-clans-table :is(.clan-rank, .clan-crest) {
+    grid-row: 1;
+  }
+  #topsDialog .ranking-clans-table .clan-ranking-row:has(.clan-join) :is(.clan-rank, .clan-crest, .clan-rank-name) {
+    grid-row: 1 / 3;
+  }
+  #topsDialog .ranking-clans-table .clan-rank-name {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  #topsDialog .ranking-clans-table .ranking-score {
+    grid-column: 4;
+    grid-row: 1;
+    font-size: 11px;
+  }
+  #topsDialog .ranking-clans-table .clan-join {
+    grid-column: 4;
+    grid-row: 2;
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+}
+@media (max-height: 800px) {
+  #topsDialog .player-avatar {
+    width: 30px;
+    height: 30px;
+  }
+  #topsDialog button.clan-ranking-player {
+    grid-template-columns: 26px 34px minmax(0, 1fr) auto;
+    font-size: 12px;
+  }
+  #topsDialog .player-account-badge {
+    width: 19px;
+    height: 19px;
+    right: -6px;
+    top: -5px;
+  }
+  #topsDialog .player-online-indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+@media (max-width: 600px) {
+  #topsDialog :is(.tops-nav, .tops-sort) > button {
+    font-size: 11px;
+    padding: 4px;
+  }
+  #topsDialog :is(.tops-nav, .tops-sort) {
+    gap: 4px;
+  }
+  #topsDialog button.clan-ranking-player {
+    gap: 6px;
+    padding-inline: 4px;
+  }
+}
+/* На низком экране сохраняем читаемость и возможность добраться до всех строк. */
+@media (max-height: 580px) {
+  #topsDialog .ranking-players-table {
+    overflow: auto;
+    grid-template-rows: none;
+    grid-auto-rows: minmax(38px, 1fr);
+  }
+}
+.event-ranking-intro {
+  grid-column: 1 / -1;
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+#topsDialog .event-ranking-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 152px;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: 6px 12px;
+}
+#topsDialog .event-ranking-board .ranking-players-table {
+  grid-column: 1;
+  grid-row: 2;
+  grid-template-rows: repeat(5, minmax(0, 42px));
+  grid-auto-rows: 42px;
+  overflow: auto;
+  margin: 0;
+  flex: none;
+}
+.event-ranking-prizes {
+  grid-column: 2;
+  grid-row: 2 / 5;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  align-self: start;
+}
+#topsDialog .event-ranking-board :is(.clan-pager, .clan-my-rank) {
+  grid-column: 1;
+  margin: 0;
+}
+.event-ranking-prizes .event-ranking-prize {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  min-height: 0;
+  padding: 6px 8px;
+  gap: 4px;
+}
+.event-ranking-prizes .event-ranking-prize > strong {
+  text-align: center;
+}
+.event-prize-place {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.25;
+  gap: 1px;
+  white-space: nowrap;
+}
+.event-ranking-prizes .event-ranking-reward {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 2px 6px;
+  font-variant-numeric: tabular-nums;
+}
+.event-ranking-prizes .event-ranking-reward > span {
+  white-space: nowrap;
+  justify-content: center;
+}
+.event-ranking-prizes .event-ranking-reward img {
+  width: 18px;
+  height: 18px;
+}
+.event-ranking-prize {
+  box-sizing: border-box;
+  width: 236px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid #c99232;
+  border-radius: 10px;
+  background: #fff8e4;
+  color: #63411d;
+  font-size: 12px;
+}
+.event-ranking-reward {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.event-ranking-reward > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.event-ranking-reward img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+.event-ranking-received {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  color: #267246;
+}
+@media (max-width: 600px) {
+  #topsDialog .event-ranking-board {
+    grid-template-columns: minmax(0, 1fr) 108px;
+    gap: 4px;
+  }
+  .event-ranking-prizes .event-ranking-prize {
+    padding: 5px;
+    gap: 3px;
+    font-size: 10px;
+  }
+  .event-ranking-prizes {
+    gap: 4px;
+  }
+  .event-ranking-prize {
+    width: 320px;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    padding: 5px;
+    font-size: 10px;
+  }
+  .event-ranking-reward {
+    gap: 5px;
+  }
+  .event-ranking-reward img {
+    width: 17px;
+    height: 19px;
+  }
+  .event-ranking-intro {
+    font-size: 11px;
+  }
+}
+@media (max-height: 700px) {
+  #topsDialog .event-ranking-board .ranking-players-table {
+    grid-template-rows: repeat(5, 30px);
+    grid-auto-rows: 30px;
+    margin-top: 0;
+  }
+  #topsDialog .event-ranking-board .player-avatar {
+    width: 24px;
+    height: 24px;
+  }
+  #topsDialog .event-ranking-board .clan-pager button {
+    min-height: 30px;
+    height: 30px;
+    padding: 2px 12px;
+  }
+  #topsDialog .event-ranking-board .clan-my-rank {
+    margin: 5px 0;
+    font-size: 11px;
+  }
+}
+@media (max-height: 460px) and (min-width: 650px) {
+  #topsDialog .event-ranking-board {
+    grid-template-columns: minmax(0, 1fr) 152px;
+    grid-template-rows: auto 135px 30px auto;
+    gap: 3px 10px;
+    align-content: start;
+  }
+  .event-ranking-intro {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 11px;
+  }
+  .event-ranking-prizes {
+    grid-column: 2;
+    grid-row: 2 / 5;
+    align-content: start;
+    margin: 0;
+    gap: 4px;
+  }
+  .event-ranking-prize {
+    width: 220px;
+    padding: 5px;
+    gap: 3px;
+    font-size: 11px;
+  }
+  .event-ranking-reward img {
+    width: 18px;
+    height: 18px;
+  }
+  #topsDialog .event-ranking-board .ranking-players-table {
+    grid-column: 1;
+    grid-row: 2;
+    grid-template-rows: repeat(5, 27px);
+    grid-auto-rows: 27px;
+  }
+  #topsDialog .event-ranking-board .player-avatar {
+    width: 24px;
+    height: 24px;
+  }
+  #topsDialog .event-ranking-board button.clan-ranking-player {
+    padding-block: 0;
+  }
+  #topsDialog .event-ranking-board .clan-pager {
+    grid-column: 1;
+    margin: 0;
+  }
+  #topsDialog .event-ranking-board .clan-pager button {
+    min-height: 30px;
+    height: 30px;
+    padding: 2px 12px;
+  }
+  .event-ranking-board .clan-my-rank {
+    grid-column: 1;
+    font-size: 11px;
+    margin: 0;
+  }
+  .event-ranking-received {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-25",
+  "source": "Original artwork generated with OpenAI imagegen using existing project gold griffin as style reference. No external downloaded assets. Symbol colors restricted to gold by owner.",
+  "frames": "Original SVG geometry in public/shared/clan-crest-variants.js inspired by basic heraldic shapes.",
+  "items": [
+    {
+      "id": "s22_bear",
+      "name": "Медведь",
+      "prompt": "Use case: stylized-concept. Asset: a single production game heraldry emblem, isolated on true transparent background. Match a polished fantasy browser game icon set: chunky sculpted faceted metal, rich amber gold bevels, strong warm brown outline, clean hand-painted 3D volume and white-gold highlights, legible at 48 pixels. Centered square composition, full silhouette with 12% safe empty margin on every side. No shield, no frame, no lettering, no banner, no background, no watermark, no cast shadow beyond the object. Not a photograph and not a flat outline. Subject: a powerful heraldic bear head facing forward, compact ears, strong brow, mostly bronze and brilliant golden sculpted facets, restrained ivory fangs. Friendly noble ferocity, symmetrical readable silhouette.",
+      "goldPrompt": "Precise object edit. Image 1 is the edit target; Image 2 is the required existing game style reference. Preserve the identity and full silhouette of image 1, but transform the ENTIRE emblem into a solid sculpted faceted GOLD bas-relief matching image 2. ALL surfaces including mane, eyes, mouth, teeth, leaves, petals and tentacles MUST be yellow gold, amber gold, gold-brown shadow or white-gold highlight ONLY. Remove EVERY trace of teal, red, green, silver, white enamel, natural flesh or other colored material. No gemstones or colored inserts. Simplify overly fine texture into strong chunky polished golden facets like Image 2, clearly legible as a small game heraldry symbol. True transparent background. Center the full intact symbol with at least 10% transparent safe margins on all sides; no cropping of horn or tentacles. No text, no shield, no frame.",
+      "generatedSource": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-87a04127-c6cd-430e-8d70-b32a89b32b89.png",
+      "source": "docs/artwork/crest-expansion-20261025/s22_bear.png",
+      "output": "public/assets/clan-crests/v2/s22_bear.webp"
+    },
+    {
+      "id": "s23_unicorn",
+      "name": "Единорог",
+      "prompt": "Use case: stylized-concept. Asset: a single production game heraldry emblem, isolated on true transparent background. Match a polished fantasy browser game icon set: chunky sculpted faceted metal, rich amber gold bevels, strong warm brown outline, clean hand-painted 3D volume and white-gold highlights, legible at 48 pixels. Centered square composition, full silhouette with 12% safe empty margin on every side. No shield, no frame, no lettering, no banner, no background, no watermark, no cast shadow beyond the object. Not a photograph and not a flat outline. Subject: a noble unicorn head in side profile facing right, flowing silver-white mane, one long gold spiral horn, gilded edges and restrained turquoise enamel accents. Sculptural compact silhouette, entire horn included.",
+      "goldPrompt": "Precise object edit. Image 1 is the edit target; Image 2 is the required existing game style reference. Preserve the identity and full silhouette of image 1, but transform the ENTIRE emblem into a solid sculpted faceted GOLD bas-relief matching image 2. ALL surfaces including mane, eyes, mouth, teeth, leaves, petals and tentacles MUST be yellow gold, amber gold, gold-brown shadow or white-gold highlight ONLY. Remove EVERY trace of teal, red, green, silver, white enamel, natural flesh or other colored material. No gemstones or colored inserts. Simplify overly fine texture into strong chunky polished golden facets like Image 2, clearly legible as a small game heraldry symbol. True transparent background. Center the full intact symbol with at least 10% transparent safe margins on all sides; no cropping of horn or tentacles. No text, no shield, no frame.",
+      "generatedSource": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-37339ed0-1d69-4b7f-9e97-49c3eb7070de.png",
+      "source": "docs/artwork/crest-expansion-20261025/s23_unicorn.png",
+      "output": "public/assets/clan-crests/v2/s23_unicorn.webp"
+    },
+    {
+      "id": "s24_kraken",
+      "name": "Кракен",
+      "prompt": "Use case: stylized-concept. Asset: a single production game heraldry emblem, isolated on true transparent background. Match a polished fantasy browser game icon set: chunky sculpted faceted metal, rich amber gold bevels, strong warm brown outline, clean hand-painted 3D volume and white-gold highlights, legible at 48 pixels. Centered square composition, full silhouette with 12% safe empty margin on every side. No shield, no frame, no lettering, no banner, no background, no watermark, no cast shadow beyond the object. Not a photograph and not a flat outline. Subject: a heraldic kraken emblem, compact central octopus head and exactly eight gracefully curling tentacles, rich deep ocean teal enamel with brilliant golden metal edges, symmetrical controlled silhouette. Clearly readable distinct tentacles, no gems.",
+      "goldPrompt": "Precise object edit. Image 1 is the edit target; Image 2 is the required existing game style reference. Preserve the identity and full silhouette of image 1, but transform the ENTIRE emblem into a solid sculpted faceted GOLD bas-relief matching image 2. ALL surfaces including mane, eyes, mouth, teeth, leaves, petals and tentacles MUST be yellow gold, amber gold, gold-brown shadow or white-gold highlight ONLY. Remove EVERY trace of teal, red, green, silver, white enamel, natural flesh or other colored material. No gemstones or colored inserts. Simplify overly fine texture into strong chunky polished golden facets like Image 2, clearly legible as a small game heraldry symbol. True transparent background. Center the full intact symbol with at least 10% transparent safe margins on all sides; no cropping of horn or tentacles. No text, no shield, no frame.",
+      "generatedSource": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-f701968d-b214-400a-97c2-2491f1744492.png",
+      "source": "docs/artwork/crest-expansion-20261025/s24_kraken.png",
+      "output": "public/assets/clan-crests/v2/s24_kraken.webp"
+    },
+    {
+      "id": "s25_rose",
+      "name": "Геральдическая роза",
+      "prompt": "Use case: stylized-concept. Asset: a single production game heraldry emblem, isolated on true transparent background. Match a polished fantasy browser game icon set: chunky sculpted faceted metal, rich amber gold bevels, strong warm brown outline, clean hand-painted 3D volume and white-gold highlights, legible at 48 pixels. Centered square composition, full silhouette with 12% safe empty margin on every side. No shield, no frame, no lettering, no banner, no background, no watermark, no cast shadow beyond the object. Not a photograph and not a flat outline. Subject: a heraldic five-petalled red Tudor-like rose with layered sculpted crimson enamel petals, gilded outlines and golden central stamens, small emerald green leaves. Compact front view, decorative noble relief, no jewels.",
+      "goldPrompt": "Precise object edit. Image 1 is the edit target; Image 2 is the required existing game style reference. Preserve the identity and full silhouette of image 1, but transform the ENTIRE emblem into a solid sculpted faceted GOLD bas-relief matching image 2. ALL surfaces including mane, eyes, mouth, teeth, leaves, petals and tentacles MUST be yellow gold, amber gold, gold-brown shadow or white-gold highlight ONLY. Remove EVERY trace of teal, red, green, silver, white enamel, natural flesh or other colored material. No gemstones or colored inserts. Simplify overly fine texture into strong chunky polished golden facets like Image 2, clearly legible as a small game heraldry symbol. True transparent background. Center the full intact symbol with at least 10% transparent safe margins on all sides; no cropping of horn or tentacles. No text, no shield, no frame.",
+      "generatedSource": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-f016ddfc-260b-44cc-856d-71da9d3d48f8.png",
+      "source": "docs/artwork/crest-expansion-20261025/s25_rose.png",
+      "output": "public/assets/clan-crests/v2/s25_rose.webp"
+    }
+  ]
+}

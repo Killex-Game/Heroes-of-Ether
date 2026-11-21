@@ -1,0 +1,16 @@
+# Социальные баннеры и меню, 14.11.2026
+
+Создано встроенным imagegen. Оригиналы сохранены рядом; игровые варианты и SHA-256 перечислены в assets.json. Масштабирование и подготовка WebP: artifacts/news-medals-admin-20261114/prepare-art.cjs в корне Killex. Баннерам задан формат 3:1, иконкам — прозрачный фон. Утверждённая корона VIP не изменялась.
+
+### proposal
+
+Use case: stylized-concept. Wide horizontal 3:1 fantasy game dialog header illustration, hand-painted polished casual RPG art, tasteful rich materials and soft cinematic light, not photorealistic. No people, characters, avatars, text, letters, UI, borders, interface frames or logos. Full bleed opaque scenery. Compose important decorations near left and right edges, keep the upper central area quiet and moderately dark for a large cream heading; center bottom will be overlapped by a round player portrait. Avoid gender-specific symbolism and overwhelming hearts. Theme: a neutral romantic MARRIAGE PROPOSAL. A tranquil garden terrace at dusk, graceful pale stone arch edges, warm hanging lanterns, small cream and dusty-rose flowers, mauve evening sky and a gently glowing path toward a distant gazebo. Tender anticipation, warm gold and muted rose, balanced symmetry without being rigid.
+
+### confirmed
+
+Use case: stylized-concept. Wide horizontal 3:1 fantasy game dialog header illustration, hand-painted polished casual RPG art, tasteful rich materials and soft cinematic light, not photorealistic. No people, characters, avatars, text, letters, UI, borders, interface frames or logos. Full bleed opaque scenery. Compose important decorations near left and right edges, keep the upper central area quiet and moderately dark for a large cream heading; center bottom will be overlapped by a round player portrait. Avoid gender-specific symbolism and overwhelming hearts. Theme: MARRIAGE CONFIRMED, a joyful union. An elegant open garden pavilion in early golden evening light, two delicate intertwined gold wedding rings arranged discreetly near the left side among ivory blossoms, two ribbons joined in a bow near the right side, soft celebratory rose petals and warm lanterns, mature gentle happiness. Warm champagne, soft pink and deep plum shadows, no glitter storm.
+
+### divorced
+
+Use case: stylized-concept. Wide horizontal 3:1 fantasy game dialog header illustration, hand-painted polished casual RPG art, tasteful rich materials and soft cinematic light, not photorealistic. No people, characters, avatars, text, letters, UI, borders, interface frames or logos. Full bleed opaque scenery. Compose important decorations near left and right edges, keep the upper central area quiet and moderately dark for a large cream heading; center bottom will be overlapped by a round player portrait. Avoid gender-specific symbolism and overwhelming hearts. Theme: MARRIAGE DISSOLVED, a quiet farewell. A tranquil garden terrace after soft rain at blue dusk, a stone arch at each side, a few fallen rose petals, two ribbons drifting gently apart toward opposite sides, distant lanterns still glowing warmly. Slightly sad but peaceful and hopeful, muted blue-lavender, silver mist and restrained warm amber. No shattered hearts, tears, graves, funerals or distressed people.
+

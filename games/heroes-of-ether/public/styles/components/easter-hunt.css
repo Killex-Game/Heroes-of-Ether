@@ -1,0 +1,831 @@
+.easter-page {
+  --collection-card: 290px;
+  --collection-art: 254px;
+  box-sizing: border-box;
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100dvh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 18px !important;
+  border: 0 !important;
+  background: radial-gradient(ellipse at 45% 25%, #345a43, #112c28 65%, #091b1a) !important;
+  color: #fff1cb;
+  overflow: hidden !important;
+}
+.easter-page[open] {
+  display: flex !important;
+  flex-direction: column;
+  gap: 12px;
+}
+.easter-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d5ad58;
+  padding-bottom: 10px;
+  gap: 12px;
+}
+.easter-heading h1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 28px;
+  margin: 0 0 4px;
+}
+.easter-heading-icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+  object-fit: contain;
+}
+.easter-exchange-fragment-icon {
+  display: inline-block;
+  width: 28px;
+  height: 21px;
+  flex: none;
+  border-radius: 3px;
+  background: #86662d url("../../assets/events/easter-hunt/golden-egg.webp") 50% 33.3333% / 300%
+    400%;
+}
+.easter-exchange-egg-icon {
+  width: 23px;
+  height: 25px;
+  object-fit: contain;
+  flex: none;
+}
+.easter-fragment-exchange {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.easter-heading small {
+  color: #e6cf9a;
+}
+.easter-heading button {
+  min-width: 130px;
+}
+.easter-header-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.easter-multiplier-panel {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.easter-multiplier-panel button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.easter-multiplier-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+}
+@media (max-width: 740px) {
+  .easter-header-actions {
+    gap: 4px;
+  }
+  .easter-header-actions button {
+    min-width: 112px;
+    min-height: 30px;
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  .easter-multiplier-panel {
+    gap: 5px;
+  }
+  .easter-multiplier-panel button {
+    min-height: 32px;
+    font-size: 12px;
+  }
+}
+.easter-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 0;
+  flex: 0 0 auto;
+}
+.easter-panel {
+  box-sizing: border-box;
+  border: 1px solid #dfb556;
+  border-radius: 16px;
+  padding: 16px;
+  background: linear-gradient(140deg, #fffaeb, #f6e8c6);
+  color: #62421d;
+  box-shadow: 0 8px 30px #0004;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.easter-panel h2,
+.easter-panel h3,
+.easter-panel p {
+  margin: 0;
+}
+.easter-panel h2 {
+  font-size: 22px;
+}
+.easter-panel h3 {
+  font-size: 16px;
+}
+.easter-collection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.easter-collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, var(--collection-card));
+  gap: 12px;
+}
+.easter-collection-card {
+  width: var(--collection-card);
+  gap: 8px;
+  padding: 16px;
+}
+.easter-collection-card h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  font-size: 17px;
+  line-height: 1.15;
+  text-align: center;
+}
+.easter-card-progress {
+  font-size: 14px;
+}
+.easter-collection-card[data-complete="true"] {
+  border-color: #b48420;
+  box-shadow:
+    inset 0 0 0 1px #e1bb66,
+    0 5px 20px #0003;
+}
+.easter-collection-card[data-complete="true"] .easter-card-progress {
+  color: #26734a;
+}
+.easter-collection-exchange {
+  width: max-content;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: auto 260px;
+  align-self: flex-start;
+  column-gap: 16px;
+}
+.easter-collection-exchange > .easter-progress,
+.easter-collection-exchange > .easter-note {
+  grid-column: 1 / -1;
+}
+.easter-collection-exchange > .easter-progress {
+  text-align: center;
+}
+.easter-rewards {
+  width: 360px;
+  flex: none;
+}
+.easter-album {
+  width: var(--collection-art);
+  height: var(--collection-art);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  border-radius: 14px;
+  overflow: hidden;
+  background: radial-gradient(#e0b862, #5d4a23);
+  box-shadow: inset 0 0 22px #0005;
+}
+.easter-fragment {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 3px;
+  color: #fff;
+  font-weight: 700;
+  text-shadow:
+    0 1px 3px #000,
+    0 0 5px #000;
+  background-image: url("../../assets/events/easter-hunt/golden-egg.webp");
+  background-size: 300% 400%;
+  filter: grayscale(1) brightness(0.24);
+  border: 1px solid #e2c47755;
+  transition: filter 0.5s;
+}
+.easter-fragment[data-found="true"] {
+  filter: none;
+}
+.chest-fragment-art {
+  width: 64px;
+  height: 60px;
+  padding: 0;
+  border-radius: 3px;
+  background-color: #80652f;
+  border-color: #c69f52;
+  box-shadow: inset 0 0 10px #3d2d1333;
+}
+.easter-ether-exchange {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.easter-ether-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex: none;
+}
+@media (max-width: 600px) {
+  .chest-fragment-art {
+    width: 56px;
+    height: 52px;
+  }
+}
+@media (min-width: 800px) {
+  .chest-modal[data-chest-theme^="easter-"] .chest-reward-grid {
+    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  }
+}
+.easter-progress {
+  font-size: 15px;
+}
+.easter-counters {
+  display: flex;
+  gap: 8px;
+}
+.easter-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 58px;
+  background: #fff8e5;
+  border: 1px solid #d7ac50;
+  border-radius: 10px;
+  gap: 4px;
+}
+.easter-counter img {
+  width: 36px;
+  height: 46px;
+  object-fit: contain;
+}
+.easter-exchange {
+  width: 100%;
+  font-size: 13px !important;
+}
+.easter-note {
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: center;
+  max-width: 100%;
+}
+.easter-chest-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.easter-chest-art {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+.easter-booster {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-block: 1px solid #d2b16b;
+  padding: 10px 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.easter-booster img {
+  width: 46px;
+  height: 60px;
+  object-fit: contain;
+}
+.easter-prizes {
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+  justify-content: center;
+  gap: 12px;
+}
+.easter-prizes > div {
+  width: 145px;
+  flex: 0 1 145px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.easter-prizes img {
+  width: min(90px, 100%);
+  height: 90px;
+  object-fit: contain;
+}
+.easter-rewards > button {
+  width: 100%;
+  margin-top: 4px;
+}
+.easter-footer {
+  display: flex;
+  flex-shrink: 0;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+}
+.easter-message {
+  font-size: 13px;
+  margin: 0;
+  max-width: 600px;
+}
+.easter-tabs {
+  display: none;
+}
+.easter-hud {
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid #bc9b5766;
+  margin-top: 5px;
+  padding-top: 4px;
+}
+.easter-hud[hidden] {
+  display: none;
+}
+.easter-hud span {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  font-size: 11px;
+}
+.easter-hud img {
+  width: 16px;
+  height: 20px;
+  object-fit: contain;
+}
+
+@media (max-width: 1650px) {
+  .easter-page {
+    --collection-card: 224px;
+    --collection-art: 188px;
+  }
+}
+@media (max-width: 1340px), (max-height: 680px) {
+  .easter-page {
+    padding: 10px !important;
+    gap: 8px !important;
+  }
+  .easter-heading {
+    padding-bottom: 6px;
+  }
+  .easter-heading h1 {
+    font-size: 22px;
+  }
+  .easter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .easter-tabs button {
+    width: 180px;
+  }
+  .easter-page[data-page="0"] .easter-rewards,
+  .easter-page[data-page="1"] .easter-collection {
+    display: none;
+  }
+  .easter-content {
+    justify-content: center;
+  }
+  .easter-panel {
+    max-width: 100%;
+  }
+  .easter-footer {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .easter-footer button {
+    min-height: 34px;
+  }
+  .easter-message {
+    font-size: 11px;
+  }
+}
+@media (max-width: 980px) {
+  .easter-page {
+    --collection-card: 176px;
+    --collection-art: 150px;
+  }
+  .easter-collection-card {
+    padding: 12px;
+  }
+  .easter-collection-card h2 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 740px) {
+  .easter-page {
+    --collection-card: 200px;
+    --collection-art: 170px;
+  }
+  .easter-collection-grid {
+    grid-template-columns: repeat(2, var(--collection-card));
+    gap: 10px;
+  }
+  .easter-collection {
+    gap: 8px;
+  }
+  .easter-collection-exchange {
+    width: 100%;
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 6px;
+  }
+  .easter-counters {
+    justify-content: center;
+  }
+  .easter-counter {
+    width: 72px;
+    height: 38px;
+    font-size: 12px;
+    gap: 2px;
+  }
+  .easter-counter img {
+    width: 24px;
+    height: 32px;
+  }
+  .easter-collection-exchange .easter-note {
+    font-size: 10px;
+  }
+  .easter-exchange {
+    min-height: 36px;
+  }
+}
+@media (max-width: 740px) and (max-height: 900px) {
+  .easter-page {
+    --collection-card: 164px;
+    --collection-art: 84px;
+  }
+  .easter-collection-card {
+    padding: 10px;
+    gap: 5px;
+  }
+  .easter-collection-card h2 {
+    min-height: 30px;
+    font-size: 13px;
+  }
+  .easter-card-progress {
+    font-size: 12px;
+  }
+}
+@media (max-height: 680px) {
+  .easter-page {
+    --collection-art: 108px;
+  }
+  .easter-panel {
+    gap: 6px;
+    padding: 8px;
+  }
+  .easter-rewards h2 {
+    display: none;
+  }
+  .easter-chest-art {
+    width: 65px;
+    height: 65px;
+  }
+  .easter-prizes img {
+    width: 60px;
+    height: 60px;
+  }
+  .easter-booster {
+    padding: 4px 0;
+  }
+  .easter-note {
+    font-size: 10px;
+  }
+  .easter-counter {
+    height: 38px;
+  }
+  .easter-counter img {
+    height: 32px;
+  }
+  .easter-heading h1 {
+    font-size: 19px;
+  }
+  .easter-heading small {
+    font-size: 10px;
+  }
+}
+@media (max-width: 740px) and (max-height: 700px) {
+  .easter-page {
+    --collection-art: 54px;
+  }
+  .easter-collection-card {
+    gap: 3px;
+    padding: 6px;
+  }
+  .easter-collection-card h2 {
+    min-height: 24px;
+    font-size: 11px;
+  }
+  .easter-collection-grid {
+    gap: 8px;
+  }
+  .easter-collection-exchange {
+    gap: 4px;
+    padding: 6px;
+  }
+  .easter-progress {
+    font-size: 12px;
+  }
+}
+@media (max-width: 360px) {
+  .easter-page {
+    --collection-card: 140px;
+  }
+  .easter-counters {
+    gap: 5px;
+  }
+  .easter-counter {
+    width: 60px;
+  }
+  .easter-counter img {
+    width: 20px;
+  }
+  .easter-card-progress {
+    font-size: 11px;
+  }
+}
+@media (max-width: 400px) and (max-height: 680px) {
+  .easter-page {
+    gap: 3px !important;
+    padding: 6px !important;
+  }
+  .easter-heading h1 {
+    font-size: 17px;
+  }
+  .easter-heading button {
+    min-width: 116px;
+    font-size: 12px;
+    height: 32px;
+    min-height: 32px;
+    padding-block: 0;
+  }
+  .easter-tabs button {
+    font-size: 12px;
+    min-height: 32px;
+  }
+  .easter-prizes img {
+    width: 48px;
+    height: 48px;
+  }
+  .easter-prizes > div {
+    font-size: 10px;
+  }
+  .easter-rewards h3 {
+    font-size: 13px;
+  }
+  .easter-chest-summary {
+    font-size: 12px;
+  }
+  .easter-booster {
+    font-size: 10px;
+  }
+  .easter-rewards > button,
+  .easter-exchange {
+    font-size: 12px !important;
+    min-height: 32px;
+  }
+  .easter-note {
+    font-size: 9px;
+  }
+  .easter-footer button {
+    font-size: 12px;
+    min-height: 32px;
+  }
+  .easter-footer {
+    min-height: 34px;
+  }
+  .easter-counter {
+    height: 30px;
+  }
+  .easter-counter img {
+    height: 28px;
+  }
+}
+@media (max-height: 460px) and (min-width: 650px) {
+  .easter-page {
+    --collection-card: 176px;
+    --collection-art: 54px;
+    gap: 5px !important;
+  }
+  .easter-collection-grid {
+    grid-template-columns: repeat(4, var(--collection-card));
+    gap: 8px;
+  }
+  .easter-collection-card {
+    padding: 6px;
+    gap: 3px;
+  }
+  .easter-collection-card h2 {
+    min-height: 28px;
+    font-size: 12px;
+  }
+  .easter-card-progress,
+  .easter-progress {
+    font-size: 11px;
+  }
+  .easter-collection {
+    gap: 5px;
+  }
+  .easter-collection-exchange {
+    width: 100%;
+    grid-template-columns: auto 260px;
+    padding: 5px;
+    gap: 4px 12px;
+  }
+  .easter-counter {
+    width: 70px;
+    height: 30px;
+    font-size: 12px;
+    gap: 2px;
+  }
+  .easter-counter img {
+    width: 24px;
+  }
+  #easterMultiplier {
+    min-height: 30px;
+    height: 30px;
+    padding: 2px 8px;
+    font-size: 12px;
+  }
+  .easter-heading small {
+    display: none;
+  }
+  .easter-heading {
+    padding-bottom: 3px;
+  }
+  .easter-heading button,
+  .easter-tabs button,
+  .easter-footer button,
+  .easter-exchange {
+    height: 30px;
+    min-height: 30px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+  .easter-footer {
+    min-height: 30px;
+  }
+}
+@media (max-height: 680px) and (min-width: 650px) {
+  .easter-rewards {
+    width: 700px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    row-gap: 4px;
+  }
+  .easter-rewards h3 {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 12px;
+  }
+  .easter-prizes {
+    grid-column: 2;
+    grid-row: 2 / 4;
+  }
+  .easter-prizes img {
+    width: 64px;
+    height: 64px;
+  }
+  .easter-booster {
+    grid-column: 1;
+    font-size: 10px;
+  }
+  .easter-chest-summary {
+    font-size: 12px;
+  }
+  .easter-rewards > button {
+    min-height: 32px;
+    height: 32px;
+    padding-block: 0;
+  }
+}
+@media (max-height: 460px) and (min-width: 650px) and (max-width: 760px) {
+  .easter-page {
+    --collection-card: 150px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .easter-fragment {
+    transition: none;
+  }
+}
+
+.easter-fragment-exchange {
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+@media (max-width: 740px), (max-height: 460px) {
+  .easter-fragment-exchange {
+    font-size: 10px;
+    min-height: 28px;
+    padding: 2px 5px;
+  }
+}
+/* Compact collection cards leave room for the pickup multiplier on short phones. */
+@media (max-width: 740px) and (max-height: 700px) {
+  .easter-collection-card {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: 40px auto 28px;
+    gap: 3px;
+  }
+  .easter-collection-card .easter-album {
+    grid-column: 1;
+    grid-row: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+  }
+  .easter-collection-card h2 {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 10px;
+  }
+  .easter-card-progress,
+  .easter-fragment-exchange {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+  .easter-multiplier-panel button {
+    min-height: 30px;
+    height: 30px;
+    padding: 2px 6px;
+    font-size: 11px;
+  }
+  .easter-multiplier-info {
+    font-size: 10px;
+  }
+}
+
+.easter-exchange-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.easter-exchange-actions .easter-exchange {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  padding: 4px 8px;
+}
+.easter-exchange-actions .easter-exchange-help {
+  flex: 0 0 30px;
+  width: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  height: 30px;
+  padding: 0;
+}
+.tooltip-item-recipe {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 5px;
+  white-space: nowrap;
+}
+.tooltip-item-recipe span {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.tooltip-item-recipe img {
+  object-fit: contain;
+  width: 20px;
+  height: 24px;
+  flex: none;
+}

@@ -1,0 +1,158 @@
+/* Прогресс над персонажем: опыт по центру, величие слева, аккаунты справа. */
+#lobby .lobby-inner {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+#lobby .showcase {
+  grid-template-rows: auto minmax(0, 1fr) 44px auto auto;
+}
+#lobby .player-progress {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 8px 0 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#lobby .progress-experience {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: center;
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-rows: auto 14px;
+  gap: 7px;
+  padding: 10px 14px;
+  border: 1px solid #d5b477;
+  border-radius: 12px;
+  background: var(--ui-c-fff3d9, #fff3d9);
+  box-shadow:
+    inset 0 0 0 2px #fff5db55,
+    0 2px 6px #65442212;
+}
+#lobby .progress-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 12px;
+  text-align: center;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+#lobby .progress-summary > * {
+  white-space: nowrap;
+}
+#lobby .progress-experience .xp-track {
+  grid-area: auto;
+  width: 100%;
+  height: 14px;
+}
+#lobby .progress-greatness {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  padding: 6px 14px;
+  border: 1px solid #d5b477;
+  border-radius: 11px;
+  background: var(--ui-c-fff3d9, #fff3d9);
+  color: var(--ui-c-59316c, #59316c);
+  line-height: 1.2;
+}
+#lobby .progress-greatness > span {
+  font-size: 10px;
+  opacity: 0.82;
+}
+#lobby #progressGreatness {
+  font-size: 15px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+#lobby .progress-actions {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+  align-self: center;
+  align-items: center;
+}
+#lobby .progress-actions .sf-tab {
+  height: 42px;
+  min-width: 150px;
+}
+@media (min-width: 961px) {
+  #lobby .player-progress {
+    position: relative;
+    z-index: 2;
+    grid-template-rows: auto;
+  }
+  #lobby .progress-greatness {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 12px);
+  }
+  #lobby .progress-actions {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 15px);
+  }
+}
+@media (max-width: 960px) {
+  #lobby .showcase {
+    grid-template-rows: auto 380px auto auto auto;
+  }
+}
+@media (max-width: 620px) {
+  #lobby .showcase {
+    grid-template-rows: auto clamp(300px, 100vw, 360px) auto auto auto;
+  }
+  #lobby .player-progress {
+    padding-top: 0;
+    gap: 10px;
+  }
+  #lobby .progress-experience {
+    padding: 9px 10px;
+  }
+  #lobby .progress-summary {
+    gap: 8px;
+    font-size: 11px;
+  }
+  #lobby .progress-greatness {
+    padding-inline: 10px;
+  }
+  #lobby .progress-actions .sf-tab {
+    min-width: 132px;
+  }
+}
+@media (min-width: 961px) and (max-height: 720px) {
+  #lobby .player-progress {
+    padding-top: 0;
+    gap: 6px;
+  }
+  #lobby .progress-experience {
+    padding-block: 6px;
+    grid-template-rows: auto 10px;
+    gap: 4px;
+  }
+  #lobby .progress-experience .xp-track {
+    height: 10px;
+  }
+  #lobby .progress-greatness {
+    padding-block: 4px;
+  }
+  #lobby .progress-actions .sf-tab {
+    height: 36px;
+    min-height: 36px !important;
+  }
+}

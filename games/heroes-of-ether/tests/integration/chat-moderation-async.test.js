@@ -1,0 +1,72 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),path=require('node:path');
+const {randomUUID}=require('node:crypto');
+const {temporary}=require('../temp');
+const {ProfileStore}=require('../../src/server/profiles/profile-store');
+const {recover}=require('../../src/server/profiles/profile-journal');
+const {ChatService}=require('../../src/server/chat/chat-service');
+const {createGameServer}=require('../../src/server/game-server');
+async function fixture(t){
+  let cleanup;const dir=temporary({after:f=>{cleanup=f;}},'chat-async-strikes');
+  let now=Date.now();
+  const file=path.join(dir,'profiles.json'),profiles=new ProfileStore({filePath:file,journal:true,incrementalSettlement:true,now:()=>now});
+  const author=profiles.open(),other=profiles.open();
+  const chat=new ChatService({filePath:path.join(dir,'clan-chat.json'),journal:true,now:()=>now});
+  const app=createGameServer({profiles,chat,autoTick:false,wallNow:()=>now,testBots:{enabled:false}});
+  t.after(async()=>{try{await app.close();}finally{cleanup();}});
+  await chat.writer.tail;
+  const send=(text,requestId=randomUUID())=>chat.send(profiles.byId(author.profile.id),null,null,{text,requestId});
+  return {profiles,chat,app,file,author,other,send,advance:ms=>{now+=ms;}};
+}
+test('violation stages asynchronously; strike, ban and disconnect wait for durable publication',async t=>{
+  const f=await fixture(t),before=structuredClone(f.profiles.data);let enter,release,done=false;
+  const entered=new Promise(resolve=>{enter=resolve;}),held=new Promise(resolve=>{release=resolve;});
+  const original=f.profiles.journal.stage.bind(f.profiles.journal);
+  t.mock.method(f.profiles.journal,'stage',async(...args)=>{enter();await held;return original(...args);});
+  t.mock.method(f.profiles.journal,'commit',()=>{throw Error('unexpected synchronous profile commit');});
+  const bans=[];f.chat.moderation.onBan=id=>bans.push(id);
+  const pending=f.send(Array(15).fill('хуй').join(' ')).catch(error=>{done=true;return error;});
+  await entered;await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(done,false);assert.deepEqual(f.profiles.data,before);assert.deepEqual(bans,[]);
+  assert.equal(f.chat.history().messages.length,0);
+  release();assert.equal((await pending).code,'ACCOUNT_BANNED');
+  assert.deepEqual(bans,[f.author.profile.id]);
+  const saved=recover(f.file).data,p=Object.values(saved.profiles).find(p=>p.id===f.author.profile.id);
+  assert.equal(p.chatModeration.profanity.count,15);
+  assert.equal(saved.administration.audit.at(-1).banId,p.moderation.ban.id);
+  assert.deepEqual(f.profiles.byId(f.other.profile.id),before.profiles[Object.keys(before.profiles).find(k=>before.profiles[k].id===f.other.profile.id)]);
+});
+test('failed violation stage leaves no strike, receipt or audit; retry and restart preserve exactly one',async t=>{
+  const f=await fixture(t),before=structuredClone(f.profiles.data),id=randomUUID();
+  const diskBefore=recover(f.file).data;
+  const fault=t.mock.method(f.profiles.journal,'stage',async()=>{throw Error('injected stage failure');});
+  await assert.rejects(f.send('хуй',id),/injected stage failure/);fault.mock.restore();
+  assert.deepEqual(f.profiles.data,before);assert.deepEqual(recover(f.file).data,diskBefore);
+  await assert.rejects(f.send('хуй',id),e=>e.code==='CHAT_MUTED');
+  await assert.rejects(f.send('хуй',id),e=>e.code==='CHAT_MUTED');
+  assert.equal(f.profiles.byId(f.author.profile.id).chatModeration.profanity.count,1);
+  assert.equal(f.profiles.data.administration.audit.filter(e=>e.requestId===id).length,1);
+  assert.equal(f.chat.achievementCounts[f.author.profile.id],undefined);
+  await f.app.close();
+  const saved=Object.values(recover(f.file).data.profiles).find(p=>p.id===f.author.profile.id);
+  assert.equal(saved.chatModeration.profanity.count,1);assert(saved.receipts[id]);
+});
+test('concurrent repeated violation cannot double strike and a newer manual ban wins an in-flight draft',async t=>{
+  const f=await fixture(t),id=randomUUID();
+  const repeated=await Promise.allSettled([f.send('хуй',id),f.send('хуй',id)]);
+  assert(repeated.every(r=>r.status==='rejected'&&r.reason.code==='CHAT_MUTED'));
+  assert.equal(f.profiles.byId(f.author.profile.id).chatModeration.profanity.count,1);
+  f.advance(15*60000);
+  let entered,release;const wait=new Promise(r=>{entered=r;}),held=new Promise(r=>{release=r;});
+  const original=f.profiles.journal.stage.bind(f.profiles.journal);let first=true;
+  t.mock.method(f.profiles.journal,'stage',async(...args)=>{if(first){first=false;entered();await held;}return original(...args);});
+  const pending=f.send('пизда').catch(e=>e);await wait;
+  const at=Date.now();
+  f.profiles.transact(f.author.token,randomUUID(),'manual-ban-fixture',p=>{
+    p.moderation={version:1,ban:{at,until:at+86400000,reason:'Решение владельца',by:'owner'}};
+  });
+  release();assert.equal((await pending).code,'ACCOUNT_BANNED');
+  const saved=f.profiles.byId(f.author.profile.id);
+  assert.equal(saved.moderation.ban.reason,'Решение владельца');
+  assert.equal(saved.chatModeration.profanity.count,1,'invalidated draft never publishes its extra strike');
+});

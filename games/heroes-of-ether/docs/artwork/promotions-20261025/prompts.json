@@ -1,0 +1,28 @@
+{
+  "generator": "Built-in image_gen",
+  "date": "2026-10-25",
+  "source": "Original generated assets; no downloaded third-party artwork",
+  "assets": [
+    {
+      "id": "starter",
+      "prompt": "Subject: a compact adventurer's BACKPACK, warm caramel brown leather, two shoulder straps visible behind it, purple rolled blanket strapped across the top, rounded front pocket, sturdy golden buckles and gold corner trim. Friendly valuable starter equipment. Use case: stylized-concept. Asset type: transparent fantasy browser game shop icon. Match the established game style: richly painted dimensional cartoon object, saturated purple accents, warm polished chunky gold edging, glossy highlights, convincing leather and metal, clean readable silhouette, not a flat vector, not photorealistic. Single isolated object, centered three-quarter view, fills about 82% of square canvas, generous transparent margin, no text, no labels, no numbers, no watermark, no ground or backdrop.",
+      "finalEdit": "Recolor ONLY all purple cloth and purple strap lining to rich forest green. Preserve warm caramel brown leather, golden buckles and trim, entire backpack design, silhouette, painted dimensional game-icon style, detail and transparency. No purple or amethyst anywhere. Keep exactly the same transparent background.",
+      "source": "starter-source.png",
+      "export": "../../../public/assets/promotions/starter-v1.webp"
+    },
+    {
+      "id": "advanced",
+      "prompt": "Subject: a premium adventurer's rectangular ATTACHE CASE / SUITCASE with a clearly visible carry handle, deep royal purple leather panels, broad warm gold metal reinforced corners and edging, two polished gold clasps. Closed case with a slim emerald enamel accent on central clasp. Visually more substantial than a backpack. Use case: stylized-concept. Asset type: transparent fantasy browser game shop icon. Match the established game style: richly painted dimensional cartoon object, saturated purple accents, warm polished chunky gold edging, glossy highlights, convincing leather and metal, clean readable silhouette, not a flat vector, not photorealistic. Single isolated object, centered three-quarter view, fills about 82% of square canvas, generous transparent margin, no text, no labels, no numbers, no watermark, no ground or backdrop.",
+      "finalEdit": "Recolor ONLY all purple leather panels, handle and straps to saturated warm burgundy red leather. Preserve all polished gold trim and clasps, tiny green emerald clasp, entire suitcase shape, silhouette, painted dimensional game-icon style, detail and transparency. No purple or amethyst anywhere. Keep exactly the same transparent background.",
+      "source": "advanced-source.png",
+      "export": "../../../public/assets/promotions/advanced-v1.webp"
+    }
+  ],
+  "rights": {
+    "source": "OpenAI built-in image_gen, original generated output",
+    "terms": "https://openai.com/policies/row-terms-of-use/",
+    "checkedAt": "2026-10-25",
+    "basis": "Terms of Use, Content: as between the user and OpenAI, the user owns Output to the extent permitted by law. Commercial use is not excluded by these terms; obligations regarding third-party rights remain.",
+    "attribution": "No named third-party asset or attribution license was used. Record AI provenance; do not represent the output as human-generated."
+  }
+}

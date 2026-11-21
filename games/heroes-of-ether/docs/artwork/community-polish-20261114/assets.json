@@ -1,0 +1,30 @@
+[
+  {
+    "path": "public/assets/menu-icons/community-v1/64/promo.webp",
+    "sha256": "ded29c54e34f9ea41bdf4302192a2b6f755246e4fff4a529d473b53f31a07f6e"
+  },
+  {
+    "path": "public/assets/menu-icons/community-v1/128/promo.webp",
+    "sha256": "480bef80ef849b23df519546216dd9d72c06736d992ca718ed85b6e858194cb7"
+  },
+  {
+    "path": "public/assets/menu-icons/community-v1/64/news.webp",
+    "sha256": "dfb33b53f2d736aea8652d3b4369d53d7252cfb9b8d2a4a40b5a17588714c649"
+  },
+  {
+    "path": "public/assets/menu-icons/community-v1/128/news.webp",
+    "sha256": "0ddedda8b9802c67ee879e7190f14407dc7c490b975a8ae564d25c9ecf68d6d8"
+  },
+  {
+    "path": "public/assets/social/banners/proposal.webp",
+    "sha256": "daae6e16589320d90b6b71412aac5c2bed4e672097ec47ee41ea9b4e108daf30"
+  },
+  {
+    "path": "public/assets/social/banners/confirmed.webp",
+    "sha256": "f4388fe68ae700209d93a898b8ce5a0af89f7c18cd11914c9bc3086a1e7b9a2a"
+  },
+  {
+    "path": "public/assets/social/banners/divorced.webp",
+    "sha256": "260e4e9566179c5e9a5446e2774a906e36c2410ebd10235867921a6b77473d91"
+  }
+]

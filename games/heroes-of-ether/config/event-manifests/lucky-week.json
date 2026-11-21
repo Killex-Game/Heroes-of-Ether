@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "lucky-week",
+  "title": "Удачная неделя",
+  "description": "Рулетка, Lite и пять особых достижений во время события. Полученное величие, призы и неиспользованные билеты сохраняются после события.",
+  "durationMinutes": 10080,
+  "contentPack": "lucky-week-v1",
+  "features": {
+    "roulette": true,
+    "lite": true
+  }
+}

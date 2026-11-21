@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-11-07",
+  "assets": [
+    {
+      "place": 2,
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a3952bb9-f0c6-4881-9938-6a220cd1db69.png",
+      "output": "assets/regalia/daily/canonical-star-v2/greatness-2.webp",
+      "sha256": "0b9a00509b95a1a6cbe2497a50740d226cb0e1d4b704b08b0f2e9bbc4bf7300c"
+    },
+    {
+      "place": 3,
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-7c82634f-04f2-4e6f-a45d-245d1a667848.png",
+      "output": "assets/regalia/daily/canonical-star-v2/greatness-3.webp",
+      "sha256": "3a1ce7234be11557acf3553ecec5bedb1e2442eda1f361785cffce97a007019d"
+    }
+  ]
+}

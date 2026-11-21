@@ -1,0 +1,53 @@
+.menu-notification-target {
+  position: relative;
+}
+.menu-notification-dot {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  z-index: 5;
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  border: 1px solid #ffe9a5;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 25%, #ffaaa3 0, #ff3f43 32%, #cd0724 72%);
+  box-shadow: 0 1px 3px #640b3c99;
+  pointer-events: none;
+  animation: menu-notice-pulse 2.2s ease-in-out infinite;
+}
+.menu-notification-dot[hidden] {
+  display: none;
+}
+.menu-notification-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 7px 3px #fa254e66;
+  opacity: 0;
+  animation: menu-notice-glow 2.2s ease-in-out infinite;
+}
+@keyframes menu-notice-pulse {
+  0%,
+  100% {
+    transform: scale(0.94);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+/* Animate a cached glow's opacity, not its blur/spread on every frame. */
+@keyframes menu-notice-glow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+html[data-page-visible="false"] .menu-notification-dot,
+html[data-page-visible="false"] .menu-notification-dot::after {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-notification-dot, .menu-notification-dot::after {
+    animation: none;
+  }
+}

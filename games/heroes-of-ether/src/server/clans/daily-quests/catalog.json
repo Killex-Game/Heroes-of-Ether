@@ -1,0 +1,767 @@
+{
+  "version": 3,
+  "items": [
+    {
+      "id": "cq_01",
+      "name": "Общий опыт",
+      "group": "resources",
+      "metric": "xp",
+      "target": 5000000,
+      "unit": "опыта",
+      "reward": {
+        "kind": "bucks",
+        "amount": 50
+      },
+      "description": "Фактически начисленный опыт арены, включая действующие бонусы. Покупки, подарки и выдачи админа не считаются."
+    },
+    {
+      "id": "cq_02",
+      "name": "Школа героев",
+      "group": "resources",
+      "metric": "xp",
+      "target": 7500000,
+      "unit": "опыта",
+      "reward": {
+        "kind": "bucks",
+        "amount": 150
+      },
+      "description": "Фактически начисленный опыт арены, включая действующие бонусы. Покупки, подарки и выдачи админа не считаются."
+    },
+    {
+      "id": "cq_03",
+      "name": "Мудрость клана",
+      "group": "resources",
+      "metric": "xp",
+      "target": 10000000,
+      "unit": "опыта",
+      "reward": {
+        "kind": "bucks",
+        "amount": 300
+      },
+      "description": "Фактически начисленный опыт арены, включая действующие бонусы. Покупки, подарки и выдачи админа не считаются."
+    },
+    {
+      "id": "cq_04",
+      "name": "Большой урожай",
+      "group": "resources",
+      "metric": "food",
+      "target": 500000,
+      "unit": "частиц",
+      "reward": {
+        "kind": "coins",
+        "amount": 500
+      },
+      "description": "Собранная обычная еда на арене. Выброшенная игроками масса тоже считается."
+    },
+    {
+      "id": "cq_05",
+      "name": "Полные закрома",
+      "group": "resources",
+      "metric": "food",
+      "target": 750000,
+      "unit": "частиц",
+      "reward": {
+        "kind": "coins",
+        "amount": 1000
+      },
+      "description": "Собранная обычная еда на арене. Выброшенная игроками масса тоже считается."
+    },
+    {
+      "id": "cq_06",
+      "name": "Пир на весь клан",
+      "group": "resources",
+      "metric": "food",
+      "target": 1000000,
+      "unit": "частиц",
+      "reward": {
+        "kind": "coins",
+        "amount": 2500
+      },
+      "description": "Собранная обычная еда на арене. Выброшенная игроками масса тоже считается."
+    },
+    {
+      "id": "cq_07",
+      "name": "Общий аппетит",
+      "group": "resources",
+      "metric": "absorbedMass",
+      "target": 2000000,
+      "unit": "массы",
+      "reward": {
+        "kind": "crystals",
+        "amount": 400
+      },
+      "description": "Сумма массы, реально полученной от соперников. Свои части не считаются, а соклановцы считаются."
+    },
+    {
+      "id": "cq_08",
+      "name": "Ненасытный отряд",
+      "group": "resources",
+      "metric": "absorbedMass",
+      "target": 1000000,
+      "unit": "массы",
+      "reward": {
+        "kind": "crystals",
+        "amount": 250
+      },
+      "description": "Сумма массы, реально полученной от соперников. Свои части не считаются, а соклановцы считаются."
+    },
+    {
+      "id": "cq_09",
+      "name": "Поглощение гигантов",
+      "group": "resources",
+      "metric": "absorbedMass",
+      "target": 3000000,
+      "unit": "массы",
+      "reward": {
+        "kind": "crystals",
+        "amount": 500
+      },
+      "description": "Сумма массы, реально полученной от соперников. Свои части не считаются, а соклановцы считаются."
+    },
+    {
+      "id": "cq_10",
+      "name": "Колючая тропа",
+      "group": "resources",
+      "metric": "hazards",
+      "target": 3000,
+      "unit": "колючек",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "low",
+        "amount": 2
+      },
+      "description": "Поглощённые колючки, включая их событийные варианты."
+    },
+    {
+      "id": "cq_11",
+      "name": "Через тернии",
+      "group": "resources",
+      "metric": "hazards",
+      "target": 5000,
+      "unit": "колючек",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "medium",
+        "amount": 3
+      },
+      "description": "Поглощённые колючки, включая их событийные варианты."
+    },
+    {
+      "id": "cq_12",
+      "name": "Повелители колючек",
+      "group": "resources",
+      "metric": "hazards",
+      "target": 10000,
+      "unit": "колючек",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 5
+      },
+      "description": "Поглощённые колючки, включая их событийные варианты."
+    },
+    {
+      "id": "cq_13",
+      "name": "Охотничий отряд",
+      "group": "combat",
+      "metric": "kills",
+      "target": 3000,
+      "unit": "соперников",
+      "reward": {
+        "kind": "coins",
+        "amount": 500
+      },
+      "description": "Полные поглощения соперников. Искусственные киллы за массу не считаются. Повторные жертвы ограничены."
+    },
+    {
+      "id": "cq_14",
+      "name": "Гроза арены",
+      "group": "combat",
+      "metric": "kills",
+      "target": 7500,
+      "unit": "соперников",
+      "reward": {
+        "kind": "crystals",
+        "amount": 750
+      },
+      "description": "Полные поглощения соперников. Искусственные киллы за массу не считаются. Повторные жертвы ограничены."
+    },
+    {
+      "id": "cq_15",
+      "name": "Легенды охоты",
+      "group": "combat",
+      "metric": "kills",
+      "target": 15000,
+      "unit": "соперников",
+      "reward": {
+        "kind": "bucks",
+        "amount": 250
+      },
+      "description": "Полные поглощения соперников. Искусственные киллы за массу не считаются. Повторные жертвы ограничены."
+    },
+    {
+      "id": "cq_19",
+      "name": "Колючий приём",
+      "group": "precision",
+      "metric": "hazardHits",
+      "target": 300,
+      "unit": "попаданий",
+      "reward": {
+        "kind": "crystals",
+        "amount": 300
+      },
+      "description": "Успешные попадания боевыми колючками по соперникам. Считается результат, а не нажатие."
+    },
+    {
+      "id": "cq_20",
+      "name": "Ловушка для врага",
+      "group": "precision",
+      "metric": "hazardHits",
+      "target": 1000,
+      "unit": "попаданий",
+      "reward": {
+        "kind": "crystals",
+        "amount": 500
+      },
+      "description": "Успешные попадания боевыми колючками по соперникам. Считается результат, а не нажатие."
+    },
+    {
+      "id": "cq_21",
+      "name": "Колючий заслон",
+      "group": "precision",
+      "metric": "hazardHits",
+      "target": 1500,
+      "unit": "попаданий",
+      "reward": {
+        "kind": "crystals",
+        "amount": 750
+      },
+      "description": "Успешные попадания боевыми колючками по соперникам. Считается результат, а не нажатие."
+    },
+    {
+      "id": "cq_22",
+      "name": "Ракетный залп",
+      "group": "precision",
+      "metric": "splitParts",
+      "target": 5000,
+      "unit": "частей",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "medium",
+        "amount": 1
+      },
+      "description": "Разделить соперников на части"
+    },
+    {
+      "id": "cq_23",
+      "name": "Точный расчёт",
+      "group": "precision",
+      "metric": "splitParts",
+      "target": 25000,
+      "unit": "частей",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "medium",
+        "amount": 2
+      },
+      "description": "Разделить соперников на части"
+    },
+    {
+      "id": "cq_24",
+      "name": "Буря рассеканий",
+      "group": "precision",
+      "metric": "splitParts",
+      "target": 50000,
+      "unit": "частей",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "medium",
+        "amount": 3
+      },
+      "description": "Разделить соперников на части"
+    },
+    {
+      "id": "cq_25",
+      "name": "Холодный расчёт",
+      "group": "precision",
+      "metric": "freezeHits",
+      "target": 2000,
+      "unit": "попаданий",
+      "reward": {
+        "kind": "crystals",
+        "amount": 300
+      },
+      "description": "Успешное применение Заморозки к соперникам. Учитываются все попадания"
+    },
+    {
+      "id": "cq_26",
+      "name": "Ледяной фронт",
+      "group": "precision",
+      "metric": "freezeHits",
+      "target": 5000,
+      "unit": "попаданий",
+      "reward": {
+        "kind": "crystals",
+        "amount": 450
+      },
+      "description": "Успешное применение Заморозки к соперникам. Учитываются все попадания"
+    },
+    {
+      "id": "cq_27",
+      "name": "Вечная мерзлота",
+      "group": "precision",
+      "metric": "freezeHits",
+      "target": 10000,
+      "unit": "попаданий",
+      "reward": {
+        "kind": "crystals",
+        "amount": 650
+      },
+      "description": "Успешное применение Заморозки к соперникам. Учитываются все попадания"
+    },
+    {
+      "id": "cq_28",
+      "name": "На крючке",
+      "group": "precision",
+      "metric": "hookHits",
+      "target": 2000,
+      "unit": "притягиваний",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "low",
+        "amount": 1
+      },
+      "description": "Крюк действительно притянул соперника. Попадание без перемещения, в том числе по паутине, не считается."
+    },
+    {
+      "id": "cq_29",
+      "name": "Дальний захват",
+      "group": "precision",
+      "metric": "hookHits",
+      "target": 5000,
+      "unit": "притягиваний",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "low",
+        "amount": 3
+      },
+      "description": "Крюк действительно притянул соперника. Попадание без перемещения, в том числе по паутине, не считается."
+    },
+    {
+      "id": "cq_30",
+      "name": "Притяжение победы",
+      "group": "precision",
+      "metric": "hookHits",
+      "target": 10000,
+      "unit": "притягиваний",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "low",
+        "amount": 5
+      },
+      "description": "Крюк действительно притянул соперника. Попадание без перемещения, в том числе по паутине, не считается."
+    },
+    {
+      "id": "cq_31",
+      "name": "Дружный коллектив",
+      "group": "precision",
+      "metric": "gifts",
+      "target": 250,
+      "unit": "подарков",
+      "reward": {
+        "kind": "bucks",
+        "amount": 300
+      },
+      "description": "Подарить подарки/усилители другим игрокам, в том числе себе"
+    },
+    {
+      "id": "cq_32",
+      "name": "Сильная рука",
+      "group": "precision",
+      "metric": "gifts",
+      "target": 500,
+      "unit": "подарков",
+      "reward": {
+        "kind": "bucks",
+        "amount": 500
+      },
+      "description": "Подарить подарки/усилители другим игрокам, в том числе себе"
+    },
+    {
+      "id": "cq_33",
+      "name": "Ударная волна",
+      "group": "precision",
+      "metric": "gifts",
+      "target": 1000,
+      "unit": "подарков",
+      "reward": {
+        "kind": "bucks",
+        "amount": 1000
+      },
+      "description": "Подарить подарки/усилители другим игрокам, в том числе себе"
+    },
+    {
+      "id": "cq_34",
+      "name": "Ядовитый след",
+      "group": "precision",
+      "metric": "poisonHits",
+      "target": 2000,
+      "unit": "попаданий",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 1
+      },
+      "description": "Успешное наложение любого яда на соперника."
+    },
+    {
+      "id": "cq_35",
+      "name": "Опасный коктейль",
+      "group": "precision",
+      "metric": "poisonHits",
+      "target": 5000,
+      "unit": "попаданий",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 2
+      },
+      "description": "Успешное наложение любого яда на соперника."
+    },
+    {
+      "id": "cq_36",
+      "name": "Токсичный фронт",
+      "group": "precision",
+      "metric": "poisonHits",
+      "target": 10000,
+      "unit": "попаданий",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 3
+      },
+      "description": "Успешное наложение любого яда на соперника."
+    },
+    {
+      "id": "cq_37",
+      "name": "Базовая подготовка",
+      "group": "arsenal",
+      "metric": "allBoosterUses",
+      "target": 1500,
+      "unit": "применений",
+      "reward": {
+        "kind": "coins",
+        "amount": 4000
+      },
+      "description": "Подтверждённые применения любых бустеров со списанием. Отменённые действия и повтор запроса исключены. От питомцев тоже считаются"
+    },
+    {
+      "id": "cq_38",
+      "name": "Рабочий арсенал",
+      "group": "arsenal",
+      "metric": "allBoosterUses",
+      "target": 2500,
+      "unit": "применений",
+      "reward": {
+        "kind": "coins",
+        "amount": 6500
+      },
+      "description": "Подтверждённые применения любых бустеров со списанием. Отменённые действия и повтор запроса исключены. От питомцев тоже считаются"
+    },
+    {
+      "id": "cq_39",
+      "name": "Мастерство основ",
+      "group": "arsenal",
+      "metric": "allBoosterUses",
+      "target": 4000,
+      "unit": "применений",
+      "reward": {
+        "kind": "coins",
+        "amount": 10000
+      },
+      "description": "Подтверждённые применения любых бустеров со списанием. Отменённые действия и повтор запроса исключены. От питомцев тоже считаются"
+    },
+    {
+      "id": "cq_40",
+      "name": "Улучшенная тактика",
+      "group": "arsenal",
+      "metric": "advancedUses",
+      "target": 800,
+      "unit": "применений",
+      "reward": {
+        "kind": "crystals",
+        "amount": 350
+      },
+      "description": "Подтверждённые применения улучшенных бустеров со списанием."
+    },
+    {
+      "id": "cq_41",
+      "name": "Арсенал мастеров",
+      "group": "arsenal",
+      "metric": "advancedUses",
+      "target": 1400,
+      "unit": "применений",
+      "reward": {
+        "kind": "crystals",
+        "amount": 550
+      },
+      "description": "Подтверждённые применения улучшенных бустеров со списанием."
+    },
+    {
+      "id": "cq_42",
+      "name": "Продвинутый отряд",
+      "group": "arsenal",
+      "metric": "advancedUses",
+      "target": 2200,
+      "unit": "применений",
+      "reward": {
+        "kind": "crystals",
+        "amount": 800
+      },
+      "description": "Подтверждённые применения улучшенных бустеров со списанием."
+    },
+    {
+      "id": "cq_43",
+      "name": "Редкая сила",
+      "group": "arsenal",
+      "metric": "rareUses",
+      "target": 300,
+      "unit": "применений",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 2
+      },
+      "description": "Подтверждённые применения редких бустеров со списанием. Бесплатные силы питомцев тоже считаются."
+    },
+    {
+      "id": "cq_44",
+      "name": "Особый резерв",
+      "group": "arsenal",
+      "metric": "rareUses",
+      "target": 500,
+      "unit": "применений",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 3
+      },
+      "description": "Подтверждённые применения редких бустеров со списанием. Бесплатные силы питомцев тоже считаются."
+    },
+    {
+      "id": "cq_45",
+      "name": "Элитный арсенал",
+      "group": "arsenal",
+      "metric": "rareUses",
+      "target": 800,
+      "unit": "применений",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 4
+      },
+      "description": "Подтверждённые применения редких бустеров со списанием. Бесплатные силы питомцев тоже считаются."
+    },
+    {
+      "id": "cq_46",
+      "name": "Крепкий щит",
+      "group": "arsenal",
+      "metric": "shieldUses",
+      "target": 500,
+      "unit": "активаций",
+      "reward": {
+        "kind": "bucks",
+        "amount": 120
+      },
+      "description": "Успешные активации любых бустеров-щитов. В том числе от питомцев"
+    },
+    {
+      "id": "cq_47",
+      "name": "Надёжный заслон",
+      "group": "arsenal",
+      "metric": "shieldUses",
+      "target": 850,
+      "unit": "активаций",
+      "reward": {
+        "kind": "bucks",
+        "amount": 180
+      },
+      "description": "Успешные активации любых бустеров-щитов. В том числе от питомцев"
+    },
+    {
+      "id": "cq_48",
+      "name": "Несокрушимый клан",
+      "group": "arsenal",
+      "metric": "shieldUses",
+      "target": 1300,
+      "unit": "активаций",
+      "reward": {
+        "kind": "bucks",
+        "amount": 260
+      },
+      "description": "Успешные активации любых бустеров-щитов. В том числе от питомцев"
+    },
+    {
+      "id": "cq_49",
+      "name": "Готовность к бою",
+      "group": "arsenal",
+      "metric": "boosterUses",
+      "target": 5000,
+      "unit": "применений",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "medium",
+        "amount": 1
+      },
+      "description": "Применения любых инвентарных и клановых бустеров со списанием. Один бустер — одно действие независимо от числа частей."
+    },
+    {
+      "id": "cq_50",
+      "name": "Полный боекомплект",
+      "group": "arsenal",
+      "metric": "boosterUses",
+      "target": 10000,
+      "unit": "применений",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "medium",
+        "amount": 2
+      },
+      "description": "Применения любых инвентарных и клановых бустеров со списанием. Один бустер — одно действие независимо от числа частей."
+    },
+    {
+      "id": "cq_51",
+      "name": "Арсенал победы",
+      "group": "arsenal",
+      "metric": "boosterUses",
+      "target": 25000,
+      "unit": "применений",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 3
+      },
+      "description": "Применения любых инвентарных и клановых бустеров со списанием. Один бустер — одно действие независимо от числа частей."
+    },
+    {
+      "id": "cq_52",
+      "name": "Общая смена",
+      "group": "endurance",
+      "metric": "arenaMs",
+      "target": 120000000,
+      "unit": "минут",
+      "reward": {
+        "kind": "bucks",
+        "amount": 200
+      },
+      "description": "Сумма времени живых участников на арене. Лобби, отключённые игроки и остатки после выхода исключены."
+    },
+    {
+      "id": "cq_53",
+      "name": "Длинный поход",
+      "group": "endurance",
+      "metric": "arenaMs",
+      "target": 360000000,
+      "unit": "минут",
+      "reward": {
+        "kind": "bucks",
+        "amount": 500
+      },
+      "description": "Сумма времени живых участников на арене. Лобби, отключённые игроки и остатки после выхода исключены."
+    },
+    {
+      "id": "cq_54",
+      "name": "Стойкость отряда",
+      "group": "endurance",
+      "metric": "arenaMs",
+      "target": 1200000000,
+      "unit": "минут",
+      "reward": {
+        "kind": "bucks",
+        "amount": 1000
+      },
+      "description": "Сумма времени живых участников на арене. Лобби, отключённые игроки и остатки после выхода исключены."
+    },
+    {
+      "id": "cq_55",
+      "name": "Среди сильнейших",
+      "group": "endurance",
+      "metric": "top10Ms",
+      "target": 60000000,
+      "unit": "минут",
+      "reward": {
+        "kind": "crystals",
+        "amount": 500
+      },
+      "description": "Суммарное время участников в топ-10 арены. Интервалы обрезаются границами дня задания."
+    },
+    {
+      "id": "cq_56",
+      "name": "Плотный состав",
+      "group": "endurance",
+      "metric": "top10Ms",
+      "target": 180000000,
+      "unit": "минут",
+      "reward": {
+        "kind": "crystals",
+        "amount": 750
+      },
+      "description": "Суммарное время участников в топ-10 арены. Интервалы обрезаются границами дня задания."
+    },
+    {
+      "id": "cq_57",
+      "name": "Десятка клана",
+      "group": "endurance",
+      "metric": "top10Ms",
+      "target": 300000000,
+      "unit": "минут",
+      "reward": {
+        "kind": "crystals",
+        "amount": 1000
+      },
+      "description": "Суммарное время участников в топ-10 арены. Интервалы обрезаются границами дня задания."
+    },
+    {
+      "id": "cq_58",
+      "name": "На вершине",
+      "group": "endurance",
+      "metric": "top1Ms",
+      "target": 18000000,
+      "unit": "минут",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 3
+      },
+      "description": "Суммарное время участников на первом месте арены. Не требуется непрерывная серия одного игрока."
+    },
+    {
+      "id": "cq_59",
+      "name": "Время лидеров",
+      "group": "endurance",
+      "metric": "top1Ms",
+      "target": 45000000,
+      "unit": "минут",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 7
+      },
+      "description": "Суммарное время участников на первом месте арены. Не требуется непрерывная серия одного игрока."
+    },
+    {
+      "id": "cq_60",
+      "name": "Вершина за нами",
+      "group": "endurance",
+      "metric": "top1Ms",
+      "target": 60000000,
+      "unit": "минут",
+      "reward": {
+        "kind": "clanChest",
+        "tier": "high",
+        "amount": 10
+      },
+      "description": "Суммарное время участников на первом месте арены. Не требуется непрерывная серия одного игрока."
+    }
+  ]
+}

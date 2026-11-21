@@ -1,0 +1,42 @@
+{
+  "enabled": true,
+  "preview": false,
+  "levelMilestones": true,
+  "productIds": [
+    "promotion:starter",
+    "promotion:advanced"
+  ],
+  "weekend": {
+    "enabled": true,
+    "startsOn": "2026-11-20",
+    "repeat": true,
+    "offerIds": [
+      "promotion:weekend:01",
+      "promotion:weekend:02",
+      "promotion:weekend:03",
+      "promotion:weekend:04",
+      "promotion:weekend:05",
+      "promotion:weekend:06",
+      "promotion:weekend:07",
+      "promotion:weekend:08",
+      "promotion:weekend:09",
+      "promotion:weekend:10",
+      "promotion:weekend:11",
+      "promotion:weekend:12",
+      "promotion:weekend:13",
+      "promotion:weekend:14",
+      "promotion:weekend:15",
+      "promotion:weekend:16",
+      "promotion:weekend:17",
+      "promotion:weekend:18",
+      "promotion:weekend:19",
+      "promotion:weekend:20",
+      "promotion:weekend:21",
+      "promotion:weekend:22",
+      "promotion:weekend:23",
+      "promotion:weekend:24",
+      "promotion:weekend:25",
+      "promotion:weekend:26"
+    ]
+  }
+}

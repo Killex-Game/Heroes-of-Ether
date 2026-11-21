@@ -1,0 +1,65 @@
+[
+  {
+    "id": "friday_levels",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-68a4a594-1246-4ded-bd57-06230884473b.png",
+    "prompt": "Use case: game-asset. Asset type: transparent achievement badge for the fantasy game Heroes of Ether. Generate one new icon named conceptually 'Personal dossier': a dark teal leather personal journal with a small round heroic player silhouette on its cover, a parchment bookmark and three ascending gold chevrons indicating earning levels in the arena. No readable text, no letters or numbers. Exactly match the existing Black Friday achievement family in the reference: thick faceted polished golden many-sided round rim, rich dimensional hand-painted Prizm fantasy illustration, dark graphite / deep petrol enamel circular interior, tasteful gold highlights, centered compact readable silhouette. Interior must be dark, never purple/amethyst. This is a distinct new journal icon, not a copy of the checklist/quill subject in reference. Transparent outside the badge, no cast shadow beyond frame, square composition with small safe margins. Strong legibility at 56px, avoid tiny noisy details and excessive gems. Input image is style reference only.",
+    "installed": true,
+    "kind": "achievement"
+  },
+  {
+    "id": "friday_common",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-3aeea67b-b85f-4365-a541-e36c4fd329e3.png",
+    "prompt": "Use case: stylized-concept. One transparent fantasy game achievement badge. Subject: A tied parcel of wrapped red candy and simple bronze booster orb, bronze trader clasp. Reference is style only. Match thick faceted polished golden many-sided circular rim, dark graphite deep petrol enamel interior, dimensional hand painted Prizm fantasy icon, clear simple silhouette readable at 56px. Dark Black Friday mood. No purple background. No text, no numbers. Centered square with small safe margin, transparent outside badge, no outer cast shadow. Distinct new subject, not checklist from reference.",
+    "installed": true,
+    "kind": "achievement"
+  },
+  {
+    "id": "friday_advanced",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-77a14a1a-b9e8-4ca4-8231-cf4e4a207264.png",
+    "prompt": "Use case: stylized-concept. One transparent fantasy game achievement badge. Subject: An ornate small purple potion flask and lilac booster orb packed in a merchant parcel. Reference is style only. Match thick faceted polished golden many-sided circular rim, dark graphite deep petrol enamel interior, dimensional hand painted Prizm fantasy icon, clear simple silhouette readable at 56px. Dark Black Friday mood. No purple background. No text, no numbers. Centered square with small safe margin, transparent outside badge, no outer cast shadow. Distinct new subject, not checklist from reference.",
+    "installed": true,
+    "kind": "achievement"
+  },
+  {
+    "id": "friday_rare",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-b0d06c68-04b8-42b2-a632-419bf4a402e6.png",
+    "prompt": "Use case: stylized-concept. One transparent fantasy game achievement badge. Subject: An elegant golden protective shield and golden booster orb in a merchant parcel. Reference is style only. Match thick faceted polished golden many-sided circular rim, dark graphite deep petrol enamel interior, dimensional hand painted Prizm fantasy icon, clear simple silhouette readable at 56px. Dark Black Friday mood. No purple background. No text, no numbers. Centered square with small safe margin, transparent outside badge, no outer cast shadow. Distinct new subject, not checklist from reference.",
+    "installed": true,
+    "kind": "achievement"
+  },
+  {
+    "id": "friday_clan",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-02d34281-1047-4c47-a9f7-e8a964258ac1.png",
+    "prompt": "Use case: stylized-concept. One transparent fantasy game achievement badge. Subject: A pair of red flaming swords beside a golden clan shield in a merchant parcel. Reference is style only. Match thick faceted polished golden many-sided circular rim, dark graphite deep petrol enamel interior, dimensional hand painted Prizm fantasy icon, clear simple silhouette readable at 56px. Dark Black Friday mood. No purple background. No text, no numbers. Centered square with small safe margin, transparent outside badge, no outer cast shadow. Distinct new subject, not checklist from reference.",
+    "installed": true,
+    "kind": "achievement"
+  },
+  {
+    "id": "friday_currency",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-12b5015c-1df8-4e58-9087-cb7a819667ba.png",
+    "prompt": "Use case: stylized-concept. One transparent fantasy game achievement badge. Subject: Three clearly distinct currencies together: round gold coin embossed with five-point star, tall bright blue crystal, three spherical golden ether drops. Reference is style only. Match thick faceted polished golden many-sided circular rim, dark graphite deep petrol enamel interior, dimensional hand painted Prizm fantasy icon, clear simple silhouette readable at 56px. Dark Black Friday mood. No purple background. No text, no numbers. Centered square with small safe margin, transparent outside badge, no outer cast shadow. Distinct new subject, not checklist from reference.",
+    "installed": true,
+    "kind": "achievement"
+  },
+  {
+    "id": "friday_status",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-cc7bd84a-fc05-48d3-9f2e-fc3a090a8acc.png",
+    "prompt": "Use case: stylized-concept. One transparent fantasy game achievement badge. Subject: Polished royal golden five-tipped VIP crown above a small elegant hourglass. Reference is style only. Match thick faceted polished golden many-sided circular rim, dark graphite deep petrol enamel interior, dimensional hand painted Prizm fantasy icon, clear simple silhouette readable at 56px. Dark Black Friday mood. No purple background. No text, no numbers. Centered square with small safe margin, transparent outside badge, no outer cast shadow. Distinct new subject, not checklist from reference.",
+    "installed": true,
+    "kind": "achievement"
+  },
+  {
+    "id": "chest",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-9f38f7d9-28a9-4a8c-8e59-432447e282ab.png",
+    "prompt": "Use case: stylized-concept. Fantasy game inventory item illustration for Heroes of Ether. One closed classical rounded-lid treasure chest, deep charcoal-black wood and dark petrol enamel, elegant polished golden fittings, central SILVER cat-paw lockplate, small turquoise gems, mysterious rich Black Friday merchant style. Same classic three-quarter perspective as reference, rectangular chest body, no supernatural shape, no medal border, no crown, no text or numbers. Rich hand-painted Prizm fantasy game style matching the reference quality, large smooth readable forms, bright edge highlights, clean silhouette. Transparent background, no scenery or outer glow, centered entire object with 8% safe margins. No checkerboard. Square asset readable at 96px. Reference is style and dimensional rendering only.",
+    "installed": true,
+    "kind": "shop"
+  },
+  {
+    "id": "coupon",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-955da9e9-a017-4011-a11b-dcb7518b38e0.png",
+    "prompt": "Use case: stylized-concept. Fantasy game inventory item illustration for Heroes of Ether. One luxury merchant coupon ticket at slight jaunty angle, thick dark graphite and deep petrol paper, gilded rim, one silver cat-paw embossed seal, short black satin ribbon and small turquoise fastening, clearly a voucher not a medal, no readable text, no digits, no currency signs. Tasteful fantasy Black Friday mystery. Rich hand-painted Prizm fantasy game style matching the reference quality, large smooth readable forms, bright edge highlights, clean silhouette. Transparent background, no scenery or outer glow, centered entire object with 8% safe margins. No checkerboard. Square asset readable at 96px. Reference is style and dimensional rendering only.",
+    "installed": true,
+    "kind": "shop"
+  }
+]

@@ -1,0 +1,11 @@
+node_modules/
+data/
+config/test-bots.json
+design/
+output/
+tests/artifacts/
+tests/.tmp-*/
+docs/history/
+public/assets/
+public/shared/clan-crest-art-data.js
+docs/file-renames.json

@@ -1,0 +1,117 @@
+{
+  "created": "2026-10-23",
+  "tool": "Built-in image_gen.imagegen",
+  "references": "Existing project achievement art; canonical frame reference: public/assets/achievements/illustrated-v2/pet_master.webp",
+  "sourceNote": "Generated for this project from existing project artwork. No external downloaded images were added. Existing source artwork provenance remains part of the separate pre-release asset audit.",
+  "eventPrompt": "Replace only central illustration with subject. Preserve canonical golden faceted frame, square silhouette, polished fantasy style. Transparent exterior. No text or numerals.",
+  "canonicalPrompt": "Edit target image 1. Supporting image 2 is the exact canonical gold achievement frame reference. Replace ONLY the old outer frame/border of image 1 with the same thick, faceted, polished bright golden frame and same silhouette, proportions and broad sculpted bevels used in image 2. Preserve image 1's central subject, meaning, arrangement, materials and rich colors; keep central illustration fully inside the round inner field. Remove the old frame completely: no doubled frame, no old protruding points. Fit to a square canvas like image 2 with matching outer margins. Clean polished fantasy game achievement icon, highly readable small. No text, no letters, no numerals, no watermark. Fully transparent outside the badge, preserve alpha. Do NOT copy the heart/paw/hands/crown central subject of reference 2.",
+  "giftCorrectionPrompt": "Edit the gold-framed purple gift-box achievement icon. The accompanying black-and-white mask marks the region to remove in white: remove BOTH GOLDEN HANDS/PALMS beneath and beside the gift box completely, including fingers and wrists. Restore the smooth rich purple inner background where the hands were. Keep the purple gift box with cyan ribbon/bow exactly as it is, same position and size. Preserve the entire outer canonical faceted gold frame unchanged, preserve highlights and composition everywhere outside the hand region. Do not erase any part of the outer gold frame, gift or ribbon. Transparent exterior, square asset, no text. Return the finished icon only, not the mask.",
+  "bannerPrompt": "Create a wide landscape 3:1 fantasy browser game event announcement banner, clean premium casual-game illustration, polished 3D painted look. A beautiful richly colored carnival roulette wheel with glowing gold rim and tiny festive bulbs sits on the left, on the right an elegant gold VIP crown, two navy-and-gold star admission tickets, a small pile of gold coins and a few cyan crystals. Rich midnight blue and aubergine background with golden rays, tasteful confetti and warm sparkles. Smooth luminous lighting, saturated emerald, ruby, sapphire enamel, elegant rounded forms, visually coordinated with a fantasy game of glossy spheres and golden UI. Keep all important objects inside a wide central horizontal band with generous safe margins; no humans. NO text, NO words, NO letters, NO numbers, NO logos, NO watermarks, NO border. This is illustration only: title and dates will be rendered separately in HTML. Landscape wide banner.",
+  "assets": [
+    {
+      "id": "lucky_attempt",
+      "subject": "a small elegant colorful carnival roulette wheel with richly enamelled jewel-tone wedges, a polished gold central star and a tiny ivory pointer, playful ribbons of light",
+      "file": "public/assets/achievements/illustrated-v2/lucky_attempt.webp"
+    },
+    {
+      "id": "lucky_gold_mine",
+      "subject": "a gleaming royal gold VIP crown rising above a small mound of gold coins in a sunlit mine, warm amber enamel and deep teal shadows, no lettering",
+      "file": "public/assets/achievements/illustrated-v2/lucky_gold_mine.webp"
+    },
+    {
+      "id": "lucky_lite",
+      "subject": "an elegant dark midnight-blue and gold event pass emblem with a bright gold five-point star and two small admission tickets, navy enamel and restrained icy blue sparkle",
+      "file": "public/assets/achievements/illustrated-v2/lucky_lite.webp"
+    },
+    {
+      "id": "lucky_arsenal",
+      "subject": "a richly detailed compact fantasy armory: a crimson boxing glove, a small polished silver rocket with red fins, a green potion flask and crossed gold-handled weapons arranged as a balanced trophy",
+      "file": "public/assets/achievements/illustrated-v2/lucky_arsenal.webp"
+    },
+    {
+      "id": "lucky_marriage_games",
+      "subject": "two elegant golden wedding rings intertwined in front of two friendly glossy game spheres, one crimson and one sapphire, with a small upward golden chevron symbolizing shared play and leveling up",
+      "file": "public/assets/achievements/illustrated-v2/lucky_marriage_games.webp"
+    },
+    {
+      "id": "career",
+      "file": "public/assets/achievements/illustrated-v2/career.webp"
+    },
+    {
+      "id": "king",
+      "file": "public/assets/achievements/illustrated-v2/king.webp"
+    },
+    {
+      "id": "eaten",
+      "file": "public/assets/achievements/illustrated-v2/eaten.webp"
+    },
+    {
+      "id": "maximum",
+      "file": "public/assets/achievements/illustrated-v2/maximum.webp"
+    },
+    {
+      "id": "boosters",
+      "file": "public/assets/achievements/illustrated-v2/boosters.webp"
+    },
+    {
+      "id": "wealthy",
+      "file": "public/assets/achievements/illustrated-v2/wealthy.webp"
+    },
+    {
+      "id": "spendthrift",
+      "file": "public/assets/achievements/illustrated-v2/spendthrift.webp"
+    },
+    {
+      "id": "miner",
+      "file": "public/assets/achievements/illustrated-v2/miner.webp"
+    },
+    {
+      "id": "spendthrift_i",
+      "file": "public/assets/achievements/illustrated-v2/spendthrift_i.webp"
+    },
+    {
+      "id": "banker",
+      "file": "public/assets/achievements/illustrated-v2/banker.webp"
+    },
+    {
+      "id": "spendthrift_ii",
+      "file": "public/assets/achievements/illustrated-v2/spendthrift_ii.webp"
+    },
+    {
+      "id": "top",
+      "file": "public/assets/achievements/illustrated-v2/top.webp"
+    },
+    {
+      "id": "generous",
+      "file": "public/assets/achievements/illustrated-v2/generous.webp"
+    },
+    {
+      "id": "needed",
+      "file": "public/assets/achievements/illustrated-v2/needed.webp"
+    },
+    {
+      "id": "sociable",
+      "file": "public/assets/achievements/illustrated-v2/sociable.webp"
+    },
+    {
+      "id": "for_clan",
+      "file": "public/assets/achievements/illustrated-v2/for_clan.webp"
+    },
+    {
+      "id": "investment",
+      "file": "public/assets/achievements/illustrated-v2/investment.webp"
+    },
+    {
+      "id": "not_stingy",
+      "file": "public/assets/achievements/illustrated-v2/not_stingy.webp"
+    },
+    {
+      "id": "resident",
+      "file": "public/assets/achievements/illustrated-v2/resident.webp"
+    },
+    {
+      "id": "event-banner",
+      "file": "public/assets/events/lucky-week/banner.webp"
+    }
+  ]
+}

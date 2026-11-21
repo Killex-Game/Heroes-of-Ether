@@ -1,0 +1,230 @@
+{
+  "description": "Existing generated artwork from the owner's visual copies, imported unchanged. No third-party downloads.",
+  "files": [
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\citadel-background.webp",
+      "destination": "public/assets/interface-packs/visual/lobby.webp",
+      "sha256": "d91786e540cbe5fc059c2888c6e483e2efdfc801b82c497e5af1050813bc160c"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\events.webp",
+      "destination": "public/assets/interface-packs/visual/nav-events.webp",
+      "sha256": "27216a003bf2b16cfb0d68d0f1b7743f9cec145a6ab8d3a96ca5c977e384411d"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\skins.webp",
+      "destination": "public/assets/interface-packs/visual/nav-skins.webp",
+      "sha256": "e36ab8120858c3a6249272f4ba628da9b10267b9f3c6e3f8c53d43f70b658e20"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\inventory.webp",
+      "destination": "public/assets/interface-packs/visual/nav-inventory.webp",
+      "sha256": "e6d750a47c9a861c7b0174f1d8bac13769f6b4b9d6f399a13267b6f85dea62db"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\wardrobe.webp",
+      "destination": "public/assets/interface-packs/visual/nav-wardrobe.webp",
+      "sha256": "b614c8f948f056274de3e11b8c5fbe6a49673cc3c7115e7480f39ba79a290936"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\quests.webp",
+      "destination": "public/assets/interface-packs/visual/nav-quests.webp",
+      "sha256": "b37e2886bcd8984a5e10a7120efd1990d5eea691b7be4d0d90aecc74a8202232"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\shop.webp",
+      "destination": "public/assets/interface-packs/visual/nav-shop.webp",
+      "sha256": "f10e4d916f6b1c5cf79a25b4ee59a58bfbfd61e595f6f5d99d067cc2ce39aba1"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\rankings.webp",
+      "destination": "public/assets/interface-packs/visual/nav-top.webp",
+      "sha256": "44df38465b96c237f0528874dc639dafbacf69e0706c8ab8c3c5ef459b9627a5"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\achievements.webp",
+      "destination": "public/assets/interface-packs/visual/nav-achievements.webp",
+      "sha256": "7aec0c20aa652b9b226387d40d093df58e1c9e18b12f81d8e6d58237b5dddfd2"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\clan.webp",
+      "destination": "public/assets/interface-packs/visual/nav-clan.webp",
+      "sha256": "28ee58ef357f59153b13bdc1b216002e8b1be53ef55f8cda0cec1fb3505ef1ba"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\interface\\pets.webp",
+      "destination": "public/assets/interface-packs/visual/nav-pets.webp",
+      "sha256": "f5023a9efd8a0b4912b75817406e6211676f77207e69f63c220f1229af939513"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\portraits\\moon-dragon.webp",
+      "destination": "public/assets/interface-packs/visual/avatars/moon-dragon.webp",
+      "sha256": "cd8a7e21d82a2af55e353d93678f170da8f7be768bf8f886104a3942b9072b53"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\portraits\\forest-spirit.webp",
+      "destination": "public/assets/interface-packs/visual/avatars/forest-spirit.webp",
+      "sha256": "e73c72d403db1dc5f7b800f7fd160a7d737444f3bc95b33d0014308d86e7155c"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\portraits\\sun-phoenix.webp",
+      "destination": "public/assets/interface-packs/visual/avatars/sun-phoenix.webp",
+      "sha256": "40bd5d872a8c40b53fc220b4697af9d73de5c6a9d6c96e01980a23095fc2e1bf"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Visual-Lab\\public\\visual-lab\\art\\portraits\\crystal-guardian.webp",
+      "destination": "public/assets/interface-packs/visual/avatars/crystal-guardian.webp",
+      "sha256": "8f1a13402f24b57321c6fb581c39db751d5df5562975da3f66fe1ad309e4319c"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\citadel-background.webp",
+      "destination": "public/assets/interface-packs/prism/lobby.webp",
+      "sha256": "0ae5896a36799bb137d63984f79ac9784ced8875c37fb19c8e04a0a564bc620e"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\events.webp",
+      "destination": "public/assets/interface-packs/prism/nav-events.webp",
+      "sha256": "703dbf3ed205fca84e3d86f03ce465a2732c1c45b51aaa9ac1cd5f7cd7b5e0c8"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\skins.webp",
+      "destination": "public/assets/interface-packs/prism/nav-skins.webp",
+      "sha256": "2277136a34c6f07e92d0318276b57da92520ac934f3307f185fc508b753b3f33"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\inventory.webp",
+      "destination": "public/assets/interface-packs/prism/nav-inventory.webp",
+      "sha256": "db7c33b8c9b678e59bef239efef2a33a1c50321fdc0b3505532e325380bc2605"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\wardrobe.webp",
+      "destination": "public/assets/interface-packs/prism/nav-wardrobe.webp",
+      "sha256": "5cf20ad2b8190e3575458a7bfa402ea8dc4b18c6242f74f0aa63d1fb99de805a"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\quests.webp",
+      "destination": "public/assets/interface-packs/prism/nav-quests.webp",
+      "sha256": "d988346d6b3d4f91337435da0ce32412a9cdb4360077b8b558ba3f0706b6b4ff"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\shop.webp",
+      "destination": "public/assets/interface-packs/prism/nav-shop.webp",
+      "sha256": "3071d997eb52abe10716dba408e95881ac02704a71bcae19ba865b70b72c7218"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\rankings.webp",
+      "destination": "public/assets/interface-packs/prism/nav-top.webp",
+      "sha256": "ae2fd7712cf47a06dc2475f5e868135ccfd586db146ba9b42cba03ded8aecc84"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\achievements.webp",
+      "destination": "public/assets/interface-packs/prism/nav-achievements.webp",
+      "sha256": "a5179223343b51f9cb276f172790675f1d423a4cb1cb7055d61f4b9cd429e4e8"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\clan.webp",
+      "destination": "public/assets/interface-packs/prism/nav-clan.webp",
+      "sha256": "2a4ce99d2e98589261b228be1b1ddfd924a606f4a4a9f60e053781ac8ba6d6a4"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\interface\\pets.webp",
+      "destination": "public/assets/interface-packs/prism/nav-pets.webp",
+      "sha256": "fdc8af0ba27236f96f175000a76f2f2f8853d0360c91de2d2cffb47c7239f9fb"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\portraits\\moon-dragon.webp",
+      "destination": "public/assets/interface-packs/prism/avatars/moon-dragon.webp",
+      "sha256": "e4fe0a1c72f87551615da9276bb698dda9851c3e49fac6cce1ee7e5f9c8738ad"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\portraits\\forest-spirit.webp",
+      "destination": "public/assets/interface-packs/prism/avatars/forest-spirit.webp",
+      "sha256": "a43290a4911753322aa0108751017c256ca4c92734658ff4109e126309847af2"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\portraits\\sun-phoenix.webp",
+      "destination": "public/assets/interface-packs/prism/avatars/sun-phoenix.webp",
+      "sha256": "afb0624a3a6c01f2b87cf23fc14e6bae9994af276d8c7b78f20d93b2e8ecaaac"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\portraits\\crystal-guardian.webp",
+      "destination": "public/assets/interface-packs/prism/avatars/crystal-guardian.webp",
+      "sha256": "19ff5c42aa6135d885ea049ae4bf7e5cf7b2ba6fa5a982bcbe821625bfbdd910"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\lobby-background.webp",
+      "destination": "public/assets/interface-packs/glass/lobby.webp",
+      "sha256": "5361c755e4a995ecf64de4f618bcccdebd9be5317c6d7c38ec245aeaca3c7d78"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-events.webp",
+      "destination": "public/assets/interface-packs/glass/nav-events.webp",
+      "sha256": "be20bdd4270a1909dbfbe525f86b1e2f742789b8448ea4dbb912d27c96a92c90"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-skins.webp",
+      "destination": "public/assets/interface-packs/glass/nav-skins.webp",
+      "sha256": "fe2708a693bb2ed555f37913995422c486c2da9a2ed26445cee4cac028ce7edf"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-inventory.webp",
+      "destination": "public/assets/interface-packs/glass/nav-inventory.webp",
+      "sha256": "b7bc44ac6c0ee805f6808d05a4afe331d099e7cc8755be4ccd983e595aa9a697"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-wardrobe.webp",
+      "destination": "public/assets/interface-packs/glass/nav-wardrobe.webp",
+      "sha256": "d11fe90f47de5a19214350263a394d2336b14ba6f4be47c57dbc2fd5647a5021"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-quests.webp",
+      "destination": "public/assets/interface-packs/glass/nav-quests.webp",
+      "sha256": "ba26448a1a407ce22290f196d2ad02e5f93351663c83033ca33ebbe4868b15e7"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-shop.webp",
+      "destination": "public/assets/interface-packs/glass/nav-shop.webp",
+      "sha256": "0fbc03a68bf4bfb4f88b98520c84734ce8d85c5aa2b088bd3256c5b2ac529daa"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-top.webp",
+      "destination": "public/assets/interface-packs/glass/nav-top.webp",
+      "sha256": "3bbcf14ae95666fac810ed65801b10e6a68e7e321b8c0ec796fc57bc1c22182f"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-achievements.webp",
+      "destination": "public/assets/interface-packs/glass/nav-achievements.webp",
+      "sha256": "7a0f902a0f4921868b250bb14f63733830bdec49b0d61b8d6cf8d5d6e6176a3d"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-clan.webp",
+      "destination": "public/assets/interface-packs/glass/nav-clan.webp",
+      "sha256": "b463970e94e9743d26f5dd234566def9ae9e37c000097a7ad6780ce23d750b0b"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\nav-pets.webp",
+      "destination": "public/assets/interface-packs/glass/nav-pets.webp",
+      "sha256": "15c39f0288e365a5ccbd131b083c0db2fc6202b7995407a602cad5685b34a868"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\avatar-moon-dragon.webp",
+      "destination": "public/assets/interface-packs/glass/avatars/moon-dragon.webp",
+      "sha256": "7ec33f096f24f06fd6d80647e7b0112ad5d70f0541fa165b0ef09d05bfdee9f5"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\avatar-forest-spirit.webp",
+      "destination": "public/assets/interface-packs/glass/avatars/forest-spirit.webp",
+      "sha256": "feb39f7b45ba0665c86413279b5aa429ad635e435a81775596d7627fb6ca9bf0"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\avatar-sun-phoenix.webp",
+      "destination": "public/assets/interface-packs/glass/avatars/sun-phoenix.webp",
+      "sha256": "a701405fbdc4b88be45fc5b457c802ff671431aa3d3f42629fe1f95971927bf7"
+    },
+    {
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Glass-Lab\\public\\assets\\glass\\avatar-crystal-guardian.webp",
+      "destination": "public/assets/interface-packs/glass/avatars/crystal-guardian.webp",
+      "sha256": "822b5682a1cc1c4ed69454f99c1d376f2ea3d4f8259197e617be43532f8108cd"
+    }
+  ]
+}

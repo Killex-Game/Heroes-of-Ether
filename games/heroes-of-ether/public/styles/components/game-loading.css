@@ -1,0 +1,50 @@
+/* Initial loading is independent of the player's not-yet-loaded theme. */
+html body #gameLoading {
+  box-sizing: border-box; padding: 24px; overflow: auto;
+  outline: none; box-shadow: none; border-radius: 0;
+  background: radial-gradient(ellipse at 50% 47%, #3a7993 0, #1e4c65 32%, #102a3d 72%);
+  font-family: Inter, system-ui, sans-serif;
+}
+html body #gameLoading[open] { display: grid; place-items: center; }
+#gameLoading::backdrop { background: #112f42; }
+#gameLoading .boot-content { width: min(640px, 100%); text-align: center; position: relative; }
+#gameLoading .boot-eyebrow { margin: 0 0 12px; color: #b5d5df; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+#gameLoading h1 { margin: 0; color: #fff2cd; font: 700 clamp(44px, 6vw, 78px)/1.02 Georgia, serif; letter-spacing: -.03em; text-shadow: 0 3px 0 #15394c, 0 0 34px #f7d78a33; }
+#gameLoading h1 span { display: block; font-size: 1.19em; letter-spacing: .045em; }
+#gameLoading .boot-heroes { position: relative; height: clamp(205px, 33vh, 310px); margin: 18px auto 8px; width: min(520px, 100%); }
+#gameLoading .boot-orbit { position: absolute; width: 65%; height: 100%; left: 17.5%; top: 0; border: 1px solid #f0d59a44; border-radius: 50%; box-shadow: 0 0 60px #71cfee22, inset 0 0 45px #80d4ec11; }
+#gameLoading .boot-orbit::before, #gameLoading .boot-orbit::after { content: ''; position: absolute; inset: 12px; border-radius: 50%; border: 1px solid #98dcf222; }
+#gameLoading .boot-orbit::after { inset: -14px; border-color: #f1ddaa14; }
+#gameLoading .boot-hero { position: absolute; bottom: 12%; width: 30%; aspect-ratio: 1; border: 2px solid #e8d29c; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 35% 25%, #b0d5de, #476f88); box-shadow: 0 12px 26px #061e3a88, inset 0 0 0 5px #ffffff20; }
+#gameLoading .boot-hero img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.07) translateY(5%); }
+#gameLoading .boot-hero-main { width: 48%; left: 26%; bottom: 3%; z-index: 2; border-width: 3px; background: radial-gradient(circle at 35% 25%, #d5eaf0, #7199b6); box-shadow: 0 20px 38px #071e3666, 0 0 38px #a3ddff44, inset 0 0 0 5px #ffffff25; }
+#gameLoading .boot-hero-left { left: 2%; transform: rotate(-8deg); }
+#gameLoading .boot-hero-right { right: 2%; transform: rotate(8deg); }
+#gameLoading .boot-star { position: absolute; bottom: -4%; left: 50%; transform: translateX(-50%); z-index: 3; font-size: 38px; color: #ffe5a2; text-shadow: 0 2px 3px #254c63, 0 0 22px #ffde85; }
+#gameLoading .boot-tagline { margin: 24px 0 28px; font-size: 13px; color: #d0e5eb; line-height: 1.5; }
+#gameLoading .boot-readiness { width: min(380px, 100%); margin: auto; min-height: 88px; }
+#gameLoading #gameLoadingStatus { margin: 0 0 12px; font-size: 14px; color: #fff0cd; line-height: 1.5; }
+#gameLoading progress { display: block; appearance: none; border: 1px solid #e5c58266; border-radius: 8px; overflow: hidden; width: 100%; height: 9px; background: #071c2d; color: #efd08b; }
+#gameLoading progress::-webkit-progress-bar { background: #071c2d; }
+#gameLoading progress::-webkit-progress-value { border-radius: 8px; background: linear-gradient(90deg, #b58b43, #ffe6a5); transition: width .2s; }
+#gameLoading progress::-moz-progress-bar { border-radius: 8px; background: linear-gradient(90deg, #b58b43, #ffe6a5); }
+#gameLoading .boot-steps { display: flex; justify-content: space-between; margin-top: 10px; font-size: 10px; color: #a8c7d3; }
+#gameLoading .boot-steps .is-ready { color: #ffe4a5; }
+#gameLoading #gameLoadingRetry { margin: 16px auto 0; padding: 11px 24px; border: 1px solid #eacb82; border-radius: 12px; background: linear-gradient(#fff1c4, #ecc678); color: #3d4b51; font: 700 14px Inter, sans-serif; cursor: pointer; box-shadow: 0 3px 0 #896e36; }
+#gameLoading #gameLoadingRetry[hidden] { display: none; }
+#gameLoading .boot-stars { position: absolute; inset: 0; pointer-events: none; opacity: .6; background-image: radial-gradient(circle at 18% 22%, #f1d592 0 1px, transparent 2px), radial-gradient(circle at 82% 26%, #cbeeff 0 1px, transparent 2px), radial-gradient(circle at 15% 72%, #cbeeff 0 1px, transparent 2px), radial-gradient(circle at 88% 79%, #f1d592 0 1px, transparent 2px); }
+@media (max-height: 650px) and (min-width: 601px) {
+  #gameLoading .boot-content { display: grid; grid-template-columns: minmax(0, 44fr) minmax(0, 55fr); align-items: center; width: min(650px, 100%); column-gap: 20px; }
+  #gameLoading .boot-eyebrow { grid-column: 2; }
+  #gameLoading h1 { grid-column: 2; font-size: clamp(34px, 5vw, 50px); }
+  #gameLoading .boot-heroes { grid-column: 1; grid-row: 1 / 5; height: 240px; width: 100%; }
+  #gameLoading .boot-tagline, #gameLoading .boot-readiness { grid-column: 2; }
+  #gameLoading .boot-tagline { margin: 18px 0; }
+}
+@media (max-width: 600px) {
+  html body #gameLoading { padding: 20px; }
+  #gameLoading .boot-eyebrow { font-size: 9px; letter-spacing: .12em; }
+  #gameLoading .boot-heroes { height: 225px; }
+  #gameLoading .boot-tagline { font-size: 12px; margin-block: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { #gameLoading progress::-webkit-progress-value { transition: none; } }

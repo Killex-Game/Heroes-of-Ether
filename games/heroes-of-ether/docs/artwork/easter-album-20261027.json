@@ -1,0 +1,25 @@
+{
+  "generator": "Built-in image_gen",
+  "createdAt": "2026-10-27",
+  "provenance": "Original AI-generated illustrations requested for this game; no third-party reference assets used. No attribution supplied by generator. Commercial release licensing review remains part of the project-wide audit.",
+  "images": [
+    {
+      "id": "easter-guardian",
+      "prompt": "Use case: stylized-concept. Asset: finished square collectible album illustration for a colorful fantasy browser game, split later by the game UI into 12 rectangular puzzle pieces (do NOT draw grid or puzzle seams). Match high quality hand-painted game loot art: rounded sculptural shapes, beautiful gold bevels and crisp highlights, warm soft shadows, rich tactile materials, readable silhouette, generous detail without clutter. Original artwork, no text, no letters, no watermark, no logos. Square composition with all parts comfortably inside margins, opaque illustrated background, polished collectible storybook painting. Avoid purple/amethyst as dominant colors. Primary request: A charming brave white rabbit guardian wearing a small emerald velvet cape with gold clasp and ornate light golden armor, gently holding a luminous painted Easter egg on a leafy staff. Full body on a small stone garden pedestal, scattered red and blue painted eggs, spring flowers and soft green sunlit grove. Warm ivory, emerald, gold, touches of coral. No humans.",
+      "name": "Пасхальный хранитель",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-0ecf4da9-a871-4120-abe8-d28c38b1d911.png"
+    },
+    {
+      "id": "spring-basket",
+      "prompt": "Use case: stylized-concept. Asset: finished square collectible album illustration for a colorful fantasy browser game, split later by the game UI into 12 rectangular puzzle pieces (do NOT draw grid or puzzle seams). Match high quality hand-painted game loot art: rounded sculptural shapes, beautiful gold bevels and crisp highlights, warm soft shadows, rich tactile materials, readable silhouette, generous detail without clutter. Original artwork, no text, no letters, no watermark, no logos. Square composition with all parts comfortably inside margins, opaque illustrated background, polished collectible storybook painting. Avoid purple/amethyst as dominant colors. Primary request: A magnificent intricately woven honey-brown Easter basket overflowing with beautifully painted round eggs in ruby red, sky blue, leaf green and warm gold, tied with a broad turquoise silk ribbon and decorated with daisies and spring foliage. The basket sits on a cream stone ledge in a glowing spring orchard. Tactile polished gold decorative fittings, soft sunbeams and floating pollen, precious but friendly.",
+      "name": "Весенняя корзина",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9f7a8466-4043-49d8-a3c2-3f38b6888844.png"
+    },
+    {
+      "id": "awakening-garden",
+      "prompt": "Use case: stylized-concept. Asset: finished square collectible album illustration for a colorful fantasy browser game, split later by the game UI into 12 rectangular puzzle pieces (do NOT draw grid or puzzle seams). Match high quality hand-painted game loot art: rounded sculptural shapes, beautiful gold bevels and crisp highlights, warm soft shadows, rich tactile materials, readable silhouette, generous detail without clutter. Original artwork, no text, no letters, no watermark, no logos. Square composition with all parts comfortably inside margins, opaque illustrated background, polished collectible storybook painting. Avoid purple/amethyst as dominant colors. Primary request: A magical spring garden surrounding an elegant golden fountain of flowing liquid amber ether shaped as round golden drops, with flowering fruit trees, white daisies, vivid green leaves, small patterned Easter eggs among the flowers, a distant warm cream castle and blue morning sky. Enchanting cohesive scene, centered fountain, no characters. Brilliant warm gold and fresh turquoise, green, coral.",
+      "name": "Сад пробуждения",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-83d4f288-f6a8-408a-bee8-03bbc6e727c4.png"
+    }
+  ]
+}

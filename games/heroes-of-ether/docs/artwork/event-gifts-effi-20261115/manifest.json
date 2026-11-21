@@ -1,0 +1,65 @@
+[
+  {
+    "id": "effi",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\event-gifts-effi-20261115\\effi.png",
+    "output": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\guide\\effi-v1.webp",
+    "bytes": 14610,
+    "format": "webp",
+    "mediaType": "image/webp",
+    "width": 213,
+    "height": 320,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 213,
+      "height": 320
+    }
+  },
+  {
+    "id": "golden-lucky-cat",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\event-gifts-effi-20261115\\golden-lucky-cat.png",
+    "output": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\gifts\\event-v1\\golden-lucky-cat.webp",
+    "bytes": 21990,
+    "format": "webp",
+    "mediaType": "image/webp",
+    "width": 256,
+    "height": 256,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 256,
+      "height": 256
+    }
+  },
+  {
+    "id": "easter-guardian",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\event-gifts-effi-20261115\\easter-guardian.png",
+    "output": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\gifts\\event-v1\\easter-guardian.webp",
+    "bytes": 19590,
+    "format": "webp",
+    "mediaType": "image/webp",
+    "width": 242,
+    "height": 256,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 242,
+      "height": 256
+    }
+  }
+]

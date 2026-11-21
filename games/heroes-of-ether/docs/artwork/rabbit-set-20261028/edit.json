@@ -1,0 +1,8 @@
+{
+  "tool": "image_gen",
+  "mode": "generate",
+  "transparent": true,
+  "prompt": "Use case: stylized-concept. Asset type: transparent fantasy browser game wearable bow tie, matching an ivory rabbit ears hat with pink ear interiors, emerald green satin bow, polished gold filigree and a gold flower. Create ONE charming elegant fluffy WHITE/IVORY FUR BOW TIE with a small vivid orange CARROT as the central knot. Two symmetrical broad soft plush bow lobes, rich short rabbit fur texture, gentle folds and tiny warm golden accents, bright saturated orange carrot body pointing vertically downward at the center, with a small emerald green leaf cluster at its top. Carrot clear and instantly readable at small icon size. The carrot IS the middle ornament, not printed on the wings. High quality hand-painted volumetric fairytale game icon, soft cream highlights, delicate gold edge accents in the same ornate royal game style, polished vivid materials. Front-facing wearable applique seen straight on, no rear strap, no neck, no body or animal, no face, no extra items, no text. A broad horizontal bow, approximately 2.3:1 overall silhouette, centered inside a square canvas with substantial transparent padding above and below, full object comfortably inside canvas. Genuine transparent alpha background, clean edges and no cast shadow outside the object. Not purple, no gemstones or amethyst.",
+  "export": "512x256 transparent contain, WebP quality 92",
+  "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-3a4cb796-047b-4cde-83ac-4803a3fd8a3b.png"
+}

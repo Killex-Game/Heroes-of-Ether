@@ -1,0 +1,1087 @@
+/* Event-only UI. No running animation, canvas or timer on the arena. */
+#lobby .lobby-wallet-tools {
+  grid-template-columns: minmax(150px, 212px) minmax(140px, 164px) minmax(140px, 164px);
+  width: min(100%, 560px);
+  gap: 10px;
+}
+/* Keep the second row reserved even outside the event. Both action columns
+   then have the same height and Roulette cannot centre between the two rows. */
+#lobby .lobby-event-actions {
+  display: grid;
+  grid-template-rows: 46px 46px;
+  align-content: start;
+  gap: 8px;
+  min-width: 0;
+}
+#lobby .lobby-event-actions #rouletteButton,
+#lobby .lobby-event-actions #blackFridayButton {
+  width: 100%;
+  height: 46px;
+  min-height: 46px;
+  margin: 0;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+}
+#lobby .lobby-event-actions #rouletteButton img {
+  width: 34px;
+  height: 34px;
+}
+#lobby .lobby-event-actions #rouletteButton {
+  display: grid;
+  grid-template-columns: 34px auto;
+}
+#lobby .lobby-event-actions #rouletteButton > span:not(.roulette-lock) {
+  grid-area: 1 / 2;
+}
+#lobby .lobby-event-actions #rouletteButton .roulette-lock {
+  grid-area: 1 / 1;
+  width: 34px;
+  height: 34px;
+}
+#lobby #blackFridayButton img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+#lobby .lobby-event-actions #blackFridayButton {
+  --prism-face-top: #3d3843;
+  --prism-face-bottom: #171920;
+  --prism-face-ink: #f4e6c4;
+  --prism-edge: #b89b60;
+  --prism-deep: #100e16;
+}
+#lobby .lobby-event-actions #blackFridayButton::before {
+  background: linear-gradient(155deg, #3d3843, #171920 78%);
+  box-shadow:
+    inset 0 1px 1px #e5d5a877,
+    0 3px 0 #100e16,
+    0 4px 7px #0003;
+}
+#lobby .lobby-event-actions #blackFridayButton:hover::before {
+  background: linear-gradient(155deg, #504752, #24242d 78%);
+}
+#lobby #blackFridayButton[hidden] {
+  display: none !important;
+}
+@media (min-width: 961px) and (max-width: 1200px) {
+  #lobby .lobby-wallet-tools {
+    grid-template-columns: minmax(130px, 1fr) minmax(125px, 1fr);
+  }
+  #lobby .lobby-event-actions {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 46px;
+  }
+}
+@media (max-width: 620px) {
+  #lobby .lobby-wallet-tools {
+    grid-template-columns: minmax(0, 1fr) minmax(120px, 1fr);
+    width: 100%;
+  }
+  #lobby .lobby-event-actions {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 46px;
+  }
+}
+body #blackFridayDialog {
+  box-sizing: border-box;
+  width: min(1200px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  height: min(980px, calc(100dvh - 20px));
+  max-height: calc(100dvh - 20px);
+  padding: 14px;
+  border: 2px solid var(--prism-edge, #d3b77b);
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    var(--prism-light, #fff2d7),
+    color-mix(in srgb, var(--prism-mid, #e8d0a2) 55%, white)
+  );
+  color: var(--prism-ink, #523821);
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 4px #ffffff88,
+    0 20px 80px #160d2d80;
+}
+body #blackFridayDialog[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#blackFridayDialog::backdrop {
+  background: #110d22b0;
+  backdrop-filter: blur(4px);
+}
+#blackFridayDialog .manya-header {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 548px) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 0 44px 0 0;
+  flex: none;
+}
+.manya-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+#blackFridayDialog .manya-header h2 {
+  margin: 3px 0;
+  font-size: 27px;
+}
+.manya-header small {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+.manya-deadline {
+  font-size: 12px;
+}
+.manya-portrait {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+.manya-header-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: none;
+  padding-top: 0;
+  align-self: start;
+}
+.manya-balance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  background: #ffffff8c;
+  border-radius: 13px;
+  padding: 9px 14px;
+}
+#blackFridayDialog .manya-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  align-self: center;
+  width: 34px;
+  height: 34px;
+  min-height: 34px;
+  padding: 0;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--prism-edge);
+  background: linear-gradient(var(--prism-light), var(--prism-mid));
+  color: var(--prism-ink);
+  font-size: 0;
+  line-height: 1;
+  box-shadow:
+    inset 0 0 0 2px #fff9,
+    0 2px 3px #0004;
+  cursor: pointer;
+}
+#blackFridayDialog .manya-close::before,
+#blackFridayDialog .manya-close::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: rotate(45deg);
+}
+#blackFridayDialog .manya-close::after {
+  transform: rotate(-45deg);
+}
+.manya-token {
+  display: inline-flex;
+  width: 25px;
+  height: 27px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  font:
+    800 14px Georgia,
+    serif;
+  color: #fff0b5;
+  background: linear-gradient(135deg, #539484, #174d41);
+  border: 2px solid #e8c471;
+  border-radius: 5px 9px 5px 9px;
+  box-shadow:
+    inset 0 0 0 2px #174d41,
+    0 2px 3px #0003;
+}
+.manya-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  flex: none;
+}
+#blackFridayDialog .manya-tabs button {
+  min-height: 38px;
+  height: 38px;
+  padding: 4px 9px;
+}
+.manya-content {
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+  padding: 3px 4px 8px;
+}
+.manya-notice {
+  min-height: 0;
+  margin: 0;
+  flex: none;
+  font-size: 12px;
+  text-align: center;
+}
+.manya-empty {
+  padding: 40px;
+  text-align: center;
+}
+.manya-book {
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  min-height: 100%;
+  padding: 12px;
+  border: 3px solid #6d4827;
+  border-radius: 14px 24px 20px 14px;
+  background: linear-gradient(90deg, #a47342, #613d26 49.4%, #b4834c 50.6%, #6e442b);
+  box-shadow:
+    inset 0 0 0 3px #c69559,
+    0 6px 9px #44271533;
+  color: #533c26;
+}
+.manya-leaf {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 24px 12px;
+  border: 1px solid #c59958;
+  border-radius: 5px 9px 14px 5px;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 27px, #b8955d12 28px 29px),
+    linear-gradient(100deg, #f9ebc8, #fff8e7 88%, #d0b183);
+  box-shadow:
+    0 3px 0 #c8a777,
+    0 6px 0 #ecdbb9;
+}
+.manya-leaf-right {
+  border-radius: 9px 5px 5px 14px;
+  background: linear-gradient(90deg, #ccb084, #fff8e8 12%, #faedce);
+  align-items: center;
+  text-align: center;
+}
+.manya-page-date {
+  margin: 0 0 6px;
+  color: #8d5432;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+#blackFridayDialog .manya-leaf h3 {
+  margin: 0 0 8px;
+  color: #5b3e25;
+  font:
+    700 24px/1.15 Georgia,
+    serif;
+}
+.manya-reset {
+  margin: 0 0 14px;
+  color: #8e7255;
+  font-size: 11px;
+}
+.manya-order {
+  display: grid;
+  grid-template-columns: 48px 1fr 88px;
+  gap: 9px;
+  align-items: center;
+  padding: 14px 0;
+  border-top: 1px dashed #c3a879;
+}
+.manya-order-icon {
+  display: block;
+  position: relative;
+  width: 46px;
+  height: 54px;
+}
+.manya-order-icon > img {
+  width: 46px;
+  height: 54px;
+  object-fit: contain;
+}
+.manya-order-games {
+  position: absolute;
+  right: -3px;
+  bottom: 0;
+  min-width: 25px;
+  padding: 1px 3px;
+  border: 1px solid #e3bd68;
+  border-radius: 6px;
+  background: linear-gradient(#3c4a4f, #142028);
+  box-shadow: 0 1px 2px #0009;
+  color: #fff0c2;
+  text-align: center;
+  font:
+    800 13px/1.2 Arial,
+    sans-serif;
+}
+.manya-order-copy {
+  min-width: 0;
+}
+.manya-order-copy strong {
+  font-size: 14px;
+}
+.manya-order-copy p {
+  margin: 5px 0 8px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.manya-order-copy small {
+  display: block;
+  font-size: 10px;
+}
+.manya-order progress {
+  width: 100%;
+  height: 7px;
+  accent-color: #4a8063;
+  display: block;
+  margin-bottom: 4px;
+}
+.manya-order-reward {
+  display: grid;
+  gap: 9px;
+  justify-items: center;
+}
+.manya-token-amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.manya-token-amount > img {
+  width: 26px;
+  height: 28px;
+  object-fit: contain;
+}
+#blackFridayDialog .manya-order button {
+  padding: 4px 7px;
+  font-size: 11px;
+  width: 88px;
+  min-height: 32px;
+  height: 32px;
+}
+.manya-order[data-claimed="true"] .manya-order-copy {
+  opacity: 0.65;
+}
+.manya-order[data-claimed="true"] button {
+  color: #315b3f;
+}
+.manya-folio {
+  margin-top: auto;
+  padding-top: 15px;
+  font-size: 10px;
+  color: #947755;
+}
+.manya-binding {
+  position: absolute;
+  top: 8%;
+  bottom: 8%;
+  width: 40px;
+  left: calc(50% - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 1;
+}
+.manya-binding i {
+  height: 13px;
+  border-radius: 50%;
+  border: 3px solid #b28a46;
+  background: linear-gradient(#e4c47a, #986c31);
+  box-shadow:
+    0 3px 3px #38221388,
+    inset 0 2px 0 #ffe5a8;
+}
+.manya-final-art {
+  position: relative;
+  width: 100%;
+  margin: 5px 0 10px;
+  padding-bottom: 20px;
+}
+.manya-album-preview {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  border: 5px solid #fff9e5;
+  box-shadow: 0 3px 8px #4e2c2540;
+  transform: rotate(-2deg);
+}
+.manya-regalia-preview {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  bottom: 0;
+  right: -5px;
+  filter: drop-shadow(0 4px 4px #38251155);
+}
+.manya-final-copy {
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 0 0 12px;
+}
+.manya-stamps {
+  display: grid;
+  grid-template-columns: repeat(10, 24px);
+  gap: 4px;
+  max-width: 100%;
+}
+.manya-stamps span {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px dashed #a4875a;
+  font-size: 11px;
+  color: #9f8866;
+}
+.manya-stamps .is-done {
+  background: #397054;
+  border: 1px solid #235136;
+  color: #fff0be;
+  transform: rotate(-8deg);
+}
+.manya-final-count {
+  font-size: 12px;
+  margin: 8px 0;
+}
+#blackFridayDialog .manya-leaf-right > button {
+  width: 100%;
+  min-height: 36px;
+  height: 36px;
+  padding: 4px 12px;
+  font-size: 12px;
+}
+.manya-catalog-wrap {
+  padding: 8px;
+}
+.manya-catalog-wrap h3 {
+  margin: 0 0 5px;
+}
+.manya-catalog-note {
+  margin: 0 0 16px;
+  font-size: 12px;
+}
+.manya-catalog {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.manya-prize {
+  display: grid;
+  grid-template-rows: 80px 42px 26px 36px;
+  align-items: center;
+  justify-items: center;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid var(--prism-edge);
+  border-radius: 13px;
+  background: #ffffffa0;
+  text-align: center;
+}
+.manya-prize > img {
+  width: 82px;
+  height: 78px;
+  object-fit: contain;
+}
+.manya-prize h4 {
+  margin: 0;
+  font-size: 15px;
+}
+.manya-prize small {
+  font-size: 10px;
+}
+#blackFridayDialog .manya-prize button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 36px;
+  min-height: 36px;
+  padding: 4px 10px;
+}
+.manya-exchange {
+  grid-column: auto;
+}
+.manya-coupon {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr) 190px;
+  align-items: center;
+  gap: 18px;
+  margin: 14px 0;
+  padding: 18px;
+  border: 1px solid #b89b60;
+  border-radius: 13px;
+  background: linear-gradient(120deg, #233238, #181b22);
+  color: #f1dfba;
+}
+.manya-coupon > img {
+  width: 100px;
+  height: 120px;
+  object-fit: contain;
+}
+.manya-coupon > button {
+  align-self: end;
+  justify-self: end;
+  width: 190px;
+  max-width: 100%;
+}
+.manya-coupon ul {
+  margin: 8px 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.manya-coupon small {
+  font-size: 11px;
+}
+@media (max-width: 800px) {
+  #blackFridayDialog .manya-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .manya-header .manya-tabs {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  #blackFridayDialog .manya-close {
+    width: 30px;
+    height: 30px;
+    min-height: 30px;
+  }
+  .manya-coupon {
+    grid-template-columns: 75px minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+  .manya-coupon > img {
+    width: 75px;
+  }
+  .manya-coupon > button {
+    grid-column: 1 / -1;
+  }
+}
+/* Black Friday has a dedicated night palette in every interface theme. */
+body #blackFridayDialog {
+  --prism-ink: #f1dfba;
+  --prism-edge: #b89b60;
+  --prism-light: #464153;
+  --prism-mid: #282333;
+  color: #f1dfba;
+  border-color: #b89b60;
+  background: radial-gradient(ellipse at top, #343044, #15131d 78%);
+  box-shadow:
+    inset 0 0 0 4px #ac8b4944,
+    0 18px 70px #000b;
+}
+#blackFridayDialog .manya-balance {
+  background: #0d0e16;
+  border: 1px solid #786848;
+  color: #f4e5c5;
+}
+#blackFridayDialog .manya-token {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex: none;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+#blackFridayDialog .manya-prize button > img {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  object-fit: contain;
+}
+#blackFridayDialog :is(h2, h3, h4, strong) {
+  color: inherit;
+}
+#blackFridayDialog :is(.sf-button, .sf-tab) {
+  color: #f4e6c4;
+  background: linear-gradient(#51445c, #302535);
+  border: 1px solid #b89b60;
+  box-shadow:
+    inset 0 1px 1px #dfce9e66,
+    0 2px 0 #09080d;
+}
+#blackFridayDialog .sf-tab[aria-pressed="true"] {
+  background: linear-gradient(#b99857, #806333);
+  color: #fff6da;
+}
+#blackFridayDialog button:disabled:not([data-pending]) {
+  color: #aba4ac;
+  background: #34313b;
+  border-color: #625966;
+  box-shadow: none;
+  opacity: 1;
+}
+#blackFridayDialog .manya-book {
+  color: #e5d5b8;
+  border-color: #66533b;
+  background: linear-gradient(90deg, #594535, #201a1e 49.4%, #78573a 50.6%, #392d2b);
+  box-shadow:
+    inset 0 0 0 3px #8c7146,
+    0 6px 12px #0007;
+}
+#blackFridayDialog .manya-leaf {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 27px, #d1ba7c08 28px 29px),
+    linear-gradient(100deg, #2d2830, #35303b 88%, #17151d);
+  border-color: #736047;
+  box-shadow:
+    0 3px 0 #514333,
+    0 6px 0 #75644b;
+}
+#blackFridayDialog .manya-leaf-right {
+  background: linear-gradient(90deg, #15141b, #302a35 12%, #282530);
+}
+#blackFridayDialog .manya-leaf h3 {
+  color: #f2db9c;
+}
+#blackFridayDialog :is(.manya-page-date, .manya-reset, .manya-folio) {
+  color: #c7b28f;
+}
+#blackFridayDialog .manya-order {
+  border-color: #79664c;
+  padding: 10px 0;
+}
+#blackFridayDialog .manya-order-tier {
+  color: #d8ba7a;
+  margin-bottom: 5px;
+}
+#blackFridayDialog .manya-order-reward {
+  gap: 5px;
+}
+#blackFridayDialog .manya-swap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: 10px;
+}
+.manya-swap img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+#blackFridayDialog .manya-album-preview {
+  border-color: #b69e70;
+}
+#blackFridayDialog .manya-prize {
+  background: linear-gradient(135deg, #35303d, #221e29);
+  border-color: #7e6947;
+  color: #f0dfbd;
+}
+#blackFridayDialog .manya-stamps span {
+  color: #c5b794;
+}
+#blackFridayDialog .manya-stamps .is-done {
+  background: #775d32;
+  border-color: #b99c58;
+  color: #fff0c4;
+}
+.manya-achievements {
+  display: grid;
+  gap: 12px;
+}
+.manya-achievement {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 15px;
+  padding: 16px;
+  border: 1px solid #7e6947;
+  border-radius: 12px;
+  background: #292531;
+}
+.manya-achievement-icon {
+  width: 54px;
+  height: 54px;
+  align-self: center;
+}
+.manya-achievement[data-earned="false"] .achievement-symbol {
+  filter: saturate(0.35) brightness(0.92);
+}
+.manya-achievement h3 {
+  margin: 0;
+  font-size: 17px;
+}
+.manya-achievement p {
+  font-size: 12px;
+  margin: 6px 0 10px;
+}
+.manya-achievement small {
+  display: block;
+  margin-top: 8px;
+}
+.manya-achievement-steps {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.manya-achievement-steps span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid #766346;
+  border-radius: 7px;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+.manya-achievement-steps .is-done {
+  background: #55462b;
+  color: #ffdf91;
+}
+.manya-achievement-steps img {
+  width: 20px;
+  height: 22px;
+  object-fit: contain;
+}
+body #donationDialog[data-black-friday="true"] {
+  color: #f0dfba;
+  background: radial-gradient(ellipse at top, #302a39, #15131d);
+  border-color: #c5a253;
+  box-shadow:
+    inset 0 0 20px #b18b4233,
+    0 0 24px #bf984355;
+}
+#donationDialog[data-black-friday="true"] .donation-card {
+  /* Replace the filled parchment frame; retain its inset so card contents stay aligned. */
+  position: relative;
+  border-image: none;
+  border: 2px solid transparent;
+  border-radius: 26px;
+  padding: 20px;
+  color: #f0dfba;
+  background:
+    radial-gradient(ellipse at 50% -15%, #454134, #2b2b31 40%, #1b1b23 80%) padding-box,
+    linear-gradient(145deg, #f4dfa2, #b28b4c 23%, #5d4b34 48%, #d4b574 74%, #705333) border-box;
+  box-shadow:
+    inset 0 1px 0 #ffedbd22,
+    0 4px 12px #0005;
+}
+#donationDialog[data-black-friday="true"] .donation-card::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #ead09a22;
+  border-radius: 19px;
+  pointer-events: none;
+}
+#donationDialog[data-black-friday="true"] .donation-prices {
+  border-top-color: #b3986155;
+}
+#donationDialog[data-black-friday="true"]
+  :is(
+    h2,
+    h3,
+    .donation-amount,
+    .donation-prices,
+    .donation-base,
+    .donation-daily-label,
+    .donation-bonus-state
+  ) {
+  color: #f0dfba;
+}
+#donationDialog[data-black-friday="true"] .donation-bonus {
+  color: #fce4a2;
+  border-color: #a68a52;
+  background: #8c6a3322;
+}
+#donationDialog[data-black-friday="true"] .donation-prices span {
+  color: #d4c3a6;
+}
+#donationDialog[data-black-friday="true"]
+  .donation-bonus-card[data-available="true"]
+  .donation-bonus-state {
+  color: #b6e7bf;
+}
+#donationDialog[data-black-friday="true"] .donation-heading {
+  background: linear-gradient(#55422d, #30251d);
+  color: #fff1cd;
+}
+/* Black Friday controls do not inherit the selected interface's amethyst fill. */
+body #donationDialog[data-black-friday="true"] :is(.sf-tab, .sf-button, .collection-pages button) {
+  --prism-face-top: #494234;
+  --prism-face-bottom: #292725;
+  --prism-face-ink: #fff0ce;
+  --prism-edge: #b39861;
+  --prism-deep: #6b4c22;
+  border-image: none;
+  border: 1px solid #b39861;
+  border-radius: 11px;
+  background: linear-gradient(#494234, #292725);
+  color: #fff0ce;
+  box-shadow:
+    inset 0 1px 0 #fff2cc33,
+    0 3px 0 #09090966;
+  text-shadow: none;
+}
+body #donationDialog[data-black-friday="true"] .sf-tab[aria-selected="true"],
+body #donationDialog[data-black-friday="true"] .sf-button:not(:disabled:not([data-pending])) {
+  --prism-face-top: #ffe7a0;
+  --prism-face-bottom: #cda150;
+  --prism-face-ink: #392a13;
+  background: linear-gradient(#ffe7a0, #cda150);
+  color: #392a13;
+  border-color: #ffe3a0;
+}
+body #donationDialog[data-black-friday="true"] :is(.sf-tab, .sf-button):disabled:not([data-pending]) {
+  --prism-face-top: #383632;
+  --prism-face-bottom: #383632;
+  --prism-face-ink: #aaa393;
+  background: #383632;
+  border-color: #686151;
+  color: #aaa393;
+  box-shadow: none;
+}
+/* Window-wide tab rules use !important, so the event palette must win here too. */
+body #donationDialog[data-black-friday="true"] .sf-tab {
+  background: linear-gradient(145deg, var(--prism-face-top), var(--prism-face-bottom)) !important;
+  color: var(--prism-face-ink) !important;
+  border-color: var(--prism-edge) !important;
+}
+body #donationDialog[data-black-friday="true"] .booster-close {
+  --ui-art-controls-button_round_default-svg: url("../../assets/ui/svg/controls/button_round_default.svg");
+  --ui-art-controls-button_round_hover-svg: url("../../assets/ui/svg/controls/button_round_hover.svg");
+  --ui-art-controls-button_round_pressed-svg: url("../../assets/ui/svg/controls/button_round_pressed.svg");
+}
+#donationDialog[data-black-friday="true"] :is(.donation-token-badge, .donation-multiplier-badge) {
+  position: absolute;
+  top: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 26px;
+  padding: 0 7px;
+  border: 1px solid #b99b59;
+  border-radius: 10px;
+  background: #17171ce8;
+  color: #fff0cd;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+#donationDialog[data-black-friday="true"] .donation-token-badge {
+  left: 11px;
+}
+#donationDialog[data-black-friday="true"] .donation-multiplier-badge {
+  top: 8px;
+  right: 8px;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: url("../../assets/ui/svg/decorations/promo-seal-gold.svg") center / contain no-repeat;
+  color: #4b2b0a;
+  font-size: 19px;
+  font-weight: 900;
+  text-shadow: 0 1px 0 #fff5bb;
+  filter: drop-shadow(0 2px 1px #0008);
+  transform: rotate(10deg);
+}
+#donationDialog[data-black-friday="true"] .donation-token-badge img {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+}
+@media (max-width: 800px) {
+  .manya-book {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .manya-binding {
+    display: none;
+  }
+  .manya-leaf {
+    padding: 16px;
+    min-width: 0;
+  }
+  .manya-catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .manya-exchange {
+    grid-column: auto;
+  }
+  .manya-final-art {
+    max-width: 380px;
+  }
+}
+@media (max-width: 460px) {
+  body #blackFridayDialog {
+    padding: 9px;
+  }
+  #blackFridayDialog .manya-header {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  #blackFridayDialog .manya-header h2 {
+    font-size: 21px;
+  }
+  .manya-portrait {
+    width: 52px;
+    height: 62px;
+  }
+  .manya-balance {
+    margin-left: 0;
+    font-size: 18px;
+    padding: 4px 8px;
+  }
+  .manya-header-controls {
+    gap: 8px;
+  }
+  #blackFridayDialog .manya-tabs button {
+    font-size: 10px;
+    padding: 2px;
+  }
+  .manya-order {
+    grid-template-columns: 32px minmax(0, 1fr) 78px;
+    gap: 7px;
+  }
+  .manya-order-icon {
+    width: 32px;
+    height: 40px;
+  }
+  .manya-order-icon > img {
+    width: 32px;
+    height: 40px;
+  }
+  .manya-order-games {
+    min-width: 20px;
+    font-size: 11px;
+  }
+  #blackFridayDialog .manya-order button {
+    width: 76px;
+  }
+  .manya-catalog {
+    gap: 8px;
+  }
+  .manya-prize {
+    padding: 8px;
+  }
+  .manya-exchange {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Approved order value accents, 2026-11-10. Static highlights, no arena animation. */
+
+#blackFridayDialog .manya-order {
+  --order-rgb: 182, 199, 214;
+  position: relative;
+  border: 1px solid rgba(var(--order-rgb), 0.24);
+  border-left: 3px solid rgba(var(--order-rgb), 0.8);
+  border-radius: 10px;
+  padding: 8px 9px 8px 7px;
+  margin: 0 0 6px;
+  gap: 8px;
+  grid-template-columns: 40px minmax(0, 1fr) 88px;
+  background: linear-gradient(
+    105deg,
+    rgba(var(--order-rgb), 0.11),
+    rgba(var(--order-rgb), 0.025) 64%,
+    transparent
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(var(--order-rgb), 0.09),
+    -3px 0 12px rgba(var(--order-rgb), 0.055);
+}
+#blackFridayDialog .manya-order[data-tier="important"] {
+  --order-rgb: 235, 184, 79;
+}
+#blackFridayDialog .manya-order[data-tier="secret"] {
+  --order-rgb: 92, 214, 198;
+  box-shadow:
+    inset 0 1px 0 rgba(var(--order-rgb), 0.14),
+    -3px 0 15px rgba(var(--order-rgb), 0.11);
+}
+#blackFridayDialog .manya-order-tier {
+  color: rgb(var(--order-rgb));
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  margin-bottom: 6px;
+}
+#blackFridayDialog .manya-order-copy strong {
+  color: #f6ebd6;
+}
+#blackFridayDialog .manya-order-copy p {
+  color: #ded7ca;
+}
+#blackFridayDialog .manya-order-icon,
+#blackFridayDialog .manya-order-icon > img {
+  width: 40px;
+  height: 48px;
+}
+#blackFridayDialog .manya-order progress {
+  accent-color: rgb(var(--order-rgb));
+}
+#blackFridayDialog .manya-order progress::-webkit-progress-value {
+  background: rgb(var(--order-rgb));
+}
+#blackFridayDialog .manya-order progress::-moz-progress-bar {
+  background: rgb(var(--order-rgb));
+}
+#blackFridayDialog .manya-order .manya-token-amount {
+  color: rgb(var(--order-rgb));
+}
+@media (min-width: 801px) and (max-height: 950px) {
+  #blackFridayDialog .manya-leaf {
+    padding: 12px 16px 10px;
+  }
+  #blackFridayDialog .manya-order {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  #blackFridayDialog .manya-order-tier {
+    margin-bottom: 3px;
+  }
+  #blackFridayDialog .manya-order-copy p {
+    margin: 4px 0 6px;
+  }
+  #blackFridayDialog .manya-folio {
+    padding-top: 8px;
+  }
+  #blackFridayDialog .manya-album-preview {
+    width: auto;
+    max-width: calc(100% - 10px);
+    max-height: clamp(180px, calc(100dvh - 620px), 310px);
+  }
+}
+
+/* Ready markers stay clear of the compact claim captions. */
+.manya-content .menu-notification-dot { width: 9px; height: 9px; right: 4px; top: 3px; }

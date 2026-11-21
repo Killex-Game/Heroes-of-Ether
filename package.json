@@ -1,0 +1,17 @@
+{
+  "name": "killex-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Killex — экосистема. Герои Эфира — браузерная игра.",
+  "scripts": {
+    "start": "node operations/scripts/start-game.cjs",
+    "test": "npm --prefix games/heroes-of-ether test",
+    "check": "npm --prefix games/heroes-of-ether run check:structure",
+    "doctor": "npm --prefix games/heroes-of-ether run doctor",
+    "config:check": "npm --prefix games/heroes-of-ether run config:check",
+    "docs:refresh": "npm --prefix games/heroes-of-ether run docs:refresh",
+    "backups:prune": "node operations/scripts/prune-backups.cjs",
+    "repo:check": "node operations/scripts/check-repository.cjs",
+    "setup": "node operations/scripts/setup-local-config.cjs"
+  }
+}

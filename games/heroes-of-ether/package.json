@@ -1,0 +1,52 @@
+{
+  "name": "killex-heroes-of-ether",
+  "version": "0.6.0",
+  "private": true,
+  "description": "Локальный прототип: арена, бустеры, кланы, опыт и рейтинги",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node scripts/testing/run-tests.js",
+    "test:events": "node scripts/testing/check-events.cjs",
+    "test:browser": "node tests/browser/game-smoke.test.cjs",
+    "test:browser:lan": "node tests/browser/accounts-chests.test.js --lan",
+    "test:browser:visual": "node tests/browser/interface-layout-and-styling.test.js",
+    "test:browser:clans": "node tests/browser/clan-battles-and-rewards.test.js",
+    "test:browser:bots": "node tests/browser/temporary-arena-bots.test.js",
+    "test:browser:experience": "node tests/browser/arena-experience-results.test.js",
+    "test:browser:vip-avatars": "node tests/browser/vip-avatar-surfaces.test.js",
+    "benchmark:collisions": "node scripts/benchmarks/collision-performance.js",
+    "import-art": "node scripts/assets/import-player-skins.js",
+    "import-boosters": "node scripts/assets/import-boosters.js",
+    "import-ui": "node scripts/assets/import-interface-kit.js",
+    "build:vip-avatars": "node scripts/assets/build-vip-avatar-variants.js",
+    "dev:coins": "node scripts/development/grant-coins.js",
+    "dev:bots": "node scripts/development/manage-test-bots.js",
+    "dev:grant-all": "node scripts/development/grant-test-inventory.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:structure": "node scripts/testing/check-project-structure.js",
+    "docs:refresh": "node scripts/documentation/build-reference-docs.js",
+    "test:browser:payments": "node tests/browser/mock-payments.test.js",
+    "test:browser:responsive": "node tests/browser/responsive-interface.test.js",
+    "test:browser:firefox": "node tests/browser/responsive-interface.test.js --engine=firefox",
+    "test:browser:webkit": "node tests/browser/responsive-interface.test.js --engine=webkit",
+    "test:browser:edge": "node tests/browser/responsive-interface.test.js --engine=edge",
+    "test:browser:bonuses": "node tests/browser/showcase-and-daily-bonuses.test.js",
+    "config:check": "node scripts/development/doctor.cjs --config-only",
+    "doctor": "node scripts/development/doctor.cjs",
+    "benchmark:capacity": "node scripts/benchmarks/mongodb-capacity.cjs",
+    "benchmark:audit": "node scripts/benchmarks/audit-capacity.cjs",
+    "test:browser:legacy": "node tests/browser/full-game-flow.test.js"
+  },
+  "engines": {
+    "node": ">=24.22.3"
+  },
+  "dependencies": {
+    "mongodb": "7.8.0",
+    "ws": "8.23.0"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}

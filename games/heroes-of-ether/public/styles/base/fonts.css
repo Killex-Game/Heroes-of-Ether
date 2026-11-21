@@ -1,0 +1,37 @@
+/* Шрифт Inter и одинаковая ширина цифр. */
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/fonts/inter/InterVariable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  /* Те же ровные цифры в HTML и canvas. */
+  font-feature-settings:
+    "tnum" 1,
+    "lnum" 1,
+    "calt" 0;
+}
+:root {
+  --game-font: "Inter", Arial, sans-serif;
+}
+html {
+  font-family: var(--game-font);
+  font-optical-sizing: none;
+}
+body {
+  font-feature-settings:
+    "tnum" 1,
+    "lnum" 1,
+    "calt" 0;
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+*,
+::before,
+::after {
+  font-variant-numeric: lining-nums tabular-nums;
+}

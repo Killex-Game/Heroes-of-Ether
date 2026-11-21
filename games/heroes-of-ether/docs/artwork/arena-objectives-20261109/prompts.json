@@ -1,0 +1,14 @@
+[
+  {
+    "id": "order-timer",
+    "kind": "icon",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-d1a0e024-dae0-465d-9f7b-50801e4e0f5d.png",
+    "prompt": "Use case: stylized-concept. A single inventory icon: elegant fantasy mechanical stopwatch timer for Heroes of Ether game, polished warm gold bezel, small winding crown on top and side start button, round deep midnight petrol enamel dial, ivory minute ticks and two clear gold hands. Match the reference illustration's richly painted fantasy game materials, crisp dark silhouette, broad gradients and controlled glossy highlights, but no crystals or snowflake. Front view, slightly dimensional thick metal casing. Simple readable at 48 pixels, no tiny filigree, no numbers, no lettering, no badge or plaque (the lower-right numerical badge is added separately in UI). Complete object with 7% transparent margin on all sides, centered square, genuinely transparent background, no scenery, no cast shadow outside object. No purple achievement medal frame."
+  },
+  {
+    "id": "friday_case",
+    "kind": "achievement",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-4f1a088c-217d-4b64-b3cf-78e11ede2494.png",
+    "prompt": "Use case: stylized-concept. New fantasy achievement interior illustration for Heroes of Ether, called Case. Reference 1 is the exact Black Friday chest identity: curved deep petrol-teal lid, black wooden body, gold reinforced bands, silver PAW shaped lock. Show that recognizable chest OPEN with tilted lid, a restrained warm light from inside and a few canonical gold star-embossed coins visible. Three-quarter front view, charming polished fantasy painted game icon. Reference2 is color/render quality guidance only. On dark graphite petrol circular enamel disk, entire primary object inside center 70% of square. NO outer gold medal frame at all (canonical frame will be composited later), no purple, no letters, no numbers, no text. Transparent outside circular backing. Thick readable shapes, controlled highlights, crisp silhouette, readable at48px. Use this exact chest rather than generic gift box. Square."
+  }
+]

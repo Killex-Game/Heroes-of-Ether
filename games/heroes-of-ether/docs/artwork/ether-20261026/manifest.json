@@ -1,0 +1,32 @@
+{
+  "created": "2026-10-26",
+  "generator": "OpenAI imagegen (built-in)",
+  "source": "Created for this project; references are existing project art, with no new third-party asset downloads.",
+  "references": [
+    "public/assets/food/rounded-pellets-v1.png",
+    "docs/artwork/ether-20261026/drop-source.png"
+  ],
+  "prompts": {
+    "drop": "Create ONE game sprite on genuinely transparent background: a simple round drop of golden ether, a smooth liquid-gold bead. This replaces the four colorful food pellets in the reference. Output a SINGLE centered bead, NOT a sprite sheet. Nearly circular silhouette, soft rounded dome, polished honey-gold liquid surface, subtle warm amber shading along lower edge and one small pale-gold highlight at upper left. Entire object in a single GOLD hue family; no green, blue, purple, red accents. It must remain simple and perfectly readable when drawn at 8-14 pixels. Match the rounded painted game-art feel of the reference but make it golden and elegant. NO gemstone facets, no crystal, no coin, no markings, no star, no pointed teardrop tip, no splash, no flame, no particles or halo, no cast ground shadow, no pedestal, no text. Floating rounded drop, full silhouette with about 12% transparent padding around it, high quality hand-painted 3D fantasy-game resource icon, square canvas.",
+    "currency": "Using the attached golden round ether drop as the exact material and shape reference, create ONE currency icon containing EXACTLY THREE of these smooth, nearly spherical golden liquid beads in a compact triangular cluster, on a genuinely transparent background. The three drops are individually legible: one slightly raised at back-center and two in front at lower left and lower right, with just a little overlap. Keep the identical golden yellow / warm amber palette, soft cream-gold top-left highlights, smooth rounded hand-painted 3D fantasy-game look. This is valuable golden ether, NOT a gemstone, coin or banknote. No pointed tips, no facets, no pedestal, no container, no ornaments, no sparkles or extra tiny drops, no external halo, no ground shadow, no text or symbols. Exactly three circular gold drops, bold clean silhouette readable at 24 pixels, cluster centered and occupying about 85% of the square canvas with safe transparent padding. Color and material must match the reference drop, not bronze/orange/brown metal."
+  },
+  "outputs": [
+    {
+      "source": "drop-source.png",
+      "file": "public/assets/food/ether-drop-v1.webp",
+      "size": 128,
+      "export": "Trim transparent border, fit in 108x108 with preserved aspect ratio, add 10px transparent border. WebP quality 96 alphaQuality 100."
+    },
+    {
+      "source": "currency-source.png",
+      "files": [
+        "public/assets/menu-icons/64/currency_bucks.webp",
+        "public/assets/menu-icons/128/currency_bucks.webp",
+        "public/assets/menu-icons/256/currency_bucks.webp"
+      ],
+      "export": "Trim transparent border, fit with preserved aspect ratio, 6% transparent padding on each edge. WebP quality 96 alphaQuality 100."
+    }
+  ],
+  "compatibility": "Internal bucks IDs and existing balances, receipts, prices, reward amounts and food physics remain unchanged. Purchased package artwork is intentionally deferred.",
+  "licensing": "AI-generated project artwork; no external font or commercial asset used. Existing reference provenance requires the separate pre-release asset audit."
+}

@@ -1,0 +1,1356 @@
+{
+  "date": "2026-10-31",
+  "scope": "Original game, visual assets and UI only",
+  "requests": [
+    "Structured quest reroll confirmation",
+    "Clan-high chest sword geometry",
+    "Single-line Easter recipe",
+    "Champion frame crown removed; laurels in foreground",
+    "Manya level 5 without floating sparkles",
+    "Complete heads, headwear, horns and ears inside circular avatar, transparent backgrounds",
+    "Scrollable avatar set cards with hidden scrollbar and fixed window size",
+    "Extra crest frame geometry matched to original presets",
+    "25 gold Prizm symbols",
+    "Clan save footer spacing"
+  ],
+  "generations": {
+    "tool": "Built-in imagegen",
+    "promptSuffix": "Prizm art direction: sculpted polished warm gold with broad clean bevels, dimensional illustration, confident silhouette, restrained details readable at 40px, bright ivory highlights and rich amber shadows. ALL GOLD monochrome material, no coloured enamel or gems. Not flat clipart, not photorealistic. Front-facing emblem composition, whole object with 10% transparent margins. No shield, no frame, no medal backing, no text, no background or ground shadow, no glitter. Square PNG with real transparent alpha. One symbol in a coherent 25-piece gold heraldic set.",
+    "symbols": [
+      {
+        "id": "s21_lily",
+        "subject": "an elegant heraldic fleur-de-lis with three swept petals, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1085c357-c96a-4c23-9c4b-d9b3ab90230a.png"
+      },
+      {
+        "id": "s01_crown",
+        "subject": "a small open five-point crown, no jewels, front view, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ccd405d3-2463-4129-9af8-e8371e05a0bb.png"
+      },
+      {
+        "id": "s02_lion",
+        "subject": "a noble lion head facing forward with a sculpted layered mane, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e17fb038-cde1-41a6-a4ff-1e8a92db63a9.png"
+      },
+      {
+        "id": "s03_wolf",
+        "subject": "a strong wolf head facing forward with upright ears and angular cheek fur, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-0c5666e6-8252-4165-9e03-a2fb98ac8c6a.png"
+      },
+      {
+        "id": "s04_dragon",
+        "subject": "a single dragon head in side profile with curved horns and a long elegant neck",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e4cd89e4-180d-4951-9823-fbbfb0f58227.png"
+      },
+      {
+        "id": "s05_phoenix",
+        "subject": "one phoenix with tall swept flame-shaped wings and a flowing tail, symmetric wings",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-f39e972c-44d7-40a2-bbeb-97de73ab14e6.png"
+      },
+      {
+        "id": "s06_eagle",
+        "subject": "a SINGLE HEADED eagle facing forward with spread layered wings, fantasy animal, NOT a national emblem",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4f2a13bd-1870-476d-b1fa-327702904758.png"
+      },
+      {
+        "id": "s07_stag",
+        "subject": "a deer head with branching antlers, frontal symmetry, all antlers visible",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-75cb7dc4-3547-4d26-98a0-6c2f94b35e7a.png"
+      },
+      {
+        "id": "s08_owl",
+        "subject": "a wise owl facing forward, wings folded, big sculpted eyes, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e41b8f23-1eb9-4dc3-8463-33852e8f4241.png"
+      },
+      {
+        "id": "s09_griffin",
+        "subject": "one griffin in heraldic rearing side pose, eagle head, lion body, one pair of wings",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ee09265f-7a41-4955-b049-3b0a26fbc351.png"
+      },
+      {
+        "id": "s10_crossed_swords",
+        "subject": "two straight swords crossed behind each other in a precise X; coherent blades, guards and handles, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-5b4570df-d30d-471f-8537-08350d8caf31.png"
+      },
+      {
+        "id": "s11_battle_axe",
+        "subject": "one elegant double-headed battle axe, straight vertical handle, symmetric blades",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9f72e034-9a5c-4cf3-a6f1-372353f6e532.png"
+      },
+      {
+        "id": "s12_tower",
+        "subject": "a sturdy castle tower with crenellations and a single arch doorway, frontal symmetry",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2967e58c-9f35-4ec9-9294-17029d79fe3e.png"
+      },
+      {
+        "id": "s13_compass_star",
+        "subject": "an elegant eight-point compass rose with alternating long and short points, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d2929caf-3b31-45f3-ae76-64d8de7e6371.png"
+      },
+      {
+        "id": "s14_crescent",
+        "subject": "one elegant crescent moon with a small four-point star nested in the crescent",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-8c60ac05-c0db-4ee9-a6be-62687bc4ed11.png"
+      },
+      {
+        "id": "s15_sun",
+        "subject": "one radiant sun medallion, smooth central disk and sculpted tapered rays, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ef35570a-2d2d-4d46-a1e6-11729820f1d9.png"
+      },
+      {
+        "id": "s16_flame",
+        "subject": "one graceful flame with three curling tongues, strong clear silhouette",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d5d66aa7-a700-4ec9-bfb4-cb1c91650c10.png"
+      },
+      {
+        "id": "s17_crystal",
+        "subject": "one elongated faceted golden gemstone with a pointed bottom, no frame",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-434db089-63e3-4065-a5c3-d33ff36f7159.png"
+      },
+      {
+        "id": "s18_oak",
+        "subject": "an oak tree with a wide layered leafy crown, stout trunk and spreading roots",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-43a4282a-747f-48bd-b22a-ef95ebbe988c.png"
+      },
+      {
+        "id": "s19_key",
+        "subject": "one ornate key with a flower-shaped bow, straight stem and coherent teeth, diagonal pose",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-50165aa4-33f1-4a3e-a9b4-94cd9bf71b30.png"
+      },
+      {
+        "id": "s20_ether_orb",
+        "subject": "one smooth golden sphere encircled by two slender intersecting orbital bands, clean symmetric geometry",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-6f4a4263-bb23-4e6e-8d94-4f06107c8bf3.png"
+      },
+      {
+        "id": "s22_bear",
+        "subject": "a powerful bear head facing forward, round ears, sculpted muzzle, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-fb490bb1-97d5-4fe6-990d-a16a3f1c0198.png"
+      },
+      {
+        "id": "s23_unicorn",
+        "subject": "one unicorn head in elegant side profile, single straight spiral horn and swept mane",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2e6beeb1-db35-48e9-bbba-1a36810440e7.png"
+      },
+      {
+        "id": "s24_kraken",
+        "subject": "a stylized kraken with one head and eight curling tentacles, clear separated silhouette",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-3e8d555a-4199-4672-9aae-ca93838c236b.png"
+      },
+      {
+        "id": "s25_rose",
+        "subject": "one heraldic rose with five sculpted overlapping petals and a circular centre, symmetric",
+        "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a750f6fa-d0d8-4717-ad23-8873a741a665.png"
+      }
+    ],
+    "forest": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-efc7eab5-2dfc-4326-9a15-9effb389c810.png"
+  },
+  "additionalGenerations": [
+    {
+      "asset": "clan-high",
+      "source": "exec-f3e0edd5-fdee-49cd-8591-57b9f930c1b6.png"
+    },
+    {
+      "asset": "manya-5",
+      "source": "exec-c3c7ca27-7709-44d2-9c26-491777b6f761.png"
+    }
+  ],
+  "avatars": [
+    {
+      "name": "crystal-guardian.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.949
+    },
+    {
+      "name": "forest-spirit.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.893
+    },
+    {
+      "name": "glass-crystal-guardian.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.918
+    },
+    {
+      "name": "glass-forest-spirit.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.86
+    },
+    {
+      "name": "glass-moon-dragon.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.88
+    },
+    {
+      "name": "glass-sun-phoenix.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.908
+    },
+    {
+      "name": "moon-dragon.webp",
+      "sourceEdgePixels": 115,
+      "scale": 0.916
+    },
+    {
+      "name": "prism-crystal-guardian.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.949
+    },
+    {
+      "name": "prism-forest-spirit.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.935
+    },
+    {
+      "name": "prism-moon-dragon.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.977
+    },
+    {
+      "name": "prism-sun-phoenix.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.91
+    },
+    {
+      "name": "sun-phoenix.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.904
+    },
+    {
+      "name": "vip-1.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.961
+    },
+    {
+      "name": "vip-2.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.96
+    },
+    {
+      "name": "vip-3.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.928
+    },
+    {
+      "name": "vip-4.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.92
+    },
+    {
+      "name": "vip-5.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.945
+    },
+    {
+      "name": "visual-crystal-guardian.webp",
+      "sourceEdgePixels": 33,
+      "scale": 0.899
+    },
+    {
+      "name": "visual-forest-spirit.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.717
+    },
+    {
+      "name": "visual-moon-dragon.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.893
+    },
+    {
+      "name": "visual-sun-phoenix.webp",
+      "sourceEdgePixels": 0,
+      "scale": 0.751
+    }
+  ],
+  "assets": [
+    {
+      "file": "public/assets/league-appearance/bronze-clan.svg",
+      "before": "fb307883fa1e254c08cc4fd129debc9aacc30fbb98b2ae1b5045316157244688",
+      "sha256": "6e59e476bfc19d7d5f464d7533c1b426764741a26bf954e73cfb801e7e6c718a",
+      "bytes": 198832
+    },
+    {
+      "file": "public/assets/league-appearance/bronze-lobby.svg",
+      "before": "a1a7a8697c072ed6c06f2196692de7017d317a59d58b9ade0d8cbaa44faf07c5",
+      "sha256": "6fe28e343bde85bbe68b79e0f02dda573605c02f4864a31867ac92c8c52f240a",
+      "bytes": 201965
+    },
+    {
+      "file": "public/assets/league-appearance/bronze-profile.svg",
+      "before": "7c4a2235f92e3f4e0400d1516e5d9522cd79bf33be80804de89bb90f94965979",
+      "sha256": "162c6f9e180034a9e7db8ecaf5e7fc55612ff0894b68ef998fbf6f49f6d69fff",
+      "bytes": 202065
+    },
+    {
+      "file": "public/assets/league-appearance/champions-clan.svg",
+      "before": "17df98c61d1dfdf2da66181e1b4b1693a6112540affe53faa8e7188d95d02199",
+      "sha256": "c6abf9567d5356e5a8fd74c40a23979c528c033c1070847fbb03f6a7d3e3e82d",
+      "bytes": 222431
+    },
+    {
+      "file": "public/assets/league-appearance/champions-frame.svg",
+      "before": "2dcd757325178aa0857757ccd27175c62c547068b353b22ed611caf8d3388991",
+      "sha256": "bc1f1813f0ff59de92ed9c41add6302d2da6b215db7a3788df1e74a2915cb251",
+      "bytes": 211492
+    },
+    {
+      "file": "public/assets/league-appearance/champions-lobby.svg",
+      "before": "26f18aca6ca34fffbbd390eddb75a84fa9aed5669d84d798f0559805b5b14033",
+      "sha256": "29a1ec1b3288acc8c5a7124ba7b4ba22682fc2cd5b03b15743e2420607190760",
+      "bytes": 225568
+    },
+    {
+      "file": "public/assets/league-appearance/champions-profile.svg",
+      "before": "bbd4bf83dcccbfa1d0d29ef4fa1024b7cd645bc7215574674b256e0e54094c46",
+      "sha256": "9049d6662e2019d6c0e72c5b7d7c20b82a12bf7d45d36601cf19377327cacebe",
+      "bytes": 225668
+    },
+    {
+      "file": "public/assets/league-appearance/diamond-clan.svg",
+      "before": "cb555e65f87157316d291dad9c2c3203f19561653b2e9f17edd1c63a60953b17",
+      "sha256": "c04c4efd1f6674254e3d6925ba13a804024dd9ff980e8b51e41c2b6698cf4c73",
+      "bytes": 215685
+    },
+    {
+      "file": "public/assets/league-appearance/diamond-lobby.svg",
+      "before": "ba3f5df37e3621c830b083f1b0e3f3e094bd2ed12e8e56ec96df4c20f5d02e0f",
+      "sha256": "b04b32bdc464af133305f9612cc9ccd8d15cdb476b0ef537b0d02c1bdd87524b",
+      "bytes": 218829
+    },
+    {
+      "file": "public/assets/league-appearance/diamond-profile.svg",
+      "before": "3c470b425fb38d84c9391ab3df1cab3a8d1ae4cc3548f2f3319c4c07498ef0d4",
+      "sha256": "38f5806b5a01cd55a1cd6fd24793b7c27405bd9b3b3fcca0705f920a36c5d4bc",
+      "bytes": 218929
+    },
+    {
+      "file": "public/assets/league-appearance/gold-clan.svg",
+      "before": "95411fd50b556cccf4b88f9d2fdd183771024d37d617763213c5ea046069381d",
+      "sha256": "e89f24a7a4d80fd2e3b7d5c2c7b7521b228b68afb2de2ee660e05fa77b6c5772",
+      "bytes": 204928
+    },
+    {
+      "file": "public/assets/league-appearance/gold-lobby.svg",
+      "before": "6d054c97787bdceeeb51c2f6f8c6e3ae60747b56b78903714af3ae6088066bfa",
+      "sha256": "95d1877bfcf23d8070a2319dde68c82769751f81f2c9f0c9e0b1997f74a3cb13",
+      "bytes": 208130
+    },
+    {
+      "file": "public/assets/league-appearance/gold-profile.svg",
+      "before": "8df49fc6c6858423ae7b1ac4095be5a6c2694636313b26bd1d2899f3927f00c7",
+      "sha256": "05c7a670e8a2332372143b3dcc78333e0a8aa74da779be17d493d5466f1f3a20",
+      "bytes": 208230
+    },
+    {
+      "file": "public/assets/league-appearance/platinum-clan.svg",
+      "before": "9ac84e5d5a632fa734b60aebdb2dd583b32f0fcee46cd7122fc18f0afe50ba7d",
+      "sha256": "41e47f744b827eb721fd83fbe3dea881f930ff90feae63fda1fbfbee40533d0c",
+      "bytes": 209141
+    },
+    {
+      "file": "public/assets/league-appearance/platinum-lobby.svg",
+      "before": "f04f24913a27184136a461a285d493dee7f83a83927df75b4ba200af02d5bc81",
+      "sha256": "a0ccd76790b75be53076a4b87bf1ba9ad926500f2911aec7f2f13c3c4504361a",
+      "bytes": 212245
+    },
+    {
+      "file": "public/assets/league-appearance/platinum-profile.svg",
+      "before": "eab9461781841c0f4c7519cc5335a87d909de460d458eed11b3c9faf8714bf80",
+      "sha256": "3f312e583f6350997c6889e08753df97d2e63a3fe0e22f4e4e693abf363011b1",
+      "bytes": 212345
+    },
+    {
+      "file": "public/assets/league-appearance/silver-clan.svg",
+      "before": "ed4d968a232b41bcf6ab5bfbb9fb60a1ec515c88684d77106a8b9ad1dafcddfe",
+      "sha256": "bbb72e34467e4aa90b1bb4701dd5405b5c5886cec80884fced865f52bf4e4539",
+      "bytes": 201678
+    },
+    {
+      "file": "public/assets/league-appearance/silver-lobby.svg",
+      "before": "6031b0cacb070aecf5d3edd2e86c3961a849a31d4181d4e4ea1a0529eb5e6ac6",
+      "sha256": "fd2981cdb79d9951025b563b0468da74f8b4118c1d32493142fd272a0ef0411c",
+      "bytes": 204851
+    },
+    {
+      "file": "public/assets/league-appearance/silver-profile.svg",
+      "before": "8c0ec8b82df79ddf2b865b5cb9865dd09ff492c10333495201d5f14f58d21f1c",
+      "sha256": "49dbef55b23050b5831826d2ad00e5e43c0e1d26ed6735c62aa2e622dd3508a3",
+      "bytes": 204951
+    },
+    {
+      "file": "public/assets/chests/prism-classic-v3/128/clan-high.webp",
+      "before": null,
+      "sha256": "ba00d3c0edd3b550dd5ca085b45596aedda646a8f2e692f2534ee7d668f81674",
+      "bytes": 11038
+    },
+    {
+      "file": "public/assets/chests/prism-classic-v3/256/clan-high.webp",
+      "before": null,
+      "sha256": "d3f25416403a3f615410896ba331299feface067f7b1dc3ef25bedf1b1a080e2",
+      "bytes": 30294
+    },
+    {
+      "file": "public/assets/chests/prism-classic-v3/512/clan-high.webp",
+      "before": null,
+      "sha256": "873d2bb2af0fa8744c03d05500f6dfeeca7100f468f41dd368c73d02230e41e7",
+      "bytes": 82748
+    },
+    {
+      "file": "public/assets/chests/prism-classic-v3/64/clan-high.webp",
+      "before": null,
+      "sha256": "9365ec09da3f8cb45aa40c1e961302ce5c599193a9150186b44657dcae375000",
+      "bytes": 4180
+    },
+    {
+      "file": "public/assets/pets/levels-v2/manya-5.webp",
+      "before": null,
+      "sha256": "6b2c6672d71816c8e1d4b2bdad31fbf8babeae0caf11edbe7bc0c8307903b657",
+      "bytes": 60114
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/crystal-guardian.webp",
+      "before": null,
+      "sha256": "90dbec2b91972d8b60e5de35a7680cd33c9f722767a6231422915924bb12fbcd",
+      "bytes": 175558
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/forest-spirit.webp",
+      "before": null,
+      "sha256": "3d01ff8693f5eef43b24c65c1c9e706dcb07615b7bf92271cfd2cf6776f7c14a",
+      "bytes": 194258
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/glass-crystal-guardian.webp",
+      "before": null,
+      "sha256": "b81b8f050a7e944385d922851ddcc22ad9f3b6bfe8a4e710a53678ba9f3f7f11",
+      "bytes": 197368
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/glass-forest-spirit.webp",
+      "before": null,
+      "sha256": "c18a5c29649664c1a5173aa71ceb7e82556a03de1e4abd152a501ac50181cdd6",
+      "bytes": 176062
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/glass-moon-dragon.webp",
+      "before": null,
+      "sha256": "8d78c7520a0ec26c4fe1820efb5225059e2bd4b2deca6689514f04384ecc89e1",
+      "bytes": 189886
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/glass-sun-phoenix.webp",
+      "before": null,
+      "sha256": "d91d65ae11d0a754c203044b827101a2bcefe616c45452d97e18e28af3324f18",
+      "bytes": 249146
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/moon-dragon.webp",
+      "before": null,
+      "sha256": "0672f2cae7ae8c099f7415e3bacfc5b1e22fea2d1b9d055b18e2889a1158a401",
+      "bytes": 172666
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/prism-crystal-guardian.webp",
+      "before": null,
+      "sha256": "81d70c9149a2de162a78b0b6911b7e529b8a76f52c5a7263e2cecd54fe2b308a",
+      "bytes": 174936
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/prism-forest-spirit.webp",
+      "before": null,
+      "sha256": "26c476956785724b7ff67d991c8cba0c103e542953f7c61926ee5fcaea98c2e2",
+      "bytes": 216684
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/prism-moon-dragon.webp",
+      "before": null,
+      "sha256": "d3a7ee5bd42f0f1e107be6dbc50cb730f5739c3c9fd1612e3a17215383fef9b3",
+      "bytes": 181602
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/prism-sun-phoenix.webp",
+      "before": null,
+      "sha256": "e759a419ef03e52335c5467ea1a93c624f01106662c8716294ef6092b7ac9866",
+      "bytes": 152416
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/sun-phoenix.webp",
+      "before": null,
+      "sha256": "40879881a6e3e0dd755aa90a444c5b949cba657fa3094da0688ea2e636d3754c",
+      "bytes": 155652
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/vip-1.webp",
+      "before": null,
+      "sha256": "fa56e11dcc1109dad8181a2d1bd75ad7055ae8f64e41bdccd02cdc6223345b1d",
+      "bytes": 202484
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/vip-2.webp",
+      "before": null,
+      "sha256": "d223911d16e86fc974524bfabf83b24f893da8fd5a330966b0e3d89f589fb4c1",
+      "bytes": 221840
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/vip-3.webp",
+      "before": null,
+      "sha256": "6b1f408c729d80c1ebaddfcd4d96967a53d28d4da5f86c3301d712b39df49c93",
+      "bytes": 216394
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/vip-4.webp",
+      "before": null,
+      "sha256": "8e49102ad690a8b1488dd658e0525a40b75411f9925d4cfcf78ee55244fbb09a",
+      "bytes": 223360
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/vip-5.webp",
+      "before": null,
+      "sha256": "136ac83b741b0fae1e62ec25345d052abed1113b604a7cadee70f94bc02e8af0",
+      "bytes": 229142
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/visual-crystal-guardian.webp",
+      "before": null,
+      "sha256": "575e1459d1f72c3ea2300012c61abfddf04cda8aa7cbcb70feff4b0b84a34320",
+      "bytes": 245652
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/visual-forest-spirit.webp",
+      "before": null,
+      "sha256": "902126db2816a0aea73220f2e30993bf0f2e5622d9ea42512f94107473900345",
+      "bytes": 290800
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/visual-moon-dragon.webp",
+      "before": null,
+      "sha256": "24e56f6d0e11992beaaa23083403a47ccef5714f8e598cb0365f3e0331b6a191",
+      "bytes": 203834
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/visual-sun-phoenix.webp",
+      "before": null,
+      "sha256": "7b94c07ac80e6d086cf76944d543f8df9e0fa750e142afeedf37ba1180c2cf64",
+      "bytes": 190454
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/crystal-guardian.webp",
+      "before": null,
+      "sha256": "5d5eb879b25a48aeae105f30ff326ccd2ed10b8dfaa82a9a36970e492fbe8784",
+      "bytes": 10718
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/forest-spirit.webp",
+      "before": null,
+      "sha256": "a7ac720dd9bb9c0a5a3db4ee4e22bf917e80d55cbdc9c7ea7e9447b407f1cf7e",
+      "bytes": 9682
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/glass-crystal-guardian.webp",
+      "before": null,
+      "sha256": "c3f9dd8123b8c577b622b568eaf366674eb5525337255cf94e429b511de0d92a",
+      "bytes": 8404
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/glass-forest-spirit.webp",
+      "before": null,
+      "sha256": "d910eedd5cf4d205e9d61397a5b292b90732cf51b72417e8019967323ed98620",
+      "bytes": 8598
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/glass-moon-dragon.webp",
+      "before": null,
+      "sha256": "8e4cbcfc03e339ed45c5e0bf4d6c323b06b9dc80709916e57e0e78d43d1ce945",
+      "bytes": 8048
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/glass-sun-phoenix.webp",
+      "before": null,
+      "sha256": "2714ea71c9e7ffc39cf3ee7730229c51f8b6415474f35db7b48d29e1a9e2e6fa",
+      "bytes": 10886
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/moon-dragon.webp",
+      "before": null,
+      "sha256": "a7910ac05a7e76865c3877409989e6cf3e73154778a5abfc71a1e4d611af2802",
+      "bytes": 9352
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/prism-crystal-guardian.webp",
+      "before": null,
+      "sha256": "765a69c7a05b5dae4f0406f96a9d14e088c3c141a41024f58b5f4cb370c4d290",
+      "bytes": 10996
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/prism-forest-spirit.webp",
+      "before": null,
+      "sha256": "fb67f522ac911c6a48b5a188e255c848a2bb28f58fbb1f78babb9c8c868d096e",
+      "bytes": 10918
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/prism-moon-dragon.webp",
+      "before": null,
+      "sha256": "2db0ae19f51fbd453a97e4ceaaa5abd4f0de857e2668fe1b17423bfddea1d4da",
+      "bytes": 10272
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/prism-sun-phoenix.webp",
+      "before": null,
+      "sha256": "54a3df0e993175d8edcbcbd8b9f3196f7912df5b2eeabda20d38717dcbdab53d",
+      "bytes": 9810
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/sun-phoenix.webp",
+      "before": null,
+      "sha256": "1e5914acb57925b1676b05396b3b622cf34739980eb6c8bc3a714520a88cfd9b",
+      "bytes": 8714
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/vip-1.webp",
+      "before": null,
+      "sha256": "6d8d057a9fb642704f55f4aa9bb3da05c2dd3625a0cb2b6f7e7b02c2c819a655",
+      "bytes": 8246
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/vip-2.webp",
+      "before": null,
+      "sha256": "ca5d08bb379959af64d86506ae917de5bc85c1a9db2e6f9f51b1bae6b6fabf68",
+      "bytes": 8072
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/vip-3.webp",
+      "before": null,
+      "sha256": "b0a16326a66f4c93ea509d55c54e78dc107b5911653059b9415105d0e9bbf3bd",
+      "bytes": 8620
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/vip-4.webp",
+      "before": null,
+      "sha256": "8fc2b53e0b887d19c428647a1cbf0c5ded839ed58e4f14c71c4339b9d7148cef",
+      "bytes": 8494
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/vip-5.webp",
+      "before": null,
+      "sha256": "d94aba578ec9b506190795e22ddcf8d8a4093861f5e624ca39866ded25c88860",
+      "bytes": 8734
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/visual-crystal-guardian.webp",
+      "before": null,
+      "sha256": "bd6118303b1021d044c14255aec5368dc458d3a571ba8dc0bf28bb3620c7607b",
+      "bytes": 10700
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/visual-forest-spirit.webp",
+      "before": null,
+      "sha256": "5619509c02716b79a4eb83207146acfb6fec3ee746d7b36b86edb64c46cbe02a",
+      "bytes": 11330
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/visual-moon-dragon.webp",
+      "before": null,
+      "sha256": "01baeb2b8d367497e7a8f24c6923735bf3275a22b4a7209b3c3dcb5505144ac6",
+      "bytes": 9670
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/visual-sun-phoenix.webp",
+      "before": null,
+      "sha256": "2014461a0421b645758125948e99636f8fb60068c79fb87816778ce96c235935",
+      "bytes": 8636
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/crystal-guardian.webp",
+      "before": null,
+      "sha256": "b438271f8faa0c6ecdcc3418b6ee756369b47a011fa2252a4d0d01b35f883d30",
+      "bytes": 27074
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/forest-spirit.webp",
+      "before": null,
+      "sha256": "fc846caa8ed325b15098a636a3c2680c862911414e13969ba2b99fb048ddd123",
+      "bytes": 26194
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/glass-crystal-guardian.webp",
+      "before": null,
+      "sha256": "719630fda84225731190d530e86d4ef96efb4a3ea8a2185db273f050de45ad57",
+      "bytes": 23374
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/glass-forest-spirit.webp",
+      "before": null,
+      "sha256": "0ddb8922d26977efbc2c434fec0e3745c8d45e88cf65b9b43a05380b9ae1822e",
+      "bytes": 23532
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/glass-moon-dragon.webp",
+      "before": null,
+      "sha256": "ae5b468f0935c40866ecc7897eb89775bdc828b1e9ea55a2e887ffb606ab07a0",
+      "bytes": 22294
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/glass-sun-phoenix.webp",
+      "before": null,
+      "sha256": "195814b96c07e0820e378b8920967c1d7967b07c021a0c4be795f8bb0c165292",
+      "bytes": 29474
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/moon-dragon.webp",
+      "before": null,
+      "sha256": "eb918e9e2433fadcede6a261ee261e18c455bc0dd277bd68c14972374a509c02",
+      "bytes": 25160
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/prism-crystal-guardian.webp",
+      "before": null,
+      "sha256": "136ce02decb3c2ecb4ba01cd6193fe72f78d33b5ac166d99acfb1f7a8f815219",
+      "bytes": 27226
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/prism-forest-spirit.webp",
+      "before": null,
+      "sha256": "e6735d41180364956252954fb6454d1dd3c8806462e666058f8ab5b7467f9769",
+      "bytes": 29180
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/prism-moon-dragon.webp",
+      "before": null,
+      "sha256": "74135ec4544d694e82aa4d956a3e810bf6502d76cc7219aee714cd39ef4bdb3e",
+      "bytes": 26230
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/prism-sun-phoenix.webp",
+      "before": null,
+      "sha256": "cc6bd05862fa89742923e568aafd2767752729933505db02b9fdb18ecc94c4d0",
+      "bytes": 24164
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/sun-phoenix.webp",
+      "before": null,
+      "sha256": "3c6fd11e6ea3d692e630572d9ad92188e1228b6ee579a91dee368ce41adc1350",
+      "bytes": 22870
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/vip-1.webp",
+      "before": null,
+      "sha256": "0321280021471ca2e3e3e5f4bd5a9ca7db1793003cffd0d916a79edb76293fd5",
+      "bytes": 22612
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/vip-2.webp",
+      "before": null,
+      "sha256": "3cd5fc901f81ae191cec4b472bb409aade6bda05d3674712dd1554b233dcca85",
+      "bytes": 23408
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/vip-3.webp",
+      "before": null,
+      "sha256": "6d7d5842a84e54cc10ca4c9ca12fcfac6c0dee2727de77d47ef61885b1543062",
+      "bytes": 23650
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/vip-4.webp",
+      "before": null,
+      "sha256": "b7b5680fe36f6bc501874aca0c658697a9456281ec9934598db1c40231411670",
+      "bytes": 23778
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/vip-5.webp",
+      "before": null,
+      "sha256": "cd76cc13096f79c9c70e2f387b1e88c7f5939a72b6f6e2f69c3b7df14f0d9e6c",
+      "bytes": 24698
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/visual-crystal-guardian.webp",
+      "before": null,
+      "sha256": "0d9a0d15a8847bbc5dc81f96666c0e201509334532aca7e02f61e4fba2f5e832",
+      "bytes": 30388
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/visual-forest-spirit.webp",
+      "before": null,
+      "sha256": "c5387997cc98fcf1e31eba527351a96c8a1d677b2c8100f069ab2870245cb4a2",
+      "bytes": 32194
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/visual-moon-dragon.webp",
+      "before": null,
+      "sha256": "df56a03cdf4815fc770311d6812270abd0840160a6eee7b2f4196ecef2d6ef9d",
+      "bytes": 27042
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/visual-sun-phoenix.webp",
+      "before": null,
+      "sha256": "f306c1e58239caf7186c5c29ada1012c84676dd41628153e759cca336ab0325a",
+      "bytes": 24822
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/crystal-guardian.webp",
+      "before": null,
+      "sha256": "2976a76b1043a239ec19c00694c8298b5d9db8941d0dd49dfc0f017da3139f1e",
+      "bytes": 69190
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/forest-spirit.webp",
+      "before": null,
+      "sha256": "2bf895dedfeb939a35754d3337398e3aa93ef4c8f08f146c0082cee58506e1bb",
+      "bytes": 73524
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/glass-crystal-guardian.webp",
+      "before": null,
+      "sha256": "a50fcfc43749d07a5e9e6799ed15c19aee6cbe4bccf367cb80237ca20bc79fb9",
+      "bytes": 68084
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/glass-forest-spirit.webp",
+      "before": null,
+      "sha256": "d1b608c47258048c060e9e9f3d2dc5d45312ba57e9074d11d956246966c45e7e",
+      "bytes": 62982
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/glass-moon-dragon.webp",
+      "before": null,
+      "sha256": "6b6b3662230065da84dea1b8b7a43bb2b072a3ab02f432aa99778641888fe892",
+      "bytes": 64282
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/glass-sun-phoenix.webp",
+      "before": null,
+      "sha256": "55e62a1b958971af252d5c08b8518bf2f10f85e6489729b519132c74ec02bf36",
+      "bytes": 83132
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/moon-dragon.webp",
+      "before": null,
+      "sha256": "d4beb66836a376212f2bc54b0d792cd76e91dbf07b3b7b5abaf79d58f1295e84",
+      "bytes": 67464
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/prism-crystal-guardian.webp",
+      "before": null,
+      "sha256": "b7208028e5bcd2be1aafdd9999072d2fc8eba8b6778dbe9d68ca534c1d2f4a87",
+      "bytes": 68348
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/prism-forest-spirit.webp",
+      "before": null,
+      "sha256": "78b13f3924ded732a96fee44ac264546649659a361a404139b0e04fcaba21fb0",
+      "bytes": 79190
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/prism-moon-dragon.webp",
+      "before": null,
+      "sha256": "d20c470976712c0a7184be8461c1f5c2e8a36edc30a55ed1d6a3c7315a3e32c2",
+      "bytes": 68378
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/prism-sun-phoenix.webp",
+      "before": null,
+      "sha256": "0959a0a529883fe397a7e591f23bb47503f2be2b75271ed6f81fe21032a5a0d8",
+      "bytes": 60852
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/sun-phoenix.webp",
+      "before": null,
+      "sha256": "4ca54161fabef95eb10b9ee701f7c763e4da20039e846dc7e1fddddf4d893d16",
+      "bytes": 61856
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/vip-1.webp",
+      "before": null,
+      "sha256": "09bd228bd48fe1686b7fa982baf1d4b32ef20787e670f3305363a4e462167889",
+      "bytes": 68046
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/vip-2.webp",
+      "before": null,
+      "sha256": "e0bfe8f3c441d9154671adec05d88d9e89c6a0bb64f26da48df58e63594eb575",
+      "bytes": 72950
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/vip-3.webp",
+      "before": null,
+      "sha256": "4080f1f84c7ea6503585711f735e909b2df9646c942f06db29f49dfd247043e5",
+      "bytes": 71688
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/vip-4.webp",
+      "before": null,
+      "sha256": "cf774e34ed62ef9db3bbc85db8f74e172ec98570473f25097a767460a8660622",
+      "bytes": 73834
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/vip-5.webp",
+      "before": null,
+      "sha256": "521692eec19b355fdcb8216ddadfda1442fca83efbc9a17dd3e2d2b7d1b1e960",
+      "bytes": 74974
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/visual-crystal-guardian.webp",
+      "before": null,
+      "sha256": "2d5e1c2f11126c3e5eae1ed97d4cb16dbe23ec97d950063004e509730340b9db",
+      "bytes": 86920
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/visual-forest-spirit.webp",
+      "before": null,
+      "sha256": "70d2d1112f4bacb5c1523ffa43442caa016a655d08c9d3e4e2bb036be7c03083",
+      "bytes": 97832
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/visual-moon-dragon.webp",
+      "before": null,
+      "sha256": "6a7369c93d797f14ea41e29f1ade245fd75a31d31db74da3b711a74f46686f1f",
+      "bytes": 76358
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/visual-sun-phoenix.webp",
+      "before": null,
+      "sha256": "2b56d4d34f698e3c909dca9d880041e0e73ac74a758a3f623142d67fa06f3e44",
+      "bytes": 69204
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/crystal-guardian.webp",
+      "before": null,
+      "sha256": "79cdaa4842b3b31e5e441231f772e2305d50a452998e9f73d5a9d10ac15c4870",
+      "bytes": 4026
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/forest-spirit.webp",
+      "before": null,
+      "sha256": "27c054aeb441eb0f064606bdaf5bdd3cc5708c93760fea0c8aba3e2ad734a4a6",
+      "bytes": 3850
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/glass-crystal-guardian.webp",
+      "before": null,
+      "sha256": "e3a2967d127c4c8653b0154dfc74c23e4a6a0ea6656d8360e06c8e77e2573754",
+      "bytes": 3382
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/glass-forest-spirit.webp",
+      "before": null,
+      "sha256": "b137c3e377423d2fe59eac15d5e236b25f8430486d418ecdca4ef76c6a4d576c",
+      "bytes": 3412
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/glass-moon-dragon.webp",
+      "before": null,
+      "sha256": "4e8e7f9fe8a0f9de076a2a87a81655724557b163781b6f9ddefc4641aae19f79",
+      "bytes": 3272
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/glass-sun-phoenix.webp",
+      "before": null,
+      "sha256": "89b66ca1b320b7a4591b5dbe299ee45fef630415eee6646445512ffc799083eb",
+      "bytes": 4032
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/moon-dragon.webp",
+      "before": null,
+      "sha256": "f5598a530b0e470c5c6c3f043433600c7115fd785fa260a6a3c219765a103f96",
+      "bytes": 3770
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/prism-crystal-guardian.webp",
+      "before": null,
+      "sha256": "086837bb88d681c5fbc761d78377e18cd76176eb345108df71fdaf7ee9aac24b",
+      "bytes": 4312
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/prism-forest-spirit.webp",
+      "before": null,
+      "sha256": "b9a627b8ec3b5bda9494afa45f18a63b9a75f7829e5983c49a4dd9e068719ef5",
+      "bytes": 4270
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/prism-moon-dragon.webp",
+      "before": null,
+      "sha256": "c8cdab00d704fcd5396af5566f368b0bf73f1f1906c7b94df08e9e6d8d2a2335",
+      "bytes": 4094
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/prism-sun-phoenix.webp",
+      "before": null,
+      "sha256": "71c0d0b38821a2938526bf2a001b0c97a128b6361dad59fd33d3f403b18277a6",
+      "bytes": 3920
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/sun-phoenix.webp",
+      "before": null,
+      "sha256": "69f4dfd71aeb9fe06ba8cd8a2df18696854461c35cdfdea3d85bacfc8f0ed23d",
+      "bytes": 3434
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/vip-1.webp",
+      "before": null,
+      "sha256": "9f667595655ea32933a2fdcaf696564b024044c2079dc7431e21a4ac8f20c18e",
+      "bytes": 3350
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/vip-2.webp",
+      "before": null,
+      "sha256": "99889e26aeb9086178953842cb56f89792913c761e4829e9efa6c131b845f46d",
+      "bytes": 3234
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/vip-3.webp",
+      "before": null,
+      "sha256": "d19f48023ab00229971982d5cae62dad40bdfa0542ba42e8dacfe1f30d369744",
+      "bytes": 3368
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/vip-4.webp",
+      "before": null,
+      "sha256": "72a261c3c6a9c777bf08e3a3712c17dbee7b0fe7e9181fa7d38ea350a00a9b74",
+      "bytes": 3412
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/vip-5.webp",
+      "before": null,
+      "sha256": "2219d1dc78a94cabfe8b5062bad06ea5c000a281ded10ef8b580d89404976feb",
+      "bytes": 3422
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/visual-crystal-guardian.webp",
+      "before": null,
+      "sha256": "c8fc06d93e884e11efd6af21373e2a2beb1cff2fac172041dcae3f2e2ddbdbfe",
+      "bytes": 3892
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/visual-forest-spirit.webp",
+      "before": null,
+      "sha256": "5a9e690244950563bafa649e6ec664a8e148194b9f2231f34b35f936394b2aa2",
+      "bytes": 4224
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/visual-moon-dragon.webp",
+      "before": null,
+      "sha256": "cbd2314bc84293cab4baa85501ba204462a857ae18fc6db014ee856b7fbb908b",
+      "bytes": 3850
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/visual-sun-phoenix.webp",
+      "before": null,
+      "sha256": "d6ca4eb27f52049d0e0f25bcc82051d397bd4539960f37dbf8eaf263defcc930",
+      "bytes": 3328
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s01_crown.webp",
+      "before": null,
+      "sha256": "1131ca7b8190731ea2709b69567f1d3c71ab2f1910fef401bcadd87ff4aba216",
+      "bytes": 9218
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s02_lion.webp",
+      "before": null,
+      "sha256": "a01c2b3595def29237c75e8b20e78cfd5039fc06cb8041015c17253b6356c02d",
+      "bytes": 8876
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s03_wolf.webp",
+      "before": null,
+      "sha256": "a8eb08fccd53a24351cc90b5fa7b376a128252329b20850a60f2948bd999041b",
+      "bytes": 8720
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s04_dragon.webp",
+      "before": null,
+      "sha256": "a0315d98324ef802b070179acfa02891a2d2adfbcbf0c43696f9d75cc595afa9",
+      "bytes": 9380
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s05_phoenix.webp",
+      "before": null,
+      "sha256": "ef07f6f80a97f837995be9c2cc77ad98bb000d2ad3d8e4b860e6404d6a0f84d0",
+      "bytes": 9844
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s06_eagle.webp",
+      "before": null,
+      "sha256": "cade9efb36d81fe1d4b7b034667e5b60b906fdbb780a11fbc49a7a5c48f12a7d",
+      "bytes": 10166
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s07_stag.webp",
+      "before": null,
+      "sha256": "7485c41e55d85313139f4283bdb691a9823985b9769a19a57c787b182a234309",
+      "bytes": 8956
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s08_owl.webp",
+      "before": null,
+      "sha256": "e0a31ef61c6545a22df84bc68e33d98e929024e6f9496eb1394b4c7592ca579d",
+      "bytes": 8298
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s09_griffin.webp",
+      "before": null,
+      "sha256": "4414106863d0f536ba67d3d525bae24014e37040259d43e36cf4a9164f22b333",
+      "bytes": 12134
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s10_crossed_swords.webp",
+      "before": null,
+      "sha256": "81152a65091206b13823356964bb49de45a3e875af57935b5804192ca003466e",
+      "bytes": 9054
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s11_battle_axe.webp",
+      "before": null,
+      "sha256": "51f355d11e4297a942a953c669dbc4d741aa179f93559868a540da8fc7247c22",
+      "bytes": 7196
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s12_tower.webp",
+      "before": null,
+      "sha256": "002283262a07e6d907ce204c9f4431d7172dcd2c0db4ff592aee6e4826aa62ae",
+      "bytes": 7676
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s13_compass_star.webp",
+      "before": null,
+      "sha256": "314276ecad492ab623606291cdc53a549a32708fcc6606185e54068124f3052b",
+      "bytes": 6900
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s14_crescent.webp",
+      "before": null,
+      "sha256": "4769f3a522a970f87ea40ba8e3d497294efa1228fe369afc81f90ee5c681a406",
+      "bytes": 9680
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s15_sun.webp",
+      "before": null,
+      "sha256": "660cd91dcd447b509532a8b02017d81d8c2555f503d5cf5eb69fc04cc15e2096",
+      "bytes": 9418
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s16_flame.webp",
+      "before": null,
+      "sha256": "a7f6db9a5693f9cd19130bc762116d2b75d53bc52a0a687fd90891d117ba25f9",
+      "bytes": 7200
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s17_crystal.webp",
+      "before": null,
+      "sha256": "54b55f7f3fd89dfd465ee0c1b29f5712531b27d83ade32dcc523b86d7dc0e9c1",
+      "bytes": 4598
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s18_oak.webp",
+      "before": null,
+      "sha256": "11b4b1d5a69331305680810dbba06c509f72f0a8fd00861f22065b8c555497ec",
+      "bytes": 13082
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s19_key.webp",
+      "before": null,
+      "sha256": "01732986c3e0a4ae95548756ae5804c48ba77f5bf7fd0c65d8f0c710d0408482",
+      "bytes": 7134
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s20_ether_orb.webp",
+      "before": null,
+      "sha256": "94c63f8658003a7f3f39fb183e80ec5e2d13accd877087b2e4d151638d0d11c2",
+      "bytes": 9162
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s21_lily.webp",
+      "before": null,
+      "sha256": "152d8a56789a40e6acd0b2097300a349636c4389c32b77a2120e6ba430058984",
+      "bytes": 7566
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s22_bear.webp",
+      "before": null,
+      "sha256": "6ba31323e267351a76b8fb3a542f739993d30478b966c25a64c68d510f422099",
+      "bytes": 10532
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s23_unicorn.webp",
+      "before": null,
+      "sha256": "64d995fc0f81f61efe99e8767c3fce65c8e2068249faaed6f1f380628c78307f",
+      "bytes": 8586
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s24_kraken.webp",
+      "before": null,
+      "sha256": "9bf9dfecf054184ce6d37481e179bc930025450925f3156ff0317396d8cd82b6",
+      "bytes": 12388
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/128/s25_rose.webp",
+      "before": null,
+      "sha256": "26b4499733ae7461eeefee602d4a186654a3535815d90f45586b3f58616a0c1f",
+      "bytes": 8574
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s01_crown.webp",
+      "before": null,
+      "sha256": "ff93c1a065597332e83b5cab7382904b296e8278b4d648578364c6493118f252",
+      "bytes": 67360
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s02_lion.webp",
+      "before": null,
+      "sha256": "7c0d3fe8ad04114dab0c2b7de3e481b7355be707ce835de510adeadf37e031d7",
+      "bytes": 79154
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s03_wolf.webp",
+      "before": null,
+      "sha256": "7933e36bc4b71aa1725540d00a560d2213290a9df434858bcb5a78e20b5d1a6c",
+      "bytes": 75452
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s04_dragon.webp",
+      "before": null,
+      "sha256": "f6c253b67dfd0d90e4f0319258cf1c3ebdf3b8940fb12223cd98ecfcb7236c1b",
+      "bytes": 69544
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s05_phoenix.webp",
+      "before": null,
+      "sha256": "5dd8984fe70bc67ecc8d649714721f0388705ed5e586df707de0c8b311859e36",
+      "bytes": 82030
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s06_eagle.webp",
+      "before": null,
+      "sha256": "0805523e42f78ae65ff57d425c2e4944e5b6802ca592605c746f7685534fd545",
+      "bytes": 85570
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s07_stag.webp",
+      "before": null,
+      "sha256": "94a0fa66cb0bdea6ec2216d9ae7fbf7d5029f942658397e9ce80abcd6759e4c7",
+      "bytes": 68854
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s08_owl.webp",
+      "before": null,
+      "sha256": "8217b02215f8d8485cc358a0ce2dc5cab751cd2db2d53b6e25d4800c3f8c3694",
+      "bytes": 72160
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s09_griffin.webp",
+      "before": null,
+      "sha256": "2e095e0123b5da54cd888e7b58d49ad39fb105b8426ec7ec0df93ca3273b1f92",
+      "bytes": 98746
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s10_crossed_swords.webp",
+      "before": null,
+      "sha256": "3dd64d5cd6831723ea1933460d22c8deafe0973afd6bf69a924b294ffe5630f5",
+      "bytes": 60360
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s11_battle_axe.webp",
+      "before": null,
+      "sha256": "46b751fd83c05a4ddb8762be71e2b5259d4701702cf6d3953f3d9052e0d68b89",
+      "bytes": 51512
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s12_tower.webp",
+      "before": null,
+      "sha256": "a35219bf6dd35c3ba21400f20bff9d0247794c34c8381805bd803eb54a187ad3",
+      "bytes": 62076
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s13_compass_star.webp",
+      "before": null,
+      "sha256": "08494bb77f44f9ab2644a43db37ecd965dd6aee674798cdd7febc48803de7136",
+      "bytes": 42922
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s14_crescent.webp",
+      "before": null,
+      "sha256": "7df83c5d6ca4241c1f5b0d3906b18b37a295e5be9d0ee8396cb33795978e7d98",
+      "bytes": 65076
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s15_sun.webp",
+      "before": null,
+      "sha256": "cbfb0d61ceaac8c60bb366229d0073f139ed1550655d925cde139b3fa278b94b",
+      "bytes": 67314
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s16_flame.webp",
+      "before": null,
+      "sha256": "e8a1cc9b987610ba9a460b00625a71db21162fa24e08c8fe6ba491985181961c",
+      "bytes": 50588
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s17_crystal.webp",
+      "before": null,
+      "sha256": "173d1bd112871c860da18db0447a0d9cb23945e28d6791862992381f8bab170d",
+      "bytes": 28918
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s18_oak.webp",
+      "before": null,
+      "sha256": "83609c7071f564692feaae3e8a21ad49c7730b939d24d2dbc10c76fde9c73866",
+      "bytes": 111846
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s19_key.webp",
+      "before": null,
+      "sha256": "fd4de7d1a23f98413c86571c291440bbfcff6b758beb0c1b798d337421538327",
+      "bytes": 53536
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s20_ether_orb.webp",
+      "before": null,
+      "sha256": "e46780f6a0fba303f8ae60a91328a10941007011da7c005888adb78493cfc1b2",
+      "bytes": 65568
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s21_lily.webp",
+      "before": null,
+      "sha256": "4735b16dbe624737c5bebfdbbd8567ad064cb461eb965c80611f7c7b9a169864",
+      "bytes": 54106
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s22_bear.webp",
+      "before": null,
+      "sha256": "c68a9435058136d086a2d4eba7f23f22f5b3c8228ea9bec50c7ef6cbbb145372",
+      "bytes": 84038
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s23_unicorn.webp",
+      "before": null,
+      "sha256": "3ebf0325bc4b4e1cb13c6bb7d259422da6b34e33ca19963fdc17a3c589e434d6",
+      "bytes": 68356
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s24_kraken.webp",
+      "before": null,
+      "sha256": "1c562812a38fc1af92419ee8ac9d45845edf4b6c43ae4e50505bbcbc5de7d715",
+      "bytes": 98652
+    },
+    {
+      "file": "public/assets/clan-crests/prism-v3/512/s25_rose.webp",
+      "before": null,
+      "sha256": "009891509df4860a3d86f371377c3d64d0f0e64c13388bd768d8780359f5dac5",
+      "bytes": 65770
+    },
+    {
+      "file": "public/shared/clan-crest-symbols-prism.js",
+      "before": null,
+      "sha256": "308dabaf21f5a6ff1341a99372af888680791caa1ea2e79816430f0b1befdd85",
+      "bytes": 102827
+    }
+  ],
+  "verification": {
+    "unitTests": 51,
+    "browserReport": "artifacts/ui-art-corrections-20261031/browser/report-all.json",
+    "presets": {
+      "created": 28,
+      "verified": 699
+    }
+  },
+  "preserved": "Player data, all rules, access levels and existing IDs unchanged"
+}

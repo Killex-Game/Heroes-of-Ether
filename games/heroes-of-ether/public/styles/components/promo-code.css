@@ -1,0 +1,35 @@
+.promo-code-dialog { box-sizing: border-box; width: min(460px, calc(100vw - 24px)); padding: 14px; border: 2px solid #c9a45b; border-radius: 18px; background: var(--sf-paper, #fff7e5); color: var(--sf-ink, #324c60); }
+.promo-code-dialog[open] { display: flex; flex-direction: column; max-height: calc(100dvh - 24px); overflow: hidden; }
+.promo-code-dialog > :not(.promo-code-rewards) { flex-shrink: 0; }
+.promo-code-form { display: grid; gap: 12px; padding: 18px 8px 8px; }
+.promo-code-form input { box-sizing: border-box; width: 100%; padding: 12px; border: 1px solid #b89351; border-radius: 10px; font: 700 19px system-ui,sans-serif; color: #254356; background: #fffdf6; text-transform: uppercase; letter-spacing: .08em; }
+.promo-code-form small { line-height: 1.4; }
+.promo-code-status { margin: 8px; line-height: 1.4; }
+.promo-code-status:empty, .promo-code-rewards:empty { display: none; }
+.promo-code-rewards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin: 12px 0; padding: 2px; list-style: none; min-height: 0; overflow-y: auto; overscroll-behavior: contain; flex: 0 1 auto; }
+.promo-reward-card { display: grid; justify-items: center; align-content: start; gap: 5px; padding: 8px 5px; min-width: 0; border: 1px solid #bd965866; border-radius: 12px; background: linear-gradient(145deg,#eac77b22,#eac77b0a); text-align: center; }
+.promo-reward-picture { display: grid; place-items: center; width: 100%; height: 80px; }
+.promo-reward-picture img { display: block; width: 100%; height: 100%; max-height: 80px; object-fit: contain; }
+.promo-reward-card[data-kind="accessory"][data-slot="bow"] .promo-reward-picture img { width: 78%; height: 78%; }
+.promo-reward-card[data-kind="skin"] img { width: 80px; border-radius: 50%; background: #85abc5; }
+.promo-reward-card[data-kind="theme"] img { object-fit: cover; border-radius: 7px; }
+.promo-reward-frame { position: relative; width: 64px; height: 64px; border-radius: 50%; }
+.promo-reward-name { font-size: 13px; line-height: 1.25; font-weight: 600; overflow-wrap: anywhere; }
+.promo-reward-amount { font-size: 14px; font-weight: 700; color: var(--sf-ink,#324c60); }
+.promo-result-controls { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.promo-result-controls button { min-width: 38px; }
+.promo-code-form[hidden], .promo-result-controls[hidden], .promo-result-controls [hidden] { display: none; }
+@media (max-height: 520px) {
+  .promo-code-form { gap: 8px; padding-top: 10px; }
+  .promo-code-form input { padding: 8px; }
+  .promo-code-rewards { margin-block: 8px; }
+  .promo-reward-picture { height: 52px; }
+  .promo-reward-picture img { max-height: 52px; }
+  .promo-reward-card[data-kind="skin"] img { width: 52px; }
+  .promo-reward-frame { width: 44px; height: 44px; }
+  .promo-reward-card { gap: 2px; padding: 4px; }
+  .promo-reward-name { font-size: 11px; }
+  .promo-result-controls { margin-top: 8px; }
+}
+@media (max-width: 519px) and (min-height: 520px) { .promo-code-rewards { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+.promo-code-rewards:has(> :only-child) { grid-template-columns: minmax(0,180px); justify-content: center; }

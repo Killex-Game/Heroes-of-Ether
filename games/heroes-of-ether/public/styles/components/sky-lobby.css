@@ -1,0 +1,34 @@
+/* The landscape never participates in layout or catches pointer events. */
+#lobby:is(
+  [data-league-background="glass"],
+  [data-league-background="prism"],
+  [data-league-background="visual"],
+  [data-league-background="heroic"]
+) {
+  position: relative;
+  isolation: isolate;
+}
+.sky-lobby-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  contain: strict;
+}
+.sky-lobby-scene[hidden],
+body:not([data-screen="lobby"]) .sky-lobby-scene,
+#lobby:not([data-league-background="glass"]):not([data-league-background="prism"]):not([data-league-background="visual"]):not([data-league-background="heroic"])
+  .sky-lobby-scene {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sky-lobby-scene {
+    display: none;
+  }
+}
+
+.public-player-hero[data-league-background="heroic"] { isolation:isolate; overflow:hidden; }
+.public-player-hero > .sky-lobby-scene { border-radius:inherit; }

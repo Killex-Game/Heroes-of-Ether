@@ -1,0 +1,203 @@
+/* The profile reserves the full ornament; balances and actions stay together. */
+#lobby .lobby-header {
+  grid-template-columns: minmax(0, min(540px, 52cqw)) minmax(0, 1fr);
+  gap: 18px;
+}
+#lobby .profile-card {
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  gap: 12px;
+  padding: 12px 16px;
+  min-height: 124px;
+  aspect-ratio: auto;
+}
+#lobby .profile-card .profile-circle {
+  justify-self: center;
+  align-self: center;
+}
+/* One portrait diameter for every frame, including none. The existing grid cell reserves the ornament. */
+#lobby .profile-card .profile-circle {
+  width: 58px;
+  height: 58px;
+}
+#lobby .lobby-wallet-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 212px) minmax(0, 180px);
+  gap: 12px;
+  align-items: center;
+  justify-self: start;
+  width: min(100%, 404px);
+}
+#lobby .lobby-balances {
+  min-width: 0;
+}
+#lobby #walletStatus {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+}
+#lobby .sf-currency-wallet .sf-currency {
+  height: 34px;
+}
+#lobby .currency-add {
+  width: 26px;
+  height: 26px;
+  flex-basis: 26px;
+  font-size: 18px;
+}
+#lobby .lobby-wallet-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-height: 100px;
+  min-width: 0;
+  gap: 8px;
+}
+#lobby .lobby-wallet-actions #accountButton,
+#lobby .lobby-wallet-actions #promotionsButton {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  min-height: 46px;
+  margin: 0;
+  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+#lobby .lobby-wallet-actions #accountButton .account-button-icons {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: 6px;
+}
+#lobby .lobby-wallet-actions #promotionsButton img,
+#lobby .lobby-wallet-actions #accountButton img {
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+}
+#lobby .lobby-wallet-actions #promotionsButton {
+  display: grid;
+  grid-template-columns: 23px auto;
+  align-content: center;
+  gap: 1px 6px;
+}
+#lobby .lobby-wallet-actions #promotionsButton strong {
+  font-size: 13px;
+}
+#lobby .lobby-wallet-actions #promotionsButton .promotions-countdown {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  text-align: center;
+  margin: 0;
+}
+#lobby .lobby-wallet-actions #promotionsButton[data-empty="true"] {
+  opacity: 0.85;
+}
+@media (max-height: 560px) and (min-width: 961px) {
+  #lobby .profile-card .profile-circle {
+    width: 44px;
+    height: 44px;
+  }
+  #lobby .profile-card {
+    grid-template-columns: 72px minmax(0, 1fr) auto;
+    min-height: 100px;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  #lobby .sf-currency-wallet .sf-currency {
+    height: 30px;
+  }
+  #lobby #walletStatus {
+    gap: 2px;
+  }
+}
+@media (max-width: 960px) {
+  #lobby .profile-card .profile-circle {
+    width: 52px;
+    height: 52px;
+  }
+  #lobby .lobby-header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  #lobby .profile-card {
+    width: min(540px, calc(100% - 44px));
+    grid-template-columns: 84px minmax(0, 1fr) auto;
+    min-height: 112px;
+    padding: 12px;
+    gap: 10px;
+  }
+  #lobby .lobby-wallet-tools {
+    justify-self: center;
+  }
+}
+@media (max-width: 620px) {
+  #lobby .profile-card {
+    grid-template-columns: 84px minmax(0, 1fr);
+    grid-template-rows: minmax(80px, auto) auto;
+  }
+  #lobby .profile-insignia {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+  #lobby .lobby-wallet-tools {
+    grid-template-columns: minmax(0, 1fr) 150px;
+    gap: 10px;
+  }
+}
+#boosterDialog .accessory-shop[hidden] {
+  display: none !important;
+}
+#boosterDialog .accessory-card {
+  display: grid;
+  grid-template-rows: 16px 100px 40px 16px 44px;
+  height: 276px;
+  min-height: 0;
+  gap: 7px;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+}
+#boosterDialog .accessory-card h3 {
+  width: 100%;
+  margin: 0;
+  min-height: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 20px;
+}
+#boosterDialog .accessory-card .accessory-shop-art {
+  width: 112px;
+  height: 100px;
+  object-fit: contain;
+  margin: 0;
+}
+#boosterDialog .accessory-shop-note {
+  margin: 0;
+  font-size: 11px;
+  line-height: 16px;
+}
+#boosterDialog .accessory-card .booster-action {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+}
+
+/* Amounts scale to their own balance capsule, including seven-digit wallets. */
+#lobby .sf-currency-wallet .sf-currency,
+#boosterDialog .sf-currency-wallet .sf-currency {
+  container-type: inline-size;
+}
+#lobby .sf-currency-value,
+#boosterDialog .sf-currency-value {
+  font-size: clamp(9px, 10cqw, 17px);
+}

@@ -1,0 +1,29 @@
+{
+  "tool": "builtin image_gen",
+  "records": [
+    {
+      "name": "casket",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-57a62ad1-a79c-40ac-95a8-f2c972e5b571.png",
+      "sha256": "f5664cb77f9ad395490ad032679ab08784c7e9e5b038bc482c366d2b21693ce7",
+      "alpha": true
+    },
+    {
+      "name": "album-draft",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-632b02b6-62b1-491a-a712-8e01738bba5d.png",
+      "sha256": "e85a575f89afac2d0e7a3ee46ae67cd86f29646599dfdb69661f72450a4c5439",
+      "alpha": false
+    },
+    {
+      "name": "shop",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-990f5dd6-b94b-4299-b97c-ae0e874e4d77.png",
+      "sha256": "ef10c09fe9b8cf174777f9d97bc4745d2130455ef65677814fc995849625e658",
+      "alpha": true
+    },
+    {
+      "name": "album",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-5a272dc5-0121-45ed-8921-96f588a505a1.png",
+      "sha256": "477b6eb65cd920ab87f9951211471aa8dd2412728bb0b95372dbb3942941ee1b",
+      "alpha": false
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+.player-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:0 0 20px}
+.player-tabs button{min-height:46px;white-space:normal;font-weight:600}
+.player-tabs button[aria-pressed="true"]{background:#693fc2;border-color:#b38bff;color:#fff}
+.player-directory-filters{display:flex;gap:16px;align-items:end;flex-wrap:wrap;margin:20px 0}
+.player-directory-filters label{flex:1;min-width:160px}
+.player-directory-row{display:grid;grid-template-columns:minmax(160px,2fr) 1fr 1fr;gap:16px;width:100%;text-align:left;padding:16px;margin-bottom:8px}
+.player-directory-row span:last-child:nth-child(4){grid-column:1/-1;color:#c5b3ee}
+.player-directory-row time{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.player-violation-summary{display:grid;gap:6px;grid-column:1/-1;overflow-wrap:anywhere}
+.moderation-handbook{border:1px solid #39344f;border-radius:12px;padding:14px;margin:16px 0}
+.moderation-handbook summary{cursor:pointer;font-weight:600}
+.moderation-handbook p{line-height:1.5;overflow-wrap:anywhere}
+.moderation-rule-list{max-height:55vh;overflow:auto;overscroll-behavior:contain;padding-right:12px}
+.moderation-rule-list article{border-top:1px solid #39344f;padding:14px 0}
+.moderation-rule-list h3{margin:0 0 8px;font-size:15px}
+.moderation-rule-list p{margin:8px 0 0}
+.game-grant-form{display:grid;gap:16px;max-width:880px}
+.game-grant-form>button{justify-self:start}
+.game-grant-preview{display:grid;gap:12px;border-left:3px solid #af82fa;padding-left:20px;margin:24px 0}
+.game-grant-preview:empty{display:none}
+.game-grant-preview>*{margin:0}.game-grant-preview button{justify-self:start}
+.game-grant-record{border:1px solid #39344f;border-radius:12px;padding:16px;margin:12px 0}
+.game-grant-record h4{margin:0}.game-grant-record p{overflow-wrap:anywhere}
+@media(max-width:700px){.player-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.player-directory-row{grid-template-columns:1fr 1fr;gap:8px}.player-directory-row strong{grid-column:1/-1}.game-grant-form .promo-reward-row{flex-wrap:wrap}}

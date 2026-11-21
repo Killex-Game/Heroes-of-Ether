@@ -1,0 +1,210 @@
+/* Shared rarity markers are also used by the daily login reward dialog. */
+.promotion-rarity {
+  width: 12px;
+  height: 12px;
+  margin-inline: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #f7dfc6, #e4b182 42%, #ab7950 85%);
+  border: 1px solid #89552e;
+  box-shadow:
+    inset 0 1px 2px #fff9,
+    0 1px 1px #70482333;
+}
+.promotion-booster[data-rarity="advanced"] .promotion-rarity {
+  background: radial-gradient(circle at 30% 25%, #eedcfa, #cbb0ef 42%, #8d65d0 85%);
+  border-color: #7550ad;
+}
+.promotion-booster[data-rarity="rare"] .promotion-rarity {
+  background: radial-gradient(circle at 30% 25%, #fff1b8, #f5d168 42%, #dea939 85%);
+  border-color: #b28224;
+}
+#lobby .lobby-sections {
+  grid-column: 3;
+  grid-row: 1;
+  align-self: stretch;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 8px;
+}
+#lobby .lobby-sections .side-nav {
+  margin-block: 0;
+  flex-shrink: 0;
+}
+@media (min-width: 961px) and (max-height: 720px) {
+  #lobby .lobby-sections { padding-top: 0; }
+}
+#lobby #promotionsButton {
+  flex: none;
+  width: 100%;
+  height: 48px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  font-size: 22px;
+}
+#promotionsButton .promotions-countdown {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+#promotionsButton img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+body #promotionsDialog {
+  --promotion-tabs-width: 92px;
+  --promotion-layout-gap: 12px;
+  --promotion-title-offset: 0px;
+  width: var(--offer-width, 560px);
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  height: max-content; min-height: 0; margin: auto;
+  padding: 14px; overflow: auto !important; box-sizing: border-box;
+  border: 0; border-image: none; border-radius: 22px;
+  --offer-light: #fff7a5; --offer-bright: #f2b629; --offer-deep: #87501c;
+  background: linear-gradient(145deg, #253b4ef5, #132536f5);
+  color: #354f5d;
+  box-shadow: 0 20px 70px #182e4380;
+}
+body #promotionsDialog:has(.promotion-tabs:not([hidden])) {
+  --promotion-title-offset: calc(var(--promotion-tabs-width) + var(--promotion-layout-gap));
+}
+#promotionsDialog[data-palette="ice"] { --offer-light:#c5ffff; --offer-bright:#1dc7f5; --offer-deep:#23588f; }
+#promotionsDialog[data-palette="emerald"] { --offer-light:#d7ffb8; --offer-bright:#4bcfa2; --offer-deep:#1c6c5a; }
+#promotionsDialog[data-palette="flame"] { --offer-light:#fff2a3; --offer-bright:#ff9451; --offer-deep:#963d35; }
+#promotionsDialog[data-palette="violet"] { --offer-light:#f6dbff; --offer-bright:#b68aee; --offer-deep:#573c8c; }
+#promotionsDialog[data-palette="rose"] { --offer-light:#ffe8eb; --offer-bright:#f3a0bc; --offer-deep:#923e73; }
+body #promotionsDialog > .clan-heading {
+  position: relative; display: grid; place-items: center;
+  grid-template-columns: minmax(0, 1fr); justify-content: stretch;
+  width: calc(100% - var(--promotion-title-offset));
+  margin: 0 0 0 var(--promotion-title-offset); padding: 10px 48px;
+  border: 0; border-radius: 13px;
+  background: none; box-shadow: none;
+  min-height: 52px; box-sizing: border-box;
+}
+body #promotionsDialog .clan-heading h2 { margin: 0; width:100%; font-size: 28px; line-height: 1.2; color: #ffe779; text-align: center; text-shadow: 0 2px 1px #080f18; }
+body #promotionsDialog .booster-close {
+  --close-size: 40px;
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  margin: 0;
+}
+body #promotionsDialog .booster-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.promotion-layout { display:flex; align-items:stretch; gap:var(--promotion-layout-gap); min-width:0; }
+.promotion-tabs {
+  display: flex; flex-direction:column; flex:0 0 var(--promotion-tabs-width); gap: 8px; margin: 0;
+}
+#promotionsDialog .promotion-tab {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  border: 1px solid #b4c5d9; border-radius: 12px; padding: 7px 5px;
+  min-height: 76px; background: linear-gradient(#f7f3e8,#d6e3e8); color: #304e61;
+  font: inherit; font-size: 11px; line-height:1.2; cursor: pointer;
+}
+#promotionsDialog .promotion-tab img { width:40px; height:40px; object-fit:contain; }
+#promotionsDialog .promotion-tab[aria-pressed="true"] {
+  background: linear-gradient(#fffbed,var(--offer-light)); border-color: #ffdb70; color: #304e61;
+  box-shadow: inset 0 0 0 2px #fff8d9, 0 0 9px #ffda6999;
+}
+#promotionsDialog .promotion-tab:focus-visible { outline: 2px solid #427ea2; outline-offset: 2px; }
+.promotions-grid { display: block; min-width: 0; flex:1; }
+.promotion-card {
+  display: flex; align-items: center; flex-direction: column; gap: 0;
+  width: 100%; box-sizing: border-box; padding: 0; overflow:hidden;
+  border:2px solid var(--offer-light); border-radius:20px;
+  background: radial-gradient(ellipse at 50% 100%,#ffffffed,transparent 72%),
+    repeating-conic-gradient(from 3deg at 50% 100%,#ffffff35 0deg 5deg,transparent 7deg 15deg),
+    linear-gradient(var(--offer-bright),var(--offer-light));
+  box-shadow: inset 0 0 22px #ffffff90,0 5px 0 #0b1c2c66;
+}
+#promotionsDialog .promotion-rewards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+  gap: 16px; width: 100%; box-sizing:border-box; list-style: none; margin: 0; padding: 18px;
+}
+#promotionsDialog .promotion-rewards li {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  min-width: 0; text-align: center; padding:12px 6px;
+  border:2px solid #fff9; border-radius:20px;
+  background:linear-gradient(#f9ffffe6,#fff); box-shadow:0 4px 12px #153f6226;
+}
+.promotion-reward-art {
+  display: grid; place-items: center; width: 126px; height: 126px;
+  max-width: 100%;
+}
+#promotionsDialog .promotion-rewards img { width: 124px; height: 124px; object-fit: contain; max-width: 100%; }
+.promotion-amount { font-size: 30px; line-height: 1.15; color: #294e65; font-variant-numeric: tabular-nums; }
+.promotion-reward-name { font-size: 14px; line-height: 1.25; max-width: 150px; font-weight:600; }
+.promotion-random { font-size: 10px; color: #876d46; }
+.promotion-bundle-note { max-width:260px; font-size:12px; line-height:1.35; color:#6b5330; }
+#promotionsDialog [data-reward-id="clan"] .promotion-reward-art { width:180px; height:180px; }
+#promotionsDialog [data-reward-id="clan"] img { width:176px; height:176px; }
+#promotionsDialog [data-reward-id="clan"] .promotion-reward-name { max-width:100%; font-size:18px; }
+.promotion-footer { width:100%; box-sizing:border-box; padding:12px 14px 14px; display:flex; flex-direction:column; align-items:center; gap:8px; background:linear-gradient(120deg,#243c56,var(--offer-deep)); container:promotion-footer / inline-size; }
+.promotion-deadline { font-size: 13px; text-align: center; color: #fff3be; font-weight:600; }
+.promotion-purchase { display:grid; grid-template-columns:minmax(0,1fr); align-items:center; width:100%; }
+.promotion-purchase:has(.promotion-old-price) { grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:12px; }
+.promotion-old-price { grid-column:3; justify-self:start; margin:0; font-size:22px; line-height:1.2; font-weight:700; color:#d6e1e9; white-space:nowrap; }
+#promotionsDialog .promotion-buy {
+  grid-column:1; justify-self:center;
+  width: max-content; max-width: 100%; min-width: 230px;
+  min-height: 50px; padding: 10px 26px; font-size: 20px; font-weight:800;
+  background:linear-gradient(#f5df80,#e9b93e); color:#403015; border:2px solid #fff2b3;
+  box-shadow:inset 0 2px 0 #fff9,0 4px 0 #76581a,0 6px 12px #081c3455;
+  align-self: center; margin: 0;
+}
+#promotionsDialog .promotion-purchase:has(.promotion-old-price) .promotion-buy { grid-column:2; }
+@container promotion-footer (max-width:520px) {
+  .promotion-purchase:has(.promotion-old-price) { grid-template-columns:minmax(0,1fr) auto; gap:10px; }
+  #promotionsDialog .promotion-purchase:has(.promotion-old-price) .promotion-buy { grid-column:1; width:100%; min-width:0; padding-inline:10px; }
+  .promotion-old-price { grid-column:2; font-size:20px; }
+}
+#promotionsDialog [hidden] { display: none !important; }
+@media (max-width: 960px) {
+  #lobby .lobby-sections { grid-column: 2; grid-row: 1; }
+}
+@media (max-width: 620px) {
+  #lobby .lobby-sections { grid-column: 1; grid-row: 2; }
+  #lobby #promotionsButton { height: 42px; min-height: 42px; font-size: 18px; }
+  body #promotionsDialog { padding: 10px; max-width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
+  body #promotionsDialog:has(.promotion-tabs:not([hidden])) { --promotion-title-offset: 0px; }
+  body #promotionsDialog .clan-heading h2 { font-size: 21px; }
+  .promotion-layout { flex-direction:column; gap:10px; }
+  .promotion-tabs { flex-direction:row; flex-wrap:wrap; flex-basis:auto; }
+  #promotionsDialog .promotion-tab { flex:1 1 70px; min-height:58px; font-size:10px; }
+  #promotionsDialog .promotion-tab img { width:28px; height:28px; }
+  #promotionsDialog .promotion-rewards { grid-template-columns: repeat(auto-fit,minmax(84px,1fr)); gap: 8px; padding:12px 8px; }
+  #promotionsDialog .promotion-rewards li { padding:8px 3px; border-radius:14px; }
+  .promotion-reward-art { width: 88px; height: 88px; }
+  #promotionsDialog .promotion-rewards img { width: 74px; height: 74px; }
+  #promotionsDialog [data-reward-id="clan"] .promotion-reward-art { width:132px; height:132px; }
+  #promotionsDialog [data-reward-id="clan"] img { width:128px; height:128px; }
+  .promotion-amount { font-size: 21px; }
+  .promotion-reward-name { font-size: 12px; }
+  .promotion-footer { padding:12px 8px; }
+  #promotionsDialog .promotion-buy { min-width:210px; font-size:18px; }
+}
+@media (max-height: 620px) {
+  #lobby .lobby-sections { gap: 8px; padding-top: 0; }
+  #lobby #promotionsButton { height: 34px; min-height: 34px; font-size: 17px; }
+  #promotionsButton img { width: 26px; height: 26px; }
+  .promotion-tabs { gap: 4px; }
+  body #promotionsDialog > .clan-heading { min-height: 44px; padding-block: 7px; }
+  body #promotionsDialog .clan-heading h2 { font-size: 20px; }
+  .promotion-reward-art { width: 76px; height: 76px; }
+  #promotionsDialog .promotion-rewards img { width: 64px; height: 64px; }
+  #promotionsDialog [data-reward-id="clan"] .promotion-reward-art { width:112px; height:112px; }
+  #promotionsDialog [data-reward-id="clan"] img { width:108px; height:108px; }
+  .promotion-amount { font-size: 20px; }
+  #promotionsDialog .promotion-rewards { padding-block:10px; }
+  #promotionsDialog .promotion-rewards li { padding-block:6px; }
+  .promotion-footer { padding-block:10px; gap:7px; }
+  #promotionsDialog .promotion-buy { min-height: 40px; padding-block: 7px; }
+}

@@ -1,0 +1,139 @@
+dialog.event-announcement {
+  box-sizing: border-box;
+  width: min(620px, calc(100vw - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 24px);
+  padding: 0;
+  overflow: auto;
+  border: 2px solid #e0b650;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #302044, #151b35);
+  color: #fff2c7;
+  box-shadow:
+    0 18px 70px #08081699,
+    inset 0 0 0 3px #f7d88b18;
+}
+.event-announcement::backdrop {
+  background: #100c22aa;
+  backdrop-filter: blur(5px);
+}
+.event-announcement-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/1;
+  object-fit: cover;
+}
+.event-announcement-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #f4ce75;
+  border-radius: 50%;
+  color: #ffe4a4;
+  background: #1c153ee8;
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.event-announcement-content {
+  padding: 22px 28px 25px;
+}
+.event-announcement-eyebrow {
+  margin: 0 0 5px;
+  color: #cbb6e9;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+.event-announcement h2 {
+  margin: 0;
+  color: #ffe493;
+  font-size: 30px;
+  line-height: 1.2;
+}
+.event-announcement-description {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #eee0f5;
+  margin: 12px 0;
+}
+.event-announcement-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 18px;
+}
+.event-announcement-features span {
+  padding: 6px 10px;
+  background: #70519a33;
+  border: 1px solid #cbad6b55;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.event-announcement-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 0;
+  padding: 14px;
+  border: 1px solid #e0b65044;
+  border-radius: 12px;
+  background: #090d223f;
+}
+.event-announcement-dates dt {
+  color: #bfaace;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.event-announcement-dates dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 700;
+}
+.event-announcement-zone {
+  color: #bfaace;
+  margin: 7px 0 18px;
+  font-size: 11px;
+}
+.event-announcement-actions {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 10px;
+}
+.event-announcement-actions button {
+  width: 100%;
+  min-height: 44px;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .event-announcement-content {
+    padding: 17px;
+  }
+  .event-announcement h2 {
+    font-size: 25px;
+  }
+  .event-announcement-dates {
+    gap: 10px;
+    padding: 10px;
+  }
+}
+@media (max-height: 650px) and (min-width: 700px) {
+  .event-announcement-banner {
+    max-height: 130px;
+  }
+  .event-announcement-content {
+    padding: 15px 24px;
+  }
+  .event-announcement-features {
+    margin: 10px 0;
+  }
+}

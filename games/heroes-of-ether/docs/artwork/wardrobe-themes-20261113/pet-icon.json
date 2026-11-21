@@ -1,0 +1,7 @@
+{
+  "id": "pets-paw-v3",
+  "prompt": "Use case: stylized-concept. Create one transparent game menu icon for the Pets button in Герои Эфира. Reference 1 is the existing paw icon which is far too glaring, yellow and bulky; redesign it. Reference 2 is the approved small shop menu icon: match its restrained volume, fine warm gold edging, deep colored enamel/leather materials and clean readable silhouette. A recognizable compact paw print with four toes: deep sapphire blue enamel pads, narrow antique gold rims, gentle pale highlights. No huge white specular blobs, no orange glow, no oversaturation, no neon, no background, no medallion around the paw, no text. Centered frontal small menu asset, silhouette occupies only 78% of square canvas, transparent margins even on every side. Professional painterly 3D fantasy game icon, readable at 32px.",
+  "hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9a4b3cfb-174d-402e-abc2-26d96efd9da0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "asset": "public/assets/pets/paw-v3.webp",
+  "sha256": "6b38c3502f4d8f6c856816b263135e176f4c84611d5ac497420fe5ea9431f935"
+}

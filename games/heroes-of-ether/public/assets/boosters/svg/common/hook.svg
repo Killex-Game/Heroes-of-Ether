@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="hook-title hook-desc">
+<title id="hook-title">Крюк</title>
+<desc id="hook-desc">Обычный бустер. Притягивает соперника. Время полёта - 10 секунд. Цена: 10 монет за 10 штук.</desc>
+<defs><linearGradient id="hook-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="hook-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="hook-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="hook-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="hook-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="hook-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="hook-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="hook-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="hook-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="hook-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="hook-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="hook-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path fill="none" stroke="#392B48" stroke-width="19" d="M48 91C42 52 66 32 91 37C116 42 124 65 108 79C90 94 72 76 80 61C85 51 96 52 104 58L157 81"/>
+<path fill="none" stroke="#D49A62" stroke-width="12" d="M48 91C42 52 66 32 91 37C116 42 124 65 108 79C90 94 72 76 80 61C85 51 96 52 104 58L157 81"/>
+<path fill="none" stroke="#FFE0A6" stroke-width="4" d="M48 76C49 50 68 36 86 40M117 66L149 80"/>
+<path fill="none" stroke="#956347" stroke-width="3" d="M45 83L53 86M46 66L54 70M53 50L62 57M70 36L73 45M91 37L88 46M106 46L99 51M106 75L110 82M84 78L83 87M82 59L76 53M131 66L128 75M144 71L141 81"/>
+<path fill="url(#hook-steel)" d="M147 89H176V162C176 201 151 222 117 222C80 222 60 202 60 168V134L100 158L83 166C82 188 95 198 116 198C136 198 147 183 147 162Z"/>
+<path stroke="none" fill="#778FBD" d="M165 101H171V162C171 199 147 217 117 217C92 217 79 207 72 193C87 205 106 210 124 207C151 203 165 185 165 164Z"/>
+<path fill="none" stroke="#F6FFFF" stroke-width="6" d="M156 108V160C156 188 141 207 116 208"/>
+<path stroke="none" fill="#E6F7FF" d="M66 144L87 157L77 162L68 174Z"/>
+<path fill="url(#hook-steel)" fill-rule="evenodd" d="M161 51A25 25 0 1 1 160.99 101A25 25 0 1 1 161 51ZM161 65A11 11 0 1 0 161.01 87A11 11 0 1 0 161 65Z"/>
+<path fill="none" stroke="#F7FCFF" stroke-width="4" d="M145 73C146 62 155 58 164 60"/>
+<path fill="none" stroke="#392B48" stroke-width="18" d="M139 76L158 85"/>
+<path fill="none" stroke="#DBA36D" stroke-width="11" d="M139 76L158 85"/>
+<path fill="none" stroke="#FFE2B5" stroke-width="3" d="M140 73L155 80"/>
+</g>
+</svg>

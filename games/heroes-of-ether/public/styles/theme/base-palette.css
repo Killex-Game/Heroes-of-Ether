@@ -1,0 +1,39 @@
+/* Approved base interface: Azure and Champagne. Geometry is unchanged. */
+[data-ui-theme="default"] {
+  --prism-light: #fff7e6;
+  --prism-mid: #eee4cd;
+  --prism-strong: #315f7c;
+  --prism-deep: #20465f;
+  --prism-ink: #293e50;
+  --prism-edge: #c9a15b;
+  --sf-ink: #293e50;
+  --sf-plum: #315f7c;
+  --sf-muted: #655c4e;
+  --sf-paper: #fff7e6;
+  --sf-border: #c9a15b;
+  --sf-active-purple: linear-gradient(#315f7c, #20465f);
+  --ui-c-a94bc5: #315f7c;
+  --ui-c-701c88: #20465f;
+}
+html[data-ui-theme="default"] body:not(.account-premium)[data-screen="lobby"] #lobby:not(.has-league-background):not([data-event-background]) {
+  background: radial-gradient(ellipse at 70% 0%, #396b85, transparent 65%), #193549;
+}
+html[data-ui-theme="default"] body.account-premium[data-screen="lobby"] #lobby:not(.has-league-background):not([data-event-background]) {
+  background: radial-gradient(ellipse at 50% 38%, #f5ddff, #d1a2ed 70%, #a45ad0);
+}
+/* Each embedded clan/event scope retains its own text and status colours. */
+html[data-ui-theme="default"] :is(.booster-dialog, .appearance-dialog, .cosmetics-dialog, .personal-dialog, .profile-copy, .progress-summary, .progress-greatness, .progress-experience, .booster-card, .currency-package, .honor-card, .quest-card, .achievement-card, .booster-note, .profile-title):not([data-ui-theme]:not([data-ui-theme="default"]) *):not([data-ui-theme]:not([data-ui-theme="default"])) {
+  color: #293e50;
+}
+html[data-ui-theme="default"] :is(.booster-card h3, .personal-field-label, .profile-copy small, .progress-summary, .booster-wallet, .cosmetics-preview h3, .booster-tooltip, .booster-pack, .booster-art-count):not([data-ui-theme]:not([data-ui-theme="default"]) *):not([data-ui-theme]:not([data-ui-theme="default"])) {
+  color: #293e50;
+}
+html[data-ui-theme="default"] #lobby:not(.has-league-background):not([data-event-background]) :is(.skin-note, .loadout-heading, .loadout-summary) {
+  color: #fff7e6;
+}
+html[data-ui-theme="default"] body:not(.account-premium) #lobby:not(.has-league-background):not([data-event-background]) #lobbyStatus:not([data-kind="error"]) {
+  color: #d5e0e5;
+}
+html[data-ui-theme="default"] body:not(.account-premium) #lobby:not(.has-league-background):not([data-event-background]) #lobbyStatus[data-kind="error"] {
+  color: #ffc6bc;
+}

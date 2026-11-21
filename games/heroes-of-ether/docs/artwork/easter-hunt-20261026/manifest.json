@@ -1,0 +1,40 @@
+{
+  "generator": "Built-in imagegen",
+  "references": [
+    "public/assets/boosters/png/sponge.png",
+    "public/assets/accessories/novice_hat.png"
+  ],
+  "provenance": "Generated for this project using existing project art as style references. No third-party downloaded assets. Existing reference provenance requires the separate pre-release audit.",
+  "assets": [
+    {
+      "id": "egg-ruby",
+      "prompt": "Use case: stylized-concept. Production transparent game inventory icon for a colorful fantasy browser game. Match the provided game art style: richly hand-painted dimensional form, crisp readable silhouette, warm beveled gold details, saturated enamel, soft luminous highlights, polished illustrated material shading, not flat vector. One isolated object centered, full silhouette with 10% transparent margin, no text, no frame, no floor, no cast shadow, no purple gems. Square 1024x1024. Subject: one plump crimson red Easter egg with ornate raised GOLD zigzag bands and tiny cream dots, distinct simple readable zigzag pattern; egg upright, front three-quarter view.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-28e58619-8547-4875-ac0f-f10a0a75fe25.png"
+    },
+    {
+      "id": "egg-sky",
+      "prompt": "Use case: stylized-concept. Production transparent game inventory icon for a colorful fantasy browser game. Match the provided game art style: richly hand-painted dimensional form, crisp readable silhouette, warm beveled gold details, saturated enamel, soft luminous highlights, polished illustrated material shading, not flat vector. One isolated object centered, full silhouette with 10% transparent margin, no text, no frame, no floor, no cast shadow, no purple gems. Square 1024x1024. Subject: one plump vivid sky-blue Easter egg with raised GOLD broad spiral ribbons and a few ivory stars, distinct swirling pattern; egg upright, front three-quarter view.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-eb0a46fa-8640-4237-aaa3-c017da043e88.png"
+    },
+    {
+      "id": "egg-leaf",
+      "prompt": "Use case: stylized-concept. Production transparent game inventory icon for a colorful fantasy browser game. Match the provided game art style: richly hand-painted dimensional form, crisp readable silhouette, warm beveled gold details, saturated enamel, soft luminous highlights, polished illustrated material shading, not flat vector. One isolated object centered, full silhouette with 10% transparent margin, no text, no frame, no floor, no cast shadow, no purple gems. Square 1024x1024. Subject: one plump vivid emerald green Easter egg decorated with raised GOLD curling leaves and ivory flowers, distinct botanical pattern; egg upright, front three-quarter view.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-51a11212-eb76-4a18-b5d4-61b4b1839aa9.png"
+    },
+    {
+      "id": "egg-sun",
+      "prompt": "Use case: stylized-concept. Production transparent game inventory icon for a colorful fantasy browser game. Match the provided game art style: richly hand-painted dimensional form, crisp readable silhouette, warm beveled gold details, saturated enamel, soft luminous highlights, polished illustrated material shading, not flat vector. One isolated object centered, full silhouette with 10% transparent margin, no text, no frame, no floor, no cast shadow, no purple gems. Square 1024x1024. Subject: one plump warm orange Easter egg with raised GOLD sunburst medallions and ivory horizontal bands, distinct sunny pattern; egg upright, front three-quarter view.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-72aa85b3-c564-460c-a16f-88a3510cd8fd.png"
+    },
+    {
+      "id": "golden-egg",
+      "prompt": "Use case: stylized-concept. Production transparent game inventory icon for a colorful fantasy browser game. Match the provided game art style: richly hand-painted dimensional form, crisp readable silhouette, warm beveled gold details, saturated enamel, soft luminous highlights, polished illustrated material shading, not flat vector. One isolated object centered, full silhouette with 10% transparent margin, no text, no frame, no floor, no cast shadow, no purple gems. Square 1024x1024. Subject: a majestic large GOLDEN Easter egg, one egg of burnished solid gold, exquisitely sculpted spring leaf filigree and embossed small rabbit silhouette at center, broad faceted beveled gold bands, tiny emerald enamel accents, elegant miniature three-foot golden stand integrated at base. Valuable collection treasure, bright and readable at small size.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e1d3caae-1d1c-4f7e-b5ab-12bec99bf9ff.png"
+    },
+    {
+      "id": "rabbit-ears",
+      "prompt": "Use case: stylized-concept. Production transparent game inventory icon for a colorful fantasy browser game. Match the provided game art style: richly hand-painted dimensional form, crisp readable silhouette, warm beveled gold details, saturated enamel, soft luminous highlights, polished illustrated material shading, not flat vector. One isolated object centered, full silhouette with 10% transparent margin, no text, no frame, no floor, no cast shadow, no purple gems. Square 1024x1024. Subject: a wearable rabbit ears headpiece ONLY, no head and no character. Two tall plush ivory rabbit ears with soft blush-pink inner fur, one ear tip gently curled, mounted on a compact golden circlet lined with short cream fur. Little emerald-green bow with a tiny gold spring-flower clasp at the base. Frontal symmetric headgear, horizontal lower edge, ears and circlet together occupy square composition. Fits on top of spherical avatar like existing fur-trimmed hat.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-56de0198-8339-49e9-8ebb-261f090fc1b8.png"
+    }
+  ]
+}

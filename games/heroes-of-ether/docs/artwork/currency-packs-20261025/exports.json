@@ -1,0 +1,135 @@
+[
+  {
+    "id": "coins-handful",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 86280
+  },
+  {
+    "id": "coins-purse",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 93578
+  },
+  {
+    "id": "coins-sack",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 110756
+  },
+  {
+    "id": "coins-casket",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 101600
+  },
+  {
+    "id": "coins-dragon",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 109442
+  },
+  {
+    "id": "coins-treasury",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 101368
+  },
+  {
+    "id": "crystals-sparks",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 100868
+  },
+  {
+    "id": "crystals-moon",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 107474
+  },
+  {
+    "id": "crystals-radiance",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 109866
+  },
+  {
+    "id": "crystals-vein",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 113484
+  },
+  {
+    "id": "crystals-mountain",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 110458
+  },
+  {
+    "id": "crystals-source",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 109300
+  },
+  {
+    "id": "bucks-change",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 90596
+  },
+  {
+    "id": "bucks-stash",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 86754
+  },
+  {
+    "id": "bucks-piggy",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 79680
+  },
+  {
+    "id": "bucks-gift",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 95586
+  },
+  {
+    "id": "bucks-treasure",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 109516
+  },
+  {
+    "id": "bucks-bank",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 98320
+  },
+  {
+    "id": "bucks-stack",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 78962
+  }
+]

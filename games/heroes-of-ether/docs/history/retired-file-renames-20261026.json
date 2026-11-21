@@ -1,0 +1,522 @@
+{
+  "date": "2026-10-26",
+  "note": "Исторические переименования удалённых ресурсов. Семь SVG клановых бустеров отсутствовали ещё до этой очистки; действующий каталог использует PNG/WebP.",
+  "archive": "../../../../backups/obsolete-files-20261026/removed-files.zip",
+  "entries": [
+    {
+      "old": "public/assets/busters/clan/awl.svg",
+      "new": "public/assets/boosters/clan/awl.svg",
+      "purpose": "Изображение или каталог бустеров."
+    },
+    {
+      "old": "public/assets/busters/clan/cake.svg",
+      "new": "public/assets/boosters/clan/cake.svg",
+      "purpose": "Изображение или каталог бустеров."
+    },
+    {
+      "old": "public/assets/busters/clan/clan_shield.svg",
+      "new": "public/assets/boosters/clan/clan_shield.svg",
+      "purpose": "Изображение или каталог бустеров."
+    },
+    {
+      "old": "public/assets/busters/clan/fire.svg",
+      "new": "public/assets/boosters/clan/fire.svg",
+      "purpose": "Изображение или каталог бустеров."
+    },
+    {
+      "old": "public/assets/busters/clan/fire_sword.svg",
+      "new": "public/assets/boosters/clan/fire_sword.svg",
+      "purpose": "Изображение или каталог бустеров."
+    },
+    {
+      "old": "public/assets/busters/clan/vortex.svg",
+      "new": "public/assets/boosters/clan/vortex.svg",
+      "purpose": "Изображение или каталог бустеров."
+    },
+    {
+      "old": "public/assets/busters/clan/warheads.svg",
+      "new": "public/assets/boosters/clan/warheads.svg",
+      "purpose": "Изображение или каталог бустеров."
+    },
+    {
+      "old": "public/assets/busters/png/rocket-v2.png",
+      "new": "public/assets/boosters/png/rocket-v2.png",
+      "purpose": "Изображение или каталог бустеров."
+    },
+    {
+      "old": "scripts/create-achievement-icons.js",
+      "new": "scripts/assets/create-achievement-icons.js",
+      "purpose": "Подготовка графических ресурсов: create-achievement-icons."
+    },
+    {
+      "old": "scripts/create-clan-icons.js",
+      "new": "scripts/assets/create-clan-icons.js",
+      "purpose": "Подготовка графических ресурсов: create-clan-icons."
+    },
+    {
+      "old": "tests/absorption-camera-browser-final.log",
+      "new": "tests/artifacts/legacy/absorption-camera-browser-final.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/accounts-chests-browser.txt",
+      "new": "tests/artifacts/legacy/accounts-chests-browser.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/accounts-general-browser.txt",
+      "new": "tests/artifacts/legacy/accounts-general-browser.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/accounts-turbo-unit.txt",
+      "new": "tests/artifacts/legacy/accounts-turbo-unit.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/achievements-browser-latest.log",
+      "new": "tests/artifacts/legacy/achievements-browser-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/achievements-browser-smoke-latest.log",
+      "new": "tests/artifacts/legacy/achievements-browser-smoke-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/ACHIEVEMENTS_BROWSER_RUN.txt",
+      "new": "tests/artifacts/legacy/ACHIEVEMENTS_BROWSER_RUN.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/arena-chests-browser.txt",
+      "new": "tests/artifacts/legacy/arena-chests-browser.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/arena-chests-general-browser.txt",
+      "new": "tests/artifacts/legacy/arena-chests-general-browser.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/arena-chests-unit.txt",
+      "new": "tests/artifacts/legacy/arena-chests-unit.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/arena-rules-browser-latest.log",
+      "new": "tests/artifacts/legacy/arena-rules-browser-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/arena-rules-browser-smoke-latest.log",
+      "new": "tests/artifacts/legacy/arena-rules-browser-smoke-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/audit-benchmark.json",
+      "new": "tests/artifacts/legacy/audit-benchmark.json",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/audit-browser.log",
+      "new": "tests/artifacts/legacy/audit-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/audit-chest-camera.log",
+      "new": "tests/artifacts/legacy/audit-chest-camera.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/audit-focused.log",
+      "new": "tests/artifacts/legacy/audit-focused.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/audit-initial.log",
+      "new": "tests/artifacts/legacy/audit-initial.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/audit-unit.log",
+      "new": "tests/artifacts/legacy/audit-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/backgrounds-greatness-browser.log",
+      "new": "tests/artifacts/legacy/backgrounds-greatness-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/backgrounds-greatness-layout.log",
+      "new": "tests/artifacts/legacy/backgrounds-greatness-layout.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/backgrounds-greatness-unit.log",
+      "new": "tests/artifacts/legacy/backgrounds-greatness-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/BOOSTER_BROWSER_RUN.txt",
+      "new": "tests/artifacts/legacy/BOOSTER_BROWSER_RUN.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/browser-clan-competition.log",
+      "new": "tests/artifacts/legacy/browser-clan-competition.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/browser-current-output.txt",
+      "new": "tests/artifacts/legacy/browser-current-output.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/browser-latest.log",
+      "new": "tests/artifacts/legacy/browser-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/browser-smoke-latest.log",
+      "new": "tests/artifacts/legacy/browser-smoke-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/browser-visual-update.log",
+      "new": "tests/artifacts/legacy/browser-visual-update.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/BROWSER_RUN.txt",
+      "new": "tests/artifacts/legacy/BROWSER_RUN.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/camera-absorption-browser.log",
+      "new": "tests/artifacts/legacy/camera-absorption-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/camera-absorption-unit.log",
+      "new": "tests/artifacts/legacy/camera-absorption-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/camera-growth-regression.log",
+      "new": "tests/artifacts/legacy/camera-growth-regression.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/chest-camera-all-browser.log",
+      "new": "tests/artifacts/legacy/chest-camera-all-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/chest-camera-browser.log",
+      "new": "tests/artifacts/legacy/chest-camera-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/chest-camera-focused.log",
+      "new": "tests/artifacts/legacy/chest-camera-focused.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/chest-camera-full-browser.log",
+      "new": "tests/artifacts/legacy/chest-camera-full-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/chest-camera-unit.log",
+      "new": "tests/artifacts/legacy/chest-camera-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/chests-quarter-test.log",
+      "new": "tests/artifacts/legacy/chests-quarter-test.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/clan-battles-early.log",
+      "new": "tests/artifacts/legacy/clan-battles-early.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/clan-battles-full.log",
+      "new": "tests/artifacts/legacy/clan-battles-full.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/clan-final-suite.log",
+      "new": "tests/artifacts/legacy/clan-final-suite.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/clan-new-tests.log",
+      "new": "tests/artifacts/legacy/clan-new-tests.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/clan-rosters-browser.log",
+      "new": "tests/artifacts/legacy/clan-rosters-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/clan-rosters-unit.log",
+      "new": "tests/artifacts/legacy/clan-rosters-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/clan-rosters-visual.log",
+      "new": "tests/artifacts/legacy/clan-rosters-visual.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/current-test-output.txt",
+      "new": "tests/artifacts/legacy/current-test-output.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/drag-chests-browser.log",
+      "new": "tests/artifacts/legacy/drag-chests-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/drag-chests-unit.log",
+      "new": "tests/artifacts/legacy/drag-chests-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/drag-loadout-browser.log",
+      "new": "tests/artifacts/legacy/drag-loadout-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/expanded-achievements-unit.txt",
+      "new": "tests/artifacts/legacy/expanded-achievements-unit.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/feeding-unit.log",
+      "new": "tests/artifacts/legacy/feeding-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/group-clan-browser-final.log",
+      "new": "tests/artifacts/legacy/group-clan-browser-final.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/group-clan-browser.log",
+      "new": "tests/artifacts/legacy/group-clan-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/group-effects-browser-final.log",
+      "new": "tests/artifacts/legacy/group-effects-browser-final.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/group-effects-browser.log",
+      "new": "tests/artifacts/legacy/group-effects-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/group-effects-seven-browser.log",
+      "new": "tests/artifacts/legacy/group-effects-seven-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/group-effects-unit.log",
+      "new": "tests/artifacts/legacy/group-effects-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/growth-browser.log",
+      "new": "tests/artifacts/legacy/growth-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/growth-chest-camera.log",
+      "new": "tests/artifacts/legacy/growth-chest-camera.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/growth-focused.log",
+      "new": "tests/artifacts/legacy/growth-focused.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/growth-full-browser.log",
+      "new": "tests/artifacts/legacy/growth-full-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/growth-merge-browser-final.log",
+      "new": "tests/artifacts/legacy/growth-merge-browser-final.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/growth-unit.log",
+      "new": "tests/artifacts/legacy/growth-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/LAST_RUN.txt",
+      "new": "tests/artifacts/legacy/LAST_RUN.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/loadout-final-browser.log",
+      "new": "tests/artifacts/legacy/loadout-final-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/loadout-full-browser.log",
+      "new": "tests/artifacts/legacy/loadout-full-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/loadout-seven-browser.log",
+      "new": "tests/artifacts/legacy/loadout-seven-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/loadout-seven-unit.log",
+      "new": "tests/artifacts/legacy/loadout-seven-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/lobby-profile-browser.log",
+      "new": "tests/artifacts/legacy/lobby-profile-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/lobby-profile-layout.log",
+      "new": "tests/artifacts/legacy/lobby-profile-layout.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/lobby-profile-unit.log",
+      "new": "tests/artifacts/legacy/lobby-profile-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/new-features-unit.txt",
+      "new": "tests/artifacts/legacy/new-features-unit.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/progression-browser-latest.log",
+      "new": "tests/artifacts/legacy/progression-browser-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/progression-browser-smoke-latest.log",
+      "new": "tests/artifacts/legacy/progression-browser-smoke-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/projectiles-browser-latest.log",
+      "new": "tests/artifacts/legacy/projectiles-browser-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/projectiles-browser-smoke-latest.log",
+      "new": "tests/artifacts/legacy/projectiles-browser-smoke-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/PROJECTILES_BROWSER_RUN.txt",
+      "new": "tests/artifacts/legacy/PROJECTILES_BROWSER_RUN.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/public-link-browser.log",
+      "new": "tests/artifacts/legacy/public-link-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/random-chests-unit.log",
+      "new": "tests/artifacts/legacy/random-chests-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/seamless-ground-browser.log",
+      "new": "tests/artifacts/legacy/seamless-ground-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/SECTIONS_BROWSER_RUN.txt",
+      "new": "tests/artifacts/legacy/SECTIONS_BROWSER_RUN.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/shield-test-output.txt",
+      "new": "tests/artifacts/legacy/shield-test-output.txt",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/shield-timing-seven-browser.log",
+      "new": "tests/artifacts/legacy/shield-timing-seven-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/showcases-browser.log",
+      "new": "tests/artifacts/legacy/showcases-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/showcases-unit.log",
+      "new": "tests/artifacts/legacy/showcases-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/tops-clan-rules.log",
+      "new": "tests/artifacts/legacy/tops-clan-rules.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/tops-gender-unit.log",
+      "new": "tests/artifacts/legacy/tops-gender-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/tops-layout.log",
+      "new": "tests/artifacts/legacy/tops-layout.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/tops-loadout.log",
+      "new": "tests/artifacts/legacy/tops-loadout.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/tops-personal-browser.log",
+      "new": "tests/artifacts/legacy/tops-personal-browser.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/unit-latest.log",
+      "new": "tests/artifacts/legacy/unit-latest.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/visual-targeted.log",
+      "new": "tests/artifacts/legacy/visual-targeted.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/visual-update-unit.log",
+      "new": "tests/artifacts/legacy/visual-update-unit.log",
+      "purpose": "Исторический результат проверки."
+    },
+    {
+      "old": "tests/wardrobe-unit-output.txt",
+      "new": "tests/artifacts/legacy/wardrobe-unit-output.txt",
+      "purpose": "Исторический результат проверки."
+    }
+  ]
+}

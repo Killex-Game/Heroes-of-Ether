@@ -1,0 +1,31 @@
+"use strict";
+const test=require('node:test'),assert=require('node:assert/strict'),path=require('node:path'),http=require('node:http'),{once}=require('node:events'),{randomUUID,randomBytes}=require('node:crypto');
+const {temporary}=require('../temp'),{ProfileStore}=require('../../src/server/profiles/profile-store'),{OwnerAccess}=require('../../src/server/admin/owner-access'),{ControlAccess}=require('../../src/server/admin/control-access'),{createControlServer}=require('../../src/server/admin/control-server'),{createGameServer}=require('../../src/server/game-server'),{Arena}=require('../../src/server/arena/arena-simulation'),otp=require('../../src/server/admin/admin-otp');
+test('player feedback reaches independent admin, moderator handles it offline, authentication and retries remain strict',async t=>{
+ let at=Date.UTC(2026,10,17,12);const now=()=>at,dir=temporary(t,'feedback-http'),profiles=new ProfileStore({now}),owner=profiles.open(),player=profiles.open(),key=randomBytes(32);
+ const access=new OwnerAccess({ownerId:owner.profile.id,now});
+ const reserve=http.createServer();reserve.listen(0,'127.0.0.1');await once(reserve,'listening');const port=reserve.address().port;await new Promise(r=>reserve.close(r));
+ const gameUrl='http://127.0.0.1:'+port,control=createControlServer({access,key,gameUrl,directory:path.join(dir,'control'),publicDir:path.resolve(__dirname,'../../public'),mediaDirectory:path.join(dir,'news-media'),now});
+ control.server.listen(0,'127.0.0.1');await once(control.server,'listening');const base='http://127.0.0.1:'+control.server.address().port;
+ let app=createGameServer({profiles,ownerAccess:new ControlAccess({ownerId:owner.profile.id,key,url:base,directory:path.join(dir,'control'),now}),wallNow:now,autoTick:false,arena:new Arena({etherCount:0}),testBots:{enabled:false}});
+ app.httpServer.listen(port,'127.0.0.1');await once(app.httpServer,'listening');t.after(async()=>{if(app)await app.close();await control.close();});
+ const password='Feedback isolated owner password';await access.login({password,setupCode:access.bootstrapCode},{method:'POST',headers:{host:new URL(base).host,origin:base,'content-type':'application/json'},socket:{remoteAddress:'127.0.0.1'}},{setHeader(){}},{id:owner.profile.id},true);access.session=null;
+ function client(){let cookie='',csrf='';return async(route,body,extra={})=>{const r=await fetch(base+'/api/admin/'+route,{method:body?'POST':'GET',headers:{origin:base,cookie,...(body?{'content-type':'application/json','x-owner-csrf':csrf}:{}),...extra},...(body?{body:JSON.stringify(body)}:{})});if(r.headers.getSetCookie().length)cookie=r.headers.getSetCookie().map(c=>c.split(';')[0]).join('; ');const data=await r.json();if(data.csrf)csrf=data.csrf;return{status:r.status,data};};}
+ const ownerApi=client(),modApi=client();assert.equal((await ownerApi('feedback')).status,401);await ownerApi('auth/login',{login:'owner',password});
+ const enroll=(await ownerApi('security/enroll-begin',{password})).data;await ownerApi('security/enroll-confirm',{enrollmentId:enroll.enrollmentId,code:otp.code(enroll.secret,Math.floor(at/30000))});at+=30000;
+ const created=(await ownerApi('moderators',{action:'create',login:'helper',name:'Помощник',reason:'Изолированный тест',password,code:otp.code(enroll.secret,Math.floor(at/30000))})).data;
+ const login=(await modApi('auth/login',{login:'helper',password:created.temporaryPassword})).data;
+ assert.equal((await modApi('auth/verify',{code:otp.code(login.secret,Math.floor(at/30000)),newPassword:'Feedback personal moderator password'})).status,200);
+ const send=async(body,headers={})=>{const r=await fetch(gameUrl+'/api/feedback',{method:'POST',headers:{origin:gameUrl,'content-type':'application/json',cookie:'sferorumiya_session='+player.token,...headers},body:JSON.stringify(body)});return{status:r.status,data:await r.json()};};
+ const input={text:'<img src=x onerror=alert(1)>\n🌟'.repeat(20),requestId:randomUUID(),playerId:owner.profile.id,playerName:'Поддельный ник'};
+ assert.equal((await send(input,{cookie:''})).status,401);assert.equal((await send(input,{origin:'https://evil.example'})).status,403);
+ assert.equal((await send({...input,text:'а'.repeat(1001)})).status,400);
+ const result=await send(input);assert.equal(result.status,200,JSON.stringify(result));assert.equal((await send(input)).data.number,result.data.number);
+ assert.equal((await fetch(base+'/_control/feedback',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(input)})).status,403);
+ const list=await modApi('feedback');assert.equal(list.status,200);assert.equal(list.data.total,1);const detail=(await modApi('feedback?number=1')).data;assert.equal(detail.playerId,player.profile.id);assert.equal(detail.playerName,player.profile.name);assert.equal(detail.dueAt-detail.createdAt,72*3600000);
+ await app.close();app=null;assert.equal((await modApi('feedback?number=1')).status,200);
+ const change={number:1,version:1,status:'processed',requestId:randomUUID()};assert.equal((await modApi('feedback',change,{'x-owner-csrf':'bad'})).status,403);
+ assert.equal((await modApi('feedback',change)).data.status,'processed');assert.equal((await modApi('feedback',change)).data.version,2);
+ assert.equal((await ownerApi('feedback?number=1')).data.handledBy,'Помощник');assert.equal((await modApi('moderators')).status,403);
+ await modApi('logout',{});assert.equal((await modApi('feedback')).status,401);
+});

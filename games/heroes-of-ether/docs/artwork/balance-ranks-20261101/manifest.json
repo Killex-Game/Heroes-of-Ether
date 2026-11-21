@@ -1,0 +1,131 @@
+{
+  "method": "Generated with image_gen, transparent original artwork; no downloaded third-party assets. WebP conversion preserves alpha. Accessory placement and effects unchanged. Title frames fitted to their transparent circular opening.",
+  "records": [
+    {
+      "kind": "accessories",
+      "id": "novice_hat",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2fc173bf-522e-4958-9ec4-341f7890f62f.png",
+      "prompt": "Create a replacement game hat sprite. Image1 is ONLY the precise positioning / lower contact contour template; replace its crown entirely. Image2 is subject reference: a cheerful red yellow blue green fabric propeller cap with a small golden two-blade propeller. Image3 is rendering/material style: polished rich hand-painted game fabric, soft dimensional shading, tasteful small gold seams. Square transparent canvas. Match image1 occupied bounding box and especially exact bottom shallow convex upward arch: center bottom at 68% canvas height, side ends around 74%; front edge must sit flush on top of round ball. Cap fabric compact rounded dome, small propeller fits within current top margin (~17%), no crown, jewels, rear brim, mannequin, ball, background or ground shadow. Only front view of hat. High quality transparent clean alpha.",
+      "installed": "public/assets/accessories/rewards-v4/novice_hat.webp",
+      "sourceSha256": "fc424f2151d07eddd7329a03830e48ebf7b82e5d9b04cc255b0ae1be7a9d1d45",
+      "sha256": "d39880767c06fcc08b74e8ad71540ac022725397eb4ecc4174049a67eb7b1886"
+    },
+    {
+      "kind": "accessories",
+      "id": "rabbit_ears",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d67ef1b3-4808-4718-a1d8-87c03a236122.png",
+      "prompt": "Redraw image1 rabbit ears game hat in same refined hand-painted fabric style as image2. Preserve image1 exact size, canvas composition, complete ears and headband bottom contact arc, transparent square. Soft detailed ivory white fur with pink velvet inner ears, one ear gently bent. Headband green satin stitched fabric with delicate gold piping and small gold fastener, not faceted crystal. Bottom front edge follows existing shallow upward arch exactly. No back half of band, no additions below arc, no floating glitter, no ball, no background. Match rest of ornate illustrated game accessories with real fabric and gold metal, not polygon surfaces.",
+      "installed": "public/assets/accessories/rewards-v4/rabbit_ears.webp",
+      "sourceSha256": "83d7d13e4a6c48a1763e0be095ae0387ead3cfaa782e2f3d0f8b6f242d39aa5f",
+      "sha256": "9f646b93783445ee0213a563d5a32143bf48c1928021c0139221bd0279dad32c"
+    },
+    {
+      "kind": "accessories",
+      "id": "carrot_bow",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c56704d7-798e-4206-a3f7-851781487a95.png",
+      "prompt": "Redraw image1 as an elegant compact game bow-tie in sophisticated richly shaded illustrated style of image2. Wide 2:1 transparent canvas, centered symmetry full silhouette. Two soft ivory furry bow loops with actual delicate fur fibers, folds and warm shadows, orange carrot centerpiece rendered smooth lacquered carved wood with little grooves and green satin leaves, tiny warm gold clasp. Keep carrot recognizable, not faceted gemstone. Crisp rounded volume, hand-painted game item, no excessive jeweled decorations, no back strap, no ground shadow, no background. Bow fills canvas with small margin, compatible 2:1 sprite.",
+      "installed": "public/assets/accessories/rewards-v4/carrot_bow.webp",
+      "sourceSha256": "b489dc52576a234f1a37e7f0f9ea401da7ba1025c45b763dd32e77ff74c74b54",
+      "sha256": "97973bcb2493c837653c4077df0760c103780732e328633344b2dbf455648265"
+    },
+    {
+      "kind": "accessories",
+      "id": "novice_bow",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2fd874fb-5e80-4d0c-b87b-19a4f3a6c483.png",
+      "prompt": "Redraw image1 royal blue bow tie into refined fabric game accessory matching image2: rich cobalt blue woven satin, sculptural folds with soft natural shading, delicate narrow gold seam piping, warm ruby red smooth oval enamel brooch in modest gold bezel at center. No crystal facets. Compact symmetrical horizontal bow, 2:1 transparent canvas, complete silhouette small margins, no neck strap, no background or drop shadow. Preserve recognizability while adding hand-painted fine material craftsmanship like image2. Do not enlarge brooch, no extra floating ornaments.",
+      "installed": "public/assets/accessories/rewards-v4/novice_bow.webp",
+      "sourceSha256": "e303e78ef7ac710c8f8295e2c5907b132eca1a31988c1baf5df3ee260c569113",
+      "sha256": "cd9b47dfc005e93fa42c3306687299e8a20f5cd4f079470ee2e7bf2838113c15"
+    },
+    {
+      "kind": "frames",
+      "id": "novice",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-297b2d85-fe55-4833-a557-9b6a983b0db7.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Новичок, plain polished silver circular metal ring, only a tiny leaf clasp at bottom, modest and slim, no wings. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/novice.webp",
+      "sourceSha256": "929c60728c04bd2c8841f228d4cfa6d8110833b4cc539637aed33b69821aa4b8",
+      "sha256": "2c8cbc9f6a0c73b34957920084a40a96df6c0abe3149f472b56da2b4d81684a3"
+    },
+    {
+      "kind": "frames",
+      "id": "experienced",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e084380c-6b26-47bd-b1a8-07dde93596b7.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Опытный, silver circular ring with blue enamel inlay and small symmetrical laurel leaves at bottom sides, slightly richer. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/experienced.webp",
+      "sourceSha256": "b7fef3b9d2c13071acf19201f5c6623daa1e3a0da5552106091b785b0c59065e",
+      "sha256": "694878540c9cbc82f0f0742a3c96a4162dbb409cbb5ed45a9fde5c17739ccc8f"
+    },
+    {
+      "kind": "frames",
+      "id": "expert",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-674a784f-c80b-4aa1-a3ce-471b17dce67e.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Знаток, bronze and warm gold ring with amber enamel bands and small sculpted leaf sprays, compact and dignified. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/expert.webp",
+      "sourceSha256": "ed7955855e9061090af28939024abea48690a08c1871497acd8448e0235ecfdd",
+      "sha256": "ed383826139ce49b0132f4d46deab477688f1b1c127bc157e7b5176ee17b9575"
+    },
+    {
+      "kind": "frames",
+      "id": "sage",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-82f34834-b4bd-4e33-b077-a5eff5c68bc6.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Мудрец, silver and gold ring, azure enamel, small upward stylized owl feather ornaments at upper sides, elegant. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/sage.webp",
+      "sourceSha256": "6982a89f3b578180e58a2792746aeba45965894614ca23f6bbf9577f62366302",
+      "sha256": "3e9519b30462a580bb395970b8f8ee041f96e4f665d00bbf66892a056d76388f"
+    },
+    {
+      "kind": "frames",
+      "id": "master",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c7417fe4-9f9a-4496-a5f4-18224aa6a220.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Мастер, warm gold ring with rich ruby red enamel, two substantial gold laurels at sides and a small central sun at top. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/master.webp",
+      "sourceSha256": "43ed446403b2f6291c1314459f6531447a9376be97c242cec8233ceed5966dee",
+      "sha256": "1b17062b3daab6910e576a974716cf5d0096e63e7f6a8e9527f2beb94094b438"
+    },
+    {
+      "kind": "frames",
+      "id": "pro",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b6b39c1d-7bee-46ad-8493-93e2533f0624.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Профи, rich gold ring with emerald enamel, layered laurel sprays and discreet enamel star clasp at top, more detailed than master. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/pro.webp",
+      "sourceSha256": "98f6f551084df29622b96020480a622193a6aa39159d5e855edd3684dbe2ca50",
+      "sha256": "97fc991eaa41e78a99031dd308a7bd35f0fc0e9b566e480e1320e39bcb3b2cc2"
+    },
+    {
+      "kind": "frames",
+      "id": "prince",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4de719e1-e424-496d-9e5f-0ce526b39df6.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Принц, ornate gold ring with royal blue enamel and slim silver feather accents, tall tasteful central heraldic fleur at top, decorated lower clasp. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/prince.webp",
+      "sourceSha256": "f733b9cc6ea46fc991f61000628215e5badb745bcc88e838601aaabf1351b01c",
+      "sha256": "87bb4c8e96a71dc03393ff2345be48c32db1510cbcff4e2ac63d5359f4e2bbea"
+    },
+    {
+      "kind": "frames",
+      "id": "king",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c8afc950-e466-4228-8859-45a2f2ed9e05.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Король, regal gold ring with crimson enamel, abundant gold laurels, two silver wing accents and a finely sculpted golden lion face at top. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/king.webp",
+      "sourceSha256": "983899e4a01c5ba3a7f4a785ea52a337afb190df237660481cfc5e4bc715073a",
+      "sha256": "b9b830cea3134e0e6c7bcbf8b6cac23dc00bd4d9b5ed7578124a05ffca6746fb"
+    },
+    {
+      "kind": "frames",
+      "id": "emperor",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-95708449-2ee3-4272-97e0-ee90ca536a0a.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Император, grand gold and ivory ring with midnight blue enamel, large layered laurels, graceful silver wings and radiant golden sun crest at top. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/emperor.webp",
+      "sourceSha256": "b30edc69edc042355731b23909cc4e7b628ae321ea108a75bf93121ef7fb86dc",
+      "sha256": "a9e24ae10952e29e9c3916628832b0d9adef1df0041b6c8c08640843e6ed4649"
+    },
+    {
+      "kind": "frames",
+      "id": "boss",
+      "path": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-da625a58-f04c-4ad1-9d8d-249c3826982b.png",
+      "prompt": "Create ONE transparent game avatar frame for rank Герой, ultimate triumphant gold and ivory ring with scarlet and sky blue enamel accents, broad balanced gold laurels, layered white wings, central glorious phoenix crest (one head) and sun rays, most magnificent of the series. Refine in painted Prizm fantasy UI style, readable generous metal surfaces, controlled highlights, not crystal everywhere. Reference shows general graduated ornate frames, do not reproduce its lettering or exact designs. CRITICAL registration for a reusable sprite: square 1024x1024 canvas, perfect circular empty transparent hole centered EXACTLY at (512,512), hole radius 360px. The inner edge of the ring follows that circle; all decoration stays OUTSIDE hole and inside square with 30px margin. Circle not oval. Front view symmetrical. True alpha outside and in the hole; NO portrait, backdrop, text, numbers, badges, labels, floor or drop shadow. Decoration increases in richness with rank; avoid crowns sitting on avatar head. No double-headed eagles, real national/political/religious emblems. Clean professional finished icon.",
+      "installed": "public/assets/title-frames/v1/boss.webp",
+      "sourceSha256": "1e1f0193b5e1e378e161a0577655f49e7f20bc2bf6b039f01b210f341f54a98b",
+      "sha256": "dd2d8cb8ef7cc37ba9fe2349db3e31f021cf2ee9f87b0657600987fc9ce7a964"
+    }
+  ]
+}

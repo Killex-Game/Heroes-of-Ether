@@ -1,0 +1,14 @@
+[
+  {
+    "id": "vk-cover",
+    "prompt": "Create one original wide community cover artwork for the fantasy multiplayer game «Герои Эфира». Use the attached purple moon dragon and orange fox as canonical character references, same friendly faces and polished hand-painted fantasy rendering, no copy of other games. Panoramic azure and champagne golden magical world, luminous sky islands, soft clouds, distant palace, adventurous playful mood. A large smiling purple dragon on the left and a spirited orange fox on the right, their busts emerge from translucent spherical magical shields, a small emerald forest creature farther behind. Keep central broad negative space with tasteful readable golden Cyrillic lettering «ГЕРОИ ЭФИРА», smaller underneath «Твой путь к величию». Rich painterly fantasy, warm dimensional light, clean details, elegant spacious composition, characters and main text inside central safe region for crops, no UI, no medals, no watermark. Wide landscape 3:1 composition.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1b965cc3-69f8-4cc9-8e0a-a82f705080c9.png",
+    "sha256": "a75e4ca49db589761d313c6cdf837fdd023fbb2cb3e5e088282351e2ccb8e383"
+  },
+  {
+    "id": "vk-avatar",
+    "prompt": "Create a single square community avatar for original fantasy multiplayer game Heroes of Ether, using the attached canonical purple moon dragon exactly recognizable, friendly smiling head and shoulders with turquoise eyes, polished hand-painted fantasy game artwork. Large closeup face inside a clean glowing pale-azure magical orb with slender champagne-gold circular rim, a small golden four-point Ether star atop rim. Background deep azure fading to soft bright sky-blue halo; tasteful sparkles, no busy details. Balanced strong readable silhouette at 64px, all essential content in a central circle with generous outer safe margin. No writing, no crown, no achievement medal, no UI. Match an azure-and-gold sky-island promotional cover.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-3dab9e29-1d9e-49d1-995a-2af743b948dc.png",
+    "sha256": "f5af6715579a050f575cad1cc3f25d5d43591bc501110b847aaa800e0b0dee24"
+  }
+]

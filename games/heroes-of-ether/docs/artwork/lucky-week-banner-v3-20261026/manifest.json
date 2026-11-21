@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-26",
+  "mode": "built-in image_gen",
+  "intent": "Redraw the event banner using the actual in-game roulette; preserve other elements from the previous banner.",
+  "source": "source.png",
+  "output": "public/assets/events/lucky-week/banner-v3.webp",
+  "references": [
+    "public/assets/events/lucky-week/banner-v2.webp",
+    "artifacts/personal-quests-20261024/browser/chromium-roulette-without-lite-1440.png",
+    "public/assets/roulette/ticket-v2.webp"
+  ],
+  "provenance": "AI-generated edit using existing project artwork and an in-game screenshot. No external stock assets added. Existing reference artwork remains subject to the project's separate commercial provenance audit.",
+  "prompt": "Use case: precise-object-edit / style-transfer. Edit target is image 1: the EXISTING 3:1 fantasy event banner. Image 2 is the exact in-game roulette appearance reference; image 3 is the canonical game ticket. The user's correction is essential: the banner's roulette MUST look like the roulette in image 2, not a generic ornate wheel with jewels. Replace ONLY the old wheel on the LEFT with an illustrated version of that exact game wheel: a broad round gold rim with small yellow/pink/cyan bulbs, a dark plum inner band, TWELVE triangular colorful wedges in turquoise, blue, orange, yellow, pink and purple, slim pale radial dividers, a small purple circular center hub with a faceted FOUR-POINT GOLD STAR, and a golden downward triangular pointer at the top. Include small illustrated prize icons on the wedges (coins, cyan crystals, crown, and familiar boosters from reference); prioritize clear icons, do not invent text or numbers. Round rim, no gem medallions, no elaborate pointed finials, no five-point star, no eight-spoke jewel wheel. Adapt the wheel naturally to the banner's warm painterly fantasy lighting while keeping its unmistakable exact game design. Keep the RIGHT side objects from original banner: gold crown with blue stones on navy velvet cushion, navy gold-star tickets, star-stamped gold coins and cyan crystals, plus the existing palace setting, drapes, lighting and overall layout. Tickets may be refreshed to match image 3. Rich polished dimensional game illustration, crisp sculpted gold materials, no flat infographic. Keep 3:1 wide full-bleed composition. No interface panels, buttons, headings, game name, watermark or labels. Do not copy the surrounding UI from screenshot 2."
+}

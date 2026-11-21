@@ -1,0 +1,846 @@
+{
+  "date": "2026-10-29",
+  "target": "original game only",
+  "sourceCopiesReadOnly": true,
+  "sourceDocumentation": [
+    "C:/Users/semen/Documents/ChatGPT/Sferorumiya-Prism-Lab/docs/visual-lab/provenance.md",
+    "C:/Users/semen/Documents/ChatGPT/Sferorumiya-Prism-Lab/docs/visual-lab/prism-art-prompts.json",
+    "C:/Users/semen/Documents/ChatGPT/Sferorumiya-Prism-Lab/docs/artwork/rewards-v2-manifest.json"
+  ],
+  "notes": [
+    "User-provided third-party reference sheets are not runtime sprites.",
+    "Existing artwork provenance is recorded here, not a clearance of all inherited game assets.",
+    "Rank emblems use the requested generated sheet; ten ranks use nine sheet emblems plus a distinct matching emperor emblem."
+  ],
+  "assets": [
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/novice.webp",
+      "before": "7669047184222c1f2269c51bb622552b4966cbe5b50805ae94caddb644f0c5fe",
+      "after": "13c51ff1f3aaedadab5aea95fe56c03ba1f10ba4cd08b790ac809f75225a4865",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\trainee.webp",
+      "sourceSha256": "29748259c8f1caa6c2932596f7af400a1bf0007465985b5f7f047635581ec95f",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/novice.webp",
+      "before": "69f1f01582a9aa3ee6fb1642b16c1ad684994f24626dd41357c5e2b4bc53bf91",
+      "after": "f441280cc11f7e62e028c3119b107eb497a9f38c4d55f5f71d999873a6b40721",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\novice.webp",
+      "sourceSha256": "a56aa075a69893b4ba9113c2675c8d45cb90eb1b5845a0fa9f3b19f48454d93b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/novice.webp",
+      "before": "b39e9fc17b5527f4653bffc6406c1fb90fbd8e826ba74afdf5e3f66dafd42dc9",
+      "after": "9e0161859d905090b7ee16aa6c6b298c88e29e53487443b8562e0ff6f9adf7ee",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\trainee.webp",
+      "sourceSha256": "29748259c8f1caa6c2932596f7af400a1bf0007465985b5f7f047635581ec95f",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/novice.webp",
+      "before": "ced8f2965feb327e57d126934b7a69fed9f325c3c292749719f09449271e4d17",
+      "after": "2d05ab06d917d19a04e883bd7a7ce5f51ea032aa2141edc33a26c9c6fa6a1706",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\novice.webp",
+      "sourceSha256": "a56aa075a69893b4ba9113c2675c8d45cb90eb1b5845a0fa9f3b19f48454d93b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/novice.webp",
+      "before": "c9d1959646678dde39706dd970f533cfcb82a13e33e00600941ef002cd50e860",
+      "after": "c03533d2273dbc20ff5e62c0eee37f228fe18866511f501ef872e2b452a0fe00",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\trainee.webp",
+      "sourceSha256": "29748259c8f1caa6c2932596f7af400a1bf0007465985b5f7f047635581ec95f",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/novice.webp",
+      "before": "c27690c7110f690aabb646bc2d2928650e2ae31c9d39865de053531aa0c87215",
+      "after": "151430a0e7e673ceb27fcea367556375802aba027d744b17ec70c2bb53c8c46b",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\novice.webp",
+      "sourceSha256": "a56aa075a69893b4ba9113c2675c8d45cb90eb1b5845a0fa9f3b19f48454d93b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/experienced.webp",
+      "before": "a2eb7a1f295947fe5076199b89dcf625b24b460703d76661b8d9ed6d9492f338",
+      "after": "c3f27c40aa9c0fa08550b79c35757417d6cacae4a85f7fd244c3e4c541518218",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\iron.webp",
+      "sourceSha256": "f0b5919037a0eae14f4487887f7811c090d3df47b766834a5dc8575699d1c968",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/experienced.webp",
+      "before": "db70c3d41a2c0b49fe30de9681a936dab8a26a262ff134e328e4ec5782f82714",
+      "after": "34b492078c002ca32e52cdfad2b8253be781b26954689c4a4d112b6ea236a98e",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\experienced.webp",
+      "sourceSha256": "a9c386f89064d23cc44886dd21fbaee530c8d52a71f5475050b97250b950dc89",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/experienced.webp",
+      "before": "d780506348f423af6d50ced2f49f425d201c51921ab29898ea3c8de9e203dff1",
+      "after": "a64eab6e92d392f5496af226bf8ca7ec0e2e23f34b2092e0cfd95731576c6d46",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\iron.webp",
+      "sourceSha256": "f0b5919037a0eae14f4487887f7811c090d3df47b766834a5dc8575699d1c968",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/experienced.webp",
+      "before": "8fcc9a346bc02039d4edcc2daf50606647c744a7b2a22ba0bea074051d302710",
+      "after": "fd11e7be3c21cef4926bd5b621bdc3c7c5a480991f288221968c6541d663a04e",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\experienced.webp",
+      "sourceSha256": "a9c386f89064d23cc44886dd21fbaee530c8d52a71f5475050b97250b950dc89",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/experienced.webp",
+      "before": "ed91bc364020d47a874d09c2e132440c12509a50f4cd9e02c6c6f61de34c11d8",
+      "after": "84c9890b887188ec73737b89a7bda7f892e8545d6984a2bf8e62ccf8274b4574",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\iron.webp",
+      "sourceSha256": "f0b5919037a0eae14f4487887f7811c090d3df47b766834a5dc8575699d1c968",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/experienced.webp",
+      "before": "d1b00583d6cf1c5a0b805f973d75e6ae5ba324119e47b2070f80f97018343a1c",
+      "after": "0d02adde7edfbbbdc151700ac8189e2a9336e2698389f63fd41a186d452b2fa1",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\experienced.webp",
+      "sourceSha256": "a9c386f89064d23cc44886dd21fbaee530c8d52a71f5475050b97250b950dc89",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/expert.webp",
+      "before": "c2525f927b1bad83e23d1a202417ee6e8499802ea71f882fdbe8b98e0ad91369",
+      "after": "596de2929d975de410f86d6b30fec8b1e89966b6088f78023763bfff9d07c674",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\bronze.webp",
+      "sourceSha256": "2869bbac43f5ecd4c12cd31469cbe2d62e033210466cf143eaa90d58e9bfe64b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/expert.webp",
+      "before": "8eedcf97390ea3f5b225e1f040689b559ed9e2e5aeb12afd3ce294fcf87e7b27",
+      "after": "2e276e15c4ca69d9cdb1e6af2c2434464817bc68b485973c0775c6cf465ff4b5",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\expert.webp",
+      "sourceSha256": "33a41f9bbd20f16bb91cbf62405e441d6d0f0dd3308e85ba3bda024d157b90e4",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/expert.webp",
+      "before": "d4f2a086cf344d4198b836ddf35a722470444ad45eca186613b847bddbdbd621",
+      "after": "f3aa6db9d5997052168be2ce80a75a9db0d7bfac9f10d664a5bb8934c8d2b4e1",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\bronze.webp",
+      "sourceSha256": "2869bbac43f5ecd4c12cd31469cbe2d62e033210466cf143eaa90d58e9bfe64b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/expert.webp",
+      "before": "1eeee83c8f813710aea4c0eba130c05161eaa829bb59db003a30dff9e7d1b3c7",
+      "after": "943127e61932d5c3c87b95342960881781c04bcb679a582416c848eaa31ee1ed",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\expert.webp",
+      "sourceSha256": "33a41f9bbd20f16bb91cbf62405e441d6d0f0dd3308e85ba3bda024d157b90e4",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/expert.webp",
+      "before": "fa5ea4e3cfaccff38881adfb680ff680302ee17e982430b7f14bd8d1709b80b9",
+      "after": "57a3c9f0087e80cf1622e09e9a9cfe1ff452aaabb30773777e6592b44b2d8e85",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\bronze.webp",
+      "sourceSha256": "2869bbac43f5ecd4c12cd31469cbe2d62e033210466cf143eaa90d58e9bfe64b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/expert.webp",
+      "before": "304dc09baaa642d19903d1d6ee431d8793597d936e16d8881537f890ed480b82",
+      "after": "d977a108cd320e03bf0b052f5cbf6a6f6221bc805f64cc3ba997201a3802bcd0",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\expert.webp",
+      "sourceSha256": "33a41f9bbd20f16bb91cbf62405e441d6d0f0dd3308e85ba3bda024d157b90e4",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/sage.webp",
+      "before": "74760b8c012065f7db6dde1660701402cf99dae053dbab6c6c097dc95252203f",
+      "after": "556180c35c3af4abf8caadba73ec454df912cde5198b1994635351c7025c94b7",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\silver.webp",
+      "sourceSha256": "d68ac7f9c52c67ef4931c4e285a88bbe932d6ccf0ddc7d6cfa93b28826b5b38c",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/sage.webp",
+      "before": "29ac56a47e215504d4a61ed33b7cfed83fab99d25da8b9c227068d787644686e",
+      "after": "68c0f1f712f4be0f213d544a0a7c5cf84646032ceb04ffb411b986faef839ce1",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\sage.webp",
+      "sourceSha256": "3eea2af2b1b0a2e818853555cea07a9525a14a681e6a21c70b3bcb5ab6ba7684",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/sage.webp",
+      "before": "18d2d855caf43bb2ba373ed9ccf6eefcca599b9e7a40d5dea2acec32d8b4593e",
+      "after": "de2191b89e769c5dd79eb4088eed1aff17a54bb08613bffde9c48ec24df11f6c",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\silver.webp",
+      "sourceSha256": "d68ac7f9c52c67ef4931c4e285a88bbe932d6ccf0ddc7d6cfa93b28826b5b38c",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/sage.webp",
+      "before": "7885284e182beaa2c1eb8e433e64a8271d24ea6c3a9efa4675cea4d7e8e3692c",
+      "after": "3d5734f12f9bc33a0e354d91b095133e6f250e8dd28a7f2083655575e0a03810",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\sage.webp",
+      "sourceSha256": "3eea2af2b1b0a2e818853555cea07a9525a14a681e6a21c70b3bcb5ab6ba7684",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/sage.webp",
+      "before": "53305b17df61e836cb7f32e9553aeb1a4b290ae85fddb81d80617065b294a469",
+      "after": "4e6fe49f2ea48704b36857d026d11aa68983ff4a674788264b053482bf34949f",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\silver.webp",
+      "sourceSha256": "d68ac7f9c52c67ef4931c4e285a88bbe932d6ccf0ddc7d6cfa93b28826b5b38c",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/sage.webp",
+      "before": "8b2404f5be034711324d27547521c242ae89ca59bf2680784931bc1b23072fa0",
+      "after": "df0357d3c514152a7fa44c59ee9994881a26a92f494e466fbc0cfefd8010de5e",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\sage.webp",
+      "sourceSha256": "3eea2af2b1b0a2e818853555cea07a9525a14a681e6a21c70b3bcb5ab6ba7684",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/master.webp",
+      "before": "4980df5555b5cddd1e8e0f5d909caf63e471de403df1df15df17094077deffc9",
+      "after": "69222a47750f6a18c4bbd9309a581e41e179d05c1a55f8f8cac3b0ea8483f487",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\gold.webp",
+      "sourceSha256": "98bcf1875fd4a321e71301660babd2905ae7bc6ae8137ffbf6115f419b3e2af2",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/master.webp",
+      "before": "7f6b23a5712543d00cc30eea81c9a243ecd11a7025c8eb4279cdfbd3185bb1f7",
+      "after": "eeb4d7e786f5e49634150cc4f6e471e0996111dbe5cf52de1ad57a4e325be1cd",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\master.webp",
+      "sourceSha256": "49df76ac384b7f1cfee38b5206cb66c4158a40383b900704b3eb70c61b9d4a5b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/master.webp",
+      "before": "fb522ff8992f45d5b836ad07d661fc13bc881f73e528d3decf599eae3fd83ca9",
+      "after": "315cf031dce28824a3a86a2424a55b98e58443cd2c37841dac3a04647e9fefb4",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\gold.webp",
+      "sourceSha256": "98bcf1875fd4a321e71301660babd2905ae7bc6ae8137ffbf6115f419b3e2af2",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/master.webp",
+      "before": "8521b2b89db8820e6543bf17b70c19cfd3764f165d2d9ca16cc5721718d9a1f2",
+      "after": "7b7f8d1114ca0fa72d542679b4ea38baa3d7c0c2646ff2c9b6bda243941a7d26",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\master.webp",
+      "sourceSha256": "49df76ac384b7f1cfee38b5206cb66c4158a40383b900704b3eb70c61b9d4a5b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/master.webp",
+      "before": "9d9a28710b7e3ae6468f1aae4e29d7c8c3bb425386082ebd3acbd2a47e048557",
+      "after": "84d53f28b038bd8ce526eb83c932eff78b4dfbd85c18b976536775198761fa94",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\gold.webp",
+      "sourceSha256": "98bcf1875fd4a321e71301660babd2905ae7bc6ae8137ffbf6115f419b3e2af2",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/master.webp",
+      "before": "cf43b91e1484ffa4f9231dbf31d2515d9cdb62d7e01706391e56f9aa71bca0cf",
+      "after": "356606662f32381fe67b80f71c619d21102c093e551e46404f70459d625a6a08",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\master.webp",
+      "sourceSha256": "49df76ac384b7f1cfee38b5206cb66c4158a40383b900704b3eb70c61b9d4a5b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/pro.webp",
+      "before": "08358bc4e3ecda06fd8b6527e2df92ffd16b878f39a2092430f76c286f470a06",
+      "after": "ae8052f181c8726da53d6e122e0a26252630363890d83e43d14fc6104ac77b22",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\platinum.webp",
+      "sourceSha256": "2d29be9187349826a51436277f7989658d98ee23bd8002f6f7f1457a2dfc5949",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/pro.webp",
+      "before": "5a75f5660ca5cfcee436c450ed7fc1bc545cecb9fa6c371a8f0b24fa03b5a609",
+      "after": "f35508fafcf341006b1f6374e0cea3d272cde64920fe6a25c03bda51263fd3d0",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\pro.webp",
+      "sourceSha256": "256e2a82137db2575bb17a988b76480f6f45998a2478f31d998983c72d0f2c45",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/pro.webp",
+      "before": "0616092d26084efaaa540f39bbe41c840e60140b6241b714bdbab15d09f21b7a",
+      "after": "878898ec103bca783ec4cd1f2392796356ac5264b4ec164ac33bf27425cec66e",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\platinum.webp",
+      "sourceSha256": "2d29be9187349826a51436277f7989658d98ee23bd8002f6f7f1457a2dfc5949",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/pro.webp",
+      "before": "8ef48b278973b685d779841de391d1ad8bd79f08918b22e52e04f3ee7c138a5b",
+      "after": "fbb33a423a948b12cdf4b190f5fe4cb7fd5150964b0d6978726c4749282b17c7",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\pro.webp",
+      "sourceSha256": "256e2a82137db2575bb17a988b76480f6f45998a2478f31d998983c72d0f2c45",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/pro.webp",
+      "before": "4271fd35ac5ea48c066e7e94470f106d3dc4ae07d4f4297ac693591e887be6d9",
+      "after": "5d5db8dd4a71b6d163b82e24253d9031a6835b56b15d652e9a1a49fd4f7a619b",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\platinum.webp",
+      "sourceSha256": "2d29be9187349826a51436277f7989658d98ee23bd8002f6f7f1457a2dfc5949",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/pro.webp",
+      "before": "63f7b41aed7e5d13135c37786d6a35ff65259cdd5286947427104e1906753494",
+      "after": "13c6ef160debef991626d7ce81cfd2a2c01693b83b2e57764a9bc985ba6c3f68",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\pro.webp",
+      "sourceSha256": "256e2a82137db2575bb17a988b76480f6f45998a2478f31d998983c72d0f2c45",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/prince.webp",
+      "before": "1f8a2e3f631ee8e95f231da778a3947f73fbcddc423af9e93ec93a91583da746",
+      "after": "8223852388c60d3bfa183d799635e5f657de94c6ffa8b1575573aef5989a33c5",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\diamond.webp",
+      "sourceSha256": "f5a90e90e93cd71267af8341e35de2c8468686f0c47e69fc31d56b7a2696d084",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/prince.webp",
+      "before": "5d743e5f61d823857eb7fd35aef2309cddb2f7ff9114c4f0ccd474e9af98e114",
+      "after": "225c5818d9ac14d8ba150dc5a9233336aa9dc9b847414c9793104716f29832c8",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\prince.webp",
+      "sourceSha256": "c679e1e0ca5eeef04fb5b7fe6015e8bed3b6521774fc1d2e4113300481fb5020",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/prince.webp",
+      "before": "f2ec8cab9a9f5cf0cd8d2e54d2ecfd549ee3873053b1e5409ed6eaa12cac6e9f",
+      "after": "3fb328563b205b8e66d6d15729e1e74ca20daa90232fff0aaf3f1750bd74442d",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\diamond.webp",
+      "sourceSha256": "f5a90e90e93cd71267af8341e35de2c8468686f0c47e69fc31d56b7a2696d084",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/prince.webp",
+      "before": "8b50a1dbe5ebe234eea3e5bcdfcb484a013f095fc650a3e4444bd7596da30320",
+      "after": "b2a5b6c7fd0f9b29f136c29fde0be8aba9a38f2b34572d6946b43f13b7674460",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\prince.webp",
+      "sourceSha256": "c679e1e0ca5eeef04fb5b7fe6015e8bed3b6521774fc1d2e4113300481fb5020",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/prince.webp",
+      "before": "b587b629efe51fa4a43d67fa9388d266cead720db23e41fef275afde708b66a9",
+      "after": "3c721df8c14500204683b55cbfb45201f5a1c519f5476df60b99786e78327b68",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\diamond.webp",
+      "sourceSha256": "f5a90e90e93cd71267af8341e35de2c8468686f0c47e69fc31d56b7a2696d084",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/prince.webp",
+      "before": "d860a248fb4dfc9bd7ce523724fd3e0f7ad8b5a471d09d7d9588b2cb1c324ff9",
+      "after": "62691165efe3e7395f2bd7f588956806fa5d20802cdb0854339491e3ed2ea992",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\prince.webp",
+      "sourceSha256": "c679e1e0ca5eeef04fb5b7fe6015e8bed3b6521774fc1d2e4113300481fb5020",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/king.webp",
+      "before": "0f1ecb9b417ebdc402c35363ecf7545c7011db6bf5671cdb4b90ada271f3b814",
+      "after": "880559f4dd4dbfeaf8cd59ad909beadeebd677c27a11aa346fcc6e3737ed5577",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\master.webp",
+      "sourceSha256": "dfe603ff5ef57b7e0cb4dfd686b17f0e91e2f1acaca5d14f7ab2b8dcfabac26c",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/king.webp",
+      "before": "be01ca6213c984c19730e887813996ad9b0972765dd73e3a3ba6c8bad0c85c8d",
+      "after": "a78f27f417d174ad640d82fb1e2976d752a440eb02fb7917e921f8984b60f016",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\king.webp",
+      "sourceSha256": "89e9da32c2508272471340c69465bb35d3134cabe3402f1df421ba9cd4edd912",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/king.webp",
+      "before": "b50864fd484cd09d3c7e0318a86fdf4c388727fe597655a240848f896d142eb6",
+      "after": "a23768ad113df63b938b6fcaa6929805f53504e4fe1816ffa3dc1d0038f804b2",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\master.webp",
+      "sourceSha256": "dfe603ff5ef57b7e0cb4dfd686b17f0e91e2f1acaca5d14f7ab2b8dcfabac26c",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/king.webp",
+      "before": "39fce6291fcf61d13ae536284040b548bf559529c3aa3e8f54d446820e39a1a5",
+      "after": "d708b4d22f712b4457b345bbb340bf15ef55211eb0ccab5cb4c5f736d86ca8c0",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\king.webp",
+      "sourceSha256": "89e9da32c2508272471340c69465bb35d3134cabe3402f1df421ba9cd4edd912",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/king.webp",
+      "before": "cdd35afac6be1464f35c96a56d3841cc41920315aa048c0e0cbac36f886b6d73",
+      "after": "8df1ac446812baa68133c8cf3d6fc81a1c8fad9e837fa5453eb263043b70dede",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\master.webp",
+      "sourceSha256": "dfe603ff5ef57b7e0cb4dfd686b17f0e91e2f1acaca5d14f7ab2b8dcfabac26c",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/king.webp",
+      "before": "9b0a118e34b13b2457f0d0da952b42cefc538158eca783e6fe96f6a73281c92d",
+      "after": "e5722a884db890b79435b049e9b7cad79276202a3374d080fb708675344e024e",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\king.webp",
+      "sourceSha256": "89e9da32c2508272471340c69465bb35d3134cabe3402f1df421ba9cd4edd912",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/boss_of_bosses.webp",
+      "before": "aad35d03454031e09d0e44357c2dfd8c6767ecbfaa4cf5d863adbad15f00a414",
+      "after": "e29ca1af45dd05c2fd765e9f1ea5ea9436063d5b08344f2c6f28cf0e6bc836e0",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\king.webp",
+      "sourceSha256": "9b76e2a6789a0640106336304527c783cde739d599bbf35bce28ba1c022bb4a4",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/boss_of_bosses.webp",
+      "before": "32361195dfa8b46eb360725c531f86ac337f6139cb9a490c8d50d6fc0fe5dd57",
+      "after": "a8ae0bcfd1cd5b4f8d107b557f8cf3111c6b02cb7d4ddb940e34f49bfd015a43",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\boss_of_bosses.webp",
+      "sourceSha256": "4f292903951230a0913a141608eba0b02277bcb0f09af978628b1b970f621afe",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/boss_of_bosses.webp",
+      "before": "ce0e7d217f61da05d5b928f7e992e7551c1b8c6ba95bfedffa7001a7b8062146",
+      "after": "3ca2993bb6144cd686fd3b536471d0d2eb6a8546e5480c209856313c7eaa28db",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\king.webp",
+      "sourceSha256": "9b76e2a6789a0640106336304527c783cde739d599bbf35bce28ba1c022bb4a4",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/boss_of_bosses.webp",
+      "before": "4d35a9c090866912578524ab62bc3d2843b680c763ea886873598df039517ae7",
+      "after": "9712195532eac87ffb3c7cb02dcb9f66b5510f26674dddd0cd4f5fc94a6ed558",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\boss_of_bosses.webp",
+      "sourceSha256": "4f292903951230a0913a141608eba0b02277bcb0f09af978628b1b970f621afe",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/boss_of_bosses.webp",
+      "before": "6ff1e4a92d6875af9a7af3fab5d33e06128b2c4a794f28e1891f990f1e825a05",
+      "after": "529976f5861fe4cf65ab5e84b62cda490bd557b7ae799b11ba0f77d316a52934",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\leagues\\king.webp",
+      "sourceSha256": "9b76e2a6789a0640106336304527c783cde739d599bbf35bce28ba1c022bb4a4",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/boss_of_bosses.webp",
+      "before": "bbe2d91a06896e408d93f9224db20b3f8db9e183ca97ff02f50973fcbd0c654f",
+      "after": "05eae89be9a0ea018988461ad4cb4d885bad4f82bd82244f07920ab710e70484",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\boss_of_bosses.webp",
+      "sourceSha256": "4f292903951230a0913a141608eba0b02277bcb0f09af978628b1b970f621afe",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_trophies/emperor.webp",
+      "before": "9a016e56f9423f1b6086afaf555938ce470406c8632b4c46e92b6451d113bea5",
+      "after": "2d55ed4d00830b4b72f191a604b08fd3bd298fc1b144beef776ca82978bac320",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_trophies\\boss_of_bosses.webp",
+      "sourceSha256": "62bd79ba2746775d5ef390935a8f53b33a666e7cd779b13a0bf16b663ab67354",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/rank_chests/emperor.webp",
+      "before": "2232acd954690ca5412dadff111150690440f597250248167425f63bb64d0e7e",
+      "after": "480c0fa456ef30678c30c6042661d5049eb58ac1405af260049641145f4641da",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\emperor.webp",
+      "sourceSha256": "127fee5346584b7f29ef250ae1f94536d296ee1a5b5fc5335acb3584ecf8808d",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_trophies/emperor.webp",
+      "before": "9e7232c54a0bf8dec92371ef1e2573d9f9cdf552c26e8c27231f1487d8a6fd3d",
+      "after": "723250a720bee4a76befac82a7caa9c2dfd0ddd4e37e1d39f7f496fbe5b9667e",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_trophies\\boss_of_bosses.webp",
+      "sourceSha256": "62bd79ba2746775d5ef390935a8f53b33a666e7cd779b13a0bf16b663ab67354",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/rank_chests/emperor.webp",
+      "before": "16215c8b248f1d7679fa3dd37fb592a63a8da24132163f06e04a11e52e67d291",
+      "after": "ae7d4eab66b7c4fb6e242612cf46c96bb3bf0f784b6d8f374ef661b6e431fa35",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\emperor.webp",
+      "sourceSha256": "127fee5346584b7f29ef250ae1f94536d296ee1a5b5fc5335acb3584ecf8808d",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_trophies/emperor.webp",
+      "before": "66e6f761be57439980f96e316faa28016695ab93861535d51c3363f242f9a77e",
+      "after": "40dd24e5de067c99a5f7db32d5517ed5bb8038f7f8ab42088f303c47c3c91816",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_trophies\\boss_of_bosses.webp",
+      "sourceSha256": "62bd79ba2746775d5ef390935a8f53b33a666e7cd779b13a0bf16b663ab67354",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/rank_chests/emperor.webp",
+      "before": "142fb1b8af81d3f5026f08bdd698da18a919280e86ba7ed0eee3edd091348f14",
+      "after": "155af8a8bbe3f65889f20931554f7a72a8f97b1513359f331c3abd07099b49e8",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\rank_chests\\emperor.webp",
+      "sourceSha256": "127fee5346584b7f29ef250ae1f94536d296ee1a5b5fc5335acb3584ecf8808d",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/chests/prism/quest-small.webp",
+      "before": null,
+      "after": "aee24466a9c037285f31d4427738896b143705c9d96cf97658ee91ff88d49c16",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\quest_chests\\small.webp",
+      "sourceSha256": "b471d50d73c3f924408959c02b5848e2d79253fcefd2d66feeb5131499c30b6b",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/chests/prism/quest-medium.webp",
+      "before": null,
+      "after": "ba935cf283ceb62eabb4d9ff8547fbe4a59c4665553c5fb196c19b4ad6b56c87",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\quest_chests\\medium.webp",
+      "sourceSha256": "123702548a4f1fd30675c15b67fb87441c6f61651ed650df3ddd08e033e0b139",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/chests/prism/quest-large.webp",
+      "before": null,
+      "after": "6d58fc24eb4ffdac0b15a8369ba44e079f2c2d643ae0d72cd8b2c03d6db1f532",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\quest_chests\\large.webp",
+      "sourceSha256": "2e70c2ab6de2dc28ed0396ee5307d00f159db49364f16804da8876beba7d3940",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/chests/prism/clan-low.webp",
+      "before": null,
+      "after": "c014ac2772e99f40d5ee9bf12eed901601249b523a0cf5265c843e1f0c3ea0ad",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\clan_chests\\low.webp",
+      "sourceSha256": "9d3d6a25029bffe4c63822c4d0b806b8a0d24b725527b2a6cd6be7bd3fdb2111",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/chests/prism/clan-medium.webp",
+      "before": null,
+      "after": "6d0a4dbb16d2707f99a2c6ffcd89d04db9effddfb68c2080dccc03705371df8d",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\clan_chests\\medium.webp",
+      "sourceSha256": "c2dd306c73eaec85ac834dc9d533aa5f9c207a7f92ce47f6666cd9845cf0765e",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/chests/prism/clan-high.webp",
+      "before": null,
+      "after": "b055217ef4446b86df18f30954d407dfc8b358be808099276b0850126608ba6a",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\rewards-v2\\clan_chests\\high.webp",
+      "sourceSha256": "af04879fe8ec803c150b792356c2a69b7e0cb5e4e14436554dbb202d02b0b757",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/events/easter-hunt/chest.webp",
+      "before": "ee78b532a70db312eabdfcf3d26be230286201447aac8b96b68f20327f94d38e",
+      "after": "38218e400baa145c3f62955c960a2f70229ce34ad39d71b28d41541661eea3f5",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\chests\\easter.webp",
+      "sourceSha256": "e2ad5f616b23759687c68d1e6109a8c2ba39391fc4e7e8731b07e490ad6f0c58",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/64/boosters/clan_shield.webp",
+      "before": "a3e81d6ab3dc555b1571071b755fff8ef39f32231cc42411134bbcb36121bfb9",
+      "after": "059757cd5c4c716e3ecfb83b51c188734bd7ccc9e5ca40e48461b96eadb6bc68",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\booster-b\\golden_shield.webp",
+      "sourceSha256": "36bb53cdbc1a266682f45b59c44d13b066365d3ed4dd836d478bec7f6ab92f58",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/128/boosters/clan_shield.webp",
+      "before": "0ce1fca66b80079ee17a718c4ce09482b4dd190c9774311c8917734594999f2c",
+      "after": "f172715e873adfe91d644314170589fa2039fc354ad92751a2b1e8048a0bd8a1",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\booster-b\\golden_shield.webp",
+      "sourceSha256": "36bb53cdbc1a266682f45b59c44d13b066365d3ed4dd836d478bec7f6ab92f58",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/progression/webp/256/boosters/clan_shield.webp",
+      "before": "89242d49df11cb948430c100cf46b976690c39bf654b5bda0b7930b1414d625e",
+      "after": "35946a047937657e4db645dd3c361b85c6e84598ab4bce144493bbf014e76c4c",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\booster-b\\golden_shield.webp",
+      "sourceSha256": "36bb53cdbc1a266682f45b59c44d13b066365d3ed4dd836d478bec7f6ab92f58",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/accessories/novice_hat.png",
+      "before": "c14dda7fe9c074631a8a449a2748ff30361e790fb7757a8130161155fd1d3871",
+      "after": "8113c9e88d96c8ae1a92a2e46b0c64a2d2903fdbcb7f0f814bd2c7990d55cb7f",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\wardrobe\\novice_hat.webp",
+      "sourceSha256": "e2e762062b8f07b8d16fead2cfed192231f51a6151bbfe7c667c637b779c63b1",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/accessories/royal_bow_tie.png",
+      "before": "9115594488d182ff729ba6872c913668254ffbb3a4435e6b9428a9651c2f1be0",
+      "after": "0c8464b31ed84ce3988d7e953bda4bce96be0210d9afa91b98ea326f26cff131",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\wardrobe\\royal_bow_tie.webp",
+      "sourceSha256": "ee5c27dca96bdbe0a4e70955fd3a1717b60604fb9fccc8cfa9c9d20d2a82676a",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/events/easter-hunt/rabbit-ears.webp",
+      "before": "2dfe817110bc3c9b5112e36bbc6ac1946d31571896cf8b9ae6e33393185a27a7",
+      "after": "79e43a660e4687bcb5be230dc0bc3e4d9bf71461b1c6fd571b69df6dee1f80ee",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\wardrobe\\rabbit-ears.webp",
+      "sourceSha256": "9fd694f256c21cb9aea52f7bee22afa15cf2760857c41cbf530bbd689e3370f7",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/events/easter-hunt/carrot-bow.webp",
+      "before": "51776c962a8dd50562949ee2cbbb9da3a1a5e85ba38b38e1aae72e1e77e60a7d",
+      "after": "df0912a88a54cb0a7ab095dae193376d11c2f05e0ab9f23d59f0ff106c553c09",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\wardrobe\\carrot-bow.webp",
+      "sourceSha256": "e7fc91849f30060e8eac2d31cb592a354bcd075206c6031a7b91296dcbb4fd8d",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/banners/vip.png",
+      "before": "3ec068323ce5418f47356097b99acd73aa2d4e3dca69175dc565d8d7b339b3c0",
+      "after": "76f3a37a6efeb9fb39ff7e7a5d77b89feee4061d04d922516b3b65d642ae17d5",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\banners\\accounts.webp",
+      "sourceSha256": "903318023a18816af2e2e267fa8f6da17e5d3a297a7aa293d503c8f68d333bba",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/banners/pets.webp",
+      "before": "d293e79d55dd49ab2a06cf1af4354584f20a5b6f9c91b8341693fbab0f5935c5",
+      "after": "096759dd96026ac5ddb5f07b3d68affebca349188835adc7c34370fd351078f7",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\banners\\pets.webp",
+      "sourceSha256": "dbf17838e257a7a91b0dfcffc3b261637b025f0fede088d6a9c02a45996093d3",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/events/lucky-week/banner-v3.webp",
+      "before": "4e31692eb0aeb3dd7edfae91a21488d9be4760bf80a6c2a6ce1f05748aff337a",
+      "after": "b226c6bcef90ad084e34fe85ef6270eb1a2decd100e9927caa572e382d9c8224",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\banners\\events.webp",
+      "sourceSha256": "ab6a169e48e4b520e71d4b26861e9fa769b449fbef06e14551b2ebdafcdfa741",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/events/easter-hunt/banner.png",
+      "before": "161cd67b527610309d4f020cad909933ff42d91cf890115160610a51020e4a26",
+      "after": "c611131de9543f81f6359d09acd0502283b8fcbd46fba2a07151b6d9fa10643b",
+      "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Sferorumiya-Prism-Lab\\public\\visual-lab\\art\\banners\\easter.webp",
+      "sourceSha256": "ae6f0bf5dd865ec7c09e26b142cddc94017470afa3bdd90987f99f1e5775563f",
+      "origin": "Existing Prism artwork generated with built-in image_gen; see source provenance",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/events/easter-hunt/egg-ruby.webp",
+      "before": "0be59a52950c7a3aa26e9561b79e24e579b621887d850fbda7c8a6803600d959",
+      "after": "16e63923f7202e5a995a54cc9d9a5b9db978fce9fb3c4ecea702a3f74e63798f",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-52ea8d5b-f47e-40ba-9b84-15377cd35a17.png",
+      "sourceSha256": "3f692e3585f1f17f53b4aa6593a7f224375ac820ddc82a9dea38df97d48ec116",
+      "origin": "Generated with built-in image_gen for this change",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/events/easter-hunt/egg-sky.webp",
+      "before": "6f0f29ee7c70f250738374ae7f3af7b022685eb38be2b0af93f10190326aaf34",
+      "after": "ecb70777b5a295566fe48d4c8c55bb4ed861f038924b06716ed1a95f000ba005",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ac4a4edc-15ee-4271-a289-2036b2dd3a1d.png",
+      "sourceSha256": "2310d3bfd23b8bd258f5d80828e89e12f365bd5204c2e90ac6a0d44616ed09ed",
+      "origin": "Generated with built-in image_gen for this change",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/events/easter-hunt/egg-leaf.webp",
+      "before": "fe5299d364ddd309a9d7507240f539d782ac555e46b5c0a00953b58b6c20d4f9",
+      "after": "1b83a3f1c7a420ce83744088c45602e4ff07c12778e1a3de7611d873602fcc9f",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-8d5f276c-8d26-439c-9cc1-c18492489000.png",
+      "sourceSha256": "a52e2395eadc6ad064f042a94de832debe9a1558e1c68e698b44f7a73035b3a5",
+      "origin": "Generated with built-in image_gen for this change",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/events/easter-hunt/egg-sun.webp",
+      "before": "9e208496f1ee153a7dd906458ddb34384d79525acf197c2b250e6fc8c19557dc",
+      "after": "a5127eed39cc737165b076462c0096c49600142aed6521e2435d975dc410d075",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-50dfc47b-26a3-4f09-ac03-f87aa709f1a3.png",
+      "sourceSha256": "0133be6df0e9c054879144e72c38a722a3a1a7897f7cbaee22f3ce7358053295",
+      "origin": "Generated with built-in image_gen for this change",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    },
+    {
+      "file": "public/assets/banners/premium.webp",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-9fb67e7b-c2ca-44cf-8ffd-407ed801b016.png",
+      "after": "422d7cbc31ee0dcf90bd4e085c86bef68f37cb41314c4eaab1b1b5bdbae169e2",
+      "sourceSha256": "84f6210cec737567e50208448ef59f3e6fe3b8c0acf4ec99e41e7d649cda8e4c",
+      "origin": "Generated with built-in image_gen for this change",
+      "license": "AI-generated output; no third-party asset license imported by this change",
+      "requiredAttribution": null
+    }
+  ]
+}

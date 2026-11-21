@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-25",
+  "method": "Built-in image_gen; transparent PNG exported to 160×160 lossless WebP.",
+  "asset": "public/assets/ui/arena-planet-v1.webp",
+  "source": "../../artifacts/arena-picker-20261025/planet-source.png",
+  "reference": "public/assets/pets/boosters/clawed-glove.webp",
+  "prompt": "Use case: stylized-concept. Create ONE fantasy casual browser-game menu icon: a beautiful small blue and emerald planet with sculpted continents and a single thick polished gold orbital ring tilted diagonally around the globe. The attached purple-and-gold clawed glove is STYLE REFERENCE ONLY, do not draw a glove. Match rich dimensional hand-painted rendering, saturated luminous colors, confident readable silhouette, beveled gold, amber shadows and crisp highlights. Planet mostly fills the square with safe padding around the complete orbit, attractive at 40px. A few restrained tiny star-shaped highlights as part of the ring, no separate background decoration. No text, no letters, no pedestal, no button frame, no background. Transparent alpha background. Friendly magical world, not a photorealistic Earth diagram.",
+  "provenance": "New generated artwork. The reference is an existing game asset; this does not independently verify its earlier commercial rights."
+}

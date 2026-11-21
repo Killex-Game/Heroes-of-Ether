@@ -1,0 +1,201 @@
+#lobby #joinForm {
+  grid-template-columns: minmax(0, 330px) 48px;
+  justify-content: center;
+  gap: 8px;
+}
+#lobby #joinForm #playButton {
+  width: 100%;
+}
+#lobby #arenaPickerButton {
+  grid-column: 2;
+  grid-row: 1;
+  width: 48px;
+  min-width: 0;
+  height: 100%;
+  min-height: 42px;
+  align-self: stretch;
+  padding: 3px;
+  margin: 0;
+}
+#arenaPickerButton img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+body #arenaPickerDialog {
+  width: min(486px, calc(100vw - 20px));
+  max-width: calc(100vw - 20px);
+  height: max-content;
+  max-height: calc(100dvh - 20px);
+  min-height: 0;
+  padding: 10px;
+  border: 3px solid #fff4d6;
+  border-image: none;
+  border-radius: 16px;
+  box-shadow:
+    inset 0 0 0 1px #d8ad56,
+    0 15px 65px #24132c55;
+  box-sizing: border-box;
+  overflow: visible;
+  margin: auto;
+}
+body #arenaPickerDialog[open] {
+  display: block;
+}
+#arenaPickerDialog .clan-heading h2 {
+  font-size: 22px;
+}
+#arenaPickerDialog .clan-heading {
+  margin-bottom: 10px;
+}
+#arenaPickerDialog .arena-auto {
+  width: 148px;
+  min-height: 34px;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+}
+.arena-choice-grid {
+  --arena-card-width: 148px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, var(--arena-card-width));
+  justify-content: start;
+  gap: 8px;
+}
+.arena-choice {
+  box-sizing: border-box;
+  width: var(--arena-card-width);
+  height: 116px;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  gap: 4px;
+  padding: 10px 8px;
+  border: 1px solid #c99539;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #fffdf0, #f5e5ba);
+  color: #633b7b;
+  box-shadow:
+    inset 0 0 0 2px #fff8e8,
+    0 2px 0 #a9782740;
+  cursor: pointer;
+}
+.arena-choice img {
+  width: 44px;
+  height: 44px;
+  grid-row: 1 / 3;
+}
+.arena-choice strong {
+  font-size: 14px;
+}
+.arena-choice .arena-occupancy {
+  font-size: 14px;
+  font-weight: 700;
+}
+.arena-choice small {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: #34723d;
+  text-align: center;
+}
+.arena-choice[aria-pressed="true"] {
+  border-color: #9d6b1f;
+  box-shadow:
+    inset 0 0 0 3px #edbf50,
+    0 2px 0 #a9782740;
+}
+.arena-choice:hover:not(:disabled:not([data-pending])) {
+  background: linear-gradient(#fffbea, #f3d48b);
+}
+.arena-choice:focus-visible {
+  outline: 2px solid #bd8c2b;
+  outline-offset: 2px;
+}
+.arena-choice:disabled:not([data-pending]) {
+  cursor: default;
+  filter: saturate(0.35);
+  opacity: 0.7;
+}
+.arena-choice:disabled:not([data-pending]) small {
+  color: #806b6b;
+}
+.arena-choice[hidden],
+.arena-picker-pages[hidden],
+.arena-picker-status:empty {
+  display: none;
+}
+.arena-picker-pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.arena-picker-pages button {
+  width: 38px;
+  min-height: 30px;
+  height: 30px;
+  padding: 3px;
+}
+.arena-picker-status {
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.arena-transfer-notice {
+  position: fixed;
+  z-index: 120;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 36px);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px 16px;
+  border: 2px solid #d9af57;
+  border-radius: 12px;
+  background: #fff3cf;
+  color: #633b7b;
+  box-shadow: 0 3px 12px #27163755;
+  text-align: center;
+  pointer-events: none;
+}
+.arena-transfer-notice[hidden] {
+  display: none;
+}
+@media (max-width: 540px) {
+  .arena-choice-grid {
+    --arena-card-width: 128px;
+  }
+  .arena-choice {
+    height: 100px;
+    padding: 6px;
+  }
+  #lobby #arenaPickerButton {
+    height: 48px;
+    min-height: 48px;
+  }
+}
+@media (max-height: 430px) {
+  #arenaPickerDialog .clan-heading {
+    min-height: 40px;
+    margin-bottom: 6px;
+  }
+  #arenaPickerDialog .arena-auto {
+    margin-bottom: 6px;
+  }
+}
+#arenaClosedDialog {
+  width: min(460px, calc(100vw - 32px));
+  height: fit-content;
+  min-height: 0;
+  max-height: calc(100dvh - 32px);
+  padding: 12px 16px 20px;
+  text-align: center;
+}
+#arenaClosedDialog[open] { display: block; }
+#arenaClosedDialog > button { width: auto; min-width: 140px; height: 44px; margin: 0 auto; }
+.arena-closed-copy {
+  margin: 26px 12px;
+  line-height: 1.5;
+}

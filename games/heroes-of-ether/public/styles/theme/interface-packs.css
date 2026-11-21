@@ -1,0 +1,197 @@
+/* Visual packs change materials, never the original window/card geometry. */
+[data-ui-theme="visual"] {
+  --prism-light: #f5e8cb;
+  --prism-mid: #decca3;
+  --prism-strong: #345d73;
+  --prism-deep: #1d394f;
+  --prism-ink: #304353;
+  --prism-edge: #bd9b62;
+  --pack-panel: linear-gradient(135deg, #fff3dbf2, #e3d2b3eb);
+  --pack-ink: #304353;
+  --pack-edge: #c2a875;
+}
+[data-ui-theme="prism"] {
+  --prism-light: #f4fbff;
+  --prism-mid: #c7e6f2;
+  --prism-strong: #de937d;
+  --prism-deep: #a55665;
+  --prism-ink: #305677;
+  --prism-edge: #b0d3e8;
+  --pack-panel: linear-gradient(135deg, #f5fcfff2, #d4e9f5e8);
+  --pack-ink: #305677;
+  --pack-edge: #add2e6;
+}
+[data-ui-theme="glass"] {
+  --prism-light: #f7f1ff;
+  --prism-mid: #e0d7f4;
+  --prism-strong: #8b78cc;
+  --prism-deep: #6553a5;
+  --prism-ink: #413d64;
+  --prism-edge: #ffffffc9;
+  --pack-panel: linear-gradient(135deg, #ffffffd9, #ede4ffcc 60%, #fbdde5cc);
+  --pack-ink: #413d64;
+  --pack-edge: #ffffffe0;
+}
+:is([data-ui-theme="visual"], [data-ui-theme="prism"], [data-ui-theme="glass"], [data-ui-theme="heroic"]) {
+  --sf-ink: var(--pack-ink);
+  --sf-plum: var(--pack-ink);
+}
+:is(html[data-ui-theme="visual"], html[data-ui-theme="prism"], html[data-ui-theme="glass"], [data-ui-theme="heroic"])
+  :is(
+    .profile-card,
+    .greatness-panel,
+    .cosmetics-preview,
+    .appearance-dialog,
+    .cosmetics-dialog,
+    #settingsMenu
+  ) {
+  background: var(--pack-panel);
+  border-color: var(--pack-edge);
+  color: var(--pack-ink);
+}
+:is(html[data-ui-theme="visual"], html[data-ui-theme="prism"], html[data-ui-theme="glass"], [data-ui-theme="heroic"])
+  #lobby
+  :is(.progress-experience, .progress-greatness) {
+  background: var(--pack-panel);
+  border-color: var(--pack-edge);
+  color: var(--pack-ink);
+}
+html[data-ui-theme="glass"] #lobby :is(.profile-card, .progress-experience, .progress-greatness) {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+/* The platform belongs under the avatar, not under the centre of the full viewport. */
+body[data-screen="lobby"]
+  #lobby:is([data-league-background="visual"], [data-league-background="prism"], [data-league-background="heroic"]) {
+  background-size: var(--pack-scene-size, cover);
+  background-position: var(--pack-scene-position, center);
+  background-repeat: no-repeat;
+}
+/* Scope theme previews independently of the currently selected pack. */
+.appearance-card[data-theme-id="visual"] .appearance-preview,
+.appearance-card[data-theme-id="prism"] .appearance-preview,
+.appearance-card[data-theme-id="glass"] .appearance-preview {
+  background-position: center;
+}
+.account-skin-sets {
+  min-width: 0;
+}
+@media (max-width: 540px) {
+  #skinsDialog .skin-owned-sets {
+    padding: 8px 4px;
+  }
+  #skinsDialog .skin-owned-sets h3 {
+    margin: 0 0 10px;
+    font-size: 19px;
+  }
+  #skinsDialog .account-avatar-grid {
+    gap: 6px;
+    margin-top: 8px;
+  }
+  #skinsDialog .account-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px;
+    gap: 3px;
+    font-size: 10px;
+  }
+  #skinsDialog .account-avatar img {
+    width: 44px;
+    height: 44px;
+  }
+}
+.interface-window .account-avatar-grid {
+  grid-template-columns: repeat(auto-fit, minmax(78px, 100px));
+  justify-content: start;
+}
+.account-avatar img {
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Each avatar collection is a complete showcase, without a horizontal picker. */
+#skinsDialog .account-skin-sets {
+  display: grid;
+  gap: 16px;
+}
+#skinsDialog .avatar-set-showcase {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--prism-edge, #c4a675);
+  border-radius: 14px;
+  background: var(--prism-light, #fff8ed);
+}
+#skinsDialog .avatar-set-showcase h4 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+#skinsDialog .account-avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--avatar-count, 5), minmax(0, 1fr));
+  justify-content: start;
+  gap: 8px;
+  margin: 0;
+}
+#skinsDialog .account-avatar {
+  width: 100%;
+  min-height: 150px;
+  height: auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  gap: 4px;
+}
+#skinsDialog .account-avatar img {
+  width: min(100%, 136px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+#skinsDialog .account-avatar span {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+#skinsDialog .account-avatar[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 2px var(--prism-edge, #c4a675);
+}
+
+/* Hero is a permanent earned interface, with its own readable material palette. */
+[data-ui-theme="heroic"] {
+  --prism-light: #fff2d4;
+  --prism-mid: #ecd4a3;
+  --prism-strong: #a43642;
+  --prism-deep: #591d2b;
+  --prism-ink: #382b21;
+  --prism-edge: #b99148;
+  --pack-panel: linear-gradient(135deg, #fff7e6f5, #ead7b5ed);
+  --pack-ink: #382b21;
+  --pack-edge: #cba85b;
+}
+html[data-ui-theme="heroic"] .appearance-card[data-theme-id="heroic"] .appearance-preview {
+  background-position: center;
+}
+
+.heroic-magic { display:none; position:absolute; inset:0; overflow:hidden; pointer-events:none; contain:strict; border-radius:inherit; }
+#lobby[data-league-background="heroic"]:not([data-event-background]) > .heroic-magic,
+.public-player-hero > .heroic-magic { display:block; }
+.heroic-magic::before { content:""; position:absolute; inset:-10%; background:conic-gradient(from 20deg at 50% 100%,transparent 0deg,#ffda7830 10deg,transparent 22deg,#98ddeb18 35deg,transparent 55deg); opacity:.5; animation:heroic-aura 12s ease-in-out infinite alternate; animation-play-state:paused; }
+.heroic-magic i { position:absolute; left:var(--x); bottom:-10px; width:3px; height:3px; border-radius:50%; background:#fff1b0; box-shadow:0 0 7px 2px #edb84d80; opacity:0; animation:heroic-mote var(--duration) var(--delay) linear infinite; animation-play-state:paused; }
+html[data-page-visible="true"] body[data-screen="lobby"] #lobby > .heroic-magic :is(i),
+html[data-page-visible="true"] body[data-screen="lobby"] #lobby > .heroic-magic::before,
+html[data-page-visible="true"] body[data-screen="lobby"] dialog[open] .heroic-magic i,
+html[data-page-visible="true"] body[data-screen="lobby"] dialog[open] .heroic-magic::before { animation-play-state:running; }
+@keyframes heroic-mote { 15%{opacity:.8} 85%{opacity:.55} to{transform:translate(30px,-480px);opacity:0} }
+@keyframes heroic-aura { to { transform:rotate(7deg); opacity:.8; } }
+@media(prefers-reduced-motion:reduce) { .heroic-magic i,.heroic-magic::before { animation:none!important; } }
+
+@media(max-width:600px) { #skinsDialog .account-avatar-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } #skinsDialog .account-avatar { min-height:112px; } }
+@media(max-width:420px) { #skinsDialog .account-avatar-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+
+html[data-page-visible="true"] body[data-screen="lobby"] #lobby[data-scene-covered="true"] > .heroic-magic i,
+html[data-page-visible="true"] body[data-screen="lobby"] #lobby[data-scene-covered="true"] > .heroic-magic::before { animation-play-state:paused; }

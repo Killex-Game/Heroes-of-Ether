@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-26",
+  "mode": "built-in image_gen",
+  "status": "Concept artwork only; not installed into active event catalog.",
+  "provenance": "Generated with the built-in image tool using project-owned reference files; no external stock downloaded. Existing reference artwork remains subject to the separate project provenance audit before commercial release.",
+  "assets": [
+    {
+      "id": "easter-hunt",
+      "title": "Пасхальная охота",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-bfba8521-5075-4987-872f-43fe6ad6c959.png",
+      "saved": "banners/easter-hunt.png",
+      "references": [
+        "public/assets/events/lucky-week/banner-v3.webp",
+        "public/assets/pets/levels-v1/zaya-0.webp"
+      ],
+      "prompt": "Create one NEW wide 3:1 full-bleed banner concept for a polished fantasy browser arena game. The FIRST reference is ONLY the established rendering/material/style reference, NOT a scene to copy: rich dimensional hand-painted casual fantasy objects, crisp silhouettes, sculpted gold bevels where sensible, tactile fabrics and wood, expressive beautiful lighting, high-quality cute character art, lush but readable composition. This is a distinct themed event, no roulette wheel. Keep major objects inside a 6% safe margin, legible when reduced to a small landscape card. NO text, letters, numbers, game name, logos, UI buttons, panels, watermark, price labels or outer frame. No generic flat icons. Do not use purple/amethyst as the scene's dominant palette. Any extra character references define the exact existing pet design; preserve face, anatomy and recognizable colors, allow small temporary thematic accessories. Golden ether, if shown, is round liquid-gold droplets, not gemstones.\n\nEASTER HUNT. A sunny enchanted spring orchard and clover meadow with blossoms and a distant friendly castle. In the foreground the exact white floppy-eared blue-eyed rabbit Zaya from reference 2 peeks delightedly from beside a beautifully woven wicker basket lined in ivory fabric and full of richly painted enamel Easter eggs: turquoise, coral, warm yellow and grassy green, decorated with gold floral patterns (not gems). A few patterned eggs are partially hidden naturally in clover along a winding trail of small round golden ether droplets. A large elegant patterned egg opens slightly with soft gold light, suggesting a treasure collection. Warm fresh daylight, emerald/mint, coral and honey-gold palette. Focus on exploration and charming egg treasures, no dark purple drapes, no religious symbols."
+    },
+    {
+      "id": "love-month",
+      "title": "Любовный месяц",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ad4bb483-c79c-418c-a0ca-4c7579ae82e5.png",
+      "saved": "banners/love-month.png",
+      "references": [
+        "public/assets/events/lucky-week/banner-v3.webp",
+        "public/assets/pets/levels-v1/zaya-0.webp",
+        "public/assets/pets/levels-v1/manya-0.webp"
+      ],
+      "prompt": "Create one NEW wide 3:1 full-bleed banner concept for a polished fantasy browser arena game. The FIRST reference is ONLY the established rendering/material/style reference, NOT a scene to copy: rich dimensional hand-painted casual fantasy objects, crisp silhouettes, sculpted gold bevels where sensible, tactile fabrics and wood, expressive beautiful lighting, high-quality cute character art, lush but readable composition. This is a distinct themed event, no roulette wheel. Keep major objects inside a 6% safe margin, legible when reduced to a small landscape card. NO text, letters, numbers, game name, logos, UI buttons, panels, watermark, price labels or outer frame. No generic flat icons. Do not use purple/amethyst as the scene's dominant palette. Any extra character references define the exact existing pet design; preserve face, anatomy and recognizable colors, allow small temporary thematic accessories. Golden ether, if shown, is round liquid-gold droplets, not gemstones.\n\nMONTH OF LOVE, friendship and partnership. A romantic but playful rose garden at warm sunset with a small pale-stone arched bridge and heart-shaped gold lanterns. The exact white rabbit Zaya from reference 2 and fluffy lilac-white kitten Manya from reference 3 sit on opposite sides of an elegant ivory gift box with red velvet ribbons, together holding one ribbon each; both cheerful, equal protagonists. Foreground two matching gold heart lockets joined by a red ribbon, sealed cream envelopes and rose petals. An elegant red rose bush frames the scene without clutter. Main palette warm ivory, vivid ruby red, peach, champagne gold, teal foliage; kitten may retain her natural lilac but scene must not become purple. A feeling of helping a partner and exchanging gifts. No printed messages, no numbers, no pink flat UI."
+    },
+    {
+      "id": "may-fun",
+      "title": "Майские забавы",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ed4134a2-14e8-465e-80ae-bd55b8cc10bf.png",
+      "saved": "banners/may-fun.png",
+      "references": [
+        "public/assets/events/lucky-week/banner-v3.webp",
+        "public/assets/pets/levels-v1/leva-0.webp"
+      ],
+      "prompt": "Create one NEW wide 3:1 full-bleed banner concept for a polished fantasy browser arena game. The FIRST reference is ONLY the established rendering/material/style reference, NOT a scene to copy: rich dimensional hand-painted casual fantasy objects, crisp silhouettes, sculpted gold bevels where sensible, tactile fabrics and wood, expressive beautiful lighting, high-quality cute character art, lush but readable composition. This is a distinct themed event, no roulette wheel. Keep major objects inside a 6% safe margin, legible when reduced to a small landscape card. NO text, letters, numbers, game name, logos, UI buttons, panels, watermark, price labels or outer frame. No generic flat icons. Do not use purple/amethyst as the scene's dominant palette. Any extra character references define the exact existing pet design; preserve face, anatomy and recognizable colors, allow small temporary thematic accessories. Golden ether, if shown, is round liquid-gold droplets, not gemstones.\n\nMAY FESTIVAL, capture-the-outposts arena. Bright lush meadow on a spring festival island, exactly three charming wooden-and-gold miniature fort outposts arranged across a readable curved path in the landscape: left with azure flag, right with scarlet flag, center with neutral ivory flag, all flags blank. Festive bunting, flowering trees, gentle stone walls and colorful distant tents. The exact cheerful golden lion cub Leva from reference 2 at one foreground side wears a small leather scout sash and holds an azure pennant, proud and friendly. Other foreground side a golden trophy on a wooden festival crate, a few round liquid-gold ether droplets. Clear sunny greens, sky blue, red and honey gold. Energetic team contest, gorgeous polished fantasy illustration; not a military war or battlefield, no weapons, explosions, text or purple dominant background."
+    },
+    {
+      "id": "scary-stories",
+      "title": "Страшные истории",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-dad61b0f-7f2c-4da1-ac4e-7b71a38f7a73.png",
+      "saved": "banners/scary-stories.png",
+      "references": [
+        "public/assets/events/lucky-week/banner-v3.webp",
+        "public/assets/pets/levels-v1/drakosha-0.webp"
+      ],
+      "prompt": "Create one NEW wide 3:1 full-bleed banner concept for a polished fantasy browser arena game. The FIRST reference is ONLY the established rendering/material/style reference, NOT a scene to copy: rich dimensional hand-painted casual fantasy objects, crisp silhouettes, sculpted gold bevels where sensible, tactile fabrics and wood, expressive beautiful lighting, high-quality cute character art, lush but readable composition. This is a distinct themed event, no roulette wheel. Keep major objects inside a 6% safe margin, legible when reduced to a small landscape card. NO text, letters, numbers, game name, logos, UI buttons, panels, watermark, price labels or outer frame. No generic flat icons. Do not use purple/amethyst as the scene's dominant palette. Any extra character references define the exact existing pet design; preserve face, anatomy and recognizable colors, allow small temporary thematic accessories. Golden ether, if shown, is round liquid-gold droplets, not gemstones.\n\nSPOOKY STORIES, cooperative haunted castle expedition. Stylized friendly spooky fairy-tale night, dark petrol-teal forest around a ruined castle gate. Foreground an ornate open storybook with blank glowing cream pages, a big warm amber jack-o-lantern and an antique lantern; playful wisps of soft mint ghost light flow from book toward castle. The exact small magenta dragon Drakosha from reference 2 wearing a little charcoal adventurer cape holds the lantern bravely, face clearly recognizable. In middle distance at the gate a large spectral armored guardian with glowing amber lantern and a readable mysterious silhouette, magical and cartoonish, not gruesome. Main palette teal-black, pumpkin orange, warm gold and mint ghost light; dragon alone retains magenta. Dimensional carved wood, metal, leather, stone; atmospheric but readable, not horror gore, no blood, no text."
+    },
+    {
+      "id": "black-friday",
+      "title": "Чёрная пятница",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4ecc60a7-17af-42c6-a5d0-333b83719449.png",
+      "saved": "banners/black-friday.png",
+      "references": [
+        "public/assets/events/lucky-week/banner-v3.webp",
+        "public/assets/pets/levels-v1/manya-0.webp"
+      ],
+      "prompt": "Create one NEW wide 3:1 full-bleed banner concept for a polished fantasy browser arena game. The FIRST reference is ONLY the established rendering/material/style reference, NOT a scene to copy: rich dimensional hand-painted casual fantasy objects, crisp silhouettes, sculpted gold bevels where sensible, tactile fabrics and wood, expressive beautiful lighting, high-quality cute character art, lush but readable composition. This is a distinct themed event, no roulette wheel. Keep major objects inside a 6% safe margin, legible when reduced to a small landscape card. NO text, letters, numbers, game name, logos, UI buttons, panels, watermark, price labels or outer frame. No generic flat icons. Do not use purple/amethyst as the scene's dominant palette. Any extra character references define the exact existing pet design; preserve face, anatomy and recognizable colors, allow small temporary thematic accessories. Golden ether, if shown, is round liquid-gold droplets, not gemstones.\n\nBLACK FRIDAY, magical merchant fair. An elegant fantasy marketplace stall of charcoal wood, emerald velvet and polished brass/gold under warm lanterns. The exact fluffy kitten Manya from reference 2 is a friendly clever merchant behind a dark leather travel case and ornate open treasure chest, with a small emerald bow. Inside and around the case carefully arranged gold star coins, bright cyan crystals, round golden liquid ether drops and premium-looking potion/scroll trinkets, a sealed delivery parcel and a balance scale; each material beautifully sculpted. A few hanging gold-rimmed price tags are BLANK, absolutely no numbers or letters or percentage marks. Strong charcoal/emerald/gold palette, rich valuable assortment, readable compact focal grouping, not dollar bills, no real currency, no roulette, no wall of gemstones and no purple scene."
+    },
+    {
+      "id": "new-year-chores",
+      "title": "Новогодние хлопоты",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e06766bd-95c6-46f0-96c9-c4f36cf399b1.png",
+      "saved": "banners/new-year-chores.png",
+      "references": [
+        "public/assets/events/lucky-week/banner-v3.webp",
+        "public/assets/pets/levels-v1/leva-0.webp",
+        "public/assets/pets/levels-v1/drakosha-0.webp"
+      ],
+      "prompt": "Create one NEW wide 3:1 full-bleed banner concept for a polished fantasy browser arena game. The FIRST reference is ONLY the established rendering/material/style reference, NOT a scene to copy: rich dimensional hand-painted casual fantasy objects, crisp silhouettes, sculpted gold bevels where sensible, tactile fabrics and wood, expressive beautiful lighting, high-quality cute character art, lush but readable composition. This is a distinct themed event, no roulette wheel. Keep major objects inside a 6% safe margin, legible when reduced to a small landscape card. NO text, letters, numbers, game name, logos, UI buttons, panels, watermark, price labels or outer frame. No generic flat icons. Do not use purple/amethyst as the scene's dominant palette. Any extra character references define the exact existing pet design; preserve face, anatomy and recognizable colors, allow small temporary thematic accessories. Golden ether, if shown, is round liquid-gold droplets, not gemstones.\n\nNEW YEAR PREPARATIONS, festive gift caravan escort. A luxurious red and gold wooden sleigh laden with varied wrapped gifts travels along a snowy path toward an illuminated fir tree and cozy fantasy village, three little gold lanterns mark checkpoints along the path. Exact golden lion cub Leva from reference 2 in a small red scarf walking proudly near the sleigh, and exact cute dragon Drakosha from reference 3 with a small green scarf hovering just above the presents, wings visible, friendly helpers. Emerald fir branches, red ribbon, golden star tree ornaments and soft snowflakes, magical winter evening blue/icy cyan with warm window and lantern light. Readable sleigh, snowy path and celebratory tree as major composition anchors. Highly dimensional painterly fantasy game style, no Santa branding, no text, no purple backdrop, no threatening combat."
+    },
+    {
+      "id": "pirate-treasures",
+      "title": "Сокровища пиратов",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-96d2304e-3f48-4889-9414-6b83a29a7291.png",
+      "saved": "banners/pirate-treasures.png",
+      "references": [
+        "public/assets/events/lucky-week/banner-v3.webp",
+        "public/assets/pets/levels-v1/manya-0.webp"
+      ],
+      "prompt": "Create one NEW wide 3:1 full-bleed banner concept for a polished fantasy browser arena game. The FIRST reference is ONLY the established rendering/material/style reference, NOT a scene to copy: rich dimensional hand-painted casual fantasy objects, crisp silhouettes, sculpted gold bevels where sensible, tactile fabrics and wood, expressive beautiful lighting, high-quality cute character art, lush but readable composition. This is a distinct themed event, no roulette wheel. Keep major objects inside a 6% safe margin, legible when reduced to a small landscape card. NO text, letters, numbers, game name, logos, UI buttons, panels, watermark, price labels or outer frame. No generic flat icons. Do not use purple/amethyst as the scene's dominant palette. Any extra character references define the exact existing pet design; preserve face, anatomy and recognizable colors, allow small temporary thematic accessories. Golden ether, if shown, is round liquid-gold droplets, not gemstones.\n\nPIRATE TREASURES, treasure hunt and risky loot extraction. A lush tropical island cove, sparkling turquoise sea, a beautiful small fantasy wooden pirate ship with cream sails anchored by a wooden dock. Foreground the exact fluffy kitten Manya from reference 2 as an adorable pirate captain, wearing a small black tricorn hat with sculpted gold trim and a coral-red bandana, both eyes visible, mischievously happy. Beside her an open weathered treasure chest brimming with gold star coins, round liquid-gold ether drops and a few blue crystals, a rolled parchment treasure map with ONLY a simple unlabeled dotted trail and X, and an ornate brass compass. Several green islands and a secret cave visible in middle distance. A rope and palm fronds frame the foreground. Rich carved wood, ropes, old brass, leather; sunlit aquamarine/coral/gold palette, no dominant purple, no text or numbers, no modern guns, no violent scene."
+    },
+    {
+      "id": "galactic-battles",
+      "title": "Галактические битвы",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-581b2c3e-87e2-4759-a00a-8fa12aba918c.png",
+      "saved": "banners/galactic-battles.png",
+      "references": [
+        "public/assets/events/lucky-week/banner-v3.webp",
+        "public/assets/pets/levels-v1/drakosha-0.webp"
+      ],
+      "prompt": "Create one NEW wide 3:1 full-bleed banner concept for a polished fantasy browser arena game. The FIRST reference is ONLY the established rendering/material/style reference, NOT a scene to copy: rich dimensional hand-painted casual fantasy objects, crisp silhouettes, sculpted gold bevels where sensible, tactile fabrics and wood, expressive beautiful lighting, high-quality cute character art, lush but readable composition. This is a distinct themed event, no roulette wheel. Keep major objects inside a 6% safe margin, legible when reduced to a small landscape card. NO text, letters, numbers, game name, logos, UI buttons, panels, watermark, price labels or outer frame. No generic flat icons. Do not use purple/amethyst as the scene's dominant palette. Any extra character references define the exact existing pet design; preserve face, anatomy and recognizable colors, allow small temporary thematic accessories. Golden ether, if shown, is round liquid-gold droplets, not gemstones.\n\nGALACTIC BATTLES, colorful fantasy orbital team arena. Translate this established richly illustrated gold fantasy game style to whimsical SPACE while preserving its identity. Two impressive compact orbital stations made of rounded sculpted gold and ivory metal face each other across a star field and a small asteroid belt, left station glows electric cyan, right station glows warm orange, visible circular reactors. Center a radiant golden energy core surrounded by a few round liquid-gold ether droplets. Foreground on one side the exact cute magenta dragon Drakosha from reference 2, clearly recognizable face/horns/wings, wears a navy flight vest with gold piping and stands on a tiny gold-trimmed flying platform; no helmet obscuring his face. Distant blue planet, readable soft energy arcs between orbital devices, a couple of small beautiful gold spacecraft. Midnight navy, vivid cyan, orange and gold main palette, character alone magenta. Dimensional hand-painted polished casual fantasy game art, not realistic military science fiction, not flat neon vector graphics, no UI, labels, numbers, text, logos or watermark, no purple-dominant space."
+    }
+  ]
+}

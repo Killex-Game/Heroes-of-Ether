@@ -1,0 +1,528 @@
+/* The hall is a separate, sleeping lobby scene. Static SVG gradients; only opacity and transforms animate. */
+body #hallOfFameDialog {
+  --hall-light: 255, 204, 100;
+  --hall-ink: #f9ebc9;
+  --hall-floor: #211824;
+  --hall-panel: #241a25ed;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--hall-floor);
+  color: var(--hall-ink);
+  overflow: hidden;
+  isolation: isolate;
+}
+body #hallOfFameDialog[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+body #hallOfFameDialog[data-hall-theme="visual"] {
+  --hall-light: 255, 188, 65;
+  --hall-floor: #181b25;
+  --hall-panel: #1a2333f2;
+}
+body #hallOfFameDialog[data-hall-theme="prism"] {
+  --hall-light: 151, 225, 255;
+  --hall-ink: #e2f3ff;
+  --hall-floor: #142c49;
+  --hall-panel: #102c48ed;
+}
+body #hallOfFameDialog[data-hall-theme="glass"] {
+  --hall-light: 166, 126, 233;
+  --hall-ink: #40375d;
+  --hall-floor: #dcd6ed;
+  --hall-panel: #fff8f0ef;
+}
+#hallOfFameDialog .hall-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  background: var(--hall-panel);
+  border-bottom: 1px solid rgba(var(--hall-light), 0.5);
+}
+#hallOfFameDialog .hall-heading h1 {
+  margin: 0;
+  font-size: 27px;
+  color: inherit;
+}
+#hallOfFameDialog .hall-heading p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: 0.8;
+}
+#hallOfFameDialog .hall-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#hallOfFameDialog .hall-actions button {
+  width: auto;
+  min-height: 40px;
+  padding: 8px 17px;
+  white-space: nowrap;
+  font-size: 14px;
+}
+#hallOfFameDialog .hall-stage-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+#hallOfFameDialog .hall-stage {
+  position: relative;
+  flex: none;
+  isolation: isolate;
+  container-type: inline-size;
+}
+#hallOfFameDialog .hall-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#hallOfFameDialog .hall-orb {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 1;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  padding: 4px;
+  border: 2px solid rgba(var(--hall-light), 0.95);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, #fcf3db70, #3735539c 68%);
+  box-shadow: 0 0 0 3px #21132e7a;
+  filter: none;
+  animation: none;
+  cursor: pointer;
+  overflow: visible;
+}
+#hallOfFameDialog .hall-orb::before,
+#hallOfFameDialog .hall-orb::after,
+.hall-hero-row::before,
+.hall-hero-row::after {
+  content: none;
+}
+#hallOfFameDialog .hall-orb:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 6px;
+}
+#hallOfFameDialog .hall-orb:disabled:not([data-pending]) {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+  background: #15233d59;
+  border-style: dashed;
+}
+#hallOfFameDialog .hall-portrait,
+.hall-avatar {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.hall-avatar {
+  background: radial-gradient(circle at 35% 25%, #b9d8e6, #3f5c80);
+}
+.hall-avatar img {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#hallOfFameDialog .hall-empty-mark {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: rgb(var(--hall-light));
+  font-size: clamp(16px, 4cqw, 60px);
+}
+#hallOfFameDialog .hall-plate {
+  position: absolute;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  padding: 7px 9px;
+  border: 1px solid rgba(var(--hall-light), 0.65);
+  border-radius: 9px;
+  background: var(--hall-panel);
+  box-shadow: 0 3px 12px #160f2b35;
+  text-align: center;
+  line-height: 1.25;
+  font-size: clamp(11px, 1.1cqw, 17px);
+  box-sizing: border-box;
+}
+#hallOfFameDialog .hall-name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#hallOfFameDialog .hall-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 3px;
+  font-size: 0.84em;
+  white-space: nowrap;
+}
+#hallOfFameDialog .hall-leader-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.75em;
+  letter-spacing: 0.035em;
+}
+#hallOfFameDialog .hall-light {
+  position: absolute;
+  z-index: 2;
+  height: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  color: rgb(var(--hall-light));
+}
+#hallOfFameDialog[data-hall-theme="default"] .hall-light:not([data-rank="1"]) {
+  color: rgb(213, 135, 255);
+}
+#hallOfFameDialog .hall-light-art {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 320 / 280;
+  overflow: visible;
+  /* Keep the centre of the ellipse exactly on the platform in every viewport. */
+  transform: translateY(-89.285714%);
+}
+#hallOfFameDialog .hall-volume {
+  transform-origin: 160px 250px;
+  opacity: 0.64;
+  animation: hall-volume-breathe 3.8s ease-in-out var(--phase) infinite paused;
+}
+#hallOfFameDialog .hall-shafts {
+  transform-origin: 160px 250px;
+  opacity: 0.55;
+  animation: hall-shafts-drift 4.1s ease-in-out var(--phase) infinite paused;
+}
+#hallOfFameDialog .hall-floor-light {
+  opacity: 0.75;
+  animation: hall-floor-breathe 3.8s ease-in-out var(--phase) infinite paused;
+}
+#hallOfFameDialog .hall-mote {
+  opacity: 0;
+  animation: hall-mote-rise 3.3s ease-out var(--mote-delay) infinite paused;
+}
+#hallOfFameDialog .hall-light[data-occupied="false"] {
+  opacity: 0.2;
+}
+#hallOfFameDialog .hall-light[data-occupied="false"] .hall-mote {
+  display: none;
+}
+#hallOfFameDialog[data-animate="true"]
+  .hall-light[data-occupied="true"]
+  :is(.hall-volume, .hall-shafts, .hall-floor-light, .hall-mote) {
+  animation-play-state: running;
+}
+@keyframes hall-volume-breathe {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scaleY(0.91);
+  }
+  46% {
+    opacity: 1;
+    transform: scaleY(1.08);
+  }
+  72% {
+    opacity: 0.82;
+    transform: scaleY(1);
+  }
+}
+@keyframes hall-shafts-drift {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: skewX(-4deg) scaleX(.94);
+  }
+  52% {
+    opacity: 1;
+    transform: skewX(4deg) scaleX(1.06);
+  }
+}
+@keyframes hall-floor-breathe {
+  0%,
+  100% {
+    opacity: 0.52;
+  }
+  46% {
+    opacity: 1;
+  }
+}
+@keyframes hall-mote-rise {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  18% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--mote-drift), -185px);
+  }
+}
+#hallOfFameDialog .hall-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 24px;
+  background: var(--hall-panel);
+  border-top: 1px solid rgba(var(--hall-light), 0.3);
+  font-size: 13px;
+}
+#hallOfFameDialog .hall-status {
+  margin: 0;
+}
+#hallOfFameDialog .hall-count {
+  white-space: nowrap;
+}
+#hallOfFameDialog .hall-compact {
+  display: none;
+}
+body .hall-detail-dialog {
+  width: min(670px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  box-sizing: border-box;
+  padding: 12px;
+  overflow: hidden;
+  border: 2px solid var(--prism-edge, #ddb155);
+  border-radius: 18px;
+  background: var(--pack-panel, var(--ui-c-fff5dd, #fff5dd));
+  color: var(--sf-ink, #57365f);
+  box-shadow: 0 18px 65px #22142566;
+}
+.hall-detail-dialog::backdrop {
+  background: #15172477;
+}
+.hall-detail-dialog .clan-heading {
+  margin: 0;
+}
+.hall-hero-rows {
+  display: grid;
+  gap: 5px;
+}
+.hall-detail-dialog .clan-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.hall-detail-dialog h2 {
+  margin: 0;
+  font-size: 22px;
+}
+.hall-list-body {
+  display: grid;
+  gap: 5px;
+  padding-top: 10px;
+}
+.hall-hero-row {
+  display: grid;
+  grid-template-columns: 24px 42px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 54px;
+  padding: 6px 10px;
+  border: 1px solid #bda26a66;
+  border-radius: 10px;
+  background: #fffcf68c;
+  color: inherit;
+  text-align: left;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.hall-hero-row:hover {
+  background: #fff5ddc4;
+}
+.hall-row-avatar {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d7b46b;
+}
+.hall-row-rank {
+  text-align: center;
+  font-weight: 700;
+}
+.hall-row-copy {
+  min-width: 0;
+}
+.hall-row-copy strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hall-row-copy small {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  opacity: 0.8;
+}
+.hall-row-value {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  font-weight: 700;
+}
+.hall-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+.hall-pager button {
+  min-width: 40px;
+  padding: 4px 12px;
+}
+.hall-empty-note {
+  padding: 20px 10px;
+  text-align: center;
+}
+.hall-rules-body {
+  padding: 0 10px;
+  line-height: 1.5;
+}
+@media (max-width: 700px) {
+  body #hallOfFameDialog[open] {
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+  }
+  #hallOfFameDialog .hall-heading {
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #hallOfFameDialog .hall-heading h1 {
+    font-size: 23px;
+  }
+  #hallOfFameDialog .hall-heading p {
+    display: none;
+  }
+  #hallOfFameDialog .hall-actions {
+    width: 100%;
+    gap: 6px;
+  }
+  #hallOfFameDialog .hall-actions button {
+    flex: 1;
+    min-height: 34px;
+    padding: 6px 5px;
+    font-size: 12px;
+  }
+  #hallOfFameDialog .hall-stage-viewport {
+    width: 100%;
+    aspect-ratio: 1672 / 941;
+  }
+  #hallOfFameDialog .hall-plate {
+    display: none;
+  }
+  #hallOfFameDialog .hall-orb {
+    padding: 1px;
+    border-width: 1px;
+  }
+  #hallOfFameDialog .hall-compact {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 8px 12px;
+    min-height: 0;
+  }
+  #hallOfFameDialog .hall-hero-row {
+    color: var(--hall-ink);
+    background: var(--hall-panel);
+  }
+  #hallOfFameDialog .hall-footer {
+    padding: 8px 12px;
+    gap: 8px;
+    font-size: 11px;
+  }
+  #hallOfFameDialog .hall-count {
+    align-self: flex-end;
+  }
+  .hall-detail-dialog h2 {
+    font-size: 20px;
+  }
+  .hall-hero-row {
+    grid-template-columns: 18px 34px minmax(0, 1fr) auto;
+    gap: 7px;
+    font-size: 12px;
+    min-height: 48px;
+    padding: 5px 6px;
+  }
+  .hall-row-avatar {
+    width: 34px;
+    height: 34px;
+  }
+  .hall-row-copy small {
+    font-size: 10px;
+  }
+  .hall-rules-body {
+    font-size: 13px;
+  }
+}
+@media (max-height: 650px) {
+  #hallOfFameDialog .hall-heading {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  #hallOfFameDialog .hall-heading p {
+    display: none;
+  }
+  .hall-list-body {
+    gap: 3px;
+    padding-top: 5px;
+  }
+  .hall-hero-row {
+    min-height: 40px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  .hall-row-avatar {
+    width: 32px;
+    height: 32px;
+  }
+  .hall-row-copy small {
+    font-size: 9px;
+    margin-top: 1px;
+  }
+  .hall-detail-dialog .hall-pager {
+    margin-top: 4px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #hallOfFameDialog :is(.hall-volume, .hall-shafts, .hall-floor-light, .hall-mote) {
+    animation: none;
+  }
+}

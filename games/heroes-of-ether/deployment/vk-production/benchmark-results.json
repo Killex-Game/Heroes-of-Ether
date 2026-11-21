@@ -1,0 +1,47 @@
+{
+  "measuredAt": "2026-10-20T13:51:21.174Z",
+  "node": "v24.22.0",
+  "cpu": "AMD Ryzen 5 2600 Six-Core Processor            ",
+  "logicalCpus": 12,
+  "tickMs": 50,
+  "playersPerArena": 35,
+  "scope": "Arena.step + JSON snapshot only; no socket/TLS/DB; protected stationary bodies",
+  "scenarios": [
+    {
+      "partsPerPlayer": 1,
+      "initialEjectedFood": 0,
+      "actualParts": 35,
+      "remainingFood": 200,
+      "samples": 120,
+      "stepAndSerializationMedianMs": 1.049,
+      "stepAndSerializationP95Ms": 1.62,
+      "snapshotMeanBytes": 59171,
+      "estimated400PlayersMbps": 3786.9,
+      "estimated400Players30DaysTB": 1227
+    },
+    {
+      "partsPerPlayer": 16,
+      "initialEjectedFood": 0,
+      "actualParts": 560,
+      "remainingFood": 200,
+      "samples": 120,
+      "stepAndSerializationMedianMs": 6.594,
+      "stepAndSerializationP95Ms": 8.519,
+      "snapshotMeanBytes": 127248,
+      "estimated400PlayersMbps": 8143.9,
+      "estimated400Players30DaysTB": 2638.6
+    },
+    {
+      "partsPerPlayer": 16,
+      "initialEjectedFood": 1024,
+      "actualParts": 560,
+      "remainingFood": 1224,
+      "samples": 120,
+      "stepAndSerializationMedianMs": 11.191,
+      "stepAndSerializationP95Ms": 12.756,
+      "snapshotMeanBytes": 234682,
+      "estimated400PlayersMbps": 15019.7,
+      "estimated400Players30DaysTB": 4866.4
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "tool": "built-in image_gen",
+  "outputs": [
+    {
+      "id": "title-boss",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-1779c3ab-2432-4b58-9fd4-d260761aeb9d.png"
+    },
+    {
+      "id": "title-king",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-aa022d10-3153-48c2-bcc9-d4f29e103b8a.png"
+    },
+    {
+      "id": "title-emperor",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-07d296a0-b752-467a-8ace-7707904918e3.png"
+    },
+    {
+      "id": "title-pro",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-b0887e0a-61fe-47ff-b313-3af63e34df7f.png"
+    },
+    {
+      "id": "title-expert",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-0d6cfad2-3e01-4dd5-b10c-792930df4a0c.png"
+    },
+    {
+      "id": "title-prince",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-819fa65a-9f7d-413a-9ba1-8cc8e9d90c91.png"
+    },
+    {
+      "id": "league-bronze",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-a9dd675b-f39f-40ca-ad70-0089a0e80876.png"
+    },
+    {
+      "id": "league-silver",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-dd784a29-5c9e-4bc9-b289-ebcf90d74333.png"
+    },
+    {
+      "id": "league-gold",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-e370f3b0-0b25-4d63-8bfe-b685f11ada03.png"
+    },
+    {
+      "id": "title-sage",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-ab6f8aaf-90f1-445b-aa9c-e304333c0b4e.png"
+    },
+    {
+      "id": "league-platinum",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-d6f925be-6ae7-48e1-9a5c-f2b03556a4da.png"
+    },
+    {
+      "id": "league-diamond",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-5d465771-31e6-4b26-bc3f-2101ec8e72e8.png"
+    },
+    {
+      "id": "league-champions",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-76dfedd7-740d-4492-991b-26bbf0767684.png"
+    }
+  ],
+  "prompts": [
+    {
+      "id": "title-boss",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Asset: existing transparent circular fantasy-game portrait frame. Image 1 is the HERO frame to edit, image 2 is the MASTER frame only as a reference for restrained border thickness. Slightly simplify image 1 by completely removing ONE redundant outside tier of long ivory/silver feathers around the sides and bottom. Keep a single elegant tier of gold laurel/feathers integrated with the red and blue enamel rim. Preserve its recognisable small phoenix at the top, bottom red jewel, palette, polished painted fantasy rendering and symmetry. Reduce visual congestion and radial border thickness approximately 20%, NOT a wholesale redesign. Make the phoenix crown compact, remove its outermost spikes, preserve the bird. Preserve a perfectly round open transparent portrait hole and center. The remaining gold rim must be continuous, not broken. Do not add new ornaments. No portrait, no lettering, no background, no glow outside, no cast shadow. Genuine transparent alpha inside the hole and outside the frame. One frame only, square canvas, entire object visible with a small clear margin.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/boss.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/master.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "title-king",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Edit ONLY image 1, a transparent circular fantasy game avatar frame; image 2 is a border-thickness/style reference, do not copy its emblem. Gently simplify the frame by removing ONE redundant outer decorative tier. Preserve original identity, colors, smooth polished illustrated gold/enamel rendering, front-view symmetry, continuous circular rim and a perfectly round empty portrait opening. Aim for about 20% thinner radial border with clearer fewer overlapping pieces, NOT a wholesale redesign. Genuine transparent alpha inside and outside. No portrait/text/background/glow/shadow. One complete frame with safe margins on square canvas. Remove the complete outer SILVER wing/feather tier at lower left and right. Keep the single gold laurel tier and red enamel rim. Keep the gold LION HEAD crest at top and red diamond bottom, slightly compact the crest's outer flame-like spikes.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/king.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/master.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "title-emperor",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Edit ONLY image 1, a transparent circular fantasy game avatar frame; image 2 is a border-thickness/style reference, do not copy its emblem. Gently simplify the frame by removing ONE redundant outer decorative tier. Preserve original identity, colors, smooth polished illustrated gold/enamel rendering, front-view symmetry, continuous circular rim and a perfectly round empty portrait opening. Aim for about 20% thinner radial border with clearer fewer overlapping pieces, NOT a wholesale redesign. Genuine transparent alpha inside and outside. No portrait/text/background/glow/shadow. One complete frame with safe margins on square canvas. Remove the complete outer IVORY/SILVER feather tier on both sides and bottom. Keep one gold laurel tier, deep BLUE enamel rim, small blue side gems, top gold SUN crest and bottom blue diamond. Reduce the top sun's outermost flames so the crest is compact.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/emperor.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/master.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "title-pro",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Image 1 is a transparent circular fantasy game portrait frame to subtly simplify; image 2 is a reference for border thickness only. Remove one redundant decorative layer, about 15-20% less radial bulk. Preserve palette, recognizable emblem, smooth polished illustrated metallic fantasy-game style, symmetry and a continuous circular rim. Do NOT redesign into a plain geometric ring. Round empty portrait opening with genuine transparent alpha, also transparent outside. One frame only, no portrait, text, background or external glow. Square canvas and safe margins. Keep the green enamel and gold frame, top green four-point star, bottom emerald diamond and small side green gems. Remove the secondary inner row of small gold/green leaf tips and extra bottom scroll loops; keep one coherent slender layer of gold leaves on the green rim.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/pro.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/master.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "title-prince",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Image 1 is a transparent circular fantasy game portrait frame to subtly simplify; image 2 is a reference for border thickness only. Remove one redundant decorative layer, about 15-20% less radial bulk. Preserve palette, recognizable emblem, smooth polished illustrated metallic fantasy-game style, symmetry and a continuous circular rim. Do NOT redesign into a plain geometric ring. Round empty portrait opening with genuine transparent alpha, also transparent outside. One frame only, no portrait, text, background or external glow. Square canvas and safe margins. Keep deep blue enamel and gold, top gold fleur-de-lis with blue inset and bottom blue diamond. Remove the outer SILVER feather tier from both sides and lower arc entirely, retaining the elegant gold leaves. Make crest slightly more compact without changing its identity.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/prince.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/master.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "title-expert",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Subtle simplification of this existing circular fantasy game portrait frame. Preserve identity, palette, top/bottom crest shapes, symmetry and polished painted fantasy style. Remove the secondary tier of overlapping leaf tips and flourishes, slightly thin the rim by 15%. Keep one elegant continuous decorated ring, not a plain ring, not a radical redesign. Round empty center, GENUINELY TRANSPARENT both inside and outside. NO haze, bloom, shadows, background or colored pixels floating outside the metal. One frame square canvas small safe margin. Keep bronze/copper laurel, amber orange enamel and top/bottom orange diamonds. Remove extra bottom pointed scroll layers and a few tiny inner leaflets; retain the main leaves.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/expert.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "title-sage",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Subtle simplification of this existing circular fantasy game portrait frame. Preserve identity, palette, top/bottom crest shapes, symmetry and polished painted fantasy style. Remove the secondary tier of overlapping leaf tips and flourishes, slightly thin the rim by 15%. Keep one elegant continuous decorated ring, not a plain ring, not a radical redesign. Round empty center, GENUINELY TRANSPARENT both inside and outside. NO haze, bloom, shadows, background or colored pixels floating outside the metal. One frame square canvas small safe margin. Keep gold, silver and azure enamel, top and bottom blue diamonds. Remove the second small leaf layer under the main sweeping silver leaves, reduce excess outer gold spikes. Retain a single sparse silver-gold leaf pattern.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/sage.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "title-prince-clean",
+      "args": {
+        "prompt": "Use case: background-extraction. Keep this exact blue and gold circular avatar frame unchanged, but remove ALL the white/beige haze and glow from both the center hole and the outside. The entire center opening and outside silhouette must be genuinely transparent alpha, clean crisp metal boundary. No new background. No portrait. No redesign. Do not erase or recolor the gold and blue frame itself. One full frame square canvas.",
+        "referenced_image_paths": [
+          "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-bf2222e5-2d74-411f-a7d4-b9aff87530fe.png"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "league-bronze",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Slightly simplify this exact circular fantasy game avatar frame, removing ONE redundant ornament layer to make the radial border around 20% slimmer. Preserve main emblem, materials/colors, polished illustrated style, symmetry and continuous ring. No radical redesign. One complete frame on square canvas with a genuinely TRANSPARENT circular center and transparent outside, crisp alpha edges. No haze, glow, backdrop, portrait, text or cast shadow. Keep copper/bronze metal, small round shield at top and bronze diamond at bottom. Remove the small secondary inner leaflets and extra double scrolls around the lower arc, leaving one modest bronze laurel layer and a slim inner rim.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/league-frames/v1/bronze.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "league-silver",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Slightly simplify this exact circular fantasy game avatar frame, removing ONE redundant ornament layer to make the radial border around 20% slimmer. Preserve main emblem, materials/colors, polished illustrated style, symmetry and continuous ring. No radical redesign. One complete frame on square canvas with a genuinely TRANSPARENT circular center and transparent outside, crisp alpha edges. No haze, glow, backdrop, portrait, text or cast shadow. Keep SILVER metal and blue enamel, small crescent moon on top and azure diamond on bottom. Remove the whole outer SILVER wing/feather tier around the lower half. Retain ONE slender silver laurel tier along both sides, remove excess upper spikes.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/league-frames/v1/silver.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "league-gold",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Slightly simplify this exact circular fantasy game avatar frame, removing ONE redundant ornament layer to make the radial border around 20% slimmer. Preserve main emblem, materials/colors, polished illustrated style, symmetry and continuous ring. No radical redesign. One complete frame on square canvas with a genuinely TRANSPARENT circular center and transparent outside, crisp alpha edges. No haze, glow, backdrop, portrait, text or cast shadow. Keep warm yellow GOLD, warm ivory enamel, top small SUN disc and subtle bottom flourish. Remove the complete outer ivory/silver wing tier on lower left/right. Retain one single gold laurel row; simplify bottom double scroll into one smooth flourish.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/league-frames/v1/gold.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "title-sage-clean",
+      "args": {
+        "prompt": "Use case: background-extraction. Remove ALL beige/white haze and glow in this frame's center and around its outside. Preserve the exact gold, silver and blue metal frame, gems and silhouette unchanged. Center hole and outside must have actual clean transparent alpha. No background, no external glow, no cast shadow. Deliver only the complete frame on square transparent canvas.",
+        "referenced_image_paths": [
+          "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-ee2829ff-0abc-4232-81ab-df3181bc37b3.png"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "league-platinum",
+      "args": {
+        "prompt": "Use case: precise-object-edit. This is an existing transparent circular fantasy game avatar frame. Remove exactly one redundant OUTER feather/leaf tier around the sides and lower half so it is visually lighter, radial thickness ~20% less. Retain one elegant continuous laurel tier, the main emblem, exact color identity and polished hand-painted fantasy style. Do NOT replace with a generic plain ring. Make perfect circular open center, bilateral symmetry. Genuine transparent alpha both inside and outside, crisp clean edges with NO white haze, external glow, shadows or backdrop. No portrait/text. One full frame on square canvas with safe margins. Preserve pale platinum/silver metal, turquoise enamel, top star with two small orbiting turquoise gems, bottom turquoise diamond. Remove the extra outside row of silver feather tips, reduce secondary curlicues at the bottom; one alternating silver/turquoise laurel layer remains.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/league-frames/v1/platinum.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "league-diamond",
+      "args": {
+        "prompt": "Use case: precise-object-edit. This is an existing transparent circular fantasy game avatar frame. Remove exactly one redundant OUTER feather/leaf tier around the sides and lower half so it is visually lighter, radial thickness ~20% less. Retain one elegant continuous laurel tier, the main emblem, exact color identity and polished hand-painted fantasy style. Do NOT replace with a generic plain ring. Make perfect circular open center, bilateral symmetry. Genuine transparent alpha both inside and outside, crisp clean edges with NO white haze, external glow, shadows or backdrop. No portrait/text. One full frame on square canvas with safe margins. Preserve royal blue enamel, silver leaves with gold edges, top and bottom faceted BLUE diamond and small side gems. Completely remove the additional outer silver feather row around both sides and lower half. Keep one slender silver-gold laurel tier.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/league-frames/v1/diamond.webp"
+        ],
+        "transparent_background": true
+      }
+    },
+    {
+      "id": "league-champions",
+      "args": {
+        "prompt": "Use case: precise-object-edit. This is an existing transparent circular fantasy game avatar frame. Remove exactly one redundant OUTER feather/leaf tier around the sides and lower half so it is visually lighter, radial thickness ~20% less. Retain one elegant continuous laurel tier, the main emblem, exact color identity and polished hand-painted fantasy style. Do NOT replace with a generic plain ring. Make perfect circular open center, bilateral symmetry. Genuine transparent alpha both inside and outside, crisp clean edges with NO white haze, external glow, shadows or backdrop. No portrait/text. One full frame on square canvas with safe margins. Preserve gold metal with ruby RED enamel, small gold TROPHY topped by crown at top, ruby jewel bottom. Completely remove the secondary outer IVORY feather row and excess lower ribbon loops. Keep one slender gold laurel row and a simple bottom jewel flourish. The trophy should stay compact.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/league-frames/v1/champions.webp"
+        ],
+        "transparent_background": true
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "id": "title-prince",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-bf2222e5-2d74-411f-a7d4-b9aff87530fe.png",
+      "reason": "opaque halo/background in center"
+    },
+    {
+      "id": "title-sage",
+      "path": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-ee2829ff-0abc-4232-81ab-df3181bc37b3.png",
+      "reason": "background halo"
+    }
+  ]
+}

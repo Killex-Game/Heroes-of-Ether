@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="mega_poison-title mega_poison-desc">
+<title id="mega_poison-title">Мега яд</title>
+<desc id="mega_poison-desc">Редкий бустер. Постепенно сжигает у игрока 50 процентов от общей массы. Угловатый фиолетовый флакон с зелёной каплей-черепом.</desc>
+<defs><linearGradient id="mega_poison-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="mega_poison-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="mega_poison-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="mega_poison-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="mega_poison-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="mega_poison-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="mega_poison-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="mega_poison-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="mega_poison-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="mega_poison-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="mega_poison-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="mega_poison-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M104 38 Q128 32 152 38 L156 70 L100 70 Z" fill="url(#mega_poison-brown)"/>
+<path d="M109 43 L146 43" fill="none" stroke="#F8D397" stroke-width="6"/>
+<path d="M113 55 L114 62 M137 53 L138 62" fill="none" stroke="#945336" stroke-width="4"/>
+<path d="M101 82 L155 82 L178 106 L201 150 L184 213 Q128 225 72 213 L55 150 L78 106 Z" fill="url(#mega_poison-plum)"/>
+<path d="M82 107 L99 93 L108 107 L77 151 L89 207 L76 207 L62 151 Z" fill="#D9B4FA" stroke="none"/>
+<path d="M160 101 L173 112 L192 151 L178 207 L133 215 L132 200 L164 196 L179 151 Z" fill="#66377E" stroke="none"/>
+<path d="M80 136 Q128 148 178 136 L184 151 L172 199 Q129 209 85 199 L72 151 Z" fill="#7D429B" stroke-width="4"/>
+<path d="M89 150 L94 187" fill="none" stroke="#BC7BD4" stroke-width="6"/>
+<path d="M98 66 Q128 61 158 66 L159 87 Q128 94 97 87 Z" fill="url(#mega_poison-gold)"/>
+<path d="M106 72 L148 72" fill="none" stroke="#FFF4B0" stroke-width="5"/>
+<path d="M104 86 L151 86" fill="none" stroke="#B0742D" stroke-width="4"/>
+<path d="M128 112 Q134 123 145 134 Q159 146 153 160 Q151 169 142 174 L142 184 L114 184 L114 174 Q102 170 101 157 Q98 142 111 132 Q123 123 128 112 Z" fill="url(#mega_poison-green)" stroke-width="5"/>
+<path d="M126 124 Q113 138 111 148" fill="none" stroke="#E9FFBC" stroke-width="5"/>
+<ellipse cx="117" cy="155" rx="6" ry="7" fill="#392B48" stroke="none"/>
+<ellipse cx="139" cy="155" rx="6" ry="7" fill="#392B48" stroke="none"/>
+<path d="M125 168 L128 163 L131 168 Z" fill="#392B48" stroke="none"/>
+<path d="M123 178 L123 183 M133 178 L133 183" fill="none" stroke-width="4"/>
+<path d="M68 124 L76 114" fill="none" stroke="#F0D9FF" stroke-width="5"/>
+<circle cx="164" cy="160" r="4" fill="#B475CC" stroke="none"/>
+</g>
+</svg>

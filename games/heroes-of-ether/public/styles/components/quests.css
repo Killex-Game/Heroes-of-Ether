@@ -1,0 +1,261 @@
+.quests-dialog {
+  width: min(1080px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  color: var(--ui-c-633b7b, #633b7b);
+}
+.quests-summary {
+  margin: 12px 0 18px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.quests-grid {
+  --quest-card-width: 236px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, var(--quest-card-width)));
+  gap: 14px;
+  align-items: stretch;
+}
+.quest-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: var(--quest-card-width);
+  max-width: 100%;
+  padding: 16px 14px;
+  border: 1px solid #d6ae62;
+  border-radius: 16px;
+  background: #fffaf0;
+  box-shadow: inset 0 1px 0 #fff;
+}
+.quest-card[data-tier="large"] {
+  background: linear-gradient(160deg, #fff7db, #fffaf0 55%);
+  border-color: #c28b32;
+}
+.quest-card[data-state="complete"] {
+  box-shadow: inset 0 0 0 2px #c6a34f;
+}
+.quest-card[data-state="claimed"] {
+  opacity: 0.72;
+}
+.quest-tier {
+  font-size: 12px;
+  font-weight: 700;
+  color: #936214;
+  text-align: center;
+}
+.quest-chest {
+  align-self: center;
+  object-fit: contain;
+}
+/* Общая градация рисунков заданий в карточках, Сокровищнице и при открытии. */
+img[src$="/quest-small.webp"] {
+  scale: 0.62;
+}
+img[src$="/quest-medium.webp"] {
+  scale: 0.80;
+}
+.quest-treasury-chest img[src$="/quest-small.webp"] {
+  scale: 0.78;
+}
+.quest-card h3 {
+  margin: 0;
+  font-size: 17px;
+  text-align: center;
+}
+.quest-description {
+  min-height: 62px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+.quest-progress-text {
+  font-size: 13px;
+  text-align: center;
+}
+.quest-progress {
+  appearance: none;
+  width: 100%;
+  height: 12px;
+  overflow: hidden;
+  border: 1px solid #bd963e;
+  border-radius: 7px;
+  background: #eadcb3;
+  accent-color: #b88b2e;
+}
+.quest-progress::-webkit-progress-bar {
+  background: #eadcb3;
+}
+.quest-progress::-webkit-progress-value {
+  background: linear-gradient(#e6c55d, #ad7c21);
+  border-radius: 6px;
+}
+.quest-progress::-moz-progress-bar {
+  background: linear-gradient(#e6c55d, #ad7c21);
+  border-radius: 6px;
+}
+.quest-rewards {
+  flex: 1;
+  padding: 10px 0;
+  border-top: 1px solid #dfc78c;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.quest-rewards p {
+  margin: 3px 0;
+}
+.quest-tickets {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #a27318;
+  font-weight: 700;
+}
+.quest-tickets img {
+  width: 28px;
+  height: 22px;
+  object-fit: contain;
+}
+.quest-card .sf-button {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 8px;
+  font-size: 13px;
+}
+.quest-confirm.clan-dialog {
+  width: min(440px, calc(100vw - 28px));
+  padding: 10px;
+  border: 2px solid var(--prism-edge, #cba75a);
+  border-image: none;
+  background: linear-gradient(135deg, var(--prism-light, #fff8e7), var(--prism-mid, #f4e4bd));
+  border-radius: 18px;
+}
+.quest-confirm .clan-heading {
+  margin-bottom: 10px;
+}
+.quest-confirm .clan-heading h2 {
+  font-size: 22px;
+}
+.quest-confirm-body {
+  padding: 16px 12px 8px;
+}
+.quest-confirm-name {
+  display: block;
+  font-size: 19px;
+}
+.quest-confirm .quest-confirm-note {
+  margin: 10px 0 16px;
+  line-height: 1.45;
+}
+.quest-confirm-details {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 12px;
+  margin: 0 0 20px;
+  padding-block: 12px;
+  border-block: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  font-size: 13px;
+}
+.quest-confirm-details dd {
+  margin: 0;
+  text-align: right;
+}
+.quest-confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+@media (max-width: 540px) {
+  .quests-grid {
+    grid-template-columns: minmax(0, 236px);
+    justify-content: center;
+  }
+  .quests-dialog {
+    padding: 12px;
+  }
+}
+
+.quests-grid {
+  justify-content: center;
+}
+body #questsDialog .quest-card[hidden],
+.quests-pages[hidden] {
+  display: none;
+}
+.quest-chest-help {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+.quest-chest-trigger {
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  cursor: help;
+  border-radius: 12px;
+}
+.quest-chest-trigger:focus-visible {
+  outline: 2px solid #c78b2a;
+  outline-offset: 2px;
+}
+.quest-chest {
+  width: 82px;
+  height: 82px;
+}
+.quest-rewards {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 100%;
+  left: -6px;
+  right: -6px;
+  padding: 12px;
+  text-align: left;
+  color: #58386b;
+  background: linear-gradient(#fff8df, #f4e6c2);
+  border: 1px solid #bf8b2e;
+  border-radius: 12px;
+  box-shadow:
+    0 5px 15px #3b204b40,
+    inset 0 0 0 2px #fffaf0;
+  pointer-events: none;
+}
+.quest-chest-help:is(:hover, :focus-within) .quest-rewards {
+  display: block;
+}
+.quest-card .quest-claim,
+.quest-card .quest-reroll {
+  margin-top: auto;
+}
+.quests-pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+.quests-pages button {
+  width: 42px;
+  height: 34px;
+  padding: 3px;
+}
+@media (min-width: 800px) and (max-width: 1071px) {
+  .quests-grid {
+    --quest-card-width: 176px;
+    gap: 10px;
+  }
+  .quest-card {
+    padding: 12px 9px;
+  }
+  .quest-card h3 {
+    font-size: 15px;
+  }
+  .quest-description {
+    min-height: 78px;
+    font-size: 12px;
+  }
+}

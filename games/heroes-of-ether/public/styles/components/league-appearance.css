@@ -1,0 +1,500 @@
+/* Лиги используют самостоятельные векторные рамки и две композиции фона. */
+body[data-screen="lobby"] #lobby.has-league-background,
+#clanDialog.has-league-background,
+.appearance-preview.has-league-background,
+.appearance-set-mini.has-league-background,
+.public-player-hero.has-league-background {
+  background-image: var(--league-background);
+  background-size: cover;
+  background-position: center;
+}
+/* Гербы масштабируются внутри SVG независимо от ширины фоновой сцены. */
+.has-league-background[data-league-background-kind="profile"] {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+/* Raster rooms keep their proportions; only vector ornaments stretch to the panel. */
+.has-scene-background[data-league-background-kind="profile"] {
+  background-size: cover;
+}
+/* WebKit не всегда передаёт reduced motion внутрь SVG-изображения. */
+@media (prefers-reduced-motion: reduce) {
+  body[data-screen="lobby"] #lobby.has-league-background,
+  #clanDialog.has-league-background,
+  .appearance-preview.has-league-background,
+  .appearance-set-mini.has-league-background,
+  .public-player-hero.has-league-background {
+    background-image: var(--league-background-still, var(--league-background));
+  }
+}
+/* Фон клана и его светлые панели составляют один набор. */
+.appearance-clan-preview {
+  --clan-panel-top: #fff6df;
+  --clan-panel-bottom: #f3daa5;
+  --clan-panel-border: #cfac66;
+  --clan-panel-trim: #e5ba62;
+  --clan-panel-ink: #5c3a6a;
+  --clan-panel-pattern: linear-gradient(transparent, transparent);
+}
+:is(#clanDialog, .appearance-clan-preview)[data-league-background="bronze"] {
+  --clan-panel-top: #ffe3bf;
+  --clan-panel-bottom: #dfa676;
+  --clan-panel-border: #b86a35;
+  --clan-panel-trim: #cb7b3e;
+  --clan-panel-ink: #603721;
+  --clan-panel-pattern: linear-gradient(
+    135deg,
+    #fff0d253 0 12%,
+    transparent 12% 87%,
+    #a65b1b16 87%
+  );
+}
+:is(#clanDialog, .appearance-clan-preview)[data-league-background="silver"] {
+  --clan-panel-top: #f6f7fa;
+  --clan-panel-bottom: #c1cad9;
+  --clan-panel-border: #7e8ca7;
+  --clan-panel-trim: #a4b2ca;
+  --clan-panel-ink: #34415f;
+  --clan-panel-pattern: linear-gradient(
+    115deg,
+    transparent 17%,
+    #ffffff61 18% 21%,
+    transparent 22% 27%,
+    #ffffff35 28% 29%,
+    transparent 30%
+  );
+}
+:is(#clanDialog, .appearance-clan-preview)[data-league-background="gold"] {
+  --clan-panel-top: #fff1a5;
+  --clan-panel-bottom: #edc14a;
+  --clan-panel-border: #bc8617;
+  --clan-panel-trim: #e2a80a;
+  --clan-panel-ink: #63400b;
+  --clan-panel-pattern: radial-gradient(ellipse at 50% 0, #fffce579, transparent 65%);
+}
+:is(#clanDialog, .appearance-clan-preview)[data-league-background="platinum"] {
+  --clan-panel-top: #d0fff0;
+  --clan-panel-bottom: #79d7c8;
+  --clan-panel-border: #389c98;
+  --clan-panel-trim: #57c8c0;
+  --clan-panel-ink: #194f50;
+  --clan-panel-pattern: radial-gradient(ellipse at 100% 0, #efffff7a, transparent 60%);
+}
+:is(#clanDialog, .appearance-clan-preview)[data-league-background="diamond"] {
+  --clan-panel-top: #d5eeff;
+  --clan-panel-bottom: #91b9fc;
+  --clan-panel-border: #648dde;
+  --clan-panel-trim: #90dfff;
+  --clan-panel-ink: #2e3c78;
+  --clan-panel-pattern:
+    linear-gradient(145deg, #ffffff64 0 16%, transparent 16% 75%, #5c7ee81f 75%),
+    linear-gradient(35deg, transparent 83%, #ffffff80 83%);
+}
+:is(#clanDialog, .appearance-clan-preview)[data-league-background="champions"] {
+  --clan-panel-top: #ffe0d6;
+  --clan-panel-bottom: #ed9caa;
+  --clan-panel-border: #b84c65;
+  --clan-panel-trim: #ebbc59;
+  --clan-panel-ink: #681e40;
+  --clan-panel-pattern:
+    linear-gradient(130deg, #bf254422, transparent 23% 77%, #bf254422),
+    radial-gradient(ellipse at 50% 0, #fff2ca69, transparent 60%);
+}
+#clanDialog.has-league-background :is(.clan-banner, .clan-panel) {
+  background:
+    var(--clan-panel-pattern),
+    linear-gradient(135deg, var(--clan-panel-top), var(--clan-panel-bottom));
+  color: var(--clan-panel-ink);
+  border-image: none;
+  border-color: transparent;
+  border-radius: 14px;
+}
+#clanDialog.has-league-background :is(.clan-banner, .clan-home-grid > .clan-panel) {
+  border-color: var(--clan-panel-border);
+  box-shadow:
+    inset 0 3px 0 var(--clan-panel-trim),
+    inset 0 4px 0 var(--ui-c-fff8, #fff8);
+}
+#clanDialog.has-league-background :is(.clan-member, .clan-request) {
+  background: linear-gradient(
+    135deg,
+    var(--ui-c-ffffff50, #ffffff50),
+    var(--ui-c-ffffff15, #ffffff15)
+  );
+  border-color: var(--clan-panel-border);
+}
+.appearance-clan-panels {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  grid-template-rows: 20px 48px;
+  gap: 5px;
+  width: calc(100% - 24px);
+  margin-top: 16px;
+}
+.appearance-clan-panels > span {
+  background:
+    var(--clan-panel-pattern),
+    linear-gradient(
+      135deg,
+      var(--clan-panel-top, var(--ui-c-fff6df, #fff6df)),
+      var(--clan-panel-bottom, var(--ui-c-f3daa5, #f3daa5))
+    );
+  border: 1px solid var(--clan-panel-border, #cfac66);
+  border-radius: 5px;
+  box-shadow:
+    inset 0 2px 0 var(--clan-panel-trim),
+    inset 0 3px 0 var(--ui-c-fff8, #fff8);
+}
+.appearance-clan-panels > span:first-child {
+  grid-column: 1 / -1;
+}
+#clanDialog.has-league-background .clan-backgrounds > h3 {
+  color: #fff4d8;
+  text-shadow: 0 2px 3px #170c32;
+}
+.appearance-set-contents {
+  margin: 0 2px 12px;
+  color: #62446f;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.skin-library .appearance-set-preview {
+  height: 154px;
+}
+.appearance-set-mini {
+  display: grid;
+  place-items: center;
+  width: calc(100% - 30px);
+  height: 90px;
+  margin-top: 18px;
+  border: 1px solid #ffe5b7aa;
+  border-radius: 9px;
+  background: var(--ui-c-f2dfc9, #f2dfc9);
+}
+.appearance-set-mini .appearance-avatar {
+  width: 52px;
+  height: 52px;
+}
+.appearance-set-arena {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+body[data-screen="lobby"]
+  #lobby.has-league-background
+  :is(#lobbyStatus, .skin-note, .loadout-heading, .loadout-summary) {
+  color: #fff1d5;
+  text-shadow: 0 1px 3px #130d25;
+}
+#settingsMenu #lobbyAppearanceButton {
+  white-space: nowrap;
+  width: 100%;
+  min-height: 38px;
+}
+#settingsMenu .setting-row.settings-appearance-row {
+  grid-template-columns: minmax(0, 1fr);
+}
+body[data-screen="arena"] #settingsMenu .settings-appearance-row {
+  display: none;
+}
+.appearance-arena-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--ui-c-201931, #201931);
+}
+.appearance-arena-skin[hidden] {
+  display: none;
+}
+#openSelfProfile {
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+#lobby #openSelfProfile[data-avatar-frame],
+#lobby #skinPreview[data-arena-frame],
+.player-avatar[data-avatar-frame] {
+  position: relative;
+  overflow: visible;
+  border-color: transparent;
+  box-shadow: none;
+}
+#lobby #skinPreview[data-arena-frame]::after,
+.player-avatar[data-avatar-frame]::after {
+  display: none;
+}
+#lobby #openSelfProfile[data-avatar-frame="default"],
+#lobby #skinPreview[data-arena-frame="default"],
+.player-avatar[data-avatar-frame="default"] {
+  background: transparent;
+}
+.appearance-rim-canvas {
+  position: absolute;
+  z-index: 1;
+  left: -8px;
+  top: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  max-width: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  pointer-events: none;
+}
+#openSelfProfile > #profileSkin {
+  border-radius: 50%;
+}
+.league-avatar-frame {
+  position: absolute !important;
+  z-index: 2;
+  inset: -22% !important;
+  width: 144% !important;
+  height: 144% !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 2px #140b2044);
+}
+.player-account-badge {
+  z-index: 4;
+}
+.public-player-hero {
+  position: relative;
+  min-height: 264px;
+}
+.public-background-edit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  padding: 6px;
+  border: 1px solid #d39a3b;
+  border-radius: 9px;
+  background: var(--ui-c-fff3ce, #fff3ce);
+  color: #72358a;
+  cursor: pointer;
+}
+.public-background-edit svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#appearanceDialog {
+  width: min(880px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 24px);
+  max-height: calc(100dvh - 24px);
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #bb914f;
+  border-image: none;
+  box-shadow:
+    inset 0 0 0 3px #fff4d8,
+    0 16px 60px var(--ui-c-27133066, #27133066);
+  border-radius: 20px;
+  overflow: hidden !important;
+  color: #593367;
+  background: var(--ui-c-fff0c7, #fff0c7);
+}
+.appearance-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.appearance-dialog > .clan-heading {
+  flex: none;
+  margin: 0;
+}
+.appearance-dialog h2 {
+  font-size: clamp(18px, 3vw, 25px);
+}
+.appearance-picker-content {
+  min-height: 0;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.appearance-picker-content::-webkit-scrollbar {
+  display: none;
+}
+.appearance-intro {
+  margin: 2px 2px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #795e80;
+}
+.appearance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.appearance-card {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid #cfac66;
+  border-radius: 14px;
+  background: var(--ui-c-fff9e9, #fff9e9);
+}
+.appearance-access-time {
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  right: 12px;
+  max-width: calc(100% - 24px);
+  padding: 3px 7px;
+  border: 1px solid #fff3cf66;
+  border-radius: 7px;
+  background: var(--ui-c-291337aa, #291337aa);
+  color: #fff4db;
+  font: 600 10px/1.4 var(--game-font);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.appearance-access-time[hidden] {
+  display: none;
+}
+#clanDialog.has-league-background .clan-backgrounds > .appearance-intro {
+  color: #fff2cf;
+  text-shadow: 0 1px 3px #190a29;
+}
+.clan-backgrounds .appearance-card > button {
+  width: 100%;
+  margin-top: auto;
+}
+.clan-backgrounds .appearance-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+.appearance-card[data-selected="true"] {
+  border-color: var(--ui-c-aa43c8, #aa43c8);
+  box-shadow: inset 0 0 0 1px var(--ui-c-aa43c8, #aa43c8);
+}
+.appearance-preview {
+  height: 120px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: radial-gradient(ellipse, var(--ui-c-ffedcb, #ffedcb), var(--ui-c-e7c9e7, #e7c9e7));
+  overflow: hidden;
+}
+.appearance-card[data-locked="true"] .appearance-preview {
+  filter: saturate(0.55);
+}
+.appearance-card > strong,
+.appearance-card > small {
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.appearance-card > .appearance-availability {
+  min-height: 1.5em;
+  color: #8256a1;
+}
+#skinsDialog.show-frames .cosmetics-preview {
+  display: none;
+}
+#skinsDialog.show-frames .skin-collection-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+#skinsDialog .interface-toolbar > .cosmetics-tabs {
+  margin: 0;
+}
+#skinsDialog .interface-toolbar > .cosmetics-season-discount {
+  margin: 8px 0 0;
+  overflow-wrap: anywhere;
+}
+.appearance-card > small {
+  color: #816888;
+  font-size: 11px;
+  min-height: 2.6em;
+}
+.appearance-card > button {
+  width: 100%;
+  margin-top: auto;
+  min-height: 34px;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+.appearance-avatar {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  display: block;
+}
+.appearance-skin {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.appearance-mini-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid #f3c46c;
+  object-fit: cover;
+}
+.skin-library .appearance-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.skin-library .appearance-preview {
+  height: 128px;
+}
+.skin-library .appearance-card > small {
+  min-height: 1.5em;
+}
+/* Орнамент рамки выходит за круг аватара: место резервируется целиком. */
+.appearance-collection:is([data-appearance-slot="frames"], [data-appearance-slot="avatarFrame"])
+  .appearance-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  grid-auto-rows: 1fr;
+}
+.appearance-collection:is([data-appearance-slot="frames"], [data-appearance-slot="avatarFrame"])
+  .appearance-preview {
+  height: 184px;
+  flex-shrink: 0;
+}
+.appearance-status {
+  margin: 0;
+}
+@media (max-width: 540px) {
+  .appearance-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .appearance-preview {
+    height: 110px;
+  }
+  .appearance-card {
+    padding: 6px;
+  }
+  .appearance-card > strong {
+    font-size: 13px;
+  }
+}
+@media (max-width: 700px) {
+  #skinsDialog .skin-library > .cosmetics-tabs {
+    position: static;
+  }
+  .appearance-grid,
+  .skin-library .appearance-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* The crop belongs to the portrait, the circular border to its own disc. */
+.appearance-mini-disc { position:relative; display:block; width:64px; height:64px; border:2px solid #d8b569; border-radius:50%; overflow:hidden; background:linear-gradient(140deg,#b4d5e4,#636785); flex:none; }
+.appearance-mini-disc .appearance-mini-avatar { display:block; width:100%; height:100%; border:0; border-radius:0; object-fit:contain; }

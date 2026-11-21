@@ -1,0 +1,11 @@
+19 октября 2026. Значки ролей Сферорумии.
+Созданы встроенным imagegen, прозрачный фон. Референс: assets/menu-icons/128/nav_clan.webp (только стиль).
+
+head.png
+Use case: stylized-concept. Asset: one small clan role badge for the Sferorumiya fantasy browser game. The reference is STYLE ONLY: polished rounded gold bevels, rich amethyst enamel, friendly hand-painted dimensional game icon, crisp dark plum outlines, simple bold readable silhouette at 24-40 px. One standalone centered complete object on truly transparent background with generous transparent margin. No text, letters, numbers, external shadow or large glow; no UI mockup or sheet. Leader badge: a regal compact gold crown with three broad points and one prominent purple amethyst, above a short gold laurel arc. Clearly the highest authority, simple and elegant.
+
+manager.png
+Use case: stylized-concept. Asset: one small clan role badge for the Sferorumiya fantasy browser game. The reference is STYLE ONLY: polished rounded gold bevels, rich amethyst enamel, friendly hand-painted dimensional game icon, crisp dark plum outlines, simple bold readable silhouette at 24-40 px. One standalone centered complete object on truly transparent background with generous transparent margin. No text, letters, numbers, external shadow or large glow; no UI mockup or sheet. Manager badge: an ornate compact gold key diagonally crossing a small amethyst enamel shield, with one gold four-point star at its center. A key signifies administration. No crown.
+
+officer.png
+Use case: stylized-concept. Asset: one small clan role badge for the Sferorumiya fantasy browser game. The reference is STYLE ONLY: polished rounded gold bevels, rich amethyst enamel, friendly hand-painted dimensional game icon, crisp dark plum outlines, simple bold readable silhouette at 24-40 px. One standalone centered complete object on truly transparent background with generous transparent margin. No text, letters, numbers, external shadow or large glow; no UI mockup or sheet. Officer badge: two short gold swords crossed behind a small purple shield with a single gold chevron, assertive and compact. No crown, no key.

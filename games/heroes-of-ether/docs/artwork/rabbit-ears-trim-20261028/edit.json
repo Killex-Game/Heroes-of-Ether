@@ -1,0 +1,11 @@
+{
+  "tool": "OpenAI built-in image_gen",
+  "date": "2026-10-28",
+  "source": "source.png",
+  "input": "Original rabbit-ears.webp from backups/event-seekers-daily-20261028/restart/code/public/assets/events/easter-hunt/",
+  "reference": "User red-marked screenshot codex-clipboard-2c151c13-7513-4888-8892-3f61ce80148b.png",
+  "output": "public/assets/events/easter-hunt/rabbit-ears.webp",
+  "prompt": "Use case: precise-object-edit. Image 1 is the original transparent rabbit ears hat sprite to edit. Image 2 is the user's in-game screenshot with red lines indicating EXACTLY the unwanted parts. The previous edit mistakenly deleted the UPPER white fur behind the gold circlet; DO NOT do that. Preserve the original upper white fur and both ears, bent right ear, green bow, gold flower and golden filigree exactly as in image 1. Remove ONLY the two lower curled-back puffy white fur end lobes at the bottom LEFT and RIGHT of the circlet, indicated by the red strokes in image 2. In the 512 square sprite these unwanted return lobes sit approximately at x38-108,y441-494 and x408-476,y441-494. They look like thick downward hanging and inward curling padded ends. The hat is worn as a FRONT-ONLY overlay on a round game avatar, so those rear/underside returns must not exist. Shorten and taper these two bottom ends naturally so there are no dangling white knobs, curled-back loops or visible underside at either lower corner. Keep the central front fur trim between them. Do not remove the upper side fur, do not change the ears, bow or gold detail, and do not make an entirely different hat. Keep the original design, painted volumetric fantasy game style, position and scale on square canvas. Background genuinely transparent including removed areas, no red marks, no screenshot, no sphere or avatar, no text. Output only the corrected transparent sprite.",
+  "export": "512x512 WebP quality92, generated alpha retained",
+  "correction": "Restore original upper fur; remove the two lower curled back end lobes marked red, not upper fur."
+}

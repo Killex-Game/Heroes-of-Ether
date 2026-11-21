@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="poison-title poison-desc">
+<title id="poison-title">Яд</title>
+<desc id="poison-desc">Улучшенный бустер «Яд». Отравляет игрока и постепенно сжигает 40% его общей массы. Округлый зелёный флакон с пробкой и этикеткой с черепом.</desc>
+<defs><linearGradient id="poison-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="poison-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="poison-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="poison-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="poison-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="poison-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="poison-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="poison-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="poison-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="poison-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="poison-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="poison-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M106 39L102 68H153L149 39Q128 31 106 39Z" fill="url(#poison-brown)"/>
+<path d="M113 41L111 60 M136 41L139 61" fill="none" stroke="#87553F" stroke-width="4"/>
+<path d="M94 77H162L157 99C188 113 210 136 210 166C210 202 177 221 128 221C79 221 46 202 46 166C46 136 67 113 99 99Z" fill="url(#poison-green)"/>
+<path d="M65 163C91 173 154 147 191 157V176C190 196 163 211 129 212C92 212 68 198 64 179Z" fill="#52B46F" fill-opacity=".7" stroke="none"/>
+<path d="M88 69Q89 61 98 61H159Q169 61 170 69L169 79Q169 85 161 85H96Q88 85 88 78Z" fill="url(#poison-plum)"/>
+<path d="M101 68H155" fill="none" stroke="#E0BBFA" stroke-width="4"/>
+<path d="M65 144Q72 124 91 117" fill="none" stroke="#F0FFD1" stroke-width="9"/>
+<circle cx="67" cy="160" r="5" fill="#F0FFD1" stroke="none"/>
+<circle cx="175" cy="130" r="8" fill="#DFFDA5" stroke="#529766" stroke-width="4"/>
+<circle cx="180" cy="186" r="5" fill="#BAF387" stroke="none"/>
+<path d="M104 126Q127 115 151 126L158 168L147 192H109L97 169Z" fill="url(#poison-cream)" stroke-width="5"/>
+<path d="M110 151C110 139 118 134 128 134C139 134 146 141 146 151C146 159 141 164 137 166V174H119V166C113 163 110 158 110 151Z" fill="#554660" stroke="none"/>
+<circle cx="120" cy="151" r="5" fill="#FFF5D5" stroke="none"/>
+<circle cx="136" cy="151" r="5" fill="#FFF5D5" stroke="none"/>
+<path d="M125 161L128 157L132 162Z" fill="#FFF5D5" stroke="none"/>
+<path d="M125 168V174 M132 168V174" fill="none" stroke="#FFF5D5" stroke-width="3"/>
+</g>
+</svg>

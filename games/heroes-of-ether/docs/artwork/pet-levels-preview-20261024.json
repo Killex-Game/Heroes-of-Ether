@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-24",
+  "status": "preview_ready",
+  "validation": {
+    "method": "Visual inspection of native generated output plus PNG header and SHA-256 verification after workspace copy",
+    "checks": [
+      "Exactly six cells per pet",
+      "Russian level labels 0–5 ordered left-to-right",
+      "Level 0 without accessories",
+      "Cumulative cosmetic progression",
+      "Complete ears, horns, wings, paws and tails inside each cell",
+      "Original faces, species and palette remain recognizable"
+    ],
+    "limitations": "Concept sheets only. Individual transparent production sprites, common anchors and small-size rendering checks will be needed before game integration."
+  },
+  "tool": "built-in image_gen",
+  "kind": "concept_comparison_sheets",
+  "note": "Preview artwork only; no live asset or balance changes. Existing project pet references supplied by the user project; their earlier provenance is not independently audited here. No external media downloaded.",
+  "assets": [
+    {
+      "id": "zaya",
+      "name": "Зая",
+      "reference": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/pets/zaya.png",
+      "generatedOriginal": "C:/Users/semen/.codex/generated_images/01a16e2b-862d-7960-a65c-ae1eeef6a60d/exec-396eb8c2-2f19-4e0c-8cfd-2a0f8e02fa9d.png",
+      "destination": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261024/pet-levels/zaya-levels-0-5-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished concept comparison sheet for six level-dependent cosmetic appearances of one existing browser-game pet. Reference image 1 supplies exact character identity, rendering style, colours, facial expression, body proportions and full seated pose. Create a NEW opaque landscape comparison board, aspect ratio 3:2, with a clean warm ivory background, very subtle gold divider lines and understated purple typography. Six equally sized cells, exactly two rows of three. Levels run left-to-right: 0, 1, 2 in top row and 3, 4, 5 in bottom row. All six are the SAME character at the SAME body size, pose, viewing direction and light, with accessories changing only. Render the ENTIRE full-body pet in every cell with generous safe margins around ears, paws, tail, wings, crown. No cropping, no circle portrait, no badge frame, no overlap between cells, no extra characters. Use exquisite friendly fantasy game illustration like the reference: large expressive eyes, clean shiny material shading, soft detailed fur or scales. Crisp silhouettes readable when small; add beautiful textile/metal craftsmanship instead of many gemstones. Each level retains the earlier accessories and adds or upgrades the stated item. Clothes must not obscure face or anatomy. Each cell has its centered caption BELOW the pet, exactly: \"Уровень 0\", \"Уровень 1\", \"Уровень 2\", \"Уровень 3\", \"Уровень 4\", \"Уровень 5\". A small elegant centered name at the top only, no additional text, no game branding, no watermark. The purpose is an attractive clearly readable comparison for approval, not a sprite atlas. Character: Зая, the exact white fluffy lop-eared bunny from the reference, blue eyes, pink ear interiors, pink nose, cheek blush, delighted open-mouth smile, small forepaws, full long ears. Top title exactly \"Зая\". Accessories theme: forest enchantress, lilac fabrics and leaf-shaped gold craft.\nLevel 0: natural white fur only; REMOVE the reference's bow and gemstone, entirely no clothing or jewellery.\nLevel 1: one small plain lilac silk bow at the neck, no jewel.\nLevel 2: same bow, add a recognizable small GOLD CARROT brooch at its knot, green enamel carrot leaves, no gemstone.\nLevel 3: retain bow/carrot brooch, add a short pale-lilac cape with elegant small gold leaf embroidery.\nLevel 4: retain previous, add a delicate thin gold leaf tiara between ears and one small gold bracelet on forepaw.\nLevel 5: upgrade to richer purple and ivory cape with gold leaf borders and a refined larger leafy tiara, retain bow/carrot/bracelet, a few very restrained soft golden sparkles close to the silhouette. The bunny remains visibly the same cute bunny, not bigger or older.",
+      "verifiedFile": {
+        "file": "zaya-levels-0-5-v1.png",
+        "width": 1536,
+        "height": 1024,
+        "sha256": "D278633DC908AE98028148C133DA6421A3AAF1258D9296A64297001A94422E4A",
+        "bytes": 2043043
+      }
+    },
+    {
+      "id": "leva",
+      "name": "Лёва",
+      "reference": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/pets/leva.png",
+      "generatedOriginal": "C:/Users/semen/.codex/generated_images/01a16e2b-862d-7960-a65c-ae1eeef6a60d/exec-26220a0b-0395-4238-b482-376778a1a238.png",
+      "destination": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261024/pet-levels/leva-levels-0-5-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished concept comparison sheet for six level-dependent cosmetic appearances of one existing browser-game pet. Reference image 1 supplies exact character identity, rendering style, colours, facial expression, body proportions and full seated pose. Create a NEW opaque landscape comparison board, aspect ratio 3:2, with a clean warm ivory background, very subtle gold divider lines and understated purple typography. Six equally sized cells, exactly two rows of three. Levels run left-to-right: 0, 1, 2 in top row and 3, 4, 5 in bottom row. All six are the SAME character at the SAME body size, pose, viewing direction and light, with accessories changing only. Render the ENTIRE full-body pet in every cell with generous safe margins around ears, paws, tail, wings, crown. No cropping, no circle portrait, no badge frame, no overlap between cells, no extra characters. Use exquisite friendly fantasy game illustration like the reference: large expressive eyes, clean shiny material shading, soft detailed fur or scales. Crisp silhouettes readable when small; add beautiful textile/metal craftsmanship instead of many gemstones. Each level retains the earlier accessories and adds or upgrades the stated item. Clothes must not obscure face or anatomy. Each cell has its centered caption BELOW the pet, exactly: \"Уровень 0\", \"Уровень 1\", \"Уровень 2\", \"Уровень 3\", \"Уровень 4\", \"Уровень 5\". A small elegant centered name at the top only, no additional text, no game branding, no watermark. The purpose is an attractive clearly readable comparison for approval, not a sprite atlas. Character: Лёва, the exact golden lion cub from the reference, amber-brown eyes, fluffy rounded ears, golden tufted mane, cream muzzle/chest/paw tips, happy open-mouth smile and full curled tail. Top title exactly \"Лёва\". Accessories theme: little king, burgundy and royal-purple velvet, gold.\nLevel 0: natural golden fur and mane only; REMOVE reference crown, cape, necklace and gemstones, no accessories.\nLevel 1: a neat burgundy neck scarf only.\nLevel 2: retain scarf, add a small beautifully engraved round gold medallion, no gemstone.\nLevel 3: retain scarf/medallion, add short royal-purple cape with restrained gold edging.\nLevel 4: retain cape/scarf/medallion, add a modest golden crown and two gold cape clasps; at most one small purple crown accent stone.\nLevel 5: upgrade to full royal purple mantle with white fur edging, elaborately crafted taller gold crown and small rounded ceremonial gold shoulder pieces, retains medallion; no oversized shoulders and no obscured paws/tail. Body and mane stay identical across levels, no aging.",
+      "verifiedFile": {
+        "file": "leva-levels-0-5-v1.png",
+        "width": 1536,
+        "height": 1024,
+        "sha256": "A4F76C2D88C318C30112A5DE0DB17286CDBA93CB8A5AB1AEFDB9A2B8633C3710",
+        "bytes": 2117569
+      }
+    },
+    {
+      "id": "drakosha",
+      "name": "Дракоша",
+      "reference": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/pets/drakosha.png",
+      "generatedOriginal": "C:/Users/semen/.codex/generated_images/01a16e2b-862d-7960-a65c-ae1eeef6a60d/exec-f6d7059f-2c77-426a-861a-e317a13a2167.png",
+      "destination": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261024/pet-levels/drakosha-levels-0-5-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished concept comparison sheet for six level-dependent cosmetic appearances of one existing browser-game pet. Reference image 1 supplies exact character identity, rendering style, colours, facial expression, body proportions and full seated pose. Create a NEW opaque landscape comparison board, aspect ratio 3:2, with a clean warm ivory background, very subtle gold divider lines and understated purple typography. Six equally sized cells, exactly two rows of three. Levels run left-to-right: 0, 1, 2 in top row and 3, 4, 5 in bottom row. All six are the SAME character at the SAME body size, pose, viewing direction and light, with accessories changing only. Render the ENTIRE full-body pet in every cell with generous safe margins around ears, paws, tail, wings, crown. No cropping, no circle portrait, no badge frame, no overlap between cells, no extra characters. Use exquisite friendly fantasy game illustration like the reference: large expressive eyes, clean shiny material shading, soft detailed fur or scales. Crisp silhouettes readable when small; add beautiful textile/metal craftsmanship instead of many gemstones. Each level retains the earlier accessories and adds or upgrades the stated item. Clothes must not obscure face or anatomy. Each cell has its centered caption BELOW the pet, exactly: \"Уровень 0\", \"Уровень 1\", \"Уровень 2\", \"Уровень 3\", \"Уровень 4\", \"Уровень 5\". A small elegant centered name at the top only, no additional text, no game branding, no watermark. The purpose is an attractive clearly readable comparison for approval, not a sprite atlas. Character: Дракоша, exact cute magenta-purple dragon hatchling from reference with amber eyes, gold-yellow belly scales, natural curved golden horns and gold claws, orange-yellow wing membranes, long full curled tail. Top title exactly \"Дракоша\". Accessories theme: guardian of flame, copper and gold crafted armour, warm orange accents. Preserve the SAME natural horns and anatomy in all six; armour is clearly separate added equipment. Remove ornamental gems from forehead/tail in the base.\nLevel 0: natural scales, horns, claws, wings and tail only; NO attached armour, no jewellery, no gems.\nLevel 1: one narrow brown leather chest strap with bronze clasp, leaving natural yellow belly mostly visible.\nLevel 2: retain strap, add small bronze foreleg bracers and a narrow decorative bronze ring around the tail.\nLevel 3: retain previous, add small fitted copper breastplate with a clear embossed flame emblem.\nLevel 4: retain previous, add gold-rimmed small shoulder guards and slim metal fittings at wing roots, not covering wing membranes.\nLevel 5: upgrade armour to elegant gold with engraved flame motifs and a modest battle circlet fitted BETWEEN natural horns, restrained amber glow along metal edges. Face and most magenta scales stay exposed. Exactly the same two wings, paws and tail in every panel, safe margins with no clipping.",
+      "verifiedFile": {
+        "file": "drakosha-levels-0-5-v1.png",
+        "width": 1536,
+        "height": 1024,
+        "sha256": "877B2D3BA09F87CC1699C2BC77088AD515456199810DF8D82B46AC90751F2496",
+        "bytes": 2213004
+      }
+    },
+    {
+      "id": "manya",
+      "name": "Маня",
+      "reference": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/pets/manya.png",
+      "generatedOriginal": "C:/Users/semen/.codex/generated_images/01a16e2b-862d-7960-a65c-ae1eeef6a60d/exec-f7ebd182-3a7e-4f7d-bee1-76c65062529a.png",
+      "destination": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261024/pet-levels/manya-levels-0-5-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished concept comparison sheet for six level-dependent cosmetic appearances of one existing browser-game pet. Reference image 1 supplies exact character identity, rendering style, colours, facial expression, body proportions and full seated pose. Create a NEW opaque landscape comparison board, aspect ratio 3:2, with a clean warm ivory background, very subtle gold divider lines and understated purple typography. Six equally sized cells, exactly two rows of three. Levels run left-to-right: 0, 1, 2 in top row and 3, 4, 5 in bottom row. All six are the SAME character at the SAME body size, pose, viewing direction and light, with accessories changing only. Render the ENTIRE full-body pet in every cell with generous safe margins around ears, paws, tail, wings, crown. No cropping, no circle portrait, no badge frame, no overlap between cells, no extra characters. Use exquisite friendly fantasy game illustration like the reference: large expressive eyes, clean shiny material shading, soft detailed fur or scales. Crisp silhouettes readable when small; add beautiful textile/metal craftsmanship instead of many gemstones. Each level retains the earlier accessories and adds or upgrades the stated item. Clothes must not obscure face or anatomy. Each cell has its centered caption BELOW the pet, exactly: \"Уровень 0\", \"Уровень 1\", \"Уровень 2\", \"Уровень 3\", \"Уровень 4\", \"Уровень 5\". A small elegant centered name at the top only, no additional text, no game branding, no watermark. The purpose is an attractive clearly readable comparison for approval, not a sprite atlas. Character: Маня, exact fluffy lavender-and-white kitten from reference with large violet eyes, pink nose and ear interiors, white muzzle/chest/paws, happy open-mouth smile, full large curled fluffy tail. Top title exactly \"Маня\". Accessories theme: star enchantress, lavender ribbon, deep violet velvet, fine gold and tiny star motifs.\nLevel 0: natural lavender-and-white fluffy fur only; REMOVE crown and necklace, no clothing, jewellery or accessories.\nLevel 1: simple lavender silk ribbon tied at neck.\nLevel 2: retain ribbon, add a small polished GOLD HEART pendant at neck with engraved star, not a large gemstone.\nLevel 3: retain ribbon/heart, add short deep-violet velvet cape with fine gold hem.\nLevel 4: retain previous, add delicate small golden tiara and a slim gold forepaw bracelet; keep both ears completely visible.\nLevel 5: upgrade to an elegant gold star diadem and richly embroidered purple mantle with thin golden constellations, retains gold heart/ribbon/bracelet; a few tiny warm luminous stars near the silhouette only, no noisy background. Same kitten body, head, fur pattern, tail shape and size across all six; no aging.",
+      "verifiedFile": {
+        "file": "manya-levels-0-5-v1.png",
+        "width": 1536,
+        "height": 1024,
+        "sha256": "5EDC54F3D2F8DD25322926CFDAA869EDBD8BD1AE16B558F96361AF1A9E41AF91",
+        "bytes": 2054180
+      }
+    }
+  ]
+}

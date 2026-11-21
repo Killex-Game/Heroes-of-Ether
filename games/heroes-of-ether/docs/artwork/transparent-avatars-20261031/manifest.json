@@ -1,0 +1,174 @@
+[
+  {
+    "id": "moon-dragon",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a889746c-112d-4f94-a995-a00b7a278191.png",
+    "sha256": "0d2847a0044d1ce4dd6be39884769450e2e111062ba1afd7a8bd198669f00ab4",
+    "transparentFraction": 0.46512976656517324,
+    "insideEmptyFraction": 0.23802588689452225
+  },
+  {
+    "id": "forest-spirit",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-40b62c04-ce46-43e8-87f7-1d7e32e3156c.png",
+    "sha256": "81e0303a9768a3bff8b6e0ccba54b42ded618e4738de2da84129decc015eb18c",
+    "transparentFraction": 0.34062419714648373,
+    "insideEmptyFraction": 0.07689501203983491
+  },
+  {
+    "id": "sun-phoenix",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1249f77a-68c0-4f83-9a60-bbb992a39d4e.png",
+    "sha256": "a64612cd6ab21aeb54e57ea4d7db5ab51c15289da3adcb43c1f37ed01810de66",
+    "transparentFraction": 0.4534809184771411,
+    "insideEmptyFraction": 0.22668275309892055
+  },
+  {
+    "id": "crystal-guardian",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-856fa4ff-9811-473d-9874-6ffc214ca2cf.png",
+    "sha256": "91668203483620b9b63f98592f399471f0f373ddd160c113570e5cdf5e3dd481",
+    "transparentFraction": 0.37427218546583946,
+    "insideEmptyFraction": 0.12341505494143012
+  },
+  {
+    "id": "vip-1",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a248d4d2-eea5-43c3-86fe-ccf558b9b4de.png",
+    "sha256": "b20f7ab822732a373efc72f85808ba0c8f4bbc8df1d5be7b3415d5aff7508021",
+    "transparentFraction": 0.5259711188948157,
+    "insideEmptyFraction": 0.3049211888100005
+  },
+  {
+    "id": "vip-2",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e935895e-2a0a-412a-b2ba-024bb7c0ba9f.png",
+    "sha256": "8474eb6c44650ed65da660b2eb0cca6787e6b4bb1bf20aac0e6849caa7400ae5",
+    "transparentFraction": 0.5699865692940486,
+    "insideEmptyFraction": 0.3689687124223708
+  },
+  {
+    "id": "vip-4",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-73372a38-f0c3-4221-955a-6eda31d05d7a.png",
+    "sha256": "bc68790eae5bd6803ec3d791acf92dba56374544a8fd94c3fec62e10aa3be19b",
+    "transparentFraction": 0.5106180159693129,
+    "insideEmptyFraction": 0.2830975511505564
+  },
+  {
+    "id": "vip-5",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-64cb08ff-c2b3-40c9-b1ed-6d1083697142.png",
+    "sha256": "2378c61f3f8540df5a2bad5627d436af9550d7e6c4bfaad85b0f459318faf6ff",
+    "transparentFraction": 0.48768533992658897,
+    "insideEmptyFraction": 0.2585360880182402
+  },
+  {
+    "id": "visual-moon-dragon",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-561680b1-e651-4857-ba8a-24b5a24e5b3c.png",
+    "sha256": "317d3f7ab6878f5767486bdf8d2ce227f273c5bb1563d32de44d0f8d02cb53c3",
+    "transparentFraction": 0.529999694756683,
+    "insideEmptyFraction": 0.3281952042573736
+  },
+  {
+    "id": "visual-forest-spirit",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-08b29fa6-9751-4255-8135-0c025caaf205.png",
+    "sha256": "10a7a0777594655192118f93cb99f9cefb350f6beb05c46afea16c2c0521a7cd",
+    "transparentFraction": 0.3742836320902299,
+    "insideEmptyFraction": 0.19329007855629934
+  },
+  {
+    "id": "visual-sun-phoenix",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9432ce07-6a2d-4863-98ed-1db7d5933e48.png",
+    "sha256": "0377d878d43b2c3e24b3418a6fa1fed2d01a3c1ec3764d1f1fe00b61a8ff7da6",
+    "transparentFraction": 0.40568108686970433,
+    "insideEmptyFraction": 0.20259308756543443
+  },
+  {
+    "id": "visual-crystal-guardian",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-8b785957-0c88-44c0-a288-486ed15e0aa2.png",
+    "sha256": "83250b6698374090eb20f645c101ce1b9646157ef3818072040c1434155a0dce",
+    "transparentFraction": 0.446790366520913,
+    "insideEmptyFraction": 0.2370153204275366
+  },
+  {
+    "id": "vip-3",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9bc9f37b-4c04-458d-aef5-4deb04bd992b.png",
+    "sha256": "cc4c7756e5ab33d4073f08903072f13732c6974bf6b8feb3718ede19c3a9256a",
+    "transparentFraction": 0.5523530444205337,
+    "insideEmptyFraction": 0.3444182445730781
+  },
+  {
+    "id": "prism-moon-dragon",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e4865a73-1ca5-4fa4-aa9f-cd1bb976b25c.png",
+    "sha256": "f403453b14b678deae5b11437479a5939ee3cd883e302baa7ba7d299d3f1c50e",
+    "transparentFraction": 0.5887692080716508,
+    "insideEmptyFraction": 0.38012892469130743
+  },
+  {
+    "id": "prism-forest-spirit",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2d4dbd08-02dd-4d19-beeb-8d5a4c2af5f4.png",
+    "sha256": "d3675b7478d28d2ac013eeb0be26a03539d3c2a58c8c7075655fdac993c24fd0",
+    "transparentFraction": 0.5450214814984394,
+    "insideEmptyFraction": 0.3116533007339851
+  },
+  {
+    "id": "prism-sun-phoenix",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c874d95d-5e45-465b-b12f-0a2505c75801.png",
+    "sha256": "7310d086409368c8d53f23f0b6c95426c5c6181eea79e9b3afe33e33cea791de",
+    "transparentFraction": 0.49301183580961977,
+    "insideEmptyFraction": 0.260571214948787
+  },
+  {
+    "id": "prism-crystal-guardian",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a889636e-dc1f-4a2f-b3d4-68348fc4ac01.png",
+    "sha256": "94e1373051c76afd504035ff8150c9ae11be405418b8262a9c152a5982c1742a",
+    "transparentFraction": 0.44340534531922093,
+    "insideEmptyFraction": 0.19497935385719525
+  },
+  {
+    "id": "glass-moon-dragon",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-bab3e61a-982a-426c-842b-e1c434d589a7.png",
+    "sha256": "fff7569aacbabc32c35c212659658152df67c95b6e6c0bd83c326e5c9af45f57",
+    "transparentFraction": 0.5009398950471728,
+    "insideEmptyFraction": 0.27209627069986975
+  },
+  {
+    "id": "glass-forest-spirit",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-147b9938-63be-4e04-b063-4516aaafb814.png",
+    "sha256": "45b073fcbbb05feed00f98d3a597ad542d15f0fdfb21ac1b004ccfe855928a0b",
+    "transparentFraction": 0.47594873438489654,
+    "insideEmptyFraction": 0.23866461288107402
+  },
+  {
+    "id": "glass-sun-phoenix",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-41a720a1-a8f9-46d7-beda-3df8145185ff.png",
+    "sha256": "9f5b04487e10b95a5a1a1a27b1b1a8f2a19027f3b25fe0c5432d6efb1220cdd3",
+    "transparentFraction": 0.45945669233254227,
+    "insideEmptyFraction": 0.24088665962302172
+  },
+  {
+    "id": "glass-crystal-guardian",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-50b8ca6c-d6ff-4379-8cdc-94dba14e1966.png",
+    "sha256": "84d6b2bed7284eb2469d293ba562f4870cc25a32d68be1bcb5f66ead1a72b091",
+    "transparentFraction": 0.5341166639957876,
+    "insideEmptyFraction": 0.2838562256791836
+  },
+  {
+    "id": "premium-1",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\public\\assets\\skins\\premium-star.svg",
+    "method": "Removed backdrop circles and reflection, preserved symbol group"
+  },
+  {
+    "id": "premium-2",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\public\\assets\\skins\\premium-crown.svg",
+    "method": "Removed backdrop circles and reflection, preserved symbol group"
+  },
+  {
+    "id": "premium-3",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\public\\assets\\skins\\premium-crystal.svg",
+    "method": "Removed backdrop circles and reflection, preserved symbol group"
+  },
+  {
+    "id": "premium-4",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\public\\assets\\skins\\premium-comet.svg",
+    "method": "Removed backdrop circles and reflection, preserved symbol group"
+  },
+  {
+    "id": "premium-5",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\public\\assets\\skins\\premium-sun.svg",
+    "method": "Removed backdrop circles and reflection, preserved symbol group"
+  }
+]

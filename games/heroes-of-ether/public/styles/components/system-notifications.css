@@ -1,0 +1,44 @@
+/* Keep the original message nodes for their owners, but never reserve layout space. */
+.system-message-source,
+.interface-footer[data-notifications-only="true"] {
+  display: none !important;
+}
+.system-message-toast {
+  display: none;
+  position: fixed;
+  inset: auto auto max(20px, env(safe-area-inset-bottom)) 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(620px, calc(100vw - 32px));
+  margin: 0;
+  padding: 12px 20px;
+  border: 2px solid #edbd56;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--ui-c-82439e, #82439e), var(--ui-c-542368, #542368));
+  color: #fff9dc;
+  box-shadow:
+    0 6px 24px var(--ui-c-32133b55, #32133b55),
+    inset 0 0 0 1px #fff0c44d;
+  font: 600 14px/1.4 var(--game-font);
+  overflow-wrap: anywhere;
+  text-align: center;
+  pointer-events: none;
+  z-index: 10000;
+}
+.system-message-toast.is-visible {
+  display: block;
+}
+.system-message-toast[data-error="true"] {
+  background: linear-gradient(135deg, var(--ui-c-a63761, #a63761), var(--ui-c-702447, #702447));
+}
+.system-message-toast::backdrop {
+  background: transparent;
+  pointer-events: none;
+}
+@media (max-width: 480px) {
+  .system-message-toast {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "canonicalReference": "design/generated-20261020/bucks-provided.png",
+  "provenance": "Existing owner-provided currency artwork, recorded in design/art-update-prompts.json. Source license was not independently audited in this task. Owner explicitly requested preservation of its design.",
+  "entries": [
+    {
+      "id": "bucks-change",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target, image 2 is the strict banknote-design reference. Replace ONLY every green banknote in image 1 with the identical currency artwork in image 2. The reference currency has emerald green PAPER, pale mint outer margins, a thin gold rectangular inner frame, a golden spherical planet with TWO crossing elliptical orbit rings centered in a dark green circular medallion, fine gold leafy flourishes left and right, and four miniature orb-with-orbit corner medallions. All notes must carry this exact SAME banknote artwork, just projected in perspective. No star, crown, animal, leaf-only central seal, dragon motif, denomination, text or other banknote design. Do not turn paper edges into thick metal. Keep the container, character ornament, composition, material rendering, proportions, rich colors and transparent background of image 1 unchanged. The banknotes must visually belong to the currency in image 2, do not redesign their symbol. Retain clean alpha and safe canvas margins.",
+      "referenced_image_paths": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9a552285-e97a-420e-852a-34ab7fb3c4d8.png",
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261020/bucks-provided.png"
+      ],
+      "transparent_background": true
+    },
+    {
+      "id": "bucks-stash",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target, image 2 is the strict banknote-design reference. Replace ONLY every green banknote in image 1 with the identical currency artwork in image 2. The reference currency has emerald green PAPER, pale mint outer margins, a thin gold rectangular inner frame, a golden spherical planet with TWO crossing elliptical orbit rings centered in a dark green circular medallion, fine gold leafy flourishes left and right, and four miniature orb-with-orbit corner medallions. All notes must carry this exact SAME banknote artwork, just projected in perspective. No star, crown, animal, leaf-only central seal, dragon motif, denomination, text or other banknote design. Do not turn paper edges into thick metal. Keep the container, character ornament, composition, material rendering, proportions, rich colors and transparent background of image 1 unchanged. The banknotes must visually belong to the currency in image 2, do not redesign their symbol. Retain clean alpha and safe canvas margins.",
+      "referenced_image_paths": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-86dbfad9-b96c-406e-92bd-aabe5a64084b.png",
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261020/bucks-provided.png"
+      ],
+      "transparent_background": true
+    },
+    {
+      "id": "bucks-piggy",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target, image 2 is the strict banknote-design reference. Replace ONLY every green banknote in image 1 with the identical currency artwork in image 2. The reference currency has emerald green PAPER, pale mint outer margins, a thin gold rectangular inner frame, a golden spherical planet with TWO crossing elliptical orbit rings centered in a dark green circular medallion, fine gold leafy flourishes left and right, and four miniature orb-with-orbit corner medallions. All notes must carry this exact SAME banknote artwork, just projected in perspective. No star, crown, animal, leaf-only central seal, dragon motif, denomination, text or other banknote design. Do not turn paper edges into thick metal. Keep the container, character ornament, composition, material rendering, proportions, rich colors and transparent background of image 1 unchanged. The banknotes must visually belong to the currency in image 2, do not redesign their symbol. Retain clean alpha and safe canvas margins.",
+      "referenced_image_paths": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4f7a63c0-bdbe-4ebc-831d-277d0626946f.png",
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261020/bucks-provided.png"
+      ],
+      "transparent_background": true
+    },
+    {
+      "id": "bucks-gift",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target, image 2 is the strict banknote-design reference. Replace ONLY every green banknote in image 1 with the identical currency artwork in image 2. The reference currency has emerald green PAPER, pale mint outer margins, a thin gold rectangular inner frame, a golden spherical planet with TWO crossing elliptical orbit rings centered in a dark green circular medallion, fine gold leafy flourishes left and right, and four miniature orb-with-orbit corner medallions. All notes must carry this exact SAME banknote artwork, just projected in perspective. No star, crown, animal, leaf-only central seal, dragon motif, denomination, text or other banknote design. Do not turn paper edges into thick metal. Keep the container, character ornament, composition, material rendering, proportions, rich colors and transparent background of image 1 unchanged. The banknotes must visually belong to the currency in image 2, do not redesign their symbol. Retain clean alpha and safe canvas margins.",
+      "referenced_image_paths": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-3662d639-7813-4b16-8340-8be8b628b710.png",
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261020/bucks-provided.png"
+      ],
+      "transparent_background": true
+    },
+    {
+      "id": "bucks-treasure",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target, image 2 is the strict banknote-design reference. Replace ONLY every green banknote in image 1 with the identical currency artwork in image 2. The reference currency has emerald green PAPER, pale mint outer margins, a thin gold rectangular inner frame, a golden spherical planet with TWO crossing elliptical orbit rings centered in a dark green circular medallion, fine gold leafy flourishes left and right, and four miniature orb-with-orbit corner medallions. All notes must carry this exact SAME banknote artwork, just projected in perspective. No star, crown, animal, leaf-only central seal, dragon motif, denomination, text or other banknote design. Do not turn paper edges into thick metal. Keep the container, character ornament, composition, material rendering, proportions, rich colors and transparent background of image 1 unchanged. The banknotes must visually belong to the currency in image 2, do not redesign their symbol. Retain clean alpha and safe canvas margins.",
+      "referenced_image_paths": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d0371588-c779-4cfb-8bd4-110b17358a9f.png",
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261020/bucks-provided.png"
+      ],
+      "transparent_background": true
+    },
+    {
+      "id": "bucks-bank",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target, image 2 is the strict banknote-design reference. Replace ONLY every green banknote in image 1 with the identical currency artwork in image 2. The reference currency has emerald green PAPER, pale mint outer margins, a thin gold rectangular inner frame, a golden spherical planet with TWO crossing elliptical orbit rings centered in a dark green circular medallion, fine gold leafy flourishes left and right, and four miniature orb-with-orbit corner medallions. All notes must carry this exact SAME banknote artwork, just projected in perspective. No star, crown, animal, leaf-only central seal, dragon motif, denomination, text or other banknote design. Do not turn paper edges into thick metal. Keep the container, character ornament, composition, material rendering, proportions, rich colors and transparent background of image 1 unchanged. The banknotes must visually belong to the currency in image 2, do not redesign their symbol. Retain clean alpha and safe canvas margins.",
+      "referenced_image_paths": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-66baf91c-b606-47e3-807b-328c2ce0da40.png",
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261020/bucks-provided.png"
+      ],
+      "transparent_background": true
+    },
+    {
+      "id": "bucks-stack",
+      "prompt": "Use case: precise-object-edit. Transform the attached existing game currency icon from three loose notes into ONE thick neat STACK of approximately twenty identical banknotes, slight offset between sheets so its thickness is unmistakable. Three-quarter angle, centered compact silhouette, full upper note plainly visible. Preserve the exact established banknote artwork, palette and painted style. The reference currency has emerald green PAPER, pale mint outer margins, a thin gold rectangular inner frame, a golden spherical planet with TWO crossing elliptical orbit rings centered in a dark green circular medallion, fine gold leafy flourishes left and right, and four miniature orb-with-orbit corner medallions. All notes must carry this exact SAME banknote artwork, just projected in perspective. No star, crown, animal, leaf-only central seal, dragon motif, denomination, text or other banknote design. Do not turn paper edges into thick metal. Do not add a band, bow, coin, wallet, box or other accessory. Emerald green and gold same as input, softly shaded pale green paper layers visible on the sides. Square transparent canvas, 85 percent occupancy, no text or watermark, no cropped corners. This is the universal wallet icon, legible at 32px.",
+      "referenced_image_paths": [
+        "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/design/generated-20261020/bucks-provided.png"
+      ],
+      "transparent_background": true
+    }
+  ]
+}

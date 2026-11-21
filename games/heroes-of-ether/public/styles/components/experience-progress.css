@@ -1,0 +1,350 @@
+/* Полосы опыта, результат жизни и уведомления об уровне. */
+.player-progress {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 9px 18px;
+  text-align: left;
+}
+.progress-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px 15px;
+  color: #5a356b;
+}
+.player-progress > .sf-tab {
+  grid-column: 2;
+  grid-row: 1/3;
+  align-self: center;
+}
+.progress-actions {
+  grid-column: 2;
+  grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-self: center;
+}
+.progress-actions .sf-tab {
+  min-width: 120px;
+}
+@media (max-width: 520px) {
+  .player-progress {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .progress-actions {
+    grid-column: 1;
+    grid-row: 3;
+    flex-direction: row;
+  }
+  .progress-actions .sf-tab {
+    min-width: 0;
+    flex: 1;
+    font-size: 12px;
+  }
+}
+.xp-track {
+  height: 22px;
+  border: 4px solid #c29144;
+  border-radius: 14px;
+  background: var(--ui-c-3f2c4b, #3f2c4b);
+  overflow: hidden;
+  box-shadow: 0 1px 1px #6c472a55;
+}
+.xp-track > div {
+  height: 100%;
+  width: 0;
+  background: var(--ui-c-82459a, #82459a)
+    var(
+      --ui-art-surfaces-progress_fill_xp-svg,
+      url("../../assets/ui/svg/surfaces/progress_fill_xp.svg")
+    )
+    center/100% 100% no-repeat;
+}
+.mass-panel small {
+  display: block;
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 3px;
+  color: #6e526b;
+}
+.mass-panel time {
+  font-variant-numeric: tabular-nums;
+}
+.level-toast {
+  position: fixed;
+  inset: 18px auto auto 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  width: max-content;
+  max-width: calc(100vw - 24px);
+  padding: 10px 22px;
+  border: 1px solid #c49b53;
+  border-radius: 12px;
+  background: var(--ui-c-fff3d9, #fff3d9);
+  color: #59316c;
+  font: 700 19px var(--game-font);
+  box-shadow: 0 3px 12px var(--ui-c-0002, #0002);
+  pointer-events: none;
+  z-index: 100;
+  text-align: center;
+}
+.level-toast::backdrop {
+  background: transparent;
+  pointer-events: none;
+}
+.life-result {
+  width: min(570px, calc(100vw - 24px));
+}
+.leave-confirm {
+  width: min(570px, calc(100vw - 24px));
+}
+.leave-confirm .clan-heading {
+  justify-content: center;
+}
+.leave-confirm h2:focus {
+  outline: none;
+}
+.leave-confirm p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+#leaveConfirmStatus {
+  color: #693b82;
+}
+#leaveConfirmStatus:empty {
+  display: none;
+}
+.life-result .clan-heading {
+  margin-bottom: 30px;
+  justify-content: center;
+}
+.life-result .clan-heading h2 {
+  font-size: 26px;
+}
+.life-result h2:focus {
+  outline: none;
+}
+.life-result-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 24px 0;
+}
+.life-result-stats dt {
+  font-size: 13px;
+  color: #7e6272;
+}
+.life-result-stats dd {
+  font: bold 28px var(--game-font);
+  margin: 6px 0 0;
+  font-variant-numeric: tabular-nums;
+}
+#lifeEventItems[hidden] {
+  display: none;
+}
+#lifeEventCounts {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 15px;
+}
+#lifeEventCounts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+#lifeEventCounts img {
+  width: 24px;
+  height: 28px;
+  object-fit: contain;
+}
+@media (max-width: 480px) {
+  #lifeEventCounts {
+    gap: 4px;
+    font-size: 12px;
+  }
+  #lifeEventCounts img {
+    width: 18px;
+    height: 23px;
+  }
+}
+.life-result .xp-track {
+  margin-top: 12px;
+}
+.life-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.life-result-actions > button {
+  flex: 1;
+  min-width: 160px;
+}
+.connection-lost[open] {
+  display: block;
+  animation: connection-lost-enter 280ms ease-out both;
+}
+.connection-lost[open]::backdrop {
+  animation: connection-lost-backdrop 280ms ease-out both;
+}
+.connection-lost p {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.connection-lost-progress {
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+@keyframes connection-lost-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes connection-lost-backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .connection-lost[open],
+  .connection-lost[open]::backdrop {
+    animation: none;
+  }
+}
+#lifeKiller {
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+#lifeResultStatus {
+  font-size: 13px;
+  line-height: 1.5;
+}
+@media (max-width: 420px) {
+  .mass-panel {
+    left: calc(max(16px, env(safe-area-inset-left)) + 56px);
+    width: 112px;
+    min-width: 0;
+    padding: 7px 8px;
+  }
+  .mass-panel small {
+    font-size: 10px;
+  }
+  .arena-counters {
+    gap: 6px;
+    justify-content: space-between;
+  }
+  .arena-counters span {
+    font-size: 8px;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+  .arena-counters strong {
+    font-size: 18px;
+  }
+  .life-result .clan-heading h2 {
+    font-size: 22px;
+  }
+  .life-result-stats dd {
+    font-size: 23px;
+  }
+}
+@media (max-height: 460px) and (min-width: 600px) {
+  .life-result[open]:not(.connection-lost) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 14px;
+    width: min(740px, calc(100vw - 24px));
+    max-height: calc(100dvh - 12px);
+    border-width: 18px;
+    border-image-width: 72px 30px 24px;
+    padding: 0 2px 8px;
+  }
+  .life-result .clan-heading,
+  #lifeKiller,
+  #lifeResultStatus,
+  .life-result-actions {
+    grid-column: 1/-1;
+  }
+  .life-result .clan-heading {
+    min-height: 40px;
+    margin: 0;
+  }
+  .life-result .clan-heading h2 {
+    font-size: 22px;
+  }
+  #lifeKiller {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .life-result-stats {
+    margin: 0;
+    gap: 8px;
+    align-self: center;
+  }
+  .life-result-stats dd {
+    font-size: 24px;
+  }
+  .life-result .clan-panel {
+    margin: 0;
+    border-width: 12px;
+  }
+  .life-result .progress-summary {
+    font-size: 12px;
+  }
+  .life-result .clan-panel p {
+    margin: 4px 0 0;
+    line-height: 1.3;
+  }
+  .life-result .xp-track {
+    height: 18px;
+    margin-top: 6px;
+  }
+  #lifeResultStatus {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .life-result-actions > button {
+    min-height: 44px;
+    padding: 8px 18px;
+  }
+}
+.progress-rules p {
+  font-size: 13px;
+}
+.clan-ranking-self {
+  background: #f0dff0;
+  border-radius: 7px;
+}
+.clan-my-rank {
+  color: #693b82;
+  font-weight: 700;
+}
+@media (max-width: 600px) {
+  .progress-summary {
+    font-size: 11px;
+    gap: 6px;
+  }
+  .player-progress {
+    gap: 7px 8px;
+    padding: 8px 0;
+  }
+  .player-progress > .sf-tab {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .progress-summary > strong:last-child {
+    width: 100%;
+  }
+}

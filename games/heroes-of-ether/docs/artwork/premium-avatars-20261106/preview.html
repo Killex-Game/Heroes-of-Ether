@@ -1,0 +1,18 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Премиальный набор — Герои Эфира</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:32px;background:#eee8fa;color:#42305d;font:16px Arial,sans-serif}h1{font-size:26px;margin:0 0 8px}p{margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.card{padding:18px 8px;background:#faf7ff;border:1px solid #bca4dd;border-radius:18px;text-align:center}.ball{border-radius:50%;width:210px;height:210px;position:relative;overflow:hidden;margin:0 auto;border:2px solid #a583da;box-shadow:0 4px 15px #5c398326;background:linear-gradient(135deg,#86b9d9,#4b536b)}.card:nth-child(2) .ball{background:linear-gradient(135deg,#f4b3c6,#754b83)}.card:nth-child(3) .ball{background:linear-gradient(135deg,#a8c5a1,#346b6b)}.card:nth-child(4) .ball{background:linear-gradient(135deg,#ffe5ad,#ac716a)}.card:nth-child(5) .ball{background:linear-gradient(135deg,#b4d6f4,#536ab0)}.ball img{width:100%;height:100%;object-fit:contain;transform:translate(var(--skin-x,0),var(--skin-y,0)) scale(var(--skin-scale,1));clip-path:var(--skin-clip)}h2{font-size:16px;min-height:38px;margin:18px 0 12px}.small{width:64px;height:64px;border-width:1px;margin:0 auto}.small img{width:100%;height:100%}footer{margin-top:24px;color:#705586;font-size:13px}
+</style><h1>Премиальный набор аватаров</h1><p>Пять персонажей для «Героев Эфира»</p><main class="grid"></main><footer>Прозрачные портреты на разных цветах шара · большие портреты и миниатюры 64 px</footer>
+<script src="../../../public/shared/player-identity.js"></script><script>
+const identity=window.SferorumiyaIdentity;
+for(const skin of identity.accountSkins.filter(s=>s.tier==="premium")){
+ const card=document.createElement("article");card.className="card";
+ for(const size of [256,64]){
+  if(size===64){const h=document.createElement("h2");h.textContent=skin.name;card.append(h)}
+  const ball=document.createElement("div");ball.className=size===64?"ball small":"ball";
+  const img=document.createElement("img");identity.setSkinImage(img,skin,size);
+  img.src="../../../public/"+identity.skinSource(skin,size);img.removeAttribute("srcset");ball.append(img);card.append(ball);
+ }
+ document.querySelector("main").append(card);
+}
+</script></html>

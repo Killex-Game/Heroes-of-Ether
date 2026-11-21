@@ -1,0 +1,202 @@
+[
+  {
+    "skinId": "vip-1",
+    "source": "vip-king.png",
+    "sourceSize": 1254,
+    "size": 64,
+    "asset": "assets/skins/vip/64/vip-king.webp",
+    "bytes": 3994
+  },
+  {
+    "skinId": "vip-1",
+    "source": "vip-king.png",
+    "sourceSize": 1254,
+    "size": 128,
+    "asset": "assets/skins/vip/128/vip-king.webp",
+    "bytes": 10366
+  },
+  {
+    "skinId": "vip-1",
+    "source": "vip-king.png",
+    "sourceSize": 1254,
+    "size": 256,
+    "asset": "assets/skins/vip/256/vip-king.webp",
+    "bytes": 27070
+  },
+  {
+    "skinId": "vip-1",
+    "source": "vip-king.png",
+    "sourceSize": 1254,
+    "size": 512,
+    "asset": "assets/skins/vip/512/vip-king.webp",
+    "bytes": 77796
+  },
+  {
+    "skinId": "vip-1",
+    "source": "vip-king.png",
+    "sourceSize": 1254,
+    "size": 1024,
+    "asset": "assets/skins/vip/1024/vip-king.webp",
+    "bytes": 237690
+  },
+  {
+    "skinId": "vip-2",
+    "source": "vip-queen.png",
+    "sourceSize": 1254,
+    "size": 64,
+    "asset": "assets/skins/vip/64/vip-queen.webp",
+    "bytes": 3840
+  },
+  {
+    "skinId": "vip-2",
+    "source": "vip-queen.png",
+    "sourceSize": 1254,
+    "size": 128,
+    "asset": "assets/skins/vip/128/vip-queen.webp",
+    "bytes": 10382
+  },
+  {
+    "skinId": "vip-2",
+    "source": "vip-queen.png",
+    "sourceSize": 1254,
+    "size": 256,
+    "asset": "assets/skins/vip/256/vip-queen.webp",
+    "bytes": 27854
+  },
+  {
+    "skinId": "vip-2",
+    "source": "vip-queen.png",
+    "sourceSize": 1254,
+    "size": 512,
+    "asset": "assets/skins/vip/512/vip-queen.webp",
+    "bytes": 80816
+  },
+  {
+    "skinId": "vip-2",
+    "source": "vip-queen.png",
+    "sourceSize": 1254,
+    "size": 1024,
+    "asset": "assets/skins/vip/1024/vip-queen.webp",
+    "bytes": 240078
+  },
+  {
+    "skinId": "vip-3",
+    "source": "vip-prince.png",
+    "sourceSize": 1254,
+    "size": 64,
+    "asset": "assets/skins/vip/64/vip-prince.webp",
+    "bytes": 3892
+  },
+  {
+    "skinId": "vip-3",
+    "source": "vip-prince.png",
+    "sourceSize": 1254,
+    "size": 128,
+    "asset": "assets/skins/vip/128/vip-prince.webp",
+    "bytes": 10742
+  },
+  {
+    "skinId": "vip-3",
+    "source": "vip-prince.png",
+    "sourceSize": 1254,
+    "size": 256,
+    "asset": "assets/skins/vip/256/vip-prince.webp",
+    "bytes": 28204
+  },
+  {
+    "skinId": "vip-3",
+    "source": "vip-prince.png",
+    "sourceSize": 1254,
+    "size": 512,
+    "asset": "assets/skins/vip/512/vip-prince.webp",
+    "bytes": 79892
+  },
+  {
+    "skinId": "vip-3",
+    "source": "vip-prince.png",
+    "sourceSize": 1254,
+    "size": 1024,
+    "asset": "assets/skins/vip/1024/vip-prince.webp",
+    "bytes": 231938
+  },
+  {
+    "skinId": "vip-4",
+    "source": "vip-knight.png",
+    "sourceSize": 1254,
+    "size": 64,
+    "asset": "assets/skins/vip/64/vip-knight.webp",
+    "bytes": 4042
+  },
+  {
+    "skinId": "vip-4",
+    "source": "vip-knight.png",
+    "sourceSize": 1254,
+    "size": 128,
+    "asset": "assets/skins/vip/128/vip-knight.webp",
+    "bytes": 11038
+  },
+  {
+    "skinId": "vip-4",
+    "source": "vip-knight.png",
+    "sourceSize": 1254,
+    "size": 256,
+    "asset": "assets/skins/vip/256/vip-knight.webp",
+    "bytes": 29784
+  },
+  {
+    "skinId": "vip-4",
+    "source": "vip-knight.png",
+    "sourceSize": 1254,
+    "size": 512,
+    "asset": "assets/skins/vip/512/vip-knight.webp",
+    "bytes": 88442
+  },
+  {
+    "skinId": "vip-4",
+    "source": "vip-knight.png",
+    "sourceSize": 1254,
+    "size": 1024,
+    "asset": "assets/skins/vip/1024/vip-knight.webp",
+    "bytes": 266014
+  },
+  {
+    "skinId": "vip-5",
+    "source": "vip-griffin.png",
+    "sourceSize": 1254,
+    "size": 64,
+    "asset": "assets/skins/vip/64/vip-griffin.webp",
+    "bytes": 3788
+  },
+  {
+    "skinId": "vip-5",
+    "source": "vip-griffin.png",
+    "sourceSize": 1254,
+    "size": 128,
+    "asset": "assets/skins/vip/128/vip-griffin.webp",
+    "bytes": 10454
+  },
+  {
+    "skinId": "vip-5",
+    "source": "vip-griffin.png",
+    "sourceSize": 1254,
+    "size": 256,
+    "asset": "assets/skins/vip/256/vip-griffin.webp",
+    "bytes": 28200
+  },
+  {
+    "skinId": "vip-5",
+    "source": "vip-griffin.png",
+    "sourceSize": 1254,
+    "size": 512,
+    "asset": "assets/skins/vip/512/vip-griffin.webp",
+    "bytes": 81960
+  },
+  {
+    "skinId": "vip-5",
+    "source": "vip-griffin.png",
+    "sourceSize": 1254,
+    "size": 1024,
+    "asset": "assets/skins/vip/1024/vip-griffin.webp",
+    "bytes": 253590
+  }
+]

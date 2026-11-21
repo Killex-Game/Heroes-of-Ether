@@ -1,0 +1,15 @@
+.owner-security-grid{display:grid;grid-template-columns:minmax(280px,.9fr) minmax(320px,1.1fr);gap:20px;align-items:start}
+#myAdminDialog{box-sizing:border-box;width:min(540px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;background:#15172b;color:#f4f0ff;border:1px solid #61558a;border-radius:20px;padding:24px}
+#myAdminDialog::backdrop{background:#050611c7}#myAdminForm{min-width:0}#myAdminForm input{box-sizing:border-box;width:100%;min-width:0}#myAdminForm p{margin:0;font-size:13px}
+.owner-security-grid>.card{margin:0;min-width:0}.security-stack{display:grid;gap:14px}.security-stack label{display:grid;gap:7px}
+.security-qr{width:min(100%,280px);padding:8px;background:white;border-radius:14px;margin:14px auto}.security-qr svg{display:block;width:100%;height:auto}
+.security-secret{display:block;overflow-wrap:anywhere;user-select:all;font:600 15px/1.6 monospace;letter-spacing:.08em;padding:10px;background:#0b0d20;border-radius:8px;text-align:center}
+.security-enrollment{border-top:1px solid #34334e;padding-top:18px;margin-top:20px}.security-code-input{font-size:22px;letter-spacing:.12em;font-variant-numeric:tabular-nums}
+.security-state{padding:12px;border:1px solid #946a38;border-radius:10px;background:#392b26}.security-state[data-enabled=true]{border-color:#376d63;background:#192f32}
+.moderator-account{padding:16px;border:1px solid #35354f;border-radius:14px;margin:12px 0;background:#15172b}.moderator-account>div:first-child{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.moderator-actions{display:flex;gap:10px;align-items:center}.moderator-actions select{min-width:0;flex:1}.moderator-actions button{flex:none}
+#moderatorForm{margin-top:20px;padding:18px;border:1px solid #6551a0;border-radius:14px;background:#121326}
+#securityCodesDialog{width:min(540px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;background:#15172b;color:#f4f0ff;border:1px solid #61558a;border-radius:20px;padding:24px}
+#securityCodesDialog::backdrop{background:#050611c7}#securityCodes{padding:16px;background:#0b0d20;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;user-select:all;line-height:1.8;font-size:15px}
+#twoFactorPanel{width:min(600px,100%);margin-inline:auto}.security-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.owner-security-grid [hidden]{display:none!important}
+@media(max-width:850px){.owner-security-grid{grid-template-columns:minmax(0,1fr)}.moderator-actions{flex-wrap:wrap}.moderator-actions select{flex-basis:100%}}

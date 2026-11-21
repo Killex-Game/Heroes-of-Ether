@@ -1,0 +1,133 @@
+/* Базовая сетка лобби. */
+/* Постоянное меню справа, три спокойных места под анонсы слева. */
+.showcase-grid {
+  grid-template-columns: minmax(160px, 220px) minmax(0, 1fr) minmax(160px, 220px);
+  align-items: center;
+}
+.side-nav {
+  gap: 10px;
+}
+.side-nav .menu-tile {
+  min-height: 64px;
+  padding: 12px 20px;
+}
+.promo-column {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+.promo-slot {
+  position: relative;
+  min-height: 134px;
+  padding: 46px 18px 16px;
+  border: 1px solid #bc914f;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--ui-c-fffaf0, #fffaf0), var(--ui-c-f1dfb9, #f1dfb9));
+  box-shadow:
+    inset 0 0 0 3px #fff5db,
+    0 2px 0 #c29b5d55;
+  overflow: hidden;
+  color: #50315f;
+}
+.promo-events {
+  background: linear-gradient(135deg, var(--ui-c-fffaf0, #fffaf0), var(--ui-c-eadbef, #eadbef));
+}
+.promo-offers {
+  background: linear-gradient(135deg, var(--ui-c-fffaf0, #fffaf0), var(--ui-c-dae9dd, #dae9dd));
+}
+.promo-slot h2 {
+  position: relative;
+  margin: 0;
+  font: 700 21px/1.15 var(--game-font);
+}
+.promo-slot p {
+  position: relative;
+  margin: 7px 0 0;
+  font-size: 11px;
+  color: #80677d;
+}
+.promo-number {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  font: 700 12px var(--game-font);
+  color: #a78045;
+}
+.promo-symbol {
+  position: absolute;
+  top: 2px;
+  right: 13px;
+  font: 52px var(--game-font);
+  color: #b6925366;
+}
+@media (max-width: 1060px) {
+  .showcase-grid {
+    gap: 14px;
+  }
+  .promo-slot {
+    padding-inline: 13px;
+  }
+  .promo-slot h2 {
+    font-size: 19px;
+  }
+  .side-nav .menu-tile {
+    padding-inline: 15px;
+  }
+}
+@media (max-width: 760px) {
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 18px 12px;
+  }
+  .showcase {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+  .promo-column {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: stretch;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .side-nav {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    gap: 8px;
+    align-self: stretch;
+  }
+  .side-nav .menu-tile {
+    min-height: 56px;
+    padding: 10px 12px;
+  }
+  .promo-slot {
+    min-height: 0;
+    padding: 40px 12px 14px;
+  }
+  .promo-slot h2 {
+    font-size: 18px;
+    overflow-wrap: anywhere;
+  }
+}
+@media (max-width: 360px) {
+  .showcase-grid {
+    column-gap: 8px;
+  }
+  .side-nav .menu-tile {
+    padding-inline: 6px;
+  }
+  .side-nav .menu-tile strong {
+    font-size: 14px;
+  }
+  .promo-slot h2 {
+    font-size: 16px;
+  }
+  .promo-offers h2 {
+    font-size: 14px;
+  }
+  .promo-slot p {
+    font-size: 10px;
+  }
+}

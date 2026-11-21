@@ -1,0 +1,1006 @@
+/* Адаптивные размеры лобби, диалогов и сеток. */
+/* Геометрия интерфейса. Декор остаётся в тематических стилях.
+   Лобби: шапка / прогресс / три колонки. Разделы: header / tabs / body / footer. */
+body[data-screen="lobby"] {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+#lobby {
+  position: relative;
+  height: 100dvh;
+  min-height: 0;
+  padding: 16px 20px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+#lobby .lobby-inner {
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto 48px minmax(0, 1fr);
+  gap: 10px;
+  container-type: size;
+}
+#lobby .lobby-header {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(300px, max-content) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding-right: 46px;
+  justify-items: stretch;
+}
+#lobby .profile-card {
+  width: max-content;
+  max-width: min(460px, 46cqw);
+  min-height: 78px;
+  height: 100%;
+  grid-template-columns: 48px minmax(60px, max-content) auto;
+  padding: 10px 14px;
+  gap: 10px;
+  justify-self: start;
+  border-radius: 18px;
+}
+#lobby .profile-card .profile-circle {
+  width: 48px;
+  height: 48px;
+}
+#lobby .profile-copy {
+  padding: 0;
+}
+#lobby .profile-insignia {
+  position: static;
+  grid-column: auto;
+  gap: 8px;
+}
+#lobby .profile-card #previewName {
+  font-size: 20px;
+}
+#lobby #accountMarks {
+  gap: 4px;
+}
+#lobby #accountMarks img {
+  width: 24px;
+  height: 24px;
+}
+#lobby .profile-account time {
+  font-size: 9px;
+}
+#lobby .guest-box {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+#lobby #walletStatus {
+  width: 100%;
+  max-width: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+#lobby .sf-currency-wallet {
+  min-width: 0;
+  gap: 4px;
+}
+#lobby .sf-currency-wallet .sf-currency {
+  min-width: 0;
+  height: 56px;
+  aspect-ratio: auto;
+}
+#lobby .sf-currency-value {
+  font-size: clamp(13px, 1.65cqw, 24px);
+}
+#lobby .currency-add {
+  width: 34px;
+  height: 34px;
+  flex-basis: 34px;
+  font-size: 22px;
+}
+#lobby .wallet-note,
+#lobby .lobby-foot,
+#lobby .skin-note {
+  display: none;
+}
+#lobby .player-progress {
+  width: 100%;
+  max-width: none;
+  height: 48px;
+  margin: 0;
+  padding: 4px 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto 10px;
+  gap: 4px 22px;
+}
+#lobby .progress-summary {
+  min-width: 0;
+  gap: 12px;
+  font-size: 12px;
+  flex-wrap: nowrap;
+}
+#lobby .progress-summary > * {
+  width: auto;
+  white-space: nowrap;
+}
+#lobby .xp-track {
+  height: 10px;
+  border-width: 2px;
+  grid-column: 1;
+  grid-row: 2;
+}
+#lobby .progress-actions {
+  grid-column: 2;
+  grid-row: 1/3;
+  flex-direction: row;
+  gap: 8px;
+}
+#lobby .progress-actions .sf-tab {
+  min-height: 36px !important;
+  min-width: 120px;
+  padding: 6px 12px !important;
+  font-size: 12px;
+}
+#lobby .showcase-grid {
+  display: grid;
+  min-height: 0;
+  width: 100%;
+  grid-template-columns: clamp(150px, 18cqw, 230px) minmax(0, 1fr) clamp(165px, 19cqw, 240px);
+  grid-template-rows: minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+#lobby .promo-column {
+  grid-column: 1;
+  grid-row: 1;
+  height: min(100%, 440px);
+  align-self: center;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+#lobby .promo-slot {
+  min-height: 0;
+  padding: 30px 14px 12px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#lobby .promo-slot h2 {
+  font-size: clamp(14px, 1.55cqw, 22px);
+  overflow-wrap: normal;
+}
+#lobby .promo-number {
+  top: 10px;
+  left: 14px;
+}
+#lobby .promo-symbol {
+  top: 0;
+  font-size: 40px;
+}
+#lobby .promo-slot p {
+  font-size: 10px;
+}
+#lobby .side-nav {
+  grid-column: 3;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  align-self: center;
+  display: grid;
+  grid-auto-rows: 48px;
+  gap: 10px;
+}
+#lobby .side-nav .menu-tile {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 8px 12px;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+#lobby .side-nav .menu-tile::before {
+  border-width: 22px 26px;
+}
+#lobby .menu-tile strong {
+  font-size: clamp(13px, 1.35cqw, 19px);
+  white-space: nowrap;
+}
+#lobby .menu-icon {
+  width: 32px;
+  height: 32px;
+  flex-basis: 32px;
+}
+#lobby .showcase {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 44px auto auto;
+  gap: 8px;
+}
+#lobby .skin-stage {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  container-type: size;
+  align-items: center;
+}
+/* Место под шапку и бабочку зарезервировано даже без экипировки. */
+#lobby .skin-art {
+  width: min(68cqw, 58cqh, 390px);
+  height: auto;
+  margin: 0;
+  flex: none;
+  transform: translateY(7cqh);
+}
+#lobby .skin-arrow {
+  width: 38px;
+  height: 38px;
+  flex-basis: 38px;
+  transform: translateY(7cqh);
+}
+#lobby #previousSkin {
+  justify-self: end;
+}
+#lobby #nextSkin {
+  justify-self: start;
+}
+#lobby .lobby-accessory-slots {
+  margin: 0;
+  gap: 8px;
+  height: 44px;
+  align-items: stretch;
+}
+#lobby .lobby-accessory-slot {
+  padding: 5px 10px;
+  gap: 6px;
+  border-radius: 10px;
+}
+#lobby .lobby-accessory-slot img {
+  width: 30px;
+  height: 30px;
+}
+#lobby .lobby-accessory-slot strong {
+  font-size: 11px;
+}
+#lobby .lobby-accessory-slot small {
+  font-size: 9px;
+  margin-top: 1px;
+}
+#lobby .entry-area {
+  width: 100%;
+  max-width: 500px;
+  justify-self: center;
+  margin: 0;
+  padding: 0;
+}
+#lobby #joinForm {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(100px, 0.65fr);
+  gap: 3px 10px;
+  align-items: end;
+}
+#lobby .field-label {
+  margin: 0;
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 11px;
+}
+#lobby #nickname {
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  font-size: 14px;
+  border-width: 14px;
+  grid-column: 1;
+  grid-row: 2;
+}
+#lobby #nicknameHelp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+#lobby #playButton {
+  width: 100%;
+  min-height: 42px;
+  height: 42px;
+  font-size: 23px;
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0;
+  padding: 6px;
+}
+#lobby #playButton::before {
+  border-width: 16px 22px;
+}
+#lobby #cancelJoin {
+  grid-column: 1/-1;
+  min-height: 30px;
+  margin: 0;
+  padding: 4px;
+  font-size: 12px;
+}
+#lobby #lobbyStatus {
+  min-height: 15px;
+  margin: 3px 0 0;
+  font-size: 10px;
+  line-height: 1.4;
+}
+body[data-screen="lobby"] .settings-area {
+  top: 24px;
+  right: 20px;
+  bottom: auto;
+  left: auto;
+}
+body[data-screen="lobby"] #settingsButton {
+  width: 38px;
+  height: 38px;
+}
+body[data-screen="lobby"] #settingsMenu {
+  top: 48px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  max-height: calc(100dvh - 84px);
+  overflow: auto;
+}
+#landscapeHint {
+  display: none;
+}
+
+/* Альбомные телефоны и небольшие ноутбуки: уменьшаем интервалы, а не меняем порядок. */
+@media (max-height: 560px) {
+  #lobby {
+    padding: 8px 12px;
+  }
+  #lobby .lobby-inner {
+    grid-template-rows: auto 34px minmax(0, 1fr);
+    gap: 5px;
+  }
+  #lobby .lobby-header {
+    gap: 12px;
+    padding-right: 38px;
+    grid-template-columns: minmax(270px, max-content) minmax(0, 1fr);
+  }
+  #lobby .profile-card {
+    min-height: 60px;
+    max-width: 350px;
+    grid-template-columns: 36px minmax(54px, max-content) auto;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 14px;
+  }
+  #lobby .profile-card .profile-circle {
+    width: 36px;
+    height: 36px;
+  }
+  #lobby .profile-card #previewName {
+    font-size: 16px;
+  }
+  #lobby .profile-copy {
+    gap: 1px;
+  }
+  #lobby .profile-copy small {
+    font-size: 9px;
+  }
+  #lobby #accountMarks {
+    gap: 2px;
+  }
+  #lobby #accountMarks img {
+    width: 18px;
+    height: 18px;
+  }
+  #lobby .profile-account strong {
+    font-size: 9px;
+  }
+  #lobby .profile-account time {
+    font-size: 8px;
+    margin: 0;
+  }
+  #lobby #walletStatus {
+    gap: 6px;
+  }
+  #lobby .sf-currency-wallet .sf-currency {
+    height: 42px;
+  }
+  #lobby .currency-add {
+    width: 26px;
+    height: 26px;
+    flex-basis: 26px;
+    font-size: 18px;
+  }
+  #lobby .player-progress {
+    height: 34px;
+    padding: 2px 6px;
+    grid-template-rows: auto 6px;
+    gap: 2px 14px;
+  }
+  #lobby .progress-summary {
+    font-size: 10px;
+  }
+  #lobby .xp-track {
+    height: 6px;
+    border-width: 1px;
+  }
+  #lobby .progress-actions .sf-tab {
+    min-width: 96px;
+    min-height: 28px !important;
+    padding: 3px 8px !important;
+    font-size: 10px;
+  }
+  #lobby .showcase-grid {
+    grid-template-columns: clamp(125px, 18cqw, 200px) minmax(0, 1fr) clamp(145px, 20cqw, 210px);
+    gap: 14px;
+  }
+  #lobby .promo-column,
+  #lobby .side-nav {
+    height: 100%;
+    gap: 5px;
+  }
+  #lobby .promo-slot {
+    padding: 16px 10px 6px;
+    border-radius: 12px;
+  }
+  #lobby .promo-slot h2 {
+    font-size: 14px;
+  }
+  #lobby .promo-number {
+    top: 5px;
+    left: 10px;
+    font-size: 9px;
+  }
+  #lobby .promo-symbol {
+    font-size: 28px;
+  }
+  #lobby .promo-slot p {
+    font-size: 9px;
+    margin: 3px 0 0;
+  }
+  #lobby .side-nav .menu-tile {
+    padding: 3px 9px;
+    gap: 5px;
+  }
+  #lobby .side-nav .menu-tile::before {
+    border-width: 14px 22px;
+  }
+  #lobby .menu-tile strong {
+    font-size: 13px;
+  }
+  #lobby .menu-icon {
+    width: 25px;
+    height: 25px;
+    flex-basis: 25px;
+  }
+  #lobby .showcase {
+    grid-template-rows: minmax(0, 1fr) 30px auto auto;
+    gap: 4px;
+  }
+  #lobby .skin-arrow {
+    width: 28px;
+    height: 28px;
+  }
+  #lobby .lobby-accessory-slots {
+    height: 30px;
+  }
+  #lobby .lobby-accessory-slot {
+    padding: 3px 7px;
+    gap: 4px;
+  }
+  #lobby .lobby-accessory-slot img {
+    width: 22px;
+    height: 22px;
+  }
+  #lobby .lobby-accessory-slot strong {
+    font-size: 10px;
+  }
+  #lobby .lobby-accessory-slot small {
+    font-size: 8px;
+  }
+  #lobby .field-label {
+    font-size: 9px;
+  }
+  #lobby #nickname {
+    height: 32px;
+    border-width: 10px;
+    font-size: 12px;
+  }
+  #lobby #playButton {
+    height: 32px;
+    min-height: 32px;
+    font-size: 19px;
+    padding: 3px;
+  }
+  #lobby #lobbyStatus {
+    font-size: 9px;
+    min-height: 12px;
+    margin-top: 1px;
+  }
+  body[data-screen="lobby"] .settings-area {
+    top: 18px;
+    right: 12px;
+  }
+  body[data-screen="lobby"] #settingsButton {
+    width: 30px;
+    height: 30px;
+  }
+}
+body[data-lobby-scaled="true"] #lobby .lobby-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 844px;
+  height: var(--scene-height);
+  max-width: none;
+  transform: translate(-50%, -50%) scale(var(--scene-scale));
+  transform-origin: center;
+}
+body[data-lobby-preview="true"] #landscapeHint {
+  display: block;
+  position: absolute;
+  bottom: 26px;
+  left: 52px;
+  right: 20px;
+  margin: 0;
+  color: #654078;
+  text-align: center;
+  font-size: 13px;
+}
+body[data-lobby-preview="true"][data-screen="lobby"] .settings-area {
+  top: auto;
+  bottom: 20px;
+  left: 12px;
+  right: auto;
+}
+body[data-lobby-preview="true"][data-screen="lobby"] #settingsMenu {
+  top: auto;
+  bottom: 48px;
+  left: 0;
+  right: auto;
+}
+
+/* Общий каркас полноценных разделов; подтверждения и игровой HUD не затрагиваются. */
+dialog.interface-window,
+#achievementsDialog.interface-window {
+  width: min(1120px, calc(100vw - 28px));
+  height: min(780px, calc(100dvh - 28px));
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 12px;
+  border: 1px solid #bb914f;
+  border-image: none;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 3px #fff4d8,
+    0 16px 60px var(--ui-c-27133066, #27133066);
+  color: #51335f;
+}
+dialog.interface-window[open] {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 10px;
+}
+.interface-header {
+  grid-row: 1;
+  min-width: 0;
+}
+.interface-toolbar {
+  grid-row: 2;
+  min-width: 0;
+}
+.interface-content {
+  grid-row: 3;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding: 2px 6px;
+}
+.interface-footer {
+  grid-row: 4;
+  min-width: 0;
+  min-height: 24px;
+}
+.interface-window .interface-header > :is(.clan-heading, .booster-heading) {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 46px;
+  height: 46px;
+  margin: 0;
+  padding: 5px 10px;
+  border: 1px solid #bd914f;
+  border-radius: 10px;
+  background: linear-gradient(var(--ui-c-9259a6, #9259a6), var(--ui-c-50245f, #50245f));
+  color: #fff8e8;
+}
+.interface-window .interface-header h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.2;
+}
+.interface-window .interface-header .booster-close {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+}
+.interface-window :is(.booster-tabs, .clan-nav, .donation-tabs, .cosmetics-tabs, .booster-filters) {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 6px;
+  margin: 0;
+  align-items: center;
+}
+.interface-window .sf-tab {
+  min-width: 0;
+  max-width: none;
+  min-height: 38px !important;
+  height: 38px;
+  padding: 6px 10px !important;
+  font-size: 12px;
+  white-space: nowrap;
+}
+#boosterDialog.interface-window :is(.booster-tabs, .booster-filters) .sf-tab {
+  height: 38px;
+  min-height: 38px !important;
+  padding: 6px 8px !important;
+  font-size: 12px;
+}
+#boosterDialog.interface-window .booster-tabs {
+  border: 0;
+  padding: 0;
+}
+.interface-window .sf-tab,
+#lobby .progress-actions .sf-tab {
+  background: linear-gradient(var(--ui-c-fffaf0, #fffaf0), var(--ui-c-f2ddb3, #f2ddb3)) !important;
+  border: 1px solid #b58c48 !important;
+  border-radius: 9px;
+  box-shadow:
+    inset 0 0 0 2px #fff6dc,
+    0 2px 0 #9a704533;
+}
+.interface-window .sf-tab[aria-pressed="true"] {
+  background: linear-gradient(var(--ui-c-9154a4, #9154a4), var(--ui-c-552563, #552563)) !important;
+  border-color: #a47b40 !important;
+  color: #fff8e7 !important;
+  box-shadow:
+    inset 0 0 0 2px #d4af66,
+    0 2px 0 var(--ui-c-67395033, #67395033);
+}
+.interface-window .sf-tab:disabled:not([data-pending]) {
+  background: linear-gradient(var(--ui-c-e9e1d1, #e9e1d1), var(--ui-c-d2c6b2, #d2c6b2)) !important;
+  color: #776e61 !important;
+  box-shadow: inset 0 0 0 2px #f5edde;
+}
+.interface-window .interface-toolbar .booster-wallet {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  max-width: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0;
+}
+#boosterDialog .interface-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+  gap: 18px;
+  align-items: center;
+}
+#boosterDialog .booster-tabs {
+  grid-column: 1;
+  grid-row: 1;
+}
+.interface-window .sf-currency-wallet .sf-currency {
+  height: 40px;
+  min-width: 0;
+  aspect-ratio: auto;
+}
+.interface-window .sf-currency-value {
+  font-size: 15px;
+}
+.interface-window .currency-add {
+  width: 26px;
+  height: 26px;
+  flex-basis: 26px;
+  font-size: 18px;
+}
+.interface-window .booster-note {
+  display: none;
+}
+.interface-window .shop-categories {
+  padding: 0;
+  border: 0;
+  margin: 0 0 10px;
+}
+.interface-window .booster-toolbar {
+  display: block;
+  margin: 0 0 10px;
+}
+.interface-window .booster-filters {
+  width: 100%;
+}
+.interface-window .booster-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 12px;
+}
+.interface-window .booster-card {
+  min-width: 0;
+  margin: 0;
+}
+.interface-window .booster-card h3 {
+  min-height: 44px;
+  line-height: 1.2;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+.interface-window .booster-action {
+  min-height: 44px;
+}
+.interface-footer :is(.clan-status, .booster-message, .account-message) {
+  min-height: 24px;
+  margin: 0;
+  padding: 3px 7px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.interface-footer .cosmetics-actions {
+  margin: 0;
+  padding: 6px 0 0;
+}
+.interface-footer .cosmetics-actions button {
+  min-height: 38px;
+  padding: 8px 16px;
+  font-size: 13px;
+}
+.interface-footer .sf-button::before {
+  border-width: 16px 24px;
+}
+.interface-window .clan-nav {
+  grid-auto-columns: minmax(0, 1fr);
+}
+.interface-window .clan-wallet {
+  white-space: nowrap;
+  margin: 0;
+  font-size: 11px;
+  text-align: right;
+}
+.interface-window .skin-collection-layout,
+.interface-window .wardrobe-layout {
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 18px;
+  padding: 0;
+  align-items: start;
+}
+.interface-window .skin-library #skinList {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 12px 0;
+  gap: 10px;
+}
+.interface-window .skin-library .skin-option .thumb {
+  width: 90px;
+  height: 90px;
+}
+.interface-window .skin-library .skin-option {
+  padding: 8px;
+  font-size: 11px;
+  min-height: 150px;
+  border-width: 1px;
+}
+.interface-window .skin-library .skin-option[aria-pressed="true"] {
+  padding: 8px;
+  border-width: 1px;
+}
+.interface-window .donation-card h3 {
+  height: 52px;
+  min-height: 52px;
+}
+@media (max-width: 900px) {
+  .interface-window .booster-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .interface-window .skin-library #skinList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .interface-window .skin-collection-layout,
+  .interface-window .wardrobe-layout {
+    grid-template-columns: 170px minmax(0, 1fr);
+  }
+}
+@media (max-height: 560px) {
+  dialog.interface-window,
+  #achievementsDialog.interface-window {
+    height: calc(100dvh - 16px);
+    width: calc(100vw - 24px);
+    padding: 8px;
+    border-radius: 14px;
+  }
+  dialog.interface-window[open] {
+    gap: 6px;
+  }
+  .interface-window .interface-header > :is(.clan-heading, .booster-heading) {
+    height: 36px;
+    min-height: 36px;
+    padding: 2px 8px;
+  }
+  .interface-window .interface-header h2 {
+    font-size: 19px;
+  }
+  .interface-window .interface-header .booster-close {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+  .interface-window .sf-tab {
+    height: 30px;
+    min-height: 30px !important;
+    padding: 4px 7px !important;
+    font-size: 11px;
+  }
+  #boosterDialog.interface-window :is(.booster-tabs, .booster-filters) .sf-tab {
+    height: 30px;
+    min-height: 30px !important;
+    padding: 4px 7px !important;
+    font-size: 11px;
+  }
+  .interface-window .sf-currency-wallet .sf-currency {
+    height: 32px;
+  }
+  .interface-window .booster-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .interface-window .booster-card h3 {
+    font-size: 15px;
+    min-height: 36px;
+  }
+  .interface-window .booster-art-slot {
+    width: 80px;
+    height: 80px;
+    margin: 6px 0;
+  }
+  .interface-window .booster-effect {
+    font-size: 11px;
+  }
+  .interface-window .booster-action {
+    font-size: 11px;
+    padding: 8px;
+  }
+  .interface-window .skin-library #skinList {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .interface-window .skin-library .skin-option .thumb {
+    width: 68px;
+    height: 68px;
+  }
+  .interface-window .skin-library .skin-option {
+    min-height: 120px;
+  }
+  .interface-window .cosmetics-preview {
+    display: block;
+    padding: 12px;
+  }
+  .interface-window .collection-preview-image {
+    width: 110px;
+    margin: 8px auto;
+  }
+  .interface-window .wardrobe-preview {
+    display: block;
+    padding: 12px;
+  }
+  .interface-window .wardrobe-preview .outfit-avatar {
+    width: 100px;
+    margin: 45px auto 16px;
+  }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .interface-window .interface-header h2 {
+    font-size: 18px;
+  }
+  #boosterDialog .interface-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  .interface-window .interface-toolbar .booster-wallet {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .interface-window .booster-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .interface-window .booster-filters {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .interface-window .sf-tab {
+    font-size: 10px;
+    padding: 5px !important;
+  }
+  #boosterDialog .booster-tabs {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #boosterDialog .booster-filters {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #boosterDialog.interface-window :is(.booster-tabs, .booster-filters) .sf-tab {
+    font-size: 10px;
+    padding: 5px !important;
+  }
+  .interface-window .clan-nav {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .interface-window .clan-wallet {
+    grid-column: 1/-1;
+    padding: 2px 6px;
+  }
+  .interface-window .skin-collection-layout,
+  .interface-window .wardrobe-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 680px) and (orientation: landscape) {
+  .interface-window .booster-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #boosterDialog .interface-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  #boosterDialog .interface-toolbar .booster-wallet {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  #boosterDialog .booster-tabs {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding-bottom: 0;
+    border: 0;
+  }
+  #boosterDialog .booster-filters {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  #boosterDialog.interface-window :is(.booster-tabs, .booster-filters) .sf-tab {
+    font-size: 10px;
+    padding: 4px !important;
+    height: 30px;
+  }
+}
+@media (max-width: 360px) {
+  .interface-window .booster-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "visual-star-lion",
+    "source": "exec-cf878862-e241-45d5-a0d2-58d65adbc69b.png",
+    "sha256": "604c2a997281b927a68ce3a3246136aa381eea541f66b55a242fadcb781f22cc",
+    "alpha": true,
+    "outputs": [
+      {
+        "size": 64,
+        "path": "public/assets/skins/transparent-v2/64/visual-star-lion.webp",
+        "bytes": 4192
+      },
+      {
+        "size": 128,
+        "path": "public/assets/skins/transparent-v2/128/visual-star-lion.webp",
+        "bytes": 12184
+      },
+      {
+        "size": 256,
+        "path": "public/assets/skins/transparent-v2/256/visual-star-lion.webp",
+        "bytes": 33840
+      },
+      {
+        "size": 512,
+        "path": "public/assets/skins/transparent-v2/512/visual-star-lion.webp",
+        "bytes": 97490
+      },
+      {
+        "size": 1024,
+        "path": "public/assets/skins/transparent-v2/1024/visual-star-lion.webp",
+        "bytes": 332336
+      }
+    ]
+  },
+  {
+    "id": "prism-star-lion",
+    "source": "exec-798e0183-d581-42f8-aef5-20997373c41a.png",
+    "sha256": "51663c85147ad93c060ade6dffd99a595e2f018abb11a703ff4f9ae8d1399f65",
+    "alpha": true,
+    "outputs": [
+      {
+        "size": 64,
+        "path": "public/assets/skins/transparent-v2/64/prism-star-lion.webp",
+        "bytes": 4276
+      },
+      {
+        "size": 128,
+        "path": "public/assets/skins/transparent-v2/128/prism-star-lion.webp",
+        "bytes": 11120
+      },
+      {
+        "size": 256,
+        "path": "public/assets/skins/transparent-v2/256/prism-star-lion.webp",
+        "bytes": 29374
+      },
+      {
+        "size": 512,
+        "path": "public/assets/skins/transparent-v2/512/prism-star-lion.webp",
+        "bytes": 79454
+      },
+      {
+        "size": 1024,
+        "path": "public/assets/skins/transparent-v2/1024/prism-star-lion.webp",
+        "bytes": 261336
+      }
+    ]
+  },
+  {
+    "id": "glass-star-lion",
+    "source": "exec-4ecc3ab9-6eca-4e5e-8a3b-c533fe6786eb.png",
+    "sha256": "970e52685872ff13b3f04fa1ff0863399a6230c452ae87923febfc909d147d05",
+    "alpha": true,
+    "outputs": [
+      {
+        "size": 64,
+        "path": "public/assets/skins/transparent-v2/64/glass-star-lion.webp",
+        "bytes": 3894
+      },
+      {
+        "size": 128,
+        "path": "public/assets/skins/transparent-v2/128/glass-star-lion.webp",
+        "bytes": 10896
+      },
+      {
+        "size": 256,
+        "path": "public/assets/skins/transparent-v2/256/glass-star-lion.webp",
+        "bytes": 30120
+      },
+      {
+        "size": 512,
+        "path": "public/assets/skins/transparent-v2/512/glass-star-lion.webp",
+        "bytes": 84670
+      },
+      {
+        "size": 1024,
+        "path": "public/assets/skins/transparent-v2/1024/glass-star-lion.webp",
+        "bytes": 321108
+      }
+    ]
+  }
+]

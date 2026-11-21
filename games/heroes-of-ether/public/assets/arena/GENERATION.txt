@@ -1,0 +1,18 @@
+КАМЕННЫЙ ФОН — 19 октября 2026
+Инструмент: встроенный imagegen, без CLI/API.
+Результат: public/assets/arena/cobblestone.png, 1254 × 1254, непрозрачный PNG.
+Масштаб в игре: 640 × 640 единиц мира.
+Источник: предоставленный пользователем 4bbcc99c-9837-46ad-806f-662cfd2cc068.png.
+Резервная копия: data/backups/seamless-ground-before-20261019-200843/cobblestone.png.
+
+Проверка: повторение изображения в браузере 2 × 2 и крупный план пересечения
+стыков. Для локальной коррекции использован браузерный снимок повторения
+со сдвигом на половину плитки. Окончательная правка выполнена imagegen.
+CanvasPattern по-прежнему кешируется; обработка пикселей в игровом цикле
+не добавлена. Случайный общий выбор фона на сервере не изменён.
+
+ПРОМПТ 1
+Use case: precise-object-edit. Asset type: seamless repeatable square ground texture for a top-down browser game. Image 1 is the edit target and style reference: warm beige and muted grey hand-painted cobblestones with a little soft green moss and small leaves between stones. Remake this as ONE truly seamless tile, not a picture of several tiles. Crucial technical requirement: periodic wraparound continuity on BOTH axes. Every stone, crack, leaf and patch of moss cut off at the left edge must continue at the exact same y position on the right edge, and every object at the top edge must continue at the exact same x position at the bottom edge. The four corners must also join seamlessly. Match edge colors, lighting, sizes and contours. Keep the same top-down orthographic painted game art style, similar small irregular stone density, quiet warm beige/gold-grey palette and modest green details. Uniform diffuse lighting across the entire tile, no vignette, no directional gradient, no borders or blank margins. Irregular organic natural stone paving, no mirrored symmetrical stones, no visible square grid, no isolated large motif, no text or game UI. Deliver a single square opaque tile intended to repeat seamlessly at 640 world units. Prioritize exact opposite-edge continuity and natural completed stone outlines when repeated.
+
+ПРОМПТ 2 (окончательная коррекция)
+Use case: precise-object-edit. Input image 1 is the actual edit target, an offset-preview of a seamless game ground tile. REPAIR ONLY THE CENTRAL CROSS: there is an unnatural horizontal cut at y=627 and a vertical cut at x=627 in this 1254x1254 picture. Repaint the incomplete/cut stones, cracks and leaves within about 65 pixels of these two center lines so they become continuous whole organic natural cobblestones with no straight seam. Do not introduce a path, stripe, blur, grid or cross. Very important: preserve the entire rest of the image EXACTLY as is, especially all four outside edges and corners, which already match their opposite sides. The outside edges MUST NOT be regenerated, shifted, cropped or changed at all; stones crossing the outside must remain the same. Preserve the same warm hand-painted beige and grey stones, green moss and leaves, exact stone scale, texture and even lighting. No global image regeneration, no stylistic changes, no text, no UI. Output the repaired single square opaque tile of the same dimensions, with the original outer edges untouched and only the center seams locally mended.

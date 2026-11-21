@@ -1,0 +1,341 @@
+{
+  "items": [
+    {
+      "id": "freeze",
+      "name": "Заморозка",
+      "tier": "common",
+      "effect": "Снижает скорость соперника на 30% в течение 10 секунд после попадания.",
+      "params": {
+        "speed_reduction_percent": 30,
+        "total_duration_seconds": 10,
+        "duration_includes_flight": false,
+        "flight_seconds": 5,
+        "flight_speed": 100
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/freeze.png"
+    },
+    {
+      "id": "colorful_shield",
+      "name": "Красочный щит",
+      "tier": "common",
+      "effect": "Защищает от негативных бустеров на 20 секунд.",
+      "params": {
+        "protection": "negative_boosters",
+        "duration_seconds": 20
+      },
+      "missing": [
+        "Взаимодействие щита с уже действующими негативными эффектами."
+      ],
+      "icon": "assets/boosters/png/colorful_shield.png"
+    },
+    {
+      "id": "hook",
+      "name": "Крюк",
+      "tier": "common",
+      "effect": "Притягивает соперника. Время полёта - до 5 секунд.",
+      "params": {
+        "flight_seconds": 5,
+        "pull_direction": "opponent_toward_player",
+        "pull_fraction": 0.8,
+        "pull_seconds": 1
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/hook.png"
+    },
+    {
+      "id": "ice_cream",
+      "name": "Мороженое",
+      "tier": "common",
+      "effect": "Даёт 200 единиц массы.",
+      "params": {
+        "mass_gain": 200
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/ice_cream.png"
+    },
+    {
+      "id": "candy",
+      "name": "Конфета",
+      "tier": "common",
+      "effect": "Даёт 150 единиц массы.",
+      "params": {
+        "mass_gain": 150
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/candy.png"
+    },
+    {
+      "id": "rocket",
+      "name": "Ракета",
+      "tier": "common",
+      "effect": "Делит задетый шар на 80%, 10% и 10%. Минимальная масса шара - 20.",
+      "params": {
+        "detached_particle_count": 2,
+        "fraction_of_hit_part_mass_per_particle": 0.1,
+        "min_hit_mass": 20
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/rocket.png"
+    },
+    {
+      "id": "glove",
+      "name": "Перчатка",
+      "tier": "common",
+      "effect": "Отталкивает соперника",
+      "params": {
+        "push_distance": null
+      },
+      "missing": [
+        "Расстояние и скорость отталкивания."
+      ],
+      "icon": "assets/boosters/png/glove.png"
+    },
+    {
+      "id": "web",
+      "name": "Паутина",
+      "tier": "advanced",
+      "effect": "Летит 1 с и может обездвижить игрока в полёте; затем остаётся ловушкой. Обездвиживает на 7 секунд, повтор продлевает эффект.",
+      "params": {
+        "immobilize_seconds": 7,
+        "flight_seconds": 1,
+        "flight_speed": 80,
+        "hits_in_flight": true
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/web.png"
+    },
+    {
+      "id": "sphere",
+      "name": "Сфера",
+      "tier": "advanced",
+      "effect": "Защищает от негативных бустеров на 30 секунд.",
+      "params": {
+        "protection": "negative_boosters",
+        "duration_seconds": 30
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/sphere.png"
+    },
+    {
+      "id": "poison",
+      "name": "Яд",
+      "tier": "advanced",
+      "effect": "Сжигает 35% общей массы на момент попадания за 10 секунд. Из потерянной массы 15% выбрасывается эфиром.",
+      "params": {
+        "mass_burn_total_percent": 35,
+        "damage_over_time_seconds": 10,
+        "tick_seconds": 1.5,
+        "mass_basis_time": "impact",
+        "flight_seconds": 5,
+        "flight_speed": 80,
+        "max_distance": 200
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/poison.png"
+    },
+    {
+      "id": "donut",
+      "name": "Пончик",
+      "tier": "advanced",
+      "effect": "Даёт 500 единиц массы.",
+      "params": {
+        "mass_gain": 500
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/donut.png"
+    },
+    {
+      "id": "speed",
+      "name": "Ускорение",
+      "tier": "advanced",
+      "effect": "Ускоряет игрока на 50%. Время действия - 15 секунд.",
+      "params": {
+        "speed_increase_percent": 50,
+        "duration_seconds": 15
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/speed.png"
+    },
+    {
+      "id": "mine",
+      "name": "Мина",
+      "tier": "advanced",
+      "effect": "Летит 1 с, срабатывает в полёте или остаётся ловушкой. Делит задетый шар на 8 частей.",
+      "params": {
+        "equal_parts": true,
+        "part_count": 8,
+        "flight_seconds": 1,
+        "flight_speed": 80,
+        "hits_in_flight": true
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/mine.png"
+    },
+    {
+      "id": "lock",
+      "name": "Замок",
+      "tier": "advanced",
+      "effect": "Закрывает рот игроку, после чего он не может ничего поглощать.",
+      "params": {
+        "blocks_absorption": true,
+        "duration_seconds": null
+      },
+      "missing": [
+        "Длительность запрета поглощения."
+      ],
+      "icon": "assets/boosters/png/lock.png"
+    },
+    {
+      "id": "harpoon",
+      "name": "Гарпун",
+      "tier": "rare",
+      "effect": "Притягивает все ваши части к точке попадания или окончания полёта на 80% расстояния за 1 секунду.",
+      "params": {
+        "flight_seconds": 7,
+        "flight_speed": 200,
+        "max_distance": 400,
+        "pull_direction": "player_toward_impact_or_endpoint",
+        "pull_fraction": 0.8,
+        "pull_seconds": 1
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/harpoon.png"
+    },
+    {
+      "id": "axe",
+      "name": "Секира",
+      "tier": "rare",
+      "effect": "Рассекает игрока на четыре равные части.",
+      "params": {
+        "equal_parts": true,
+        "part_count": 4,
+        "flight_speed": 100,
+        "max_distance": 400
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/axe.png"
+    },
+    {
+      "id": "stone",
+      "name": "Камень",
+      "tier": "rare",
+      "effect": "В полёте и после приземления обездвиживает первого задетого игрока на 10 секунд. После приземления действует и на владельца. Повтор продлевает обездвиживание.",
+      "params": {
+        "immobilize_seconds": 10,
+        "flight_seconds": 4,
+        "flight_can_trigger": true
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/stone.png"
+    },
+    {
+      "id": "meat",
+      "name": "Мясо",
+      "tier": "rare",
+      "effect": "Даёт игроку 700 единиц массы.",
+      "params": {
+        "mass_gain": 700
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/meat.png"
+    },
+    {
+      "id": "knuckles",
+      "name": "Кастет",
+      "tier": "rare",
+      "effect": "При попадании мгновенно делит соперника до максимума частей и исчезает. Отскакивает от любого щита. После первого отражения живёт до 15 секунд.",
+      "params": {
+        "duration_seconds": 15,
+        "crushing_behavior": "single_hit_max_parts",
+        "part_count": 16,
+        "flight_speed": 200,
+        "max_distance": 400
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/knuckles.png"
+    },
+    {
+      "id": "golden_shield",
+      "name": "Золотой щит",
+      "tier": "rare",
+      "effect": "Защита от негативных бустеров на 35 секунд и увеличение скорости на 20%.",
+      "params": {
+        "duration_seconds": 35,
+        "protection_scope": "negative_boosters",
+        "speed_increase_percent": 20
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/golden_shield.png"
+    },
+    {
+      "id": "mega_poison",
+      "name": "Мега яд",
+      "tier": "rare",
+      "effect": "Сжигает 50% общей массы на момент попадания за 15 секунд. Из потерянной массы 15% выбрасывается эфиром.",
+      "params": {
+        "mass_burn_total_percent": 50,
+        "damage_over_time_seconds": 15,
+        "tick_seconds": 1.5,
+        "mass_basis_time": "impact",
+        "flight_seconds": 5,
+        "flight_speed": 100,
+        "max_distance": 400
+      },
+      "missing": [],
+      "icon": "assets/boosters/png/mega_poison.png"
+    },
+    {
+      "id": "sponge",
+      "name": "Губка",
+      "tier": "rare",
+      "effect": "Постепенно полностью соединяет ваши части.",
+      "params": {
+        "gradual_full_merge": true,
+        "merge_duration_seconds": null
+      },
+      "missing": [
+        "Длительность и порядок соединения частей."
+      ],
+      "icon": "assets/boosters/png/sponge.png"
+    }
+  ],
+  "tiers": {
+    "common": {
+      "name": "Обычные",
+      "count": 7,
+      "pack_price": {
+        "currency": "coins",
+        "currency_ru": "монеты",
+        "amount": 10,
+        "quantity": 10
+      },
+      "availability": "Очень распространены; доступны везде.",
+      "rarity_color": "#AB7950"
+    },
+    "advanced": {
+      "name": "Улучшенные",
+      "count": 7,
+      "pack_price": {
+        "currency": "crystals",
+        "currency_ru": "кристаллы",
+        "amount": 10,
+        "quantity": 10
+      },
+      "availability": "Редко выпадают в обычных сундучках; доступны к покупке по указанной цене.",
+      "rarity_color": "#8D65D0"
+    },
+    "rare": {
+      "name": "Редкие",
+      "count": 8,
+      "pack_price": {
+        "currency": "crystals",
+        "currency_ru": "кристаллы",
+        "amount": 20,
+        "quantity": 10
+      },
+      "availability": "Покупка на «Ярмарке от Мани» и «Чёрной Пятнице» либо получение из сундуков от Боссов.",
+      "rarity_color": "#DEA939"
+    }
+  }
+}

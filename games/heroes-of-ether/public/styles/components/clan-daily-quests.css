@@ -1,0 +1,22 @@
+.clan-daily-panel,.clan-daily-ranking{display:flex;flex-direction:column;gap:10px;min-width:0}
+.clan-daily-panel h3,.clan-daily-ranking h3{margin:0}
+.clan-daily-ranking-list button.clan-daily-rank{width:100%;border:0;border-bottom:1px solid #b6925438;background:transparent;color:inherit;font-family:inherit;text-align:left;cursor:pointer}
+.clan-daily-ranking-list button.clan-daily-rank.own{background:#79b9cf30}
+.clan-daily-ranking-list button.clan-daily-rank:hover{background:#79b9cf20}
+.clan-daily-ranking-list button.clan-daily-rank:focus-visible{outline:2px solid currentColor;outline-offset:-2px}
+.clan-daily-deadline{align-self:center;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:180px;max-width:100%;padding:9px 22px;border:1px solid var(--clan-panel-trim,#cfa656);border-radius:14px;background:#ffffff70;box-shadow:inset 0 1px 0 #fff8;text-align:center;font-variant-numeric:tabular-nums}
+:is(#clanDialog,#clanPreviewDialog) .clan-daily-panel > .clan-daily-deadline{margin:4px auto 8px;line-height:1.25;opacity:1}
+.clan-daily-clock-label{font-size:13px;font-weight:600}.clan-daily-clock-value{font-size:30px;letter-spacing:1px;line-height:1.1}.clan-daily-deadline.is-finished .clan-daily-clock-value{font-size:17px;letter-spacing:0}
+.clan-daily-row{display:grid;grid-template-columns:minmax(0,1fr) 62px;align-items:center;gap:10px;padding:10px;border:1px solid #b6925460;border-radius:12px;background:#ffffff42}
+.clan-daily-row.completed{background:#91cb8230;border-color:#6d9a64}
+.clan-daily-copy{min-width:0}.clan-daily-copy h4{margin:0 0 3px;font-size:14px}.clan-daily-copy p{margin:0 0 7px;font-size:12px}
+.clan-daily-bar{height:10px;border-radius:9px;background:#594b3328;overflow:hidden;box-shadow:inset 0 1px 3px #0003}.clan-daily-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(#badd7c,#4d9c69)}
+.clan-daily-value{display:block;text-align:right;font-size:11px;margin-top:3px;font-variant-numeric:tabular-nums}
+.clan-daily-progress-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:3px}.clan-daily-progress-meta .clan-daily-value{margin:0}.clan-daily-greatness{display:inline-flex;align-items:center;gap:3px;font-size:12px;font-weight:600;white-space:nowrap}.clan-daily-greatness img{width:18px;height:18px;object-fit:contain}
+.clan-daily-reward{display:flex;flex-direction:column;align-items:center;font-size:13px}.clan-daily-reward img{width:48px;height:48px;object-fit:contain}
+.clan-daily-wait{display:grid;place-content:center;flex:1;min-height:220px;text-align:center}
+.clan-daily-ranking-list{--clan-rank-row-height:44px;flex:1;min-height:44px;overflow:hidden}.clan-daily-rank{box-sizing:border-box;display:grid;grid-template-columns:30px minmax(0,1fr) 30px;gap:8px;align-items:center;height:var(--clan-rank-row-height);min-height:var(--clan-rank-row-height);padding:7px 8px;border-bottom:1px solid #b6925438;font-size:13px}.clan-daily-rank span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clan-daily-rank.own{border-radius:8px;background:#79b9cf30;outline:1px solid #599db3}
+.clan-daily-pager{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:8px}
+#clanDialog .clan-home-grid > .clan-daily-ranking{overflow:hidden}
+@media(max-width:1100px){#clanDialog[data-view="home"] .clan-home-grid > .clan-daily-ranking{height:clamp(310px,70dvh,700px);min-height:0}}
+@media(max-width:700px){.clan-daily-row{padding:8px;gap:7px}.clan-daily-reward img{width:42px;height:42px}}

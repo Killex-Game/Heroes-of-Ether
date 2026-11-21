@@ -1,0 +1,40 @@
+"use strict";
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const { copyRecord } = require('../../src/server/profiles/copy-record');
+test('record copy preserves enumerable keys, symbols and safe prototype keys', () => {
+  const symbol = Symbol('revision'), hidden = Symbol('private');
+  const source = Object.create(null);
+  source.a = { id: 'a' }; source.__proto__ = { injected: true };
+  source[symbol] = 7;
+  Object.defineProperty(source, hidden, {value: 9});
+  Object.defineProperty(source, 'secret', {value: 1});
+  let reads = 0;
+  Object.defineProperty(source, 'getter', {enumerable: true, get() {reads++; return 11;}});
+  const expected = {...source}; reads = 0;
+  const actual = copyRecord(source);
+  assert.deepEqual(actual, expected); assert.equal(reads, 1);
+  assert.equal(Object.getPrototypeOf(actual), Object.prototype);
+  assert.equal(actual.injected, undefined);
+  assert.deepEqual(Object.getOwnPropertyDescriptors(actual), Object.getOwnPropertyDescriptors(expected));
+  assert.equal(actual.a, source.a);
+  actual.a = { id: 'updated' }; delete actual.__proto__;
+  assert.equal(source.a.id, 'a'); assert.equal(Object.hasOwn(source, '__proto__'), true);
+});
+
+test('large record copy retains normal prototype, order and immutable row sharing', () => {
+  const source = Object.create(null), symbol = Symbol('extra');
+  for(let i=0;i<1280;i++)source['profile-'+i]=Object.freeze({id:i});
+  Object.defineProperty(source,'__proto__',{value:{injected:true},enumerable:true});
+  Object.defineProperty(source,'computed',{get(){return 17;},enumerable:true});
+  source[symbol]=9;Object.freeze(source);
+  const actual=copyRecord(source),expected={...source};
+  assert.deepEqual(actual,expected);
+  assert.deepEqual(Reflect.ownKeys(actual),Reflect.ownKeys(expected));
+  assert.deepEqual(Object.getOwnPropertyDescriptors(actual),Object.getOwnPropertyDescriptors(expected));
+  assert.equal(Object.getPrototypeOf(actual),Object.prototype);
+  assert.equal(actual.injected,undefined);
+  assert.equal(actual['profile-1279'],source['profile-1279']);
+  actual['profile-1279']={id:'replacement'};
+  assert.equal(source['profile-1279'].id,1279);
+});

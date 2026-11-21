@@ -1,0 +1,80 @@
+#boosterDialog.interface-window .clan-owned-chests {
+  justify-content: start;
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 240px));
+  max-width: 996px;
+  margin-inline: 0;
+}
+#boosterDialog[data-mode="chests"][data-chest-category="treasury"] .interface-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #b98b34 #f7e5bf;
+  overscroll-behavior: contain;
+}
+#boosterDialog .clan-chest-inventory {
+  margin: 0;
+}
+#boosterDialog .clan-chest-inventory-heading {
+  flex-wrap: wrap;
+}
+#boosterDialog .clan-chest-inventory-heading span {
+  font-size: 12px;
+}
+#boosterDialog[data-mode="chests"][data-chest-category="treasury"]
+  .interface-footer:has(.booster-message:empty) {
+  display: none;
+}
+@media (max-height: 550px) {
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .booster-heading {
+    min-height: 34px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .sf-tab {
+    min-height: 30px;
+    height: 30px;
+    padding-block: 3px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .interface-toolbar {
+    gap: 4px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .chest-categories {
+    margin-bottom: 4px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .clan-owned-chests {
+    margin-top: 4px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .collection-pages {
+    margin-top: 4px;
+    min-height: 28px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .collection-pages button {
+    height: 28px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .clan-owned-chest {
+    height: 140px;
+    padding: 5px;
+    gap: 2px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .clan-owned-chest > * {
+    flex-shrink: 0;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .clan-owned-chest > img {
+    width: 32px;
+    height: 32px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .clan-owned-chest > strong {
+    min-height: 28px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .clan-owned-chest > button {
+    min-height: 28px;
+    padding-block: 3px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .clan-reward-notices {
+    margin-top: 4px;
+  }
+  #boosterDialog[data-mode="chests"][data-chest-category="treasury"] .clan-chest-inventory {
+    padding: 6px;
+  }
+}

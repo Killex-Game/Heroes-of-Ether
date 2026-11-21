@@ -1,0 +1,233 @@
+[
+  {
+    "id": "heroic-profile",
+    "prompt": "Create a high quality fantasy game mini-profile background for Heroes of Ether. Match the attached reference's polished hand-painted 3D fantasy illustration style, obsidian marble, warm gold, ruby-red banners, luminous sunset amber. A majestic HERO'S THRONE HALL, symmetrical wide landscape composition 16:9, tall elegant golden throne in distant centre, black marble pillars and golden laurel ornaments on sides, ruby curtains. Central lower area spacious and calm for overlaying one circular character portrait; throne visible behind it, not obstructing portrait. No people, no UI, no frames around entire artwork, no text, no logos. Refined large forms and soft magical golden lighting, crisp but not noisy, harmonious and premium.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e1653f7f-788c-4179-9bb0-c6374db76d7e.png",
+    "dest": "public/assets/interface-packs/heroic/profile.webp",
+    "sha256": "089c3ca033dd727191bb455b0f9671028ec84f5c77406edfb2ec9a15404fb5ac"
+  },
+  {
+    "id": "heroic-hall",
+    "prompt": "Edit the FIRST reference into the Heroic themed Hall of Fame for a fantasy game. Preserve the exact wide composition, camera, dimensions and all SEVEN circular pedestal surfaces in precisely the same places and sizes so existing portrait overlays still align. Change the architecture to obsidian black marble with gold veins and polished rich gold trim, burgundy red banners and runner, ruby gems instead of purple. Grand sunburst and laurel motifs, warm golden magical radiance from pedestal tops, soft amber sunset through arch windows. Match the SECOND reference's dark gold heroic style. Keep pedestal tops clear, no portraits, no people, no text, no UI. High quality polished fantasy illustration, harmonious light, readable large forms, no grain.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-3ffd7edc-a924-44ad-8a05-1d0461afa3be.png",
+    "dest": "public/assets/hall-of-fame/v1/heroic-1672.webp",
+    "sha256": "1a2ba84e3668eca9cbae13418f492bd2892db927540ecbc933f0dd0e48f46bcf"
+  },
+  {
+    "id": "vip-crown",
+    "prompt": "Redesign this VIP golden crown game icon for Heroes of Ether. Keep its polished hand-painted fantasy cartoon style, warm yellow gold with defined amber shadows, one purple gem in the front band, three elegant upright rounded-point tips, premium clean beveled highlights. Correct the squashed low shape: the crown must be taller, proud, balanced almost square silhouette, front facing with slight view of bottom rim. More refined than this chunky toy crown, but simple legible at 24px. No achievement medal border, no badge, no letters, no backdrop, no diffuse yellow halo. Actual transparent background, generous safe padding 8%, single centered crown. 1024 square.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-70037ec9-03f4-49f6-975d-bb7b3241d680.png",
+    "dest": "public/assets/accounts/vip.png",
+    "sha256": "892786398d7e047a060ec05b9345347442f98264ad519a78aab2f49e67e8f4d2"
+  },
+  {
+    "id": "experienced-hat",
+    "prompt": "One single isolated fantasy game accessory: a neat soft azure scout cap, short curved visor, small silver compass brooch on front, one slim white feather at side. Heroes of Ether canonical polished hand-painted 3D cartoon inventory art. Clean readable compact silhouette, luminous material highlights, precise dark contour. FRONT VIEW ONLY for placing on top of a round avatar; flat gently concave lower support line, show only visible FRONT half, absolutely no visible rear brim or rear arc. Wide short composition 1.8:1. No head, no person, no text, no icon frame, no ground shadow. True transparent background. Centered with safe 10% padding. Square 1024 canvas.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b731a1da-4f70-410e-bc93-465181fa3d0a.png",
+    "dest": "public/assets/accessories/titles-v1/experienced-hat.webp",
+    "sha256": "29a7fe834bea3f5c0bc2401ea4b08a72cb7cbf3dcbd8fe16478f6cf2ddc47925"
+  },
+  {
+    "id": "experienced-bow",
+    "prompt": "One single isolated fantasy game accessory: a neat azure silk bow tie, silver edging and a small silver compass clasp. Heroes of Ether canonical polished hand-painted 3D cartoon inventory art. Clean readable compact silhouette, luminous material highlights, precise dark contour. Symmetrical horizontal bow tie, width about 2.2 times height, front facing, folded silk volume; no neck strap. No head, no person, no text, no icon frame, no ground shadow. True transparent background. Centered with safe 10% padding. Square 1024 canvas.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1853007a-d277-4eb3-8ed9-8347cf6f8ce7.png",
+    "dest": "public/assets/accessories/titles-v1/experienced-bow.webp",
+    "sha256": "535acd5d0a742f8398614352501488040a687034e4dee891c8a30dc302f4f710"
+  },
+  {
+    "id": "tops-icon",
+    "prompt": "Single clean polished fantasy game UI icon, transparent background. A compact winner podium with three rounded blue enamel steps trimmed in warm gold, taller center step bearing a tiny upright five pointed golden star sculptural trophy. Left and right steps lower. Azure and champagne palette, rich amber shadows and precise soft highlights, hand-painted high quality family fantasy game Heroes of Ether, readable at 36 px. This is the Rankings menu icon, NOT an achievement medallion: no circular badge, no wreath, no octagonal achievement frame. No numbers or text. Centered isolated object, 1024x1024, balanced padding 10%.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4b375f78-8908-47cd-b8b5-dbe70390b225.png",
+    "dest": "public/assets/menu-icons/v2/nav_tops.webp",
+    "sha256": "959e29a7a889b35799141d330728f43e5368399029c392ef50e16bccc020baa5"
+  },
+  {
+    "id": "expert-hat",
+    "prompt": "Single isolated premium fantasy game headwear accessory for Heroes of Ether: a deep sapphire blue rounded beret, elegant slim gold band and small sapphire diamond pin. Canonical polished hand-painted 3D mobile fantasy game item, rich satin and metal materials, warm upper-left highlights, clean bold readable silhouette, refined details, friendly fairy-tale mood. Straight FRONT VIEW, symmetrical. Only the front-facing hat, no head, no person, no rear hoop. One item only, centered and filling 85% of image width. Real transparent background, no text, no medals, no badge, no ground shadow.",
+    "dest": "public/assets/accessories/titles-v1/expert-hat.webp",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-fcb82a2a-1002-4e4c-ba27-79afbfb322fd.png",
+    "sha256": "cbdbef511211b81dd846245715831018d41525b2ff6368c10ee95520874f1ae2"
+  },
+  {
+    "id": "expert-bow",
+    "prompt": "Single isolated premium fantasy game bow tie accessory for Heroes of Ether: a sapphire blue folded silk bow tie, fine gold edging and diamond-shaped sapphire clasp. Canonical polished hand-painted 3D mobile fantasy game item, rich satin and metal materials, warm upper-left highlights, clean bold readable silhouette, refined details, friendly fairy-tale mood. Straight FRONT VIEW, symmetrical. Only the bow tie, horizontal shape about 2:1 width:height, no neck, no person. One item only, centered and filling 85% of image width. Real transparent background, no text, no medals, no badge, no ground shadow.",
+    "dest": "public/assets/accessories/titles-v1/expert-bow.webp",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-f7cec9ab-90ce-436e-9fb6-63e5b43d9baa.png",
+    "sha256": "597529a3461627d3e07ef729b411d3ba17c43e14100049fb2177305adb6518b0"
+  },
+  {
+    "id": "sage-hat",
+    "prompt": "Single isolated premium fantasy game headwear accessory for Heroes of Ether: a compact teal silk turban, smooth folds, silver crescent pin and a tiny pearl. Polished hand-painted 3D fantasy mobile game art, satin and metal materials, warm upper-left highlights, clean readable silhouette, refined restrained details. Straight FRONT VIEW symmetrical. Hat only, no head or rear hoop. Centered 85% width, real transparent background. No text, badge, medal or ground shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-bca60359-fd5d-45dd-b60b-de30a5b5c985.png",
+    "dest": "public/assets/accessories/titles-v1/sage-hat.webp",
+    "sha256": "10c85fc5809397326dd18e3dab65f57b687da8d098ccff293ed3b5d26b29f79a"
+  },
+  {
+    "id": "sage-bow",
+    "prompt": "Single isolated premium fantasy game bow tie accessory for Heroes of Ether: a teal satin bow tie, silver moon-shaped central clasp and pearl highlight. Polished hand-painted 3D fantasy mobile game art, satin and metal materials, warm upper-left highlights, clean readable silhouette, refined restrained details. Straight FRONT VIEW symmetrical. Horizontal bow tie only, 2:1 width:height, no person. Centered 85% width, real transparent background. No text, badge, medal or ground shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-e628b1bd-db0a-4301-a386-d5045fb39668.png",
+    "dest": "public/assets/accessories/titles-v1/sage-bow.webp",
+    "sha256": "c2a30b4ba34c74004588b48544eab2ee5c9a81d80536e31f33d7fd652a0fc77e"
+  },
+  {
+    "id": "master-hat",
+    "prompt": "Single isolated premium fantasy game headwear accessory for Heroes of Ether: a burgundy leather craftsman peaked cap, low domed crown, brass trim and a single small elegant gear clasp. Polished hand-painted 3D fantasy mobile game art, leather satin brass materials, warm upper-left highlights, clean readable silhouette, restrained details. Straight FRONT VIEW symmetrical. Hat only, no head or rear hoop. Centered 85% width, real transparent background. No text, badge, medal, shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-0857cd5a-33d5-4171-bb9e-e1b7bdcad8b1.png",
+    "dest": "public/assets/accessories/titles-v1/master-hat.webp",
+    "sha256": "0c380e60cb937667d96682ef9e78a03f0217cedc1adffd5c69f8828ed6e134b8"
+  },
+  {
+    "id": "master-bow",
+    "prompt": "Single isolated premium fantasy game bow tie accessory for Heroes of Ether: a burgundy silk bow tie, brass trim and small polished brass gear clasp. Polished hand-painted 3D fantasy mobile game art, leather satin brass materials, warm upper-left highlights, clean readable silhouette, restrained details. Straight FRONT VIEW symmetrical. Horizontal bow tie only, 2:1 width:height, no person. Centered 85% width, real transparent background. No text, badge, medal, shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-7de2fab6-6083-4372-9a39-9946b0c720f2.png",
+    "dest": "public/assets/accessories/titles-v1/master-bow.webp",
+    "sha256": "c1a34bee0e4305c82f69615e51ef0cb1b9a3b4b76832198df798f5ec6a17981e"
+  },
+  {
+    "id": "pro-hat",
+    "prompt": "Single isolated premium fantasy game headwear accessory for Heroes of Ether: an elegant emerald green tricorne hat, thin gold edge, tiny emerald clasp front center. Polished hand-painted 3D fantasy game art, silk and polished metal, warm upper-left highlights, clean readable silhouette, restrained details. Straight FRONT VIEW symmetrical. Hat only, no head, no rear hoop. Centered 85% width. True transparent background, no colored halo outside object. No text, badge, medal or shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-73a52892-9360-4443-83ad-cdde4613fc97.png",
+    "dest": "public/assets/accessories/titles-v1/pro-hat.webp",
+    "sha256": "a2bf99a0f13b5ed9896e12d511a68fd955e9322fa46150e383933425bdb59c30"
+  },
+  {
+    "id": "pro-bow",
+    "prompt": "Single isolated premium fantasy game bow tie accessory for Heroes of Ether: an emerald satin bow tie, gold folded trim and oval emerald clasp. Polished hand-painted 3D fantasy game art, silk and polished metal, warm upper-left highlights, clean readable silhouette, restrained details. Straight FRONT VIEW symmetrical. Horizontal bow tie only, 2:1 proportions, no person. Centered 85% width. True transparent background, no colored halo outside object. No text, badge, medal or shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a2ebc147-25f9-4fcb-85bf-25cffb1267d4.png",
+    "dest": "public/assets/accessories/titles-v1/pro-bow.webp",
+    "sha256": "0d25f21c742c1ad1fba0a9032462aba562c5fc3c6837946987f5680f94d91898"
+  },
+  {
+    "id": "prince-hat",
+    "prompt": "Single isolated premium fantasy game headwear accessory for Heroes of Ether: a graceful small ivory and gold open coronet, three slender gold points with tiny blue sapphires, no velvet dome. Polished hand-painted 3D fantasy game art, silk and polished metal, warm upper-left highlights, clean readable silhouette, restrained details. Straight FRONT VIEW symmetrical. Hat only, no head, no rear hoop. Centered 85% width. True transparent background, no colored halo outside object. No text, badge, medal or shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-55e08692-15ec-4be8-82a9-20900423ffc8.png",
+    "dest": "public/assets/accessories/titles-v1/prince-hat.webp",
+    "sha256": "cad28c56b1688b9a466050b99c9186b78f992e3ee5aef5fbeefa023a609b06d5"
+  },
+  {
+    "id": "prince-bow",
+    "prompt": "Single isolated premium fantasy game bow tie accessory for Heroes of Ether: an ivory silk bow tie with blue interior folds and a sapphire gold clasp. Polished hand-painted 3D fantasy game art, silk and polished metal, warm upper-left highlights, clean readable silhouette, restrained details. Straight FRONT VIEW symmetrical. Horizontal bow tie only, 2:1 proportions, no person. Centered 85% width. True transparent background, no colored halo outside object. No text, badge, medal or shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-8f660973-8a36-4478-ac4f-b250af7c68cf.png",
+    "dest": "public/assets/accessories/titles-v1/prince-bow.webp",
+    "sha256": "a8f4fd53d2782005dd42db7dc2e678f370f99e466dde654c600d529e1d880e5e"
+  },
+  {
+    "id": "king-hat",
+    "prompt": "Single isolated premium fantasy game headwear accessory for Heroes of Ether: a dignified golden open royal crown, five upright slim points, ruby red inlays and one small blue central jewel. Polished hand-painted 3D fantasy game art, silk and polished metal, warm upper-left highlights, clean readable silhouette, restrained details. Straight FRONT VIEW symmetrical. Crown only, no head, no rear hoop. Centered 85% width. True transparent background, no colored halo outside object. No text, badge, medal or shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ccc5fbf8-8284-41b0-bbdd-bccd71e2f3ef.png",
+    "dest": "public/assets/accessories/titles-v1/king-hat.webp",
+    "sha256": "1267f8af7562bd667fcd0f1cf4e2e848ef287f2726778d1385811e5f19e72b95"
+  },
+  {
+    "id": "king-bow",
+    "prompt": "Single isolated premium fantasy game bow tie accessory for Heroes of Ether: a rich ruby satin bow tie, elegant gold edging and royal blue oval jewel center. Polished hand-painted 3D fantasy game art, silk and polished metal, warm upper-left highlights, clean readable silhouette, restrained details. Straight FRONT VIEW symmetrical. Horizontal bow tie only, 2:1 proportions, no person. Centered 85% width. True transparent background, no colored halo outside object. No text, badge, medal or shadow.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-efa35e42-0cb6-4d44-a22a-3ea28c28b655.png",
+    "dest": "public/assets/accessories/titles-v1/king-bow.webp",
+    "sha256": "a8202c9f46dab2e054c1ae70850be2ad501248173134c2e4b280bd8af11913b6"
+  },
+  {
+    "id": "emperor-hat",
+    "prompt": "One single isolated fantasy game inventory accessory for Heroes of Ether: a sophisticated crimson velvet imperial diadem, ascending golden rays around front edge, one deep red ruby, no religious cross. Canonical polished hand-painted cartoon 3D icon, elegant smooth volumes, readable restrained gold highlights, colorful and warm, clean silhouette, NOT a medal or achievement badge. Front view, symmetrical, no character, no text, no letters, no background, full object with generous transparent margins. Wearable hat with visible neat lower rim, frontal three-quarter slight top view.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-55430184-7a68-4142-9ace-e4f7ae3bf60d.png",
+    "dest": "public/assets/accessories/titles-v1/emperor-hat.webp",
+    "sha256": "7ba8ebf5c865df2edadb16eb5946b243d481f00f0a73af051ac5e9463318146c"
+  },
+  {
+    "id": "emperor-bow",
+    "prompt": "One single isolated fantasy game inventory accessory for Heroes of Ether: a crimson velvet bow tie, thin double gold edging and square onyx clasp. Canonical polished hand-painted cartoon 3D icon, elegant smooth volumes, readable restrained gold highlights, colorful and warm, clean silhouette, NOT a medal or achievement badge. Front view, symmetrical, no character, no text, no letters, no background, full object with generous transparent margins. Wide horizontally proportioned bow tie, width about twice its height.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9e527a89-b324-4fe8-9d2f-89f88ba75685.png",
+    "dest": "public/assets/accessories/titles-v1/emperor-bow.webp",
+    "sha256": "e57a19dfed5da073d5c14bd0ff14a87f36dfcff7a55623fe8ba7273cc7d746be"
+  },
+  {
+    "id": "boss-hat",
+    "prompt": "One single isolated fantasy game inventory accessory for Heroes of Ether: an exquisite champagne gold heroic diadem, modest small golden wing tips either side, central radiant amber star jewel, tiny pale azure inlays, clean restrained silhouette. Canonical polished hand-painted cartoon 3D icon, elegant smooth volumes, readable restrained gold highlights, colorful and warm, clean silhouette, NOT a medal or achievement badge. Front view, symmetrical, no character, no text, no letters, no background, full object with generous transparent margins. Wearable hat with visible neat lower rim, frontal three-quarter slight top view.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-98d5d645-0c9a-4807-8dff-eadfe067751b.png",
+    "dest": "public/assets/accessories/titles-v1/boss-hat.webp",
+    "sha256": "16986d3bba6ce03c0375e6cfddb83cc59ef96f13d300dcd8694c1adf97118969"
+  },
+  {
+    "id": "boss-bow",
+    "prompt": "One single isolated fantasy game inventory accessory for Heroes of Ether: a champagne silk bow tie with pale azure interior folds, refined gold edges and amber star crystal clasp. Canonical polished hand-painted cartoon 3D icon, elegant smooth volumes, readable restrained gold highlights, colorful and warm, clean silhouette, NOT a medal or achievement badge. Front view, symmetrical, no character, no text, no letters, no background, full object with generous transparent margins. Wide horizontally proportioned bow tie, width about twice its height.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-f8522eb9-cff4-452f-a794-5e869c4c78bb.png",
+    "dest": "public/assets/accessories/titles-v1/boss-bow.webp",
+    "sha256": "f2497c9e06a0fb075a7bd6db68fdc3a8b71db06ccd741af2fc5f24d603fbffbf"
+  },
+  {
+    "id": "novice-offer",
+    "prompt": "Single isolated inventory icon for a title celebration offer in original fantasy game Heroes of Ether: cheerful blue and yellow, small explorer canvas backpack with a compass. A beautiful tangible container, polished hand-painted cartoon fantasy style, round soft forms, warm dimensional lighting, concise readable silhouette, three-quarter front view, centered full object, rich but restrained detail. No characters, no coins outside, no texts, no numbers, no medal or achievement frame, transparent background.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-92c3cccf-4769-4088-9b54-d1ffeef1d300.png",
+    "dest": "public/assets/title-offers/v1/novice.webp",
+    "sha256": "1fb89c3a219b530c5cf7c0af4290a587ae4b1014cf3d7a06542b3e867db65f7b"
+  },
+  {
+    "id": "experienced-offer",
+    "prompt": "Single isolated inventory icon for a title celebration offer in original fantasy game Heroes of Ether: azure and silver, leather travel satchel with a compass clasp. A beautiful tangible container, polished hand-painted cartoon fantasy style, round soft forms, warm dimensional lighting, concise readable silhouette, three-quarter front view, centered full object, rich but restrained detail. No characters, no coins outside, no texts, no numbers, no medal or achievement frame, transparent background.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-bb6463d2-0573-43c1-9ef2-c60726be3dc8.png",
+    "dest": "public/assets/title-offers/v1/experienced.webp",
+    "sha256": "d6071ce7f14f8e76a49c017fbc3e588e299f8dc3b87a53de823d98d2dcd1dffb"
+  },
+  {
+    "id": "expert-offer",
+    "prompt": "One isolated reward offer icon for original fantasy game Heroes of Ether: sapphire blue and gold, elegant book-shaped gift case. Tangible closed container in polished hand-painted cartoon fantasy style, softly rounded forms, bright readable silhouette, dimensional warm illumination, three-quarter front view, full object with transparent margin. No character, text, letters, numbers, coins outside, medal border or achievement badge.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-dee7fb9b-f56c-484b-b142-b22e4a4a30a8.png",
+    "dest": "public/assets/title-offers/v1/expert.webp",
+    "sha256": "17b4149a5398bfc53580fde9f7d5fea1b6f57769a9def8f8f23c3f3f3f026be9"
+  },
+  {
+    "id": "sage-offer",
+    "prompt": "One isolated reward offer icon for original fantasy game Heroes of Ether: teal and silver, rounded scroll case with a crescent clasp. Tangible closed container in polished hand-painted cartoon fantasy style, softly rounded forms, bright readable silhouette, dimensional warm illumination, three-quarter front view, full object with transparent margin. No character, text, letters, numbers, coins outside, medal border or achievement badge.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4c97fef8-4197-409d-8810-b1a42ff22898.png",
+    "dest": "public/assets/title-offers/v1/sage.webp",
+    "sha256": "5e1aad28dd42aa337ae85159d66ae96661a940e209cbdee4a5557f86ae8a3b4f"
+  },
+  {
+    "id": "master-offer",
+    "prompt": "One isolated reward offer icon for original fantasy game Heroes of Ether: burgundy and brass, master craftsman tool chest with elegant gold clasps. Tangible closed container in polished hand-painted cartoon fantasy style, softly rounded forms, bright readable silhouette, dimensional warm illumination, three-quarter front view, full object with transparent margin. No character, text, letters, numbers, coins outside, medal border or achievement badge.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-21bf7d6c-449e-4c66-8de0-7dd900eaaad9.png",
+    "dest": "public/assets/title-offers/v1/master.webp",
+    "sha256": "142bff894ca5d6a8d55c82b0bd9e9e31cd047ec8509ed474bacfeed4ab314991"
+  },
+  {
+    "id": "pro-offer",
+    "prompt": "One isolated reward offer icon for original fantasy game Heroes of Ether: emerald and gold, polished treasure casket with an emerald clasp. Tangible closed container in polished hand-painted cartoon fantasy style, softly rounded forms, bright readable silhouette, dimensional warm illumination, three-quarter front view, full object with transparent margin. No character, text, letters, numbers, coins outside, medal border or achievement badge.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4781fb29-061f-4de9-949b-bf5b96c81737.png",
+    "dest": "public/assets/title-offers/v1/pro.webp",
+    "sha256": "1b3b2c5f454e0bd99e9ad2d7cb4f11e210fbc1fe2c1667ad62653211ec96a475"
+  },
+  {
+    "id": "prince-offer",
+    "prompt": "One isolated reward offer icon for original fantasy game Heroes of Ether: ivory and sapphire gold, elegant rounded princely gift chest. Tangible closed container in polished hand-painted cartoon fantasy style, softly rounded forms, bright readable silhouette, dimensional warm illumination, three-quarter front view, full object with transparent margin. No character, text, letters, numbers, coins outside, medal border or achievement badge.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-172f0c4f-0cb3-48c4-998d-a1426eb0830d.png",
+    "dest": "public/assets/title-offers/v1/prince.webp",
+    "sha256": "d423e6aa546a81671a8cbd7b412a3969e7b150510b1a453d26495e2a0b7cc80e"
+  },
+  {
+    "id": "king-offer",
+    "prompt": "One isolated reward offer icon for original fantasy game Heroes of Ether: ruby and royal blue gold, regal treasure chest with ruby clasps. Tangible closed container in polished hand-painted cartoon fantasy style, softly rounded forms, bright readable silhouette, dimensional warm illumination, three-quarter front view, full object with transparent margin. No character, text, letters, numbers, coins outside, medal border or achievement badge.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-06f8ed6b-0368-4e06-a795-69bcee5fb8dc.png",
+    "dest": "public/assets/title-offers/v1/king.webp",
+    "sha256": "6fb05f7f973ea3d8609d863e083a65ae0dcac5fb4a6890b149809c52f59d89ab"
+  },
+  {
+    "id": "emperor-offer",
+    "prompt": "One isolated reward offer icon for original fantasy game Heroes of Ether: crimson velvet and gold, imperial jewel case with black onyx lock. Tangible closed container in polished hand-painted cartoon fantasy style, softly rounded forms, bright readable silhouette, dimensional warm illumination, three-quarter front view, full object with transparent margin. No character, text, letters, numbers, coins outside, medal border or achievement badge.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-48aee847-df78-476b-aabc-2b54a6e7c2bb.png",
+    "dest": "public/assets/title-offers/v1/emperor.webp",
+    "sha256": "a6f49821330adcbfe1ed31288e1d1c77fc14d9034bdff4988c1a9cc45c5b59be"
+  },
+  {
+    "id": "boss-offer",
+    "prompt": "One isolated reward offer icon for original fantasy game Heroes of Ether: champagne gold and azure, heroic crystal coffer with radiant amber star clasp. Tangible closed container in polished hand-painted cartoon fantasy style, softly rounded forms, bright readable silhouette, dimensional warm illumination, three-quarter front view, full object with transparent margin. No character, text, letters, numbers, coins outside, medal border or achievement badge.",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c0b43ace-4910-495c-b91b-00f75366b93b.png",
+    "dest": "public/assets/title-offers/v1/boss.webp",
+    "sha256": "4cd921197c535821d6d8b526a6bc30cb31d6fec0a18e358a2ab0f4528f44c9f9"
+  },
+  {
+    "id": "pets-paw",
+    "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-53cea403-a4ce-4e56-973a-99df3b8c0b6c.png",
+    "dest": "public/assets/pets/paw-v2.webp",
+    "prompt": "One polished dimensional fantasy game UI icon for the Pets button in Heroes of Ether. A friendly golden paw print, large rounded heart-like central paw pad and four plump rounded toe beans, honey amber gold with cream highlights, gently bevelled thick surfaces, deep warm brown contour and subtle volumetric shadows, luxurious hand-painted casual fantasy finish. Coherent with the reference crown's gold material and rounded treatment. No circle, no achievement medal, no ribbon, no text, no scene, no paws of real animal, no sparkles scattered outside. Clear readable silhouette at 32 pixels. Isolated on transparent background. Symmetrical near frontal 3/4 dimensional relief, single icon centered with transparent padding.",
+    "sha256": "b547bf7f6adeb5065165b5ef273e7aae4f6e4170cdb12a842507a62786faaf63"
+  }
+]

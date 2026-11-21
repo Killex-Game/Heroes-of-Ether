@@ -1,0 +1,113 @@
+/* Единая насыщенная палитра корон и подписей VIP/Premium. */
+/* One palette for account labels and crowns across all windows. */
+:root {
+  --vip-ink: #bd5900;
+  --vip-glow: #ffc51f99;
+  --premium-ink: #a20cce;
+  --premium-glow: #dc70ff88;
+}
+#lobby #accountMarks {
+  min-width: 136px;
+}
+.profile-account-period {
+  display: block;
+  white-space: nowrap;
+  font-size: 9px;
+  color: #745d6a;
+  margin-top: 1px;
+  font-variant-numeric: tabular-nums;
+}
+#lobby #accountMarks .profile-account[data-active="false"] img {
+  filter: saturate(0.65) brightness(0.95);
+  opacity: 0.72;
+}
+#lobby #accountMarks .profile-account[data-active="false"] strong {
+  color: #86664b;
+  text-shadow: none;
+  font-weight: 700;
+}
+#lobby #accountMarks .profile-account.premium[data-active="false"] strong {
+  color: #84678d;
+}
+img[src*="accounts/vip.png"],
+#achievementsDialog img[src*="accounts/vip.png"] {
+  filter: saturate(1.08) brightness(1.02) contrast(1.03) drop-shadow(0 1px 1px #9b480055)
+    drop-shadow(0 0 3px #ffc92c99);
+  opacity: 1;
+}
+img[src*="accounts/premium.png"],
+#achievementsDialog img[src*="accounts/premium.png"] {
+  filter: saturate(1.7) brightness(1.13) contrast(1.1) drop-shadow(0 1px 1px #68009055)
+    drop-shadow(0 0 3px #d750ff99);
+  opacity: 1;
+}
+.account-label-vip,
+.profile-account.vip strong,
+.account-plan.vip h3,
+[data-achievement="vip"] .achievement-name,
+[data-achievement-detail="vip"] .achievement-detail-heading h3,
+.chest-reward-item:has(img[src*="accounts/vip.png"]) :is(strong, small),
+.promo-products .promo-slide[data-tier="vip"] h2 {
+  color: var(--vip-ink);
+  font-weight: 800;
+  text-shadow:
+    0 1px 0 #fff9da,
+    0 0 5px var(--vip-glow);
+}
+.account-label-premium,
+.profile-account.premium strong,
+.account-plan.premium h3,
+[data-achievement="premium"] .achievement-name,
+[data-achievement-detail="premium"] .achievement-detail-heading h3,
+.chest-reward-item:has(img[src*="accounts/premium.png"]) :is(strong, small),
+.promo-products .promo-slide[data-tier="premium"] h2 {
+  color: var(--premium-ink);
+  font-weight: 800;
+  text-shadow:
+    0 1px 0 #fff2ff,
+    0 0 5px var(--premium-glow);
+}
+.profile-account.vip time {
+  color: #965407;
+}
+.profile-account.premium time {
+  color: #7f369c;
+}
+body.account-vip #previewName {
+  color: #b45a00;
+  text-shadow:
+    0 1px 0 #fff8d3,
+    0 0 7px #ffc21f99;
+}
+body.account-premium #previewName {
+  color: #a20cce;
+  text-shadow:
+    0 1px 0 #ffedff,
+    0 0 7px #d658ff88;
+}
+.leader-row:not(.leader-self) .name-vip {
+  color: #ad5100;
+  text-shadow:
+    0 1px 0 #fff6cc,
+    0 0 5px #ffd12e88;
+}
+.leader-row:not(.leader-self) .name-premium {
+  color: #9a09ca;
+  text-shadow:
+    0 1px 0 #fff1ff,
+    0 0 5px #d14fff66;
+}
+.leader-self .name-vip {
+  color: #874300;
+  text-shadow: none;
+}
+.leader-self .name-premium {
+  color: #762694;
+  text-shadow: none;
+}
+
+/* Active status is legible at the approved small crown size. */
+#lobby #accountMarks .profile-account.vip[data-active="true"] img {
+  filter: saturate(1.2) brightness(1.08) drop-shadow(0 0 2px #fff2a8) drop-shadow(0 0 5px #ffb800) drop-shadow(0 0 8px #ffa00088);
+  opacity: 1;
+}

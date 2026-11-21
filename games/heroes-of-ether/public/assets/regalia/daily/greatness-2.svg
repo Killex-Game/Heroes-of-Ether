@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 132"><title>Сияние величия - 2 место</title>
+  <defs>
+    <linearGradient id="metal" x1=".15" y1="0" x2=".8" y2="1"><stop stop-color="#f8ffff"/><stop offset=".25" stop-color="#daebf3"/><stop offset=".48" stop-color="#8ea8bd"/><stop offset=".64" stop-color="#f8ffff"/><stop offset=".8" stop-color="#daebf3"/><stop offset="1" stop-color="#8ea8bd"/></linearGradient>
+    <linearGradient id="bevel" x2=".3" y2="1"><stop stop-color="#8ea8bd"/><stop offset=".5" stop-color="#455e7a"/><stop offset="1" stop-color="#daebf3"/></linearGradient>
+    <radialGradient id="enamel" cx=".35" cy=".18" r=".9"><stop stop-color="#c79bea"/><stop offset=".45" stop-color="#8150b3"/><stop offset="1" stop-color="#402461"/></radialGradient>
+    <linearGradient id="gloss" x2=".3" y2="1"><stop stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  </defs>
+  <path d="m40 96-7 31 16-7 12 7 4-29m23-2 7 31-16-7-12 7-4-29" fill="#402461" stroke="#455e7a" stroke-width="1.5"/>
+  <path d="m42 104-4 16 10-5m38-11 4 16-10-5" fill="none" stroke="#8ea8bd" stroke-width="2"/>
+  <path d="m64 6 34 14 16 35-10 40-40 24-40-24-10-40 16-35Z" fill="url(#metal)" stroke="#455e7a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="m64 11 31 13 14 32-9 36-36 22-36-22-9-36 14-32Z" fill="url(#bevel)" stroke="#f8ffff" stroke-width="1.3" stroke-linejoin="round"/>
+  <path d="m64 16 27 11 13 30-9 32-31 19-31-19-9-32 13-30Z" fill="url(#enamel)" stroke="#455e7a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="m64 19 25 10 11 25Q63 42 29 59l11-29Z" fill="url(#gloss)"/>
+  <path d="M37 31 64 20l25 11M33 84l7 9 24 14 24-14 7-9" fill="none" stroke="#f8ffff" stroke-width="1" opacity=".65" stroke-linecap="round"/>
+  <path d="m64 23 4 8 9 1-7 7 2 10-8-5-8 5 2-10-7-7 9-1Z" fill="url(#metal)" stroke="#f8ffff" stroke-width="1"/><path d="m64 27 1 9-5 3Z" fill="#f8ffff" opacity=".8"/>
+  <g fill="url(#metal)" stroke="#455e7a" stroke-width=".7" stroke-linejoin="round"><path d="M43 108Q13 96 15 57" fill="none" stroke="#8ea8bd" stroke-width="2.5"/>
+    <path d="M17 77Q4 73 8 60q11 3 9 17Zm5 14Q8 90 8 77q12 0 14 14Zm9 11Q16 105 13 92q13-3 18 10Zm12 7Q31 116 24 105q11-7 19 4Z"/>
+    <path d="M17 78q-3-14 9-20 4 13-9 20Zm5 13q-3-13 7-20 6 12-7 20Zm9 11q-5-12 4-20 8 10-4 20Z"/><g transform="translate(128 0) scale(-1 1)"><path d="M43 108Q13 96 15 57" fill="none" stroke="#8ea8bd" stroke-width="2.5"/>
+    <path d="M17 77Q4 73 8 60q11 3 9 17Zm5 14Q8 90 8 77q12 0 14 14Zm9 11Q16 105 13 92q13-3 18 10Zm12 7Q31 116 24 105q11-7 19 4Z"/>
+    <path d="M17 78q-3-14 9-20 4 13-9 20Zm5 13q-3-13 7-20 6 12-7 20Zm9 11q-5-12 4-20 8 10-4 20Z"/></g></g>
+  <text x="64" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="49" font-weight="bold" fill="#402461" stroke="#402461" stroke-width="4">2</text>
+  <text x="64" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="49" font-weight="bold" fill="url(#metal)" stroke="#455e7a" stroke-width=".7">2</text>
+  <path d="m60 109 4-3 4 3-4 4Z" fill="#f8ffff" stroke="#8ea8bd"/>
+  <path d="m31 23 1 4 4 1-4 1-1 4-1-4-4-1 4-1Z" fill="#f8ffff"/>
+  </svg>

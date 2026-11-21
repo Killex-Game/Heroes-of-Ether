@@ -1,0 +1,19 @@
+{
+  "createdAt": "2026-10-26",
+  "tool": "Built-in imagegen",
+  "source": "source.png",
+  "asset": "public/assets/roulette/ticket-v2.webp",
+  "export": "256 x 256 WebP, quality 94, alpha quality 100. Original generated transparency preserved; only downscaled and encoded.",
+  "references": [
+    "User-supplied screenshot codex-clipboard-d8c72e07-590c-4c99-8d63-b6a47ad0c344.png: existing navy-and-gold ticket",
+    "public/assets/boosters/png/lock.png: project illustration style reference only"
+  ],
+  "provenance": "Created with the built-in OpenAI image generator for this game. No external stock assets, fonts or downloaded third-party artwork were added. Existing project reference provenance remains subject to the project's separate pre-release asset audit. No new third-party attribution requirement was introduced.",
+  "prompt": "Create a polished replacement game inventory icon, SINGLE roulette admission ticket, isolated on genuinely transparent background. Image 1 is the existing ticket edit target: preserve its identity and colors (deep midnight navy-blue enamel rectangular ticket, golden rim and a single large five-point golden star at center, slight diagonal tilt upper right). Image 2 is STYLE REFERENCE ONLY: match the game's beautifully painted dimensional fantasy objects, rich polished gold bevels, warm amber metal shadows, cream-gold edge highlights and tactile enamel, clean bold silhouette readable at 24-64 pixels. Do NOT copy the padlock shape, purple color, keyhole or shackle. Redesign the ticket alone with sculpted double gold rim, neat rounded inward semicircular notches on both short edges, dark navy blue enamel face, a prominent dimensional faceted FIVE-point gold star. Tasteful subtle engraved border details, coherent top-left lighting, slight perspective showing metal thickness. One ticket only, no extra objects, no text, no letters, no numbers, no reward card UI, no badge, no backdrop, no enclosing square frame, no loose sparkles, no watermark. Ticket should fill about 88% of canvas width with generous safe padding, full silhouette visible. Gold and deep dark blue palette ONLY, no purple, no colored gemstones. Square transparent icon canvas, high quality hand-painted mobile fantasy game illustration, crisp readable at tiny sizes.",
+  "relatedPaletteChange": {
+    "common": { "accent": "#AB7950", "slotGradient": ["#F7DFC6", "#E4B182", "#C88A52"] },
+    "advanced": { "accent": "#8D65D0", "slotGradient": ["#EEDCFA", "#CBB0EF", "#AD82DA"] },
+    "rare": { "accent": "#DEA939", "slotGradient": ["#FFF1B8", "#F5D168", "#E4AD32"] },
+    "scope": "Promotion rarity dots match the established booster catalog colors. Booster slot inner panels are more saturated; outer frames, card layout, icons and counts are preserved."
+  }
+}

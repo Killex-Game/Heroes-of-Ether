@@ -1,0 +1,30 @@
+{
+  "enabled": true,
+  "profileIds": ["c39fe041-62a0-4047-87d1-2be4e8ee6562"],
+  "accessoryIds": [
+    "dawn_circlet",
+    "captain_tricorn",
+    "star_pilot",
+    "forest_hood",
+    "polar_hat",
+    "alchemist_hat",
+    "baker_hat",
+    "magician_hat",
+    "ash_crown",
+    "tracker_hat",
+    "may_wreath",
+    "royal_page",
+    "solar_ribbon",
+    "sea_bow",
+    "orbital_bow",
+    "forest_moth",
+    "snow_pattern",
+    "amber_drop",
+    "cherry_sweet",
+    "velvet_trick",
+    "forge_spark",
+    "wanderer_knot",
+    "silk_peony",
+    "royal_swallow"
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-06",
+  "assets": [
+    {
+      "id": "premium-1",
+      "name": "Звёздная чародейка",
+      "source": "premium-1.png",
+      "sourceSha256": "96fa2693b841a77dc2860f9411bc4ee510a8dbb7282f783946865da8c5b34a59",
+      "generatedSource": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-fb26f3ae-d18f-4683-8b5f-7717092a02a0.png",
+      "width": 1254,
+      "height": 1254,
+      "outputs": [
+        {
+          "size": 64,
+          "path": "assets/skins/premium-v2/64/premium-1.webp",
+          "bytes": 3802,
+          "sha256": "c1b0bcbacfd14c3c1f23aa2decb44b808d2ea6a03c257d0d69bbb9f95dc8b0f8"
+        },
+        {
+          "size": 128,
+          "path": "assets/skins/premium-v2/128/premium-1.webp",
+          "bytes": 10226,
+          "sha256": "4f90d908875ba5984b09d5b2706f87e09905c8037ae50834940ce827f3f38f5a"
+        },
+        {
+          "size": 256,
+          "path": "assets/skins/premium-v2/256/premium-1.webp",
+          "bytes": 28676,
+          "sha256": "211f0762e889a67d71bfa5d43d6463545c3e81d680d0b7782f04ba23fb4f545c"
+        },
+        {
+          "size": 512,
+          "path": "assets/skins/premium-v2/512/premium-1.webp",
+          "bytes": 86478,
+          "sha256": "43446e4fe73f02d91181ba4d484c15152f4d8dd1c395031f46b8bd6df72c717b"
+        },
+        {
+          "size": 1024,
+          "path": "assets/skins/premium-v2/1024/premium-1.webp",
+          "bytes": 281812,
+          "sha256": "bd3ed325ca1e1f4c808eb1de7f2959a421596c070e9a08aa6bec23ab574d5d0b"
+        }
+      ]
+    },
+    {
+      "id": "premium-2",
+      "name": "Лунный рыцарь",
+      "source": "premium-2.png",
+      "sourceSha256": "07cd6e0b420d901fc251eb4c7216dad60ddcd84417ba367941b6c2f43df4e778",
+      "generatedSource": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-75c6e740-208c-4f00-bc19-ea1f2ff404b0.png",
+      "width": 1254,
+      "height": 1254,
+      "outputs": [
+        {
+          "size": 64,
+          "path": "assets/skins/premium-v2/64/premium-2.webp",
+          "bytes": 3750,
+          "sha256": "d179d87eb02a7efb7e0eedab28634d12864b7d4f65d57eb2c8242c68e867896a"
+        },
+        {
+          "size": 128,
+          "path": "assets/skins/premium-v2/128/premium-2.webp",
+          "bytes": 10778,
+          "sha256": "f422fcdfb3e7475c6a78c8f2def90d761da43bd36701cbaa0fa94566e6074bdf"
+        },
+        {
+          "size": 256,
+          "path": "assets/skins/premium-v2/256/premium-2.webp",
+          "bytes": 31282,
+          "sha256": "3a909ed9a1ea391cc33e4aee252e084d4ef88c5a0b744d09088ee66c5121915d"
+        },
+        {
+          "size": 512,
+          "path": "assets/skins/premium-v2/512/premium-2.webp",
+          "bytes": 98284,
+          "sha256": "46d448a5efc172d87ac643a32f6311b49cf4f7a895b4bfbfeacf9bc556d09e74"
+        },
+        {
+          "size": 1024,
+          "path": "assets/skins/premium-v2/1024/premium-2.webp",
+          "bytes": 322232,
+          "sha256": "174a0b57a3dd8f33ca1cd8afa2457d66ce796480f0f3d512404dfd84fc106621"
+        }
+      ]
+    },
+    {
+      "id": "premium-3",
+      "name": "Сумеречная пантера",
+      "source": "premium-3.png",
+      "sourceSha256": "e9608a7ab1a3c51e8fd4a18aa2386bfa7dc627a3091e752e2d556b2862c1e045",
+      "generatedSource": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-99b851e1-1b7f-49c1-9384-2a4a7be18b76.png",
+      "width": 1254,
+      "height": 1254,
+      "outputs": [
+        {
+          "size": 64,
+          "path": "assets/skins/premium-v2/64/premium-3.webp",
+          "bytes": 3646,
+          "sha256": "83f68b5c9b168650f2106353115125d63a20237aaddaf5cff3eb18360bc2f540"
+        },
+        {
+          "size": 128,
+          "path": "assets/skins/premium-v2/128/premium-3.webp",
+          "bytes": 9552,
+          "sha256": "d8f7fe0fa0b80676ed6c97890096b8062fb493fe7e28cdaf03a8eededb5b90c1"
+        },
+        {
+          "size": 256,
+          "path": "assets/skins/premium-v2/256/premium-3.webp",
+          "bytes": 25950,
+          "sha256": "2f932e96ec3d6b3693bf3e7f940116c57516bda386f3fad0ba1cfc5f6018e4a4"
+        },
+        {
+          "size": 512,
+          "path": "assets/skins/premium-v2/512/premium-3.webp",
+          "bytes": 80224,
+          "sha256": "d21fb65fd08623a459bdc1d85f3933abae4577c73b496ac5153d8a88bd3eeda6"
+        },
+        {
+          "size": 1024,
+          "path": "assets/skins/premium-v2/1024/premium-3.webp",
+          "bytes": 260274,
+          "sha256": "6cc225e2f7d99b350a11e4ce7103dd3352bf4d94ee9cabaa84bb831c34916915"
+        }
+      ]
+    },
+    {
+      "id": "premium-4",
+      "name": "Астральный ворон",
+      "source": "premium-4.png",
+      "sourceSha256": "5bfec603d962704f3b9b77a378f08b602a994c690b2a8cea3790808eef758f99",
+      "generatedSource": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c1dac8f3-d051-4d41-926b-f7c9d05f8c2c.png",
+      "width": 1254,
+      "height": 1254,
+      "outputs": [
+        {
+          "size": 64,
+          "path": "assets/skins/premium-v2/64/premium-4.webp",
+          "bytes": 3510,
+          "sha256": "1eb80e0854440b725f4292b3c8ad0b25251e2533c616d665eebfac22ab032679"
+        },
+        {
+          "size": 128,
+          "path": "assets/skins/premium-v2/128/premium-4.webp",
+          "bytes": 9534,
+          "sha256": "05a335de94911bafdc78d4a380ec152c65c75062cf24f2a4942cc81e3e89148b"
+        },
+        {
+          "size": 256,
+          "path": "assets/skins/premium-v2/256/premium-4.webp",
+          "bytes": 26016,
+          "sha256": "d9b5246b4355df3c35807847c38b48f4fac8e274678f4b35bde2a986c17c3fb1"
+        },
+        {
+          "size": 512,
+          "path": "assets/skins/premium-v2/512/premium-4.webp",
+          "bytes": 77938,
+          "sha256": "5ed049b67d96bd2fd1be1842b25c336c4e076f5bf109631e2fbcaae192492a1e"
+        },
+        {
+          "size": 1024,
+          "path": "assets/skins/premium-v2/1024/premium-4.webp",
+          "bytes": 246800,
+          "sha256": "f7bfa945d8f3604b380b6970d419841cecc5c397e7724378f6ad209e251312d5"
+        }
+      ]
+    },
+    {
+      "id": "premium-5",
+      "name": "Аметистовый дракон",
+      "source": "premium-5.png",
+      "sourceSha256": "aecfda4176b4de24568b8cc8353b8a9931a402f5df58a1f5c4003a9ee02cea5d",
+      "generatedSource": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-afd545d7-716c-4438-abc9-c7778f7426c4.png",
+      "width": 1254,
+      "height": 1254,
+      "outputs": [
+        {
+          "size": 64,
+          "path": "assets/skins/premium-v2/64/premium-5.webp",
+          "bytes": 3772,
+          "sha256": "c9333c321b9e93dda93726825199d38b47219f60063ff2896de9664557f1a4ee"
+        },
+        {
+          "size": 128,
+          "path": "assets/skins/premium-v2/128/premium-5.webp",
+          "bytes": 10116,
+          "sha256": "4b407c13e39433e5c59244f258c0a27d5e373ae237553e782734962c0f82cca3"
+        },
+        {
+          "size": 256,
+          "path": "assets/skins/premium-v2/256/premium-5.webp",
+          "bytes": 27962,
+          "sha256": "62c08e00ada9f7865c09dc7fee4c4da0e80d445d69369a25d8c14dcfb0252a70"
+        },
+        {
+          "size": 512,
+          "path": "assets/skins/premium-v2/512/premium-5.webp",
+          "bytes": 85288,
+          "sha256": "a63d6bb76ea03d20b8513773844b6820a52bc9a4e7f3eb22b3d22dba9684a42c"
+        },
+        {
+          "size": 1024,
+          "path": "assets/skins/premium-v2/1024/premium-5.webp",
+          "bytes": 270298,
+          "sha256": "a1bd938d79d2ff82b2c92bfe89f5323cefe46c6a5efc18b22ad1e6c9a3523bf0"
+        }
+      ]
+    }
+  ]
+}

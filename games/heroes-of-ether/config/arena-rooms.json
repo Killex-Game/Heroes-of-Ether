@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "arenaCapacity": 35,
+  "minimumArenas": 3,
+  "expansionBatch": 2,
+  "spareSeatsBeforeExpansion": 25,
+  "maximumArenas": 13,
+  "maximumArenaPlayers": 400,
+  "lobbyReserve": 30,
+  "reservationTtlMs": 15000,
+  "workerHeartbeatTtlMs": 10000,
+  "lobbyPresenceTtlMs": 90000
+}

@@ -1,0 +1,90 @@
+{
+  "created": "2026-11-02",
+  "source": "OpenAI image_gen, generated for this game; no downloaded third-party artwork",
+  "images": [
+    {
+      "id": "teddy",
+      "master": "teddy.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A lovable seated honey-brown plush teddy bear with a red satin bow, stitched soft paws, friendly round face. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "1cd78b5ae5d02d13f46ad56b83c09f8d857c58464d0b918d9b421e1bdc6e2367"
+    },
+    {
+      "id": "rose",
+      "master": "rose.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A single exquisite red rose with a long curved green stem and two leaves, a small ivory silk ribbon, lush layered petals. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "7df4a82b4cf5dbef9d3c96f08482c752a36fdf5b7e39c958296be4f966ca7ffe"
+    },
+    {
+      "id": "chocolates",
+      "master": "chocolates.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: An open burgundy heart-shaped chocolate box with a tasteful gold rim and ivory ribbon, distinct assorted chocolates visible. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "b2f765867723d8baad4f2ffcc7d2ff159af3f6f5d94fc00398e1a6f6a9887244"
+    },
+    {
+      "id": "ring",
+      "master": "ring.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A graceful polished gold ring with a single modest pale blue gemstone, three-quarter view, elegant and readable. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "684ac361126093133042793d8137887d999ef3f3bc8609e8b8f4a13688936565"
+    },
+    {
+      "id": "ether_bottle",
+      "master": "ether_bottle.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A rounded clear glass bottle with a cork and modest golden collar, filled with several ROUND smooth golden liquid ether beads. Beads are round golden drops, not pointed or faceted; no dangling drop pendant. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "7b861fe339e65277f7b6624e5d138abeec160cd5f79c3e11e2a3605775c68b73"
+    },
+    {
+      "id": "car",
+      "master": "car.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A charming compact red vintage convertible car, three-quarter front view, cream seats, polished chrome trim, no driver and no logos. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "6b6348a169f21d530a482a8026a2e9b3f9f757e47678e883423746008d718583"
+    },
+    {
+      "id": "clover",
+      "master": "clover.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: One lush emerald green four-leaf clover charm, gently curved stem, satin leaf highlights, small gold edge near base, immediately recognizable four leaves. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "55db6d742df9ec9efa26eacee709efe439fb39d5f16dcb4202f63666328df920"
+    },
+    {
+      "id": "swift_boot",
+      "master": "swift_boot.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: One elegant warm brown leather winged boot with a brass buckle and small ivory wings at the ankle, suggests swiftness. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "b276469164c774a6ec419269ec71c3decdf7a5574db30e20cb2db81c7722c179"
+    },
+    {
+      "id": "booster_crystal",
+      "master": "booster_crystal.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A single luminous turquoise crystal set in a compact gold holder, clean faceted blue-green mineral, bright energy inside, no background glow. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "82856204da01b989d5bf84b95fb6ce7d29bf51e9f92277f418f3db9494fe884d"
+    },
+    {
+      "id": "ward_shield",
+      "master": "ward_shield.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A sturdy royal blue enamel shield with bright polished gold border and small central silver star, friendly protective silhouette, three-quarter frontal view. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "a53446158ea91539af102d4f2513471410a8aedc02b764e094ef807786cfe70c"
+    },
+    {
+      "id": "skull",
+      "master": "skull.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A stylized ivory skull with dark eye sockets and an amber small tooth, expressive fantasy curse object, no gore, readable compact silhouette. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "ea6d76bc4f0ede04ba55224ba5783845685492841230dcd5e45dc1ff7153f95a"
+    },
+    {
+      "id": "shackles",
+      "master": "shackles.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A pair of dark iron ankle shackles linked by three clear chain links, worn steel and bronze rivets, distinct closed cuffs, simple coherent geometry. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "b9300eb650ed9b81da4b864753486fccb19c9b856b2aefb8761a3d9cbf2314e4"
+    },
+    {
+      "id": "venom",
+      "master": "venom.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A squat dark green glass poison vial filled with vivid lime liquid, cork stopper, small ivory skull emblem on its front, curved silver fitting, no vapor. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "ba724e33a1e6cfab1bb32663b06fcdc0847c323a4f42bdb90da40da031390d4a"
+    },
+    {
+      "id": "black_mark",
+      "master": "black_mark.png",
+      "prompt": "Use case: stylized-concept. Asset: one production game gift inventory icon, square composition. Subject: A round black wax seal curse token with a sculpted dark crimson eye emblem, scalloped edge, a short dark red ribbon, ominous but readable. Style: polished hand-painted dimensional fantasy casual-game illustration, matching Prizm game items, rich distinct colors, clear materials, soft shaded volume, crisp clean silhouette, restrained golden highlights where appropriate. Centered entire object with 12% safe padding. Transparent background with real alpha, no floor, no cast shadow outside object, no border/card, no labels, no lettering, no extra floating particles, no watermark. Detailed and beautiful yet readable at 80 pixels. Do not add crystals unless the described item specifically needs them.",
+      "sha256": "efd7fd971fded0f98effd95c82db791d7cc399217904bf9a75ecbcde3b8a2afe"
+    }
+  ]
+}

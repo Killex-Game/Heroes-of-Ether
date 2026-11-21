@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="speed-title speed-desc">
+<title id="speed-title">Ускорение</title>
+<desc id="speed-desc">Улучшенный бустер «Ускорение». Ускоряет игрока на 50% на 15 секунд. Фиолетово-золотой сапожок с белым крылом и короткими штрихами скорости.</desc>
+<defs><linearGradient id="speed-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="speed-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="speed-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="speed-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="speed-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="speed-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="speed-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="speed-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="speed-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="speed-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="speed-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="speed-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M41 92H73 M33 117H65 M42 143H62" fill="none" stroke="#996ECB" stroke-width="9"/>
+<path d="M96 77L145 84L144 152C158 161 167 166 193 164C208 163 218 174 218 188C218 201 205 209 185 209H99C80 209 74 196 78 182L94 130Z" fill="url(#speed-plum)"/>
+<path d="M79 186C112 190 173 191 217 183V193C216 206 202 216 184 216H99C82 216 73 204 79 186Z" fill="url(#speed-gold)"/>
+<path d="M90 75L96 59L154 70L151 87Q120 92 90 75Z" fill="url(#speed-gold)"/>
+<path d="M96 68L146 78" fill="none" stroke="#FFF3AC" stroke-width="5"/>
+<path d="M95 178L108 132L110 100" fill="none" stroke="#D4B1F6" stroke-width="8"/>
+<path d="M94 161L146 166L153 180L88 175Z" fill="url(#speed-gold)" stroke-width="5"/>
+<path d="M113 161L130 163L129 177L111 175Z" fill="url(#speed-steel)" stroke-width="4"/>
+<path d="M146 143C133 115 139 88 163 74C174 68 191 58 205 40C211 54 207 74 196 91C205 84 211 78 221 68C225 88 214 109 195 120C203 118 210 116 216 112C214 133 195 143 171 144Z" fill="url(#speed-cream)"/>
+<path d="M146 143Q172 113 194 89" fill="none" stroke="#C1AEBD" stroke-width="5"/>
+<path d="M167 121Q184 124 195 120 M179 106Q180 88 190 74" fill="none" stroke="#C1AEBD" stroke-width="5"/>
+<path d="M157 106Q160 91 177 81" fill="none" stroke="#FFFFFF" stroke-width="7"/>
+<path d="M169 201H191" fill="none" stroke="#FFF3A3" stroke-width="5"/>
+</g>
+</svg>

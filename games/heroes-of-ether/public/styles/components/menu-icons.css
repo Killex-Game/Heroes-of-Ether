@@ -1,0 +1,106 @@
+/* Размеры иконок меню и валют. */
+/* Готовые прозрачные изображения дизайнера, подписи остаются текстом. */
+.side-nav .menu-tile {
+  justify-content: flex-start;
+  gap: 8px;
+  padding-inline: 12px;
+}
+/* Fit every current menu item in an equal row; center the label and artwork
+   inside the row instead of inheriting the generic button's grid tracks. */
+#lobby .side-nav .menu-tile {
+  display: flex;
+  align-items: center;
+  padding-block: 0;
+}
+.menu-icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex: 0 0 36px;
+}
+/* Artwork is normalized at import; themes never inherit a paw-only enlargement. */
+.side-nav .menu-tile strong {
+  font-size: 18px;
+  overflow-wrap: normal;
+}
+.sf-currency-coins,
+.sf-currency-crystals,
+.sf-currency-bucks {
+  background-image: none;
+}
+.sf-currency::before {
+  content: "";
+  position: absolute;
+  inset: 12% 0 12% 10%;
+  border: 3px double #c58b37;
+  border-radius: 999px;
+  background: linear-gradient(
+    var(--ui-c-fffdf1, #fffdf1),
+    var(--ui-c-fff3d2, #fff3d2) 60%,
+    var(--ui-c-edd39c, #edd39c)
+  );
+  box-shadow:
+    inset 0 0 0 2px #fff7de,
+    0 2px 1px #72532b55;
+}
+.currency-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30%;
+  height: 100%;
+  object-fit: contain;
+}
+.sf-currency-value {
+  right: 8%;
+}
+img.donation-currency-icon {
+  display: block;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+@media (max-width: 1060px) and (min-width: 761px) {
+  .menu-icon {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+  .side-nav .menu-tile {
+    gap: 5px;
+    padding-inline: 8px;
+  }
+  .side-nav .menu-tile strong {
+    font-size: 15px;
+  }
+}
+@media (max-width: 760px) {
+  .side-nav .menu-tile {
+    padding-inline: 8px;
+    gap: 6px;
+  }
+  .menu-icon {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+  .side-nav .menu-tile strong {
+    font-size: 16px;
+  }
+}
+@media (max-width: 380px) {
+  .menu-icon {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+  }
+  .side-nav .menu-tile {
+    gap: 4px;
+    padding-inline: 6px;
+  }
+  .side-nav .menu-tile strong {
+    font-size: 14px;
+  }
+}

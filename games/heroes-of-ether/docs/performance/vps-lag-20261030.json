@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-30",
+  "scope": "Original game, Beget test VPS",
+  "hardware": { "vcpus": 2, "ramGb": 4, "diskGb": 30 },
+  "changesDeployed": [
+    "Indexed accessory lookup and hoisted food bonuses out of nested collision loops",
+    "Bounded four-snapshot ACK pipeline instead of one snapshot per round trip",
+    "Unchanged mass samples and passive lifetime/quest samples coalesced per second; combat and pickups remain immediate",
+    "Shared room snapshot serialization with independent per-client food deltas",
+    "Adaptive client interpolation reserve 120-240 ms without extrapolation or coordinate rewind"
+  ],
+  "loadCheck": {
+    "clients": 10,
+    "durationSeconds": 60,
+    "movementUpdatesPerSecondBeforeApprox": [7, 8],
+    "movementUpdatesPerSecondAfter": [17.82, 18.06],
+    "targetUpdatesPerSecond": 20,
+    "p95ArrivalGapMsAfterApprox": [134, 136],
+    "meanStatePayloadMbpsPerClient": 6.17597,
+    "profilesAvailableAfter": 10,
+    "lifeResultsReceived": 10,
+    "limitations": "Synthetic moving clients and bots, short test, not 500 players and not a browser rendering benchmark"
+  },
+  "singleClientAfter": {
+    "updatesPerSecond": 19.15,
+    "p95ArrivalGapMs": 80.24,
+    "maxArrivalGapMs": 169.94
+  },
+  "validation": {
+    "unitAndIntegrationTests": 976,
+    "passed": 975,
+    "failed": 1,
+    "knownPreexistingFailure": "tests/integration/accessories.test.js:165 expects hat width <= 90 px; unchanged renderer violates this with both original and optimized catalog",
+    "networkAndPersistenceTests": "Passed, including slow ACK client, invalid ACK flood, disconnect, disk-write retry and life results",
+    "motionReplay": "0 frozen frames of 1694 on final captured arrival trace; deterministic replay only",
+    "formatting": "Passed"
+  },
+  "capacity500": {
+    "status": "Planning estimate only; no live capacity limits or tariff changed",
+    "currentArenaAdmissionLimit": 400,
+    "currentLobbyReserve": 30,
+    "currentArenaCapacity": 35,
+    "minimumRoomsFor500": 15,
+    "linearCurrentStateTrafficExtrapolationGbps": 3.088,
+    "trafficCaveat": "Actual load varies by room occupancy, number of split parts and effects; excludes transport overhead, not a measured 500-client result",
+    "candidateHardwareAfterArchitectureWork": {
+      "fastDedicatedVcpuRange": [8, 16],
+      "ramGbRange": [16, 32],
+      "nvmeGb": 100,
+      "networkGbps": 1
+    },
+    "requiredBeforeRaisingLimit": [
+      "Per-room simulation workers with authoritative routing and shared durable progression",
+      "Transactional database instead of concurrent whole-file JSON rewrites",
+      "Player metadata/dynamic state deltas and viewport interest management",
+      "Keep reliable economy/life-result messages separate from replaceable position snapshots",
+      "Staged load tests 50, 100, 250, 500 including split-part extremes, projectiles, reconnects and saving"
+    ],
+    "targetStatePayloadKBpsPerClient": [30, 60],
+    "targetAggregateStateTrafficMbpsAt500": [120, 240],
+    "targetsNotMeasuredGuarantees": true
+  }
+}

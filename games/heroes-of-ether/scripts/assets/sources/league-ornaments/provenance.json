@@ -1,0 +1,21 @@
+{
+  "crown": {
+    "source": "User supplied: Императорская корона с аметистами.png",
+    "use": "Unchanged artwork, resized to 512 px and encoded as WebP"
+  },
+  "laurel": {
+    "tool": "Built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: transparent game UI ornament. Reference image is ONLY a style reference for the lustrous sculpted gold, high quality fantasy game painting and rich shading, do NOT copy the crown. Create one standalone symmetrical golden laurel wreath, frontal view, circular overall outline, transparent empty center, open at the top. Two graceful botanically coherent curving branches with individually sculpted overlapping lanceolate laurel leaves, delicate embossed veins, convincing thickness, warm gold highlights and amber shadows, ivory specular highlights. Strong saturated premium casual fantasy RPG item artwork matching the supplied crown. The branches meet neatly at the bottom without a ribbon, bow, medallion, gem or dangling ornament. Fine elegant silhouette, relatively slim wreath arms leaving 72 percent diameter clear in the center, about 12 leaves per side, smooth connected stems. No crown, no text, no background, no frame circle. Entire wreath completely within canvas with 6 percent clear outer padding. Clean transparent alpha including the center, suitable for placing around an avatar and behind small league heraldic emblems.",
+    "source": "gold-laurel.png"
+  },
+  "delivery": "Self-contained SVG backgrounds and frames. Champion artwork uses champion-crown.webp; imperial-crown.webp is retained as an unused earlier source.",
+  "championCrown": {
+    "source": "champion-crown.png",
+    "reference": "public/assets/progression/webp/256/leagues/champions.webp",
+    "tool": "Built-in image_gen",
+    "prompt": "Use case: background-extraction. Asset type: exact isolated game crown cutout from the provided Champion league emblem. Edit target: provided champions.webp. Extract ONLY THE CENTRAL GOLDEN CROWN, preserving its exact visual design and silhouette: tall central golden fleur-de-lis, large faceted purple/amethyst diamond in the center, two curled golden side points with tiny amethyst gems, the gold curved horizontal bottom band with small purple diamond gems. Keep the original painterly glossy fantasy game style, saturated gold highlights and purple jewels, front view, existing proportions. Remove the purple shield completely, remove all outer laurel leaves completely, remove shield border and bottom shield point completely. All gaps between crown points and outside its silhouette must be transparent. This is an extraction of the original central open crown, NOT creation of an imperial dome crown: no velvet cap, no arches, no pearl rows, no orb, no added ornaments. Clean alpha edges, no shadow or glow outside crown. Output one isolated crown centered on transparent square canvas, occupying about 88% of canvas width with equal small side margins, no text. Preserve recognizable original crown exactly and only reconstruct tiny edge portions hidden by the shield or laurel if necessary.",
+    "delivery": "Trim transparent margins, resize to 512 x 429 WebP with preserved alpha. Embed in Champion backgrounds and 256 x 304 profile frame.",
+    "extractedSource": "champion-crown-extracted.png",
+    "rubyEditPrompt": "Use case: precise-object-edit. Edit target: isolated crown image supplied. Change ONLY the PURPLE / AMETHYST JEWEL colors into rich vivid RUBY RED gemstones to match a scarlet-and-gold Champion avatar frame. Central diamond, both side teardrop gems and both little diamonds on the base band must be saturated ruby red, with deep crimson shadows, vivid scarlet facets, pink-red specular highlights and tiny white glints. Preserve the exact crown silhouette, proportions, shape, all golden metal surfaces and gold highlights, jewelry geometry and faceting, layout and canvas size. Keep the full original crown in exactly the same position, don't add, remove or reshape any element. True transparent background and transparent interior holes. No purple gemstones left, no purple tint in jewels. All gold metal must remain gold. No shield, laurel, velvet cap, letters, background, extra glow, or extra objects."
+  }
+}

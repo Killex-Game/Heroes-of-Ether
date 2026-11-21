@@ -1,0 +1,17 @@
+/* Forms, public profile names and chats keep normal browser text selection. */
+body {
+  user-select: none;
+  -webkit-user-select: none;
+}
+input,
+textarea,
+#publicPlayerTitle,
+.public-player-name,
+[contenteditable="true"],
+[contenteditable="true"] * {
+  user-select: text;
+  -webkit-user-select: text;
+}
+img {
+  -webkit-user-drag: none;
+}

@@ -1,0 +1,8 @@
+{
+  "intent": "news incident banner",
+  "sha256": "CF6842BF774847867248951857EAFE181087083765EBC768F2CD362498D08596",
+  "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-e095b243-2f38-45cc-ad59-c93de1413462.png",
+  "tool": "image_gen",
+  "prompt": "prompt.txt",
+  "file": "news-incident-v1.png"
+}

@@ -1,0 +1,3 @@
+# Keep deployment bytes identical across Windows and Linux checkouts.
+# Changes to line endings must be explicit, reviewed changes.
+* -text

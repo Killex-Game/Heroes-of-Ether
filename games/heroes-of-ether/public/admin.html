@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Администрирование — Герои Эфира</title>
+    <link rel="stylesheet" href="/styles/owner-security.css?v=20261114-clan-quests-26" />
+    <script src="/ui/admin/vendor/qrcode-generator.js?v=2.0.4" defer></script>
+    <script src="/ui/admin/admin-security.js?v=20261114-clan-quests-26" defer></script>
+    <link rel="stylesheet" href="/styles/owner-admin.css?v=20261116-player-edit-44" />
+    <link rel="stylesheet" href="/styles/owner-feedback.css?v=20261117-feedback" />
+    <script src="/ui/admin/feedback-panel.js?v=20261117-feedback" defer></script>
+    <link rel="stylesheet" href="/styles/owner-events.css?v=20261114-clan-quests-26" />
+    <link rel="stylesheet" href="/styles/components/game-news.css?v=20261114-news-10" />
+    <link rel="stylesheet" href="/styles/owner-news.css?v=20261115-bulk-news" />
+    <link rel="stylesheet" href="/styles/owner-maintenance.css?v=20261114-service-16" />
+    <link rel="stylesheet" href="/styles/owner-dashboard.css?v=20261114-clan-quests-26" />
+    <script src="/shared/platform-contract.js?v=20261113-killex" defer></script>
+    <script src="/shared/activity-scheduler.js?v=20261114-news-10" defer></script>
+    <script src="/shared/news-layout.js?v=20261114-news-banner-15" defer></script>
+    <script src="/shared/control-state.js?v=20261113-killex" defer></script>
+    <script src="/shared/request-identifiers.js?v=20261113-killex" defer></script>
+    <script src="/ui/admin/transaction-journal.js?v=20261113-killex" defer></script>
+    <script src="/ui/admin/event-manager.js?v=20261114-news-10" defer></script>
+    <script src="/ui/admin/content-manager.js?v=20261115-bulk-news" defer></script>
+    <script src="/ui/admin/news-editor.js?v=20261114-news-banner-15" defer></script>
+    <script src="/ui/admin/content-trash.js?v=20261115-control" defer></script>
+    <script src="/ui/admin/owner-dashboard.js?v=20261114-clan-quests-26" defer></script>
+    <script src="/ui/admin/payment-reports.js?v=20261114-community-7" defer></script>
+    <script src="/ui/admin/server-health.js?v=20261114-community-7" defer></script>
+    <script src="/ui/admin/maintenance-panel.js?v=20261114-service-16" defer></script>
+    <script src="/ui/admin/owner-monitoring.js?v=20261115-stability-audit" defer></script>
+    <script src="/ui/admin/clan-seasons.js?v=20261114-clan-quests-26" defer></script>
+    <script src="/ui/admin/journal-panels.js?v=20261114-clan-quests-26" defer></script>
+    <link rel="stylesheet" href="/styles/owner-players.css?v=20261116-moderation-catalog" />
+    <script src="/ui/admin/control-status.js?v=20261115-control" defer></script>
+    <script src="/ui/admin/moderation-catalog.js?v=20261116-moderation-catalog" defer></script>
+    <script src="/ui/admin/player-tabs.js?v=20261116-moderation-catalog" defer></script>
+    <script src="/ui/admin/player-inventory.js?v=20261116-moderation-43" defer></script>
+    <script src="/ui/admin/player-editor.js?v=20261116-player-edit-44" defer></script>
+    <script src="/ui/admin/owner-panel.js?v=20261116-moderation-catalog" defer></script>
+  </head>
+  <body class="owner-app">
+    <aside id="ownerNavigation" class="owner-navigation" aria-label="Разделы администрирования" hidden></aside>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Экосистема KILLEX · ГЕРОИ ЭФИРА</p>
+        <h1>Добро пожаловать,<br /><span id="ownerGreeting">владелец</span></h1>
+        <p class="owner-subtitle">Игра, сообщество и события — под твоим управлением</p>
+      </div>
+      <div class="owner-header-right"><time id="ownerClock" class="owner-clock"></time><p id="ownerDate"></p><nav><a href="/">В игру ↗</a><button id="myAdminProfile" hidden>Мой профиль</button><button id="logout" hidden>Завершить сеанс</button></nav></div>
+    </header>
+    <main>
+      <div id="notice" class="notice" role="status" aria-live="polite">Проверяем доступ…</div>
+      <section id="controlStatus" class="card" hidden></section>
+      <button id="retry" hidden>Повторить сохранение</button>
+      <section id="loginPanel" class="card login" hidden>
+        <h2 id="loginTitle">Вход владельца</h2>
+        <p id="loginHint">Введи отдельный пароль админ-панели.</p>
+        <form id="loginForm">
+          <label id="adminLoginLabel">Логин<input id="adminLogin" value="owner" autocomplete="username" maxlength="32" required /></label>
+          <label id="setupLabel" hidden
+            >Ключ первого входа<input id="setupCode" autocomplete="off" maxlength="48"
+          /></label>
+          <label
+            >Пароль<input
+              id="password"
+              type="password"
+              autocomplete="current-password"
+              minlength="12"
+              maxlength="128"
+              required
+          /></label>
+          <button type="submit" class="primary">Войти</button>
+        </form>
+      </section>
+      <section id="twoFactorPanel" class="card login" hidden>
+        <h2 id="loginOtpTitle">Код подтверждения</h2><p id="loginOtpHint"></p>
+        <div id="loginQrArea" hidden><div id="loginQr" class="security-qr"></div><p class="muted">Ключ для ручного ввода:</p><code id="loginSecret" class="security-secret"></code></div>
+        <form id="twoFactorForm" class="security-stack">
+          <label id="loginNewPasswordLabel" hidden>Новый личный пароль<input id="loginNewPassword" type="password" autocomplete="new-password" minlength="12" maxlength="128" /></label>
+          <label>Код из приложения или резервный код<input id="loginOtp" class="security-code-input" autocomplete="one-time-code" maxlength="40" required /></label>
+          <div class="security-actions"><button type="submit" class="primary">Подтвердить вход</button><button type="button" id="twoFactorBack">Назад</button></div>
+        </form>
+      </section>
+      <div id="workspace" hidden>
+        <section data-admin-view="overview" class="owner-overview" aria-label="Обзор игры">
+          <div class="section-title"><div><p class="eyebrow">ЦЕНТР УПРАВЛЕНИЯ</p><h2>Обзор игры</h2></div><button id="refreshOverview" type="button">Обновить обзор</button></div>
+          <div class="owner-metrics">
+            <article class="card owner-metric"><span>Игроки на арене</span><strong id="overviewPlayers">—</strong><small>На момент замера</small></article>
+            <article class="card owner-metric"><span>Игроки в лобби</span><strong id="overviewLobby">—</strong><small>Недавняя активность</small></article>
+            <article class="card owner-metric"><span>Общий онлайн</span><strong id="overviewOnline">—</strong><small>Лобби и арена, без тестовых ботов</small></article>
+            <article class="card owner-metric"><span>Профили игроков</span><strong id="overviewProfiles">—</strong><small>Все сохранённые профили</small></article>
+            <article class="card owner-metric"><span>Комнаты</span><strong id="overviewRooms">—</strong><small>Игровые арены сервера</small></article>
+            <article class="card owner-metric"><span>Очередь действий</span><strong id="overviewQueue">—</strong><small>Ожидают сохранения</small></article>
+          </div>
+          <div class="owner-overview-grid">
+            <article class="card owner-event-preview"><p class="eyebrow">КАЛЕНДАРЬ ИГРЫ</p><h2 id="overviewEventTitle">События</h2><p id="overviewEventDescription">Открывай события и управляй их расписанием.</p><p id="overviewEventDates" class="muted"></p><button type="button" data-admin-target="events">Управлять событиями →</button></article>
+            <article class="card owner-rate-card"><h2>Ритм сервера</h2><div class="owner-rate-ring"><strong id="overviewRate">—</strong><span>обновлений / с</span></div><small id="overviewMeasured">Замер ещё не получен</small></article>
+        <details id="performancePanel" class="card">
+          <summary><span>Состояние игрового сервера</span><button id="refreshPerformance" type="button" class="owner-icon-button" aria-label="Обновить показатели" title="Обновить показатели"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6.1 7a7 7 0 0 1 11.8-1L20 12M4 12l2.1 6A7 7 0 0 0 17.9 17"/></svg></button></summary>
+          <p class="muted">Такты за последнюю минуту, задержка цикла за последние 10 секунд. Обновляется по запросу; сохранения и настройки не меняются.</p>
+          <div id="performanceStats" class="stats" aria-live="polite"></div>
+          <p id="performanceTime" class="muted"></p>
+          <p class="performance-legend"><span data-health="warning">Внимание</span><span data-health="critical">Критично</span> Порог и причина указаны в каждой подсвеченной плашке. Серый — недостаточно данных.</p>
+        </details>
+            <article class="card owner-quick-card"><h2>Быстрый переход</h2><div class="owner-shortcuts"><button type="button" data-admin-target="players"><strong>Игроки</strong><span>Поиск, профили и модерация</span></button><button type="button" data-admin-target="promos"><strong>Промокоды</strong><span>Награды и акции</span></button><button type="button" data-admin-target="news"><strong>Редакция</strong><span>Новости и публикации</span></button><button type="button" data-admin-target="audit"><strong>Журнал</strong><span>История действий владельца</span></button></div></article>
+            <article class="card owner-session-card"><p class="eyebrow">РАБОЧЕЕ ПРОСТРАНСТВО</p><h2>Герои Эфира</h2><p>Все изменения проходят через подтверждение и сохраняются в журнале.</p><span class="owner-session-badge">Сеанс владельца</span><p class="muted">Обзор обновляется по запросу. Время последнего замера указано у показателей.</p></article>
+          </div>
+        <section class="card owner-monitoring" aria-labelledby="monitorTitle">
+          <div class="section-title"><h2 id="monitorTitle">Мониторинг игры</h2><button type="button" data-admin-target="maintenance">Технические работы →</button></div>
+          <p id="monitorStatus" class="service-current" role="status">Получаем показатели…</p>
+          <div id="monitorGraphs" class="monitor-graphs"></div>
+          <p id="monitorUpdated" class="muted"></p>
+          <p class="muted">Последний час · замеры каждые 5 секунд, пока открыт «Обзор» · после закрытия сбор прекращается в течение 15 секунд. Разрывы — периоды без измерений.</p>
+        </section>
+        </section>
+        <section id="clanSeasonsPanel" class="card clan-seasons-panel" data-admin-view="events" hidden></section>
+        <section id="eventsPanel" class="card events-panel" data-admin-view="events" aria-labelledby="eventsTitle" hidden></section>
+        <section id="maintenancePanel" class="card" data-admin-view="maintenance" aria-label="Технические работы" hidden></section>
+        <section id="feedbackPanel" class="card" data-admin-view="feedback" hidden></section>
+        <section id="moderatorsPanel" data-admin-view="moderators" hidden>
+          <div class="section-title"><h2>Модераторы и безопасность</h2></div>
+          <div class="owner-security-grid">
+            <section class="card"><h3>Защита владельца</h3><p id="ownerFactorState" class="security-state"></p>
+              <p>Google Authenticator или другое приложение TOTP. Привязка включится после подтверждения кода.</p>
+              <form id="ownerFactorForm" class="security-stack">
+                <label>Действие<select id="ownerFactorAction"><option value="enroll-begin">Подключить Google Authenticator</option><option value="recovery-codes">Обновить резервные коды</option><option value="recover-profile">Восстановить вход в игровой профиль</option></select></label>
+                <label>Пароль владельца<input id="factorPassword" type="password" autocomplete="current-password" minlength="12" maxlength="128" required /></label>
+                <label id="factorOtpLabel">Код 2FA или резервный код<input id="factorOtp" autocomplete="one-time-code" maxlength="40" /></label>
+                <button class="primary" type="submit">Продолжить</button>
+              </form>
+              <div id="ownerFactorEnrollment" class="security-enrollment" hidden>
+                <h3>Добавь ключ в приложение</h3><div id="ownerFactorQr" class="security-qr"></div><p class="muted">Ключ для ручного ввода:</p><code id="ownerFactorSecret" class="security-secret"></code>
+                <form id="ownerFactorConfirm" class="security-stack"><label>Шестизначный код<input id="ownerFactorCode" class="security-code-input" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required /></label><div class="security-actions"><button class="primary" type="submit">Включить 2FA</button><button id="cancelFactorEnrollment" type="button">Отмена</button></div></form>
+              </div>
+            </section>
+            <section class="card"><div class="section-title"><h3>Модераторы</h3><button id="moderatorCreate" type="button">Добавить</button></div>
+              <p>Доступ к игрокам и журналам. Правки баланса, инвентаря, статусов и блокировок записываются с именем модератора.</p>
+              <p id="moderatorRequirement" class="muted">Сначала подключи 2FA владельца.</p><div id="moderatorList"></div>
+              <form id="moderatorForm" class="security-stack" hidden><h3 id="moderatorFormTitle"></h3>
+                <div id="moderatorIdentity" class="security-stack"><label>Логин<input id="moderatorLogin" autocomplete="off" minlength="3" maxlength="32" pattern="[a-zA-Z0-9][a-zA-Z0-9_.-]{2,31}" /></label><label>Имя<input id="moderatorName" maxlength="64" autocomplete="off" /></label></div>
+                <label>Причина<textarea id="moderatorReason" minlength="3" maxlength="500" required></textarea></label>
+                <label>Пароль владельца<input id="moderatorPassword" type="password" autocomplete="current-password" minlength="12" maxlength="128" required /></label>
+                <label>Код 2FA или резервный код<input id="moderatorOtp" autocomplete="one-time-code" maxlength="40" required /></label>
+                <div class="security-actions"><button class="primary" type="submit">Подтвердить</button><button id="moderatorCancel" type="button">Отмена</button></div>
+              </form>
+            </section>
+          </div>
+        </section>
+        <details id="promoCodesPanel" class="card" data-admin-view="promos" hidden></details>
+        <details id="newsAdminPanel" class="card" data-admin-view="news" hidden></details>
+        <section id="trashPanel" class="card" data-admin-view="trash" hidden></section>
+        <section data-admin-view="players" hidden>
+          <nav id="playerTabs" class="player-tabs" aria-label="Разделы игроков"></nav>
+          <section id="playerDirectory" class="card" hidden></section>
+          <section id="gameGrants" class="card" hidden></section>
+          <div class="workspace" id="playerSettings">
+          <aside class="card players">
+            <div class="section-title">
+              <h2>Игроки</h2>
+              <span id="total" class="badge"></span>
+            </div>
+            <form id="searchForm" class="search">
+              <label class="sr-only" for="search">Ник или ID</label
+              ><input id="search" maxlength="64" placeholder="Ник или ID" /><button type="submit">
+                Найти
+              </button>
+            </form>
+            <div id="players" class="player-list"></div>
+            <div class="pager">
+              <button id="prevPlayers" aria-label="Предыдущая страница игроков">←</button
+              ><span id="playersPage"></span
+              ><button id="nextPlayers" aria-label="Следующая страница игроков">→</button>
+            </div>
+          </aside>
+          <section class="card detail">
+            <div id="empty">
+              <h2>Выбери игрока</h2>
+              <p>Найди аккаунт по нику или постоянному ID. Все изменения сохраняются в журнале.</p>
+            </div>
+            <div id="selected" hidden>
+              <div class="section-title">
+                <h2 id="playerName"></h2>
+                <button id="refreshPlayer">Обновить</button>
+              </div>
+              <p id="playerId" class="muted identifier"></p>
+              <p id="playerState"></p>
+              <div class="owner-player-edit-actions">
+                <button type="button" id="editPlayerName" aria-haspopup="dialog">Изменить ник</button>
+                <button type="button" id="editPlayerLevel" aria-haspopup="dialog">Изменить уровень</button>
+              </div>
+              <div id="stats" class="stats"></div>
+              <p id="banInfo" class="ban-info" hidden></p>
+              <section class="owner-chat-moderation" aria-labelledby="chatStrikesTitle">
+                <h3 id="chatStrikesTitle">Страйки и ограничения чата</h3>
+                <div id="chatStrikeStats" class="stats owner-chat-strikes"></div>
+                <p id="chatMuteInfo" class="muted"></p>
+                <p class="muted">Счётчики независимы. Каждый сбрасывается после 7 суток без соответствующих нарушений.</p>
+              </section>
+              <h3>Правка аккаунта</h3>
+              <form id="actionForm">
+                <label
+                  >Действие<select id="action">
+                    <option value="ban">Заблокировать</option>
+                    <option value="unban">Снять блокировку</option>
+                    <option value="rename">Изменить ник</option>
+                    <option value="level">Изменить уровень</option>
+                    <option value="wallet">Начислить или списать валюту</option>
+                    <option value="account">Изменить VIP / Premium</option>
+                    <option value="inventory">Начислить или списать бустеры</option>
+                  </select></label
+                >
+                <div id="actionFields" class="form-grid"></div>
+                <label
+                  >Причина<textarea
+                    id="reason"
+                    rows="2"
+                    minlength="3"
+                    maxlength="500"
+                    required
+                    placeholder="За что блокировка или зачем меняются данные"
+                  ></textarea>
+                </label>
+                <p id="editHint" class="muted"></p>
+                <button class="primary" id="review" type="submit">Проверить правку</button>
+              </form>
+            </div>
+          </section>
+        </div>
+        </section>
+        <section data-admin-view="economy" hidden>
+          <section class="card payment-report" aria-labelledby="paymentsTitle">
+            <div class="section-title"><div><p class="eyebrow">ВСЯ ИГРА · ПОКУПКИ ЗА ГОЛОСА</p><h2 id="paymentsTitle">Общая финансовая отчётность</h2></div><button id="paymentsExport" type="button" disabled>Скачать отчёт CSV</button></div>
+            <p class="muted">Покупки всех игроков за выбранный период. Выбор игрока в персональном блоке не меняет этот отчёт.</p>
+            <form id="paymentFilters" class="payment-filters">
+              <label>С даты<input id="paymentsFrom" type="date" required /></label><label>По дату<input id="paymentsTo" type="date" required /></label>
+              <label>Оплаты<select id="paymentsMode"><option value="real">Реальные</option><option value="test">Тестовые</option></select></label>
+              <label>Категория<select id="paymentsCategory"><option value="all">Все категории</option><option value="promotions">Акции</option><option value="coins">Монеты</option><option value="crystals">Кристаллы</option><option value="bucks">Эфир</option><option value="statuses">Статусы</option><option value="eventSubscriptions">Событийные подписки</option><option value="coupons">Купоны</option><option value="other">Прочее</option></select></label>
+              <button id="paymentsRefresh" class="primary" type="submit">Показать</button>
+            </form>
+            <div id="paymentsHint" class="payment-notice" role="status"></div>
+            <div id="paymentsSummary" class="stats"></div>
+            <div class="payment-charts"><section><h3 id="paymentsReportTitle">Выручка по дням</h3><div id="paymentsChart"></div></section><section><h3>По категориям</h3><div id="paymentsCategories"></div></section></div>
+            <p id="paymentsCaptured" class="muted"></p>
+          </section>
+          <div class="economy-journal-columns">
+          <section class="card" aria-labelledby="paymentsJournalTitle"><h2 id="paymentsJournalTitle">Покупки игроков за Голоса</h2><div id="paymentsJournal"></div><div class="pager"><button id="paymentsPrev" type="button" aria-label="Предыдущие покупки" disabled>←</button><span id="paymentsPage"></span><button id="paymentsNext" type="button" aria-label="Следующие покупки" disabled>→</button></div></section>
+          <div class="economy-player-column">
+          <div class="card"><h2>Экономика игроков</h2><p id="economySelected">Выбери всех игроков или отдельный профиль.</p><div class="content-toolbar"><button id="economyAll" type="button">Все игроки</button><button type="button" data-admin-target="players">Выбрать игрока</button><button id="economyWallet" type="button" hidden>Изменить баланс</button></div></div>
+        <section id="transactionsPanel" class="card audit" hidden>
+          <div class="section-title">
+            <h2>Журнал транзакций</h2>
+            <button id="refreshTransactions">Обновить журнал</button>
+          </div>
+          <label class="transaction-filter"
+            >Показать
+            <select id="transactionFilter">
+              <option value="all">Все транзакции</option>
+              <option value="coins">Монеты</option>
+              <option value="crystals">Кристаллы</option>
+              <option value="bucks">Эфир</option>
+              <option value="account">VIP / Premium</option>
+              <option value="payment">Донат и покупки за голоса</option>
+            </select>
+          </label>
+          <p id="transactionHint" class="muted" aria-live="polite"></p>
+          <details>
+            <summary>Баланс на начало журнала</summary>
+            <div id="transactionOpening" class="transaction-opening"></div>
+          </details>
+          <div id="transactions"></div>
+          <div class="pager">
+            <button id="prevTransactions" aria-label="Предыдущая страница транзакций">←</button>
+            <span id="transactionsPage"></span>
+            <button id="nextTransactions" aria-label="Следующая страница транзакций">→</button>
+          </div>
+        </section>
+        </div></div>
+        </section>
+        <section class="owner-journals" data-admin-view="audit" hidden>
+        <section class="card audit owner-journal-card" id="actionsJournal">
+          <div class="section-title">
+            <h2>Действия с игроками и игрой</h2>
+            <button id="auditScope">Все игроки</button>
+            <button id="refreshAudit" type="button">Обновить</button>
+          </div>
+          <p id="auditHint" class="muted"></p>
+          <div id="audit"></div>
+          <div class="pager">
+            <button id="prevAudit" aria-label="Предыдущая страница журнала">←</button
+            ><span id="auditPage"></span
+            ><button id="nextAudit" aria-label="Следующая страница журнала">→</button>
+          </div>
+        </section>
+        <section class="card audit owner-journal-card" id="securityJournal"></section>
+        <section class="card audit owner-journal-card" id="runtimeJournal"></section>
+        <section class="card audit owner-journal-card" id="watchdogJournal"></section>
+        </section>
+      </div>
+    </main>
+    <dialog id="myAdminDialog" aria-labelledby="myAdminTitle">
+      <form id="myAdminForm" class="security-stack"><h2 id="myAdminTitle">Мой профиль модератора</h2>
+        <label>Имя<input id="myAdminName" maxlength="64" required autocomplete="name" /></label>
+        <label>Логин<input id="myAdminLogin" minlength="3" maxlength="32" pattern="[a-zA-Z0-9][a-zA-Z0-9_.-]{2,31}" autocomplete="username" required /></label>
+        <label>Новый пароль<input id="myAdminNewPassword" type="password" minlength="12" maxlength="128" autocomplete="new-password" /></label>
+        <label>Повтори новый пароль<input id="myAdminPasswordRepeat" type="password" minlength="12" maxlength="128" autocomplete="new-password" /></label>
+        <p class="muted">Оставь новые пароли пустыми, чтобы сохранить текущий. Для подтверждения введи текущий пароль и новый код 2FA.</p>
+        <label>Текущий пароль<input id="myAdminPassword" type="password" minlength="12" maxlength="128" autocomplete="current-password" required /></label>
+        <label>Код 2FA или резервный код<input id="myAdminOtp" autocomplete="one-time-code" maxlength="40" required /></label>
+        <p id="myAdminError" role="alert"></p>
+        <div class="security-actions"><button type="submit" class="primary">Сохранить</button><button id="myAdminCancel" type="button">Отмена</button></div>
+      </form>
+    </dialog>
+    <dialog id="securityCodesDialog"><form method="dialog"><h2 id="securityCodesTitle"></h2><p id="securityCodesHint"></p><pre id="securityCodes"></pre><div class="security-actions"><button id="securityDownload" type="button">Скачать</button><button value="close" class="primary">Сохранено, закрыть</button></div></form></dialog>
+    <dialog id="confirmDialog">
+      <form method="dialog">
+        <h2>Подтверждение правки</h2>
+        <div id="reviewText"></div>
+        <p class="muted">Правка применяется к выбранному аккаунту и записывается в журнал.</p>
+        <div class="dialog-actions">
+          <button value="cancel">Отмена</button
+          ><button id="commit" class="primary" type="button">Применить</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

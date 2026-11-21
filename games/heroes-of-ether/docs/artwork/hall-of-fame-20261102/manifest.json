@@ -1,0 +1,57 @@
+{
+  "source": "User supplied Hall of Fame concept; three theme adaptations by built-in image_gen. No external downloaded art.",
+  "files": [
+    {
+      "path": "public/assets/hall-of-fame/v1/default-960.webp",
+      "sha256": "99ea6d79f99dae4df412cfe67ad16fa9f36bafc190c85a4dc804ffcc3a519a56"
+    },
+    {
+      "path": "public/assets/hall-of-fame/v1/default-1672.webp",
+      "sha256": "df4fa1eb57117ee81916a0f9f95128a9a30b7b411da9e4b107d7676412ea84ae"
+    },
+    {
+      "path": "public/assets/hall-of-fame/v1/visual-960.webp",
+      "sha256": "0cab69ea26c33c25ac28c3ee044eef9b86d5a3d009e2d5329f6583d58da46317"
+    },
+    {
+      "path": "public/assets/hall-of-fame/v1/visual-1672.webp",
+      "sha256": "30a8337f3ce5973eb7ce78058b33f1ecb2a42f80fa6f0d158663ba4f98a3a5fc"
+    },
+    {
+      "path": "public/assets/hall-of-fame/v1/prism-960.webp",
+      "sha256": "838ebdb059d5659d5ad0046ac25872923b5bcbbab0dacc4f5f042ec4de9da2e4"
+    },
+    {
+      "path": "public/assets/hall-of-fame/v1/prism-1672.webp",
+      "sha256": "111d57ae94c59ce7dc4679eaa2c5089ea91151dcfce97aa5ffe60f1588ae63b9"
+    },
+    {
+      "path": "public/assets/hall-of-fame/v1/glass-960.webp",
+      "sha256": "cae2f5c4e40a9e51951c681a122a456d2f432932beaba591aa4955cfac587b50"
+    },
+    {
+      "path": "public/assets/hall-of-fame/v1/glass-1672.webp",
+      "sha256": "6ce575d1ef58827966b6e7598b1bd3d5b9ec087bfefb52474a95a485d71b2742"
+    },
+    {
+      "path": "public/assets/accessories/shop-v3/cowboy_hat.webp",
+      "sha256": "a38c4dadf18ce864107a3dec8a50d5137bff36e828e2a5d733efceb6902da882"
+    },
+    {
+      "path": "public/assets/accessories/shop-v3/sombrero_hat.webp",
+      "sha256": "a7a4aa8636daadc47c0a7b73ede9f6808635d9b6263e4d5fd8ebe1155ddfe87d"
+    },
+    {
+      "path": "public/assets/menu-icons/64/nav_events.webp",
+      "sha256": "a9393354262cff04e8bd438d524ad986eb6a9b21edd26a5d11c503ce6da3f697"
+    },
+    {
+      "path": "public/assets/menu-icons/128/nav_events.webp",
+      "sha256": "dea2b52e002435795b345ce27587efd07ae627435109db418417d86ebf782498"
+    },
+    {
+      "path": "public/assets/menu-icons/256/nav_events.webp",
+      "sha256": "5604e8bc0f6aa030076c868f8f9f05ada9fb094d3db6e1fc758cc04ea484c2a7"
+    }
+  ]
+}

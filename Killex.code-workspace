@@ -1,0 +1,12 @@
+{
+  "folders": [
+    { "name": "Герои Эфира", "path": "games/heroes-of-ether" },
+    { "name": "Обслуживание", "path": "operations" },
+    { "name": "Документы", "path": "docs" },
+    { "name": "Проверки и отчёты", "path": "artifacts" }
+  ],
+  "settings": {
+    "search.exclude": { "**/node_modules": true, "**/data": true, "**/backups": true, "**/.cache": true },
+    "files.watcherExclude": { "**/node_modules/**": true, "**/data/**": true, "**/backups/**": true }
+  }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="lock-title lock-desc">
+<title id="lock-title">Замок</title>
+<desc id="lock-desc">Улучшенный бустер «Замок». Закрывает рот игроку, после чего тот не может ничего поглощать. Латунный навесной замок с толстой стальной дужкой и замочной скважиной.</desc>
+<defs><linearGradient id="lock-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="lock-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="lock-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="lock-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="lock-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="lock-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="lock-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="lock-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="lock-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="lock-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="lock-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="lock-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M79 117V84C79 55 99 35 128 35C157 35 177 55 177 84V117H155V84C155 68 144 57 128 57C112 57 101 68 101 84V117Z" fill="url(#lock-steel)"/>
+<path d="M89 83C89 61 105 45 126 45" fill="none" stroke="#FFFFFF" stroke-width="7"/>
+<path d="M166 84V113" fill="none" stroke="#7181AD" stroke-width="5"/>
+<rect x="56" y="104" width="144" height="112" rx="22" fill="url(#lock-gold)"/>
+<path d="M57 177V195Q57 216 80 216H176Q200 215 200 193V179C174 191 150 194 127 194C102 194 77 188 57 177Z" fill="#CE802E" fill-opacity=".4" stroke="none"/>
+<rect x="70" y="116" width="116" height="84" rx="15" fill="none" stroke="#AF6927" stroke-width="4"/>
+<path d="M73 139V129Q73 120 84 120H108" fill="none" stroke="#FFF5B5" stroke-width="7"/>
+<circle cx="128" cy="151" r="25" fill="url(#lock-cream)" stroke="#B77D35" stroke-width="5"/>
+<path d="M139 146C139 139 134 135 128 135C122 135 117 139 117 146C117 151 120 154 123 156L119 172H137L133 156C137 154 139 151 139 146Z" fill="#554660" stroke="none"/>
+<circle cx="83" cy="183" r="4" fill="#FFF3A3" stroke="none"/>
+<circle cx="173" cy="183" r="4" fill="#FFF3A3" stroke="none"/>
+<path d="M154 121H173" fill="none" stroke="#FFF3A3" stroke-width="5"/>
+</g>
+</svg>

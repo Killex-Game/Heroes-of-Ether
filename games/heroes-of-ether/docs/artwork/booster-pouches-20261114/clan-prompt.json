@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen.imagegen (built-in)",
+  "prompt": "Use case: precise-object-edit. Asset type: transparent fantasy game icon for a CLAN BOOSTER POUCH in the promotion named Weapon Supply. Image 1 is the approved composition/style reference and edit target: keep its broad low soft pouch shape, compact elliptical open mouth, natural densely packed contents, polished smooth game illustration, gold cord, clean silhouette and actual transparent alpha. Change the cloth to deep ruby red/burgundy with restrained gold edging and a small shield-shaped gold clasp so this clan tier differs from green, blue and purple pouches. Replace ALL three old contents (axe, purple potion and purple-gem shield) with the three CLAN booster types shown in reference images 2,3,4: a short visible part of a flaming silver sword with gold hilt; a silver-and-gold wing-edged clan shield with gold four-pointed star; and a compact paired bundle of red/ivory/gold rocket tips representing the warheads booster, without exhaust. Exactly these 3 booster types, no extra items. Keep them physically packed INSIDE the pouch, partially overlapping at different subtle angles, leaning against one another and the fabric, with their lower halves hidden BEHIND the front cloth edge. The sword and rocket bundle sit partly BEHIND the shield. Nothing floats or stands on a pole; nothing balances on top of the rim. Contents rise only a little above the rear edge, the low pouch dominates the silhouette just as in image 1. Do not turn the image into a tall upright fan. Small controlled magical flame on exposed sword only, no flame touching cloth and no background glow. Make broad simplified shapes readable at 124 pixels, no noisy microdetail, no text, numbers, lettering, watermark, backdrop, ground plane, coins or chest. Keep everything comfortably inside the square image with transparent margin.",
+  "references": [
+    "docs/artwork/booster-pouches-20261114/rare-source.png",
+    "public/assets/progression/webp/256/boosters/flaming_sword.webp",
+    "public/assets/progression/webp/256/boosters/clan_shield.webp",
+    "public/assets/boosters/png/warheads.png"
+  ],
+  "selected": "exec-d57b28a2-e7b8-47da-9a79-cd18889f5ae9.png"
+}

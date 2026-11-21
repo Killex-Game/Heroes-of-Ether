@@ -1,0 +1,28 @@
+[Unit]
+Description=Heroes of Ether - independent administration
+Wants=network-online.target
+After=network-online.target
+[Service]
+Type=simple
+User=heroether-play
+Group=heroether-play
+WorkingDirectory=/srv/heroether-test/play/current
+ExecStart=/srv/heroether-test/runtime/node-v24.22.3-linux-x64/bin/node admin-control.js
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOST=127.0.0.1
+Environment=ADMIN_PUBLIC_DIR=/srv/heroether-test/play/current/public
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=30
+KillSignal=SIGTERM
+MemoryMax=512M
+CPUQuota=50%
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/heroether-test/play/data /srv/heroether-test/play/secrets /srv/heroether-test/play/admin-control
+UMask=0077
+[Install]
+WantedBy=multi-user.target

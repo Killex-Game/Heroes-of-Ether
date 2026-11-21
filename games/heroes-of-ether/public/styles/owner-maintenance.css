@@ -1,0 +1,24 @@
+.service-current{padding:14px 18px;border-radius:12px;background:#275d4044;border:1px solid #80cf9e55}
+.service-current[data-closed="true"]{background:#724b2244;border-color:#e7ae6e66}
+#maintenanceForm{display:grid;gap:18px;max-width:960px}
+.service-mode{margin:0;border:1px solid #ffffff24;border-radius:14px;padding:16px 20px;background:#191c3180;min-width:0}
+.service-mode legend{font-size:18px;padding:0 8px}
+.service-mode legend label{display:flex;align-items:center;gap:12px;cursor:pointer}
+.service-mode input[type="checkbox"]{width:20px;height:20px;accent-color:#9865ed;margin:0}
+.service-mode p{margin:4px 0 16px;color:#bdc4df}
+.service-dates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.service-dates input{min-width:0;width:100%;box-sizing:border-box;color-scheme:dark}
+#maintenanceForm>button{justify-self:start;min-height:44px}
+@media(max-width:600px){.service-dates{grid-template-columns:1fr}.service-mode{padding:14px 12px}}
+.service-mode .service-automatic{color:#ffb4bf;padding:12px;border:1px solid #ff708955;border-radius:10px;background:#8b203333}
+.service-current[data-health="critical"]{background:#81283c55;border-color:#ff647e99;color:#ffd2da}
+.service-current[data-health="warning"]{background:#80591e44;border-color:#e8b96888;color:#ffe4b9}
+.monitor-graphs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.monitor-chart{min-width:0;border:1px solid #ffffff20;background:#0b102480;border-radius:16px;padding:18px}
+.monitor-chart h3{margin:0 0 12px}.monitor-chart p{font-size:12px;color:#b6bbd3}
+.monitor-chart svg{width:100%;height:180px;overflow:visible}.monitor-chart svg text{fill:#a9b1ce;font-size:10px}
+.monitor-grid{stroke:#ffffff17;stroke-width:1}.monitor-chart path[data-series="read"]{stroke:#55bfff}.monitor-chart path[data-series="write"]{stroke:#c488ff}
+.monitor-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;margin-bottom:10px}.monitor-legend [data-series="read"]{color:#55bfff}.monitor-legend [data-series="write"]{color:#c488ff}
+.monitor-axis{display:flex;justify-content:space-between;padding-left:8%;font-size:11px;color:#a9b1ce}
+.service-log-entry{padding:16px 0;border-bottom:1px solid #ffffff20}.service-log-entry time{display:block;color:#b5bad1;margin-top:8px}.service-log-entry p{margin:8px 0}.service-log-entry small{color:#b5bad1}
+@media(max-width:900px){.monitor-graphs{grid-template-columns:1fr}.monitor-chart{padding:12px}.owner-monitoring .section-title{flex-wrap:wrap}.audit .section-title{flex-wrap:wrap}}

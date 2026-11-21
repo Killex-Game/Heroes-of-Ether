@@ -1,0 +1,30 @@
+/* Портреты не меняют размер шара, аксессуаров и рамки.
+   Обратная окружность clip-path остаётся на месте при сдвиге самого рисунка. */
+img[data-skin-fit="portrait"] {
+  transform: translate(var(--skin-x), var(--skin-y)) scale(var(--skin-scale));
+  transform-origin: 50% 50%;
+  clip-path: var(--skin-clip);
+  border-radius: 0;
+}
+#lobbySkin[data-skin-fit="portrait"],
+#profileSkin[data-skin-fit="portrait"],
+.avatar-disc .outfit-skin[data-skin-fit="portrait"],
+.player-avatar .avatar-disc img[data-skin-fit="portrait"] {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+[data-skin-fit="portrait"] { transition: none; }
+/* Normalize transparent medal canvases inside the unchanged insignia column. */
+#lobby #profileMedal { position: relative; width: 52px; height: 52px; flex: 0 0 52px; }
+#lobby #profileMedal .title-medal {
+  position: absolute; left: 50%; top: 50%;
+  width: calc(52px * var(--lobby-medal-scale, 1));
+  height: calc(52px * var(--lobby-medal-scale, 1));
+  max-width: none; object-fit: contain; transform: translate(-50%, -50%); pointer-events: none;
+}
+@media (max-width: 700px) {
+  #lobby #profileMedal { width: 36px; height: 36px; flex-basis: 36px; }
+  #lobby #profileMedal .title-medal { width: calc(36px * var(--lobby-medal-scale, 1)); height: calc(36px * var(--lobby-medal-scale, 1)); }
+}

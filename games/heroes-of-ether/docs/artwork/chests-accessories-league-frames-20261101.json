@@ -1,0 +1,312 @@
+{
+  "mode": "imagegen reference edits; transparent webp derivatives",
+  "generated": [
+    {
+      "key": "thorn",
+      "args": {
+        "prompt": "Use case: precise-object-edit. Simplify this green arena thorn into a clean readable game sprite. Preserve circular silhouette and about 12 short triangular spikes around its edge, bright fresh green color and soft rounded volume. Remove all tiny scales, little bumps, veins and internal spikes. Smooth green ball interior with one broad soft highlight and a darker lower edge, no facets, no face. Object occupies 92% of square canvas. No backdrop, no shadow outside shape, no particles, no text. Transparent background.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/arena/thorn-v1.webp"
+        ],
+        "transparent_background": true
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-516ee952-f316-4d1f-bfce-9a51c68933ba.png"
+    },
+    {
+      "key": "viking_hat",
+      "args": {
+        "prompt": "Use case: background-extraction. Produce the supplied Viking helmet as a clean isolated transparent game accessory, preserve its steel-blue dome, golden bands and two ivory horns. Remove the entire black/brown background and ALL outer glow. Front view only; remove visible back/rear opening and rear padding. Its lower front band must be a smooth upward arch, highest at middle and lower at the sides, to rest on the top of a spherical avatar. Preserve design/materials. Whole object visible with safe small margins. No new objects, no shadow or glow outside, actual alpha transparency.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Downloads/687493ea-a384-4438-864b-bc0c1166e147.png"
+        ],
+        "transparent_background": true
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d02442bc-19eb-447f-9dd0-1dcad953a9b8.png"
+    },
+    {
+      "key": "chest-pro",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism-classic-v2/512/pro.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/boss_of_bosses.webp"
+        ],
+        "prompt": "Use case: style-transfer. Deliver ONE game inventory icon on genuine transparent alpha background. Image 1 is the chest to redesign; images 2-5 are the exact visual style references. Redraw image 1 using their soft polished illustrated mobile-fantasy Prizm style, broad clean curved surfaces, luminous smooth enamel, thick beveled gold or silver edging, compact elegant chunky proportions and clear readable decoration. The current image 1 is too realistic and heavily textured: remove scratches, stone veins and fine texture, simplify tiny rivets and incidental detail. Preserve its distinct identity and these defining elements: Teal turquoise enamel, silver reinforcement bands edged in gold, crossed hammer and pickaxe badge on the front. Classic rectangular chest with rounded barrel lid, CLOSED, front and LEFT end visible, matching the style references' orientation. Keep recognizable symbol and palette, not the symbols of the other chests. No extra shapes or crystal growth, no text, no ground, no backdrop, no cast shadow outside silhouette. Center entire chest with 8% clear margin, square canvas. Do not include multiple chests or a comparison sheet."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-26596071-5465-4948-b38c-36fa07e93d82.png"
+    },
+    {
+      "key": "chest-prince",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism-classic-v2/512/king.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/boss_of_bosses.webp"
+        ],
+        "prompt": "Use case: style-transfer. Deliver ONE game inventory icon on genuine transparent alpha background. Image 1 is the chest to redesign; images 2-5 are the exact visual style references. Redraw image 1 using their soft polished illustrated mobile-fantasy Prizm style, broad clean curved surfaces, luminous smooth enamel, thick beveled gold or silver edging, compact elegant chunky proportions and clear readable decoration. The current image 1 is too realistic and heavily textured: remove scratches, stone veins and fine texture, simplify tiny rivets and incidental detail. Preserve its distinct identity and these defining elements: Royal blue enamel, gold bands, a single sculpted lion head lock. Classic rectangular chest with rounded barrel lid, CLOSED, front and LEFT end visible, matching the style references' orientation. Keep recognizable symbol and palette, not the symbols of the other chests. No extra shapes or crystal growth, no text, no ground, no backdrop, no cast shadow outside silhouette. Center entire chest with 8% clear margin, square canvas. Do not include multiple chests or a comparison sheet."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-552f84d1-304f-4030-bbf2-3adcaf5d0e21.png"
+    },
+    {
+      "key": "chest-king",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism-classic-v2/512/prince.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/boss_of_bosses.webp"
+        ],
+        "prompt": "Use case: style-transfer. Deliver ONE game inventory icon on genuine transparent alpha background. Image 1 is the chest to redesign; images 2-5 are the exact visual style references. Redraw image 1 using their soft polished illustrated mobile-fantasy Prizm style, broad clean curved surfaces, luminous smooth enamel, thick beveled gold or silver edging, compact elegant chunky proportions and clear readable decoration. The current image 1 is too realistic and heavily textured: remove scratches, stone veins and fine texture, simplify tiny rivets and incidental detail. Preserve its distinct identity and these defining elements: Crimson red enamel, ivory-white stripes, gold fittings, small crown on the front and ruby lock. Classic rectangular chest with rounded barrel lid, CLOSED, front and LEFT end visible, matching the style references' orientation. Keep recognizable symbol and palette, not the symbols of the other chests. No extra shapes or crystal growth, no text, no ground, no backdrop, no cast shadow outside silhouette. Center entire chest with 8% clear margin, square canvas. Do not include multiple chests or a comparison sheet."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d98b070e-1877-44b2-850d-5bac5197d644.png"
+    },
+    {
+      "key": "chest-emperor",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism-classic-v2/512/emperor.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/boss_of_bosses.webp"
+        ],
+        "prompt": "Use case: style-transfer. Deliver ONE game inventory icon on genuine transparent alpha background. Image 1 is the chest to redesign; images 2-5 are the exact visual style references. Redraw image 1 using their soft polished illustrated mobile-fantasy Prizm style, broad clean curved surfaces, luminous smooth enamel, thick beveled gold or silver edging, compact elegant chunky proportions and clear readable decoration. The current image 1 is too realistic and heavily textured: remove scratches, stone veins and fine texture, simplify tiny rivets and incidental detail. Preserve its distinct identity and these defining elements: Crimson red and pearl ivory enamel, elegant gold scrolls, sun medallion with red center on lid and ruby lock. Classic rectangular chest with rounded barrel lid, CLOSED, front and LEFT end visible, matching the style references' orientation. Keep recognizable symbol and palette, not the symbols of the other chests. No extra shapes or crystal growth, no text, no ground, no backdrop, no cast shadow outside silhouette. Center entire chest with 8% clear margin, square canvas. Do not include multiple chests or a comparison sheet."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b4a823ae-f601-4225-ba55-e26d6affca0b.png"
+    },
+    {
+      "key": "chest-clan-high",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism-classic-v3/512/clan-high.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp"
+        ],
+        "prompt": "Use case: style-transfer. ONE isolated game chest icon, actual transparent background. Image 1 is the design to redraw. Images 2-4 are the exact soft polished illustrated mobile-fantasy Prizm style to match. Preserve the distinct design of image 1 but use compact chunky proportions, rounded forms, broad clean bright metal bevels, luminous smooth enamel or softly painted wood, no realistic scratches or fine noisy textures. Defining elements: Royal blue body, gold bands, gold laurel on front, blue heraldic shield with golden lilies, simple keyhole. Two straight swords are wholly BEHIND the chest, with matching hilts at upper left and upper right, blades fully occluded by the chest; never pierce lid or front. Preserve orientation of image 1 (front and RIGHT end visible). Classic closed rectangular treasure chest, rounded barrel lid except small travel chest may be flatter. Simplify minor details for clarity at 80px. No new motifs. No text, scene, ground, external shadow or backdrop. Entire silhouette centered with 8% transparent margin, square canvas. Do not output multiple objects."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ae9de72b-ca34-4194-ae10-c7c2e3767e98.png"
+    },
+    {
+      "key": "chest-clan-medium",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism-classic-v2/512/clan-medium.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp"
+        ],
+        "prompt": "Use case: style-transfer. ONE isolated game chest icon, actual transparent background. Image 1 is the design to redraw. Images 2-4 are the exact soft polished illustrated mobile-fantasy Prizm style to match. Preserve the distinct design of image 1 but use compact chunky proportions, rounded forms, broad clean bright metal bevels, luminous smooth enamel or softly painted wood, no realistic scratches or fine noisy textures. Defining elements: Warm brown wood, gold bands, a vertical crimson red banner and gold shield-shaped keyhole with a lily above, side ring. Preserve orientation of image 1 (front and RIGHT end visible). Classic closed rectangular treasure chest, rounded barrel lid except small travel chest may be flatter. Simplify minor details for clarity at 80px. No new motifs. No text, scene, ground, external shadow or backdrop. Entire silhouette centered with 8% transparent margin, square canvas. Do not output multiple objects."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-acb3a7c3-98af-40d3-b441-fe08a58efc76.png"
+    },
+    {
+      "key": "chest-clan-low",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism-classic-v2/512/clan-low.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp"
+        ],
+        "prompt": "Use case: style-transfer. ONE isolated game chest icon, actual transparent background. Image 1 is the design to redraw. Images 2-4 are the exact soft polished illustrated mobile-fantasy Prizm style to match. Preserve the distinct design of image 1 but use compact chunky proportions, rounded forms, broad clean bright metal bevels, luminous smooth enamel or softly painted wood, no realistic scratches or fine noisy textures. Defining elements: Warm honey wood, plain silver reinforcement bands, simple silver keyhole, side ring. The simplest lowest-tier clan chest, no invented gem or crown. Preserve orientation of image 1 (front and RIGHT end visible). Classic closed rectangular treasure chest, rounded barrel lid except small travel chest may be flatter. Simplify minor details for clarity at 80px. No new motifs. No text, scene, ground, external shadow or backdrop. Entire silhouette centered with 8% transparent margin, square canvas. Do not output multiple objects."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-80a8694d-24bd-47c9-81f6-b35fdd1103fc.png"
+    },
+    {
+      "key": "chest-quest-large",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism/quest-large.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp"
+        ],
+        "prompt": "Use case: style-transfer. ONE isolated game chest icon, actual transparent background. Image 1 is the design to redraw. Images 2-4 are the exact soft polished illustrated mobile-fantasy Prizm style to match. Preserve the distinct design of image 1 but use compact chunky proportions, rounded forms, broad clean bright metal bevels, luminous smooth enamel or softly painted wood, no realistic scratches or fine noisy textures. Defining elements: Emerald green enamel, gold edging, two brown leather straps, a parchment map on the front under a large gold compass-rose emblem with green center, gold corners. Preserve orientation of image 1 (front and RIGHT end visible). Classic closed rectangular treasure chest, rounded barrel lid except small travel chest may be flatter. Simplify minor details for clarity at 80px. No new motifs. No text, scene, ground, external shadow or backdrop. Entire silhouette centered with 8% transparent margin, square canvas. Do not output multiple objects."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ea86efaa-1b45-446b-a1c6-8b5dc10d04cc.png"
+    },
+    {
+      "key": "chest-quest-medium",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism-classic-v2/512/quest-medium.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp"
+        ],
+        "prompt": "Use case: style-transfer. ONE isolated game chest icon, actual transparent background. Image 1 is the design to redraw. Images 2-4 are the exact soft polished illustrated mobile-fantasy Prizm style to match. Preserve the distinct design of image 1 but use compact chunky proportions, rounded forms, broad clean bright metal bevels, luminous smooth enamel or softly painted wood, no realistic scratches or fine noisy textures. Defining elements: Bright turquoise blue enamel, gold edges, two brown leather straps and a carry handle, gold compass-rose on front with blue center, side ring. Preserve orientation of image 1 (front and RIGHT end visible). Classic closed rectangular treasure chest, rounded barrel lid except small travel chest may be flatter. Simplify minor details for clarity at 80px. No new motifs. No text, scene, ground, external shadow or backdrop. Entire silhouette centered with 8% transparent margin, square canvas. Do not output multiple objects."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-edc433a2-91f2-43a1-bab7-e41311bd2c4e.png"
+    },
+    {
+      "key": "chest-quest-small",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/chests/prism-classic-v2/512/quest-small.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/experienced.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/master.webp",
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/progression/webp/256/rank_chests/sage.webp"
+        ],
+        "prompt": "Use case: style-transfer. ONE isolated game chest icon, actual transparent background. Image 1 is the design to redraw. Images 2-4 are the exact soft polished illustrated mobile-fantasy Prizm style to match. Preserve the distinct design of image 1 but use compact chunky proportions, rounded forms, broad clean bright metal bevels, luminous smooth enamel or softly painted wood, no realistic scratches or fine noisy textures. Defining elements: Small warm wooden travel chest, green leather straps, gold corners, rolled ivory parchment held across front with green wax seal and gold leaf, side ring. Modest rounded low chest. Preserve orientation of image 1 (front and RIGHT end visible). Classic closed rectangular treasure chest, rounded barrel lid except small travel chest may be flatter. Simplify minor details for clarity at 80px. No new motifs. No text, scene, ground, external shadow or backdrop. Entire silhouette centered with 8% transparent margin, square canvas. Do not output multiple objects."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-82ecf90a-ff73-4e2f-9a50-767e518a712d.png"
+    },
+    {
+      "key": "frame-bronze",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/king.webp"
+        ],
+        "prompt": "Use case: stylized-concept. Create ONE ornate CIRCULAR profile avatar FRAME for a fantasy game. Reference image shows the target visual quality, polished illustrated Prizm style and richness. Design a distinct league frame: Bronze league: rich warm copper and dark bronze, chestnut leather inset, modest symmetrical laurel branches, small round embossed shield medallion at top. Clearly lowest tier but polished and well crafted. No crown or wings. Strict geometry: square canvas, perfect circular EMPTY hole centered at 50% x, 51% y, hole radius 30% of canvas width. Entire hole truly transparent, outside silhouette truly transparent, no backdrop, no black paint, no avatar. Continuous narrow inner metallic ring hugs circle exactly; decoration expands OUTWARD, never blocks central hole. Symmetric balance, clean readable gold/silver bevels, rich smooth enamel, no excessive tiny texture, no text, no letters, no number, no banner labels. Full ornament fits canvas with 5% transparent margin. This is a single frame asset, no sheet. Do not duplicate the reference lion head or red jewel pattern unless requested above."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-6fc5126e-aca5-436c-bddd-c9bf69632524.png"
+    },
+    {
+      "key": "frame-silver",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/king.webp"
+        ],
+        "prompt": "Use case: stylized-concept. Create ONE ornate CIRCULAR profile avatar FRAME for a fantasy game. Reference image shows the target visual quality, polished illustrated Prizm style and richness. Design a distinct league frame: Silver league: lustrous silver and icy blue enamel, silver laurel branches with a few overlapping feathers, small silver crescent at top. More elegant and elaborate than bronze. No crown. Strict geometry: square canvas, perfect circular EMPTY hole centered at 50% x, 51% y, hole radius 30% of canvas width. Entire hole truly transparent, outside silhouette truly transparent, no backdrop, no black paint, no avatar. Continuous narrow inner metallic ring hugs circle exactly; decoration expands OUTWARD, never blocks central hole. Symmetric balance, clean readable gold/silver bevels, rich smooth enamel, no excessive tiny texture, no text, no letters, no number, no banner labels. Full ornament fits canvas with 5% transparent margin. This is a single frame asset, no sheet. Do not duplicate the reference lion head or red jewel pattern unless requested above."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-eab9c735-8136-4a6c-bae7-fd2973b7eae7.png"
+    },
+    {
+      "key": "frame-gold",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/king.webp"
+        ],
+        "prompt": "Use case: stylized-concept. Create ONE ornate CIRCULAR profile avatar FRAME for a fantasy game. Reference image shows the target visual quality, polished illustrated Prizm style and richness. Design a distinct league frame: Gold league: bright gold and warm ivory enamel, full golden laurels and modest wing-like flourishes, small sun insignia at top, luminous gold finish. Strict geometry: square canvas, perfect circular EMPTY hole centered at 50% x, 51% y, hole radius 30% of canvas width. Entire hole truly transparent, outside silhouette truly transparent, no backdrop, no black paint, no avatar. Continuous narrow inner metallic ring hugs circle exactly; decoration expands OUTWARD, never blocks central hole. Symmetric balance, clean readable gold/silver bevels, rich smooth enamel, no excessive tiny texture, no text, no letters, no number, no banner labels. Full ornament fits canvas with 5% transparent margin. This is a single frame asset, no sheet. Do not duplicate the reference lion head or red jewel pattern unless requested above."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-47b6f8b9-1d99-42ba-be71-9ba4dfc5f1e0.png"
+    },
+    {
+      "key": "frame-platinum",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/king.webp"
+        ],
+        "prompt": "Use case: stylized-concept. Create ONE ornate CIRCULAR profile avatar FRAME for a fantasy game. Reference image shows the target visual quality, polished illustrated Prizm style and richness. Design a distinct league frame: Platinum league: pale platinum metal, turquoise and mint enamel, graceful swept feather/wing accents, full laurel branches, small star set in a sculpted orbit at top. Richer layered ornament. Strict geometry: square canvas, perfect circular EMPTY hole centered at 50% x, 51% y, hole radius 30% of canvas width. Entire hole truly transparent, outside silhouette truly transparent, no backdrop, no black paint, no avatar. Continuous narrow inner metallic ring hugs circle exactly; decoration expands OUTWARD, never blocks central hole. Symmetric balance, clean readable gold/silver bevels, rich smooth enamel, no excessive tiny texture, no text, no letters, no number, no banner labels. Full ornament fits canvas with 5% transparent margin. This is a single frame asset, no sheet. Do not duplicate the reference lion head or red jewel pattern unless requested above."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-522167de-0027-4fb6-ad8a-565e89c9e6c3.png"
+    },
+    {
+      "key": "frame-diamond",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/king.webp"
+        ],
+        "prompt": "Use case: stylized-concept. Create ONE ornate CIRCULAR profile avatar FRAME for a fantasy game. Reference image shows the target visual quality, polished illustrated Prizm style and richness. Design a distinct league frame: Diamond league: lustrous silver with gold accents, rich sapphire blue enamel, a few clear blue diamond highlights appropriate to diamond tier, broad layered silver wings and laurels, single blue diamond top crest. Majestic but balanced. Strict geometry: square canvas, perfect circular EMPTY hole centered at 50% x, 51% y, hole radius 30% of canvas width. Entire hole truly transparent, outside silhouette truly transparent, no backdrop, no black paint, no avatar. Continuous narrow inner metallic ring hugs circle exactly; decoration expands OUTWARD, never blocks central hole. Symmetric balance, clean readable gold/silver bevels, rich smooth enamel, no excessive tiny texture, no text, no letters, no number, no banner labels. Full ornament fits canvas with 5% transparent margin. This is a single frame asset, no sheet. Do not duplicate the reference lion head or red jewel pattern unless requested above."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-42af0d72-6154-45b4-9562-12e00b7fddb5.png"
+    },
+    {
+      "key": "frame-champions",
+      "args": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/title-frames/v1/king.webp"
+        ],
+        "prompt": "Use case: stylized-concept. Create ONE ornate CIRCULAR profile avatar FRAME for a fantasy game. Reference image shows the target visual quality, polished illustrated Prizm style and richness. Design a distinct league frame: Champion league: highest tier, magnificent polished gold, crimson red and ivory enamel, large multi-layered laurel wreath and feather flourishes, elegant cup-shaped champion crest at top. Small crown centered above crest with all leaves in foreground. Most elaborate tier, no animal or real-world political emblem. Strict geometry: square canvas, perfect circular EMPTY hole centered at 50% x, 51% y, hole radius 30% of canvas width. Entire hole truly transparent, outside silhouette truly transparent, no backdrop, no black paint, no avatar. Continuous narrow inner metallic ring hugs circle exactly; decoration expands OUTWARD, never blocks central hole. Symmetric balance, clean readable gold/silver bevels, rich smooth enamel, no excessive tiny texture, no text, no letters, no number, no banner labels. Full ornament fits canvas with 5% transparent margin. This is a single frame asset, no sheet. Do not duplicate the reference lion head or red jewel pattern unless requested above."
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-522c156c-6d6c-4b01-bd74-5a7d7b2a376c.png"
+    },
+    {
+      "key": "sombrero_hat",
+      "args": {
+        "prompt": "Edit the supplied game hat into a wearable front-only sprite. Preserve the exact recognizable woven straw sombrero, red fabric band, upturned outer brim, color scheme and polished illustrated rendering. Front view, symmetrical and compact. IMPORTANT the lower silhouette is a shallow upward arch (centre higher than sides), shaped to sit flush on the upper contour of a round ball. No rear brim, no inside cavity, no hollow liner visible behind the ball. No huge low hanging brim. Remove ALL dark background, colored glow and detached shadow outside the object. Actual transparent alpha background. Keep entire hat visible with clear margin, no text, no circle, no avatar.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Downloads/656d9596-4613-46b7-84b7-8b42b06d88ac.png"
+        ],
+        "transparent_background": true
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-fd81c09f-199b-493e-a121-68a5cb5f765c.png"
+    },
+    {
+      "key": "mushroom_hat",
+      "args": {
+        "prompt": "Edit the supplied game hat into a wearable front-only sprite. Preserve the exact recognizable bright red mushroom cap with large cream white dots and a narrow cream underside, color scheme and polished illustrated rendering. Front view, symmetrical and compact. IMPORTANT the lower silhouette is a shallow upward arch (centre higher than sides), shaped to sit flush on the upper contour of a round ball. No rear brim, no inside cavity, no hollow liner visible behind the ball. No huge low hanging brim. Remove ALL dark background, colored glow and detached shadow outside the object. Actual transparent alpha background. Keep entire hat visible with clear margin, no text, no circle, no avatar.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Downloads/04301baa-55dd-4306-921b-3c7f20179107.png"
+        ],
+        "transparent_background": true
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-87615826-8dc4-4a5d-aa6b-a57b162a81cc.png"
+    },
+    {
+      "key": "cowboy_hat",
+      "args": {
+        "prompt": "Edit the supplied game hat into a wearable front-only sprite. Preserve the exact recognizable brown leather cowboy hat, gold stitched band, golden round leafy badge, upturned outer brim, color scheme and polished illustrated rendering. Front view, symmetrical and compact. IMPORTANT the lower silhouette is a shallow upward arch (centre higher than sides), shaped to sit flush on the upper contour of a round ball. No rear brim, no inside cavity, no hollow liner visible behind the ball. No huge low hanging brim. Remove ALL dark background, colored glow and detached shadow outside the object. Actual transparent alpha background. Keep entire hat visible with clear margin, no text, no circle, no avatar.",
+        "referenced_image_paths": [
+          "C:/Users/semen/Downloads/c03156ea-a80b-4767-993c-891a72211f6b.png"
+        ],
+        "transparent_background": true
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-18400246-cd85-40a9-a2d3-0ef143c739d1.png"
+    },
+    {
+      "key": "sombrero_hat",
+      "args": {
+        "prompt": "Precise geometric edit of image 1. Keep its recognizable hat design and colors, crown and materials. Change only its bottom/brim geometry to fit a ball: make the bottom edge a clear concave arch, CENTER HIGHER than the two side endpoints, like the curved bottom rim of image 2. The current brim is too flat or curves the wrong way. Use a circular arch with centre of circle below image, sag about 8% of total hat width between middle and endpoints. Remove all back brim and hollow inside surfaces, only front rim remains. No circle or ball drawn, pure transparent background, whole hat fully visible. No other objects, no text, no shadow outside.",
+        "referenced_image_paths": [
+          "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-fd81c09f-199b-493e-a121-68a5cb5f765c.png",
+          "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-d02442bc-19eb-447f-9dd0-1dcad953a9b8.png"
+        ],
+        "transparent_background": true
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c0eb256b-540c-4070-9a1f-74cf168a6090.png"
+    },
+    {
+      "key": "mushroom_hat",
+      "args": {
+        "prompt": "Precise geometric edit of image 1. Keep its recognizable hat design and colors, crown and materials. Change only its bottom/brim geometry to fit a ball: make the bottom edge a clear concave arch, CENTER HIGHER than the two side endpoints, like the curved bottom rim of image 2. The current brim is too flat or curves the wrong way. Use a circular arch with centre of circle below image, sag about 8% of total hat width between middle and endpoints. Remove all back brim and hollow inside surfaces, only front rim remains. No circle or ball drawn, pure transparent background, whole hat fully visible. No other objects, no text, no shadow outside.",
+        "referenced_image_paths": [
+          "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-87615826-8dc4-4a5d-aa6b-a57b162a81cc.png",
+          "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-d02442bc-19eb-447f-9dd0-1dcad953a9b8.png"
+        ],
+        "transparent_background": true
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4eb99177-cb68-4a79-b604-597362ce6673.png"
+    },
+    {
+      "key": "cowboy_hat",
+      "args": {
+        "prompt": "Precise geometric edit of image 1. Keep its recognizable hat design and colors, crown and materials. Change only its bottom/brim geometry to fit a ball: make the bottom edge a clear concave arch, CENTER HIGHER than the two side endpoints, like the curved bottom rim of image 2. The current brim is too flat or curves the wrong way. Use a circular arch with centre of circle below image, sag about 8% of total hat width between middle and endpoints. Remove all back brim and hollow inside surfaces, only front rim remains. No circle or ball drawn, pure transparent background, whole hat fully visible. No other objects, no text, no shadow outside.",
+        "referenced_image_paths": [
+          "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-18400246-cd85-40a9-a2d3-0ef143c739d1.png",
+          "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-d02442bc-19eb-447f-9dd0-1dcad953a9b8.png"
+        ],
+        "transparent_background": true
+      },
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-6764c685-bd91-4bde-8a4e-8c64cc4116da.png"
+    }
+  ],
+  "providedBows": {
+    "striped_bow": "91a60d10-a6b1-43c2-8478-b1212fb30139",
+    "black_bow": "7a4707e1-5c65-42de-bfae-560717a346ca",
+    "red_bow": "65a78b56-ccd3-40b0-aec2-f7a33d288f00",
+    "gold_bow": "fd6efbce-ff92-4ce2-9b8b-1f5d9990344e"
+  }
+}

@@ -1,0 +1,740 @@
+/* Детали аватаров, профилей, рейтингов, кланов и коллекций. */
+/* Shared geometry for the autumn artwork update. */
+#lobby .profile-card {
+  max-width: min(500px, 48cqw);
+}
+#lobby .showcase-grid {
+  grid-template-columns: clamp(235px, 30cqw, 410px) minmax(0, 1fr) clamp(220px, 23cqw, 300px);
+  gap: 18px;
+}
+@media (min-width: 1051px) and (min-height: 621px) {
+  #lobby .side-nav {
+    height: auto;
+    gap: 12px;
+  }
+  #lobby .side-nav .menu-tile {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+  #lobby .menu-tile strong {
+    font-size: clamp(17px, 1.65cqw, 23px);
+  }
+  #lobby .menu-icon {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+}
+#lobby .promo-slot {
+  position: relative;
+  padding: 14px;
+  background-color: var(--ui-c-f2dbaf, #f2dbaf);
+  background-size: cover;
+  background-position: center;
+  border-radius: 17px;
+  border: 2px solid #d6ad5d;
+  box-shadow:
+    inset 0 0 0 2px #ffedba,
+    0 3px 8px var(--ui-c-633a5d26, #633a5d26);
+}
+#lobby .promo-slot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--ui-c-fff3d8e8, #fff3d8e8), transparent 69%);
+  pointer-events: none;
+}
+#lobby .promo-slot > * {
+  position: relative;
+  z-index: 1;
+  max-width: 52%;
+}
+#lobby .promo-slot .promo-eyebrow {
+  font-size: 10px;
+  color: #73513a;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+#lobby .promo-slot h2 {
+  margin: 0 0 7px;
+  font-size: clamp(19px, 2cqw, 30px);
+  color: #5d3521;
+  text-shadow: 0 1px 1px #fff6d6;
+}
+#lobby .promo-slot p {
+  margin: 0;
+  font-size: clamp(10px, 1cqw, 13px);
+  line-height: 1.5;
+  color: #623e32;
+}
+#lobby .promo-products {
+  cursor: pointer;
+}
+#lobby .promo-products::after {
+  content: none;
+}
+#lobby .promo-products > .promo-slide {
+  position: absolute;
+  inset: 0;
+  max-width: none;
+  padding: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.9s ease-in-out;
+  pointer-events: none;
+}
+#lobby .promo-products > .promo-slide.is-active {
+  opacity: 1;
+}
+#lobby .promo-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--ui-c-fff3d8e8, #fff3d8e8), transparent 69%);
+}
+#lobby .promo-slide > * {
+  position: relative;
+  z-index: 1;
+  max-width: 52%;
+}
+#lobby .promo-slide-copy {
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.45s ease;
+}
+#lobby .promo-slide.is-active .promo-slide-copy {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.35s;
+}
+#lobby .promo-slide[data-tier="premium"]::before {
+  background: linear-gradient(90deg, #321243e8, transparent 72%);
+}
+#lobby .promo-slide[data-tier="premium"] h2,
+#lobby .promo-slide[data-tier="premium"] p,
+#lobby .promo-slide[data-tier="premium"] .promo-eyebrow {
+  color: #fff0c9;
+  text-shadow: 0 1px 2px #321342;
+}
+@media (prefers-reduced-motion: reduce) {
+  #lobby .promo-products > .promo-slide,
+  #lobby .promo-products .promo-slide-copy {
+    transition: none;
+    transform: none;
+  }
+}
+#lobby .promo-events {
+  background-position: 65% center;
+}
+#lobby .player-progress {
+  width: min(780px, 82%);
+  max-width: 100%;
+  justify-self: center;
+  height: 54px;
+  grid-template-rows: auto 18px;
+  padding: 2px 8px;
+}
+/* Experience keeps a vivid fill; nested clan scopes use their own theme. */
+[data-ui-theme] {
+  --xp-fill: initial;
+  --xp-fill-shadow: initial;
+}
+[data-ui-theme="bronze"] {
+  --xp-fill: linear-gradient(#ffd59a, #f09a3b 45%, #c46117 60%, #ffb04a);
+}
+[data-ui-theme="silver"] {
+  --xp-fill: linear-gradient(#eef7ff, #91adc8 45%, #527596 60%, #acc4df);
+}
+[data-ui-theme="gold"] {
+  --xp-fill: linear-gradient(#ffe681, #f6b91e 45%, #d48809 60%, #ffc92b);
+}
+[data-ui-theme="platinum"] {
+  --xp-fill: linear-gradient(#b4fff2, #32cbb8 45%, #129481 60%, #49d8c1);
+}
+[data-ui-theme="diamond"] {
+  --xp-fill: linear-gradient(#a9eeff, #27beff 45%, #007fc8 60%, #5bd4ff);
+}
+[data-ui-theme="champions"] {
+  --xp-fill: linear-gradient(#ffc4d2, #f24c79 45%, #b9204a 60%, #ff7093);
+}
+[data-ui-theme]:not([data-ui-theme="default"]) {
+  --xp-fill-shadow: inset 0 1px 2px #fffbe6, inset 0 -1px 1px #00000022;
+}
+#lobby .xp-track,
+#lifeXpBar {
+  position: relative;
+  height: 18px;
+  border: 2px solid #b49755;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ui-c-d6c8a8, #d6c8a8);
+  box-shadow: inset 0 2px 5px #65442244;
+}
+#lobby #xpFill,
+#lifeXpFill {
+  position: relative;
+  height: 100%;
+  border-radius: 9px;
+  background: var(
+    --xp-fill,
+    linear-gradient(
+      var(--ui-c-acf869, #acf869),
+      var(--ui-c-50ce48, #50ce48) 45%,
+      var(--ui-c-139842, #139842) 60%,
+      var(--ui-c-49c94c, #49c94c)
+    )
+  );
+  box-shadow: var(--xp-fill-shadow, inset 0 1px 2px var(--ui-c-f0ffc8, #f0ffc8));
+  transition: width 0.6s ease;
+  overflow: hidden;
+}
+/* Oversized repeating layers travel exactly one tile at a constant speed. */
+#xpFill::after,
+#lifeXpFill::after,
+.clan-xp-fill::after,
+.clan-battle-bar > span::after {
+  content: "";
+  position: absolute;
+  inset: 0 -180px 0 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18px 35%, var(--ui-c-fffed1, #fffed1) 0 1px, transparent 2px),
+    radial-gradient(circle at 93px 70%, var(--ui-c-e9ffb9, #e9ffb9) 0 1px, transparent 2px),
+    radial-gradient(circle at 141px 28%, var(--ui-c-fffad5, #fffad5) 0 1.2px, transparent 2.4px);
+  background-size: 180px 100%;
+  animation: xp-spark-drift 6s linear infinite;
+  animation-delay: var(--flow-phase, 0s);
+  opacity: 0.8;
+}
+.clan-battle-bar > span:last-child::after {
+  animation-direction: reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .clan-battle-bar > span::after {
+    animation: none;
+  }
+}
+@keyframes xp-spark-drift {
+  from {
+    transform: translateX(-180px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.clan-xp-track {
+  height: 12px;
+  border: 1px solid #b69744;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ui-c-d6c8a8, #d6c8a8);
+  box-shadow: inset 0 1px 3px #60432244;
+}
+.clan-xp-fill {
+  position: relative;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background: var(
+    --xp-fill,
+    linear-gradient(
+      var(--ui-c-b5ff71, #b5ff71),
+      var(--ui-c-46d342, #46d342) 45%,
+      var(--ui-c-119944, #119944) 60%,
+      var(--ui-c-41ca46, #41ca46)
+    )
+  );
+  box-shadow: var(--xp-fill-shadow, none);
+}
+body #settingsMenu #closeSettings::after {
+  display: none;
+}
+body #settingsMenu #closeSettings {
+  color: #62345d;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  line-height: 1;
+  text-align: center;
+}
+.clan-banner {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr) minmax(165px, 210px);
+  align-items: center;
+  gap: 18px;
+}
+.clan-banner-actions {
+  display: grid;
+  gap: 8px;
+  align-content: center;
+  justify-items: stretch;
+}
+.clan-banner-actions:empty {
+  display: none;
+}
+.clan-banner-actions .sf-button {
+  font-size: 13px;
+  min-height: 40px;
+  padding: 8px 15px;
+}
+.clan-banner .clan-level {
+  max-width: 660px;
+}
+.clan-crest,
+.clan-league-crest {
+  object-fit: contain;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+.clan-crest-choice img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.account-button-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.account-button-icons img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.player-avatar {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border: 2px solid #cfaa5c;
+  border-radius: 50%;
+  background: var(--ui-c-634073, #634073);
+}
+.player-avatar .avatar-disc img {
+  position: absolute;
+  inset: -6.5%;
+  width: 113%;
+  height: 113%;
+  max-width: none;
+  object-fit: cover;
+}
+.player-account-badge {
+  position: absolute;
+  z-index: 2;
+  right: -9px;
+  top: -8px;
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px #37214488);
+}
+.player-avatar[data-account="vip"] {
+  border-color: #ffcc32;
+  box-shadow:
+    0 0 0 2px #a65c13,
+    0 0 9px #ffc40080;
+}
+.player-avatar[data-account="premium"] {
+  border-color: var(--ui-c-d8a1ff, #d8a1ff);
+  box-shadow:
+    0 0 0 2px var(--ui-c-7826a5, #7826a5),
+    0 0 10px var(--ui-c-b84cf590, #b84cf590);
+}
+.tops-dialog button.clan-ranking-player {
+  display: grid;
+  grid-template-columns: 32px 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  min-height: 66px;
+  border: 0;
+  border-bottom: 1px solid #cfb98b55;
+  border-radius: 9px;
+  padding: 8px 12px;
+  color: #55315e;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.tops-dialog button.clan-ranking-player:hover {
+  background: #eddded;
+}
+.player-profile-dialog {
+  width: min(740px, calc(100vw - 28px));
+  max-height: calc(100dvh - 28px);
+  padding: 12px;
+  border: 2px solid #b98c40;
+  border-radius: 20px;
+  background: linear-gradient(140deg, var(--ui-c-fff9e3, #fff9e3), var(--ui-c-f2deae, #f2deae));
+  box-shadow:
+    inset 0 0 0 3px #ffefc8,
+    0 20px 80px var(--ui-c-29113788, #29113788);
+  color: #51315f;
+  overflow: auto;
+}
+.player-profile-dialog::backdrop {
+  background: var(--ui-c-24122caa, #24122caa);
+}
+.player-profile-dialog .personal-heading h2 {
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+.public-player-hero {
+  display: grid;
+  place-items: center;
+  min-height: 185px;
+  padding: 22px;
+  border-radius: 14px;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    var(--ui-c-ffe6a6, #ffe6a6),
+    var(--ui-c-e6ccf1, #e6ccf1) 65%,
+    var(--ui-c-cba9db, #cba9db)
+  );
+}
+.public-player-avatar {
+  width: 144px;
+  height: 144px;
+  border-width: 4px;
+}
+.public-player-avatar .player-account-badge {
+  width: 50px;
+  height: 50px;
+  right: -12px;
+  top: -15px;
+}
+.public-shelf-title {
+  margin: 14px 6px 7px;
+  font-size: 14px;
+}
+.public-player-shelf {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  min-width: 0;
+  min-height: 110px;
+  padding: 12px;
+  border: 1px solid #d9b56c;
+  border-radius: 13px;
+  background: linear-gradient(var(--ui-c-fff6dc, #fff6dc), var(--ui-c-ead19e, #ead19e));
+  box-shadow: inset 0 -5px 0 #cba35322;
+}
+.public-player-shelf.has-overflow {
+  grid-template-columns: 28px minmax(0, 1fr) 28px;
+  gap: 6px;
+}
+.public-shelf-track {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 4px;
+  padding: 6px 4px;
+}
+.public-shelf-track::-webkit-scrollbar {
+  display: none;
+}
+.public-shelf-track > .public-trophy {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+.public-shelf-arrow.sf-button {
+  width: 28px;
+  min-width: 28px;
+  height: 38px;
+  min-height: 38px;
+  padding: 0;
+  font-size: 24px;
+}
+.public-shelf-arrow.sf-button::before {
+  border-width: 12px 10px;
+}
+.public-shelf-arrow[hidden] {
+  display: none;
+}
+.public-trophy.personal-season-trophy {
+  position: relative;
+  width: 72px;
+  height: 76px;
+  padding: 4px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: none;
+  cursor: help;
+}
+.personal-season-trophy img {
+  width: 64px;
+  height: 68px;
+}
+.personal-season-trophy .regalia-count {
+  right: 0;
+  bottom: 0;
+  background: #35635c;
+  color: #fff8dd;
+}
+.public-trophy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 84px;
+  gap: 4px;
+  text-align: center;
+}
+.public-trophy img,
+.public-trophy .title-medal {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+.public-trophy small {
+  font-size: 10px;
+}
+/* Одинаковые ячейки для кубков, медалей, регалий и подарков мини-профиля. */
+#playerProfileDialog .public-player-shelf .public-shelf-track > .public-trophy {
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  grid-template: 1fr / 1fr;
+  gap: 0;
+  flex: 0 0 76px;
+  width: 76px;
+  min-width: 76px;
+  height: 104px;
+  min-height: 104px;
+  padding: 6px;
+  border-radius: 10px;
+}
+#playerProfileDialog .public-trophy > img,
+#playerProfileDialog .public-trophy .title-medal {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin: 0;
+  align-self: center;
+  justify-self: center;
+}
+#playerProfileDialog .personal-season-trophy img {
+  transform-origin: center;
+}
+#playerProfileDialog .public-shelf-track > .title-trophy {
+  /* Clip only the enlarged transparent canvas inside the existing shelf cell. */
+  overflow: hidden;
+}
+#playerProfileDialog .title-trophy .title-medal {
+  transform: scale(var(--shelf-medal-scale, 1));
+  transform-origin: center;
+}
+#playerProfileDialog .public-trophy small {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  font-size: 8px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+#playerProfileDialog .public-trophy .regalia-count {
+  right: 2px;
+  bottom: 14px;
+}
+.daily-regalia {
+  position: relative;
+  width: 64px;
+  min-height: 68px;
+  border-radius: 10px;
+  cursor: help;
+}
+.daily-regalia img {
+  width: 64px;
+  height: 68px;
+  filter: drop-shadow(0 2px 2px #4d244448);
+}
+.daily-regalia:focus-visible {
+  outline: 2px solid var(--ui-c-9b43c7, #9b43c7);
+  outline-offset: 3px;
+}
+.regalia-count {
+  position: absolute;
+  bottom: -2px;
+  right: -3px;
+  min-width: 22px;
+  padding: 2px 5px;
+  border-radius: 10px;
+  border: 1px solid #edd493;
+  color: #fff8dd;
+  background: var(--ui-c-5c256f, #5c256f);
+  font-size: 10px;
+  font-weight: 800;
+  pointer-events: none;
+}
+.ranking-players-table .clan-ranking-player[data-podium] {
+  position: relative;
+  border: 1px solid var(--podium-edge);
+  border-left: 4px solid var(--podium-edge);
+  background: linear-gradient(105deg, var(--podium-tint), #fff8e7 72%, var(--podium-tint));
+  box-shadow:
+    inset 0 1px 0 #ffffffc9,
+    inset 0 -2px 0 #69432e0c;
+}
+.clan-ranking-player[data-podium="1"] {
+  --podium-edge: #d59516;
+  --podium-tint: #ffe6a0;
+}
+.clan-ranking-player[data-podium="2"] {
+  --podium-edge: #8ba3c6;
+  --podium-tint: #dbe8ff;
+}
+.clan-ranking-player[data-podium="3"] {
+  --podium-edge: #c57f4c;
+  --podium-tint: #f7d3b4;
+}
+.clan-ranking-player[data-podium] .daily-rank-medal {
+  width: 34px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+}
+.daily-rank-medal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px #52284b44);
+}
+.ranking-players-table .clan-ranking-player[data-podium].clan-ranking-self {
+  outline: 2px solid #c99a3c;
+  outline-offset: -3px;
+}
+.public-player-details {
+  display: grid;
+  grid-template-columns: 120px 145px minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+.public-player-social,
+.public-player-clan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 6px;
+  border: 1px solid #d9b982;
+  border-radius: 13px;
+  text-align: center;
+}
+.public-player-social strong,
+.public-player-clan strong {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.public-player-clan .clan-crest {
+  width: 68px;
+  height: 68px;
+}
+.public-player-social .sf-button {
+  font-size: 11px;
+  min-height: 36px;
+  padding: 6px 9px;
+  text-decoration: none;
+}
+.public-player-stats {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: center;
+  gap: 13px 10px;
+  margin: 0;
+  padding: 15px 10px;
+  border-radius: 13px;
+  background: var(--ui-c-fff9e480, #fff9e480);
+  font-size: 12px;
+}
+.public-player-stats dd {
+  margin: 0;
+  font-weight: 750;
+  text-align: right;
+}
+body.account-vip .skin-art {
+  border-color: #f7c446;
+  box-shadow:
+    0 0 0 4px #fff2ad,
+    0 0 0 8px #b97417,
+    0 0 0 11px #f3c545,
+    0 0 27px #ffc40088;
+}
+body.account-premium .skin-art {
+  border-color: var(--ui-c-d5a0ff, #d5a0ff);
+  box-shadow:
+    0 0 0 4px var(--ui-c-ead0ff, #ead0ff),
+    0 0 0 8px var(--ui-c-741c9d, #741c9d),
+    0 0 0 11px var(--ui-c-daa5ff, #daa5ff),
+    0 0 30px var(--ui-c-b444ff99, #b444ff99);
+}
+@media (max-height: 620px), (max-width: 1050px) {
+  #lobby .showcase-grid {
+    grid-template-columns: minmax(210px, 28cqw) minmax(0, 1fr) minmax(145px, 19cqw);
+    gap: 12px;
+  }
+  #lobby .promo-slot {
+    padding: 10px;
+  }
+  #lobby .promo-slot h2 {
+    font-size: 19px;
+  }
+  #lobby .promo-slot .promo-eyebrow {
+    font-size: 8px;
+    margin-bottom: 4px;
+  }
+  #lobby .promo-slot p {
+    font-size: 9px;
+  }
+  #lobby .player-progress {
+    width: min(700px, 88%);
+    height: 44px;
+    grid-template-rows: auto 14px;
+  }
+  #lobby .xp-track {
+    height: 14px;
+  }
+}
+@media (max-width: 700px) {
+  .public-player-details {
+    grid-template-columns: 1fr 1fr;
+  }
+  .public-player-stats {
+    grid-column: 1/-1;
+  }
+  .clan-banner {
+    grid-template-columns: 55px minmax(0, 1fr);
+  }
+  .clan-banner-actions {
+    grid-column: 1/-1;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #xpFill::before,
+  #xpFill::after,
+  #lifeXpFill::after {
+    animation: none;
+  }
+}

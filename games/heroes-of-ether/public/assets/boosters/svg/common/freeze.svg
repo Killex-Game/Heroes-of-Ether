@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="freeze-title freeze-desc">
+<title id="freeze-title">Заморозка</title>
+<desc id="freeze-desc">Обычный бустер. Замедляет игрока на 30%. Действует 10 секунд (с учётом полёта). Цена: 10 монет за 10 штук.</desc>
+<defs><linearGradient id="freeze-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="freeze-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="freeze-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="freeze-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="freeze-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="freeze-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="freeze-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="freeze-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="freeze-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="freeze-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="freeze-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="freeze-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path transform="rotate(0 128 128)" fill="url(#freeze-frost)" d="M118 129V81L97 69L102 58L118 67V46L128 28L138 46V67L154 58L159 69L138 81V129Z"/>
+<path transform="rotate(0 128 128)" fill="none" stroke="#F4FFFF" stroke-width="5" d="M126 49V104M106 65L120 74"/>
+<path transform="rotate(60 128 128)" fill="url(#freeze-frost)" d="M118 129V81L97 69L102 58L118 67V46L128 28L138 46V67L154 58L159 69L138 81V129Z"/>
+<path transform="rotate(60 128 128)" fill="none" stroke="#F4FFFF" stroke-width="5" d="M126 49V104M106 65L120 74"/>
+<path transform="rotate(120 128 128)" fill="url(#freeze-frost)" d="M118 129V81L97 69L102 58L118 67V46L128 28L138 46V67L154 58L159 69L138 81V129Z"/>
+<path transform="rotate(120 128 128)" fill="none" stroke="#F4FFFF" stroke-width="5" d="M126 49V104M106 65L120 74"/>
+<path transform="rotate(180 128 128)" fill="url(#freeze-frost)" d="M118 129V81L97 69L102 58L118 67V46L128 28L138 46V67L154 58L159 69L138 81V129Z"/>
+<path transform="rotate(180 128 128)" fill="none" stroke="#F4FFFF" stroke-width="5" d="M126 49V104M106 65L120 74"/>
+<path transform="rotate(240 128 128)" fill="url(#freeze-frost)" d="M118 129V81L97 69L102 58L118 67V46L128 28L138 46V67L154 58L159 69L138 81V129Z"/>
+<path transform="rotate(240 128 128)" fill="none" stroke="#F4FFFF" stroke-width="5" d="M126 49V104M106 65L120 74"/>
+<path transform="rotate(300 128 128)" fill="url(#freeze-frost)" d="M118 129V81L97 69L102 58L118 67V46L128 28L138 46V67L154 58L159 69L138 81V129Z"/>
+<path transform="rotate(300 128 128)" fill="none" stroke="#F4FFFF" stroke-width="5" d="M126 49V104M106 65L120 74"/>
+<path fill="url(#freeze-blue)" d="M128 91L161 109V147L128 165L95 147V109Z"/>
+<path stroke="none" fill="#D2FFFF" d="M128 96L155 112L128 128L101 112Z"/>
+<path stroke="none" fill="#75DCEC" d="M100 115L125 130V158L100 144Z"/>
+<path stroke="none" fill="#369BD4" d="M131 130L156 115V144L131 158Z"/>
+<path fill="none" stroke="#E9FFFF" stroke-width="4" d="M105 111L128 98L143 107"/>
+<path fill="none" stroke="#392B48" stroke-width="4" d="M128 127V158M102 113L128 127L154 113"/>
+</g>
+</svg>

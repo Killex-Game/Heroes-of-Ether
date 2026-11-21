@@ -1,0 +1,34 @@
+# ДВА закомментированных unit-файла. Не установлены и не включены.
+# /etc/systemd/system/sferorumiya-backup.service
+# [Unit]
+# Description=Sferorumiya encrypted PostgreSQL backup
+# After=network-online.target
+# Wants=network-online.target
+# [Service]
+# Type=oneshot
+# User=sferorumiya-backup
+# EnvironmentFile=/etc/sferorumiya/backup.env
+# UMask=0077
+# ExecStart=/usr/bin/node /opt/sferorumiya/deployment/vk-production/backup-postgres.js
+# NoNewPrivileges=true
+# PrivateTmp=true
+# ProtectSystem=strict
+# ProtectHome=true
+# TimeoutStartSec=2h
+#
+# /etc/systemd/system/sferorumiya-backup.timer
+# [Unit]
+# Description=Sferorumiya backup every six hours
+# [Timer]
+# OnCalendar=*-*-* 00,06,12,18:15:00 UTC
+# Persistent=true
+# RandomizedDelaySec=60
+# [Install]
+# WantedBy=timers.target
+#
+# Ручная настройка после проверки бэкапа и восстановления:
+# systemctl daemon-reload
+# systemctl start sferorumiya-backup.service
+# systemctl enable --now sferorumiya-backup.timer
+# systemctl list-timers sferorumiya-backup.timer
+# Настроить внешний сигнал при status=failed и отсутствии нового complete.json > 7 часов.

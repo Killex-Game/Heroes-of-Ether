@@ -1,0 +1,1237 @@
+[
+  {
+    "old": "accounts.js",
+    "new": "src/server/accounts/account-benefits.js",
+    "purpose": "Сроки VIP/Premium, множители наград и ежедневные бонусы."
+  },
+  {
+    "old": "achievement-stages.js",
+    "new": "src/server/progression/achievement-stages.js",
+    "purpose": "Порог и накопленный прогресс отдельных степеней достижений."
+  },
+  {
+    "old": "achievements.js",
+    "new": "src/server/progression/activity-achievements.js",
+    "purpose": "Достижения за посещения, расходы, клановую активность и время игры."
+  },
+  {
+    "old": "booster-effects.js",
+    "new": "src/server/boosters/booster-effects.js",
+    "purpose": "Изменение массы и частей шара от бустеров, поджог и периодические эффекты."
+  },
+  {
+    "old": "boosters.js",
+    "new": "src/server/boosters/booster-catalog.js",
+    "purpose": "Каталог, цены, длительности и правила применения бустеров."
+  },
+  {
+    "old": "clan-chests.js",
+    "new": "src/server/clans/clan-chest-rewards.js",
+    "purpose": "Выдача, получение, хранение и открытие клановых сундуков."
+  },
+  {
+    "old": "clan-competition.js",
+    "new": "src/server/clans/clan-competition-service.js",
+    "purpose": "Расписание битв, группы лиг, подсчёт результатов и выдача наград."
+  },
+  {
+    "old": "clan-progress.js",
+    "new": "src/server/clans/clan-level-progress.js",
+    "purpose": "Расчёт уровня клана и прогресса до следующего уровня."
+  },
+  {
+    "old": "clans.js",
+    "new": "src/server/clans/clan-service.js",
+    "purpose": "Создание кланов, состав, роли, заявки, казна и оружейная."
+  },
+  {
+    "old": "combat.js",
+    "new": "src/server/arena/projectile-combat.js",
+    "purpose": "Полёт и столкновения бустеров, отражения, ловушки и удерживаемый меч."
+  },
+  {
+    "old": "daily-rankings.js",
+    "new": "src/server/rankings/daily-leaderboards.js",
+    "purpose": "Суточные рейтинги игроков и смена расчётного дня."
+  },
+  {
+    "old": "game.js",
+    "new": "src/server/arena/arena-simulation.js",
+    "purpose": "Серверная симуляция арены: движение, масса, деление, кормление, поглощение и снимки состояния."
+  },
+  {
+    "old": "geometry.js",
+    "new": "src/server/arena/circle-overlap.js",
+    "purpose": "Геометрия пересечения кругов."
+  },
+  {
+    "old": "mass-bonus.js",
+    "new": "src/server/arena/mass-kill-bonus.js",
+    "purpose": "Бонус за накопленную массу и учёт порогов за одну жизнь."
+  },
+  {
+    "old": "profile-details.js",
+    "new": "src/server/profiles/profile-validation.js",
+    "purpose": "Проверка ника, пола и ссылки VK; правила изменения личных данных."
+  },
+  {
+    "old": "profiles.js",
+    "new": "src/server/profiles/profile-store.js",
+    "purpose": "Загрузка и атомарное сохранение профилей, транзакции и публичные представления."
+  },
+  {
+    "old": "progression.js",
+    "new": "src/server/progression/experience-progression.js",
+    "purpose": "Уровни, опыт за арену, ограничения начисления и боевые достижения."
+  },
+  {
+    "old": "request-limits.js",
+    "new": "src/server/http/request-rate-limits.js",
+    "purpose": "Ограничение частоты HTTP/WebSocket запросов."
+  },
+  {
+    "old": "server-lock.js",
+    "new": "src/server/runtime/process-lock.js",
+    "purpose": "Защита файла сохранений от одновременного запуска двух серверов."
+  },
+  {
+    "old": "server.js",
+    "new": "src/server/game-server.js",
+    "purpose": "HTTP API, WebSocket, игровой цикл и корректное завершение сервера."
+  },
+  {
+    "old": "spatial-index.js",
+    "new": "src/server/arena/spatial-collision-index.js",
+    "purpose": "Пространственный индекс для поиска соседних шаров."
+  },
+  {
+    "old": "static-files.js",
+    "new": "src/server/http/static-file-server.js",
+    "purpose": "Безопасная потоковая выдача браузерных файлов и изображений."
+  },
+  {
+    "old": "test-bots.js",
+    "new": "src/server/testing/arena-test-bots.js",
+    "purpose": "Тестовые кланы, составы и боты, активные при присутствии живого игрока."
+  },
+  {
+    "old": "titles.js",
+    "new": "src/server/progression/title-chest-rewards.js",
+    "purpose": "Звания, величие и содержимое сундуков за звания."
+  },
+  {
+    "old": "turbo.js",
+    "new": "src/server/arena/turbo-ability.js",
+    "purpose": "Запас и переключение способности Турбо за одну жизнь."
+  },
+  {
+    "old": "public/accessories-view.js",
+    "new": "public/arena/accessory-renderer.js",
+    "purpose": "Рисование шапки и бабочки на шаре."
+  },
+  {
+    "old": "public/accessories.js",
+    "new": "public/shared/accessory-catalog.js",
+    "purpose": "Общие параметры аксессуаров для сервера и клиента."
+  },
+  {
+    "old": "public/accounts-ui.js",
+    "new": "public/ui/accounts/account-dialog.js",
+    "purpose": "Окно VIP/Premium, активация и подписи срока действия."
+  },
+  {
+    "old": "public/achievement-notices.js",
+    "new": "public/shared/achievement-notifications.js",
+    "purpose": "Учёт прочитанных уведомлений о полученных степенях."
+  },
+  {
+    "old": "public/achievements-ui.js",
+    "new": "public/ui/progression/achievement-dialog.js",
+    "purpose": "Коллекция достижений, фильтры, детали и Карьера."
+  },
+  {
+    "old": "public/arena-art.js",
+    "new": "public/arena/food-and-frame-renderer.js",
+    "purpose": "Частицы еды и рамки VIP/Premium на арене."
+  },
+  {
+    "old": "public/arena-backgrounds.js",
+    "new": "public/shared/arena-backgrounds.js",
+    "purpose": "Список фонов, выбор нового фона и браузерная отрисовка текстуры."
+  },
+  {
+    "old": "public/arena-view.js",
+    "new": "public/shared/arena-camera-and-layout.js",
+    "purpose": "Математика камеры, плавного масштаба, радиуса и подписей шаров."
+  },
+  {
+    "old": "public/booster-timing.js",
+    "new": "public/shared/booster-cooldowns.js",
+    "purpose": "Расчёт клиентских таймеров перезарядки по серверному состоянию."
+  },
+  {
+    "old": "public/booster-tooltip.js",
+    "new": "public/ui/boosters/booster-tooltip.js",
+    "purpose": "Подсказка с описанием бустера при наведении и фокусе."
+  },
+  {
+    "old": "public/boosters-ui.js",
+    "new": "public/ui/boosters/shop-and-inventory-dialog.js",
+    "purpose": "Магазин, инвентарь, быстрые слоты и отправка применения бустера."
+  },
+  {
+    "old": "public/chests-ui.js",
+    "new": "public/ui/progression/chest-opening-dialog.js",
+    "purpose": "Подтверждение открытия сундука и показ полученных наград."
+  },
+  {
+    "old": "public/clan-battles-ui.js",
+    "new": "public/ui/clans/clan-battle-and-treasury.js",
+    "purpose": "Битва, таймер, шкала счёта, награды и Сокровищница."
+  },
+  {
+    "old": "public/clan-competition-rules.js",
+    "new": "public/shared/clan-competition-rules.js",
+    "purpose": "Общие правила лиг и описания степеней клановых сундуков."
+  },
+  {
+    "old": "public/clan-crest-art.js",
+    "new": "public/shared/clan-crest-art-data.js",
+    "purpose": "Сгенерированные данные форм, цветов и символов гербов."
+  },
+  {
+    "old": "public/clan-crest-builder.js",
+    "new": "public/ui/clans/clan-crest-editor.js",
+    "purpose": "Редактор герба: выбор формы, цвета и символа."
+  },
+  {
+    "old": "public/clan-crest-raster.js",
+    "new": "public/ui/clans/clan-crest-renderer.js",
+    "purpose": "Рисование герба из растровых слоёв и кеш изображений."
+  },
+  {
+    "old": "public/clan-crests.js",
+    "new": "public/shared/clan-crest-rules.js",
+    "purpose": "Проверка параметров герба и SVG представление."
+  },
+  {
+    "old": "public/clans-ui.js",
+    "new": "public/ui/clans/clan-dialog.js",
+    "purpose": "Окно клана: навигация, участники, управление и запросы к API."
+  },
+  {
+    "old": "public/cosmetics-ui.js",
+    "new": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+    "purpose": "Скины, гардероб, аксессуары и наборы аккаунтов."
+  },
+  {
+    "old": "public/donation-ui.js",
+    "new": "public/ui/shop/currency-purchase-dialog.js",
+    "purpose": "Окно пополнения игровых валют и предложения магазина."
+  },
+  {
+    "old": "public/effects-view.js",
+    "new": "public/shared/booster-effect-renderer.js",
+    "purpose": "Значки активных эффектов, их расположение и пламя на горящем шаре."
+  },
+  {
+    "old": "public/greatness-ui.js",
+    "new": "public/ui/progression/greatness-label.js",
+    "purpose": "Единое отображение значка и числового значения величия."
+  },
+  {
+    "old": "public/identity.js",
+    "new": "public/shared/player-identity.js",
+    "purpose": "Каталог базовых скинов, подписи игроков и значки званий."
+  },
+  {
+    "old": "public/interface-layout.js",
+    "new": "public/ui/layout/viewport-layout.js",
+    "purpose": "Подстройка лобби и окон под размеры экрана."
+  },
+  {
+    "old": "public/loadout-ui.js",
+    "new": "public/ui/boosters/quick-slot-editor.js",
+    "purpose": "Выбор, перестановка и перетаскивание бустеров в быстрые слоты."
+  },
+  {
+    "old": "public/loadout.js",
+    "new": "public/shared/quick-slot-rules.js",
+    "purpose": "Клавиши слотов, их количество и перестановка предметов."
+  },
+  {
+    "old": "public/lobby-banners.js",
+    "new": "public/ui/lobby/promotion-banners.js",
+    "purpose": "Баннеры VIP/Premium, события и кнопка аккаунтов."
+  },
+  {
+    "old": "public/personal-ui.js",
+    "new": "public/ui/profile/profile-editor-dialog.js",
+    "purpose": "Редактор ника, пола и ссылки VK."
+  },
+  {
+    "old": "public/player-profile-ui.js",
+    "new": "public/ui/profile/public-player-dialog.js",
+    "purpose": "Просмотр другого игрока, аватар, награды и ссылка VK."
+  },
+  {
+    "old": "public/progress-ui.js",
+    "new": "public/ui/progression/experience-progress.js",
+    "purpose": "Шкалы опыта, уведомление о новом уровне и итоги жизни."
+  },
+  {
+    "old": "public/progression-art.js",
+    "new": "public/shared/progression-asset-paths.js",
+    "purpose": "Пути к изображениям достижений, лиг, званий и сундуков."
+  },
+  {
+    "old": "public/projectiles-view.js",
+    "new": "public/shared/projectile-renderer.js",
+    "purpose": "Сглаживание, поворот и рисование летящих и удерживаемых бустеров."
+  },
+  {
+    "old": "public/shields-view.js",
+    "new": "public/arena/shield-renderer.js",
+    "purpose": "Рисование действующих щитов вокруг шара."
+  },
+  {
+    "old": "public/tops-ui.js",
+    "new": "public/ui/rankings/leaderboard-dialog.js",
+    "purpose": "Окно рейтингов игроков и кланов."
+  },
+  {
+    "old": "public/window-panels.js",
+    "new": "public/ui/layout/dialog-content-layout.js",
+    "purpose": "Пагинация коллекций и подгонка содержимого окон по высоте."
+  },
+  {
+    "old": "public/windows.js",
+    "new": "public/ui/layout/modal-stack.js",
+    "purpose": "Порядок модальных окон, закрытие и восстановление фокуса."
+  },
+  {
+    "old": "public/accounts.css",
+    "new": "public/styles/components/account-dialog.css",
+    "purpose": "Карточки аккаунтов и блок статусов профиля."
+  },
+  {
+    "old": "public/account-colors.css",
+    "new": "public/styles/theme/account-colors.css",
+    "purpose": "Единая насыщенная палитра корон и подписей VIP/Premium."
+  },
+  {
+    "old": "public/achievements.css",
+    "new": "public/styles/components/achievement-dialog.css",
+    "purpose": "Карточки достижений, фильтры, степени и Карьера."
+  },
+  {
+    "old": "public/booster-sections.css",
+    "new": "public/styles/components/shop-sections.css",
+    "purpose": "Разделы магазина и инвентаря, коллекции и переключатели."
+  },
+  {
+    "old": "public/boosters.css",
+    "new": "public/styles/components/shop-and-quick-slots.css",
+    "purpose": "Магазин бустеров, инвентарь и панель быстрых слотов."
+  },
+  {
+    "old": "public/clan-battles.css",
+    "new": "public/styles/components/clan-battle-panel.css",
+    "purpose": "Таблицы участников и лиг, шкала битвы и личная награда."
+  },
+  {
+    "old": "public/clan-crest-builder.css",
+    "new": "public/styles/components/clan-crest-editor.css",
+    "purpose": "Сетка и элементы редактора гербов."
+  },
+  {
+    "old": "public/clans.css",
+    "new": "public/styles/components/clan-dialog.css",
+    "purpose": "Основная структура окон клана и управления участниками."
+  },
+  {
+    "old": "public/cosmetics.css",
+    "new": "public/styles/components/skin-and-wardrobe-dialogs.css",
+    "purpose": "Внешний вид выбора скинов и гардероба."
+  },
+  {
+    "old": "public/donation.css",
+    "new": "public/styles/components/currency-purchase-dialog.css",
+    "purpose": "Карточки пополнения валюты."
+  },
+  {
+    "old": "public/fonts.css",
+    "new": "public/styles/base/fonts.css",
+    "purpose": "Шрифт Inter и одинаковая ширина цифр."
+  },
+  {
+    "old": "public/interface-layout.css",
+    "new": "public/styles/layout/responsive-viewport.css",
+    "purpose": "Адаптивные размеры лобби, диалогов и сеток."
+  },
+  {
+    "old": "public/loadout.css",
+    "new": "public/styles/components/quick-slot-editor.css",
+    "purpose": "Редактор быстрых слотов и состояние перетаскивания."
+  },
+  {
+    "old": "public/lobby-update.css",
+    "new": "public/styles/theme/lobby-colors-and-controls.css",
+    "purpose": "Насыщенный фон лобби, кнопки, тумблеры и декоративные эффекты."
+  },
+  {
+    "old": "public/lobby.css",
+    "new": "public/styles/layout/lobby-grid.css",
+    "purpose": "Базовая сетка лобби."
+  },
+  {
+    "old": "public/menu-icons.css",
+    "new": "public/styles/components/menu-icons.css",
+    "purpose": "Размеры иконок меню и валют."
+  },
+  {
+    "old": "public/progress.css",
+    "new": "public/styles/components/experience-progress.css",
+    "purpose": "Полосы опыта, результат жизни и уведомления об уровне."
+  },
+  {
+    "old": "public/titles.css",
+    "new": "public/styles/components/title-and-chest-panels.css",
+    "purpose": "Витрина званий и окна сундуков."
+  },
+  {
+    "old": "public/ui-kit.css",
+    "new": "public/styles/theme/game-controls.css",
+    "purpose": "Общая тема кнопок, панелей, полей и рамок."
+  },
+  {
+    "old": "public/visual-update.css",
+    "new": "public/styles/theme/profile-and-clan-details.css",
+    "purpose": "Детали аватаров, профилей, рейтингов, кланов и коллекций."
+  },
+  {
+    "old": "public/window-panels.css",
+    "new": "public/styles/layout/dialog-and-menu-sizing.css",
+    "purpose": "Финальная геометрия окон, меню, шкал и вместимость коллекций."
+  },
+  {
+    "old": "ACHIEVEMENTS.md",
+    "new": "docs/rules/achievements.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "BOOSTERS.md",
+    "new": "docs/rules/boosters.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "CLANS.md",
+    "new": "docs/rules/clans.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "COSMETICS.md",
+    "new": "docs/rules/cosmetics.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "PROGRESSION_ASSETS.md",
+    "new": "docs/art/progression-assets.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "PROGRESSION.md",
+    "new": "docs/rules/experience-and-levels.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "README_RU.txt",
+    "new": "docs/history/legacy-readme.txt",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "TECH_NOTES.md",
+    "new": "docs/history/implementation-notes.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "TEST_REPORT.md",
+    "new": "docs/history/verification-reports.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "TITLES_CHESTS_PROPOSAL.md",
+    "new": "docs/history/title-chest-proposal.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "TITLES_CHESTS.md",
+    "new": "docs/rules/titles-and-chests.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "UI_KIT.md",
+    "new": "docs/art/interface-kit.md",
+    "purpose": "Справочник или история разработки; назначение уточнено в docs/README.md."
+  },
+  {
+    "old": "test-bots.json",
+    "new": "config/test-bots.json",
+    "purpose": "Включение временного режима тестовых ботов."
+  },
+  {
+    "old": "public/assets/busters/boosters.json",
+    "new": "public/assets/boosters/boosters.json",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/catalog.html",
+    "new": "public/assets/boosters/catalog.html",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/axe.png",
+    "new": "public/assets/boosters/png/axe.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/cake.png",
+    "new": "public/assets/boosters/png/cake.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/candy.png",
+    "new": "public/assets/boosters/png/candy.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/colorful_shield.png",
+    "new": "public/assets/boosters/png/colorful_shield.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/donut.png",
+    "new": "public/assets/boosters/png/donut.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/freeze.png",
+    "new": "public/assets/boosters/png/freeze.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/glove.png",
+    "new": "public/assets/boosters/png/glove.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/golden_shield.png",
+    "new": "public/assets/boosters/png/golden_shield.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/harpoon.png",
+    "new": "public/assets/boosters/png/harpoon.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/hook.png",
+    "new": "public/assets/boosters/png/hook.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/ice_cream.png",
+    "new": "public/assets/boosters/png/ice_cream.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/knuckles.png",
+    "new": "public/assets/boosters/png/knuckles.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/lock.png",
+    "new": "public/assets/boosters/png/lock.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/meat.png",
+    "new": "public/assets/boosters/png/meat.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/mega_poison.png",
+    "new": "public/assets/boosters/png/mega_poison.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/mine.png",
+    "new": "public/assets/boosters/png/mine.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/poison.png",
+    "new": "public/assets/boosters/png/poison.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/rocket.png",
+    "new": "public/assets/boosters/png/rocket.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/speed.png",
+    "new": "public/assets/boosters/png/speed.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/sphere.png",
+    "new": "public/assets/boosters/png/sphere.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/sponge.png",
+    "new": "public/assets/boosters/png/sponge.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/stone.png",
+    "new": "public/assets/boosters/png/stone.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/warheads.png",
+    "new": "public/assets/boosters/png/warheads.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/png/web.png",
+    "new": "public/assets/boosters/png/web.png",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "scripts/absorption-camera-browser-smoke.js",
+    "new": "tests/browser/absorption-camera.test.js",
+    "purpose": "Браузерный сценарий: absorption camera."
+  },
+  {
+    "old": "scripts/accounts-chests-browser-smoke.js",
+    "new": "tests/browser/accounts-chests.test.js",
+    "purpose": "Браузерный сценарий: accounts chests."
+  },
+  {
+    "old": "scripts/achievements-browser-smoke.js",
+    "new": "tests/browser/achievements.test.js",
+    "purpose": "Браузерный сценарий: achievements."
+  },
+  {
+    "old": "scripts/arena-rules-browser-smoke.js",
+    "new": "tests/browser/arena-rules.test.js",
+    "purpose": "Браузерный сценарий: arena rules."
+  },
+  {
+    "old": "scripts/backgrounds-greatness-browser-smoke.js",
+    "new": "tests/browser/backgrounds-greatness.test.js",
+    "purpose": "Браузерный сценарий: backgrounds greatness."
+  },
+  {
+    "old": "scripts/benchmark-collisions.js",
+    "new": "scripts/benchmarks/collision-performance.js",
+    "purpose": "Измерение производительности поиска столкновений."
+  },
+  {
+    "old": "scripts/booster-browser-smoke.js",
+    "new": "tests/browser/booster-shop-and-activation.test.js",
+    "purpose": "Браузерный сценарий: booster shop and activation."
+  },
+  {
+    "old": "scripts/browser-career-layout.js",
+    "new": "tests/browser/career-panel-layout.test.js",
+    "purpose": "Браузерный сценарий: career panel layout."
+  },
+  {
+    "old": "scripts/browser-clan-competition.js",
+    "new": "tests/browser/clan-battles-and-rewards.test.js",
+    "purpose": "Браузерный сценарий: clan battles and rewards."
+  },
+  {
+    "old": "scripts/browser-feeding.js",
+    "new": "tests/browser/mass-feeding.test.js",
+    "purpose": "Браузерный сценарий: mass feeding."
+  },
+  {
+    "old": "scripts/browser-fire-sword.js",
+    "new": "tests/browser/fire-sword-burn.test.js",
+    "purpose": "Браузерный сценарий: fire sword burn."
+  },
+  {
+    "old": "scripts/browser-profile-helper.js",
+    "new": "tests/browser/helpers/profile-controls.js",
+    "purpose": "Общие действия браузерных проверок с профилем."
+  },
+  {
+    "old": "scripts/browser-smoke.js",
+    "new": "tests/browser/full-game-flow.test.js",
+    "purpose": "Браузерный сценарий: full game flow."
+  },
+  {
+    "old": "scripts/browser-test-bots.js",
+    "new": "tests/browser/temporary-arena-bots.test.js",
+    "purpose": "Браузерный сценарий: temporary arena bots."
+  },
+  {
+    "old": "scripts/browser-visual-update.js",
+    "new": "tests/browser/interface-layout-and-styling.test.js",
+    "purpose": "Браузерный сценарий: interface layout and styling."
+  },
+  {
+    "old": "scripts/build-clan-guide.py",
+    "new": "scripts/documentation/build-clan-guide.py",
+    "purpose": "Сборка PDF руководства по клановым битвам."
+  },
+  {
+    "old": "scripts/chest-camera-browser-smoke.js",
+    "new": "tests/browser/chest-camera.test.js",
+    "purpose": "Браузерный сценарий: chest camera."
+  },
+  {
+    "old": "scripts/clan-rules-browser-smoke.js",
+    "new": "tests/browser/clan-rules.test.js",
+    "purpose": "Браузерный сценарий: clan rules."
+  },
+  {
+    "old": "scripts/cosmetics-browser-smoke.js",
+    "new": "tests/browser/cosmetics.test.js",
+    "purpose": "Браузерный сценарий: cosmetics."
+  },
+  {
+    "old": "scripts/crest-reference-previews.js",
+    "new": "scripts/assets/build-crest-previews.js",
+    "purpose": "Подготовка графических ресурсов: build-crest-previews."
+  },
+  {
+    "old": "scripts/dev-bots.js",
+    "new": "scripts/development/manage-test-bots.js",
+    "purpose": "Локальная подготовка тестовых данных: manage-test-bots."
+  },
+  {
+    "old": "scripts/dev-coins.js",
+    "new": "scripts/development/grant-coins.js",
+    "purpose": "Локальная подготовка тестовых данных: grant-coins."
+  },
+  {
+    "old": "scripts/dev-grant-all.js",
+    "new": "scripts/development/grant-test-inventory.js",
+    "purpose": "Локальная подготовка тестовых данных: grant-test-inventory."
+  },
+  {
+    "old": "scripts/expanded-achievements-browser-smoke.js",
+    "new": "tests/browser/expanded-achievements.test.js",
+    "purpose": "Браузерный сценарий: expanded achievements."
+  },
+  {
+    "old": "scripts/group-effects-browser-smoke.js",
+    "new": "tests/browser/group-effects.test.js",
+    "purpose": "Браузерный сценарий: group effects."
+  },
+  {
+    "old": "scripts/growth-merge-browser-smoke.js",
+    "new": "tests/browser/growth-merge.test.js",
+    "purpose": "Браузерный сценарий: growth merge."
+  },
+  {
+    "old": "scripts/import-art.js",
+    "new": "scripts/assets/import-player-skins.js",
+    "purpose": "Подготовка графических ресурсов: import-player-skins."
+  },
+  {
+    "old": "scripts/import-boosters.js",
+    "new": "scripts/assets/import-boosters.js",
+    "purpose": "Подготовка графических ресурсов: import-boosters."
+  },
+  {
+    "old": "scripts/import-clan-crest-kit.js",
+    "new": "scripts/assets/import-clan-crest-kit.js",
+    "purpose": "Подготовка графических ресурсов: import-clan-crest-kit."
+  },
+  {
+    "old": "scripts/import-generated-icons.js",
+    "new": "scripts/assets/import-generated-icons.js",
+    "purpose": "Подготовка графических ресурсов: import-generated-icons."
+  },
+  {
+    "old": "scripts/import-progression-art.ps1",
+    "new": "scripts/assets/import-progression-art.ps1",
+    "purpose": "Подготовка графических ресурсов: import-progression-art."
+  },
+  {
+    "old": "scripts/import-ui.js",
+    "new": "scripts/assets/import-interface-kit.js",
+    "purpose": "Подготовка графических ресурсов: import-interface-kit."
+  },
+  {
+    "old": "scripts/install-visual-assets.js",
+    "new": "scripts/assets/install-generated-art.js",
+    "purpose": "Подготовка графических ресурсов: install-generated-art."
+  },
+  {
+    "old": "scripts/layout-browser-smoke.js",
+    "new": "tests/browser/desktop-layout.test.js",
+    "purpose": "Браузерный сценарий: desktop layout."
+  },
+  {
+    "old": "scripts/layout-touch-smoke.js",
+    "new": "tests/browser/touch-layout.test.js",
+    "purpose": "Браузерный сценарий: touch layout."
+  },
+  {
+    "old": "scripts/loadout-browser-smoke.js",
+    "new": "tests/browser/loadout.test.js",
+    "purpose": "Браузерный сценарий: loadout."
+  },
+  {
+    "old": "scripts/progression-browser-smoke.js",
+    "new": "tests/browser/progression.test.js",
+    "purpose": "Браузерный сценарий: progression."
+  },
+  {
+    "old": "scripts/projectiles-browser-smoke.js",
+    "new": "tests/browser/projectiles.test.js",
+    "purpose": "Браузерный сценарий: projectiles."
+  },
+  {
+    "old": "scripts/public-link-smoke.js",
+    "new": "tests/browser/public-game-link.test.js",
+    "purpose": "Браузерный сценарий: public game link."
+  },
+  {
+    "old": "scripts/remove-button-ornaments.js",
+    "new": "scripts/assets/remove-button-ornaments.js",
+    "purpose": "Подготовка графических ресурсов: remove-button-ornaments."
+  },
+  {
+    "old": "scripts/sections-browser-smoke.js",
+    "new": "tests/browser/shop-section-navigation.test.js",
+    "purpose": "Браузерный сценарий: shop section navigation."
+  },
+  {
+    "old": "scripts/shield-timing-browser-smoke.js",
+    "new": "tests/browser/shield-timing.test.js",
+    "purpose": "Браузерный сценарий: shield timing."
+  },
+  {
+    "old": "scripts/test-tunnel.js",
+    "new": "scripts/network/start-test-tunnel.js",
+    "purpose": "Временный сетевой туннель для тестировщика."
+  },
+  {
+    "old": "scripts/tops-personal-browser-smoke.js",
+    "new": "tests/browser/leaderboards-and-profile.test.js",
+    "purpose": "Браузерный сценарий: leaderboards and profile."
+  },
+  {
+    "old": "scripts/visual-art-contact-sheet.js",
+    "new": "scripts/assets/build-art-contact-sheet.js",
+    "purpose": "Подготовка графических ресурсов: build-art-contact-sheet."
+  },
+  {
+    "old": "scripts/wardrobe-browser-smoke.js",
+    "new": "tests/browser/wardrobe.test.js",
+    "purpose": "Браузерный сценарий: wardrobe."
+  },
+  {
+    "old": "tests/absorption-live-rules.test.js",
+    "new": "tests/unit/absorption-live-rules.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/accessories.test.js",
+    "new": "tests/integration/accessories.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/accounts-turbo.test.js",
+    "new": "tests/integration/accounts-turbo.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/achievement-notices.test.js",
+    "new": "tests/unit/achievement-notices.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/advanced-boosters.test.js",
+    "new": "tests/unit/advanced-boosters.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/arena-backgrounds.test.js",
+    "new": "tests/integration/arena-backgrounds.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/arena-chests-update.test.js",
+    "new": "tests/unit/arena-chests-update.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/arena-clan-rules.test.js",
+    "new": "tests/unit/arena-clan-rules.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/booster-server.test.js",
+    "new": "tests/integration/booster-server.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/booster-timing.test.js",
+    "new": "tests/unit/booster-timing.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/boosters.test.js",
+    "new": "tests/unit/booster-catalog.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/chests-server.test.js",
+    "new": "tests/integration/chests-server.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/clan-competition.test.js",
+    "new": "tests/unit/clan-competition.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/clan-crests.test.js",
+    "new": "tests/unit/clan-crests.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/clan-rules.test.js",
+    "new": "tests/unit/clan-rules.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/clans.test.js",
+    "new": "tests/unit/clan-service.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/combat.test.js",
+    "new": "tests/unit/projectile-combat.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/effects-view.test.js",
+    "new": "tests/unit/effects-view.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/expanded-achievements.test.js",
+    "new": "tests/unit/expanded-achievements.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/feeding.test.js",
+    "new": "tests/integration/feeding.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/fire-sword.test.js",
+    "new": "tests/unit/fire-sword.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/game.test.js",
+    "new": "tests/unit/arena-simulation.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/geometry-view.test.js",
+    "new": "tests/unit/geometry-view.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/import-art.test.js",
+    "new": "tests/unit/import-art.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/loadout.test.js",
+    "new": "tests/unit/loadout.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/mass-decay.test.js",
+    "new": "tests/unit/mass-decay.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/mass-limits.test.js",
+    "new": "tests/unit/mass-limits.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/profile-daily.test.js",
+    "new": "tests/integration/profile-daily.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/progression-server.test.js",
+    "new": "tests/integration/progression-server.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/progression.test.js",
+    "new": "tests/unit/progression.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/projectiles-view.test.js",
+    "new": "tests/unit/projectiles-view.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/random-chests.test.js",
+    "new": "tests/unit/random-chests.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/request-limits.test.js",
+    "new": "tests/unit/request-limits.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/server-resilience.test.js",
+    "new": "tests/integration/server-resilience.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/server.test.js",
+    "new": "tests/integration/server.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/spatial-index.test.js",
+    "new": "tests/unit/spatial-index.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/splitting.test.js",
+    "new": "tests/unit/splitting.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/test-bots.test.js",
+    "new": "tests/integration/test-bots.test.js",
+    "purpose": "Интеграционные проверки сервера и протокола."
+  },
+  {
+    "old": "tests/test-grant.test.js",
+    "new": "tests/unit/test-grant.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/titles.test.js",
+    "new": "tests/unit/titles.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "tests/visual-gameplay.test.js",
+    "new": "tests/unit/arena-and-progression-regressions.test.js",
+    "purpose": "Модульные проверки игровых правил."
+  },
+  {
+    "old": "public/assets/banners/vip-crown.png",
+    "new": "public/assets/banners/vip.png",
+    "purpose": "Действующий VIP-баннер с короной."
+  },
+  {
+    "old": "public/assets/banners/vip.webp",
+    "new": "design/references/vip-banner-before-crown.webp",
+    "purpose": "Предыдущий VIP-баннер, сохранён как исходный образец."
+  },
+  {
+    "old": "public/assets/skins/Лиловый дракон в янтарном круге-4.png",
+    "new": "public/assets/skins/moon-dragon.png",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/Мудрый лесной дух с янтарными глазами-2.png",
+    "new": "public/assets/skins/forest-spirit.png",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/Огненный феникс в фиолетовом круге-1.png",
+    "new": "public/assets/skins/sun-phoenix.png",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/Кристальный страж Сферорумии-3.png",
+    "new": "public/assets/skins/crystal-guardian.png",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/vip-1.png",
+    "new": "public/assets/skins/vip-king.png",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/vip-2.png",
+    "new": "public/assets/skins/vip-queen.png",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/vip-3.png",
+    "new": "public/assets/skins/vip-prince.png",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/vip-4.png",
+    "new": "public/assets/skins/vip-knight.png",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/vip-5.png",
+    "new": "public/assets/skins/vip-griffin.png",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/premium-1.svg",
+    "new": "public/assets/skins/premium-star.svg",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/premium-2.svg",
+    "new": "public/assets/skins/premium-crown.svg",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/premium-3.svg",
+    "new": "public/assets/skins/premium-crystal.svg",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/premium-4.svg",
+    "new": "public/assets/skins/premium-comet.svg",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/skins/premium-5.svg",
+    "new": "public/assets/skins/premium-sun.svg",
+    "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
+  },
+  {
+    "old": "public/assets/busters/svg/advanced/donut.svg",
+    "new": "public/assets/boosters/svg/advanced/donut.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/advanced/lock.svg",
+    "new": "public/assets/boosters/svg/advanced/lock.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/advanced/mine.svg",
+    "new": "public/assets/boosters/svg/advanced/mine.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/advanced/poison.svg",
+    "new": "public/assets/boosters/svg/advanced/poison.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/advanced/speed.svg",
+    "new": "public/assets/boosters/svg/advanced/speed.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/advanced/sphere.svg",
+    "new": "public/assets/boosters/svg/advanced/sphere.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/advanced/web.svg",
+    "new": "public/assets/boosters/svg/advanced/web.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/common/candy.svg",
+    "new": "public/assets/boosters/svg/common/candy.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/common/colorful_shield.svg",
+    "new": "public/assets/boosters/svg/common/colorful_shield.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/common/freeze.svg",
+    "new": "public/assets/boosters/svg/common/freeze.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/common/glove.svg",
+    "new": "public/assets/boosters/svg/common/glove.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/common/hook.svg",
+    "new": "public/assets/boosters/svg/common/hook.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/common/ice_cream.svg",
+    "new": "public/assets/boosters/svg/common/ice_cream.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/common/rocket.svg",
+    "new": "public/assets/boosters/svg/common/rocket.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/rare/axe.svg",
+    "new": "public/assets/boosters/svg/rare/axe.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/rare/golden_shield.svg",
+    "new": "public/assets/boosters/svg/rare/golden_shield.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/rare/harpoon.svg",
+    "new": "public/assets/boosters/svg/rare/harpoon.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/rare/knuckles.svg",
+    "new": "public/assets/boosters/svg/rare/knuckles.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/rare/meat.svg",
+    "new": "public/assets/boosters/svg/rare/meat.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/rare/mega_poison.svg",
+    "new": "public/assets/boosters/svg/rare/mega_poison.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/rare/sponge.svg",
+    "new": "public/assets/boosters/svg/rare/sponge.svg",
+    "purpose": "Изображение или каталог бустеров."
+  },
+  {
+    "old": "public/assets/busters/svg/rare/stone.svg",
+    "new": "public/assets/boosters/svg/rare/stone.svg",
+    "purpose": "Изображение или каталог бустеров."
+  }
+]

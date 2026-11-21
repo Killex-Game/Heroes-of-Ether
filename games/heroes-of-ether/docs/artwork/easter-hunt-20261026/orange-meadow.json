@@ -1,0 +1,13 @@
+{
+  "generator": "OpenAI imagegen",
+  "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a95e14c1-26cc-4558-bb4a-e5a409f3e4be.png",
+  "prompt": "Create a square seamless repeatable top-down ground texture for our illustrated fantasy browser arena game, based on the attached existing meadow texture as STYLE AND FORMAT REFERENCE. New scene: warm orange grass for an Easter event. Very substantially LESS detail than the reference: broad soft painterly terracotta-orange and muted apricot grass clumps, sparse simple curved blades, soft low contrast shading, clean calm ground that lets tiny colorful eggs and golden food read clearly. Matte warm orange dominant palette, only restrained golden ochre accents. Consistent overhead orthographic view, uniform scale, diffuse flat light, no perspective, no horizon, no vignette, no large focal shapes, no scattered eggs, no flowers, no stones, no objects, no text, no borders, no transparent areas. Tile seamlessly on all four edges with evenly distributed low-frequency shapes. Retain the pleasant polished hand-painted game style but remove fine leafy clutter. Entire image is the texture.",
+  "reference": "public/assets/arena/meadow.webp",
+  "output": "public/assets/arena/easter-meadow.webp",
+  "format": {
+    "width": 1254,
+    "height": 1254,
+    "type": "webp",
+    "tileSize": 640
+  }
+}

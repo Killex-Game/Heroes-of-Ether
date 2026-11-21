@@ -1,0 +1,121 @@
+{
+  "generator": "OpenAI built-in image_gen",
+  "onlyArenaSiblings": true,
+  "rendererModified": false,
+  "referenceCatalogCount": 4,
+  "variants": 3,
+  "count": 4,
+  "previewRowOrder": [
+    "original",
+    "visual-lab",
+    "prism-lab"
+  ],
+  "assets": [
+    {
+      "variant": "original",
+      "name": "novice_hat",
+      "catalogId": "novice_hat",
+      "reference": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/accessories/novice_hat.png",
+      "candidate": "Золотая округлая шапка с простым крестом, одним фиолетовым центром и гладким белым кантом.",
+      "target": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/arena-simple/accessories/novice_hat.webp",
+      "sourceAtlas": "C:/Users/semen/Documents/ChatGPT/Сферорумия/artifacts/arena-simple-accessories/masters/arena-accessories-original-v2.png",
+      "box": {
+        "left": 68,
+        "top": 18,
+        "width": 668,
+        "height": 477
+      },
+      "width": 512,
+      "height": 435,
+      "anchor": "bottom",
+      "preparedPath": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\artifacts\\arena-simple-accessories\\final\\original\\novice_hat.webp",
+      "sha256": "ce6ed287b0afb806d00b9d447b87ec5934bbd53b239f90191ee4efee24d31f2f",
+      "referenceSha256": "c14dda7fe9c074631a8a449a2748ff30361e790fb7757a8130161155fd1d3871",
+      "zeroAlpha": 104826,
+      "borderPixelsAbove16": 0,
+      "prompt": "Use case: precise-object-edit. This four-accessory atlas is the edit target. Change ONLY the two large PURPLE fabric-like panels of the TOP LEFT royal hat into smooth WARM GOLD, so the entire rounded cap dome is GOLD as in the original game's golden cap. Keep the single central oval purple jewel PURPLE. Keep the gold cross, broad gold bands, cream front trim, hat shape, dimensions, shading style and position exactly unchanged. The TOP RIGHT purple bow tie MUST remain purple. The bottom rabbit ears and carrot bow MUST remain exactly unchanged. Preserve the exact four-object composition and all transparent spacing. The result must retain genuine transparent alpha everywhere outside the objects. No new ornament, no additional jewels, no text, no background or shadows.",
+      "originalPrompt": "Use case: stylized-concept. Asset type: FOUR simplified arena-only accessory overlays for a fast-moving browser game. Create a NEW 2-column by 2-row atlas, EXACTLY four separate objects on genuine transparent alpha. This is the LOW-DETAIL IN-GAME version, intended to remain unmistakable at 40 to 80 screen pixels wide. Use only LARGE simple color masses, one or two broad folds/bevels per material and a few clean highlights. Strong coherent silhouette. Very low visual complexity, no tiny ornaments, no fine curls, no filigree, no flower clusters, no rows of jewels, no individual fur strands, no engraving, no texture noise, no fine line pattern. Preserve a charming finished premium illustration feel, not a placeholder. Each whole object fits the central 70% of its equal square cell with very generous clean transparent gaps and no overlap, no cropped tips. Front-facing view. Top-left hat/coronet; top-right bow tie; bottom-left rabbit-ear headband; bottom-right carrot bow tie. No wearer, head, face or body. The hats/headbands show ONLY the FRONT surface, with NO back rim, inside opening, rear hoop or rear band. No backdrop, ground, cast shadow outside the object, text, labels, cell borders, logos or watermark. The previously viewed accessory images are STYLE AND DESIGN REFERENCES only, not edit targets; make deliberately simplified new variants of their recognizable designs. VARIANT: Original game's rounded dimensional fantasy art. Use the FIRST four accessory references (golden cross-topped cap, purple bow, rabbit ears and carrot bow). Smooth rounded volumes with soft warm fantasy lighting, rich material color, subtle soft brown edging, NOT angular low-poly enamel and NOT strongly ink-outlined medieval cartoon. TOP LEFT: a broad simple rounded golden royal cap with ONE simple golden cross on top, ONE large purple oval center accent, and a broad smooth cream-white front trim. Cap dome has at most two broad gold bands and one smooth gradient, no scrollwork or side jewels. TOP RIGHT: deep purple bow tie with two large wings, two broad folds, a simple thin golden edge and a single purple rounded central knot in gold. Wide compact silhouette. BOTTOM LEFT: two large cream rabbit ears with coral-pink centers, the right ear tip gently folded, attached to a plain emerald front band. A single small green center knot. Ear edges are smooth rounded forms with NO furry strands. BOTTOM RIGHT: a cream-white bow tie formed from two smooth rounded lobes with one broad fold each, centered by a simple orange carrot with two broad green leaves, no gold filigree. Bow ties approximately twice as wide as tall. All objects are much simpler than the references.",
+      "installStatus": "installed"
+    },
+    {
+      "variant": "original",
+      "name": "royal_bow_tie",
+      "catalogId": "novice_bow",
+      "reference": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/accessories/royal_bow_tie.png",
+      "candidate": "Фиолетовая объёмная бабочка с простым золотым краем и одним центральным узлом.",
+      "target": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/arena-simple/accessories/royal_bow_tie.webp",
+      "sourceAtlas": "C:/Users/semen/Documents/ChatGPT/Сферорумия/artifacts/arena-simple-accessories/masters/arena-accessories-original-v2.png",
+      "box": {
+        "left": 830,
+        "top": 120,
+        "width": 647,
+        "height": 365
+      },
+      "width": 512,
+      "height": 256,
+      "anchor": "center",
+      "preparedPath": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\artifacts\\arena-simple-accessories\\final\\original\\royal_bow_tie.webp",
+      "sha256": "09b0419d60f53ca8eb0a64115a5d790f5684289d7b94b67d6ec4740208247b75",
+      "referenceSha256": "9115594488d182ff729ba6872c913668254ffbb3a4435e6b9428a9651c2f1be0",
+      "zeroAlpha": 57370,
+      "borderPixelsAbove16": 0,
+      "prompt": "Use case: precise-object-edit. This four-accessory atlas is the edit target. Change ONLY the two large PURPLE fabric-like panels of the TOP LEFT royal hat into smooth WARM GOLD, so the entire rounded cap dome is GOLD as in the original game's golden cap. Keep the single central oval purple jewel PURPLE. Keep the gold cross, broad gold bands, cream front trim, hat shape, dimensions, shading style and position exactly unchanged. The TOP RIGHT purple bow tie MUST remain purple. The bottom rabbit ears and carrot bow MUST remain exactly unchanged. Preserve the exact four-object composition and all transparent spacing. The result must retain genuine transparent alpha everywhere outside the objects. No new ornament, no additional jewels, no text, no background or shadows.",
+      "originalPrompt": "Use case: stylized-concept. Asset type: FOUR simplified arena-only accessory overlays for a fast-moving browser game. Create a NEW 2-column by 2-row atlas, EXACTLY four separate objects on genuine transparent alpha. This is the LOW-DETAIL IN-GAME version, intended to remain unmistakable at 40 to 80 screen pixels wide. Use only LARGE simple color masses, one or two broad folds/bevels per material and a few clean highlights. Strong coherent silhouette. Very low visual complexity, no tiny ornaments, no fine curls, no filigree, no flower clusters, no rows of jewels, no individual fur strands, no engraving, no texture noise, no fine line pattern. Preserve a charming finished premium illustration feel, not a placeholder. Each whole object fits the central 70% of its equal square cell with very generous clean transparent gaps and no overlap, no cropped tips. Front-facing view. Top-left hat/coronet; top-right bow tie; bottom-left rabbit-ear headband; bottom-right carrot bow tie. No wearer, head, face or body. The hats/headbands show ONLY the FRONT surface, with NO back rim, inside opening, rear hoop or rear band. No backdrop, ground, cast shadow outside the object, text, labels, cell borders, logos or watermark. The previously viewed accessory images are STYLE AND DESIGN REFERENCES only, not edit targets; make deliberately simplified new variants of their recognizable designs. VARIANT: Original game's rounded dimensional fantasy art. Use the FIRST four accessory references (golden cross-topped cap, purple bow, rabbit ears and carrot bow). Smooth rounded volumes with soft warm fantasy lighting, rich material color, subtle soft brown edging, NOT angular low-poly enamel and NOT strongly ink-outlined medieval cartoon. TOP LEFT: a broad simple rounded golden royal cap with ONE simple golden cross on top, ONE large purple oval center accent, and a broad smooth cream-white front trim. Cap dome has at most two broad gold bands and one smooth gradient, no scrollwork or side jewels. TOP RIGHT: deep purple bow tie with two large wings, two broad folds, a simple thin golden edge and a single purple rounded central knot in gold. Wide compact silhouette. BOTTOM LEFT: two large cream rabbit ears with coral-pink centers, the right ear tip gently folded, attached to a plain emerald front band. A single small green center knot. Ear edges are smooth rounded forms with NO furry strands. BOTTOM RIGHT: a cream-white bow tie formed from two smooth rounded lobes with one broad fold each, centered by a simple orange carrot with two broad green leaves, no gold filigree. Bow ties approximately twice as wide as tall. All objects are much simpler than the references.",
+      "installStatus": "installed"
+    },
+    {
+      "variant": "original",
+      "name": "rabbit-ears",
+      "catalogId": "rabbit_ears",
+      "reference": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/events/easter-hunt/rabbit-ears.webp",
+      "candidate": "Две кремовые ушные формы с розовой серединой, простой зелёный передний ободок.",
+      "target": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/arena-simple/accessories/rabbit-ears.webp",
+      "sourceAtlas": "C:/Users/semen/Documents/ChatGPT/Сферорумия/artifacts/arena-simple-accessories/masters/arena-accessories-original-v2.png",
+      "box": {
+        "left": 92,
+        "top": 501,
+        "width": 656,
+        "height": 487
+      },
+      "width": 512,
+      "height": 512,
+      "anchor": "bottom",
+      "preparedPath": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\artifacts\\arena-simple-accessories\\final\\original\\rabbit-ears.webp",
+      "sha256": "1d1039d396e59774c1f18a64b59f715b438e488fe1d41777534cb5039d2b138b",
+      "referenceSha256": "2dfe817110bc3c9b5112e36bbc6ac1946d31571896cf8b9ae6e33393185a27a7",
+      "zeroAlpha": 168871,
+      "borderPixelsAbove16": 0,
+      "prompt": "Use case: precise-object-edit. This four-accessory atlas is the edit target. Change ONLY the two large PURPLE fabric-like panels of the TOP LEFT royal hat into smooth WARM GOLD, so the entire rounded cap dome is GOLD as in the original game's golden cap. Keep the single central oval purple jewel PURPLE. Keep the gold cross, broad gold bands, cream front trim, hat shape, dimensions, shading style and position exactly unchanged. The TOP RIGHT purple bow tie MUST remain purple. The bottom rabbit ears and carrot bow MUST remain exactly unchanged. Preserve the exact four-object composition and all transparent spacing. The result must retain genuine transparent alpha everywhere outside the objects. No new ornament, no additional jewels, no text, no background or shadows.",
+      "originalPrompt": "Use case: stylized-concept. Asset type: FOUR simplified arena-only accessory overlays for a fast-moving browser game. Create a NEW 2-column by 2-row atlas, EXACTLY four separate objects on genuine transparent alpha. This is the LOW-DETAIL IN-GAME version, intended to remain unmistakable at 40 to 80 screen pixels wide. Use only LARGE simple color masses, one or two broad folds/bevels per material and a few clean highlights. Strong coherent silhouette. Very low visual complexity, no tiny ornaments, no fine curls, no filigree, no flower clusters, no rows of jewels, no individual fur strands, no engraving, no texture noise, no fine line pattern. Preserve a charming finished premium illustration feel, not a placeholder. Each whole object fits the central 70% of its equal square cell with very generous clean transparent gaps and no overlap, no cropped tips. Front-facing view. Top-left hat/coronet; top-right bow tie; bottom-left rabbit-ear headband; bottom-right carrot bow tie. No wearer, head, face or body. The hats/headbands show ONLY the FRONT surface, with NO back rim, inside opening, rear hoop or rear band. No backdrop, ground, cast shadow outside the object, text, labels, cell borders, logos or watermark. The previously viewed accessory images are STYLE AND DESIGN REFERENCES only, not edit targets; make deliberately simplified new variants of their recognizable designs. VARIANT: Original game's rounded dimensional fantasy art. Use the FIRST four accessory references (golden cross-topped cap, purple bow, rabbit ears and carrot bow). Smooth rounded volumes with soft warm fantasy lighting, rich material color, subtle soft brown edging, NOT angular low-poly enamel and NOT strongly ink-outlined medieval cartoon. TOP LEFT: a broad simple rounded golden royal cap with ONE simple golden cross on top, ONE large purple oval center accent, and a broad smooth cream-white front trim. Cap dome has at most two broad gold bands and one smooth gradient, no scrollwork or side jewels. TOP RIGHT: deep purple bow tie with two large wings, two broad folds, a simple thin golden edge and a single purple rounded central knot in gold. Wide compact silhouette. BOTTOM LEFT: two large cream rabbit ears with coral-pink centers, the right ear tip gently folded, attached to a plain emerald front band. A single small green center knot. Ear edges are smooth rounded forms with NO furry strands. BOTTOM RIGHT: a cream-white bow tie formed from two smooth rounded lobes with one broad fold each, centered by a simple orange carrot with two broad green leaves, no gold filigree. Bow ties approximately twice as wide as tall. All objects are much simpler than the references.",
+      "installStatus": "installed"
+    },
+    {
+      "variant": "original",
+      "name": "carrot-bow",
+      "catalogId": "carrot_bow",
+      "reference": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/events/easter-hunt/carrot-bow.webp",
+      "candidate": "Белая объёмная бабочка с простой оранжевой морковкой и двумя зелёными листьями.",
+      "target": "C:/Users/semen/Documents/ChatGPT/Сферорумия/sferorumiya_v05_update/sferorumiya_v05/public/assets/arena-simple/accessories/carrot-bow.webp",
+      "sourceAtlas": "C:/Users/semen/Documents/ChatGPT/Сферорумия/artifacts/arena-simple-accessories/masters/arena-accessories-original-v2.png",
+      "box": {
+        "left": 826,
+        "top": 577,
+        "width": 646,
+        "height": 392
+      },
+      "width": 512,
+      "height": 256,
+      "anchor": "center",
+      "preparedPath": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\artifacts\\arena-simple-accessories\\final\\original\\carrot-bow.webp",
+      "sha256": "c812ed1ea9bcf5d6a8b62ef5fdddafe87c9ede4e81ce3d235ce599372c582dc6",
+      "referenceSha256": "51776c962a8dd50562949ee2cbbb9da3a1a5e85ba38b38e1aae72e1e77e60a7d",
+      "zeroAlpha": 60000,
+      "borderPixelsAbove16": 0,
+      "prompt": "Use case: precise-object-edit. This four-accessory atlas is the edit target. Change ONLY the two large PURPLE fabric-like panels of the TOP LEFT royal hat into smooth WARM GOLD, so the entire rounded cap dome is GOLD as in the original game's golden cap. Keep the single central oval purple jewel PURPLE. Keep the gold cross, broad gold bands, cream front trim, hat shape, dimensions, shading style and position exactly unchanged. The TOP RIGHT purple bow tie MUST remain purple. The bottom rabbit ears and carrot bow MUST remain exactly unchanged. Preserve the exact four-object composition and all transparent spacing. The result must retain genuine transparent alpha everywhere outside the objects. No new ornament, no additional jewels, no text, no background or shadows.",
+      "originalPrompt": "Use case: stylized-concept. Asset type: FOUR simplified arena-only accessory overlays for a fast-moving browser game. Create a NEW 2-column by 2-row atlas, EXACTLY four separate objects on genuine transparent alpha. This is the LOW-DETAIL IN-GAME version, intended to remain unmistakable at 40 to 80 screen pixels wide. Use only LARGE simple color masses, one or two broad folds/bevels per material and a few clean highlights. Strong coherent silhouette. Very low visual complexity, no tiny ornaments, no fine curls, no filigree, no flower clusters, no rows of jewels, no individual fur strands, no engraving, no texture noise, no fine line pattern. Preserve a charming finished premium illustration feel, not a placeholder. Each whole object fits the central 70% of its equal square cell with very generous clean transparent gaps and no overlap, no cropped tips. Front-facing view. Top-left hat/coronet; top-right bow tie; bottom-left rabbit-ear headband; bottom-right carrot bow tie. No wearer, head, face or body. The hats/headbands show ONLY the FRONT surface, with NO back rim, inside opening, rear hoop or rear band. No backdrop, ground, cast shadow outside the object, text, labels, cell borders, logos or watermark. The previously viewed accessory images are STYLE AND DESIGN REFERENCES only, not edit targets; make deliberately simplified new variants of their recognizable designs. VARIANT: Original game's rounded dimensional fantasy art. Use the FIRST four accessory references (golden cross-topped cap, purple bow, rabbit ears and carrot bow). Smooth rounded volumes with soft warm fantasy lighting, rich material color, subtle soft brown edging, NOT angular low-poly enamel and NOT strongly ink-outlined medieval cartoon. TOP LEFT: a broad simple rounded golden royal cap with ONE simple golden cross on top, ONE large purple oval center accent, and a broad smooth cream-white front trim. Cap dome has at most two broad gold bands and one smooth gradient, no scrollwork or side jewels. TOP RIGHT: deep purple bow tie with two large wings, two broad folds, a simple thin golden edge and a single purple rounded central knot in gold. Wide compact silhouette. BOTTOM LEFT: two large cream rabbit ears with coral-pink centers, the right ear tip gently folded, attached to a plain emerald front band. A single small green center knot. Ear edges are smooth rounded forms with NO furry strands. BOTTOM RIGHT: a cream-white bow tie formed from two smooth rounded lobes with one broad fold each, centered by a simple orange carrot with two broad green leaves, no gold filigree. Bow ties approximately twice as wide as tall. All objects are much simpler than the references.",
+      "installStatus": "installed"
+    }
+  ],
+  "installedAt": "2026-10-28T20:50:33.182Z",
+  "variant": "original"
+}

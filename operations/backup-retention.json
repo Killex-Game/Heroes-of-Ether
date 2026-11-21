@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "keepLatest": 3,
+  "pinned": {
+    "global-optimization-20261113": "Контрольная копия перед глобальной оптимизацией; исключение сверх трёх свежих комплектов."
+  },
+  "legacyBundles": ["legacy-game", "social-title-20261112"]
+}

@@ -1,0 +1,81 @@
+{
+  "mode": "frames",
+  "at": "2026-10-28T20:54:06.417Z",
+  "checks": [
+    {
+      "version": "original",
+      "engine": "chromium",
+      "arenaFlag": true,
+      "uiDefaultPreserved": true,
+      "lobbyFramePixelComparisons": 8,
+      "separateSimpleRendering": true
+    },
+    {
+      "version": "visual",
+      "engine": "chromium",
+      "arenaFlag": true,
+      "uiDefaultPreserved": true,
+      "lobbyFramePixelComparisons": 8,
+      "separateSimpleRendering": true
+    },
+    {
+      "version": "prism",
+      "engine": "chromium",
+      "arenaFlag": true,
+      "uiDefaultPreserved": true,
+      "lobbyFramePixelComparisons": 8,
+      "separateSimpleRendering": true
+    },
+    {
+      "version": "original",
+      "engine": "firefox",
+      "arenaFlag": true,
+      "uiDefaultPreserved": true,
+      "lobbyFramePixelComparisons": 8,
+      "separateSimpleRendering": true
+    },
+    {
+      "version": "visual",
+      "engine": "firefox",
+      "arenaFlag": true,
+      "uiDefaultPreserved": true,
+      "lobbyFramePixelComparisons": 8,
+      "separateSimpleRendering": true
+    },
+    {
+      "version": "prism",
+      "engine": "firefox",
+      "arenaFlag": true,
+      "uiDefaultPreserved": true,
+      "lobbyFramePixelComparisons": 8,
+      "separateSimpleRendering": true
+    },
+    {
+      "version": "original",
+      "engine": "webkit",
+      "arenaFlag": true,
+      "uiDefaultPreserved": true,
+      "lobbyFramePixelComparisons": 8,
+      "separateSimpleRendering": true
+    },
+    {
+      "version": "visual",
+      "engine": "webkit",
+      "arenaFlag": true,
+      "uiDefaultPreserved": true,
+      "lobbyFramePixelComparisons": 8,
+      "separateSimpleRendering": true
+    },
+    {
+      "version": "prism",
+      "engine": "webkit",
+      "arenaFlag": true,
+      "uiDefaultPreserved": true,
+      "lobbyFramePixelComparisons": 8,
+      "separateSimpleRendering": true
+    }
+  ],
+  "errors": [],
+  "boosterFilesUnchanged": true,
+  "boosterFilesUnchangedAfter": true
+}

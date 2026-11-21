@@ -1,0 +1,272 @@
+[
+  {
+    "name": "book",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\book.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\book.webp",
+    "bytes": 36290,
+    "sha256": "e27c3272062a14925e43f746032dfccdf72d3f7b92258e1949e63d7a77bf63f8",
+    "prompt": "See generation record in conversation; reference asset extraction",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "generator",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\generator.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\generator.webp",
+    "bytes": 107586,
+    "sha256": "fb1c223c6d80a75ead8f7cee76acffdf4cda7cb6466cefd17f661aa74068a9ac",
+    "prompt": "See generation record in conversation; reference asset extraction",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-amber",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-amber.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-amber.webp",
+    "bytes": 7188,
+    "sha256": "fc439e93d79dfb4633a366363c8a342eb614676700ef437b1a06d4cf71148068",
+    "prompt": "Create ONE isolated sun-amber ingredient icon. Attached eggs are ONLY the style reference: match clean cel-shaded color patches, smooth rounded volume, broad glossy white highlights, crisp elegant shapes. Subject: a small irregular honey-gold amber gem, four broad warm orange facets and a bright golden center, no fossil or tiny texture. Friendly fantasy game item with medium-low detail, no realistic grain, no text or decorations. IMPORTANT: ONLY the ingredient, without a bubble or enclosing circle; the game will add one common bubble separately. Actual transparent background, centered square composition with generous 15% padding.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-berries",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-berries.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-berries.webp",
+    "bytes": 30410,
+    "sha256": "0177a8ac29dd2badd044fef7410c8e06c79395fb0c3debb1917c6ed67260f0ff",
+    "prompt": "Create ONE isolated alchemy ingredient icon. Attached eggs are ONLY a STYLE reference, NOT the subject. Match their polished casual fantasy game art: clean cel-shaded color transitions, smooth rounded volume, broad white oval highlights, crisp silhouette, a few graceful shapes. Medium-low detail, no photorealistic texture, grain, tiny embellishments or thick black outlines. No purple. The subject floats INSIDE a clear circular bubble with a very thin pale cyan edge and one small glint; empty interior and exterior are truly transparent, no fog or white halo. Centered square icon with 12% margins. No text. SUBJECT: A small cluster of THREE round scarlet red berries on one curved green stem, each berry has a broad glossy highlight, no seeds or tiny texture.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-coal",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-coal.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-coal.webp",
+    "bytes": 8544,
+    "sha256": "1a44fd31369b47bf52b1a4e3936fad6834267980801368b86e83bccdfc6c2fd1",
+    "prompt": "One isolated glowing ember alchemy ingredient, ONLY the object without bubble, frame or scenery. A small rounded charcoal-black stone with three broad orange-red glowing cracks and a warm amber core, glossy highlights and crisp cel-shaded curved facets. Match the attached casual fantasy game eggs' style: rounded dimensional volume, clean solid color regions, large smooth highlights, no grain or realistic texture, restrained detail, no text, no purple. Actual transparent background, square image, object centered with 15 percent margins.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-dew",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-dew.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-dew.webp",
+    "bytes": 22884,
+    "sha256": "210c960028c871991aa23312d7a91bc47f3059c14180397df65908fd3d3c2f5c",
+    "prompt": "Create ONE isolated alchemy ingredient icon. Attached eggs are ONLY a STYLE reference, NOT the subject. Match their polished casual fantasy game art: clean cel-shaded color transitions, smooth rounded volume, broad white oval highlights, crisp silhouette, a few graceful shapes. Medium-low detail, no photorealistic texture, grain, tiny embellishments or thick black outlines. No purple. The subject floats INSIDE a clear circular bubble with a very thin pale cyan edge and one small glint; empty interior and exterior are truly transparent, no fog or white halo. Centered square icon with 12% margins. No text. SUBJECT: One plump turquoise water droplet with pale cyan curved highlight and darker teal lower shading, crisp pointed top, no container.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-feather",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-feather.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-feather.webp",
+    "bytes": 10316,
+    "sha256": "324b3cb6d0157b925ce223e64c436120c38d2e8627179813aa8a33197d0d66aa",
+    "prompt": "Create ONE isolated alchemy ingredient game icon: one elegant curved phoenix feather, flame-orange and golden-yellow, with red-orange tip and simple pale gold quill. The attached eggs are ONLY STYLE reference. Clean cel-shaded color transitions, smooth rounded three-dimensional volume, broad white glints, crisp graceful silhouette, medium-low detail. Few large shapes, no realistic barbs or texture, no grain, no tiny embellishments, no thick black outline, no purple. No bubble, no container. Transparent background. Feather centered diagonally occupying 65% of square, no ground shadow or text. Readable at 32px. Match polished casual fantasy game inventory art.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-frost",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-frost.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-frost.webp",
+    "bytes": 10622,
+    "sha256": "923e082282174b79b15fd3d35a5ccd600ce30f2cd376341f6bcdc9e21d53d0f5",
+    "prompt": "ONE isolated ice crystal alchemy ingredient, no enclosing bubble or scenery. A small cluster of THREE elegant tapered ice crystals, icy pale blue and white with cyan shadow facets, few broad polished planes and clean glossy highlights. Match the attached casual fantasy game eggs: clean cel-shaded colors, dimensional illustrated volume, clear readable silhouette, no realistic texture, no grain, no tiny cracks or fragments, no purple, no text. Transparent background, centered square composition, 15 percent clear margin.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-leaf",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-leaf.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-leaf.webp",
+    "bytes": 19310,
+    "sha256": "c8c71e63e6f2967392872086b50d41220a8de245442696134c0cb87034a519be",
+    "prompt": "Create ONE green magical leaf ingredient icon. The attached eggs are ONLY the ART STYLE reference: match their clean hand-drawn casual game icon style, glossy broad white oval highlights, controlled cel-shaded color patches, gentle rounded dimensional volume, vivid but harmonious greens, crisp edges. The subject is NOT an egg: a graceful curved green leaf, short thin stem, slightly folded tip and central vein with only two pairs of side veins. No fine texture or photorealism, no grain, no elaborate details. Place leaf inside a perfectly circular CLEAR TRANSPARENT bubble with a very thin pale-cyan edge and one small highlight, no foggy white filled halo. Both outside and empty inside areas have actual alpha transparency. Entire centered isolated icon, square canvas with 10 percent margins, no text or scenery.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-mushroom",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-mushroom.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-mushroom.webp",
+    "bytes": 26940,
+    "sha256": "b56e4871b1adbe41978aa58539c6b05cca6c39d59e84f476b946ae9f058bf2e9",
+    "prompt": "Create ONE isolated alchemy ingredient icon. Attached eggs are ONLY a STYLE reference, NOT the subject. Match their polished casual fantasy game art: clean cel-shaded color transitions, smooth rounded volume, broad white oval highlights, crisp silhouette, a few graceful shapes. Medium-low detail, no photorealistic texture, grain, tiny embellishments or thick black outlines. No purple. The subject floats INSIDE a clear circular bubble with a very thin pale cyan edge and one small glint; empty interior and exterior are truly transparent, no fog or white halo. Centered square icon with 12% margins. No text. SUBJECT: One honey-brown mushroom, smooth domed golden-brown cap, cream thick stem, slightly tilted, no gills, no grass or moss.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-pearl",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-pearl.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-pearl.webp",
+    "bytes": 5760,
+    "sha256": "40f57c89e321e7103d9253afcfa9b93f366eb522fcf57f6496e683472bc7d1b0",
+    "prompt": "Create ONE isolated alchemy ingredient icon: a plump pearlescent ivory pearl with a small warm gold crescent highlight and a very subtle pale sea-green lower reflection. The attached eggs are ONLY the STYLE reference, NOT subject. Match polished casual fantasy game icons: clean cel-shaded color transitions, smooth rounded volume, broad white oval glints, crisp graceful silhouette, medium-low detail. No realistic texture, no grain, no tiny decorations, no thick black outline. NO purple. No shell, no bubble, no container; just one pearl centered occupying 63% of a square, fully transparent background, no ground or shadow or text. Keep a simple clear silhouette readable at 32 pixels.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ingredient-sand",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\ingredient-sand.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\ingredient-sand.webp",
+    "bytes": 9530,
+    "sha256": "92feb24c428a360814924a290fd4c9d73c01052dffd6b97429d0a25e4042d660",
+    "prompt": "One isolated star-sand ingredient for a casual fantasy game. A tiny open warm brown drawstring pouch with a folded rim, filled with pale golden sparkling sand, ONE small golden four-point star among the sand. Just a few broad shapes, no individual fine grains, no intricate stitching. Match attached eggs' clean glossy cel-shaded style: dimensional rounded volumes, clear color transitions, broad highlights, elegant readable silhouette. Medium-low detail, no photographic textures. Only this object, no bubble, enclosing frame, text or background. True alpha transparency, square canvas, 15 percent margin.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-archmage",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-archmage.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-archmage.webp",
+    "bytes": 14918,
+    "sha256": "f9f09c5e4adcd6e108c822a753e1cdb16f75f04c929ea08d6c281173094a79f9",
+    "prompt": "Create ONE isolated potion bottle game icon. Attached eggs are ONLY the STYLE reference: clean cel shading, smooth dimensional shapes, large glossy white highlights, vivid harmonious colors, elegant medium-low detail. Fully visible corked bottle centered, fills75% square. No photorealism, grain, fine texture, heavy black outline, purple, text, scenery or floor shadow. True transparent background. Potion of the Archmage: elegant wide faceted glass bottle filled with luminous deep cyan-blue liquid, tan cork, small gold collar, simple large golden four-point magic star emblem on front, one pale blue swirl in liquid.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-clarity",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-clarity.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-clarity.webp",
+    "bytes": 13266,
+    "sha256": "fc867b6492bf7808bf91fbbc28ea2102252d76b1de91259f670fcff289befe34",
+    "prompt": "ONE isolated game potion icon: a softly faceted diamond-shaped glass flask filled with very pale icy-cyan liquid, cork, slim silver collar with small silver snowflake pendant. Full bottle vertical centered, 75% square. Attached eggs STYLE ONLY: polished casual fantasy game art, smooth clean cel shading, rounded volume, two broad white highlights, medium-low detail, graceful readable silhouette. Not photorealistic, no grain or tiny engraving, no heavy black outline. Transparent background, no ground, no exterior shadow, no bubble surrounding bottle, no text.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-fortitude",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-fortitude.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-fortitude.webp",
+    "bytes": 15850,
+    "sha256": "0124e4fc51043bd27464de18a777168d70698378e48af25df4437c2770c14804",
+    "prompt": "Create ONE isolated potion bottle game icon, Potion of Fortitude. Attached eggs are ONLY a STYLE reference: smooth dimensional cel shading, clean color blocks, generous glossy white highlights, elegant controlled shapes, medium-low detail. Subject: sturdy round-square glass flask filled with smoky steel-blue liquid, short neck with a tan cork and small bronze collar, simple gold shield emblem centered on the bottle. Whole bottle centered, fills 75% of square, fully visible. No photorealism, texture, tiny ornate detail, grain, black heavy outline, violet colors, words, letters, floor shadow, background scenery. True transparent background.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-gatherer",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-gatherer.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-gatherer.webp",
+    "bytes": 11246,
+    "sha256": "fe2f152b82d0e69f5ade3957397f383b06ddd593f02e2bfa53186d2dcc5e5254",
+    "prompt": "ONE isolated game potion icon: squat round clear glass flask with lime-green liquid, cork, restrained warm gold collar, small golden three-leaf sprout medallion. Potion of the Gatherer. Full vertical bottle centered occupying 75% square. Match attached eggs STYLE ONLY: smooth clean cel-shaded color transitions, glossy rounded volume, broad white highlights, graceful simple silhouette, medium-low detail. No grain, realistic textures, tiny ornate decoration or heavy black outline. Transparent background without floor, exterior shadow, bubble, frame or text.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-knowledge",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-knowledge.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-knowledge.webp",
+    "bytes": 12924,
+    "sha256": "3df339fe52c6e35ab0aa99877865322f7764d40e6812292eb1d548ff31dddd20",
+    "prompt": "ONE isolated game potion icon: a clear rounded hexagonal glass flask with sapphire-blue liquid, short corked neck, thin golden collar and small golden open-book medallion. Knowledge potion. Full bottle vertical centered occupies 75% square. Match attached eggs as STYLE ONLY: polished casual fantasy icon, clean smooth cel shading, a few broad bright white highlights, crisp graceful volume, medium-low detail, no realism, no grain, no complex engraving, no thick black outline. Restrained warm gold. Truly transparent background, no floor shadow, no text or frame or bubble outside bottle.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-longevity",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-longevity.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-longevity.webp",
+    "bytes": 10026,
+    "sha256": "5258114c6639b4b6a5b0409920351a27e1181e5b395660c6385078f13ff8eb25",
+    "prompt": "ONE isolated game potion icon: an elegant oval glass flask filled with emerald-green liquid, short corked neck, slim gold collar with small golden hourglass pendant. Full bottle vertical centered, 75% square. Attached eggs STYLE ONLY: polished casual fantasy game art, smooth clean cel shading, rounded volume, two broad white highlights, medium-low detail, graceful readable silhouette. Not photorealistic, no grain or tiny engraving, no heavy black outline. Transparent background, no ground, no exterior shadow, no bubble surrounding bottle, no text.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-magnetism",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-magnetism.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-magnetism.webp",
+    "bytes": 12410,
+    "sha256": "5266a22a57631698441099b36d9e5f89279921f2f2c8713809bd29cc214fc9c7",
+    "prompt": "ONE isolated potion icon: round clear glass bottle of luminous aqua-cyan liquid, cork and slim silver collar, small silver horseshoe magnet medallion with two blue tips. Potion of Magnetism. Full vertical bottle centered, 75% square. Attached eggs STYLE ONLY: polished casual fantasy game cel shading, smooth simple volume, broad white glints, clear silhouette, medium-low detail, elegant not realistic. No grain, tiny ornaments or thick outlines. Transparent background, no floor shadow, no bubble or frame or text.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-precision",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-precision.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-precision.webp",
+    "bytes": 12170,
+    "sha256": "4cf6922c4859971f9a49be5b517ff020a0c0528ec7101dd5946cd31932dd4fa5",
+    "prompt": "ONE isolated game potion icon: a slim rounded triangular clear glass flask of bright amber-yellow liquid, corked neck with restrained golden collar, small gold four-point star pendant. Potion of Precision. Full bottle vertical centered occupying 75% square. Attached eggs STYLE ONLY: polished casual fantasy cel shading, clean transitions, broad white oval highlights, smooth simple volume, medium-low detail, crisp graceful silhouette. No realistic grain, tiny ornaments, heavy outlines, no purple. Transparent background without floor shadow, bubble, text or frame.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-prosperity",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-prosperity.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-prosperity.webp",
+    "bytes": 12716,
+    "sha256": "04f80c650cdfcae6523151cf3434366c8b29cc61d25ff7491e9c44f329005e0f",
+    "prompt": "Create ONE isolated potion bottle game icon. Attached eggs are ONLY the STYLE reference: clean cel shading, smooth dimensional shapes, large glossy white highlights, vivid harmonious colors, elegant medium-low detail. Fully visible corked bottle centered, fills75% square. No photorealism, grain, fine texture, heavy black outline, purple, text, scenery or floor shadow. True transparent background. Potion of Prosperity: gently pear-shaped glass bottle filled with golden honey-yellow liquid, tan cork and gold neck collar, simple golden flower emblem on front.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-reach",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-reach.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-reach.webp",
+    "bytes": 9966,
+    "sha256": "95616ef285d308bdeafcb52da7f8a93f1aef5246f007e9c03863e981abb806a3",
+    "prompt": "ONE isolated game potion icon: tall elegant oval clear glass flask containing turquoise-teal liquid, cork, slim gold collar, small golden arrowhead pendant. Potion of Reach. Complete bottle vertical centered 75% square. Attached eggs are STYLE reference only: clean cel shading, glossy simple smooth volumes, broad white oval glints, crisp graceful silhouette, medium-low detail, no photorealism, no grain, no micro engraving or black outline. Transparent background with no floor, exterior shadow or surrounding bubble, no text.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-satiety",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-satiety.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-satiety.webp",
+    "bytes": 11372,
+    "sha256": "83020e0013991c3caceca5f73fee920496a34cc5d4e92535292574cd593e87f1",
+    "prompt": "ONE isolated potion inventory icon: a squat pear-shaped clear glass flask filled with warm honey-orange liquid, short neck with cork and restrained gold collar, one small gold apple-shaped pendant. Full bottle centered occupies 75% square, vertical. Match attached eggs ONLY in STYLE: polished casual fantasy, clean cel shading, broad white oval highlights, smooth simple colored volume, crisp silhouette, medium-low detail. No realistic texture, no small ornamentation, no thick black outline. Transparent background, no floor shadow, no text, no frame, no external bubble. Elegant and readable at 48px. This is a Potion of Satiety.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-steadiness",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-steadiness.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-steadiness.webp",
+    "bytes": 12880,
+    "sha256": "3a470db0732d686bf5a01585e1d1f3858db839cb55f095482370c08f086fd2f2",
+    "prompt": "ONE isolated game potion icon: sturdy short square glass flask with rounded corners filled with olive-green liquid, simple cork, thin golden collar, little golden leaf medallion on the neck. Potion of Steadiness. Full vertical bottle centered occupying 75% square. Attached eggs are STYLE ONLY: smooth clean cel shading, polished rounded volume, broad white glints, elegant simple forms, medium-low detail, crisp silhouette, readable at 48px. No realistic texture, no grain, no fine engraving, no heavy black outline. Transparent background without floor, external shadows, bubble or text.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-strength",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-strength.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-strength.webp",
+    "bytes": 14204,
+    "sha256": "b7c94e4cc9e7cd77a7f3aa4818f56a3576429e725bb83763c3190eb3557edb0b",
+    "prompt": "ONE isolated game inventory potion icon: a squat round clear glass potion flask filled with rich ruby-red liquid, chunky golden cork collar, one small gold lightning medallion attached to neck. Full bottle including cork, vertical, centered, occupies 75% square. Attached eggs ONLY STYLE reference: glossy polished casual fantasy, clean cel shading, broad white highlights, smooth colored volume, crisp graceful silhouette, medium-low detail, no photographic texture, no tiny ornamentation, no heavy black outline. Elegant but simple, readable at 48px. Gold details restrained. No purple default. Transparent background, no ground, no shadow outside object, no text, no border, no bubble around bottle. Not an egg.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-swiftness",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-swiftness.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-swiftness.webp",
+    "bytes": 10710,
+    "sha256": "962be4828714b6e77f181002f1a1db084a33e11b343ebb0116fa35899b17568a",
+    "prompt": "ONE isolated game inventory potion icon: a slender teardrop clear glass potion flask filled with bright sky-blue liquid, golden cork collar, one small gold feather medallion on neck. Full bottle including cork, vertical, centered, occupies 75% square. Attached eggs ONLY STYLE reference: glossy polished casual fantasy, clean cel shading, broad white highlights, smooth colored volume, crisp graceful silhouette, medium-low detail, no photographic texture, no tiny ornamentation, no heavy black outline. Elegant but simple, readable at 48px. Gold details restrained. No purple default. Transparent background, no ground, no shadow outside object, no text, no border, no bubble around bottle. Not an egg.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-tempest",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-tempest.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-tempest.webp",
+    "bytes": 13702,
+    "sha256": "ee84aec5ab78a3574d482a0629564c87aa367a7ececae08a30c7ee4441ab0b93",
+    "prompt": "ONE isolated potion icon: a rounded faceted clear glass flask with deep ocean-blue liquid and a single pale cyan sweeping swirl inside, cork, silver collar, small silver lightning pendant. Potion of Tempest, higher tier but simple elegant. Full bottle vertical centered occupying 75% square. Attached eggs STYLE ONLY: smooth clean cel-shaded color transitions, glossy volume, broad white glints, crisp silhouette, medium-low detail. No photorealism, grain, tiny ornaments or thick black outline. Transparent background, no floor shadow, surrounding bubble, text or frame.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "potion-vigor",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\potion-vigor.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\potion-vigor.webp",
+    "bytes": 13228,
+    "sha256": "2346c73d1f05565c66f11aa0609747e2d04f658607e84019049956855466370b",
+    "prompt": "ONE isolated potion game icon: broad round clear glass flask with coral-orange liquid, short thick cork, warm gold collar, small golden sun medallion. Potion of Vigor. Full bottle centered vertical occupying 75% square. Style reference attached eggs ONLY: clean smooth cel shaded fantasy game art, glossy rounded volume, two broad white highlights, crisp graceful shapes, medium-low detail. No tiny decorations, no realistic texture, no grain or dark outlines. Truly transparent background, no ground shadow, no external bubble, no text.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "recipe",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\recipe.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\recipe.webp",
+    "bytes": 89478,
+    "sha256": "f8a37ce2ab5dfff131fafc1f8645bde2d229c5b63683de045a3dd6b57de38971",
+    "prompt": "See generation record in conversation; reference asset extraction",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "shelf",
+    "source": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\docs\\artwork\\ether-alchemy-20261116\\shelf.png",
+    "target": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\games\\heroes-of-ether\\public\\assets\\events\\ether-alchemy\\v1\\shelf.webp",
+    "bytes": 94338,
+    "sha256": "38d30b12d1ab04cfb0ab17cc1140668a125e4a1036b29b79f7ed377674b6bd57",
+    "prompt": "See generation record in conversation; reference asset extraction",
+    "tool": "built-in image_gen"
+  }
+]

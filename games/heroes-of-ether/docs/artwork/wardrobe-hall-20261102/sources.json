@@ -1,0 +1,141 @@
+{
+  "created": "2026-11-02",
+  "method": "OpenAI image generation, original artwork; references: existing owner supplied game accessories. Transparent backgrounds. Hats redrawn for existing fitting, no renderer scale changes. Hall variants for classic/royal/citadel/heaven. Four complete free portraits. Fashionista uses existing canonical frame.",
+  "sources": {
+    "viking_hat": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-87fa8759-2b67-47dc-bfa2-5ee05263a06a.png",
+    "sombrero_hat": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d6731a81-7709-4a8c-a0af-d5391a454bb7.png",
+    "mushroom_hat": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-09e39d9c-a45d-460d-9386-cca8992a5fe4.png",
+    "cowboy_hat_v3": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-54174f95-0d33-409c-b44a-218bc593e325.png",
+    "hall_classic": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-25b8b25d-436e-4185-b02b-98dcb0415e46.png",
+    "hall_visual": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c4f30f49-90b6-462a-b047-0df68ad8e43c.png",
+    "hall_prism": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b78a346c-07c5-48ea-b276-162d5c4c5abe.png",
+    "hall_glass": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-9c452a2a-6bff-4694-802c-dc301c75b69f.png",
+    "fashionista": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-f87ebd1d-c56c-42a9-9e4f-5fc9ab01e71c.png",
+    "amber-fox": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-f57d9793-079e-46c4-9f52-bbd42272f8ef.png",
+    "snow-leopard": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1aab9a4c-6530-480b-9e7f-7aca99f43d99.png",
+    "little-owl": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-13258e44-f120-46bd-974f-0ca76b6f301f.png",
+    "sea-dragon": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-8db3bfb8-0662-4ee9-b1bb-22ce1939cb8f.png"
+  },
+  "outputs": [
+    {
+      "file": "public/assets/accessories/shop-v2/viking_hat.webp",
+      "sha256": "e61e87a8d63352eec8c9f80401731a2f7c0860295d76db198a7cee23a361b9b8"
+    },
+    {
+      "file": "public/assets/accessories/shop-v2/sombrero_hat.webp",
+      "sha256": "a41605f4c8445dc1f34aab5a0099d8fe3130d6a34f1c72dcf03f822134c894ba"
+    },
+    {
+      "file": "public/assets/accessories/shop-v2/mushroom_hat.webp",
+      "sha256": "d288e7394aa5e609bfd89e19daa39cc68dda3732995d4e7ea8c4248bab6a0516"
+    },
+    {
+      "file": "public/assets/accessories/shop-v2/cowboy_hat.webp",
+      "sha256": "3a7aa1dc7f857a6b76a2df1cffa072fc664687b2a3b0bde025fad867161e469e"
+    },
+    {
+      "file": "public/assets/menu-icons/64/nav_hall.webp",
+      "sha256": "4e53352accbd602da97523f91691b34d0334b32e1c41d67d60c69ec21a62d25c"
+    },
+    {
+      "file": "public/assets/menu-icons/128/nav_hall.webp",
+      "sha256": "4ad98368c6574fb5dfbd9d506fb31755016f6818ef4b305effeabefe01a00c92"
+    },
+    {
+      "file": "public/assets/interface-packs/visual/nav-hall.webp",
+      "sha256": "31c647328d15555a0a3bf55a1192115ba3b9198a4003d4c1269c531937823fa9"
+    },
+    {
+      "file": "public/assets/interface-packs/prism/nav-hall.webp",
+      "sha256": "f9c685a27b3ad356dc82c58c4af7e23bf6a0eaa260f44d99b12eb45caab6eacb"
+    },
+    {
+      "file": "public/assets/interface-packs/glass/nav-hall.webp",
+      "sha256": "e6d543e07ae98150413b6acd9cfc655de3b6c020aad5eb2751a9b878b7702ed5"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/amber-fox.webp",
+      "sha256": "99d662b9f5c85875d25ecf45b9313991b1f02a4809fa63b5786d4def84d94bc0"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/amber-fox.webp",
+      "sha256": "6c15378831d46f51e6a55fde56d0162991e6735e18451581afa26905deeb59c9"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/amber-fox.webp",
+      "sha256": "5be502cd1e9b6c7b7f8242f8aab442c15b6b98f109e4399c889ad4aa5aeea311"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/amber-fox.webp",
+      "sha256": "404adaed12523c951ee1fcda6a906d7ca87ea9e4c1e9cef90aedf8b8f75c683d"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/amber-fox.webp",
+      "sha256": "f3922c03b5455d59c182b5c565c4bd0b0d69d6b0c0b2ed84a26713a040de4b1e"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/snow-leopard.webp",
+      "sha256": "f34370bb756da6ed5032f93c0b629bd5724d39530c7e4892b72cb2b7f436ebba"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/snow-leopard.webp",
+      "sha256": "d02fd211cbbf75262f056c99617f9577140e12f158a42900410f1871e12acc83"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/snow-leopard.webp",
+      "sha256": "b17e50ce47f2bff4c59f664616a0f99f191521a7b4169c98f27a3009a8a291f2"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/snow-leopard.webp",
+      "sha256": "6286b9088701ac32fe4e2ac4999dfc1241556a4ec43a2b09645555b4813c7ca7"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/snow-leopard.webp",
+      "sha256": "836f4ba9617da99e3df2a01c65c67bc1aee1dd156e4648d849dccc7ac7041ffc"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/little-owl.webp",
+      "sha256": "8b7db4f39c4c365348c182a5a74ebc33d041a0b64c2d0ce70bfbda91dc69d74c"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/little-owl.webp",
+      "sha256": "b8ade33bb4a8a562aeb1d655c8b2969dd5da1961eacde8d80fc45ad8f4be87ee"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/little-owl.webp",
+      "sha256": "dff04fe0606e36513489c6ca2b10e5d6ba72e5b7406fb3fc4a9dcd7c6ca0da28"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/little-owl.webp",
+      "sha256": "2a1f59df4efd3849bd6db74a98a9c97cd774bb602209a3a5479a40af4eef2cc1"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/little-owl.webp",
+      "sha256": "ecd768d922c8d1a925f4811448c9e36e6c8697359d6bccce17d881eb10d34b75"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/64/sea-dragon.webp",
+      "sha256": "182b3c1d3da3ec3a29ca744f7f82323bb944074b54f93b3b76afae93bc4330de"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/128/sea-dragon.webp",
+      "sha256": "1d2f65532217a48dc1d36ed07d2bb365971b111ec1031c853077451905520ff5"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/256/sea-dragon.webp",
+      "sha256": "7fa7be1bba7ce4b06cf3cef1445aac1c773c12de588f9242f1fa65582b0903c2"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/512/sea-dragon.webp",
+      "sha256": "da479b2a9ac81eb739f20f7282af5ff591ae17e17be74582b85a95dd437f0ae6"
+    },
+    {
+      "file": "public/assets/skins/transparent-v2/1024/sea-dragon.webp",
+      "sha256": "73200f58724b356fa93c46ae84fc7d1e49b2772914567266e6012d0a2b7a0153"
+    },
+    {
+      "file": "public/assets/achievements/illustrated-v2/fashionista.webp",
+      "sha256": "a1f2924cf1295e38175892ae995dbfd6006902708b370bbdb5f5fa6336aeac63"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "mode": "live",
+  "at": "2026-10-28T21:02:14.150Z",
+  "checks": [
+    {
+      "version": "original",
+      "engine": "chromium",
+      "isolatedOriginal": true,
+      "freshBrowserSession": true,
+      "entered": true,
+      "movement": {
+        "distance": 15.544329639003388,
+        "frames": 10
+      },
+      "returnedToLobby": true,
+      "errors": [],
+      "httpErrors": []
+    },
+    {
+      "version": "visual",
+      "engine": "chromium",
+      "isolatedOriginal": false,
+      "freshBrowserSession": true,
+      "entered": true,
+      "movement": {
+        "distance": 12.707668328339075,
+        "frames": 11
+      },
+      "returnedToLobby": true,
+      "errors": [],
+      "httpErrors": []
+    },
+    {
+      "version": "prism",
+      "engine": "chromium",
+      "isolatedOriginal": false,
+      "freshBrowserSession": true,
+      "entered": true,
+      "movement": {
+        "distance": 15.88458541042375,
+        "frames": 10
+      },
+      "returnedToLobby": true,
+      "errors": [],
+      "httpErrors": []
+    },
+    {
+      "version": "original",
+      "engine": "firefox",
+      "isolatedOriginal": true,
+      "freshBrowserSession": true,
+      "entered": true,
+      "movement": {
+        "distance": 19.430412048753286,
+        "frames": 9
+      },
+      "returnedToLobby": true,
+      "errors": [],
+      "httpErrors": []
+    },
+    {
+      "version": "visual",
+      "engine": "firefox",
+      "isolatedOriginal": false,
+      "freshBrowserSession": true,
+      "entered": true,
+      "movement": {
+        "distance": 15.884585410424206,
+        "frames": 13
+      },
+      "returnedToLobby": true,
+      "errors": [],
+      "httpErrors": []
+    },
+    {
+      "version": "prism",
+      "engine": "firefox",
+      "isolatedOriginal": false,
+      "freshBrowserSession": true,
+      "entered": true,
+      "movement": {
+        "distance": 12.699227468413351,
+        "frames": 12
+      },
+      "returnedToLobby": true,
+      "errors": [],
+      "httpErrors": []
+    },
+    {
+      "version": "original",
+      "engine": "webkit",
+      "isolatedOriginal": true,
+      "freshBrowserSession": true,
+      "entered": true,
+      "movement": {
+        "distance": 23.316494458503943,
+        "frames": 8
+      },
+      "returnedToLobby": true,
+      "errors": [],
+      "httpErrors": []
+    },
+    {
+      "version": "visual",
+      "engine": "webkit",
+      "isolatedOriginal": false,
+      "freshBrowserSession": true,
+      "entered": true,
+      "movement": {
+        "distance": 15.88458541042476,
+        "frames": 7
+      },
+      "returnedToLobby": true,
+      "errors": [],
+      "httpErrors": []
+    },
+    {
+      "version": "prism",
+      "engine": "webkit",
+      "isolatedOriginal": false,
+      "freshBrowserSession": true,
+      "entered": true,
+      "movement": {
+        "distance": 12.707668328339413,
+        "frames": 7
+      },
+      "returnedToLobby": true,
+      "errors": [],
+      "httpErrors": []
+    }
+  ],
+  "errors": [],
+  "boosterFilesUnchanged": true,
+  "boosterFilesUnchangedAfter": true
+}

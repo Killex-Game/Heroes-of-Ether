@@ -1,0 +1,41 @@
+[
+  {
+    "browser": "chromium",
+    "decodedFiles": 32,
+    "widths": [
+      1440,
+      844,
+      390
+    ],
+    "playStop": true,
+    "selectionPersists": true,
+    "export": true,
+    "errors": []
+  },
+  {
+    "browser": "firefox",
+    "decodedFiles": 32,
+    "widths": [
+      1440,
+      844,
+      390
+    ],
+    "playStop": true,
+    "selectionPersists": true,
+    "export": true,
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "decodedFiles": 32,
+    "widths": [
+      1440,
+      844,
+      390
+    ],
+    "playStop": true,
+    "selectionPersists": true,
+    "export": true,
+    "errors": []
+  }
+]

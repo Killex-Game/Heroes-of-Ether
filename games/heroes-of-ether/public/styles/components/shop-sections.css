@@ -1,0 +1,172 @@
+/* Разделы магазина и инвентаря, коллекции и переключатели. */
+/* Спокойные статичные материалы: торговая лавка, коллекция и сокровищница. */
+#boosterDialog {
+  border-image-slice: 112 48 40 48;
+  background-color: var(--ui-c-f7ead2, #f7ead2);
+}
+#boosterDialog[data-mode="shop"] {
+  background-image:
+    linear-gradient(90deg, var(--ui-c-b88b4210, #b88b4210) 1px, transparent 1px),
+    linear-gradient(var(--ui-c-fff5df, #fff5df), var(--ui-c-ead4ad, #ead4ad));
+  background-size:
+    48px 48px,
+    100% 100%;
+}
+#boosterDialog[data-mode="inventory"] {
+  background-image:
+    radial-gradient(ellipse at 50% 0, var(--ui-c-f9f2ff, #f9f2ff), transparent 65%),
+    linear-gradient(135deg, var(--ui-c-e7deed, #e7deed), var(--ui-c-e4cfba, #e4cfba));
+}
+#boosterDialog[data-mode="chests"] {
+  background-image:
+    radial-gradient(ellipse at 50% 0, var(--ui-c-ffebaf80, #ffebaf80), transparent 65%),
+    linear-gradient(135deg, var(--ui-c-d7b77d, #d7b77d), var(--ui-c-aa8263, #aa8263));
+}
+#boosterDialog .booster-grid,
+#boosterDialog .chests-section {
+  padding: 12px;
+  border: 1px solid #aa86525c;
+  border-radius: 14px;
+  background: var(--ui-c-4a284817, #4a284817);
+}
+#boosterDialog[data-mode="inventory"] .booster-grid {
+  background: var(--ui-c-51325916, #51325916);
+  border-color: var(--ui-c-89699166, #89699166);
+}
+#boosterDialog[data-mode="chests"] .chests-section {
+  background: none;
+  border-color: transparent;
+}
+#boosterDialog .booster-card {
+  border-image-slice: 36;
+  background: linear-gradient(var(--ui-c-fffaf0, #fffaf0), var(--ui-c-f6e8cf, #f6e8cf));
+}
+#boosterDialog[data-mode="inventory"] .booster-card {
+  background: linear-gradient(var(--ui-c-fcf9ff, #fcf9ff), var(--ui-c-eee3f3, #eee3f3));
+}
+#boosterDialog .chest-card {
+  border-image-slice: 36 fill;
+  /* Рамка уже содержит заливку; отдельный фон выступал за её скруглённые края. */
+  background: none;
+  min-height: 232px;
+  justify-content: flex-start;
+}
+#boosterDialog .chest-heading:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+#boosterDialog .chest-heading {
+  cursor: help;
+}
+#boosterDialog .chest-heading h3 {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#boosterDialog .chest-state {
+  min-height: 0;
+  font-size: 12px;
+}
+/* Пять одинаковых мест зарезервированы независимо от выбранного раздела. */
+#boosterDialog .shop-categories {
+  grid-column: 1 / -1;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+#boosterDialog .shop-categories .sf-tab {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  height: 40px;
+}
+#boosterDialog .accessory-shop-tabs {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+#boosterDialog .accessory-shop-tabs[hidden] {
+  display: none;
+}
+@media (max-width: 700px) {
+  #boosterDialog .shop-categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#boosterDialog .booster-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+#boosterDialog .booster-toolbar {
+  display: block;
+}
+#boosterDialog .booster-filters {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+#boosterDialog .booster-tabs .sf-tab,
+#boosterDialog .booster-filters .sf-tab {
+  width: 100%;
+  height: 46px;
+  min-width: 0;
+  margin: 0;
+  padding: 8px !important;
+  font-size: 13px;
+  line-height: 1.2;
+}
+.booster-card-head {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.booster-pack {
+  flex-shrink: 0;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: var(--ui-c-ead5a6, #ead5a6);
+  color: #523448;
+  font-size: 12px;
+  font-weight: 700;
+}
+#boosterDialog .booster-card .booster-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+#boosterDialog .booster-card .booster-price-icon {
+  position: static;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  flex: 0 0 26px;
+  object-fit: contain;
+}
+@media (max-width: 600px) {
+  #boosterDialog .booster-tabs,
+  #boosterDialog .booster-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  #boosterDialog .booster-tabs .sf-tab,
+  #boosterDialog .booster-filters .sf-tab {
+    font-size: 12px;
+  }
+  #boosterDialog .booster-grid,
+  #boosterDialog .chests-section {
+    padding: 8px;
+  }
+  #boosterDialog .booster-card {
+    border-width: 10px;
+  }
+  .booster-pack {
+    font-size: 11px;
+  }
+}

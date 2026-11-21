@@ -1,0 +1,266 @@
+[
+  {
+    "path": "public/assets/interface-packs/visual/menu-v2/nav-promo.webp",
+    "sha256": "0fd2af7864c939e73cd3a5d184c048398871b0c2588ef29accc761d8a35ce98a",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/visual-promo.png",
+    "originalSha256": "71f6522e81e1deef98c06efa920e93a502c26f5fb156d78fbc47271dfc990c88",
+    "crop": {
+      "left": 160,
+      "top": 99,
+      "width": 1216,
+      "height": 824
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/visual/menu-v2/nav-news.webp",
+    "sha256": "af9676530cf4e5790d0857c24ccb77050c955c1bf391b79f0eb8fb3c38812959",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/visual-news.png",
+    "originalSha256": "c22895f21241318c911b3cf53acc8ac6eedaecac6a1f1ec5b2195b7c6b2912ca",
+    "crop": {
+      "left": 60,
+      "top": 65,
+      "width": 1173,
+      "height": 1067
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/prism/menu-v2/nav-promo.webp",
+    "sha256": "ac1033204a0670a37fa4bd33cedc7e36b65c997d62e3df3b4485325a4fd2f676",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/prism-promo.png",
+    "originalSha256": "a9f741d78c7612760b8d2f5462028fc9bded19f36f223c8bfb809f4cbab3c012",
+    "crop": {
+      "left": 122,
+      "top": 67,
+      "width": 1308,
+      "height": 860
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/prism/menu-v2/nav-news.webp",
+    "sha256": "173977c97dc1c403dcd4798256a191170729bf381f7b2f39009395850f3feef9",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/prism-news.png",
+    "originalSha256": "432b3100a892f5d93fdeb2c7c111705a4bdec5d84e7d12954fd9b65b628e7bb3",
+    "crop": {
+      "left": 236,
+      "top": 101,
+      "width": 999,
+      "height": 798
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/glass/menu-v2/nav-promo.webp",
+    "sha256": "062bd1ecd257a25a9b08885b86b1ba356365a7db692e597f05b4c42b27761af9",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/glass-promo.png",
+    "originalSha256": "4b5a2f9aba6a824e1d96e6b1a9504d726697a016365cd290f47a8b20b5d13e12",
+    "crop": {
+      "left": 182,
+      "top": 122,
+      "width": 1168,
+      "height": 767
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/glass/menu-v2/nav-news.webp",
+    "sha256": "36157f06d1825fe33e53dee5cee0b80af21232616de0407b4d6d3f77b70cd3d4",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/glass-news.png",
+    "originalSha256": "4db874cacfa1f7beefc35adfe4be58bce15d658e0c503fd160c51e958922ad86",
+    "crop": {
+      "left": 97,
+      "top": 202,
+      "width": 1107,
+      "height": 821
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-promo.webp",
+    "sha256": "6baf2ecbabe237e3e576a3ed85b12921dd3e7574934842f6a7c222e13a24aca4",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-promo.png",
+    "originalSha256": "fbc8e292f19796c26f9edfcb4d21ae2782d689718f71eee8169659bcf0d40c35",
+    "crop": {
+      "left": 114,
+      "top": 82,
+      "width": 1307,
+      "height": 826
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-news.webp",
+    "sha256": "c2ed82fe4998c8bdb3d4be0ad70ecd3b92fd7190a0c60008cf54742d48d36906",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-news.png",
+    "originalSha256": "d330f31ed791fd4a6bceb1c36f832652194532de9b2c9c74398ffee7225f9498",
+    "crop": {
+      "left": 50,
+      "top": 54,
+      "width": 1137,
+      "height": 1154
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-hall.webp",
+    "sha256": "c1e182b90a98193f828e02a796b97724ecfdbfc7584ff58c09eb85a6c4975eac",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-hall.png",
+    "originalSha256": "18704241f2aa914464e1fd48c32e01064e11fbcd43fb14b3afcb4565386ea9ed",
+    "crop": {
+      "left": 21,
+      "top": 0,
+      "width": 1210,
+      "height": 1254
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-events.webp",
+    "sha256": "f975064dce9cb57144aa1fe88db060fb3a491a8c53e4d8a5c3f7014cff7383e6",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-events.png",
+    "originalSha256": "15690f80c40d45b9418e6960dcfe446575f7aba4e362b65086a99b08211da06c",
+    "crop": {
+      "left": 66,
+      "top": 5,
+      "width": 1132,
+      "height": 1245
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-inventory.webp",
+    "sha256": "677835ca42119fd8f2af0b7ea933d7942e9aad5f6a3f4c1b981ace5202f434f0",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-inventory.png",
+    "originalSha256": "26b8f465a2f21088c63971b56f50d96b3de20955a84bb53c80dbedfa10783308",
+    "crop": {
+      "left": 89,
+      "top": 52,
+      "width": 1108,
+      "height": 1033
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-wardrobe.webp",
+    "sha256": "e11cae64a811eb954e8ea04002b6bb46bf182c7340b076a86ffc44392777bca0",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-wardrobe.png",
+    "originalSha256": "8dcb8028215c180bc0887001cfc43efa95dd84aec97dbbf236fcf7c4ad85c630",
+    "crop": {
+      "left": 67,
+      "top": 36,
+      "width": 1080,
+      "height": 1189
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-quests.webp",
+    "sha256": "83478201fcceb19da246d0f2cc1f922a6437ce2569aa3f7486fa496f31ab6a69",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-quests.png",
+    "originalSha256": "c8b83fd7ac366beaf4733612286508934d0f6deac93c440c5bdcee43c223e545",
+    "crop": {
+      "left": 54,
+      "top": 0,
+      "width": 1201,
+      "height": 1199
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-shop.webp",
+    "sha256": "fa4b290f1922569e7de99f0963367cfc9004429063ec9d8069e58d37e14fffe6",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-shop.png",
+    "originalSha256": "8f3981b32de3ce0ef719aa4a6de4cf50c002c2ba420173124982060baf62593f",
+    "crop": {
+      "left": 54,
+      "top": 22,
+      "width": 1146,
+      "height": 1089
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-top.webp",
+    "sha256": "99993e6e513f7b730df2b36abf97b5f3090c578ebedb6b673e7f2d24b3b08921",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-top.png",
+    "originalSha256": "7ef762b0528e04a420a9af774c6283b0e4525f08fea8d21eeb65858ed5929b92",
+    "crop": {
+      "left": 61,
+      "top": 35,
+      "width": 1133,
+      "height": 1196
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-achievements.webp",
+    "sha256": "3a819bc9af8580d2d9fad4809f8e7f04b7daba1e30ad99267c6049537696baad",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-achievements.png",
+    "originalSha256": "f42f112b5ba1e1375bbb0a13b8bdf3ee1c139e80422aef2b892c76fba9437abf",
+    "crop": {
+      "left": 70,
+      "top": 0,
+      "width": 1110,
+      "height": 1219
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-clan.webp",
+    "sha256": "73a75bae445829bc9e3ced2489e3beddb1476801a7e5165d946c40d9515526f7",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-clan.png",
+    "originalSha256": "32a49616ce5342fd62253c18ada0384c970147a4694d6e90eed78a37024237ff",
+    "crop": {
+      "left": 88,
+      "top": 74,
+      "width": 1081,
+      "height": 1134
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/heroic/menu-v2/nav-pets.webp",
+    "sha256": "efe7791583644b102249b60b6c88ba03d0f83c24c18545706936df1971f88ed2",
+    "original": "docs/artwork/lobby-theme-icons-20261114/originals/heroic-pets.png",
+    "originalSha256": "c7f37448b7434ebeeedfc0d9df1f9575b9dd6fce680eb8d59cf880d0b9808851",
+    "crop": {
+      "left": 45,
+      "top": 125,
+      "width": 1163,
+      "height": 1043
+    }
+  },
+  {
+    "path": "public/assets/menu-icons/community-v2/pets.webp",
+    "sha256": "30d9e84bdcd134a7321b95f7aa9448b48f28d4ef53403a93ed2dc6b4d188b126",
+    "source": "public/assets/pets/paw-v3.webp",
+    "sourceSha256": "55e592d785ce32c09bbe757ddfe034d871aeb2f48fb8a9098f72f21ed081b532",
+    "crop": {
+      "left": 46,
+      "top": 52,
+      "width": 164,
+      "height": 151
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/visual/menu-v2/nav-pets.webp",
+    "sha256": "087d1850bae4e8a21b5d9107cf9979d01077394e5952af6c868efe2dddc87af8",
+    "source": "public/assets/interface-packs/visual/nav-pets.webp",
+    "sourceSha256": "f5023a9efd8a0b4912b75817406e6211676f77207e69f63c220f1229af939513",
+    "crop": {
+      "left": 12,
+      "top": 49,
+      "width": 488,
+      "height": 414
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/prism/menu-v2/nav-pets.webp",
+    "sha256": "2669866637446dcced65c553eb798032ba031f917eaa773abad7794eaca216bc",
+    "source": "public/assets/interface-packs/prism/nav-pets.webp",
+    "sourceSha256": "fdc8af0ba27236f96f175000a76f2f2f8853d0360c91de2d2cffb47c7239f9fb",
+    "crop": {
+      "left": 26,
+      "top": 46,
+      "width": 462,
+      "height": 419
+    }
+  },
+  {
+    "path": "public/assets/interface-packs/glass/menu-v2/nav-pets.webp",
+    "sha256": "4a541060c6e16c10a94b8fa6551287c750d5d567f4fa6c96aed5fccbd2417a8f",
+    "source": "public/assets/interface-packs/glass/nav-pets.webp",
+    "sourceSha256": "15c39f0288e365a5ccbd131b083c0db2fc6202b7995407a602cad5685b34a868",
+    "crop": {
+      "left": 14,
+      "top": 70,
+      "width": 741,
+      "height": 628
+    }
+  }
+]

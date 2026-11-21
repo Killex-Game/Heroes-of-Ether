@@ -1,0 +1,499 @@
+/* Насыщенный фон лобби, кнопки, тумблеры и декоративные эффекты. */
+/* Постоянная геометрия лобби и небольших окон. */
+.greatness-icon {
+  display: inline-block;
+  object-fit: contain;
+  vertical-align: middle;
+  flex: none;
+}
+.greatness-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.achievement-milestones .greatness-icon {
+  width: 16px;
+  height: 16px;
+}
+.achievement-milestones .greatness-value {
+  justify-content: center;
+}
+.honor-greatness .greatness-icon,
+.clan-member-info .greatness-icon {
+  width: 18px;
+  height: 18px;
+}
+/* Обрезается только аватар: аксессуары и внешняя рамка не обрезаются. */
+.avatar-disc {
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+#lobbySkin,
+#profileSkin,
+.avatar-disc .outfit-skin {
+  position: absolute;
+  inset: -6.5%;
+  width: 113%;
+  height: 113%;
+  max-width: none;
+  object-fit: cover;
+}
+.personal-field-label {
+  font-size: 13px;
+  font-weight: 700;
+}
+.personal-genders {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.personal-gender {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 88px;
+  padding: 9px;
+  border: 2px solid var(--ui-c-c5b2cd, #c5b2cd);
+  border-radius: 13px;
+  background: var(--ui-c-fff9f3, #fff9f3);
+  color: #65446c;
+  font: 600 14px var(--game-font);
+  box-shadow: none;
+}
+.personal-gender img {
+  width: 56px;
+  height: 56px;
+}
+.personal-gender:hover {
+  border-color: var(--ui-c-ad78b8, #ad78b8);
+}
+.personal-gender[aria-pressed="true"] {
+  border-color: var(--ui-c-8b4ba5, #8b4ba5);
+  background: linear-gradient(var(--ui-c-f9eaff, #f9eaff), var(--ui-c-e6cbed, #e6cbed));
+  box-shadow:
+    inset 0 0 0 2px var(--ui-c-fdf5ff, #fdf5ff),
+    0 0 0 2px var(--ui-c-c69bd466, #c69bd466);
+  color: #512460;
+}
+.personal-gender[aria-pressed="true"]::after {
+  content: "✓";
+  position: absolute;
+  right: 7px;
+  top: 4px;
+  font-size: 13px;
+  color: #783692;
+}
+.interface-window .tops-sort {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+}
+.tops-nav > button {
+  min-width: 130px;
+}
+.tops-dialog .ranking-board {
+  max-width: 940px;
+  margin-inline: auto;
+}
+.tops-dialog .clan-ranking-row {
+  grid-template-columns: 24px 42px minmax(0, 1fr) 50px minmax(70px, auto);
+}
+.tops-dialog .clan-ranking-row:has(.clan-join) {
+  grid-template-columns: 24px 42px minmax(0, 1fr) 50px minmax(70px, auto) 205px;
+}
+.tops-dialog .clan-join {
+  font-size: 12px;
+  padding: 8px 12px;
+  min-height: 40px;
+}
+.tops-dialog .clan-ranking-self {
+  background: #f2e3f5;
+  border-radius: 8px;
+}
+.tops-dialog .ranking-score {
+  justify-self: end;
+}
+.tops-dialog .clan-rank-name {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.tops-dialog .title-medal {
+  flex: none;
+}
+.clan-deposit {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 700px;
+  margin: 10px 0 24px;
+}
+.clan-deposit .sf-button {
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  padding: 8px 5px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.clan-deposit-balance {
+  margin-bottom: 8px;
+}
+.clan-deposit-toast {
+  display: none;
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  max-width: calc(100vw - 24px);
+  padding: 17px 28px;
+  border: 2px solid #c09a55;
+  border-radius: 15px;
+  background: linear-gradient(var(--ui-c-8855a0, #8855a0), var(--ui-c-54275f, #54275f));
+  color: #fff4d5;
+  box-shadow:
+    inset 0 0 0 2px #edd09866,
+    0 8px 35px var(--ui-c-32164155, #32164155);
+  font: 600 16px var(--game-font);
+  pointer-events: none;
+  text-align: center;
+  z-index: 1000;
+}
+.clan-deposit-toast.is-visible {
+  display: block;
+  animation: deposit-toast 3s ease both;
+}
+@keyframes deposit-toast {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 7px));
+  }
+  12%,
+  83% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 7px));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clan-deposit-toast.is-visible {
+    animation: none;
+  }
+}
+@media (max-width: 760px) {
+  .tops-dialog .clan-ranking-row,
+  .tops-dialog .clan-ranking-row:has(.clan-join) {
+    grid-template-columns: 20px 32px minmax(0, 1fr) auto;
+  }
+  .tops-dialog .clan-capacity {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .tops-dialog .ranking-score {
+    grid-column: 4;
+    grid-row: 1;
+  }
+  .tops-dialog .clan-join {
+    grid-column: 2/-1;
+    grid-row: 3;
+  }
+  .tops-nav > button {
+    min-width: 0;
+    flex: 1;
+  }
+  .clan-deposit {
+    gap: 4px;
+  }
+  .clan-deposit .sf-button {
+    font-size: 10px;
+    padding-inline: 1px;
+  }
+  .personal-gender {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+#lobby .promo-column {
+  height: 100%;
+  align-self: stretch;
+}
+#lobby .promo-slot {
+  width: 100%;
+  min-width: 0;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+#lobby #joinForm {
+  grid-template-columns: minmax(0, 1fr);
+}
+#lobby #playButton {
+  grid-column: 1;
+  grid-row: 1;
+  width: min(100%, 330px);
+  justify-self: center;
+}
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+#lobby .profile-name-row #previewName {
+  min-width: 0;
+  flex: 1;
+}
+#editProfile {
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  border: 1px solid #bc914f;
+  border-radius: 7px;
+  background: var(--ui-c-fff4d7, #fff4d7);
+  color: #795084;
+}
+#editProfile svg {
+  width: 17px;
+  height: 17px;
+}
+#editProfile:hover {
+  background: var(--ui-c-f1def3, #f1def3);
+}
+.personal-dialog {
+  width: min(420px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  padding: 12px;
+  border: 1px solid #ba8f49;
+  border-radius: 17px;
+  background: linear-gradient(135deg, var(--ui-c-fff9e8, #fff9e8), var(--ui-c-f3dfb9, #f3dfb9));
+  color: #55325f;
+  box-shadow:
+    inset 0 0 0 3px #fff6db,
+    0 16px 60px var(--ui-c-21102b66, #21102b66);
+  overflow: auto;
+}
+.personal-dialog::backdrop {
+  background: var(--ui-c-24142db3, #24142db3);
+}
+.personal-heading,
+body #settingsMenu .settings-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 10px;
+  margin: 0 0 12px;
+  border: 1px solid #b78a46;
+  border-radius: 10px;
+  background: linear-gradient(var(--ui-c-925aa8, #925aa8), var(--ui-c-542460, #542460));
+  color: #fff8e6;
+  min-height: 44px;
+}
+.personal-heading h2,
+body #settingsMenu .settings-heading h2 {
+  font-size: 19px;
+  line-height: 1.2;
+  margin: 0;
+}
+.personal-close,
+body #settingsMenu #closeSettings {
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #b38330;
+  border-radius: 50%;
+  background: linear-gradient(var(--ui-c-ffecaa, #ffecaa), var(--ui-c-eab747, #eab747));
+  color: #5d335e;
+  font: 22px/1 var(--game-font);
+  box-shadow: inset 0 0 0 2px #fff2bc;
+}
+.personal-form {
+  display: grid;
+  gap: 9px;
+  padding: 4px 5px;
+}
+.personal-form label {
+  font-size: 13px;
+  font-weight: 700;
+}
+.personal-form input,
+.personal-form select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 43px;
+  padding: 8px 11px;
+  border: 1px solid #bf985e;
+  border-radius: 9px;
+  background: var(--ui-c-fffaed, #fffaed);
+  color: #54315f;
+  font: 14px var(--game-font);
+}
+.personal-price {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 5px 0;
+  color: #78546f;
+}
+.inline-currency {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+.personal-status {
+  min-height: 18px;
+  margin: 0;
+  font-size: 12px;
+}
+.personal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 18px;
+}
+.personal-dialog .sf-button {
+  min-height: 40px;
+  padding: 8px 18px;
+  font-size: 14px;
+}
+.rename-confirm h2 {
+  font-size: 22px;
+  margin: 4px 0 14px;
+}
+body #settingsMenu,
+body[data-screen="lobby"] #settingsMenu {
+  width: min(330px, calc(100vw - 32px));
+  padding: 10px;
+  border: 1px solid #bd934d;
+  border-image: none;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--ui-c-fff9e8, #fff9e8), var(--ui-c-f3dfb9, #f3dfb9));
+  color: #55325f;
+  box-shadow:
+    inset 0 0 0 3px #fff6db,
+    0 10px 32px var(--ui-c-28153044, #28153044);
+}
+#settingsMenu .setting-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 62px;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 4px;
+}
+#settingsMenu .setting-title {
+  font-size: 13px;
+  font-weight: 700;
+}
+#settingsMenu .setting-audio-row {
+  grid-template-columns: 64px minmax(0, 1fr);
+}
+#settingsMenu .setting-volume {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: 8px;
+}
+#settingsMenu .setting-volume input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  accent-color: #b88726;
+  cursor: pointer;
+}
+#settingsMenu .setting-volume output {
+  text-align: right;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+#settingsMenu .setting-sub {
+  color: #80677d;
+  line-height: 1.4;
+}
+#settingsMenu .future-chat {
+  margin: 12px 4px 4px;
+}
+#settingsMenu #settingsFeedback {
+  margin: 6px 4px 0;
+}
+.inventory-loadout {
+  grid-column: 1/-1;
+  justify-self: center;
+  width: min(100%, 448px);
+  border: 1px solid #bc914f;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--ui-c-fff9e9, #fff9e9), var(--ui-c-f2dfbd, #f2dfbd));
+  padding: 6px 9px 8px;
+}
+.booster-card[draggable="true"] {
+  cursor: grab;
+}
+.booster-card[data-dragging="true"] {
+  opacity: 0.55;
+}
+.inventory-loadout .loadout-slot img {
+  pointer-events: none;
+}
+.interface-window .ranking-tabs {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.ranking-tabs > :nth-child(-n + 2) {
+  grid-column: span 3;
+}
+.ranking-tabs > :nth-child(n + 3) {
+  grid-column: span 2;
+}
+.ranking-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.ranking-score img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+@media (max-height: 560px) {
+  .inventory-loadout {
+    max-width: 320px;
+    padding: 3px 7px 5px;
+  }
+  #lobby .profile-name-row {
+    gap: 3px;
+  }
+  #editProfile {
+    width: 21px;
+    height: 21px;
+    flex-basis: 21px;
+    padding: 3px;
+  }
+  #editProfile svg {
+    width: 15px;
+    height: 15px;
+  }
+}

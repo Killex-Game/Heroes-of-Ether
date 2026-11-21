@@ -1,0 +1,20 @@
+"use strict";
+const test = require("node:test"), assert = require("node:assert/strict");
+const {profileKeys} = require("../../src/server/profiles/profile-index");
+const tables = require("../../src/server/profiles/immutable-table-delta");
+test("profile index survives progress but never reuses removed or changed identities", () => {
+  let rows = {a:{id:"alice",level:1},b:{id:"bob",level:2}};
+  const initial = profileKeys(rows);
+  let next = {...rows,a:{...rows.a,level:3}};
+  tables.remember(next,rows,["a"]);
+  assert.equal(profileKeys(next),initial); rows=next;
+  next={b:rows.b}; tables.remember(next,rows,["a"]);
+  assert.equal(profileKeys(next).has("alice"),false);rows=next;
+  next={...rows,c:{id:"carol"}};tables.remember(next,rows,["c"]);
+  assert.equal(profileKeys(next).get("carol"),"c");rows=next;
+  next={...rows,c:{id:"dora"}};tables.remember(next,rows,["c"]);
+  assert.equal(profileKeys(next).has("carol"),false);
+  assert.equal(profileKeys(next).get("dora"),"c");
+  assert.deepEqual(profileKeys(structuredClone(next)),new Map([["bob","b"],["dora","c"]]));
+  assert.equal(initial.get("alice"),"a");
+});

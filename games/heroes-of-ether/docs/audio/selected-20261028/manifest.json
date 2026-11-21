@@ -1,0 +1,225 @@
+{
+  "date": "2026-10-28",
+  "license": "CC0-1.0",
+  "selection": "Мой выбор звуков.txt",
+  "sources": {
+    "rpg": {
+      "author": "Kenney",
+      "title": "RPG Audio",
+      "url": "https://kenney.nl/assets/rpg-audio",
+      "evidence": "evidence/kenney-rpg.html",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "checkedOn": "2026-10-28"
+    },
+    "bell": {
+      "author": "775noise",
+      "title": "Shop door bell.wav",
+      "url": "https://freesound.org/people/775noise/sounds/494565/",
+      "evidence": "evidence/bell.html",
+      "preview": true,
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "checkedOn": "2026-10-28"
+    },
+    "shield": {
+      "author": "bart",
+      "title": "Space Ship Shield Sounds",
+      "url": "https://opengameart.org/content/space-ship-shield-sounds",
+      "evidence": "evidence/shield.html",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "checkedOn": "2026-10-28"
+    },
+    "fanfare": {
+      "author": "Trex0n / Cal McEachern",
+      "title": "Happy and Sad Tuba Fanfare",
+      "url": "https://opengameart.org/content/happy-and-sad-tuba-fanfare",
+      "evidence": "evidence/fanfare.html",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "checkedOn": "2026-10-28"
+    },
+    "ui": {
+      "author": "Kenney",
+      "title": "Interface Sounds",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "evidence": "evidence/kenney-interface.html",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "checkedOn": "2026-10-28"
+    }
+  },
+  "tracks": [
+    {
+      "name": "Перевернуть лист",
+      "layers": [
+        {
+          "file": "sources/rpg/Audio/bookFlip2.ogg",
+          "ref": "rpg"
+        }
+      ],
+      "note": "",
+      "id": "02A",
+      "file": "public/assets/audio/quests-selected-v1.wav",
+      "duration": 0.47,
+      "peak": 0.72,
+      "rms": 0.0247,
+      "sources": [
+        "rpg"
+      ],
+      "processing": "Обрезка по указанным интервалам, нормализация уровня, короткие края без щелчков. Монтаж и изменение высоты тона — только там, где указано в слоях.",
+      "sha256": "689dcc1dd4b0a26002a191b65e3653fe90de2b376b63df0aefe8577430214179"
+    },
+    {
+      "name": "Кожа и пряжка",
+      "layers": [
+        {
+          "file": "sources/rpg/Audio/beltHandle2.ogg",
+          "ref": "rpg"
+        },
+        {
+          "file": "sources/rpg/Audio/handleSmallLeather.ogg",
+          "ref": "rpg",
+          "at": 0.17
+        },
+        {
+          "file": "sources/rpg/Audio/cloth4.ogg",
+          "ref": "rpg",
+          "at": 0.3,
+          "gain": 0.6
+        }
+      ],
+      "note": "Составной вариант для рюкзака с ремнями.",
+      "id": "03A",
+      "file": "public/assets/audio/shop-selected-v1.wav",
+      "duration": 0.724,
+      "peak": 0.72,
+      "rms": 0.0492,
+      "sources": [
+        "rpg"
+      ],
+      "processing": "Обрезка по указанным интервалам, нормализация уровня, короткие края без щелчков. Монтаж и изменение высоты тона — только там, где указано в слоях.",
+      "sha256": "bfa3f2217b10034133661a78d004fc40233ab64b9c029f25bc9062d813fabec9"
+    },
+    {
+      "name": "Дверь и звон",
+      "layers": [
+        {
+          "file": "sources/rpg/Audio/doorOpen_1.ogg",
+          "ref": "rpg",
+          "gain": 0.6
+        },
+        {
+          "file": "sources/extra/bell-preview.mp3",
+          "ref": "bell",
+          "start": 0.28,
+          "end": 1.95,
+          "at": 0.16
+        }
+      ],
+      "note": "Дверь Kenney и фрагмент колокольчика Freesound.",
+      "id": "05A",
+      "file": "public/assets/audio/clan-selected-v1.wav",
+      "duration": 1.87,
+      "peak": 0.72,
+      "rms": 0.0335,
+      "sources": [
+        "rpg",
+        "bell"
+      ],
+      "processing": "Обрезка по указанным интервалам, нормализация уровня, короткие края без щелчков. Монтаж и изменение высоты тона — только там, где указано в слоях.",
+      "sha256": "49acbd4ae856e8f5d627efe5c4af3d0c67e453ce3d7df9e9e4814de782278fa0"
+    },
+    {
+      "name": "Быстрый шелест ткани",
+      "layers": [
+        {
+          "file": "sources/rpg/Audio/cloth1.ogg",
+          "ref": "rpg"
+        },
+        {
+          "file": "sources/rpg/Audio/cloth3.ogg",
+          "ref": "rpg",
+          "at": 0.22,
+          "gain": 0.7
+        }
+      ],
+      "note": "Составная короткая альтернатива для быстрого открытия окна.",
+      "id": "11B",
+      "file": "public/assets/audio/wardrobe-selected-v1.wav",
+      "duration": 0.737,
+      "peak": 0.72,
+      "rms": 0.0752,
+      "sources": [
+        "rpg"
+      ],
+      "processing": "Обрезка по указанным интервалам, нормализация уровня, короткие края без щелчков. Монтаж и изменение высоты тона — только там, где указано в слоях.",
+      "sha256": "ed0606961bdfcca60d2258466fe9a178e7a36234b0bd1a5574be9352d579f5ba"
+    },
+    {
+      "name": "Импульс щита",
+      "layers": [
+        {
+          "file": "sources/extra/shield/space shield sounds - 1.wav",
+          "ref": "shield",
+          "end": 1.18
+        }
+      ],
+      "note": "",
+      "id": "13A",
+      "file": "public/assets/audio/shield-selected-v1.wav",
+      "duration": 1.22,
+      "peak": 0.407,
+      "rms": 0.085,
+      "sources": [
+        "shield"
+      ],
+      "processing": "Обрезка по указанным интервалам, нормализация уровня, короткие края без щелчков. Монтаж и изменение высоты тона — только там, где указано в слоях.",
+      "sha256": "5e0eb4d08db0971b4859789a0a5f9b780b6ddf69cc6c8f60d5580c8d244c84a0"
+    },
+    {
+      "name": "Фанфара тубы",
+      "layers": [
+        {
+          "file": "sources/extra/fanfarehappy.ogg",
+          "ref": "fanfare",
+          "end": 2.2
+        }
+      ],
+      "note": "",
+      "id": "15A",
+      "file": "public/assets/audio/title-selected-v1.wav",
+      "duration": 2.24,
+      "peak": 0.6125,
+      "rms": 0.085,
+      "sources": [
+        "fanfare"
+      ],
+      "processing": "Обрезка по указанным интервалам, нормализация уровня, короткие края без щелчков. Монтаж и изменение высоты тона — только там, где указано в слоях.",
+      "sha256": "d73266e175fa88aff6df1fa892e0aac9843d22086f7977d53bbb28cb06b2d91d"
+    },
+    {
+      "id": "10A",
+      "file": "public/assets/audio/roulette-tick-selected-v1.wav",
+      "sources": [
+        "ui"
+      ],
+      "original": "sources/interface/Audio/tick_001.ogg",
+      "originalSha256": "9d057b918024c787bbe6c00beed13a7ef72a3fa0c259add3cef36582792f4230",
+      "sha256": "c0b048307bc7594aa777186563d611d114af7ae31d8b89bc6e8ce1263d129e9a",
+      "duration": 0.5,
+      "processing": "Один исходный щелчок выбранного варианта A; нормализация, короткий fade и тишина до 500 мс для декодера WebKit. Проигрывается при смене сектора фактической анимации, без длинной фонограммы."
+    }
+  ]
+}

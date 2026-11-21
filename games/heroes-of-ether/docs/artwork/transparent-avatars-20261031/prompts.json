@@ -1,0 +1,6 @@
+{
+  "tool": "image_gen",
+  "transparent_background": true,
+  "instructions": "Remove all scenic backgrounds, circular disks, borders and background sparkles. Preserve foreground character, original pose, clothing, style, scale and composition. Genuine transparent alpha around character and in gaps, clean antialiased edges. No redesign or additional elements.",
+  "nativePremium": "Remove SVG backdrop circles, retain foreground symbol."
+}

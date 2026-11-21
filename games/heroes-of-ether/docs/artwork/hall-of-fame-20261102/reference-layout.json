@@ -1,0 +1,90 @@
+{
+  "width": 1672,
+  "height": 941,
+  "slots": [
+    {
+      "rank": 1,
+      "x": 50,
+      "y": 24,
+      "width": 12.3,
+      "platformY": 37.1,
+      "glowWidth": 16,
+      "glowHeight": 4.1,
+      "plateX": 50,
+      "plateY": 44.8,
+      "plateWidth": 16
+    },
+    {
+      "rank": 2,
+      "x": 31.3,
+      "y": 38,
+      "width": 8.3,
+      "platformY": 48.4,
+      "glowWidth": 12.8,
+      "glowHeight": 3.4,
+      "plateX": 32.5,
+      "plateY": 54.2,
+      "plateWidth": 9
+    },
+    {
+      "rank": 3,
+      "x": 68.8,
+      "y": 38,
+      "width": 8.3,
+      "platformY": 48.4,
+      "glowWidth": 12.8,
+      "glowHeight": 3.4,
+      "plateX": 67.5,
+      "plateY": 54.2,
+      "plateWidth": 9
+    },
+    {
+      "rank": 4,
+      "x": 22.4,
+      "y": 49.9,
+      "width": 9,
+      "platformY": 60,
+      "glowWidth": 14.1,
+      "glowHeight": 4.0,
+      "plateX": 23.5,
+      "plateY": 66,
+      "plateWidth": 9.4
+    },
+    {
+      "rank": 5,
+      "x": 77.7,
+      "y": 49.9,
+      "width": 9,
+      "platformY": 60,
+      "glowWidth": 14.1,
+      "glowHeight": 4.0,
+      "plateX": 76.3,
+      "plateY": 66,
+      "plateWidth": 9.4
+    },
+    {
+      "rank": 6,
+      "x": 13.3,
+      "y": 65,
+      "width": 10.1,
+      "platformY": 75.7,
+      "glowWidth": 17,
+      "glowHeight": 4.9,
+      "plateX": 13.3,
+      "plateY": 83.5,
+      "plateWidth": 12
+    },
+    {
+      "rank": 7,
+      "x": 86.2,
+      "y": 65,
+      "width": 10.1,
+      "platformY": 75.7,
+      "glowWidth": 17,
+      "glowHeight": 4.9,
+      "plateX": 86.2,
+      "plateY": 83.5,
+      "plateWidth": 12
+    }
+  ]
+}

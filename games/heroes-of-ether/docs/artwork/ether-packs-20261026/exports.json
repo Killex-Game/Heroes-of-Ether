@@ -1,0 +1,50 @@
+[
+  {
+    "id": "change",
+    "output": "public/assets/currency-packs/ether-v1/change.webp",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 44858
+  },
+  {
+    "id": "stash",
+    "output": "public/assets/currency-packs/ether-v1/stash.webp",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 54610
+  },
+  {
+    "id": "piggy",
+    "output": "public/assets/currency-packs/ether-v1/piggy.webp",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 58282
+  },
+  {
+    "id": "gift",
+    "output": "public/assets/currency-packs/ether-v1/gift.webp",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 85066
+  },
+  {
+    "id": "treasure",
+    "output": "public/assets/currency-packs/ether-v1/treasure.webp",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 83658
+  },
+  {
+    "id": "bank",
+    "output": "public/assets/currency-packs/ether-v1/bank.webp",
+    "width": 512,
+    "height": 512,
+    "alpha": true,
+    "bytes": 93674
+  }
+]

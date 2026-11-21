@@ -1,0 +1,30 @@
+{
+  "generator": "OpenAI imagegen",
+  "assets": [
+    {
+      "id": "easter_colors",
+      "prompt": "Use case: stylized-concept. An interior illustration for a fantasy game achievement medal; DO NOT draw a border, frame, lettering or badge. Genuine transparent background. One compact centered full composition with 20 percent empty padding. Rich hand-painted dimensional casual fantasy game style, bright enamel, warm golden beveled accents, readable shapes, expressive materials matching game inventory. Square. No purple gemstones. A neat little group of exactly four Easter eggs: red with gold zigzags, sky blue with gold spirals, emerald green with cream flowers, orange with gold suns. All four whole eggs clearly visible, compact balanced group.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a755d275-574b-4e57-b1e9-4c84e921536c.png"
+    },
+    {
+      "id": "easter_hunter",
+      "prompt": "Use case: stylized-concept. An interior illustration for a fantasy game achievement medal; DO NOT draw a border, frame, lettering or badge. Genuine transparent background. One compact centered full composition with 20 percent empty padding. Rich hand-painted dimensional casual fantasy game style, bright enamel, warm golden beveled accents, readable shapes, expressive materials matching game inventory. Square. No purple gemstones. A beautiful deep wicker basket overflowing with small colorful ornate Easter eggs, emerald satin ribbon on handle. Egg colors red, sky blue, green, orange. Full basket and handle inside safe area.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b902fada-804f-490c-950b-eea9179f4d4c.png"
+    },
+    {
+      "id": "easter_adventure",
+      "prompt": "Use case: stylized-concept. An interior illustration for a fantasy game achievement medal; DO NOT draw a border, frame, lettering or badge. Genuine transparent background. One compact centered full composition with 20 percent empty padding. Rich hand-painted dimensional casual fantasy game style, bright enamel, warm golden beveled accents, readable shapes, expressive materials matching game inventory. Square. No purple gemstones. A compact whimsical adventurer's green boot beside a rolled parchment treasure map bearing a tiny golden egg symbol, a small brass compass in front. Golden buckles, brown leather and spring-green cloth. All objects whole.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-5ceb4661-7f58-412e-b7ca-ab5a8fa8ea27.png"
+    },
+    {
+      "id": "easter_find",
+      "prompt": "Use case: stylized-concept. An interior illustration for a fantasy game achievement medal; DO NOT draw a border, frame, lettering or badge. Genuine transparent background. One compact centered full composition with 20 percent empty padding. Rich hand-painted dimensional casual fantasy game style, bright enamel, warm golden beveled accents, readable shapes, expressive materials matching game inventory. Square. No purple gemstones. A small treasure chest of emerald enamel panels and golden sculpted bands, spring-flower gold clasp, lid open showing crimson and blue Easter eggs and golden coins. It is a polished fantasy inventory chest.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-7af7873e-ca1d-4c70-bac3-aa27057ad105.png"
+    },
+    {
+      "id": "easter_extra",
+      "prompt": "Use case: stylized-concept. An interior illustration for a fantasy game achievement medal; DO NOT draw a border, frame, lettering or badge. Genuine transparent background. One compact centered full composition with 20 percent empty padding. Rich hand-painted dimensional casual fantasy game style, bright enamel, warm golden beveled accents, readable shapes, expressive materials matching game inventory. Square. No purple gemstones. An elegant small golden balance scale, one pan holding three red blue and green Easter eggs, other pan holding three glowing rounded GOLDEN ether droplets. Compact balanced full scale silhouette, teal ribbon around central column.",
+      "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-f356aef6-8702-4649-af46-2df970036c34.png"
+    }
+  ]
+}

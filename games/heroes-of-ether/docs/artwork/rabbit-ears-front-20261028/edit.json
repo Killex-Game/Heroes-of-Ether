@@ -1,0 +1,10 @@
+{
+  "tool": "OpenAI built-in image_gen",
+  "date": "2026-10-28",
+  "input": "public/assets/events/easter-hunt/rabbit-ears.webp",
+  "output": "public/assets/events/easter-hunt/rabbit-ears.webp",
+  "source": "source.png",
+  "prompt": "Use case: precise-object-edit. Edit target: the attached transparent game sprite of rabbit ears with a green bow, gold filigree circlet and white fur trim. This hat is overlaid on the FRONT top edge of a spherical player avatar, never viewed as a complete physical headband. Remove the visible REAR RETURN of the headband: the extra white furry upper/back arc peeking up behind the gold circlet on the left and right of the ears. Remove any rearward looping or tucked-under return ends at the sides, so only a single elegant FRONT-facing shallow curved band remains, with clean tapering tips. Make removed areas truly transparent. Keep both tall rabbit ears, the bent right ear, pink interiors, emerald green bow and gold flower, the gold filigree FRONT panel, its white front lower fur trim, the exact polished painted fantasy game style and overall position/scale unchanged as closely as possible. Do not add a head, sphere, face, shadow background or text. Preserve a square canvas and genuine alpha transparency. The final silhouette is an open front arch with two ears, not a closed oval ring or a band that wraps around behind the sphere.",
+  "export": "512x512 WebP, quality 92, original generated alpha retained",
+  "rule": "Only the front of hats is visible when worn on a spherical avatar; no visible rear headband or wraparound loop."
+}

@@ -1,0 +1,73 @@
+#arenaTouchControls[hidden] { display: none; }
+#arenaTouchControls {
+  position: absolute;
+  z-index: 5;
+  left: max(14px, env(safe-area-inset-left));
+  right: calc(max(18px, env(safe-area-inset-right)) + 114px);
+  bottom: max(104px, calc(env(safe-area-inset-bottom) + 88px));
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+#arenaTouchControls button {
+  min-width: 0;
+  min-height: 44px;
+  height: 44px;
+  padding: 4px 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 11px;
+  line-height: 13px;
+  touch-action: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+#arenaTouchControls svg {
+  width: 24px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: currentColor;
+  pointer-events: none;
+}
+#arenaTouchControls button[data-held="true"] {
+  box-shadow: inset 0 0 0 2px #f8da8c;
+  filter: brightness(1.12);
+}
+#arena .booster-quick { touch-action: none; }
+@media (max-width: 760px) and (min-height: 501px) {
+  #arena .booster-quick { bottom: max(153px, calc(env(safe-area-inset-bottom) + 137px)); }
+  #arena .arena-chat { bottom: max(230px, calc(env(safe-area-inset-bottom) + 214px)); }
+}
+@media (max-height: 500px) and (min-width: 601px) {
+  #arenaTouchControls {
+    left: 50%;
+    right: auto;
+    width: 220px;
+    transform: translateX(-50%);
+    bottom: max(112px, calc(env(safe-area-inset-bottom) + 96px));
+  }
+  #arena .leaderboard[data-mobile-panel="true"]:not(.arena-panel-collapsed) {
+    width: min(600px, calc(100vw - 240px));
+  }
+}
+@media (max-height: 460px) and (min-width: 601px) and (max-width: 720px) {
+  #arenaTouchControls { bottom: max(76px, calc(env(safe-area-inset-bottom) + 60px)); }
+}
+/* Five rows keep the expanded HUD clear of controls on a short phone screen. */
+@media (max-height: 740px) and (min-height: 501px) and (max-width: 600px) {
+  #arenaObjectives { gap: 4px; }
+  #arenaObjectives .arena-objective { min-height: 54px; padding-block: 4px 5px; }
+  #arena .leaderboard[data-mobile-panel="true"]:not(.arena-panel-collapsed) {
+    grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr);
+  }
+  #arena .leaderboard[data-mobile-panel="true"] #leaderList {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(5, 17px);
+    column-gap: 5px;
+  }
+}

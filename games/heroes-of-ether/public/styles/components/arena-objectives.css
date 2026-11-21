@@ -1,0 +1,87 @@
+#arenaObjectives {
+  position: absolute;
+  display: grid;
+  gap: 6px;
+  pointer-events: none;
+  user-select: none;
+}
+#arenaObjectives * { pointer-events: none; }
+#arenaObjectives[hidden],
+#arena .arena-panel-toggle[hidden] { display: none; }
+#arena .arena-panel-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid #ead39480;
+  border-radius: 10px;
+  background: #17202be8;
+  color: #fff9e9;
+  font: 600 12px / 1.2 var(--game-font);
+  text-align: left;
+  pointer-events: auto;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+#arena .arena-panel-toggle::after {
+  content: "";
+  flex: 0 0 7px;
+  height: 7px;
+  margin: 0 2px 3px;
+  border-right: 2px solid #e7c769;
+  border-bottom: 2px solid #e7c769;
+  transform: rotate(45deg);
+}
+#arena .arena-panel-toggle[aria-expanded="true"]::after {
+  transform: rotate(225deg);
+  margin-top: 6px;
+}
+#arena .arena-panel-toggle:focus-visible {
+  outline: 2px solid #fff0b2;
+  outline-offset: 2px;
+}
+#arena .arena-panel-collapsed > :not(.arena-panel-toggle) {
+  display: none !important;
+}
+#arena .leaderboard.arena-panel-collapsed {
+  display: block;
+  width: min(216px, calc(100vw - 150px));
+  top: max(14px, env(safe-area-inset-top));
+  padding: 0;
+  border: 0;
+  background: none;
+  overflow: visible;
+}
+#arena .leaderboard[data-mobile-panel="true"] > .arena-panel-toggle {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-bottom: 4px;
+}
+#arena .leaderboard.arena-panel-collapsed > .arena-panel-toggle { margin-bottom: 0; }
+#arena .leaderboard[data-mobile-panel="true"] :is(.leader-heading, .arena-clans-title) { grid-row: 2; }
+#arena .leaderboard[data-mobile-panel="true"] :is(#leaderList, #arenaClanList) { grid-row: 3; }
+#arenaObjectives.arena-panel-collapsed { width: min(216px, calc(100vw - 28px)) !important; }
+.arena-objective {
+  position: relative;
+  padding: 6px 9px 7px 40px;
+  border: 1px solid #ead39461;
+  border-radius: 10px;
+  background: #17202b9e;
+  color: #fff9e9;
+  min-height: 58px;
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.25;
+  text-shadow: 0 1px 2px #000b;
+}
+.arena-objective-reward { position: absolute; left: 6px; top: 13px; width: 28px; height: 28px; object-fit: contain; }
+.arena-objective-heading { display: flex; justify-content: space-between; gap: 5px; margin-bottom: 3px; color: #f0dbaa; font-size: 10px; }
+.arena-objective-heading b { white-space: nowrap; color: #fff; font-variant-numeric: tabular-nums; }
+.arena-objective-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.arena-objective-meter { position: absolute; left: 40px; right: 9px; bottom: 3px; height: 2px; border-radius: 2px; background: #ffffff25; }
+.arena-objective-meter i { display: block; height: 100%; background: #e7c769; }
+.arena-objective[data-ready="true"] .arena-objective-heading b { color: #a5e0ad; }
+body[data-screen="arena"] #boosterTooltip { display: none !important; }

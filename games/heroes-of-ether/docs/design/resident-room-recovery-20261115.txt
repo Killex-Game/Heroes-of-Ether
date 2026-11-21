@@ -1,0 +1,118 @@
+Resident room recovery — experimental foundation, 15 November 2026
+
+NOT enabled in game-server. The current live architecture still owns simulation
+in the main process. This foundation does not establish 700-player capacity.
+
+Implemented and independently tested on Windows/Linux:
+- RoomOutbox: exclusively owned append journal, fsync before publication,
+  contiguous sequence/digest acknowledgements, bounded outstanding frames,
+  strict room/epoch identity, corruption/gap refusal, durable end marker.
+- RoomFrameGate: one private synchronous simulation step at a time; no later
+  input/tick while its frame is pending; presentation/cast reply only inside
+  the post-fsync publication callback. Any failure after private mutation is
+  terminal. No rewind of the private arena is advertised as recovery.
+- A recovered epoch cannot resume an arena image that was never checkpointed.
+  Recovery preserves confirmed progress and closes the old room instead.
+- openExisting never creates an empty journal when evidence is absent. Missing
+  data is an unresolved fault, not proof that an unpaid/refunded effect is safe.
+- planRoomRecovery validates the receiver watermark and digest against the
+  entire recovered prefix, exact ownership of progress/casts, and transaction
+  identities. It returns a detached ordered tail and proposed RESERVED outcomes.
+  It does not write profiles, grant rewards, debit or refund inventory.
+
+Critical integration still required before enabling resident rooms:
+1. Durable admission/lifecycle ownership and fencing of a specific process and
+   epoch, including joins, reconnects, maintenance, bans, departures and respawns.
+   A disconnected socket/IPC channel alone is not proof that its writer stopped.
+2. A RESERVED operation and inventory debit in the existing profile journal,
+   with exact request signature and idempotency. A client success ACK waits for
+   confirmed application, not just reservation. No parallel Mongo transaction
+   implementation that can diverge from the profile WAL.
+3. Route ALL physical effects through the private frame gate. Arena inputs and
+   profile/outfit updates queue while pending. Existing RoomCasts benchmark
+   applies effects immediately and is not compliant with this new boundary.
+4. Atomically apply a recovered/published frame's progress, cast outcomes and
+   contiguous receiver watermark in ONE profile commit. ACK only after fsync.
+   On conflicts with lobby/admin transactions, rebuild from the new base.
+5. After fencing and exclusive recovery, atomically commit the entire tail and
+   APPLIED/REFUNDED outcomes. A reservation absent from that complete tail is
+   refundable only under the enforced no-publication-before-durability protocol.
+   An absent/corrupt journal or a receiver ahead of evidence must stop recovery.
+6. The 20:00 Moscow settlement barrier waits for every relevant room's durable
+   prefix crossing the deadline, including recovery. Timeout is not completion.
+7. Preserve login and gameplay checks; validate all 30 boosters, other-player
+   effects, clan daily quests, gifts/events and maintenance with actual failures.
+8. Only then compare the same 700-active-player workload and independent load
+   generation; keep CPU/GC/cgroup timings separate and report actual cadence.
+
+Lock scope:
+Current RoomOutbox uses the existing process lock and is suitable for the
+child-process prototype. A worker_threads exit leaves the parent PID alive;
+therefore a thread-based design needs parent-owned lock handoff after confirmed
+worker termination. Do not bypass a live PID lock to force recovery.
+
+Validation:20 integration tests pass on both OSs, including actual process
+termination before journaling and after durable commit/before network publish.
+These are foundation tests, not an end-to-end paid booster recovery guarantee.
+
+06:10 UTC extension, still NOT deployed/imported by game-server:
+- RoomProfileLedger now reserves inventory in the existing profile WAL without
+  successful-use/achievement credit. APPLIED and frame progress/watermark share
+  one fsynced commit. Unapplied reservations refund once after exclusive recovery.
+- Unresolved reservations are limited to 8/profile and admission to 1024; all
+  final outcomes remain in the bucketed operation receipt ledger. Namespaced
+  operation IDs prevent cross-player collisions. Seasonal refunds retain the
+  original expiry and do not renew an expired item.
+- Actual process termination at reservation/applied/receiver boundaries is
+  exercised. Restart defers resident life finalization until its durable tail
+  has been reconciled. A racing lobby balance commit rebuilds the draft.
+- Experimental worlds use version15, accepted only by explicit constructor
+  option residentRoomExperiment. Normal game startup rejects these worlds.
+  There is no server/config/environment switch enabling this in production.
+- Existing 77 targeted journal/cast/recovery tests pass on Windows and Linux.
+  Negative fixture logs (missing seasonal state/invalid expiry) and initial
+  recovery conflict from premature life ending are retained with the fixes.
+- Remaining: actual room simulation adapter, all 30 effect boundaries, admission
+  and authenticated lifecycle, precise resident clan deadline sampling, batched
+  throughput, same-workload 700-player measurement. Do not infer capacity or
+  a production recovery guarantee from these isolated ledger tests.
+
+09:45 UTC extension, still ISOLATED and not production-enabled:
+- The durable-resident benchmark now drives actual Arena/stepRoom, actual
+  WebSocket input/output and all thirty booster types. Both object and serialized
+  frame protocols exercise the real effects and their recorded outcomes.
+- A pending inventory reservation delays its own cast, not all room physics.
+  Late responses recheck life/target/seasonal expiry; a rejected effect refunds
+  through the same durable frame. Publication still waits for the room WAL.
+- The coordinator commits frame progress, cast outcomes and receiver watermark
+  together before ACK. Crash recovery was exercised around both durable logs;
+  absent/corrupt evidence still stops recovery instead of guessing a refund.
+- Resident clan boundary tests cover final samples, every relevant room crossing
+  the deadline, recovery, failed profile fsync and exactly-once settlement. This
+  is a controlled fixture, not complete live join/leave/admin/event integration.
+- Optional immutable serialized frames remove a second structuredClone at the
+  receiver. Canonical digest, ownership, sequence and semantic validation remain.
+  Frames are capped at 2 MiB plus envelope; outstanding parsed input at 64 MiB.
+  Default object protocol remains unchanged. This is not a public client API.
+- The isolated ledger constructor accepts a 1–32 ms build scheduling budget,
+  default 8 ms. It changes only where a FIFO batch yields, with a separate cap
+  of 256 entries and existing total admission bound. It does not limit the cost
+  of one indivisible operation and is not an event-loop latency guarantee.
+  Budgets 1/8/16/32 preserve durable reserve/apply/replay outcomes in tests.
+- Actual 700-player comparisons use a server cgroup of 9 CPU and generator
+  cgroup of 3 CPU on the SAME 12-CPU host. Production remains 3 CPU/7 GiB and
+  has not adopted these experiments. Generator throttling still influences
+  offered workload; this is not a fully independent physical load generator.
+- A measured phase now records its own CPU/cgroup interval before stop/drain.
+  Whole .cpuprofile files and legacy ledger.cpuMs include setup/drain and must
+  not be presented as CPU for the 45-second phase. GC overlaps measured work;
+  shared cgroup counters are never summed across member processes.
+- At this checkpoint, no candidate reaches 20 Hz for 700 active players.
+  Comparison JSON/CSV and raw profiles live in artifacts/sustained-work-20261115.
+  Larger profile batches reduced flush overhead but do not remove profile-copy,
+  achievement and global commit costs. More network workers were slower.
+- Remaining production integration: authenticated admission and reconnects,
+  complete lobby/admin/clan lifecycle, live Atlas mirror and maintenance drain,
+  bounded cross-room changes, full event workload, and an isolated sustained
+  700-active-player acceptance run. Do not lift production admission limits
+  merely because the benchmark processes can open 700 sockets.

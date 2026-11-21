@@ -1,0 +1,180 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-11-12",
+  "unchanged": [
+    "title-novice",
+    "title-experienced",
+    "title-master"
+  ],
+  "assets": [
+    {
+      "id": "title-boss",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-1779c3ab-2432-4b58-9fd4-d260761aeb9d.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/title-boss.png",
+      "sha256": "5bb785df0e5c085d41cb03f749c267640bb978c6b215f61d0089c4fb805c3725",
+      "target": "public/assets/title-frames/v2/boss.webp",
+      "outputSha256": "718ee92a38f92c2bdbd23a7feaf4218936ec47f5284ee840e1f54ef474634ccb",
+      "fit": [
+        0.49863,
+        0.51038,
+        0.33859
+      ]
+    },
+    {
+      "id": "title-king",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-aa022d10-3153-48c2-bcc9-d4f29e103b8a.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/title-king.png",
+      "sha256": "25e538c4449b9330125f24cf2ecc663be52f434d8ed6dadc4fadf8211ee96603",
+      "target": "public/assets/title-frames/v2/king.webp",
+      "outputSha256": "30d60fd4e535d9e1f91318d9554d70936f1a434da01e15a4c769af23026b0fb4",
+      "fit": [
+        0.498,
+        0.51145,
+        0.31987
+      ]
+    },
+    {
+      "id": "title-emperor",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-07d296a0-b752-467a-8ace-7707904918e3.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/title-emperor.png",
+      "sha256": "c1dc2232802b802a253652001cd156280d08aa7495f5c0b00f6f55a7c4ac83c5",
+      "target": "public/assets/title-frames/v2/emperor.webp",
+      "outputSha256": "6baa3cfb577dc9387bac3311a867897c8f31230f1b49083eed15270cbbac3b64",
+      "fit": [
+        0.4967,
+        0.50919,
+        0.33086
+      ]
+    },
+    {
+      "id": "title-pro",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-b0887e0a-61fe-47ff-b313-3af63e34df7f.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/title-pro.png",
+      "sha256": "073fbe23a13253353d779c9a71fe303de87d234598bc8ca736f85fbb191efab4",
+      "target": "public/assets/title-frames/v2/pro.webp",
+      "outputSha256": "99b481b9a793854db3db7429eb44bd9b1737974b5341705fc9a474e11c1ae733",
+      "fit": [
+        0.49835,
+        0.49447,
+        0.35527
+      ]
+    },
+    {
+      "id": "title-expert",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-0d6cfad2-3e01-4dd5-b10c-792930df4a0c.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/title-expert.png",
+      "sha256": "1e165ec74a30b9d43ae41492b94700d5d475d6a5a6dd5b70b728b97b2946e638",
+      "target": "public/assets/title-frames/v2/expert.webp",
+      "outputSha256": "a0a7314c0b6b2027239cba3b8b468eab0719b22fce43baab5bd06cd16b513546",
+      "fit": [
+        0.49678,
+        0.48902,
+        0.37439
+      ]
+    },
+    {
+      "id": "title-prince",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-819fa65a-9f7d-413a-9ba1-8cc8e9d90c91.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/title-prince.png",
+      "sha256": "e064e3309be2ff7c7fdac09ad95743c0fb6857f2d24cfa6226277d38f6929d45",
+      "target": "public/assets/title-frames/v2/prince.webp",
+      "outputSha256": "c80e463d311f553a917df4ff20e410a7bb14f7480382b58682ab6cca5162e48c",
+      "fit": [
+        0.49791,
+        0.51544,
+        0.32598
+      ]
+    },
+    {
+      "id": "league-bronze",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-a9dd675b-f39f-40ca-ad70-0089a0e80876.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/league-bronze.png",
+      "sha256": "25fd03b9b92866167c28e44807bf8816eec8b12a2ec5bb8c3cf6cd8a14108f17",
+      "target": "public/assets/league-frames/v2/bronze.webp",
+      "outputSha256": "33247adefac3f47fba7d8d375a7e56f89916cdd08d5f12f2f1826cb66914a9a0",
+      "fit": [
+        0.49679,
+        0.50899,
+        0.34632
+      ]
+    },
+    {
+      "id": "league-silver",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-dd784a29-5c9e-4bc9-b289-ebcf90d74333.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/league-silver.png",
+      "sha256": "9caf14382be09fecb738350b50791368497cf0de0dc742864b25ba3454394b17",
+      "target": "public/assets/league-frames/v2/silver.webp",
+      "outputSha256": "102e8fa3e0b85530d049a6ac69043c30a725cc0ed86d22b27acbf327b0e2985d",
+      "fit": [
+        0.49897,
+        0.50519,
+        0.34673
+      ]
+    },
+    {
+      "id": "league-gold",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-e370f3b0-0b25-4d63-8bfe-b685f11ada03.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/league-gold.png",
+      "sha256": "2697439a5d14e4b8846a1c566db00a046d2d6dc159973e5effe7bfdae4fbb70f",
+      "target": "public/assets/league-frames/v2/gold.webp",
+      "outputSha256": "86b54c15b3438095ca6a95e289b8e7a8567061387aa036dc76b0edd7e2a9b76c",
+      "fit": [
+        0.49723,
+        0.50848,
+        0.33737
+      ]
+    },
+    {
+      "id": "title-sage",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-ab6f8aaf-90f1-445b-aa9c-e304333c0b4e.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/title-sage.png",
+      "sha256": "6862d295519a8cc2db80184e7e779347f096b7eb5eb800319eff29022b367724",
+      "target": "public/assets/title-frames/v2/sage.webp",
+      "outputSha256": "9234377b221352c804f92817643e30301fcd67cd3e1692149c0094ea927961d2",
+      "fit": [
+        0.4973,
+        0.49196,
+        0.34876
+      ]
+    },
+    {
+      "id": "league-platinum",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-d6f925be-6ae7-48e1-9a5c-f2b03556a4da.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/league-platinum.png",
+      "sha256": "09fd21873842827a6f57e2cd79b4ec6ffa8ce09adf34dc0748e40e7cfb59c676",
+      "target": "public/assets/league-frames/v2/platinum.webp",
+      "outputSha256": "79e1ae7427f41ca7ede90186e7fbdc05a71c009c77837c671510cf5a37b6435d",
+      "fit": [
+        0.498,
+        0.50616,
+        0.31499
+      ]
+    },
+    {
+      "id": "league-diamond",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-5d465771-31e6-4b26-bc3f-2101ec8e72e8.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/league-diamond.png",
+      "sha256": "379f7ff5b1d2f2020476b3140a50b9d29007dec94902fcfe18f70d9daa30fce1",
+      "target": "public/assets/league-frames/v2/diamond.webp",
+      "outputSha256": "bcf64ba8b7351fd06f247916925de879ebc85f6088271a4691589afe254817c6",
+      "fit": [
+        0.49892,
+        0.49928,
+        0.32598
+      ]
+    },
+    {
+      "id": "league-champions",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-76dfedd7-740d-4492-991b-26bbf0767684.png",
+      "master": "docs/artwork/frame-refinement-20261112/masters/league-champions.png",
+      "sha256": "aba3f80385f1972cd33f1e8f5ee5561eff90b7144c89dbd09a7fcb3a43577d91",
+      "target": "public/assets/league-frames/v2/champions.webp",
+      "outputSha256": "018b7e7fe210156e12a80bedf975554feb972ccb16577e176b60bb6a410eea21",
+      "fit": [
+        0.49752,
+        0.51019,
+        0.31621
+      ]
+    }
+  ]
+}

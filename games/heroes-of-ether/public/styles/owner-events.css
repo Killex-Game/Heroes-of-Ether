@@ -1,0 +1,168 @@
+.events-panel {
+  margin-bottom: 24px;
+}
+.event-upload {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 16px;
+}
+.event-upload input {
+  padding: 8px;
+}
+.event-message {
+  margin: 12px 0;
+  color: #b4e8ca;
+  overflow-wrap: anywhere;
+}
+.event-error {
+  color: #ffb8bf;
+}
+.event-prepared {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 340px));
+  align-items: start;
+  gap: 16px;
+}
+.event-card,
+.event-live-card {
+  padding: 20px;
+  background: #15243a;
+  border: 1px solid #3d5577;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+.event-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.event-card h3,
+.event-live-card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.event-card p {
+  margin: 12px 0;
+}
+.event-start {
+  margin-top: 20px;
+  align-self: stretch;
+}
+.event-card small {
+  line-height: 1.6;
+}
+.event-start-time {
+  margin-top: 16px;
+}
+.event-start-time input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.event-interval-preview {
+  white-space: pre-line;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.event-duration-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.event-duration-form .event-duration-presets button {
+  width: auto;
+  padding: 6px 10px;
+}
+.event-live-card {
+  border-color: #51aa8b;
+  background: #173634;
+  margin-top: 16px;
+}
+.event-tag {
+  display: block;
+  color: #a0f1cb;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.event-timing {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) auto;
+  align-items: end;
+  gap: 12px;
+  max-width: 620px;
+}
+.event-timing input,
+.event-duration-fields input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.event-duration-form {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #3d5577;
+}
+.event-duration-form h4 {
+  margin: 0 0 12px;
+}
+.event-duration-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.event-duration-hint {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.event-duration-form button {
+  width: 100%;
+}
+.event-guide {
+  margin-top: 20px;
+  border-top: 1px solid #34465e;
+  padding-top: 16px;
+}
+.event-guide summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.event-guide p {
+  max-width: 95ch;
+  overflow-wrap: anywhere;
+}
+.event-history {
+  max-height: 300px;
+  overflow: auto;
+  font-size: 13px;
+}
+.event-confirm {
+  width: min(560px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  overflow: auto;
+}
+.event-confirm-summary {
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+@media (max-width: 650px) {
+  .event-timing {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .event-upload {
+    grid-template-columns: 1fr;
+  }
+  .event-card,
+  .event-live-card {
+    padding: 16px;
+  }
+  .event-confirm .dialog-actions {
+    flex-wrap: wrap;
+  }
+  .event-confirm .dialog-actions button {
+    flex: 1 1 150px;
+  }
+}
+
+.clan-seasons-panel{margin-bottom:24px}.clan-seasons-panel form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.clan-seasons-panel label{display:flex;flex-direction:column;gap:8px}.clan-seasons-panel input[type=checkbox]{width:auto;align-self:flex-start}.clan-season-admin-row{padding:16px 0;margin-top:16px;border-top:1px solid #ffffff25}@media(max-width:650px){.clan-seasons-panel form{grid-template-columns:1fr}}

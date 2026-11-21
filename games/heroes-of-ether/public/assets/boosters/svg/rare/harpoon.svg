@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="harpoon-title harpoon-desc">
+<title id="harpoon-title">Гарпун</title>
+<desc id="harpoon-desc">Редкий бустер. Притягивает вас к сопернику; время полёта - 11 секунд. Прямой гарпун с зазубринами и верёвкой.</desc>
+<defs><linearGradient id="harpoon-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="harpoon-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="harpoon-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="harpoon-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="harpoon-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="harpoon-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="harpoon-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="harpoon-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="harpoon-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="harpoon-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="harpoon-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="harpoon-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M63 197 C36 185 45 164 68 168 C101 173 96 211 137 216 C169 220 190 197 185 169 C181 146 197 130 214 143" fill="none" stroke-width="15"/>
+<path d="M63 197 C36 185 45 164 68 168 C101 173 96 211 137 216 C169 220 190 197 185 169 C181 146 197 130 214 143" fill="none" stroke="#EAC491" stroke-width="8"/>
+<path d="M213 143 L218 149 M130 213 L129 218 M181 191 L188 191" fill="none" stroke="#B0784E" stroke-width="4"/>
+<path d="M51 204 L171 64 L185 78 L65 217 Q56 220 51 213 Z" fill="url(#harpoon-steel)"/>
+<path d="M64 202 L176 72" fill="none" stroke="#F2F9FF" stroke-width="4"/>
+<path d="M52 202 L85 163 L98 175 L65 214 Q56 218 52 211 Z" fill="url(#harpoon-dark)"/>
+<path d="M59 194 L74 205 M67 184 L82 195 M76 174 L91 185" fill="none" stroke="#B091B9" stroke-width="5"/>
+<path d="M85 160 L96 151 L111 164 L101 177 Z" fill="url(#harpoon-gold)"/>
+<path d="M94 158 L101 164" fill="none" stroke="#FFF7C4" stroke-width="4"/>
+<path d="M219 35 L206 101 L188 86 L166 115 L166 90 L146 98 L169 62 Z" fill="url(#harpoon-steel)"/>
+<path d="M212 43 L179 72 L153 91 L170 84 L174 101 L190 80 L202 88 Z" fill="#EDF9FF" stroke="none"/>
+<path d="M213 43 L190 78 L201 89" fill="none" stroke="#6D83B0" stroke-width="5"/>
+<path d="M169 65 L185 80 L178 89 L160 74 Z" fill="url(#harpoon-gold)"/>
+<path d="M168 70 L175 77" fill="none" stroke="#FFF3AD" stroke-width="4"/>
+</g>
+</svg>

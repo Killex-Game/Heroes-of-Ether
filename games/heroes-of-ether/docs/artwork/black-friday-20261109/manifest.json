@@ -1,0 +1,38 @@
+[
+  {
+    "name": "token-draft",
+    "file": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\docs\\artwork\\black-friday-20261109\\token-draft.png",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1f033f6a-2fb5-4450-a3bf-fe944ae022c5.png",
+    "tool": "image_gen (built-in)",
+    "prompt": "Silver coin with raised cat paw, double rim, gold accents, transparent. Draft rejected: remove gold.",
+    "hasAlpha": true,
+    "sha256": "487e5d72bb44d495508bbd3311f77241d3085707fff65bb2bfede46d785f3656"
+  },
+  {
+    "name": "token-v2",
+    "file": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\docs\\artwork\\black-friday-20261109\\token-v2.png",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-d1b1fdd9-c972-4160-b2e5-56d11f3b5105.png",
+    "tool": "image_gen (built-in)",
+    "prompt": "Edit token: remove all four gold inserts; uninterrupted silver rim, no gold anywhere. Preserve raised paw, composition and transparent background.",
+    "hasAlpha": true,
+    "sha256": "c2c788d085e19caefe7bb34e5da507a20a8d0b390f8ec651e4a036aa86667dfb"
+  },
+  {
+    "name": "regalia-v2",
+    "file": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\docs\\artwork\\black-friday-20261109\\regalia-v2.png",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-50aec2a3-6233-4e3a-a1c0-a6f06e7dedc4.png",
+    "tool": "image_gen (built-in)",
+    "prompt": "Standalone open smoky crystal casket, emerald lining, gold fittings, three burgundy cards. Game style. No medal, frame, laurels, ribbon or crown. Transparent.",
+    "hasAlpha": true,
+    "sha256": "69208c728bf1116a9c2de382bd9ddcaea830f7283eb912af8a70978afc3962dd"
+  },
+  {
+    "name": "banner-v2",
+    "file": "C:\\Users\\semen\\Documents\\ChatGPT\\Сферорумия\\sferorumiya_v05_update\\sferorumiya_v05\\docs\\artwork\\black-friday-20261109\\banner-v2.png",
+    "source": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-dad402bb-8a37-4839-9a38-9895a5ffb33f.png",
+    "tool": "image_gen (built-in)",
+    "prompt": "Edit Manya shop banner to charcoal awning, midnight teal and indigo shadows, soft amber lanterns. Preserve Manya and canonical gold coins with five-point star and double rim. No text.",
+    "hasAlpha": false,
+    "sha256": "823956bba0dc107a6ad512aa41b901ff279c5e7ce3d10b8484f6a0c8438a186a"
+  }
+]

@@ -1,0 +1,51 @@
+/* The same celebratory silhouette as earned achievements, with a player portrait. */
+.social-notice-dialog { overflow: auto; --social-avatar-size: 112px; --social-portrait-overlap: 55px; }
+.social-notice-dialog[data-marriage-state] { width: min(470px, calc(100vw - 24px)); max-width: calc(100vw - 24px); height: min(430px, calc(100dvh - 24px)); padding-bottom: 12px; }
+.social-notice-dialog .achievement-earned-banner { padding-bottom: calc(var(--social-portrait-overlap) + 3px); }
+.social-notice-dialog[data-marriage-state] .achievement-earned-banner { background-size: cover; background-position: center; }
+.social-notice-dialog[data-marriage-state="proposal"] .achievement-earned-banner { background-image: linear-gradient(#11112644,#11112611),url("../../assets/social/banners/proposal.webp"); }
+.social-notice-dialog[data-marriage-state="confirmed"] .achievement-earned-banner { background-image: linear-gradient(#24101e44,#24101e11),url("../../assets/social/banners/confirmed.webp"); }
+.social-notice-dialog:is([data-marriage-state="divorced"], [data-marriage-state="declined"]) .achievement-earned-banner { background-image: linear-gradient(#10192a44,#10192a11),url("../../assets/social/banners/divorced.webp"); }
+.social-notice-dialog .social-content { display: grid; justify-items: center; gap: 14px; padding: 0; overflow: visible; max-height: none; }
+.social-notice-dialog.marriage-dialog .social-content { padding: 0; }
+.social-notice-dialog.marriage-dialog .achievement-earned-description { margin: 0; }
+.social-notice-dialog .social-notice-avatar {
+  width: var(--social-avatar-size); height: var(--social-avatar-size); box-sizing: content-box;
+  margin: calc(-1 * var(--social-portrait-overlap)) auto 0; isolation: isolate;
+  padding-top: max(8px, calc(var(--social-frame-top, 0) * var(--social-avatar-size)));
+  padding-bottom: max(8px, calc(var(--social-frame-bottom, 0) * var(--social-avatar-size)));
+}
+.social-notice-avatar .player-avatar { width: var(--social-avatar-size); height: var(--social-avatar-size); --avatar-size: var(--social-avatar-size); }
+.social-notice-avatar .avatar-disc { width: 100%; height: 100%; }
+.social-notice-avatar .player-account-badge { width: 30px; height: 30px; }
+.social-anonymous-avatar { display: grid; place-items: center; width: 100%; height: 100%; border: 3px solid #d6ae62; border-radius: 50%; background: linear-gradient(145deg,#345c72,#152e44); color: #ffe2a5; font: bold 64px Georgia,serif; box-sizing: border-box; }
+.social-notice-dialog .achievement-earned-name { margin: 0; overflow-wrap: anywhere; }
+.social-notice-dialog .social-status { margin: 0; font-size: 13px; }
+.social-notice-dialog .social-status:not(:empty) { margin-top: 12px; }
+.social-notice-dialog .social-actions, .social-invitation-pages { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; }
+.social-notice-dialog .social-invite-form { display: grid; gap: 12px; justify-items: center; }
+.social-notice-dialog .social-invite-form p { margin: 0; font-size: 13px; }
+.social-notice-gift { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 0; width: 100%; border-block: 1px solid #b8915044; }
+.social-notice-gift img { width: 64px; height: 64px; object-fit: contain; }
+.gift-summary-list { width: 100%; max-height: 45dvh; overflow-y: auto; }
+.gift-history-dialog { width: min(480px, calc(100vw - 24px)); }
+.gift-history-list { max-height: 55dvh; overflow-y: auto; }
+.gift-history-row { display: flex; align-items: center; gap: 12px; padding: 8px; border-bottom: 1px solid #b8915044; }
+.gift-history-row img { width: 48px; height: 48px; object-fit: contain; flex-shrink: 0; }
+.gift-history-row div { min-width: 0; overflow-wrap: anywhere; }
+.gift-history-row small { display: block; margin-top: 4px; }
+.social-gift-card.social-event-gift {
+  height: auto;
+  grid-template-rows: 64px minmax(34px, auto) minmax(48px, auto) 36px auto;
+}
+.social-event-gift > .social-gift-unlock { align-self: start; }
+.social-invitation-pages button { min-width: 38px; }
+@media (max-height: 620px) {
+  .social-notice-dialog { padding-bottom: 14px; --social-avatar-size: 80px; --social-portrait-overlap: 38px; }
+  .social-notice-dialog .achievement-earned-banner { padding-top: 16px; }
+  .social-notice-dialog .social-content { gap: 8px; }
+  .social-notice-dialog .achievement-earned-name { font-size: 20px; }
+  .social-notice-gift { padding: 4px 0; }
+  .social-notice-gift img { width: 44px; height: 44px; }
+}
+@media (max-height: 370px) { .social-notice-dialog { max-height: calc(100dvh - 12px); overflow-y: auto; } }

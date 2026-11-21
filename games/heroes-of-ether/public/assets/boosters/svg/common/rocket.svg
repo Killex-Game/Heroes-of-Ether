@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="rocket-title rocket-desc">
+<title id="rocket-title">Ракета</title>
+<desc id="rocket-desc">Обычный бустер. Отделяет от соперника 2 частицы по 10% от общей массы. Цена: 10 монет за 10 штук.</desc>
+<defs><linearGradient id="rocket-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="rocket-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="rocket-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="rocket-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="rocket-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="rocket-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="rocket-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="rocket-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="rocket-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="rocket-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="rocket-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="rocket-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path transform="rotate(30 128 128)" fill="url(#rocket-gold)" d="M113 174C102 188 106 205 109 218L123 209L130 229L141 209L151 214C153 197 150 185 142 174Z"/>
+<path transform="rotate(30 128 128)" fill="url(#rocket-red)" stroke-width="4" d="M121 179C114 190 116 199 122 207L129 201L135 214C142 199 142 188 135 179Z"/>
+<path transform="rotate(30 128 128)" fill="url(#rocket-gold)" d="M104 123C85 132 71 155 70 185L109 170Z"/>
+<path transform="rotate(30 128 128)" fill="url(#rocket-gold)" d="M151 123C172 132 186 155 187 185L147 170Z"/>
+<path transform="rotate(30 128 128)" fill="none" stroke="#FFF3AA" stroke-width="5" d="M92 143C85 151 81 163 79 172M169 146L177 169"/>
+<path transform="rotate(30 128 128)" fill="url(#rocket-red)" d="M106 71C94 101 97 148 109 177H147C159 148 162 101 150 71Z"/>
+<path transform="rotate(30 128 128)" stroke="none" fill="#CE4269" d="M144 84C152 113 147 151 138 175H147C159 145 160 109 150 80Z"/>
+<path transform="rotate(30 128 128)" fill="url(#rocket-gold)" d="M106 71C109 52 118 37 128 28C139 37 148 52 150 71Z"/>
+<path transform="rotate(30 128 128)" fill="none" stroke="#FFF7BF" stroke-width="5" d="M126 43C120 51 117 59 116 64"/>
+<path transform="rotate(30 128 128)" fill="none" stroke="#FFD3BC" stroke-width="5" d="M106 108C104 126 107 140 111 151"/>
+<circle transform="rotate(30 128 128)" cx="128" cy="108" r="20" fill="url(#rocket-gold)" stroke-width="6"/>
+<circle transform="rotate(30 128 128)" cx="128" cy="108" r="12" fill="url(#rocket-frost)" stroke-width="4"/>
+<path transform="rotate(30 128 128)" fill="none" stroke="#F6FFFF" stroke-width="4" d="M122 109C120 104 125 100 130 101"/>
+<rect transform="rotate(30 128 128)" x="106" y="166" width="44" height="19" rx="6" fill="url(#rocket-steel)"/>
+<path transform="rotate(30 128 128)" fill="url(#rocket-gold)" d="M128 143L115 189L128 182L141 189Z"/>
+</g>
+</svg>

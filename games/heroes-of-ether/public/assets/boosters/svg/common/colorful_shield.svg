@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="colorful_shield-title colorful_shield-desc">
+<title id="colorful_shield-title">Красочный щит</title>
+<desc id="colorful_shield-desc">Обычный бустер. Защищает от негативных бустеров на 20 секунд. Цена: 10 монет за 10 штук.</desc>
+<defs><linearGradient id="colorful_shield-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="colorful_shield-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="colorful_shield-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="colorful_shield-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="colorful_shield-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="colorful_shield-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="colorful_shield-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="colorful_shield-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="colorful_shield-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="colorful_shield-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="colorful_shield-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="colorful_shield-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
+<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<path fill="url(#colorful_shield-gold)" d="M128 29L210 55L204 133C201 174 172 203 128 225C84 203 55 174 52 133L46 55Z"/>
+<path fill="url(#colorful_shield-blue)" d="M128 49L190 70L184 133C180 171 154 188 128 201C102 188 76 171 72 133L66 70Z"/>
+<path stroke="none" fill="url(#colorful_shield-red)" d="M128 49L190 70L185 121H128Z"/>
+<path stroke="none" fill="url(#colorful_shield-green)" d="M71 121H128V201C102 188 76 171 72 133Z"/>
+<path stroke="none" fill="url(#colorful_shield-plum)" d="M128 121H185L184 133C180 171 154 188 128 201Z"/>
+<path fill="none" stroke-width="5" d="M128 49V201M71 121H185"/>
+<path fill="none" stroke="#FFF3AD" stroke-width="5" d="M58 61L128 39L188 58"/>
+<path fill="none" stroke="#D8FFFF" stroke-width="5" d="M80 78L111 68"/>
+<path fill="none" stroke="#FFD6E4" stroke-width="5" d="M140 67L172 78"/>
+<path fill="none" stroke="#C3FAAA" stroke-width="4" d="M85 135C90 153 99 164 112 174"/>
+<path fill="none" stroke="#C6A1E7" stroke-width="4" d="M170 134C166 150 157 161 147 169"/>
+<path fill="url(#colorful_shield-cream)" d="M128 97L150 121L128 146L106 121Z"/>
+<path stroke="none" fill="#FFFDF0" d="M128 104V135L112 121Z"/>
+<path stroke="none" fill="#D8AD6C" d="M132 111L143 121L132 134Z"/>
+<circle cx="57" cy="67" r="4" fill="#FFF8C8" stroke-width="3"/>
+<circle cx="199" cy="67" r="4" fill="#FFF8C8" stroke-width="3"/>
+<circle cx="128" cy="212" r="4" fill="#FFF8C8" stroke-width="3"/>
+</g>
+</svg>

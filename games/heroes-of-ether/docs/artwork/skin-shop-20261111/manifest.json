@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "mode": "edit",
+  "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-b93d0af7-55b5-46d6-ae34-55b576815d1b.png",
+  "reference": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1b749835-98b5-454c-b345-8d5ff36e6eeb.png",
+  "prompt": "Use case: precise-object-edit. Edit this exact transparent game avatar of the squirrel craftswoman. Remove ONLY both insect-like antennae and both brown horns above her forehead. Reconstruct ordinary natural red squirrel hair between her two furry ears. Keep her two natural squirrel ears fully intact, same face, eyes, braid, tail, green apron, tools, body, pose, lighting, detailed painted fantasy-game style, size and framing. No new ornaments, no text. Preserve genuine transparent background. The result must clearly be a normal squirrel with two ears and no horns or antennae.",
+  "id": "forest-squirrel",
+  "sha256": "1fad85967dbfc14969e0ea6e9cddffb66f3d19fc198b248a39a8626a5afe5162"
+}

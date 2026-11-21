@@ -1,0 +1,73 @@
+/* The greeting has its own header column, above the right navigation. */
+#lobby .lobby-header:has(.effi-lobby) {
+  grid-template-columns: minmax(280px, min(540px, 37cqw)) minmax(260px, 1fr) clamp(220px, 21cqw, 300px);
+  gap: 16px;
+  padding-right: 0;
+}
+.effi-lobby {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  gap: 0;
+  padding-top: 14px;
+  pointer-events: none;
+}
+.effi-lobby-character {
+  position: relative;
+  flex: 0 0 82px;
+  height: 123px;
+  animation: effi-lobby-float 3.6s ease-in-out infinite;
+}
+.effi-lobby-character img, .effi-lobby-eyes {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.effi-lobby-blink { opacity: 0; animation: effi-lobby-blink 4.8s linear infinite; }
+.effi-lobby-bubble {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  margin: 36px 0 0 -5px;
+  padding: 11px 13px;
+  border: 1px solid #c7a362;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #fffdf3, #f4ead3);
+  box-shadow: 0 3px 9px #2b49301a, inset 0 0 0 2px #fffaf0;
+  color: #294e4e;
+}
+.effi-lobby-bubble::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: -6px;
+  top: 23px;
+  background: #fcf7e8;
+  border-left: 1px solid #c7a362;
+  border-bottom: 1px solid #c7a362;
+  transform: rotate(45deg);
+}
+.effi-lobby-bubble strong { display: block; font-size: 13px; color: #567c69; }
+.effi-lobby-bubble p { margin: 5px 0 0; min-height: 40px; font-size: 15px; line-height: 20px; font-weight: 600; }
+.effi-lobby[data-active="false"] { visibility: hidden; }
+.effi-lobby[data-active="false"] :is(.effi-lobby-character, .effi-lobby-blink) { animation-play-state: paused; }
+@keyframes effi-lobby-float { 0%, 100% { transform: translateY(3px); } 50% { transform: translateY(-3px); } }
+@keyframes effi-lobby-blink { 0%, 92%, 97%, 100% { opacity: 0; } 93.5%, 95.5% { opacity: 1; } }
+@media (max-width: 1200px) and (min-width: 961px) {
+  .effi-lobby-character { flex-basis: 72px; height: 108px; }
+  .effi-lobby-bubble { padding: 10px; }
+  .effi-lobby-bubble p { font-size: 14px; }
+}
+@media (max-width: 960px) {
+  #lobby .lobby-header:has(.effi-lobby) { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .effi-lobby { justify-self: end; width: min(300px, 100%); padding-top: 0; }
+  .effi-lobby-character { flex-basis: 66px; height: 99px; }
+  .effi-lobby-bubble { margin-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .effi-lobby-character, .effi-lobby-blink { animation: none; }
+}
