@@ -2,18 +2,20 @@
 const test = require("node:test"), assert = require("node:assert/strict");
 const fs = require("node:fs"), path = require("node:path"), vm = require("node:vm");
 const { EventEmitter } = require("node:events");
+const { createRequire } = require("node:module");
 function fixture() {
   class Worker extends EventEmitter {
     postMessage(message) { this.sent = message; }
     async terminate() {}
   }
   const filename = path.resolve(__dirname, "../../src/server/persistence/mongodb-sync.js");
+  const sourceRequire = createRequire(filename);
   const module = { exports: {} };
   vm.runInNewContext(fs.readFileSync(filename, "utf8"), {
     module, __dirname: path.dirname(filename), console, setTimeout, clearTimeout,
     setInterval, clearInterval,
     require: name => name === "node:worker_threads" ? { Worker }
-      : name === "./mongodb-config" ? { safeError: error => error.code } : require(name),
+      : name === "./mongodb-config" ? { safeError: error => error.code } : sourceRequire(name),
   }, { filename });
   return new module.exports.MongoSync("unused", { intervalMs: 5000 });
 }
@@ -61,6 +63,7 @@ test("Optional Mongo telemetry transport failure does not mark persistence faile
 });
 test("Worker metric setup and sampling failures cannot change a successful persistence response", async () => {
   const filename=path.resolve(__dirname,'../../src/server/persistence/mongodb-worker.js'),port=new EventEmitter(),messages=[];
+  const sourceRequire=createRequire(filename);
   port.postMessage=message=>messages.push(message);
   class State {
     constructor(){this.client={connect:async()=>{}};this.metrics=()=>{throw Error('optional sampling');};this.metrics.enable=()=>{throw Error('optional setup');};}
@@ -71,7 +74,7 @@ test("Worker metric setup and sampling failures cannot change a successful persi
     require:name=>name==='node:worker_threads'?{parentPort:port,workerData:{root:'unused',config:{}}}
       :name==='./mongodb-state'?{MongoState:State,readLocal:()=>({snapshot:{}})}
       :name==='./mongodb-config'?{safeError:()=> 'MONGO_OPERATION_FAILED'}
-      :name==='../profiles/profile-journal'?{atomicSnapshot(){}}:require(name)
+      :name==='../profiles/profile-journal'?{atomicSnapshot(){}}:sourceRequire(name)
   },{filename});
   const receive=port.listeners('message')[0];
   await receive({type:'metrics-control',enabled:true});assert.equal(messages.at(-1).metricsError,'MONGO_METRICS_UNAVAILABLE');
