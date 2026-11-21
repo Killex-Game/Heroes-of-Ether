@@ -263,8 +263,11 @@
       this.turboButton.tabIndex = -1;
       this.turboButton.id = "turboButton";
       this.turboButton.hidden = true;
+      const turboIcon = make("img", "turbo-symbol");
+      turboIcon.src = "assets/boosters/turbo-bolt-v1.svg"; turboIcon.alt = "";
+      turboIcon.width = turboIcon.height = 48;
       this.turboButton.append(
-        make("span", "turbo-symbol", "ϟ"),
+        turboIcon,
         make("span", "booster-slot-key", "T"),
       );
       this.turboOverlay = make("span", "booster-slot-cooldown");

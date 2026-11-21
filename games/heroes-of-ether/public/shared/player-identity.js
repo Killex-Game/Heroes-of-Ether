@@ -8,6 +8,8 @@
       ? require("./skin-collection-preview")
       : root.KillexSkinCollections;
   const portraitFits = Object.freeze({
+    "gift-winged-guardian": { scale: 1.17, x: 0, y: 0.06 },
+    "gift-winged-guardianess": { scale: 1.37, x: 0, y: 0.07 },
     ...Object.fromEntries(
       collectionCatalog.collections.flatMap((c) =>
         c.members.map((m) => [m.id, m.fit || { scale: 1, x: 0, y: 0.04 }]),
@@ -255,7 +257,15 @@
       }),
     ),
   );
-  const allSkins = Object.freeze([...skins, ...accountSkins, ...themeSkins, ...collectionSkins]);
+  const ownerGiftSkins = Object.freeze([
+    ["gift-winged-guardian", "Крылатый хранитель"],
+    ["gift-winged-guardianess", "Крылатая хранительница"],
+  ].map(([id, name]) => {
+    const variants = Object.freeze(Object.fromEntries([64, 128, 256, 512, 1024]
+      .map(size => [size, `assets/skins/owner-gifts-v1/${size}/${id}.webp`])));
+    return Object.freeze({ id, name, ownerGift: true, variants, arena: variants[1024] });
+  }));
+  const allSkins = Object.freeze([...skins, ...accountSkins, ...themeSkins, ...collectionSkins, ...ownerGiftSkins]);
   // Один каталог путей для миниатюр, профиля, гардероба и большого портрета.
   const resolveSkin = (skin) =>
     (typeof skin === "string" ? allSkins.find((item) => item.id === skin) : skin) || skins[0];
@@ -363,6 +373,7 @@
     themeSkins,
     allSkins,
     collectionSkins,
+    ownerGiftSkins,
     skinSource,
     setSkinImage,
     setSkinImageReady,
@@ -376,7 +387,7 @@
       const skin = allSkins.find((s) => s.id === id);
       return (
         !!skin &&
-        (grantedSkins.includes(id) || ((!skin.tier || !!account?.[skin.tier]) &&
+        (grantedSkins.includes(id) || (!skin.ownerGift && (!skin.tier || !!account?.[skin.tier]) &&
         (!skin.set || unlockedThemes.includes(skin.set)) &&
         (!skin.collection || purchasedCollections.includes(skin.collection))))
       );

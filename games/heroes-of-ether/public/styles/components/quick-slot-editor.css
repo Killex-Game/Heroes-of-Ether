@@ -151,6 +151,8 @@
   min-width: 0;
   height: auto;
   aspect-ratio: 1;
+  min-height: 0;
+  align-self: start;
 }
 @media (hover: hover) and (pointer: fine) {
   .booster-quick .booster-slot {
@@ -167,7 +169,7 @@
 }
 .booster-quick .turbo-slot .booster-slot-cooldown::before { display: none; }
 .booster-quick .turbo-slot .booster-cooldown-seconds { font-size: 11px; line-height: 14px; }
-.booster-quick .turbo-symbol { display: block; transform: translateY(-5px); }
+.booster-quick .turbo-symbol { display: block; width: 61%; height: 60%; object-fit: contain; transform: none; }
 .potion-order-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; }
 @media (min-width: 961px) and (hover: hover) and (pointer: fine) {
   body .booster-quick { width: min(560px, calc(100vw - 40px)); gap: 7px; }

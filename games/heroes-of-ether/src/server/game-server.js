@@ -917,6 +917,7 @@ function createGameServer({
               q.get("playerPage") || 1,
               q.get("clans") || "greatness",
               ["clan", "rankings"].includes(q.get("scope")) ? q.get("scope") : "all",
+              q.get("playerSearch") || "",
             ),
           );
         }

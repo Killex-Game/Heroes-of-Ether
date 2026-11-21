@@ -374,7 +374,10 @@ class ProfileJournal {
     this.previous = next;
     this.revision++;
     this.pendingBytes += entry.bytes;
-    if (++this.sealedBatches >= 64 || this.pendingBytes >= this.checkpointThreshold())
+    // Small durable casts otherwise rewrite the whole world every 64 actions.
+    // Keep a bounded 256-batch window (at most two seals per cast), while the
+    // existing 4 MiB threshold, periodic checkpoint and final drain still win.
+    if (++this.sealedBatches >= 256 || this.pendingBytes >= this.checkpointThreshold())
       this.queueCheckpoint();
     return true;
   }

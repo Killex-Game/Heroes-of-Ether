@@ -40,6 +40,7 @@
   const playerEditor = new window.KillexPlayerEditor({ review: playerEditReview, retry: commit });
   $("editPlayerName").onclick = () => playerEditor.open("rename");
   $("editPlayerLevel").onclick = () => playerEditor.open("level");
+  $("giftPlayerAvatar").onclick = () => { if (adminRole === "owner") playerEditor.open("avatarGift"); };
   const transactionHome = $("transactionsPanel").parentElement;
   const securityUI = new window.KillexAdminSecurity({ api, fail, onAuth: enter, onChallenge: value => { csrf = value; }, onBack: lock });
   const journal = new window.KillexTransactionJournal({ api, fail });
@@ -266,7 +267,7 @@
     if (!player) return;
     inventoryPanel.setBusy(busy, !!pending);
     playerEditor.setBusy(busy, !!pending);
-    for (const id of ["editPlayerName", "editPlayerLevel"]) $(id).disabled = busy || !!pending;
+    for (const id of ["editPlayerName", "editPlayerLevel", "giftPlayerAvatar"]) $(id).disabled = busy || !!pending;
     $("actionFields").replaceChildren();
     const a = $("action").value;
     if (a === "ban") {
@@ -459,6 +460,12 @@
     if (action === "rename") {
       command.name = value;
       reviewCommand(command, `Ник: ${player.name} → ${value}`);
+    } else if (action === "avatarGift") {
+      if (adminRole !== "owner") return;
+      const skin = player.ownerGiftSkins?.find(s => s.id === value && !s.owned);
+      if (!skin) return;
+      command.skinId = value;
+      reviewCommand(command, `Подарить аватар «${skin.name}» только этому игроку.`);
     } else {
       command.level = Number(value);
       reviewCommand(command, `Уровень: ${player.level} → ${command.level}. Опыт — начало уровня, без наград.`);
@@ -511,6 +518,7 @@
   async function enter(status) {
     if (status.requires2fa) { securityUI.challenge(status); return; }
     adminRole = status.role || "owner";
+    $("giftPlayerAvatar").hidden = adminRole !== "owner";
     feedbackPanel.ready();
     playerTabs.ready(adminRole);
     setup = false;

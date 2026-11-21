@@ -37,3 +37,22 @@ test("Small booster seals trigger checkpoints by total WAL bytes before the back
   assert.ok(checkpoints>=3,"Frequent seals must not postpone checkpoints until the 30s timer");
   assert.deepEqual(recover(file).data.profiles,world.profiles);
 });
+
+test("Small casts remain durable through 256 seals without rewriting a large unchanged world every 64 casts",async t=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),"journal-small-casts-")),file=path.join(dir,"profiles.json");
+ const journal=new ProfileJournal(file,{intervalMs:300000});
+ t.after(async()=>{await journal.close();fs.rmSync(dir,{recursive:true,force:true});});
+ let world={profiles:{p:{coins:1000,receipts:{}},archive:{payload:"x".repeat(6*1024*1024)}},clans:{}};
+ journal.commit(world);await journal.requestCheckpoint();
+ const snapshot=fs.readFileSync(file);let checkpoints=0;
+ const request=journal.requestCheckpoint.bind(journal);journal.requestCheckpoint=async()=>{checkpoints++;return request();};
+ for(let i=1;i<=256;i++){
+  world={...world,profiles:{...world.profiles,p:{coins:1000-i,receipts:{...world.profiles.p.receipts,["cast"+i]:"once"}}}};
+  const staged=await journal.stage(world);assert(journal.publishStaged(staged,world));
+  await new Promise(r=>setImmediate(r));
+  if(i===64||i===128||i===255){assert.equal(checkpoints,0);assert.deepEqual(fs.readFileSync(file),snapshot);assert.deepEqual(recover(file).data.profiles,world.profiles);}
+ }
+ if(journal.running)await journal.running;
+ assert.equal(checkpoints,1);assert.deepEqual(recover(file).data.profiles,world.profiles);
+ await journal.close();assert.deepEqual(recover(file).data.profiles,world.profiles);
+});

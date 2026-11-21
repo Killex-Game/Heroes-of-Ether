@@ -168,12 +168,12 @@
   const arenaSkins = Object.fromEntries(
     SKINS.map((skin) => {
       const image = new Image();
-      if (!skin.collection) image.src = skin.arena;
+      if (!skin.collection && !skin.ownerGift) image.src = skin.arena;
       return [skin.id, image];
     }),
   );
   // Purchased collections load arena-size art only when that character is encountered.
-  for (const skin of SKINS.filter((skin) => skin.collection)) {
+  for (const skin of SKINS.filter((skin) => skin.collection || skin.ownerGift)) {
     const image = arenaSkins[skin.id];
     Object.defineProperty(arenaSkins, skin.id, {
       get() {
@@ -2041,7 +2041,7 @@
     thumb.append(missing, img);
     button.append(thumb, document.createTextNode(s.name));
     button.addEventListener("click", () => showSkin(s.id));
-    if (!s.tier && !s.set && !s.collection) $("skinList").append(button);
+    if (!s.tier && !s.set && !s.collection && !s.ownerGift) $("skinList").append(button);
     skinButtons.set(s.id, button);
     skinImages.set(s.id, img);
     let triedFallback = false;
@@ -2061,7 +2061,7 @@
       missing.hidden = false;
       showSkin(preferences.previewSkin, false);
     });
-    if (!s.collection) window.KillexIdentity.setSkinImage(img, s, 256);
+    if (!s.collection && !s.ownerGift) window.KillexIdentity.setSkinImage(img, s, 256);
   }
   function cycleSkin(delta) {
     const available = SKINS.filter((s) =>

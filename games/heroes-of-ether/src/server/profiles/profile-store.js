@@ -1473,7 +1473,9 @@ class ProfileStore {
           )
         )
           throw new BoosterError(
-            playerIdentity.collectionSkins.some((skin) => skin.id === input.skinId)
+            playerIdentity.ownerGiftSkins.some((skin) => skin.id === input.skinId)
+              ? "Этот аватар доступен после личного подарка владельца."
+              : playerIdentity.collectionSkins.some((skin) => skin.id === input.skinId)
               ? "Сначала купи этот набор скинов."
               : playerIdentity.themeSkins.some((skin) => skin.id === input.skinId)
                 ? "Для этого набора сначала купи соответствующую тему интерфейса."

@@ -416,6 +416,7 @@ class ClanService {
     playerPage = 1,
     clanOrder = "greatness",
     scope = "all",
+    playerSearch = "",
   ) {
     this.profiles.refreshCompetition();
     const profile = this.profiles.find(token);
@@ -461,7 +462,14 @@ class ClanService {
         (!metric && b.progress.xp - a.progress.xp) ||
         a.id.localeCompare(b.id),
     );
-    const playerPages = Math.max(1, Math.ceil(players.length / 10));
+    const playerQuery = String(playerSearch).trim().slice(0, 64);
+    const needle = playerQuery.normalize("NFC").toLocaleLowerCase("ru");
+    const matchingRanks = [];
+    if (needle) players.forEach((p, i) => {
+      if (p.name.normalize("NFC").toLocaleLowerCase("ru").includes(needle)) matchingRanks.push(i);
+    });
+    const playerMatches = needle ? matchingRanks.length : players.length;
+    const playerPages = Math.max(1, Math.ceil(playerMatches / 10));
     const currentPlayerPage = Math.max(
       1,
       Math.min(playerPages, Number.isInteger(Number(playerPage)) ? Number(playerPage) : 1),
@@ -486,6 +494,8 @@ class ClanService {
       playerOrder: order,
       playerPage: currentPlayerPage,
       playerPages,
+      playerSearch: playerQuery,
+      playerMatches,
       playerTotal: players.length,
       eventRanking: require("../rankings/event-leaderboards").view(
         this.profiles,
@@ -495,12 +505,13 @@ class ClanService {
       dailyResetAt: daily.nextReset(at),
       dailyPrizeTickets: daily.eventDay(this.profiles.events, daily.dayAt(at)),
       myRank: players.findIndex((p) => p.id === profile.id) + 1,
-      playerLeaders: players
-        .slice((currentPlayerPage - 1) * 10, currentPlayerPage * 10)
-        .map((p, i) => ({
-          ...this.player(p),
-          dailyScore: metric ? scores.get(p.id) : undefined,
-          rank: (currentPlayerPage - 1) * 10 + i + 1,
+      playerLeaders: (needle ? matchingRanks.slice((currentPlayerPage - 1) * 10, currentPlayerPage * 10)
+        : Array.from({ length: Math.min(10, Math.max(0, players.length - (currentPlayerPage - 1) * 10)) },
+          (_, i) => (currentPlayerPage - 1) * 10 + i))
+        .map((rank) => ({
+          ...this.player(players[rank]),
+          dailyScore: metric ? scores.get(players[rank].id) : undefined,
+          rank: rank + 1,
         })),
     };
   }

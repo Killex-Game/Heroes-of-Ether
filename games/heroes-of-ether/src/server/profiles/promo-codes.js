@@ -11,7 +11,7 @@ const catalog = Object.freeze([
   ...Object.entries({ coins: "Монеты", crystals: "Кристаллы", bucks: "Эфир" }).map(([id, name]) => ({ kind: "currency", id, name, category: "Валюта", max: 1000000 })),
   ...[...BOOSTERS.values()].map(b => ({ kind: "booster", id: b.id, name: b.name, category: "Бустеры", max: 10000 })),
   ...accessories.items.map(a => ({ kind: "accessory", id: a.id, name: a.name, category: a.slot === "hat" ? "Шапки" : "Бабочки", max: 1 })),
-  ...identity.allSkins.map(s => ({ kind: "skin", id: s.id, name: s.name, category: "Скины", max: 1 })),
+  ...identity.allSkins.filter(s => !s.ownerGift).map(s => ({ kind: "skin", id: s.id, name: s.name, category: "Скины", max: 1 })),
   ...appearance.interfaceThemes.map(t => ({ kind: "theme", id: t.id, name: t.name, category: "Темы интерфейса — полный набор", max: 1 })),
   ...appearance.themes.map(t => ({ kind: "theme", id: t.id, name: t.name, category: "Темы оформления", max: 1 })),
   ...[...appearance.rankFrames, ...appearance.accountFrames].map(t => ({ kind: "frame", id: t.id, name: t.name, category: "Рамки", max: 1 })),
@@ -64,7 +64,8 @@ function rewardIcon(r) {
   if (r.kind === "chest") return art.clanChest(r.id);
   return null;
 }
-const describe = list => list.map(r => ({ ...r, name: lookup.get(r.kind + ":" + r.id)?.name || r.id, icon: rewardIcon(r) }));
+const describe = list => list.map(r => ({ ...r, name: lookup.get(r.kind + ":" + r.id)?.name ||
+  (r.kind === "skin" && identity.ownerGiftSkins.find(s => s.id === r.id)?.name) || r.id, icon: rewardIcon(r) }));
 function view(store) {
   return { revision: store.data.promoCodes?.revision || 0,
     items: structuredClone(store.data.promoCodes?.items || []), catalog };

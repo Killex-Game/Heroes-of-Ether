@@ -13,23 +13,26 @@ const catalog = [...rewards.catalog, ...['vip', 'premium'].map(id => ({
 const fail = (message, status = 400) => { throw new BoosterError(message, status); };
 const request = id => typeof id === 'string' && /^[a-zA-Z0-9_-]{16,80}$/.test(id);
 const integer = n => Number.isSafeInteger(n) && n >= 0;
-function normalizeRewards(rows) {
+function normalizeRewards(rows, ownerNotice = false) {
   if (!Array.isArray(rows) || !rows.length || rows.length > 50) fail('Добавь от 1 до 50 наград.');
   const seen = new Set();
   return rows.map(r => {
     if (!r || seen.has(r.kind + ':' + r.id)) fail('Объедини одинаковые награды.');
     seen.add(r.kind + ':' + r.id);
+    if (ownerNotice && r.kind === 'skin' && r.amount === 1 &&
+        require('../../../public/shared/player-identity').ownerGiftSkins.some(s => s.id === r.id))
+      return { kind: r.kind, id: r.id, amount: 1 };
     if (r.kind !== 'account') return rewards.rewards([r])[0];
     if (!['vip', 'premium'].includes(r.id) || !integer(r.amount) || r.amount < 1 || r.amount > 365)
       fail('Укажи от 1 до 365 дней статуса.');
     return { kind: r.kind, id: r.id, amount: r.amount };
   });
 }
-function normalize(input) {
+function normalize(input, ownerNotice = false) {
   if (typeof input.title !== 'string' || !input.title.trim() || input.title.length > 100 ||
       typeof input.message !== 'string' || input.message.trim().length < 3 || input.message.length > 500)
     fail('Укажи название подарка и сообщение игрокам (3–500 символов).');
-  return { title: input.title.trim(), message: input.message.trim(), rewards: normalizeRewards(input.rewards) };
+  return { title: input.title.trim(), message: input.message.trim(), rewards: normalizeRewards(input.rewards, ownerNotice) };
 }
 function describe(rows) {
   return rows.map(r => r.kind === 'account' ? { ...r, name: r.id === 'vip' ? 'VIP (дни)' : 'Premium (дни)',
@@ -44,7 +47,7 @@ function acknowledge(store, token, input) {
 }
 function validateNotice(n) {
   if (!n || !isShort(n.id) || !integer(n.at)) throw Error('Повреждено уведомление о подарке.');
-  normalize(n);
+  normalize(n, true);
 }
 function validateProfile(p) {
   if (p.gameGiftNotices === undefined) return;

@@ -70,3 +70,32 @@
 }
 
 #topsDialog .clan-ranking-row { grid-template-columns: 22px 42px minmax(0, 1fr) auto; }
+
+/* Player search gets its own row without displacing daily prizes or the footer. */
+#topsDialog .daily-ranking-board {
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+}
+#topsDialog .daily-ranking-board > .player-ranking-search {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0;
+}
+#topsDialog .daily-ranking-board :is(.ranking-players-table, .daily-ranking-prizes) {
+  grid-row: 3;
+}
+#topsDialog .daily-ranking-board .ranking-footer { grid-row: 4; }
+@media (max-width: 600px) {
+  #topsDialog .daily-ranking-board {
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+  }
+  #topsDialog .daily-ranking-board .ranking-players-table { grid-row: 4; }
+  #topsDialog .daily-ranking-board .ranking-footer { grid-row: 5; }
+}
+@media (max-height: 580px) {
+  #topsDialog .ranking-board .ranking-players-table {
+    grid-template-rows: none;
+    grid-auto-rows: minmax(32px, max-content);
+    align-content: start;
+    overflow: auto;
+  }
+}

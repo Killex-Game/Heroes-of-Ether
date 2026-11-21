@@ -6,7 +6,7 @@
 }
 .effi-lobby {
   position: absolute;
-  top: 82px;
+  top: 40px;
   right: 0;
   display: flex;
   align-items: center;
@@ -14,12 +14,14 @@
   min-width: 0;
   gap: 0;
   padding-top: 0;
-  pointer-events: none;
+  pointer-events: auto;
+  z-index: 2;
 }
-.lobby-generator-tools { position: relative; min-width: 0; min-height: 222px; align-self: start; }
+.lobby-generator-tools { position: relative; min-width: 0; min-height: 124px; align-self: start; padding-top: 18px; }
 .lobby-generator-tools #etherGeneratorButton { width: 100%; min-height: 48px; margin: 0; padding-right: 42px; }
 .lobby-generator-reserved { min-height: 60px; }
-.effi-lobby-dismiss { pointer-events: auto; margin-top: 8px; padding: 4px 12px; border: 1px solid #c7a362; border-radius: 8px; color: #294e4e; background: #fffaf0; cursor: pointer; }
+.effi-lobby-dismiss { position: absolute; top: 3px; right: 3px; display: grid; place-items: center; width: 28px; height: 28px; margin: 0; padding: 0; border: 0; border-radius: 7px; color: #567c69; background: transparent; font: 24px/1 sans-serif; cursor: pointer; }
+.effi-lobby-dismiss:hover, .effi-lobby-dismiss:focus-visible { background: #e8d9b5; outline: 2px solid #ba954f; outline-offset: 1px; }
 .effi-lobby-character {
   position: relative;
   flex: 0 0 66px;
@@ -39,7 +41,7 @@
   flex: 1;
   min-width: 0;
   margin: 0 0 0 -5px;
-  padding: 11px 13px;
+  padding: 11px 34px 11px 13px;
   border: 1px solid #c7a362;
   border-radius: 14px;
   background: linear-gradient(145deg, #fffdf3, #f4ead3);
@@ -66,7 +68,7 @@
 @keyframes effi-lobby-blink { 0%, 92%, 97%, 100% { opacity: 0; } 93.5%, 95.5% { opacity: 1; } }
 @media (max-width: 1200px) and (min-width: 961px) {
   .effi-lobby-character { flex-basis: 72px; height: 108px; }
-  .effi-lobby-bubble { padding: 10px; }
+  .effi-lobby-bubble { padding: 10px 34px 10px 10px; }
   .effi-lobby-bubble p { font-size: 14px; }
 }
 @media (max-width: 960px) {

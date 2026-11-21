@@ -23,6 +23,7 @@
       this.clanOrder = "greatness";
       this.page = 1;
       this.search = "";
+      this.playerSearch = "";
       this.dialog = el("dialog", "clan-dialog tops-dialog");
       this.dialog.id = "topsDialog";
       this.dialog.setAttribute("aria-labelledby", "topsTitle");
@@ -53,6 +54,7 @@
         page: this.page,
         players: this.playerOrder,
         playerPage: this.playerPage,
+        playerSearch: this.playerSearch,
         clans: this.clanOrder,
       });
     }
@@ -63,7 +65,7 @@
       if (fresh) {
         this.playerOrder = this.clanOrder = "greatness";
         this.playerPage = this.page = 1;
-        this.search = "";
+        this.search = this.playerSearch = "";
         this.owner.invalidate?.();
         this.content.replaceChildren(); this.nav.replaceChildren();
       }
@@ -162,6 +164,7 @@
       if (!this.dialog.open) return;
       const data = this.owner.getData();
       if (!data?.playerLeaders || data.page !== this.page ||
+        (data.playerSearch || "") !== this.playerSearch ||
         (this.section !== "event" && data.playerPage !== this.playerPage)) return;
       this.page = data.page;
       this.playerPage = this.section === "event" ? data.eventRanking?.page || 1 : data.playerPage;
@@ -261,6 +264,21 @@
           },
         ),
       );
+      const search = el("form", "clan-search player-ranking-search"), input = el("input");
+      input.type = "search"; input.maxLength = 64; input.value = this.playerSearch;
+      input.placeholder = "Ник игрока"; input.setAttribute("aria-label", "Поиск игрока по нику");
+      const find = el("button", "sf-button sf-tertiary", "Найти");
+      find.type = "submit"; find.dataset.busy = input.dataset.busy = "true";
+      search.append(input, find);
+      search.onsubmit = event => {
+        event.preventDefault(); this.playerSearch = input.value.trim().slice(0, 64);
+        this.playerPage = 1; this.owner.load();
+      };
+      if (this.playerSearch) {
+        const reset = button("Сбросить", () => { this.playerSearch = ""; this.playerPage = 1; this.owner.load(); }, "sf-button sf-tertiary");
+        reset.dataset.busy = "true"; search.append(reset);
+      }
+      panel.append(search);
       if (daily) {
         const rules = window.KillexDailyRankings;
         const prizes = el("aside", "daily-ranking-prizes");
@@ -301,6 +319,7 @@
         panel.append(prizes);
       }
       const rows = el("div", "ranking-table ranking-players-table");
+      if (!data.playerLeaders.length) rows.append(el("p", "clan-muted", "Игроков не найдено."));
       for (const player of data.playerLeaders) {
         const row = el("button", "clan-ranking-player");
         row.type = "button";

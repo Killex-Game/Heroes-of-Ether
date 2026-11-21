@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="styles/components/arena-touch-controls.css?v=20261113-mobile-polish" />
     <link rel="stylesheet" href="styles/components/account-dialog.css?v=20261113-killex" />
     <link rel="stylesheet" href="styles/layout/responsive-viewport.css?v=20261114-community-7" />
-    <link rel="stylesheet" href="styles/components/quick-slot-editor.css?v=20261113-killex" />
+    <link rel="stylesheet" href="styles/components/quick-slot-editor.css?v=20261122-lobby-arena-ui" />
     <link rel="stylesheet" href="styles/theme/lobby-colors-and-controls.css?v=20261113-killex" />
     <link rel="stylesheet" href="styles/components/clan-crest-editor.css?v=20261113-killex" />
     <link rel="stylesheet" href="styles/theme/profile-and-clan-details.css?v=20261114-community-7" />
@@ -68,7 +68,7 @@
     <link rel="stylesheet" href="styles/theme/interface-themes.css?v=20261113-killex" />
     <link rel="stylesheet" href="styles/theme/interface-pack-palettes.css?v=20261113-killex" />
     <link rel="stylesheet" href="styles/components/lobby-progress.css?v=20261113-killex" />
-    <link rel="stylesheet" href="styles/components/pets.css?v=20261114-community-7" />
+    <link rel="stylesheet" href="styles/components/pets.css?v=20261122-lobby-arena-ui" />
     <link rel="stylesheet" href="styles/components/roulette.css?v=20261114-news-10" />
     <link rel="stylesheet" href="styles/components/event-announcement.css?v=20261113-killex" />
     <link rel="stylesheet" href="styles/components/events-page.css?v=20261113-killex" />
@@ -485,6 +485,7 @@
         Сервер ещё не передаёт массу и эфир. Нужен server.js с обновлением сбора и поглощения из
         предыдущего шага.
       </div>
+      <div class="arena-status-stack">
       <div id="massPanel" class="mass-panel">
         <div class="arena-counters">
           <div><span>Масса</span><strong id="mass">-</strong></div>
@@ -494,6 +495,7 @@
         </div>
         <small>Таймер: <time id="lifeTime">00:00:00</time></small
         ><small>Опыт: <b id="arenaXp">0</b></small>
+      </div>
       </div>
       <div id="joystick" aria-label="Сенсорный джойстик"><div id="stick"></div></div>
       <div id="arenaTouchControls" role="group" aria-label="Управление шаром" hidden>
@@ -677,7 +679,7 @@
     <script src="shared/achievement-badge.js?v=20261113-killex"></script>
     <script src="ui/progression/greatness-label.js?v=20261113-killex"></script>
     <script src="shared/skin-collection-preview.js?v=20261113-killex"></script>
-    <script src="shared/player-identity.js?v=20261114-avatar-ban-24"></script>
+    <script src="shared/player-identity.js?v=20261122-winged-gifts"></script>
     <script src="shared/league-appearance.js?v=20261115-avatar-contact"></script>
     <script src="shared/lobby-menu-art.js?v=20261114-community-8"></script>
     <script src="shared/interface-theme.js?v=20261113-killex"></script>
@@ -719,9 +721,9 @@
     <script src="ui/progression/arena-objectives.js?v=20261113-mobile-polish"></script>
     <script src="ui/boosters/quick-slot-editor.js?v=20261113-killex"></script>
     <script src="shared/daily-login-rewards.js?v=20261113-killex"></script>
-    <script src="ui/boosters/shop-and-inventory-dialog.js?v=20261117-daily-window-reset"></script>
+    <script src="ui/boosters/shop-and-inventory-dialog.js?v=20261122-lobby-arena-ui"></script>
     <script src="shared/pet-rules.js?v=20261113-killex"></script>
-    <script src="ui/pets/pet-dialog.js?v=20261117-daily-window-reset"></script>
+    <script src="ui/pets/pet-dialog.js?v=20261122-lobby-arena-ui"></script>
     <script src="ui/cosmetics/accessory-ability-ui.js?v=20261116-hud-42"></script>
     <script src="ui/progression/quest-dialog.js?v=20261114-news-10"></script>
     <script src="shared/roulette-rules.js?v=20261113-killex"></script>
@@ -733,7 +735,7 @@
     <script src="ui/progression/title-earned-dialog.js?v=20261113-mobile-polish"></script>
     <script src="ui/progression/collection-earned-dialog.js?v=20261113-killex"></script>
     <script src="ui/clans/clan-preview.js?v=20261115-clan-awards"></script>
-    <script src="ui/rankings/leaderboard-dialog.js?v=20261117-daily-window-reset"></script>
+    <script src="ui/rankings/leaderboard-dialog.js?v=20261122-lobby-arena-ui"></script>
     <script src="ui/profile/gift-history.js?v=20261117-gifts"></script>
     <script src="ui/profile/player-awards.js?v=20261117-gifts"></script>
     <script src="ui/profile/public-player-dialog.js?v=20261117-gifts"></script>
@@ -766,14 +768,14 @@
     <script src="shared/release-notes.js?v=20261116-player-edit-44"></script>
     <script src="ui/lobby/game-news.js?v=20261114-news-10"></script>
     <script src="ui/lobby/promo-code.js?v=20261114-community-23"></script>
-    <script src="game-client.js?v=20261117-chat-enter"></script>
+    <script src="game-client.js?v=20261122-winged-gifts"></script>
     <script src="ui/layout/viewport-layout.js?v=20261113-killex"></script>
     <script src="ui/layout/dialog-content-layout.js?v=20261117-daily-window-reset"></script>
     <script src="ui/layout/system-notifications.js?v=20261113-killex"></script>
     <link rel="stylesheet" href="styles/components/effi-helper.css?v=20261115-guide" />
     <script src="ui/lobby/effi-helper.js?v=20261115-guide"></script>
-    <link rel="stylesheet" href="styles/components/effi-lobby.css?v=20261116-greeting" />
-    <script src="ui/lobby/effi-lobby.js?v=20261116-greeting"></script>
+    <link rel="stylesheet" href="styles/components/effi-lobby.css?v=20261122-overlay" />
+    <script src="ui/lobby/effi-lobby.js?v=20261122-overlay"></script>
   </body>
 </html>
 

@@ -149,7 +149,7 @@
       document.querySelector(".booster-quick").prepend(this.fire, this.secondary);
       const supportHud = el("div", "arena-support-hud");
       supportHud.append(this.hud);
-      document.getElementById("arena").append(supportHud);
+      document.querySelector(".arena-status-stack").prepend(supportHud);
       this.images = new Map();
       window.KillexActivity.every(() => {
         if (this.dialog.open && !document.hidden) this.updateClock();

@@ -10,6 +10,7 @@ const { cleanName } = require("../arena/arena-simulation");
 const { validateWorld } = require("../clans/clan-service");
 const experience = require("../progression/experience-progression");
 const loadout = require("../../../public/shared/quick-slot-rules");
+const identity = require("../../../public/shared/player-identity");
 const { copyRecord } = require("../profiles/copy-record");
 const profileIndex = require("../profiles/profile-index");
 const tableDeltas = require("../profiles/immutable-table-delta");
@@ -26,6 +27,7 @@ const labels = {
   account: "Статус аккаунта",
   inventory: "Правка бустеров",
   killReview: "Проверка Kill",
+  avatarGift: "Подарок аватара",
 };
 class OwnerService {
   constructor({ profiles, access, inArena = () => false, now = Date.now }) {
@@ -59,6 +61,8 @@ class OwnerService {
       wallet: clone(p.wallet),
       inventory: clone(p.inventory),
       account: clone(p.account || accounts.fresh()),
+      ownerGiftSkins: identity.ownerGiftSkins.map(s => ({ id: s.id, name: s.name,
+        icon: identity.skinSource(s, 128), owned: !!p.grantedSkins?.includes(s.id) })),
       boosters: [...BOOSTERS.values()]
         .map((b) => ({ id: b.id, name: b.name, icon: b.icon, effect: b.usage || b.effect, tier: b.tier })),
     };
@@ -114,6 +118,10 @@ class OwnerService {
     )
       fail("Укажи причину от 3 до 500 символов.");
     const command = { action, targetId, requestId, revision, reason: input.reason.trim() };
+    if (action === "avatarGift") {
+      if (!identity.ownerGiftSkins.some(s => s.id === input.skinId)) fail("Выбери подарочный аватар.");
+      command.skinId = input.skinId;
+    }
     if (["ban", "unban", "killReview"].includes(action)) {
       if (!Number.isSafeInteger(input.moderationRevision) || input.moderationRevision < 0)
         fail("Обнови сведения о блокировке.");
@@ -189,6 +197,8 @@ class OwnerService {
     if (!this.access.canManagePlayers(actor))
       throw new BoosterError("Нет права менять данные игроков.", 403);
     const command = this.normalize(input);
+    if (command.action === "avatarGift" && !this.access.isOwner(actor))
+      throw new BoosterError("Подарочные аватары выдаёт только владелец.", 403);
     const signature = createHash("sha256").update(JSON.stringify(command)).digest("hex");
     const previous = this.profiles.data.administration?.receipts[command.requestId];
     if (previous) {
@@ -226,6 +236,19 @@ class OwnerService {
     };
     let before, after;
     switch (command.action) {
+      case "avatarGift": {
+        if (p.grantedSkins?.includes(command.skinId))
+          throw new BoosterError("Этот аватар уже подарен игроку.", 409);
+        const skin = identity.ownerGiftSkins.find(s => s.id === command.skinId);
+        before = { skinId: skin.id, owned: false };
+        p.grantedSkins = [...(p.grantedSkins || []), skin.id];
+        p.gameGiftNotices = [...(p.gameGiftNotices || []), { id: newBanId(next), at,
+          title: skin.name, message: command.reason, rewards: [{ kind: "skin", id: skin.id, amount: 1 }] }];
+        require("../profiles/promo-codes").validateProfile(p);
+        require("./game-grants").validateProfile(p);
+        after = { skinId: skin.id, owned: true };
+        break;
+      }
       case 'killReview': {
         before={case:p.kill,ban:p.moderation?.ban||null};
         p.kill={...p.kill,status:command.verdict,reviewedAt:at,reviewedBy:actor.id,reviewReason:command.reason};

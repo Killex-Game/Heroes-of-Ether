@@ -1,0 +1,72 @@
+[
+  {
+    "id": "gift-winged-guardian",
+    "source": "Мужественный фэнтезийный герой с крыльями.png",
+    "width": 1254,
+    "height": 1254,
+    "sourceSha256": "9c6b0d3307ab1ad0e7216db02a94a27503afd946c8f384fe9027cb49607552b7",
+    "provenance": "Provided directly by the game owner for use as a personal gift avatar; original pixels preserved. No external asset downloaded.",
+    "outputs": [
+      {
+        "size": 64,
+        "bytes": 2766,
+        "sha256": "edabd13f3599e9589c970aead0945c2773e138d521711b852f779f9ef76c54d8"
+      },
+      {
+        "size": 128,
+        "bytes": 6562,
+        "sha256": "8c74d8506e281dd91e29ca9df29f37ca6a1ab1f55b292dc45ab7575243aad9fa"
+      },
+      {
+        "size": 256,
+        "bytes": 16670,
+        "sha256": "8ba3c8fd57e76d8d5cbaf6a8a3307eb3b99d1d583bd6217a6dd38a24fb31a01e"
+      },
+      {
+        "size": 512,
+        "bytes": 41268,
+        "sha256": "b1f3a0bf42a7ef4eb9cd2ed7153427ffea6c42c0af93a3b23ab3a7e9fa8a5318"
+      },
+      {
+        "size": 1024,
+        "bytes": 107322,
+        "sha256": "640f4c679b57783744971be479b4b0322f5f9c4ebb0e0016ed3f015638dc0398"
+      }
+    ]
+  },
+  {
+    "id": "gift-winged-guardianess",
+    "source": "Рыжеволосая героиня с белыми крыльями.png",
+    "width": 1254,
+    "height": 1254,
+    "sourceSha256": "d47781d29a836d000861c0af2530a165aba4e4d403ee5d77ad908e4dfe2aa41e",
+    "provenance": "Provided directly by the game owner for use as a personal gift avatar; original pixels preserved. No external asset downloaded.",
+    "outputs": [
+      {
+        "size": 64,
+        "bytes": 2812,
+        "sha256": "dd10d88b8f3c9c8f574b9d18038aff8c56c85a05062fcbf1a8e2fab95e9dd483"
+      },
+      {
+        "size": 128,
+        "bytes": 6920,
+        "sha256": "b54485dce696b328b51ea6012d1fdd01f4e46cad476490993e81072cc14d1928"
+      },
+      {
+        "size": 256,
+        "bytes": 17614,
+        "sha256": "e2a60ebceb2c687526287188b1f307eb6057783608a226f0e07ed765bd84f0f3"
+      },
+      {
+        "size": 512,
+        "bytes": 44618,
+        "sha256": "3c050e48378927568d2ecc0044ab698e638d209294797000fb50065d7c30beb7"
+      },
+      {
+        "size": 1024,
+        "bytes": 118504,
+        "sha256": "b89a68b16705e5024a9e6f43c034da0b3e7c1b853dcef7a753661e255884d008"
+      }
+    ]
+  }
+]

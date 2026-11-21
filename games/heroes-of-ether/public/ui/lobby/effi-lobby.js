@@ -22,7 +22,7 @@
         </g>
       </svg>
     </div>
-    <div class="effi-lobby-bubble"><strong>Эффи</strong><p></p><button class="effi-lobby-dismiss" type="button">Выйти</button></div>`;
+    <div class="effi-lobby-bubble"><strong>Эффи</strong><p></p><button class="effi-lobby-dismiss" type="button" aria-label="Скрыть Эффи" title="Скрыть Эффи">×</button></div>`;
   const tools = document.querySelector(".lobby-generator-tools") || document.createElement("div");
   tools.className = "lobby-generator-tools";
   const reserved = document.createElement("div");
@@ -33,7 +33,9 @@
   const copy = root.querySelector("p"), words = greeting.split(" ");
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   let timer = null, position = 0, away = false, visible = false, dismissed = false;
-  root.querySelector(".effi-lobby-dismiss").addEventListener("click", () => { dismissed = true; sync(); });
+  root.querySelector(".effi-lobby-dismiss").addEventListener("click", () => {
+    dismissed = true; sync(); tools.querySelector("#etherGeneratorButton")?.focus();
+  });
   function word() {
     timer = null;
     if (!visible) return;
