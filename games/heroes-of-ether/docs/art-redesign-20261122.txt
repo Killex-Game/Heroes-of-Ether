@@ -81,3 +81,10 @@ operations/scripts/restore-art-redesign-20261122.cjs принимает:
 Результат установки и актуальная статическая ревизия: docs/current-release.json
 в корне репозитория. Серверный выпуск остаётся owner-gift-avatars;
 статический патч не требует перезапуска игры или админки.
+
+Установлено 2026-11-21T22:31:50.422Z. Финальная проверка 2026-11-21T22:33:53.139Z.
+Game PID197400, admin PID1163, NRestarts0/0; без перезапуска.
+HTTP: 1656 файлов × 3 маршрута (game/admin/HTTPS), 4968 точных совпадений.
+Манифест: c18612155bba4712f0ab368f422290aa1d4547a8825de59c9e6fdedc306bfb78.
+Код: 1a577f65ad3a2bb489161e519cbb511ff7d6569b, release/20261122-art-redesign.
+Независимая копия VPS SHA256: 19bf61fc9f9f0b4f6448947fb666e310cf0de57e4cdde2dc1bb0bd62d9efd796.
