@@ -1,32 +1,71 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),path=require('node:path'),fs=require('node:fs');
-const {spawn}=require('node:child_process'),{once}=require('node:events'),{randomUUID}=require('node:crypto');
+const {spawn}=require('node:child_process'),{once}=require('node:events'),{randomUUID,createHash}=require('node:crypto');
 const {temporary}=require('../temp'),{ProfileStore}=require('../../src/server/profiles/profile-store');
 const {recover}=require('../../src/server/profiles/profile-journal');
 const {RoomProfileLedger}=require('../../src/server/arena/resident/room-profile-ledger');
 const {RoomOutbox}=require('../../src/server/arena/resident/room-outbox');
 const records=require('../../src/server/arena/resident/room-cast-records');
-async function fixture(t){
+async function fixture(t, ledgerOptions, memberCount=1){
  let cleanup;const root=temporary({after:f=>cleanup=f},'room-profile-ledger'),filePath=path.join(root,'profiles.json');
  let at=Date.parse('2026-11-15T06:00:00Z');
  const store=new ProfileStore({filePath,journal:true,residentRoomExperiment:true,now:()=>at});
  const auth=store.open(),id=auth.profile.id,lifeId=randomUUID();
  store.transact(auth.token,randomUUID(),'fixture',p=>{p.inventory.meat=5;p.quickSlots=['meat'];});
  store.startLife(id,lifeId);
+ const additional=[];
+ for(let i=1;i<memberCount;i++){
+  const auth=store.open(),id=auth.profile.id,lifeId=randomUUID();
+  store.transact(auth.token,randomUUID(),'fixture',p=>{p.inventory.meat=5;p.quickSlots=['meat'];});
+  store.startLife(id,lifeId);additional.push({auth,id,lifeId});
+ }
  const child=spawn(process.execPath,['-e','setInterval(()=>{},1000)'],{stdio:'ignore',windowsHide:true});
  await once(child,'spawn');
- const ledger=new RoomProfileLedger(store),identity={roomId:'room-a',epoch:'epoch-a'};
- await ledger.claim({...identity,profileIds:[id]},child);
+ const ledger=new RoomProfileLedger(store,ledgerOptions),identity={roomId:'room-a',epoch:'epoch-a'};
+ await ledger.claim({...identity,profileIds:[id,...additional.map(p=>p.id)]},child);
  const boxes=[],file=path.join(root,'room.json');
  const open=async(recovery=false)=>{const b=await RoomOutbox[recovery?'openExisting':'open']({...identity,file});boxes.push(b);return b;};
  const stop=async()=>{if(child.exitCode!==null || child.signalCode!==null)return;const done=once(child,'exit');child.kill('SIGKILL');await done;};
  const input=(extra={})=>({...identity,lifeId,boosterId:'meat',txId:id+'_'+randomUUID(),intent:'meat-at-cursor',...extra});
  const cast=tx=>({txId:tx.txId,profileId:id,lifeId,boosterId:tx.boosterId,mass:75});
  t.after(async()=>{try{await stop();for(const box of boxes)await box.close();await ledger.chain;await store.close();}finally{cleanup();}});
- return {root,filePath,store,auth,id,lifeId,child,ledger,identity,open,stop,input,cast,at:()=>at,setAt:value=>{at=value;}};
+ return {root,filePath,store,auth,id,lifeId,child,ledger,identity,open,stop,input,cast,additional,at:()=>at,setAt:value=>{at=value;}};
 }
-test('resident reserve is durable without success credit, application and frame watermark commit together',async t=>{
- const f=await fixture(t),before=structuredClone(f.store.find(f.auth.token)),input=f.input();
+test('one frame resolves several profiles and outcomes atomically; invalid tail and failed fsync retain all reservations',async t=>{
+ const f=await fixture(t,undefined,2),other=f.additional[0];
+ const a=await f.ledger.reserve(f.child,f.auth.token,f.input());
+ const b=await f.ledger.reserve(f.child,f.auth.token,f.input());
+ const input=()=>f.input({txId:other.id+'_'+randomUUID(),lifeId:other.lifeId});
+ const c=await f.ledger.reserve(f.child,other.auth.token,input());
+ const d=await f.ledger.reserve(f.child,other.auth.token,input());
+ const cast=tx=>({...f.cast(tx),profileId:tx.profileId,lifeId:tx.lifeId});
+ const before=f.store.data,saved=structuredClone(before);
+ function freeze(value){if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.freeze(value);for(const child of Object.values(value))freeze(child);}}
+ freeze(before);
+ const box=await f.open(),entry=await box.append({at:f.at(),applied:[a,c,d].map(cast),cancelled:[cast(b)]});
+ const invalid=structuredClone(entry);invalid.frame.applied.push({...cast(a),txId:f.id+'_'+randomUUID()});
+ invalid.digest=createHash('sha256').update(JSON.stringify(invalid.frame)).digest('hex');
+ await assert.rejects(f.ledger.accept(f.child,invalid),/reservation/);
+ assert.equal(f.store.data,before);assert.deepEqual(before,saved);
+ const failure=t.mock.method(fs,'fsync',(fd,callback)=>callback(Error('multi-profile write failure')));
+ await assert.rejects(f.ledger.accept(f.child,entry),/multi-profile write failure/);failure.mock.restore();
+ assert.equal(f.store.data,before);assert.deepEqual(before,saved);
+ const ack=await f.ledger.accept(f.child,entry);box.acknowledge(ack);
+ const own=f.store.byId(f.id),second=f.store.byId(other.id);
+ assert.equal(own.inventory.meat,4);assert.equal(own.progress.boosterUses,1);
+ assert.equal(second.inventory.meat,3);assert.equal(second.progress.boosterUses,2);
+ for(const tx of [a,c,d])assert.equal(records.read(f.store.byId(tx.profileId),tx.txId).status,'APPLIED');
+ assert.equal(records.read(own,b.txId).status,'REFUNDED');
+ const committed=structuredClone(f.store.data);
+ assert.deepEqual(await f.ledger.accept(f.child,entry),ack);
+ assert.deepEqual(f.store.data,committed);
+ const restored=recover(f.filePath);
+ assert.equal(restored.revision,f.store.journal.revision);
+ assert.deepEqual(restored.data,{...committed,_journalRevision:restored.revision});
+ assert.deepEqual(before,saved);
+});
+for(const maxBuildMs of [1,8,16,32])test(`resident reserve, application and frame watermark stay durable with ${maxBuildMs}ms scheduling budget`,async t=>{
+ const f=await fixture(t,{maxBuildMs}),before=structuredClone(f.store.find(f.auth.token)),input=f.input();
  const tx=await f.ledger.reserve(f.child,f.auth.token,input);
  assert.equal(tx.status,'RESERVED');assert.equal(f.store.find(f.auth.token).inventory.meat,4);
  assert.equal(f.store.find(f.auth.token).progress.boosterUses,before.progress.boosterUses);
@@ -42,6 +81,48 @@ test('resident reserve is durable without success credit, application and frame 
  assert.equal(f.store.find(f.auth.token).progress.boosterUses,before.progress.boosterUses+1);
  const saved=recover(f.filePath).data;assert.equal(saved.residentRooms['room-a'].sequence,1);
  assert.equal(records.read(Object.values(saved.profiles)[0],tx.txId).status,'APPLIED');
+});
+
+test('invalid ledger budgets fail before installing a settlement hook',async t=>{
+ const f=await fixture(t),hook=f.store.clanQuestSettlementReady;
+ for(const maxBuildMs of [0,-1,33,NaN,Infinity,'16'])
+  assert.throws(()=>new RoomProfileLedger(f.store,{maxBuildMs}),/build budget/);
+ assert.equal(f.store.clanQuestSettlementReady,hook);
+});
+
+test('serialized frame keeps canonical hash, durable outcome, replay and private input semantics',async t=>{
+ const f=await fixture(t),tx=await f.ledger.reserve(f.child,f.auth.token,f.input()),box=await f.open();
+ const entry=await box.append({at:f.at(),applied:[f.cast(tx)],progress:[{type:'massPeak',profileId:f.id,mass:321}]});
+ const bytes=box.serializedEntry(1),before=f.store.data;
+ const altered=JSON.parse(bytes);altered.frame.progress[0].mass=999;
+ await assert.rejects(f.ledger.acceptSerialized(f.child,JSON.stringify(altered)),/envelope/);
+ await assert.rejects(f.ledger.acceptSerialized({},bytes),/unowned/);
+ await assert.rejects(f.ledger.acceptSerialized(f.child,'{'),/Invalid serialized/);
+ await assert.rejects(f.ledger.acceptSerialized(f.child,'x'.repeat(2*1024*1024+129)),/byte budget/);
+ await assert.rejects(f.ledger.acceptSerialized(f.child,JSON.stringify({extra:'я'.repeat(1100000)})),/byte budget/);
+ assert.equal(f.store.data,before);assert.equal(f.ledger.serializedBytes,0);
+ const result=await f.ledger.acceptSerialized(f.child,bytes);
+ assert.deepEqual(result.profileIds,[f.id]);assert.equal(f.ledger.serializedBytes,0);
+ assert.deepEqual(await f.ledger.accept(f.child,entry),result.ack);
+ assert.deepEqual(await f.ledger.acceptSerialized(f.child,bytes),result);
+ assert.equal(f.store.byId(f.id).progress.maxMass,321);assert.equal(f.store.byId(f.id).progress.boosterUses,1);
+ assert.equal(f.store.byId(f.id).inventory.meat,4);
+ box.acknowledge(result.ack);
+ assert.equal(records.read(Object.values(recover(f.filePath).data.profiles)[0],tx.txId).status,'APPLIED');
+});
+
+test('serialized application rejects failed durability and retries the same prefix without lost reservation',async t=>{
+ const f=await fixture(t),tx=await f.ledger.reserve(f.child,f.auth.token,f.input()),box=await f.open();
+ await box.append({at:f.at(),applied:[f.cast(tx)]});const bytes=box.serializedEntry(1),before=f.store.data;
+ const mock=t.mock.method(fs,'fsync',(fd,callback)=>callback(Error('serialized disk failure')));
+ await assert.rejects(f.ledger.acceptSerialized(f.child,bytes),/serialized disk failure/);mock.mock.restore();
+ assert.equal(f.store.data,before);assert.equal(f.ledger.serializedBytes,0);
+ assert.equal(records.read(f.store.byId(f.id),tx.txId).status,'RESERVED');
+ const {ack}=await f.ledger.acceptSerialized(f.child,bytes);box.acknowledge(ack);
+ assert.equal(f.store.byId(f.id).progress.boosterUses,1);
+ await box.close();await f.stop();await f.ledger.fenceStopped(f.identity,f.child);
+ await f.ledger.recoverStopped(await f.open(true),f.child);
+ assert.equal(f.store.byId(f.id).progress.boosterUses,1);assert.equal(f.store.byId(f.id).inventory.meat,4);
 });
 test('fenced recovery atomically keeps applied progress and refunds only an unapplied reservation',async t=>{
  const f=await fixture(t),before=f.store.find(f.auth.token).progress.boosterUses;

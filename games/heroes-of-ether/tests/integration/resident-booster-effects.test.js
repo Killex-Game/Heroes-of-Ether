@@ -46,18 +46,20 @@ async function fixture(t,id){
  }
  return {store,auth,p,arena,tx,ledger,identity,child,box,gate,simulate,wall,stop,file};
 }
-for(const booster of [...BOOSTERS.values()].filter(b=>b.ready))test('resident durable pipeline applies actual '+booster.id+' exactly once',async t=>{
+for(const wire of ['object','json'])for(const booster of [...BOOSTERS.values()].filter(b=>b.ready))test('resident '+wire+' durable pipeline applies actual '+booster.id+' exactly once',async t=>{
  const f=await fixture(t,booster.id),before=f.store.find(f.auth.token).progress.boosterUses;
  assert.equal(f.store.find(f.auth.token).inventory[booster.id],1);
  let published=false;
  const entry=await f.gate.advance({at:f.wall},f.simulate,()=>{published=true;});
  assert.equal(published,true);assert.equal(f.p.boosterUses[booster.id],1);
  assert.equal(f.store.find(f.auth.token).progress.boosterUses,before,'Room publication is not a profile ACK');
- const ack=await f.ledger.accept(f.child,entry);f.box.acknowledge(ack);
+ const serialized=f.box.serializedEntry(entry.frame.sequence);
+ const accept=()=>wire==='json'?f.ledger.acceptSerialized(f.child,serialized).then(result=>result.ack):f.ledger.accept(f.child,entry);
+ const ack=await accept();f.box.acknowledge(ack);
  const saved=f.store.find(f.auth.token);
  assert.equal(saved.inventory[booster.id],1);assert.equal(saved.progress.boosterUses,before+1);
  assert.equal(records.read(saved,f.tx.txId).status,'APPLIED');
- const snapshot=f.store.data;assert.deepEqual(await f.ledger.accept(f.child,entry),ack);
+ const snapshot=f.store.data;assert.deepEqual(await accept(),ack);
  assert.strictEqual(f.store.data,snapshot);assert.equal(f.box.acknowledge(ack),false);
 });
 test('actual private mass effect with failed room fsync is never published and its reservation is refunded on recovery',async t=>{

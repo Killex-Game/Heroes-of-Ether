@@ -64,6 +64,24 @@ async function setup(t) {
   });
   return { app, profiles, a, b, access, url, request, login, command, ownerCookie, targetCookie };
 }
+test('a new integrity ban appears in the authenticated violators directory without any chat strike', {timeout:10000}, async t=>{
+  const f=await setup(t);await f.login();
+  assert.equal((await f.request('/api/admin/players?view=violators')).data.total,0);
+  const ws=new WebSocket(f.url.replace('http:','ws:'),{headers:{Cookie:f.targetCookie}});
+  t.after(()=>ws.terminate());
+  const packets=[];ws.on('message',raw=>packets.push(JSON.parse(raw)));await once(ws,'open');
+  const wait=async predicate=>{for(let i=0;i<300;i++){const value=packets.find(predicate);if(value)return value;await new Promise(r=>setTimeout(r,10));}throw Error('Expected WebSocket result');};
+  await wait(p=>p.type==='welcome');
+  ws.send(JSON.stringify({type:'move',x:100,y:100,speed:999}));
+  await wait(p=>p.type==='accountBanned');
+  const result=await f.request('/api/admin/players?view=violators'),row=result.data.players.find(p=>p.id===f.b.profile.id);
+  assert.equal(result.status,200);assert.equal(result.data.total,1);assert(row);
+  assert.equal(row.ban.by,'system:integrity');assert.equal(row.ban.reason,'Нарушение правил игры по пункту 3.2');
+  assert.equal(row.ban.until-row.ban.at,180*86400000);
+  assert.equal(row.chatModeration.flood.strikes,0);assert.equal(row.chatModeration.profanity.strikes,0);
+  assert.equal((await f.request('/api/admin/players?view=violators&q='+encodeURIComponent(row.id))).data.total,1);
+});
+
 test("HTTP owner boundary, setup, CSRF, immutable ID and reserved nickname", async (t) => {
   const f = await setup(t);
   assert.equal(

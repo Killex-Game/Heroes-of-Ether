@@ -8,6 +8,7 @@ const { ProfileJournal, recover } = require("../../profiles/profile-journal");
 const { copyArenaData } = require("../../profiles/arena-profile-copy");
 const { acquireServerLock } = require("../../runtime/process-lock");
 const FORMAT = "arena-room-outbox-v1";
+const serializedEntries = new WeakMap();
 const identifier = value => typeof value === "string" && /^[a-zA-Z0-9_-]{1,128}$/.test(value);
 const hash = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 const validSequence = value => Number.isSafeInteger(value) && value >= 0;
@@ -86,6 +87,15 @@ class RoomOutbox {
     const entry = this.frames.get(sequence);
     return entry ? copyArenaData(entry) : null;
   }
+  serializedEntry(sequence) {
+    if (!Number.isSafeInteger(sequence) || sequence < 1) throw Error('Invalid frame sequence');
+    const entry = this.frames.get(sequence);
+    if (!entry) return null;
+    let json = serializedEntries.get(entry);
+    if (json === undefined) serializedEntries.set(entry, (json = JSON.stringify(entry)));
+    // Strings are immutable. No caller can alter the durable frame or its cache.
+    return json;
+  }
   append({ at, progress = [], applied = [], cancelled = [], kind = "tick", boundaryAt }, publish) {
     if (this.blocked) return Promise.reject(Error("Room outbox cannot advance"));
     let frame, entry;
@@ -102,6 +112,7 @@ class RoomOutbox {
       // custom serializers cannot execute across this persistence boundary.
       frame = JSON.parse(json);
       entry = { frame, digest: createHash('sha256').update(json).digest('hex') };
+      serializedEntries.set(entry, '{"frame":' + json + ',"digest":' + JSON.stringify(entry.digest) + '}');
     } catch (error) { return Promise.reject(error); }
     const ack = this.ackSequence, remove = this.ackRemovals(ack), ended = kind === "end";
     const change = { set: { sequence: frame.sequence, ackSequence: ack, ackDigest: this.ackDigest, ended }, remove: [],

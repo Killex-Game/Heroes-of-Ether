@@ -1,7 +1,8 @@
 "use strict";
 const WebSocket=require('ws'), wire=require('../../../public/shared/arena-wire');
 const {summary}=require('./room-fixture.cjs');
-let clients=[],cpu,started,bytes=0,packets=0,intervals=[],failures=0,decodeMs=[];
+const samples=require('../sample-window.cjs');
+let clients=[],cpu,started,bytes=0,packets=0,intervals=samples(),failures=0,decodeMs=samples();
 const decode = process.env.ROOM_BENCH_DECODE === '1';
 const inputs=process.env.ROOM_BENCH_INPUTS==='socket'?new (require('./peer-inputs.cjs').PeerInputs)():null;
 process.on('disconnect',()=>process.exit());

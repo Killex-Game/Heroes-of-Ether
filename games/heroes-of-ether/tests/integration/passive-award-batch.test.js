@@ -18,7 +18,9 @@ test("private passive batches agree with full award scans across hour/day/degree
    {type:"massPeak",profileId:id,mass:100+n},
    {type:"questSample",profileId:id,lifeId:"award-life",food:n,clanFood:n,rank:1},
    {type:"lifeTime",profileId:id,lifeId:"award-life",durationSeconds:n+1},
-   ...(n%7===0?[{type:"arenaAction",profileId:id,lifeId:"award-life",action:"split",amount:2}]:[]),
+   ...(n%7===0?[{type:"arenaAction",profileId:id,lifeId:"award-life",sequence:n+1,metric:"boosterUses",boosterId:"shield"}]:[]),
+   {type:"clanArenaAction",profileId:id,lifeId:"award-life",sequence:n+1,metric:"splitParts",amount:2},
+   {type:"boosterUsed",profileId:id,lifeId:"award-life",mass:100+n},
    ...(n%17===0?[{type:"absorbed",profileId:id,victimProfileId:"victim-"+n,lifeId:"victim-life-"+n,gain:5,victimDefeated:true,spaceSplit:true}]:[]),
   ]);
   let expected;

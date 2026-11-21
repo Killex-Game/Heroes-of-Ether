@@ -40,6 +40,25 @@ test('directory sorts actual online humans, searches unicode, and filters curren
   f.advance(7*86400000); assert.deepEqual(f.service.players('',1,{view:'violators'}).players.map(p=>p.id),[people[1].id]);
   assert.throws(()=>f.service.players('',1,{view:'invalid'}),/параметры/);
 });
+test('every active account ban is listed without chat strikes, regardless of issuer or online state', t => {
+  const f=fixture(t), sources=[f.owner.id,'moderator:test','system:flood','system:profanity','system:integrity','system:future-rule'];
+  const ids=[];
+  for(const [i,by] of sources.entries()) {
+    const p=f.profiles.byId(f.profiles.open().profile.id);ids.push(p.id);
+    p.name='Нарушитель '+i;
+    p.moderation={version:1,ban:{by,reason:'Проверка '+by,at:f.now()-1,until:i===0?null:f.now()+3600000}};
+    if(i%2)f.online.add(p.id);
+  }
+  const before=structuredClone(f.profiles.data), listed=f.service.players('',1,{view:'violators'});
+  assert.deepEqual(listed.players.map(p=>p.id).sort(),ids.sort());
+  for(const row of listed.players) {
+    assert(row.ban);assert.equal(row.chatModeration.flood.strikes,0);assert.equal(row.chatModeration.profanity.strikes,0);
+  }
+  assert.deepEqual(f.profiles.data,before);
+  f.advance(3600000);
+  assert.deepEqual(f.service.players('',1,{view:'violators'}).players.map(p=>p.id),[ids.find(id=>f.profiles.byId(id).moderation.ban.until===null)]);
+});
+
 test('registrations use saved account dates, exclude bots, page and sort without writing profiles', t => {
   const f = fixture(t), people = f.accounts.map(a => f.profiles.find(a.token));
   people[0].name = 'Зоя'; people[1].name = 'Mr Lāйfēr'; people[2].name = 'Без даты'; people[3].testBot = true;

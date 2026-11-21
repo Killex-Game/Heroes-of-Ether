@@ -30,6 +30,10 @@ test('room frame publication waits for fsync; caller mutation and concurrent adv
   assert.deepEqual(box.pendingSequences(),[1]);
   const single=box.entry(1);single.frame.progress[0].mass=1234;
   assert.equal(box.entry(1).frame.progress[0].mass,50);
+  const wire=box.serializedEntry(1),decoded=JSON.parse(wire);
+  assert.deepEqual(decoded,box.entry(1));decoded.frame.progress[0].mass=999;
+  assert.equal(JSON.parse(box.serializedEntry(1)).frame.progress[0].mass,50);
+  assert.equal(box.serializedEntry(2),null);assert.throws(()=>box.serializedEntry(0),/Invalid/);
   assert.equal(box.entry(2),null);assert.throws(()=>box.entry(0),/Invalid/);
 });
 test('outbox capacity, contiguous ACKs, stale epoch fencing and durable end marker',async t=>{
@@ -43,6 +47,7 @@ test('outbox capacity, contiguous ACKs, stale epoch fencing and durable end mark
   const last=await box.append({at:3,kind:'end'});assert.equal(box.blocked,true);
   await assert.rejects(box.append({at:4}),/cannot advance/);
   assert.deepEqual(box.list().map(e=>e.frame.sequence),[2,3]);
+  assert.equal(box.serializedEntry(1),null);
   const disk=recover(f.file).data;assert.equal(disk.ackSequence,1);assert.deepEqual(Object.keys(disk.roomFrames),['2','3']);
   box.acknowledge(ack(second));box.acknowledge(ack(last));await box.close();
   const reopened=await f.open();assert.equal(reopened.ended,true);assert.equal(reopened.sequence,3);assert.deepEqual(reopened.list(),[]);

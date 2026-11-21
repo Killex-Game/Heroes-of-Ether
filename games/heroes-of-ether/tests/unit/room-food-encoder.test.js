@@ -132,3 +132,32 @@ test("frozen launch metadata can be reused, but frozen accessors and nested muta
   x++;
   assert.notEqual(encoder.encode([{ ...base, birth: getter }])[0].meta, previous);
 });
+
+test("immutable food reuse preserves retained frames, removals and same-ID replacements", () => {
+  const encoder = new RoomFoodEncoder();
+  const first = Object.freeze({id:"natural",x:10,y:20,value:1,radius:5,color:"gold"});
+  const old = encoder.encode([first])[0];
+  for (let i=0;i<10;i++) assert.equal(encoder.encode([first])[0],old);
+  const changed = Object.freeze({...first,x:50,color:"blue"});
+  const replacement = encoder.encode([changed])[0];
+  assert.equal(old.px,10);assert.equal(replacement.px,50);
+  assert.notEqual(old.meta,replacement.meta);
+  encoder.encode([]);assert.equal(encoder.previous.size,0);
+  assert.deepEqual(encoder.encode([first])[0],old);
+});
+
+test("frozen food with nested metadata or getters remains live rather than cached by identity", () => {
+  const encoder = new RoomFoodEncoder();let x=1,color="red";
+  const getter = Object.freeze({id:"getter",get x(){return x;},y:20,value:1,radius:5,get color(){return color;}});
+  const nested = Object.freeze({id:"nested",x:10,y:20,value:1,radius:5,color:{shade:"red"}});
+  const before = encoder.encode([getter,nested]);
+  x=55;color="blue";nested.color.shade="green";
+  const after = encoder.encode([getter,nested]);
+  assert.equal(before[0].px,1);assert.equal(after[0].px,55);
+  assert.notEqual(before[0].meta,after[0].meta);
+  assert.notEqual(before[1].meta,after[1].meta);
+  const mutable={id:"getter",x:55,y:20,value:1,radius:5,color:"blue"};
+  encoder.encode([mutable]);mutable.x=70;
+  assert.equal(encoder.encode([mutable])[0].px,70);
+  assert.equal(encoder.encode([getter])[0].px,55);
+});

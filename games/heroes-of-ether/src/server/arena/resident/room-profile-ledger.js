@@ -8,6 +8,7 @@ const { arenaCastDraft }=require('../../profiles/profile-store');
 const indexes=require('../../profiles/profile-index');
 const tables=require('../../profiles/immutable-table-delta');
 const { copyRecord }=require('../../profiles/copy-record');
+const {createProfileBatch,replaceBatchProfile,sealProfileBatch}=require('../../profiles/profile-batch');
 const records=require('./room-cast-records');
 const { planRoomRecovery }=require('./room-recovery');
 const { RoomOutbox }=require('./room-outbox');
@@ -16,10 +17,14 @@ const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex
 const stopped=child=>child.exitCode!==null || child.signalCode!==null;
 const identity=(room,input)=>room && room.roomId===input.roomId && room.epoch===input.epoch;
 class RoomProfileLedger {
-  constructor(store) {
+  constructor(store, { maxBuildMs = 8 } = {}) {
     if(!store.residentRoomExperiment || !store.journal)throw Error('Resident profile ledger requires explicit isolated experiment');
+    if(!Number.isFinite(maxBuildMs) || maxBuildMs<1 || maxBuildMs>32)
+      throw Error('Invalid isolated ledger build budget');
+    this.maxBuildMs=maxBuildMs;
     this.store=store;this.bindings=new Map();this.pending=0;this.chain=Promise.resolve();
     this.queue=[];this.writing=false;this.scheduled=false;this.idle=null;
+    this.serializedBytes=0;
     this.metrics={operations:0,flushes:0,conflicts:0,failures:0,maxQueue:0};
     this.fenced=new Set();
     const prior=store.clanQuestSettlementReady;
@@ -61,7 +66,7 @@ class RoomProfileLedger {
       // Preserve FIFO and all per-operation timestamps. A bounded cheap prefix
       // shares one fsync; expensive work returns control to socket/IPC handlers.
       for(const entry of this.queue) {
-        if(selected.length && (selected.length>=256 || performance.now()-started>=8))break;
+        if(selected.length && (selected.length>=256 || performance.now()-started>=this.maxBuildMs))break;
         try {
           const draft=entry.build(snapshot,at);snapshot=draft.next || snapshot;
           selected.push({entry,result:draft.result});
@@ -128,10 +133,12 @@ class RoomProfileLedger {
       return {next:batch.next,result:tx};
     });
   }
-  editProfile(world,id,mutate) {
+  editProfile(world,id,mutate,batch) {
     const key=indexes.profileKeys(world.profiles).get(id),current=world.profiles[key];
     if(!current)throw Error('Missing owned profile');
     const draft=arenaCastDraft(current);mutate(draft);draft.revision++;
+    const staged=replaceBatchProfile(batch,world,key,draft);
+    if(staged){indexes.remember(staged.profiles,indexes.profileKeys(world.profiles));return staged;}
     const profiles=Object.assign(copyRecord(world.profiles),{[key]:draft});
     tables.remember(profiles,world.profiles,[key],true);indexes.remember(profiles,indexes.profileKeys(world.profiles));
     return {...world,profiles};
@@ -150,8 +157,11 @@ class RoomProfileLedger {
     questBoundary.validate(room,f);
     if(f.progress.some(e=>!room.profiles.includes(e?.profileId) || e.type==='boosterUsed'))
       throw Error('Unowned progress or duplicate booster credit');
-    let next=base;const used=new Set(),events=[];
-    for(const [casts,status] of [[f.applied,'APPLIED'],[f.cancelled || [],'REFUNDED']])for(const cast of casts) {
+    let next=base;const used=new Set(),events=[],batch=createProfileBatch(base);
+    // A frame is one private atomic operation. Reuse its profile table while
+    // resolving casts, then seal before progress, snapshot preparation or I/O.
+    // Failure discards this table; a later frame always starts a separate one.
+    try { for(const [casts,status] of [[f.applied,'APPLIED'],[f.cancelled || [],'REFUNDED']])for(const cast of casts) {
       if(!room.profiles.includes(cast?.profileId) || used.has(cast.txId))throw Error('Unowned or duplicated resident cast');
       used.add(cast.txId);
       const p=this.store.byId(cast.profileId,next),tx=records.read(p,cast.txId);
@@ -160,9 +170,9 @@ class RoomProfileLedger {
           (status==='APPLIED' && p.progress.session?.id!==cast.lifeId) ||
           (cast.mass!==undefined && (!Number.isSafeInteger(cast.mass) || cast.mass<0)))
         throw Error('Resident applied cast conflicts with its reservation');
-      next=this.editProfile(next,cast.profileId,draft=>records.resolve(draft,tx,status,f.at));
+      next=this.editProfile(next,cast.profileId,draft=>records.resolve(draft,tx,status,f.at),batch);
       if(status==='APPLIED')events.push({type:'boosterUsed',profileId:cast.profileId,lifeId:cast.lifeId,...(cast.mass===undefined?{}:{mass:cast.mass})});
-    }
+    }} finally { sealProfileBatch(batch); }
     // Exactly one successful-use credit per confirmed reservation, before the
     // physical consequences/death in the same private frame.
     const progress=this.store.arenaProgressDraft(next,`resident:${room.roomId}:${room.epoch}:${f.sequence}`,
@@ -180,6 +190,25 @@ class RoomProfileLedger {
       const room=this.owner(base,entry.frame,child),next=this.applyEntry(base,room,entry);
       return {next,result:{roomId:room.roomId,epoch:room.epoch,sequence:entry.frame.sequence,digest:entry.digest}};
     });
+  }
+  acceptSerialized(child,serialized) {
+    // An IPC string already owns immutable bytes. Parse a bounded private graph
+    // once rather than cloning a second graph created by IPC deserialization.
+    // applyEntry still validates the canonical frame hash, ownership, sequence,
+    // reservations, deadline and every progress operation on the current world.
+    if(typeof serialized!=='string' || serialized.length>2*1024*1024+128)
+      return Promise.reject(Error('Resident serialized frame exceeds byte budget'));
+    const bytes=Buffer.byteLength(serialized);
+    if(bytes>2*1024*1024+128 || this.serializedBytes+bytes>64*1024*1024)
+      return Promise.reject(Error('Resident serialized frame exceeds byte budget'));
+    let entry;
+    try{entry=JSON.parse(serialized);}catch{return Promise.reject(Error('Invalid serialized resident frame'));}
+    this.serializedBytes+=bytes;
+    return this.enqueue(base=>{
+      const room=this.owner(base,entry?.frame || {},child),next=this.applyEntry(base,room,entry);
+      return {next,result:{ack:{roomId:room.roomId,epoch:room.epoch,sequence:entry.frame.sequence,digest:entry.digest},
+        profileIds:[...new Set([...entry.frame.applied,...(entry.frame.cancelled || [])].map(c=>c.profileId))]}};
+    }).finally(()=>{this.serializedBytes-=bytes;});
   }
   fenceStopped(input,child) {
     if(!(child instanceof ChildProcess) || !stopped(child))return Promise.reject(Error('Resident owner is still alive'));
