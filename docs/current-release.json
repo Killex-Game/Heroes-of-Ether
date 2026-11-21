@@ -1,0 +1,39 @@
+{
+  "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
+  "gameRelease": "20261121-kill-review",
+  "sourceTag": "vps/20261121-kill-review",
+  "sourceCommit": "3c98024eb386de9500f41c2798393311840b5044",
+  "verifiedSourceFiles": 3302,
+  "excludedHistoricalTestLogs": 5,
+  "independentAdminRelease": "20261117-player-feedback",
+  "unreleasedLocalBranch": "work/local-unreleased-20261121",
+  "runtimeChangesDuringRepositorySetup": false,
+  "mainAdditionalChanges": "Repository tooling/documentation and VM import resolution in a unit-test fixture only",
+  "databaseCompatibility": "Mongo documentFormat1 is required; do not roll back to an older adapter",
+  "verification": {
+    "configuration": "pass",
+    "structure": {
+      "scripts": 996,
+      "references": 5176,
+      "renames": 247
+    },
+    "initialFull": {
+      "tests": 2175,
+      "passed": 2168,
+      "failed": 3,
+      "skipped": 4
+    },
+    "affectedTestFilesAfterFix": {
+      "tests": 26,
+      "passed": 26,
+      "failed": 0
+    },
+    "repositoryCheckTests": {
+      "tests": 5,
+      "passed": 5
+    }
+  },
+  "followUps": [
+    "Scheduled backup at 2026-11-21 20:19 VPS journal time failed with MONGO_CONCURRENT_READ. Preserve the consistency check; no backup repair or game restart was performed in this repository task."
+  ]
+}
