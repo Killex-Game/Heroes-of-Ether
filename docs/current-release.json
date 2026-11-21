@@ -1,15 +1,15 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261122-arena-reliability",
-  "sourceTag": "release/20261122-arena-reliability",
-  "sourceCommit": "bbd64c1f70d6f899fb2b5ec69635a3f4a454e622",
-  "previousRelease": "20261121-kill-review",
+  "gameRelease": "20261122-mongo-journal-read",
+  "sourceTag": "release/20261122-mongo-journal-read",
+  "sourceCommit": "00b8cf54b29e60539d2d139cd398a454c3a81d85",
+  "previousRelease": "20261122-kill-checkpoints",
   "independentAdminRelease": "20261117-player-feedback",
   "unreleasedLocalBranch": "work/local-unreleased-20261121",
   "localRunningGameUpdated": false,
-  "entryReopenedAtUtc": "2026-11-21T19:45:11.267Z",
+  "entryReopenedAtUtc": "2026-11-21T20:38:19.972Z",
   "runtime": {
-    "gamePid": 180895,
+    "gamePid": 187863,
     "adminPid": 1163,
     "restarts": [
       0,
@@ -18,66 +18,140 @@
     "mongoConnected": true
   },
   "manifest": {
-    "files": 81,
-    "sha256": "7a7b7f2b904cbc6d05d0a1cd198621eebb0dc543af985aa9ce78c59a4d651691"
+    "files": 8,
+    "sha256": "badf50a68e88606e0c6421dda0fd9154f20821ad562f245df764cb3e3b4af3de"
   },
-  "report": "games/heroes-of-ether/docs/arena-reliability-20261122.txt",
-  "localEvidence": "artifacts/arena-reliability-20261121",
-  "databaseCompatibility": "Mongo documentFormat1 is required; preserve the single writer, WAL/fsync and snapshot export validation",
+  "includedPreviousChange": {
+    "sourceCommit": "3a1b14e115e65f9da478918412e452790d3e0ea3",
+    "manifestSha256": "10508bec4bac7f6c4b4f4595ac34c318c1cdc5788a39dc20d66cc365ed8a3061",
+    "note": "Kill layout and player flags included; timer-only checkpoint change was insufficient, superseded by pinned WAL synchronization."
+  },
+  "report": "games/heroes-of-ether/docs/kill-checkpoints-20261122.txt",
+  "localEvidence": "artifacts/mongo-journal-read-20261122",
+  "previousEvidence": "artifacts/kill-owner-load-20261122",
+  "databaseCompatibility": "Mongo documentFormat1 required; preserve single writer, WAL/fsync and snapshot export validation",
   "verification": {
+    "targetedWindows": {
+      "tests": 17,
+      "passed": 17
+    },
+    "targetedActualLinux": {
+      "tests": 44,
+      "passed": 44
+    },
     "windowsFull": {
-      "tests": 2193,
-      "passed": 2189,
-      "failed": 0,
-      "skippedOptInAtlas": 4
+      "tests": 2202,
+      "passed": 2197,
+      "failed": 1,
+      "skippedOptInAtlas": 4,
+      "note": "EPERM rename in existing progression fixture; full test file repeated15/15 without code changes. Original failure retained."
     },
-    "actualLinuxFull": {
-      "tests": 2193,
-      "passed": 2189,
-      "failed": 0,
-      "skippedOptInAtlas": 4
+    "repeatWindows": {
+      "tests": 15,
+      "passed": 15
     },
-    "cleanInstallTargeted": {
-      "tests": 27,
-      "passed": 27
+    "actualAtlasWorker": {
+      "tests": 1,
+      "passed": 1,
+      "scope": "Unique temporary test database; sync, worker failure/reacquisition, final shutdown and reopen"
     },
     "browsers": [
       "Chrome",
       "Firefox",
       "WebKit"
     ],
+    "browserRoleViewportCombinations": 18,
     "browserPageErrors": 0,
     "http": {
-      "publicFiles": 16,
+      "publicFiles": 4,
       "origins": [
-        "SSH tunnel 3102",
+        "game3000",
+        "admin3103",
+        "SSH tunnel3102",
         "HTTPS"
       ],
       "exact": true
     },
     "structure": {
-      "scripts": 1004,
-      "references": 5209,
+      "scripts": 1006,
+      "references": 5216,
       "renames": 247
     },
     "fullBackupAndAtlasBefore": true,
     "fullWorldAndAuxiliaryAtlasAfter": true,
-    "exactExpectedWorldTransition": true,
-    "beforeRevision": 3014399,
-    "revisionAfter": 3014400,
-    "afterDigest": "c6ac6bbada5735d9df78566ee6128f023b8013345523ad00b89de89a8cbe2bf2",
-    "profiles": 1492,
-    "clans": 134,
-    "removedErroneousClanCups": 134,
-    "removedErroneousPersonalCups": 1101,
-    "walletsAndCurrencyHistoriesUnchanged": true,
-    "inventoryUnchanged": true
+    "allWorldAndAuxiliaryFieldsUnchanged": true,
+    "beforeRevision": 3025106,
+    "revisionAfter": 3025106,
+    "afterDigest": "14234676a96e322afacd31991dc91c9dc14a7e573599e414013fc45f6100ebcc",
+    "profiles": 1493,
+    "clans": 134
+  },
+  "observations": {
+    "before": {
+      "seconds": 60.067,
+      "arena": [
+        0,
+        0
+      ],
+      "lobby": [
+        7,
+        8
+      ],
+      "checkpoints": 2,
+      "cpuCores": 1.0002340220087569,
+      "throttledSeconds": 4.25572
+    },
+    "timerOnlyAttempt": {
+      "seconds": 60.063,
+      "checkpoints": 2
+    },
+    "after": {
+      "seconds": 180.228,
+      "checkpoints": 1
+    },
+    "afterSettled": {
+      "seconds": 120.162,
+      "arena": [
+        1,
+        1
+      ],
+      "lobby": [
+        3,
+        4
+      ],
+      "hz": [
+        19.87,
+        19.97
+      ],
+      "workP95": [
+        7.51,
+        14.52
+      ],
+      "intervalP95": [
+        51.34,
+        69.26
+      ],
+      "rssMiB": [
+        1937,
+        3367
+      ],
+      "maxQueuedActions": 0,
+      "maxArenaBatches": 0,
+      "mongo": {
+        "allConnected": true,
+        "firstRevision": 3025113,
+        "lastRevision": 3026275,
+        "lastSyncedAt": "2026-11-21T20:41:29.933Z"
+      }
+    },
+    "limitation": "Sequential observations after restarts, different online load; not an equivalent A/B test. First60seconds after reopening excluded from settled summary because update rate includes the maintenance window. Full measurements are retained."
   },
   "followUps": [
-    "No equivalent load test proves all lag or RSS issues resolved; historical 18-19 November episodes lack detailed traces.",
-    "No verified cheating evidence for the three reported players in available data. Kill suspicion review remains manual; no trained neural model claimed.",
-    "Room names have not been changed; owner requested proposals.",
-    "Local experimental branch and its running processes remain separate from the deployed VPS version.",
-    "Initial test/fixture failures are retained in validation-notes.txt; final successful runs do not erase them."
+    "Sequential post-restart observations with different online load are not an equivalent A/B test; no proof all lag/RSS issues are resolved.",
+    "Historical18–19Nov and21Nov22:00MSK lack precise per-action traces; avoid claiming an exact cause for each event.",
+    "Kill model is not trained; suspicious input rhythms go to manual review. No verified cheating evidence for the three reported players.",
+    "Room names unchanged; proposals are Роса/Искра/Заря.",
+    "Local experimental branch and running processes remain separate.",
+    "FileZilla resolves current to the release directory; reconnect through the saved site after deployments. Direct uploads must also be incorporated into Git."
   ]
 }
