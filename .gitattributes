@@ -1,3 +1,13 @@
 # Keep deployment bytes identical across Windows and Linux checkouts.
 # Changes to line endings must be explicit, reviewed changes.
 * -text
+
+# Already-compressed game artwork/audio: avoid expensive delta searches.
+*.webp -delta
+*.png -delta
+*.jpg -delta
+*.jpeg -delta
+*.mp3 -delta
+*.ogg -delta
+*.zip -delta
+*.woff2 -delta
