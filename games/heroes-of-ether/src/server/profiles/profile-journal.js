@@ -273,6 +273,9 @@ class ProfileJournal {
     this.retiringWorkers = new Set();
     this.file = file;
     const restored = recover(file);
+    // The store has exclusive writer ownership before opening its journal.
+    // Remove only flat read-link directories left by a previous process crash.
+    require("./profile-read-snapshot").cleanup(file);
     this.revision = restored.revision;
     this.maxPendingBytes = maxPendingBytes;
     this.pendingBytes =
@@ -476,6 +479,16 @@ class ProfileJournal {
         syncDirectory(path.dirname(this.file));
       }
     }
+  }
+  async pinSnapshot() {
+    if (this.closed || this.fault) throw Error("Profile journal unavailable");
+    if (this.running) { await this.running; return this.pinSnapshot(); }
+    if (this.arenaFlush) { await this.arenaFlush.catch(() => {}); return this.pinSnapshot(); }
+    // No await between sealing and linking: a checkpoint cannot start/delete
+    // segments in this turn. Hard links keep immutable bytes alive afterwards.
+    // The active append is never read or copied by the MongoDB worker.
+    this.sealActive();
+    return require("./profile-read-snapshot").pin(this.file, segments(this.file), this.revision);
   }
   async requestCheckpoint() {
     if (this.running) return this.running;

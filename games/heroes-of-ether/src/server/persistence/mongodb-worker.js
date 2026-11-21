@@ -21,7 +21,7 @@ function report(values) {
   atomicSnapshot(path.join(dataDir, "mongodb-status.json"), status);
 }
 // Commands are serial and coalesced by the parent. No per-player work queue.
-parentPort.on("message", async ({ id, command, type, enabled }) => {
+parentPort.on("message", async ({ id, command, type, enabled, profileSnapshot }) => {
   if(type==='metrics-control'){
     clearInterval(metricTimer);metricTimer=null;
     try{
@@ -34,10 +34,10 @@ parentPort.on("message", async ({ id, command, type, enabled }) => {
     let result;
     if (command === "open" || command === "resume") {
       await state.client.connect();
-      result = await state.acquire(readLocal(dataDir, command === "open").snapshot);
+      result = await state.acquire(readLocal(dataDir, command === "open", profileSnapshot).snapshot);
       report({ ...result, connected: true, lastError: null });
     } else if (command === "sync") {
-      result = await state.sync(checkpoints.snapshot());
+      result = await state.sync(checkpoints.snapshot(profileSnapshot));
       report({ ...result, connected: true, lastError: null });
     } else if (command === "close") {
       await state.close();

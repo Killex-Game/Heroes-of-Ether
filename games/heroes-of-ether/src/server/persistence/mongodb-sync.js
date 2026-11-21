@@ -58,7 +58,7 @@ class MongoSync {
     worker.on("exit", failed);
     if(this.metricsEnabled)this.sendMetricsControl(true);
   }
-  command(command) {
+  command(command, profileSnapshot = null) {
     if (this.waiting || this.failed)
       return Promise.reject(
         Object.assign(Error("MONGO_WORKER_UNAVAILABLE"), { code: "MONGO_WORKER_UNAVAILABLE" }),
@@ -74,7 +74,7 @@ class MongoSync {
       // Keep ordinary writes bounded separately; no arena ACK waits on Atlas.
       }, command === "open" || command === "resume" ? 600000 : 45000);
       this.waiting = { id, timeout, resolve, reject };
-      this.worker.postMessage({ id, command });
+      this.worker.postMessage({ id, command, profileSnapshot });
     });
   }
   attach(profiles, chat) {
@@ -96,16 +96,18 @@ class MongoSync {
   flush(final = false) {
     if (this.running) return this.running;
     this.running = (async () => {
-      // Checkpoint construction is already off-thread; only its immutable file
-      // crosses into MongoDB. Never structured-clone the entire live world.
-      if (!final) await Promise.all([
-        this.profiles.journal.requestCheckpoint(), this.chat?.writer?.checkpoint(),
-      ]);
+      // Read the same durable revision from pinned checkpoint + sealed WAL.
+      // A regular Atlas sync must not rewrite the whole world on disk first.
+      // Only paths/revision cross the worker boundary; no live-world clone.
+      if (!final) await this.chat?.writer?.checkpoint();
+      const pinned = !final ? await this.profiles.journal.pinSnapshot() : null;
+      const source = pinned ? { file: pinned.file, revision: pinned.revision } : null;
+      try {
       if (this.failed) {
         await this.worker.terminate();
         this.spawn();
         try {
-          await this.command("resume");
+          await this.command("resume", source);
         } catch (error) {
           // A worker that failed to read/acquire its source has no verified
           // manifest. The next flush must resume again, never send sync to it.
@@ -113,9 +115,14 @@ class MongoSync {
           throw error;
         }
       }
-      const result = await this.command("sync");
+      const result = await this.command("sync", source);
       this.lastError = null;
       return result;
+      } finally {
+        // A timeout must stop the reader before unlinking its inputs.
+        if (this.failed) await this.worker.terminate();
+        pinned?.release();
+      }
     })().finally(() => {
       this.running = null;
     });

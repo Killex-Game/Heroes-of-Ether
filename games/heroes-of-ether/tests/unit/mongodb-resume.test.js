@@ -3,17 +3,17 @@ const test=require("node:test"),assert=require("node:assert/strict");
 const {MongoSync}=require("../../src/server/persistence/mongodb-sync");
 test("A failed resume never sends sync to an uninitialized worker; the next flush reacquires first",async()=>{
   const calls=[];let rejectResume=true;
-  const owner={failed:true,profiles:{journal:{async requestCheckpoint(){calls.push("checkpoint");}}},
+  const owner={failed:true,profiles:{journal:{async pinSnapshot(){calls.push("pin");return {file:'snapshot',revision:17,release(){calls.push("release");}};}}},
     worker:{async terminate(){calls.push("terminate");}},
     spawn(){calls.push("spawn");this.failed=false;},
-    async command(name){calls.push(name);if(name==="resume"&&rejectResume)throw Object.assign(Error("read failed"),{code:"MONGO_OPERATION_FAILED"});return {revision:17};}
+    async command(name,source){assert.deepEqual(source,{file:'snapshot',revision:17});calls.push(name);if(name==="resume"&&rejectResume)throw Object.assign(Error("read failed"),{code:"MONGO_OPERATION_FAILED"});return {revision:17};}
   };
   await assert.rejects(MongoSync.prototype.flush.call(owner),{code:"MONGO_OPERATION_FAILED"});
   assert.equal(owner.failed,true);assert.equal(owner.running,null);assert.equal(calls.includes("sync"),false);
   rejectResume=false;
   const result=await MongoSync.prototype.flush.call(owner);
   assert.deepEqual(result,{revision:17});assert.equal(owner.failed,false);
-  assert.deepEqual(calls,["checkpoint","terminate","spawn","resume","checkpoint","terminate","spawn","resume","sync"]);
+  assert.deepEqual(calls,["pin","terminate","spawn","resume","terminate","release","pin","terminate","spawn","resume","sync","release"]);
 });
 test("Cold snapshot acquisition can outlast 45 seconds but remains bounded; write timeout stays 45 seconds",async t=>{
   t.mock.timers.enable({apis:["setTimeout"]});

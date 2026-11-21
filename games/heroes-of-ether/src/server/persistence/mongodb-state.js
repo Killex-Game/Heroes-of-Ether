@@ -123,9 +123,15 @@ function unpack(documents, manifest) {
     fail("MONGO_CHECKSUM_FAILED");
   return { world, auxiliary, snapshot, manifest };
 }
-function readLocal(dataDir, journal = false) {
+function readLocal(dataDir, journal = false, profileSnapshot = null) {
   const file = path.join(dataDir, "profiles.json");
-  const world = journal ? recover(file).data : JSON.parse(fs.readFileSync(file, "utf8"));
+  let world;
+  if (profileSnapshot) {
+    const saved = recover(profileSnapshot.file, false);
+    if (!Number.isSafeInteger(profileSnapshot.revision) || saved.revision !== profileSnapshot.revision)
+      fail("MONGO_INVALID_REVISION");
+    world = saved.data;
+  } else world = journal ? recover(file).data : JSON.parse(fs.readFileSync(file, "utf8"));
   const auxiliary = {};
   for (const name of AUXILIARY) {
     const source = path.join(dataDir, name);
