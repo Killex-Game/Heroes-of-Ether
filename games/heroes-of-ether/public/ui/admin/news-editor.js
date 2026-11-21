@@ -35,7 +35,7 @@
     reset.onclick=()=>{if(!busy){image=apiLayout.banners[fields.category.value];paint();}};
     const change=()=>paint();form.addEventListener('input',change);form.addEventListener('change',change);
     file.onchange=async()=>{
-      if(!file.files[0]||busy)return;busy=true;status.textContent='Подготавливаем и загружаем баннер…';file.disabled=true;
+      if(!file.files[0]||busy)return;busy=true;status.textContent='';file.disabled=true;
       try{const data=await png(file.files[0]);if(!alive||!file.isConnected)return;const result=await api('news/banner',{image:data});
         if(!alive||!file.isConnected)return;image=result.image;paint();status.textContent='Баннер загружен. Сохрани статью, чтобы опубликовать изменения.';
       }catch(e){if(alive&&file.isConnected)status.textContent=e.message;}

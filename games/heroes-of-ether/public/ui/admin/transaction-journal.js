@@ -64,7 +64,7 @@
         player = this.player;
       for (const id of ["prevTransactions", "nextTransactions", "refreshTransactions"])
         window.KillexControls.state($(id), true, false);
-      $("transactionHint").textContent = "Загружаем транзакции игрока «" + player.name + "»…";
+      $("transactionHint").textContent = "";
       try {
         const value = await this.api(
           "transactions?targetId=" +

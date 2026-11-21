@@ -177,7 +177,7 @@
         if (!this.dialog.open || this.loading !== request) return;
         this.status.textContent =
           error.name === "AbortError"
-            ? "Сервер не отвечает. Повторяем подключение…"
+            ? "Не удалось связаться с ареной."
             : error.message;
         for (const card of this.cards.values()) window.KillexControls.state(card, true);
       } finally {

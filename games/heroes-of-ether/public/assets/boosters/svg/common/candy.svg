@@ -1,24 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="candy-title candy-desc">
-<title id="candy-title">Конфета</title>
-<desc id="candy-desc">Обычный бустер. Даёт 150 единиц массы. Цена: 10 монет за 10 штук.</desc>
-<defs><linearGradient id="candy-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="candy-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="candy-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="candy-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="candy-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="candy-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="candy-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="candy-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="candy-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="candy-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="candy-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="candy-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
-<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-<path fill="url(#candy-plum)" d="M88 109L42 77L33 99L43 119L31 141L70 151L93 140Z"/>
-<path fill="url(#candy-plum)" d="M168 109L210 77L223 96L213 119L225 143L186 152L164 139Z"/>
-<path stroke="none" fill="#BD87E7" d="M41 88L78 113L42 107L39 99Z"/>
-<path stroke="none" fill="#694083" d="M43 138L71 130L83 138L69 145Z"/>
-<path stroke="none" fill="#BD87E7" d="M210 86L213 95L178 115Z"/>
-<path stroke="none" fill="#694083" d="M183 134L211 131L215 139L188 147Z"/>
-<path fill="none" stroke="#392B48" stroke-width="4" d="M46 104L80 119L51 133M207 103L176 119L207 134"/>
-<path fill="url(#candy-gold)" d="M81 104L97 99V148L81 142Z"/>
-<path fill="url(#candy-gold)" d="M159 99L176 105V142L159 148Z"/>
-<circle cx="128" cy="123" r="52" fill="url(#candy-pink)"/>
-<path stroke="none" fill="#CE5798" d="M177 113C183 139 165 165 141 172C122 177 105 171 95 160C119 169 144 162 157 144C164 134 168 123 167 109Z"/>
-<path fill="none" stroke="#FFF4C6" stroke-width="12" d="M105 79C136 70 167 95 161 127C157 151 126 161 108 143C91 126 103 104 121 103C139 101 148 122 136 132C129 139 118 136 118 127"/>
-<path fill="none" stroke="#FFECA5" stroke-width="5" d="M116 79C139 79 153 92 156 110"/>
-<path fill="none" stroke="#FFF4FB" stroke-width="5" d="M90 109C91 99 97 93 105 90"/>
-<path fill="none" stroke="#DAB3EF" stroke-width="4" d="M46 88L64 100M195 96L207 86"/>
-<path fill="none" stroke="#FFF8C1" stroke-width="3" d="M85 113V132M171 114V130"/>
-</g>
+  <title id="candy-title">Конфета</title>
+  <desc id="candy-desc">Обычный бустер. Даёт 150 единиц массы. Цена: 10 монет за 10 штук.</desc>
+  <defs>
+    <radialGradient id="candy-gold" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#FFFFB4" /><stop offset=".33" stop-color="#FFE95A" /><stop offset=".7" stop-color="#FFCA13" /><stop offset="1" stop-color="#E89208" /></radialGradient><radialGradient id="candy-steel" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#FFFFFF" /><stop offset=".33" stop-color="#EEF1FF" /><stop offset=".7" stop-color="#C3C9EE" /><stop offset="1" stop-color="#9299C2" /></radialGradient><radialGradient id="candy-frost" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#F5FFFF" /><stop offset=".33" stop-color="#91F4FF" /><stop offset=".7" stop-color="#26D4F8" /><stop offset="1" stop-color="#1596D4" /></radialGradient><radialGradient id="candy-plum" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#F2BEFF" /><stop offset=".33" stop-color="#D779FF" /><stop offset=".7" stop-color="#AF3DEB" /><stop offset="1" stop-color="#7630B9" /></radialGradient><radialGradient id="candy-pink" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#FFCFEB" /><stop offset=".33" stop-color="#FF8AC1" /><stop offset=".7" stop-color="#F83C8C" /><stop offset="1" stop-color="#CA185D" /></radialGradient><radialGradient id="candy-green" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#E9FF9C" /><stop offset=".33" stop-color="#BCF244" /><stop offset=".7" stop-color="#76D213" /><stop offset="1" stop-color="#388C16" /></radialGradient><radialGradient id="candy-red" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#FF9AA9" /><stop offset=".33" stop-color="#FF5B78" /><stop offset=".7" stop-color="#EC1B4C" /><stop offset="1" stop-color="#AF0A38" /></radialGradient><radialGradient id="candy-blue" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#D9FFFF" /><stop offset=".33" stop-color="#59E6FF" /><stop offset=".7" stop-color="#11B5F6" /><stop offset="1" stop-color="#0765C5" /></radialGradient><radialGradient id="candy-cream" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#FFFFF5" /><stop offset=".33" stop-color="#FFF4CE" /><stop offset=".7" stop-color="#FFE2A0" /><stop offset="1" stop-color="#DBA557" /></radialGradient><radialGradient id="candy-stone" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#F1F4FF" /><stop offset=".33" stop-color="#C5D1E5" /><stop offset=".7" stop-color="#9AA8C8" /><stop offset="1" stop-color="#6E7DA6" /></radialGradient><radialGradient id="candy-dark" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#C3A2EC" /><stop offset=".33" stop-color="#9670CC" /><stop offset=".7" stop-color="#68459D" /><stop offset="1" stop-color="#493171" /></radialGradient><radialGradient id="candy-brown" cx=".31" cy=".22" r=".83"><stop offset="0" stop-color="#FFE996" /><stop offset=".33" stop-color="#FFCA55" /><stop offset=".7" stop-color="#F09C20" /><stop offset="1" stop-color="#BC600C" /></radialGradient><radialGradient id="candy-round-volume" cx=".34" cy=".25" r=".77"><stop offset=".4" stop-color="#81065C" stop-opacity="0" /><stop offset=".75" stop-color="#81065C" stop-opacity=".06" /><stop offset="1" stop-color="#81065C" stop-opacity=".43" /></radialGradient><radialGradient id="candy-reflected-pink" cx=".5" cy=".5" r=".5"><stop stop-color="#FFB0E1" stop-opacity=".7" /><stop offset="1" stop-color="#FFB0E1" stop-opacity="0" /></radialGradient></defs>
+  <defs>
+    <clipPath id="candy-body-clip">
+      <ellipse cx="128" cy="128" rx="54" ry="44" />
+    </clipPath>
+    <linearGradient id="candy-gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFFFF" stop-opacity=".8" />
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <g transform="rotate(43 128 128)" stroke="#B969BA" stroke-width=".85" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#candy-steel)" d="M82 107C64 102 49 81 35 85C25 88 35 105 31 118C28 128 22 137 30 143C43 151 55 156 75 146L88 139Z" />
+    <path fill="url(#candy-steel)" d="M174 107C192 102 207 81 221 85C231 88 221 105 225 118C228 128 234 137 226 143C213 151 201 156 181 146L168 139Z" />
+    <path fill="url(#candy-pink)" stroke="none" d="M37 88C46 90 51 106 79 118L81 123C52 118 36 115 35 107Z M32 139C44 127 60 130 78 132L78 141C56 145 46 152 32 139Z M219 88C210 90 205 106 177 118L175 123C204 118 220 115 221 107Z M224 139C212 127 196 130 178 132L178 141C200 145 210 152 224 139Z" />
+    <ellipse cx="80" cy="128" rx="8" ry="20" fill="url(#candy-gold)" stroke="#D8991B" stroke-width=".8" />
+    <ellipse cx="176" cy="128" rx="8" ry="20" fill="url(#candy-gold)" stroke="#D8991B" stroke-width=".8" />
+    <ellipse cx="128" cy="128" rx="54" ry="44" fill="url(#candy-pink)" />
+    <g clip-path="url(#candy-body-clip)" stroke="none">
+      <path fill="url(#candy-plum)" d="M82 91C110 92 111 116 138 123C159 129 173 132 183 148L178 168C159 143 139 144 121 136C99 126 105 110 80 109Z" />
+      <path fill="#FFF4FC" d="M104 80C134 82 131 105 155 115C167 120 176 122 185 131L184 147C170 131 150 132 135 119C118 105 127 94 103 92Z" />
+      <path fill="#FDF1FF" opacity=".95" d="M76 119C99 122 100 143 123 153C139 160 154 166 165 179L145 181C135 169 121 170 107 160C89 147 91 136 75 136Z" />
+      <ellipse cx="117" cy="107" rx="41" ry="19" fill="url(#candy-gloss)" />
+      <path d="M76 139C91 160 117 168 143 162C163 158 177 142 182 127C182 158 160 177 130 176C104 176 82 161 76 139Z" fill="#A93890" opacity=".19" />
+    <ellipse cx="128" cy="128" rx="54" ry="44" fill="url(#candy-round-volume)" /><ellipse cx="147" cy="156" rx="30" ry="11" fill="url(#candy-reflected-pink)" /></g>
+    <ellipse cx="91" cy="116" rx="2.6" ry="3.5" fill="#FFFFFF" stroke="none" />
+  <path d="M96 105C104 96 119 92 125 96C130 101 121 105 111 108C101 112 91 113 96 105Z" fill="#FFFFFF" stroke="none" opacity=".91" /><path d="M38 92C42 92 46 102 54 109C45 109 39 106 37 101C35 97 35 94 38 92ZM213 94C216 91 220 92 219 98C218 103 211 110 203 113C203 108 211 102 213 94Z" fill="#FFFFFF" stroke="none" opacity=".88" /><path d="M34 134C43 131 55 129 65 131C56 135 43 139 37 139C34 139 32 137 34 134ZM219 135C210 133 198 131 190 132C198 138 212 142 218 140C222 139 223 136 219 135Z" fill="#FFFFFF" stroke="none" opacity=".72" /></g>
 </svg>

@@ -211,7 +211,7 @@
   }
   function setLobbyStatus(text, error = false) {
     if (serverUnavailable && phase === "lobby") {
-      text = "Нет связи с ареной. Проверяем доступность сервера…";
+      text = "Нет связи с ареной.";
       error = true;
     }
     ui.lobbyStatus.textContent = text;
@@ -243,8 +243,7 @@
       ui.play.disabled && !ui.play.hasAttribute("data-pending"),
     );
     ui.play.setAttribute("aria-busy", String(serverUnavailable));
-    ui.play.textContent =
-      phase === "connecting" ? "Подключение…" : phase === "leaving" ? "Выход из арены…" : "Играть";
+    ui.play.textContent = "Играть";
     ui.play.setAttribute(
       "aria-label",
       serverUnavailable ? "Играть - ожидаем восстановления связи" : ui.play.textContent,
@@ -595,7 +594,7 @@
     if (previousSocket && previousSocket.readyState !== WebSocket.CLOSED) {
       closingSocket = previousSocket;
       phase = "leaving";
-      setLobbyStatus("Закрываем соединение с ареной…");
+      setLobbyStatus("");
       refreshJoinControls();
       try {
         previousSocket.close(1000, "Return to lobby");
@@ -630,7 +629,7 @@
     const generation = ++joinGeneration;
     if (location.protocol !== "http:" && location.protocol !== "https:") {
       setLobbyStatus(
-        "Это просмотр файла. Для игры запусти npm start и открой http://localhost:3000.",
+        "Открой игру по её адресу в браузере.",
         true,
       );
       return;
@@ -647,7 +646,7 @@
     try {
       await boosterUI.prepareArena();
       if (phase !== "connecting" || generation !== joinGeneration) return;
-      setLobbyStatus("Выбираем арену…");
+      setLobbyStatus("");
       reservation = await arenaPicker.reserve();
     } catch (error) {
       if (phase === "connecting" && generation === joinGeneration) {
@@ -663,7 +662,7 @@
       refreshJoinControls();
     }
     if (phase !== "connecting" || generation !== joinGeneration) return;
-    setLobbyStatus(`Подключаемся: ${reservation.name}…`);
+    setLobbyStatus("");
     let attempt;
     try {
       const scheme = location.protocol === "https:" ? "wss:" : "ws:";
@@ -2256,9 +2255,9 @@
   syncFullscreen();
   refreshJoinControls();
   if (!ctx)
-    setLobbyStatus("Браузер не поддерживает Canvas 2D. Открой игру в другом браузере.", true);
+    setLobbyStatus("Этот браузер не поддерживает игру. Попробуй другой браузер.", true);
   else if (!("WebSocket" in window))
-    setLobbyStatus("Браузер не поддерживает WebSocket. Открой игру в другом браузере.", true);
+    setLobbyStatus("Этот браузер не поддерживает игру. Попробуй другой браузер.", true);
   else window.KillexBoot?.runtimeReady();
   // Здесь намеренно нет connect(), WebSocket, таймера движения или цикла арены.
 })();

@@ -22,6 +22,9 @@ design/
 output/
 docs/**/*.png
 docs/**/*.webp
+!docs/artwork/style-canon/*.png
+!docs/artwork/style-canon/refs/*.png
+!docs/artwork/style-canon/refs/*.webp
 docs/**/*.jpg
 docs/**/*.jpeg
 docs/**/*.mp4

@@ -1,23 +1,166 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="axe-title axe-desc">
-<title id="axe-title">Секира</title>
-<desc id="axe-desc">Редкий бустер. Рассекает игрока на четыре равные части. Двусторонняя фантазийная секира без крови.</desc>
-<defs><linearGradient id="axe-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="axe-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="axe-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="axe-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="axe-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="axe-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="axe-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="axe-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="axe-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="axe-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="axe-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="axe-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
-<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-<path d="M116 103 L140 103 L144 210 Q144 223 128 223 Q112 223 112 210 Z" fill="url(#axe-brown)"/>
-<path d="M121 135 L120 205" fill="none" stroke="#F3C38A" stroke-width="5"/>
-<path d="M113 174 L141 185 M113 190 L142 201" fill="none" stroke="#8D4D3D" stroke-width="5"/>
-<path d="M113 212 L142 212 L142 219 Q128 227 113 219 Z" fill="url(#axe-gold)"/>
-<path d="M112 64 Q79 66 58 40 Q35 64 36 101 Q39 132 62 151 Q76 125 112 122 Z" fill="url(#axe-steel)"/>
-<path d="M144 64 Q177 66 198 40 Q221 64 220 101 Q217 132 194 151 Q180 125 144 122 Z" fill="url(#axe-steel)"/>
-<path d="M56 52 Q39 88 52 117 Q57 128 62 136 L70 124 Q51 102 60 68 Z" fill="#EDF6FF" stroke="none"/>
-<path d="M200 52 Q217 88 204 117 Q199 128 194 136 L186 124 Q205 102 196 68 Z" fill="#EDF6FF" stroke="none"/>
-<path d="M67 72 Q85 84 107 83 L107 112 Q83 113 72 122 Q61 99 67 72Z" fill="#899CC6" stroke="none"/>
-<path d="M189 72 Q171 84 149 83 L149 112 Q173 113 184 122 Q195 99 189 72Z" fill="#899CC6" stroke="none"/>
-<path d="M108 60 Q128 51 148 60 L153 121 L143 136 L113 136 L103 121 Z" fill="url(#axe-gold)"/>
-<path d="M116 65 L114 116" fill="none" stroke="#FFF4BD" stroke-width="5"/>
-<path d="M128 76 L141 96 L128 117 L115 96 Z" fill="url(#axe-plum)" stroke-width="5"/>
-<path d="M128 80 L128 111 L119 96 Z" fill="#D8B3FA" stroke="none"/>
-<path d="M119 128 L138 128" fill="none" stroke="#B16D29" stroke-width="4"/>
-</g>
+  <title id="axe-title">Секира</title>
+  <desc id="axe-desc">Редкий бустер. Рассекает игрока на четыре равные части. Двусторонняя фантазийная секира без крови.</desc>
+  <defs>
+    <radialGradient id="axe-gold" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFC2" />
+      <stop offset=".25" stop-color="#FFE972" />
+      <stop offset=".55" stop-color="#FFD22A" />
+      <stop offset=".82" stop-color="#F5A512" />
+      <stop offset="1" stop-color="#DC830C" />
+    </radialGradient>
+    <radialGradient id="axe-steel" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#EFF2FF" />
+      <stop offset=".55" stop-color="#CAD0E8" />
+      <stop offset=".82" stop-color="#9A9DBD" />
+      <stop offset="1" stop-color="#787EAA" />
+    </radialGradient>
+    <radialGradient id="axe-frost" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#C2FFFF" />
+      <stop offset=".55" stop-color="#57E2FF" />
+      <stop offset=".82" stop-color="#18ABEA" />
+      <stop offset="1" stop-color="#1580D0" />
+    </radialGradient>
+    <radialGradient id="axe-plum" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#EFCFFF" />
+      <stop offset=".25" stop-color="#D58BFF" />
+      <stop offset=".55" stop-color="#B64EF3" />
+      <stop offset=".82" stop-color="#8831CE" />
+      <stop offset="1" stop-color="#6423A8" />
+    </radialGradient>
+    <radialGradient id="axe-pink" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE4F5" />
+      <stop offset=".25" stop-color="#FFA3DA" />
+      <stop offset=".55" stop-color="#F857AD" />
+      <stop offset=".82" stop-color="#D93490" />
+      <stop offset="1" stop-color="#BB2B78" />
+    </radialGradient>
+    <radialGradient id="axe-green" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F2FFAA" />
+      <stop offset=".25" stop-color="#C9F75B" />
+      <stop offset=".55" stop-color="#84DF1F" />
+      <stop offset=".82" stop-color="#42AE24" />
+      <stop offset="1" stop-color="#20833F" />
+    </radialGradient>
+    <radialGradient id="axe-red" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFD0D6" />
+      <stop offset=".25" stop-color="#FF8596" />
+      <stop offset=".55" stop-color="#FB3F62" />
+      <stop offset=".82" stop-color="#DC1744" />
+      <stop offset="1" stop-color="#B5183D" />
+    </radialGradient>
+    <radialGradient id="axe-blue" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#E9FFFF" />
+      <stop offset=".25" stop-color="#81EBFF" />
+      <stop offset=".55" stop-color="#31C3F3" />
+      <stop offset=".82" stop-color="#0B91E0" />
+      <stop offset="1" stop-color="#176ACA" />
+    </radialGradient>
+    <radialGradient id="axe-cream" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#FFF4D9" />
+      <stop offset=".55" stop-color="#FFE7B5" />
+      <stop offset=".82" stop-color="#F5CB8B" />
+      <stop offset="1" stop-color="#DDA563" />
+    </radialGradient>
+    <radialGradient id="axe-stone" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F3F3FC" />
+      <stop offset=".25" stop-color="#D5D8E8" />
+      <stop offset=".55" stop-color="#AFB6D0" />
+      <stop offset=".82" stop-color="#8C95B3" />
+      <stop offset="1" stop-color="#727F9D" />
+    </radialGradient>
+    <radialGradient id="axe-dark" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#B688D6" />
+      <stop offset=".25" stop-color="#8455B6" />
+      <stop offset=".55" stop-color="#623A97" />
+      <stop offset=".82" stop-color="#4C2878" />
+      <stop offset="1" stop-color="#392461" />
+    </radialGradient>
+    <radialGradient id="axe-brown" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE9AF" />
+      <stop offset=".25" stop-color="#FFC370" />
+      <stop offset=".55" stop-color="#F3A038" />
+      <stop offset=".82" stop-color="#D97C24" />
+      <stop offset="1" stop-color="#B55E26" />
+    </radialGradient>
+    <radialGradient id="axe-c2-glassGreen" cx=".25" cy=".15" r=".92">
+      <stop stop-color="#EEFFFF" />
+      <stop offset=".35" stop-color="#A6F5BE" />
+      <stop offset=".72" stop-color="#5CDB8E" />
+      <stop offset="1" stop-color="#20A86A" />
+    </radialGradient>
+    <radialGradient id="axe-c2-poisonLiquid" cx=".32" cy=".28" r=".86">
+      <stop stop-color="#98F729" />
+      <stop offset=".5" stop-color="#47C315" />
+      <stop offset="1" stop-color="#067638" />
+    </radialGradient>
+    <radialGradient id="axe-c2-orb" cx=".3" cy=".22" r=".78">
+      <stop stop-color="#86FFFF" />
+      <stop offset=".27" stop-color="#1CCEEB" />
+      <stop offset=".64" stop-color="#0789C4" />
+      <stop offset=".85" stop-color="#076BBC" />
+      <stop offset="1" stop-color="#28C7EF" />
+    </radialGradient>
+    <radialGradient id="axe-c2-purpleOrb" cx=".32" cy=".24" r=".76">
+      <stop stop-color="#F7C5FF" />
+      <stop offset=".3" stop-color="#D780FF" />
+      <stop offset=".63" stop-color="#A94EE8" />
+      <stop offset="1" stop-color="#7430B3" />
+    </radialGradient>
+    <radialGradient id="axe-c2-cyanGlow">
+      <stop stop-color="#C9FFFF" stop-opacity=".85" />
+      <stop offset=".6" stop-color="#5DEFF5" stop-opacity=".4" />
+      <stop offset="1" stop-color="#34DCEB" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="axe-c2-amberFace" cx=".26" cy=".16" r=".86">
+      <stop stop-color="#FFF59C" />
+      <stop offset=".3" stop-color="#FFDA42" />
+      <stop offset=".72" stop-color="#F4AF15" />
+      <stop offset="1" stop-color="#E58E0C" />
+    </radialGradient>
+    <linearGradient id="axe-c2-plumTube" x1="0" y1=".2" x2="1" y2=".3">
+      <stop stop-color="#A94EDE" />
+      <stop offset=".28" stop-color="#E1A4FF" />
+      <stop offset=".48" stop-color="#B565EA" />
+      <stop offset="1" stop-color="#6A2CAA" />
+    </linearGradient>
+    <linearGradient id="axe-c2-goldTube" x1="0" y1="0" x2="1" y2=".2">
+      <stop stop-color="#E99D18" />
+      <stop offset=".23" stop-color="#FFF9BB" />
+      <stop offset=".46" stop-color="#FFD93C" />
+      <stop offset="1" stop-color="#E69A14" />
+    </linearGradient>
+    <filter id="axe-c2-contact" x="-.2" y="-.2" width="1.4" height="1.5" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.4" />
+    </filter>
+  </defs>
+  <g transform="translate(128 128) rotate(26) scale(.91) translate(-128 -128)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M115 111Q128 105 141 111L144 216Q144 230 128 232Q112 230 112 216Z" fill="url(#axe-c2-plumTube)" />
+    <path d="M117 143Q130 149 141 158M116 164Q130 170 142 180M115 185Q130 191 142 202" fill="none" stroke="#7435AA" stroke-width="3" opacity=".75" />
+    <path d="M119 141Q128 146 134 149M118 163Q128 168 135 172M117 184Q128 189 136 194" fill="none" stroke="#E6AEFF" stroke-width="2.8" opacity=".8" />
+    <path d="M111 214Q128 221 145 214V225Q140 238 128 241Q116 238 111 225Z" fill="url(#axe-gold)" />
+    <path d="M115 218Q126 224 136 220C128 230 120 229 115 218Z" fill="#FFF9C1" />
+    <path d="M112 64C90 66 69 51 60 33C37 51 24 80 28 110C32 136 48 155 66 166C73 141 89 125 112 124Z" fill="url(#axe-steel)" />
+    <path d="M144 64C166 66 187 51 196 33C219 51 232 80 228 110C224 136 208 155 190 166C183 141 167 125 144 124Z" fill="url(#axe-steel)" />
+    <path d="M59 39C39 61 30 86 36 111C42 133 53 147 63 154L68 142C49 122 45 104 47 85C49 66 57 49 59 39Z" fill="#FCFDFF" />
+    <path d="M197 39C217 61 226 86 220 111C214 133 203 147 193 154L188 142C207 122 211 104 209 85C207 66 199 49 197 39Z" fill="#F2F2FF" />
+    <path d="M46 84C45 110 54 131 65 142L69 130C59 115 54 99 55 82Z" fill="#BCC1DF" />
+    <path d="M210 84C211 110 202 131 191 142L187 130C197 115 202 99 201 82Z" fill="#969DBC" opacity=".7" />
+    <path d="M66 61C79 77 94 82 112 80L112 113C93 114 79 125 72 137C59 117 56 86 66 61Z M190 61C177 77 162 82 144 80L144 113C163 114 177 125 184 137C197 117 200 86 190 61Z" fill="url(#axe-plum)" />
+    <path d="M65 58C77 74 94 80 112 77L112 86C91 87 76 79 67 69C63 86 64 102 68 114C71 106 75 100 81 96C78 109 79 118 83 121L72 137C58 115 55 84 65 58Z M191 58C179 74 162 80 144 77L144 86C165 87 180 79 189 69C193 86 192 102 188 114C185 106 181 100 175 96C178 109 177 118 173 121L184 137C198 115 201 84 191 58Z" fill="url(#axe-gold)" />
+    <path d="M67 64C80 79 96 82 106 81C95 85 77 78 67 64Z M190 64C181 75 169 80 153 81C168 84 182 77 190 64Z" fill="#FFFBC0" />
+    <path d="M109 58Q128 50 147 58L152 117Q151 130 140 137H116Q105 130 104 117Z" fill="url(#axe-gold)" />
+    <path d="M111 64Q121 58 134 60C139 63 124 65 118 69L116 88Q112 93 111 86Z" fill="#FFFFDC" />
+    <path d="M128 72L145 96L128 122L111 96Z" fill="url(#axe-plum)" />
+    <path d="M128 74V102L113 96Z" fill="#F1B7FF" />
+    <path d="M128 74L143 96L128 102Z" fill="#CC78F9" />
+    <path d="M113 96L128 102V119Z" fill="#B854E8" />
+    <path d="M128 102L143 96L128 119Z" fill="#7933BB" />
+    <path d="M120 86L126 77L125 91L115 96Z" fill="#FFFFFF" opacity=".8" />
+    <path d="M114 128Q128 133 141 128L142 139Q128 145 114 139Z" fill="url(#axe-gold)" />
+  </g>
 </svg>

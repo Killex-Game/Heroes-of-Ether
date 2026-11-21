@@ -40,7 +40,7 @@
         event.preventDefault();if(this.busy)return;
         const payload={revision:s.revision,windows:rows.map(r=>({mode:r.mode,enabled:r.manual,startsAt:instant(r.inputs[0].value),endsAt:instant(r.inputs[1].value)})),reason:reason.value};
         const signature=JSON.stringify(payload);if(this.pending?.signature!==signature)this.pending={signature,requestId:KillexRequestIds.create()};
-        const generation=this.generation;this.busy=true;save.disabled=true;refresh.disabled=true;status.textContent='Сохраняем…';
+        const generation=this.generation;this.busy=true;save.disabled=true;refresh.disabled=true;status.textContent='';
         try{
           const next=await this.api('maintenance',{...payload,requestId:this.pending.requestId});
           if(generation!==this.generation)return;this.state=next;this.pending=null;this.render();this.root.querySelector('#service-save-status').textContent='Расписание сохранено.';

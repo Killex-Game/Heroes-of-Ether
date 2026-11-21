@@ -492,7 +492,7 @@
         } catch (error) {
           this.wardrobeStatus.textContent =
             error.name === "AbortError"
-              ? "Ответ задержался. Обновляем сохранённый выбор."
+              ? "Не удалось подтвердить выбор."
               : error.message;
           await this.owner.loadProfile();
         } finally {

@@ -1,21 +1,166 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="stone-title stone-desc">
-<title id="stone-title">Камень</title>
-<desc id="stone-desc">Редкий бустер. Обездвиживает игрока на 20 секунд. Крупная серая глыба со светлым знаком неподвижности.</desc>
-<defs><linearGradient id="stone-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="stone-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="stone-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="stone-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="stone-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="stone-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="stone-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="stone-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="stone-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="stone-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="stone-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="stone-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
-<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-<path d="M58 83 L101 49 L156 46 L207 91 L219 150 L185 199 L108 216 L48 184 L36 132 Z" fill="url(#stone-stone)"/>
-<path d="M58 83 L103 66 L156 46 L101 49 Z" fill="#ECEBF1" stroke="none"/>
-<path d="M103 66 L180 101 L207 91 L156 46 Z" fill="#BFC0CF" stroke="none"/>
-<path d="M36 132 L62 127 L78 173 L48 184 Z" fill="#85859B" stroke="none"/>
-<path d="M62 127 L103 66 L180 101 L177 166 L119 187 L78 173 Z" fill="#A8A9BA" stroke="none"/>
-<path d="M177 166 L219 150 L185 199 L108 216 L119 187 Z" fill="#6D7088" stroke="none"/>
-<path d="M66 91 L98 76" fill="none" stroke="#EEEFF6" stroke-width="7"/>
-<path d="M193 113 L188 132 L195 144" fill="none" stroke="#6C6C84" stroke-width="5"/>
-<path d="M80 174 L95 179 L103 193" fill="none" stroke="#6C6C84" stroke-width="5"/>
-<circle cx="127" cy="130" r="34" fill="none" stroke="#E1F7F5" stroke-width="6"/>
-<rect x="113" y="112" width="9" height="35" rx="4" fill="#F0FFFF" stroke="none"/>
-<rect x="132" y="112" width="9" height="35" rx="4" fill="#F0FFFF" stroke="none"/>
-<path d="M117 183 L152 175" fill="none" stroke="#BCBECC" stroke-width="4"/>
-</g>
+  <title id="stone-title">Камень</title>
+  <desc id="stone-desc">Редкий бустер. Обездвиживает игрока на 20 секунд. Крупная серая глыба со светлым знаком неподвижности.</desc>
+  <defs>
+    <radialGradient id="stone-gold" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFC2" />
+      <stop offset=".25" stop-color="#FFE972" />
+      <stop offset=".55" stop-color="#FFD22A" />
+      <stop offset=".82" stop-color="#F5A512" />
+      <stop offset="1" stop-color="#DC830C" />
+    </radialGradient>
+    <radialGradient id="stone-steel" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#EFF2FF" />
+      <stop offset=".55" stop-color="#CAD0E8" />
+      <stop offset=".82" stop-color="#9A9DBD" />
+      <stop offset="1" stop-color="#787EAA" />
+    </radialGradient>
+    <radialGradient id="stone-frost" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#C2FFFF" />
+      <stop offset=".55" stop-color="#57E2FF" />
+      <stop offset=".82" stop-color="#18ABEA" />
+      <stop offset="1" stop-color="#1580D0" />
+    </radialGradient>
+    <radialGradient id="stone-plum" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#EFCFFF" />
+      <stop offset=".25" stop-color="#D58BFF" />
+      <stop offset=".55" stop-color="#B64EF3" />
+      <stop offset=".82" stop-color="#8831CE" />
+      <stop offset="1" stop-color="#6423A8" />
+    </radialGradient>
+    <radialGradient id="stone-pink" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE4F5" />
+      <stop offset=".25" stop-color="#FFA3DA" />
+      <stop offset=".55" stop-color="#F857AD" />
+      <stop offset=".82" stop-color="#D93490" />
+      <stop offset="1" stop-color="#BB2B78" />
+    </radialGradient>
+    <radialGradient id="stone-green" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F2FFAA" />
+      <stop offset=".25" stop-color="#C9F75B" />
+      <stop offset=".55" stop-color="#84DF1F" />
+      <stop offset=".82" stop-color="#42AE24" />
+      <stop offset="1" stop-color="#20833F" />
+    </radialGradient>
+    <radialGradient id="stone-red" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFD0D6" />
+      <stop offset=".25" stop-color="#FF8596" />
+      <stop offset=".55" stop-color="#FB3F62" />
+      <stop offset=".82" stop-color="#DC1744" />
+      <stop offset="1" stop-color="#B5183D" />
+    </radialGradient>
+    <radialGradient id="stone-blue" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#E9FFFF" />
+      <stop offset=".25" stop-color="#81EBFF" />
+      <stop offset=".55" stop-color="#31C3F3" />
+      <stop offset=".82" stop-color="#0B91E0" />
+      <stop offset="1" stop-color="#176ACA" />
+    </radialGradient>
+    <radialGradient id="stone-cream" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#FFF4D9" />
+      <stop offset=".55" stop-color="#FFE7B5" />
+      <stop offset=".82" stop-color="#F5CB8B" />
+      <stop offset="1" stop-color="#DDA563" />
+    </radialGradient>
+    <radialGradient id="stone-stone" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F3F3FC" />
+      <stop offset=".25" stop-color="#D5D8E8" />
+      <stop offset=".55" stop-color="#AFB6D0" />
+      <stop offset=".82" stop-color="#8C95B3" />
+      <stop offset="1" stop-color="#727F9D" />
+    </radialGradient>
+    <radialGradient id="stone-dark" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#B688D6" />
+      <stop offset=".25" stop-color="#8455B6" />
+      <stop offset=".55" stop-color="#623A97" />
+      <stop offset=".82" stop-color="#4C2878" />
+      <stop offset="1" stop-color="#392461" />
+    </radialGradient>
+    <radialGradient id="stone-brown" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE9AF" />
+      <stop offset=".25" stop-color="#FFC370" />
+      <stop offset=".55" stop-color="#F3A038" />
+      <stop offset=".82" stop-color="#D97C24" />
+      <stop offset="1" stop-color="#B55E26" />
+    </radialGradient>
+    <radialGradient id="stone-face" cx=".28" cy=".2" r=".86">
+      <stop offset="0" stop-color="#E5E9F4" />
+      <stop offset=".25" stop-color="#CCD4E7" />
+      <stop offset=".55" stop-color="#AFBDD6" />
+      <stop offset=".82" stop-color="#98AAC7" />
+      <stop offset="1" stop-color="#8398BB" />
+    </radialGradient>
+    <radialGradient id="stone-c2-glassGreen" cx=".25" cy=".15" r=".92">
+      <stop stop-color="#EEFFFF" />
+      <stop offset=".35" stop-color="#A6F5BE" />
+      <stop offset=".72" stop-color="#5CDB8E" />
+      <stop offset="1" stop-color="#20A86A" />
+    </radialGradient>
+    <radialGradient id="stone-c2-poisonLiquid" cx=".32" cy=".28" r=".86">
+      <stop stop-color="#98F729" />
+      <stop offset=".5" stop-color="#47C315" />
+      <stop offset="1" stop-color="#067638" />
+    </radialGradient>
+    <radialGradient id="stone-c2-orb" cx=".3" cy=".22" r=".78">
+      <stop stop-color="#86FFFF" />
+      <stop offset=".27" stop-color="#1CCEEB" />
+      <stop offset=".64" stop-color="#0789C4" />
+      <stop offset=".85" stop-color="#076BBC" />
+      <stop offset="1" stop-color="#28C7EF" />
+    </radialGradient>
+    <radialGradient id="stone-c2-purpleOrb" cx=".32" cy=".24" r=".76">
+      <stop stop-color="#F7C5FF" />
+      <stop offset=".3" stop-color="#D780FF" />
+      <stop offset=".63" stop-color="#A94EE8" />
+      <stop offset="1" stop-color="#7430B3" />
+    </radialGradient>
+    <radialGradient id="stone-c2-cyanGlow">
+      <stop stop-color="#C9FFFF" stop-opacity=".85" />
+      <stop offset=".6" stop-color="#5DEFF5" stop-opacity=".4" />
+      <stop offset="1" stop-color="#34DCEB" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="stone-c2-amberFace" cx=".26" cy=".16" r=".86">
+      <stop stop-color="#FFF59C" />
+      <stop offset=".3" stop-color="#FFDA42" />
+      <stop offset=".72" stop-color="#F4AF15" />
+      <stop offset="1" stop-color="#E58E0C" />
+    </radialGradient>
+    <linearGradient id="stone-c2-plumTube" x1="0" y1=".2" x2="1" y2=".3">
+      <stop stop-color="#A94EDE" />
+      <stop offset=".28" stop-color="#E1A4FF" />
+      <stop offset=".48" stop-color="#B565EA" />
+      <stop offset="1" stop-color="#6A2CAA" />
+    </linearGradient>
+    <linearGradient id="stone-c2-goldTube" x1="0" y1="0" x2="1" y2=".2">
+      <stop stop-color="#E99D18" />
+      <stop offset=".23" stop-color="#FFF9BB" />
+      <stop offset=".46" stop-color="#FFD93C" />
+      <stop offset="1" stop-color="#E69A14" />
+    </linearGradient>
+    <filter id="stone-c2-contact" x="-.2" y="-.2" width="1.4" height="1.5" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.4" />
+    </filter>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M57 79 Q82 51 104 46 L151 43 Q161 42 169 50 L204 83 Q211 91 213 102 L222 142 Q224 153 216 163 L191 197 Q186 204 175 207 L115 220 Q105 221 95 216 L50 192 Q42 188 40 178 L31 139 Q29 131 34 120 Z" fill="url(#stone-stone)" />
+    <path d="M57 79 L105 64 L152 47 L107 50 Q83 54 57 79 Z" fill="#F1F4FA" />
+    <path d="M105 64 L178 99 L205 91 Q205 84 194 75 L162 48 Q157 44 152 47 Z" fill="url(#stone-steel)" />
+    <path d="M34 133 L63 127 L80 175 L46 185 Q42 181 40 171 Z" fill="url(#stone-stone)" />
+    <path d="M63 127 L105 64 L178 99 L176 165 L119 188 L80 175 Z" fill="url(#stone-face)" />
+    <path d="M178 99 L208 95 L219 145 L176 165 Z" fill="url(#stone-stone)" />
+    <path d="M176 165 L219 145 Q221 152 214 162 L186 198 L111 215 L119 188 Z" fill="#8590AC" />
+    <path d="M193 113 L188 132 L196 143 M80 176 L94 180 L102 194" fill="none" stroke="#7988A2" stroke-width="2.5" opacity=".45" />
+    <circle cx="128" cy="130" r="36" fill="#9FC6E0" opacity=".5" />
+    <circle cx="128" cy="129" r="31" fill="none" stroke="#F0FFFE" stroke-width="2.5" opacity="0.6" />
+    <rect x="114" y="112" width="10" height="34" rx="4" fill="#F5FFFF" />
+    <rect x="133" y="112" width="10" height="34" rx="4" fill="#E7F8F8" />
+    <path d="M119 187 L153 176" fill="none" stroke="#CFD8E8" stroke-width="2.5" opacity="0.6" />
+    <path d="M68 78C77 68 91 64 98 66C103 70 90 78 80 83Q65 89 68 78Z" fill="#FFFFFF" opacity=".72" />
+    <path d="M37 137L44 166Q46 179 54 182C45 182 40 175 38 164Z" fill="#DDE4F0" opacity=".72" />
+    <path d="M116 190L152 178C139 189 126 194 116 194Z" fill="#CFD8E9" opacity=".66" />
+  </g>
 </svg>

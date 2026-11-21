@@ -60,7 +60,7 @@
       this.hint.textContent = view === 'registrations' ? 'Реальные аккаунты. Время: МСК. Для старых аккаунтов дата восстановлена по первым сохранениям.' : view === 'online' ? 'Реальные игроки в лобби и на арене.' : 'Действующие страйки, ограничения чата и блокировки.';
       if(view==='kill'){this.heading.textContent='Kill — проверка подозрений';this.hint.textContent='Ритм команд — повод для проверки, а не доказательство. Отклоняйте случаи, вызванные задержками сети или обычной игрой. Подтверждение скрипта блокирует аккаунт на 180 дней по п. 3.2.';}
       this.rows.replaceChildren();
-      this.directoryStatus.textContent = 'Загрузка…';
+      this.directoryStatus.textContent = '';
       try {
         const result = await this.api('players?' + new URLSearchParams({view,sort,order,q:this.query.value,page:this.page}));
         if (!this.active || serial !== this.serial) return;

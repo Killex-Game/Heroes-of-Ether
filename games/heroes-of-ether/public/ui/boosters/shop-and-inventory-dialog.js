@@ -441,7 +441,7 @@
         if (claiming) return;
         claiming = true;
         window.KillexControls.state(done, true, false);
-        done.textContent = "Получение…";
+        // Keep the reward action label while awaiting its receipt.
         status.hidden = true;
         try {
           const award = await fetchJson("/api/profile/login-reward", {
@@ -1298,11 +1298,11 @@
       this.activations.set(item.id, pending);
       if (item.kind === "mass")
         this.massRepeatReadyAt = performance.now() + (this.catalog?.rules.massRepeatMs || 100);
-      this.showArenaMessage("Применяем: " + item.name, 0);
+      this.showArenaMessage("", 0);
       pending.timer = setTimeout(() => {
         if (this.activations.get(item.id) !== pending) return;
         this.game.send(operation); // Тот же ID не расходует второй предмет.
-        this.showArenaMessage("Ожидаем подтверждение сервера…", 0);
+        this.showArenaMessage("", 0);
         pending.timer = setTimeout(() => {
           if (this.activations.get(item.id) !== pending) return;
           this.activations.delete(item.id);
@@ -1310,7 +1310,7 @@
           this.updateQuick();
           this.load();
           this.showArenaMessage(
-            "Ответ не получен. Проверяем инвентарь; не повторяй применение до обновления количества.",
+            "Связь прервалась. Дождись восстановления количества бустеров перед повторным применением.",
           );
         }, 5000);
       }, 3000);

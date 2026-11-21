@@ -31,7 +31,7 @@
     }
     copy.textContent=active?(lastMode==='maintenance'?'Устанавливаем обновление игры.':'Вход в игру временно закрыт.'):
       localFailure?(brokenAssets?'Не удалось загрузить игру. Попробуй открыть её снова.':'Не удалось связаться с игрой. Проверь соединение.'):'Игра снова доступна.';
-    status.textContent=active?'':localFailure?(brokenAssets?'':'Проверяем соединение…'):'';
+    status.textContent='';
     button.hidden=active||(localFailure&&!brokenAssets);
     button.textContent=brokenAssets?'Попробовать снова':'Вернуться в игру';
   }
@@ -50,11 +50,11 @@
       if(typeof value.maintenance!=='boolean')throw Error('No availability status');
       if(request===generation)update(value);
     }catch(_){
-      if(request===generation&&++failures>=2){if(!server?.maintenance)failure();else {show(server.mode||'maintenance');status.textContent='Проверяем соединение…';button.hidden=true;}}
+      if(request===generation&&++failures>=2){if(!server?.maintenance)failure();else {show(server.mode||'maintenance');status.textContent='';button.hidden=true;}}
     }finally{checking=false;if(!document.hidden)timer=setTimeout(check,blocked?3000:10000);}
   }
   window.KillexMaintenance={get blocked(){return blocked;},update,check,failure};
-  if(standalone){show('unavailable');copy.textContent='Проверяем доступность игры…';button.hidden=true;}
+  if(standalone){show('unavailable');copy.textContent='';button.hidden=true;}
   if(window.KillexStartupFailure)failure({assets:true});
   document.addEventListener('killex:startup-failed',()=>failure({assets:true}));
   document.addEventListener('visibilitychange',()=>{clearTimeout(timer);if(!document.hidden)check();});

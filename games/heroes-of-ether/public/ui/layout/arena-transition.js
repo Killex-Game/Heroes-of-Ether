@@ -19,7 +19,7 @@
       generation++;
       onCancel = cancelAction || null;
       cancel.hidden = !onCancel;
-      label.textContent = destination === "arena" ? "Входим на арену…" : "Возвращаемся в лобби…";
+      label.textContent = "";
       if (!root.open) root.showModal();
       return generation;
     },

@@ -1,54 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-  <defs>
-    <linearGradient id="gold" x1="18" y1="26" x2="72" y2="84" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff6c4"/><stop offset=".18" stop-color="#e4a53b"/>
-      <stop offset=".38" stop-color="#ffdf78"/><stop offset=".52" stop-color="#fff3b0"/>
-      <stop offset=".66" stop-color="#c58127"/><stop offset=".84" stop-color="#efbf59"/>
-      <stop offset="1" stop-color="#9b581e"/>
-    </linearGradient>
-    <linearGradient id="arch" x1="31" y1="17" x2="67" y2="35" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#b77527"/><stop offset=".22" stop-color="#fff3b4"/>
-      <stop offset=".48" stop-color="#f4c15c"/><stop offset=".7" stop-color="#fff4c5"/>
-      <stop offset="1" stop-color="#b97522"/>
-    </linearGradient>
-    <linearGradient id="enamel" x1="33" y1="41" x2="62" y2="79" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#6ac5f4"/><stop offset=".23" stop-color="#237bbd"/>
-      <stop offset=".5" stop-color="#244c94"/><stop offset=".78" stop-color="#25336c"/>
-      <stop offset="1" stop-color="#151c48"/>
-    </linearGradient>
-    <linearGradient id="shine" x1="36" y1="41" x2="54" y2="67" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#d4f6ff" stop-opacity=".65"/><stop offset="1" stop-color="#d4f6ff" stop-opacity="0"/>
-    </linearGradient>
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><defs><linearGradient id="u-blue" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#C9F6FF" /><stop offset=".48" stop-color="#5CB9FA" /><stop offset="1" stop-color="#426DD2" /></linearGradient><linearGradient id="u-violet" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#F0BEFF" /><stop offset=".48" stop-color="#B378F3" /><stop offset="1" stop-color="#7750D5" /></linearGradient><linearGradient id="u-gold" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#FFFAB4" /><stop offset=".48" stop-color="#FFD23F" /><stop offset="1" stop-color="#F29A23" /></linearGradient><linearGradient id="u-lime" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#E6FF9D" /><stop offset=".48" stop-color="#A0EE28" /><stop offset="1" stop-color="#4DB51B" /></linearGradient><linearGradient id="u-red" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#FFC0CE" /><stop offset=".48" stop-color="#FF6585" /><stop offset="1" stop-color="#CE386A" /></linearGradient><linearGradient id="u-cream" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#FFFFF5" /><stop offset=".48" stop-color="#FFF1CF" /><stop offset="1" stop-color="#F3DFAE" /></linearGradient><linearGradient id="u-paper" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#F7FCFF" /><stop offset=".48" stop-color="#E1EEFF" /><stop offset="1" stop-color="#BBD2F7" /></linearGradient><linearGradient id="u-silver" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#FFFFFF" /><stop offset=".48" stop-color="#D9E8F7" /><stop offset="1" stop-color="#95AFD4" /></linearGradient><linearGradient id="u-bronze" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#FFE3AD" /><stop offset=".48" stop-color="#F4B269" /><stop offset="1" stop-color="#C77D4B" /></linearGradient><linearGradient id="u-teal" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#C4FFF4" /><stop offset=".48" stop-color="#56DCD4" /><stop offset="1" stop-color="#269CAB" /></linearGradient><linearGradient id="u-dark" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#7389E0" /><stop offset=".48" stop-color="#4D54B7" /><stop offset="1" stop-color="#323888" /></linearGradient><linearGradient id="u-disabled" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#F4EFE8" /><stop offset=".48" stop-color="#DED6CA" /><stop offset="1" stop-color="#B9AD9E" /></linearGradient><linearGradient id="u-pink" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#FFE1F3" /><stop offset=".48" stop-color="#FF9ECD" /><stop offset="1" stop-color="#DA66AA" /></linearGradient><linearGradient id="u-ink" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#697BA8" /><stop offset=".48" stop-color="#43577E" /><stop offset="1" stop-color="#334768" /></linearGradient><linearGradient id="u-accent" x1=".18" y1="0" x2=".7" y2="1"><stop stop-color="#C9F6FF" /><stop offset=".48" stop-color="#5CB9FA" /><stop offset="1" stop-color="#426DD2" /></linearGradient><linearGradient id="u-gloss" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF" stop-opacity=".63" /><stop offset="1" stop-color="#FFFFFF" stop-opacity="0" /></linearGradient><linearGradient id="u-rim" x1=".2" y1="0" x2=".8" y2="1"><stop stop-color="#FFFFFF" /><stop offset=".42" stop-color="#D7DDFB" /><stop offset="1" stop-color="#8293D2" /></linearGradient><linearGradient id="arch" x1="31" y1="17" x2="67" y2="35" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C9F6FF" /><stop offset=".48" stop-color="#5CB9FA" /><stop offset="1" stop-color="#426DD2" /></linearGradient>
     <linearGradient id="edge" x1="30" y1="42" x2="66" y2="82" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff5c5"/><stop offset=".45" stop-color="#e7ab3e"/><stop offset="1" stop-color="#fff0a6"/>
-    </linearGradient>
-  </defs>
-  <!-- Raised shackle with a continuous highlight and a dark inner bevel. -->
-  <path d="M31 42V28a17 17 0 0 1 34 0v14" fill="none" stroke="#4b2d23" stroke-width="11"/>
-  <path d="M31 42V28a17 17 0 0 1 34 0v14" fill="none" stroke="url(#arch)" stroke-width="8"/>
-  <path d="M28.5 36v-8A19.5 19.5 0 0 1 60 12.6" fill="none" stroke="#fff6c9" stroke-width="1.5" stroke-linecap="round"/>
-  <path d="M35 38V28a13 13 0 0 1 26 0v10" fill="none" stroke="#84541f" stroke-width="1.3"/>
-  <!-- Acanthus scrolls frame the lock without another circular badge. -->
-  <g id="scroll" stroke-linejoin="round">
-    <path d="M28 72C17 68 12 59 15 48c1-5 4-8 8-10-2 5-1 9 2 12-7-1-9 5-6 10 1-5 4-6 8-6-4 6-3 12 1 18Z" fill="url(#gold)" stroke="#6c421f" stroke-width="1.2"/>
-    <path d="M21 43c-8 10-3 23 6 27M18 56l5-4" fill="none" stroke="#ffe9a0" stroke-width="1.15" stroke-linecap="round"/>
-    <path d="M22 65c-2 7 2 11 8 10" fill="none" stroke="#e8b954" stroke-width="1.8" stroke-linecap="round"/>
-  </g>
-  <use href="#scroll" transform="translate(96 0) scale(-1 1)"/>
-  <!-- Cast gold shoulders taper to a shield point. -->
-  <path d="M23 41q25-12 50 0l-3 26C68 79 59 85 48 90 37 85 28 79 26 67Z" fill="#6b3e21" stroke="#38243b" stroke-width="2"/>
-  <path d="M24 39q24-11 48 0l-3 26C67 77 58 83 48 88 38 83 29 77 27 65Z" fill="url(#gold)" stroke="#dca242" stroke-width="1"/>
-  <path d="M26 40q22-10 44 0l-3 24C65 75 57 81 48 85" fill="none" stroke="#fff1b6" stroke-width="1.3"/>
-  <path d="M30 44q18-8 36 0l-2.5 20C62 73 56 78 48 82c-8-4-14-9-15.5-18Z" fill="url(#enamel)" stroke="#8a5729" stroke-width="2"/>
-  <path d="M31.5 44.5q16.5-7 33 0l-2.4 19C60.6 72 55 76.8 48 80.5c-7-3.7-12.6-8.5-14.1-17Z" fill="none" stroke="url(#edge)" stroke-width="1"/>
-  <path d="M33 45q15-6 30 0l-.8 6C49 49 41 55 35 64Z" fill="url(#shine)"/>
-  <!-- Engraved keyhole, kept bold enough to read at the in-game icon size. -->
-  <path d="M48 49a5.7 5.7 0 0 1 3.1 10.5L53 69q-5 2-10 0l1.9-9.5A5.7 5.7 0 0 1 48 49Z" fill="#111a40" stroke="#153967" stroke-width="3"/>
-  <path d="M48 49a5.7 5.7 0 0 1 3.1 10.5L53 69q-5 2-10 0l1.9-9.5A5.7 5.7 0 0 1 48 49Z" fill="url(#gold)" stroke="#efcb74" stroke-width=".7"/>
-  <path d="M44.5 54a3.5 3.5 0 0 1 4-3.1M46.2 61l-1 6.8" fill="none" stroke="#fff7ce" stroke-width="1.1" stroke-linecap="round"/>
-  <!-- Small chased accents and restrained metal glints. -->
-  <path d="M37 66q0 5 5 7M59 66q0 5-5 7M43 77l5 3 5-3" fill="none" stroke="#87b8df" stroke-width=".9" stroke-linecap="round" opacity=".8"/>
-  <path d="m48 34 3 3-3 3-3-3Z" fill="#fff0a2" stroke="#a56b25" stroke-width=".8"/>
-  <path d="m27 38 1 3.5 3.5 1-3.5 1-1 3.5-1-3.5-3.5-1 3.5-1Z" fill="#fff8d8"/>
-  <path d="m64 21 .6 2.4 2.4.6-2.4.6-.6 2.4-.6-2.4-2.4-.6 2.4-.6Z" fill="#fff4c6"/>
-</svg>
+      <stop offset="0" stop-color="#697BA8" /><stop offset=".48" stop-color="#43577E" /><stop offset="1" stop-color="#334768" /></linearGradient>
+  <linearGradient id="enamel" x1="33" y1="41" x2="62" y2="79" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F0BEFF" /><stop offset=".48" stop-color="#B378F3" /><stop offset="1" stop-color="#7750D5" /></linearGradient>
+    <linearGradient id="gold" x1="18" y1="26" x2="72" y2="84" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFAB4" /><stop offset=".48" stop-color="#FFD23F" /><stop offset="1" stop-color="#F29A23" /></linearGradient>
+    <linearGradient id="shine" x1="36" y1="41" x2="54" y2="67" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" /><stop offset=".48" stop-color="#D9E8F7" /><stop offset="1" stop-color="#95AFD4" /></linearGradient>
+    <radialGradient id="canon-gold" cx=".28" cy=".18" r=".88"><stop offset="0" stop-color="#fffec0"/><stop offset="0.23" stop-color="#ffe94a"/><stop offset="0.55" stop-color="#ffc20d"/><stop offset="0.82" stop-color="#f39a00"/><stop offset="1" stop-color="#ca6500"/></radialGradient><linearGradient id="canon-edge" x1=".22" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#fffbc3"/><stop offset="0.3" stop-color="#ffcf28"/><stop offset="0.65" stop-color="#e98c00"/><stop offset="1" stop-color="#8f4205"/></linearGradient><linearGradient id="canon-bevel" x1=".22" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#fffef0"/><stop offset="0.24" stop-color="#ffe885"/><stop offset="0.53" stop-color="#ffbe0b"/><stop offset="0.77" stop-color="#ec8a00"/><stop offset="1" stop-color="#ffca28"/></linearGradient><radialGradient id="canon-purple" cx=".28" cy=".18" r=".88"><stop offset="0" stop-color="#e8bbff"/><stop offset="0.25" stop-color="#c378ff"/><stop offset="0.6" stop-color="#8735e4"/><stop offset="1" stop-color="#491598"/></radialGradient><radialGradient id="canon-blue" cx=".28" cy=".18" r=".88"><stop offset="0" stop-color="#bafaff"/><stop offset="0.24" stop-color="#41daff"/><stop offset="0.62" stop-color="#159ce8"/><stop offset="1" stop-color="#2156bf"/></radialGradient><radialGradient id="canon-green" cx=".28" cy=".18" r=".88"><stop offset="0" stop-color="#e4ff9f"/><stop offset="0.3" stop-color="#a6ed25"/><stop offset="0.7" stop-color="#56b912"/><stop offset="1" stop-color="#207b14"/></radialGradient><linearGradient id="canon-silver" x1=".22" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="0.19" stop-color="#edf3ff"/><stop offset="0.38" stop-color="#a6b1d1"/><stop offset="0.58" stop-color="#e8eaff"/><stop offset="0.82" stop-color="#9ba4c4"/><stop offset="1" stop-color="#525b86"/></linearGradient><linearGradient id="canon-silver-edge" x1=".22" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#d9e7ff"/><stop offset="0.5" stop-color="#8993bb"/><stop offset="1" stop-color="#485482"/></linearGradient><linearGradient id="canon-paper" x1=".22" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#ffffed"/><stop offset="0.36" stop-color="#fff7ce"/><stop offset="0.73" stop-color="#f9dea0"/><stop offset="1" stop-color="#d6ac60"/></linearGradient><linearGradient id="canon-paper-roll" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9c5c17"/><stop offset="0.17" stop-color="#dc9b33"/><stop offset="0.42" stop-color="#fff3ba"/><stop offset="0.62" stop-color="#fff5cb"/><stop offset="0.85" stop-color="#d3942d"/><stop offset="1" stop-color="#9c5c17"/></linearGradient><radialGradient id="canon-gloss"><stop stop-color="#fff" stop-opacity=".64"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><g stroke-linecap="round" stroke-linejoin="round"><g transform="scale(3 2.6667)" id="scroll"><path d="M9 17V10A7 7 0 0 1 23 10V17" fill="none" stroke="#576386" stroke-width="6.1" opacity="1"/><path d="M9 17V10A7 7 0 0 1 23 10V17" fill="none" stroke="url(#canon-silver)" stroke-width="4.9" opacity="1"/><path d="M7.8 12V10Q8 4 14 3.7" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.9"/><rect x="2.5" y="15.9" width="27" height="19" rx="6.2" fill="url(#canon-edge)" /><rect x="2.5" y="14" width="27" height="18.6" rx="6.2" fill="url(#canon-bevel)" /><rect x="4.7" y="15.4" width="22.5" height="15.4" rx="4.7" fill="url(#canon-gold)" /><path d="M5.6 21Q5.6 17 9.2 17H21" fill="none" stroke="#fff9b8" stroke-width="1.65" opacity="0.95"/><path d="M16 19Q19.2 19 19.2 22Q19.2 24 17.6 24.8L18.5 29H13.5L14.4 24.8Q12.8 24 12.8 22Q12.8 19 16 19Z" fill="#8e5a16" /><path d="M16 19.5Q18.5 19.5 18.5 22Q18.5 23.8 17 24.2L17.8 28.3H14.2L15 24.2Q13.5 23.8 13.5 22Q13.5 19.5 16 19.5Z" fill="#514161" /><path d="M10 31H23" fill="none" stroke="#ffdc3b" stroke-width="0.8" opacity="0.85"/></g></g></svg>

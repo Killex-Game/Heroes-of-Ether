@@ -1,22 +1,162 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="harpoon-title harpoon-desc">
-<title id="harpoon-title">Гарпун</title>
-<desc id="harpoon-desc">Редкий бустер. Притягивает вас к сопернику; время полёта - 11 секунд. Прямой гарпун с зазубринами и верёвкой.</desc>
-<defs><linearGradient id="harpoon-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="harpoon-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="harpoon-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="harpoon-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="harpoon-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="harpoon-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="harpoon-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="harpoon-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="harpoon-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="harpoon-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="harpoon-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="harpoon-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
-<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-<path d="M63 197 C36 185 45 164 68 168 C101 173 96 211 137 216 C169 220 190 197 185 169 C181 146 197 130 214 143" fill="none" stroke-width="15"/>
-<path d="M63 197 C36 185 45 164 68 168 C101 173 96 211 137 216 C169 220 190 197 185 169 C181 146 197 130 214 143" fill="none" stroke="#EAC491" stroke-width="8"/>
-<path d="M213 143 L218 149 M130 213 L129 218 M181 191 L188 191" fill="none" stroke="#B0784E" stroke-width="4"/>
-<path d="M51 204 L171 64 L185 78 L65 217 Q56 220 51 213 Z" fill="url(#harpoon-steel)"/>
-<path d="M64 202 L176 72" fill="none" stroke="#F2F9FF" stroke-width="4"/>
-<path d="M52 202 L85 163 L98 175 L65 214 Q56 218 52 211 Z" fill="url(#harpoon-dark)"/>
-<path d="M59 194 L74 205 M67 184 L82 195 M76 174 L91 185" fill="none" stroke="#B091B9" stroke-width="5"/>
-<path d="M85 160 L96 151 L111 164 L101 177 Z" fill="url(#harpoon-gold)"/>
-<path d="M94 158 L101 164" fill="none" stroke="#FFF7C4" stroke-width="4"/>
-<path d="M219 35 L206 101 L188 86 L166 115 L166 90 L146 98 L169 62 Z" fill="url(#harpoon-steel)"/>
-<path d="M212 43 L179 72 L153 91 L170 84 L174 101 L190 80 L202 88 Z" fill="#EDF9FF" stroke="none"/>
-<path d="M213 43 L190 78 L201 89" fill="none" stroke="#6D83B0" stroke-width="5"/>
-<path d="M169 65 L185 80 L178 89 L160 74 Z" fill="url(#harpoon-gold)"/>
-<path d="M168 70 L175 77" fill="none" stroke="#FFF3AD" stroke-width="4"/>
-</g>
+  <title id="harpoon-title">Гарпун</title>
+  <desc id="harpoon-desc">Редкий бустер. Притягивает вас к сопернику; время полёта - 11 секунд. Прямой гарпун с зазубринами и верёвкой.</desc>
+  <defs>
+    <radialGradient id="harpoon-gold" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFC2" />
+      <stop offset=".25" stop-color="#FFE972" />
+      <stop offset=".55" stop-color="#FFD22A" />
+      <stop offset=".82" stop-color="#F5A512" />
+      <stop offset="1" stop-color="#DC830C" />
+    </radialGradient>
+    <radialGradient id="harpoon-steel" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#EFF2FF" />
+      <stop offset=".55" stop-color="#CAD0E8" />
+      <stop offset=".82" stop-color="#9A9DBD" />
+      <stop offset="1" stop-color="#787EAA" />
+    </radialGradient>
+    <radialGradient id="harpoon-frost" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#C2FFFF" />
+      <stop offset=".55" stop-color="#57E2FF" />
+      <stop offset=".82" stop-color="#18ABEA" />
+      <stop offset="1" stop-color="#1580D0" />
+    </radialGradient>
+    <radialGradient id="harpoon-plum" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#EFCFFF" />
+      <stop offset=".25" stop-color="#D58BFF" />
+      <stop offset=".55" stop-color="#B64EF3" />
+      <stop offset=".82" stop-color="#8831CE" />
+      <stop offset="1" stop-color="#6423A8" />
+    </radialGradient>
+    <radialGradient id="harpoon-pink" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE4F5" />
+      <stop offset=".25" stop-color="#FFA3DA" />
+      <stop offset=".55" stop-color="#F857AD" />
+      <stop offset=".82" stop-color="#D93490" />
+      <stop offset="1" stop-color="#BB2B78" />
+    </radialGradient>
+    <radialGradient id="harpoon-green" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F2FFAA" />
+      <stop offset=".25" stop-color="#C9F75B" />
+      <stop offset=".55" stop-color="#84DF1F" />
+      <stop offset=".82" stop-color="#42AE24" />
+      <stop offset="1" stop-color="#20833F" />
+    </radialGradient>
+    <radialGradient id="harpoon-red" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFD0D6" />
+      <stop offset=".25" stop-color="#FF8596" />
+      <stop offset=".55" stop-color="#FB3F62" />
+      <stop offset=".82" stop-color="#DC1744" />
+      <stop offset="1" stop-color="#B5183D" />
+    </radialGradient>
+    <radialGradient id="harpoon-blue" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#E9FFFF" />
+      <stop offset=".25" stop-color="#81EBFF" />
+      <stop offset=".55" stop-color="#31C3F3" />
+      <stop offset=".82" stop-color="#0B91E0" />
+      <stop offset="1" stop-color="#176ACA" />
+    </radialGradient>
+    <radialGradient id="harpoon-cream" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#FFF4D9" />
+      <stop offset=".55" stop-color="#FFE7B5" />
+      <stop offset=".82" stop-color="#F5CB8B" />
+      <stop offset="1" stop-color="#DDA563" />
+    </radialGradient>
+    <radialGradient id="harpoon-stone" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F3F3FC" />
+      <stop offset=".25" stop-color="#D5D8E8" />
+      <stop offset=".55" stop-color="#AFB6D0" />
+      <stop offset=".82" stop-color="#8C95B3" />
+      <stop offset="1" stop-color="#727F9D" />
+    </radialGradient>
+    <radialGradient id="harpoon-dark" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#B688D6" />
+      <stop offset=".25" stop-color="#8455B6" />
+      <stop offset=".55" stop-color="#623A97" />
+      <stop offset=".82" stop-color="#4C2878" />
+      <stop offset="1" stop-color="#392461" />
+    </radialGradient>
+    <radialGradient id="harpoon-brown" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE9AF" />
+      <stop offset=".25" stop-color="#FFC370" />
+      <stop offset=".55" stop-color="#F3A038" />
+      <stop offset=".82" stop-color="#D97C24" />
+      <stop offset="1" stop-color="#B55E26" />
+    </radialGradient>
+    <radialGradient id="harpoon-c2-glassGreen" cx=".25" cy=".15" r=".92">
+      <stop stop-color="#EEFFFF" />
+      <stop offset=".35" stop-color="#A6F5BE" />
+      <stop offset=".72" stop-color="#5CDB8E" />
+      <stop offset="1" stop-color="#20A86A" />
+    </radialGradient>
+    <radialGradient id="harpoon-c2-poisonLiquid" cx=".32" cy=".28" r=".86">
+      <stop stop-color="#98F729" />
+      <stop offset=".5" stop-color="#47C315" />
+      <stop offset="1" stop-color="#067638" />
+    </radialGradient>
+    <radialGradient id="harpoon-c2-orb" cx=".3" cy=".22" r=".78">
+      <stop stop-color="#86FFFF" />
+      <stop offset=".27" stop-color="#1CCEEB" />
+      <stop offset=".64" stop-color="#0789C4" />
+      <stop offset=".85" stop-color="#076BBC" />
+      <stop offset="1" stop-color="#28C7EF" />
+    </radialGradient>
+    <radialGradient id="harpoon-c2-purpleOrb" cx=".32" cy=".24" r=".76">
+      <stop stop-color="#F7C5FF" />
+      <stop offset=".3" stop-color="#D780FF" />
+      <stop offset=".63" stop-color="#A94EE8" />
+      <stop offset="1" stop-color="#7430B3" />
+    </radialGradient>
+    <radialGradient id="harpoon-c2-cyanGlow">
+      <stop stop-color="#C9FFFF" stop-opacity=".85" />
+      <stop offset=".6" stop-color="#5DEFF5" stop-opacity=".4" />
+      <stop offset="1" stop-color="#34DCEB" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="harpoon-c2-amberFace" cx=".26" cy=".16" r=".86">
+      <stop stop-color="#FFF59C" />
+      <stop offset=".3" stop-color="#FFDA42" />
+      <stop offset=".72" stop-color="#F4AF15" />
+      <stop offset="1" stop-color="#E58E0C" />
+    </radialGradient>
+    <linearGradient id="harpoon-c2-plumTube" x1="0" y1=".2" x2="1" y2=".3">
+      <stop stop-color="#A94EDE" />
+      <stop offset=".28" stop-color="#E1A4FF" />
+      <stop offset=".48" stop-color="#B565EA" />
+      <stop offset="1" stop-color="#6A2CAA" />
+    </linearGradient>
+    <linearGradient id="harpoon-c2-goldTube" x1="0" y1="0" x2="1" y2=".2">
+      <stop stop-color="#E99D18" />
+      <stop offset=".23" stop-color="#FFF9BB" />
+      <stop offset=".46" stop-color="#FFD93C" />
+      <stop offset="1" stop-color="#E69A14" />
+    </linearGradient>
+    <filter id="harpoon-c2-contact" x="-.2" y="-.2" width="1.4" height="1.5" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.4" />
+    </filter>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M65 193C40 184 45 164 62 170C80 176 84 203 106 215C127 226 150 215 147 193C145 177 126 167 104 176" fill="none" stroke="#C48B3A" stroke-width="13" opacity="1" />
+    <path d="M65 191C43 182 47 167 62 173C78 179 84 202 107 213C126 223 146 213 144 194C142 180 125 171 105 178" fill="none" stroke="url(#harpoon-gold)" stroke-width="9" opacity="1" />
+    <path d="M51 204 L173 63 L187 76 L66 217 Q59 222 53 217 Q47 212 51 204 Z" fill="url(#harpoon-plum)" />
+    <path d="M62 202 L177 70" fill="none" stroke="#E8CEFF" stroke-width="2.5" opacity="0.6" />
+    <path d="M73 186 L158 88" fill="none" stroke="#8051AC" stroke-width="2.5" opacity="0.6" />
+    <path d="M50 205 L80 171 L95 184 L65 218 Q55 224 50 215 Z" fill="url(#harpoon-dark)" />
+    <path d="M57 199 L73 211 M65 189 L81 201 M73 180 L89 192" fill="none" stroke="#BB91DB" stroke-width="2.5" opacity="0.6" />
+    <path d="M78 170 L87 159 L104 174 L96 186 Z" fill="url(#harpoon-gold)" />
+    <path d="M219 32 L207 99 L190 86 L168 113 L167 91 L147 99 L171 62 Z" fill="url(#harpoon-steel)" />
+    <path d="M215 39 L176 73 L155 92 L172 84 L174 103 L191 80 L203 90 Z" fill="#F8FCFF" />
+    <path d="M215 39 L192 79 L203 90 L207 99 L219 32 Z" fill="#9EB5D4" opacity=".8" />
+    <path d="M190 80 L176 99 L176 83 Z" fill="#BCCFE8" />
+    <path d="M171 63 L188 78 L180 89 L160 73 Z" fill="url(#harpoon-gold)" />
+    <path d="M55 211 Q58 216 64 214" fill="none" stroke="#E4C6F2" stroke-width="2.0" opacity="0.6" />
+    <path d="M56 173Q61 174 65 179M93 204L97 213M114 215L119 220M139 205L146 205M133 177L132 183" fill="none" stroke="#AD7C37" stroke-width="2" opacity=".6" />
+    <path d="M50 174Q54 168 60 172M107 212Q116 216 126 215M141 187Q138 179 130 177" fill="none" stroke="#FFF4B4" stroke-width="2.8" opacity=".9" />
+    <path d="M66 197L174 72" fill="none" stroke="#E7B9FF" stroke-width="3.1" opacity=".82" />
+    <path d="M170 66L183 77L180 81L166 71Z" fill="#FFFED1" />
+    <path d="M84 167L98 178L95 181L82 171Z" fill="#FFF5BA" />
+  </g>
 </svg>

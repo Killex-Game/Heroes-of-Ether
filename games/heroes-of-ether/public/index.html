@@ -115,9 +115,9 @@
         </div>
         <p class="boot-tagline">Собирай силу. Находи союзников. Стань Героем.</p>
         <div class="boot-readiness">
-          <p id="gameLoadingStatus" role="status" aria-live="polite">Открываем мир Эфира…</p>
+          <p id="gameLoadingStatus" role="status" aria-live="polite"></p>
           <progress id="gameLoadingProgress" max="3" value="0" aria-label="Подготовка игры"></progress>
-          <div class="boot-steps" aria-hidden="true"><span>Подключение</span><span>Твой герой</span><span>Мир игры</span></div>
+          <div class="boot-steps" aria-hidden="true"></div>
           <button id="gameLoadingRetry" type="button" hidden>Попробовать снова</button>
         </div>
       </div>
@@ -173,7 +173,7 @@
           </div>
           <div class="guest-box lobby-wallet-tools">
             <div class="lobby-balances">
-              <strong id="walletStatus" class="wallet-value">Загружаем профиль…</strong
+              <strong id="walletStatus" class="wallet-value"></strong
               ><small class="wallet-note">Баланс сохраняется на сервере</small>
             </div>
             <div class="lobby-wallet-actions">
@@ -482,8 +482,7 @@
         <div id="arenaClanList"></div>
       </aside>
       <div id="legacyNote" hidden>
-        Сервер ещё не передаёт массу и эфир. Нужен server.js с обновлением сбора и поглощения из
-        предыдущего шага.
+        Не удалось открыть арену. Обнови страницу.
       </div>
       <div class="arena-status-stack">
       <div id="massPanel" class="mass-panel">
@@ -588,7 +587,7 @@
       <p id="connectionLostMessage">Соединение с сервером прервалось.</p>
       <p id="connectionLostHint">Вернись в лобби и подключись снова, когда связь восстановится.</p>
       <p class="clan-muted connection-lost-progress">
-        Сохранённый прогресс будет загружен с сервера при подключении.
+        Твой сохранённый прогресс останется с тобой.
       </p>
       <div class="life-result-actions">
         <button id="connectionLostLobby" type="button" class="sf-button sf-danger">

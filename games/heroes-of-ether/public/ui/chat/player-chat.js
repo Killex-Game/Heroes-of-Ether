@@ -188,7 +188,7 @@
       this.retry = request;
       this.busy = true;
       this.lock();
-      this.status.textContent = "Отправляем…";
+      this.status.textContent = "";
       try {
         const result = await this.send(request);
         if (generation !== this.generation) return;
@@ -400,7 +400,7 @@
       } catch (error) {
         if (clanId !== this.clanId || !this.active()) return;
         if ([401, 403].includes(error.status)) this.revoke(error);
-        else this.panel.status.textContent = "Нет связи с чатом. Пробуем восстановить…";
+        else this.panel.status.textContent = "Нет связи с чатом.";
       } finally {
         this.loading = false;
       }

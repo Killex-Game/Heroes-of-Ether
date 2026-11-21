@@ -1,24 +1,175 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="poison-title poison-desc">
-<title id="poison-title">Яд</title>
-<desc id="poison-desc">Улучшенный бустер «Яд». Отравляет игрока и постепенно сжигает 40% его общей массы. Округлый зелёный флакон с пробкой и этикеткой с черепом.</desc>
-<defs><linearGradient id="poison-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="poison-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="poison-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="poison-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="poison-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="poison-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="poison-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="poison-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="poison-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="poison-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="poison-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="poison-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
-<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-<path d="M106 39L102 68H153L149 39Q128 31 106 39Z" fill="url(#poison-brown)"/>
-<path d="M113 41L111 60 M136 41L139 61" fill="none" stroke="#87553F" stroke-width="4"/>
-<path d="M94 77H162L157 99C188 113 210 136 210 166C210 202 177 221 128 221C79 221 46 202 46 166C46 136 67 113 99 99Z" fill="url(#poison-green)"/>
-<path d="M65 163C91 173 154 147 191 157V176C190 196 163 211 129 212C92 212 68 198 64 179Z" fill="#52B46F" fill-opacity=".7" stroke="none"/>
-<path d="M88 69Q89 61 98 61H159Q169 61 170 69L169 79Q169 85 161 85H96Q88 85 88 78Z" fill="url(#poison-plum)"/>
-<path d="M101 68H155" fill="none" stroke="#E0BBFA" stroke-width="4"/>
-<path d="M65 144Q72 124 91 117" fill="none" stroke="#F0FFD1" stroke-width="9"/>
-<circle cx="67" cy="160" r="5" fill="#F0FFD1" stroke="none"/>
-<circle cx="175" cy="130" r="8" fill="#DFFDA5" stroke="#529766" stroke-width="4"/>
-<circle cx="180" cy="186" r="5" fill="#BAF387" stroke="none"/>
-<path d="M104 126Q127 115 151 126L158 168L147 192H109L97 169Z" fill="url(#poison-cream)" stroke-width="5"/>
-<path d="M110 151C110 139 118 134 128 134C139 134 146 141 146 151C146 159 141 164 137 166V174H119V166C113 163 110 158 110 151Z" fill="#554660" stroke="none"/>
-<circle cx="120" cy="151" r="5" fill="#FFF5D5" stroke="none"/>
-<circle cx="136" cy="151" r="5" fill="#FFF5D5" stroke="none"/>
-<path d="M125 161L128 157L132 162Z" fill="#FFF5D5" stroke="none"/>
-<path d="M125 168V174 M132 168V174" fill="none" stroke="#FFF5D5" stroke-width="3"/>
-</g>
+  <title id="poison-title">Яд</title>
+  <desc id="poison-desc">Улучшенный бустер «Яд». Отравляет игрока и постепенно сжигает 40% его общей массы. Округлый зелёный флакон с пробкой и этикеткой с черепом.</desc>
+  <defs>
+    <radialGradient id="poison-gold" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFC2" />
+      <stop offset=".25" stop-color="#FFE972" />
+      <stop offset=".55" stop-color="#FFD22A" />
+      <stop offset=".82" stop-color="#F5A512" />
+      <stop offset="1" stop-color="#DC830C" />
+    </radialGradient>
+    <radialGradient id="poison-steel" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#EFF2FF" />
+      <stop offset=".55" stop-color="#CAD0E8" />
+      <stop offset=".82" stop-color="#9A9DBD" />
+      <stop offset="1" stop-color="#787EAA" />
+    </radialGradient>
+    <radialGradient id="poison-frost" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#C2FFFF" />
+      <stop offset=".55" stop-color="#57E2FF" />
+      <stop offset=".82" stop-color="#18ABEA" />
+      <stop offset="1" stop-color="#1580D0" />
+    </radialGradient>
+    <radialGradient id="poison-plum" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#EFCFFF" />
+      <stop offset=".25" stop-color="#D58BFF" />
+      <stop offset=".55" stop-color="#B64EF3" />
+      <stop offset=".82" stop-color="#8831CE" />
+      <stop offset="1" stop-color="#6423A8" />
+    </radialGradient>
+    <radialGradient id="poison-pink" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE4F5" />
+      <stop offset=".25" stop-color="#FFA3DA" />
+      <stop offset=".55" stop-color="#F857AD" />
+      <stop offset=".82" stop-color="#D93490" />
+      <stop offset="1" stop-color="#BB2B78" />
+    </radialGradient>
+    <radialGradient id="poison-green" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F2FFAA" />
+      <stop offset=".25" stop-color="#C9F75B" />
+      <stop offset=".55" stop-color="#84DF1F" />
+      <stop offset=".82" stop-color="#42AE24" />
+      <stop offset="1" stop-color="#20833F" />
+    </radialGradient>
+    <radialGradient id="poison-red" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFD0D6" />
+      <stop offset=".25" stop-color="#FF8596" />
+      <stop offset=".55" stop-color="#FB3F62" />
+      <stop offset=".82" stop-color="#DC1744" />
+      <stop offset="1" stop-color="#B5183D" />
+    </radialGradient>
+    <radialGradient id="poison-blue" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#E9FFFF" />
+      <stop offset=".25" stop-color="#81EBFF" />
+      <stop offset=".55" stop-color="#31C3F3" />
+      <stop offset=".82" stop-color="#0B91E0" />
+      <stop offset="1" stop-color="#176ACA" />
+    </radialGradient>
+    <radialGradient id="poison-cream" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#FFF4D9" />
+      <stop offset=".55" stop-color="#FFE7B5" />
+      <stop offset=".82" stop-color="#F5CB8B" />
+      <stop offset="1" stop-color="#DDA563" />
+    </radialGradient>
+    <radialGradient id="poison-stone" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F3F3FC" />
+      <stop offset=".25" stop-color="#D5D8E8" />
+      <stop offset=".55" stop-color="#AFB6D0" />
+      <stop offset=".82" stop-color="#8C95B3" />
+      <stop offset="1" stop-color="#727F9D" />
+    </radialGradient>
+    <radialGradient id="poison-dark" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#B688D6" />
+      <stop offset=".25" stop-color="#8455B6" />
+      <stop offset=".55" stop-color="#623A97" />
+      <stop offset=".82" stop-color="#4C2878" />
+      <stop offset="1" stop-color="#392461" />
+    </radialGradient>
+    <radialGradient id="poison-brown" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE9AF" />
+      <stop offset=".25" stop-color="#FFC370" />
+      <stop offset=".55" stop-color="#F3A038" />
+      <stop offset=".82" stop-color="#D97C24" />
+      <stop offset="1" stop-color="#B55E26" />
+    </radialGradient>
+    <radialGradient id="poison-c2-glassGreen" cx=".25" cy=".15" r=".92">
+      <stop stop-color="#EEFFFF" />
+      <stop offset=".35" stop-color="#A6F5BE" />
+      <stop offset=".72" stop-color="#5CDB8E" />
+      <stop offset="1" stop-color="#20A86A" />
+    </radialGradient>
+    <radialGradient id="poison-c2-poisonLiquid" cx=".32" cy=".28" r=".86">
+      <stop stop-color="#98F729" />
+      <stop offset=".5" stop-color="#47C315" />
+      <stop offset="1" stop-color="#067638" />
+    </radialGradient>
+    <radialGradient id="poison-c2-orb" cx=".3" cy=".22" r=".78">
+      <stop stop-color="#86FFFF" />
+      <stop offset=".27" stop-color="#1CCEEB" />
+      <stop offset=".64" stop-color="#0789C4" />
+      <stop offset=".85" stop-color="#076BBC" />
+      <stop offset="1" stop-color="#28C7EF" />
+    </radialGradient>
+    <radialGradient id="poison-c2-purpleOrb" cx=".32" cy=".24" r=".76">
+      <stop stop-color="#F7C5FF" />
+      <stop offset=".3" stop-color="#D780FF" />
+      <stop offset=".63" stop-color="#A94EE8" />
+      <stop offset="1" stop-color="#7430B3" />
+    </radialGradient>
+    <radialGradient id="poison-c2-cyanGlow">
+      <stop stop-color="#C9FFFF" stop-opacity=".85" />
+      <stop offset=".6" stop-color="#5DEFF5" stop-opacity=".4" />
+      <stop offset="1" stop-color="#34DCEB" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="poison-c2-amberFace" cx=".26" cy=".16" r=".86">
+      <stop stop-color="#FFF59C" />
+      <stop offset=".3" stop-color="#FFDA42" />
+      <stop offset=".72" stop-color="#F4AF15" />
+      <stop offset="1" stop-color="#E58E0C" />
+    </radialGradient>
+    <linearGradient id="poison-c2-plumTube" x1="0" y1=".2" x2="1" y2=".3">
+      <stop stop-color="#A94EDE" />
+      <stop offset=".28" stop-color="#E1A4FF" />
+      <stop offset=".48" stop-color="#B565EA" />
+      <stop offset="1" stop-color="#6A2CAA" />
+    </linearGradient>
+    <linearGradient id="poison-c2-goldTube" x1="0" y1="0" x2="1" y2=".2">
+      <stop stop-color="#E99D18" />
+      <stop offset=".23" stop-color="#FFF9BB" />
+      <stop offset=".46" stop-color="#FFD93C" />
+      <stop offset="1" stop-color="#E69A14" />
+    </linearGradient>
+    <filter id="poison-c2-contact" x="-.2" y="-.2" width="1.4" height="1.5" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.4" />
+    </filter>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100 24Q128 15 156 24L151 62H106Z" fill="url(#poison-brown)" />
+    <ellipse cx="128" cy="24" rx="28" ry="9" fill="url(#poison-gold)" />
+    <ellipse cx="115" cy="21" rx="8" ry="3.4" fill="#FFF7CB" opacity=".85" />
+    <ellipse cx="139" cy="26" rx="4.4" ry="2" fill="#C6812D" opacity=".7" />
+    <circle cx="115" cy="42" r="3" fill="#D68835" opacity=".6" />
+    <path d="M99 73H157L153 92C189 107 211 134 211 169C211 209 178 233 128 233C78 233 45 209 45 169C45 134 67 107 103 92Z" fill="url(#poison-c2-glassGreen)" />
+    <path d="M104 98C78 109 52 135 52 168C52 205 83 225 128 225C173 225 204 205 204 168C204 135 178 109 152 98Z" fill="url(#poison-green)" />
+    <path d="M56 146C85 134 169 134 200 146L200 174C195 204 168 219 128 219C88 219 61 202 56 174Z" fill="url(#poison-c2-poisonLiquid)" />
+    <ellipse cx="128" cy="146" rx="72" ry="14" fill="#C0F84A" />
+    <ellipse cx="129" cy="149" rx="65" ry="9" fill="#83DA18" />
+    <path d="M65 144C83 137 110 135 136 137C113 139 83 141 70 147Z" fill="#F0FF9C" />
+    <ellipse cx="148" cy="207" rx="45" ry="11" fill="#9CE92E" opacity=".35" />
+    <rect x="94" y="68" width="68" height="24" rx="9" fill="url(#poison-gold)" />
+    <path d="M100 72Q119 67 142 72L141 78Q119 73 100 78Z" fill="#FFFFDA" />
+    <path d="M128 70L136 80L128 90L120 80Z" fill="url(#poison-gold)" />
+    <rect x="89" y="55" width="78" height="18" rx="8" fill="url(#poison-c2-glassGreen)" />
+    <path d="M96 58Q123 55 149 59C151 62 143 63 134 62L98 63Q92 62 96 58Z" fill="#FFFFFF" opacity=".88" />
+    <path d="M75 117C83 108 94 104 96 109C97 115 88 127 79 136C74 142 67 145 65 140C63 135 68 124 75 117Z" fill="#F6FFF0" opacity=".94" />
+    <ellipse cx="60" cy="158" rx="3.7" ry="6.8" transform="rotate(10 60 158)" fill="#E8FFD1" opacity=".84" />
+    <path d="M52 174C54 200 79 220 110 224C77 224 50 204 49 179Z" fill="#B5F9B5" opacity=".63" />
+    <circle cx="77" cy="179" r="8" fill="url(#poison-green)" />
+    <ellipse cx="74" cy="176" rx="2.6" ry="2" fill="#ECFFA8" />
+    <circle cx="179" cy="182" r="9" fill="url(#poison-green)" />
+    <ellipse cx="176" cy="179" rx="3" ry="2.3" fill="#F6FFAB" />
+    <circle cx="176" cy="123" r="5" fill="url(#poison-green)" />
+    <circle cx="89" cy="202" r="3" fill="#B4EF4B" />
+    <path d="M99 135Q128 118 157 135Q166 140 167 157L161 179Q158 185 147 187V199Q146 206 137 206H119Q110 206 109 199V187Q98 185 95 179L89 157Q90 140 99 135Z" fill="#A57D37" opacity=".35" transform="translate(1 3)" />
+    <path d="M99 135Q128 118 157 135Q166 140 167 157L161 179Q158 185 147 187V199Q146 206 137 206H119Q110 206 109 199V187Q98 185 95 179L89 157Q90 140 99 135Z" fill="url(#poison-cream)" />
+    <path d="M103 145C116 141 121 147 122 157C120 165 110 169 103 164C98 160 98 151 103 145Z M153 145C140 141 135 147 134 157C136 165 146 169 153 164C158 160 158 151 153 145Z" fill="#216B39" />
+    <path d="M128 169L121 181Q128 184 135 181Z" fill="#2C7C43" />
+    <path d="M118 194V203M128 194V205M138 194V203" stroke="#D0A36B" stroke-width="2.7" />
+    <path d="M101 139C109 132 123 129 131 131C136 133 126 135 119 138C110 143 101 144 101 139Z" fill="#FFFFFF" opacity=".94" />
+  </g>
 </svg>

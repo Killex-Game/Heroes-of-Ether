@@ -282,7 +282,7 @@
       this.busy = true;
       this.readVersion = (this.readVersion || 0) + 1;
       this.lockControls();
-      this.message("Получаем сундук…");
+      this.message("");
       const request = { action: "claim", chestId, requestId: uuid() };
       try {
         if (this.readPromise) await this.readPromise;

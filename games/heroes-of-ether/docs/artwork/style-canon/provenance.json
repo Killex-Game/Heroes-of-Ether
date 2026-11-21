@@ -1,0 +1,73 @@
+{
+  "source": "Owner-supplied STYLE_CANON.md v1.2 and Актуальное1/_canon references, 22.11.2026",
+  "files": [
+    {
+      "path": "CANON_OVERVIEW.png",
+      "sha256": "b11141f4904db0607661027155432102d5aedeefcd52f0fa858dbb1da67d1df1"
+    },
+    {
+      "path": "REFERENCES.png",
+      "sha256": "5d87727b484789999775616871ab24dcbe8f801fd4c622656f8b05eb857a107c"
+    },
+    {
+      "path": "refs/currency_bucks.webp",
+      "sha256": "4f0cb2deb70aed2194e74451d77870fa6fa3c32e79e0c79e7b366111a667bc7b"
+    },
+    {
+      "path": "refs/image.png",
+      "sha256": "b11141f4904db0607661027155432102d5aedeefcd52f0fa858dbb1da67d1df1"
+    },
+    {
+      "path": "refs/nav_events.webp",
+      "sha256": "90366607970b8df40d49447ba67ac607cb0a6e2ed5ad6a610f90f9193d061201"
+    },
+    {
+      "path": "refs/nav_tops.webp",
+      "sha256": "77f1a8c7b35a66994f3b1746d37d8dc9d3d731139e39db149d021712e9b55959"
+    },
+    {
+      "path": "refs/potion-magnetism.webp",
+      "sha256": "33c5935f83768ad3c58628e2cb21df195f52650f815ec31f3307849b43e573d1"
+    },
+    {
+      "path": "refs/potion-precision.webp",
+      "sha256": "9675cd8dbcd722b9b724bf91de862619b2bad6cc180127f4551eb32b4caca84d"
+    },
+    {
+      "path": "refs/potion-prosperity.webp",
+      "sha256": "2fcf9623d1d9c17f6e2de1095d8bb69e225f8bf3cbcae70d8d0b81b9d7baf935"
+    },
+    {
+      "path": "refs/potion-reach.webp",
+      "sha256": "71cbf0384d970e6bc375c2543f0b78a3c9f1f69fbc3b2281a155183eb796cc5c"
+    },
+    {
+      "path": "refs/potion-satiety.webp",
+      "sha256": "4778b0af634022205f9bb15ca4b1ea56910d44e88cff7df32157b3208c5668d2"
+    },
+    {
+      "path": "refs/potion-steadiness.webp",
+      "sha256": "5645b6a421abbfa139a1cd6d8c243852415fb00f42f7807f027c814afbe67dad"
+    },
+    {
+      "path": "refs/potion-strength.webp",
+      "sha256": "7e4461b7193513ad019278f9985fca5d06a0945f41539034b7a0aec9e08f3715"
+    },
+    {
+      "path": "refs/potion-swiftness.webp",
+      "sha256": "8031b159dadaae4f129c58597695aecdb6c16896ba4b5cee2832114b7215503b"
+    },
+    {
+      "path": "refs/potion-tempest.webp",
+      "sha256": "a4a1c092893c33cada54b72c9c6f6ff9e76005f02876b933688f7bfe6acbf3fd"
+    },
+    {
+      "path": "refs/token-v2.webp",
+      "sha256": "25bc86a2b6d1cba5d399bce1b96f3bc71b94b083aba8d0abacab6b7b567b40cb"
+    },
+    {
+      "path": "STYLE_CANON.md",
+      "sha256": "c757d65ccbe10bfc2da9bc2e6d7dade1b399136b8a790d2e6c15abd30d010e17"
+    }
+  ]
+}

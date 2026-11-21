@@ -38,7 +38,7 @@
     event.preventDefault();refresh();if(busy||send.disabled)return;
     const value=text.value.replace(/\r\n?/g,'\n').trim();
     if(!pending||pending.text!==value)pending={text:value,requestId:window.KillexRequestIds.create()};
-    busy=true;refresh();text.readOnly=true;message.textContent='Отправляем…';
+    busy=true;refresh();text.readOnly=true;message.textContent='';
     const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),12000);
     try{
       const response=await fetch('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(pending),signal:controller.signal});

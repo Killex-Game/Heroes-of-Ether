@@ -770,7 +770,7 @@
         this.status.dataset.error = "true";
         this.status.textContent =
           error.name === "AbortError"
-            ? "Ответ задержался. Проверяем сохранённый выбор."
+            ? "Не удалось подтвердить выбор."
             : error.message;
         await this.owner.loadProfile();
       } finally {

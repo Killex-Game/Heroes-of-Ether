@@ -1,24 +1,200 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="mine-title mine-desc">
-<title id="mine-title">Мина</title>
-<desc id="mine-desc">Улучшенный бустер «Мина». Разрывает соперника на равные части. Тёмная круглая фантазийная мина с шестью тупыми выступами и красным индикатором.</desc>
-<defs><linearGradient id="mine-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="mine-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="mine-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="mine-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="mine-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="mine-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="mine-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="mine-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="mine-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="mine-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="mine-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="mine-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
-<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-<path d="M111 61L113 36Q128 29 143 36L145 61Z" fill="url(#mine-steel)"/>
-<path d="M177 81L196 65Q210 69 214 83L198 102Z" fill="url(#mine-steel)"/>
-<path d="M198 153L221 164Q224 181 210 191L188 178Z" fill="url(#mine-steel)"/>
-<path d="M111 197L112 220Q128 227 144 220L145 197Z" fill="url(#mine-steel)"/>
-<path d="M58 153L35 164Q32 181 46 191L68 178Z" fill="url(#mine-steel)"/>
-<path d="M79 81L60 65Q46 69 42 83L58 102Z" fill="url(#mine-steel)"/>
-<circle cx="128" cy="131" r="76" fill="url(#mine-dark)"/>
-<path d="M61 149C75 184 109 199 145 190C172 184 188 167 198 147C192 181 163 207 128 207C97 207 69 186 61 149Z" fill="#322C42" stroke="none" opacity=".5"/>
-<path d="M72 135C86 148 105 155 128 155C151 155 170 148 184 135" fill="none" stroke="#A191AD" stroke-width="5"/>
-<path d="M128 63C114 84 111 117 114 144" fill="none" stroke="#392B48" stroke-width="5"/>
-<path d="M76 110Q84 87 106 79" fill="none" stroke="#C0AECF" stroke-width="8"/>
-<circle cx="151" cy="109" r="22" fill="url(#mine-steel)" stroke-width="5"/>
-<circle cx="151" cy="109" r="13" fill="url(#mine-red)" stroke-width="4"/>
-<circle cx="146" cy="104" r="4" fill="#FFE4B7" stroke="none"/>
-<circle cx="94" cy="171" r="5" fill="#CEBEE2" stroke="none"/>
-<circle cx="158" cy="171" r="5" fill="#CEBEE2" stroke="none"/>
-</g>
+  <title id="mine-title">Мина</title>
+  <desc id="mine-desc">Улучшенный бустер «Мина». Разрывает соперника на равные части. Тёмная круглая фантазийная мина с шестью тупыми выступами и красным индикатором.</desc>
+  <defs>
+    <radialGradient id="mine-gold" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFC2" />
+      <stop offset=".25" stop-color="#FFE972" />
+      <stop offset=".55" stop-color="#FFD22A" />
+      <stop offset=".82" stop-color="#F5A512" />
+      <stop offset="1" stop-color="#DC830C" />
+    </radialGradient>
+    <radialGradient id="mine-steel" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#EFF2FF" />
+      <stop offset=".55" stop-color="#CAD0E8" />
+      <stop offset=".82" stop-color="#9A9DBD" />
+      <stop offset="1" stop-color="#787EAA" />
+    </radialGradient>
+    <radialGradient id="mine-frost" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#C2FFFF" />
+      <stop offset=".55" stop-color="#57E2FF" />
+      <stop offset=".82" stop-color="#18ABEA" />
+      <stop offset="1" stop-color="#1580D0" />
+    </radialGradient>
+    <radialGradient id="mine-plum" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#EFCFFF" />
+      <stop offset=".25" stop-color="#D58BFF" />
+      <stop offset=".55" stop-color="#B64EF3" />
+      <stop offset=".82" stop-color="#8831CE" />
+      <stop offset="1" stop-color="#6423A8" />
+    </radialGradient>
+    <radialGradient id="mine-pink" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE4F5" />
+      <stop offset=".25" stop-color="#FFA3DA" />
+      <stop offset=".55" stop-color="#F857AD" />
+      <stop offset=".82" stop-color="#D93490" />
+      <stop offset="1" stop-color="#BB2B78" />
+    </radialGradient>
+    <radialGradient id="mine-green" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F2FFAA" />
+      <stop offset=".25" stop-color="#C9F75B" />
+      <stop offset=".55" stop-color="#84DF1F" />
+      <stop offset=".82" stop-color="#42AE24" />
+      <stop offset="1" stop-color="#20833F" />
+    </radialGradient>
+    <radialGradient id="mine-red" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFD0D6" />
+      <stop offset=".25" stop-color="#FF8596" />
+      <stop offset=".55" stop-color="#FB3F62" />
+      <stop offset=".82" stop-color="#DC1744" />
+      <stop offset="1" stop-color="#B5183D" />
+    </radialGradient>
+    <radialGradient id="mine-blue" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#E9FFFF" />
+      <stop offset=".25" stop-color="#81EBFF" />
+      <stop offset=".55" stop-color="#31C3F3" />
+      <stop offset=".82" stop-color="#0B91E0" />
+      <stop offset="1" stop-color="#176ACA" />
+    </radialGradient>
+    <radialGradient id="mine-cream" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#FFF4D9" />
+      <stop offset=".55" stop-color="#FFE7B5" />
+      <stop offset=".82" stop-color="#F5CB8B" />
+      <stop offset="1" stop-color="#DDA563" />
+    </radialGradient>
+    <radialGradient id="mine-stone" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F3F3FC" />
+      <stop offset=".25" stop-color="#D5D8E8" />
+      <stop offset=".55" stop-color="#AFB6D0" />
+      <stop offset=".82" stop-color="#8C95B3" />
+      <stop offset="1" stop-color="#727F9D" />
+    </radialGradient>
+    <radialGradient id="mine-dark" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#B688D6" />
+      <stop offset=".25" stop-color="#8455B6" />
+      <stop offset=".55" stop-color="#623A97" />
+      <stop offset=".82" stop-color="#4C2878" />
+      <stop offset="1" stop-color="#392461" />
+    </radialGradient>
+    <radialGradient id="mine-brown" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE9AF" />
+      <stop offset=".25" stop-color="#FFC370" />
+      <stop offset=".55" stop-color="#F3A038" />
+      <stop offset=".82" stop-color="#D97C24" />
+      <stop offset="1" stop-color="#B55E26" />
+    </radialGradient>
+    <radialGradient id="mine-c2-glassGreen" cx=".25" cy=".15" r=".92">
+      <stop stop-color="#EEFFFF" />
+      <stop offset=".35" stop-color="#A6F5BE" />
+      <stop offset=".72" stop-color="#5CDB8E" />
+      <stop offset="1" stop-color="#20A86A" />
+    </radialGradient>
+    <radialGradient id="mine-c2-poisonLiquid" cx=".32" cy=".28" r=".86">
+      <stop stop-color="#98F729" />
+      <stop offset=".5" stop-color="#47C315" />
+      <stop offset="1" stop-color="#067638" />
+    </radialGradient>
+    <radialGradient id="mine-c2-orb" cx=".3" cy=".22" r=".78">
+      <stop stop-color="#86FFFF" />
+      <stop offset=".27" stop-color="#1CCEEB" />
+      <stop offset=".64" stop-color="#0789C4" />
+      <stop offset=".85" stop-color="#076BBC" />
+      <stop offset="1" stop-color="#28C7EF" />
+    </radialGradient>
+    <radialGradient id="mine-c2-purpleOrb" cx=".32" cy=".24" r=".76">
+      <stop stop-color="#F7C5FF" />
+      <stop offset=".3" stop-color="#D780FF" />
+      <stop offset=".63" stop-color="#A94EE8" />
+      <stop offset="1" stop-color="#7430B3" />
+    </radialGradient>
+    <radialGradient id="mine-c2-cyanGlow">
+      <stop stop-color="#C9FFFF" stop-opacity=".85" />
+      <stop offset=".6" stop-color="#5DEFF5" stop-opacity=".4" />
+      <stop offset="1" stop-color="#34DCEB" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="mine-c2-amberFace" cx=".26" cy=".16" r=".86">
+      <stop stop-color="#FFF59C" />
+      <stop offset=".3" stop-color="#FFDA42" />
+      <stop offset=".72" stop-color="#F4AF15" />
+      <stop offset="1" stop-color="#E58E0C" />
+    </radialGradient>
+    <linearGradient id="mine-c2-plumTube" x1="0" y1=".2" x2="1" y2=".3">
+      <stop stop-color="#A94EDE" />
+      <stop offset=".28" stop-color="#E1A4FF" />
+      <stop offset=".48" stop-color="#B565EA" />
+      <stop offset="1" stop-color="#6A2CAA" />
+    </linearGradient>
+    <linearGradient id="mine-c2-goldTube" x1="0" y1="0" x2="1" y2=".2">
+      <stop stop-color="#E99D18" />
+      <stop offset=".23" stop-color="#FFF9BB" />
+      <stop offset=".46" stop-color="#FFD93C" />
+      <stop offset="1" stop-color="#E69A14" />
+    </linearGradient>
+    <filter id="mine-c2-contact" x="-.2" y="-.2" width="1.4" height="1.5" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.4" />
+    </filter>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <g transform="rotate(0 128 128)">
+      <rect x="110" y="27" width="36" height="47" rx="10" fill="url(#mine-c2-goldTube)" />
+      <ellipse cx="128" cy="29" rx="18" ry="9" fill="url(#mine-gold)" />
+      <ellipse cx="122" cy="26" rx="7" ry="3.3" fill="#FFFAD0" opacity=".92" />
+      <path d="M113 40L114 58Q116 64 119 61L119 41Z" fill="#FFF4AC" opacity=".55" />
+    </g>
+    <g transform="rotate(60 128 128)">
+      <rect x="110" y="27" width="36" height="47" rx="10" fill="url(#mine-c2-goldTube)" />
+      <ellipse cx="128" cy="29" rx="18" ry="9" fill="url(#mine-gold)" />
+      <ellipse cx="122" cy="26" rx="7" ry="3.3" fill="#FFFAD0" opacity=".92" />
+      <path d="M113 40L114 58Q116 64 119 61L119 41Z" fill="#FFF4AC" opacity=".55" />
+    </g>
+    <g transform="rotate(120 128 128)">
+      <rect x="110" y="27" width="36" height="47" rx="10" fill="url(#mine-c2-goldTube)" />
+      <ellipse cx="128" cy="29" rx="18" ry="9" fill="url(#mine-gold)" />
+      <ellipse cx="122" cy="26" rx="7" ry="3.3" fill="#FFFAD0" opacity=".92" />
+      <path d="M113 40L114 58Q116 64 119 61L119 41Z" fill="#FFF4AC" opacity=".55" />
+    </g>
+    <g transform="rotate(180 128 128)">
+      <rect x="110" y="27" width="36" height="47" rx="10" fill="url(#mine-c2-goldTube)" />
+      <ellipse cx="128" cy="29" rx="18" ry="9" fill="url(#mine-gold)" />
+      <ellipse cx="122" cy="26" rx="7" ry="3.3" fill="#FFFAD0" opacity=".92" />
+      <path d="M113 40L114 58Q116 64 119 61L119 41Z" fill="#FFF4AC" opacity=".55" />
+    </g>
+    <g transform="rotate(240 128 128)">
+      <rect x="110" y="27" width="36" height="47" rx="10" fill="url(#mine-c2-goldTube)" />
+      <ellipse cx="128" cy="29" rx="18" ry="9" fill="url(#mine-gold)" />
+      <ellipse cx="122" cy="26" rx="7" ry="3.3" fill="#FFFAD0" opacity=".92" />
+      <path d="M113 40L114 58Q116 64 119 61L119 41Z" fill="#FFF4AC" opacity=".55" />
+    </g>
+    <g transform="rotate(300 128 128)">
+      <rect x="110" y="27" width="36" height="47" rx="10" fill="url(#mine-c2-goldTube)" />
+      <ellipse cx="128" cy="29" rx="18" ry="9" fill="url(#mine-gold)" />
+      <ellipse cx="122" cy="26" rx="7" ry="3.3" fill="#FFFAD0" opacity=".92" />
+      <path d="M113 40L114 58Q116 64 119 61L119 41Z" fill="#FFF4AC" opacity=".55" />
+    </g>
+    <circle cx="128" cy="131" r="79" fill="url(#mine-dark)" />
+    <path d="M64 161C99 187 162 194 193 148C188 184 160 211 128 210C96 210 75 190 64 161Z" fill="#3C246B" opacity=".32" />
+    <path d="M130 53C100 93 105 171 137 207M173 68C194 112 188 161 166 190" fill="none" stroke="#5C2A8B" stroke-width="2.5" opacity=".45" />
+    <ellipse cx="97" cy="83" rx="24" ry="13" transform="rotate(-31 97 83)" fill="#F4D8FF" opacity=".92" />
+    <ellipse cx="72" cy="106" rx="4" ry="7" transform="rotate(22 72 106)" fill="#EDC6FF" opacity=".8" />
+    <path d="M53 117Q128 143 203 117V151Q128 180 53 151Z" fill="#CE831A" />
+    <path d="M53 113Q128 139 203 113V147Q128 174 53 147Z" fill="url(#mine-gold)" />
+    <path d="M57 117Q86 128 104 129L105 134Q78 132 57 122Z" fill="#FFFCE0" />
+    <path d="M181 122L198 117V143L180 148Z" fill="#DA9318" opacity=".44" />
+    <circle cx="74" cy="135" r="6.5" fill="url(#mine-gold)" />
+    <ellipse cx="72" cy="132" rx="2.2" ry="1.7" fill="#FFFFFF" />
+    <circle cx="182" cy="135" r="6.5" fill="url(#mine-gold)" />
+    <ellipse cx="180" cy="132" rx="2.2" ry="1.7" fill="#FFFFFF" />
+    <circle cx="128" cy="138" r="32" fill="#C58021" opacity=".7" />
+    <circle cx="128" cy="134" r="32" fill="url(#mine-gold)" />
+    <circle cx="128" cy="134" r="24" fill="url(#mine-red)" />
+    <path d="M128 111L113 123L108 137L128 144L145 123Z" fill="#FF7997" opacity=".65" />
+    <path d="M145 123L152 135L138 154L128 144Z" fill="#BE1442" opacity=".48" />
+    <path d="M108 137L128 144L138 154L122 157Z" fill="#F84364" />
+    <ellipse cx="119" cy="121" rx="7" ry="4.5" transform="rotate(-34 119 121)" fill="#FFF9FC" />
+    <path d="M105 120C109 111 117 107 123 107C127 109 117 111 113 118C109 124 103 125 105 120Z" fill="#FFFDE6" />
+  </g>
 </svg>

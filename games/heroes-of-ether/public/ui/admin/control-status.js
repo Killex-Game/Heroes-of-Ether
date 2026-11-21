@@ -13,7 +13,7 @@
       if(!this.active||this.disabled||this.busy||document.hidden)return;
       this.busy=true;const serial=this.serial;
       try{const state=await this.api('control-status');if(!this.active||serial!==this.serial)return;this.render(state);}
-      catch(e){if(e.status===404||e.status===403)this.disabled=true;else if(this.active&&serial===this.serial){this.root.hidden=false;this.root.textContent='Проверяем доступность сервиса управления…';}}
+      catch(e){if(e.status===404||e.status===403)this.disabled=true;else if(this.active&&serial===this.serial){this.root.hidden=false;this.root.textContent='Сервис управления временно недоступен.';}}
       finally{this.busy=false;}
     }
     render(state){

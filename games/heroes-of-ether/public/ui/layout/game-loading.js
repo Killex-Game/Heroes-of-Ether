@@ -20,7 +20,7 @@
   function update() {
     progress.value = Number(runtime) + Number(profile) + Number(loaded && portraits);
     [...root.querySelectorAll(".boot-steps span")].forEach((node, i) => node.classList.toggle("is-ready", [runtime, profile, loaded && portraits][i]));
-    if (!failed) status.textContent = !profile ? "Знакомимся с твоим героем…" : "Готовим мир к твоему появлению…";
+    if (!failed) status.textContent = "";
   }
   async function complete() {
     update();
@@ -61,7 +61,7 @@
   }, true);
   window.addEventListener("load", () => { loaded = true; complete(); }, { once: true });
   const watchdog = setTimeout(() => {
-    if (active) fail("Загрузка занимает больше времени. Проверь соединение или попробуй снова.");
+    if (active) fail("Не удалось открыть игру. Проверь соединение или попробуй снова.");
   }, 20000);
   window.KillexBoot = Object.freeze({
     get active() { return active; },

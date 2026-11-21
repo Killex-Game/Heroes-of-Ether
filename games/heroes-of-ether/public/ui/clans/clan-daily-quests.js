@@ -7,7 +7,7 @@
   function panel(state){
     const root=el('section','clan-panel clan-daily-panel'), data=state.dailyQuests;
     root.append(el('h3','','Клановые задания'));
-    if(!data?.active&&!data?.resultsVisible){root.append(el('p','clan-daily-wait','Задания обновляются...'));return root;}
+    if(!data?.active&&!data?.resultsVisible){root.append(el('p','clan-daily-wait','Новые задания появятся в 06:00 МСК.'));return root;}
     root.dataset.clanQuestUntil=String(data.resultsUntil||data.end+7200000);
     const time=el('p','clan-daily-deadline');
     if(data.active)time.dataset.clanQuestEnd=String(data.end);
@@ -19,7 +19,7 @@
     }
     time.setAttribute('role','timer');time.setAttribute('aria-live','off');
     if(data.active)time.append(el('span','clan-daily-clock-label','До окончания'),el('strong','clan-daily-clock-value'));
-    else {time.classList.add('is-finished');time.append(el('strong','clan-daily-clock-value',data.settled?'Итоги дня':'Подводим итоги…'));}
+    else {time.classList.add('is-finished');time.append(el('strong','clan-daily-clock-value',data.settled?'Итоги дня':'Задания завершены'));}
     root.append(time);
     updateCountdown(root);
     for(const q of data.quests){
@@ -85,7 +85,7 @@
       ? Number(node.dataset.clanQuestClock)+performance.now()-Number(node.dataset.clanQuestReceived):Date.now();
     const panels=[...(container?.matches?.('[data-clan-quest-until]')?[container]:[]),...(container?.querySelectorAll('[data-clan-quest-until]')||[])];
     for(const panel of panels)if(currentTime(panel)>=Number(panel.dataset.clanQuestUntil)){
-      panel.replaceChildren(el('h3','','Клановые задания'),el('p','clan-daily-wait','Задания обновляются...'));
+      panel.replaceChildren(el('h3','','Клановые задания'),el('p','clan-daily-wait','Новые задания появятся в 06:00 МСК.'));
       delete panel.dataset.clanQuestUntil;
     }
     for(const node of container?.querySelectorAll('[data-clan-quest-end]')||[]) {
@@ -95,7 +95,7 @@
         .map(n=>String(n).padStart(2,'0')).join(':');
       const label=node.querySelector('.clan-daily-clock-label'), clock=node.querySelector('.clan-daily-clock-value');
       if(label)label.hidden=!seconds;
-      const text=seconds?value:'Подводим итоги…';
+      const text=seconds?value:'Задания завершены';
       if(clock && clock.textContent!==text)clock.textContent=text;
       node.classList.toggle('is-finished',!seconds);
     }

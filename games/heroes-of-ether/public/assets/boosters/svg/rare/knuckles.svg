@@ -1,18 +1,154 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="knuckles-title knuckles-desc">
-<title id="knuckles-title">Кастет</title>
-<desc id="knuckles-desc">Редкий бустер. Дробит соперника; время действия - 15 секунд. Золотой кастет с четырьмя сквозными отверстиями для пальцев.</desc>
-<defs><linearGradient id="knuckles-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="knuckles-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="knuckles-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="knuckles-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="knuckles-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="knuckles-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="knuckles-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="knuckles-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="knuckles-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="knuckles-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="knuckles-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="knuckles-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
-<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-<path fill-rule="evenodd" d="M38 95 Q39 65 63 61 Q81 57 91 66 Q105 55 119 60 Q135 58 145 69 Q160 61 175 66 Q207 68 219 98 L215 130 Q213 146 195 153 L180 160 L166 184 Q157 198 141 191 L126 174 L89 172 L61 158 Q42 148 39 129 Z M56 99 A14 17 0 1 0 84 99 A14 17 0 1 0 56 99 Z M94 96 A14 17 0 1 0 122 96 A14 17 0 1 0 94 96 Z M132 98 A14 17 0 1 0 160 98 A14 17 0 1 0 132 98 Z M170 104 A14 17 0 1 0 198 104 A14 17 0 1 0 170 104 Z" fill="url(#knuckles-gold)"/>
-<path d="M47 130 Q57 147 84 152 L130 153 L150 175 Q156 181 162 174 L176 150 L200 139 L209 125" fill="none" stroke="#B97429" stroke-width="8"/>
-<path d="M49 82 Q60 69 76 72 M99 70 Q109 65 118 71 M138 74 Q148 70 159 76 M175 78 Q191 76 200 90" fill="none" stroke="#FFF6B6" stroke-width="5"/>
-<path d="M80 137 Q128 129 174 140 L164 155 Q124 146 87 153 Z" fill="url(#knuckles-brown)" stroke-width="5"/>
-<path d="M94 139 L100 149 M112 137 L118 147 M132 138 L138 149 M153 139 L156 151" fill="none" stroke="#E9B270" stroke-width="4"/>
-<path d="M53 121 L54 130 M90 119 L90 126 M128 117 L128 125 M166 123 L166 130" fill="none" stroke="#FFF3AB" stroke-width="4"/>
-<path d="M145 177 L151 181" fill="none" stroke="#FFDF7E" stroke-width="5"/>
-<circle cx="69" cy="151" r="4" fill="#FFDF86" stroke="none"/>
-<circle cx="185" cy="144" r="4" fill="#FFDF86" stroke="none"/>
-<path d="M42 111 L45 123" fill="none" stroke="#FFEAAA" stroke-width="4"/>
-</g>
+  <title id="knuckles-title">Кастет</title>
+  <desc id="knuckles-desc">Редкий бустер. Дробит соперника; время действия - 15 секунд. Золотой кастет с четырьмя сквозными отверстиями для пальцев.</desc>
+  <defs>
+    <radialGradient id="knuckles-gold" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFC2" />
+      <stop offset=".25" stop-color="#FFE972" />
+      <stop offset=".55" stop-color="#FFD22A" />
+      <stop offset=".82" stop-color="#F5A512" />
+      <stop offset="1" stop-color="#DC830C" />
+    </radialGradient>
+    <radialGradient id="knuckles-steel" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#EFF2FF" />
+      <stop offset=".55" stop-color="#CAD0E8" />
+      <stop offset=".82" stop-color="#9A9DBD" />
+      <stop offset="1" stop-color="#787EAA" />
+    </radialGradient>
+    <radialGradient id="knuckles-frost" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#C2FFFF" />
+      <stop offset=".55" stop-color="#57E2FF" />
+      <stop offset=".82" stop-color="#18ABEA" />
+      <stop offset="1" stop-color="#1580D0" />
+    </radialGradient>
+    <radialGradient id="knuckles-plum" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#EFCFFF" />
+      <stop offset=".25" stop-color="#D58BFF" />
+      <stop offset=".55" stop-color="#B64EF3" />
+      <stop offset=".82" stop-color="#8831CE" />
+      <stop offset="1" stop-color="#6423A8" />
+    </radialGradient>
+    <radialGradient id="knuckles-pink" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE4F5" />
+      <stop offset=".25" stop-color="#FFA3DA" />
+      <stop offset=".55" stop-color="#F857AD" />
+      <stop offset=".82" stop-color="#D93490" />
+      <stop offset="1" stop-color="#BB2B78" />
+    </radialGradient>
+    <radialGradient id="knuckles-green" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F2FFAA" />
+      <stop offset=".25" stop-color="#C9F75B" />
+      <stop offset=".55" stop-color="#84DF1F" />
+      <stop offset=".82" stop-color="#42AE24" />
+      <stop offset="1" stop-color="#20833F" />
+    </radialGradient>
+    <radialGradient id="knuckles-red" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFD0D6" />
+      <stop offset=".25" stop-color="#FF8596" />
+      <stop offset=".55" stop-color="#FB3F62" />
+      <stop offset=".82" stop-color="#DC1744" />
+      <stop offset="1" stop-color="#B5183D" />
+    </radialGradient>
+    <radialGradient id="knuckles-blue" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#E9FFFF" />
+      <stop offset=".25" stop-color="#81EBFF" />
+      <stop offset=".55" stop-color="#31C3F3" />
+      <stop offset=".82" stop-color="#0B91E0" />
+      <stop offset="1" stop-color="#176ACA" />
+    </radialGradient>
+    <radialGradient id="knuckles-cream" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#FFF4D9" />
+      <stop offset=".55" stop-color="#FFE7B5" />
+      <stop offset=".82" stop-color="#F5CB8B" />
+      <stop offset="1" stop-color="#DDA563" />
+    </radialGradient>
+    <radialGradient id="knuckles-stone" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F3F3FC" />
+      <stop offset=".25" stop-color="#D5D8E8" />
+      <stop offset=".55" stop-color="#AFB6D0" />
+      <stop offset=".82" stop-color="#8C95B3" />
+      <stop offset="1" stop-color="#727F9D" />
+    </radialGradient>
+    <radialGradient id="knuckles-dark" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#B688D6" />
+      <stop offset=".25" stop-color="#8455B6" />
+      <stop offset=".55" stop-color="#623A97" />
+      <stop offset=".82" stop-color="#4C2878" />
+      <stop offset="1" stop-color="#392461" />
+    </radialGradient>
+    <radialGradient id="knuckles-brown" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE9AF" />
+      <stop offset=".25" stop-color="#FFC370" />
+      <stop offset=".55" stop-color="#F3A038" />
+      <stop offset=".82" stop-color="#D97C24" />
+      <stop offset="1" stop-color="#B55E26" />
+    </radialGradient>
+    <radialGradient id="knuckles-c2-glassGreen" cx=".25" cy=".15" r=".92">
+      <stop stop-color="#EEFFFF" />
+      <stop offset=".35" stop-color="#A6F5BE" />
+      <stop offset=".72" stop-color="#5CDB8E" />
+      <stop offset="1" stop-color="#20A86A" />
+    </radialGradient>
+    <radialGradient id="knuckles-c2-poisonLiquid" cx=".32" cy=".28" r=".86">
+      <stop stop-color="#98F729" />
+      <stop offset=".5" stop-color="#47C315" />
+      <stop offset="1" stop-color="#067638" />
+    </radialGradient>
+    <radialGradient id="knuckles-c2-orb" cx=".3" cy=".22" r=".78">
+      <stop stop-color="#86FFFF" />
+      <stop offset=".27" stop-color="#1CCEEB" />
+      <stop offset=".64" stop-color="#0789C4" />
+      <stop offset=".85" stop-color="#076BBC" />
+      <stop offset="1" stop-color="#28C7EF" />
+    </radialGradient>
+    <radialGradient id="knuckles-c2-purpleOrb" cx=".32" cy=".24" r=".76">
+      <stop stop-color="#F7C5FF" />
+      <stop offset=".3" stop-color="#D780FF" />
+      <stop offset=".63" stop-color="#A94EE8" />
+      <stop offset="1" stop-color="#7430B3" />
+    </radialGradient>
+    <radialGradient id="knuckles-c2-cyanGlow">
+      <stop stop-color="#C9FFFF" stop-opacity=".85" />
+      <stop offset=".6" stop-color="#5DEFF5" stop-opacity=".4" />
+      <stop offset="1" stop-color="#34DCEB" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="knuckles-c2-amberFace" cx=".26" cy=".16" r=".86">
+      <stop stop-color="#FFF59C" />
+      <stop offset=".3" stop-color="#FFDA42" />
+      <stop offset=".72" stop-color="#F4AF15" />
+      <stop offset="1" stop-color="#E58E0C" />
+    </radialGradient>
+    <linearGradient id="knuckles-c2-plumTube" x1="0" y1=".2" x2="1" y2=".3">
+      <stop stop-color="#A94EDE" />
+      <stop offset=".28" stop-color="#E1A4FF" />
+      <stop offset=".48" stop-color="#B565EA" />
+      <stop offset="1" stop-color="#6A2CAA" />
+    </linearGradient>
+    <linearGradient id="knuckles-c2-goldTube" x1="0" y1="0" x2="1" y2=".2">
+      <stop stop-color="#E99D18" />
+      <stop offset=".23" stop-color="#FFF9BB" />
+      <stop offset=".46" stop-color="#FFD93C" />
+      <stop offset="1" stop-color="#E69A14" />
+    </linearGradient>
+    <filter id="knuckles-c2-contact" x="-.2" y="-.2" width="1.4" height="1.5" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.4" />
+    </filter>
+  </defs>
+  <g transform="rotate(10 128 128)" stroke-linecap="round" stroke-linejoin="round">
+    <path fill-rule="evenodd" d="M29 108Q29 73 56 60Q78 49 94 66Q111 53 130 67Q151 60 167 78Q191 70 211 92Q229 113 216 139Q209 154 187 160L178 174Q174 181 184 189Q194 198 181 205C139 224 69 204 39 174Q23 157 29 139Z M48 99A17 23 0 1 0 82 99A17 23 0 1 0 48 99Z M91 99A17 23 0 1 0 125 99A17 23 0 1 0 91 99Z M134 107A17 23 0 1 0 168 107A17 23 0 1 0 134 107Z M175 119A17 22 0 1 0 209 119A17 22 0 1 0 175 119Z M71 147C92 142 131 146 165 163Q170 166 163 173C145 186 103 174 78 161Q66 154 71 147Z" fill="#D28A20" transform="translate(0 4)" />
+    <path fill-rule="evenodd" d="M29 108Q29 73 56 60Q78 49 94 66Q111 53 130 67Q151 60 167 78Q191 70 211 92Q229 113 216 139Q209 154 187 160L178 174Q174 181 184 189Q194 198 181 205C139 224 69 204 39 174Q23 157 29 139Z M48 99A17 23 0 1 0 82 99A17 23 0 1 0 48 99Z M91 99A17 23 0 1 0 125 99A17 23 0 1 0 91 99Z M134 107A17 23 0 1 0 168 107A17 23 0 1 0 134 107Z M175 119A17 22 0 1 0 209 119A17 22 0 1 0 175 119Z M71 147C92 142 131 146 165 163Q170 166 163 173C145 186 103 174 78 161Q66 154 71 147Z" fill="url(#knuckles-gold)" />
+    <path d="M38 155C64 190 126 209 174 197C155 214 94 203 60 184Q45 174 38 163Z" fill="#DD941B" opacity=".65" />
+    <path d="M50 70C60 61 74 60 81 66C86 70 78 72 69 71C62 71 54 76 49 81C43 85 43 77 50 70Z" fill="#FFFEDB" />
+    <path d="M100 73Q110 65 120 72Q125 77 118 79L105 78Q97 78 100 73Z" fill="#FFFFDD" />
+    <path d="M144 80Q153 75 160 81Q165 85 159 87L148 86Q141 86 144 80Z" fill="#FFF9C8" opacity=".9" />
+    <path d="M187 89Q197 87 204 96Q207 101 201 100L189 96Q182 93 187 89Z" fill="#FFF4B5" />
+    <path d="M37 117C35 125 35 136 40 141C44 145 47 142 44 136L41 118Q39 111 37 117Z" fill="#FFF9BC" />
+    <path d="M81 143C107 139 145 148 166 159C143 151 113 147 90 149Z" fill="#FFF5B3" opacity=".85" />
+    <path d="M48 99A17 23 0 0 1 79 86M91 99A17 23 0 0 1 122 86M134 107A17 23 0 0 1 165 94M175 119A17 22 0 0 1 206 107" fill="none" stroke="#A77756" stroke-width="2.2" opacity=".75" />
+    <path d="M50 110Q55 123 66 122M93 111Q99 124 109 122M137 120Q143 132 153 130M177 130Q184 143 194 139" fill="none" stroke="#FFECA0" stroke-width="2.1" />
+  </g>
 </svg>

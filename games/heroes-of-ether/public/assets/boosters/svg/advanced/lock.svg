@@ -1,20 +1,168 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="lock-title lock-desc">
-<title id="lock-title">Замок</title>
-<desc id="lock-desc">Улучшенный бустер «Замок». Закрывает рот игроку, после чего тот не может ничего поглощать. Латунный навесной замок с толстой стальной дужкой и замочной скважиной.</desc>
-<defs><linearGradient id="lock-gold" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF3A3"/><stop offset=".54" stop-color="#FFC54B"/><stop offset="1" stop-color="#D27A20"/></linearGradient><linearGradient id="lock-steel" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F1F7FF"/><stop offset=".54" stop-color="#B7CFED"/><stop offset="1" stop-color="#6A80AE"/></linearGradient><linearGradient id="lock-frost" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4FFFF"/><stop offset=".54" stop-color="#79E9F7"/><stop offset="1" stop-color="#339FD6"/></linearGradient><linearGradient id="lock-plum" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#CA9BFA"/><stop offset=".54" stop-color="#9863CB"/><stop offset="1" stop-color="#634180"/></linearGradient><linearGradient id="lock-pink" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFE0ED"/><stop offset=".54" stop-color="#F49ABF"/><stop offset="1" stop-color="#CE5798"/></linearGradient><linearGradient id="lock-green" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#DFFDA5"/><stop offset=".54" stop-color="#8CD968"/><stop offset="1" stop-color="#38996A"/></linearGradient><linearGradient id="lock-red" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFCCAB"/><stop offset=".54" stop-color="#F87472"/><stop offset="1" stop-color="#CD4269"/></linearGradient><linearGradient id="lock-blue" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#B3F2FF"/><stop offset=".54" stop-color="#66BFF3"/><stop offset="1" stop-color="#5274CB"/></linearGradient><linearGradient id="lock-cream" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#FFF9E5"/><stop offset=".54" stop-color="#F6DEAE"/><stop offset="1" stop-color="#D8AD6C"/></linearGradient><linearGradient id="lock-stone" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#D6D5DF"/><stop offset=".54" stop-color="#999AAD"/><stop offset="1" stop-color="#676980"/></linearGradient><linearGradient id="lock-dark" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#877195"/><stop offset=".54" stop-color="#554660"/><stop offset="1" stop-color="#322C42"/></linearGradient><linearGradient id="lock-brown" x1="0" y1="0" x2="0.82" y2="1"><stop offset="0" stop-color="#F4BD82"/><stop offset=".54" stop-color="#C8804D"/><stop offset="1" stop-color="#925537"/></linearGradient></defs>
-<g stroke="#392B48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-<path d="M79 117V84C79 55 99 35 128 35C157 35 177 55 177 84V117H155V84C155 68 144 57 128 57C112 57 101 68 101 84V117Z" fill="url(#lock-steel)"/>
-<path d="M89 83C89 61 105 45 126 45" fill="none" stroke="#FFFFFF" stroke-width="7"/>
-<path d="M166 84V113" fill="none" stroke="#7181AD" stroke-width="5"/>
-<rect x="56" y="104" width="144" height="112" rx="22" fill="url(#lock-gold)"/>
-<path d="M57 177V195Q57 216 80 216H176Q200 215 200 193V179C174 191 150 194 127 194C102 194 77 188 57 177Z" fill="#CE802E" fill-opacity=".4" stroke="none"/>
-<rect x="70" y="116" width="116" height="84" rx="15" fill="none" stroke="#AF6927" stroke-width="4"/>
-<path d="M73 139V129Q73 120 84 120H108" fill="none" stroke="#FFF5B5" stroke-width="7"/>
-<circle cx="128" cy="151" r="25" fill="url(#lock-cream)" stroke="#B77D35" stroke-width="5"/>
-<path d="M139 146C139 139 134 135 128 135C122 135 117 139 117 146C117 151 120 154 123 156L119 172H137L133 156C137 154 139 151 139 146Z" fill="#554660" stroke="none"/>
-<circle cx="83" cy="183" r="4" fill="#FFF3A3" stroke="none"/>
-<circle cx="173" cy="183" r="4" fill="#FFF3A3" stroke="none"/>
-<path d="M154 121H173" fill="none" stroke="#FFF3A3" stroke-width="5"/>
-</g>
+  <title id="lock-title">Замок</title>
+  <desc id="lock-desc">Улучшенный бустер «Замок». Закрывает рот игроку, после чего тот не может ничего поглощать. Латунный навесной замок с толстой стальной дужкой и замочной скважиной.</desc>
+  <defs>
+    <radialGradient id="lock-gold" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFC2" />
+      <stop offset=".25" stop-color="#FFE972" />
+      <stop offset=".55" stop-color="#FFD22A" />
+      <stop offset=".82" stop-color="#F5A512" />
+      <stop offset="1" stop-color="#DC830C" />
+    </radialGradient>
+    <radialGradient id="lock-steel" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#EFF2FF" />
+      <stop offset=".55" stop-color="#CAD0E8" />
+      <stop offset=".82" stop-color="#9A9DBD" />
+      <stop offset="1" stop-color="#787EAA" />
+    </radialGradient>
+    <radialGradient id="lock-frost" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#C2FFFF" />
+      <stop offset=".55" stop-color="#57E2FF" />
+      <stop offset=".82" stop-color="#18ABEA" />
+      <stop offset="1" stop-color="#1580D0" />
+    </radialGradient>
+    <radialGradient id="lock-plum" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#EFCFFF" />
+      <stop offset=".25" stop-color="#D58BFF" />
+      <stop offset=".55" stop-color="#B64EF3" />
+      <stop offset=".82" stop-color="#8831CE" />
+      <stop offset="1" stop-color="#6423A8" />
+    </radialGradient>
+    <radialGradient id="lock-pink" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE4F5" />
+      <stop offset=".25" stop-color="#FFA3DA" />
+      <stop offset=".55" stop-color="#F857AD" />
+      <stop offset=".82" stop-color="#D93490" />
+      <stop offset="1" stop-color="#BB2B78" />
+    </radialGradient>
+    <radialGradient id="lock-green" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F2FFAA" />
+      <stop offset=".25" stop-color="#C9F75B" />
+      <stop offset=".55" stop-color="#84DF1F" />
+      <stop offset=".82" stop-color="#42AE24" />
+      <stop offset="1" stop-color="#20833F" />
+    </radialGradient>
+    <radialGradient id="lock-red" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFD0D6" />
+      <stop offset=".25" stop-color="#FF8596" />
+      <stop offset=".55" stop-color="#FB3F62" />
+      <stop offset=".82" stop-color="#DC1744" />
+      <stop offset="1" stop-color="#B5183D" />
+    </radialGradient>
+    <radialGradient id="lock-blue" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#E9FFFF" />
+      <stop offset=".25" stop-color="#81EBFF" />
+      <stop offset=".55" stop-color="#31C3F3" />
+      <stop offset=".82" stop-color="#0B91E0" />
+      <stop offset="1" stop-color="#176ACA" />
+    </radialGradient>
+    <radialGradient id="lock-cream" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFFFFF" />
+      <stop offset=".25" stop-color="#FFF4D9" />
+      <stop offset=".55" stop-color="#FFE7B5" />
+      <stop offset=".82" stop-color="#F5CB8B" />
+      <stop offset="1" stop-color="#DDA563" />
+    </radialGradient>
+    <radialGradient id="lock-stone" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#F3F3FC" />
+      <stop offset=".25" stop-color="#D5D8E8" />
+      <stop offset=".55" stop-color="#AFB6D0" />
+      <stop offset=".82" stop-color="#8C95B3" />
+      <stop offset="1" stop-color="#727F9D" />
+    </radialGradient>
+    <radialGradient id="lock-dark" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#B688D6" />
+      <stop offset=".25" stop-color="#8455B6" />
+      <stop offset=".55" stop-color="#623A97" />
+      <stop offset=".82" stop-color="#4C2878" />
+      <stop offset="1" stop-color="#392461" />
+    </radialGradient>
+    <radialGradient id="lock-brown" cx=".28" cy=".18" r=".9">
+      <stop offset="0" stop-color="#FFE9AF" />
+      <stop offset=".25" stop-color="#FFC370" />
+      <stop offset=".55" stop-color="#F3A038" />
+      <stop offset=".82" stop-color="#D97C24" />
+      <stop offset="1" stop-color="#B55E26" />
+    </radialGradient>
+    <radialGradient id="lock-c2-glassGreen" cx=".25" cy=".15" r=".92">
+      <stop stop-color="#EEFFFF" />
+      <stop offset=".35" stop-color="#A6F5BE" />
+      <stop offset=".72" stop-color="#5CDB8E" />
+      <stop offset="1" stop-color="#20A86A" />
+    </radialGradient>
+    <radialGradient id="lock-c2-poisonLiquid" cx=".32" cy=".28" r=".86">
+      <stop stop-color="#98F729" />
+      <stop offset=".5" stop-color="#47C315" />
+      <stop offset="1" stop-color="#067638" />
+    </radialGradient>
+    <radialGradient id="lock-c2-orb" cx=".3" cy=".22" r=".78">
+      <stop stop-color="#86FFFF" />
+      <stop offset=".27" stop-color="#1CCEEB" />
+      <stop offset=".64" stop-color="#0789C4" />
+      <stop offset=".85" stop-color="#076BBC" />
+      <stop offset="1" stop-color="#28C7EF" />
+    </radialGradient>
+    <radialGradient id="lock-c2-purpleOrb" cx=".32" cy=".24" r=".76">
+      <stop stop-color="#F7C5FF" />
+      <stop offset=".3" stop-color="#D780FF" />
+      <stop offset=".63" stop-color="#A94EE8" />
+      <stop offset="1" stop-color="#7430B3" />
+    </radialGradient>
+    <radialGradient id="lock-c2-cyanGlow">
+      <stop stop-color="#C9FFFF" stop-opacity=".85" />
+      <stop offset=".6" stop-color="#5DEFF5" stop-opacity=".4" />
+      <stop offset="1" stop-color="#34DCEB" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="lock-c2-amberFace" cx=".26" cy=".16" r=".86">
+      <stop stop-color="#FFF59C" />
+      <stop offset=".3" stop-color="#FFDA42" />
+      <stop offset=".72" stop-color="#F4AF15" />
+      <stop offset="1" stop-color="#E58E0C" />
+    </radialGradient>
+    <linearGradient id="lock-c2-plumTube" x1="0" y1=".2" x2="1" y2=".3">
+      <stop stop-color="#A94EDE" />
+      <stop offset=".28" stop-color="#E1A4FF" />
+      <stop offset=".48" stop-color="#B565EA" />
+      <stop offset="1" stop-color="#6A2CAA" />
+    </linearGradient>
+    <linearGradient id="lock-c2-goldTube" x1="0" y1="0" x2="1" y2=".2">
+      <stop stop-color="#E99D18" />
+      <stop offset=".23" stop-color="#FFF9BB" />
+      <stop offset=".46" stop-color="#FFD93C" />
+      <stop offset="1" stop-color="#E69A14" />
+    </linearGradient>
+    <filter id="lock-c2-contact" x="-.2" y="-.2" width="1.4" height="1.5" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.4" />
+    </filter>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M76 111V79C76 44 98 23 128 23C158 23 180 44 180 79V111H155V79C155 62 145 51 128 51C111 51 101 62 101 79V111Z" fill="url(#lock-steel)" />
+    <path d="M77 108V79C77 46 98 26 127 26C105 32 91 51 91 77V108Z" fill="#F6FAFF" opacity=".8" />
+    <path d="M151 37C168 46 176 61 176 81V108H161V79C161 60 157 46 151 37Z" fill="#8387AC" opacity=".38" />
+    <path d="M92 56C96 45 106 37 115 36C124 35 123 40 115 45C106 49 101 57 97 67C93 73 88 69 92 56Z" fill="#FFFFFF" />
+    <ellipse cx="89" cy="109" rx="24" ry="10" fill="url(#lock-gold)" />
+    <ellipse cx="167" cy="109" rx="24" ry="10" fill="url(#lock-gold)" />
+    <path d="M68 111H187Q209 111 213 133L210 186Q208 206 188 214L133 237Q128 240 123 237L68 214Q48 206 46 186L43 133Q44 112 68 111Z" fill="#DC8B18" />
+    <path d="M68 106H187Q208 106 212 130L209 182Q207 201 188 209L133 232Q128 235 123 232L68 209Q49 201 47 182L44 130Q45 107 68 106Z" fill="url(#lock-gold)" />
+    <path d="M49 145C78 158 103 178 128 199C153 177 179 160 207 145L204 184Q202 198 185 205L128 228L71 205Q55 199 52 184Z" fill="#EEB02B" />
+    <path d="M58 150C84 163 105 177 120 199L120 216L74 198Q58 192 58 176Z" fill="url(#lock-plum)" />
+    <path d="M198 150C173 163 151 177 136 199L136 216L182 198Q198 192 198 176Z" fill="url(#lock-plum)" />
+    <path d="M63 156C79 160 100 176 108 187C91 176 74 170 66 167Q60 165 63 156Z" fill="#F0B7FF" opacity=".72" />
+    <path d="M192 155C179 161 162 172 153 185C165 175 177 171 189 167Q195 165 192 155Z" fill="#E09CFF" opacity=".7" />
+    <path d="M68 111C77 109 90 109 101 111C106 114 98 118 87 119L65 119C57 119 58 113 68 111Z" fill="#FFFFE0" />
+    <path d="M51 135Q52 127 55 130L56 167Q57 186 68 194C57 191 51 179 51 167Z" fill="#FFF2A1" opacity=".7" />
+    <path d="M91 115Q128 127 166 115C148 132 111 132 91 115Z" fill="#DE9B20" opacity=".7" />
+    <circle cx="64" cy="133" r="7.5" fill="url(#lock-gold)" />
+    <ellipse cx="61.8" cy="130.5" rx="2.4" ry="2" fill="#FFFFFF" />
+    <circle cx="191" cy="133" r="7.5" fill="url(#lock-gold)" />
+    <ellipse cx="188.8" cy="130.5" rx="2.4" ry="2" fill="#FFFFFF" />
+    <path d="M153 151C153 136 142 126 128 126C114 126 103 136 103 151C103 160 107 167 114 172L109 195Q128 205 147 195L142 172C149 167 153 160 153 151Z" fill="#BE7B22" opacity=".6" transform="translate(0 2)" />
+    <path d="M153 151C153 136 142 126 128 126C114 126 103 136 103 151C103 160 107 167 114 172L109 195Q128 205 147 195L142 172C149 167 153 160 153 151Z" fill="url(#lock-gold)" />
+    <path d="M143 151C143 142 136 136 128 136C120 136 113 142 113 151C113 157 117 163 122 165L117 190Q128 194 139 190L134 165C139 163 143 157 143 151Z" fill="url(#lock-dark)" />
+    <path d="M112 142C115 134 123 130 129 131C133 133 123 135 120 141C116 147 110 148 112 142Z" fill="#FFFFE7" />
+    <path d="M69 201Q94 213 119 224C97 216 78 213 67 204Z" fill="#FFF2B1" opacity=".7" />
+  </g>
 </svg>

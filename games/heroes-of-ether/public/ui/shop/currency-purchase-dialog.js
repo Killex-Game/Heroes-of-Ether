@@ -237,13 +237,11 @@
           !active || claimed || pending || this.owner.serverInArena,
           !active || claimed || this.owner.serverInArena,
         );
-        action.textContent = pending
-          ? "Получение…"
-          : !active
-            ? `Нужен ${label}`
-            : claimed
-              ? "Получено"
-              : "Получить";
+        action.textContent = !active
+          ? `Нужен ${label}`
+          : claimed
+            ? "Получено"
+            : "Получить";
       }
     }
     async claimBonus(kind, currency) {

@@ -1,1 +1,153 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><defs><linearGradient id="g" x2=".8" y2="1"><stop stop-color="#fff6bf"/><stop offset=".35" stop-color="#ffdc79"/><stop offset=".7" stop-color="#b47b30"/><stop offset="1" stop-color="#ffe5a0"/></linearGradient><linearGradient id="b" x2="1" y2="1"><stop stop-color="#3a4875"/><stop offset="1" stop-color="#12142e"/></linearGradient></defs><path d="M60 7 103 32v54l-43 27L17 86V32Z" fill="url(#b)" stroke="url(#g)" stroke-width="4"/><path d="m60 16 35 21v44l-35 23-35-23V37Z" fill="none" stroke="#91c9f4" stroke-opacity=".5"/><g transform="rotate(-18 60 61)"><path d="M31 39h58v13a9 9 0 0 0 0 18v13H31V70a9 9 0 0 0 0-18Z" fill="url(#g)" stroke="#fff1bd" stroke-width="2"/><path d="M38 45h44v32H38Z" fill="url(#b)" stroke="#b59251"/><path d="m60 46 4 10 11 1-9 7 3 11-9-6-9 6 3-11-9-7 11-1Z" fill="url(#g)"/></g><path d="m99 8 2 7 7 2-7 2-2 7-2-7-7-2 7-2ZM13 90l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" fill="#ccedff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="lite-title lite-desc">
+  <title id="lite-title">Lite — Герои Эфира</title>
+  <desc id="lite-desc">Голубой объёмный щит с золотым билетом подписки и мягкой сиреневой звездой.</desc>
+  <defs>
+    <radialGradient id="b" cx=".23" cy=".16" r=".93" gradientTransform="translate(0 -.02) scale(1 1.05)">
+      <stop stop-color="#D2FFFF"/>
+      <stop offset=".28" stop-color="#8CF4FF"/>
+      <stop offset=".63" stop-color="#39D6FF"/>
+      <stop offset=".86" stop-color="#36A7ED"/>
+      <stop offset="1" stop-color="#4785DC"/>
+    </radialGradient>
+    <linearGradient id="shield-depth" x1=".12" y1="0" x2=".75" y2="1">
+      <stop stop-color="#67DFFF"/>
+      <stop offset=".5" stop-color="#4EB7EF"/>
+      <stop offset="1" stop-color="#457ED4"/>
+    </linearGradient>
+    <radialGradient id="shield-face" cx=".25" cy=".19" r=".88" gradientTransform="translate(0 -.03) scale(1 1.08)">
+      <stop stop-color="#D2FFFF"/>
+      <stop offset=".2" stop-color="#72F1FF"/>
+      <stop offset=".48" stop-color="#25D7F8"/>
+      <stop offset=".76" stop-color="#169BEC"/>
+      <stop offset="1" stop-color="#2678E1"/>
+    </radialGradient>
+    <linearGradient id="shield-bottom" x1=".2" y1="0" x2=".72" y2="1">
+      <stop stop-color="#0B83E4" stop-opacity="0"/>
+      <stop offset=".66" stop-color="#175AD4" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#164DD2" stop-opacity=".54"/>
+    </linearGradient>
+    <radialGradient id="blue-bounce" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#78F9FF" stop-opacity=".88"/>
+      <stop offset=".6" stop-color="#67EDFF" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#5CE5FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g" cx=".26" cy=".12" r=".94">
+      <stop stop-color="#FFFBA5"/>
+      <stop offset=".26" stop-color="#FFF16D"/>
+      <stop offset=".56" stop-color="#FFD72F"/>
+      <stop offset=".81" stop-color="#FFB819"/>
+      <stop offset="1" stop-color="#F39712"/>
+    </radialGradient>
+    <linearGradient id="ticket-depth" x1=".08" y1="0" x2=".74" y2="1">
+      <stop stop-color="#F7BD23"/>
+      <stop offset=".42" stop-color="#FFBB16"/>
+      <stop offset="1" stop-color="#E89415"/>
+    </linearGradient>
+    <radialGradient id="ticket-face" cx=".25" cy=".12" r=".96">
+      <stop stop-color="#FFF4A5"/>
+      <stop offset=".4" stop-color="#FFE361"/>
+      <stop offset=".75" stop-color="#FFD033"/>
+      <stop offset="1" stop-color="#F9AE16"/>
+    </radialGradient>
+    <linearGradient id="ticket-top-light" x1=".08" y1="0" x2=".9" y2="1">
+      <stop stop-color="#FFFFEC"/>
+      <stop offset=".48" stop-color="#FFF8B6" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#FFF486" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="ticket-bounce" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#FFF37D" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#FFE14F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="star-depth" x1=".2" y1="0" x2=".76" y2="1">
+      <stop stop-color="#C286F2"/>
+      <stop offset=".6" stop-color="#9A45DD"/>
+      <stop offset="1" stop-color="#7838C6"/>
+    </linearGradient>
+    <radialGradient id="star-face" cx=".3" cy=".27" r=".78">
+      <stop stop-color="#ECAEFD"/>
+      <stop offset=".32" stop-color="#D88BFB"/>
+      <stop offset=".65" stop-color="#B75BE8"/>
+      <stop offset=".89" stop-color="#9C45D3"/>
+      <stop offset="1" stop-color="#A153DA"/>
+    </radialGradient>
+    <radialGradient id="star-bounce" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#EAA9FF" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#D986FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="white-gloss" x1=".2" y1="0" x2=".7" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EAFFFF" stop-opacity=".8"/>
+    </linearGradient>
+    <filter id="contact-soft" x="-.18" y="-.24" width="1.4" height="1.55" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.45"/>
+    </filter>
+    <filter id="star-contact" x="-.2" y="-.2" width="1.4" height="1.5" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation=".9"/>
+    </filter>
+    <filter id="gloss-soft" x="-.3" y="-.3" width="1.6" height="1.6" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation=".65"/>
+    </filter>
+    <path id="shield-shape" d="M60 8.8C62.6 8.8 64.3 11.4 69.3 13.7C79.5 19 89.6 22.4 100.7 24Q105 24.6 104.7 29.3L103.8 54.8C103.4 80.1 85.9 101 63.2 113.1Q60 114.8 56.8 113.1C34.1 101 16.6 80.1 16.2 54.8L15.3 29.3Q15 24.6 19.3 24C30.4 22.4 40.5 19 50.7 13.7C55.7 11.4 57.4 8.8 60 8.8Z"/>
+    <path id="ticket-shape" d="M34.2 38.8Q60 37.2 85.8 38.8Q92 39.2 92 45.5V50.4Q92 52.1 90.4 52.5C81.2 54.9 81.2 65.7 90.4 68Q92 68.4 92 70.1V76.9Q92 83 85.8 83.4Q60 85 34.2 83.4Q28 83 28 76.9V70.1Q28 68.4 29.6 68C38.8 65.7 38.8 54.9 29.6 52.5Q28 52.1 28 50.4V45.5Q28 39.2 34.2 38.8Z"/>
+    <path id="star-shape" d="M58.3 45.8Q60 42.4 61.7 45.8L65.1 52.7Q65.6 53.8 66.9 54L74.5 55.1Q78.2 55.6 75.5 58.2L70 63.5Q69.1 64.4 69.3 65.7L70.6 73.3Q71.3 77 68 75.2L61.2 71.6Q60 71 58.8 71.6L52 75.2Q48.7 77 49.4 73.3L50.7 65.7Q50.9 64.4 50 63.5L44.5 58.2Q41.8 55.6 45.5 55.1L53.1 54Q54.4 53.8 54.9 52.7Z"/>
+    <clipPath id="shield-clip"><use href="#shield-shape"/></clipPath>
+    <clipPath id="ticket-clip"><use href="#ticket-shape"/></clipPath>
+    <clipPath id="star-clip"><use href="#star-shape"/></clipPath>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- The rounded blue body uses the airy glass and enamel palette of the potions. -->
+    <use href="#shield-shape" transform="translate(0 1.25)" fill="url(#shield-depth)"/>
+    <use href="#shield-shape" fill="url(#b)"/>
+    <path d="M60 13.6Q61.2 13.6 63.7 15.4C74.5 22 85.1 25.8 97.7 28Q100.5 28.5 100.3 31.3L99.3 54.9C98.9 78.6 83 97.9 62 109.4Q60 110.5 58 109.4C37 97.9 21.1 78.6 20.7 54.9L19.7 31.3Q19.5 28.5 22.3 28C34.9 25.8 45.5 22 56.3 15.4Q58.8 13.6 60 13.6Z" fill="url(#shield-face)"/>
+    <path d="M23.1 49.9C30.9 71.5 61.9 80.6 98.1 52.7C98 77.9 82.2 96.6 62 107.8Q60 109 58 107.8C37.7 96.4 22.3 78.1 22 54.9Z" fill="url(#shield-bottom)"/>
+    <g clip-path="url(#shield-clip)">
+      <ellipse cx="78" cy="91" rx="24" ry="13" transform="rotate(-37 78 91)" fill="url(#blue-bounce)"/>
+      <path d="M21.1 29.1C34.1 26.7 44.3 23.6 55 17.6C58.9 15.4 60 15.6 58.1 18.2C51.2 25.1 34.1 32 24.2 32.9C21.4 33.1 19.8 31.2 21.1 29.1Z" fill="#EAFFFF" opacity=".76"/>
+      <path d="M17.8 36.3C18 33.1 20.6 32.6 20.9 36.3L21.7 55.3C21.8 63.5 22.6 69.7 24.9 76.5C21 70 18.2 62.2 18 54.8Z" fill="#BFFFFF" opacity=".71"/>
+      <path d="M62.3 108.9C79.5 99.3 91.9 85.8 97.7 72.9C95 86.6 81.2 103 64.2 112C62.1 113.1 60.2 111.1 62.3 108.9Z" fill="#67D9FF" opacity=".45" filter="url(#gloss-soft)"/>
+    </g>
+    <!-- Broad, round specular reflections, matching the bottle highlights. -->
+    <path d="M34.8 29.3C40.6 26.5 46.7 27.2 45.4 31.6C43.7 36.8 35.2 44 29.3 45.4C24.5 46.6 23.3 43.4 26.1 38.9C28.2 35.2 31.4 31.4 34.8 29.3Z" fill="url(#white-gloss)"/>
+    <ellipse cx="25.3" cy="51.6" rx="2.6" ry="4.2" transform="rotate(15 25.3 51.6)" fill="#EEFFFF" opacity=".78"/>
+    <ellipse cx="88.1" cy="84.9" rx="4.6" ry="10.4" transform="rotate(36 88.1 84.9)" fill="#B6FCFF" opacity=".44" filter="url(#gloss-soft)"/>
+    <!-- A soft golden pass, with small, rounded punched edges. -->
+    <g transform="rotate(-15 60 60)">
+      <use href="#ticket-shape" transform="translate(.4 3.8)" fill="#165CA8" opacity=".41" filter="url(#contact-soft)"/>
+      <use href="#ticket-shape" transform="translate(0 2)" fill="url(#ticket-depth)"/>
+      <use href="#ticket-shape" fill="url(#g)"/>
+      <path d="M35.6 42.7Q60 41.2 84.4 42.7Q88.2 42.9 88.2 46.8V49.7C78.4 53.4 78.4 67 88.2 70.6V75.8Q88.2 79.3 84.4 79.6Q60 81.1 35.6 79.6Q31.8 79.3 31.8 75.8V70.6C41.6 67 41.6 53.4 31.8 49.7V46.8Q31.8 42.9 35.6 42.7Z" fill="url(#ticket-face)"/>
+      <g clip-path="url(#ticket-clip)">
+        <ellipse cx="55" cy="77.5" rx="29" ry="7.9" fill="url(#ticket-bounce)"/>
+        <path d="M34.4 39.7Q59.5 38.3 84.8 39.7C87.1 39.9 88.6 40.6 89.5 42.3C75.4 40.7 50.7 40.5 35.6 42C32.9 42.2 31.3 43.1 30.2 45.1C30.4 42.2 31.5 40.2 34.4 39.7Z" fill="url(#ticket-top-light)"/>
+        <path d="M29.8 72.2C30.7 71.8 31.1 72.2 31.1 74.7C31.2 78.2 32.1 80.5 36.4 81.4C32.6 81.7 30.3 80.9 29.9 77.6Z" fill="#FFF7A0" opacity=".83"/>
+        <path d="M85.8 81.3C88.7 80.7 90.2 79.1 90.4 76.5L90.5 72.6C92.1 75.9 91.9 79.6 88.9 82.2Q87.3 83.4 83.4 83.8L39 84C60.2 83.5 75.3 83 85.8 81.3Z" fill="#EBA91B" opacity=".65"/>
+      </g>
+      <!-- The ticket perforations are gentle recessed dots, not hard stitching. -->
+      <g fill="#E3A128" opacity=".67">
+        <ellipse cx="40.1" cy="46.7" rx=".83" ry="1.2"/>
+        <ellipse cx="40.1" cy="51.1" rx=".83" ry="1.2"/>
+        <ellipse cx="40.1" cy="71.3" rx=".83" ry="1.2"/>
+        <ellipse cx="40.1" cy="75.7" rx=".83" ry="1.2"/>
+        <ellipse cx="79.9" cy="46.7" rx=".83" ry="1.2"/>
+        <ellipse cx="79.9" cy="51.1" rx=".83" ry="1.2"/>
+        <ellipse cx="79.9" cy="71.3" rx=".83" ry="1.2"/>
+        <ellipse cx="79.9" cy="75.7" rx=".83" ry="1.2"/>
+      </g>
+      <path d="M34.6 44.4C38.2 43.7 45.1 43.4 49.1 44C51.6 44.4 50.7 46.4 47.3 47.1C43.5 47.8 37.7 47.9 34.5 47.3C32.8 46.9 32.9 44.8 34.6 44.4Z" fill="#FFFFFF" opacity=".92"/>
+      <ellipse cx="34" cy="50" rx="1.25" ry="1.8" fill="#FFFEEE" opacity=".8"/>
+      <!-- A rounded enamel star has one continuous surface, without gemstone facets. -->
+      <use href="#star-shape" transform="translate(.3 2.7)" fill="#AC6A2B" opacity=".31" filter="url(#star-contact)"/>
+      <use href="#star-shape" transform="translate(0 1.35)" fill="url(#star-depth)"/>
+      <use href="#star-shape" fill="url(#star-face)"/>
+      <g clip-path="url(#star-clip)">
+        <ellipse cx="63" cy="69.4" rx="10.9" ry="6.3" fill="url(#star-bounce)"/>
+        <path d="M57.2 49.7C58.5 46.6 60 45.7 61 47.6C61.9 49.1 61 52.5 59.3 54.4C57.9 56.1 55.6 55.9 56 53.8Z" fill="#FFFFFF" opacity=".9"/>
+        <path d="M47.6 56.3C49.7 55.9 52.7 55.4 53.5 56.4C54.1 57.2 52.3 58.5 50.4 58.7C48.2 59 46 57.9 46.1 57C46.2 56.7 46.8 56.5 47.6 56.3Z" fill="#FCEBFF" opacity=".78"/>
+        <path d="M65.9 71C67 71 68.4 72.8 68.4 73.7C67.7 74.3 64.3 72.2 63.4 71.6C63.6 70.9 64.8 70.7 65.9 71Z" fill="#F1A5FF" opacity=".52"/>
+      </g>
+    </g>
+    <!-- A tiny, softly rounded sparkle preserves the original accent. -->
+    <path d="M102 9.5Q102.4 9.5 102.7 11.1L103.4 14.5Q103.6 15.4 104.5 15.6L107.9 16.3Q109.5 16.6 109.5 17Q109.5 17.4 107.9 17.7L104.5 18.4Q103.6 18.6 103.4 19.5L102.7 22.9Q102.4 24.5 102 24.5Q101.6 24.5 101.3 22.9L100.6 19.5Q100.4 18.6 99.5 18.4L96.1 17.7Q94.5 17.4 94.5 17Q94.5 16.6 96.1 16.3L99.5 15.6Q100.4 15.4 100.6 14.5L101.3 11.1Q101.6 9.5 102 9.5Z" fill="#FFF6A1"/>
+    <path d="M102 12.8L102.8 16.2L106.2 17L102.8 17.8L102 21.2L101.2 17.8L97.8 17L101.2 16.2Z" fill="#FFFFFF"/>
+  </g>
+</svg>

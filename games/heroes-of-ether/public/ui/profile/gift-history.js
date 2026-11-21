@@ -15,7 +15,7 @@
     let abort, generation=0, page=0, nextBefore=null; const cursors=[null];
     const load=async()=>{
       abort?.abort(); abort=new AbortController(); const current=++generation;
-      window.KillexControls.state(previous,true);window.KillexControls.state(next,true);status.textContent="Загрузка…";
+      window.KillexControls.state(previous,true);window.KillexControls.state(next,true);status.textContent="";
       const query=new URLSearchParams({playerId:player.id,giftId:gift.id});if(cursors[page]!==null)query.set("before",String(cursors[page]));
       try {
         const response=await fetch("/api/social/gifts?"+query,{signal:abort.signal,cache:"no-store"});const result=await response.json();

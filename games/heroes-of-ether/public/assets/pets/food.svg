@@ -1,1 +1,168 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="gold" x2=".3" y2="1"><stop stop-color="#fff4bd"/><stop offset=".35" stop-color="#ffc642"/><stop offset=".65" stop-color="#dc7c15"/><stop offset="1" stop-color="#ffda67"/></linearGradient><linearGradient id="violet" x2=".6" y2="1"><stop stop-color="#d6a4ff"/><stop offset=".5" stop-color="#8c39b3"/><stop offset="1" stop-color="#412369"/></linearGradient><linearGradient id="fire" x2="0" y2="1"><stop stop-color="#fff3a2"/><stop offset=".45" stop-color="#ffb71d"/><stop offset="1" stop-color="#e63525"/></linearGradient></defs><path d="M14 15h36l3 40q-21 10-42 0z" fill="url(#violet)" stroke="#684081" stroke-width="2"/><rect x="10" y="9" width="44" height="11" rx="5" fill="url(#gold)" stroke="#a47731"/><ellipse cx="32" cy="37" rx="16" ry="14" fill="#fff1c7" stroke="#cb9d4c"/><path d="M24 42c-2-9 6-15 8-15s10 6 8 15c-2 3-6 0-8 0s-6 3-8 0z" fill="#c18437"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="u-blue" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#C9F6FF" />
+      <stop offset=".48" stop-color="#5CB9FA" />
+      <stop offset="1" stop-color="#426DD2" />
+    </linearGradient>
+    <linearGradient id="u-violet" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#F0BEFF" />
+      <stop offset=".48" stop-color="#B378F3" />
+      <stop offset="1" stop-color="#7750D5" />
+    </linearGradient>
+    <linearGradient id="u-gold" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#FFFAB4" />
+      <stop offset=".48" stop-color="#FFD23F" />
+      <stop offset="1" stop-color="#F29A23" />
+    </linearGradient>
+    <linearGradient id="u-lime" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#E6FF9D" />
+      <stop offset=".48" stop-color="#A0EE28" />
+      <stop offset="1" stop-color="#4DB51B" />
+    </linearGradient>
+    <linearGradient id="u-red" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#FFC0CE" />
+      <stop offset=".48" stop-color="#FF6585" />
+      <stop offset="1" stop-color="#CE386A" />
+    </linearGradient>
+    <linearGradient id="u-cream" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#FFFFF5" />
+      <stop offset=".48" stop-color="#FFF1CF" />
+      <stop offset="1" stop-color="#F3DFAE" />
+    </linearGradient>
+    <linearGradient id="u-paper" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#F7FCFF" />
+      <stop offset=".48" stop-color="#E1EEFF" />
+      <stop offset="1" stop-color="#BBD2F7" />
+    </linearGradient>
+    <linearGradient id="u-silver" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#FFFFFF" />
+      <stop offset=".48" stop-color="#D9E8F7" />
+      <stop offset="1" stop-color="#95AFD4" />
+    </linearGradient>
+    <linearGradient id="u-bronze" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#FFE3AD" />
+      <stop offset=".48" stop-color="#F4B269" />
+      <stop offset="1" stop-color="#C77D4B" />
+    </linearGradient>
+    <linearGradient id="u-teal" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#C4FFF4" />
+      <stop offset=".48" stop-color="#56DCD4" />
+      <stop offset="1" stop-color="#269CAB" />
+    </linearGradient>
+    <linearGradient id="u-dark" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#7389E0" />
+      <stop offset=".48" stop-color="#4D54B7" />
+      <stop offset="1" stop-color="#323888" />
+    </linearGradient>
+    <linearGradient id="u-disabled" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#F4EFE8" />
+      <stop offset=".48" stop-color="#DED6CA" />
+      <stop offset="1" stop-color="#B9AD9E" />
+    </linearGradient>
+    <linearGradient id="u-pink" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#FFE1F3" />
+      <stop offset=".48" stop-color="#FF9ECD" />
+      <stop offset="1" stop-color="#DA66AA" />
+    </linearGradient>
+    <linearGradient id="u-ink" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#697BA8" />
+      <stop offset=".48" stop-color="#43577E" />
+      <stop offset="1" stop-color="#334768" />
+    </linearGradient>
+    <linearGradient id="u-accent" x1=".18" y1="0" x2=".7" y2="1">
+      <stop stop-color="#C9F6FF" />
+      <stop offset=".48" stop-color="#5CB9FA" />
+      <stop offset="1" stop-color="#426DD2" />
+    </linearGradient>
+    <linearGradient id="u-gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFFFF" stop-opacity=".63" />
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="u-rim" x1=".2" y1="0" x2=".8" y2="1">
+      <stop stop-color="#FFFFFF" />
+      <stop offset=".42" stop-color="#D7DDFB" />
+      <stop offset="1" stop-color="#8293D2" />
+    </linearGradient>
+    <linearGradient id="fire" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFC0CE" />
+      <stop offset=".48" stop-color="#FF6585" />
+      <stop offset="1" stop-color="#CE386A" />
+    </linearGradient>
+    <linearGradient id="gold" x2=".3" y2="1">
+      <stop offset="0" stop-color="#FFFAB4" />
+      <stop offset=".48" stop-color="#FFD23F" />
+      <stop offset="1" stop-color="#F29A23" />
+    </linearGradient>
+    <linearGradient id="violet" x2=".6" y2="1">
+      <stop offset="0" stop-color="#F0BEFF" />
+      <stop offset=".48" stop-color="#B378F3" />
+      <stop offset="1" stop-color="#7750D5" />
+    </linearGradient>
+    <radialGradient id="food-body" cx=".27" cy=".17" r=".89">
+      <stop stop-color="#E7B8FF" />
+      <stop offset=".25" stop-color="#C87DF6" />
+      <stop offset=".55" stop-color="#AA53E9" />
+      <stop offset=".82" stop-color="#8540CF" />
+      <stop offset="1" stop-color="#7834BB" />
+    </radialGradient>
+    <linearGradient id="food-side" x1="0" y1="0" x2="1" y2=".6">
+      <stop stop-color="#BC6DEE" />
+      <stop offset=".47" stop-color="#9B48D9" />
+      <stop offset="1" stop-color="#6E30AD" />
+    </linearGradient>
+    <radialGradient id="food-gold-round" cx=".28" cy=".14" r=".95">
+      <stop stop-color="#FFFEC4" />
+      <stop offset=".25" stop-color="#FFEB78" />
+      <stop offset=".58" stop-color="#FFD02B" />
+      <stop offset="1" stop-color="#ECA019" />
+    </radialGradient>
+    <linearGradient id="food-gold-roll" x1=".13" y1="0" x2=".65" y2="1">
+      <stop stop-color="#FFF9AA" />
+      <stop offset=".24" stop-color="#FFE451" />
+      <stop offset=".65" stop-color="#FBC222" />
+      <stop offset="1" stop-color="#E9A01D" />
+    </linearGradient>
+    <radialGradient id="food-label" cx=".28" cy=".21" r=".9">
+      <stop stop-color="#FFFFFF" />
+      <stop offset=".44" stop-color="#FFF6D9" />
+      <stop offset=".78" stop-color="#FFE8B6" />
+      <stop offset="1" stop-color="#F1CF8C" />
+    </radialGradient>
+    <radialGradient id="food-pad" cx=".27" cy=".2" r=".85">
+      <stop stop-color="#FFFBA9" />
+      <stop offset=".33" stop-color="#FFE45C" />
+      <stop offset=".67" stop-color="#FFC32A" />
+      <stop offset="1" stop-color="#EAA022" />
+    </radialGradient>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.5 17H48.5L54.6 48.9Q57.1 60.2 47.1 61H18Q8.1 60.2 9.5 50.4L12.7 26.2Z" fill="url(#food-body)" />
+    <path d="M46.2 18.5L49 18.7L54.6 48.9Q56.9 58.6 49 60.4L42.7 60.8Q49.8 55 49.2 48.3L45.8 28.9Z" fill="url(#food-side)" />
+    <path d="M13.1 28.7L11 48.2Q9.5 58.6 18.5 59.1C15.2 55.8 14.3 52 15 45.6L17.5 26.6Z" fill="#C889F0" opacity=".58" />
+    <path d="M15.5 55.1C24.5 58.4 37.5 59.1 48.5 56.4Q46.9 61 39.4 61H20Q14.2 60.3 15.5 55.1Z" fill="#8E42C4" opacity=".5" />
+    <path d="M14.6 18.6H48L48.7 22.2Q32.6 26.2 13.9 22.3Z" fill="#8140B5" opacity=".4" />
+    <path d="M17.6 25C20.4 21.7 22.4 23.5 21.7 27.5L19.6 36Q17.2 39.8 16.1 36.5C15.5 33.3 16.1 28 17.6 25Z" fill="#FFFFFF" opacity=".86" />
+    <ellipse cx="14.8" cy="41.6" rx=".9" ry="1.7" transform="rotate(8 14.8 41.6)" fill="#EDC8FF" opacity=".8" />
+    <rect x="10.8" y="10.7" width="42.4" height="11.2" rx="5.6" fill="#C38321" opacity=".65" />
+    <rect x="10.8" y="8.5" width="42.4" height="11.5" rx="5.75" fill="url(#food-gold-roll)" />
+    <path d="M15.7 9.3H46.8Q50.5 9.3 51.8 12C42.7 10.8 29.2 10.6 17.6 11.3Q13.5 11.7 12.6 14.5C12.2 12.1 13.6 9.8 15.7 9.3Z" fill="#FFF9BC" />
+    <path d="M17.5 11.3H30.7C34.9 11.3 33.1 13.5 28.9 13.8L17.4 14.2C14.8 14.1 15 12 17.5 11.3Z" fill="#FFFFFF" opacity=".91" />
+    <path d="M15.9 18.1Q31.3 19.7 48.2 17.9C43.8 20.1 22.9 20.7 15.9 18.1Z" fill="#E3A025" opacity=".72" />
+    <ellipse cx="32" cy="40.4" rx="16" ry="13.8" fill="#7834B1" opacity=".32" />
+    <ellipse cx="31.5" cy="38.9" rx="16" ry="13.8" fill="url(#food-gold-round)" />
+    <ellipse cx="31.5" cy="38.6" rx="14.8" ry="12.8" fill="url(#food-label)" />
+    <path d="M21.4 30.4C24.9 26.7 31 25.9 34.2 27.1C31 27.4 26.4 29 23.7 32.1Q20.4 33.5 21.4 30.4Z" fill="#FFFFFF" opacity=".86" />
+    <path d="M23.9 43.3C22.8 39.7 26.2 34.5 29.7 33.1Q32 32.2 34.3 33.1C37.8 34.5 41.2 39.7 40.1 43.3C39.3 46.2 35.5 44.9 32 43.4C28.5 44.9 24.7 46.2 23.9 43.3Z" fill="#D5A344" opacity=".47" transform="translate(0 .65)" />
+    <path d="M23.9 43.3C22.8 39.7 26.2 34.5 29.7 33.1Q32 32.2 34.3 33.1C37.8 34.5 41.2 39.7 40.1 43.3C39.3 46.2 35.5 44.9 32 43.4C28.5 44.9 24.7 46.2 23.9 43.3Z" fill="url(#food-pad)" />
+    <ellipse cx="23.1" cy="32.5" rx="2.5" ry="3.2" transform="rotate(-24 23.1 32.5)" fill="url(#food-pad)" />
+    <ellipse cx="28.8" cy="28.9" rx="2.55" ry="3.3" transform="rotate(-8 28.8 28.9)" fill="url(#food-pad)" />
+    <ellipse cx="35.4" cy="29" rx="2.55" ry="3.3" transform="rotate(9 35.4 29)" fill="url(#food-pad)" />
+    <ellipse cx="41.1" cy="32.5" rx="2.5" ry="3.2" transform="rotate(24 41.1 32.5)" fill="url(#food-pad)" />
+    <path d="M28 36C29.8 34.3 31.4 34.1 31.5 35.2C31.3 36.5 28.4 38.6 27.3 38.1C26.5 37.7 27 36.9 28 36Z" fill="#FFFEE2" />
+    <ellipse cx="28.1" cy="27.7" rx=".8" ry="1.2" transform="rotate(16 28.1 27.7)" fill="#FFFFFF" opacity=".85" />
+    <ellipse cx="34.7" cy="27.7" rx=".8" ry="1.2" transform="rotate(16 34.7 27.7)" fill="#FFFFFF" opacity=".8" />
+    <ellipse cx="22.3" cy="31.4" rx=".7" ry="1" fill="#FFFEDB" opacity=".8" />
+    <ellipse cx="40.5" cy="31.4" rx=".7" ry="1" fill="#FFFEDB" opacity=".75" />
+  </g>
+</svg>

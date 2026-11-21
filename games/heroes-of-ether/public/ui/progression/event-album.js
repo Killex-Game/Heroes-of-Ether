@@ -118,7 +118,7 @@
       button.type = "button";
       if (event.available) {
         button.append(
-          this.busy === event.id ? "Получаем…" : `Забрать ${event.available}`,
+          `Забрать ${event.available}`,
           picture("assets/menu-icons/64/currency_bucks.webp", ""),
         );
         button.setAttribute("aria-label", `Забрать ${event.available} эфира`);

@@ -348,7 +348,7 @@
         false,
       );
       this.render();
-      dialog.message.textContent = action === "prepare" ? "Открываем…" : "Получаем награду…";
+      dialog.message.textContent = "";
       try {
         const response = await fetch(
           friday

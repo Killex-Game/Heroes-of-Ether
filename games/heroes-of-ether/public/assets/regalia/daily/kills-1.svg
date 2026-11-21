@@ -1,25 +1,87 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 132"><title>Гроза арены - 1 место</title>
-  <defs>
-    <linearGradient id="metal" x1=".15" y1="0" x2=".8" y2="1"><stop stop-color="#fff7ce"/><stop offset=".25" stop-color="#ffdb65"/><stop offset=".48" stop-color="#ce8a20"/><stop offset=".64" stop-color="#fff7ce"/><stop offset=".8" stop-color="#ffdb65"/><stop offset="1" stop-color="#ce8a20"/></linearGradient>
-    <linearGradient id="bevel" x2=".3" y2="1"><stop stop-color="#ce8a20"/><stop offset=".5" stop-color="#784015"/><stop offset="1" stop-color="#ffdb65"/></linearGradient>
-    <radialGradient id="enamel" cx=".35" cy=".18" r=".9"><stop stop-color="#f37c91"/><stop offset=".45" stop-color="#b5264b"/><stop offset="1" stop-color="#58152d"/></radialGradient>
-    <linearGradient id="gloss" x2=".3" y2="1"><stop stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-  </defs>
-  <path d="m40 96-7 31 16-7 12 7 4-29m23-2 7 31-16-7-12 7-4-29" fill="#58152d" stroke="#784015" stroke-width="1.5"/>
-  <path d="m42 104-4 16 10-5m38-11 4 16-10-5" fill="none" stroke="#ce8a20" stroke-width="2"/>
-  <path d="m64 6 34 14 16 35-10 40-40 24-40-24-10-40 16-35Z" fill="url(#metal)" stroke="#784015" stroke-width="2" stroke-linejoin="round"/>
-  <path d="m64 11 31 13 14 32-9 36-36 22-36-22-9-36 14-32Z" fill="url(#bevel)" stroke="#fff7ce" stroke-width="1.3" stroke-linejoin="round"/>
-  <path d="m64 16 27 11 13 30-9 32-31 19-31-19-9-32 13-30Z" fill="url(#enamel)" stroke="#784015" stroke-width="2" stroke-linejoin="round"/>
-  <path d="m64 19 25 10 11 25Q63 42 29 59l11-29Z" fill="url(#gloss)"/>
-  <path d="M37 31 64 20l25 11M33 84l7 9 24 14 24-14 7-9" fill="none" stroke="#fff7ce" stroke-width="1" opacity=".65" stroke-linecap="round"/>
-  <path d="m53 27 23 23m-4-26-23 27m-2-7 8 7m15-7 8 7" fill="none" stroke="#fff7ce" stroke-width="3.2" stroke-linecap="round"/><path d="m50 24 7 3-4 4Zm28-3-3 7-4-4Z" fill="#fff7ce"/>
-  <g fill="url(#metal)" stroke="#784015" stroke-width=".7" stroke-linejoin="round"><path d="M43 108Q13 96 15 57" fill="none" stroke="#ce8a20" stroke-width="2.5"/>
-    <path d="M17 77Q4 73 8 60q11 3 9 17Zm5 14Q8 90 8 77q12 0 14 14Zm9 11Q16 105 13 92q13-3 18 10Zm12 7Q31 116 24 105q11-7 19 4Z"/>
-    <path d="M17 78q-3-14 9-20 4 13-9 20Zm5 13q-3-13 7-20 6 12-7 20Zm9 11q-5-12 4-20 8 10-4 20Z"/><g transform="translate(128 0) scale(-1 1)"><path d="M43 108Q13 96 15 57" fill="none" stroke="#ce8a20" stroke-width="2.5"/>
-    <path d="M17 77Q4 73 8 60q11 3 9 17Zm5 14Q8 90 8 77q12 0 14 14Zm9 11Q16 105 13 92q13-3 18 10Zm12 7Q31 116 24 105q11-7 19 4Z"/>
-    <path d="M17 78q-3-14 9-20 4 13-9 20Zm5 13q-3-13 7-20 6 12-7 20Zm9 11q-5-12 4-20 8 10-4 20Z"/></g></g>
-  <text x="64" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="49" font-weight="bold" fill="#58152d" stroke="#58152d" stroke-width="4">1</text>
-  <text x="64" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="49" font-weight="bold" fill="url(#metal)" stroke="#784015" stroke-width=".7">1</text>
-  <path d="m60 109 4-3 4 3-4 4Z" fill="#fff7ce" stroke="#ce8a20"/>
-  <path d="m31 23 1 4 4 1-4 1-1 4-1-4-4-1 4-1Z" fill="#fff7ce"/>
-  </svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 132" data-family="kills" data-place="1">
+<title>Гроза арены - 1 место</title>
+<desc>Объёмная медаль. Категория kills; место 1. Нативные векторные формы, прозрачный фон.</desc>
+<defs>
+  <linearGradient id="metal" x1=".12" y1=".03" x2=".86" y2=".98">
+    <stop stop-color="#FFF085"/><stop offset=".24" stop-color="#FFCF30"/><stop offset=".5" stop-color="#F8B51C"/><stop offset=".76" stop-color="#DE8A08"/><stop offset="1" stop-color="#A85E08"/>
+  </linearGradient>
+  <linearGradient id="edge" x1="0" y1="0" x2=".4" y2="1"><stop stop-color="#FFCF30"/><stop offset=".55" stop-color="#DE8A08"/><stop offset="1" stop-color="#A85E08"/></linearGradient>
+  <radialGradient id="rimRounded" cx=".5" cy=".5" r=".5"><stop offset=".76" stop-color="#DE8A08"/><stop offset=".84" stop-color="#F8B51C"/><stop offset=".9" stop-color="#FFF085"/><stop offset=".95" stop-color="#FFCF30"/><stop offset="1" stop-color="#DE8A08"/></radialGradient>
+  <linearGradient id="rimLight" x1=".12" y1="0" x2=".92" y2="1"><stop stop-color="#FFF9C3" stop-opacity=".58"/><stop offset=".38" stop-color="#FFF9C3" stop-opacity="0"/><stop offset=".65" stop-color="#A85E08" stop-opacity=".02"/><stop offset="1" stop-color="#A85E08" stop-opacity=".48"/></linearGradient>
+  <linearGradient id="well" x1=".2" y1="0" x2=".7" y2="1"><stop stop-color="#A85E08"/><stop offset=".4" stop-color="#DE8A08"/><stop offset=".85" stop-color="#FFF085"/><stop offset="1" stop-color="#FFF9C3"/></linearGradient>
+  <linearGradient id="lip" x1=".3" y1="0" x2=".7" y2="1"><stop stop-color="#FFCF30"/><stop offset=".48" stop-color="#F8B51C"/><stop offset="1" stop-color="#FFF9C3"/></linearGradient>
+  <radialGradient id="enamel" cx=".32" cy=".18" r=".98"><stop stop-color="#FFB2CA"/><stop offset=".32" stop-color="#FF5A91"/><stop offset=".65" stop-color="#EB2466"/><stop offset="1" stop-color="#B70E44"/></radialGradient>
+  <linearGradient id="gloss" x1="0" y1="0" x2=".4" y2="1"><stop stop-color="#FFFFFF" stop-opacity=".7"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+  <linearGradient id="enamelBottom" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FF5A91" stop-opacity="0"/><stop offset="1" stop-color="#FFB2CA" stop-opacity=".26"/></linearGradient>
+  <linearGradient id="ribbon" x1=".1" y1="0" x2=".9" y2="1"><stop stop-color="#B61052"/><stop offset=".38" stop-color="#F7437F"/><stop offset=".7" stop-color="#FF91B2"/><stop offset="1" stop-color="#F7437F"/></linearGradient>
+  <linearGradient id="ribbonRight" x1="1" y1=".2" x2="0" y2="1"><stop stop-color="#B61052"/><stop offset=".45" stop-color="#F7437F"/><stop offset="1" stop-color="#B61052"/></linearGradient>
+  <linearGradient id="leaf" x1="0" y1=".2" x2="1" y2=".85"><stop stop-color="#FFF9C3"/><stop offset=".37" stop-color="#FFCF30"/><stop offset=".7" stop-color="#F8B51C"/><stop offset="1" stop-color="#DE8A08"/></linearGradient>
+  <linearGradient id="number" x1=".2" y1="0" x2=".7" y2="1"><stop stop-color="#FFF9C3"/><stop offset=".4" stop-color="#FFF085"/><stop offset=".65" stop-color="#FFCF30"/><stop offset="1" stop-color="#DE8A08"/></linearGradient>
+  <linearGradient id="silverSymbol" x1=".2" y1="0" x2=".7" y2="1"><stop stop-color="#FFFFFF"/><stop offset=".4" stop-color="#EDF6FF"/><stop offset=".72" stop-color="#B8CCE6"/><stop offset="1" stop-color="#8DA6C8"/></linearGradient>
+  <linearGradient id="blade" x1="0" y1="0" x2="1" y2=".25"><stop stop-color="#FFFFFF"/><stop offset=".45" stop-color="#F5FBFF"/><stop offset=".55" stop-color="#C4D3EB"/><stop offset="1" stop-color="#A2B8D5"/></linearGradient>
+  <linearGradient id="hourglass" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#FFFFFF" stop-opacity=".88"/><stop offset=".42" stop-color="#83D8FF" stop-opacity=".48"/><stop offset="1" stop-color="#D7FAFF" stop-opacity=".84"/></linearGradient>
+  <linearGradient id="goldSymbol" x1=".15" y1="0" x2=".8" y2="1"><stop stop-color="#FFF7A8"/><stop offset=".4" stop-color="#FFD934"/><stop offset="1" stop-color="#E7950C"/></linearGradient>
+  <clipPath id="enamelClip"><circle cx="64" cy="58" r="37.7"/></clipPath>
+  <clipPath id="numberClip"><path d="M52.21500334896182 85.44239785666443H59.95780308104488V63.466510381781646L52.010046885465506 65.10616208975217V59.13965170797053L59.912257200267916 57.5H68.24715338245144V85.44239785666443H75.9899531145345V91.5H52.21500334896182Z"/></clipPath>
+  <g id="laurel">
+    <path d="M34 102C22 94 13 80 12.5 64" fill="none" stroke="#A85E08" stroke-width="3.4"/>
+    <path d="M33.2 100.4C22 92 14 79.5 12.7 64" fill="none" stroke="url(#metal)" stroke-width="2.4"/>
+    <g transform="translate(16 75) rotate(-10)"><path d="M0 0C-7-2-8.5-13-3.3-20C3.8-17 7-7 0 0Z" fill="url(#leaf)" stroke="#DE8A08" stroke-width=".5"/><path d="M-3.2-18C-5.5-12-3.8-5.7-.4-1.9C-3.2-7.3-3.6-12.6-3.2-18Z" fill="#FFF9C3" opacity=".68"/></g>
+    <g transform="translate(22 88) rotate(-28)"><path d="M0 0C-7-2-8.5-13-3.3-20C3.8-17 7-7 0 0Z" fill="url(#leaf)" stroke="#DE8A08" stroke-width=".5"/><path d="M-3.2-18C-5.5-12-3.8-5.7-.4-1.9C-3.2-7.3-3.6-12.6-3.2-18Z" fill="#FFF9C3" opacity=".68"/></g>
+    <g transform="translate(32 99) rotate(-44)"><path d="M0 0C-7-2-8.5-13-3.3-20C3.8-17 7-7 0 0Z" fill="url(#leaf)" stroke="#DE8A08" stroke-width=".5"/><path d="M-3.2-18C-5.5-12-3.8-5.7-.4-1.9C-3.2-7.3-3.6-12.6-3.2-18Z" fill="#FFF9C3" opacity=".68"/></g>
+  </g>
+</defs>
+<g stroke-linejoin="round" stroke-linecap="round">
+  <!-- Folded ribbon tails remain behind the medal. -->
+  <path d="M34 83 24.5 125.5 43 117.8 57.6 128 64 87Z" fill="#B61052"/>
+  <path d="M35 83.5 26.2 122.8 43.6 115.7 56.5 125 62.4 87Z" fill="url(#ribbon)"/>
+  <path d="M35 85 27.9 121.2 31.2 119.8 39.5 88Z" fill="#FF91B2" opacity=".78"/>
+  <path d="M43.6 115.7 56.5 125 58.7 105.4 49.6 97.8Z" fill="#B61052" opacity=".36"/>
+  <path d="M94 83 103.5 125.5 85 117.8 70.4 128 64 87Z" fill="#B61052"/>
+  <path d="M93 83.5 101.8 122.8 84.4 115.7 71.5 125 65.6 87Z" fill="url(#ribbonRight)"/>
+  <path d="M89.5 89 99.9 121.1 96.8 119.8 86.2 91Z" fill="#FF91B2" opacity=".65"/>
+  <path d="M84.4 115.7 71.5 125 69.4 106 78.4 98Z" fill="#800C39" opacity=".24"/>
+  <!-- Raised rim, rounded outer face and shallow enamel socket. -->
+  <circle cx="64" cy="61.2" r="49.3" fill="url(#edge)"/>
+  <circle cx="64" cy="58" r="49.2" fill="url(#rimRounded)" stroke="#DE8A08" stroke-width=".45"/>
+  <circle cx="64" cy="58" r="49.1" fill="url(#rimLight)"/>
+  <path d="M25.2 29.7C30.4 22.8 39.1 17.4 46.2 15.6C42.4 18.4 38.1 20.5 34.4 23.7C31.1 26.6 28.5 29.1 25.2 29.7Z" fill="#FFF9C3" opacity=".82"/>
+  <path d="M18.3 43.8C22.3 25.1 40.3 11.9 59.2 10.8C44 13.7 31 21.4 24.2 35.2C21.6 40.4 19.8 44.4 18.3 43.8Z" fill="#FFF9C3" opacity=".92"/>
+  <path d="M25 87C40.4 107.5 76 114.2 96 94.4" fill="none" stroke="#FFD855" stroke-width="2.1" opacity=".72"/>
+  <path d="M19.3 49.8C17.2 63.2 21 77.6 27.9 87.1" fill="none" stroke="#FFF085" stroke-width="1.2" opacity=".58"/>
+  <circle cx="64" cy="58.4" r="41.6" fill="url(#well)"/>
+  <circle cx="64" cy="57.9" r="39.2" fill="url(#lip)"/>
+  <circle cx="64" cy="58" r="37.7" fill="url(#enamel)" stroke="#B70E44" stroke-width=".55"/>
+  <g clip-path="url(#enamelClip)">
+    <path d="M28 50C31 30 49 19 69 22C83 24 95 34 99 45C84 37 66 36 54 44C42 51 33 54 28 50Z" fill="url(#gloss)" opacity=".5"/>
+    <ellipse cx="37.5" cy="36.2" rx="7.9" ry="3.2" transform="rotate(-45 37.5 36.2)" fill="#FFFFFF" opacity=".88"/>
+    <ellipse cx="31.9" cy="47.2" rx="1.8" ry="2.6" transform="rotate(16 31.9 47.2)" fill="#FFFFFF" opacity=".62"/>
+    <path d="M28 79C42 87 77 89 99 73V100H28Z" fill="url(#enamelBottom)"/>
+  </g>
+  <use href="#laurel"/>
+  <use href="#laurel" transform="translate(128 0) scale(-1 1)"/>
+  <g opacity=".25" transform="translate(0 1.4)"><path d="M52 24 77 49M76 24 51 49" stroke="#800C39" stroke-width="4.4"/></g>
+        <g transform="translate(64 36.5) rotate(-43)"><path d="M0-15 2.9-11.4 2.1 5.5 0 7.2-2.1 5.5-2.9-11.4Z" fill="url(#blade)" stroke="#7C8FAE" stroke-width=".55"/>
+          <path d="M0-14.1 0 5.8-1.5 4.8-2.1-11.1Z" fill="#FFFFFF" opacity=".83"/>
+          <rect x="-1.7" y="6.5" width="3.4" height="7" rx="1.4" fill="url(#silverSymbol)" stroke="#8795AF" stroke-width=".5"/>
+          <rect x="-6.5" y="5.3" width="13" height="3" rx="1.5" fill="url(#silverSymbol)" stroke="#8191AE" stroke-width=".5"/>
+          <path d="M-5.1 6.1H3.2" stroke="#FFFFFF" stroke-width=".9"/>
+          <ellipse cx="0" cy="14" rx="2.6" ry="1.7" fill="url(#silverSymbol)"/>
+        </g>
+        <g transform="translate(64 36.5) rotate(43)"><path d="M0-15 2.9-11.4 2.1 5.5 0 7.2-2.1 5.5-2.9-11.4Z" fill="url(#blade)" stroke="#7C8FAE" stroke-width=".55"/>
+          <path d="M0-14.1 0 5.8-1.5 4.8-2.1-11.1Z" fill="#FFFFFF" opacity=".83"/>
+          <rect x="-1.7" y="6.5" width="3.4" height="7" rx="1.4" fill="url(#silverSymbol)" stroke="#8795AF" stroke-width=".5"/>
+          <rect x="-6.5" y="5.3" width="13" height="3" rx="1.5" fill="url(#silverSymbol)" stroke="#8191AE" stroke-width=".5"/>
+          <path d="M-5.1 6.1H3.2" stroke="#FFFFFF" stroke-width=".9"/>
+          <ellipse cx="0" cy="14" rx="2.6" ry="1.7" fill="url(#silverSymbol)"/>
+        </g>
+  <!-- Exact numeral outlines avoid platform font substitutions. -->
+  <path d="M52.21500334896182 85.44239785666443H59.95780308104488V63.466510381781646L52.010046885465506 65.10616208975217V59.13965170797053L59.912257200267916 57.5H68.24715338245144V85.44239785666443H75.9899531145345V91.5H52.21500334896182Z" transform="translate(0 2.1)" fill="#800C39" stroke="#800C39" stroke-width="1.3" opacity=".56"/>
+  <path d="M52.21500334896182 85.44239785666443H59.95780308104488V63.466510381781646L52.010046885465506 65.10616208975217V59.13965170797053L59.912257200267916 57.5H68.24715338245144V85.44239785666443H75.9899531145345V91.5H52.21500334896182Z" fill="url(#number)" stroke="#A85E08" stroke-width=".65"/>
+  <g clip-path="url(#numberClip)">
+    <path d="M52.21500334896182 85.44239785666443H59.95780308104488V63.466510381781646L52.010046885465506 65.10616208975217V59.13965170797053L59.912257200267916 57.5H68.24715338245144V85.44239785666443H75.9899531145345V91.5H52.21500334896182Z" transform="translate(-.65 -.7)" fill="#FFF9C3"/>
+    <path d="M52.21500334896182 85.44239785666443H59.95780308104488V63.466510381781646L52.010046885465506 65.10616208975217V59.13965170797053L59.912257200267916 57.5H68.24715338245144V85.44239785666443H75.9899531145345V91.5H52.21500334896182Z" transform="translate(.65 .8)" fill="url(#number)"/>
+    <path d="M42 58C51 53 69 55 83 61V65C64 61 52 62 42 67Z" fill="#FFFFFF" opacity=".19"/>
+  </g>
+</g>
+</svg>

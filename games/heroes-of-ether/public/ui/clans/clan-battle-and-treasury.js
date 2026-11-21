@@ -1034,7 +1034,7 @@
           row.append(
             art(item.art, ""),
             el("strong", "", item.name + " ×" + item.count),
-            el("span", "", item.until ? "Сгорит " + date(item.until) : "Уточняем срок…"),
+            el("span", "", item.until ? "Сгорит " + date(item.until) : ""),
           );
           if (item.unreceived) {
             const receive = button("Получить", () =>

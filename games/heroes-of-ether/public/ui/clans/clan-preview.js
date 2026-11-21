@@ -57,7 +57,7 @@
       this.signature = "";
       this.title.textContent = "Просмотр клана";
       this.content.replaceChildren();
-      this.status.textContent = "Загрузка…";
+      this.status.textContent = "";
       window.KillexUITheme.inherit(this.dialog, this.owner.dialog);
       window.KillexWindows.open(this.dialog);
       this.timer?.();
@@ -94,7 +94,7 @@
         this.render(data);
       } catch (error) {
         if (id === this.clanId && this.dialog.open && this.request === request)
-          this.status.textContent = error.name === "AbortError" ? "Нет связи с сервером. Повторяем…" : error.message;
+          this.status.textContent = error.name === "AbortError" ? "Нет связи с сервером." : error.message;
       } finally {
         clearTimeout(timeout);
         if (this.request === request) this.request = null;

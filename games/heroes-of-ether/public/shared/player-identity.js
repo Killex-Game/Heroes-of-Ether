@@ -15,6 +15,10 @@
         c.members.map((m) => [m.id, m.fit || { scale: 1, x: 0, y: 0.04 }]),
       ),
     ),
+    "forest-owl": { scale: 0.95, x: 0, y: 0.033 },
+    "desert-fennec": { scale: 0.92, x: 0, y: 0.0624 },
+    "cloud-whale": { scale: 0.96, x: 0, y: 0.0618 },
+    "twilight-bat": { scale: 0.97, x: 0, y: 0.0382 },
     "premium-1": { scale: 0.94, x: 0, y: 0.085 },
     "premium-2": { scale: 0.94, x: 0, y: 0.085 },
     "premium-3": { scale: 0.94, x: 0, y: 0.085 },
@@ -27,26 +31,10 @@
     "snow-leopard": { scale: 0.94, x: 0, y: 0.105 },
     "little-owl": { scale: 0.94, x: 0, y: 0.105 },
     "sea-dragon": { scale: 0.94, x: 0, y: 0.105 },
-    "crystal-guardian": {
-      scale: 1.05,
-      x: 0,
-      y: 0.075,
-    },
-    "forest-spirit": {
-      scale: 1.155,
-      x: 0,
-      y: 0.0672,
-    },
-    "glass-crystal-guardian": {
-      scale: 1.14,
-      x: 0,
-      y: 0.1037,
-    },
-    "glass-forest-spirit": {
-      scale: 1.095,
-      x: 0,
-      y: 0.0795,
-    },
+    "crystal-guardian": { scale: 1, x: 0, y: 0.0432 },
+    "forest-spirit": { scale: 1.06, x: 0, y: 0.0153 },
+    "glass-crystal-guardian": { scale: 1.01, x: 0, y: 0.0385 },
+    "glass-forest-spirit": { scale: 1.03, x: 0, y: 0.0413 },
     "glass-moon-dragon": {
       scale: 1.14,
       x: 0,
@@ -67,11 +55,7 @@
       x: 0,
       y: 0.0232,
     },
-    "prism-forest-spirit": {
-      scale: 1.115,
-      x: 0,
-      y: 0.0505,
-    },
+    "prism-forest-spirit": { scale: 1.04, x: 0, y: 0.0246 },
     "prism-moon-dragon": {
       scale: 1.025,
       x: 0,
@@ -82,31 +66,19 @@
       x: 0,
       y: 0.0646,
     },
-    "sun-phoenix": {
-      scale: 1.195,
-      x: 0,
-      y: 0.0447,
-    },
+    "sun-phoenix": { scale: 1.06, x: 0, y: 0.007 },
     "vip-1": {
       scale: 1.075,
       x: 0,
       y: 0.045,
     },
-    "vip-2": {
-      scale: 1.105,
-      x: 0,
-      y: 0.0213,
-    },
+    "vip-2": { scale: 1.04, x: 0, y: 0.0083 },
     "vip-3": {
       scale: 1.135,
       x: 0,
       y: 0.0586,
     },
-    "vip-4": {
-      scale: 1.135,
-      x: 0,
-      y: 0.0567,
-    },
+    "vip-4": { scale: 1.04, x: 0, y: 0.0083 },
     "vip-5": {
       scale: 0.97,
       x: 0,
@@ -117,21 +89,9 @@
       x: 0,
       y: 0.0195,
     },
-    "visual-forest-spirit": {
-      scale: 1.11,
-      x: 0,
-      y: 0.0411,
-    },
-    "visual-moon-dragon": {
-      scale: 1.14,
-      x: 0,
-      y: 0.0654,
-    },
-    "visual-sun-phoenix": {
-      scale: 1.14,
-      x: 0,
-      y: 0.0873,
-    },
+    "visual-forest-spirit": { scale: 1.02, x: 0, y: 0.0219 },
+    "visual-moon-dragon": { scale: 1.07, x: 0, y: 0.0441 },
+    "visual-sun-phoenix": { scale: 1.05, x: 0, y: 0.0404 },
   });
   // Один прозрачный портрет для всех поверхностей; старые файлы сохраняются как исходники.
   function transparentSkin(skin) {

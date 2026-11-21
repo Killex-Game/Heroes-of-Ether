@@ -148,8 +148,8 @@
         return;
       }
       this.setPending(true);
-      this.status.textContent = "Подтверждаем операцию и сохраняем покупку…";
-      this.confirmButton.textContent = "Обработка…";
+      this.status.textContent = "";
+      // The existing action label stays stable while the button is disabled.
       try {
         this.requestId ||= window.KillexRequestIds.create();
         // Повтор после потери ответа или перезагрузки использует тот же номер.

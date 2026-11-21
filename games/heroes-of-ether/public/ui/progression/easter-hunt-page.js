@@ -368,7 +368,7 @@
       });
       this.busy = true;
       this.render();
-      this.message.textContent = action === "multiplier" ? "Включаем множитель…" : "Обмениваем…";
+      this.message.textContent = "";
       try {
         const response = await fetch("/api/easter/action", {
           method: "POST",
