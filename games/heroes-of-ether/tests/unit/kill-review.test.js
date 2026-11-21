@@ -42,6 +42,23 @@ test('failed durable commit does not publish suspicion; successful retry retains
  await assert.rejects(f.kill.report(f.target.id,evidence()),/disk failed/);assert.strictEqual(f.profiles.data,before);assert(!f.profiles.byId(f.target.id).kill);
  f.profiles.journal.stage=original;assert(await f.kill.report(f.target.id,evidence()));
 });
+
+test('admin lists and player card expose compact suspicion and unfiltered new-case count without mutations', async t=>{
+ const f=await fixture(t);await f.kill.report(f.target.id,evidence());
+ const p=f.profiles.byId(f.target.id),before=structuredClone(f.profiles.data);
+ const summary={id:p.kill.id,status:'new',createdAt:p.kill.createdAt};
+ assert.deepEqual(f.service.player(p.id).killReview,summary);
+ for(const view of ['settings','online','registrations','kill']) {
+  const list=f.service.players('',1,{view});assert.equal(list.killPending,1);
+  const row=list.players.find(r=>r.id===p.id);assert(row);assert.deepEqual(row.killReview,summary);
+  if(view!=='kill')assert(!Object.hasOwn(row,'kill'),'large evidence is confined to the review page');
+ }
+ assert.equal(f.service.players('no-such-player').killPending,1);
+ assert.deepEqual(f.profiles.data,before);
+ f.service.apply(f.owner,f.command('dismissed'));
+ assert.equal(f.service.players().killPending,0);
+ assert.equal(f.service.player(p.id).killReview.status,'dismissed');
+});
 test('cadence detector ignores legitimate hold, UUID retries, single TCP burst and server stalls',async()=>{
  const detector=new KillDetector({profiles:{data:{}}});let reports=0;detector.report=async()=>{reports++;};
  const send=(s,at,id='ice_cream',requestId=randomUUID(),stalled=false)=>detector.observe(s,'p',{type:'useBooster',boosterId:id,requestId},at,{stalled});

@@ -47,6 +47,7 @@ class OwnerService {
       testBot: !!p.testBot,
       moderationRevision: p.moderation?.version || 0,
       ban: activeBan(p, this.now()),
+      killReview: p.kill ? { id: p.kill.id, status: p.kill.status, createdAt: p.kill.createdAt } : null,
     };
   }
   player(id) {

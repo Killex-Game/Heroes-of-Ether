@@ -156,6 +156,7 @@
       "players?q=" + encodeURIComponent($("search").value) + "&page=" + playersPage,
     );
     playersPage = value.page;
+    playerTabs.killCount(value.killPending);
     $("total").textContent = fmt(value.total);
     if (!$("search").value.trim()) dashboard.players(value.total);
     $("players").replaceChildren();
@@ -171,6 +172,7 @@
         ),
       );
       b.addEventListener("click", () => choose(p.id).catch(fail));
+      if(p.killReview?.status === 'new') b.append(node('span', 'Kill · На проверке', 'kill-review-badge'));
       $("players").append(b);
     }
     if (!value.players.length) $("players").append(node("p", "Ничего не найдено.", "muted"));
@@ -196,6 +198,14 @@
     stat("VIP до", date(player.account.vipUntil));
     stat("Premium до", date(player.account.premiumUntil));
     stat("Бустеры", fmt(Object.values(player.inventory).reduce((sum, n) => sum + n, 0)), () => inventoryPanel.open());
+    if(player.killReview) {
+      const status = player.killReview.status;
+      stat('Kill', status === 'new' ? 'На проверке' : status === 'confirmed' ? 'Подтверждено' : 'Подозрение отклонено');
+      const card = $('stats').lastElementChild;
+      card.dataset.health = status === 'new' ? 'warning' : status === 'confirmed' ? 'critical' : 'ok';
+      const open = node('button', 'Открыть проверку'); open.type = 'button';
+      open.onclick = () => playerTabs.reviewPlayer(player.id); card.append(open);
+    }
     inventoryPanel.update(player, adminRole === "moderator" && player.isOwner
       ? "Данные владельца доступны только для просмотра."
       : player.inArena ? "Изменение доступно после выхода игрока с арены." : "");

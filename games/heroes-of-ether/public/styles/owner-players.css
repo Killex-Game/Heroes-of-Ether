@@ -1,6 +1,14 @@
-.player-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:0 0 20px}
+.player-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:0 0 20px}
 .player-tabs button{min-height:46px;white-space:normal;font-weight:600}
 .player-tabs button[aria-pressed="true"]{background:#693fc2;border-color:#b38bff;color:#fff}
+.player-tabs button[data-pending="true"]{border-color:#d9ad57;box-shadow:inset 0 -3px #d9ad57}
+.kill-review-badge{display:inline-flex;justify-self:start;align-items:center;padding:5px 10px;border:1px solid #c89b4e;border-radius:999px;background:#6b512c45;color:#ffe1a0;font-size:12px;font-weight:600}
+.player-directory-row>.kill-review-badge{grid-column:1/-1;grid-row:2}
+.player-directory-row[data-kill-case]{border:1px solid #514867;border-radius:14px;padding:20px;margin-bottom:16px;align-items:center}
+.player-directory-row[data-kill-case]>.player-violation-summary{margin-top:8px;padding-top:16px;border-top:1px solid #39344f;gap:10px}
+.player-directory-row[data-kill-case] textarea{width:100%;resize:vertical;min-height:76px}
+.player-directory-row[data-kill-case] .actions{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:1100px){.player-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .player-directory-filters{display:flex;gap:16px;align-items:end;flex-wrap:wrap;margin:20px 0}
 .player-directory-filters label{flex:1;min-width:160px}
 .player-directory-row{display:grid;grid-template-columns:minmax(160px,2fr) 1fr 1fr;gap:16px;width:100%;text-align:left;padding:16px;margin-bottom:8px}

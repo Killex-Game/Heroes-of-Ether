@@ -14,6 +14,13 @@
       this.buildDirectory(); this.buildGrants(); this.paint();
     }
     ready(role) { this.active = true; this.role = role; this.buttons.get('grants').hidden = role !== 'owner'; if (role !== 'owner' && this.view === 'grants') this.view = 'settings'; this.paint(); }
+    killCount(count) {
+      const n = Number.isSafeInteger(count) && count > 0 ? count : 0, b = this.buttons.get('kill');
+      b.textContent = n ? 'Kill · ' + fmt(n) : 'Kill';
+      b.dataset.pending = String(n > 0);
+      b.setAttribute('aria-label', n ? 'Kill: новых проверок ' + fmt(n) : 'Kill');
+    }
+    reviewPlayer(id) { this.page = 1; this.query.value = id; this.select('kill'); }
     lock() { this.active = false; this.serial++; this.view = 'settings'; this.preview = null; this.pending = null; this.catalog = null; this.history.replaceChildren(); this.rows.replaceChildren(); this.giftForm.reset(); this.rewardRows.replaceChildren(); this.previewBox.replaceChildren(); this.paint(); }
     paint() {
       $('playerSettings').hidden = this.view !== 'settings'; $('playerDirectory').hidden = !['online','violators','registrations','kill'].includes(this.view); $('gameGrants').hidden = this.view !== 'grants';
@@ -57,11 +64,13 @@
       try {
         const result = await this.api('players?' + new URLSearchParams({view,sort,order,q:this.query.value,page:this.page}));
         if (!this.active || serial !== this.serial) return;
+        this.killCount(result.killPending);
         this.page = result.page; this.rows.replaceChildren();
         for (const p of result.players) {
           if(view==='kill'){this.rows.append(this.killRow(p,serial));continue;}
           const row = button('', () => this.selectPlayer(p.id)); row.className = 'player-directory-row';
           row.append(el('strong',p.name));
+          if(p.killReview?.status==='new')row.append(el('span','Kill · На проверке','kill-review-badge'));
           if (view === 'registrations') {
             const date = el('time', p.registeredAt == null ? 'Дата не сохранена' : stamp(p.registeredAt));
             if (p.registeredAt != null) date.dateTime = new Date(p.registeredAt).toISOString();
@@ -83,7 +92,7 @@
           }
           this.rows.append(row);
         }
-        if (!result.players.length) this.rows.append(el('p','Игроки не найдены.'));
+        if (!result.players.length) this.rows.append(el('p',view === 'kill' && !this.query.value.trim() ? 'Система Kill пока не зарегистрировала подозрительных случаев.' : 'Игроки не найдены.'));
         this.previous.disabled = result.page <= 1; this.next.disabled = result.page >= result.pages;
         this.pageText.textContent = result.page+' / '+result.pages; this.directoryStatus.textContent = 'Всего: '+fmt(result.total)+' · Обновлено: '+stamp(result.capturedAt);
       } catch (error) { if (this.active && serial === this.serial) this.directoryStatus.textContent = error.message; }

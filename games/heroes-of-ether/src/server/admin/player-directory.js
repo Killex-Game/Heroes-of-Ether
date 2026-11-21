@@ -12,7 +12,9 @@ function read(service, query = '', page = 1, options = {}) {
       !['asc', 'desc'].includes(order)) throw new BoosterError('Проверь параметры списка игроков.', 400);
   const q = query.trim().normalize('NFKC').toLocaleLowerCase('ru'), at = service.now();
   const found = [];
+  let killPending = 0;
   for (const p of Object.values(service.profiles.data.profiles)) {
+    if (p.kill?.status === 'new') killPending++;
     if (registrations && p.testBot) continue;
     if (view === 'kill' && !p.kill) continue;
     if (q && !p.id.toLowerCase().includes(q) && !p.name.normalize('NFKC').toLocaleLowerCase('ru').includes(q)) continue;
@@ -33,7 +35,7 @@ function read(service, query = '', page = 1, options = {}) {
     a.p.name.localeCompare(b.p.name, 'ru') || a.p.id.localeCompare(b.p.id));
   const pages = Math.max(1, Math.ceil(found.length / 20));
   page = Math.min(pages, Math.max(1, Math.floor(Number(page) || 1)));
-  return { view, sort, order, total: found.length, page, pages, capturedAt: at,
+  return { view, sort, order, total: found.length, page, pages, capturedAt: at, killPending,
     players: found.slice((page - 1) * 20, page * 20).map(row => ({
       ...service.summary(row.p), online: row.online, inArena: row.inArena,
       ...(registrations ? { registeredAt: row.registeredAt } : {}),

@@ -601,7 +601,10 @@ class ProfileStore {
       });
     }
     if (filePath && journal) {
-      this.journal = new persistence.ProfileJournal(filePath);
+      // Every acknowledged update is fsynced in the WAL. Rebuild the full world
+      // every 5min for small changes; existing byte/segment limits compact early.
+      // Small chat journals and independent room outboxes keep their own cadence.
+      this.journal = new persistence.ProfileJournal(filePath, { intervalMs: 300000 });
       this.data = require('./recovery-sharing').share(this.journal.previous,this.data);
     }
     if (arenaProgressWorker && this.journal)
