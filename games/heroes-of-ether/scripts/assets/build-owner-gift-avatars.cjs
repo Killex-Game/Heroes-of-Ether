@@ -10,11 +10,11 @@ async function build(sources) {
     const skin = skins[i], input = fs.readFileSync(sources[i]);
     const metadata = await sharp(input).metadata();
     if (!metadata.hasAlpha || metadata.width !== metadata.height) throw Error("Expected a square transparent source: " + skin.id);
-    const original = path.join(root, "public/assets/skins/owner-gifts-v1/sources", skin.id + ".png");
+    const original = path.join(root, "design/owner-gift-avatars/sources", skin.id + ".png");
     fs.mkdirSync(path.dirname(original), { recursive: true }); fs.writeFileSync(original, input);
     const outputs = [];
     for (const [size, asset] of Object.entries(skin.variants)) {
-      const file = path.join(root, "public", asset); fs.mkdirSync(path.dirname(file), { recursive: true });
+      const file = path.join(root, "public", asset.split("?")[0]); fs.mkdirSync(path.dirname(file), { recursive: true });
       await sharp(input).resize(+size, +size).webp({ quality: 92, alphaQuality: 100, effort: 6 }).toFile(file);
       outputs.push({ size: +size, bytes: fs.statSync(file).size, sha256: crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex") });
     }

@@ -10,8 +10,11 @@ const { ProfileStore } = require("../../src/server/profiles/profile-store"),
 const engine = process.argv[2] || "chromium",
   out = path.resolve(__dirname, "../../../../artifacts/clan-crest-unlocks-20261026"),
   profiles = new ProfileStore(),
-  user = profiles.open(),
-  p = profiles.find(user.token);
+  user = profiles.open();
+profiles.claimLoginReward(user.token);
+const p = profiles.find(user.token);
+p.name = "Проверка рамки";
+p.personal = { ...p.personal, nameSet: true, introPending: false, gender: "male", vkUrl: "" };
 p.account = require("../../src/server/accounts/account-benefits").fresh();
 p.account.vipUntil = Date.now() + 3600000;
 p.account.premiumUntil = Date.now() + 3600000;
@@ -41,6 +44,11 @@ fs.mkdirSync(out, { recursive: true });
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(url);
     await page.waitForFunction(() => !document.querySelector("#playButton").disabled);
+    // News acknowledgement is unrelated to the frame scenario.
+    await page.evaluate((id) => {
+      localStorage.setItem(KillexPlatform.storageKey(".releaseNotes.v1." + id), KillexRelease.id);
+      document.getElementById("releaseNotesDialog")?.close();
+    }, p.id);
     async function noFrame(selector) {
       const info = await page.locator(selector).evaluate((n) => {
         const s = getComputedStyle(n),

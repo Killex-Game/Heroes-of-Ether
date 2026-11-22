@@ -15,7 +15,7 @@ const portraits = {
   for (const [id, color] of Object.entries(portraits)) {
     const source = path.join(
         root,
-        "public/assets/achievements/template/sources",
+        "design/achievement-portraits/sources",
         `pet_level_${id}.png`,
       ),
       silhouette = await sharp(source)
@@ -40,7 +40,7 @@ const portraits = {
       ),
       illustration = path.join(
         root,
-        "public/assets/achievements/template/illustrations",
+        "design/achievement-portraits/illustrations",
         `pet_level_${id}.png`,
       );
     fs.mkdirSync(path.dirname(illustration), { recursive: true });
