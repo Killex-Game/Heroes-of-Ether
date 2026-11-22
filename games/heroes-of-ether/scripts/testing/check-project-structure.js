@@ -7,7 +7,7 @@ const vm = require("node:vm");
 const parser = require("prettier/plugins/babel").parsers.babel;
 const root = path.resolve(__dirname, "../..");
 const publicRoot = path.join(root, "public");
-const failures = [];
+const failures = require("./check-retired-assets.cjs").checkRetiredAssets(root);
 let scripts = 0,
   references = 0;
 

@@ -1126,112 +1126,112 @@
   },
   {
     "old": "public/assets/busters/svg/advanced/donut.svg",
-    "new": "public/assets/boosters/svg/advanced/donut.svg",
+    "new": "public/assets/boosters/png/donut.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/advanced/lock.svg",
-    "new": "public/assets/boosters/svg/advanced/lock.svg",
+    "new": "public/assets/boosters/png/lock.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/advanced/mine.svg",
-    "new": "public/assets/boosters/svg/advanced/mine.svg",
+    "new": "public/assets/boosters/png/mine.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/advanced/poison.svg",
-    "new": "public/assets/boosters/svg/advanced/poison.svg",
+    "new": "public/assets/boosters/png/poison.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/advanced/speed.svg",
-    "new": "public/assets/boosters/svg/advanced/speed.svg",
+    "new": "public/assets/boosters/png/speed.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/advanced/sphere.svg",
-    "new": "public/assets/boosters/svg/advanced/sphere.svg",
+    "new": "public/assets/boosters/png/sphere.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/advanced/web.svg",
-    "new": "public/assets/boosters/svg/advanced/web.svg",
+    "new": "public/assets/boosters/png/web.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/common/candy.svg",
-    "new": "public/assets/boosters/svg/common/candy.svg",
+    "new": "public/assets/boosters/png/candy.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/common/colorful_shield.svg",
-    "new": "public/assets/boosters/svg/common/colorful_shield.svg",
+    "new": "public/assets/boosters/png/colorful_shield.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/common/freeze.svg",
-    "new": "public/assets/boosters/svg/common/freeze.svg",
+    "new": "public/assets/boosters/png/freeze.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/common/glove.svg",
-    "new": "public/assets/boosters/svg/common/glove.svg",
+    "new": "public/assets/boosters/png/glove.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/common/hook.svg",
-    "new": "public/assets/boosters/svg/common/hook.svg",
+    "new": "public/assets/boosters/png/hook.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/common/ice_cream.svg",
-    "new": "public/assets/boosters/svg/common/ice_cream.svg",
+    "new": "public/assets/boosters/png/ice_cream.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/common/rocket.svg",
-    "new": "public/assets/boosters/svg/common/rocket.svg",
+    "new": "public/assets/boosters/png/rocket.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/rare/axe.svg",
-    "new": "public/assets/boosters/svg/rare/axe.svg",
+    "new": "public/assets/boosters/png/axe.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/rare/golden_shield.svg",
-    "new": "public/assets/boosters/svg/rare/golden_shield.svg",
+    "new": "public/assets/boosters/png/golden_shield.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/rare/harpoon.svg",
-    "new": "public/assets/boosters/svg/rare/harpoon.svg",
+    "new": "public/assets/boosters/png/harpoon.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/rare/knuckles.svg",
-    "new": "public/assets/boosters/svg/rare/knuckles.svg",
+    "new": "public/assets/boosters/png/knuckles.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/rare/meat.svg",
-    "new": "public/assets/boosters/svg/rare/meat.svg",
+    "new": "public/assets/boosters/png/meat.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/rare/mega_poison.svg",
-    "new": "public/assets/boosters/svg/rare/mega_poison.svg",
+    "new": "public/assets/boosters/png/mega_poison.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/rare/sponge.svg",
-    "new": "public/assets/boosters/svg/rare/sponge.svg",
+    "new": "public/assets/boosters/png/sponge.png",
     "purpose": "Изображение или каталог бустеров."
   },
   {
     "old": "public/assets/busters/svg/rare/stone.svg",
-    "new": "public/assets/boosters/svg/rare/stone.svg",
+    "new": "public/assets/boosters/png/stone.png",
     "purpose": "Изображение или каталог бустеров."
   }
 ]

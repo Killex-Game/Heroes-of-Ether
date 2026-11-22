@@ -4,7 +4,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const skins = require("../../public/assets/skins/manifest.json");
 
-function importArt(sourceDir, destination = path.join(__dirname, "../../public/assets/skins")) {
+function importArt(sourceDir, destination = path.join(__dirname, "../../design/imported-player-skins")) {
   const directory = path.resolve(sourceDir);
   if (!fs.statSync(directory).isDirectory()) throw new Error("Укажи папку с четырьмя PNG.");
   fs.mkdirSync(destination, { recursive: true });
@@ -39,7 +39,7 @@ if (require.main === module) {
       for (const item of results)
         console.log((item.status === "copied" ? "Подключён: " : "Не найден: ") + item.message);
       if (results.some((item) => item.status === "missing")) process.exitCode = 1;
-      else console.log("Готово. Обнови страницу игры через Ctrl+F5.");
+      else console.log("Исходники сохранены в design/imported-player-skins. Рабочие портреты не заменены.");
     } catch (error) {
       console.error(error.message);
       process.exitCode = 1;
