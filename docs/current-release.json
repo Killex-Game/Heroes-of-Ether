@@ -1,205 +1,196 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261122-clan-join-ui",
-  "sourceTag": "release/20261122-clan-join-ui",
-  "sourceCommit": "b9da428a88b714257a74f4f8950ebd434fc0c6d5",
+  "gameRelease": "20261122-postgresql-only-schedule",
+  "sourceTag": "release/20261122-postgresql-only-schedule",
+  "sourceCommit": "3abe7318e439e7e2199a2bf96215f6046cd7eb1c",
   "branch": "feature/art-redesign-20261122",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
-  "unreleasedLocalBranch": "work/local-unreleased-20261121",
   "localRunningGameUpdated": false,
-  "entryReopenedAtUtc": "2026-11-22T08:26:21.786Z",
+  "entryReopenedAtUtc": "2026-11-22T16:35:46.158Z",
   "runtime": {
-    "at": "2026-11-22T08:26:33.569Z",
-    "release": "/srv/heroether-test/play/releases/20261122-clan-join-ui",
-    "game": {
-      "ActiveState": "active",
-      "MainPID": "265147",
-      "NRestarts": "0",
-      "MemoryCurrent": "1109073920"
-    },
-    "admin": {
-      "ActiveState": "active",
-      "MainPID": "1163",
-      "NRestarts": "0",
-      "MemoryCurrent": "87326720"
-    },
-    "service": {
-      "maintenance": false,
-      "mode": null,
-      "title": null,
-      "message": "",
-      "startsAt": null,
-      "endsAt": null,
-      "draining": false,
-      "serverNow": 1795335993673,
-      "automatic": false,
-      "retryAfter": 3
-    },
-    "mongo": {
-      "connected": true,
-      "hasError": false,
-      "revision": 3218374,
-      "generation": 28136,
-      "checkedAt": 1795335992295
-    },
-    "hold": false,
-    "codeForNextColdStartVerified": true
+    "gamePid": 306662,
+    "adminPid": 1163,
+    "entryOpen": true,
+    "backend": "postgresql",
+    "database": "semenovkir",
+    "postgresqlVersion": 17,
+    "tlsVerified": true,
+    "hold": false
   },
-  "previousRelease": {
-    "gameRelease": "20261122-clan-contributors-rims",
-    "sourceCommit": "352ac3ac23292b0693195c4a85968d7f111f31f9",
-    "patches": [
-      {
-        "name": "clan-contributors-rims",
-        "files": 289,
-        "manifestSha256": "2c3b7e9b1d4eed180642e582e512145635d9a6b04c083ca3c757b73262314e91"
-      },
-      {
-        "name": "runtime-cleanup",
-        "files": 166,
-        "manifestSha256": "66b9a11ada6e6610658f7ec72fc5b343c5004cffc9000bb951b0a26c5a059cec"
-      },
-      {
-        "name": "roster-ledger-fix",
-        "files": 2,
-        "manifestSha256": "83b514b029d1c8ea878cfe358dfb7af225cde99037e5ad79fdc4457cba64cf9e"
-      },
-      {
-        "name": "asset-source-audit",
-        "files": 69,
-        "manifestSha256": "6f889101590b676ef56e3012ccf2e44701753ed7bfc73116bf7eb30cb7117f84"
-      }
-    ],
-    "combinedManifest": {
-      "files": 522,
-      "sha256": "a3e3c4e47ac86e658442a5ff48b26656c68990089392d283a023611878902040"
-    },
-    "report": "games/heroes-of-ether/docs/clan-rims-runtime-cleanup-20261122.txt"
-  },
-  "patches": [
-    {
-      "name": "avatar-canon16",
-      "files": 356,
-      "manifestSha256": "2cc94f0de37c3d7ab6280d3e545bf317db7a4a46d7db215f04f32938794057fc",
-      "httpChecks": 1424
-    },
-    {
-      "name": "clan-join-ui-and-refresh",
-      "files": 32,
-      "publicFiles": 21,
-      "manifestSha256": "ee37f87bc14b55a8c101fa500d532b4f5fab36e0eaa9399f32ac5f7238b3c498",
-      "httpChecks": 84
-    }
+  "installed": [
+    "PostgreSQL-only runtime, administration monitoring and verified backups",
+    "Future clan season scheduling with one or two quest seasons in succession",
+    "Three unreviewed historical gift-dispatch cases in Kill",
+    "Production game code without comments, development sources preserved",
+    "Recovery safeguards and individual avatar portrait fit"
   ],
+  "data": {
+    "before": {
+      "at": 1795364485192,
+      "revision": 3252767,
+      "digest": "87bad266097755efe3a309f6f83f3374f66f027b50fa4e3c7b839edb31fe9bf0",
+      "worldHash": "8c838deab4642b0b8b92bcfa61fa70f85afeb9f4060a0afbb99b1ff8578470b9",
+      "profiles": 1701,
+      "clans": 135,
+      "fullWorldAndAuxEqual": true,
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "backup": "/srv/heroether-test/play/backups/postgresql-only-20261122"
+    },
+    "killImport": {
+      "at": 1795365132101,
+      "added": [
+        "89c62439-6c46-46c2-aa66-8e14855d498d",
+        "b8c0fc0f-2c86-4841-9ddd-06f63ec9a455",
+        "4443d2ba-8ea6-446b-bfb6-93649d8097e5"
+      ],
+      "skipped": [],
+      "beforeRevision": 3252767,
+      "revision": 3252768,
+      "digest": "c2e4cd8583d9a01e06cb3b1e8f4ba529b36f6597a388ca83f291fb3b936a85a8",
+      "allOtherFieldsUnchanged": true,
+      "noBans": true,
+      "noTrainingLabels": true,
+      "recoveredCommittedImport": true
+    },
+    "restart": {
+      "calendarReplayExact": true,
+      "noCalendarChange": true,
+      "expiredChat": 0,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 3252768,
+      "revision": 3252768,
+      "digest": "c2e4cd8583d9a01e06cb3b1e8f4ba529b36f6597a388ca83f291fb3b936a85a8",
+      "worldHash": "2edf163abfe265dd5a3ea2c22ca0846b95b10a292b3ebd950bf184d6d62f4552",
+      "profiles": 1701,
+      "clans": 135
+    },
+    "localBackupSha256": "6d305500fe2dab2065baf4ab4abeba99f0eb7c1f21e488a01bb7460c78675360"
+  },
   "verification": {
-    "clanJoinUnits": {
-      "windows": 36,
-      "linux": 36
+    "windowsFull": {
+      "total": 2263,
+      "passed": 2259,
+      "failed": 3,
+      "skipped": 1,
+      "reason": "Three Windows EPERM rename failures; full run is not green"
     },
-    "stableRefreshUnits": {
-      "windows": 23,
-      "linux": 23
+    "linuxTargeted": {
+      "total": 156,
+      "passed": 156,
+      "failed": 0,
+      "skipped": 0,
+      "includes": "All three affected Windows files, PostgreSQL integration, persistence, seasons and Kill"
     },
-    "finalColdReadUnits": {
-      "windows": 14,
-      "linux": 14
-    },
-    "stableRefreshBrowsers": {
-      "chromium": 23,
-      "firefox": 23,
-      "webkit": 23,
-      "pageErrors": 0,
-      "missingAssets": 0
+    "windowsPostgresqlLive": 9,
+    "browsers": {
+      "engines": [
+        "Chromium",
+        "Firefox",
+        "WebKit"
+      ],
+      "scheduleWidths": 3,
+      "giftReviewWidths": 3,
+      "pageErrors": 0
     },
     "http": {
-      "files": 21,
+      "exactChecks": 879,
       "surfaces": 4,
-      "exact": true,
-      "checks": 84
+      "internalHttpsMaintenancePageVerified404": true
     },
-    "data": {
-      "before": {
-        "ok": true,
-        "entireWorldAndAuxEqual": true,
-        "localUnchanged": true,
-        "revision": 3218374,
-        "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
-        "profiles": 1699,
-        "clans": 134,
-        "elapsedMs": 152118
+    "production": {
+      "files": 2414,
+      "dependencyFiles": 70,
+      "commentsRemoved": 3431
+    },
+    "structure": {
+      "javascriptFiles": 1037,
+      "localReferences": 5440
+    },
+    "repositoryCheck": "passed",
+    "live": {
+      "points": 7,
+      "spanMs": 120337,
+      "observedAfterOpeningMs": 384660,
+      "stableGamePid": 306662,
+      "stableAdminPid": 1163,
+      "automaticFaults": 0,
+      "updatesHz": {
+        "min": 19.95,
+        "max": 20
       },
-      "calendar": {
-        "calendarReplayExact": true,
-        "noCalendarChange": true,
-        "expiredChat": 0,
-        "allOtherFieldsEqual": true,
-        "beforeRevision": 3218374,
-        "revision": 3218374,
-        "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
-        "worldHash": "4f4a67e11437df7e9eb0791313d89c4b5586cf2281c92254998af610546afd63",
-        "profiles": 1699,
-        "clans": 134
+      "rssMiB": {
+        "min": 1874,
+        "max": 3793
       },
-      "after": {
-        "ok": true,
-        "entireWorldAndAuxEqual": true,
-        "localUnchanged": true,
-        "revision": 3218374,
-        "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
-        "profiles": 1699,
-        "clans": 134,
-        "elapsedMs": 438427,
-        "independentFullDocumentRead": true,
-        "parallelReaders": 8,
-        "primaryMajorityCausalContentFence": true
+      "last": {
+        "at": 1795365730818,
+        "revision": 3254058,
+        "generation": 115,
+        "prepareMs": 17529,
+        "writeMs": 209,
+        "online": {
+          "arena": 1,
+          "lobby": 3,
+          "total": 4
+        },
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 21,
+          "parts": 67,
+          "connections": 1
+        },
+        "updatesHz": 19.97,
+        "tickP95": 17.04,
+        "intervalP95": 51.15,
+        "memory": {
+          "resident": 2157,
+          "heapUsed": 401,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 3254258,
+          "pendingWalBytes": 3989381,
+          "maxWalBytes": 67108864
+        }
       }
-    },
-    "coldRead": {
-      "ok": true,
-      "allFieldsEqual": true,
-      "cursorCalls": 0,
-      "revision": 3218374,
-      "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
-      "elapsedMs": 54811,
-      "gameWriterUntouched": true
-    },
-    "startupRecovery": {
-      "at": 1795334661527,
-      "revision": 3218374,
-      "generation": 28091,
-      "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
-      "allLocalFieldsEqualVerifiedExport": true,
-      "cloudManifestUnchanged": true,
-      "originalAcquireCAS": true
-    },
-    "deployment": {
-      "failedStarts": 7,
-      "failuresRetained": [
-        "Two generic cold-read failures, exact original causes unproved",
-        "MongoNetworkTimeoutError on third cold read",
-        "20-minute full-read deadline on fourth",
-        "EACCES in temporary recovery helper on fifth",
-        "Wrong deployment.hold helper path rejected sixth and seventh",
-        "First full parallel export rejected unchanged content because heartbeat advanced metadata generation"
-      ],
-      "temporaryStartupOverridesRemoved": true,
-      "normalServiceConfigurationRestored": true,
-      "backupSha256": "bb9302ef30153054f5ef78d6e251078944078922d82ade7034c803017a6c8c19",
-      "proofSha256": "c9b775c7baa8e4ae0c8a116b686595cf4f1ab6723ced7e0ec67171d8d0fb5ba0"
     }
   },
-  "report": "games/heroes-of-ether/docs/stable-refresh-audit-20261122.txt",
-  "localEvidence": [
-    "artifacts/clan-join-arena-20261122",
-    "artifacts/refresh-audit-20261122",
-    "artifacts/avatar-canon16-20261122"
+  "kill": {
+    "status": "manual-review",
+    "cases": 3,
+    "names": [
+      "Путник 104",
+      "Путник 106",
+      "Killerbot"
+    ],
+    "automaticBans": 0,
+    "trainingLabelsAdded": 0,
+    "domain": "gift-dispatch-v1",
+    "separateFromBoosterModel": true
+  },
+  "reports": [
+    "artifacts/postgresql-only-20261122",
+    "artifacts/postgresql-migration-20261122",
+    "artifacts/kill-gift-evidence-20261122",
+    "deliveries/gift-audit-20261122"
   ],
-  "deliveries": "deliveries/emoji-20261122",
-  "pending": [
-    "Alternative Space jump remains an isolated prototype, not installed; compare artifact available",
-    "RSS and representative arena load remain open; no general FPS or memory improvement claim",
-    "Full cold transfers when local/cloud snapshots differ still depend on Atlas speed; throttling cause not proven",
-    "Scaling to 500k-2m CCU is researched architecture, not an implemented or load-tested cluster"
-  ]
+  "remaining": [
+    "Gift evidence requires human labels; no trained gift classifier is claimed",
+    "RSS and high-concurrency capacity remain unproven",
+    "VPS disk has approximately 3.4 GiB free; protected art and recovery backups must be preserved",
+    "Space jump remains an isolated prototype",
+    "Local experimental game has not been updated"
+  ],
+  "backup": {
+    "archive": "snapshot-20261122T163632Z.tar.gz",
+    "sha256": "c7a5106516cf65f6df2f3ec0a257aff16c9031d272eb8970a5815c5ef2c2c3d4",
+    "verified": true,
+    "revision": 3252768
+  }
 }
