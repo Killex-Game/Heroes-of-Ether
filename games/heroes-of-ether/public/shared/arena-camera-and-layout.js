@@ -7,6 +7,7 @@
   "use strict";
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
   const CAMERA = Object.freeze({
+    viewExpansion: 1.05,
     massStep: 25000,
     maxWorldFraction: 0.9,
     partStep: 0.075,
@@ -66,7 +67,7 @@
     );
     const smallZoom = 1 + CAMERA.smallZoom * (1 - progress * progress * (3 - 2 * progress));
     const closeScale = massScale * smallZoom;
-    if (!group) return closeScale;
+    if (!group) return minimum + (closeScale - minimum) / CAMERA.viewExpansion;
     // Оставляем пространство вокруг группы: её габариты и суммарная площадь
     // шаров тоже требуют отдаления, даже при небольшой общей массе.
     // На широком экране вертикальная группа раньше занимала лишь 72% высоты:
@@ -100,7 +101,7 @@
     const nearZoom =
       1 + CAMERA.largeGroupZoom * largeEase;
     const compact = Math.max(normalScale, Math.min(normalScale * compactZoom, fit));
-    return Math.max(compact, Math.min(compact * nearZoom, fit));
+    return minimum + (Math.max(compact, Math.min(compact * nearZoom, fit)) - minimum) / CAMERA.viewExpansion;
   }
   function followCenter(camera, target, dt, forcedMovement = false, parts = []) {
     // Track real displacement of surviving parts, not changes to the group's
