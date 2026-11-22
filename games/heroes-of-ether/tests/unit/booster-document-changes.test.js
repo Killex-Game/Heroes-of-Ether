@@ -150,8 +150,8 @@ test("Вихрь активируется без направления, сле�
   const timing = require("../../public/shared/booster-cooldowns");
   const displayed = (at) => arena.snapshot(at).players.find((p) => p.id === a.id);
   assert.deepEqual(displayed(5000).effects, [{ id: "vortex", remainingMs: 10000 }]);
-  assert.equal(timing.cooldown(BOOSTERS.get("vortex"), displayed(5000), 1000).ms, 9000);
-  assert.equal(timing.label(timing.cooldown(BOOSTERS.get("vortex"), displayed(14000)).ms), "1");
+  assert.equal(timing.cooldown(BOOSTERS.get("vortex"), displayed(5000), 499).ms, 1);
+  assert.equal(timing.cooldown(BOOSTERS.get("vortex"), displayed(5500)).ms, 0);
   assert.equal(timing.cooldown(BOOSTERS.get("vortex"), displayed(15000)).ms, 0);
   a.x = 2000;
   arena.ether.push({ id: "near-owner", x: 2150, y: 5000, value: 5 });

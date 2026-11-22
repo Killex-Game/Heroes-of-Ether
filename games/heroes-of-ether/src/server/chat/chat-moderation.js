@@ -8,7 +8,7 @@ const deltas = require("../profiles/immutable-table-delta");
 const { copyRecord } = require("../profiles/copy-record");
 const { replaceBatchProfile } = require("../profiles/profile-batch");
 const receipts = require("../profiles/operation-receipts");
-const { countProfanity, fingerprint } = require("./profanity");
+const { countProfanity, censorProfanity, fingerprint } = require("./profanity");
 const { REASONS, activeMute, decision } = require("./chat-rules");
 const RECEIPT = "chat-moderation-v1";
 
@@ -36,21 +36,29 @@ class ChatModeration {
     const at = this.now(), mute = activeMute(this.current(profile), at);
     return { reason: mute?.reason || null, until: mute?.until || null, serverNow: at };
   }
-  assertCanSend(profile) {
+  assertCanSend(profile, requestId, signature) {
     const current = this.current(profile), at = this.now();
     requirePlayable(current, at);
+    // A profane message approved before its own mute may need to finish the
+    // separate chat WAL after an interrupted save. Only that exact request passes.
+    if (requestId && current.receipts) {
+      let saved;
+      try { saved = JSON.parse(receipts.read(current, requestId)); } catch (_) {}
+      if (saved?.[0] === RECEIPT && saved[1] === signature && saved[2]?.allowed) return;
+    }
     const mute = activeMute(current, at);
     if (mute) throw rejection(mute, at);
   }
   check(profile, requestId, signature, text, channel) {
     const current = this.current(profile), at = this.now();
-    this.assertCanSend(current);
+    this.assertCanSend(current, requestId, signature);
     const receipt = current.receipts ? receipts.read(current, requestId) : receipts.MISSING;
     if (receipt !== receipts.MISSING) {
       let saved;
       try { saved = JSON.parse(receipt); } catch (_) { /* An unrelated operation. */ }
       if (saved?.[0] !== RECEIPT || saved[1] !== signature)
         throw new BoosterError("Номер сообщения уже использован.", 409);
+      if (saved[2]?.allowed) return saved[2].text;
       throw rejection(saved[2], at);
     }
     const rows = (this.recent.get(current.id) || []).filter(row => at - row.at < 30000);
@@ -78,29 +86,31 @@ class ChatModeration {
           const world = batch.next, key = profileKeys(world.profiles).get(current.id);
           const fresh = world.profiles[key];
           if (!fresh) throw new BoosterError("Игрок не найден.", 401);
-          this.assertCanSend(fresh);
+          this.assertCanSend(fresh, requestId, signature);
           const previous = receipts.read(fresh, requestId);
           if (previous !== receipts.MISSING) {
             let saved;
             try { saved = JSON.parse(previous); } catch (_) {}
             if (saved?.[0] !== RECEIPT || saved[1] !== signature)
               throw new BoosterError("Номер сообщения уже использован.", 409);
+            if (saved[2]?.allowed) return { finish: () => resolve(saved[2].text) };
             throw rejection(saved[2], this.now());
           }
           const finish = this.prepareViolation(fresh, requestId, signature, text, channel,
             { flood, profanity }, nextRows, this.now(), batch);
-          return { finish: () => { try { finish(); } catch (error) { reject(error); } } };
+          return { finish: () => { try { resolve(finish()); } catch (error) { reject(error); } } };
         },
         fail: reject,
       }));
     }
-    this.prepareViolation(current, requestId, signature, text, channel,
+    return this.prepareViolation(current, requestId, signature, text, channel,
       { flood, profanity }, nextRows, at)();
   }
   prepareViolation(current, requestId, signature, text, channel, violation, nextRows, at, batch) {
     const { flood, profanity } = violation;
     const { next, punishment } = decision(current.chatModeration, violation, at);
-    const result = punishment || { reason: REASONS.profanity, until: null, account: false };
+    const result = { ...(punishment || { reason: REASONS.profanity, until: null, account: false }),
+      ...(!flood && profanity ? { allowed: true, text: censorProfanity(text) } : {}) };
     const saved = JSON.stringify([RECEIPT, signature, result]);
     const draft = {
       ...current,
@@ -145,6 +155,7 @@ class ChatModeration {
     return () => {
       this.remember(current.id, punishment ? [] : nextRows);
       if (result.account) this.onBan(current.id);
+      if (result.allowed) return result.text;
       throw rejection(result, at);
     };
   }

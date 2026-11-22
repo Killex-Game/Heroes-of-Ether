@@ -428,13 +428,13 @@ class BoosterEffects {
       durationSeconds: Math.max(0, Math.floor((now - p.lifeStartedAt) / 1000)),
     });
   }
-  startSponge(p, now) {
+  startSponge(p, now, durationMs = BOOSTERS.get("sponge").durationMs) {
     const a = this.arena;
     // Губка снимает только ожидание. Движение и слияние остаются общими для всех частей.
     a.prepareMergeTimers(p);
     for (const part of p.parts || []) part.mergeAt = Math.min(part.mergeAt, now);
     a.refreshMergeTimer(p);
-    p.effects.sponge = now + BOOSTERS.get("sponge").durationMs;
+    p.effects.sponge = now + durationMs;
   }
 }
 module.exports = { BoosterEffects };

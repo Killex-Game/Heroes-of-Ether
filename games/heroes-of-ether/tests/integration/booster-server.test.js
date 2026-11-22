@@ -567,7 +567,7 @@ test("Лимит на сервере отдельный для слотов; о�
         ? first
         : { boosterId: "candy", spawnSerial: player.spawnSerial, requestId: randomUUID() };
     assert.equal((await use(client.ws, last)).ok, true);
-    advance(100);
+    advance(200);
   }
   assert.equal(player.boostersUsed, 10);
   assert.equal((await use(client.ws, last)).replay, true);

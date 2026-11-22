@@ -11,7 +11,7 @@
     shopSection: "shop", rankingsButton: "top", achievementsButton: "achievements",
     clanSection: "clan", petsSection: "pets", newsSection: "news",
   });
-  const themes = Object.freeze(["default", "heroic", "visual", "prism", "glass"]);
+  const themes = Object.freeze(["default", "heroic"]);
   function source(theme, icon) {
     if (!themes.includes(theme)) theme = "default";
     if (theme === "default") return icon === "pets" ? "assets/menu-icons/community-v2/pets.webp?art=20261122b" :

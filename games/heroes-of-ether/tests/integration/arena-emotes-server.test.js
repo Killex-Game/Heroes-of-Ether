@@ -108,7 +108,7 @@ test("emote socket path stays transient and isolated to the sender's arena", asy
   emit(1);
   await new Promise(r => setTimeout(r, 50));
   assert.equal(b.messages.filter(m => m.type === "emote").length, 1);
-  env.advance(1600); emit(9);
+  env.advance(5000); emit(9);
   await until(() => b.messages.filter(m => m.type === "emote").length === 2);
   assert.equal(b.messages.filter(m => m.type === "emote")[1].index, 9);
   assert.equal(c.messages.filter(m => m.type === "emote").length, 0);
@@ -127,10 +127,10 @@ test("only current authoritative Premium selects pet emotions; VIP and spoofed v
   };
   assert.equal(await emit(),'basic');
   profile.account ||= {};
-  profile.account.vipUntil=Date.now()+86400000;env.advance(1600);
+  profile.account.vipUntil=Date.now()+86400000;env.advance(5000);
   assert.equal(await emit(),'basic');
-  profile.account.premiumUntil=Date.now()+86400000;env.advance(1600);
+  profile.account.premiumUntil=Date.now()+86400000;env.advance(5000);
   assert.equal(await emit(),'pets');
-  profile.account.premiumUntil=1;env.advance(1600);
+  profile.account.premiumUntil=1;env.advance(5000);
   assert.equal(await emit(),'basic');
 });

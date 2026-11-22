@@ -2,13 +2,13 @@
 "use strict";
 // Общие идентификаторы, не произвольные URL от игроков.
 ((root) => {
-  // Единая посадка DOM и арены: лицо по центру круга, голова внутри рамки.
-  // Координаты отдельных портретов учитывают лицо, а не центр одежды и плеч.
+  // Единая посадка DOM и арены. Исходные изображения не меняются:
+  // более свободное кадрирование сохраняет плечи, крылья и силуэт.
   const collectionCatalog =
     typeof module === "object" && module.exports
       ? require("./skin-collection-preview")
       : root.KillexSkinCollections;
-  const portraitFits = Object.freeze({
+  const portraitAnchors = Object.freeze({
   "army-commander": {
   "scale": 1.49,
   "x": 0,
@@ -510,6 +510,13 @@
   "y": 0.2085
 }
 });
+  const defaultPortraitFit = Object.freeze({ scale: 0.96, x: 0, y: 0 });
+  const portraitFits = Object.freeze(Object.fromEntries(Object.entries(portraitAnchors)
+    .map(([id, fit]) => [id, Object.freeze({
+      scale: Math.min(1.08, Math.max(0.94, 0.96 + (fit.scale - 1) * 0.1)),
+      x: fit.x * 0.5,
+      y: Math.min(0.035, Math.max(-0.025, fit.y * 0.15)),
+    })])));
   // Единый актуальный каталог портретов для всех поверхностей.
   function transparentSkin(skin) {
     const directory = skin.tier === "premium" ? "premium-v2" : "transparent-v2";
@@ -577,23 +584,13 @@
       skins.map(([, name], index) => transparentSkin({ id: `${tier}-${index + 1}`, name, tier })),
     ),
   );
-  const themeSkinSets = Object.freeze([
-    Object.freeze({ id: "visual", name: "Королевский набор" }),
-    Object.freeze({ id: "prism", name: "Набор «Цитадель»" }),
-    Object.freeze({ id: "glass", name: "Небесный набор" }),
-  ]);
-  const themeSkins = Object.freeze(
-    themeSkinSets.flatMap((set) =>
-      [...skins.slice(0, 4), { id: "star-lion", name: "Звёздный лев" }].map((skin) => {
-        return transparentSkin({
-          id: `${set.id}-${skin.id}`,
-          name: skin.name,
-          set: set.id,
-          file: `${set.id}-${skin.id}.webp`,
-        });
-      }),
-    ),
-  );
+  const themeSkinSets = Object.freeze([]);
+  const themeSkins = Object.freeze([]);
+  // Read-only compatibility for saved identities and old reward receipts. No retired art is loaded.
+  const retiredSkinReplacements = Object.freeze(Object.fromEntries(["visual", "prism", "glass"].flatMap(theme =>
+    ["moon-dragon", "forest-spirit", "sun-phoenix", "crystal-guardian", "star-lion"]
+      .map(id => [`${theme}-${id}`, id === "star-lion" ? "snow-leopard" : id]))));
+  const currentSkinId = id => Object.prototype.hasOwnProperty.call(retiredSkinReplacements, id) ? retiredSkinReplacements[id] : id;
   const collectionSkins = Object.freeze(
     collectionCatalog.collections.flatMap((c) =>
       c.members.map((m) => {
@@ -620,7 +617,7 @@
   const allSkins = Object.freeze([...skins, ...accountSkins, ...themeSkins, ...collectionSkins, ...ownerGiftSkins]);
   // Один каталог путей для миниатюр, профиля, гардероба и большого портрета.
   const resolveSkin = (skin) =>
-    (typeof skin === "string" ? allSkins.find((item) => item.id === skin) : skin) || skins[0];
+    (typeof skin === "string" ? allSkins.find((item) => item.id === currentSkinId(skin)) : skin) || skins[0];
   const skinSource = (skin, size = 256) => {
     skin = resolveSkin(skin);
     if (!skin.variants) skin = skins[0];
@@ -639,7 +636,7 @@
     }
     if (image.getAttribute("src") !== src) image.setAttribute("src", src);
     image.dataset.skinId = skin.id;
-    const fit = portraitFits[skin.id];
+    const fit = portraitFits[skin.id] || defaultPortraitFit;
     if (fit) {
       image.dataset.skinFit = "portrait";
       image.style.setProperty("--skin-scale", String(fit.scale));
@@ -681,7 +678,7 @@
     return request.promise;
   };
   const drawSkin = (ctx, image, skin, x, y, diameter, fallbackScale = 1) => {
-    const fit = portraitFits[typeof skin === "string" ? skin : skin?.id];
+    const fit = portraitFits[typeof skin === "string" ? skin : skin?.id] || defaultPortraitFit;
     const scale = fit?.scale || fallbackScale;
     const size = diameter * scale;
     ctx.drawImage(
@@ -722,6 +719,8 @@
     skins,
     accountSkins,
     themeSkinSets,
+    currentSkinId,
+    retiredSkinReplacements,
     themeSkins,
     allSkins,
     collectionSkins,

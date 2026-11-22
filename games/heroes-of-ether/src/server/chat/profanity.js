@@ -25,34 +25,65 @@ function bad(word) {
     // A real prefix boundary can contain two е letters (пере + ебли).
     EBLO.test(mapped) || EBLO.test(word) || EBLO.test(normalized) || EBLO.test(simple) || DICTIONARY_ADDITIONS.test(normalized);
 }
-function countProfanity(text) {
-  const clean = text.normalize("NFKC").toLowerCase().replace(/[\p{M}\p{Cf}]/gu, "");
+function profanityRanges(clean) {
   const tokens = [...clean.matchAll(/[\p{L}\p{N}]+/gu)];
-  let count = 0;
+  const ranges = [];
   for (let i = 0; i < tokens.length; i++) {
     const token = tokens[i];
-    if (bad(token[0])) { count++; continue; }
+    if (bad(token[0])) { ranges.push([token.index, token.index + token[0].length]); continue; }
     // Explicitly separated letters: х.у.й / х у й. Do not join ordinary words.
     if (token[0].length !== 1) continue;
-    let joined = token[0], end = i;
+    let joined = token[0], end = i, punctuationGap = null;
     for (let j = i + 1; j < Math.min(tokens.length, i + 16); j++) {
       if (tokens[j][0].length !== 1) break;
       const gap = clean.slice(tokens[j - 1].index + tokens[j - 1][0].length, tokens[j].index);
       if (!/^[\s.*_\-·]{1,3}$/u.test(gap)) break;
+      const punctuation = /[^\s]/u.test(gap);
+      if (punctuationGap !== null && punctuation !== punctuationGap) break;
+      punctuationGap = punctuation;
       joined += tokens[j][0];
       end = j;
     }
-    if (end > i && bad(joined)) count++;
+    if (end > i && bad(joined))
+      ranges.push([token.index, tokens[end].index + tokens[end][0].length]);
     i = end;
   }
   // These masks are unambiguous enough for automatic screening. Deliberately
   // do not infer whole words from arbitrary stars or from a single initial.
-  count += [...clean.matchAll(/(?<![\p{L}\p{N}])(?:[хx][*_*·]{1,3}[йяеё]|п[*_*·]{1,3}зда|бл[*_*·]{1,3}[дт]ь|[сc][*_*·]{1,3}[кk][аa])(?![\p{L}\p{N}])/gu)].length;
-  return count;
+  for (const match of clean.matchAll(/(?<![\p{L}\p{N}])(?:[хx][*_*·]{1,3}[йяеё]|п[*_*·]{1,3}зда|бл[*_*·]{1,3}[дт]ь|[сc][*_*·]{1,3}[кk][аa])(?![\p{L}\p{N}])/gu))
+    ranges.push([match.index, match.index + match[0].length]);
+  return ranges;
+}
+function countProfanity(text) {
+  return profanityRanges(text.normalize("NFKC").toLowerCase().replace(/[\p{M}\p{Cf}]/gu, "")).length;
+}
+function censorProfanity(text) {
+  // Keep offsets into the original Unicode text so only the offending spans
+  // change, including disguises, combining marks and compatibility characters.
+  let clean = "", offset = 0;
+  const starts = [], ends = [];
+  for (const character of text) {
+    const normalized = character.normalize("NFKC").toLowerCase().replace(/[\p{M}\p{Cf}]/gu, "");
+    for (let i = 0; i < normalized.length; i++) {
+      starts.push(offset); ends.push(offset + character.length);
+    }
+    clean += normalized;
+    offset += character.length;
+  }
+  const spans = profanityRanges(clean).map(([from, to]) => [starts[from], ends[to - 1]])
+    .sort((a, b) => a[0] - b[0]);
+  let result = "", cursor = 0;
+  for (let [from, to] of spans) {
+    if (from < cursor) continue;
+    while (to < text.length && /[\p{M}\p{Cf}]/u.test(text[to])) to++;
+    result += text.slice(cursor, from) + "***";
+    cursor = to;
+  }
+  return result + text.slice(cursor);
 }
 function fingerprint(text) {
   const normalized = text.normalize("NFKC").toLowerCase().replace(/[\p{M}\p{Cf}]/gu, "");
   return (normalized.replace(/[^\p{L}\p{N}]/gu, "") || normalized.replace(/\s+/gu, ""))
     .replace(/(.)\1{2,}/gu, "$1$1");
 }
-module.exports = { countProfanity, fingerprint };
+module.exports = { countProfanity, censorProfanity, fingerprint };

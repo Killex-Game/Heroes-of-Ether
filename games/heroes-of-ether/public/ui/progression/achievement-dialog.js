@@ -85,7 +85,6 @@
         ["new", "Не начаты"],
         ["started", "В процессе"],
         ["complete", "Выполнены"],
-        ["planned", "Пока недоступны"],
       ]) {
         const wrap = el("label"),
           input = el("input");
@@ -406,7 +405,7 @@
       chest.append(chestIcon, el("strong", "", reward.chestName));
       rewards.append(chest, el("p", "", "Постоянная медаль и рамка этого титула"));
       if (current?.id === "boss")
-        rewards.append(el("p", "", "Героическая тема интерфейса и фон лобби навсегда"));
+        rewards.append(el("p", "", "Героическая тема интерфейса и фон лобби навсегда"), el("p", "", "Специальный подарок от игры"));
       const chestState =
         reward.state === "opened"
           ? "Сундук открыт - награды получены"

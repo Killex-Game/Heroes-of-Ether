@@ -87,7 +87,7 @@ test("Персональный доступ открывает оформлен�
     const requestId = randomUUID();
     f.choose(f.head, "set", theme.id, requestId);
     assert.equal(f.choose(f.head, "set", theme.id, requestId).replay, true);
-    for (const slot of catalog.slots) assert.equal(f.view(f.head)[slot], theme.id);
+    for (const slot of catalog.slots) assert.equal(f.view(f.head)[slot], slot === "arenaFrame" ? "canon_" + theme.id : theme.id);
     assert.throws(() => f.choose(outsider, "set", theme.id), /недоступно/);
   }
   for (const { id } of catalog.accountFrames) {
@@ -286,14 +286,14 @@ test("Набор лиги: тема интерфейса, фоны и рамки
   const before = structuredClone(f.store.find(f.head.token)),
     requestId = randomUUID();
   f.choose(f.head, "set", "silver", requestId);
-  for (const slot of slots) assert.equal(f.view(f.head)[slot], "silver");
+  for (const slot of slots) assert.equal(f.view(f.head)[slot], slot === "arenaFrame" ? "canon_silver" : "silver");
   assert.equal(f.choose(f.head, "set", "silver", requestId).replay, true);
   assert.throws(() => f.choose(f.head, "set", "bronze", requestId), /операц|запрос/);
   f.choose(f.head, "arenaFrame", "bronze");
   for (const slot of slots)
-    assert.equal(f.view(f.head)[slot], slot === "arenaFrame" ? "bronze" : "silver");
+    assert.equal(f.view(f.head)[slot], slot === "arenaFrame" ? "canon_bronze" : "silver");
   f.choose(f.head, "set", "silver", requestId);
-  assert.equal(f.view(f.head).arenaFrame, "bronze");
+  assert.equal(f.view(f.head).arenaFrame, "canon_bronze");
   const committed = structuredClone(f.store.find(f.head.token)),
     save = f.store.save;
   f.store.save = () => {
@@ -334,7 +334,7 @@ test("Набор не обходит доступ к отдельным элем
   choose("champions");
   const changed = store.find(user.token);
   for (const slot of require("../../public/shared/league-appearance").slots)
-    assert.equal(changed.appearance[slot], "champions");
+    assert.equal(changed.appearance[slot], slot === "arenaFrame" ? "canon_champions" : "champions");
   assert.deepEqual(changed.appearance.grants, {});
   for (const field of ["wallet", "inventory", "honors", "greatness", "progress", "account"])
     assert.deepEqual(changed[field], before[field]);
@@ -390,7 +390,7 @@ test("Тестовые рамки доступны без клана, сохра
       const revision = store.find(user.token).revision;
       store.setAppearance(user.token, input);
       assert.equal(store.find(user.token).revision, revision);
-      assert.equal(store.identity(store.find(user.token)).appearance[slot], theme.id);
+      assert.equal(store.identity(store.find(user.token)).appearance[slot], slot === "arenaFrame" ? "canon_" + theme.id : theme.id);
     }
   }
   assert.equal(store.view(store.find(user.token)).appearance.testFrames, true);
@@ -412,7 +412,7 @@ test("Тестовые рамки доступны без клана, сохра
   now += appearance.MONTH + 1;
   const restarted = new ProfileStore(options);
   for (const slot of ["avatarFrame", "arenaFrame"])
-    assert.equal(restarted.identity(restarted.find(user.token)).appearance[slot], "champions");
+    assert.equal(restarted.identity(restarted.find(user.token)).appearance[slot], slot === "arenaFrame" ? "canon_champions" : "champions");
   const disabled = new ProfileStore({ filePath, now: () => now, unlockLeagueBackgrounds: true });
   for (const slot of ["avatarFrame", "arenaFrame"])
     assert.equal(disabled.identity(disabled.find(user.token)).appearance[slot], "default");
@@ -468,8 +468,8 @@ test("Рамка арены передаётся всем игрокам, выб
   const first = await connect(own),
     second = await connect(other);
   const ownId = first.players[0].id;
-  assert.equal(first.players.find((p) => p.id === ownId).arenaFrame, "silver");
-  assert.equal(second.players.find((p) => p.id === ownId).arenaFrame, "silver");
+  assert.equal(first.players.find((p) => p.id === ownId).arenaFrame, "canon_silver");
+  assert.equal(second.players.find((p) => p.id === ownId).arenaFrame, "canon_silver");
   const radius = app.arena.players.get(ownId).radius;
   wall += 5001;
   app.tick();
@@ -494,7 +494,7 @@ test("Рамки аккаунтов: независимый выбор, срок
   choose("arenaFrame", "premium");
   const before = structuredClone(store.find(user.token));
   assert.equal(store.publicPlayer(user.profile.id).appearance.avatarFrame, "vip");
-  assert.equal(store.identity(store.find(user.token)).appearance.arenaFrame, "premium");
+  assert.equal(store.identity(store.find(user.token)).appearance.arenaFrame, "canon_premium");
   const restarted = new ProfileStore({ filePath, now: () => now });
   assert.equal(restarted.identity(restarted.find(user.token)).appearance.avatarFrame, "vip");
   for (const id of ["vip", "premium"])
@@ -502,7 +502,7 @@ test("Рамки аккаунтов: независимый выбор, срок
       assert.throws(() => choose(slot, id), /доступное/);
   now += 1001;
   assert.equal(store.identity(store.find(user.token)).appearance.avatarFrame, "default");
-  assert.equal(store.identity(store.find(user.token)).appearance.arenaFrame, "premium");
+  assert.equal(store.identity(store.find(user.token)).appearance.arenaFrame, "canon_premium");
   now += 1000;
   assert.equal(store.identity(store.find(user.token)).appearance.arenaFrame, "default");
   const testing = new ProfileStore({

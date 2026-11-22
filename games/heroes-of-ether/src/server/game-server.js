@@ -1243,6 +1243,7 @@ function createGameServer({
       profileConnections.set(profile.id, ws);
       Object.assign(p, profiles.identity(profile));
       accessoryAbilities.start(p, profiles.byId(profile.id));
+      require("./arena/accessory-passives").start(arena, p, now());
       p.quickSlots = [...(profile.quickSlots || [])];
     }
     ws.playerId = p.id;
@@ -1554,6 +1555,7 @@ function createGameServer({
                     if (fresh) {
                       arenaPets.start(p, fresh, startedAt, profiles.now());
                       accessoryAbilities.start(p, fresh);
+                      require("./arena/accessory-passives").start(arena, p, startedAt);
                     }
                     ws.lastContinuedLifeId = message.lifeId;
                     safeSend(
@@ -1762,12 +1764,10 @@ function createGameServer({
                     type: "boosterResult",
                     requestId: message.requestId,
                     ok: true,
-                    ...(BOOSTERS.get(message.boosterId)?.kind === "mass" && {
-                      repeatAfterMs: Math.max(
-                        0,
-                        Math.ceil((p.boosterItemReadyAt[message.boosterId] || 0) - now()),
-                      ),
-                    }),
+                    repeatAfterMs: Math.max(
+                      0,
+                      Math.ceil((p.boosterItemReadyAt[message.boosterId] || 0) - now()),
+                    ),
                     ...(ws.stateStream.entityDeltas
                       ? { profilePatch: result.profile, replay: result.replay }
                       : result),

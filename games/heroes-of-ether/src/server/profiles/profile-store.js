@@ -324,7 +324,7 @@ class ProfileStore {
             quickSlots: null,
           });
       }
-      require("../clans/clan-service").validateWorld(data);
+      require("../clans/clan-service").validateWorld(data, { allowRetiredSkins: true });
       for (const p of Object.values(data.profiles)) {
         if (p.quickSlots?.length === 7) {
           p.quickSlots = p.quickSlots.slice(0, 6);
@@ -514,12 +514,14 @@ class ProfileStore {
         const migratedEvent = require("../events/lucky-week").migrate(p);
         const migratedFriday = blackFriday.migrate(p);
         const migratedWardrobe = wardrobeState.migrate(p, data.clans, this.now());
+        const migratedThemeSkins = require("./retired-theme-skins").migrate(p);
         wardrobeState.validate(p);
         if (
           migratedActivity ||
           migratedEvent ||
           migratedFriday ||
           migratedWardrobe ||
+          migratedThemeSkins ||
           migratedPetLevels ||
           migratedAccessories
         ) {

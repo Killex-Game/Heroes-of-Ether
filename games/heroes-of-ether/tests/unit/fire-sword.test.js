@@ -84,13 +84,14 @@ test("Меч снова поджигает тот же шар после вых�
   arena.boosterEffects.tick(b, 16000);
   assert.equal(b.swordBurns.length, 0);
 });
-test("Повтор меча без перезарядки обновляет единственный клинок", () => {
+test("Повтор меча после 0,5 секунды обновляет единственный клинок", () => {
   const { arena, a } = scene(),
     message = { boosterId: sword.id, spawnSerial: a.spawnSerial, aimX: 2000, aimY: 1000 };
   const commit = arena.prepareBooster(a.id, message, 5000);
   assert.equal(a.boosterItemReadyAt.fire_sword, undefined);
   commit();
-  assert.doesNotThrow(() => arena.prepareBooster(a.id, message, 5000));
+  assert.throws(() => arena.prepareBooster(a.id, message, 5499),/Подожди/);
+  assert.doesNotThrow(() => arena.prepareBooster(a.id, message, 5500));
   assert.doesNotThrow(() => arena.prepareBooster(a.id, { ...message, boosterId: "rocket" }, 6000));
   const me = arena.snapshot(6000).players.find((p) => p.id === a.id);
   const item = publicCatalog().items.find((b) => b.id === sword.id);

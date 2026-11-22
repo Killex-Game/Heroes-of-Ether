@@ -1072,19 +1072,22 @@
     slotBlocked(item, me) {
       if (!item || !me) return true;
       if (me.level < item.useLevel) return true;
-      if (item.kind === "mass")
-        return (
-          (me.parts?.find((part) => part.id === me.mainPartId)?.mass ?? me.mass) >= me.massLimit
-        );
+      if (item.kind === "mass" &&
+          (me.parts?.find((part) => part.id === me.mainPartId)?.mass ?? me.mass) >= me.massLimit)
+        return true;
       return this.cooldown(item, me).ms > 0;
     }
     cooldown(item, me) {
-      return window.KillexBoosterTiming.cooldown(
+      const timer = window.KillexBoosterTiming.cooldown(
         item,
         me,
-        performance.now() - this.stateReceivedAt,
+        Math.max(0, performance.now() - (this.stateReceivedAt || 0)),
         this.catalog?.rules,
       );
+      const local = this.localCooldowns?.get(item?.id);
+      if (local && me && local.serial === me.spawnSerial)
+        timer.ms = Math.max(timer.ms, local.until - performance.now());
+      return timer;
     }
     showArenaMessage(text, duration = 5000) {
       clearTimeout(this.messageTimer);
@@ -1316,8 +1319,12 @@
       }
       const pending = { operation, timer: null };
       this.activations.set(item.id, pending);
+      (this.localCooldowns ||= new Map()).set(item.id, {
+        serial: me.spawnSerial,
+        until: performance.now() + (item.cooldownMs || this.catalog?.rules.cooldownMs || 500),
+      });
       if (item.kind === "mass")
-        this.massRepeatReadyAt = performance.now() + (this.catalog?.rules.massRepeatMs || 100);
+        this.massRepeatReadyAt = performance.now() + (item.cooldownMs || this.catalog?.rules.massRepeatMs || 200);
       this.showArenaMessage("", 0);
       pending.timer = setTimeout(() => {
         if (this.activations.get(item.id) !== pending) return;
@@ -1355,6 +1362,13 @@
           ({ operation }) => operation.requestId === message.requestId,
         );
         if (message.type === "boosterResult" && pending) {
+          const id = pending.operation.boosterId;
+          if (!message.ok) this.localCooldowns?.delete(id);
+          else if (Number.isFinite(message.repeatAfterMs))
+            (this.localCooldowns ||= new Map()).set(id, {
+              serial: pending.operation.spawnSerial,
+              until: performance.now() + message.repeatAfterMs,
+            });
           if (this.item(pending.operation.boosterId)?.kind === "mass") {
             if (!message.ok) this.stopMassRepeat();
             else if (this.massRepeatCode && Number.isFinite(message.repeatAfterMs))
@@ -1387,6 +1401,7 @@
     }
     respawn() {
       this.stopMassRepeat();
+      this.localCooldowns?.clear();
       this.turboPending = null;
       this.cancelTarget();
       this.effects.textContent = "";
@@ -1394,6 +1409,7 @@
     }
     leaveArena() {
       this.stopMassRepeat();
+      this.localCooldowns?.clear();
       this.turboPending = null;
       cancelAnimationFrame(this.cooldownFrame);
       this.budgetUntil = 0;
@@ -1453,7 +1469,7 @@
           const me = this.game.getMe();
           if (item?.kind === "mass" && me && !this.game.inputBlocked() && !this.dialog.open) {
             const serial = me.spawnSerial;
-            this.massRepeatReadyAt = performance.now() + (this.catalog?.rules.massRepeatMs || 100);
+            this.massRepeatReadyAt = performance.now() + (item.cooldownMs || this.catalog?.rules.massRepeatMs || 200);
             this.massRepeatCode = event.code;
             this.massRepeatTimer = setInterval(() => {
               const current = this.game.getMe();
@@ -1469,14 +1485,14 @@
                 ) ||
                 this.slots[i] !== item.id ||
                 !this.slotAvailable(i) ||
-                !this.slotCount(item, current) ||
-                this.slotBlocked(item, current)
+                !this.slotCount(item, current)
               ) {
                 this.stopMassRepeat();
                 return;
               }
               // One request in flight; slow networks never build a queue of purchases/uses.
-              if (!this.activations.has(item.id) && performance.now() >= this.massRepeatReadyAt)
+              if (!this.activations.has(item.id) && performance.now() >= this.massRepeatReadyAt &&
+                  !this.slotBlocked(item, current))
                 this.useSlot(i);
             }, 25);
           }

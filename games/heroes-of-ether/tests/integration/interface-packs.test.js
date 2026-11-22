@@ -169,149 +169,81 @@ test("Free preview selection does not become ownership; Killex's explicit access
   }
 });
 
-test("All fifteen paid pack avatars retain one identity across size variants; loadout survives restart", (t) => {
-  const options = {
-    filePath: path.join(temporary(t, "pack-avatars"), "profiles.json"),
-  };
-  const store = new ProfileStore(options),
-    user = store.open();
-  const p = store.find(user.token);
-  Object.assign(p.wallet, { coins: 50000, crystals: 15000, bucks: 3000 });
-  for (const { id } of paidThemes)
-    store.setAppearance(user.token, {
-      slot: "theme",
-      themeId: id,
-      action: "buy",
-      requestId: randomUUID(),
-    });
-  store.setAppearance(user.token, {
-    slot: "theme",
-    themeId: "default",
-    requestId: randomUUID(),
-  });
-  assert.equal(identity.themeSkins.length, 15);
-  for (const skin of identity.themeSkins) {
-    assert.equal(identity.skinAllowed(skin.id, {}), false);
-    assert(
-      identity.skinAllowed(skin.id, {}, store.view(store.find(user.token)).appearance.unlocked),
-    );
-    assert.equal(identity.skinSource(skin, 128), skin.variants[128]);
-    assert.equal(identity.skinSource(skin, 1024), skin.arena);
-    assert(fs.existsSync(path.resolve(__dirname, "../../public", skin.arena.split("?")[0])));
-    store.setLoadout(user.token, {
-      skinId: skin.id,
-      name: "Путник",
-      quickSlots: [null, null, null, null, null, null],
-      requestId: randomUUID(),
-    });
-    assert.equal(new ProfileStore(options).find(user.token).skinId, skin.id);
+
+test("Retired theme skins migrate once without altering earned rewards or purchased themes", (t) => {
+  const migration = require('../../src/server/profiles/retired-theme-skins');
+  assert.equal(identity.themeSkins.length, 0);
+  assert.equal(Object.keys(identity.retiredSkinReplacements).length, 15);
+  for (const [oldId, replacement] of Object.entries(identity.retiredSkinReplacements)) {
+    assert.equal(identity.validSkin(oldId), false);
+    assert.equal(identity.skinAllowed(oldId, {}, ['visual','prism','glass']), false);
+    assert.equal(identity.skinAllowed(replacement, {}), true);
+    assert.equal(identity.skinSource(oldId, 256), identity.skinSource(replacement, 256));
+    const profile = {skinId:oldId,grantedSkins:[oldId,'gift-winged-guardian',replacement],wallet:{coins:37},appearance:{purchasedThemes:{visual:1}},history:[{skinId:oldId}]};
+    const before = structuredClone(profile);
+    assert.equal(migration.migrate(profile), true);
+    assert.equal(profile.skinId, replacement);
+    assert.deepEqual(profile.grantedSkins, [replacement,'gift-winged-guardian']);
+    for (const k of ['wallet','appearance','history']) assert.deepEqual(profile[k],before[k]);
+    assert.equal(migration.migrate(profile), false);
   }
-  assert.equal(identity.skinAllowed("vip-1", {}), false);
-  assert.equal(identity.skinAllowed("glass-unknown", {}), false);
+  assert.equal(identity.currentSkinId('__proto__'), '__proto__');
+  const options = {filePath:path.join(temporary(t,'retired-skins'),'profiles.json'),now:()=>Date.UTC(2026,10,23,12)};
+  const store = new ProfileStore(options), user=store.open(), p=store.find(user.token);
+  p.skinId='prism-star-lion';p.grantedSkins=['glass-moon-dragon','gift-winged-guardian'];
+  p.appearance.purchasedThemes={prism:options.now()};store.save(store.data);
+  const before=structuredClone(p), restarted=new ProfileStore(options), q=restarted.find(user.token);
+  const expected={...before,skinId:'snow-leopard',grantedSkins:['moon-dragon','gift-winged-guardian'],revision:before.revision+1};
+  assert.deepEqual(q,expected);
+  assert.equal(restarted.identity(q).skinId,'snow-leopard');
+  assert.equal(restarted.arenaAppearance(q).skinId,'snow-leopard');
+  restarted.save(restarted.data);
+  assert.deepEqual(new ProfileStore(options).find(user.token),q);
 });
 
-test("Theme avatars reject unowned, forged and legacy preview selections without changing progress", (t) => {
-  const options = {
-    filePath: path.join(temporary(t, "skin-access"), "profiles.json"),
-    unlockLeagueBackgrounds: true,
-    unlockLeagueFrames: true,
-  };
-  const store = new ProfileStore(options),
-    user = store.open();
-  const p = store.find(user.token);
-  p.account = {
-    ...require("../../src/server/accounts/account-benefits").fresh(),
-    vipUntil: Date.now() + 86400000,
-    premiumUntil: Date.now() + 86400000,
-  };
-  // Old unrestricted selection must neither grant ownership nor leak into the arena.
-  p.skinId = "glass-moon-dragon";
-  p.appearance.uiTheme = p.appearance.lobbyBackground = "glass";
-  store.save(store.data);
-  assert.equal(store.identity(p).skinId, "moon-dragon");
-  assert.equal(store.arenaAppearance(p).skinId, "moon-dragon");
-  assert.equal(store.view(p).skinId, "moon-dragon");
-  const before = structuredClone(store.data),
-    disk = fs.readFileSync(options.filePath, "utf8");
-  for (const skin of identity.themeSkins) {
-    assert.throws(
-      () =>
-        store.setLoadout(user.token, {
-          skinId: skin.id,
-          name: "Путник",
-          quickSlots: [null, null, null, null, null, null],
-          requestId: randomUUID(),
-          appearance: {
-            unlocked: [skin.set],
-            purchasedThemes: { [skin.set]: Date.now() },
-          },
-        }),
-      /купи соответствующую тему/,
-    );
-  }
-  assert.deepEqual(store.data, before);
-  assert.equal(fs.readFileSync(options.filePath, "utf8"), disk);
-  assert.equal(new ProfileStore(options).identity(p).skinId, "moon-dragon");
+test("Retired selections and forged ownership are rejected without mutating the profile", (t) => {
+  const options={filePath:path.join(temporary(t,'retired-access'),'profiles.json'),unlockLeagueFrames:true,unlockLeagueBackgrounds:true};
+  const store=new ProfileStore(options),user=store.open(),p=store.find(user.token),before=structuredClone(p);
+  const disk=fs.readFileSync(options.filePath,'utf8');
+  for(const skinId of Object.keys(identity.retiredSkinReplacements)) assert.throws(()=>store.setLoadout(user.token,{
+    skinId,name:'Путник',quickSlots:[],requestId:randomUUID(),appearance:{unlocked:['visual','prism','glass']}
+  }),/доступный скин/);
+  assert.deepEqual(store.find(user.token),before);
+  assert.equal(fs.readFileSync(options.filePath,'utf8'),disk);
 });
 
-test("Buying one theme unlocks only its five avatars, never another theme or account avatars", (t) => {
-  const options = {
-    filePath: path.join(temporary(t, "skin-purchase"), "profiles.json"),
-  };
-  const store = new ProfileStore(options),
-    user = store.open();
-  const profile = () => store.find(user.token);
-  profile().wallet.crystals = 15000;
-  const purchase = {
-    slot: "theme",
-    themeId: "prism",
-    action: "buy",
-    requestId: randomUUID(),
-  };
-  const save = store.save;
-  store.save = () => {
-    throw Error("write failed");
-  };
-  assert.throws(() => store.setAppearance(user.token, purchase), /write failed/);
-  assert(!store.view(profile()).appearance.unlocked.includes("prism"));
-  assert.equal(profile().wallet.crystals, 15000);
-  store.save = save;
-  store.setAppearance(user.token, purchase);
-  assert.equal(store.setAppearance(user.token, purchase).replay, true);
-  assert.equal(profile().wallet.crystals, 0);
-  const access = store.view(profile()).appearance.unlocked;
-  assert.equal(identity.themeSkins.filter((s) => identity.skinAllowed(s.id, {}, access)).length, 5);
-  assert.equal(identity.skinAllowed("vip-1", {}, access), false);
-  assert.equal(identity.skinAllowed("premium-1", {}, access), false);
-  store.setLoadout(user.token, {
-    skinId: "prism-star-lion",
-    name: "Путник",
-    quickSlots: [],
-    requestId: randomUUID(),
-  });
-  assert.equal(new ProfileStore(options).view(profile()).skinId, "prism-star-lion");
+test("Theme purchase retains atomic ownership and charges without granting retired avatars", (t) => {
+  const options={filePath:path.join(temporary(t,'theme-without-avatars'),'profiles.json')};
+  const store=new ProfileStore(options),user=store.open(),profile=()=>store.find(user.token);
+  profile().wallet.crystals=15000;
+  const purchase={slot:'theme',themeId:'prism',action:'buy',requestId:randomUUID()},save=store.save;
+  store.save=()=>{throw Error('write failed');};
+  assert.throws(()=>store.setAppearance(user.token,purchase),/write failed/);
+  assert(!store.view(profile()).appearance.unlocked.includes('prism'));
+  assert.equal(profile().wallet.crystals,15000);store.save=save;
+  store.setAppearance(user.token,purchase);
+  assert.equal(store.setAppearance(user.token,purchase).replay,true);
+  assert.equal(profile().wallet.crystals,0);
+  const access=store.view(profile()).appearance.unlocked;
+  assert(access.includes('prism'));
+  assert.equal(identity.skinAllowed('vip-1',{},access),false);
+  assert.equal(identity.skinAllowed('premium-1',{},access),false);
+  assert.equal(identity.skinAllowed('prism-star-lion',{},access),false);
+  store.setLoadout(user.token,{skinId:'snow-leopard',name:'Путник',quickSlots:[],requestId:randomUUID()});
+  const restored=new ProfileStore(options);
+  assert.equal(restored.find(user.token).skinId,'snow-leopard');
+  assert.deepEqual(restored.find(user.token).appearance,profile().appearance);
 });
 
-test("Only explicit personal preview opens theme avatars; revocation falls back without deleting selection", () => {
-  const store = new ProfileStore(),
-    user = store.open(),
-    p = store.find(user.token);
-  const config = require("../../config/appearance-testing.json");
-  for (const key of ["allAppearanceProfileIds", "allPersonalAppearanceProfileIds"]) {
+test("Personal previews never resurrect retired avatars or create ownership", () => {
+  const store=new ProfileStore(),user=store.open(),p=store.find(user.token),config=require('../../config/appearance-testing.json');
+  for(const key of ['allAppearanceProfileIds','allPersonalAppearanceProfileIds']){
     config[key].push(p.id);
-    try {
-      const access = store.view(p).appearance.unlocked;
-      assert.equal(
-        identity.themeSkins.filter((s) => identity.skinAllowed(s.id, {}, access)).length,
-        15,
-      );
-      p.skinId = "visual-star-lion";
-      assert.equal(store.identity(p).skinId, p.skinId);
-      assert.equal(p.appearance.purchasedThemes, undefined);
-    } finally {
-      config[key].splice(config[key].indexOf(p.id), 1);
-    }
-    assert.equal(store.identity(p).skinId, "moon-dragon");
-    assert.equal(p.skinId, "visual-star-lion");
+    try{
+      const access=store.view(p).appearance.unlocked;
+      assert.equal(identity.skinAllowed('visual-star-lion',{},access),false);
+      assert.equal(identity.skinAllowed('snow-leopard',{},access),true);
+      assert.equal(p.appearance.purchasedThemes,undefined);
+    }finally{config[key].splice(config[key].indexOf(p.id),1);}
   }
 });

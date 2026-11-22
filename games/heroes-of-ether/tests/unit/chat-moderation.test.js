@@ -28,23 +28,23 @@ test("ordinary words, names and substrings do not create profanity strikes", () 
   for (const text of ["Страхуй меня!", "Подстрахуй", "учебник", "употреблять", "рубля", "корабля", "бляха", "хулиган", "педикюр", "мандат", "команда", "небо", "ребёнок", "ебеновый", "мебель", "Scunthorpe", "ассистент", "барсука", "барсуки", "сук", "сучок", "суканый", "х у л и г а н", "обновление", "Не работает кнопка. Игра тормозит", "я за честную игру"])
     assert.equal(countProfanity(text), 0, text);
 });
-test("profanity: 1 / 2 / 3 / 6 / 9 and crossing multiple thresholds", () => {
+test("profanity counts messages; every third message mutes only chat", () => {
   let state, at = 1000;
   for (let i = 1; i <= 25; i++) {
     const d = decision(state, { profanity: 1 }, at++); state = d.next;
-    if (i > 2 && i % 3) assert.equal(d.punishment, null);
+    if (i % 3) assert.equal(d.punishment, null);
     else {
-      assert.equal(d.punishment.minutes, i === 1 ? 15 : i === 2 ? 30 : 60);
-      assert.equal(d.punishment.account, i >= 3);
+      assert.equal(d.punishment.minutes, 60);
+      assert.equal(d.punishment.account, false);
     }
   }
   const jump = decision(null, { profanity: 15 }, at);
-  assert.equal(jump.punishment.account, true);
-  assert.equal(jump.next.profanity.count, 15);
+  assert.equal(jump.punishment, null);
+  assert.equal(jump.next.profanity.count, 1);
   for (const count of [1, 2, 3, 4, 6, 9]) {
     const d = decision(null, { profanity: count }, at);
-    assert.equal(d.punishment.minutes, count === 1 ? 15 : count === 2 ? 30 : 60);
-    assert.equal(d.punishment.account, count >= 3);
+    assert.equal(d.punishment, null);
+    assert.equal(d.next.profanity.count, 1);
   }
 });
 test("flood: 5 minutes, 30 minutes, one hour and one hour again", () => {
@@ -80,28 +80,30 @@ test("fast varied messages also detect flood, not only duplicate text", () => {
   assert.equal(f.reject("Сообщение восемь").chatModeration.reason, REASONS.flood);
   assert.equal(f.profile.chatModeration.flood.count, 1);
 });
-test("rejected profanity is not delivered or credited; request replay never adds a strike", () => {
+test("censored messages are delivered once and request replay never adds a strike", () => {
   const f = fixture(), id = randomUUID();
-  f.reject("блядь", id);
-  for (let i = 0; i < 10; i++) f.reject("блядь", id);
+  assert.equal(f.send("блядь", id).message.text, "***");
+  for (let i = 0; i < 10; i++) assert.equal(f.send("блядь", id).duplicate, true);
   assert.equal(f.profile.chatModeration.profanity.count, 1);
-  assert.equal(f.chat.history().messages.length, 0);
-  assert.deepEqual(f.chat.achievementCounts, {});
+  assert.equal(f.chat.history().messages.length, 1);
   f.advance(15 * MINUTE);
   assert.equal(f.reject("пизда", id).status, 409);
-  f.advance(WEEK + 1); f.reject("блядь", id);
+  f.advance(WEEK + 1); f.send("блядь", id);
   assert.equal(f.profile.chatModeration.profanity.count, 1, "old receipt survives the strike window");
-  f.reject("хуй"); assert.equal(f.profile.chatModeration.profanity.count, 1, "new window");
+  f.send("хуй"); assert.equal(f.profile.chatModeration.profanity.count, 2, "message strikes survive quiet weeks");
 });
-test("one message crosses several thresholds; account ban blocks all subsequent sends", () => {
+test("many words are one strike, third message mutes chat, sixth repeats the one hour mute", () => {
   const f = fixture();
-  const e = f.reject(Array(3).fill("сука").join(" "));
-  assert.equal(e.code, "ACCOUNT_BANNED"); assert.equal(f.profile.moderation.ban.until, f.now() + HOUR);
-  assert.equal(f.reject("Чистое сообщение").code, "ACCOUNT_BANNED");
-  f.advance(HOUR);
-  assert.equal(f.reject(Array(2).fill("хуй").join(" ")).code, "CHAT_REJECTED");
-  assert.equal(f.profile.chatModeration.profanity.count, 5);
-  assert.equal(f.reject("хуй").code, "ACCOUNT_BANNED");
+  for(let i=1;i<=6;i++) {
+    assert.equal(f.send(i + " сука хуй").message.text, i + " *** ***");
+    assert.equal(f.profile.chatModeration.profanity.count, i);
+    assert.equal(f.profile.moderation?.ban, undefined);
+    if(i%3===0) {
+      assert.equal(f.profile.chatModeration.mute.until, f.now()+HOUR);
+      assert.equal(f.reject("Чистое сообщение").code, "CHAT_MUTED");
+      f.advance(HOUR);
+    } else f.advance(3000);
+  }
   assert.equal(f.profile.chatModeration.profanity.count, 6);
 });
 test("retrying a rate-limited request cannot replace its text and bypass screening", () => {

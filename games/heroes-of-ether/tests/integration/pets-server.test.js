@@ -115,7 +115,7 @@ test("pet HTTP economy and WebSocket authority: replay, Origin, arena lock, Q/R 
     true,
   );
   assert.equal(p.pet.stock.claw, 4);
-  time = 4300;
+  time = 4500;
   assert.equal((await reply({ ...repeat, sequence: 3 })).ok, true);
   assert.equal(p.pet.stock.fire, 3);
   assert.equal(

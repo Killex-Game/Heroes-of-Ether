@@ -197,7 +197,8 @@ test("Spawn attacks and mass caps never consume supplies; repeated shields and p
   place(bot, massLimitForLevel(bot.level), 700);
   assert.equal(tryUse("candy", 7000), null);
   assert.ok(tryUse("sphere", 7100));
-  assert.ok(tryUse("sphere", 7100));
+  assert.equal(tryUse("sphere", 7599),null);
+  assert.ok(tryUse("sphere",7600));
   assert.equal(state.used, 4);
   const prepare = arena.prepareBooster;
   arena.prepareBooster = () => {

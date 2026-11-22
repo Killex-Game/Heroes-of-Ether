@@ -7,6 +7,7 @@ const { BoosterError } = require("../boosters/booster-catalog");
 const { RequestLimits } = require("../http/request-rate-limits");
 const { benefits } = require("../accounts/account-benefits");
 const { ChatModeration } = require("./chat-moderation");
+const { censorProfanity } = require("./profanity");
 const LIMIT = 100;
 const CLAN_RETENTION_MS = 48 * 60 * 60 * 1000;
 const ARENA_IDLE_RETENTION_MS = 15 * 60 * 1000;
@@ -219,7 +220,6 @@ class ChatService {
   }
   sendNow(profile, clan, room, input, arenaId) {
     if (!profile) throw new BoosterError("Сначала войди в игру.", 401);
-    this.moderation.assertCanSend(profile);
     if (!input || typeof input.requestId !== "string" || !/^[a-f0-9-]{36}$/i.test(input.requestId))
       throw new BoosterError("Некорректный номер сообщения.");
     if (typeof input.text !== "string" || input.text.length > 560 || [...input.text].length > 280)
@@ -240,6 +240,8 @@ class ChatService {
     const signature = hash(
       JSON.stringify([room || (arenaId === "arena-1" ? null : arenaId), text]),
     );
+    this.moderation.assertCanSend(profile, input.requestId, signature);
+    const visibleText = censorProfanity(text);
     const receipt = this.messageReceipts[receiptKey];
     const previous = rows.find(
       (m) => m.author.id === profile.id && m.requestId === input.requestId,
@@ -260,17 +262,15 @@ class ChatService {
               clanTag: clan?.prefix || "",
               ...this.authorDetails(profile),
             },
-            text,
+            text: visibleText,
           },
           duplicate: true,
         };
-      if (previous.text !== text) throw new BoosterError("Номер сообщения уже использован.", 409);
+      if (!receipt && previous.text !== text && previous.text !== visibleText)
+        throw new BoosterError("Номер сообщения уже использован.", 409);
       return { message: this.publicMessage(previous), duplicate: true };
     }
-    const screened = this.moderation.check(profile, input.requestId, signature, text, room ? `clan:${room}` : `arena:${arenaId}`);
-    // An asynchronous violation always rejects after its durable profile
-    // commit. Do not deliver or count the offending message while it is staged.
-    if (screened && typeof screened.then === "function") return screened;
+    const publish = screenedText => {
     if (!this.limits.take(profile.id, "chat").allowed)
       throw new BoosterError("Слишком часто. Подожди пару секунд.", 429);
     const message = {
@@ -283,7 +283,7 @@ class ChatService {
         clanTag: clan?.prefix || "",
         ...this.authorDetails(profile),
       },
-      text,
+      text: screenedText ?? visibleText,
     };
     const next = [...rows, message].slice(-LIMIT);
     const count = (this.achievementCounts[profile.id] || 0) + 1;
@@ -314,6 +314,10 @@ class ChatService {
     this.messageReceipts = messageReceipts;
     this.credit(profile.id);
     return { message: this.publicMessage(message), duplicate: false };
+    };
+    const screened = this.moderation.check(profile, input.requestId, signature, text, room ? `clan:${room}` : `arena:${arenaId}`);
+    // Publish censored text only after the strike has been durably recorded.
+    return screened && typeof screened.then === "function" ? screened.then(publish) : publish(screened);
   }
   async persistMessage(profile,room,arenaId,rows,message,key,signature,count){
     const receipt={signature,id:message.id,at:message.at};

@@ -38,17 +38,17 @@ test("ordinary ebl substrings and dictionary explanatory words stay allowed", ()
     assert.equal(countProfanity(text), 0, text);
 });
 
-test("new family uses existing chat sanctions and request replay adds no strike", () => {
+test("new family is censored and request replay adds no strike", () => {
   let at = 100000;
   const p = { id: "dictionary-test", name: "Игрок", receipts: {} }, chat = new ChatService({ now: () => at });
   const send = (text, id) => chat.send(p, null, null, { text, requestId: id });
-  assert.throws(() => send("ебло", "11111111-1111-4111-8111-111111111111"), e => e.code === "CHAT_MUTED");
+  assert.equal(send("ебло", "11111111-1111-4111-8111-111111111111").message.text, "***");
   assert.equal(p.chatModeration.profanity.count, 1);
-  assert.equal(p.chatModeration.mute.until, at + 15 * 60000);
-  assert.throws(() => send("ебло", "11111111-1111-4111-8111-111111111111"), e => e.code === "CHAT_MUTED");
+  assert.equal(p.chatModeration.mute, null);
+  assert.equal(send("ебло", "11111111-1111-4111-8111-111111111111").duplicate, true);
   assert.equal(p.chatModeration.profanity.count, 1);
   at += 15 * 60000 + 1;
-  assert.throws(() => send("выёбываешься", "22222222-2222-4222-8222-222222222222"), e => e.code === "CHAT_MUTED");
+  assert.equal(send("выёбываешься", "22222222-2222-4222-8222-222222222222").message.text, "***");
   assert.equal(p.chatModeration.profanity.count, 2);
-  assert.equal(p.chatModeration.mute.until, at + 30 * 60000);
+  assert.equal(p.chatModeration.mute, null);
 });

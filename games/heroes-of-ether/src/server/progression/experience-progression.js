@@ -244,6 +244,7 @@ function earnXp(
   at = Date.now(),
   accountXpPercent = accounts.benefits(p, at).xpPercent,
   absorption = false,
+  accessoryPercent = null,
 ) {
   // До завершения жизни опыт хранится отдельно и не меняет уровень/рейтинг.
   const s = p.progress;
@@ -252,8 +253,8 @@ function earnXp(
   const extraUnits = add(
     s.session?.accessoryXpRemainder || 0,
     amount *
-      (accessories.bonus(accessoryAccess.outfit(p), "xp") +
-        (absorption ? accessories.bonus(accessoryAccess.outfit(p), "killXp") : 0)) *
+      (accessoryPercent ?? (accessories.bonus(accessoryAccess.outfit(p), "xp") +
+        (absorption ? accessories.bonus(accessoryAccess.outfit(p), "killXp") : 0))) *
       repeats,
   );
   amount =
@@ -265,7 +266,8 @@ function earnXp(
   if (s.session) s.session.giftXpRemainder = giftUnits % 100;
   const activePotion = p.alchemy?.active;
   const potionXp = activePotion && s.session && activePotion.lifeId === s.session.id
-    ? require("../../../public/shared/alchemy-rules").combine(activePotion.ids || [activePotion.id]).xp || 0 : 0;
+    ? require("../../../public/shared/alchemy-rules").combine(activePotion.ids || [activePotion.id],
+      Math.max(1, accessories.bonus(accessoryAccess.outfit(p), "potionFactor"))).xp || 0 : 0;
   if (potionXp && s.session) {
     const units = amount * Math.round(potionXp * 100) + (s.session.alchemyXpRemainder || 0);
     amount += Math.floor(units / 100);
@@ -356,6 +358,8 @@ function applyEvent(p, event, at) {
         if (until <= at) delete s.absorptionVictims[id];
       s.absorptionVictims[event.victimProfileId] = add(at, VICTIM_COOLDOWN_MS);
       s.absorptionKills = add(s.absorptionKills, 1);
+      const completeBonus = accessories.bonus(accessoryAccess.outfit(p), "completeKillXp");
+      if (completeBonus && s.session) earnXp(p, KILL_XP, 1, at, -100, false, completeBonus);
     }
     if (event.spaceSplit && event.victimDefeated !== false && s.session) {
       const key = event.lifeId;

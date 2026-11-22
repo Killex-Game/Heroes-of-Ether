@@ -215,4 +215,5 @@ module.exports = {
   tick,
   use,
   snapshot,
+  gainMassEvenly,
 };

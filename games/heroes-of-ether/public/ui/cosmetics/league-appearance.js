@@ -420,14 +420,17 @@
         );
       const grid = el("div", "appearance-grid"),
         cards = [];
-      for (const theme of [
+      const choices = [
         { id: "default", name: "По умолчанию", title: "Классическое оформление" },
         ...catalog.interfaceThemes,
         ...(catalog.frameSlot(slot) || slot === "frames"
-          ? [...catalog.accountFrames, ...catalog.rankFrames, ...catalog.variantFrames]
+          ? [...catalog.accountFrames, ...catalog.rankFrames]
           : []),
         ...catalog.themes,
-      ]) {
+      ];
+      for (const original of choices) {
+        const id = catalog.frameForSlot(original.id, slot);
+        const theme = { ...original, id, title: slot === "arenaFrame" ? "Ободок шара" : slot === "avatarFrame" ? "Рамка профиля" : original.title };
         const card = el("article", "appearance-card");
         card.dataset.themeId = theme.id;
         const preview = el("div", "appearance-preview");

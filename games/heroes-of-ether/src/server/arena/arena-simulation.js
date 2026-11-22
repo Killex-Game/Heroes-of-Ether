@@ -790,25 +790,19 @@ class Arena {
         boosterLimitForLevel(p.level) + (p.account?.slotBonus || 0)
     )
       throw new BoosterError("Лимит этого слота на эту жизнь исчерпан.", 409);
-    const sharedCooldown = booster.sharedCooldownMs ?? BOOSTER_RULES.COOLDOWN_MS;
-    const itemCooldownEnabled = BOOSTER_RULES.COOLDOWNS_ENABLED || booster.id === "easter_egg";
-    const hasCooldown = BOOSTER_RULES.COOLDOWNS_ENABLED && booster.kind !== "mass" && booster.kind !== "shield" && sharedCooldown > 0;
-    if (hasCooldown && p.boosterReadyAt > now)
-      throw new BoosterError("Бустеры перезаряжаются одну секунду.", 409);
     if (booster.kind === "mass" && this.mainBody(p).mass >= massLimitForLevel(p.level))
       throw new BoosterError(
         "Достигнут предел массы главного шара для вашего уровня. Предмет сохранён.",
         409,
       );
-    if (itemCooldownEnabled && p.boosterItemReadyAt[booster.id] > now)
+    if (p.boosterItemReadyAt[booster.id] > now)
       throw new BoosterError(
-        booster.id === "fire_sword"
-          ? "Огненный меч перезаряжается 5 секунд после применения."
-          : "Подожди мгновение перед следующим применением этого бустера.",
+        "Подожди мгновение перед следующим применением этого бустера.",
         409,
       );
     const alchemyCast = alchemy.prepare(p, booster, now, !accessory);
-    booster = alchemyCast.booster;
+    booster = booster.flightMs || booster.kind === "vortex"
+      ? alchemyCast.booster : accessoryPassives.outgoing(p, alchemyCast.booster);
     const launch =
       booster.flightMs || booster.kind === "vortex"
         ? this.combat.prepare(p, booster, message, now)
@@ -832,20 +826,12 @@ class Arena {
       if (this.hasEffect(target, "shield", now))
         throw new BoosterError("Соперника защищает щит. Предмет сохранён.");
     }
-    const effectActive =
-      booster.kind === "shield"
-        ? p.effects[booster.id] > now && p.shieldReadyAt[booster.id] > now
-        : this.hasEffect(target, booster.kind, now);
-    if (BOOSTER_RULES.COOLDOWNS_ENABLED && booster.kind === "shield" && effectActive)
-      throw new BoosterError("Повтор этого щита доступен через 15 секунд после применения.", 409);
-    if (BOOSTER_RULES.COOLDOWNS_ENABLED && !launch && booster.kind !== "mass" && effectActive)
-      throw new BoosterError("Такой эффект уже действует. Предмет сохранён.");
     if (booster.kind === "sponge" && !p.parts)
       throw new BoosterError("Для Губки нужны разделённые части. Предмет сохранён.");
     // Применяется только после успешного серверного списания и сохранения предмета.
     return () => {
       if (launch) launch();
-      else if (booster.kind === "sponge") this.boosterEffects.startSponge(p, now);
+      else if (booster.kind === "sponge") this.boosterEffects.startSponge(p, now, booster.durationMs);
       else if (booster.kind === "easter_growth") {
         // Finish due growth before replacing its schedule, including the last
         // +50 at the exact ten-second cooldown boundary.
@@ -868,14 +854,15 @@ class Arena {
           for (const id of Object.keys(p.effects))
             if (BOOSTERS.get(id)?.kind === "shield") delete p.effects[id];
           p.shieldReadyAt = {
-            [booster.id]: now + (BOOSTER_RULES.COOLDOWNS_ENABLED ? BOOSTER_RULES.SHIELD_COOLDOWN_MS : 0),
+            [booster.id]: now + booster.cooldownMs,
           };
         }
-        const effect = giftEffects.adjust(
+        let effect = giftEffects.adjust(
           booster,
           giftEffects.arena(p, "outgoing") *
             (target === p ? 1 : giftEffects.arena(target, "incoming")),
         );
+        if (target !== p) effect = accessoryPassives.incoming(target, alchemy.incoming(target, effect));
         target.effects[booster.id] = now + effect.durationMs;
         (target.effectStrengths ||= {})[booster.id] = effect.multiplier ?? effect.speedBonus;
         if (booster.kind === "root") {
@@ -885,9 +872,8 @@ class Arena {
           for (const part of this.bodies(target)) if (target.parts) part.vx = part.vy = 0;
         }
       }
-      if (hasCooldown) p.boosterReadyAt = now + sharedCooldown;
       alchemy.commit(p, alchemyCast, now);
-      if (itemCooldownEnabled && booster.cooldownMs) p.boosterItemReadyAt[booster.id] = now + booster.cooldownMs;
+      p.boosterItemReadyAt[booster.id] = now + booster.cooldownMs;
       p.boostersUsed++;
       require("./quest-actions").record(this, p, "boosterUses", null, booster.id, null, accessory ? 'accessory' : 'inventory');
       if (!accessory) p.boosterUses[booster.id] = (p.boosterUses[booster.id] || 0) + 1;
@@ -1262,6 +1248,7 @@ class Arena {
       if (p.isRemnant) continue;
       turbo.update(p, now);
       arenaPets.tick(this, p, now);
+      accessoryPassives.tick(this, p, now);
     }
     for (const p of this.players.values()) if (!p.dead) this.boosterEffects.tick(p, now);
     this.combat.update(now);

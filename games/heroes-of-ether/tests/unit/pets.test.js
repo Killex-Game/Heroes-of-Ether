@@ -576,19 +576,19 @@ test("Zaya carrot shares food, permits a full main part and rejects full players
   assert.equal(p.mass, 1100);
   assert.equal(p.pet.stock.carrot, 2);
   setParts(arena, p, [limit, 100, 200]);
-  pets.use(arena, p, message(p, "sixth", 2), 1300);
+  pets.use(arena, p, message(p, "sixth", 2), 1500);
   assert.deepEqual(
     p.parts.map((part) => part.mass),
     [limit, 350, 450],
   );
   assert.equal(p.pet.stock.carrot, 1);
   setParts(arena, p, [limit, limit]);
-  assert.throws(() => pets.use(arena, p, message(p, "sixth", 3), 1600), /предел массы/);
+  assert.throws(() => pets.use(arena, p, message(p, "sixth", 3), 2000), /предел массы/);
   assert.equal(p.pet.stock.carrot, 1);
   assert.equal(p.pet.sequence, 2);
 });
 
-test("Питомцевые запасы применяются без задержки, повтор запроса не расходует заряд", () => {
+test("Питомцевые запасы ждут 0,5 секунды, повтор запроса не расходует заряд", () => {
   for (const kind of ["fire", "claw", "glove", "carrot"]) {
     const { arena, p } = arenaFixture(kind === "carrot" ? "zaya" : "manya");
     p.pet.stock[kind] = 3;
@@ -600,10 +600,11 @@ test("Питомцевые запасы применяются без задер
     assert.equal(pets.use(arena, p, first, 5000).replay, true);
     assert.equal(p.pet.stock[kind], 2, kind);
     assert.equal(pets.use(arena, p, first, 5299).replay, true);
-    assert.equal(pets.snapshot(p, 5299).cooldowns[kind], 0);
-    pets.use(arena, p, repeat, 5000);
+    assert.equal(pets.snapshot(p, 5299).cooldowns[kind], 201);
+    assert.throws(()=>pets.use(arena,p,repeat,5499),/мгновение|перезаряд/i);
+    pets.use(arena,p,repeat,5500);
     assert.equal(p.pet.stock[kind], 1, kind);
-    assert.equal(pets.snapshot(p, 5000).cooldowns[kind], 0);
+    assert.equal(pets.snapshot(p, 5500).cooldowns[kind], 500);
   }
 });
 
@@ -615,19 +616,20 @@ test("Огонь Q, коготь R и следующая перчатка R пр
   pets.use(arena, p, message(p, "secondary", 3), 5000);
   assert.equal(p.pet.stock.claw, 0);
   assert.equal(p.pet.stock.glove, 10);
-  pets.use(arena, p, message(p, "secondary", 4), 5000);
+  assert.throws(()=>pets.use(arena,p,message(p,"secondary",4),5499),/мгновение|перезаряд/i);
+  pets.use(arena,p,message(p,"secondary",4),5500);
   assert.equal(p.pet.stock.glove, 9);
 });
 
-test("Обычный и питомцевый огонь применяются без задержки с раздельным расходом", () => {
+test("Обычный и питомцевый огонь делят перезарядку одного бустера с раздельным расходом", () => {
   const { arena, p } = arenaFixture();
   const ordinary = { boosterId: "fire", spawnSerial: p.spawnSerial, aimX: 900, aimY: 500 };
   pets.use(arena, p, message(p, "fire", 1), 5000);
-  assert.doesNotThrow(() => arena.prepareBooster(p.id, ordinary, 5000));
-  arena.prepareBooster(p.id, ordinary, 5300)();
-  assert.equal(pets.snapshot(p, 5300).cooldowns.fire, 0);
+  assert.throws(() => arena.prepareBooster(p.id, ordinary, 5499),/Подожди/);
+  arena.prepareBooster(p.id, ordinary, 5500)();
+  assert.equal(pets.snapshot(p, 5500).cooldowns.fire, 500);
   assert.throws(() => pets.use(arena, p, message(p, "fire", 1), 5300), /обработан/);
-  pets.use(arena, p, message(p, "fire", 2), 5600);
+  pets.use(arena, p, message(p, "fire", 2), 6000);
   assert.equal(p.pet.stock.fire, 9);
 });
 test("Q fire applies level damage at swept boundary; replay and stale lives never spend again", () => {

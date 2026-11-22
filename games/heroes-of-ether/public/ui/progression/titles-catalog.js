@@ -64,6 +64,7 @@
         appearance.append(prize(accessory.icon, accessory.name, accessory.bonusLabel || accessory.description || "Навсегда", "title-road-accessory"));
       if (t.id === "boss") {
         appearance.append(prize(window.KillexLeagueAppearance.source("heroic", "lobby"), "Героическое оформление", "Тема интерфейса и фон лобби навсегда", "title-road-theme"));
+        appearance.append(el("p", "", "Специальный подарок от игры"));
       }
       if (t.accountDays) for (const [kind, days] of Object.entries(t.accountDays))
         rewards.append(prize(`assets/accounts/${kind}.png?art=20261122b`, kind === "vip" ? "VIP" : "Premium", number(days) + " дн."));

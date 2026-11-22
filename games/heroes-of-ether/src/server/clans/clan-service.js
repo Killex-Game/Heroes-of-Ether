@@ -110,7 +110,7 @@ function clanFields(input) {
   }
   return { prefix, name, description, emblem: input.emblem, privacy, crest };
 }
-function validateWorld(data) {
+function validateWorld(data, { allowRetiredSkins = false } = {}) {
   const broken = () => {
     throw Error("Повреждены профили или кланы. Файл сохранений не перезаписан.");
   };
@@ -121,7 +121,7 @@ function validateWorld(data) {
     if (
       typeof p.name !== "string" ||
       !p.name ||
-      !validSkin(p.skinId) ||
+      !validSkin(allowRetiredSkins ? require("../../../public/shared/player-identity").currentSkinId(p.skinId) : p.skinId) ||
       !Number.isSafeInteger(p.level) ||
       p.level < 1 ||
       !Number.isSafeInteger(p.greatness) ||

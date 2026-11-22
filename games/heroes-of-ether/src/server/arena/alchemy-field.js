@@ -31,7 +31,7 @@ class AlchemyField {
       if (!parts.some(part => { const r = part.radius + item.radius, dx = part.x - item.x, dy = part.y - item.y; return Math.abs(dx) < r && Math.abs(dy) < r && dx * dx + dy * dy < r * r; })) continue;
       if (p.alchemyRun !== this.runId) { p.alchemyRun = this.runId; p.alchemyIngredients = {}; p.alchemyPickupCount = 0; }
       const every = modifiers(p).ingredientEvery;
-      const count = 1 + (every && ++p.alchemyPickupCount % every === 0 ? 1 : 0);
+      const count = 1 + (every && ++p.alchemyPickupCount % every === 0 ? modifiers(p).ingredientExtra || 1 : 0);
       p.alchemyIngredients[item.alchemyIngredient] = (p.alchemyIngredients[item.alchemyIngredient] || 0) + count;
       (collected ||= new Set()).add(item);
     }

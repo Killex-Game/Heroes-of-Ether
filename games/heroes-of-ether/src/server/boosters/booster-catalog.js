@@ -7,10 +7,10 @@ const alchemy = require("../../../public/shared/alchemy-rules");
 // Числовые эффекты и цены взяты из каталога и справочника. Общие правила
 // первого прототипа отделены от них, чтобы впоследствии менять баланс явно.
 const BOOSTER_RULES = Object.freeze({
-  COOLDOWNS_ENABLED: false,
-  COOLDOWN_MS: 1000,
-  MASS_REPEAT_MS: 100,
-  SHIELD_COOLDOWN_MS: 15000,
+  COOLDOWNS_ENABLED: true,
+  COOLDOWN_MS: 500,
+  MASS_REPEAT_MS: 200,
+  SHIELD_COOLDOWN_MS: 500,
   TARGET_RANGE: 600,
   RARE_SHOP_ENABLED: true,
   FLIGHT_SPEED: 200,
@@ -152,7 +152,7 @@ const implementations = {
     fraction: 0.2,
     durationMs: 1000,
     heldMs: 10000,
-    cooldownMs: 5000,
+    cooldownMs: 500,
     contactIntervalMs: 2000,
   },
 };
@@ -178,25 +178,13 @@ for (const id of [
     ...implementations[id],
   };
 }
-// Повтор одного вида через 0,3 с; разные виды не задерживают друг друга.
-for (const id of [
-  "glove",
-  "web",
-  "freeze",
-  "hook",
-  "rocket",
-  "lock",
-  "harpoon",
-  "mega_poison",
-  "axe",
-  "stone",
-  "fire",
-]) {
-  implementations[id].sharedCooldownMs = 0;
-  implementations[id].cooldownMs = 300;
+// Каждый предмет перезаряжается независимо от остальных и срока его эффекта.
+for (const [id, item] of Object.entries(implementations)) {
+  item.sharedCooldownMs = 0;
+  item.cooldownMs = id === "easter_egg" ? 10000
+    : ["meat", "donut", "candy"].includes(id) ? BOOSTER_RULES.MASS_REPEAT_MS
+      : BOOSTER_RULES.COOLDOWN_MS;
 }
-for (const item of Object.values(implementations))
-  if (item.kind === "mass") item.cooldownMs = BOOSTER_RULES.MASS_REPEAT_MS;
 const clanCatalog = [
   [
     "fire",

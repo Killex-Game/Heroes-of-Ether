@@ -24,7 +24,7 @@ test("Тема и общие рамки: атомарность, повтор, �
   choose("set", "diamond");
   choose("frames", "bronze");
   assert.equal(p().appearance.avatarFrame, "bronze");
-  assert.equal(p().appearance.arenaFrame, "bronze");
+  assert.equal(p().appearance.arenaFrame, "canon_bronze");
   assert.equal(p().appearance.uiTheme, "diamond");
   choose("theme", "silver");
   assert.equal(p().appearance.uiTheme, "silver");
@@ -33,7 +33,7 @@ test("Тема и общие рамки: атомарность, повтор, �
   const id = randomUUID();
   choose("frames", "vip", id);
   assert.equal(choose("frames", "vip", id).replay, true);
-  assert.equal(p().appearance.arenaFrame, "vip");
+  assert.equal(p().appearance.arenaFrame, "canon_vip");
   const committed = structuredClone(p()),
     saved = fs.readFileSync(filePath, "utf8"),
     save = store.save;
@@ -52,7 +52,7 @@ test("Тема и общие рамки: атомарность, повтор, �
     assert.deepEqual(q[field], before[field]);
   choose("frames", "premium");
   assert.equal(p().appearance.avatarFrame, "premium");
-  assert.equal(p().appearance.arenaFrame, "premium");
+  assert.equal(p().appearance.arenaFrame, "canon_premium");
   choose("frames", "default");
   assert.equal(p().appearance.arenaFrame, "default");
 });

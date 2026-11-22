@@ -56,7 +56,7 @@ function grant(profile, rank, at) {
 }
 // Покупка темы открывает её набор независимо от выбранного сейчас оформления.
 // Только адресный тест владельца является исключением, общий preview не даёт наборы.
-function skinSets(profile) {
+function ownedThemes(profile) {
   const preview =
     testAccess.all(profile) ||
     accessOverrides.allPersonalAppearanceProfileIds?.includes(profile.id);
@@ -80,7 +80,7 @@ function access(profile, clans, at) {
         .map((f) => [f.id, null]),
     ),
     ...Object.fromEntries(
-      skinSets(profile).map((id) => [id, null]),
+      ownedThemes(profile).map((id) => [id, null]),
     ),
     ...Object.fromEntries(
       catalog.accountFrames
@@ -222,7 +222,8 @@ function update(profile, input, clans, at, testBackgrounds = false, testFrames =
       403,
     );
   profile.appearance ||= fresh();
-  for (const slot of slots) profile.appearance[slot] = input.themeId;
+  for (const slot of slots) profile.appearance[slot] = catalog.frameForSlot(input.themeId, slot);
   validate(profile);
 }
+const skinSets = () => [];
 module.exports = { MONTH, validate, view, capture, update, selected, grant, skinSets };

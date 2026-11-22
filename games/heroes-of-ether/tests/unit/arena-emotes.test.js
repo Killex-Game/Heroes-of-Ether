@@ -27,9 +27,9 @@ test("emotions are room-local, bounded, replaceable and never queue slow sockets
   assert(service.send(room, p, { index: 8, spawnSerial: 1, playerId: "victim" }, 0, send));
   assert.deepEqual(sent.map(r => r[0]), [a, b]);
   assert(sent.every(r => r[1].playerId === "actor" && r[1].index === 8));
-  assert(!service.send(room, p, { index: 9, spawnSerial: 1 }, 1499, send));
+  assert(!service.send(room, p, { index: 9, spawnSerial: 1 }, 4999, send));
   service.leave(room, b);
-  assert(service.send(room, p, { index: 9, spawnSerial: 1 }, 1500, send));
+  assert(service.send(room, p, { index: 9, spawnSerial: 1 }, 5000, send));
   assert.equal(sent.length, 3); assert.equal(sent[2][0], a);
   assert.deepEqual(p, source);
 });

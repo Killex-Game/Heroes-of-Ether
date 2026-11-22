@@ -96,7 +96,7 @@ test("Несколько летящих Гарпунов при промахах
     stopped: true,
     nextMassDecayAt: Infinity,
   });
-  for (let at = 3000; at <= 4200; at += 300) {
+  for (let at = 3000; at <= 4500; at += 500) {
     arena.prepareBooster(
       p.id,
       {
@@ -108,7 +108,7 @@ test("Несколько летящих Гарпунов при промахах
       at,
     )();
   }
-  for (let at = 4250; at <= 7200; at += 50) {
+  for (let at = 4550; at <= 7500; at += 50) {
     arena.step(at);
     near(p.x - 10000, (R.HARPOON_SPEED * Math.max(0, at - 5000)) / 1000);
     near(p.y, 10000);

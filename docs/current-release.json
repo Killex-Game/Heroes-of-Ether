@@ -131,5 +131,24 @@
     "All protected backups retained, including previous art stages; new backup exists on VPS and locally",
     "Root experimental game and independent admin process were not updated",
     "VPS disk measured during final verification: 98% used, about 1.5 GiB free. Protected backups were retained."
+  ],
+  "staticPatches": [
+    {
+      "id": "20261123-browser-abort-compat",
+      "sourceCommit": "4aa43f9338cabcdd5e7407a0a67d675d7ebe84ca",
+      "installedAt": "2026-11-22T21:59:36.158Z",
+      "files": 4,
+      "restarted": false,
+      "report": "artifacts/browser-abort-compat-20261123/report.txt",
+      "unitTests": 6,
+      "browserEngines": [
+        "Chromium",
+        "Firefox",
+        "WebKit"
+      ],
+      "missingNativeMethodsSimulated": true,
+      "actualWindows7Tested": false,
+      "exactHttpChecks": 15
+    }
   ]
 }

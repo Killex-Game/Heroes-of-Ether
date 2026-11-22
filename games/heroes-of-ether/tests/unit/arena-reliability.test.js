@@ -43,7 +43,7 @@ test("sword destroys a part when the burn reaches300; natural decay never kills"
   assert.equal(small.p.mass, 20);
   assert.equal(small.p.dead, false);
 });
-test("same-time repeat boosters are allowed but slot exhaustion remains authoritative", () => {
+test("per-item cooldown rejects same-time repeats and slot exhaustion remains authoritative", () => {
   const { arena, p } = scene();
   p.protectedUntil = 0;
   p.level = 121;
@@ -52,10 +52,11 @@ test("same-time repeat boosters are allowed but slot exhaustion remains authorit
     assert.ok(booster, id);
     const message = { boosterId: id, spawnSerial: p.spawnSerial, aimX: 1500, aimY: 1000 };
     arena.prepareBooster(p.id, message, 3000)();
-    arena.prepareBooster(p.id, message, 3000)();
+    assert.throws(()=>arena.prepareBooster(p.id,message,3000),/Подожди/);
+    arena.prepareBooster(p.id,message,3000+booster.cooldownMs)();
     assert.equal(p.boosterUses[id], 2);
     p.boosterUses[id] = 1e6;
-    assert.throws(() => arena.prepareBooster(p.id, message, 3000), /Лимит/);
+    assert.throws(() => arena.prepareBooster(p.id, message, 5000), /Лимит/);
   }
 });
 

@@ -11,9 +11,11 @@ function activeMute(profile, at) {
 }
 function decision(previous, { flood, profanity }, at) {
   const next = {
-    version: 1,
+    version: 2,
     flood: { ...counter(previous?.flood, at) },
-    profanity: { ...counter(previous?.profanity, at) },
+    // Version one counted words. Start the new message counter independently,
+    // retaining existing restrictions and the old count in the audit record.
+    profanity: { ...(previous?.version === 2 ? previous.profanity : { count: 0, lastAt: 0 }) },
     mute: previous?.mute?.until > at ? { ...previous.mute } : null,
   };
   let punishment = null;
@@ -28,13 +30,11 @@ function decision(previous, { flood, profanity }, at) {
     choose("flood", n === 1 ? 5 : n === 2 ? 30 : 60, n >= 3);
   }
   if (profanity) {
-    const old = next.profanity.count, count = old + profanity;
+    const old = next.profanity.count, count = old + 1;
     if (!Number.isSafeInteger(count)) throw Error("Превышен счётчик нарушений чата");
     next.profanity = { count, lastAt: at };
     if (Math.floor(count / 3) > Math.floor(old / 3))
-      choose("profanity", 60, true);
-    else if (old < 2 && count >= 2) choose("profanity", 30);
-    else if (old < 1 && count >= 1) choose("profanity", 15);
+      choose("profanity", 60);
   }
   if (punishment && !punishment.account)
     next.mute = { at, until: punishment.until, reason: punishment.reason };
@@ -46,7 +46,7 @@ function validate(profile) {
   const validCounter = c => c && Number.isSafeInteger(c.count) && c.count >= 0 &&
     Number.isSafeInteger(c.lastAt) && c.lastAt >= 0;
   const mute = state?.mute;
-  if (!state || state.version !== 1 || !validCounter(state.flood) || !validCounter(state.profanity) ||
+  if (!state || ![1, 2].includes(state.version) || !validCounter(state.flood) || !validCounter(state.profanity) ||
     (mute !== null && (!mute || !Object.values(REASONS).includes(mute.reason) ||
       !Number.isSafeInteger(mute.at) || mute.at < 0 || !Number.isSafeInteger(mute.until) || mute.until <= mute.at)))
     throw Error("Повреждены данные ограничений чата. Сохранение не перезаписано.");
@@ -54,9 +54,10 @@ function validate(profile) {
 function ownerView(profile, at) {
   const result = { mute: activeMute(profile, at) ? { ...activeMute(profile, at) } : null };
   for (const kind of ["flood", "profanity"]) {
-    const value = counter(profile.chatModeration?.[kind], at);
+    const persistent = kind === "profanity" && profile.chatModeration?.version === 2;
+    const value = persistent ? profile.chatModeration.profanity : counter(profile.chatModeration?.[kind], at);
     result[kind] = { strikes: value.count, lastAt: value.count ? value.lastAt : null,
-      resetAt: value.count ? value.lastAt + WEEK : null };
+      resetAt: value.count && !persistent ? value.lastAt + WEEK : null };
   }
   return result;
 }

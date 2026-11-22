@@ -53,9 +53,8 @@
     const full = [
       item.ability
         ? `Клавиша E: ${item.ability.name}, ${item.ability.count} применения за жизнь.`
-        : item.id !== "novice_hat"
-          ? item.bonusLabel || item.description
-          : "",
+        : "",
+      item.id !== "novice_hat" ? item.bonusLabel || item.description : "",
       item.id !== "novice_hat" && item.description !== item.bonusLabel ? item.description : "",
     ].filter(Boolean);
     if (full.length) {
@@ -151,6 +150,7 @@
         ["bow", "Бабочки"],
         ["leagueSets", "Тема оформления"],
         ["frames", "Рамки профиля"],
+        ["arenaFrames", "Ободки шара"],
       ]) {
         const control = button("sf-tab", name, () => {
           this.filter = id;
@@ -173,14 +173,15 @@
       this.emptySets = el(
         "p",
         "cosmetics-muted",
-        "Наборы открываются после покупки в магазине, с VIP, Premium или покупкой темы интерфейса. В каждом наборе 5 аватарок.",
+        "Наборы открываются после покупки в магазине, с VIP или Premium. В каждом наборе 5 аватарок.",
       );
       this.sets.append(el("h3", "", "Мои наборы"), this.emptySets);
       this.accountSets = el("div", "account-skin-sets");
       this.sets.append(this.accountSets);
-      this.frames = this.appearance.gallery("frames");
+      this.frames = this.appearance.gallery("avatarFrame");
+      this.arenaFrames = this.appearance.gallery("arenaFrame");
       this.leagueSets = this.appearance.gallery("set");
-      library.append(this.defaults, this.sets, this.leagueSets, this.frames);
+      library.append(this.defaults, this.sets, this.leagueSets, this.frames, this.arenaFrames);
       layout.append(preview, library);
       const actions = el("footer", "cosmetics-actions");
       actions.append(
@@ -194,7 +195,7 @@
       this.renderFilter();
     }
     renderFilter() {
-      const frames = ["frames", "leagueSets"].includes(this.filter);
+      const frames = ["frames", "arenaFrames", "leagueSets"].includes(this.filter);
       const accessories = ["hat", "bow"].includes(this.filter);
       this.skins.classList.toggle("show-frames", frames);
       for (const [id, tab] of this.filters)
@@ -202,6 +203,8 @@
       this.defaults.hidden = this.filter !== "sets";
       this.sets.hidden = this.filter !== "sets";
       this.frames.hidden = this.filter !== "frames";
+      this.arenaFrames.hidden = this.filter !== "arenaFrames";
+      this.appearance.previewArena(this.filter === "arenaFrames");
       this.leagueSets.hidden = this.filter !== "leagueSets";
       if (this.accessoryContent) {
         this.accessoryContent.hidden = !accessories;

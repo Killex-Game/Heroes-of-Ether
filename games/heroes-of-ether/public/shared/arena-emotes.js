@@ -5,7 +5,7 @@
   else root.KillexEmotes = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, () => {
   "use strict";
-  const DURATION_MS = 3000, COOLDOWN_MS = 1500;
+  const DURATION_MS = 3000, COOLDOWN_MS = 5000;
   const items = Object.freeze([
     [1, "drakosha", "Сердитый Дракоша"], [6, "leva", "Дурачащийся Лёва"],
     [2, "zaya", "Смеющаяся Зая"], [4, "leva", "Плачущий Лёва"],

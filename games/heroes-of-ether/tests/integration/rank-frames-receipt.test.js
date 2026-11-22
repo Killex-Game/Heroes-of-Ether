@@ -23,7 +23,8 @@ test("new frame variants preserve originals, inherit access and expiry, and cann
   appearance.grant(p,0,AT);
   for(const id of ['title_prince','canon_title_prince','vip','canon_vip','bronze','canon_bronze']){
     appearance.update(p,{slot:'frames',themeId:id},{},AT);
-    assert.equal(appearance.selected(p,{},AT).avatarFrame,id);
+    assert.equal(appearance.selected(p,{},AT).avatarFrame,id.replace(/^canon_/,""));
+    assert.equal(appearance.selected(p,{},AT).arenaFrame,"canon_"+id.replace(/^canon_/,""));
   }
   appearance.update(p,{slot:'frames',themeId:'canon_vip'},{},AT);
   assert.equal(appearance.selected(p,{},AT+1000).avatarFrame,'default');

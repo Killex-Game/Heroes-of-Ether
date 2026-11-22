@@ -18,6 +18,8 @@ const catalog = Object.freeze([
   ...Object.entries(CHESTS).map(([id, c]) => ({ kind: "chest", id, name: c.name, category: "Сундуки", max: 50 })),
 ].filter((item, i, list) => item.id !== "default" && list.findIndex(o => o.kind === item.kind && o.id === item.id) === i));
 const lookup = new Map(catalog.map(item => [item.kind + ":" + item.id, item]));
+// Old claims remain byte-for-byte intact; their retired skin identifiers resolve to current rewards.
+const rewardItem = (kind, id) => lookup.get(kind + ":" + (kind === "skin" ? identity.currentSkinId(id) : id));
 function normalizeCode(value) {
   if (typeof value !== "string" || value.length > 80) fail("Введи промокод.");
   const code = value.trim().normalize("NFKC").toUpperCase();
@@ -28,7 +30,7 @@ function rewards(value) {
   if (!Array.isArray(value) || !value.length || value.length > 50) fail("Добавь от 1 до 50 наград.");
   const seen = new Set();
   return value.map(row => {
-    const key = row?.kind + ":" + row?.id, item = lookup.get(key);
+    const key = row?.kind + ":" + row?.id, item = rewardItem(row?.kind, row?.id);
     if (!item || seen.has(key) || !int(row.amount) || row.amount < 1 || row.amount > item.max)
       fail("Проверь вид и количество награды; одинаковые награды объединяй в одну строку.");
     seen.add(key);
@@ -64,7 +66,7 @@ function rewardIcon(r) {
   if (r.kind === "chest") return art.clanChest(r.id);
   return null;
 }
-const describe = list => list.map(r => ({ ...r, name: lookup.get(r.kind + ":" + r.id)?.name ||
+const describe = list => list.map(r => ({ ...r, name: rewardItem(r.kind, r.id)?.name ||
   (r.kind === "skin" && identity.ownerGiftSkins.find(s => s.id === r.id)?.name) || r.id, icon: rewardIcon(r) }));
 function view(store) {
   return { revision: store.data.promoCodes?.revision || 0,
@@ -89,7 +91,8 @@ function grant(p, list, at) {
     }
     if (r.kind === "accessory" || r.kind === "skin") {
       const key = r.kind === "accessory" ? "grantedAccessories" : "grantedSkins";
-      if (!p[key]?.includes(r.id)) p[key] = [...(p[key] || []), r.id];
+      const id = r.kind === "skin" ? identity.currentSkinId(r.id) : r.id;
+      if (!p[key]?.includes(id)) p[key] = [...(p[key] || []), id];
     }
     if (r.kind === "theme" || r.kind === "frame") {
       p.appearance ||= { ...appearance.selection(), grants: {}, grantVersion: 2 };

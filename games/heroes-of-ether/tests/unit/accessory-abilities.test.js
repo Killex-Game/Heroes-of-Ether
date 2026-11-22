@@ -7,18 +7,18 @@ const A = require("../../src/server/arena/accessory-abilities"),
   catalog = require("../../public/shared/accessory-catalog");
 test("каждый аксессуар имеет работающий бонус или способность; новые ускорения соблюдают предел", () => {
   const passives = require("../../src/server/arena/accessory-passives");
-  const supported = new Set(["xp", "massXp", "killXp", "food", "foodRadius", "decayReduction", "lightSpeed", "feedSpeed", "shieldSpeed", "petTime", "freezeReduction"]);
+  const supported = new Set(["xp", "massXp", "killXp", "food", "foodRadius", "decayReduction", "lightSpeed", "feedSpeed", "shieldSpeed", "petTime", "freezeReduction", "speed", "positive", "negativeReduction", "attack", "completeKillXp", "spawnMass", "minuteMass", "potionFactor"]);
   for (const item of catalog.items) {
     assert.ok(item.ability || Object.values(item.bonus).some(n => n > 0), item.id);
     for (const [stat, value] of Object.entries(item.bonus)) { assert.ok(supported.has(stat), stat); assert.ok(Number.isFinite(value) && value > 0); }
   }
-  const p = { id: "test", mass: 100, outfit: { hat: "rabbit_ears", bow: "title_boss_bow" } };
+  const p = { id: "test", mass: 100, outfit: { hat: "rabbit_ears", bow: "forge_spark" } };
   assert.equal(passives.speed(p, 0), .04);
   passives.shieldBroken(p, 1, "enemy");
-  assert.equal(passives.speed(p, 1), .07);
-  assert.equal(passives.speed({ ...p, mass: 5000 }, 1), .03);
+  assert.equal(passives.speed(p, 1), .08);
+  assert.equal(passives.speed({ ...p, mass: 5000 }, 1), .05);
   assert.equal(passives.speed(p, 3002), .04);
-  assert.equal(passives.petReserve(10000, p.outfit), 800);
+  assert.equal(passives.petReserve(10000, { hat: "title_sage_hat" }), 1000);
 });
 function fixture() {
   const arena = new Arena({ etherCount: 0 }),

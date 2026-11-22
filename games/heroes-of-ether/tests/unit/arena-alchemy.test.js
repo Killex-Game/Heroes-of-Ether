@@ -31,7 +31,8 @@ test("Strength doubles successful mass, shared ten-second cooldown, no loss on f
   assert.throws(() => use("hook", 3000), /направление/);
   assert.equal(p.potion.readyAt, 3000);
   const initial = p.mass; use("ice_cream", 3000); assert.equal(p.mass, initial + 400);
-  use("ice_cream", 3100); assert.equal(p.mass, initial + 600);
+  assert.throws(() => use("ice_cream", 3499), /Подожди/);
+  use("ice_cream", 3500); assert.equal(p.mass, initial + 600);
   use("ice_cream", 13000); assert.equal(p.mass, initial + 1000);
   assert.equal(p.boosterUses.ice_cream, 3);
 });

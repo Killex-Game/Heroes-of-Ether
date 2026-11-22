@@ -179,7 +179,7 @@
       icon: "assets/pets/boosters/carrot-v2.webp?art=20261122b",
     },
   };
-  const ABILITY_COOLDOWN_MS = 0;
+  const ABILITY_COOLDOWN_MS = 500;
   return {
     pets,
     get,

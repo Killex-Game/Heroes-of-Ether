@@ -1334,7 +1334,7 @@
         !event.repeat && !event.ctrlKey && !event.altKey && !event.metaKey && !event.shiftKey &&
         !document.querySelector("dialog[open]") && ui.settings.hidden &&
         !event.target?.closest("input, textarea, select, [contenteditable], button, a, [role='button']") &&
-        arenaChat?.panel.root.hidden) {
+        arenaChat?.panel) {
       event.preventDefault();
       arenaChat.expand(true);
       arenaChat.panel.input.focus();
@@ -1677,7 +1677,7 @@
       scale = camera.scale;
     const ids = window.KillexEffects.active(p, elapsed);
     const x = (d.x - camera.x) * scale + width / 2;
-    const y = (d.y - camera.y) * scale + height / 2;
+    const y = (d.y - camera.y) * scale + height / 2 + Math.max(2, Math.min(9, d.radius * scale * 0.06));
     ctx.save();
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     ctx.textAlign = "center";
@@ -1743,7 +1743,7 @@
     if (player.id !== myId || !preferences.showMass) return;
     const scale = camera.scale,
       x = (displayed.x - camera.x) * scale + width / 2,
-      y = (displayed.y - camera.y) * scale + height / 2;
+      y = (displayed.y - camera.y) * scale + height / 2 + Math.max(2, Math.min(9, displayed.radius * scale * 0.06));
     ctx.save();
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     const nameSize = bodyNameLayout(player, displayed, x, scale).layout.size;
@@ -1900,6 +1900,7 @@
     // Physical contact is server-authoritative. Larger readable sprite fringes
     // must not cover a ball; only penetrating fire is drawn above the players.
     projectileView.draw(ctx, { ...projectileOptions, shots: groundShots });
+    if (emoteView.active.size) emoteView.prune(now);
     for (const { player: p, part, key, elapsed, opacity, kind, position } of ordered) {
       if (kind === "hazard") {
         if (part.alchemyIngredient) {
@@ -1927,20 +1928,11 @@
         // Масса — часть рисунка шара: следующие шары закрывают её вместе
         // с аватаром. Не выносим цифры поверх всех частей при слиянии.
         drawBodyMass(p, part, d, elapsed);
+        emoteView.draw(ctx, p, d, scale, now, { left, right, top, bottom });
         ctx.restore();
       }
     }
     projectileView.draw(ctx, { ...projectileOptions, shots: throughShots });
-    if (emoteView.active.size) {
-      emoteView.prune(now);
-      for (const { player, key, kind, opacity } of ordered) {
-        const body = kind !== "hazard" && smoothParts.get(key);
-        if (!body || !player || opacity <= 0) continue;
-        ctx.save(); ctx.globalAlpha *= opacity;
-        emoteView.draw(ctx, player, body, scale, now, { left, right, top, bottom });
-        ctx.restore();
-      }
-    }
     ctx.restore();
     frameId = requestAnimationFrame(frame);
   }
@@ -2195,6 +2187,13 @@
     },
   });
   accessoryAbilityUI = new window.KillexAccessoryAbilityUI({
+    cooldown: id => boosterUI.cooldown(boosterUI.item(id), getMe()),
+    startCooldown(id) {
+      const item = boosterUI.item(id), me = getMe();
+      const timer = { serial: me.spawnSerial, until: performance.now() + (item?.cooldownMs || 500) };
+      (boosterUI.localCooldowns ||= new Map()).set(id, timer);
+      return () => { if (boosterUI.localCooldowns.get(id) === timer) boosterUI.localCooldowns.delete(id); };
+    },
     isArena: () => phase === "arena",
     getMe,
     send,

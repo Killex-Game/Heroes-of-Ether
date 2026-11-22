@@ -48,8 +48,8 @@ test("Fire applies gift strength as a percentage and shares resistance and potio
   }
   for (const source of ["pet","clan"]) {
     const s=scene();pet(s.a,"manya",5000);pet(s.b,"manya",5000);
-    s.b.potion={modifiers:{resistance:.2}};
-    s.a.potion={id:"test-pulse",readyAt:0,modifiers:{pulseMs:10000}};
+    s.b.potion={accessoryFactor:1,modifiers:{resistance:.2}};
+    s.a.potion={id:"test-pulse",readyAt:0,accessoryFactor:1,modifiers:{pulseMs:10000}};
     hit(s,source); // 70% * 2 * 85% * 80% = 95.2%.
     assert.equal(s.b.mass,480);assert.equal(s.b.dead,false);
   }
@@ -64,7 +64,7 @@ test("Fire destroys parts at or below 300 before or after damage without duplica
     if(dead) {s.arena.boosterEffects.burn(s.b,s.b,5100);assert.equal(s.arena.combatEvents.length,1);}
   }
   const s=scene();pet(s.a,"manya",5000);s.a.giftModifiers={outgoing:1.25};
-  s.a.potion={id:"test-pulse",readyAt:0,modifiers:{pulseMs:10000}};
+  s.a.potion={id:"test-pulse",readyAt:0,accessoryFactor:1,modifiers:{pulseMs:10000}};
   hit(s,"pet");assert.equal(s.b.dead,true);
 });
 test("Fire changes only the hit part; spawn protection still blocks both sources", () => {
@@ -94,7 +94,8 @@ test("Egg alone retains a ten-second cooldown and finishes the last growth tick 
   assert.deepEqual(cooldown(egg,snap,1234,catalog.rules),{ms:7766,duration:10000});
   assert.equal(cooldown(egg,snap,9000,catalog.rules).ms,0);
   arena.prepareBooster(a.id,{...message,boosterId:"speed"},6000)();
-  assert.doesNotThrow(()=>arena.prepareBooster(a.id,{...message,boosterId:"speed"},6000));
+  assert.throws(()=>arena.prepareBooster(a.id,{...message,boosterId:"speed"},6499),/Подожди/);
+  assert.doesNotThrow(()=>arena.prepareBooster(a.id,{...message,boosterId:"speed"},6500));
   prepare(15000)();assert.equal(a.mass,1250);assert.equal(a.boosterItemReadyAt.easter_egg,25000);
   arena.boosterEffects.tick(a,25000);assert.equal(a.mass,1500);
   arena.resetPlayer(a,26000);assert.equal(a.boosterItemReadyAt.easter_egg,undefined);

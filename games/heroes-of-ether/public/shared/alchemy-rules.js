@@ -60,11 +60,17 @@
   const potionMap = new Map(potions.flatMap(p => [[p.id, p], [p.boosterId, p]]));
   const equipped = saved => saved?.queue || (saved?.equipped ? [saved.equipped] : []);
   const activeIds = active => active?.ids || (active?.id ? [active.id] : []);
-  function combine(ids) {
+  function combine(ids, factor = 1) {
     const result = {};
     for (const id of new Set(ids)) for (const [key, value] of Object.entries(potionMap.get(id)?.modifiers || {})) {
       result[key] = ["pulseMs", "ingredientEvery"].includes(key)
         ? Math.min(result[key] || Infinity, value) : (result[key] || 0) + value;
+    }
+    if (factor > 1) {
+      for (const key of Object.keys(result))
+        if (!["pulseMs", "ingredientEvery"].includes(key)) result[key] *= factor;
+      if (result.pulseMs) result.pulseFactor = 2 * factor;
+      if (result.ingredientEvery) result.ingredientExtra = factor;
     }
     return result;
   }

@@ -314,13 +314,13 @@ test("Шило без щита сохраняет ускорение; новое
   assert.equal(b.effects.speed, 20000);
   launch(arena, b, "sphere", 5500);
   const readyAt = b.boosterReadyAt;
-  hit(arena, a, b, "awl", 5501);
+  hit(arena, a, b, "awl", 6000);
   assert.equal(b.boosterReadyAt, readyAt);
   assert.equal(b.effects.speed, 20000);
-  launch(arena, b, "speed", 5501);
-  assert.equal(b.effects.speed, 20501);
   launch(arena, b, "speed", 6000);
   assert.equal(b.effects.speed, 21000);
+  launch(arena, b, "speed", 6500);
+  assert.equal(b.effects.speed, 21500);
 });
 test("Клановый щит отражает повторно, скорость 200 и исходный срок сохраняются", () => {
   const { arena, a, b } = scene(10);

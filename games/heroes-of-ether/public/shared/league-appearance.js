@@ -132,6 +132,9 @@
   const variantsById = new Map(variantFrames.map(item => [item.id,item]));
   const variantFrame = id => variantsById.get(id);
   const baseFrame = id => variantFrame(id)?.baseId || id;
+  const arenaVariants = new Map(variantFrames.map(item => [item.baseId, item.id]));
+  const frameForSlot = (id, slot) => slot === "avatarFrame" ? baseFrame(id)
+    : slot === "arenaFrame" ? arenaVariants.get(baseFrame(id)) || id : id;
   const framesById = new Map([...frameThemes, ...rankFrames, ...packFrames, ...variantFrames].map((item) => [item.id, item]));
   const frameTheme = (id) => framesById.get(id);
   const valid = (id, slot) =>
@@ -143,7 +146,7 @@
     Object.fromEntries(
       slots.map((slot) => {
         const id = value?.[slot] ?? (slot === "uiTheme" ? value?.lobbyBackground : undefined);
-        return [slot, valid(id, slot) ? id : "default"];
+        return [slot, valid(id, slot) ? frameForSlot(id, slot) : "default"];
       }),
     );
   const resolveFrame = (id) => (theme(id) || accountFrame(id) || rankFrame(id) || interfaceTheme(id) || variantFrame(id) ? id : "default");
@@ -156,7 +159,7 @@
             ? `assets/league-appearance/${id}-${kind}.svg?art=20261122b`
             : null;
   return {
-    variantFrames, variantFrame, baseFrame,
+    variantFrames, variantFrame, baseFrame, frameForSlot,
     themes,
     interfaceThemes,
     interfaceTheme,

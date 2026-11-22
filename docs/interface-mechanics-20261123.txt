@@ -1,0 +1,19 @@
+Interface and mechanics update, 23 November 2026
+
+Owner decisions
+Mobile lobby navigation and arena action buttons use existing icons without visible labels. Accessible names remain. Purchase prices and confirmation text stay visible.
+Avatar raster files remain unchanged. Profile and canvas use the same smaller proportional fit for all 85 current identities.
+Profile frames and arena rims have independent wardrobe sections. The three purchased interface themes keep default menu icons. Heroic keeps its icons. Fifteen retired theme identities resolve to accessible base identities, without removing purchased themes or reward history.
+Per-item booster cooldown: 500 ms, candy/donut/meat 200 ms, Easter egg 10 seconds. No shared cooldown. Hat E stock is limited to one allocation per life, consumed one item per press, and shares its booster cooldown.
+Emotes have a hidden 5 second server cooldown and are drawn with their own body so foreground bodies occlude them.
+Profanity is censored with ***. Each offending message adds one strike; every third message causes a one hour chat mute. This rule does not impose an account ban. Existing flood and tamper handling remain.
+Title accessory values follow the owner's Word document and later clarifications. Emperor and Hero hats receive +15% positive boosters in place of the repeated speed line. Royal potion bonuses affect strength and applicable durations. Hero gift label: Специальный подарок от игры.
+Skull, shackles, poison and black mark cost 5 ether. The unavailable achievement checkbox is removed. The generator icon is larger. Arena name/effect/mass labels are slightly lower. Enter refocuses an already expanded arena chat.
+
+Graphics constraints
+New raster graphics are prepared only, outside public assets. Do not install them with this code release.
+Preserve all avatars and the newspaper's article, News, Events and Updates banners.
+Prepared images and illustrated achievements document are under the root deliveries directory, outside Git.
+
+Validation evidence is stored locally under artifacts/interface-mechanics-20261123.
+The working source changes are not proof of installation. Consult docs/current-release.json for the live release.

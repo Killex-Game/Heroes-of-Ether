@@ -45,13 +45,15 @@ class Combat {
     this.hitBounds = null;
   }
   prepare(player, booster, message, now) {
+    booster = accessoryPassives.outgoing(player, booster);
     const outgoing = gifts.arena(player, "outgoing");
     if (booster.kind === "fire") {
       const base = arenaPets.fireFraction(player);
       booster = {
         ...gifts.adjust(booster, outgoing),
         // +25% strength multiplies the base damage; it is not +25 percentage points.
-        fireFraction: base * outgoing * (booster.alchemyFireFactor || 1),
+        fireFraction: base * outgoing * (booster.alchemyFireFactor || 1) *
+          (1 + accessories.bonus(player.outfit, "attack") / 100),
       };
     } else booster = gifts.adjust(booster, outgoing);
     if (player.protectedUntil > now)
@@ -282,7 +284,7 @@ class Combat {
       dx = flightLength > 0.001 ? shot.dx : x - owner.x,
       dy = flightLength > 0.001 ? shot.dy : y - owner.y,
       length = Math.hypot(dx, dy),
-      distance = (R.HARPOON_SPEED * R.PULL_MS) / 1000 * (shot.effectBooster?.alchemyPullFactor || 1);
+      distance = (R.HARPOON_SPEED * R.PULL_MS) / 1000 * (shot.effectBooster?.alchemyPullFactor || 1) * (shot.effectBooster?.accessoryPullFactor || 1);
     // A later projectile may land behind its moving owner. Keep its flight direction.
     this.pulls.set(owner.id, {
       life: owner.lifeId,
@@ -424,10 +426,10 @@ class Combat {
     if (contacts) for (const contact of contacts) this.hitBounds?.delete(contact.player);
     const arena = this.arena,
       baseBooster = shot.effectBooster || shot.petBooster || BOOSTERS.get(shot.boosterId),
-      booster = require("./alchemy-effects").incoming(target, gifts.adjust(
+      booster = accessoryPassives.incoming(target, require("./alchemy-effects").incoming(target, gifts.adjust(
         baseBooster,
         baseBooster.kind === "cake" ? 1 : gifts.arena(target, "incoming"),
-      ));
+      )));
     if (booster.kind === "knuckles") {
       if (target.protectedUntil > shieldAt || arena.hasEffect(target, "shield", shieldAt)) {
         this.reflectKnuckles(shot, target, part, now);
@@ -618,7 +620,7 @@ class Combat {
         dx = source.x - attached.x,
         dy = source.y - attached.y,
         distance = Math.hypot(dx, dy),
-        travel = R.HOOK_PULL_DISTANCE * (booster.alchemyPullFactor || 1),
+        travel = R.HOOK_PULL_DISTANCE * (booster.alchemyPullFactor || 1) * (booster.accessoryPullFactor ?? 1),
         fallbackAngle = Math.atan2(-shot.dy, -shot.dx),
         directionX = distance > 0 ? dx / distance : Math.cos(fallbackAngle),
         directionY = distance > 0 ? dy / distance : Math.sin(fallbackAngle);

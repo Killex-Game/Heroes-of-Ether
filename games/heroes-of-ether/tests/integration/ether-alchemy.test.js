@@ -55,3 +55,38 @@ test("Z waits for durable journal; a life ending during fsync keeps the potion",
  p.dead=true;release();assert.equal((await wait("boosterResult")).ok,false);
  assert.equal(f.p().inventory.alchemy_strength,2);assert.equal(p.potion,null);
 });
+
+for (const mode of ['disconnect-after-write-failure', 'absorbed-in-collection-tick'])
+test('generator credits raw collected ether exactly once on '+mode, async t=>{
+ const f=setup(t),arena=new Arena({etherCount:0});let mono=5000;
+ const app=createGameServer({profiles:f.store,events:f.events,arena,autoTick:false,wallNow:()=>f.at,now:()=>mono,testBots:{enabled:false}});
+ t.after(()=>app.close());app.httpServer.listen(0,'127.0.0.1');await once(app.httpServer,'listening');
+ const ws=new WS('ws://127.0.0.1:'+app.httpServer.address().port,{headers:{Cookie:'sferorumiya_session='+f.user.token}});
+ t.after(()=>ws.terminate());const messages=[];ws.on('message',raw=>messages.push(JSON.parse(raw)));
+ const wait=async predicate=>{const signal=AbortSignal.timeout(4000);for(;;){const m=messages.find(predicate);if(m)return m;await once(ws,'message',{signal});}};
+ const welcome=await wait(m=>m.type==='welcome'),p=arena.players.get(welcome.id);
+ Object.assign(p,{x:500,y:500,targetX:500,targetY:500,protectedUntil:0});
+ p.potion={id:'prosperity',readyAt:0};
+ arena.ether=[{id:'natural-test',x:500,y:500,radius:2,value:4},{id:'ejected-test',x:500,y:500,radius:2,value:5,ejected:true}];
+ arena.etherIndex=null;
+ if(mode==='absorbed-in-collection-tick'){
+   const collect=arena.collectEther.bind(arena);let arrived=false;
+   arena.collectEther=at=>{collect(at);if(arrived)return;arrived=true;
+     const enemy=arena.addPlayer(mono,'enemy');Object.assign(enemy,{x:500,y:500,targetX:500,targetY:500,mass:10000,radius:Math.sqrt(10000)*4,protectedUntil:0});
+   };
+ }
+ const save=f.store.save;
+ if(mode==='disconnect-after-write-failure')f.store.save=()=>{throw Error('generator fixture disk failure');};
+ mono+=50;app.tick();
+ assert.equal(p.alchemyNatural,4,'only raw natural orbs count, without ejected mass or potion bonus');
+ if(mode==='disconnect-after-write-failure'){
+   assert.equal(f.p().alchemy.natural,150000);
+   f.store.save=save;const closed=once([...app.wss.clients][0],'close');ws.close();await closed;
+   mono+=50;app.tick();
+ }else assert.equal(p.dead,true);
+ assert.equal(f.p().alchemy.natural,150004);
+ assert.equal(f.p().progress.session,null);
+ mono+=50;app.tick();assert.equal(f.p().alchemy.natural,150004);
+ const restored=new ProfileStore({filePath:f.filePath,now:()=>f.at});
+ assert.equal(restored.find(f.user.token).alchemy.natural,150004);
+});

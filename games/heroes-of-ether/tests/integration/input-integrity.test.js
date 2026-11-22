@@ -33,18 +33,20 @@ test('authenticated '+payload.type+' '+Object.keys(payload).at(-1)+' tampering i
   const r=await fetch(f.url+'/api/profile',{headers:{Cookie:'sferorumiya_session='+f.auth.token}});
   assert.equal(r.status,403);assert.equal(f.profiles.data.administration.audit.filter(e=>e.actorId==='system:integrity').length,1);
 });
-test('real WS shields repeat immediately, retries are free, broken shield can be recast without a ban', {timeout:10000},async t=>{
+test('real WS shields use a 500ms item cooldown; retries are free and destruction cannot bypass it', {timeout:10000},async t=>{
   const f=await fixture(t,true),spawnSerial=f.player().spawnSerial;
   const first={type:'useBooster',boosterId:'sphere',spawnSerial,requestId:randomUUID()};
   f.ws.send(JSON.stringify(first));assert.equal((await f.wait(p=>p.type==='boosterResult'&&p.requestId===first.requestId)).ok,true);
   assert.equal(f.profiles.find(f.auth.token).inventory.sphere,9);
   f.set(5100);const early={...first,requestId:randomUUID()};f.ws.send(JSON.stringify(early));
-  const accepted=await f.wait(p=>p.type==='boosterResult'&&p.requestId===early.requestId);assert.equal(accepted.ok,true);
-  f.ws.send(JSON.stringify(first));await new Promise(r=>setTimeout(r,25));assert.equal(f.profiles.find(f.auth.token).inventory.sphere,8);
+  const accepted=await f.wait(p=>p.type==='boosterResult'&&p.requestId===early.requestId);assert.equal(accepted.ok,false);
+  f.ws.send(JSON.stringify(first));await new Promise(r=>setTimeout(r,25));assert.equal(f.profiles.find(f.auth.token).inventory.sphere,9);
   delete f.player().effects.sphere; // Same authoritative mutation as a hit from an awl.
+  f.set(5500);
+  f.set(5500);
   const replacement={...first,requestId:randomUUID()};f.ws.send(JSON.stringify(replacement));
   assert.equal((await f.wait(p=>p.type==='boosterResult'&&p.requestId===replacement.requestId)).ok,true);
-  assert.equal(f.profiles.find(f.auth.token).inventory.sphere,7);assert.equal(f.profiles.find(f.auth.token).moderation?.ban||null,null);
+  assert.equal(f.profiles.find(f.auth.token).inventory.sphere,8);assert.equal(f.profiles.find(f.auth.token).moderation?.ban||null,null);
 });
 test('one or a thousand direction commands per server tick have identical authoritative speed',()=>{
   const make=()=>{const a=new Arena({etherCount:0}),p=a.addPlayer(0,'moving');Object.assign(p,{x:1000,y:1000,targetX:1000,targetY:1000,protectedUntil:0});return{a,p};};
@@ -60,7 +62,7 @@ test('one or a thousand direction commands per server tick have identical author
 });
 test('Kill observes actual WS bursts while preserving server use limits and manual review only',{timeout:20000},async t=>{
   const f=await fixture(t,false);let sequence=0;
-  for(let step=0;step<920;step++){
+  for(let step=0;step<1100;step++){
     f.set(5100+step*50);f.app.tick();
     if(step%20!==0)continue;
     const ids=[];

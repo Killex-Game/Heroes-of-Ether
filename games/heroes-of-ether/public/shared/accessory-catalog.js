@@ -14,18 +14,34 @@
     mushroom_hat: { foodRadius: 5 }, cowboy_hat: { lightSpeed: 3 }, gold_bow: { petTime: 6 },
     rabbit_ears: { lightSpeed: 4 }, may_wreath: { petTime: 8 }, royal_page: { massXp: 8 },
     silk_peony: { freezeReduction: 8 }, royal_swallow: { feedSpeed: 4 },
-    title_experienced_hat: { foodRadius: 4 }, title_experienced_bow: { massXp: 5 },
-    title_expert_hat: { massXp: 8 }, title_expert_bow: { freezeReduction: 8 },
-    title_sage_hat: { petTime: 8 }, title_sage_bow: { decayReduction: 6 },
-    title_master_hat: { food: 10 }, title_master_bow: { shieldSpeed: 4 },
-    title_pro_hat: { killXp: 8 }, title_pro_bow: { feedSpeed: 4 },
-    title_prince_hat: { lightSpeed: 3, massXp: 4 }, title_prince_bow: { petTime: 10 },
-    title_king_hat: { freezeReduction: 10 }, title_king_bow: { foodRadius: 6 },
-    title_emperor_hat: { decayReduction: 8 }, title_emperor_bow: { killXp: 10 },
-    title_boss_hat: { massXp: 10, freezeReduction: 5 },
-    title_boss_bow: { petTime: 8, shieldSpeed: 3 },
+    title_experienced_hat: { foodRadius: 15 }, title_experienced_bow: { xp: 15 },
+    title_expert_hat: { speed: 10 }, title_expert_bow: { xp: 20, positive: 20 },
+    title_sage_hat: { petTime: 10 }, title_sage_bow: { xp: 25, positive: 25, speed: 5, negativeReduction: 5 },
+    title_master_hat: { attack: 25 }, title_master_bow: { xp: 30, positive: 25, speed: 10, negativeReduction: 10 },
+    title_pro_hat: { completeKillXp: 25 }, title_pro_bow: { xp: 30, positive: 30, speed: 15, negativeReduction: 15 },
+    title_prince_hat: { spawnMass: 500, negativeReduction: 5 }, title_prince_bow: { xp: 35, positive: 30, speed: 20, negativeReduction: 20 },
+    title_king_hat: { xp: 10, speed: 10, potionFactor: 2, minuteMass: 750 }, title_king_bow: { xp: 40, positive: 35, speed: 25, negativeReduction: 25 },
+    title_emperor_hat: { xp: 10, speed: 10, positive: 15, potionFactor: 2, minuteMass: 1000 }, title_emperor_bow: { xp: 45, positive: 45, speed: 45, negativeReduction: 45 },
+    title_boss_hat: { xp: 15, speed: 15, positive: 15, negativeReduction: 15, potionFactor: 2, minuteMass: 2000 },
+    title_boss_bow: { xp: 50, positive: 50, speed: 50, negativeReduction: 50 },
+  });
+  const titleAbilities = Object.freeze({
+    experienced: ["candy", 10, "Конфета"], expert: ["donut", 5, "Пончик"],
+    sage: ["meat", 3, "Мясо"], master: ["fire", 3, "Огонь"],
+    pro: ["cake", 2, "Торт"], prince: ["hook", 5, "Крюк"],
+    king: ["harpoon", 5, "Гарпун"], emperor: ["cake", 5, "Торт"],
+    boss: ["fire", 10, "Огонь"],
   });
   const buffText = (stat, value) => ({
+    xp: `+${value}% опыта.`,
+    speed: `+${value}% скорости.`,
+    positive: `+${value}% к действию позитивных бустеров.`,
+    negativeReduction: `Действие негативных бустеров слабее на ${value}%.`,
+    attack: `+${value}% к силе атакующих бустеров.`,
+    completeKillXp: `+${value}% опыта за полное поглощение соперника.`,
+    spawnMass: `+${value} массы при появлении на арене.`,
+    minuteMass: `+${value} массы за каждую минуту жизни на арене.`,
+    potionFactor: `Сила и длительность эффектов зелий x${value}.`,
     shieldSpeed: `После снятия щита вражеским бустером: +${value}% скорости на 3 секунды, не чаще раза в 20 секунд.`,
     feedSpeed: `После реального кормления по W: +${value}% скорости на 3 секунды; повтор обновляет срок.`,
     lightSpeed: `+${value}% скорости при общей массе меньше 5 000.`,
@@ -500,6 +516,12 @@
     ...titleSets.filter(t => t.degree > 1).flatMap(t => ["hat", "bow"].map(slot => Object.freeze({
       id: "title_" + t.id + "_" + slot, slot, name: t[slot], titleDegree: t.degree,
       icon: "assets/accessories/titles-" + (slot === "hat" ? (titleHatVersions[t.id] || "v1") + "/" : "v1/") + t.id + "-" + slot + ".webp",
+      ...(slot === "hat" && titleAbilities[t.id] && { ability: Object.freeze({
+        boosterId: titleAbilities[t.id][0], count: titleAbilities[t.id][1], name: titleAbilities[t.id][2],
+        icon: titleAbilities[t.id][0] === "fire"
+          ? "assets/progression/webp/256/boosters/fire.webp?art=20261122b"
+          : "assets/boosters/png/" + titleAbilities[t.id][0] + ".png",
+      }) }),
       bonus: Object.freeze({}), bonusLabel: "За титул «" + t.name + "»",
       description: "Декоративный аксессуар",
     }))),
@@ -508,7 +530,9 @@
     if (!buff) return accessory;
     return Object.freeze({ ...accessory, bonus: Object.freeze(buff),
       bonusLabel: Object.entries(buff).map(([stat, value]) => buffText(stat, value)).join(" "),
-      description: "Бонус действует, пока аксессуар надет.",
+      description: accessory.ability
+        ? `На одну жизнь: ${accessory.ability.count} применений бустера «${accessory.ability.name}» по клавише E. Одно нажатие расходует один заряд.`
+        : "Бонус действует, пока аксессуар надет.",
     });
   }));
   const slots = Object.freeze(["bow", "hat"]);

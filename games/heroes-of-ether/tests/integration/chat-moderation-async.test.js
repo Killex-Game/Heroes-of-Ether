@@ -18,7 +18,7 @@ async function fixture(t){
   const send=(text,requestId=randomUUID())=>chat.send(profiles.byId(author.profile.id),null,null,{text,requestId});
   return {profiles,chat,app,file,author,other,send,advance:ms=>{now+=ms;}};
 }
-test('violation stages asynchronously; strike, ban and disconnect wait for durable publication',async t=>{
+test('violation stages asynchronously; censorship and one strike wait for durable publication without disconnect',async t=>{
   const f=await fixture(t),before=structuredClone(f.profiles.data);let enter,release,done=false;
   const entered=new Promise(resolve=>{enter=resolve;}),held=new Promise(resolve=>{release=resolve;});
   const original=f.profiles.journal.stage.bind(f.profiles.journal);
@@ -29,11 +29,12 @@ test('violation stages asynchronously; strike, ban and disconnect wait for durab
   await entered;await new Promise(resolve=>setImmediate(resolve));
   assert.equal(done,false);assert.deepEqual(f.profiles.data,before);assert.deepEqual(bans,[]);
   assert.equal(f.chat.history().messages.length,0);
-  release();assert.equal((await pending).code,'ACCOUNT_BANNED');
-  assert.deepEqual(bans,[f.author.profile.id]);
+  release();assert.equal((await pending).message.text,Array(15).fill('***').join(' '));
+  assert.deepEqual(bans,[]);
   const saved=recover(f.file).data,p=Object.values(saved.profiles).find(p=>p.id===f.author.profile.id);
-  assert.equal(p.chatModeration.profanity.count,15);
-  assert.equal(saved.administration.audit.at(-1).banId,p.moderation.ban.id);
+  assert.equal(p.chatModeration.profanity.count,1);
+  assert.equal(saved.administration.audit.at(-1).action,'chat-strike');
+  assert.equal(p.moderation?.ban,undefined);
   assert.deepEqual(f.profiles.byId(f.other.profile.id),before.profiles[Object.keys(before.profiles).find(k=>before.profiles[k].id===f.other.profile.id)]);
 });
 test('failed violation stage leaves no strike, receipt or audit; retry and restart preserve exactly one',async t=>{
@@ -42,11 +43,11 @@ test('failed violation stage leaves no strike, receipt or audit; retry and resta
   const fault=t.mock.method(f.profiles.journal,'stage',async()=>{throw Error('injected stage failure');});
   await assert.rejects(f.send('хуй',id),/injected stage failure/);fault.mock.restore();
   assert.deepEqual(f.profiles.data,before);assert.deepEqual(recover(f.file).data,diskBefore);
-  await assert.rejects(f.send('хуй',id),e=>e.code==='CHAT_MUTED');
-  await assert.rejects(f.send('хуй',id),e=>e.code==='CHAT_MUTED');
+  assert.equal((await f.send('хуй',id)).message.text,'***');
+  assert.equal((await f.send('хуй',id)).duplicate,true);
   assert.equal(f.profiles.byId(f.author.profile.id).chatModeration.profanity.count,1);
   assert.equal(f.profiles.data.administration.audit.filter(e=>e.requestId===id).length,1);
-  assert.equal(f.chat.achievementCounts[f.author.profile.id],undefined);
+  assert.equal(f.chat.history().messages.length,1);
   await f.app.close();
   const saved=Object.values(recover(f.file).data.profiles).find(p=>p.id===f.author.profile.id);
   assert.equal(saved.chatModeration.profanity.count,1);assert(saved.receipts[id]);
@@ -54,7 +55,7 @@ test('failed violation stage leaves no strike, receipt or audit; retry and resta
 test('concurrent repeated violation cannot double strike and a newer manual ban wins an in-flight draft',async t=>{
   const f=await fixture(t),id=randomUUID();
   const repeated=await Promise.allSettled([f.send('хуй',id),f.send('хуй',id)]);
-  assert(repeated.every(r=>r.status==='rejected'&&r.reason.code==='CHAT_MUTED'));
+  assert(repeated.every(r=>r.status==='fulfilled'&&r.value.message.text==='***'));
   assert.equal(f.profiles.byId(f.author.profile.id).chatModeration.profanity.count,1);
   f.advance(15*60000);
   let entered,release;const wait=new Promise(r=>{entered=r;}),held=new Promise(r=>{release=r;});

@@ -223,7 +223,15 @@
       this.panel.form.before(this.panel.status);
       this.root = el("aside", "arena-chat");
       this.root.id = "arenaChat";
-      this.toggle = el("button", "sf-button arena-chat-toggle", "Чат арены");
+      this.toggle = el("button", "sf-button arena-chat-toggle");
+      this.toggleLabel = el("span", "arena-chat-label", "Чат арены");
+      this.toggle.append(this.toggleLabel);
+      const chatIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      chatIcon.setAttribute("viewBox", "0 0 28 28");
+      chatIcon.setAttribute("aria-hidden", "true");
+      chatIcon.classList.add("mobile-control-icon");
+      chatIcon.innerHTML = '<path d="M5 4h18a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H11l-6 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 10h12M8 15h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+      this.toggle.append(chatIcon);
       this.toggle.type = "button";
       this.toggle.setAttribute("aria-controls", "arenaChatBody");
       this.panel.root.id = "arenaChatBody";
@@ -245,7 +253,7 @@
     expand(open) {
       this.panel.root.hidden = !open;
       this.toggle.setAttribute("aria-expanded", String(open));
-      this.toggle.textContent = open ? "Свернуть чат" : "Чат арены";
+      this.toggleLabel.textContent = open ? "Свернуть чат" : "Чат арены";
       if (open) {
         this.unread = false;
         this.panel.log.scrollTop = this.panel.log.scrollHeight;
