@@ -2787,8 +2787,6 @@ body #clanDialog .clan-settings-layout select {
 }
 body #clanDialog.clan-editor-open[open] {
   grid-template-rows: auto auto minmax(0, 1fr);
-  gap: 8px;
-  padding: 10px;
 }
 body #clanDialog.clan-editor-open .interface-footer {
   display: none;
@@ -2802,6 +2800,12 @@ body #clanDialog.clan-editor-open .clan-crest-preview > button {
   padding: 4px;
   font-size: 10px;
 }
+#clanDialog .clan-member:has(.clan-member-join) {
+  grid-template-columns: 44px minmax(0, 1fr) max-content auto 30px;
+}
+#clanDialog .clan-member-join { grid-column: 3; grid-row: 1; }
+#clanDialog .clan-member:has(.clan-member-join) .clan-member-kills { grid-column: 4; grid-row: 1; }
+#clanDialog .clan-member:has(.clan-member-join) .clan-member-gear { grid-column: 5; grid-row: 1; }
 /* Оформление: настройки над генератором слева, отдельная витрина фонов справа. */
 body
   #clanDialog.clan-editor-open[data-view="edit"]
@@ -2824,6 +2828,10 @@ body #clanDialog .clan-form.clan-unified-appearance {
     "generator backgrounds"
     "actions backgrounds";
   gap: 10px 14px;
+}
+body #clanDialog .clan-form.clan-unified-appearance:not(:has(.clan-backgrounds)) {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "settings" "generator" "actions";
 }
 body #clanDialog .clan-unified-appearance .clan-settings-layout {
   display: contents;

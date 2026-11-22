@@ -448,6 +448,11 @@
       }
       for (const b of this.nav.children)
         b.setAttribute("aria-pressed", String(this.mode === b.dataset.mode));
+      // Keep the already painted portrait and rim across data-only refreshes.
+      this.previousMemberRows = new Map(
+        [...this.content.querySelectorAll(".clan-member[data-member-id]")].map(row =>
+          [row.dataset.memberId, row]),
+      );
       this.content.replaceChildren();
       if (this.mode === "create" || this.mode === "edit")
         this.form(this.mode === "edit" ? d.mine : null);
@@ -461,6 +466,7 @@
         const node = [this.content, ...this.content.querySelectorAll("*")].find(node => node.className === position.key);
         if (node) { node.scrollTop = position.top; node.scrollLeft = position.left; }
       }
+      this.previousMemberRows = null;
       this.lockControls();
     }
     expireBackground() {
@@ -739,12 +745,12 @@
         updateCost();
       };
       layout.classList.add("clan-settings-layout");
-      if (clan?.permissions.editBasics) {
+      if (clan) {
         form.classList.add("clan-unified-appearance");
         const heading = form.firstElementChild;
         heading.className = "clan-settings-title";
         details.prepend(heading);
-        layout.append(this.backgrounds());
+        if (clan.permissions.editBasics) layout.append(this.backgrounds());
       }
       updateCost();
     }
@@ -903,9 +909,27 @@
       return shelf;
     }
     memberRow(p, clan, { readOnly = false, competitionMode = this.data.competition?.mode } = {}) {
+      const battle = readOnly ? { kills: p.kills } : this.data.competition?.personal?.[p.id],
+        reward = !readOnly && window.KillexClanBattleUI.previewTier(this.data.competition, p.id),
+        canJoin = !readOnly && p.canJoinArena && this.game.isLobby(),
+        previousRow = !readOnly && this.previousMemberRows?.get(p.id),
+        contentKey = JSON.stringify([p, readOnly, competitionMode, battle?.kills ?? 0, reward, canJoin]);
+      if (previousRow?.memberContentKey === contentKey) return previousRow;
+      const signature = JSON.stringify([p.skinId, p.appearance?.avatarFrame,
+        !!p.account?.premium, !!p.account?.vip, p.role]);
+      const previous = previousRow?.querySelector(".clan-member-avatar");
       const row = el("div", "clan-member"),
-        avatar = window.KillexPlayerProfile.avatar(p, "clan-member-avatar");
+        avatar = previous?.dataset.memberAppearance === signature ? previous
+          : window.KillexPlayerProfile.avatar(p, "clan-member-avatar");
+      avatar.dataset.memberAppearance = signature;
+      const presence = avatar.querySelector(".player-online-indicator");
+      if (presence) {
+        presence.dataset.online = String(p.online === true);
+        presence.title = p.online ? "В сети" : "Не в сети";
+        presence.setAttribute("aria-label", presence.title);
+      }
       row.dataset.memberId = p.id;
+      row.memberContentKey = contentKey;
       const profileButton = button(
         "",
         () => window.KillexPlayerProfile.open(p.id),
@@ -925,15 +949,23 @@
       info.firstElementChild.classList.toggle("name-vip", !p.account?.premium && !!p.account?.vip);
       if (badge) info.firstElementChild.prepend(badge);
       row.append(avatar, info);
-      if (["head", "manager", "officer"].includes(p.role)) {
+      if (["head", "manager", "officer"].includes(p.role) && !avatar.querySelector(".clan-role-icon")) {
         const roleIcon = el("img", "clan-role-icon");
         roleIcon.src = "assets/clan-roles/" + p.role + ".png?art=20261122b";
         roleIcon.alt = roles[p.role];
         roleIcon.title = roles[p.role];
         avatar.append(roleIcon);
       }
-      const battle = readOnly ? { kills: p.kills } : this.data.competition?.personal?.[p.id],
-        reward = !readOnly && window.KillexClanBattleUI.previewTier(this.data.competition, p.id);
+      if (canJoin) {
+        const join = previousRow?.querySelector(".clan-member-join") || button("Присоединиться", () => {
+          if (!this.game.isLobby() || join.disabled) return;
+          join.disabled = true;
+          this.dialog.close();
+          this.game.joinClanMember?.(p.id);
+        }, "sf-button sf-secondary clan-member-join");
+        join.setAttribute("aria-label", "Присоединиться к " + p.name);
+        row.append(join);
+      }
       if (reward) row.dataset.reward = reward;
       const kills = el("span", "clan-member-kills", number(battle?.kills ?? 0));
       kills.setAttribute("aria-label", `Киллы за текущую битву: ${number(battle?.kills ?? 0)}`);

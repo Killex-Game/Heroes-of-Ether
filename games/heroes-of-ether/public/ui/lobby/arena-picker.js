@@ -235,10 +235,11 @@
         clearTimeout(timeout);
       }
     }
-    async reserve() {
+    async reserve(clanMemberId = null) {
       const pending = {
         requestId: window.KillexRequestIds.create(),
-        preferredArenaId: this.preferred(),
+        preferredArenaId: clanMemberId ? null : this.preferred(),
+        ...(clanMemberId ? { clanMemberId } : {}),
       };
       this.pending = pending;
       let result;

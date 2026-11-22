@@ -684,3 +684,5 @@
 #clanPreviewDialog .clan-battle-stage {
   min-height: 240px;
 }
+
+#clanDialog .clan-member-join { position:relative; z-index:2; flex:0 0 auto; min-width:0; min-height:30px; height:32px; padding:4px 9px; font-size:11px; white-space:nowrap; }

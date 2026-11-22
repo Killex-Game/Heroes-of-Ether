@@ -272,6 +272,7 @@ class ClanService {
         return {
           ...this.player(this.profiles.byId(id)),
           role,
+          canJoinArena: other && viewer.clanId === clan.id && !!this.profiles.clanArenaFor?.(viewer.id, id),
           canKick: other && power(rights.role) > power(role),
           canTransfer: other && rights.transfer && role !== "recruit",
           assignableRoles:

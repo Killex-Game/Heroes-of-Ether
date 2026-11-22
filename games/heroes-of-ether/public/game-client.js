@@ -597,7 +597,7 @@
       revealLobby();
     }
   }
-  async function joinArena(event) {
+  async function joinArena(event, clanMemberId = null) {
     event?.preventDefault();
     if (boosterUI?.profile?.personal?.introPending) {
       document.querySelector("#editProfile")?.click();
@@ -635,7 +635,7 @@
       await boosterUI.prepareArena();
       if (phase !== "connecting" || generation !== joinGeneration) return;
       setLobbyStatus("");
-      reservation = await arenaPicker.reserve();
+      reservation = await arenaPicker.reserve(clanMemberId);
     } catch (error) {
       if (phase === "connecting" && generation === joinGeneration) {
         phase = "lobby";
@@ -2246,6 +2246,7 @@
     updateProfile: (p) => boosterUI.updateProfile(p),
   });
   new window.KillexClanUI({
+    joinClanMember: id => joinArena(null, id),
     isLobby: () => phase === "lobby",
     beforeOpen: () => boosterUI.prepareArena(),
     updateProfile: (profile) => boosterUI.updateProfile(profile),

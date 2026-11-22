@@ -128,6 +128,7 @@ function createGameServer({
     now: wallNow,
   });
   profiles.isOnline = (id) => profileConnections.has(id) || presence.isOnline(id);
+  profiles.clanArenaFor = (viewer, member) => !profileConnections.has(viewer) && arenaRooms.memberArena(viewer, member);
   // Reads and unrelated lobby changes must not settle the day ahead of queued
   // arena progress. The ordinary flush/timer retries after durable publication.
   const clanQuestBoundary = require("./arena/clan-quest-boundary");
@@ -1097,6 +1098,8 @@ function createGameServer({
             "INVALID_ARENA",
             "RESERVATION_EXPIRED",
             "REQUEST_CONFLICT",
+            "CLAN_ARENA_UNAVAILABLE",
+            "CLAN_ARENA_FULL",
             "MOCK_DAILY_LIMIT",
           ].includes(error.code)
             ? error.code

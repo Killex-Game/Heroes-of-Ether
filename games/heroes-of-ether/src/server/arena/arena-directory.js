@@ -116,6 +116,7 @@ class ArenaDirectory {
   toLobby(player) {
     Object.assign(player, {
       state: "lobby",
+      clanMemberId: null,
       arenaId: null,
       ticket: null,
       expiresAt: null,
@@ -155,7 +156,7 @@ class ArenaDirectory {
     return { ok: true, state: "lobby" };
   }
 
-  reserve(playerId, preferredArenaId = null, group = null) {
+  reserve(playerId, preferredArenaId = null, group = null, exact = false) {
     this.sweep();
     const player = this.players.get(playerId);
     if (!player) return { ok: false, code: "SESSION_REQUIRED" };
@@ -174,8 +175,8 @@ class ArenaDirectory {
         this.roomOccupancy(b.id) - this.roomOccupancy(a.id) ||
         Number(a.id.slice(6)) - Number(b.id.slice(6)),
     );
-    const room = available.find((r) => r.id === preferredArenaId) || available[0];
-    if (!room) return this.full();
+    const room = available.find((r) => r.id === preferredArenaId) || (!exact && available[0]);
+    if (!room) return exact ? { ok: false, code: "CLAN_ARENA_FULL", message: "На арене соклановца сейчас нет свободных мест. Попробуй позже." } : this.full();
     Object.assign(player, {
       state: "reserved",
       arenaId: room.id,

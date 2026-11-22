@@ -65,9 +65,22 @@ class ArenaRooms {
     this.refresh();
     return this.directory.list(id && this.directory.levelGroups ? this.group(id) : null);
   }
+  memberArena(viewerId, memberId) {
+    if (viewerId === memberId) return null;
+    const viewer = this.profileFor(viewerId), member = this.profileFor(memberId);
+    if (!viewer?.clanId || viewer.clanId !== member?.clanId || this.group(viewerId) !== this.group(memberId)) return null;
+    for (const [id, room] of this.rooms) {
+      const entry = this.directory.rooms.get(id);
+      if (entry?.status !== "ready" || (this.directory.levelGroups && entry.group !== this.group(viewerId))) continue;
+      for (const player of room.arena.players.values())
+        if (player.profileId === memberId && !player.dead && !player.isRemnant) return id;
+    }
+    return null;
+  }
   reserve(id, input) {
     if (
       !input ||
+      (input.clanMemberId != null && (typeof input.clanMemberId !== "string" || input.clanMemberId.length > 64 || !input.clanMemberId)) ||
       typeof input.requestId !== "string" ||
       !/^[a-f0-9-]{36}$/i.test(input.requestId || "") ||
       (input.preferredArenaId != null &&
@@ -86,7 +99,7 @@ class ArenaRooms {
       throw fail("Уровень изменился. Выбери комнату снова.", "ARENA_LEVEL");
     }
     if (previous) {
-      if (previous.preferredArenaId !== (input.preferredArenaId || null))
+      if (previous.preferredArenaId !== (input.preferredArenaId || null) || previous.clanMemberId !== (input.clanMemberId || null))
         throw fail("Номер подключения уже использован.", "REQUEST_CONFLICT");
       if (player.state === "reserved" && player.ticket === previous.result.ticket)
         return previous.result;
@@ -96,11 +109,15 @@ class ArenaRooms {
       throw fail("Ты уже играешь в другой вкладке. Сначала выйди в лобби.", "ARENA_ACTIVE");
     if (player.state === "reserved")
       throw fail("Подключение уже выполняется в другой вкладке.", "ARENA_ACTIVE");
-    const reservation = this.directory.reserve(id, input.preferredArenaId, this.group(id));
+    const memberArena = input.clanMemberId ? this.memberArena(id, input.clanMemberId) : null;
+    if (input.clanMemberId && !memberArena)
+      throw fail("Соклановец уже вышел с арены или находится в другой зоне по уровню.", "CLAN_ARENA_UNAVAILABLE");
+    const reservation = this.directory.reserve(id, memberArena || input.preferredArenaId, this.group(id), !!input.clanMemberId);
     if (!reservation.ok)
       throw fail(reservation.message || "Не удалось выбрать арену.", reservation.code, reservation.code === "ARENA_LEVEL" ? 409 : 503);
     this.ensureRooms();
     player.requestId = input.requestId;
+    player.clanMemberId = input.clanMemberId || null;
     const result = {
       arenaId: reservation.arenaId,
       name: this.directory.rooms.get(reservation.arenaId)?.name || arenaName(reservation.arenaId),
@@ -111,6 +128,7 @@ class ArenaRooms {
     };
     this.requests.set(key, {
       preferredArenaId: input.preferredArenaId || null,
+      clanMemberId: input.clanMemberId || null,
       createdAt: this.now(),
       result,
     });
@@ -126,8 +144,13 @@ class ArenaRooms {
   claim(id, arenaId, ticket) {
     this.refresh();
     const player = this.directory.players.get(id);
-    if (!player || player.arenaId !== arenaId || typeof ticket !== "string") return false;
+    if (!player || player.state !== "reserved" || player.arenaId !== arenaId ||
+        typeof ticket !== "string" || player.ticket !== ticket) return false;
     const room = this.directory.rooms.get(arenaId);
+    if (player.clanMemberId && this.memberArena(id, player.clanMemberId) !== arenaId) {
+      this.directory.toLobby(player);
+      return false;
+    }
     if (this.directory.levelGroups && room?.group !== this.group(id)) {
       this.directory.toLobby(player);
       return false;
