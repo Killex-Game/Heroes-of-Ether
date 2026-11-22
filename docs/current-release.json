@@ -1,111 +1,205 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261122-season-camera",
-  "sourceTag": "release/20261122-season-camera",
-  "sourceCommit": "99cddca7ab19f18d4b900afe9678d1917e755b16",
-  "previousSourceCommit": "1a6f115b4b2e993ba3b48f188da5e8c767934855",
-  "serverRuntimeSourceCommit": "99cddca7ab19f18d4b900afe9678d1917e755b16",
+  "gameRelease": "20261122-clan-join-ui",
+  "sourceTag": "release/20261122-clan-join-ui",
+  "sourceCommit": "b9da428a88b714257a74f4f8950ebd434fc0c6d5",
+  "branch": "feature/art-redesign-20261122",
+  "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "unreleasedLocalBranch": "work/local-unreleased-20261121",
   "localRunningGameUpdated": false,
-  "entryReopenedAtUtc": "2026-11-22T03:37:30.409Z",
+  "entryReopenedAtUtc": "2026-11-22T08:26:21.786Z",
   "runtime": {
-    "gamePid": 222719,
-    "adminPid": 1163,
-    "mongoConnected": true,
-    "entryOpen": true,
-    "restarted": true,
-    "verifiedAtUtc": "2026-11-22T03:37:36.379Z"
+    "at": "2026-11-22T08:26:33.569Z",
+    "release": "/srv/heroether-test/play/releases/20261122-clan-join-ui",
+    "game": {
+      "ActiveState": "active",
+      "MainPID": "265147",
+      "NRestarts": "0",
+      "MemoryCurrent": "1109073920"
+    },
+    "admin": {
+      "ActiveState": "active",
+      "MainPID": "1163",
+      "NRestarts": "0",
+      "MemoryCurrent": "87326720"
+    },
+    "service": {
+      "maintenance": false,
+      "mode": null,
+      "title": null,
+      "message": "",
+      "startsAt": null,
+      "endsAt": null,
+      "draining": false,
+      "serverNow": 1795335993673,
+      "automatic": false,
+      "retryAfter": 3
+    },
+    "mongo": {
+      "connected": true,
+      "hasError": false,
+      "revision": 3218374,
+      "generation": 28136,
+      "checkedAt": 1795335992295
+    },
+    "hold": false,
+    "codeForNextColdStartVerified": true
+  },
+  "previousRelease": {
+    "gameRelease": "20261122-clan-contributors-rims",
+    "sourceCommit": "352ac3ac23292b0693195c4a85968d7f111f31f9",
+    "patches": [
+      {
+        "name": "clan-contributors-rims",
+        "files": 289,
+        "manifestSha256": "2c3b7e9b1d4eed180642e582e512145635d9a6b04c083ca3c757b73262314e91"
+      },
+      {
+        "name": "runtime-cleanup",
+        "files": 166,
+        "manifestSha256": "66b9a11ada6e6610658f7ec72fc5b343c5004cffc9000bb951b0a26c5a059cec"
+      },
+      {
+        "name": "roster-ledger-fix",
+        "files": 2,
+        "manifestSha256": "83b514b029d1c8ea878cfe358dfb7af225cde99037e5ad79fdc4457cba64cf9e"
+      },
+      {
+        "name": "asset-source-audit",
+        "files": 69,
+        "manifestSha256": "6f889101590b676ef56e3012ccf2e44701753ed7bfc73116bf7eb30cb7117f84"
+      }
+    ],
+    "combinedManifest": {
+      "files": 522,
+      "sha256": "a3e3c4e47ac86e658442a5ff48b26656c68990089392d283a023611878902040"
+    },
+    "report": "games/heroes-of-ether/docs/clan-rims-runtime-cleanup-20261122.txt"
   },
   "patches": [
     {
-      "name": "season-camera-avatar-gifts-20261122",
-      "files": 179,
-      "manifestSha256": "8975a7536892f675fc0143c2585ca8c3e9226c217b57668454926eeb3521809a"
+      "name": "avatar-canon16",
+      "files": 356,
+      "manifestSha256": "2cc94f0de37c3d7ab6280d3e545bf317db7a4a46d7db215f04f32938794057fc",
+      "httpChecks": 1424
+    },
+    {
+      "name": "clan-join-ui-and-refresh",
+      "files": 32,
+      "publicFiles": 21,
+      "manifestSha256": "ee37f87bc14b55a8c101fa500d532b4f5fab36e0eaa9399f32ac5f7238b3c498",
+      "httpChecks": 84
     }
   ],
   "verification": {
-    "linuxInitial": {
-      "total": 2237,
-      "pass": 2232,
-      "fail": 1,
-      "skip": 4,
-      "failure": "update-cadence fixed 15ms wait in test fixture",
-      "failedFilePassedOnRerun": true
+    "clanJoinUnits": {
+      "windows": 36,
+      "linux": 36
     },
-    "linuxFinalTargeted": {
-      "total": 15,
-      "pass": 15,
-      "fail": 0
+    "stableRefreshUnits": {
+      "windows": 23,
+      "linux": 23
     },
-    "windowsInitial": {
-      "total": 2236,
-      "pass": 2231,
-      "fail": 1,
-      "skip": 4,
-      "failure": "Windows EPERM rename progression fixture",
-      "failedFilePassedOnRerun": true
+    "finalColdReadUnits": {
+      "windows": 14,
+      "linux": 14
     },
-    "browsers": [
-      "Chrome",
-      "Firefox",
-      "WebKit"
-    ],
-    "structure": {
-      "scripts": 1022,
-      "references": 5368
+    "stableRefreshBrowsers": {
+      "chromium": 23,
+      "firefox": 23,
+      "webkit": 23,
+      "pageErrors": 0,
+      "missingAssets": 0
     },
     "http": {
-      "files": 155,
+      "files": 21,
       "surfaces": 4,
-      "checks": 620,
-      "exact": true
+      "exact": true,
+      "checks": 84
     },
     "data": {
       "before": {
         "ok": true,
         "entireWorldAndAuxEqual": true,
         "localUnchanged": true,
-        "revision": 3166687,
-        "digest": "88081e09b38714df75f3a429f1823e3ca7d9b2fe0d8661042cee6b4122a1409a",
-        "profiles": 1496,
+        "revision": 3218374,
+        "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
+        "profiles": 1699,
         "clans": 134,
-        "elapsedMs": 153039
+        "elapsedMs": 152118
+      },
+      "calendar": {
+        "calendarReplayExact": true,
+        "noCalendarChange": true,
+        "expiredChat": 0,
+        "allOtherFieldsEqual": true,
+        "beforeRevision": 3218374,
+        "revision": 3218374,
+        "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
+        "worldHash": "4f4a67e11437df7e9eb0791313d89c4b5586cf2281c92254998af610546afd63",
+        "profiles": 1699,
+        "clans": 134
       },
       "after": {
         "ok": true,
         "entireWorldAndAuxEqual": true,
         "localUnchanged": true,
-        "revision": 3166688,
-        "digest": "3f71ac1290450cda6310586272b45eeaa3efba5a29d4fcdf306e88b0793a2d13",
-        "profiles": 1496,
+        "revision": 3218374,
+        "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
+        "profiles": 1699,
         "clans": 134,
-        "elapsedMs": 145718
-      },
-      "calendar": {
-        "calendarReplayExact": true,
-        "allOtherFieldsEqual": true,
-        "beforeRevision": 3166687,
-        "revision": 3166688,
-        "digest": "3f71ac1290450cda6310586272b45eeaa3efba5a29d4fcdf306e88b0793a2d13",
-        "worldHash": "639ccda1dd75dd01dd2116da2092bcfbcb271c6424007177df3bb7b191fad20b",
-        "profiles": 1496,
-        "clans": 134,
-        "at": 1795318464565
+        "elapsedMs": 438427,
+        "independentFullDocumentRead": true,
+        "parallelReaders": 8,
+        "primaryMajorityCausalContentFence": true
       }
     },
+    "coldRead": {
+      "ok": true,
+      "allFieldsEqual": true,
+      "cursorCalls": 0,
+      "revision": 3218374,
+      "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
+      "elapsedMs": 54811,
+      "gameWriterUntouched": true
+    },
+    "startupRecovery": {
+      "at": 1795334661527,
+      "revision": 3218374,
+      "generation": 28091,
+      "digest": "b6c9a548262d82c28d8de7d99736882a95c95a3e0cb89fd254589688bc265bf0",
+      "allLocalFieldsEqualVerifiedExport": true,
+      "cloudManifestUnchanged": true,
+      "originalAcquireCAS": true
+    },
     "deployment": {
-      "initialAttempt": "Separate offline Atlas verification helper exhausted its default 3 GiB V8 heap before installation. Negative logs retained.",
-      "resumedAttempt": "Same verification completed using a temporary helper with 6 GiB V8 heap and 8 GiB cgroup. Game memory settings unchanged.",
-      "temporaryVerificationPeak": "5.1 GiB",
-      "backupArchiveSha256": "044783135b48848e2224fd3bacf59e44eaf2e020ae63463cc0a499a3d8841dbc",
-      "proofArchiveSha256": "71f2c789abf01647090fe7df774feb2fb8c4b51c9f34953c06e71b6c7594824d"
+      "failedStarts": 7,
+      "failuresRetained": [
+        "Two generic cold-read failures, exact original causes unproved",
+        "MongoNetworkTimeoutError on third cold read",
+        "20-minute full-read deadline on fourth",
+        "EACCES in temporary recovery helper on fifth",
+        "Wrong deployment.hold helper path rejected sixth and seventh",
+        "First full parallel export rejected unchanged content because heartbeat advanced metadata generation"
+      ],
+      "temporaryStartupOverridesRemoved": true,
+      "normalServiceConfigurationRestored": true,
+      "backupSha256": "bb9302ef30153054f5ef78d6e251078944078922d82ade7034c803017a6c8c19",
+      "proofSha256": "c9b775c7baa8e4ae0c8a116b686595cf4f1ab6723ced7e0ec67171d8d0fb5ba0"
     }
   },
-  "report": "games/heroes-of-ether/docs/season-camera-20261122.txt",
-  "localEvidence": "artifacts/season-camera-20261122",
+  "report": "games/heroes-of-ether/docs/stable-refresh-audit-20261122.txt",
+  "localEvidence": [
+    "artifacts/clan-join-arena-20261122",
+    "artifacts/refresh-audit-20261122",
+    "artifacts/avatar-canon16-20261122"
+  ],
+  "deliveries": "deliveries/emoji-20261122",
   "pending": [
-    "RSS optimization and representative load testing remain open; no 300000CCU claim.",
-    "Kill rhythm reports require human review; no trained neural model or proven AHK conclusion."
+    "Alternative Space jump remains an isolated prototype, not installed; compare artifact available",
+    "RSS and representative arena load remain open; no general FPS or memory improvement claim",
+    "Full cold transfers when local/cloud snapshots differ still depend on Atlas speed; throttling cause not proven",
+    "Scaling to 500k-2m CCU is researched architecture, not an implemented or load-tested cluster"
   ]
 }
