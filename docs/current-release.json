@@ -1,22 +1,21 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261122-owner-gift-avatars",
-  "sourceTag": "release/20261122-art-redesign",
-  "sourceCommit": "1a577f65ad3a2bb489161e519cbb511ff7d6569b",
-  "previousSourceCommit": "8f25275780fbee251358e54e29f63247cb8b79be",
-  "serverRuntimeSourceCommit": "8f25275780fbee251358e54e29f63247cb8b79be",
+  "gameRelease": "20261122-lobby-limits-art",
+  "sourceTag": "release/20261122-lobby-limits-art",
+  "sourceCommit": "1a6f115",
+  "previousSourceCommit": "1a577f65ad3a2bb489161e519cbb511ff7d6569b",
+  "serverRuntimeSourceCommit": "1a6f115",
   "independentAdminRelease": "20261117-player-feedback",
   "unreleasedLocalBranch": "work/local-unreleased-20261121",
   "localRunningGameUpdated": false,
-  "entryReopenedAtUtc": "2026-11-21T21:51:35.362Z",
+  "entryReopenedAtUtc": "2026-11-22T01:32:07.462Z",
   "runtime": {
-    "gamePid": 197400,
+    "gamePid": 212956,
     "adminPid": 1163,
     "mongoConnected": true,
     "entryOpen": true,
-    "restarted": false,
-    "verifiedAtUtc": "2026-11-21T22:33:53.139Z",
-    "serviceState": "ActiveState=active\nMainPID=197400\nNRestarts=0\n\nActiveState=active\nMainPID=1163\nNRestarts=0\n"
+    "restarted": true,
+    "verifiedAtUtc": "2026-11-22T01:35:41.218Z"
   },
   "machineSettings": {
     "availableVcpu": 12,
@@ -26,86 +25,66 @@
     "memoryMaxGiB": 7,
     "memoryUnchanged": true
   },
-  "staticPatch": {
-    "name": "20261122-art-redesign",
-    "installedAtUtc": "2026-11-21T22:31:50.422Z",
-    "files": 1656,
-    "images": 1626,
-    "manifestSha256": "c18612155bba4712f0ab368f422290aa1d4547a8825de59c9e6fdedc306bfb78",
-    "previousImagesBytes": 163624221,
-    "newImagesBytes": 152529544,
-    "backupVps": "/srv/heroether-test/play/backups/art-redesign-20261122/before",
-    "backupLocal": "backups/art-redesign-20261122/before",
-    "vpsBackupArchiveLocal": "backups/art-redesign-20261122/vps-before-static.tar.gz",
-    "vpsBackupArchiveSha256": "19bf61fc9f9f0b4f6448947fb666e310cf0de57e4cdde2dc1bb0bd62d9efd796",
-    "excluded": [
-      "arena ingredient images and bubble shell",
-      "arena shield effects",
-      "base UI controls, colors, windows and backgrounds",
-      "private owner gift avatars"
-    ],
-    "canon": "games/heroes-of-ether/docs/artwork/style-canon/STYLE_CANON.md"
-  },
-  "report": "games/heroes-of-ether/docs/art-redesign-20261122.txt",
-  "localEvidence": "artifacts/art-redesign-20261122",
-  "databaseCompatibility": "Mongo documentFormat1, single writer, per-commit fsync and Atlas synchronization unchanged",
+  "patches": [
+    {
+      "name": "art-consistency-20261122",
+      "files": 699,
+      "installedAtUtc": "2026-11-21T23:40:18.418Z"
+    },
+    {
+      "name": "lobby-limits-art-20261122",
+      "files": 151,
+      "manifestSha256": "0d77d15faa58b1ed431ad7d8a5459e1f902e086f415be62731a42a9903bfac73"
+    },
+    {
+      "name": "alchemy-separation-20261122",
+      "files": 5,
+      "installedAtUtc": "2026-11-22T01:32:19.338Z",
+      "noRestart": true
+    }
+  ],
   "verification": {
-    "scope": "Static assets, visual placement and waiting copy only; no game store/config mutations",
-    "targetedTests": {
-      "tests": 10,
-      "passed": 10,
-      "failed": 0
+    "linux": {
+      "total": 2219,
+      "pass": 2215,
+      "fail": 0,
+      "skip": 4
     },
-    "rollbackChecks": {
-      "tests": 7,
-      "passed": 7
-    },
-    "structure": {
-      "scripts": 1009,
-      "references": 5245
+    "windowsInitial": {
+      "pass": 2205,
+      "fail": 10,
+      "skip": 4,
+      "failedFilesPassedOnRerun": true
     },
     "browsers": [
       "Chrome",
       "Firefox",
       "WebKit"
     ],
-    "decodedImagesPerBrowser": 1626,
-    "viewports": [
-      [
-        1520,
-        1000
-      ],
-      [
-        844,
-        390
-      ],
-      [
-        390,
-        844
-      ]
-    ],
-    "portraitsReviewed": 85,
-    "framesReviewed": 20,
-    "accessoriesReviewed": 54,
-    "pageErrors": 0,
+    "structure": {
+      "scripts": 1017,
+      "references": 5264
+    },
     "http": {
-      "checks": 4968,
+      "files": 769,
+      "surfaces": 4,
+      "checks": 3076,
       "exact": true
     },
-    "preservedFiles": 677,
-    "notes": [
-      "Initial Firefox fixture was blocked by delayed release notes; fixed readiness in fixture and Firefox/WebKit passed.",
-      "Initial structure command used wrong cwd; correct command passed.",
-      "Rollback Windows fsync with read-only descriptor failed; changed temp descriptor to r+ and all7 checks passed.",
-      "Three supplied regalia SVGs have trailing whitespace; original asset bytes preserved.",
-      "First manifest helper used excessive per-file Git subprocesses; replaced with one batch read."
-    ]
+    "data": {
+      "wholeWorldAndAuxEqual": true,
+      "profiles": 1496,
+      "clans": 134,
+      "revision": 3130452,
+      "digest": "a761b039f8a155cb7ef8a3b30174c9ec33160dab80086aa94ae9e965e2741fb6"
+    }
   },
-  "followUps": [
-    "RSS remains several GiB; full profiles/history and checkpoint design need bounded active-data storage.",
-    "Physics remains in the main coordinator; 300000+ simultaneous users require room ownership/process distribution and capacity tests.",
-    "No proven macro evidence for reported players. Existing Kill model is not trained; suspicious rhythms require manual review.",
-    "Local experimental branch and its running processes remain unchanged.",
-    "FileZilla saved site resolves current; reconnect after release changes."
+  "report": "games/heroes-of-ether/docs/lobby-limits-art-20261122.txt",
+  "localEvidence": "artifacts/lobby-limits-art-20261122",
+  "pending": [
+    "Two-month alternating clan seasons, cumulative quest prizes, 08–21 schedule, local player times and event banner.",
+    "RSS optimization and representative load testing remain open; no 300000CCU claim.",
+    "Kill rhythm reports require human review; no trained neural model or proven macro conclusion.",
+    "New user request: arena emoji keys1–9 above every ball and remove album cover text."
   ]
 }
