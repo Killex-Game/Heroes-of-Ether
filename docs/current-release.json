@@ -1,15 +1,15 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261122-postgresql-only-schedule",
-  "sourceTag": "release/20261122-postgresql-only-schedule",
-  "sourceCommit": "3abe7318e439e7e2199a2bf96215f6046cd7eb1c",
+  "gameRelease": "20261122-kill-owner-mark",
+  "sourceTag": "release/20261122-kill-owner-mark",
+  "sourceCommit": "78b71ae4e3e7ba49236133e3ff982a9b5074805a",
   "branch": "feature/art-redesign-20261122",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": false,
-  "entryReopenedAtUtc": "2026-11-22T16:35:46.158Z",
+  "entryReopenedAtUtc": "2026-11-22T17:35:14.512Z",
   "runtime": {
-    "gamePid": 306662,
+    "gamePid": 316098,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
@@ -19,6 +19,7 @@
     "hold": false
   },
   "installed": [
+    "Durable owner-confirmed Kill evidence for lobby scripts, without automatic bans or booster-model training",
     "PostgreSQL-only runtime, administration monitoring and verified backups",
     "Future clan season scheduling with one or two quest seasons in succession",
     "Three unreviewed historical gift-dispatch cases in Kill",
@@ -192,5 +193,48 @@
     "sha256": "c7a5106516cf65f6df2f3ec0a257aff16c9031d272eb8970a5815c5ef2c2c3d4",
     "verified": true,
     "revision": 3252768
+  },
+  "previousRelease": "20261122-postgresql-only-schedule",
+  "killOwnerMark": {
+    "at": 1795368436602,
+    "id": "cc9d533f-b10b-4705-87db-6819d05bea83",
+    "name": "LoveHeroin",
+    "caseId": "209665fa-4c38-4b1a-8a9c-fdae42634fff",
+    "eventId": "96f279bd-f02a-48bd-a18e-708125beb664",
+    "duplicateVerified": true,
+    "status": "new",
+    "ownerConfirmed": true,
+    "banChanged": false,
+    "walletChanged": false,
+    "inventoryChanged": false,
+    "allOtherWorldFieldsUnchanged": true,
+    "postgresqlVerified": true,
+    "beforeRevision": 3277007,
+    "revision": 3277008,
+    "digest": "f355c83de0ac268dc07d54f6a42a9e056058048bea2d263edefdc67ab7c2a085",
+    "worldHash": "3bc236331401567e7dfe22dc621fce17907da5cdfee935a40eb76c381bd56cf2",
+    "recoveredCommittedMark": true,
+    "restart": {
+      "calendarReplayExact": true,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 3277008,
+      "revision": 3277009,
+      "digest": "33b82640d9531028ee6483af609e1d0c6ca8eb5e26ac48df42795b45b704fa27",
+      "worldHash": "e8395fc338d3ee5f9e9797e99ea8f72cfc49d624fb1933b44c17734480e11a86",
+      "profiles": 1701,
+      "clans": 135,
+      "at": 1795368452515
+    },
+    "windowsTargeted": 33,
+    "linuxTargeted": 29,
+    "browsers": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "actualCardChromiumWidths": 3,
+    "httpExact": 8,
+    "backupSha256": "5e491bf3f485dfd54f98f3acf491556fea5d05d6e07d374f5658d8c1dd15a2c2",
+    "report": "artifacts/kill-owner-mark-20261122/report.txt"
   }
 }

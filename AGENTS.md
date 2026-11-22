@@ -1,3 +1,7 @@
+## Kill owner evidence installed 22.11.2026
+
+VPS current 20261122-kill-owner-mark source 78b71ae4e3e7ba49236133e3ff982a9b5074805a game316098/admin1163. Entry opened 17:35:14 UTC; PostgreSQL verified. LoveHeroin cc9d533f-b10b-4705-87db-6819d05bea83 case209665fa-4c38-4b1a-8a9c-fdae42634fff labelled automation-confirmed-by-owner; pending separate moderation decision, no ban, no economy changes. Owner requests keeping mechanism. Initial HTTP attempts rejected by auth, no bypass. Offline locked OwnerService write committed; initial verification failed on journal revision, independently recovered and fully verified. Mark revision3277007 to3277008, restart3277009 exact calendar replay, all other fields equal. Targeted Windows33/Linux29 pass, three browsers, actual card Chromium3 widths. Production comments stripped. All backups protected both hosts. See docs/current-release.json and artifacts/kill-owner-mark-20261122/report.txt.
+
 ## PostgreSQL, расписание сезонов и материалы Kill - УСТАНОВЛЕНО 22.11.2026
 
 - Читать docs/current-release.json. VPS current 20261122-postgresql-only-schedule, game PID 306662, admin PID 1163. Вход открыт 2026-11-22T16:35:46.158Z. Admin pin 20261117-player-feedback сохранять; он не перезапускался. Исходники 3abe7318e439e7e2199a2bf96215f6046cd7eb1c, активная копия .cache/arena-fixes-20261121. Корневая экспериментальная игра не обновлена.
