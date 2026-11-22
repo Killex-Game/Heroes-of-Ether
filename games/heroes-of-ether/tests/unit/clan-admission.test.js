@@ -32,3 +32,20 @@ test('departure during battle does not cancel it, but prevents the next battle',
  comp.advance(d,Date.parse('2026-11-16T21:00:00Z'),n=>n-1);assert.ok(d.competition.lastBattle[c.id]);
  comp.advance(d,start+86400000,n=>n-1);assert.ok(!d.competition.day.pairs.some(p=>p.a===c.id||p.b===c.id));
 });
+
+test('after removing underlevel bots the repaired rosters form full groups and pairs',()=>{
+ const d=fixture();
+ for(const c of Object.values(d.clans)) { leave(d,c); leave(d,c); }
+ d.competition.week=null;d.competition.day=null;d.competition.lastScheduledDay=null;
+ const before=structuredClone(d),filled=prepareBattlePopulation(d,at);
+ assert.equal(filled.added,24);assert.deepEqual(d,before);
+ for(const [key,p] of Object.entries(d.profiles))assert.deepEqual(filled.data.profiles[key],p);
+ assert(Object.values(filled.data.clans).every(c=>c.members.length===10));
+ comp.advance(filled.data,start,n=>n-1);
+ assert.equal(filled.data.competition.week.groups.length,1);
+ assert.equal(filled.data.competition.week.groups[0].clans.length,12);
+ assert.equal(filled.data.competition.day.pairs.length,6);
+ const assigned=filled.data.competition.day.pairs.flatMap(p=>[p.a,p.b]);
+ assert.equal(new Set(assigned).size,12);
+ assert.equal(prepareBattlePopulation(filled.data,start).added,0);
+});

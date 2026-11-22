@@ -11,7 +11,7 @@ function fixture(count=1){
     const id='c'+String(i).padStart(2,'0'),pid='p'+i,p=structuredClone(store.find(seed.token)||Object.values(store.data.profiles)[0]);
     p.id=pid;p.clanId=id;p.account={...p.account,vipUntil:end+86400000,premiumUntil:end+86400000};
     profiles[pid]=p;clans[id]={id,name:id,prefix:id,xp:0,members:[pid]};
-    boards.push([id,{day:'2026-11-01',quests:[{id:'cq_1',completedAt:start+1000+i}]}]);
+    boards.push([id,{day:'2026-11-01',contributors:{[pid]:{firstAt:start+1000+i}},quests:[{id:'cq_1',completedAt:start+1000+i}]}]);
   }
   return {profiles,clans,boards,clanQuests:{calendarVersion:1,calendarActivatedAt:start,nextAt:end,seasons:[]}};
 }
@@ -52,14 +52,15 @@ test('counts every completed task once across boards, receipts, days, and restar
   const paid=season.capture(d,end,[]),restored=structuredClone(paid);
   assert.deepEqual(season.capture(restored,end+86400000,[]),restored);
 });
-test('only members at settlement receive prizes, daily contributors are not required',()=>{
+test('passive members and departed contributors receive no season prize',()=>{
   const f=fixture(),extra=structuredClone(f.profiles.p0);extra.id='new-member';
   f.profiles[extra.id]=extra;
   let d=season.capture(f,start+86400000,f.boards);
   d.clans.c00.members=[extra.id];d.profiles.p0.clanId=null;
   const paid=season.capture(d,end,[]);
   assert(!paid.profiles.p0.clanQuestMedals);
-  assert.equal(paid.profiles[extra.id].clanQuestMedals[0].place,1);
+  assert(!paid.profiles[extra.id].clanQuestMedals);
+  assert.deepEqual(paid.profiles[extra.id].wallet,extra.wallet);
 });
 test('pending arena progress defers settlement; delayed final task gets counted before exactly one payout',()=>{
   const f=fixture(),d=season.capture(f,start+86400000,[]);
@@ -86,4 +87,41 @@ test('rejects corrupt archived rewards and invalid or duplicate personal medals'
   const bad=structuredClone(paid);mutate(bad);assert.throws(()=>season.validate(bad),/Invalid/);
  }
  season.validate(paid);
+});
+
+test('quest opening is 06:00, battle opening remains 08:00, dates include the final season day in every timezone',()=>{
+ const at=Date.parse('2026-11-22T12:00:00Z'),q=calendar.daily(at,'quests'),b=calendar.daily(at,'battle');
+ assert.equal(q.start,Date.parse('2026-11-22T03:00:00Z'));assert.equal(q.end,b.end);
+ assert.equal(b.start-q.start,7200000);
+ const cp=require('node:child_process'),file=require.resolve('../../public/shared/clan-season-calendar');
+ for(const tz of ['UTC','Asia/Yekaterinburg','America/Los_Angeles','Pacific/Kiritimati']){
+  const result=JSON.parse(cp.execFileSync(process.execPath,['-e','const c=require('+JSON.stringify(file)+');console.log(JSON.stringify({dates:c.seasonRange(c.season('+at+')),hours:c.localRange('+at+',"quests")}))'],{encoding:'utf8',env:{...process.env,TZ:tz}}));
+  assert.equal(result.dates,'01.11.2026 - 31.12.2026');
+  if(tz==='Asia/Yekaterinburg')assert.equal(result.hours,'08:00 - 23:00');
+ }
+ assert.equal(calendar.seasonRange(calendar.season(Date.parse('2028-02-10T12:00:00Z'))),'01.01.2028 - 29.02.2028');
+});
+test('contribution to an unfinished task qualifies, saved across days and restart, only in its own clan and season',()=>{
+ const f=fixture(2),base=structuredClone(f.profiles.p0),b=f.boards[0][1];
+ f.profiles.late={...structuredClone(base),id:'late'};f.clans.c00.members.push('late');
+ f.profiles.wrong={...structuredClone(base),id:'wrong',clanId:'c01'};f.clans.c00.members.push('wrong');
+ b.contributors.wrong={firstAt:start+2000};b.contributors.stale={firstAt:start-1};b.contributors.future={firstAt:end};
+ let d=season.capture(f,start+86400000,f.boards);
+ d=season.capture(structuredClone(d),start+2*86400000,[['c00',{day:'2026-11-02',quests:[{id:'unfinished',completedAt:null}],contributors:{late:{firstAt:start+86401000}}}]]);
+ const p=season.capture(d,end,[]);season.validate(p);
+ assert.equal(p.profiles.late.clanQuestMedals.length,1);assert(!p.profiles.wrong.clanQuestMedals);
+ assert.deepEqual(p.clanQuests.questSeason.contributors.c00,['late','p0','wrong']);
+ assert.deepEqual(season.capture(structuredClone(p),end+1000,[]),p);
+});
+test('old season state backfills only proven contributors from retained daily receipts and current boards',()=>{
+ const f=fixture(),d=season.capture(f,start+86400000,f.boards),state=d.clanQuests.questSeason;
+ delete state.contributorVersion;delete state.contributors;
+ for(const id of ['receipt-member','passive','old-receipt']){d.profiles[id]={...structuredClone(f.profiles.p0),id};d.clans.c00.members.push(id);}
+ d.clanQuestRewards={a:{clanId:'c00',earnedAt:start+20*3600000,members:['receipt-member'],quests:[],day:'2026-11-01'},old:{clanId:'c00',earnedAt:start-1,members:['old-receipt'],quests:[],day:'2026-10-31'}};
+ const upgraded=season.capture(d,start+2*86400000,f.boards);season.validate(upgraded);
+ const paid=season.capture(upgraded,end,[]);
+ assert(paid.profiles['receipt-member'].clanQuestMedals);assert(paid.profiles.p0.clanQuestMedals);
+ assert(!paid.profiles.passive.clanQuestMedals);assert(!paid.profiles['old-receipt'].clanQuestMedals);
+ assert.equal(state.contributorVersion,undefined,'migration is immutable');
+ for(const mutate of [x=>x.contributorVersion=2,x=>x.contributors={c00:['p0','p0']},x=>x.contributors={c00:['__proto__']},x=>x.contributors=[]]){const bad=structuredClone(upgraded);mutate(bad.clanQuests.questSeason);assert.throws(()=>season.validate(bad),/Invalid/);}
 });

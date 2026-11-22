@@ -27,10 +27,10 @@
   tabs.setAttribute("aria-label", "Разделы газеты");
   pager.setAttribute("aria-label", "Страницы газеты");
   status.setAttribute("role", "status");
-  header.append(el("small", "news-edition", "ГЕРОИ ЭФИРА · ИГРОВАЯ ГАЗЕТА"), title, close);
+  header.append(el("small", "news-edition", "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТА"), title, close);
   article.tabIndex = 0;
   article.dataset.showScrollbar = 'true';
-  article.setAttribute("aria-label", "Текст новости — прокрутка колёсиком, касанием или клавишами");
+  article.setAttribute("aria-label", "Текст новости - прокрутка колёсиком, касанием или клавишами");
   for (const [key, name] of [["news", "Новости"], ["event", "События"], ["release", "Обновления"]]) {
     const tab = button(name, () => { category = key; page = 0; render(); }, "news-section-tile");
     tab.append(el("small", "", key === "news" ? "Вести Эфира" : key === "event" ? "Время приключений" : "Что нового"));
@@ -40,7 +40,7 @@
   footer.append(version);
   dialog.append(header, article, pager, tabs, status, footer);
   document.body.append(dialog);
-  document.querySelector(".lobby-foot").textContent = "Герои Эфира · " + release.version;
+  document.querySelector(".lobby-foot").textContent = "Герои Эфира, " + release.version;
   let profile, displayedFor, scheduled = false, category = "news", page = 0, remote = [], pages = [], loadId = 0;
   const seen = new Set(), key = id => window.KillexPlatform.storageKey(".releaseNotes.v1." + id);
   const layout = window.KillexNewsLayout;

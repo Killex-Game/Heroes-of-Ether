@@ -148,7 +148,7 @@
       const eligible = profile.promotions?.includes(offer.id) && profile.promotionEndsAt?.[offer.id] > Date.now()+this.clockOffset;
       const deadline = el("small", "promotion-deadline");
       if (eligible) deadline.dataset.endsAt = String(profile.promotionEndsAt[offer.id]);
-      else deadline.textContent = "Предпросмотр · покупка недоступна";
+      else deadline.textContent = "Предпросмотр, покупка недоступна";
       const buy = el("button", "sf-button promotion-buy", "Купить за "+offer.votes+" голосов");
       buy.type = "button";
       buy.setAttribute("aria-label", "Купить: "+offer.name+" за "+offer.votes+" голосов");

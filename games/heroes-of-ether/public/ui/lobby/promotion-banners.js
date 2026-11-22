@@ -69,7 +69,7 @@
   const eventBanners = {
     "ether-alchemy-v1": "assets/events/ether-alchemy/v1/banner-v2.webp?art=20261122d",
     "black-friday-v1": "assets/events/black-friday/banner-v2.webp?art=20261122d",
-    "easter-hunt-v1": "assets/events/easter-hunt/banner.png?art=20261122d",
+    "easter-hunt-v1": "assets/events/easter-hunt/banner.png?art=20261122-zaya",
     "lucky-week-v1": "assets/events/lucky-week/banner-v3.webp?art=20261122d",
     "core-v1": "assets/events/lucky-week/banner-v3.webp?art=20261122d",
   };

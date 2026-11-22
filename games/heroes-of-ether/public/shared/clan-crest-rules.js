@@ -1,31 +1,20 @@
-/* Проверка параметров герба и SVG представление. */
+/* Проверка параметров герба и актуальные слои оформления. */
 (function (root, factory) {
   if (typeof module === "object" && module.exports)
     module.exports = factory(
       require("./clan-crest-art-data"),
       require("./clan-crest-variants"),
-      require("./clan-crest-symbols-refined"),
     );
   else
     root.KillexClanCrests = factory(
       root.KillexClanCrestArt,
       root.KillexCrestVariants,
-      root.KillexCrestPrismSymbols,
     );
-})(typeof globalThis !== "undefined" ? globalThis : this, (art, variants, prismSymbols) => {
+})(typeof globalThis !== "undefined" ? globalThis : this, (art, variants) => {
   "use strict";
   const LILY = "s21_lily",
-    symbols = [
-      {
-        id: LILY,
-        name: "Геральдическая лилия",
-        svg: '<defs><linearGradient id="lily-gold" x2=".3" y2="1"><stop stop-color="#fff7b6"/><stop offset=".4" stop-color="#ffc326"/><stop offset=".65" stop-color="#ad5810"/><stop offset="1" stop-color="#ffdf60"/></linearGradient></defs><path d="M256 96C194 169 206 200 236 287C191 207 153 209 134 243C113 288 165 316 196 287C169 287 157 267 175 259C196 254 216 291 232 316L211 358L243 345L256 393L269 345L301 358L280 316C296 291 316 254 337 259C355 267 343 287 316 287C347 316 399 288 378 243C359 209 321 207 276 287C306 200 318 169 256 96Z" fill="url(#lily-gold)" stroke="#84400f" stroke-width="5"/><path d="M256 108V311M211 313H301M220 329H292" fill="none" stroke="#fff1a2" stroke-width="7"/>',
-      },
-      ...art.symbols,
-      ...variants.symbols,
-    ]
-      .filter((symbol) => symbol.id !== "s19_key")
-      .map((symbol) => ({ ...symbol, svg: prismSymbols?.[symbol.id] || symbol.svg }));
+    symbols = [{ id: LILY, name: "Геральдическая лилия" }, ...art.symbols, ...variants.symbols]
+      .filter((symbol) => symbol.id !== "s19_key");
   // Retired key: keep saved crests valid, preserve their field, metal and frame.
   const currentSymbol = (id) => (id === "s19_key" ? LILY : id);
   const retiredFrames = {
@@ -44,8 +33,7 @@
       symbol: "s01_crown",
       metal: "steel",
     }),
-    EDIT_COST = 50,
-    cache = new Map();
+    EDIT_COST = 50;
   function normalize(value) {
     if (value == null) return null;
     if (
@@ -177,44 +165,8 @@
       ? `assets/clan-crests/prism-refined-v5/${size <= 128 ? 128 : 512}/${id}.webp?art=20261122b`
       : null;
   }
-  function svg(value) {
-    const c = normalize(value) || DEFAULT,
-      f = frames.find((x) => x.id === c.frame),
-      symbol = symbols.find((x) => x.id === c.symbol),
-      [x, y, w, h] = f.symbol_box,
-      scale = Math.min(w, h) / 320;
-    const background = `<defs><clipPath id="field-clip"><path d="${f.inner_path}"/></clipPath></defs><g clip-path="url(#field-clip)">${fieldBody(c)}</g>`;
-    const metal = variants.metals.find((x) => x.id === c.metal);
-    const frame = metal?.tint
-      ? `<defs><filter id="metal"><feColorMatrix type="matrix" values="${metal.tint.map((t) => `${0.3 * t} ${0.59 * t} ${0.11 * t} 0 0`).join(" ")} 0 0 0 1 0"/></filter></defs><g filter="url(#metal)">${f.svg}</g>`
-      : f.svg;
-    return (
-      '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">' +
-      background +
-      frame +
-      (symbol
-        ? '<g transform="translate(' +
-          (x + w / 2 - 256 * scale) +
-          " " +
-          (y + h / 2 - 256 * scale) +
-          ") scale(" +
-          scale +
-          ')">' +
-          symbol.svg +
-          "</g>"
-        : "") +
-      "</svg>"
-    );
-  }
-  function source(value, legacy = "astral") {
-    if (!value) return "assets/ui/art/clan_" + (legacy === "grove" ? "grove" : "astral") + ".png";
-    const c = normalize(value),
-      key = JSON.stringify(c);
-    if (!cache.has(key)) {
-      if (cache.size >= 128) cache.delete(cache.keys().next().value);
-      cache.set(key, "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg(c)));
-    }
-    return cache.get(key);
+  function defaultSource(legacy = "astral") {
+    return "assets/ui/art/clan_" + (legacy === "grove" ? "grove" : "astral") + ".png";
   }
   return {
     DEFAULT,
@@ -226,8 +178,7 @@
     framesForLevel,
     normalize,
     equal,
-    source,
-    svg,
+    defaultSource,
     fieldSvg,
     frameSource,
     symbolSource,

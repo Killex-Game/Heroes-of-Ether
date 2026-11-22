@@ -99,7 +99,7 @@
       });
       this.dialog.addEventListener("close", () => {
         // A queued close event may arrive after the window has reopened.
-        if(!this.dialog.open){this.memberDialog.close();this.questRankingCleanup?.();}
+        if(!this.dialog.open){this.viewRequest=(this.viewRequest||0)+1;this.memberDialog.close();this.questRankingCleanup?.();}
       });
       document.getElementById("clanSection").addEventListener("click", () => this.open());
       window.KillexActivity.every(() => {
@@ -175,6 +175,7 @@
         const query = this.tops.query();
         query.set("scope", scope);
         const incoming = await json("/api/clans?" + query);
+        await window.KillexClanCrests.prepare?.(incoming.mine?.crest);
         if (version !== this.readVersion) return false;
         const data = { ...this.data, ...incoming };
         if (scope === "rankings" && this.data?.mine && incoming.mine?.id === this.data.mine.id)
@@ -271,7 +272,13 @@
       }
       return membershipChanged;
     }
-    go(mode) {
+    async go(mode) {
+      const version = this.viewRequest = (this.viewRequest || 0) + 1;
+      if (["edit", "create"].includes(mode)) {
+        try { await window.KillexClanCrests.prepareEditor?.(this.data?.mine?.crest); }
+        catch { this.message("Не удалось открыть оформление клана. Попробуй ещё раз.", true); return; }
+        if (version !== this.viewRequest) return;
+      }
       this.mode = mode;
       this.confirmation.hidden = true;
       this.message("");
@@ -387,17 +394,22 @@
       }
     }
     confirm(text, action, fields) {
-      this.confirmation.replaceChildren(
-        el("p", "", text),
+      const actions = el("div", "clan-confirm-actions");
+      actions.append(
         this.actionButton("Подтвердить", action, fields, "sf-button sf-danger"),
         button("Отмена", () => {
           this.confirmation.hidden = true;
         }),
       );
+      this.confirmation.replaceChildren(el("p", "", text), actions);
       this.confirmation.hidden = false;
     }
     render() {
       if (!this.data) return;
+      const keepPosition = this.dialog.open && this.dialog.dataset.view === this.mode,
+        scroll = keepPosition ? [this.content, ...this.content.querySelectorAll("*")]
+          .filter(node => node.scrollTop || node.scrollLeft)
+          .map(node => ({ key: node.className, top: node.scrollTop, left: node.scrollLeft })) : [];
       this.questRankingCleanup?.();
       this.questRankingCleanup=null;
       const d = this.data;
@@ -445,6 +457,10 @@
         this.applications();
       else if (d.mine) this.home();
       else this.welcome();
+      for (const position of scroll) {
+        const node = [this.content, ...this.content.querySelectorAll("*")].find(node => node.className === position.key);
+        if (node) { node.scrollTop = position.top; node.scrollLeft = position.left; }
+      }
       this.lockControls();
     }
     expireBackground() {
@@ -882,7 +898,7 @@
       shelf.append(el("small", "", "Кубки сезона"), items);
       if (competition?.season) {
         const peak = rules.LEAGUES[competition.seasonPeak]?.name || "Бронзовая";
-        shelf.title = `Сезон ${competition.season.number}: максимум - ${peak}. Завершение ${new Date(competition.season.end).toLocaleDateString("ru-RU", { timeZone: "Europe/Moscow" })}.`;
+        shelf.title = `Сезон ${competition.season.number}: максимум - ${peak}. Завершение ${window.KillexClanCalendar.seasonRange(competition.season).split(" - ")[1]}.`;
       }
       return shelf;
     }

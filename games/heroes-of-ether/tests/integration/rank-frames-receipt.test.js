@@ -30,8 +30,8 @@ test("new frame variants preserve originals, inherit access and expiry, and cann
   assert(!appearance.view(p,{},AT).unlocked.includes('canon_premium'));
   assert(!appearance.view(p,{},AT).unlocked.includes('canon_title_king'));
   assert(!appearance.view(p,{},AT).unlocked.includes('canon_diamond'));
-  assert.equal(catalog.source('title_prince','frame').startsWith('assets/title-frames/'),true);
-  assert.equal(catalog.source('canon_title_prince','frame').startsWith('assets/frames/canon-v1/'),true);
+  assert.equal(catalog.source('title_prince','frame').startsWith('assets/frames/rims-v2/'),true);
+  assert.equal(catalog.source('canon_title_prince','frame').startsWith('assets/frames/rims-v2/'),true);
 });
 test("rank frames require an earned rank even with preview; permanent selection survives restart and account expiry", (t) => {
   const filePath = path.join(temporary(t, "rank-frames"), "profiles.json"),

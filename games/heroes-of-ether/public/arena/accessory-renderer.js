@@ -10,8 +10,8 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, (accessories) => {
   "use strict";
   // Украшения не закрывают соседние шары даже при большой массе и приближении.
-  const MAX_HAT_WIDTH_PX = 90;
-  const MAX_BOW_WIDTH_PX = 64;
+  const MAX_HAT_WIDTH_PX = 72;
+  const MAX_BOW_WIDTH_PX = 48;
   const TEXTURE_WIDTH = 256;
   const CONTOUR_STRIPS = 64;
   const MAX_CONTOURS = 48;
@@ -54,7 +54,7 @@
     // Поля шапки опираются на верхнюю дугу шара.
     if (worn.hat) {
       const fit = hatFits[worn.hat] || hatFits.novice_hat,
-        width = Math.min(r * fit.widthRatio, MAX_HAT_WIDTH_PX / screenScale) * 0.85,
+        width = Math.min(r * fit.widthRatio, MAX_HAT_WIDTH_PX / screenScale) * 0.65,
         height = width * fit.aspect;
       result.push({
         id: worn.hat,
@@ -66,7 +66,7 @@
       });
     }
     if (worn.bow) {
-      const width = Math.min(r * 0.92, MAX_BOW_WIDTH_PX / screenScale) * 0.9;
+      const width = Math.min(r * 0.92, MAX_BOW_WIDTH_PX / screenScale) * 0.65;
       result.push({
         id: worn.bow,
         x: x - width / 2,

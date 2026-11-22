@@ -77,7 +77,7 @@ let browser, timer;
       window.drawnVipAvatars = [];
       const draw = CanvasRenderingContext2D.prototype.drawImage;
       CanvasRenderingContext2D.prototype.drawImage = function (source, ...args) {
-        if (this.canvas.id === "game" && /\/skins\/transparent-v1\/1024\/vip-/.test(source?.src))
+        if (this.canvas.id === "game" && /\/skins\/transparent-v2\/1024\/vip-/.test(source?.src))
           if (!window.drawnVipAvatars.includes(source.src)) window.drawnVipAvatars.push(source.src);
         return draw.call(this, source, ...args);
       };
@@ -120,11 +120,11 @@ let browser, timer;
       assert.equal(await page.locator("#lobbySkin").getAttribute("data-skin-id"), skin.id);
       assert.match(
         await page.locator("#profileSkin").evaluate((image) => image.currentSrc),
-        /\/transparent-v1\/128\/vip-/,
+        /\/transparent-v2\/128\/vip-/,
       );
       assert.match(
         await page.locator("#lobbySkin").evaluate((image) => image.currentSrc),
-        /\/transparent-v1\/1024\/vip-/,
+        /\/transparent-v2\/1024\/vip-/,
       );
     }
     await page.locator(".account-avatar").filter({ hasText: "Король" }).click();

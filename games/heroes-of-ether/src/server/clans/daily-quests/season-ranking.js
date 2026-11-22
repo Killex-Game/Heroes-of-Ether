@@ -5,7 +5,23 @@ const {copyRecord} = require("../../profiles/copy-record");
 const deltas = require("../../profiles/immutable-table-delta");
 const chests = require("../clan-chest-rewards");
 const {clanProgress} = require("../clan-level-progress");
-const fresh = s => ({id:s.id,start:s.start,end:s.end,number:s.number,scores:{},days:{}});
+const fresh = s => ({id:s.id,start:s.start,end:s.end,number:s.number,scores:{},days:{},contributorVersion:1,contributors:{}});
+function rememberContributors(state, clanId, board, receipt = false) {
+  if (state.settledAt) return;
+  const ids = receipt
+    ? (Number.isSafeInteger(board.earnedAt) && board.earnedAt > state.start && board.earnedAt <= state.end ? board.members || [] : [])
+    : Object.entries(board.contributors || {}).filter(([,v]) => Number.isSafeInteger(v?.firstAt) && v.firstAt >= state.start && v.firstAt < state.end).map(([id]) => id);
+  if (!ids.length) return;
+  const known = state.contributors[clanId] || [];
+  state.contributors[clanId] = [...new Set([...known,...ids])].sort();
+}
+function hydrateContributors(state, data) {
+  if (state.settledAt || state.contributorVersion === 1) return;
+  state.contributorVersion = 1; state.contributors = {};
+  // Retained daily payout recipients are positive contribution evidence. Never
+  // infer participation from clan membership or invent missing historical events.
+  for (const receipt of Object.values(data.clanQuestRewards || {})) rememberContributors(state,receipt.clanId,receipt,true);
+}
 function add(state, clanId, day, quests) {
   const eligible = quests.filter(q => Number.isSafeInteger(q.completedAt) &&
     q.completedAt >= state.start && q.completedAt < state.end);
@@ -31,9 +47,10 @@ function current(data, at) {
   const season = calendar.season(at), saved = data.clanQuests?.questSeason;
   if (season.mode !== "quests") return saved || null;
   const state = saved?.id === season.id ? structuredClone(saved) : fresh(season);
+  hydrateContributors(state,data);
   if (!state.settledAt) for (const clan of Object.values(data.clans)) {
     const board = clan.dailyQuests?.board;
-    if (board) add(state,clan.id,board.day,board.quests);
+    if (board) { add(state,clan.id,board.day,board.quests); rememberContributors(state,clan.id,board); }
   }
   return state;
 }
@@ -46,11 +63,14 @@ function capture(data, at, boards, {canSettle=true}={}) {
   if (!state && season.mode === "quests") {
     state = fresh(season);
     // Only retained dated evidence from this season. Never fabricate past days.
-    for (const receipt of Object.values(data.clanQuestRewards || {}))
-      add(state,receipt.clanId,receipt.day,receipt.quests);
+    for (const receipt of Object.values(data.clanQuestRewards || {})) {
+      add(state,receipt.clanId,receipt.day,receipt.quests); rememberContributors(state,receipt.clanId,receipt,true);
+    }
   }
-  if (state) for (const [clanId, board] of boards)
-    if (board) add(state,clanId,board.day,board.quests);
+  if (state) {
+    hydrateContributors(state,data);
+    for (const [clanId, board] of boards) if (board) { add(state,clanId,board.day,board.quests); rememberContributors(state,clanId,board); }
+  }
   let next = data, archives = control.questSeasonHistory || {};
   if (state && !state.settledAt && state.end <= at) {
     if (!canSettle) return {...data,clanQuests:{...control,questSeason:state,nextAt:Math.min(control.nextAt,state.end)}};
@@ -64,7 +84,7 @@ function capture(data, at, boards, {canSettle=true}={}) {
       const members = [];
       for (const id of clan.members) {
         const key = profileKeys.get(id), original = key === undefined ? null : data.profiles[key];
-        if (!original || original.clanId !== clan.id) continue;
+        if (!original || original.clanId !== clan.id || !state.contributors[clan.id]?.includes(id)) continue;
         if (original.clanQuestMedals?.some(m=>m.seasonId===state.id))
           throw Error("Clan season medal exists without reward receipt");
         if (profiles === data.profiles) profiles = copyRecord(profiles);
@@ -85,7 +105,7 @@ function capture(data, at, boards, {canSettle=true}={}) {
   }
   if (season.mode === "quests" && state?.id !== season.id) {
     state = fresh(season);
-    for (const [clanId,board] of boards) if (board) add(state,clanId,board.day,board.quests);
+    for (const [clanId,board] of boards) if (board) { add(state,clanId,board.day,board.quests); rememberContributors(state,clanId,board); }
   }
   return {...next,clanQuests:{...control,...(state?{questSeason:state}:{}),questSeasonHistory:archives}};
 }
@@ -104,6 +124,10 @@ function validate(data) {
     const s = calendar.season(state.start);
     if (s.mode!=="quests" || s.id!==state.id || s.end!==state.end || s.number!==state.number || !state.scores || !state.days ||
         (state.settledAt!==undefined && (!Number.isSafeInteger(state.settledAt)||state.settledAt<state.end))) throw Error("Invalid clan quest season");
+    if (state.contributorVersion !== undefined && state.contributorVersion !== 1) throw Error("Invalid clan season contribution version");
+    if (state.contributorVersion === 1 && (!state.contributors || Array.isArray(state.contributors) || typeof state.contributors !== "object")) throw Error("Invalid clan season contributors");
+    if (state.contributorVersion === undefined && state.contributors !== undefined) throw Error("Invalid unversioned clan season contributors");
+    for (const [clanId,ids] of Object.entries(state.contributors || {})) if (!/^[a-zA-Z0-9_-]{1,80}$/.test(clanId) || Object.hasOwn(Object.prototype,clanId) || !Array.isArray(ids) || new Set(ids).size !== ids.length || ids.some(id=>typeof id!=="string" || !/^[a-zA-Z0-9_-]{1,80}$/.test(id) || Object.hasOwn(Object.prototype,id))) throw Error("Invalid clan season contributors");
     for (const score of Object.values(state.scores)) if (!Number.isSafeInteger(score.completed) || score.completed<0 ||
       !Number.isSafeInteger(score.reachedAt) || score.reachedAt<state.start || score.reachedAt>=state.end) throw Error("Invalid clan season score");
     for (const ids of Object.values(state.days)) if (!Array.isArray(ids) || ids.length>5 || new Set(ids).size!==ids.length || ids.some(id=>typeof id!=="string")) throw Error("Invalid clan season counter");

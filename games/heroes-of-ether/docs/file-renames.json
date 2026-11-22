@@ -1056,72 +1056,72 @@
   },
   {
     "old": "public/assets/skins/Лиловый дракон в янтарном круге-4.png",
-    "new": "public/assets/skins/moon-dragon.png",
+    "new": "public/assets/skins/transparent-v2/256/moon-dragon.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/Мудрый лесной дух с янтарными глазами-2.png",
-    "new": "public/assets/skins/forest-spirit.png",
+    "new": "public/assets/skins/transparent-v2/256/forest-spirit.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/Огненный феникс в фиолетовом круге-1.png",
-    "new": "public/assets/skins/sun-phoenix.png",
+    "new": "public/assets/skins/transparent-v2/256/sun-phoenix.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/Кристальный страж Сферорумии-3.png",
-    "new": "public/assets/skins/crystal-guardian.png",
+    "new": "public/assets/skins/transparent-v2/256/crystal-guardian.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/vip-1.png",
-    "new": "public/assets/skins/vip-king.png",
+    "new": "public/assets/skins/transparent-v2/256/vip-1.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/vip-2.png",
-    "new": "public/assets/skins/vip-queen.png",
+    "new": "public/assets/skins/transparent-v2/256/vip-2.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/vip-3.png",
-    "new": "public/assets/skins/vip-prince.png",
+    "new": "public/assets/skins/transparent-v2/256/vip-3.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/vip-4.png",
-    "new": "public/assets/skins/vip-knight.png",
+    "new": "public/assets/skins/transparent-v2/256/vip-4.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/vip-5.png",
-    "new": "public/assets/skins/vip-griffin.png",
+    "new": "public/assets/skins/transparent-v2/256/vip-5.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/premium-1.svg",
-    "new": "public/assets/skins/premium-star.svg",
+    "new": "public/assets/skins/premium-v2/256/premium-1.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/premium-2.svg",
-    "new": "public/assets/skins/premium-crown.svg",
+    "new": "public/assets/skins/premium-v2/256/premium-2.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/premium-3.svg",
-    "new": "public/assets/skins/premium-crystal.svg",
+    "new": "public/assets/skins/premium-v2/256/premium-3.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/premium-4.svg",
-    "new": "public/assets/skins/premium-comet.svg",
+    "new": "public/assets/skins/premium-v2/256/premium-4.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {
     "old": "public/assets/skins/premium-5.svg",
-    "new": "public/assets/skins/premium-sun.svg",
+    "new": "public/assets/skins/premium-v2/256/premium-5.webp",
     "purpose": "Скин игрока; имя файла соответствует изображению, ID профиля сохранён."
   },
   {

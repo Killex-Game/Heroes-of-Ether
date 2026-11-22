@@ -29,7 +29,7 @@ function availableDuration(data,start,end) {
   if (data.clanQuests?.calendarVersion === 1) {
     let total=0;
     for (let from=start;from<end;) {
-      const day=calendar.daily(from), until=Math.min(end,day.end+11*3600000);
+      const day=calendar.daily(from,"quests"), until=Math.min(end,day.end+9*3600000);
       if(calendar.season(from).mode==='quests')total+=Math.max(0,Math.min(end,day.end)-Math.max(from,day.start));
       from=until;
     }
@@ -49,6 +49,7 @@ function capture(next, previous, at, {canSettle=true} = {}) {
   const day = engine.period(at), boundary = due(next, at), repairRecruits = next.clanQuests.recruitRulesVersion !== 1;
   const sourceBoards = boundary ? Object.entries(next.clans).map(([id,c])=>[id,c.dailyQuests?.board]) : [];
   const upgradeWindow = next.clanQuests.windowVersion !== engine.WINDOW_VERSION;
+  const earlierOpening = next.clanQuests.windowVersion === 3;
   let clans = next.clans, profiles = next.profiles, index, ledger = next.clanQuestRewards;
   const changedProfiles = new Set();let deferredEnd=Infinity;
   const writable = id => {
@@ -75,6 +76,14 @@ function capture(next, previous, at, {canSettle=true} = {}) {
         if(recruits===clan.competition.recruits)recruits={...recruits};
         recruits[pid]=day.nextStart;
       }
+      if (earlierOpening) for (const pid of clan.members) {
+        const until = recruits[pid];
+        // The former 08:00 quest opening becomes 06:00 on the same server day.
+        if (pid!==clan.ownerId && until>at && (until+3*3600000)%86400000===8*3600000) {
+          if(recruits===clan.competition.recruits)recruits={...recruits};
+          recruits[pid]=until-2*3600000;
+        }
+      }
       if(recruits!==clan.competition.recruits){
         if(clans===next.clans)clans={...clans};
         clan=clans[id]={...clan,competition:{...clan.competition,recruits}};
@@ -89,6 +98,8 @@ function capture(next, previous, at, {canSettle=true} = {}) {
     if (board && !board.settledAt && board.day === day.id &&
         board.start === day.start-2*3600000 && board.end === day.end-3600000)
       assign({...state,board:{...board,end:day.end}});
+    if (earlierOpening && board && !board.settledAt && board.day===day.id && board.start===day.start+2*3600000 && board.end===day.end)
+      assign({...state,board:{...board,start:day.start}});
     if(upgrade) {
       // Preserve today's selection and earned contributions. Only approved rule
       // changes apply; completed historical days and financial receipts stay intact.
@@ -229,7 +240,7 @@ function validate(data) {
   const state=data.clanQuests;
   if(state.version!==1 || !Number.isSafeInteger(state.revision) || !Number.isSafeInteger(state.nextAt) || !Array.isArray(state.seasons)) throw Error('Invalid clan quest schedule');
   if(state.recruitRulesVersion!==undefined && state.recruitRulesVersion!==1)throw Error('Invalid clan newcomer rules');
-  if(state.windowVersion!==undefined && ![1,2,engine.WINDOW_VERSION].includes(state.windowVersion))throw Error('Invalid clan quest window');
+  if(state.windowVersion!==undefined && ![1,2,3,engine.WINDOW_VERSION].includes(state.windowVersion))throw Error('Invalid clan quest window');
   seasonal.validate(data);
   let history=[];
   for(const s of state.seasons) {history=seasons.announce(history,s,{role:'owner'}); history.at(-1).cancelled=!!s.cancelled;}

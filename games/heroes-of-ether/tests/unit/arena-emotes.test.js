@@ -48,15 +48,15 @@ test("dead, departed, stale and malformed requests cannot broadcast an emotion",
   }
 });
 
-test("emote sits centered above every hat and scales with each body", () => {
+test("emote overlaps every hat, stays centered and scales with each body", () => {
   const hats = [null, "novice_hat", "rabbit_ears", "title_emperor_hat", "magician_hat", "sombrero_hat"];
   for (const hat of hats) for (const scale of [0.1, 0.5, 1, 2]) for (const radius of [8, 30, 150, 600]) {
     const body = { x: 140, y: 200, radius }, outfit = { hat };
     const rect = placement(outfit, body, scale);
     assert(Math.abs(rect.x + rect.width / 2 - body.x) < 1e-9);
-    assert(rect.y + rect.height < body.y - radius);
+    assert(rect.y + rect.height <= body.y - radius);
     for (const accessory of accessories.placements(outfit, { ...body, scale }))
-      assert(rect.y + rect.height < accessory.y);
+      { assert(rect.y < accessory.y); assert(rect.y + rect.height > accessory.y); }
     assert(rect.width * scale >= 24 - 1e-9 && rect.width * scale <= 64 + 1e-9);
   }
 });

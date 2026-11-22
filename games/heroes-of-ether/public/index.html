@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru" class="game-booting">
   <head>
-    <script src="shared/art-revision.js?v=20261122-portrait-memory"></script>
+    <script src="shared/art-revision.js?v=20261122-clean-rims"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#101321" />
@@ -23,11 +23,11 @@
     <link rel="stylesheet" href="styles/base/fonts.css?v=20261122-art-consistency" />
     <link rel="stylesheet" href="styles/components/player-feedback.css?v=20261122-art-consistency" />
     <link rel="stylesheet" href="styles/components/maintenance.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/base/page-and-arena.css?v=20261122-art-consistency" />
+    <link rel="stylesheet" href="styles/base/page-and-arena.css?v=20261122-clean-rims" />
     <link rel="stylesheet" href="styles/components/shop-and-quick-slots.css?v=20261122-art-consistency" />
     <link rel="stylesheet" href="styles/theme/game-controls.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/clan-daily-quests.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/clan-dialog.css?v=20261122-art-consistency" />
+    <link rel="stylesheet" href="styles/components/clan-daily-quests.css?v=20261122-clean-rims" />
+    <link rel="stylesheet" href="styles/components/clan-dialog.css?v=20261122-clean-rims" />
     <link rel="stylesheet" href="styles/components/player-chat.css?v=20261122-art-consistency" />
     <link
       rel="stylesheet"
@@ -52,10 +52,10 @@
     <link rel="stylesheet" href="styles/components/quick-slot-editor.css?v=20261122-art-consistency" />
     <link rel="stylesheet" href="styles/theme/lobby-colors-and-controls.css?v=20261122-art-consistency" />
     <link rel="stylesheet" href="styles/components/clan-crest-editor.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/theme/profile-and-clan-details.css?v=20261122-art-consistency" />
+    <link rel="stylesheet" href="styles/theme/profile-and-clan-details.css?v=20261122-clean-rims" />
     <link
       rel="stylesheet"
-      href="styles/layout/dialog-and-menu-sizing.css?v=20261122-art-consistency"
+      href="styles/layout/dialog-and-menu-sizing.css?v=20261122-clean-rims"
     />
     <link rel="stylesheet" href="styles/theme/account-colors.css?v=20261122-art-consistency" />
     <link rel="stylesheet" href="styles/components/clan-and-ranking-details.css?v=20261122-art-consistency" />
@@ -64,7 +64,7 @@
     <link rel="stylesheet" href="styles/components/system-notifications.css?v=20261122-art-consistency" />
     <link
       rel="stylesheet"
-      href="styles/components/league-appearance.css?v=20261122-art-consistency"
+      href="styles/components/league-appearance.css?v=20261122-clean-rims"
     />
     <link rel="stylesheet" href="styles/theme/interface-themes.css?v=20261122-art-consistency" />
     <link rel="stylesheet" href="styles/theme/interface-pack-palettes.css?v=20261122-art-consistency" />
@@ -472,6 +472,7 @@
         >
           ← В лобби
         </button>
+        <div id="arenaEmoteHotkeys" class="arena-emote-hotkeys" role="list" aria-label="Эмоции, клавиши от 1 до 9"></div>
       </div>
       <aside class="leaderboard" aria-labelledby="leadersTitle">
         <div class="leader-heading">
@@ -670,21 +671,21 @@
     <script src="ui/layout/game-interactions.js?v=20261122-art-consistency"></script>
     <script src="ui/layout/modal-stack.js?v=20261122-art-consistency"></script>
     <script src="shared/request-identifiers.js?v=20261122-art-consistency"></script>
-    <script src="ui/lobby/player-feedback.js?v=20261122-art-consistency"></script>
+    <script src="ui/lobby/player-feedback.js?v=20261122-clean-rims"></script>
     <script src="shared/weekend-promotion-catalog.js?v=20261122-art-consistency"></script>
     <script src="shared/virtual-product-catalog.js?v=20261122-limit5"></script>
     <script src="ui/shop/mock-payment-dialog.js?v=20261122-limit5"></script>
-    <script src="ui/shop/promotion-dialog.js?v=20261122-art-consistency"></script>
+    <script src="ui/shop/promotion-dialog.js?v=20261122-clean-rims"></script>
     <script src="shared/progression-asset-paths.js?v=20261122-portrait-memory"></script>
     <script src="shared/achievement-badge.js?v=20261122-portrait-memory"></script>
     <script src="ui/progression/greatness-label.js?v=20261122-art-consistency"></script>
     <script src="shared/skin-collection-preview.js?v=20261122-three-packs"></script>
-    <script src="shared/player-identity.js?v=20261122-three-packs"></script>
-    <script src="shared/league-appearance.js?v=20261122-new-frames"></script>
+    <script src="shared/player-identity.js?v=20261122-clean-rims"></script>
+    <script src="shared/league-appearance.js?v=20261122-clean-rims"></script>
     <script src="shared/lobby-menu-art.js?v=20261122-art-consistency"></script>
     <script src="shared/interface-theme.js?v=20261122-art-consistency"></script>
     <script src="shared/accessory-catalog.js?v=20261122-art-consistency"></script>
-    <script src="arena/accessory-renderer.js?20261122-portrait-memory"></script>
+    <script src="arena/accessory-renderer.js?v=20261122-clean-rims"></script>
     <script src="arena/shield-renderer.js?v=20261122-art-consistency"></script>
     <script src="ui/progression/titles-catalog.js?v=20261122-art-consistency"></script>
     <script src="ui/progression/achievement-dialog.js?v=20261122-art-consistency"></script>
@@ -695,35 +696,33 @@
     <script src="shared/alchemy-rules.js?v=20261122-art-consistency"></script>
     <script src="arena/alchemy-art.js?v=20261122-art-consistency"></script>
     <script src="ui/progression/ether-generator.js?v=20261122-split"></script>
-    <script src="ui/progression/ether-alchemy.js?v=20261122-split"></script>
-    <script src="ui/progression/events-page.js?v=20261122-banners-packs"></script>
+    <script src="ui/progression/ether-alchemy.js?v=20261122-clean-rims"></script>
+    <script src="ui/progression/events-page.js?v=20261122-clean-rims"></script>
     <script src="shared/easter-rules.js?v=20261122-art-consistency"></script>
     <script src="ui/progression/easter-hunt-page.js?v=20261122-art-consistency"></script>
     <script src="arena/easter-renderer.js?v=20261122-art-consistency"></script>
     <script src="ui/progression/experience-progress.js?20261122-portrait-memory"></script>
-    <script src="shared/clan-season-calendar.js?v=20261122"></script>
+    <script src="shared/clan-season-calendar.js?v=20261122-clean-rims"></script>
     <script src="shared/clan-competition-rules.js?v=20261122-art-consistency"></script>
     <script src="shared/clan-quest-descriptions.js?v=20261122-art-consistency"></script>
-    <script src="shared/clan-crest-art-data.js?v=20261122-art-consistency"></script>
-    <script src="shared/clan-crest-variants.js?v=20261122-art-consistency"></script>
-    <script src="shared/clan-crest-symbols-prism.js?v=20261122-art-consistency"></script>
-    <script src="shared/clan-crest-symbols-refined.js?v=20261122-art-consistency"></script>
-    <script src="shared/clan-crest-rules.js?v=20261122-art-consistency"></script>
-    <script src="ui/clans/clan-crest-renderer.js?v=20261122-art-consistency"></script>
+    <script src="shared/clan-crest-art-data.js?v=20261122-clean-rims"></script>
+    <script src="shared/clan-crest-variants.js?v=20261122-clean-rims"></script>
+    <script src="shared/clan-crest-rules.js?v=20261122-clean-rims"></script>
+    <script src="ui/clans/clan-crest-renderer.js?v=20261122-clean-rims"></script>
     <script src="ui/clans/clan-crest-editor.js?v=20261122-art-consistency"></script>
-    <script src="ui/clans/clan-battle-and-treasury.js?v=20261122-art-consistency"></script>
+    <script src="ui/clans/clan-battle-and-treasury.js?v=20261122-clean-rims"></script>
     <script src="ui/progression/chest-opening-dialog.js?v=20261122-art-consistency"></script>
     <script src="ui/shop/currency-purchase-dialog.js?v=20261122-art-consistency"></script>
     <script src="shared/booster-cooldowns.js?v=20261122-egg10"></script>
     <script src="ui/cosmetics/skin-and-wardrobe-dialogs.js?v=20261122-banners-packs"></script>
-    <script src="ui/cosmetics/league-appearance.js?v=20261122-new-frames"></script>
+    <script src="ui/cosmetics/league-appearance.js?v=20261122-clean-rims"></script>
     <script src="ui/lobby/sky-scene.js?v=20261122-portrait-memory"></script>
     <script src="shared/quick-slot-rules.js?v=20261122-art-consistency"></script>
     <script src="ui/boosters/booster-tooltip.js?v=20261122-art-consistency"></script>
     <script src="ui/progression/arena-objectives.js?v=20261122-art-consistency"></script>
     <script src="ui/boosters/quick-slot-editor.js?v=20261122-art-consistency"></script>
     <script src="shared/daily-login-rewards.js?v=20261122-art-consistency"></script>
-    <script src="ui/boosters/shop-and-inventory-dialog.js?v=20261122-art-consistency"></script>
+    <script src="ui/boosters/shop-and-inventory-dialog.js?v=20261122-clean-rims"></script>
     <script src="shared/pet-rules.js?v=20261122-art-consistency"></script>
     <script src="ui/pets/pet-dialog.js?v=20261122-art-consistency"></script>
     <script src="ui/cosmetics/accessory-ability-ui.js?v=20261122-art-consistency"></script>
@@ -734,19 +733,19 @@
     <script src="ui/profile/profile-editor-dialog.js?v=20261122-art-consistency"></script>
     <script src="shared/daily-ranking-rules.js?v=20261122-art-consistency"></script>
     <script src="ui/rankings/daily-ranking-notice.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/title-earned-dialog.js?v=20261122-art-consistency"></script>
+    <script src="ui/progression/title-earned-dialog.js?v=20261122-clean-rims"></script>
     <script src="ui/progression/collection-earned-dialog.js?v=20261122-art-consistency"></script>
-    <script src="ui/clans/clan-preview.js?v=20261122-art-consistency"></script>
+    <script src="ui/clans/clan-preview.js?v=20261122-clean-rims"></script>
     <script src="ui/rankings/leaderboard-dialog.js?v=20261122-art-consistency"></script>
     <script src="ui/profile/gift-history.js?v=20261122-art-consistency"></script>
-    <script src="ui/profile/player-awards.js?v=20261122-individual-gifts"></script>
-    <script src="ui/profile/public-player-dialog.js?v=20261122-art-consistency"></script>
+    <script src="ui/profile/player-awards.js?v=20261122-clean-rims"></script>
+    <script src="ui/profile/public-player-dialog.js?v=20261122-clean-rims"></script>
     <script src="ui/profile/player-social.js?v=20261122-art-consistency"></script>
     <link rel="stylesheet" href="styles/components/admin-adjustment-notice.css?v=20261122-art-consistency" />
-    <script src="ui/profile/admin-adjustment-notice.js?v=20261122-art-consistency"></script>
-    <script src="ui/lobby/promotion-banners.js?v=20261122-banners-packs"></script>
-    <script src="ui/clans/clan-daily-quests.js?v=20261122-art-consistency"></script>
-    <script src="ui/clans/clan-dialog.js?v=20261122-art-consistency"></script>
+    <script src="ui/profile/admin-adjustment-notice.js?v=20261122-clean-rims"></script>
+    <script src="ui/lobby/promotion-banners.js?v=20261122-clean-rims"></script>
+    <script src="ui/clans/clan-daily-quests.js?v=20261122-clean-rims"></script>
+    <script src="ui/clans/clan-dialog.js?v=20261122-clean-rims"></script>
     <script src="ui/chat/player-chat.js?v=20261122-art-consistency"></script>
     <script src="shared/arena-camera-and-layout.js?v=20261122-fast-camera"></script>
     <script src="shared/arena-motion.js?v=20261122-art-consistency"></script>
@@ -754,7 +753,7 @@
     <script src="shared/arena-backgrounds.js?v=20261122-art-consistency"></script>
     <script src="shared/projectile-renderer.js?v=20261122-art-consistency"></script>
     <script src="shared/booster-effect-renderer.js?v=20261122-art-consistency"></script>
-    <script src="arena/food-and-frame-renderer.js?v=20261122-new-frames"></script>
+    <script src="arena/food-and-frame-renderer.js?v=20261122-clean-rims"></script>
     <script src="arena/body-renderer.js?v=20261122-art-consistency"></script>
     <script src="arena/portrait-loader.js?v=20261122-portrait-memory"></script>
     <script src="ui/profile/online-presence.js?v=20261122-art-consistency"></script>
@@ -764,16 +763,17 @@
     <script src="shared/arena-names.js?v=20261122-art-consistency"></script>
     <script src="ui/lobby/arena-picker.js?v=20261122-art-consistency"></script>
     <script src="ui/rankings/hall-of-fame.js?v=20261122-art-consistency"></script>
-    <script src="ui/layout/maintenance.js?v=20261122-banners-packs"></script>
+    <script src="ui/layout/maintenance.js?v=20261122-clean-rims"></script>
     <link rel="stylesheet" href="styles/components/arena-transition.css?v=20261122-art-consistency" />
     <script src="ui/layout/arena-transition.js?v=20261122-art-consistency"></script>
     <script src="ui/arena/touch-controls.js?v=20261122-art-consistency"></script>
     <script src="shared/release-notes.js?v=20261122-art-consistency"></script>
-    <script src="ui/lobby/game-news.js?v=20261122-art-consistency"></script>
+    <script src="ui/lobby/game-news.js?v=20261122-clean-rims"></script>
     <script src="ui/lobby/promo-code.js?v=20261122-art-consistency"></script>
-    <script src="shared/arena-emotes.js?v=20261122-emotes"></script>
-    <script src="arena/emote-renderer.js?v=20261122-emotes"></script>
-    <script src="game-client.js?v=20261122-fast-camera-emotes"></script>
+    <script src="shared/arena-emotes.js?v=20261122-clean-rims"></script>
+    <script src="arena/emote-hotkeys.js?v=20261122-rim-clans"></script>
+    <script src="arena/emote-renderer.js?v=20261122-clean-rims"></script>
+    <script src="game-client.js?v=20261122-clean-rims"></script>
     <script src="ui/layout/viewport-layout.js?v=20261122-art-consistency"></script>
     <script src="ui/layout/dialog-content-layout.js?v=20261122-art-consistency"></script>
     <script src="ui/layout/system-notifications.js?v=20261122-art-consistency"></script>

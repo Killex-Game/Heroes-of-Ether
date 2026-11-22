@@ -2,13 +2,13 @@
 const test = require("node:test"), assert = require("node:assert/strict");
 const q = require("../../src/server/clans/daily-quests/engine");
 const seasons = require("../../src/server/clans/daily-quests/seasons");
-const start = Date.parse("2026-11-14T05:00:00Z"), end = start + 13 * 3600000;
+const start = Date.parse("2026-11-14T03:00:00Z"), end = start + 15 * 3600000;
 const catalog = { version: 1, items: q.GROUPS.flatMap((group, i) => [0, 1].map(n => ({
   id: `${group}${n}`, group, name: group, metric: ["xp", "kills", "hookHits", "shieldUses", "arenaSeconds"][i],
   target: 10, reward: { kind: "crystals", amount: 500 },
 }))) };
 const event = (playerId, sequence, deltas, at = start) => ({ playerId, sequence, clanId: "c", deltas, at });
-test("MSK boundaries: exactly 08:00 starts; 21:00 closes; previous ranking retained until 08:00", () => {
+test("MSK boundaries: exactly 06:00 starts; 21:00 closes; previous ranking retained until 06:00", () => {
   assert.equal(q.period(start - 1).active, false); assert.equal(q.period(start).active, true);
   assert.equal(q.period(end - 1).active, true); assert.equal(q.period(end).active, false);
   assert.equal(q.period(start + 86400000 - 1).id, "2026-11-14");

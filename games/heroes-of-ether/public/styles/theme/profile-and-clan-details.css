@@ -448,7 +448,7 @@ body #settingsMenu #closeSettings {
 .public-shelf-track::-webkit-scrollbar {
   display: none;
 }
-.public-shelf-track > .public-trophy {
+.public-shelf-content > .public-trophy {
   flex-shrink: 0;
   scroll-snap-align: start;
 }
@@ -506,7 +506,7 @@ body #settingsMenu #closeSettings {
   font-size: 10px;
 }
 /* Одинаковые ячейки для кубков, медалей, регалий и подарков мини-профиля. */
-#playerProfileDialog .public-player-shelf .public-shelf-track > .public-trophy {
+#playerProfileDialog .public-player-shelf .public-shelf-content > .public-trophy {
   box-sizing: border-box;
   position: relative;
   display: grid;
@@ -534,7 +534,7 @@ body #settingsMenu #closeSettings {
 #playerProfileDialog .personal-season-trophy img {
   transform-origin: center;
 }
-#playerProfileDialog .public-shelf-track > .title-trophy {
+#playerProfileDialog .public-shelf-content > .title-trophy {
   /* Clip only the enlarged transparent canvas inside the existing shelf cell. */
   overflow: hidden;
 }
@@ -738,3 +738,6 @@ body.account-premium .skin-art {
     animation: none;
   }
 }
+
+.public-shelf-content { position:relative; flex:0 0 auto; height:104px; }
+.public-shelf-content > .public-trophy { position:absolute !important; top:0; }

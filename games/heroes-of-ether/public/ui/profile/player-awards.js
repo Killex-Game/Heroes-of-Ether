@@ -176,34 +176,25 @@
       entry.start = total;
       total += entry.count;
     }
-    // Keep every gift individually reachable without retaining thousands of DOM nodes.
+    // A stable full-width rail keeps native scrolling independent of mounted items.
+    // Updating the visible window must never shrink or replace the scroll container.
     track.dataset.total = String(total);
     track.style.overflowAnchor = "none";
-    // Offscreen slots have no snap target yet; Firefox otherwise jumps back to
-    // the last mounted item when scrolling across the spacer.
-    if (total > 40) track.style.scrollSnapType = "none";
+    track.style.scrollSnapType = "none";
+    const content = el("div", "public-shelf-content");
+    track.append(content);
     let step = 80, gap = 4, first = -1, end = -1;
     const mounted = new Map();
     const renderWindow = (focusIndex = null, force = false) => {
       if (!total) return;
+      content.style.width = Math.max(0, total * step - gap) + "px";
       const visible = Math.max(1, Math.ceil(track.clientWidth / step));
-      const start = Math.max(0, Math.min(total - 1,
+      const start = total <= 40 ? 0 : Math.max(0, Math.min(total - 1,
         focusIndex ?? Math.floor(track.scrollLeft / step)) - 10);
       const stop = Math.min(total, start + Math.max(40, visible + 20));
       if (!force && start === first && stop === end) return;
       first = start; end = stop;
-      const left = track.scrollLeft;
-      const focused = track.contains(document.activeElement) ? document.activeElement : null;
-      const fragment = document.createDocumentFragment();
-      const spacer = (count) => {
-        if (!count) return;
-        const node = el("span", "public-shelf-spacer");
-        node.setAttribute("aria-hidden", "true");
-        node.style.flex = "0 0 " + Math.max(0, count * step - gap) + "px";
-        node.style.height = "1px";
-        fragment.append(node);
-      };
-      spacer(start);
+      for (const [index,node] of mounted) if (index < start || index >= stop) { node.remove(); mounted.delete(index); }
       let entryIndex = 0;
       while (entries[entryIndex].start + entries[entryIndex].count <= start) entryIndex++;
       for (let index = start; index < stop; index++) {
@@ -214,14 +205,11 @@
           node = typeof entry.node === "function" ? entry.node(index - entry.start) : entry.node;
           node.dataset.awardIndex = String(index);
           mounted.set(index, node);
+          const successor = Array.from(content.children).find(child => Number(child.dataset.awardIndex) > index);
+          content.insertBefore(node, successor || null);
         }
-        fragment.append(node);
+        node.style.left = index * step + "px";
       }
-      spacer(total - stop);
-      for (const index of mounted.keys()) if (index < start || index >= stop) mounted.delete(index);
-      track.replaceChildren(fragment);
-      track.scrollLeft = left;
-      if (focused && track.contains(focused)) focused.focus({ preventScroll: true });
     };
     renderWindow();
     if (!entries.length)
@@ -290,6 +278,20 @@
     const frame = requestAnimationFrame(update);
     return {
       element: shelf,
+      position() {
+        const active = document.activeElement;
+        return { left: track.scrollLeft,
+          focus: active === previous ? "previous" : active === next ? "next" :
+            track.contains(active) ? active.dataset.awardIndex : null };
+      },
+      restore(position) {
+        update();
+        track.scrollLeft = position.left;
+        update();
+        const focus = position.focus === "previous" ? previous :
+          position.focus === "next" ? next : mounted.get(Number(position.focus));
+        if (position.focus != null && focus) focus.focus({ preventScroll: true });
+      },
       destroy() {
         observer.disconnect();
         cancelAnimationFrame(frame);

@@ -113,12 +113,12 @@
       card.type = "button";
       card.dataset.eventIndex = index;
       card.style.setProperty("--event-phase", -index * 0.8 + "s");
-      const number = el("span", "event-card-number", String(index + 1).padStart(2, "0")),
+      const number = el("span", "event-card-number", String(index === 4 ? 0 : index < 4 ? index + 1 : index).padStart(2, "0")),
         image = el("img", index ? "event-card-lock" : "event-card-banner"),
         title = el(
           "strong",
           "event-card-title",
-          index ? "Событие " + (index + 1) : "Удачная неделя",
+          index ? "Событие " + (index < 4 ? index + 1 : index) : "Удачная неделя",
         ),
         status = el("span", "event-card-status", index ? "Недоступно" : "Ожидает начала");
       image.alt = "";
@@ -129,7 +129,7 @@
       card.append(number, image, title, status);
       if (index === 2) {
         image.className = "event-card-banner";
-        image.src = "assets/events/easter-hunt/card-banner.webp?art=20261122d";
+        image.src = "assets/events/easter-hunt/card-banner.webp?art=20261122-zaya";
         title.textContent = "Пасхальная охота";
         this.easterStatus = status;
         this.related = el("span", "event-card-related", "Удачная неделя");
@@ -166,7 +166,7 @@
         card.onclick=()=>{this.dialog.close();document.getElementById('clanSection')?.click();};
       } else if (index) {
         window.KillexControls.state(card, true);
-        card.setAttribute("aria-label", "Событие " + (index + 1) + ": недоступно");
+        card.setAttribute("aria-label", "Событие " + (index < 4 ? index + 1 : index) + ": недоступно");
       } else {
         this.status = status;
         this.action = el("span", "event-card-action", "Рулетка, Lite и достижения");
@@ -214,7 +214,7 @@
       const calendar=window.KillexClanCalendar,season=calendar.season(now),seasonArt='assets/events/clans/'+season.mode+'.webp';
       this.clanSeasonTitle.textContent=season.name;
       if(this.clanSeasonImage.getAttribute('src')!==seasonArt)this.clanSeasonImage.src=seasonArt;
-      this.clanSeasonStatus.textContent='Активно · До конца: '+calendar.countdown(season.end,now);
+      this.clanSeasonStatus.textContent='До конца: '+calendar.countdown(season.end,now);
       this.cards[4].dataset.available='true';window.KillexControls.state(this.cards[4],false);
       const card = this.cards[0];
       const shopActive = !!(
@@ -320,7 +320,7 @@
         card.hidden = local < 0 || local >= pageSize;
         if (card.hidden) return;
         if (fullRing) {
-          const angle = -Math.PI / 2 + (index * Math.PI * 2) / 7;
+          const angle = -Math.PI + (index * Math.PI * 2) / 7;
           place(card, cx + rx * Math.cos(angle), cy + ry * Math.sin(angle));
         } else
           place(

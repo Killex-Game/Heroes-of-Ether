@@ -125,10 +125,10 @@
     x.type="button"; x.setAttribute("aria-label","Закрыть предпросмотр"); x.onclick=()=>preview.close(); head.append(title,x);
     const picture=el("div","title-share-picture"), image=el("img"), text=el("p","title-share-copy");
     image.src="assets/title-share/v1/"+dialog.dataset.titleId+".png";
-    image.alt="Мой новый титул — "+name.textContent+". Герои Эфира";
+    image.alt="Мой новый титул - "+name.textContent+". Герои Эфира";
     image.width=image.height=768;
     picture.append(image);
-    text.textContent="Мой новый титул — «"+name.textContent+"»! Играю в «Герои Эфира». Присоединяйся — давай играть вместе!";
+    text.textContent="Мой новый титул - «"+name.textContent+"»! Играю в «Герои Эфира». Присоединяйся - давай играть вместе!";
     const back=el("button","sf-button sf-primary","Закрыть"); back.type="button"; back.onclick=()=>preview.close();
     preview.append(head,picture,text,el("small","title-share-note","Предпросмотр публикации"),back);
     preview.addEventListener("close",()=>preview.remove(),{once:true}); document.body.append(preview);

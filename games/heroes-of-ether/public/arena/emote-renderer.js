@@ -10,11 +10,12 @@
     scale = Math.max(0.01, scale);
     const size = Math.max(24, Math.min(64, body.radius * scale * 0.9)) / scale;
     let top = body.y - body.radius;
+    let hat = null;
     for (const rect of accessories.placements(outfit, { ...body, scale })) {
-      // Include a small contour-warp margin above the hat's source rectangle.
-      if (rect.y < top) top = Math.min(top, rect.y - rect.width * 0.12);
+      // The emote overlays the upper part of the hat instead of floating above it.
+      if (rect.y < top) { top = rect.y; hat = rect; }
     }
-    return { x: body.x - size / 2, y: top - 8 / scale - size, width: size, height: size };
+    return { x: body.x - size / 2, y: top - size + (hat ? Math.min(size * .4, hat.height * .55) : 0), width: size, height: size };
   }
   class Renderer {
     constructor(imageFactory = () => new Image()) {

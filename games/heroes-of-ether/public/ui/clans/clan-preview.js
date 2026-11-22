@@ -90,6 +90,8 @@
         this.status.textContent = "";
         const signature = JSON.stringify(data);
         if (signature === this.signature) return;
+        await window.KillexClanCrests.prepare?.(data.clan.crest);
+        if (!this.dialog.open || id !== this.clanId || request.signal.aborted) return;
         this.signature = signature;
         this.render(data);
       } catch (error) {

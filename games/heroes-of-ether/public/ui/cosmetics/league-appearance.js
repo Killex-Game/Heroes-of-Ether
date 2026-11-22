@@ -168,8 +168,7 @@
         ? "Доступно бессрочно"
         : Number.isFinite(until)
           ? "Доступно до " +
-            new Date(until).toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }) +
-            " МСК"
+            new Date(until).toLocaleString("ru-RU")
           : "Временный тестовый доступ - срок пока не назначен";
     tickAccessBadge(badge);
     return badge;
@@ -219,7 +218,7 @@
         continue;
       }
       if (!rim.visible || !rim.width || document.hidden) continue;
-      visible ||= !["vip", "premium"].includes(rim.id) && !catalog.variantFrame(rim.id);
+      visible ||= !!catalog.interfaceTheme(rim.id);
       const ctx = rim.canvas.getContext("2d");
       ctx.clearRect(0, 0, rim.width, rim.height);
       window.KillexArenaArt.selectedFrame(
@@ -259,17 +258,14 @@
     if (!host) return;
     const resolved = catalog.resolveFrame(id, account);
     host.dataset.arenaFrame = resolved;
-    if (catalog.variantFrame(resolved)) {
-      paintFrame(host, resolved, account);
-      return;
-    }
+
     host.querySelector(":scope > .league-avatar-frame")?.remove();
     setRim(host, resolved);
   }
   function paintFrame(host, id, account) {
     if (!host) return;
     let image = host.querySelector(":scope > .league-avatar-frame");
-    const source = catalog.source(id, "frame");
+    const source = catalog.interfaceTheme(id) ? catalog.source(id, "frame") : null;
     if (!source) {
       image?.remove();
       const resolved = catalog.resolveFrame(id, account);
@@ -400,7 +396,7 @@
         el(
           "p",
           "appearance-intro",
-          "Купленная тема открывает весь комплект навсегда. Оформление лиг выдаётся за медали на 30 дней, Чемпионское — навсегда.",
+          "Купленная тема открывает весь комплект навсегда. Оформление лиг выдаётся за медали на 30 дней, Чемпионское доступно навсегда.",
         ),
       );
       if (slot === "set") {
@@ -628,7 +624,7 @@
                     ? "Награда за титул «Герой» - навсегда"
                     : "Достигни титула «Герой»"
                   : allowed
-                    ? "Тема куплена · навсегда"
+                    ? "Тема куплена навсегда"
                     : priceText(pack)
                 : id === "default"
                   ? "Всегда доступно"
@@ -648,8 +644,7 @@
           availability.title =
             until && !testAccess
               ? "Доступно до " +
-                new Date(until).toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }) +
-                " МСК"
+                new Date(until).toLocaleString("ru-RU")
               : "";
           for (const image of card.querySelectorAll(
             ".appearance-skin,.appearance-mini-avatar,.appearance-arena-skin",
@@ -667,7 +662,7 @@
                   : "Все фоны временно открыты") +
             " для тестирования. Награды и сроки лиг сохраняются."
           : slot === "set"
-            ? "Полный комплект: интерфейс, фоны и рамки. Купленные темы и Героическая — навсегда; оформление лиг действует до указанного срока."
+            ? "Полный комплект: интерфейс, фоны и рамки. Купленные темы и Героическая доступны навсегда; оформление лиг действует до указанного срока."
             : slot === "frames"
               ? "Одна лига для рамки профиля и ободка на арене. VIP и Premium также выбираются здесь."
               : slot === "theme"

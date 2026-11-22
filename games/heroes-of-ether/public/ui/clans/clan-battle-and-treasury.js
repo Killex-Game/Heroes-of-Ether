@@ -93,7 +93,7 @@
     constructor(owner) {
       this.owner = owner;
       if (owner.readOnly) return;
-      this.dialog = el("dialog", "clan-dialog clan-league-info");
+      this.dialog = el("dialog", "clan-season-guide");
       this.dialog.id = "leagueInfoDialog";
       document.body.append(this.dialog);
       window.KillexActivity.every(() => {
@@ -567,60 +567,33 @@
       return root;
     }
     info() {
-      const head = el("header", "clan-heading"),
-        close = button("×", () => this.dialog.close());
-      close.className = "booster-close";
-      close.setAttribute("aria-label", "Закрыть описание лиг");
-      head.append(el("h2", "", "О клановых лигах"), close);
-      const intro = el(
-        "p",
-        "",
-        "Сезон длится 2 месяца. Клановые битвы: январь–февраль, май–июнь, сентябрь–октябрь. Между ними идут сезоны клановых заданий. Медали выдаются по итогам недели в понедельник, кубок — в конце сезона. Битвы ежедневно " + window.KillexClanCalendar.localRange(window.KillexAppearance?.now?.() ?? Date.now()) + ". Все часы показаны по твоему местному времени. При поражении все игроки, состоящие в клане на момент итогов, теряют по " +
-          rules.BATTLE_LOSS_GREATNESS +
-          " величия, даже без участия в битве. Величие не опускается ниже нуля. При ничьей величие не списывается.",
-      );
-      const list = el("div", "clan-league-guide");
-      for (const l of rules.LEAGUES) {
-        const card = el("article", "clan-league-guide-row"),
-          r = l.reward;
-        card.append(
-          art(leagueArt(l.id), "clan-league-art"),
-          el("h3", "", l.name),
-          el("p", "", "Порог: " + num(l.threshold) + " киллов"),
-          window.KillexGreatnessUI.label(
-            el(
-              "p",
-              "",
-              num(r.coins) +
-                " монет - " +
-                num(r.crystals) +
-                " кристаллов - " +
-                num(r.bucks) +
-                " эфира - " +
-                num(r.greatness) +
-                " величия",
-            ),
-          ),
-          el(
-            "small",
-            "",
-            l.index === 5
-              ? "1 победитель и ещё 3 остаются. Чемпионское оформление навсегда."
-              : l.index >= 3
-                ? "2 клана проходят дальше, 7 остаются, остальные понижаются."
-                : "3 клана проходят дальше. В группе из 16 ещё 8 остаются, 5 понижаются.",
-          ),
-        );
-        list.append(card);
+      const head=el('header','clan-heading'),close=button('×',()=>this.dialog.close());
+      close.className='booster-close';close.setAttribute('aria-label','Закрыть описание лиг');
+      head.append(el('h2','','О клановых лигах'),close);
+      const summary=el('div','clan-guide-summary');
+      const time=window.KillexClanCalendar.localRange(window.KillexAppearance?.now?.()??Date.now()).replace('–',' - ');
+      for(const text of [
+        'Сезон длится 2 месяца. Битвы: январь-февраль, май-июнь, сентябрь-октябрь. Между ними идут клановые задания',
+        'Битвы ежедневно '+time+' по местному времени. Медали выдаются по итогам недели в понедельник, кубок в конце сезона',
+        'При поражении каждый участник клана теряет '+rules.BATTLE_LOSS_GREATNESS+' величия, включая не участвовавших в битве, но не ниже нуля. При ничьей списания нет',
+        'Призовое место даёт медаль и награду даже без порога киллов. Порог нужен для повышения. Личный приз требует хотя бы 1 килл за неделю и членства в клане на момент итогов',
+        'Повышение и сохранение места: в первых трёх лигах 3 повышаются, 8 остаются и 5 понижаются при группе из 16. В Платиновой и Бриллиантовой 2 повышаются, 7 остаются; в Чемпионской 1 победитель и ещё 3 остаются',
+        'Медаль открывает оформление на 30 дней; Чемпионское навсегда. Остальным оставшимся: 100 монет, 100 кристаллов, 1 эфир, 2 величия. Выбывающим наград нет. Ниже Бронзовой лиги понижения нет. Новобранец во время битвы участвует со следующего дня'
+      ])summary.append(el('p','',text));
+      const list=el('div','clan-league-guide');
+      for(const league of rules.LEAGUES){
+        const row=el('article','clan-league-guide-row'),copy=el('div','clan-prize-copy'),r=league.reward;
+        row.dataset.tier=league.id;
+        copy.append(el('strong','',league.name),el('small','','Порог '+num(league.threshold)+' киллов'));
+        const amounts=el('div','clan-prize-amounts');
+        for(const [key,name] of [['coins','монет'],['crystals','кристаллов'],['bucks','эфира'],['greatness','величия']]){
+          const amount=el('span'),icon=key==='greatness'?window.KillexGreatnessUI.icon(17):art('assets/menu-icons/128/currency_'+key+'.webp','');
+          amount.setAttribute('aria-label',num(r[key])+' '+name);amount.title=num(r[key])+' '+name;amount.append(icon,el('span','',num(r[key])));amounts.append(amount);
+        }
+        copy.append(amounts);
+        row.append(art(leagueArt(league.id),'clan-league-art'),copy);list.append(row);
       }
-      const foot = el(
-        "p",
-        "",
-        "Призовые места получают указанную награду, а клан - медаль, даже без порога киллов. Порог обязателен для повышения. Медаль открывает оформление своей лиги клану и всем его текущим участникам на 30 дней, Чемпионское - навсегда. Для личной награды нужен хотя бы 1 зачтённый килл за неделю и членство в клане на момент итогов. Остальным оставшимся: 100 монет, 100 кристаллов, 1 эфир и 2 величия. Выбывающим наград нет. Ниже Бронзовой лиги клан не опускается. Новобранец, вступивший во время битвы, начинает участвовать со следующего дня.",
-      );
-      window.KillexGreatnessUI.label(foot);
-      this.dialog.replaceChildren(head, intro, list, foot);
-      window.KillexWindows.open(this.dialog);
+      window.KillexClanDailyQuests.guide(this.dialog,head,summary,list);
     }
   }
   class ClanChestInventory {

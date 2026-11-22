@@ -109,7 +109,7 @@
         brew.textContent = !active ? "Варка доступна во время события" : "Сварить × " + p.yield;
         const queue = R.equipped(s), index = queue.indexOf(id);
         const equip = card.querySelector('[data-action="equip"]'); equip.disabled = this.busy || !s.potions[id] || (index < 0 && queue.length >= R.MAX_ACTIVE);
-        equip.textContent = index >= 0 ? `Z: ${index + 1} · Убрать` : "В очередь Z";
+        equip.textContent = index >= 0 ? `Z: ${index + 1}, Убрать` : "В очередь Z";
         for (const row of card.querySelectorAll(".alchemy-recipe-cost")) {
           const cost = p.ingredients.find(i => i.id === row.dataset.ingredient);
           row.dataset.enough = String((s.ingredients[cost.id] || 0) >= cost.count);

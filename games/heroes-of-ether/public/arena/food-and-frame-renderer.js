@@ -604,23 +604,19 @@
       simple,
     );
   }
-  // Eleven immutable optional artworks; lazy decoding, one image per design.
-  const variantImages = new Map();
-  function variantFrame(ctx, id, x, y, radius) {
+  // Optional frame selections share the thin arena rim, including in DOM previews.
+  const variantRims = new Map();
+  function variantFrame(ctx, id, x, y, radius, scale, now) {
     const catalog = window.KillexLeagueAppearance, frame = catalog.variantFrame(id);
     if (!frame) return false;
-    let image = variantImages.get(id);
-    if (!image) {
-      image = new Image();
-      image.onload = () => document.dispatchEvent(new Event("killex:frame-loaded"));
-      image.src = catalog.source(id, "frame");
-      variantImages.set(id, image);
+    let theme = variantRims.get(id);
+    if (!theme) {
+      const base = catalog.frameTheme(frame.baseId) || accountThemes[frame.baseId];
+      if (!base) return false;
+      theme = { ...base, id };
+      variantRims.set(id, theme);
     }
-    if (image.naturalWidth && radius > 0) {
-      const [cx, cy, innerRadius] = frame.fit, size = radius / (innerRadius * 0.98);
-      ctx.drawImage(image, x - cx * size, y - cy * size, size, size);
-    }
-    return true;
+    return decoratedFrame(ctx, theme, x, y, radius, scale, now, true);
   }
   function selectedFrame(
     ctx,
@@ -633,7 +629,7 @@
     now = performance.now(),
     simple = false,
   ) {
-    if (variantFrame(ctx, id, x, y, radius)) return true;
+    if (variantFrame(ctx, id, x, y, radius, scale, now)) return true;
     if (leagueFrame(ctx, id, x, y, radius, scale, now, true)) return true;
     const resolved = window.KillexLeagueAppearance.resolveFrame(id, account);
     return accountFrame(ctx, { [resolved]: true }, x, y, radius, scale, now, simple);

@@ -26,8 +26,8 @@
     if(!dialog)return;
     dates.hidden=!(active&&server.endsAt);
     if(!dates.hidden){
-      const end=new Date(server.endsAt),zone={timeZone:'Europe/Moscow'};
-      dates.textContent='До '+end.toLocaleDateString('ru-RU',{...zone,day:'numeric',month:'long'})+' '+end.toLocaleTimeString('ru-RU',{...zone,hour:'2-digit',minute:'2-digit'})+' МСК';
+      const end=new Date(server.endsAt),zone={};
+      dates.textContent='До '+end.toLocaleDateString('ru-RU',{...zone,day:'numeric',month:'long'})+' '+end.toLocaleTimeString('ru-RU',{...zone,hour:'2-digit',minute:'2-digit'});
     }
     copy.textContent=active?(lastMode==='maintenance'?'Устанавливаем обновление игры.':'Вход в игру временно закрыт.'):
       localFailure?(brokenAssets?'Не удалось загрузить игру. Попробуй открыть её снова.':'Не удалось связаться с игрой. Проверь соединение.'):'Игра снова доступна.';

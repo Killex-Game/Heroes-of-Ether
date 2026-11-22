@@ -4,6 +4,7 @@
   const kit = window.KillexClanCrests,
     tiles = new Map(),
     composed = new Map(),
+    ready = new Map(),
     SIZE = 512;
   const canvas = () =>
     Object.assign(document.createElement("canvas"), { width: SIZE, height: SIZE });
@@ -221,7 +222,10 @@
     if (composed.size >= 64) composed.delete(composed.keys().next().value);
     composed.set(key, pending);
     try {
-      return await pending;
+      const url = await pending;
+      if (ready.size >= 128) ready.delete(ready.keys().next().value);
+      ready.set(key, url);
+      return url;
     } catch (error) {
       composed.delete(key);
       throw error;
@@ -230,15 +234,35 @@
   kit.paintImage = (image, value, legacy) => {
     const version = JSON.stringify(value);
     image.dataset.crestVersion = version;
-    image.src = kit.source(value, legacy);
-    if (!value) return Promise.resolve();
+    if (!value) { image.src = kit.defaultSource(legacy); return Promise.resolve(); }
+    const key = JSON.stringify(kit.normalize(value));
+    const cached = ready.get(key);
+    if (cached) { image.src = cached; image.style.visibility = ""; return Promise.resolve(); }
+    image.removeAttribute("src");
+    image.style.visibility = "hidden";
     return render(value)
       .then((url) => {
-        if (image.dataset.crestVersion === version) image.src = url;
+        if (image.dataset.crestVersion === version) { image.src = url; image.style.visibility = ""; }
       })
       .catch(() => {
         image.dataset.artError = "true";
       });
   };
+  kit.prepare = async (value) => { if (value) await render(value); };
+  kit.prepareEditor = async (value) => {
+    const c = kit.normalize(value) || kit.DEFAULT;
+    await Promise.all([
+      ...kit.frames.map(frame => render({ ...c, frame: frame.id })),
+      ...kit.metals.map(metal => render({ ...c, metal: metal.id })),
+      ...kit.symbols.map(symbol => new Promise(resolve => {
+        const image = new Image();
+        image.onload = image.onerror = resolve;
+        image.src = kit.symbolSource(symbol.id, 128);
+      })),
+    ]);
+  };
+  document.addEventListener("killex:profile", ({detail}) => {
+    if (detail?.clanCrest) render(detail.clanCrest).catch(() => {});
+  });
   kit.renderRaster = render;
 })();

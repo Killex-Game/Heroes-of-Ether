@@ -19,10 +19,11 @@
       end: Date.UTC(year, month + 2, 1) - OFFSET,
     };
   }
-  function daily(at) {
+  function daily(at, mode = "battle") {
     const midnight = Math.floor((at + OFFSET) / DAY) * DAY - OFFSET;
-    return { start: midnight + 8 * HOUR, end: midnight + 21 * HOUR,
-      nextStart: midnight + (at < midnight + 8 * HOUR ? 0 : DAY) + 8 * HOUR };
+    const opening = mode === "quests" ? 6 : 8;
+    return { start: midnight + opening * HOUR, end: midnight + 21 * HOUR,
+      nextStart: midnight + (at < midnight + opening * HOUR ? 0 : DAY) + opening * HOUR };
   }
   const QUEST_PRIZES = Object.freeze([
     [1, 3, "diamond", "Бриллиантовая", 250, 3000, 250],
@@ -35,11 +36,14 @@
   const questPrize = rank => QUEST_PRIZES.find(p => rank >= p.from && rank <= p.to) || null;
   const localTime = at => new Date(at).toLocaleTimeString("ru-RU", {hour: "2-digit", minute: "2-digit"});
   const localDate = at => new Date(at).toLocaleDateString("ru-RU");
-  const localRange = at => { const d = daily(at); return `${localTime(d.start)}–${localTime(d.end)}`; };
+  const localRange = (at, mode = "battle") => { const d = daily(at, mode); return `${localTime(d.start)} - ${localTime(d.end)}`; };
+  // Named season days stay calendar dates, independent of the viewer's timezone.
+  const seasonDay = at => { const d = new Date(at + OFFSET); return `${String(d.getUTCDate()).padStart(2,"0")}.${String(d.getUTCMonth()+1).padStart(2,"0")}.${d.getUTCFullYear()}`; };
+  const seasonRange = s => `${seasonDay(s.start)} - ${seasonDay(s.end - 1)}`;
   const countdown = (end, at) => {
     const s = Math.max(0, Math.ceil((end - at) / 1000)), days = Math.floor(s / 86400);
     return (days ? `${days} д ` : "") + [Math.floor(s / 3600) % 24, Math.floor(s / 60) % 60, s % 60]
       .map(n => String(n).padStart(2, "0")).join(":");
   };
-  return {season, daily, QUEST_PRIZES, questPrize, localTime, localDate, localRange, countdown};
+  return {season, daily, QUEST_PRIZES, questPrize, localTime, localDate, localRange, seasonRange, countdown};
 });

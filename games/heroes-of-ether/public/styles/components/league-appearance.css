@@ -498,3 +498,8 @@ body[data-screen="arena"] #settingsMenu .settings-appearance-row {
 /* The crop belongs to the portrait, the circular border to its own disc. */
 .appearance-mini-disc { position:relative; display:block; width:64px; height:64px; border:2px solid #d8b569; border-radius:50%; overflow:hidden; background:linear-gradient(140deg,#b4d5e4,#636785); flex:none; }
 .appearance-mini-disc .appearance-mini-avatar { display:block; width:100%; height:100%; border:0; border-radius:0; object-fit:contain; }
+
+/* A portrait always sits on a full circular disc, also in frame previews. */
+.appearance-avatar,.appearance-set-arena { border-radius:50%; background:radial-gradient(circle at 30% 25%,#f3eafa 0%,#8cafd2 22%,#2a2447 100%); }
+.appearance-skin { display:block; }
+#skinPreview > .outfit-accessory,.outfit-avatar > .outfit-accessory { z-index:3; }

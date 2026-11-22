@@ -286,31 +286,6 @@
     { name: "Алый и белый", color: "c21_snow", secondary: "c24_scarlet", pattern: "per_pale" },
     { name: "Море и медь", color: "c23_navy", secondary: "c26_copper", pattern: "chief" },
   ];
-  const symbols = [
-    [
-      "s22_bear",
-      "Медведь",
-      "M129 163Q95 76 174 101L206 126Q256 110 306 126L338 101Q417 76 383 163L402 275L344 376L256 410L168 376L110 275ZM200 240L228 253M284 253L312 240M210 307L256 331L302 307L287 363H225Z",
-    ],
-    [
-      "s23_unicorn",
-      "Единорог",
-      "M132 390Q90 239 188 159L225 90L265 158L382 77L310 203L378 273L355 316L289 289L300 405L220 360L176 411Z",
-    ],
-    [
-      "s24_kraken",
-      "Кракен",
-      "M185 270Q124 108 256 89Q388 108 327 270Q390 226 412 281Q422 351 342 337Q420 401 357 420Q304 428 287 350Q290 444 256 441Q222 444 225 350Q208 428 155 420Q92 401 170 337Q90 351 100 281Q122 226 185 270Z",
-    ],
-    [
-      "s25_rose",
-      "Геральдическая роза",
-      "M256 112Q348 62 348 168Q457 175 388 264Q445 362 337 363Q283 462 232 370Q130 424 133 316Q35 256 132 204Q112 91 216 140Z",
-    ],
-  ].map(([id, name, path]) => ({
-    id,
-    name,
-    svg: `<defs><linearGradient id="symbol-gold" x2=".4" y2="1"><stop stop-color="#fff6bb"/><stop offset=".42" stop-color="#ffca35"/><stop offset=".75" stop-color="#ac6411"/><stop offset="1" stop-color="#ffe47a"/></linearGradient></defs><path d="${path}" fill="url(#symbol-gold)" stroke="#804310" stroke-width="7" stroke-linejoin="round"/>`,
-  }));
+  const symbols = [{"id":"s22_bear","name":"Медведь"},{"id":"s23_unicorn","name":"Единорог"},{"id":"s24_kraken","name":"Кракен"},{"id":"s25_rose","name":"Геральдическая роза"}];
   return { frames, colors, patterns, metals, presets, symbols };
 });

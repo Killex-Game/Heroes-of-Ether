@@ -868,6 +868,7 @@
       performance.now(),
     );
     const me = getMe();
+    window.KillexEmoteHotkeys?.update(me?.account);
     lastStateAt = performance.now();
     if (me && !lifeResult)
       lifeClock = {

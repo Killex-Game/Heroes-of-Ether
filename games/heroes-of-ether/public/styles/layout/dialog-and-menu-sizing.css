@@ -112,8 +112,7 @@ body dialog :is(.clan-heading, .personal-heading, .booster-heading) {
 /* These small arena dialogs used to paint a second header inside their border image. */
 #lifeResultDialog,
 #connectionLostDialog,
-#leaveConfirmDialog,
-#leagueInfoDialog {
+#leaveConfirmDialog {
   border: 1px solid #bb914f;
   border-image: none;
   border-radius: 18px;
@@ -125,8 +124,7 @@ body dialog :is(.clan-heading, .personal-heading, .booster-heading) {
 }
 #lifeResultDialog > .clan-heading,
 #connectionLostDialog > .clan-heading,
-#leaveConfirmDialog > .clan-heading,
-#leagueInfoDialog > .clan-heading {
+#leaveConfirmDialog > .clan-heading {
   min-height: 48px;
   padding: 5px 10px;
   margin-bottom: 16px;
@@ -993,7 +991,9 @@ body[data-screen="lobby"] #settingsMenu {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(560px, 80%);
+  width: max-content;
+  max-width: min(560px, 90%);
+  box-sizing: border-box;
   box-shadow: 0 15px 80px var(--ui-c-35133d99, #35133d99);
 }
 #clanDialog .clan-armory {

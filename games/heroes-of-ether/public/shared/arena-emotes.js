@@ -7,14 +7,14 @@
   "use strict";
   const DURATION_MS = 3000, COOLDOWN_MS = 1500;
   const items = Object.freeze([
-    ["drakosha", "Сердитый Дракоша"], ["zaya", "Смеющаяся Зая"],
-    ["manya", "Голодная Маня"], ["leva", "Плачущий Лёва"],
-    ["manya", "Влюблённая Маня"], ["leva", "Дурачащийся Лёва"],
-    ["drakosha", "Крутой Дракоша"], [null, "Мир"],
-    ["manya", "Маня извиняется"],
-  ].map(([pet, name], i) => Object.freeze({ id: i + 1, pet, name,
-    image: `assets/emotes/basic-v1/${i + 1}.webp`,
-    premiumImage: i === 7 ? "assets/emotes/basic-v1/8.webp" : `assets/emotes/pets-v1/${i + 1}.webp` })));
+    [1, "drakosha", "Сердитый Дракоша"], [6, "leva", "Дурачащийся Лёва"],
+    [2, "zaya", "Смеющаяся Зая"], [4, "leva", "Плачущий Лёва"],
+    [5, "manya", "Влюблённая Маня"], [7, "drakosha", "Крутой Дракоша"],
+    [3, "manya", "Голодная Маня"], [8, "manya", "Мир"],
+    [9, "manya", "Маня извиняется"],
+  ].map(([asset, pet, name], i) => Object.freeze({ id: i + 1, pet, name,
+    image: `assets/emotes/basic-v1/${asset}.webp`,
+    premiumImage: `assets/emotes/pets-v1/${asset}.webp` })));
   const valid = id => Number.isInteger(id) && id >= 1 && id <= items.length;
   function key(event) {
     if (!event || event.defaultPrevented || event.repeat || event.isComposing ||

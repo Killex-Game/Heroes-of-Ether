@@ -43,8 +43,8 @@
     try{
       const response=await fetch('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(pending),signal:controller.signal});
       const result=await response.json();if(!response.ok)throw Error(result.error||'Не удалось отправить отзыв.');
-      pending=null;text.value='';message.textContent='Спасибо! Отзыв № '+result.number+' отправлен. Срок обработки — 72 часа.';
-    }catch(error){message.textContent=error.name==='AbortError'?'Ответ задержался. Повтори отправку — дубликат не появится.':error.message;}
+      pending=null;text.value='';message.textContent='Спасибо! Отзыв № '+result.number+' отправлен. Срок обработки - 72 часа.';
+    }catch(error){message.textContent=error.name==='AbortError'?'Ответ задержался. Повтори отправку - дубликат не появится.':error.message;}
     finally{clearTimeout(timeout);busy=false;text.readOnly=false;refresh();}
   });
 })();

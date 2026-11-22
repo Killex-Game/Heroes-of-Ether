@@ -138,6 +138,9 @@
       }
     }
     render(p) {
+      const previousPlayer = this.player, previousAwards = this.awards,
+        shelfPosition = previousPlayer?.id === p.id && this.dialog.open
+          ? previousAwards?.position() : null;
       this.player = p;
       clearTimeout(this.giftExpiryTimer);
       const now = Date.now(),
@@ -198,8 +201,20 @@
           effects.append(item);
         }
       }
-      this.awards?.destroy();
-      this.awards = window.KillexPlayerAwards.create(p);
+      const awardKey = JSON.stringify({
+        seasonTrophies:p.seasonTrophies, clanQuestMedals:p.clanQuestMedals,
+        eventRegalia:p.eventRegalia, easter:p.easter?.trophies, regalia:p.regalia,
+        titleMedals:p.titleMedals, title:p.title, clanFrame:p.clanFrame,
+        gifts:p.social?.gifts.map(g=>({id:g.id,count:g.count,latestAt:g.latestAt,
+          effectUntil:g.effectUntil > now ? g.effectUntil : 0,historyMore:!!g.historyMore,
+          history:g.history.filter(h=>h.expiresAt > now).map(h=>
+            [h.id,h.at,h.expiresAt,h.fromName,!!h.anonymous])}))
+      });
+      if (previousPlayer?.id !== p.id || this.awardKey !== awardKey || !this.awards) {
+        this.awards?.destroy();
+        this.awards = window.KillexPlayerAwards.create(p);
+        this.awardKey = awardKey;
+      }
       const shelf = this.awards.element;
       const details = el("div", "public-player-details"),
         social = el("section", "public-player-social");
@@ -209,7 +224,6 @@
       if (p.clanId) {
         const crest = el("img", "clan-crest");
         window.KillexClanCrests.paintImage?.(crest, p.clanCrest, p.clanEmblem);
-        if (!crest.src) crest.src = window.KillexClanCrests.source(p.clanCrest, p.clanEmblem);
         crest.alt = "";
         clan.append(
           crest,
@@ -246,6 +260,7 @@
         shelf,
         details,
       );
+      if (shelfPosition) this.awards.restore(shelfPosition);
     }
   }
   let dialog;

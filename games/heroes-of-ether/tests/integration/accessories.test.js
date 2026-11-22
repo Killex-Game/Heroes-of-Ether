@@ -161,13 +161,13 @@ test("Аксессуары передаются в снимке каждой ж�
   arena.resetPlayer(p, 1000);
   assert.deepEqual(arena.snapshot(1000).players[0].outfit, p.outfit);
   const small = placements(p.outfit, { x: 0, y: 0, radius: 20 }),
-    large = placements(p.outfit, { x: 0, y: 0, radius: 60 });
+    large = placements(p.outfit, { x: 0, y: 0, radius: 40 });
   assert.equal(small.length, 2);
   assert.ok(small[0].y < 0);
   assert.ok(small[1].y > 0);
   small.forEach((r, i) => {
     for (const key of ["x", "y", "width", "height"])
-      assert.ok(Math.abs(large[i][key] - r[key] * 3) < 1e-8);
+      assert.ok(Math.abs(large[i][key] - r[key] * 2) < 1e-8);
   });
 });
 test("Крупные шары: аксессуары ограничены на экране и остаются у краёв шара при любом масштабе", () => {
@@ -175,8 +175,8 @@ test("Крупные шары: аксессуары ограничены на э
   for (const scale of [0.15, 0.5, 1, 2]) {
     const body = { x: 1500, y: 1500, radius: 1000, scale };
     const [hat, bow] = placements(outfit, body);
-    assert.ok(hat.width * scale <= 90);
-    assert.ok(bow.width * scale <= 80);
+    assert.ok(hat.width * scale <= 47);
+    assert.ok(bow.width * scale <= 32);
     for (const item of [hat, bow]) assert.ok(Math.abs(item.x + item.width / 2 - body.x) < 1e-8);
     assert.ok(hat.y < body.y - body.radius);
     assert.ok(hat.y + hat.height > body.y - body.radius);

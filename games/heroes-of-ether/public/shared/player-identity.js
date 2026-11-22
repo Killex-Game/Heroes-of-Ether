@@ -437,7 +437,7 @@
     "y": -0.0018
   }
 });
-  // Один прозрачный портрет для всех поверхностей; старые файлы сохраняются как исходники.
+  // Единый актуальный каталог портретов для всех поверхностей.
   function transparentSkin(skin) {
     const directory = skin.tier === "premium" ? "premium-v2" : "transparent-v2";
     const variants = Object.freeze(
@@ -448,7 +448,7 @@
         ]),
       ),
     );
-    return Object.freeze({ ...skin, variants, arena: variants[1024] });
+    return Object.freeze({ ...skin, file: `${directory}/256/${skin.id}.webp`, variants, arena: variants[1024] });
   }
   const skins = Object.freeze(
     [
@@ -456,25 +456,25 @@
         id: "moon-dragon",
         name: "Лунный дракон",
         file: "moon-dragon.png",
-        arena: "assets/ui/art/avatar_dragon.png?art=20261122b",
+
       },
       {
         id: "forest-spirit",
         name: "Лесной дух",
         file: "forest-spirit.png",
-        arena: "assets/ui/art/avatar_grove.png?art=20261122b",
+
       },
       {
         id: "sun-phoenix",
         name: "Солнечный феникс",
         file: "sun-phoenix.png",
-        arena: "assets/ui/art/avatar_phoenix.png?art=20261122b",
+
       },
       {
         id: "crystal-guardian",
         name: "Кристальный страж",
         file: "crystal-guardian.png",
-        arena: "assets/ui/art/avatar_crystal.png?art=20261122b",
+
       },
       { id: "amber-fox", name: "Янтарная лиса", file: "amber-fox.webp" },
       { id: "snow-leopard", name: "Снежный барс", file: "snow-leopard.webp" },
@@ -501,29 +501,7 @@
   };
   const accountSkins = Object.freeze(
     Object.entries(accountSkinSets).flatMap(([tier, skins]) =>
-      skins.map(([symbol, name], index) => {
-        const file =
-          tier === "vip" ? `vip-${symbol}.png` : `premium-v2/256/premium-${index + 1}.webp`;
-        const variants =
-          tier === "vip"
-            ? Object.freeze(
-                Object.fromEntries(
-                  [64, 128, 256, 512, 1024].map((size) => [
-                    size,
-                    `assets/skins/vip/${size}/vip-${symbol}.webp?art=20261122b`,
-                  ]),
-                ),
-              )
-            : null;
-        return transparentSkin({
-          id: `${tier}-${index + 1}`,
-          name,
-          tier,
-          file,
-          variants,
-          arena: variants?.[1024] || "assets/skins/" + file,
-        });
-      }),
+      skins.map(([, name], index) => transparentSkin({ id: `${tier}-${index + 1}`, name, tier })),
     ),
   );
   const themeSkinSets = Object.freeze([
@@ -534,14 +512,11 @@
   const themeSkins = Object.freeze(
     themeSkinSets.flatMap((set) =>
       [...skins.slice(0, 4), { id: "star-lion", name: "Звёздный лев" }].map((skin) => {
-        const source = `assets/interface-packs/${set.id}/avatars/${skin.id}.webp?art=20261122b`;
         return transparentSkin({
           id: `${set.id}-${skin.id}`,
           name: skin.name,
           set: set.id,
           file: `${set.id}-${skin.id}.webp`,
-          variants: Object.freeze({ 1024: source }),
-          arena: source,
         });
       }),
     ),
@@ -575,7 +550,7 @@
     (typeof skin === "string" ? allSkins.find((item) => item.id === skin) : skin) || skins[0];
   const skinSource = (skin, size = 256) => {
     skin = resolveSkin(skin);
-    if (!skin.variants) return "assets/skins/" + encodeURIComponent(skin.file);
+    if (!skin.variants) skin = skins[0];
     const sizes = Object.keys(skin.variants)
       .map(Number)
       .sort((a, b) => a - b);

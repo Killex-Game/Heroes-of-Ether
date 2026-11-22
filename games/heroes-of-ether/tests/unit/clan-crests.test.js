@@ -11,21 +11,8 @@ const kit = require("../../public/shared/clan-crest-rules"),
   { temporary } = require("../temp");
 const { clanProgress } = require("../../src/server/clans/clan-level-progress");
 function assertSafeArtwork(svg) {
-  // Only bundled WebP illustrations are allowed; external images and active SVG stay forbidden.
-  const vector = svg.replace(
-    /<image x="96" y="96" width="320" height="320" href="data:image\/webp;base64,([A-Za-z0-9+/=]+)"\/>/g,
-    (_, encoded) => {
-      const image = Buffer.from(encoded, "base64");
-      assert.equal(image.subarray(0, 4).toString(), "RIFF");
-      assert.equal(image.subarray(8, 12).toString(), "WEBP");
-      const fs = require("node:fs");
-      assert.ok(kit.symbols.some(symbol => image.equals(fs.readFileSync(path.resolve(__dirname,
-        "../../public/assets/clan-crests/prism-refined-v5/512", symbol.id + ".webp")))));
-      return "";
-    },
-  );
-  assert.doesNotMatch(vector, /<(?:script|foreignObject|image)\b|\bon\w+=|href=/i);
-  assert.doesNotMatch(vector, /NaN|Infinity/);
+  assert.doesNotMatch(svg, /<(?:script|foreignObject|image)\b|\bon\w+=|href=/i);
+  assert.doesNotMatch(svg, /NaN|Infinity/);
 }
 function clanXp(level) {
   let xp = 0;
@@ -120,7 +107,12 @@ test("Конструктор: 21 форма, 32 цвета, 24 золотых с
     for (const symbol of kit.symbols) {
       const c = { ...kit.DEFAULT, frame: frame.id, symbol: symbol.id };
       assert.deepEqual(kit.normalize(c), c);
-      const svg = kit.svg(c);
+      const svg = kit.fieldSvg(c);
+      const fs = require("node:fs");
+      assert(fs.existsSync(path.resolve(__dirname, "../../public", kit.symbolSource(symbol.id).split("?")[0])));
+      const frameSource = kit.frameSource(frame.id);
+      if (frameSource.startsWith("assets/")) assert(fs.existsSync(path.resolve(__dirname, "../../public", frameSource)));
+      else assertSafeArtwork(decodeURIComponent(frameSource.split(",")[1]));
       assert.match(svg, /<svg/);
       assertSafeArtwork(svg);
     }
@@ -139,7 +131,7 @@ test("Конструктор: 21 форма, 32 цвета, 24 золотых с
   ])
     assert.throws(() => kit.normalize(bad));
   assert.equal(kit.normalize(null), null);
-  assert.match(kit.source(null, "grove"), /clan_grove/);
+  assert.match(kit.defaultSource("grove"), /clan_grove/);
   for (const [old, replacement] of Object.entries({
     f04_broad: "f03_heater",
     f06_diamond: "f07_octagon",
@@ -164,7 +156,7 @@ test("Конструктор: 21 форма, 32 цвета, 24 золотых с
   for (const pattern of kit.patterns)
     for (const metal of kit.metals) {
       const c = { ...kit.DEFAULT, pattern: pattern.id, metal: metal.id, secondary: "c21_snow" };
-      assertSafeArtwork(kit.svg(c));
+      assertSafeArtwork(kit.fieldSvg(c));
       assert.ok(kit.fieldSvg(c).includes("<svg"));
     }
   for (const preset of kit.presets)
@@ -269,7 +261,7 @@ test("Удалённый ключ исчезает из выбора, стары
   const loaded = new ProfileStore({ filePath });
   assert.deepEqual(loaded.data.clans[f.clan().id].crest, { ...old, symbol: "s21_lily" });
   assert.deepEqual(loaded.find(f.u.token), profile);
-  assert.equal(kit.svg(old), kit.svg({ ...old, symbol: "s21_lily" }));
+  assert.deepEqual(kit.normalize(old), kit.normalize({ ...old, symbol: "s21_lily" }));
 });
 
 test("Удалённые рамки в старом сохранении заменяются бесплатно, остальные параметры и прогресс сохраняются", (t) => {

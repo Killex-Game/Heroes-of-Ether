@@ -2,7 +2,7 @@
 (() => {
   const el=(tag,cls,text)=>{const n=document.createElement(tag);n.className=cls||'';if(text!==undefined)n.textContent=text;return n;};
   const fmt=n=>Number(n).toLocaleString('ru-RU');
-  const date=at=>new Date(at).toLocaleString('ru-RU',{timeZone:'Europe/Moscow'})+' МСК';
+  const date=at=>new Date(at).toLocaleString('ru-RU');
   let profile, box;
   const acknowledged=new Set();
   function show(){
@@ -20,7 +20,7 @@
     }else{
     const change=n.action==='account' ? n.days ? n.item+': добавлено '+fmt(n.days)+' дн.' : n.item+': статус отключён' : n.item+': '+(n.amount>0?'добавлено ':'списано ')+fmt(Math.abs(n.amount));
     body.append(el('h3','',change),el('p','', 'Модератор: '+n.actorName),el('p','admin-adjustment-reason','Причина: '+n.reason));
-    body.append(el('p','',n.action==='account' ? (n.after ? 'Действует до: '+date(n.after) : 'Прежний срок: '+(n.before?date(n.before):'—')) : 'Было: '+fmt(n.before)+' → Стало: '+fmt(n.after)),accept);
+    body.append(el('p','',n.action==='account' ? (n.after ? 'Действует до: '+date(n.after) : 'Прежний срок: '+(n.before?date(n.before):'-')) : 'Было: '+fmt(n.before)+' → Стало: '+fmt(n.after)),accept);
     }
     dialog.append(header,body,status);document.body.append(dialog);box=dialog;
     const requestId=window.KillexRequestIds.create();let busy=false;

@@ -74,15 +74,10 @@
   max-height: calc(100dvh - 28px);
   color: #3c2348;
   background: var(--ui-c-fff5dd, #fff5dd);
-  border: 24px solid transparent;
-  border-image: var(
-      --ui-art-surfaces-window_large-svg,
-      url("../../assets/ui/svg/surfaces/window_large.svg?art=20261122b")
-    )
-    112 48 40 48 fill;
-  border-image-width: 84px 36px 30px;
+  border: 1px solid #be984f;
+  border-image: none;
   border-radius: 22px;
-  padding: 0 0 12px;
+  padding: 12px;
   box-shadow: 0 15px 65px var(--ui-c-24132c55, #24132c55);
 }
 .clan-dialog::backdrop {
@@ -341,8 +336,11 @@
 .clan-confirm p {
   margin: 0 0 10px;
 }
-.clan-confirm button {
-  margin-right: 8px;
+.clan-confirm-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .clan-search {
   display: flex;
@@ -433,8 +431,8 @@
 }
 @media (max-width: 760px) {
   .clan-dialog {
-    border-width: 18px;
-    border-image-width: 74px 26px 22px;
+    border-width: 1px;
+    padding: 10px;
   }
   .clan-heading {
     padding: 0 2px;

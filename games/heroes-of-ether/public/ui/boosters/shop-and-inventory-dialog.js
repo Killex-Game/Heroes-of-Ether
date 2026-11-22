@@ -537,7 +537,7 @@
         this.slots = [...profile.quickSlots];
         this.saveSlots();
       }
-      // На арене обновляем данные и HUD, а скрытые витрины — при возвращении.
+      // На арене обновляем данные и HUD, а скрытые витрины - при возвращении.
       if (document.body.dataset.screen !== "arena") this.refreshLobby();
       else document.dispatchEvent(new CustomEvent("killex:arena-profile", { detail: profile }));
       this.updateQuick();
@@ -702,7 +702,6 @@
                 "booster-expiry",
                 "До " +
                   new Date(deadline).toLocaleString("ru-RU", {
-                    timeZone: "Europe/Moscow",
                     day: "2-digit",
                     month: "2-digit",
                     year: "numeric",
@@ -759,7 +758,7 @@
           const rules = window.KillexAlchemyRules, id = rules.get(item.id).id;
           const queue = [...rules.equipped(this.profile.alchemy)], index = queue.indexOf(id);
           action = make("div", "potion-order-controls");
-          const choose = button("booster-action sf-button", index < 0 ? "В очередь Z" : `Z: ${index + 1} · Убрать`,
+          const choose = button("booster-action sf-button", index < 0 ? "В очередь Z" : `Z: ${index + 1}, Убрать`,
             () => this.savePotionQueue(index < 0 ? [...queue, id] : queue.filter(key => key !== id)));
           choose.disabled = this.purchasesBlocked() || !!this.potionSaving || (index < 0 && queue.length >= rules.MAX_ACTIVE);
           action.append(choose);
@@ -1092,7 +1091,7 @@
       this.updatePotion(me);
       const budget =
         me && performance.now() < this.budgetUntil
-          ? (this.potionButton.hidden ? `До ${me.boosterLimit} применений каждого слота` : `Слоты: до ${me.boosterLimit} раз · Z: до 3 разных зелий`)
+          ? (this.potionButton.hidden ? `До ${me.boosterLimit} применений каждого слота` : `Слоты: до ${me.boosterLimit} раз, Z: до 3 разных зелий`)
           : "";
       if (this.budget.textContent !== budget) this.budget.textContent = budget;
       this.slotButtons.forEach((control, i) => {
