@@ -235,7 +235,7 @@ class MongoState {
       await session.endSession();
     }
   }
-  async read({ snapshot = false } = {}) {
+  async read({ snapshot = false, localSnapshot = null } = {}) {
     // All state writes atomically advance the manifest generation. Majority
     // reads in one causal session, fenced by identical manifests before/after,
     // are accepted only if no writer changed the snapshot during the cursor.
@@ -254,11 +254,23 @@ class MongoState {
       await this.reader.connect();
       manifest = await this.readMeta.findOne({ _id: "state" }, options);
       if (!manifest) fail("MONGO_NOT_INITIALIZED");
-      // One completed cursor read, regardless of its internal wire batches.
-      await this.metrics.run('read',async()=>{
-        for await (const document of this.readState.find({}, { ...options, batchSize: 8 }))
-          documents.push(document);
-      });
+      // A recovered, checksum-verified local journal can already contain the
+      // exact cloud version. Reuse those bytes only under the same generation
+      // fence; unpack below still validates every document and the whole world.
+      // Explicit online exports always read every cloud document independently.
+      const matchingLocal = !snapshot && localSnapshot?.docs instanceof Map &&
+        manifest.sourceId === this.config?.sourceId &&
+        ['revision', 'digest', 'worldHash', 'chatRevision', 'chatHash', 'chatFormat', 'documentFormat']
+          .every(key => localSnapshot[key] === manifest[key]);
+      if (matchingLocal) {
+        for (const document of localSnapshot.docs.values()) documents.push(document);
+      } else {
+        // One completed cursor read, regardless of its internal wire batches.
+        await this.metrics.run('read',async()=>{
+          for await (const document of this.readState.find({}, { ...options, batchSize: 8 }))
+            documents.push(document);
+        });
+      }
       const after = await this.readMeta.findOne({ _id: 'state' }, options);
       if (!isDeepStrictEqual(manifest, after)) fail('MONGO_CONCURRENT_READ');
     } catch (error) {
@@ -299,7 +311,7 @@ class MongoState {
     return verified;
   }
   async acquire(local) {
-    const remote = await this.read();
+    const remote = await this.read({ localSnapshot: local });
     assertCompatible(remote.manifest, local, this.config.sourceId);
     const now = new Date();
     const result = await this.meta.updateOne(

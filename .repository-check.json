@@ -1,6 +1,6 @@
 {
   "games/heroes-of-ether/tests/unit/mongodb-state.test.js": {
-    "sha256": "41d9b55239b6a737000d2feb428836b653c76c2d162c202874e694a086559cce",
+    "sha256": "4e751c260d67203185b8ec29a276fc38734e2bba25b702570907533bdb992627",
     "reason": "Reviewed safeError unit test: dummy connection URI at host, no real credentials."
   }
 }

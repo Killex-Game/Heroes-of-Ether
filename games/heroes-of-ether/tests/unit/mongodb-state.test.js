@@ -93,6 +93,42 @@ test('online export pins a snapshot session and still rejects inconsistent or ex
   moved=true;await assert.rejects(MongoState.prototype.read.call(state,{snapshot:true}),{code:'MONGO_CONCURRENT_READ'});
   moved=false;expired=true;await assert.rejects(MongoState.prototype.read.call(state,{snapshot:true}),{code:239});assert.equal(closed,3);
 });
+
+test('cold reads reuse only an exact local snapshot; online exports remain independent', async()=>{
+  const {MongoState}=require('../../src/server/persistence/mongodb-state');
+  const packed=pack(world()),manifest={...packed,docs:undefined,sourceId:'source',version:1,generation:12};
+  let cursors=0,metaReads=0,moved=false,closed=0;
+  const state={config:{sourceId:'source'},metrics:require('../../src/server/persistence/mongodb-metrics').observeMongo(),
+    reader:{connect:async()=>{},startSession:()=>{metaReads=0;return {endSession:async()=>{}};},close:async()=>closed++},
+    readMeta:{findOne:async()=>++metaReads===2&&moved?{...manifest,generation:13}:manifest},
+    readState:{find:()=>{cursors++;return {async *[Symbol.asyncIterator](){yield* packed.docs.values();}};}}};
+  assert.deepEqual((await MongoState.prototype.read.call(state,{localSnapshot:packed})).world,world());
+  assert.equal(cursors,0);assert.equal(metaReads,2);
+  for(const key of ['revision','digest','worldHash','chatRevision','chatHash','chatFormat','documentFormat']){
+    const before=cursors;
+    await MongoState.prototype.read.call(state,{localSnapshot:{...packed,[key]:'different'}});
+    assert.equal(cursors,before+1,key+' must trigger a full read');
+  }
+  state.config.sourceId='other';await MongoState.prototype.read.call(state,{localSnapshot:packed});assert.equal(cursors,8);
+  state.config.sourceId='source';await MongoState.prototype.read.call(state,{snapshot:true,localSnapshot:packed});assert.equal(cursors,9);
+  moved=true;await assert.rejects(MongoState.prototype.read.call(state,{localSnapshot:packed}),{code:'MONGO_CONCURRENT_READ'});
+  moved=false;
+  const corrupted=structuredClone(packed);corrupted.docs.values().next().value.value.wallet.coins++;
+  await assert.rejects(MongoState.prototype.read.call(state,{localSnapshot:corrupted}),{code:'MONGO_CHECKSUM_FAILED'});
+  assert.equal(cursors,9);assert.equal(closed,12);
+});
+
+test('acquire passes the local snapshot but still checks source and exact generation lease CAS', async()=>{
+  const {MongoState}=require('../../src/server/persistence/mongodb-state');
+  const local=pack(world()),manifest={...local,docs:undefined,sourceId:'source',version:1,generation:12};
+  let writes=0,matchedCount=1;
+  const state={config:{sourceId:'source'},writer:'writer',read:async options=>{
+    assert.strictEqual(options.localSnapshot,local);return {snapshot:local,manifest};
+  },meta:{updateOne:async(query,update)=>{writes++;assert.equal(query.sourceId,'source');assert.equal(query.generation,12);assert.equal(update.$set.writer,'writer');assert(query.$or.some(row=>row.writer==='writer'));return {matchedCount};}}};
+  assert.deepEqual(await MongoState.prototype.acquire.call(state,local),{revision:local.revision,generation:12});
+  matchedCount=0;await assert.rejects(MongoState.prototype.acquire.call(state,local),{code:'MONGO_WRITER_BUSY'});
+  state.config.sourceId='other';await assert.rejects(MongoState.prototype.acquire.call(state,local),{code:'MONGO_SOURCE_MISMATCH'});assert.equal(writes,2);
+});
 test("Wallet delta does not resend archives; removals and unsafe keys are retained", () => {
   const original = world(),
     next = structuredClone(original);
