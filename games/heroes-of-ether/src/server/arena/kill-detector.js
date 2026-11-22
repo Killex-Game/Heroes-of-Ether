@@ -75,6 +75,7 @@ class KillDetector {
 }
 function validate(c) {
   if(c===undefined)return;
+  if(c?.reason==='owner-reported-automation')return require('./kill-owner-evidence').validate(c);
   if(c?.reason==='gift-dispatch-pattern')return require('./kill-gift-evidence').validate(c);
   if(!c||c.version!==1||typeof c.id!=='string'||!/^[a-f0-9-]{36}$/.test(c.id)||!['new','confirmed','dismissed'].includes(c.status)||
     !Number.isSafeInteger(c.createdAt)||c.createdAt<0||!['repeated-mixed-bursts','reviewed-model-anomaly'].includes(c.reason)||

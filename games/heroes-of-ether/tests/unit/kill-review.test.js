@@ -8,6 +8,7 @@ const {OwnerService}=require('../../src/server/admin/owner-service');
 const {OwnerAccess}=require('../../src/server/admin/owner-access');
 const model=require('../../src/server/arena/kill-model');
 const evidence=()=>({version:1,features:[.8,.9,.6,.8,.9],windows:[0,15000,30000].map(start=>({start,end:start+15000,count:300,kinds:3,rate:20,shortFraction:.9,maxBurst:18})),modelReady:false,modelScore:null,reason:'repeated-mixed-bursts'});
+const ownerEvidence=at=>({sourceSha256:'a'.repeat(64),analysisSha256:'b'.repeat(64),summary:'Владелец подтвердил автоматизацию. Серия проверена по журналу.',observations:[{kind:'clan-deposit',start:at-20000,end:at-1000,count:50,medianIntervalMs:373}]});
 async function fixture(t){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'kill-review-')),file=path.join(dir,'profiles.json'),at=Date.UTC(2026,10,21,10);
  const profiles=new ProfileStore({filePath:file,journal:true,incrementalSettlement:true,now:()=>at});const a=profiles.open(),b=profiles.open();
@@ -18,6 +19,37 @@ async function fixture(t){
  const command=verdict=>({action:'killReview',targetId:target.id,requestId:randomUUID(),revision:profiles.byId(target.id).revision,moderationRevision:profiles.byId(target.id).moderation?.version||0,caseId:profiles.byId(target.id).kill.id,verdict,reason:'Проверено по записи и серверным действиям'});
  return {profiles,kill,service,owner,target,command,file,at};
 }
+test('owner report is visible, durable, audited and idempotent without a ban or fabricated model features',async t=>{
+ const f=await fixture(t),before=structuredClone(f.profiles.byId(f.target.id));
+ const cmd={action:'killReport',targetId:f.target.id,requestId:randomUUID(),revision:before.revision,moderationRevision:0,reason:'Подтверждено владельцем',evidence:ownerEvidence(f.at)};
+ const result=f.service.apply(f.owner,cmd),p=f.profiles.byId(f.target.id);
+ assert.equal(result.duplicate,false);validate(p.kill);assert.equal(p.kill.ownerEvidence.reportedBy,f.owner.id);
+ assert.equal(p.kill.ownerEvidence.label,'automation-confirmed-by-owner');assert.equal(p.kill.status,'new');assert.equal(p.kill.features,null);
+ assert.deepEqual({...p,kill:undefined,revision:before.revision},{...before,kill:undefined});
+ assert.equal(f.service.players('',1,{view:'kill'}).players[0].kill.ownerEvidence.domain,'lobby-repeat-v1');
+ assert.deepEqual(Object.values(recover(f.file).data.profiles).find(x=>x.id===p.id).kill,p.kill);
+ assert(f.service.apply(f.owner,cmd).duplicate);assert.equal(f.profiles.data.administration.audit.length,1);
+ assert.throws(()=>f.service.apply(f.owner,{...cmd,requestId:randomUUID()}),/уже есть открытая/);
+ assert.throws(()=>f.service.apply(f.owner,{...cmd,evidence:{...cmd.evidence,summary:'Другая версия'}}),/уже использован/);
+ f.service.apply(f.owner,f.command('dismissed'));assert(!f.profiles.byId(p.id).moderation.ban);
+ assert.equal(model.train(f.profiles.data.administration.audit).positive,0);
+ assert.equal(model.train([{action:'killReview',targetId:p.id,after:{case:{...p.kill,status:'confirmed',features:[1,1,1,1,1]}}}]).positive,0);
+});
+test('owner report rejects a moderator, invalid evidence, stale version, bots and failed persistence without publishing',async t=>{
+ const f=await fixture(t),before=f.profiles.data,cmd={action:'killReport',targetId:f.target.id,requestId:randomUUID(),revision:f.target.revision,moderationRevision:0,reason:'Подтверждено владельцем',evidence:ownerEvidence(f.at)};
+ const originalManage=f.service.access.canManagePlayers;f.service.access.canManagePlayers=()=>true;
+ assert.throws(()=>f.service.apply(f.target,cmd),/только владелец/);f.service.access.canManagePlayers=originalManage;
+ assert.throws(()=>f.service.apply(f.owner,{...cmd,moderationRevision:1}),/изменились/);
+ assert.throws(()=>f.service.apply(f.owner,{...cmd,evidence:{...cmd.evidence,observations:[{...cmd.evidence.observations[0],end:f.at+1000}]}}),/будущем/);
+ assert.throws(()=>f.service.apply(f.owner,{...cmd,evidence:{...cmd.evidence,observations:Array(6).fill(cmd.evidence.observations[0])}}),/Некорректные/);
+ assert.throws(()=>f.service.apply(f.owner,{...cmd,targetId:f.owner.id}),/обычного аккаунта/);
+ const originalById=f.profiles.byId.bind(f.profiles);f.profiles.byId=id=>id===f.target.id?{...originalById(id),testBot:true}:originalById(id);
+ assert.throws(()=>f.service.apply(f.owner,cmd),/обычного аккаунта/);f.profiles.byId=originalById;
+ const commit=f.profiles.journal.commit;f.profiles.journal.commit=()=>{throw Error('disk failed');};
+ assert.throws(()=>f.service.apply(f.owner,cmd),/disk failed/);assert.strictEqual(f.profiles.data,before);
+ assert(!f.profiles.byId(f.target.id).kill);f.profiles.journal.commit=commit;
+ f.service.apply(f.owner,cmd);assert.equal(f.service.players('',1,{view:'kill'}).total,1);
+});
 test('suspicion is durable, bounded, deduplicated and never bans; manual dismissal is audited and repeat-safe',async t=>{
  const f=await fixture(t),before=structuredClone(f.profiles.byId(f.target.id));
  assert(await f.kill.report(f.target.id,evidence()));assert.equal(await f.kill.report(f.target.id,evidence()),false);

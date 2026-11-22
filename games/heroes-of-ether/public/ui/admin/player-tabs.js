@@ -102,6 +102,12 @@
       row.append(button(p.name,()=>this.selectPlayer(p.id)),el('strong',c.status==='new'?'На проверке':c.status==='confirmed'?'Скрипт подтверждён':'Подозрение отклонено'),el('time',stamp(c.createdAt)));
       const details=el('div',undefined,'player-violation-summary');
       details.append(el('span','ID игрока: '+p.id));
+      if(c.reason==='owner-reported-automation'){
+        const e=c.ownerEvidence, names={'clan-deposit':'Взносы в клан','roulette':'Запуски рулетки','booster-purchase':'Покупки бустеров','gift-send':'Отправки подарков'};
+        details.append(el('strong','Подтверждено владельцем'),el('span',e.summary));
+        for(const o of e.observations)details.append(el('span',names[o.kind]+': '+o.count+', '+stamp(o.start)+' по '+stamp(o.end)+', медианный интервал '+o.medianIntervalMs+' мс'));
+        details.append(el('span','Ручная отметка сохранена для Kill. Это отдельный пример поведения в лобби, он не обучает модель нажатий на бустеры. Блокировка оформляется отдельным решением.'),el('span','Контрольная сумма источника: '+e.sourceSha256));
+      }
       if(c.reason==='gift-dispatch-pattern'){
         const g=c.giftEvidence;
         details.append(el('strong','Ночная рассылка подарков'),
@@ -113,7 +119,7 @@
           el('span','Контрольная сумма источника: '+g.sourceSha256));
       }
       for(const w of c.windows)details.append(el('span',`${Math.round((w.end-w.start)/1000)} с: ${w.count} команд, ${w.kinds} видов бустеров, ${w.rate}/с; короткие интервалы ${Math.round(w.shortFraction*100)}%.`));
-      if(c.reason!=='gift-dispatch-pattern')details.append(el('span',c.modelReady?'Сигнал локальной модели и серверной телеметрии. Оценка не является доказательством.':'Сбор обучающих примеров. Локальная модель ещё не обучена.'));
+      if(!['gift-dispatch-pattern','owner-reported-automation'].includes(c.reason))details.append(el('span',c.modelReady?'Сигнал локальной модели и серверной телеметрии. Оценка не является доказательством.':'Сбор обучающих примеров. Локальная модель ещё не обучена.'));
       if(c.status!=='new'){details.append(el('p',c.reviewReason));row.append(details);return row;}
       const reason=el('textarea');reason.maxLength=500;reason.rows=2;reason.placeholder='Основание решения: что проверено';reason.setAttribute('aria-label','Основание решения Kill');
       const result=el('p');result.setAttribute('role','status');let pending=null,busy=false;

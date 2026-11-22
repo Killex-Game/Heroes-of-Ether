@@ -27,6 +27,7 @@ const labels = {
   account: "Статус аккаунта",
   inventory: "Правка бустеров",
   killReview: "Проверка Kill",
+  killReport: "Ручная отметка Kill",
   avatarGift: "Подарок аватара",
 };
 class OwnerService {
@@ -122,10 +123,14 @@ class OwnerService {
       if (!identity.ownerGiftSkins.some(s => s.id === input.skinId)) fail("Выбери подарочный аватар.");
       command.skinId = input.skinId;
     }
-    if (["ban", "unban", "killReview"].includes(action)) {
+    if (["ban", "unban", "killReview", "killReport"].includes(action)) {
       if (!Number.isSafeInteger(input.moderationRevision) || input.moderationRevision < 0)
         fail("Обнови сведения о блокировке.");
       command.moderationRevision = input.moderationRevision;
+    }
+    if (action === 'killReport') {
+      try { command.evidence = require('../arena/kill-owner-evidence').normalize(input.evidence); }
+      catch (error) { fail(error.message); }
     }
     if (action === 'killReview') {
       if (!['confirmed','dismissed'].includes(input.verdict) || typeof input.caseId !== 'string' || !/^[a-f0-9-]{36}$/.test(input.caseId)) fail('Выбери результат проверки Kill.');
@@ -197,6 +202,8 @@ class OwnerService {
     if (!this.access.canManagePlayers(actor))
       throw new BoosterError("Нет права менять данные игроков.", 403);
     const command = this.normalize(input);
+    if (command.action === 'killReport' && !this.access.isOwner(actor))
+      throw new BoosterError('Подтверждение владельца может внести только владелец.', 403);
     if (command.action === "avatarGift" && !this.access.isOwner(actor))
       throw new BoosterError("Подарочные аватары выдаёт только владелец.", 403);
     const signature = createHash("sha256").update(JSON.stringify(command)).digest("hex");
@@ -212,9 +219,9 @@ class OwnerService {
       throw new BoosterError("Аккаунт владельца изменяет только владелец.", 403);
     if ((command.action === "ban" || command.action === 'killReview' && command.verdict === 'confirmed') && this.access.isOwner(current))
       throw new BoosterError("Единственного владельца нельзя заблокировать.", 403);
-    if (!["ban", "unban", "killReview"].includes(command.action) && this.inArena(current.id))
+    if (!["ban", "unban", "killReview", "killReport"].includes(command.action) && this.inArena(current.id))
       throw new BoosterError("Для правки данных игрок должен выйти с арены.", 409);
-    const stale = ["ban", "unban", "killReview"].includes(command.action)
+    const stale = ["ban", "unban", "killReview", "killReport"].includes(command.action)
       ? (current.moderation?.version || 0) !== command.moderationRevision
       : current.revision !== command.revision;
     if (stale)
@@ -224,6 +231,10 @@ class OwnerService {
       );
     if (command.action === 'killReview' && (current.kill?.id !== command.caseId || current.kill.status !== 'new'))
       throw new BoosterError('Эта проверка уже обработана. Обнови список.',409);
+    if (command.action === 'killReport' && (current.testBot || this.access.isOwner(current)))
+      throw new BoosterError('Ручная отметка требует обычного аккаунта игрока.', 400);
+    if (command.action === 'killReport' && current.kill?.status === 'new')
+      throw new BoosterError('У игрока уже есть открытая проверка Kill. Материалы сохранены.', 409);
     const committed = this.profiles.data, key = profileIndex.profileKeys(committed.profiles).get(current.id);
     const next = { ...committed, profiles: copyRecord(committed.profiles) },
       p = next.profiles[key] = copyProfile(current),
@@ -236,6 +247,13 @@ class OwnerService {
     };
     let before, after;
     switch (command.action) {
+      case 'killReport': {
+        before = { case: p.kill || null };
+        try { p.kill = require('../arena/kill-owner-evidence').create(command.evidence, actor.id, at, randomUUID()); }
+        catch (error) { fail(error.message); }
+        after = { case: p.kill };
+        break;
+      }
       case "avatarGift": {
         if (p.grantedSkins?.includes(command.skinId))
           throw new BoosterError("Этот аватар уже подарен игроку.", 409);
