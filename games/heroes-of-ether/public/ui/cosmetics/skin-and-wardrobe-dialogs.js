@@ -365,7 +365,6 @@
         showcase.dataset.setId = set.id;
         showcase.append(el("h4", "", set.name));
         const grid = el("div", "account-avatar-grid");
-        grid.style.setProperty("--avatar-count", set.skins.length);
         for (const skin of set.skins) {
           const control = button("account-avatar", "", () => {
             document.dispatchEvent(new CustomEvent("killex:choose-skin", { detail: skin.id }));

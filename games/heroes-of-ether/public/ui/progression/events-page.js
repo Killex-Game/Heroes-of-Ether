@@ -274,22 +274,13 @@
         ringWidth = Math.min(250, Math.floor((width - 72) / 3)),
         ringHeight = Math.min(218, Math.floor((height - 32) / 3.5)),
         fullRing = ringWidth >= 190 && ringHeight >= 158,
-        horizontal = width >= 480,
-        pageSize = fullRing ? 7 : 2,
-        pageCount = Math.ceil(7 / pageSize),
+        pageSize = fullRing ? 6 : 2,
+        pageCount = Math.ceil(6 / pageSize),
         gap = 18,
-        cardWidth = fullRing
-          ? ringWidth
-          : horizontal
-            ? Math.min(240, Math.floor((width - gap * 2) / 3))
-            : Math.min(280, width),
-        cardHeight = fullRing
-          ? ringHeight
-          : horizontal
-            ? Math.min(180, height - 50)
-            : Math.min(180, Math.floor((height - 50 - gap * 2) / 3)),
-        mapWidth = fullRing ? width : horizontal ? cardWidth * 3 + gap * 2 : cardWidth,
-        mapHeight = fullRing ? height : horizontal ? cardHeight : cardHeight * 3 + gap * 2;
+        cardWidth = fullRing ? ringWidth : Math.min(240, Math.floor((width - gap) / 2)),
+        cardHeight = fullRing ? ringHeight : Math.min(180, Math.floor((height - 50 - gap) / 2)),
+        mapWidth = fullRing ? width : cardWidth * 2 + gap,
+        mapHeight = fullRing ? height : cardHeight * 2 + gap;
       this.page = Math.max(0, Math.min(this.page, pageCount - 1));
       this.pages.hidden = fullRing;
       window.KillexControls.state(this.previous, this.page === 0);
@@ -313,21 +304,21 @@
           top: y - cardHeight / 2 + "px",
         });
       };
-      place(this.cards[0], cx, cy);
+      // The season is an additional central card, alongside Lucky Week.
+      const centerY = fullRing ? cy : cardHeight / 2;
+      place(this.cards[0], fullRing ? cx : cardWidth * 1.5 + gap, centerY);
+      place(this.cards[4], fullRing ? cx - cardWidth - gap : cardWidth / 2, centerY);
       const outer = [];
-      [this.cards[4],...this.cards.slice(1).filter(card=>card!==this.cards[4])].forEach((card, index) => {
+      this.cards.slice(1).filter(card => card !== this.cards[4]).forEach((card, index) => {
         const local = index - this.page * pageSize;
         card.hidden = local < 0 || local >= pageSize;
         if (card.hidden) return;
         if (fullRing) {
-          const angle = -Math.PI + (index * Math.PI * 2) / 7;
+          const angle = -Math.PI + ((index + 1) * Math.PI * 2) / 7;
           place(card, cx + rx * Math.cos(angle), cy + ry * Math.sin(angle));
-        } else
-          place(
-            card,
-            horizontal ? cx + (local ? 1 : -1) * (cardWidth + gap) : cx,
-            horizontal ? cy : cy + (local ? 1 : -1) * (cardHeight + gap),
-          );
+        } else {
+          place(card, cardWidth / 2 + local * (cardWidth + gap), cardHeight * 1.5 + gap);
+        }
         outer.push(card);
       });
       this.drawLines(outer, fullRing ? { cx, cy, rx, ry } : null);

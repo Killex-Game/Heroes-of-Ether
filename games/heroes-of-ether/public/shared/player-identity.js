@@ -8,21 +8,81 @@
       ? require("./skin-collection-preview")
       : root.KillexSkinCollections;
   const portraitFits = Object.freeze({
-    "army-commander": {"scale":1.0632,"x":0,"y":-0.0132},
-    "army-sapper": {"scale":1.0121,"x":0,"y":0.0138},
-    "army-scout": {"scale":0.9892,"x":0,"y":0.022},
-    "army-scout-falcon": {"scale":1.0878,"x":0.0009,"y":-0.0271},
-    "army-service-dog": {"scale":1.1035,"x":0.0202,"y":0.0284},
-    "hospital-chief-doctor": {"scale":1.0088,"x":0.0008,"y":0.0122},
-    "hospital-helper-cat": {"scale":1.044,"x":-0.0075,"y":-0.0053},
-    "hospital-nurse": {"scale":1.0432,"x":0.0042,"y":-0.0049},
-    "hospital-paramedic": {"scale":0.9973,"x":0,"y":0.018},
-    "hospital-surgeon": {"scale":1.0432,"x":0.0008,"y":-0.0049},
-    "norse-freyja": {"scale":1.0309,"x":-0.0008,"y":0.0012},
-    "norse-hugin": {"scale":1.0858,"x":-0.0061,"y":-0.0175},
-    "norse-loki": {"scale":1.0022,"x":-0.0008,"y":0.0155},
-    "norse-odin": {"scale":0.9924,"x":0,"y":0.0204},
-    "norse-thor": {"scale":1.0088,"x":0.0024,"y":0.0138},
+  "army-commander": {
+    "scale": 1.05,
+    "x": 0,
+    "y": -0.017
+  },
+  "army-sapper": {
+    "scale": 1.04,
+    "x": 0.0041,
+    "y": -0.0079
+  },
+  "army-scout": {
+    "scale": 1.01,
+    "x": -0.0099,
+    "y": 0.003
+  },
+  "army-scout-falcon": {
+    "scale": 1.05,
+    "x": 0.0164,
+    "y": -0.017
+  },
+  "army-service-dog": {
+    "scale": 1.09,
+    "x": 0.0085,
+    "y": 0.0269
+  },
+  "hospital-chief-doctor": {
+    "scale": 1.03,
+    "x": 0.004,
+    "y": -0.007
+  },
+  "hospital-helper-cat": {
+    "scale": 1.03,
+    "x": -0.004,
+    "y": -0.007
+  },
+  "hospital-nurse": {
+    "scale": 1.05,
+    "x": 0.0123,
+    "y": -0.017
+  },
+  "hospital-paramedic": {
+    "scale": 1.02,
+    "x": -0.002,
+    "y": -0.002
+  },
+  "hospital-surgeon": {
+    "scale": 1.05,
+    "x": -0.0021,
+    "y": -0.017
+  },
+  "norse-freyja": {
+    "scale": 1.05,
+    "x": 0.0021,
+    "y": -0.017
+  },
+  "norse-hugin": {
+    "scale": 1.05,
+    "x": -0.0062,
+    "y": -0.0088
+  },
+  "norse-loki": {
+    "scale": 1.02,
+    "x": -0.01,
+    "y": -0.002
+  },
+  "norse-odin": {
+    "scale": 1.01,
+    "x": 0.0059,
+    "y": 0.003
+  },
+  "norse-thor": {
+    "scale": 1.03,
+    "x": -0.0161,
+    "y": -0.007
+  },
   "gift-winged-guardian": {
     "scale": 1.17,
     "x": 0,
@@ -73,29 +133,41 @@
     "x": 0.0029,
     "y": 0.03
   },
-  "vip-1": {"scale":0.9594,"x":0.0028,"y":0.0282},
-  "vip-2": {
-    "scale": 0.9747,
-    "x": 0.0057,
-    "y": 0.0281
+  "vip-1": {
+    "scale": 1.01,
+    "x": 0.002,
+    "y": 0.003
   },
-  "vip-3": {"scale":0.9927,"x":0.0019,"y":0.0213},
+  "vip-2": {
+    "scale": 1.02,
+    "x": 0.002,
+    "y": 0.006
+  },
+  "vip-3": {
+    "scale": 1.04,
+    "x": 0.0081,
+    "y": 0.0002
+  },
   "vip-4": {
-    "scale": 0.9651,
-    "x": -0.0009,
-    "y": 0.0272
+    "scale": 1.01,
+    "x": 0.0138,
+    "y": 0.003
   },
   "vip-5": {
-    "scale": 1.046,
-    "x": 0.0031,
-    "y": 0.03
+    "scale": 1.06,
+    "x": 0.0166,
+    "y": 0.0235
   },
   "premium-1": {
     "scale": 0.967,
     "x": 0.0009,
     "y": 0.0301
   },
-  "premium-2": {"scale":0.9575,"x":0.0009,"y":0.0291},
+  "premium-2": {
+    "scale": 0.9575,
+    "x": 0.0009,
+    "y": 0.0291
+  },
   "premium-3": {
     "scale": 0.9846,
     "x": 0.0048,
@@ -187,254 +259,254 @@
     "y": 0.0291
   },
   "workshop-raccoon": {
-    "scale": 1.005,
-    "x": 0.001,
-    "y": 0.0055
+    "scale": 1,
+    "x": 0,
+    "y": 0.008
   },
   "workshop-hedgehog": {
-    "scale": 0.9906,
-    "x": -0.0029,
-    "y": 0.0204
+    "scale": 1.02,
+    "x": 0,
+    "y": -0.002
   },
   "workshop-beaver": {
-    "scale": 1.0327,
-    "x": -0.005,
-    "y": -0.0083
+    "scale": 1.02,
+    "x": -0.002,
+    "y": -0.002
   },
   "workshop-mole": {
-    "scale": 1.0505,
-    "x": -0.0072,
-    "y": -0.0111
+    "scale": 1.02,
+    "x": 0.0179,
+    "y": 0.002
   },
   "workshop-robin": {
-    "scale": 1.0176,
-    "x": 0,
-    "y": -0.0008
+    "scale": 0.98,
+    "x": 0.088,
+    "y": 0.0295
   },
   "forest-fox": {
-    "scale": 0.9651,
-    "x": -0.0028,
-    "y": 0.0253
+    "scale": 1.05,
+    "x": -0.0082,
+    "y": -0.017
   },
   "forest-owl": {
-    "scale": 0.9826,
-    "x": 0.0029,
-    "y": 0.0243
+    "scale": 1.03,
+    "x": 0.002,
+    "y": -0.007
   },
   "forest-badger": {
-    "scale": 0.9886,
-    "x": -0.0039,
-    "y": 0.0136
+    "scale": 1.01,
+    "x": 0.1006,
+    "y": 0.003
   },
   "forest-deer": {
-    "scale": 0.9613,
-    "x": -0.0028,
-    "y": 0.0272
+    "scale": 1.02,
+    "x": 0.0418,
+    "y": -0.002
   },
   "forest-squirrel": {
-    "scale": 0.9787,
-    "x": 0.0153,
-    "y": 0.0186
+    "scale": 1.02,
+    "x": 0.0139,
+    "y": -0.002
   },
   "sea-seal": {
-    "scale": 1.0305,
-    "x": 0.001,
-    "y": 0.0028
+    "scale": 1.01,
+    "x": -0.0138,
+    "y": 0.003
   },
   "sea-octopus": {
-    "scale": 0.9886,
-    "x": 0.001,
-    "y": 0.0136
+    "scale": 1.02,
+    "x": 0.008,
+    "y": 0.002
   },
   "sea-seahorse": {
-    "scale": 0.9826,
-    "x": -0.0115,
-    "y": 0.0166
+    "scale": 1.03,
+    "x": 0.0101,
+    "y": -0.007
   },
   "sea-turtle": {
-    "scale": 0.9651,
-    "x": 0.0028,
-    "y": 0.0291
+    "scale": 1.1,
+    "x": 0.0344,
+    "y": 0.0439
   },
   "sea-otter": {
-    "scale": 0.9846,
-    "x": -0.001,
-    "y": 0.0291
+    "scale": 1.04,
+    "x": 0.0569,
+    "y": 0.0124
   },
   "desert-fennec": {
-    "scale": 1.005,
-    "x": 0.0079,
-    "y": 0.0192
+    "scale": 1.1,
+    "x": 0.0107,
+    "y": 0.0525
   },
   "desert-cat": {
-    "scale": 0.9846,
-    "x": -0.0019,
-    "y": 0.0291
+    "scale": 1.03,
+    "x": 0.0764,
+    "y": -0.007
   },
   "desert-gazelle": {
-    "scale": 1.0029,
-    "x": 0.0137,
-    "y": 0.0104
+    "scale": 1.04,
+    "x": 0.0244,
+    "y": -0.012
   },
   "desert-beetle": {
-    "scale": 1.0714,
-    "x": 0.0031,
-    "y": -0.0171
+    "scale": 1.04,
+    "x": 0,
+    "y": -0.0079
   },
   "desert-jackal": {
-    "scale": 0.9575,
-    "x": 0.0019,
-    "y": 0.0291
+    "scale": 1.03,
+    "x": 0.0604,
+    "y": -0.007
   },
   "cloud-griffin": {
-    "scale": 0.9906,
-    "x": 0.001,
-    "y": 0.0146
+    "scale": 1.09,
+    "x": 0,
+    "y": 0.0269
   },
   "cloud-pegasus": {
-    "scale": 1.005,
-    "x": 0.001,
-    "y": 0.0173
+    "scale": 1.03,
+    "x": -0.006,
+    "y": -0.007
   },
   "cloud-ibex": {
-    "scale": 0.9747,
-    "x": 0.0019,
-    "y": 0.0243
+    "scale": 1.01,
+    "x": 0.0434,
+    "y": 0.003
   },
   "cloud-whale": {
-    "scale": 1.0371,
-    "x": 0.001,
-    "y": 0.0037
+    "scale": 1.13,
+    "x": 0.011,
+    "y": 0.1019
   },
   "cloud-lynx": {
-    "scale": 0.9651,
-    "x": 0,
-    "y": 0.0253
+    "scale": 1.01,
+    "x": -0.0039,
+    "y": 0.003
   },
   "twilight-moth": {
-    "scale": 1.007,
-    "x": 0.001,
-    "y": 0.0162
+    "scale": 1.12,
+    "x": 0.0131,
+    "y": 0.088
   },
   "twilight-frog": {
-    "scale": 0.9866,
-    "x": 0.001,
-    "y": 0.0262
+    "scale": 1.02,
+    "x": 0.002,
+    "y": 0.006
   },
   "twilight-gecko": {
-    "scale": 1.0438,
-    "x": 0.001,
-    "y": -0.0138
+    "scale": 1.02,
+    "x": 0.002,
+    "y": -0.002
   },
   "twilight-bat": {
-    "scale": 0.9747,
-    "x": 0.0048,
-    "y": 0.03
+    "scale": 1.1,
+    "x": 0.0107,
+    "y": 0.0568
   },
   "twilight-panda": {
-    "scale": 0.9826,
-    "x": 0.001,
-    "y": 0.0204
+    "scale": 1.01,
+    "x": 0.0059,
+    "y": 0.003
   },
   "snow-fox": {
-    "scale": 0.9886,
-    "x": 0,
-    "y": 0.0136
+    "scale": 1.02,
+    "x": 0.002,
+    "y": -0.002
   },
   "snow-hare": {
-    "scale": 0.967,
-    "x": 0.0094,
-    "y": 0.0244
+    "scale": 1.03,
+    "x": 0.002,
+    "y": -0.007
   },
   "snow-bear": {
-    "scale": 1.0371,
-    "x": 0.001,
-    "y": -0.0105
+    "scale": 1.05,
+    "x": -0.0021,
+    "y": -0.0129
   },
   "snow-walrus": {
-    "scale": 1.0461,
-    "x": 0.001,
-    "y": -0.0089
+    "scale": 1.01,
+    "x": -0.002,
+    "y": 0.0069
   },
   "snow-ermine": {
-    "scale": 1.0008,
-    "x": 0,
-    "y": 0.0154
+    "scale": 1.04,
+    "x": 0.0102,
+    "y": -0.0039
   },
   "flame-salamander": {
-    "scale": 1.0154,
-    "x": 0.0069,
-    "y": 0.0082
+    "scale": 1.02,
+    "x": -0.002,
+    "y": 0.002
   },
   "flame-ferret": {
-    "scale": 1.0349,
-    "x": 0.002,
-    "y": -0.0013
+    "scale": 1.05,
+    "x": 0.0082,
+    "y": -0.0088
   },
   "flame-ram": {
-    "scale": 1.0438,
-    "x": 0.001,
-    "y": -0.0138
+    "scale": 1.02,
+    "x": 0.008,
+    "y": -0.002
   },
   "flame-dragon": {
-    "scale": 1.0305,
-    "x": 0.002,
-    "y": 0.0089
-  },
-  "flame-marten": {
-    "scale": 0.9806,
-    "x": 0.0105,
-    "y": 0.0176
-  },
-  "grove-ent": {
-    "scale": 0.9967,
-    "x": -0.0039,
-    "y": 0.0115
-  },
-  "grove-dryad": {
-    "scale": 0.9826,
-    "x": 0,
-    "y": 0.0166
-  },
-  "grove-faun": {
-    "scale": 0.9886,
-    "x": -0.0039,
-    "y": 0.0136
-  },
-  "grove-spirit": {
-    "scale": 1.0393,
-    "x": 0,
-    "y": -0.0055
-  },
-  "grove-hedgehog": {
-    "scale": 0.9826,
-    "x": -0.0048,
-    "y": 0.0166
-  },
-  "stars-lynx": {
-    "scale": 0.9728,
-    "x": -0.0009,
-    "y": 0.0215
-  },
-  "stars-ram": {
-    "scale": 1.0438,
-    "x": 0.001,
-    "y": -0.0138
-  },
-  "stars-koi": {
-    "scale": 0.9728,
-    "x": 0,
-    "y": 0.0234
-  },
-  "stars-raven": {
-    "scale": 1.0154,
-    "x": 0.001,
+    "scale": 1.04,
+    "x": 0.0041,
     "y": 0.0042
   },
+  "flame-marten": {
+    "scale": 1.09,
+    "x": 0.0043,
+    "y": 0.0354
+  },
+  "grove-ent": {
+    "scale": 1.02,
+    "x": -0.002,
+    "y": -0.002
+  },
+  "grove-dryad": {
+    "scale": 1.04,
+    "x": 0,
+    "y": -0.012
+  },
+  "grove-faun": {
+    "scale": 1.04,
+    "x": -0.002,
+    "y": -0.012
+  },
+  "grove-spirit": {
+    "scale": 1.05,
+    "x": 0.0082,
+    "y": -0.017
+  },
+  "grove-hedgehog": {
+    "scale": 1.05,
+    "x": 0.0267,
+    "y": -0.0129
+  },
+  "stars-lynx": {
+    "scale": 1.06,
+    "x": 0,
+    "y": 0.0318
+  },
+  "stars-ram": {
+    "scale": 1.05,
+    "x": -0.0041,
+    "y": -0.0129
+  },
+  "stars-koi": {
+    "scale": 1.04,
+    "x": 0.0325,
+    "y": -0.012
+  },
+  "stars-raven": {
+    "scale": 1.06,
+    "x": 0.0124,
+    "y": -0.0054
+  },
   "stars-dolphin": {
-    "scale": 1.0483,
-    "x": 0.0092,
-    "y": -0.0018
+    "scale": 1.05,
+    "x": 0.0021,
+    "y": -0.0129
   }
 });
   // Единый актуальный каталог портретов для всех поверхностей.
@@ -444,7 +516,7 @@
       Object.fromEntries(
         [64, 128, 256, 512, 1024].map((size) => [
           size,
-          `assets/skins/${directory}/${size}/${skin.id}.webp?art=${["vip-1", "vip-3", "premium-2"].includes(skin.id) ? "20261122c" : "20261122b"}`,
+          `assets/skins/${directory}/${size}/${skin.id}.webp?art=${skin.tier === "vip" ? "20261122-canon16" : ["vip-1", "vip-3", "premium-2"].includes(skin.id) ? "20261122c" : "20261122b"}`,
         ]),
       ),
     );
@@ -528,7 +600,7 @@
           Object.fromEntries(
             [64, 128, 256, 512, 1024].map((size) => [
               size,
-              "assets/skins/collections-v1/" + size + "/" + m.id + ".webp?v=20261111-shop",
+              "assets/skins/collections-v1/" + size + "/" + m.id + ".webp?v=20261122-canon16",
             ]),
           ),
         );

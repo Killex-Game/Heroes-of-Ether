@@ -6,30 +6,30 @@
   const collections = [
     {"id":"army","name":"Защитники","currency":"coins","price":2500,"members":[{"id":"army-commander","name":"Командир"},{"id":"army-sapper","name":"Сапёр"},{"id":"army-scout","name":"Разведчица"},{"id":"army-scout-falcon","name":"Сокол-разведчик"},{"id":"army-service-dog","name":"Служебная овчарка"}]},
     {"id":"hospital","name":"Весёлая больница","currency":"crystals","price":250,"members":[{"id":"hospital-chief-doctor","name":"Главврач"},{"id":"hospital-helper-cat","name":"Кот-помощник"},{"id":"hospital-nurse","name":"Медсестра"},{"id":"hospital-paramedic","name":"Фельдшер"},{"id":"hospital-surgeon","name":"Хирург"}]},
-    {"id":"norse","name":"Скандинавия","currency":"bucks","price":200,"members":[{"id":"norse-freyja","name":"Фрейя"},{"id":"norse-hugin","name":"Хугин"},{"id":"norse-loki","name":"Локи"},{"id":"norse-odin","name":"Один"},{"id":"norse-thor","name":"Тор"}]},
+    {"id":"norse","name":"Скандинавия","currency":"bucks","price":200,"members":[{"id":"norse-freyja","name":"Фрейя"},{"id":"norse-hugin","name":"Хугин, ворон Одина"},{"id":"norse-loki","name":"Локи"},{"id":"norse-odin","name":"Один"},{"id":"norse-thor","name":"Тор"}]},
     {
       id: "forest",
       name: "Лесные тропы",
       members: [
         {
           id: "forest-fox",
-          name: "Лис-картограф",
+          name: "Лиса-проводница",
         },
         {
           id: "forest-owl",
-          name: "Сова-травница",
+          name: "Лесная сова",
         },
         {
           id: "forest-badger",
-          name: "Барсук-следопыт",
+          name: "Лесничий",
         },
         {
           id: "forest-deer",
-          name: "Олень-вестник",
+          name: "Хранительница рощи",
         },
         {
           id: "forest-squirrel",
-          name: "Белка-мастерица",
+          name: "Лесной картограф",
         },
       ],
       currency: "coins",
@@ -41,23 +41,23 @@
       members: [
         {
           id: "sea-seal",
-          name: "Тюлень-штурман",
+          name: "Морской штурман",
         },
         {
           id: "sea-octopus",
-          name: "Осьминог-алхимик",
+          name: "Морская алхимичка",
         },
         {
           id: "sea-seahorse",
-          name: "Морской конёк",
+          name: "Хранительница приливов",
         },
         {
           id: "sea-turtle",
-          name: "Черепаха-сказитель",
+          name: "Черепаха-летописец",
         },
         {
           id: "sea-otter",
-          name: "Выдра-жемчужница",
+          name: "Морская выдра",
         },
       ],
       currency: "coins",
@@ -69,23 +69,23 @@
       members: [
         {
           id: "cloud-griffin",
-          name: "Грифон-почтальон",
+          name: "Небесный грифон",
         },
         {
           id: "cloud-pegasus",
-          name: "Пегас рассвета",
+          name: "Небесная посланница",
         },
         {
           id: "cloud-ibex",
-          name: "Серна ветров",
+          name: "Проводник вершин",
         },
         {
           id: "cloud-whale",
-          name: "Небесный кит",
+          name: "Облачный кит",
         },
         {
           id: "cloud-lynx",
-          name: "Облачная рысь",
+          name: "Провидица облаков",
         },
       ],
       currency: "crystals",
@@ -97,23 +97,23 @@
       members: [
         {
           id: "snow-fox",
-          name: "Полярный лис",
+          name: "Снежная лисица",
         },
         {
           id: "snow-hare",
-          name: "Снежный заяц",
+          name: "Целительница снегов",
         },
         {
           id: "snow-bear",
-          name: "Медвежонок севера",
+          name: "Страж перевала",
         },
         {
           id: "snow-walrus",
-          name: "Морж-хранитель",
+          name: "Северный штурман",
         },
         {
           id: "snow-ermine",
-          name: "Горностай",
+          name: "Горностай-картограф",
         },
       ],
       currency: "crystals",
@@ -125,23 +125,23 @@
       members: [
         {
           id: "desert-fennec",
-          name: "Фенек-проводник",
+          name: "Фенек-путешественник",
         },
         {
           id: "desert-cat",
-          name: "Барханный кот",
+          name: "Караванщик",
         },
         {
           id: "desert-gazelle",
-          name: "Газель рассвета",
+          name: "Газель оазиса",
         },
         {
           id: "desert-beetle",
-          name: "Скарабей-хранитель",
+          name: "Хранительница скарабея",
         },
         {
           id: "desert-jackal",
-          name: "Шакал-искатель",
+          name: "Следопыт барханов",
         },
       ],
       currency: "coins",
@@ -153,23 +153,23 @@
       members: [
         {
           id: "workshop-raccoon",
-          name: "Енот-механик",
+          name: "Енот-мастер",
         },
         {
           id: "workshop-hedgehog",
-          name: "Ёж-часовщик",
+          name: "Часовщик",
         },
         {
           id: "workshop-beaver",
-          name: "Бобр-изобретатель",
+          name: "Мастер-плотник",
         },
         {
           id: "workshop-mole",
-          name: "Крот-ювелир",
+          name: "Ювелир",
         },
         {
           id: "workshop-robin",
-          name: "Малиновка-летописец",
+          name: "Белка-ремесленница",
         },
       ],
       currency: "coins",
@@ -181,23 +181,23 @@
       members: [
         {
           id: "twilight-moth",
-          name: "Лунная моль",
+          name: "Лунный мотылёк",
         },
         {
           id: "twilight-frog",
-          name: "Лягушонок-маг",
+          name: "Сумеречный чародей",
         },
         {
           id: "twilight-gecko",
-          name: "Геккон-светлячок",
+          name: "Сумеречный дозорный",
         },
         {
           id: "twilight-bat",
-          name: "Летучая мышь",
+          name: "Сумеречная летучая мышь",
         },
         {
           id: "twilight-panda",
-          name: "Красная панда",
+          name: "Сумеречная травница",
         },
       ],
       currency: "crystals",
@@ -209,23 +209,23 @@
       members: [
         {
           id: "flame-salamander",
-          name: "Саламандра",
+          name: "Заклинательница пламени",
         },
         {
           id: "flame-ferret",
-          name: "Огненный хорёк",
+          name: "Разведчик углей",
         },
         {
           id: "flame-ram",
-          name: "Баран искр",
+          name: "Мастер горна",
         },
         {
           id: "flame-dragon",
-          name: "Медный дракон",
+          name: "Огненный дракон",
         },
         {
           id: "flame-marten",
-          name: "Куница очага",
+          name: "Куница углей",
         },
       ],
       currency: "bucks",
@@ -237,23 +237,23 @@
       members: [
         {
           id: "grove-ent",
-          name: "Дубовичок",
+          name: "Хранитель дубравы",
         },
         {
           id: "grove-dryad",
-          name: "Цветочная дриада",
+          name: "Травница рощи",
         },
         {
           id: "grove-faun",
-          name: "Лесной фавн",
+          name: "Лесной следопыт",
         },
         {
           id: "grove-spirit",
-          name: "Грибной дух",
+          name: "Собирательница грибов",
         },
         {
           id: "grove-hedgehog",
-          name: "Вересковый ёж",
+          name: "Ёж-хранитель",
         },
       ],
       currency: "bucks",
@@ -269,19 +269,19 @@
         },
         {
           id: "stars-ram",
-          name: "Созвездие Овна",
+          name: "Звёздный мудрец",
         },
         {
           id: "stars-koi",
-          name: "Кометный карп",
+          name: "Звёздная астрологиня",
         },
         {
           id: "stars-raven",
-          name: "Ворон туманности",
+          name: "Звёздный ворон",
         },
         {
           id: "stars-dolphin",
-          name: "Лунный дельфин",
+          name: "Лунная навигаторша",
         },
       ],
       currency: "bucks",
