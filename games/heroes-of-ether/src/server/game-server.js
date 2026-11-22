@@ -200,6 +200,7 @@ function createGameServer({
         !group || groupForLevel(profile.level).id === group;
       if (id === "arena-1") {
         bots.isLevelEligible = eligible;
+        bots.cacheLevelEligibility = true;
         bots.roomBotLimit = band?.maxBots ?? 30;
         arena.maxParts = band?.maxParts ?? 16;
         return { id, arena, bots };
@@ -215,6 +216,7 @@ function createGameServer({
           ...testBots,
           isProfileAvailable: botAvailable,
           isLevelEligible: eligible,
+          cacheLevelEligibility: true,
           roomBotLimit: band?.maxBots ?? 30,
         }),
       };

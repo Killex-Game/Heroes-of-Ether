@@ -1677,7 +1677,7 @@
       scale = camera.scale;
     const ids = window.KillexEffects.active(p, elapsed);
     const x = (d.x - camera.x) * scale + width / 2;
-    const y = (d.y - camera.y) * scale + height / 2 + Math.max(2, Math.min(9, d.radius * scale * 0.06));
+    const y = (d.y - camera.y) * scale + height / 2 + d.radius * scale * 0.28;
     ctx.save();
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     ctx.textAlign = "center";
@@ -1743,7 +1743,7 @@
     if (player.id !== myId || !preferences.showMass) return;
     const scale = camera.scale,
       x = (displayed.x - camera.x) * scale + width / 2,
-      y = (displayed.y - camera.y) * scale + height / 2 + Math.max(2, Math.min(9, displayed.radius * scale * 0.06));
+      y = (displayed.y - camera.y) * scale + height / 2 + displayed.radius * scale * 0.28;
     ctx.save();
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     const nameSize = bodyNameLayout(player, displayed, x, scale).layout.size;

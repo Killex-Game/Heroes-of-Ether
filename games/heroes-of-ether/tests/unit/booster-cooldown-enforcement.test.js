@@ -14,7 +14,7 @@ test("Every consumable uses its own deadline in both simulation and HUD", () => 
     if (booster.id === "sponge") arena.splitPlayer(p, { spawnSerial: p.spawnSerial, sequence: 1 }, 3000);
     const command = { boosterId: booster.id, spawnSerial: p.spawnSerial, aimX: 3000, aimY: 3000 };
     const ms = booster.id === "easter_egg" ? 10000
-      : ["meat", "donut", "candy"].includes(booster.id) ? 200 : 500;
+      : ["meat", "donut", "candy"].includes(booster.id) ? 100 : 500;
     assert.equal(booster.cooldownMs, ms, booster.id);
     arena.prepareBooster(p.id, command, 5000)();
     assert.throws(() => arena.prepareBooster(p.id, command, 5000 + ms - 1), /мгновение/, booster.id);

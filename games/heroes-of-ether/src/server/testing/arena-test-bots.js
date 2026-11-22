@@ -208,6 +208,7 @@ class TestBots {
     random = Math.random,
     isProfileAvailable = () => true,
     isLevelEligible = () => true,
+    cacheLevelEligibility = false,
     roomBotLimit = MAX_ACTIVE_BOTS,
   }) {
     this.arena = arena;
@@ -218,6 +219,8 @@ class TestBots {
     this.random = random;
     this.isProfileAvailable = isProfileAvailable;
     this.isLevelEligible = isLevelEligible;
+    this.cacheLevelEligibility = cacheLevelEligibility;
+    this.rosterEligibility = new (require("./bot-roster-eligibility").BotRosterEligibility)();
     this.roomBotLimit = roomBotLimit;
     this.nextConfigAt = 0;
     this.nextThinkAt = 0;
@@ -300,11 +303,12 @@ class TestBots {
       (p) => !p.isTestBot && !p.isRemnant,
     ).length;
     const limit = Math.min(this.maxActive, this.roomBotLimit, Math.max(0, maxPlayers - humans));
-    const candidates = [...Object.values(this.profiles.data.clans), ...independentBots(this.profiles, at)].filter((c) =>
+    const independent = independentBots(this.profiles, at);
+    const eligible = this.rosterEligibility.read(this.profiles, independent, this.isLevelEligible, this.cacheLevelEligibility);
+    const candidates = [...Object.values(this.profiles.data.clans), ...independent].filter((c) =>
       // Crossing a level boundary affects the next spawn, never the current life.
       (this.arena.players.get(this.slots.get(c.id)?.playerId)?.dead === false) ||
-      c.members.some((id) => { const p = this.profiles.byId(id); return p?.testBot === MARKER &&
-        (!c.independent || !p.clanId) && this.isLevelEligible(p); }),
+      eligible.has(c.id),
     );
     const offset = candidates.length > limit ? Math.floor(at / 60000) % candidates.length : 0;
     const clans = [...candidates.slice(offset), ...candidates.slice(0, offset)].slice(0, limit);

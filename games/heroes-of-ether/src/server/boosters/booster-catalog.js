@@ -9,7 +9,7 @@ const alchemy = require("../../../public/shared/alchemy-rules");
 const BOOSTER_RULES = Object.freeze({
   COOLDOWNS_ENABLED: true,
   COOLDOWN_MS: 500,
-  MASS_REPEAT_MS: 200,
+  MASS_REPEAT_MS: 100,
   SHIELD_COOLDOWN_MS: 500,
   TARGET_RANGE: 600,
   RARE_SHOP_ENABLED: true,
