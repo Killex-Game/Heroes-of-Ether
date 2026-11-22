@@ -1,60 +1,50 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261122-lobby-limits-art",
-  "sourceTag": "release/20261122-lobby-limits-art",
-  "sourceCommit": "1a6f115",
-  "previousSourceCommit": "1a577f65ad3a2bb489161e519cbb511ff7d6569b",
-  "serverRuntimeSourceCommit": "1a6f115",
+  "gameRelease": "20261122-season-camera",
+  "sourceTag": "release/20261122-season-camera",
+  "sourceCommit": "99cddca7ab19f18d4b900afe9678d1917e755b16",
+  "previousSourceCommit": "1a6f115b4b2e993ba3b48f188da5e8c767934855",
+  "serverRuntimeSourceCommit": "99cddca7ab19f18d4b900afe9678d1917e755b16",
   "independentAdminRelease": "20261117-player-feedback",
   "unreleasedLocalBranch": "work/local-unreleased-20261121",
   "localRunningGameUpdated": false,
-  "entryReopenedAtUtc": "2026-11-22T01:32:07.462Z",
+  "entryReopenedAtUtc": "2026-11-22T03:37:30.409Z",
   "runtime": {
-    "gamePid": 212956,
+    "gamePid": 222719,
     "adminPid": 1163,
     "mongoConnected": true,
     "entryOpen": true,
     "restarted": true,
-    "verifiedAtUtc": "2026-11-22T01:35:41.218Z"
-  },
-  "machineSettings": {
-    "availableVcpu": 12,
-    "cpuQuotaBefore": 300,
-    "cpuQuotaAfter": 600,
-    "persistent": true,
-    "memoryMaxGiB": 7,
-    "memoryUnchanged": true
+    "verifiedAtUtc": "2026-11-22T03:37:36.379Z"
   },
   "patches": [
     {
-      "name": "art-consistency-20261122",
-      "files": 699,
-      "installedAtUtc": "2026-11-21T23:40:18.418Z"
-    },
-    {
-      "name": "lobby-limits-art-20261122",
-      "files": 151,
-      "manifestSha256": "0d77d15faa58b1ed431ad7d8a5459e1f902e086f415be62731a42a9903bfac73"
-    },
-    {
-      "name": "alchemy-separation-20261122",
-      "files": 5,
-      "installedAtUtc": "2026-11-22T01:32:19.338Z",
-      "noRestart": true
+      "name": "season-camera-avatar-gifts-20261122",
+      "files": 179,
+      "manifestSha256": "8975a7536892f675fc0143c2585ca8c3e9226c217b57668454926eeb3521809a"
     }
   ],
   "verification": {
-    "linux": {
-      "total": 2219,
-      "pass": 2215,
-      "fail": 0,
-      "skip": 4
+    "linuxInitial": {
+      "total": 2237,
+      "pass": 2232,
+      "fail": 1,
+      "skip": 4,
+      "failure": "update-cadence fixed 15ms wait in test fixture",
+      "failedFilePassedOnRerun": true
+    },
+    "linuxFinalTargeted": {
+      "total": 15,
+      "pass": 15,
+      "fail": 0
     },
     "windowsInitial": {
-      "pass": 2205,
-      "fail": 10,
+      "total": 2236,
+      "pass": 2231,
+      "fail": 1,
       "skip": 4,
-      "failedFilesPassedOnRerun": true
+      "failure": "Windows EPERM rename progression fixture",
+      "failedFilePassedOnRerun": true
     },
     "browsers": [
       "Chrome",
@@ -62,29 +52,60 @@
       "WebKit"
     ],
     "structure": {
-      "scripts": 1017,
-      "references": 5264
+      "scripts": 1022,
+      "references": 5368
     },
     "http": {
-      "files": 769,
+      "files": 155,
       "surfaces": 4,
-      "checks": 3076,
+      "checks": 620,
       "exact": true
     },
     "data": {
-      "wholeWorldAndAuxEqual": true,
-      "profiles": 1496,
-      "clans": 134,
-      "revision": 3130452,
-      "digest": "a761b039f8a155cb7ef8a3b30174c9ec33160dab80086aa94ae9e965e2741fb6"
+      "before": {
+        "ok": true,
+        "entireWorldAndAuxEqual": true,
+        "localUnchanged": true,
+        "revision": 3166687,
+        "digest": "88081e09b38714df75f3a429f1823e3ca7d9b2fe0d8661042cee6b4122a1409a",
+        "profiles": 1496,
+        "clans": 134,
+        "elapsedMs": 153039
+      },
+      "after": {
+        "ok": true,
+        "entireWorldAndAuxEqual": true,
+        "localUnchanged": true,
+        "revision": 3166688,
+        "digest": "3f71ac1290450cda6310586272b45eeaa3efba5a29d4fcdf306e88b0793a2d13",
+        "profiles": 1496,
+        "clans": 134,
+        "elapsedMs": 145718
+      },
+      "calendar": {
+        "calendarReplayExact": true,
+        "allOtherFieldsEqual": true,
+        "beforeRevision": 3166687,
+        "revision": 3166688,
+        "digest": "3f71ac1290450cda6310586272b45eeaa3efba5a29d4fcdf306e88b0793a2d13",
+        "worldHash": "639ccda1dd75dd01dd2116da2092bcfbcb271c6424007177df3bb7b191fad20b",
+        "profiles": 1496,
+        "clans": 134,
+        "at": 1795318464565
+      }
+    },
+    "deployment": {
+      "initialAttempt": "Separate offline Atlas verification helper exhausted its default 3 GiB V8 heap before installation. Negative logs retained.",
+      "resumedAttempt": "Same verification completed using a temporary helper with 6 GiB V8 heap and 8 GiB cgroup. Game memory settings unchanged.",
+      "temporaryVerificationPeak": "5.1 GiB",
+      "backupArchiveSha256": "044783135b48848e2224fd3bacf59e44eaf2e020ae63463cc0a499a3d8841dbc",
+      "proofArchiveSha256": "71f2c789abf01647090fe7df774feb2fb8c4b51c9f34953c06e71b6c7594824d"
     }
   },
-  "report": "games/heroes-of-ether/docs/lobby-limits-art-20261122.txt",
-  "localEvidence": "artifacts/lobby-limits-art-20261122",
+  "report": "games/heroes-of-ether/docs/season-camera-20261122.txt",
+  "localEvidence": "artifacts/season-camera-20261122",
   "pending": [
-    "Two-month alternating clan seasons, cumulative quest prizes, 08–21 schedule, local player times and event banner.",
     "RSS optimization and representative load testing remain open; no 300000CCU claim.",
-    "Kill rhythm reports require human review; no trained neural model or proven macro conclusion.",
-    "New user request: arena emoji keys1–9 above every ball and remove album cover text."
+    "Kill rhythm reports require human review; no trained neural model or proven AHK conclusion."
   ]
 }
