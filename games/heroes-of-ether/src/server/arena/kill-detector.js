@@ -20,16 +20,30 @@ class KillDetector {
     Object.assign(this,{profiles,actionQueue,now,onError});this.pending=new Map();this.model=model.train(profiles.data.administration?.audit);
   }
   retrain() { this.model=model.train(this.profiles.data.administration?.audit); }
-  session() { return {window:null,hits:0,windows:[],seen:new Set(),recent:[],quietUntil:0}; }
+  session() { return {window:null,hits:0,windows:[],seen:new Set(),recent:[],quietUntil:0,gate:null,armedUntil:0}; }
   observe(s,id,message,at,{stalled=false}={}) {
     at=Math.trunc(at);
     if(message?.type!=='useBooster'||!BOOSTERS.has(message.boosterId)||
         typeof message.requestId!=='string'||!/^[a-zA-Z0-9_-]{16,80}$/.test(message.requestId))return;
-    if(stalled){s.window=null;s.hits=0;s.windows=[];s.quietUntil=at+2000;return;}
+    if(stalled){s.window=null;s.hits=0;s.windows=[];s.gate=null;s.armedUntil=0;s.quietUntil=at+2000;return;}
     if(at<s.quietUntil)return;
     if(s.seen.has(message.requestId))return;
     s.seen.add(message.requestId);s.recent.push(message.requestId);
     if(s.recent.length>256)s.seen.delete(s.recent.shift());
+    if(this.profiles.byId?.(id)?.kill?.status==='new')return;
+    if(s.window && at-s.window.last>5000){s.armedUntil=0;s.gate=null;}
+    if(at>=s.armedUntil){
+      s.window=null;s.windows=[];s.hits=0;
+      let g=s.gate;
+      if(!g||at<g.last||at-g.last>3000)g=s.gate={start:at,last:at,count:0,short:0,key:message.boosterId,mixed:false,hits:0};
+      if(g.count && at-g.last<=20)g.short++;
+      g.mixed ||= g.key!==message.boosterId;g.count++;g.last=at;
+      if(at-g.start<1000)return;
+      const hits=g.count>=8&&g.mixed&&g.short/(g.count-1)>=.45?g.hits+1:0;
+      s.gate={start:at,last:at,count:0,short:0,key:message.boosterId,mixed:false,hits};
+      if(hits<3)return;
+      s.armedUntil=at+120000;s.gate=null;
+    }
     if(!s.window||at<s.window.last||at-s.window.last>5000){s.window=fresh(at);s.hits=0;s.windows=[];}
     const w=s.window;
     if(at-w.start>=WINDOW){
@@ -44,7 +58,7 @@ class KillDetector {
       if(s.hits>=3){
         const evidence={version:1,features:f.vector,windows:s.windows.slice(-3),modelReady:this.model.ready,modelScore:score,
           reason:burst?'repeated-mixed-bursts':'reviewed-model-anomaly'};
-        this.report(id,evidence).catch(this.onError);s.hits=0;s.windows=[];s.quietUntil=at+60000;
+        this.report(id,evidence).catch(this.onError);s.hits=0;s.windows=[];s.quietUntil=at+60000;s.armedUntil=0;s.gate=null;
       }
       s.window=fresh(at);
     }
@@ -75,6 +89,7 @@ class KillDetector {
 }
 function validate(c) {
   if(c===undefined)return;
+  if(c?.reason==='lobby-repeated-actions')return require('./kill-lobby-evidence').validate(c);
   if(c?.reason==='owner-reported-automation')return require('./kill-owner-evidence').validate(c);
   if(c?.reason==='gift-dispatch-pattern')return require('./kill-gift-evidence').validate(c);
   if(!c||c.version!==1||typeof c.id!=='string'||!/^[a-f0-9-]{36}$/.test(c.id)||!['new','confirmed','dismissed'].includes(c.status)||

@@ -118,8 +118,16 @@
           el('span','Материалы для обучения после ручной проверки. Автоматизация пока не подтверждена. Это отдельный тип примеров, он не обучает модель нажатий на бустеры.'),
           el('span','Контрольная сумма источника: '+g.sourceSha256));
       }
+      if(c.reason==='lobby-repeated-actions'){
+        const e=c.lobbyEvidence,names={'gift-send':'Отправки подарков','clan-deposit':'Взносы в клан','roulette':'Запуски рулетки','booster-purchase':'Покупки бустеров','currency-purchase':'Покупки валюты','currency-purchase-attempt':'Команды покупки валюты'};
+        details.append(el('strong','Подозрение на автоматизацию: '+names[e.kind]),
+          el('span',e.kind==='currency-purchase-attempt'?'Пять продолжительных серий разных команд покупки, включая отказы по суточному лимиту. Повторы известных номеров исключены.':'Пять продолжительных серий успешных действий. Повторы запросов и отказы не учитываются.'),
+          el('span','Kill включён по сигналу: '+(e.trigger.kind==='rapid-commands'?'высокая скорость команд':'длинная серия повторений')+'. Это основание для проверки, а не доказательство читов.'));
+        for(const w of e.samples)details.append(el('span',stamp(w.start)+' по '+stamp(w.end)+': '+w.count+' действий, медианный интервал '+w.medianIntervalMs+' мс, близкие интервалы '+Math.round(w.regularFraction*100)+'%'));
+        details.append(el('span',e.modelReady?'Отдельная модель этого вида действий использует рассмотренные примеры. Оценка не назначает наказание.':'Сработало правило похожих повторяющихся серий. Для обучения отдельной модели ещё недостаточно подтверждённых и отклонённых примеров.'));
+      }
       for(const w of c.windows)details.append(el('span',`${Math.round((w.end-w.start)/1000)} с: ${w.count} команд, ${w.kinds} видов бустеров, ${w.rate}/с; короткие интервалы ${Math.round(w.shortFraction*100)}%.`));
-      if(!['gift-dispatch-pattern','owner-reported-automation'].includes(c.reason))details.append(el('span',c.modelReady?'Сигнал локальной модели и серверной телеметрии. Оценка не является доказательством.':'Сбор обучающих примеров. Локальная модель ещё не обучена.'));
+      if(!['gift-dispatch-pattern','owner-reported-automation','lobby-repeated-actions'].includes(c.reason))details.append(el('span',c.modelReady?'Сигнал локальной модели и серверной телеметрии. Оценка не является доказательством.':'Сбор обучающих примеров. Локальная модель ещё не обучена.'));
       if(c.status!=='new'){details.append(el('p',c.reviewReason));row.append(details);return row;}
       const reason=el('textarea');reason.maxLength=500;reason.rows=2;reason.placeholder='Основание решения: что проверено';reason.setAttribute('aria-label','Основание решения Kill');
       const result=el('p');result.setAttribute('role','status');let pending=null,busy=false;

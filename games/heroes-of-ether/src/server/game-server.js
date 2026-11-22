@@ -158,6 +158,14 @@ function createGameServer({
   });
   const kill = new (require('./arena/kill-detector').KillDetector)({profiles,actionQueue:boosterQueue,now:wallNow,
     onError:error=>console.error('Не удалось сохранить подозрение Kill:',error.message)});
+  const lobbyKill = new (require('./arena/kill-lobby-detector').KillLobbyDetector)({ profiles,
+    report: (id, evidence) => kill.report(id, evidence),
+    onError: error => console.error('Не удалось сохранить наблюдение Kill в лобби:', error.message) });
+  function observeLobbyAction(token, path, body, result, at) {
+    try { lobbyKill.accept(profiles.find(token), path, body, result, at,
+      { stalled: wallNow() - at > 1000 || rateNow() - stalledAt < 2000 }); }
+    catch (error) { console.error('Не удалось обработать наблюдение Kill в лобби:', error.message); }
+  }
   chat.syncProgress();
   const clans = new ClanService(profiles);
   let lobbyBots;
@@ -729,7 +737,7 @@ function createGameServer({
                 503,
               );
             const result = owner.apply(actorProfile(), body);
-            if (body.action === 'killReview' && !result.duplicate) kill.retrain();
+            if (body.action === 'killReview' && !result.duplicate) { kill.retrain(); lobbyKill.retrain(); }
             disconnectBanned(result.player.id);
             return reply(200, result);
           }
@@ -1029,6 +1037,12 @@ function createGameServer({
                 profiles.buySkinCollection(token, body, batch),
               ),
             );
+          const lobbyObservedAt = wallNow();
+          if (req.url === '/api/mock-payments/confirm') {
+            try { lobbyKill.currencyAttempt(profiles.find(token), body, lobbyObservedAt,
+              { stalled: rateNow() - stalledAt < 2000 }); }
+            catch (error) { console.error('Не удалось обработать сигнал покупок Kill:', error.message); }
+          }
           const result =
             req.url === "/api/roulette/action"
               ? rouletteService.mutate(profiles, token, body)
@@ -1061,6 +1075,7 @@ function createGameServer({
                                     : req.url === "/api/chests/open"
                                       ? profiles.openChest(token, body.chestId, body.requestId)
                                       : clans.mutate(token, body);
+          observeLobbyAction(token, req.url, body, result, lobbyObservedAt);
           if (req.url === "/api/clans/action") syncIdentities();
           return reply(200, result);
         }
@@ -1071,9 +1086,11 @@ function createGameServer({
           requireRunning();
           const token = sessionToken(req);
           // Recheck lobby access both before preparation and after durable staging.
+          const lobbyObservedAt = wallNow();
           const result = await durableLobbyAction(token, (batch) =>
             profiles.buy(token, body.boosterId, body.requestId, batch),
           );
+          observeLobbyAction(token, req.url, body, result, lobbyObservedAt);
           return reply(200, result);
         }
         return reply(404, { error: "Такой операции нет." });

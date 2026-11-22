@@ -99,6 +99,7 @@ test('cadence detector ignores legitimate hold, UUID retries, single TCP burst a
  const batch=detector.session();for(let n=0;n<60;n++)send(batch,n,'ice_cream');send(batch,20000);
  const stall=detector.session();for(let at=0;at<90000;at+=100)send(stall,at,at%200?'candy':'ice_cream',randomUUID(),true);
  assert.equal(reports,0);assert(hold.seen.size<=256&&hold.recent.length<=256);
+ assert.equal(hold.window,null);assert.equal(retry.window,null);assert.equal(batch.window,null);assert.equal(stall.window,null);
 });
 test('three sustained mixed burst windows create review evidence, without an automatic ban',()=>{
  const detector=new KillDetector({profiles:{data:{}}}),s=detector.session(),cases=[];detector.report=async(id,e)=>cases.push(e);
