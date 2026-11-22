@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen",
+  "banners": [
+    {
+      "id": "quests",
+      "prompt": "Create a landscape 4:3 illustration banner for the clan QUEST season of Heroes of Ether. Soft rounded casual 2.5D fantasy game canon, clear saturated colours, gentle light upper left, few tiny restrained highlights, no glossy white glare. Central large parchment quest scroll with FIVE simple green completed check marks, purple-and-gold clan shield beside it, small gold medal and a few coins. Warm welcoming castle guild hall background, blue and gold accents, clear big readable shapes at 250px width. No people, no text, no letters or digits, no frame, no watermark. Full bleed painted background, no transparency. Composition leaves bottom 20 percent uncluttered and dark enough for existing UI title overlay.",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png"
+    },
+    {
+      "id": "battle",
+      "prompt": "Create a landscape 4:3 illustration banner for the clan BATTLE season of Heroes of Ether. Soft rounded casual 2.5D fantasy game canon, clear saturated colours, gentle light upper left, few tiny restrained highlights, no glossy white glare. Two proud opposing blue and purple heraldic clan shields with simple gold star emblems, two crossed silver fantasy swords behind them, a small gold season trophy between them. Warm castle tournament courtyard in background, banners, no people. Clear big readable shapes at 250px width. No text, no letters or digits, no frame, no watermark. Full bleed painted background, no transparency. Composition leaves bottom 20 percent uncluttered and dark enough for existing UI title overlay.",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-12f5f0ad-390d-45bb-844f-45cc8b04622d.png"
+    }
+  ]
+}

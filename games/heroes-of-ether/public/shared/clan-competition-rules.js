@@ -89,6 +89,8 @@
     return amount - saving;
   }
   const dayStart = (at) => Math.floor((at + MSK) / DAY) * DAY - MSK;
+  // Legacy saves without the clan calendar retain their original season IDs.
+  // Calendar-enabled worlds use clan-season-calendar and clamp weeks to its edges.
   function season(at) {
     const d = new Date(at + MSK),
       year = d.getUTCFullYear(),

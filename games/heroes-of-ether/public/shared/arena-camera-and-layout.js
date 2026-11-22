@@ -12,7 +12,7 @@
     partStep: 0.075,
     maxPartReduction: 0.3,
     compactGroupZoom: 0.3,
-    largeGroupZoom: 0.8,
+    largeGroupZoom: 1.1,
     smallMass: 150,
     normalViewMass: 1000,
     smallZoom: 0.3,
@@ -76,11 +76,17 @@
     // Переход непрерывный; масштаб одинаков по обеим осям, без масок обзора.
     const vertical = clamp((group.height / group.width - 1) / 0.5, 0, 1);
     const landscape = clamp((width / height - 1) / 0.5, 0, 1);
-    const heightFraction = 0.72 + 0.18 * vertical * vertical * (3 - 2 * vertical) * landscape;
+    // Large, roughly square groups used only 72% of the screen height,
+    // needlessly making every part and nearby object smaller. Use up to 84%
+    // for these groups, retaining the 90% bound for tall landscape groups.
+    const largeMassProgress = clamp((mass - 1000) / 39000, 0, 1);
+    const largeEase = largeMassProgress * largeMassProgress * (3 - 2 * largeMassProgress);
+    const compactHeight = 0.72 + 0.12 * largeEase;
+    const heightFraction = compactHeight + (0.9 - compactHeight) * vertical * vertical * (3 - 2 * vertical) * landscape;
     const fit = Math.min(
       (width * 0.8) / group.width,
       (height * heightFraction) / group.height,
-      Math.sqrt((width * height * 0.5) / group.area),
+      Math.sqrt((width * height * (0.5 + 0.08 * largeEase)) / group.area),
     );
     const crowding = Math.max(1, massScale / fit);
     const scale = minimum + (massScale - minimum) / (crowding * crowding);
@@ -91,20 +97,33 @@
     // крошечного героя остаётся прежним. Крупные шары приближаем дополнительно.
     const compactZoom =
       1 + CAMERA.compactGroupZoom * Math.min(1, Math.log2(parts.length) / 4) * progress;
-    const largeMassProgress = clamp((mass - 1000) / 39000, 0, 1);
     const nearZoom =
-      1 +
-      CAMERA.largeGroupZoom * largeMassProgress * largeMassProgress * (3 - 2 * largeMassProgress);
+      1 + CAMERA.largeGroupZoom * largeEase;
     const compact = Math.max(normalScale, Math.min(normalScale * compactZoom, fit));
     return Math.max(compact, Math.min(compact * nearZoom, fit));
   }
-  function followCenter(camera, target, dt, forcedMovement = false) {
+  function followCenter(camera, target, dt, forcedMovement = false, parts = []) {
+    // Track real displacement of surviving parts, not changes to the group's
+    // bounding box after a split, feeding or losing a part. At most 16 entries.
+    const previous = camera.followParts || new Map(), current = new Map();
+    const speeds = [];
+    for (const part of parts) {
+      if (!part.id || !Number.isFinite(part.x) || !Number.isFinite(part.y)) continue;
+      const old = previous.get(part.id);
+      if (old && dt > 0) speeds.push(Math.hypot(part.x - old.x, part.y - old.y) / dt);
+      current.set(part.id, { x: part.x, y: part.y });
+    }
+    camera.followParts = current;
+    speeds.sort((a, b) => a - b);
+    const motion = speeds.length ? speeds[Math.floor((speeds.length - 1) / 2)] : 0;
+    const screenSpeed = motion * Math.max(0.01, camera.scale);
+
     camera.fastFollowMs = forcedMovement
       ? 250
       : Math.max(0, (camera.fastFollowMs || 0) - dt * 1000);
     const fast = camera.fastFollowMs > 0;
     const time = Math.max(0, dt),
-      omega = fast ? 28 : 8,
+      omega = fast ? 28 : 8 + 16 * clamp(screenSpeed / 500, 0, 1),
       decay = Math.exp(-omega * time);
     if (!target || !Number.isFinite(target.x) || !Number.isFinite(target.y)) return;
     // Отдельное затухание центра камеры: кормление любой части, смена главной,
@@ -121,12 +140,36 @@
     const dx = next.x - camera.x,
       dy = next.y - camera.y,
       distance = Math.hypot(dx, dy);
-    const maxStep = fast ? Infinity : (180 * time) / Math.max(0.01, camera.scale),
+    const maxStep = fast ? Infinity : ((420 + screenSpeed * 1.25) * time) / Math.max(0.01, camera.scale),
       ratio = distance > maxStep ? maxStep / distance : 1;
     camera.x += dx * ratio;
     camera.y += dy * ratio;
     camera.vx = velocity.x * ratio;
     camera.vy = velocity.y * ratio;
+  }
+  function movementTarget(player, pointer, camera, width, height, world) {
+    const edge = Math.min(96, Math.min(width, height) * 0.12);
+    const directional = pointer.x <= edge || pointer.x >= width - edge ||
+      pointer.y <= edge || pointer.y >= height - edge;
+    let x, y;
+    if (directional) {
+      // The screen edge is an intent to travel, not a wall or a destination.
+      // Anchor the ray at the player so crossing the cursor cannot reverse it.
+      const dx = pointer.x - width / 2, dy = pointer.y - height / 2;
+      const length = Math.hypot(dx, dy) || 1;
+      const nx = dx / length, ny = dy / length;
+      const reach = Math.max(0, Math.min(
+        nx > 0 ? (world.width - player.x) / nx : nx < 0 ? -player.x / nx : Infinity,
+        ny > 0 ? (world.height - player.y) / ny : ny < 0 ? -player.y / ny : Infinity,
+      ));
+      x = player.x + nx * reach;
+      y = player.y + ny * reach;
+    } else {
+      x = camera.x + (pointer.x - width / 2) / camera.scale;
+      y = camera.y + (pointer.y - height / 2) / camera.scale;
+    }
+    return { x: clamp(x, 0, world.width), y: clamp(y, 0, world.height),
+      keepDirection: directional };
   }
   function approachScale(current, target, dt, minimum = 0) {
     if (!(current > 0)) return target;
@@ -208,6 +251,7 @@
   return {
     desiredScale,
     groupFrame,
+    movementTarget,
     followCenter,
     approachScale,
     animateRadius,

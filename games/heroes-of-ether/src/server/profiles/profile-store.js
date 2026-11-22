@@ -906,6 +906,7 @@ class ProfileStore {
       menuNotifications: this.menuNotifications(profile),
       seasonBenefits: trophyBenefits(this.data.clans[profile.clanId]),
       seasonTrophies: personalTrophies.view(profile),
+      clanQuestMedals: structuredClone(profile.clanQuestMedals || []),
       regalia: dailyRankings.publicRegalia(profile),
       dailyRankingRewards: require("../rankings/daily-ranking-notices").view(profile),
       administrativeNotices: require('../admin/adjustment-notices').view(profile),
@@ -1116,6 +1117,7 @@ class ProfileStore {
       eventRegalia: blackFriday.regalia(p),
       easter: { trophies: easter.view(p, this.events, this.now()).trophies },
       seasonTrophies: personalTrophies.view(p),
+      clanQuestMedals: structuredClone(p.clanQuestMedals || []),
     };
   }
   byId(id, data = this.data) {

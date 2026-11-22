@@ -9,6 +9,12 @@ const tableDeltas=require('./immutable-table-delta');
 const {shareArenaData}=require('./arena-profile-copy');
 const optionKeys=['petEvents','baseRouletteConfig','promotionConfig','unlockLeagueBackgrounds',
   'unlockLeagueFrames','unlockClanCrests','clanDailyQuests'];
+const schedules=new WeakMap();
+function progressSchedule(control){
+  let schedule=schedules.get(control);
+  if(!schedule){schedule={calendarVersion:control.calendarVersion,seasons:control.seasons||[]};schedules.set(control,schedule);}
+  return schedule;
+}
 class ClanArenaProgressShards extends ArenaProgressShards {
   async prepare(store,batches){
     if(this.failed||this.closed)return undefined;
@@ -22,7 +28,7 @@ class ClanArenaProgressShards extends ArenaProgressShards {
     try{
       if(base.progressReceipt===batch.id)return {snapshot:base,changes:[[]]};
       const keys=profileKeys(base.profiles),order=new Set();
-      const groups=Array.from({length:this.count},()=>({profiles:{},clans:{},clanQuests:base.clanQuests,progress:[]}));
+      const groups=Array.from({length:this.count},()=>({profiles:{},clans:{},clanQuests:progressSchedule(base.clanQuests),progress:[]}));
       for(const event of batch.progress){
         const key=keys.get(event.profileId);if(!key)continue;
         const p=base.profiles[key],clan=base.clans[p.clanId];

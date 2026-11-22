@@ -15,3 +15,10 @@ test('dates, edited source identity and hidden releases retain their semantics',
  assert.equal(layout.merge(base,[{...edit,visible:false}]).length,2);
  assert.equal(layout.merge(base,[{...edit,visible:false}],true).length,3);
 });
+
+test('stored built-in banners use the current art revision; uploaded images are unchanged',()=>{
+ const {imageSource}=require('../../public/shared/news-layout');
+ assert.equal(imageSource('assets/news/v1/news.webp'),'assets/news/v1/news.webp?art=20261122d');
+ assert.equal(imageSource('assets/events/easter-hunt/banner.png?art=20261122b'),'assets/events/easter-hunt/banner.png?art=20261122d');
+ const upload='/news-media/'+ 'a'.repeat(64)+'.png';assert.equal(imageSource(upload),upload);
+});

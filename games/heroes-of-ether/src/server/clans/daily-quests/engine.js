@@ -2,7 +2,7 @@
 // Pure daily rules. The service commits boards and prizes with the existing WAL.
 const { createHash } = require("node:crypto");
 const DAY = 86400000, HOUR = 3600000, MSK = 3 * HOUR;
-const WINDOW_VERSION = 2, ACTIVE_MS = 15 * HOUR, RESULTS_MS = 2 * HOUR;
+const WINDOW_VERSION = 3, ACTIVE_MS = 13 * HOUR, RESULTS_MS = 2 * HOUR;
 const GROUPS = ["resources", "combat", "precision", "arsenal", "endurance"];
 const METRICS = new Set(["xp", "food", "absorbedMass", "hazards", "kills", "jumpKills",
   "hazardHits", "rocketHits", "freezeHits", "hookHits", "pushHits", "poisonHits",
@@ -13,7 +13,7 @@ const hash = value => createHash("sha256").update(value).digest("hex");
 const validId = value => typeof value === "string" && /^[a-zA-Z0-9_-]{1,80}$/.test(value) && !Object.hasOwn(Object.prototype, value);
 function period(at) {
   if (!Number.isSafeInteger(at) || at < 0) throw Error("Invalid server time");
-  const start = Math.floor((at + MSK - 6 * HOUR) / DAY) * DAY - MSK + 6 * HOUR;
+  const start = Math.floor((at + MSK - 8 * HOUR) / DAY) * DAY - MSK + 8 * HOUR;
   return { id: new Date(start + MSK).toISOString().slice(0, 10), start,
     end: start + ACTIVE_MS, nextStart: start + DAY, active: at < start + ACTIVE_MS };
 }

@@ -1,0 +1,182 @@
+{
+  "method": "native image_gen",
+  "preserveExisting": true,
+  "frames": [
+    {
+      "id": "title_prince",
+      "name": "Принц",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Elegant youthful prince: warm gold ring with royal blue enamel inset, small gold three-point coronet at top bearing one blue sapphire; two compact rounded leaf accents at lower sides. Modest compared to king.",
+      "fit": [
+        0.489768,
+        0.530305,
+        0.327269
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 43856,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-5e747020-2acf-495f-9f53-8db35c211223.png",
+      "sha256": "62fe203e30f45861c32f534fdf8cfc9e3de36a821314efcded14c7a76fba7122",
+      "output": "public/assets/frames/canon-v1/title_prince.webp"
+    },
+    {
+      "id": "title_king",
+      "name": "Король",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Regal king: rounded warm gold ring with deep red enamel inset; broader five-point crown at top and one red ruby, pair of compact gold laurel branches attached on lower outer sides. Richer than prince but clear silhouette.",
+      "fit": [
+        0.49022,
+        0.531235,
+        0.305664
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 50090,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-f41163d8-779e-477f-8716-2ba54d613c7e.png",
+      "sha256": "651c6c50a3bd22fb166322d459c7191b945b58997f053e1233cf32f0ba05bc34",
+      "output": "public/assets/frames/canon-v1/title_king.webp"
+    },
+    {
+      "id": "title_emperor",
+      "name": "Император",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Highest imperial frame: warm gold double-bevel ring with deep blue enamel, broad ornate but simple gold imperial crown at top with small red jewel, symmetrical large rounded laurel leaves hugging the outer lower ring. Most prestigious of the title trio, no wings.",
+      "fit": [
+        0.491259,
+        0.524036,
+        0.282492
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 51888,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-ea189e6a-ea7d-4fd5-9f62-235cde9cee50.png",
+      "sha256": "45b19c5e97ddf8947d0f2c541313365b1b272f5667f7bff815c42b44931ee806",
+      "output": "public/assets/frames/canon-v1/title_emperor.webp"
+    },
+    {
+      "id": "vip",
+      "name": "VIP",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Prestigious VIP: warm gold satin ring with honey gold enamel, a compact tasteful gold crown at top with emerald centre; restrained golden leaf accents at bottom. No letters. Gold identity.",
+      "fit": [
+        0.489912,
+        0.516537,
+        0.329339
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 43492,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-e0f338a6-b192-4cd0-a326-52941ccdbbe7.png",
+      "sha256": "1bf76aaa73cd477da21d59a5b3863ca7668781ebe1119134dd38c4122757f9e7",
+      "output": "public/assets/frames/canon-v1/vip.webp"
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Premium: luminous amethyst-purple enamel circular ring with warm gold rounded borders, small gold crown holding a violet diamond at top, compact violet gem at bottom, simple curved gold flourish attached at sides. Richer than VIP, no letters.",
+      "fit": [
+        0.491828,
+        0.531282,
+        0.320916
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 46520,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-99a24801-26e3-4f88-adc6-f7ce3d6ecc1e.png",
+      "sha256": "b8d7e8cf51184a8f5c074ac5b721e4675cb3815c66b70d92015f3d14f19b8613",
+      "output": "public/assets/frames/canon-v1/premium.webp"
+    },
+    {
+      "id": "bronze",
+      "name": "Бронзовая",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Bronze league: simple satin copper-bronze ring, warm brown enamel accent, only a small symmetrical pair of bronze laurel leaves at bottom. Lowest league, elegant but unadorned, no crown.",
+      "fit": [
+        0.48832,
+        0.508789,
+        0.327173
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 45164,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-53bd892f-123d-469c-b4cf-9904bd4d2965.png",
+      "sha256": "92b1313705afea1c2600fb3b83300933d026774f531728de9ba27c5941baf371",
+      "output": "public/assets/frames/canon-v1/bronze.webp"
+    },
+    {
+      "id": "silver",
+      "name": "Серебряная",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Silver league: pearl silver rounded ring, cool pale blue enamel accent, compact symmetrical silver laurel leaves lower sides and small silver diamond at top. More refined than bronze, no crown.",
+      "fit": [
+        0.495117,
+        0.522424,
+        0.350323
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 57604,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-a746b98f-b5d6-4e3d-bce7-12a74b81f562.png",
+      "sha256": "a4dbb53b2ec70ab7536dbcd793c0126920e4c454534056a8c2c256bc650d6515",
+      "output": "public/assets/frames/canon-v1/silver.webp"
+    },
+    {
+      "id": "gold",
+      "name": "Золотая",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Gold league: rich warm gold rounded ring, amber enamel accent, short gold laurels lower sides and a small simple gold star fixed at top. Clear gold identity.",
+      "fit": [
+        0.491211,
+        0.524457,
+        0.327249
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 42862,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-314dd09b-c43c-4a66-9e58-a49b2eeddaa9.png",
+      "sha256": "28fc97498411ea0ab2e65252f4d57b45bae41707f330ba069fed79d0db83fae7",
+      "output": "public/assets/frames/canon-v1/gold.webp"
+    },
+    {
+      "id": "platinum",
+      "name": "Платиновая",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Platinum league: lustrous soft platinum-silver ring with turquoise enamel, compact teal gemstone on top and symmetrical platinum laurel leaves lower sides. Cool turquoise identity.",
+      "fit": [
+        0.493777,
+        0.521507,
+        0.331055
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 44660,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-d35fa558-398b-4e9f-b71c-37645d98cf9b.png",
+      "sha256": "366ff5bb101edddfcfe7378fac85901910ae5dca8ef12825d5a5cefec5b79ab8",
+      "output": "public/assets/frames/canon-v1/platinum.webp"
+    },
+    {
+      "id": "diamond",
+      "name": "Бриллиантовая",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Diamond league: pearl-silver ring with luminous icy cyan blue enamel, one clear blue diamond with broad facets at top, compact icy crystal clusters attached symmetrically at lower sides. No fragmented shards or glow cloud.",
+      "fit": [
+        0.493141,
+        0.527566,
+        0.338973
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 59116,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-7101c490-2530-4c10-8d47-4e58b1cb87ff.png",
+      "sha256": "469df491ddb6a005d39954110bcd892fb7a13767a35ded5da3886cb4bb536a39",
+      "output": "public/assets/frames/canon-v1/diamond.webp"
+    },
+    {
+      "id": "champions",
+      "name": "Чемпионская",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent circular avatar overlay frame for Heroes of Ether fantasy game. Style references only: image 1 rounded ring profile and volume, image 2 soft gold and enamel. Primary request: a NEW frame, never a medal or filled badge. Soft casual fantasy 2.5D, rounded sculpted forms, broad smooth shading, saturated colours, satin materials, restrained small highlights from upper left. NO rough scratches, intricate filigree, white glare, rays, sparks, letters, numbers, ribbons with writing, face or character. Geometry: square image, front view perfectly circular ring, centre of circular opening exactly at canvas (50%,52%), clear circular opening diameter 63% of canvas; outer ring diameter about 78%; small attached decoration can extend to 94% canvas but never clipped. The entire circular centre hole and outside silhouette must be true transparent alpha, absolutely no solid disk, backdrop, shadow inside hole or checkerboard. Ring continuous all 360 degrees. Balanced and readable at 64px. Champion league: most prestigious rich warm gold ring with vivid crimson enamel, compact grand gold crown at top with central red diamond, complete but simple golden laurels hugging lower sides. Clear triumphant royal red and gold identity; no wings, no text.",
+      "fit": [
+        0.492217,
+        0.534226,
+        0.319432
+      ],
+      "centerAlpha": 0,
+      "rayCount": 360,
+      "bytes": 51154,
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-20d28b35-3118-4a7b-9d24-ba0078601f12.png",
+      "sha256": "1cfba39b5253829d59c8b7ff99d90eb5221991d618a0cfa0da6f40998cf73d41",
+      "output": "public/assets/frames/canon-v1/champions.webp"
+    }
+  ]
+}

@@ -20,23 +20,26 @@ const equip = (s, t, skinId) =>
     name: s.find(t).name,
     quickSlots: s.find(t).quickSlots,
   });
-test("Ten collections: approved prices, currency order and five complete portraits each", () => {
+test("Thirteen collections: approved prices, currency order and five complete portraits each", () => {
   assert.deepEqual(
     catalog.collections.map((c) => [c.id, c.currency, c.price]),
     [
+      ["army", "coins", 2500],
       ["workshop", "coins", 3000],
       ["forest", "coins", 3500],
       ["sea", "coins", 3500],
       ["desert", "coins", 5000],
+      ["hospital", "crystals", 250],
       ["cloud", "crystals", 500],
       ["twilight", "crystals", 750],
       ["snow", "crystals", 1000],
+      ["norse", "bucks", 200],
       ["flame", "bucks", 500],
       ["grove", "bucks", 500],
       ["stars", "bucks", 750],
     ],
   );
-  assert.equal(identity.collectionSkins.length, 50);
+  assert.equal(identity.collectionSkins.length, 65);
   for (const c of catalog.collections) {
     assert.equal(c.members.length, 5);
     for (const m of c.members) {

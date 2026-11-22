@@ -1,14 +1,15 @@
 "use strict";
 (() => {
   const node=(tag,text)=>{const n=document.createElement(tag);if(text)n.textContent=text;return n;};
-  const date=n=>new Date(n).toLocaleString('ru-RU',{timeZone:'Europe/Moscow'});
+  const date=n=>new Date(n).toLocaleString('ru-RU');
   const inputDate=n=>new Date(n+3*3600000).toISOString().slice(0,16);
   class ClanSeasons {
     constructor({api}){this.api=api;this.root=document.getElementById('clanSeasonsPanel');this.generation=0;}
     lock(){this.generation++;this.pending=null;this.root.replaceChildren();}
     async load(){const g=this.generation;try{const data=await this.api('clan-seasons');if(g===this.generation)this.render(data);}catch(e){if(g===this.generation)this.root.textContent=e.message;}}
     render(data){
-      this.root.replaceChildren(node('h2','Сезоны клановых битв'));
+      this.root.replaceChildren(node('h2','Сезоны кланов'));
+      if(data.automatic){this.root.append(node('p','Сезоны сменяются автоматически каждые 2 месяца. Битвы: январь–февраль, май–июнь, сентябрь–октябрь. Задания: март–апрель, июль–август, ноябрь–декабрь.'),node('p',data.current.name+': '+date(data.current.start)+' — '+date(data.current.end)),node('p','Сезонные призы за задания и кубки за битвы выдаются в конце сезона; медали лиг — по итогам недели.'));return;}
       this.root.append(node('p','Во время сезона клановые битвы и лиги заменяют ежедневные задания. После его окончания задания возвращаются, если ещё не наступило 20:00 МСК. Уже заработанные награды сохраняются.'));
       const form=node('form'), fields={};
       for(const [key,label,type] of [['name','Название сезона','text'],['startsAt','Начало, МСК','datetime-local'],['endsAt','Окончание, МСК','datetime-local'],['reason','Причина для журнала','text']]){

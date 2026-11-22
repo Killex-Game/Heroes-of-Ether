@@ -8,6 +8,21 @@
       ? require("./skin-collection-preview")
       : root.KillexSkinCollections;
   const portraitFits = Object.freeze({
+    "army-commander": {"scale":1.0632,"x":0,"y":-0.0132},
+    "army-sapper": {"scale":1.0121,"x":0,"y":0.0138},
+    "army-scout": {"scale":0.9892,"x":0,"y":0.022},
+    "army-scout-falcon": {"scale":1.0878,"x":0.0009,"y":-0.0271},
+    "army-service-dog": {"scale":1.1035,"x":0.0202,"y":0.0284},
+    "hospital-chief-doctor": {"scale":1.0088,"x":0.0008,"y":0.0122},
+    "hospital-helper-cat": {"scale":1.044,"x":-0.0075,"y":-0.0053},
+    "hospital-nurse": {"scale":1.0432,"x":0.0042,"y":-0.0049},
+    "hospital-paramedic": {"scale":0.9973,"x":0,"y":0.018},
+    "hospital-surgeon": {"scale":1.0432,"x":0.0008,"y":-0.0049},
+    "norse-freyja": {"scale":1.0309,"x":-0.0008,"y":0.0012},
+    "norse-hugin": {"scale":1.0858,"x":-0.0061,"y":-0.0175},
+    "norse-loki": {"scale":1.0022,"x":-0.0008,"y":0.0155},
+    "norse-odin": {"scale":0.9924,"x":0,"y":0.0204},
+    "norse-thor": {"scale":1.0088,"x":0.0024,"y":0.0138},
   "gift-winged-guardian": {
     "scale": 1.17,
     "x": 0,

@@ -77,15 +77,11 @@
     eventCard(event) {
       const card = el("article", "event-album-event"),
         cover = el("div", "event-album-cover"),
-        title = el("h2", "", event.title),
         body = el("div", "event-album-body"),
         grid = el("div", "event-album-artworks");
       const owned = event.items.filter((art) => art.owned).length;
-      cover.append(
-        picture(event.banner, ""),
-        title,
-        el("span", "event-album-count", `Изображения ${owned} / ${event.items.length}`),
-      );
+      card.setAttribute("aria-label", `${event.title}: изображения ${owned} / ${event.items.length}`);
+      cover.append(picture(event.banner + (event.banner.includes("?") ? "&" : "?") + "art=20261122d", ""));
       for (const art of event.items) {
         const tile = el("button", "event-album-tile");
         tile.type = "button";

@@ -98,7 +98,7 @@ test("Компактная группа из 16 частей приближен�
   );
   const frame = view.groupFrame(compact);
   assert.ok(frame.width * zoom <= 1914 * 0.8 + 1e-6);
-  assert.ok(frame.height * zoom <= 950 * 0.72 + 1e-6);
+  assert.ok(frame.height * zoom <= 950 * 0.84 + 1e-6);
   assert.ok(view.desiredScale({ mass, parts: makeParts(600) }, 1914, 950, world) < zoom);
   for (const [width, height] of [
     [390, 844],
@@ -276,7 +276,7 @@ test("Камера плавно следует за группой при 30/60/
     for (let i = 0; i < fps; i++) {
       const before = { ...camera };
       view.followCenter(camera, { x: 1000, y: -1000 }, 1 / fps);
-      assert.ok(Math.hypot(camera.x - before.x, camera.y - before.y) <= 180 / fps + 1e-8);
+      assert.ok(Math.hypot(camera.x - before.x, camera.y - before.y) <= 420 / fps + 1e-8);
     }
   }
   assert.ok(Math.max(...positions) - Math.min(...positions) < 1e-8);
@@ -371,11 +371,11 @@ test("Вертикальная группа больших шаров не от�
       scale > previousHeightFit * 1.2,
       "минимум на 20% ближе для показанной вытянутой группы",
     );
-    assert.ok(scale >= view.desiredScale(horizontal, 1920, 960, world) * 0.82);
+    assert.ok(scale >= view.desiredScale(horizontal, 1920, 960, world) * 0.7);
     assert.ok(frame.height * scale <= 960 * 0.9 + 1e-8, "основные части помещаются по высоте");
     assert.ok(frame.width * scale <= 1920 * 0.8 + 1e-8);
     if (mass === 65000)
-      assert.equal(view.desiredScale(horizontal, 1920, 960, world), 0.5796996204474442);
+      assert.ok(view.desiredScale(horizontal, 1920, 960, world) > 0.5796996204474442, "горизонтальная группа тоже стала ближе");
   }
 });
 
@@ -414,4 +414,46 @@ test("Однострочный ник растёт умеренно и впис�
       assert.ok(layout.textWidth + layout.badgeRadius * 2 + layout.size * 0.2 <= radius * scale * 1.8 + 1e-8);
       assert.ok(layout.textWidth > 0);
     }
+});
+
+
+test("Fast continuous movement is followed without the old 180 px/s ceiling", () => {
+  for (const fps of [30, 60, 144]) for (const speed of [300, 700, 1400]) {
+    const camera = { x: 1000, y: 1000, scale: 1 };
+    for (let i = 0; i <= fps * 4; i++) {
+      const part = { id: "one", x: 1000 + speed * i / fps, y: 1000 };
+      view.followCenter(camera, part, 1 / fps, false, [part]);
+      assert.ok(Number.isFinite(camera.x));
+      if (i >= fps) assert.ok(part.x - camera.x < 130, "fast player remains close to screen center");
+      assert.ok(camera.x <= part.x + 1e-6, "camera does not overtake the player");
+    }
+    const stationary = { id: "one", x: 1000 + speed * 4, y: 1000 };
+    for (let i = 0; i < fps; i++) view.followCenter(camera, stationary, 1 / fps, false, [stationary]);
+    assert.ok(Math.abs(stationary.x - camera.x) < 1, "braking remains stable");
+  }
+});
+
+test("Pointer edge continues beyond viewport; central precision and world limits remain", () => {
+  const world = { width: 6120, height: 4080 }, camera = { x: 1000, y: 1000, scale: 1 };
+  const first = view.movementTarget({ x: 1000, y: 1000 }, { x: 1360, y: 450 }, camera, 1366, 900, world);
+  const beyond = view.movementTarget({ x: 1900, y: 1000 }, { x: 1360, y: 450 }, camera, 1366, 900, world);
+  assert.equal(first.keepDirection, true); assert.equal(beyond.keepDirection, true);
+  assert.equal(beyond.x, world.width); assert.equal(beyond.y, 1000);
+  const precise = view.movementTarget({ x: 1000, y: 1000 }, { x: 800, y: 500 }, camera, 1366, 900, world);
+  assert.deepEqual(precise, { x: 1117, y: 1050, keepDirection: false });
+  const diagonal = view.movementTarget({ x: 1000, y: 1000 }, { x: 1360, y: 890 }, camera, 1366, 900, world);
+  assert.ok(Math.abs((diagonal.y - 1000) / (diagonal.x - 1000) - 440 / 677) < 1e-9);
+  for (const x of [0, 1366]) for (const y of [0, 900]) {
+    const p = view.movementTarget({ x: 6000, y: 4000 }, { x, y }, camera, 1366, 900, world);
+    assert.ok(p.x >= 0 && p.x <= world.width && p.y >= 0 && p.y <= world.height);
+  }
+  const arena = new Arena({ etherCount: 0, world }), p = arena.addPlayer(0, "offscreen");
+  p.x = 1000; p.y = 1000;
+  p.effects.speed = 100000; p.effectStrengths = { speed: 4 };
+  arena.handleInput(p.id, { type: "move", ...first }, 1);
+  for (let i = 1; i < 150; i++) { arena.step(i * 50); }
+  assert.ok(p.x > camera.x + 1366 / 2, "server movement crosses the visible right edge");
+  assert.ok(p.x <= world.width - p.radius, "physical arena wall still applies");
+  arena.handleInput(p.id, { type: "stop" }, 7500);
+  assert.equal(p.moveDirection, null);
 });

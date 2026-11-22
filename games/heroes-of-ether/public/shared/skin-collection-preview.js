@@ -4,6 +4,9 @@
     ["coins", "crystals", "bucks"].indexOf(a.currency) -
       ["coins", "crystals", "bucks"].indexOf(b.currency) || a.price - b.price;
   const collections = [
+    {"id":"army","name":"Защитники","currency":"coins","price":2500,"members":[{"id":"army-commander","name":"Командир"},{"id":"army-sapper","name":"Сапёр"},{"id":"army-scout","name":"Разведчица"},{"id":"army-scout-falcon","name":"Сокол-разведчик"},{"id":"army-service-dog","name":"Служебная овчарка"}]},
+    {"id":"hospital","name":"Весёлая больница","currency":"crystals","price":250,"members":[{"id":"hospital-chief-doctor","name":"Главврач"},{"id":"hospital-helper-cat","name":"Кот-помощник"},{"id":"hospital-nurse","name":"Медсестра"},{"id":"hospital-paramedic","name":"Фельдшер"},{"id":"hospital-surgeon","name":"Хирург"}]},
+    {"id":"norse","name":"Скандинавия","currency":"bucks","price":200,"members":[{"id":"norse-freyja","name":"Фрейя"},{"id":"norse-hugin","name":"Хугин"},{"id":"norse-loki","name":"Локи"},{"id":"norse-odin","name":"Один"},{"id":"norse-thor","name":"Тор"}]},
     {
       id: "forest",
       name: "Лесные тропы",

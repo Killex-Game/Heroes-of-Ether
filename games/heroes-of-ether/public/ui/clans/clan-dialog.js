@@ -844,7 +844,11 @@
         if (count > 1) item.append(el("b", "clan-medal-count", number(count)));
         medals.append(item);
       }
-      shelf.append(el("small", "", "Медали лиг"), medals);
+      for(const medal of competition?.questSeasonMedals||[]){
+        const prize=window.KillexClanCalendar.questPrize(medal.place);if(!prize)continue;
+        const item=el('div','clan-league-medal'),img=el('img');item.dataset.earned='true';item.title=prize.name+' медаль за сезон клановых заданий. Место '+medal.place;img.src=window.KillexProgressionArt.leagueMedal(medal.tier,128);img.alt=item.title;item.append(img);medals.append(item);
+      }
+      shelf.append(el("small", "", "Медали клана"), medals);
       return shelf;
     }
     trophyShelf(competition = this.data.competition, { earnedOnly = false } = {}) {

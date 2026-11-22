@@ -49,7 +49,7 @@ function grant(profile, rank, at) {
   const previousUntil = profile.appearance.grants[theme.id];
   if (typeof previousUntil === "number" && previousUntil <= at)
     for (const slot of catalog.slots)
-      if (profile.appearance[slot] === theme.id) profile.appearance[slot] = "default";
+      if (catalog.baseFrame(profile.appearance[slot]) === theme.id) profile.appearance[slot] = "default";
   profile.appearance.grants[theme.id] =
     rank === 5 ? null : Math.max(profile.appearance.grants[theme.id] || 0, at + MONTH);
   profile.revision++;
@@ -66,7 +66,7 @@ function skinSets(profile) {
 }
 function access(profile, clans, at) {
   const grants = profile.appearance?.grants || {};
-  return {
+  const available = {
     default: null,
     ...Object.fromEntries(Object.keys(profile.appearance?.granted || {}).map(id => [id, null])),
     ...((profile.honors?.claimed || 0) >= 10 || Object.hasOwn(profile.honors?.medals || {}, "boss") || testAccess.all(profile) ? { heroic: null } : {}),
@@ -106,6 +106,9 @@ function access(profile, clans, at) {
         )
       : {}),
   };
+  for (const frame of catalog.variantFrames)
+    if (Object.hasOwn(available,frame.baseId)) available[frame.id]=available[frame.baseId];
+  return available;
 }
 const background = (slot) => slot === "lobbyBackground" || slot === "profileBackground";
 const testing = (slot, backgrounds, frames) =>

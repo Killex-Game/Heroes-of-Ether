@@ -111,8 +111,14 @@ test("Arena sends movement every tick, rankings once a second, and a full snapsh
   ws.on("message", (raw) => messages.push(JSON.parse(raw)));
   await once(ws, "open");
   t.after(() => ws.terminate());
-  const flush = () => new Promise((r) => setTimeout(r, 15));
-  await flush();
+  const waitForStates = async (received, count) => {
+    const deadline = Date.now() + 2000;
+    while (received.filter((m) => m.type === "state").length < count) {
+      assert.ok(Date.now() < deadline, `Expected ${count} state messages`);
+      await new Promise((r) => setTimeout(r, 5));
+    }
+  };
+  await waitForStates(messages, 1);
   assert.ok(messages.find((m) => m.type === "state")?.leaderboard);
   messages.length = 0;
   let calculations = 0;
@@ -125,7 +131,7 @@ test("Arena sends movement every tick, rankings once a second, and a full snapsh
     at += 50;
     app.tick();
   }
-  await flush();
+  await waitForStates(messages, 20);
   const states = messages.filter((m) => m.type === "state");
   assert.equal(states.length, 20);
   assert.equal(states.filter((m) => Array.isArray(m.leaderboard)).length, 1);
@@ -136,7 +142,7 @@ test("Arena sends movement every tick, rankings once a second, and a full snapsh
   }
   at += 50;
   app.tick();
-  await flush();
+  await waitForStates(messages, 21);
   assert.equal(calculations, 2);
   ws.close();
   await once(ws, "close");
@@ -145,6 +151,6 @@ test("Arena sends movement every tick, rankings once a second, and a full snapsh
   reconnect.on("message", (raw) => again.push(JSON.parse(raw)));
   await once(reconnect, "open");
   t.after(() => reconnect.terminate());
-  await flush();
+  await waitForStates(again, 1);
   assert.ok(again.find((m) => m.type === "state")?.leaderboard);
 });

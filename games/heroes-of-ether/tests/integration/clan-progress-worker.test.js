@@ -8,7 +8,7 @@ const {ArenaProgressShards}=require('../../src/server/profiles/arena-progress-sh
 const {BatchedArenaProgressShards}=require('../../src/server/profiles/arena-progress-batched-shards');
 const {IndependentProgress}=require('../../scripts/benchmarks/resident-room-processes/independent-progress.cjs');
 const catalog=require('../../src/server/clans/daily-quests/catalog.json');
-const start=Date.parse('2026-11-15T03:00:00Z'),end=start+15*3600000;
+const start=Date.parse('2026-11-15T05:00:00Z'),end=start+13*3600000;
 function comparable(world){const copy=structuredClone(world);
   for(const p of Object.values(copy.profiles))p.transactions.entries.forEach((r,i)=>{r.id='receipt-'+i;});
   return copy;}

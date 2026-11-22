@@ -11,7 +11,13 @@ const { copyRecord } = require('../../profiles/copy-record');
 const actions = require('./actions');
 const { awardTitles } = require('../../progression/title-chest-rewards');
 engine.validateCatalog(catalog);
-const active = (data, at) => seasons.active(data.clanQuests?.seasons || [], at);
+const calendar = require('../../../../public/shared/clan-season-calendar');
+const seasonal = require('./season-ranking');
+const active = (data, at) => {
+  if (data.clanQuests?.calendarVersion !== 1) return seasons.active(data.clanQuests?.seasons || [], at);
+  const s = calendar.season(at);
+  return s.mode === 'battle' ? {...s,startsAt:s.start,endsAt:s.end} : null;
+};
 const eligible = (clan, start) => Object.fromEntries(clan.members
   .filter(id => (clan.competition?.joined?.[id] ?? clan.createdAt ?? 0) < start)
   .map(id => [id, clan.competition?.joined?.[id] || 0]));
@@ -20,16 +26,28 @@ function blocked(data, board, at) {
   return !!active(data, at);
 }
 function availableDuration(data,start,end) {
+  if (data.clanQuests?.calendarVersion === 1) {
+    let total=0;
+    for (let from=start;from<end;) {
+      const day=calendar.daily(from), until=Math.min(end,day.end+11*3600000);
+      if(calendar.season(from).mode==='quests')total+=Math.max(0,Math.min(end,day.end)-Math.max(from,day.start));
+      from=until;
+    }
+    return total;
+  }
   return Math.max(0,end-start-(data.clanQuests?.seasons||[]).filter(s=>!s.cancelled)
     .reduce((sum,s)=>sum+Math.max(0,Math.min(end,s.endsAt)-Math.max(start,s.startsAt)),0));
 }
 function initialize(data, at) {
-  if (data.clanQuests) return data;
-  return {...data, clanQuests:{version:1, catalogVersion:catalog.version, revision:0, nextAt:0, seasons:[], enabledAt:at}};
+  if (data.clanQuests?.calendarVersion === 1) return data;
+  if (data.clanQuests?.calendarVersion !== undefined) throw Error('Unknown clan calendar version');
+  const control=data.clanQuests || {version:1,catalogVersion:catalog.version,revision:0,seasons:[],enabledAt:at};
+  return {...data,clanQuests:{...control,calendarVersion:1,calendarActivatedAt:at,nextAt:0}};
 }
 function capture(next, previous, at, {canSettle=true} = {}) {
   if (!next.clanQuests) return next;
   const day = engine.period(at), boundary = due(next, at), repairRecruits = next.clanQuests.recruitRulesVersion !== 1;
+  const sourceBoards = boundary ? Object.entries(next.clans).map(([id,c])=>[id,c.dailyQuests?.board]) : [];
   const upgradeWindow = next.clanQuests.windowVersion !== engine.WINDOW_VERSION;
   let clans = next.clans, profiles = next.profiles, index, ledger = next.clanQuestRewards;
   const changedProfiles = new Set();let deferredEnd=Infinity;
@@ -137,9 +155,10 @@ function capture(next, previous, at, {canSettle=true} = {}) {
   let control = next.clanQuests;
   if (boundary) {
     const edges = control.seasons.filter(s=>!s.cancelled).flatMap(s=>[s.startsAt,s.endsAt]).filter(n=>n>at);
-    control = {...control,catalogVersion:catalog.version,recruitRulesVersion:1,windowVersion:engine.WINDOW_VERSION,nextAt:Math.min(day.active?day.end:day.nextStart,...edges,deferredEnd)};
+    control = {...control,catalogVersion:catalog.version,recruitRulesVersion:1,windowVersion:engine.WINDOW_VERSION,nextAt:Math.min(day.active?day.end:day.nextStart,...(control.calendarVersion===1?[calendar.season(at).end]:edges),deferredEnd)};
   }
-  return clans===next.clans && profiles===next.profiles && control===next.clanQuests && ledger===next.clanQuestRewards ? next : {...next,clans,profiles,clanQuests:control,...(ledger?{clanQuestRewards:ledger}:{})};
+  const result=clans===next.clans && profiles===next.profiles && control===next.clanQuests && ledger===next.clanQuestRewards ? next : {...next,clans,profiles,clanQuests:control,...(ledger?{clanQuestRewards:ledger}:{})};
+  return boundary ? seasonal.capture(result,at,sourceBoards,{canSettle}) : result;
 }
 // Called exclusively for server progress events inside the durable arena draft.
 // No timers or full-player searches; work is bounded by one clan's five rows.
@@ -168,7 +187,7 @@ function progress(data, clanDrafts, p, event, at, changes, earned, before) {
     session.sampledAt = at;
     if (event.type === 'questSample') session.rank = event.rank;
   }
-  if (board && !blocked(data,board,at) && at >= board.start && at < board.end && Object.hasOwn(board.eligible,p.id)) {
+  if (board && !blocked(data,board,at) && (data.clanQuests.calendarVersion!==1 || engine.period(at).active) && at >= board.start && at < board.end && Object.hasOwn(board.eligible,p.id)) {
     // Existing persistent victim cooldowns, including clanmates, remain authoritative.
     deltas.kills = Math.max(0,p.progress.absorptionKills-before.kills);
     deltas.absorbedMass = Math.max(0,p.progress.absorbedMass-before.mass);
@@ -194,14 +213,14 @@ function gift(data,p,at) {
 function view(data,clan,at,part) {
   if(!data.clanQuests) return {};
   const season=active(data,at), day=engine.period(at), board=clan.dailyQuests?.board;
-  const result={mode:season?'battle':'quests',announcedSeason:season};
+  const result={mode:season?'battle':'quests',announcedSeason:season,calendarSeason:calendar.season(at),questSeasonMedals:structuredClone(clan.questSeasonMedals||[])};
   if(!part || part==='battle' || part==='preview') result.dailyQuests={
     active:!!(board?.day===day.id && day.active && !season && board.quests.length),
     resultsVisible:!!(board?.day===day.id && !season && board.quests.length && at>=board.end && at<board.end+engine.RESULTS_MS),
     settled:!!board?.settledAt,resultsUntil:(board?.end??day.end)+engine.RESULTS_MS,
     day:day.id,start:board?.day===day.id?board.start:day.start,end:board?.day===day.id?board.end:day.end,nextStart:day.nextStart,serverNow:at,
     quests:board?.day===day.id ? board.quests.map(q=>({...structuredClone(q),greatness:engine.questGreatness(q.metric),description:descriptions[q.id]||q.description})) : []};
-  if(!part || part==='league') result.dailyRanking=engine.ranking(Object.values(data.clans).map(c=>({...c,level:clanProgress(c.xp).level})),
+  if(!part || part==='league') result.dailyRanking=data.clanQuests.calendarVersion===1 ? seasonal.rows(data,seasonal.current(data,at)) : engine.ranking(Object.values(data.clans).map(c=>({...c,level:clanProgress(c.xp).level})),
     Object.fromEntries(Object.entries(data.clans).map(([id,c])=>[id,c.dailyQuests?.board])),at);
   return result;
 }
@@ -210,7 +229,8 @@ function validate(data) {
   const state=data.clanQuests;
   if(state.version!==1 || !Number.isSafeInteger(state.revision) || !Number.isSafeInteger(state.nextAt) || !Array.isArray(state.seasons)) throw Error('Invalid clan quest schedule');
   if(state.recruitRulesVersion!==undefined && state.recruitRulesVersion!==1)throw Error('Invalid clan newcomer rules');
-  if(state.windowVersion!==undefined && state.windowVersion!==engine.WINDOW_VERSION)throw Error('Invalid clan quest window');
+  if(state.windowVersion!==undefined && ![1,2,engine.WINDOW_VERSION].includes(state.windowVersion))throw Error('Invalid clan quest window');
+  seasonal.validate(data);
   let history=[];
   for(const s of state.seasons) {history=seasons.announce(history,s,{role:'owner'}); history.at(-1).cancelled=!!s.cancelled;}
   for(const c of Object.values(data.clans)) for(const b of [c.dailyQuests?.board].filter(Boolean)) {

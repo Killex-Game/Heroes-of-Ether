@@ -6,7 +6,33 @@ const {ClanService}=require('../../src/server/clans/clan-service');
 const service=require('../../src/server/clans/daily-quests/service'),engine=require('../../src/server/clans/daily-quests/engine');
 const admin=require('../../src/server/clans/daily-quests/admin');
 const {temporary}=require('../temp');
-const start=Date.parse('2026-11-14T03:00:00Z'),end=start+15*3600000;
+const start=Date.parse('2026-11-14T05:00:00Z'),end=start+13*3600000;
+test('season reward uses the durable store barrier, survives restart, pays all current members exactly once',async t=>{
+  const f=fixture(t,true);f.task('xp',1);
+  const next=structuredClone(f.store.data),board=next.clans[f.id].dailyQuests.board;
+  board.quests[0].progress=1;board.quests[0].completedAt=start;board.contributors={[f.a.profile.id]:{firstAt:start}};
+  f.store.save(next);f.at(end);f.store.refreshCompetition();
+  const seasonEnd=Date.parse('2026-12-31T21:00:00Z');
+  f.at(seasonEnd);f.store.clanQuestSettlementReady=()=>false;f.store.refreshCompetition();
+  assert(!f.store.data.clanQuests.questSeason.settledAt);
+  const before=structuredClone(f.store.data); // Calendar rewards already settled; isolate the season payment.
+  f.store.clanQuestSettlementReady=()=>true;
+  const pending=f.store.data,commit=f.store.journal.commit;
+  f.store.journal.commit=()=>{throw Error('season fsync failure');};
+  assert.throws(()=>f.store.refreshCompetition(),/season fsync failure/);assert.equal(f.store.data,pending);
+  f.store.journal.commit=commit;f.store.refreshCompetition();
+  for(const who of [f.a,f.b]){
+    const p=f.store.find(who.token),old=Object.values(before.profiles).find(x=>x.id===p.id);
+    assert.equal(p.wallet.coins-old.wallet.coins,3000);
+    assert.equal(p.wallet.crystals-old.wallet.crystals,250);
+    assert.equal(p.wallet.bucks-old.wallet.bucks,250);
+    assert.equal(p.clanQuestMedals.length,1);
+  }
+  const saved=require('../../src/server/profiles/profile-journal').recover(f.file).data;
+  const again=service.capture(saved,saved,seasonEnd+1);
+  assert.deepEqual(again.profiles,saved.profiles);
+  assert.equal(Object.keys(saved.clanQuests.questSeasonHistory).length,1);
+});
 function fixture(t,journal=false,options={}){
   let now=start-86400000;
   let cleanup;
@@ -41,7 +67,7 @@ test('approved catalog: exact values, rejected rows absent, feasible time bounds
     assert.equal(qs.length,5);assert.equal(qs[0].metric,'xp');assert.equal(qs.filter(q=>q.metric==='xp').length,1);
     assert.equal(qs[1].metric,'kills');assert.equal(qs.filter(q=>q.metric==='kills').length,1);
     assert(qs.slice(2).every(q=>q.metric!=='xp'&&q.metric!=='kills'));
-    assert(qs.every(q=>!q.metric.endsWith('Ms')||q.target<=n*15*3600000));
+    assert(qs.every(q=>!q.metric.endsWith('Ms')||q.target<=n*13*3600000));
   }
 });
 test('store initializes quests, gives no automatic battles, gift is replay safe and prizes wait until 21:00',t=>{
@@ -56,7 +82,7 @@ test('store initializes quests, gives no automatic battles, gift is replay safe 
   f.at(end);f.store.refreshCompetition();assert.equal(f.store.find(f.a.token).wallet.crystals,before+500);
   const receipt=f.board().rewardReceipt;f.store.refreshCompetition();assert.equal(f.board().rewardReceipt,receipt);assert.equal(f.store.find(f.a.token).wallet.crystals,before+500);
 });
-test('newcomer after 06:00 cannot contribute; leaving forfeits eligibility even after rejoining',t=>{
+test('newcomer after 08:00 cannot contribute; leaving forfeits eligibility even after rejoining',t=>{
   const f=fixture(t);f.task('xp',100);
   f.act(f.late,'apply',{clanId:f.id});if(f.store.find(f.late.token).clanId!==f.id)f.act(f.a,'accept',{clanId:f.id,memberId:f.late.profile.id});
   assert(!Object.hasOwn(f.board().eligible,f.late.profile.id));
@@ -69,7 +95,7 @@ test('newcomer after 06:00 cannot contribute; leaving forfeits eligibility even 
   const before=f.store.find(f.b.token).wallet.crystals;f.at(end);f.store.refreshCompetition();assert.equal(f.store.find(f.b.token).wallet.crystals,before);
 });
 
-test('daily newcomers including overnight joins wait until 06:00; old missing status is repaired without deleting assigned roles',t=>{
+test('daily newcomers including overnight joins wait until 08:00; old missing status is repaired without deleting assigned roles',t=>{
   const f=fixture(t,true);f.at(start+1000);
   f.act(f.late,'apply',{clanId:f.id});if(f.store.find(f.late.token).clanId!==f.id)f.act(f.a,'accept',{clanId:f.id,memberId:f.late.profile.id});
   const data=structuredClone(f.store.data),clan=data.clans[f.id];
@@ -141,19 +167,16 @@ test('21:00 read waits for queued pre-deadline progress before paying or replaci
   assert.equal(f.board().quests[0].progress,1);f.at(end);f.clanApi.state(f.a.token);assert.equal(f.store.find(f.a.token).wallet.crystals,before);
   f.store.clanQuestSettlementReady=()=>true;f.store.refreshCompetition();assert.equal(f.store.find(f.a.token).wallet.crystals,before+500);assert(f.board().settledAt);
 });
-test('announced seasons pause tasks, owner only; seasons without battles do not award trophies',t=>{
-  const f=fixture(t);const access={isOwner:a=>a.id===f.a.profile.id},actor={id:f.a.profile.id};
-  const announce=name=>admin.apply(f.store,access,actor,{action:'announce',immediate:true,name,endsAt:start+3600000,revision:f.store.data.clanQuests.revision,reason:'Проверка',requestId:randomUUID()});
+test('automatic seasons alternate and reject manual overrides; unmatched clans earn no cups',t=>{
+  const f=fixture(t),access={isOwner:a=>a.id===f.a.profile.id},actor={id:f.a.profile.id};
   assert.throws(()=>admin.apply(f.store,access,{id:'stranger'},{}),/владелец/);
-  announce('Первый');assert.equal(f.clanApi.state(f.a.token).competition.mode,'battle');assert.equal(f.clanApi.state(f.a.token).competition.dailyQuests.active,false);
-  const s=f.store.data.clanQuests.seasons[0];f.at(start+60000);
-  admin.apply(f.store,access,actor,{action:'stop',id:s.id,revision:f.store.data.clanQuests.revision,reason:'Завершение',requestId:randomUUID()});
-  assert.equal(f.clanApi.state(f.a.token).competition.mode,'quests');assert.equal(f.clanApi.state(f.a.token).competition.dailyQuests.active,true);assert.equal(f.store.data.competition.season.settled,true);
-  const count=f.store.data.clans[f.id].competition.trophies.length;
-  announce('Второй');f.at(start+3600000);f.store.refreshCompetition();
-  assert.equal(count,0);
+  assert.throws(()=>admin.apply(f.store,access,actor,{}),/автоматически/);
+  assert.equal(f.clanApi.state(f.a.token).competition.mode,'quests');
+  f.at(Date.parse('2027-01-01T05:00:00Z'));f.store.refreshCompetition();
+  assert.equal(f.clanApi.state(f.a.token).competition.mode,'battle');
+  f.at(Date.parse('2027-03-01T05:00:00Z'));f.store.refreshCompetition();
+  assert.equal(f.clanApi.state(f.a.token).competition.mode,'quests');
   assert.equal(f.store.data.clans[f.id].competition.trophies.length,0);
-  f.store.refreshCompetition();assert.equal(f.store.data.clans[f.id].competition.trophies.length,0);
 });
 
 test('revised clan actions have independent cursors, include pets, retain paid-only inventory tasks and every freeze hit',t=>{
@@ -258,7 +281,7 @@ test('a read at 21:00 waits for the final arena sample, including food since the
   assert.deepEqual(f.board().quests.map(q=>q.progress),[1000,4]);
 });
 
-test('06:00 profile read cannot carry food from the final night tick into the new daily board',async t=>{
+test('08:00 profile read cannot carry food from the final night tick into the new daily board',async t=>{
   const f=fixture(t),opening=start+86400000;
   f.at(opening-1000);f.store.refreshCompetition();let simulation=1000;
   const {Arena}=require('../../src/server/arena/arena-simulation'),arena=new Arena({etherCount:0});
@@ -275,7 +298,7 @@ test('06:00 profile read cannot carry food from the final night tick into the ne
   assert.equal(f.board().quests[0].progress,3,'Only food actually added after opening is counted');
 });
 
-test('06:00 baseline survives asynchronous journal failure and retry without importing night food',async t=>{
+test('08:00 baseline survives asynchronous journal failure and retry without importing night food',async t=>{
   const f=fixture(t,true,{arenaProgressWorker:true}),opening=start+86400000;
   f.at(opening-1000);f.store.refreshCompetition();let simulation=1000;
   const {Arena}=require('../../src/server/arena/arena-simulation'),arena=new Arena({etherCount:0});
@@ -388,7 +411,7 @@ test('greatness opens its earned title in the same settlement, incomplete quests
   assert.deepEqual(Object.values(saved.profiles).find(p=>p.id===after.id).honors,after.honors);
 });
 
-test('legacy current board keeps selection and early progress; closing moves to 21:00, next board to 06:00',t=>{
+test('legacy current board keeps selection and early progress; closing moves to 21:00, next board to 08:00',t=>{
   const f=fixture(t,true);f.task('gifts',1);
   f.at(start+1000);f.act(f.late,'apply',{clanId:f.id});if(f.store.find(f.late.token).clanId!==f.id)f.act(f.a,'accept',{clanId:f.id,memberId:f.late.profile.id});
   const data=structuredClone(f.store.data),b=data.clans[f.id].dailyQuests.board;
@@ -409,7 +432,7 @@ test('legacy current board keeps selection and early progress; closing moves to 
   assert.equal(f.board().quests[0].metric,'xp');assert.equal(f.board().quests[1].metric,'kills');assert(f.board().quests.every(q=>q.progress===0));
 });
 
-test('read-only final board visible 21:00 to 23:00, then placeholder until 06:00',t=>{
+test('read-only final board visible 21:00 to 23:00, then placeholder until 08:00',t=>{
   const f=fixture(t);f.task('xp',1);
   const view=at=>service.view(f.store.data,f.store.data.clans[f.id],at,'preview').dailyQuests;
   assert.equal(view(end-1).active,true);assert.equal(view(end-1).resultsVisible,false);

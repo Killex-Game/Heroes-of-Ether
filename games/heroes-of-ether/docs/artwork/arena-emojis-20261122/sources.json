@@ -1,0 +1,144 @@
+{
+  "tool": "built-in image_gen",
+  "normalAndVip": "basic",
+  "premium": "pets",
+  "sharedPeaceHand": 8,
+  "finalEmotes": [
+    {
+      "id": 1,
+      "set": "basic",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-1b636edb-cfbc-4270-9a51-e6f058434e4a.png",
+      "prompt": "Use case: stylized-concept. Asset: single arena emoji for Heroes of Ether, BASIC/VIP tier. Create ONE simple traditional round golden-yellow smiley face, not an animal, not a character portrait. Expression: Furious angry face with intensely knitted eyebrows and clenched teeth, warm orange-red round face. No horns. Soft rounded casual 2.5D fantasy game illustration, warm honey-yellow body and warm orange shading, clear dark plum facial features, large simple readable shapes. Smooth soft light from upper left, very restrained small highlights, no large white glare, no sparkles. Friendly polished mobile fantasy game style matching the game's soft toy-like items, but simpler than pet portraits. Composition centered, complete silhouette, 8% transparent padding, 1:1 canvas. Transparent background with real alpha. No text, digits, watermark, border, pedestal, aura, crown or decorations. Must be immediately readable at 48px.",
+      "output": "public/assets/emotes/basic-v1/1.webp",
+      "sha256": "aca56d670cdf3236286ff4f1a5bba4adee345ad2e1e6c83f2c3e3126b3a5f34b"
+    },
+    {
+      "id": 1,
+      "set": "pets",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-602a65c2-a36f-4266-a83c-0d3987b4c9db.png",
+      "prompt": "Use case: identity-preserve. Create ONE arena emoji portrait by editing ONLY THE FACIAL EXPRESSION of the EXACT PET in the supplied image. This reference is the actual character identity and art style, not merely inspiration. Preserve its face shape, species, ear/horn geometry, hair tuft, fur/skin colors and distinctive head accessory exactly. Crop into a centered HEAD PORTRAIT, no full body, no tail, no wings, no backdrop, no badge, no text or numbers. Tiny bit of neck only when needed; 7% transparent margin. Match the existing soft rounded 2.5D rendering, with fewer/smaller restrained highlights, saturated colors and broad soft shading; no thick black outline. Transparent background, clean alpha. Readable as a 64px game emote. Character: our exact magenta DRAGON Drakosha with golden horns, amber eyes and purple forehead gem. Expression: furious/comically angry, one eye wide and other narrowed, brows deeply furrowed, clenched teeth. Keep him a magenta dragon, do not add a bull nose ring or change his horns.",
+      "output": "public/assets/emotes/pets-v1/1.webp",
+      "sha256": "905090c1023b2fd5c46fdca13509dcd0b2f07d1fb8ef1382c639849555ec5b09"
+    },
+    {
+      "id": 2,
+      "set": "basic",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-6a79753b-38c5-4c18-9979-0f0474c02521.png",
+      "prompt": "Use case: stylized-concept. Asset: single arena emoji for Heroes of Ether, BASIC/VIP tier. Create ONE simple traditional round golden-yellow smiley face, not an animal, not a character portrait. Expression: Laughing hard with eyes squeezed into happy arcs and a wide open smiling mouth, joyful. Soft rounded casual 2.5D fantasy game illustration, warm honey-yellow body and warm orange shading, clear dark plum facial features, large simple readable shapes. Smooth soft light from upper left, very restrained small highlights, no large white glare, no sparkles. Friendly polished mobile fantasy game style matching the game's soft toy-like items, but simpler than pet portraits. Composition centered, complete silhouette, 8% transparent padding, 1:1 canvas. Transparent background with real alpha. No text, digits, watermark, border, pedestal, aura, crown or decorations. Must be immediately readable at 48px.",
+      "output": "public/assets/emotes/basic-v1/2.webp",
+      "sha256": "61f414e8cfc84e35469749bde6e242db6e900ec43f5ff3f80f3ea04a69e66b02"
+    },
+    {
+      "id": 2,
+      "set": "pets",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-02791e26-c146-47af-9c0a-7ac20f352e13.png",
+      "prompt": "Use case: identity-preserve. Create ONE arena emoji portrait by editing ONLY THE FACIAL EXPRESSION of the EXACT PET in the supplied image. This reference is the actual character identity and art style, not merely inspiration. Preserve its face shape, species, ear/horn geometry, hair tuft, fur/skin colors and distinctive head accessory exactly. Crop into a centered HEAD PORTRAIT, no full body, no tail, no wings, no backdrop, no badge, no text or numbers. Tiny bit of neck only when needed; 7% transparent margin. Match the existing soft rounded 2.5D rendering, with fewer/smaller restrained highlights, saturated colors and broad soft shading; no thick black outline. Transparent background, clean alpha. Readable as a 64px game emote. Character: our exact WHITE-PINK rabbit Zaya, with long DROOPING ears, pink curled hair tuft, blue eyes and purple neck bow visible at lower edge. Expression: laughing heartily with open smiling mouth, two small rabbit teeth and joyfully narrowed eyes. KEEP the drooping-ear silhouette and pink tuft. Do not substitute a generic upright-eared rabbit.",
+      "output": "public/assets/emotes/pets-v1/2.webp",
+      "sha256": "5415fab9b539436c45caac3e142977c3de2ead66a72c60b138827fd396c86bd3"
+    },
+    {
+      "id": 3,
+      "set": "basic",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-90e671ec-9342-4805-a9f6-0f5117e794ef.png",
+      "prompt": "Use case: stylized-concept. Asset: single arena emoji for Heroes of Ether, BASIC/VIP tier. Create ONE simple traditional round golden-yellow smiley face, not an animal, not a character portrait. Expression: Hungry and eagerly licking lips with tongue visible, raised excited eyes, a small simple bowl tucked beneath the chin. Soft rounded casual 2.5D fantasy game illustration, warm honey-yellow body and warm orange shading, clear dark plum facial features, large simple readable shapes. Smooth soft light from upper left, very restrained small highlights, no large white glare, no sparkles. Friendly polished mobile fantasy game style matching the game's soft toy-like items, but simpler than pet portraits. Composition centered, complete silhouette, 8% transparent padding, 1:1 canvas. Transparent background with real alpha. No text, digits, watermark, border, pedestal, aura, crown or decorations. Must be immediately readable at 48px.",
+      "output": "public/assets/emotes/basic-v1/3.webp",
+      "sha256": "d66ceb89aca02c30022faa77a00d99cb3bab91c460d18ddc6013d58e3eed27a3"
+    },
+    {
+      "id": 3,
+      "set": "pets",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-0f9ceb6e-ecd7-4f27-bcd6-934bb498a8e2.png",
+      "prompt": "Use case: identity-preserve. Create ONE arena emoji portrait by editing ONLY THE FACIAL EXPRESSION of the EXACT PET in the supplied image. This reference is the actual character identity and art style, not merely inspiration. Preserve its face shape, species, ear/horn geometry, hair tuft, fur/skin colors and distinctive head accessory exactly. Crop into a centered HEAD PORTRAIT, no full body, no tail, no wings, no backdrop, no badge, no text or numbers. Tiny bit of neck only when needed; 7% transparent margin. Match the existing soft rounded 2.5D rendering, with fewer/smaller restrained highlights, saturated colors and broad soft shading; no thick black outline. Transparent background, clean alpha. Readable as a 64px game emote. Character: our exact lavender-purple and white cat Manya, golden tiara with purple gem, pink nose. Expression: silly hungry delight, eyes looking up, tongue sticking slightly out, holding a small golden-orange food bowl with two lavender front paws just below her chin. Head-dominant composition, preserve purple cat colors and tiara, do not turn her gray.",
+      "output": "public/assets/emotes/pets-v1/3.webp",
+      "sha256": "535961743c2e1390a98bcd559b4fd5723a68b65cd41a71622110ef3ad9ac992f"
+    },
+    {
+      "id": 4,
+      "set": "basic",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-b0eefd45-903b-482d-8f7c-a8fb52acba34.png",
+      "prompt": "Use case: stylized-concept. Asset: single arena emoji for Heroes of Ether, BASIC/VIP tier. Create ONE simple traditional round golden-yellow smiley face, not an animal, not a character portrait. Expression: Crying loudly, open sad mouth, eyebrows raised in sorrow, two broad blue tears. Soft rounded casual 2.5D fantasy game illustration, warm honey-yellow body and warm orange shading, clear dark plum facial features, large simple readable shapes. Smooth soft light from upper left, very restrained small highlights, no large white glare, no sparkles. Friendly polished mobile fantasy game style matching the game's soft toy-like items, but simpler than pet portraits. Composition centered, complete silhouette, 8% transparent padding, 1:1 canvas. Transparent background with real alpha. No text, digits, watermark, border, pedestal, aura, crown or decorations. Must be immediately readable at 48px.",
+      "output": "public/assets/emotes/basic-v1/4.webp",
+      "sha256": "1ae40dcbcf1e28c2ea19c89aab3a527a1765f61f75109e75a492ce243efd7948"
+    },
+    {
+      "id": 4,
+      "set": "pets",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-183ed156-7d8a-42fc-a570-062d374dd549.png",
+      "prompt": "Use case: identity-preserve. Make ONE arena emoji portrait from the EXACT PET in the supplied reference. The reference is the actual character identity and rendering, NOT just a style moodboard. Keep its species, facial shape, colors, head accessory, hair tuft, ear/horn silhouette and distinctive markings. Change its facial expression to the requested emotion. Centered HEAD PORTRAIT on a genuinely transparent background, all ears/crown/horns within frame with 7% margin. No full body, wings or tail, no circle/frame/badge, no text/numbers/watermark. Keep soft rounded saturated casual 2.5D pet art; fewer small gentle highlights, broad smooth shading, no thick black outline. Readable as a 64px emote. Our golden lion cub Leva with round pink inner ears, golden curled forelock and tilted golden crown with purple diamond. Expression: loudly crying, open sad mouth, brows raised sadly, big clear blue tears streaming from BOTH eyes. Keep recognizable golden lion cub, not a monkey.",
+      "output": "public/assets/emotes/pets-v1/4.webp",
+      "sha256": "fadfb4869ca567e08069a354893a7086ed62e85cf9b24143a3329908f19dd0c6"
+    },
+    {
+      "id": 5,
+      "set": "basic",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-a0040b40-adef-4a7e-b590-696d321296f8.png",
+      "prompt": "Use case: stylized-concept. Asset: single arena emoji for Heroes of Ether, BASIC/VIP tier. Create ONE simple traditional round golden-yellow smiley face, not an animal, not a character portrait. Expression: In love, exactly two large red heart-shaped eyes and a delighted open smile. Soft rounded casual 2.5D fantasy game illustration, warm honey-yellow body and warm orange shading, clear dark plum facial features, large simple readable shapes. Smooth soft light from upper left, very restrained small highlights, no large white glare, no sparkles. Friendly polished mobile fantasy game style matching the game's soft toy-like items, but simpler than pet portraits. Composition centered, complete silhouette, 8% transparent padding, 1:1 canvas. Transparent background with real alpha. No text, digits, watermark, border, pedestal, aura, crown or decorations. Must be immediately readable at 48px.",
+      "output": "public/assets/emotes/basic-v1/5.webp",
+      "sha256": "723f8ec5eae6a05ba32a5ba83ba05c31dfa7300cbffb72d8e464b9ae0eb61593"
+    },
+    {
+      "id": 5,
+      "set": "pets",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-aa9b7236-aa87-4966-8561-15e7ba4ede2d.png",
+      "prompt": "Use case: identity-preserve. Make ONE arena emoji portrait from the EXACT PET in the supplied reference. The reference is the actual character identity and rendering, NOT just a style moodboard. Keep its species, facial shape, colors, head accessory, hair tuft, ear/horn silhouette and distinctive markings. Change its facial expression to the requested emotion. Centered HEAD PORTRAIT on a genuinely transparent background, all ears/crown/horns within frame with 7% margin. No full body, wings or tail, no circle/frame/badge, no text/numbers/watermark. Keep soft rounded saturated casual 2.5D pet art; fewer small gentle highlights, broad smooth shading, no thick black outline. Readable as a 64px emote. Our lavender-and-white cat Manya with pink nose and golden purple-gem tiara. Expression: madly in love, eyes contain two clear red HEART shapes, happy wide open smiling mouth, little pink tongue. Preserve lavender-purple fur and actual Manya head identity.",
+      "output": "public/assets/emotes/pets-v1/5.webp",
+      "sha256": "c08f375e4bdcfda1f9db7ea2d69b7f2eb93b162b2bf86f91e1b5aa675996d86a"
+    },
+    {
+      "id": 6,
+      "set": "basic",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-85345f6b-8abc-4088-b9d3-ec7298dec919.png",
+      "prompt": "Use case: stylized-concept. Asset: single arena emoji for Heroes of Ether, BASIC/VIP tier. Create ONE simple traditional round golden-yellow smiley face, not an animal, not a character portrait. Expression: Playful silly goofing face: one eye winking, other eye happy and wide, tongue sticking out to one side, cheeky goofy smile; friendly and funny, no anger. Soft rounded casual 2.5D fantasy game illustration, warm honey-yellow body and warm orange shading, clear dark plum facial features, large simple readable shapes. Smooth soft light from upper left, very restrained small highlights, no large white glare, no sparkles. Friendly polished mobile fantasy game style matching the game's soft toy-like items, but simpler than pet portraits. Composition centered, complete silhouette, 8% transparent padding, 1:1 canvas. Transparent background with real alpha. No text, digits, watermark, border, pedestal, aura, crown or decorations. Must be immediately readable at 48px.",
+      "output": "public/assets/emotes/basic-v1/6.webp",
+      "sha256": "76fcc9d9f52c62f4d8f108b0e1a30d2328b788267f2acd7fdf3a1fd7c55724c8"
+    },
+    {
+      "id": 6,
+      "set": "pets",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-4edf8183-f355-4927-acfe-feec918633b5.png",
+      "prompt": "Edit the provided Leva lion cub head portrait: replace the angry roaring expression with PLAYFUL SILLINESS, cheeky goofy face. One eye winks, the other remains bright and friendly, tongue sticking out playfully to one side, broad mischievous grin. No angry eyebrows or roaring aggression. Preserve the exact golden lion cub identity, ears, mane silhouette, crown with purple jewel and soft rounded casual 2.5D Heroes of Ether game style. Full head only, centered with 8% transparent padding, no cropping of crown, real transparent alpha background. Smooth shading, restrained small highlights, no large white glare, no text or border.",
+      "output": "public/assets/emotes/pets-v1/6.webp",
+      "sha256": "d3b7aa440ef6610fd432bb2d906347d8bd2612399a714c221464e02ea6581c02"
+    },
+    {
+      "id": 7,
+      "set": "basic",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-85651735-dc29-435e-9ec1-14889c66e2ac.png",
+      "prompt": "Use case: stylized-concept. Asset: single arena emoji for Heroes of Ether, BASIC/VIP tier. Create ONE simple traditional round golden-yellow smiley face, not an animal, not a character portrait. Expression: Cool confident smirk wearing simple dark sunglasses with one subtle blue reflection. Soft rounded casual 2.5D fantasy game illustration, warm honey-yellow body and warm orange shading, clear dark plum facial features, large simple readable shapes. Smooth soft light from upper left, very restrained small highlights, no large white glare, no sparkles. Friendly polished mobile fantasy game style matching the game's soft toy-like items, but simpler than pet portraits. Composition centered, complete silhouette, 8% transparent padding, 1:1 canvas. Transparent background with real alpha. No text, digits, watermark, border, pedestal, aura, crown or decorations. Must be immediately readable at 48px.",
+      "output": "public/assets/emotes/basic-v1/7.webp",
+      "sha256": "70e094669d14e167e33e69aa02877eb76c2643febb031d3202bef85533dc0375"
+    },
+    {
+      "id": 7,
+      "set": "pets",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-5b5ad61a-ddb4-494e-849c-d6dd1a1fef92.png",
+      "prompt": "Use case: identity-preserve. Make ONE arena emoji portrait from the EXACT PET in the supplied reference. The reference is the actual character identity and rendering, NOT just a style moodboard. Keep its species, facial shape, colors, head accessory, hair tuft, ear/horn silhouette and distinctive markings. Change its facial expression to the requested emotion. Centered HEAD PORTRAIT on a genuinely transparent background, all ears/crown/horns within frame with 7% margin. No full body, wings or tail, no circle/frame/badge, no text/numbers/watermark. Keep soft rounded saturated casual 2.5D pet art; fewer small gentle highlights, broad smooth shading, no thick black outline. Readable as a 64px emote. Our magenta dragon Drakosha, golden horns, gold lower jaw, purple forehead gem. Expression: confident cheeky cool grin wearing simple black sunglasses over his eyes, one corner of mouth raised. Keep all actual Drakosha features. No fox or other animal.",
+      "output": "public/assets/emotes/pets-v1/7.webp",
+      "sha256": "82a4bc4920c4d9fb1b28c2529b8a06d54b5fe73946099a50c9de305c29db622d"
+    },
+    {
+      "id": 8,
+      "set": "basic",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-ec9d52af-cc78-4179-a5ef-9f560aecdb7f.png",
+      "prompt": "Edit the provided reference: replace the entire rabbit portrait and face with ONLY a standalone cartoon hand making the peace V gesture. No face, head, ears, eyes, body, bow or jewellery anywhere. Palm faces viewer; exactly TWO extended raised fingers (index and middle) spread in a V; ring and little fingers folded against palm, thumb naturally rests across them. Five fingers in total, only two extended. Warm golden-yellow skin, rounded plump fingers, soft casual 2.5D game style of Heroes of Ether, smooth warm orange side shadows and one small restrained highlight, no huge white glare. Center the complete isolated hand with a short rounded wrist, generous 8% transparent padding, square composition, transparent alpha background. Clear readable silhouette at 48px, no text, frame, watermark, aura, no other elements.",
+      "output": "public/assets/emotes/basic-v1/8.webp",
+      "sha256": "726fe6d7d7ff4d6ca1c60dc2f285b7c5073a20e56b05d63235446268e695ddd0"
+    },
+    {
+      "id": 9,
+      "set": "basic",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-ea19db1c-b702-467e-a5cd-92cabc18cc9a.png",
+      "prompt": "Use case: stylized-concept. Asset: single arena emoji for Heroes of Ether, BASIC/VIP tier. Create ONE simple traditional round golden-yellow smiley face, not an animal, not a character portrait. Expression: Apologetic sorry expression, gently lowered eyes, worried raised inner eyebrows, a small sheepish closed smile, with two small golden hands pressed palm-to-palm under the chin in a pleading apology. Clearly says sorry, not surprise or laughter. Soft rounded casual 2.5D fantasy game illustration, warm honey-yellow body and warm orange shading, clear dark plum facial features, large simple readable shapes. Smooth soft light from upper left, very restrained small highlights, no large white glare, no sparkles. Friendly polished mobile fantasy game style matching the game's soft toy-like items, but simpler than pet portraits. Composition centered, complete silhouette, 8% transparent padding, 1:1 canvas. Transparent background with real alpha. No text, digits, watermark, border, pedestal, aura, crown or decorations. Must be immediately readable at 48px.",
+      "output": "public/assets/emotes/basic-v1/9.webp",
+      "sha256": "3decc372fb2b1b10173cfe3508ff27ad485ee81d561bfa9951f03c48ef05548e"
+    },
+    {
+      "id": 9,
+      "set": "pets",
+      "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-a48073c9-fb01-48d8-a52a-3c356cd8b281.png",
+      "prompt": "Edit this Manya portrait to communicate 'I'm sorry / please forgive me'. Preserve the exact lavender and white cat identity, pink nose, gold tiara with purple gemstone, soft 2.5D Heroes of Ether style. Change the surprised expression to a visibly apologetic guilty expression: eyes slightly lowered, inner eyebrows gently raised in regret, small sheepish closed smile. Two small lavender-white paws pressed together in front of the chin, begging forgiveness. Head portrait and paws only, centered, all tiara and ears fully visible, generous 8% transparent padding, square composition, real transparent alpha background. Smooth soft shading, few small restrained highlights, no large white glare, no text or frame.",
+      "output": "public/assets/emotes/pets-v1/9.webp",
+      "sha256": "b73eadcdaa369a32a7a641edc47a7d61805e8e4caddb0af45fd5cb4c1d43a851"
+    }
+  ]
+}

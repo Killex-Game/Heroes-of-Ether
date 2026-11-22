@@ -1,0 +1,412 @@
+{
+  "approvedStyle": "../style-canon/refs/banners/clan-quests-approved.png",
+  "sources": [
+    {
+      "id": "vip",
+      "source": "vip.png",
+      "prompt": "Use case: style-transfer. Redraw the existing VIP game banner (image 2) in the exact visual language of reference 1: friendly chunky softly painted casual 2.5D fantasy illustration, warm architectural depth, broad clean shapes, restrained highlights, lightly illustrated matte surfaces. Do not mimic excessive polished 3D shine of image 2. Preserve its crown subject and red/gold identity. Wide 2:1 game marketing banner, no text, letters, watermark or UI border. Main subject center-right with calm usable left area for HTML heading. No waterfalls. VIP golden crown with ruby red velvet and red gemstone, on a cushion in a sunny welcoming castle hall. Honey gold, scarlet, warm ivory, royal blue background banners. Main bold readable crown; warm daylight from left.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a3169d63-383e-4200-bbbb-26689612b23c.png"
+    },
+    {
+      "id": "premium",
+      "source": "premium.webp",
+      "prompt": "Use case: style-transfer. Redraw the existing Premium game banner (image 2) in the exact visual language of reference 1: friendly chunky softly painted casual 2.5D fantasy illustration, warm architectural depth, broad clean shapes, restrained highlights, lightly illustrated matte surfaces. Do not mimic excessive polished 3D shine of image 2. Preserve crown subject and purple/gold identity. Wide 2:1 game marketing banner, no text, letters, watermark or UI border. Main subject center-right with calm usable left area for HTML heading. No waterfalls. Grand golden crown with deep amethyst violet-blue velvet and purple gems, on a cushion in a welcoming twilight castle hall. Honey gold and royal purple, cool moonlight outside, warm lamplight inside. Crown main bold readable shape, equal visual size to VIP.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-39c56fea-351c-4b82-9eb9-cb2e0dac7df0.png"
+    },
+    {
+      "id": "pets",
+      "prompt": "Create one finished game banner illustration for Heroes of Ether. The FIRST reference is the explicitly user-approved BANNER STYLE: cozy polished fantasy storybook casual 2.5D, large rounded readable forms, soft painterly modelling, rich blue, warm gold and purple, calm warm light, restrained small highlights, no hard outlines, no photorealism. Match its illustration style, not its exact contents. No text, letters, numbers, UI, frame, watermark, waterfall, sparkles clutter. Opaque edge-to-edge scenic background. Wide horizontal 2:1 composition, main subjects across center, full animals visible. Royal castle garden terrace in soft morning light. EXACTLY the four supplied pet characters together, keep their precise identities, accessories and colors: magenta little dragon Drakosha with yellow belly and gold horns; golden lion cub Leva with purple royal cape, crown and purple gem; lavender kitten Manya with white chest, crown and heart jewel; pink floppy-eared bunny Zaya with crown and purple bow with gold gem. Friendly close group, all four equally prominent, no extra animals. Pet references 2-5 define identity only, redraw their excessive highlights in softer style of first reference.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/pets/drakosha.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/pets/leva.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/pets/manya.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/pets/zaya.png"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c9dacd4f-a177-489c-a539-4162e42df5ee.png"
+    },
+    {
+      "id": "lucky",
+      "prompt": "Create one finished game banner illustration for Heroes of Ether. The FIRST reference is the explicitly user-approved BANNER STYLE: cozy polished fantasy storybook casual 2.5D, large rounded readable forms, soft painterly modelling, rich blue, warm gold and purple, calm warm light, restrained small highlights, no hard outlines, no photorealism. Match its illustration style, not its exact contents. No text, letters, numbers, UI, frame, watermark, waterfall, sparkles clutter. Opaque edge-to-edge scenic background. Wide horizontal 2:1 event banner for Lucky Week. Cozy golden hour enchanted castle meadow, a single large graceful golden horseshoe and green four-leaf clover together on right half, a few rounded gold coins and a small treasure bag nearby. Left half calmer blue-green garden and distant castle for live title overlay. A cheerful promise of luck, no characters. Keep main motifs inside safe center 80%.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/events/lucky-week/banner-v3.webp"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b9df15f3-715c-4ed5-b212-3cea7b018a41.png"
+    },
+    {
+      "id": "alchemy",
+      "prompt": "Create one finished game banner illustration for Heroes of Ether. The FIRST reference is the explicitly user-approved BANNER STYLE: cozy polished fantasy storybook casual 2.5D, large rounded readable forms, soft painterly modelling, rich blue, warm gold and purple, calm warm light, restrained small highlights, no hard outlines, no photorealism. Match its illustration style, not its exact contents. No text, letters, numbers, UI, frame, watermark, waterfall, sparkles clutter. Opaque edge-to-edge scenic background. Wide horizontal 2:1 event banner for Ether Alchemy. Main subject centered: the exact blue round cauldron with golden rim, small handles, turquoise diamond medallion and bright turquoise potion from second reference, on a wooden fantasy laboratory table. Elegant cabinet with small colorful potion bottles on left and a few leaves, mushrooms and open recipe book on right. Cozy blue-and-gold castle laboratory, warm diffuse light. No generator machine. Keep the cauldron silhouette and its turquoise liquid clear; very little steam. No writing on book or bottles.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/events/ether-alchemy/v1/cauldron-v1.webp"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-672fe714-4c25-400c-8cc1-c52ad71db854.png"
+    },
+    {
+      "id": "proposal",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/social/banners/proposal.webp"
+      ],
+      "prompt": "One finished illustration, wide horizontal 3:1 banner, for Heroes of Ether. First reference is the user-approved banner illustration STYLE: rich cozy fantasy storybook casual 2.5D, smooth rounded large forms, soft warm painterly light, clear silhouettes, bright saturated colors, controlled small highlights. Second reference defines theme/composition only. No text, numbers, lettering, watermark, UI, outer frame or waterfall. Full opaque scenic background to all edges. Middle 45% visually calm and darker for overlaid live heading, major decorative objects at left and right ends. A joyful marriage proposal in an enchanted palace garden at warm purple-and-gold sunset. At left a velvet blue open ring box with a gold ring, blush roses and warm lantern; at right ivory garden arch, more roses and golden lantern. Background distant blue fairy tale castle and terraces. No people or animals. Romantic and inviting, tasteful not kitschy.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1159e2a3-3a60-405a-a931-345a348703e5.png"
+    },
+    {
+      "id": "confirmed",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/social/banners/confirmed.webp"
+      ],
+      "prompt": "One finished illustration, wide horizontal 3:1 banner, for Heroes of Ether. First reference is the user-approved banner illustration STYLE: rich cozy fantasy storybook casual 2.5D, smooth rounded large forms, soft warm painterly light, clear silhouettes, bright saturated colors, controlled small highlights. Second reference defines theme/composition only. No text, numbers, lettering, watermark, UI, outer frame or waterfall. Full opaque scenic background to all edges. Middle 45% visually calm and darker for overlaid live heading, major decorative objects at left and right ends. A joyful completed wedding celebration in a fantasy palace garden, warm pink-and-gold sunset. Large elegant interlocked gold wedding rings and cream flowers on left, ivory silk bow with soft red roses and gold lantern on right, blue fairy tale palace and garden terraces far in center background. No people or animals. Festive and affectionate.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ce36b12b-0f35-449d-9a87-ab2eb2c20e99.png"
+    },
+    {
+      "id": "divorced",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/social/banners/divorced.webp"
+      ],
+      "prompt": "One finished illustration, wide horizontal 3:1 banner, for Heroes of Ether. First reference is the user-approved banner illustration STYLE: rich cozy fantasy storybook casual 2.5D, smooth rounded large forms, soft warm painterly light, clear silhouettes, bright saturated colors, controlled small highlights. Second reference defines theme/composition only. No text, numbers, lettering, watermark, UI, outer frame or waterfall. Full opaque scenic background to all edges. Middle 45% visually calm and darker for overlaid live heading, major decorative objects at left and right ends. A calm respectful parting scene for end of marriage. Two separate gold rings resting apart near left and right edges on a pale blue stone garden terrace, blue flowers, a few soft fallen petals, distant archways in cool evening light. Dignified hopeful atmosphere, subdued blue and lavender, no grief caricature, no broken hearts, no people or animals.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-42856a9e-7d94-44b7-8c98-2b953c62062e.png"
+    },
+    {
+      "id": "easter",
+      "prompt": "Create one finished game banner illustration for Heroes of Ether. Reference 1 is the user-approved BANNER STYLE: cozy polished fantasy storybook casual 2.5D, large rounded readable forms, soft painterly modelling, rich blue, warm gold and purple, calm warm light, restrained small highlights, no hard outlines, no photorealism. Match style; later references define contents and identity. No text, letters, numbers, UI, frame, watermark, waterfalls or sparkles clutter. Opaque scenic background. Wide horizontal 2:1 Easter banner. The same friendly WHITE bunny with green eyes and green-gold cape from reference 2 beside a green-gold basket. EXACTLY FOUR eggs, all large and plainly visible: PINK with WHITE FLOWERS, BLUE with WHITE SNOWFLAKES, GREEN with PALE LEAVES, YELLOW with WHITE ZIGZAGS. Those are the game's four egg types. Do not invent other egg colors or patterns. Gentle spring castle garden, lilac branches, sunlight and soft green grass. Main group central with safe margins. Bunny not pink pet Zaya. No additional eggs, even background.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/events/easter-hunt/banner.png"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-cbb50e14-f6da-432a-9360-6192ee0a8fcf.png"
+    },
+    {
+      "id": "friday",
+      "prompt": "Create one finished game banner illustration for Heroes of Ether. Reference 1 is the user-approved BANNER STYLE: cozy polished fantasy storybook casual 2.5D, large rounded readable forms, soft painterly modelling, rich blue, warm gold and purple, calm warm light, restrained small highlights, no hard outlines, no photorealism. Match style; later references define contents and identity. No text, letters, numbers, UI, frame, watermark, waterfalls or sparkles clutter. Opaque scenic background. Wide horizontal 3:1 fantasy market event banner. Real lavender kitten Manya, white chest and purple eyes, crown and heart-shaped jewel as reference3, a few large treasure chests with gold star coins, blue crystals, teal gift boxes on a blue-violet draped merchant stall, warm golden lanterns, cozy castle market at twilight. Manya near left and one open large gold-rimmed chest at right, calm rich indigo center background for live heading. Joyful shopping scene, no sale text or numbers.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/events/black-friday/banner-v2.webp",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/pets/manya.png"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-92b278a2-89f1-4abd-b370-5d3ad9689bc7.png"
+    },
+    {
+      "id": "news",
+      "prompt": "Create one finished game banner illustration for Heroes of Ether. Reference 1 is the user-approved BANNER STYLE: cozy polished fantasy storybook casual 2.5D, large rounded readable forms, soft painterly modelling, rich blue, warm gold and purple, calm warm light, restrained small highlights, no hard outlines, no photorealism. Match style; later references define contents and identity. No text, letters, numbers, UI, frame, watermark, waterfalls or sparkles clutter. Opaque scenic background. Wide horizontal 3:1 general News banner. A beautifully rounded rolled parchment tied with blue ribbon and plain gold wax seal, a large cream quill with golden holder, resting on wooden castle writing desk. Inviting blue and warm gold royal library behind. Main object center-right, calm blue left for live title. Parchment completely blank, no writing.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/news/v1/news.webp"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-066c2b46-ec05-49d6-9345-433b5ea1bbf4.png"
+    },
+    {
+      "id": "event",
+      "prompt": "Create one finished game banner illustration for Heroes of Ether. Reference 1 is the user-approved BANNER STYLE: cozy polished fantasy storybook casual 2.5D, large rounded readable forms, soft painterly modelling, rich blue, warm gold and purple, calm warm light, restrained small highlights, no hard outlines, no photorealism. Match style; later references define contents and identity. No text, letters, numbers, UI, frame, watermark, waterfalls or sparkles clutter. Opaque scenic background. Wide horizontal 3:1 Events news banner. A blue-and-gold rounded celebration arch bearing one golden star and hanging turquoise diamond ornament, soft flowing cream ribbons, cozy castle courtyard with warm lanterns and flowering shrubs behind. Main arch center-right, calm blue left for live title. No people.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/news/v1/event.webp"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1d893bc4-6468-454e-80e3-d070fedb83f7.png"
+    },
+    {
+      "id": "release",
+      "prompt": "Create one finished game banner illustration for Heroes of Ether. Reference 1 is the user-approved BANNER STYLE: cozy polished fantasy storybook casual 2.5D, large rounded readable forms, soft painterly modelling, rich blue, warm gold and purple, calm warm light, restrained small highlights, no hard outlines, no photorealism. Match style; later references define contents and identity. No text, letters, numbers, UI, frame, watermark, waterfalls or sparkles clutter. Opaque scenic background. Wide horizontal 3:1 Updates news banner. A large closed royal blue book with a rounded gold border and single big gold star on its cover, flowing gold bookmark ribbon. On a wooden table in cozy fantasy castle workshop-library, soft blue background, a few large shelves with simple books. Main book center-right and calm blue left for live title. No lettering or tool clutter.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/news/v1/release.webp"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ce7bad54-fbf6-4d90-bc1b-edfdb3dd6f5f.png"
+    },
+    {
+      "id": "maintenance",
+      "prompt": "Finished wide horizontal 3:1 banner illustration for Heroes of Ether. Match FIRST reference's approved cozy polished fantasy storybook casual 2.5D: softly rounded readable forms, warm diffuse painterly light, blue, purple, creamy stone and gold, only small restrained highlights, no photorealism, no hard outlines. No text, letters, numbers, UI, external border, watermark or waterfalls. Opaque full background, main imagery has generous edge margins. Redraw the SECOND reference's game maintenance scene. Friendly small purple dragon assistant at left and smiling bearded fantasy dwarf engineer at right carefully adjusting one central round blue ether orb held in golden armillary rings on a sturdy workbench. Both look at the orb, dragon holds a wrench, dwarf gently uses small gold hammer. Castle workshop behind, warm lamps, no extra limbs or tools, no danger. Preserve all important objects without copying old rendering style.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:/Users/semen/Documents/ChatGPT/Killex/.cache/arena-fixes-20261121/games/heroes-of-ether/public/assets/service/maintenance-v1.png"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-40f87c89-ae0a-4a0a-bc65-a1f924942d9b.png"
+    },
+    {
+      "id": "achievement",
+      "prompt": "Finished wide horizontal 3:1 banner illustration for Heroes of Ether. Match FIRST reference's approved cozy polished fantasy storybook casual 2.5D: softly rounded readable forms, warm diffuse painterly light, blue, purple, creamy stone and gold, only small restrained highlights, no photorealism, no hard outlines. No text, letters, numbers, UI, external border, watermark or waterfalls. Opaque full background, main imagery has generous edge margins. Celebration header for a newly completed achievement. Warm blue-and-gold castle hall, tall elegant blue banners, a large golden laurel branch at each far side with purple ribbons, distant soft golden trophy on a pedestal at right. The middle 55 percent has a calm dark blue wall and faint warm light for live title and medal overlay. No characters, no medals with baked frame, no stars clutter. Cheerful and dignified.",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png"
+      ],
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-6e7cea5f-79b4-4eb1-9f04-b941ad4a7be8.png"
+    },
+    {
+      "id": "pets-lobby",
+      "refs": [
+        "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-89785ab7-2327-4a4d-bb4e-16de50336201.png",
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c9dacd4f-a177-489c-a539-4162e42df5ee.png"
+      ],
+      "prompt": "One final landscape 3:2 game banner. Match first image approved cozy painterly fantasy 2.5D style. Recompose the exact FOUR royal pets from second image for a narrow lobby card: magenta dragon Drakosha, golden lion cub Leva, lavender white-chested kitten Manya, pink bunny Zaya. All four faces, crowns, horns and ears entirely visible, preserve exact colors and individual jewelry. Arrange a friendly compact group on the RIGHT TWO THIRDS of image, with dragon and lion slightly behind and kitten and bunny in front, natural sitting poses, no overlap of faces. LEFT QUARTER calm empty castle garden for overlaid live text. All pets safely INSIDE central 84 percent of image, generous margins all around. Soft garden stone terrace and blue-gold palace behind. Opaque image, no text, no eggs, no cauldron, no book, no extra props, no other animals, no frame, no waterfall. Soft restrained highlights.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-55edd691-b052-4650-a765-ce50a535bda5.png"
+    },
+    {
+      "id": "pets-card",
+      "refs": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-c9dacd4f-a177-489c-a539-4162e42df5ee.png"
+      ],
+      "prompt": "Adapt this exact approved Heroes of Ether banner into a wide 2.56:1 horizontal event-card illustration. Preserve the same characters/objects, colors, identity and soft fantasy 2.5D style exactly. Recompose by adding more scenery at the left and right and making the central subject group slightly smaller so EVERY important ear, crown, horn, cauldron, book and egg is safely visible in the middle 76% width and 76% height. The picture will be shown small. Absolutely no cropping of the main subject. No new characters or extra eggs. For Easter there remain precisely the four existing eggs with their existing motifs. Full opaque background to all edges, no padding, no text, no frame. No extra highlights or waterfalls.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-dbeffe7c-cda1-48ce-8582-79ee9237b20e.png",
+      "rejected": "Invented unrelated egg props; retain original approved four-pet banner"
+    },
+    {
+      "id": "easter-card",
+      "refs": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-cbb50e14-f6da-432a-9360-6192ee0a8fcf.png"
+      ],
+      "prompt": "Adapt this exact approved Heroes of Ether banner into a wide 2.56:1 horizontal event-card illustration. Preserve the same characters/objects, colors, identity and soft fantasy 2.5D style exactly. Recompose by adding more scenery at the left and right and making the central subject group slightly smaller so EVERY important ear, crown, horn, cauldron, book and egg is safely visible in the middle 76% width and 76% height. The picture will be shown small. Absolutely no cropping of the main subject. No new characters or extra eggs. For Easter there remain precisely the four existing eggs with their existing motifs. Full opaque background to all edges, no padding, no text, no frame. No extra highlights or waterfalls.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-2ed6886f-81f1-4405-8e21-616134bf6fba.png"
+    },
+    {
+      "id": "lucky-card",
+      "refs": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b9df15f3-715c-4ed5-b212-3cea7b018a41.png"
+      ],
+      "prompt": "Adapt this exact approved Heroes of Ether banner into a wide 2.56:1 horizontal event-card illustration. Preserve the same characters/objects, colors, identity and soft fantasy 2.5D style exactly. Recompose by adding more scenery at the left and right and making the central subject group slightly smaller so EVERY important ear, crown, horn, cauldron, book and egg is safely visible in the middle 76% width and 76% height. The picture will be shown small. Absolutely no cropping of the main subject. No new characters or extra eggs. For Easter there remain precisely the four existing eggs with their existing motifs. Full opaque background to all edges, no padding, no text, no frame. No extra highlights or waterfalls.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-08e75e49-619d-4e28-8a29-1cdc4a1d09d1.png"
+    },
+    {
+      "id": "alchemy-card",
+      "refs": [
+        "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-672fe714-4c25-400c-8cc1-c52ad71db854.png"
+      ],
+      "prompt": "Adapt this exact approved Heroes of Ether banner into a wide 2.56:1 horizontal event-card illustration. Preserve the same characters/objects, colors, identity and soft fantasy 2.5D style exactly. Recompose by adding more scenery at the left and right and making the central subject group slightly smaller so EVERY important ear, crown, horn, cauldron, book and egg is safely visible in the middle 76% width and 76% height. The picture will be shown small. Absolutely no cropping of the main subject. No new characters or extra eggs. For Easter there remain precisely the four existing eggs with their existing motifs. Full opaque background to all edges, no padding, no text, no frame. No extra highlights or waterfalls.",
+      "generated": "C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-3e60624d-0eee-4b0b-8e6f-da3d57733af1.png"
+    }
+  ],
+  "applied": [
+    {
+      "id": "vip",
+      "file": "assets/banners/vip.png",
+      "width": 1024,
+      "height": 512,
+      "before": "05afbaee22e0f04afa262687bd7a888d385b3321a55ce8cedafe1ca1d4264f78",
+      "after": "c25486a2110425aad76b2263763206ecb8e860cb47324a43f72d7a356660a012",
+      "beforeBytes": 1195004,
+      "bytes": 1297378
+    },
+    {
+      "id": "premium",
+      "file": "assets/banners/premium.webp",
+      "width": 1024,
+      "height": 512,
+      "before": "82a9f838d604a2122420f5c5624d5628bfa445e350f1c46458ab34ee1a7f5e92",
+      "after": "caddcf4a68efbf7f163b30689e7cb93469ab35ff28e7069a773e7d1fa1e65648",
+      "beforeBytes": 131362,
+      "bytes": 89488
+    },
+    {
+      "id": "pets",
+      "file": "assets/banners/pets.webp",
+      "width": 1024,
+      "height": 683,
+      "before": "f4202afed5513c412f7136233bcd0f0ee9c18ac15b5c64031f6bf156cba54f17",
+      "after": "1e75a6d838d0a8ab644318275aba1bf420d57b9c99d08244c08f1a4c1cab1621",
+      "beforeBytes": 135528,
+      "bytes": 144356,
+      "source": "pets-lobby"
+    },
+    {
+      "id": "lucky",
+      "file": "assets/events/lucky-week/banner-v3.webp",
+      "width": 1024,
+      "height": 512,
+      "before": "1fd0eebbb4d89c34990647e3acb411188009e5b312f618acb8b1fff44cacdbbf",
+      "after": "ba54b0401e4eb9edbc1f06db9e918bbea36cbcf75d87dee683da9536fe8a2371",
+      "beforeBytes": 168406,
+      "bytes": 97486
+    },
+    {
+      "id": "alchemy",
+      "file": "assets/events/ether-alchemy/v1/banner-v2.webp",
+      "width": 1200,
+      "height": 600,
+      "before": "ac71800a19862d2c3ca0324f06aa4e9e6e9135c0e9d2734cce868f61111c01ec",
+      "after": "328407e1679fc3b5a85ba678c220fccc77a7c387a5b1ea68128ce458ab38317c",
+      "beforeBytes": 132044,
+      "bytes": 110120
+    },
+    {
+      "id": "proposal",
+      "file": "assets/social/banners/proposal.webp",
+      "width": 1200,
+      "height": 400,
+      "before": "9100997a0e6198de983666678a1f100ac20af97b647943583f8e6939eab1aaad",
+      "after": "3d0abfdc2d6b66f2f803150cfb18e434c466583d25c784af4d9143665a32ada2",
+      "beforeBytes": 134562,
+      "bytes": 104948
+    },
+    {
+      "id": "confirmed",
+      "file": "assets/social/banners/confirmed.webp",
+      "width": 1200,
+      "height": 400,
+      "before": "ff2588790c2c64b9825fd7b9aa0b91cf0244af7c9c697121f381911de843be83",
+      "after": "ffec437605530139d8a9ff89fc060c79a2f86bc56f31d52fff0e148192a691ad",
+      "beforeBytes": 134170,
+      "bytes": 115616
+    },
+    {
+      "id": "divorced",
+      "file": "assets/social/banners/divorced.webp",
+      "width": 1200,
+      "height": 400,
+      "before": "89520319b66d347da82b62a5a42a32dc5c82bfe7109c2693b3d0050f7474c1b9",
+      "after": "72219effac7ec1de6f7007c051489e0c8383ccd7d56e1d479f25058363ed9024",
+      "beforeBytes": 131208,
+      "bytes": 78598
+    },
+    {
+      "id": "easter",
+      "file": "assets/events/easter-hunt/banner.png",
+      "width": 1200,
+      "height": 600,
+      "before": "b60161e31210c85dbbac5505ddc6ba6d7153d2becc208c580403f4be83d20b30",
+      "after": "be030999842f1b55bcb8356c9a8dca86438d66b35631a147719d8632306971b4",
+      "beforeBytes": 1357427,
+      "bytes": 1772780
+    },
+    {
+      "id": "friday",
+      "file": "assets/events/black-friday/banner-v2.webp",
+      "width": 1440,
+      "height": 480,
+      "before": "fed0278550915a17c6c6bb94368861c42e115434f194a67225596e2060b1de2d",
+      "after": "0c95da99986e29d778f3e7d6bf0b8c28da3c1039f35ed661e9102ba3cab0c5d4",
+      "beforeBytes": 210622,
+      "bytes": 132208
+    },
+    {
+      "id": "friday",
+      "file": "assets/events/black-friday/banner.webp",
+      "width": 1440,
+      "height": 480,
+      "before": "598c3555465e6a2f42f02cd188c1a796aeccbd271ca3a169640b4c32c88864ac",
+      "after": "0c95da99986e29d778f3e7d6bf0b8c28da3c1039f35ed661e9102ba3cab0c5d4",
+      "beforeBytes": 199154,
+      "bytes": 132208
+    },
+    {
+      "id": "friday",
+      "file": "assets/events/black-friday/card-banner.webp",
+      "width": 768,
+      "height": 300,
+      "before": "65527effc677ca598a5d624d009e2bc5ea3e599da838ac6f030ac33903d8ced7",
+      "after": "a97634faa092742fec14902937167b6da21e554f920bc241d77f01e2af99101b",
+      "beforeBytes": 90646,
+      "bytes": 58474
+    },
+    {
+      "id": "news",
+      "file": "assets/news/v1/news.webp",
+      "width": 1200,
+      "height": 400,
+      "before": "fa30f63ef471e1a901bb7f4d14374be93e77d4623133cb3f3e23fab0f554f736",
+      "after": "12a3f057f6322980d2154b315a569f0262b229cb6915a20848814f9cc4c641c1",
+      "beforeBytes": 55050,
+      "bytes": 65984
+    },
+    {
+      "id": "news",
+      "file": "assets/news/v1/news-tile.webp",
+      "width": 600,
+      "height": 200,
+      "before": "e9b82740afbf50f152d44f116ee7b393503c4c78188431fd84f50cbc2c8cc8c2",
+      "after": "811b57e33dd0227664fd34caf381ce721dfa0d0d804e207114c1508dc5d359c9",
+      "beforeBytes": 21096,
+      "bytes": 24620
+    },
+    {
+      "id": "event",
+      "file": "assets/news/v1/event.webp",
+      "width": 1200,
+      "height": 400,
+      "before": "856f68ccaa1e670a6bb7af35bd2ed5a48edfcb0efe5c5223f03c0c8576f9aad9",
+      "after": "b75a68a958a5baeba85047cdce455ce04d26ed3d26e9c3294ba9fe8cf7778f33",
+      "beforeBytes": 53640,
+      "bytes": 73704
+    },
+    {
+      "id": "event",
+      "file": "assets/news/v1/event-tile.webp",
+      "width": 600,
+      "height": 200,
+      "before": "d1c455deec0d5ee3994ced12b19bae9fcf4e38955db310dcf752e433130e10a5",
+      "after": "b5ee4dcc5a4f288d14d1546358a59e24e982bcbcd13d49b15b749e98b74b891a",
+      "beforeBytes": 20026,
+      "bytes": 26228
+    },
+    {
+      "id": "release",
+      "file": "assets/news/v1/release.webp",
+      "width": 1200,
+      "height": 400,
+      "before": "d4c8652afa7232d63cedaeaff684b3c1d56792bd849a2f1a0b30680bda410c70",
+      "after": "e5fe05892f8896822abe0eceb741d1d7deb73cc96af191cfb1c744fc760a9096",
+      "beforeBytes": 45098,
+      "bytes": 50604
+    },
+    {
+      "id": "release",
+      "file": "assets/news/v1/release-tile.webp",
+      "width": 600,
+      "height": 200,
+      "before": "67ff1e2a42516a3357fddd0005cb5dbc28af980998253efb32fcc11ee3e681e0",
+      "after": "5ef57a88058cb8acf845fc0677c40213deb0f2ee928a8f0d59b9230a38562734",
+      "beforeBytes": 17522,
+      "bytes": 20100
+    },
+    {
+      "id": "maintenance",
+      "file": "assets/service/maintenance-v1.png",
+      "width": 1200,
+      "height": 400,
+      "before": "8361e71e3994de389a8b8ca282f61630bd23197848fa37dff7e2d867e9477ed3",
+      "after": "d3312d6a7bf02db86ccd5e41f9f505223f5b6c47788c1521ea64dc509721ee73",
+      "beforeBytes": 2998392,
+      "bytes": 1231773
+    },
+    {
+      "id": "achievement",
+      "file": "assets/banners/achievement.webp",
+      "width": 1200,
+      "height": 400,
+      "before": null,
+      "after": "7809d34b2f41d036f17a0a23edbb191cf736c9affab3422019e8288d6940ad64",
+      "beforeBytes": 0,
+      "bytes": 65580
+    },
+    {
+      "id": "easter-card",
+      "file": "assets/events/easter-hunt/card-banner.webp",
+      "width": 768,
+      "height": 300,
+      "before": "d7296466d766e4d0941104f4810b45d42633462e9e69b6ab3143d8b5c1f8699f",
+      "after": "ff95cf78cad4ae933f8ca9de41d00b7513842cd36f4951e018e4368a56f1f722",
+      "beforeBytes": 40588,
+      "bytes": 71806
+    },
+    {
+      "id": "lucky-card",
+      "file": "assets/events/lucky-week/card-banner.webp",
+      "width": 768,
+      "height": 300,
+      "before": "75e3bdbb6802e16550c045c4da0de54ae9636d26ac22d614735170df6da02b8c",
+      "after": "b54828f54dc91a083584eaa6c17d06e35b3958b437aad9eb93bc33417f18151a",
+      "beforeBytes": 93158,
+      "bytes": 69692
+    },
+    {
+      "id": "alchemy-card",
+      "file": "assets/events/ether-alchemy/v1/card-banner.webp",
+      "width": 768,
+      "height": 300,
+      "before": null,
+      "after": "e227f5ec6c7ce3776a2d9ddcd83cd9a37156087761dd85a95191ba63efde446e",
+      "beforeBytes": 0,
+      "bytes": 68138
+    }
+  ]
+}

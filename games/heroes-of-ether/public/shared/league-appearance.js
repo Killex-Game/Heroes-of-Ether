@@ -101,9 +101,9 @@
   const ranksById = new Map(rankFrames.map((item) => [item.id, item]));
   const accountsById = new Map(accountFrames.map((item) => [item.id, item]));
   const themesById = new Map(themes.map((item) => [item.id, item]));
-  const rankFrame = (id) => ranksById.get(id);
+  const rankFrame = (id) => ranksById.get(baseFrame(id));
   const frameSlot = (slot) => slot === "avatarFrame" || slot === "arenaFrame";
-  const accountFrame = (id) => accountsById.get(id);
+  const accountFrame = (id) => accountsById.get(baseFrame(id));
   const theme = (id) => themesById.get(id);
   const leagueFrameFits = {
     bronze: [0.49632,0.508343,0.34957],
@@ -128,12 +128,16 @@
     ["glass", "#dbbfea", "#fff5ff", "#66578d", [0.496094,0.542969,0.356294]],
     ["heroic", "#ecc35c", "#fff0bf", "#851f37", [0.491211,0.527344,0.346827]],
   ].map(([id, metal, light, dark, fit]) => Object.freeze({ ...interfaceTheme(id), metal, light, dark, fit, rank: 3 }));
-  const framesById = new Map([...frameThemes, ...rankFrames, ...packFrames].map((item) => [item.id, item]));
+  const variantFrames = Object.freeze([{"id":"canon_title_prince","baseId":"title_prince","name":"Принц · Эфир","title":"Новое оформление","fit":[0.489768,0.530305,0.327269]},{"id":"canon_title_king","baseId":"title_king","name":"Король · Эфир","title":"Новое оформление","fit":[0.49022,0.531235,0.305664]},{"id":"canon_title_emperor","baseId":"title_emperor","name":"Император · Эфир","title":"Новое оформление","fit":[0.491259,0.524036,0.282492]},{"id":"canon_vip","baseId":"vip","name":"VIP · Эфир","title":"Новое оформление","fit":[0.489912,0.516537,0.329339]},{"id":"canon_premium","baseId":"premium","name":"Premium · Эфир","title":"Новое оформление","fit":[0.491828,0.531282,0.320916]},{"id":"canon_bronze","baseId":"bronze","name":"Бронзовая · Эфир","title":"Новое оформление","fit":[0.48832,0.508789,0.327173]},{"id":"canon_silver","baseId":"silver","name":"Серебряная · Эфир","title":"Новое оформление","fit":[0.495117,0.522424,0.350323]},{"id":"canon_gold","baseId":"gold","name":"Золотая · Эфир","title":"Новое оформление","fit":[0.491211,0.524457,0.327249]},{"id":"canon_platinum","baseId":"platinum","name":"Платиновая · Эфир","title":"Новое оформление","fit":[0.493777,0.521507,0.331055]},{"id":"canon_diamond","baseId":"diamond","name":"Бриллиантовая · Эфир","title":"Новое оформление","fit":[0.493141,0.527566,0.338973]},{"id":"canon_champions","baseId":"champions","name":"Чемпионская · Эфир","title":"Новое оформление","fit":[0.492217,0.534226,0.319432]}].map(Object.freeze));
+  const variantsById = new Map(variantFrames.map(item => [item.id,item]));
+  const variantFrame = id => variantsById.get(id);
+  const baseFrame = id => variantFrame(id)?.baseId || id;
+  const framesById = new Map([...frameThemes, ...rankFrames, ...packFrames, ...variantFrames].map((item) => [item.id, item]));
   const frameTheme = (id) => framesById.get(id);
   const valid = (id, slot) =>
     id === "default" ||
     !!theme(id) ||
-    (frameSlot(slot) && !!(accountFrame(id) || rankFrame(id))) ||
+    (frameSlot(slot) && !!(accountFrame(id) || rankFrame(id) || variantFrame(id))) ||
     (slots.includes(slot) && !!interfaceTheme(id));
   const selection = (value) =>
     Object.fromEntries(
@@ -142,9 +146,11 @@
         return [slot, valid(id, slot) ? id : "default"];
       }),
     );
-  const resolveFrame = (id) => (theme(id) || accountFrame(id) || rankFrame(id) || interfaceTheme(id) ? id : "default");
+  const resolveFrame = (id) => (theme(id) || accountFrame(id) || rankFrame(id) || interfaceTheme(id) || variantFrame(id) ? id : "default");
   const source = (id, kind) =>
-    rankFrame(id) && kind === "frame"
+    variantFrame(id) && kind === "frame"
+      ? `assets/frames/canon-v1/${baseFrame(id)}.webp?art=20261122`
+      : rankFrame(id) && kind === "frame"
       ? `assets/title-frames/${["novice", "experienced", "master"].includes(rankFrame(id).titleId) ? "v1" : "v2"}/${rankFrame(id).titleId}.webp?art=20261122c`
       : theme(id) && kind === "frame"
         ? `assets/league-frames/v2/${id}.webp?art=20261122c`
@@ -154,6 +160,7 @@
             ? `assets/league-appearance/${id}-${kind}.svg?art=20261122b`
             : null;
   return {
+    variantFrames, variantFrame, baseFrame,
     themes,
     interfaceThemes,
     interfaceTheme,

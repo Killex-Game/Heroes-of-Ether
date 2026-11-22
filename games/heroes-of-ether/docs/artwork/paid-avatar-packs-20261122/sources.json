@@ -1,0 +1,273 @@
+{
+  "sources": [
+    {
+      "id": "army-commander",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "cb0af8c65127dcf6c6a1102e254b61c16d5939908f98e45b81c29e37ec2c6076"
+    },
+    {
+      "id": "army-sapper",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "75784c7c2de36f996b11f3dcfcf41f208df2455eff4913ea691023fa78269e4d"
+    },
+    {
+      "id": "army-scout",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "62d32c9e3c971e4ebb25bfba4f8fd8b9a3913c1a7a6060adeee565a693766193"
+    },
+    {
+      "id": "army-scout-falcon",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "dd274d59bdc23844c96ff59c44ba519ffa9825ad52bf73a1ac07da345bc382c0"
+    },
+    {
+      "id": "army-service-dog",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "185e80ec8cda37cf889f2861d2e02ce8e89ac5c10f23ac943173d639d5e43406"
+    },
+    {
+      "id": "hospital-chief-doctor",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "68a58acb09a23ec6a39395f739bf3cea3b2819700b73731d74bdf186fd8ef3d4"
+    },
+    {
+      "id": "hospital-helper-cat",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "bbb1bc06f3fc82e74610b3097bc7cb168382eff2687015aa181ee65e365c38e5"
+    },
+    {
+      "id": "hospital-nurse",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "894f37fe59109d2644d3367b0f069d08a2bb28c07382c845925189f7d9445568"
+    },
+    {
+      "id": "hospital-paramedic",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "fd491a08c7d8d780f4ecfa4e2bb610d80e702b30243f4bfd379fe99427f8e23c"
+    },
+    {
+      "id": "hospital-surgeon",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "d6d6333064402198ed7eb23950cf44e56b79500e6c6a426cb5533945b1573e49"
+    },
+    {
+      "id": "norse-freyja",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "d8e10213b39b99c1e160ed565320cb1f7789b4f0f3b9f373549eb186a41273e8"
+    },
+    {
+      "id": "norse-hugin",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "33e3179184a6037385e1ad1518d730d422450d0803b8c040bfed701600fb196a"
+    },
+    {
+      "id": "norse-loki",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "ccdc0554af2aa48e1f8417a7e6cc06a164331474d1cfe3c846268f8255a43dfa"
+    },
+    {
+      "id": "norse-odin",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "a40c96ebc7de4eced031446009cc65f917cc11c486e0688e8bc1115102a8fba2"
+    },
+    {
+      "id": "norse-thor",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "sha256": "c0e20106237dfbbf8f56cd1037585b5e61c5b2313398c0b9e0d14dfeb15bfdce"
+    }
+  ],
+  "fits": {
+    "army-commander": {
+      "scale": 1.0632,
+      "x": 0,
+      "y": -0.0132
+    },
+    "army-sapper": {
+      "scale": 1.0121,
+      "x": 0,
+      "y": 0.0138
+    },
+    "army-scout": {
+      "scale": 0.9892,
+      "x": 0,
+      "y": 0.022
+    },
+    "army-scout-falcon": {
+      "scale": 1.0878,
+      "x": 0.0009,
+      "y": -0.0271
+    },
+    "army-service-dog": {
+      "scale": 1.1035,
+      "x": 0.0202,
+      "y": 0.0284
+    },
+    "hospital-chief-doctor": {
+      "scale": 1.0088,
+      "x": 0.0008,
+      "y": 0.0122
+    },
+    "hospital-helper-cat": {
+      "scale": 1.044,
+      "x": -0.0075,
+      "y": -0.0053
+    },
+    "hospital-nurse": {
+      "scale": 1.0432,
+      "x": 0.0042,
+      "y": -0.0049
+    },
+    "hospital-paramedic": {
+      "scale": 0.9973,
+      "x": 0,
+      "y": 0.018
+    },
+    "hospital-surgeon": {
+      "scale": 1.0432,
+      "x": 0.0008,
+      "y": -0.0049
+    },
+    "norse-freyja": {
+      "scale": 1.0309,
+      "x": -0.0008,
+      "y": 0.0012
+    },
+    "norse-hugin": {
+      "scale": 1.0858,
+      "x": -0.0061,
+      "y": -0.0175
+    },
+    "norse-loki": {
+      "scale": 1.0022,
+      "x": -0.0008,
+      "y": 0.0155
+    },
+    "norse-odin": {
+      "scale": 0.9924,
+      "x": 0,
+      "y": 0.0204
+    },
+    "norse-thor": {
+      "scale": 1.0088,
+      "x": 0.0024,
+      "y": 0.0138
+    }
+  },
+  "processing": "Uniform resize only; original alpha preserved; shared DOM/canvas fit",
+  "packs": [
+    {
+      "id": "army",
+      "name": "Защитники",
+      "currency": "coins",
+      "price": 2500,
+      "members": [
+        {
+          "id": "army-commander",
+          "name": "Командир"
+        },
+        {
+          "id": "army-sapper",
+          "name": "Сапёр"
+        },
+        {
+          "id": "army-scout",
+          "name": "Разведчица"
+        },
+        {
+          "id": "army-scout-falcon",
+          "name": "Сокол-разведчик"
+        },
+        {
+          "id": "army-service-dog",
+          "name": "Служебная овчарка"
+        }
+      ]
+    },
+    {
+      "id": "hospital",
+      "name": "Весёлая больница",
+      "currency": "crystals",
+      "price": 250,
+      "members": [
+        {
+          "id": "hospital-chief-doctor",
+          "name": "Главврач"
+        },
+        {
+          "id": "hospital-helper-cat",
+          "name": "Кот-помощник"
+        },
+        {
+          "id": "hospital-nurse",
+          "name": "Медсестра"
+        },
+        {
+          "id": "hospital-paramedic",
+          "name": "Фельдшер"
+        },
+        {
+          "id": "hospital-surgeon",
+          "name": "Хирург"
+        }
+      ]
+    },
+    {
+      "id": "norse",
+      "name": "Скандинавия",
+      "currency": "bucks",
+      "price": 200,
+      "members": [
+        {
+          "id": "norse-freyja",
+          "name": "Фрейя"
+        },
+        {
+          "id": "norse-hugin",
+          "name": "Хугин"
+        },
+        {
+          "id": "norse-loki",
+          "name": "Локи"
+        },
+        {
+          "id": "norse-odin",
+          "name": "Один"
+        },
+        {
+          "id": "norse-thor",
+          "name": "Тор"
+        }
+      ]
+    }
+  ]
+}

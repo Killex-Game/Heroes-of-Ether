@@ -7,7 +7,7 @@ const {ClanService}=require('../../src/server/clans/clan-service');
 const {ClanArenaProgressShards}=require('../../src/server/profiles/clan-arena-progress-shards');
 const {ArenaProgressPreparer}=require('../../src/server/profiles/arena-progress-preparer');
 const {recover}=require('../../src/server/profiles/profile-journal');
-const start=Date.parse('2026-11-15T03:00:00Z');
+const start=Date.parse('2026-11-15T05:00:00Z');
 function comparable(data){const copy=structuredClone(data);for(const p of Object.values(copy.profiles))
   p.transactions.entries.forEach((e,i)=>{e.id='entry-'+i;});return copy;}
 function fixture(t,pipeline=false){

@@ -47,6 +47,11 @@
       window.KillexBoosterTooltip.attach(item, { name, usage, scrollable: true });
       add(item, history[0].awardedAt, history[0].number);
     }
+    for (const medal of player.clanQuestMedals || []) {
+      const prize=window.KillexClanCalendar.questPrize(medal.place);if(!prize)continue;
+      const item=el('div','public-trophy'),img=el('img','');img.src=window.KillexProgressionArt.leagueMedal(medal.tier,128);img.alt=prize.name+' медаль';item.append(img);item.dataset.questSeason=medal.seasonId;
+      window.KillexBoosterTooltip.attach(item,{name:prize.name+' медаль за клановые задания',usage:'Место '+medal.place+'. Выполнено заданий: '+medal.completed+'. Получена '+new Date(medal.awardedAt).toLocaleDateString('ru-RU')});add(item,medal.awardedAt,medal.number);
+    }
     const rankingRules = window.KillexDailyRankings;
     for (const earned of player.eventRegalia || []) {
       const item = el("div", "public-trophy"),
@@ -118,11 +123,13 @@
         .slice(0, gift.count)
         .filter((received) => received.expiresAt > Date.now());
       if (gift.historyMore) {
-        const item = giftItem(info, null, gift.effectUntil);
-        item.append(el("b", "regalia-count", "×" + number(gift.count)));
-        item.setAttribute("aria-label", info.name + ": " + number(gift.count) + ". Открыть историю подарков");
-        item.onclick = () => window.KillexGiftHistory.open(player, { ...gift, info });
-        add(item, gift.latestAt);
+        // The DTO is compact, but every received gift has its own shelf slot.
+        // Details outside the DTO remain available through bounded history pages.
+        add((index) => {
+          const item = giftItem(info, history[index], gift.effectUntil);
+          item.onclick = () => window.KillexGiftHistory.open(player, { ...gift, info });
+          return item;
+        }, gift.latestAt, 0, gift.count);
         continue;
       }
       for (const received of history)
@@ -164,31 +171,63 @@
       add(item);
     }
     entries.sort((a, b) => b.at - a.at || b.order - a.order);
-    let entryIndex = 0,
-      copyIndex = 0;
-    const hasMore = () => entryIndex < entries.length;
-    const appendBatch = () => {
+    let total = 0;
+    for (const entry of entries) {
+      entry.start = total;
+      total += entry.count;
+    }
+    // Keep every gift individually reachable without retaining thousands of DOM nodes.
+    track.dataset.total = String(total);
+    track.style.overflowAnchor = "none";
+    // Offscreen slots have no snap target yet; Firefox otherwise jumps back to
+    // the last mounted item when scrolling across the spacer.
+    if (total > 40) track.style.scrollSnapType = "none";
+    let step = 80, gap = 4, first = -1, end = -1;
+    const mounted = new Map();
+    const renderWindow = (focusIndex = null, force = false) => {
+      if (!total) return;
+      const visible = Math.max(1, Math.ceil(track.clientWidth / step));
+      const start = Math.max(0, Math.min(total - 1,
+        focusIndex ?? Math.floor(track.scrollLeft / step)) - 10);
+      const stop = Math.min(total, start + Math.max(40, visible + 20));
+      if (!force && start === first && stop === end) return;
+      first = start; end = stop;
+      const left = track.scrollLeft;
+      const focused = track.contains(document.activeElement) ? document.activeElement : null;
       const fragment = document.createDocumentFragment();
-      // Длинную витрину достраиваем при листании, не создавая сразу тысячи кнопок.
-      for (let added = 0; added < 40 && hasMore(); added++) {
+      const spacer = (count) => {
+        if (!count) return;
+        const node = el("span", "public-shelf-spacer");
+        node.setAttribute("aria-hidden", "true");
+        node.style.flex = "0 0 " + Math.max(0, count * step - gap) + "px";
+        node.style.height = "1px";
+        fragment.append(node);
+      };
+      spacer(start);
+      let entryIndex = 0;
+      while (entries[entryIndex].start + entries[entryIndex].count <= start) entryIndex++;
+      for (let index = start; index < stop; index++) {
+        while (index >= entries[entryIndex].start + entries[entryIndex].count) entryIndex++;
         const entry = entries[entryIndex];
-        fragment.append(typeof entry.node === "function" ? entry.node() : entry.node);
-        if (++copyIndex === entry.count) {
-          entryIndex++;
-          copyIndex = 0;
+        let node = mounted.get(index);
+        if (!node) {
+          node = typeof entry.node === "function" ? entry.node(index - entry.start) : entry.node;
+          node.dataset.awardIndex = String(index);
+          mounted.set(index, node);
         }
+        fragment.append(node);
       }
-      track.append(fragment);
+      spacer(total - stop);
+      for (const index of mounted.keys()) if (index < start || index >= stop) mounted.delete(index);
+      track.replaceChildren(fragment);
+      track.scrollLeft = left;
+      if (focused && track.contains(focused)) focused.focus({ preventScroll: true });
     };
-    const fillNext = () => {
-      if (hasMore() && track.scrollLeft + track.clientWidth * 2 >= track.scrollWidth) appendBatch();
-    };
-    appendBatch();
+    renderWindow();
     if (!entries.length)
       track.append(el("p", "clan-muted", "Здесь появятся медали, кубки и регалии."));
     shelf.append(previous, track, next);
     const scroll = (direction) => {
-      if (direction > 0) fillNext();
       track.scrollBy({
         left: direction * Math.max(80, track.clientWidth * 0.8),
         behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
@@ -197,41 +236,54 @@
     previous.onclick = () => scroll(-1);
     next.onclick = () => scroll(1);
     const update = () => {
+      const sample = track.querySelector(".public-trophy");
+      const width = sample?.getBoundingClientRect().width;
+      const measuredGap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      if (width && (step !== width + measuredGap || gap !== measuredGap)) {
+        step = width + measuredGap; gap = measuredGap;
+        renderWindow(null, true);
+      } else renderWindow();
       // Measure against the full shelf so arrows disappear again after widening.
-      const overflow = hasMore() || track.scrollWidth > shelf.clientWidth - 24 + 2;
+      const overflow = track.scrollWidth > shelf.clientWidth - 24 + 2;
       previous.hidden = next.hidden = !overflow;
       shelf.classList.toggle("has-overflow", overflow);
       window.KillexControls.state(previous, track.scrollLeft <= 2);
       window.KillexControls.state(
         next,
-        !hasMore() && track.scrollLeft + track.clientWidth >= track.scrollWidth - 2,
+        track.scrollLeft + track.clientWidth >= track.scrollWidth - 2,
       );
     };
     track.addEventListener(
       "scroll",
       () => {
-        fillNext();
         update();
       },
       { passive: true },
     );
     track.addEventListener("keydown", (event) => {
       if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-      const items = [...track.querySelectorAll("button,[tabindex='0']")],
-        index = items.indexOf(document.activeElement);
-      if (index < 0) return;
+      const active = document.activeElement;
+      if (!track.contains(active) || !active.matches("button,[tabindex='0']")) return;
+      const index = Number(active.dataset.awardIndex);
+      if (!Number.isInteger(index)) return;
       const target =
         event.key === "Home"
           ? 0
           : event.key === "End"
-            ? items.length - 1
+            ? total - 1
             : Math.max(
                 0,
-                Math.min(items.length - 1, index + (event.key === "ArrowRight" ? 1 : -1)),
+                Math.min(total - 1, index + (event.key === "ArrowRight" ? 1 : -1)),
               );
       event.preventDefault();
-      items[target].focus();
-      items[target].scrollIntoView({ block: "nearest", inline: "nearest" });
+      if (!mounted.has(target)) {
+        track.scrollLeft = target * step;
+        renderWindow(target);
+      }
+      const item = mounted.get(target);
+      if (!item.matches("button,[tabindex='0']")) item.tabIndex = 0;
+      item.focus({ preventScroll: true });
+      item.scrollIntoView({ block: "nearest", inline: "nearest" });
     });
     const observer = new ResizeObserver(update);
     observer.observe(shelf);

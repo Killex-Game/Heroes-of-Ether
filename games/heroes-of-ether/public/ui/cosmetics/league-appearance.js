@@ -219,7 +219,7 @@
         continue;
       }
       if (!rim.visible || !rim.width || document.hidden) continue;
-      visible ||= !["vip", "premium"].includes(rim.id);
+      visible ||= !["vip", "premium"].includes(rim.id) && !catalog.variantFrame(rim.id);
       const ctx = rim.canvas.getContext("2d");
       ctx.clearRect(0, 0, rim.width, rim.height);
       window.KillexArenaArt.selectedFrame(
@@ -252,12 +252,18 @@
     rimVisibility.observe(host);
     rimSize.observe(host);
   }
+  document.addEventListener("killex:frame-loaded", requestRims);
   reducedMotion.addEventListener("change", requestRims);
   document.addEventListener("visibilitychange", requestRims);
   function paintArenaFrame(host, id, account) {
     if (!host) return;
     const resolved = catalog.resolveFrame(id, account);
     host.dataset.arenaFrame = resolved;
+    if (catalog.variantFrame(resolved)) {
+      paintFrame(host, resolved, account);
+      return;
+    }
+    host.querySelector(":scope > .league-avatar-frame")?.remove();
     setRim(host, resolved);
   }
   function paintFrame(host, id, account) {
@@ -419,7 +425,7 @@
         { id: "default", name: "По умолчанию", title: "Классическое оформление" },
         ...catalog.interfaceThemes,
         ...(catalog.frameSlot(slot) || slot === "frames"
-          ? [...catalog.accountFrames, ...catalog.rankFrames]
+          ? [...catalog.accountFrames, ...catalog.rankFrames, ...catalog.variantFrames]
           : []),
         ...catalog.themes,
       ]) {
@@ -611,7 +617,7 @@
             "aria-label",
             purchasing
               ? `Купить тему «${pack.name}» за ${priceText(pack)}`
-              : `${labels[slot]}: ${pack?.name || catalog.theme(id)?.name || catalog.accountFrame(id)?.name || catalog.rankFrame(id)?.name || "По умолчанию"}`,
+              : `${labels[slot]}: ${pack?.name || catalog.variantFrame(id)?.name || catalog.theme(id)?.name || catalog.accountFrame(id)?.name || catalog.rankFrame(id)?.name || "По умолчанию"}`,
           );
           availability.textContent =
             testAccess && id !== "default"
@@ -631,9 +637,9 @@
                     : catalog.accountFrame(id)
                       ? (allowed ? "Пока активен " : "Нужен ") + catalog.accountFrame(id).name
                       : !allowed
-                        ? id === "champions"
+                        ? catalog.baseFrame(id) === "champions"
                           ? "За медаль Чемпионской лиги - навсегда"
-                          : id === "bronze"
+                          : catalog.baseFrame(id) === "bronze"
                             ? "За медаль Бронзовой лиги - 30 дней"
                             : "За медаль этой лиги - 30 дней"
                         : until === null

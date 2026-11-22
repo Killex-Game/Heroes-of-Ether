@@ -12,7 +12,7 @@
   // Do not fill a stalled mobile uplink with obsolete controls. TCP can deliver
   // several seconds of queued input at once and trip the server's flood limit.
   const INPUT_FRESHNESS_MS = 750;
-  const TRANSIENT_INPUT = new Set(["move", "stop", "viewport", "split", "feed"]);
+  const TRANSIENT_INPUT = new Set(["move", "stop", "viewport", "split", "feed", "emote"]);
   const $ = (id) => document.getElementById(id);
   const ui = {
     lobby: $("lobby"),
@@ -167,6 +167,8 @@
   let recoveryDelay = 3000;
   const arenaPortraits = new window.KillexArenaPortraits.Portraits(window.KillexIdentity);
   const accessoryView = new window.KillexAccessoryView.Renderer();
+  const emoteView = new window.KillexEmoteView.Renderer();
+  let lastEmoteAt = -Infinity;
   const shieldView = new window.KillexShields.Renderer();
 
   function cleanName(value) {
@@ -507,6 +509,8 @@
     leaveArena("Ты в лобби. Опыт завершённой жизни сохранён."),
   );
   function clearArena() {
+    emoteView.clear();
+    lastEmoteAt = -Infinity;
     gameAudio.stop();
     arenaAudio.reset();
     arenaChat?.disconnect();
@@ -714,6 +718,10 @@
       if(window.KillexMaintenance?.blocked)return;
       if (message.type === "accountBanned") {
         location.assign("/blocked.html");
+        return;
+      }
+      if (message.type === "emote") {
+        emoteView.receive(message, performance.now());
         return;
       }
       if (["chatHistory", "chatMessage", "chatResult"].includes(message.type)) {
@@ -1119,8 +1127,7 @@
       return;
     }
     input = { ...previous, kind: "retained" };
-    const x = camera.x + (previous.x - width / 2) / camera.scale,
-      y = camera.y + (previous.y - height / 2) / camera.scale;
+    const { x, y } = window.KillexArenaView.movementTarget(me, previous, camera, width, height, world);
     if (Math.hypot(x - me.x, y - me.y) < 2) stopMovement();
     else
       send({
@@ -1146,10 +1153,11 @@
         type: "move",
         x: clamp(me.x + vector.x * 220, 0, world.width),
         y: clamp(me.y + vector.y * 220, 0, world.height),
+        keepDirection: true,
       });
     } else if (input.kind === "mouse" || input.kind === "touch") {
-      const targetX = camera.x + (input.x - width / 2) / camera.scale;
-      const targetY = camera.y + (input.y - height / 2) / camera.scale;
+      const target = window.KillexArenaView.movementTarget(me, input, camera, width, height, world);
+      const targetX = target.x, targetY = target.y;
       // Допуск в координатах арены, а не экрана. Прежние 9 px при
       // отдалении камеры останавливали шар до 95% покрытия соперника.
       if (Math.hypot(targetX - me.x, targetY - me.y) < 2) {
@@ -1160,6 +1168,7 @@
         type: "move",
         x: clamp(targetX, 0, world.width),
         y: clamp(targetY, 0, world.height),
+        keepDirection: target.keepDirection,
       });
     }
   }
@@ -1305,6 +1314,17 @@
       return;
     }
     if (lifeResult || $("leaveConfirmDialog").open) return;
+    const emoteIndex = window.KillexEmotes.key(event);
+    if (emoteIndex && phase === "arena" && !document.hidden && ui.settings.hidden &&
+        !document.querySelector("dialog[open]") &&
+        !event.target?.closest("input, textarea, select, [contenteditable], button, a, [role='button']")) {
+      const me = getMe(), at = performance.now();
+      if (!me || me.dead || me.departure || !Number.isSafeInteger(me.spawnSerial)) return;
+      event.preventDefault();
+      if (at - lastEmoteAt >= window.KillexEmotes.COOLDOWN_MS &&
+          send({ type: "emote", index: emoteIndex, spawnSerial: me.spawnSerial })) lastEmoteAt = at;
+      return;
+    }
     if (event.key === "Enter" && phase === "arena" && !event.defaultPrevented &&
         !event.repeat && !event.ctrlKey && !event.altKey && !event.metaKey && !event.shiftKey &&
         !document.querySelector("dialog[open]") && ui.settings.hidden &&
@@ -1775,6 +1795,7 @@
       window.KillexArenaView.animateRadius(displayed, part.radius, dt);
       if (player.id === myId && !body.retiring)
         ownParts.push({
+          id: key,
           x: displayed.x,
           y: displayed.y,
           radius: displayed.radius,
@@ -1797,7 +1818,7 @@
       const subject = { ...me, parts: ownParts };
       const view = window.KillexArenaView;
       const group = view.groupFrame(subject);
-      view.followCenter(camera, group, dt, me.forcedMovement === true);
+      view.followCenter(camera, group, dt, me.forcedMovement === true, ownParts);
       view.updateZoom(
         camera,
         view.desiredScale(subject, width, height, world, group),
@@ -1905,6 +1926,16 @@
       }
     }
     projectileView.draw(ctx, { ...projectileOptions, shots: throughShots });
+    if (emoteView.active.size) {
+      emoteView.prune(now);
+      for (const { player, key, kind, opacity } of ordered) {
+        const body = kind !== "hazard" && smoothParts.get(key);
+        if (!body || !player || opacity <= 0) continue;
+        ctx.save(); ctx.globalAlpha *= opacity;
+        emoteView.draw(ctx, player, body, scale, now, { left, right, top, bottom });
+        ctx.restore();
+      }
+    }
     ctx.restore();
     frameId = requestAnimationFrame(frame);
   }

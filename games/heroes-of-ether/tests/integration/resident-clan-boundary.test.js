@@ -7,7 +7,7 @@ const service=require('../../src/server/clans/daily-quests/service');
 const {RoomProfileLedger}=require('../../src/server/arena/resident/room-profile-ledger');
 const {RoomOutbox}=require('../../src/server/arena/resident/room-outbox');
 const boundary=require('../../src/server/arena/resident/room-quest-boundary');
-const start=Date.parse('2026-11-15T03:00:00Z'),end=start+15*3600000;
+const start=Date.parse('2026-11-15T05:00:00Z'),end=start+13*3600000;
 async function fixture(t){
  let cleanup,at=start-86400000,child,ledger;const boxes=[];
  const root=temporary({after:f=>cleanup=f},'resident-clan-boundary');

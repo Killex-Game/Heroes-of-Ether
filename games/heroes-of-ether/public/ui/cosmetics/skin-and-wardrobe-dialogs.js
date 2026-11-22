@@ -511,7 +511,7 @@
       copy.append(
         el("span", "cosmetics-eyebrow", "Коллекции обликов"),
         el("h3", "", "Наборы скинов"),
-        el("p", "cosmetics-muted", "Десять новых коллекций. В каждом наборе пять персонажей."),
+        el("p", "cosmetics-muted", "В каждом наборе пять персонажей. Коллекция остаётся у тебя навсегда."),
       );
       header.append(copy, button("sf-button", "В гардероб", onCollection));
       root.append(header);
@@ -525,7 +525,7 @@
         for (const member of collection.members) {
           const portrait = el("figure", "skin-collection-portrait"),
             img = el("img");
-          setSkinImage(img, member.id, 512);
+          setSkinImage(img, member.id, 160);
           img.alt = member.name;
           img.width = 160;
           img.height = 160;

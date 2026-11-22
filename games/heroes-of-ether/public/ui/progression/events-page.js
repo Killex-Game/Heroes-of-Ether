@@ -124,12 +124,12 @@
       image.alt = "";
       image.draggable = false;
       image.src = index
-        ? "assets/ui/svg/identity/access-lock.svg?art=20261122b"
-        : "assets/events/lucky-week/card-banner.webp?art=20261122b";
+        ? "assets/ui/svg/identity/access-lock.svg?art=20261122d"
+        : "assets/events/lucky-week/card-banner.webp?art=20261122d";
       card.append(number, image, title, status);
       if (index === 2) {
         image.className = "event-card-banner";
-        image.src = "assets/events/easter-hunt/card-banner.webp?art=20261122b";
+        image.src = "assets/events/easter-hunt/card-banner.webp?art=20261122d";
         title.textContent = "Пасхальная охота";
         this.easterStatus = status;
         this.related = el("span", "event-card-related", "Удачная неделя");
@@ -144,7 +144,7 @@
         };
       } else if (index === 1) {
         image.className = "event-card-banner";
-        image.src = "assets/events/black-friday/card-banner.webp?art=20261122b";
+        image.src = "assets/events/black-friday/card-banner.webp?art=20261122d";
         title.textContent = "Чёрная пятница";
         this.blackFridayStatus = status;
         card.append(el("span", "event-card-action", "Лавка Мани"));
@@ -155,10 +155,15 @@
           this.blackFriday.open();
         };
       } else if (index === 3) {
-        image.className = "event-card-banner"; image.src = "assets/events/ether-alchemy/v1/banner-v2.webp?art=20261122b";
+        image.className = "event-card-banner"; image.src = "assets/events/ether-alchemy/v1/card-banner.webp?art=20261122d";
         title.textContent = "Эфирная алхимия"; this.alchemyStatus = status;
         card.append(el("span", "event-card-action", "Лаборатория"));
         card.onclick = () => { this.update(); if (!card.disabled) { this.dialog.close(); this.alchemy.open(); } };
+      } else if (index === 4) {
+        image.className='event-card-banner';image.src='assets/events/clans/quests.webp';
+        this.clanSeasonImage=image;this.clanSeasonTitle=title;this.clanSeasonStatus=status;
+        card.append(el('span','event-card-action','К клану'));
+        card.onclick=()=>{this.dialog.close();document.getElementById('clanSection')?.click();};
       } else if (index) {
         window.KillexControls.state(card, true);
         card.setAttribute("aria-label", "Событие " + (index + 1) + ": недоступно");
@@ -206,13 +211,18 @@
           event.features?.roulette &&
           this.profile?.roulette?.available
         );
+      const calendar=window.KillexClanCalendar,season=calendar.season(now),seasonArt='assets/events/clans/'+season.mode+'.webp';
+      this.clanSeasonTitle.textContent=season.name;
+      if(this.clanSeasonImage.getAttribute('src')!==seasonArt)this.clanSeasonImage.src=seasonArt;
+      this.clanSeasonStatus.textContent='Активно · До конца: '+calendar.countdown(season.end,now);
+      this.cards[4].dataset.available='true';window.KillexControls.state(this.cards[4],false);
       const card = this.cards[0];
       const shopActive = !!(
         this.profile?.blackFriday?.active && this.profile.blackFriday.endsAt > now
       );
       window.KillexControls.state(this.cards[1], !shopActive);
       this.cards[1].dataset.available = String(shopActive);
-      this.blackFridayStatus.textContent = shopActive ? "Лавка открыта" : "Ожидает начала";
+      this.blackFridayStatus.textContent = shopActive ? "До конца: "+calendar.countdown(this.profile.blackFriday.endsAt,now) : "Ожидает начала";
       const hunt = this.profile?.easter;
       const huntActive = !!(hunt?.active && hunt.endsAt > now);
       const linked =
@@ -230,12 +240,12 @@
       window.KillexControls.state(this.cards[2], !huntActive);
       this.cards[2].dataset.available = String(huntActive);
       this.easterStatus.textContent = huntActive
-        ? `Фрагменты: ${hunt.fragments} / ${window.KillexEaster.fragments}`
+        ? "До конца: "+calendar.countdown(hunt.endsAt,now)
         : "Ожидает начала";
       const alchemyActive = !!this.profile?.alchemy?.active && this.profile.alchemy.endsAt > now;
       window.KillexControls.state(this.cards[3], !alchemyActive);
       this.cards[3].dataset.available = String(alchemyActive);
-      this.alchemyStatus.textContent = alchemyActive ? "Сбор ингредиентов и зельеварение" : "Ожидает начала";
+      this.alchemyStatus.textContent = alchemyActive ? "До конца: "+calendar.countdown(this.profile.alchemy.endsAt,now) : "Ожидает начала";
       window.KillexControls.state(card, !available);
       card.dataset.available = String(available);
       if (available) {
@@ -305,7 +315,7 @@
       };
       place(this.cards[0], cx, cy);
       const outer = [];
-      this.cards.slice(1).forEach((card, index) => {
+      [this.cards[4],...this.cards.slice(1).filter(card=>card!==this.cards[4])].forEach((card, index) => {
         const local = index - this.page * pageSize;
         card.hidden = local < 0 || local >= pageSize;
         if (card.hidden) return;

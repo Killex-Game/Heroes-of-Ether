@@ -20,7 +20,7 @@
       premium = tier === "premium";
     slide.className = "promo-slide";
     slide.dataset.tier = tier;
-    slide.style.backgroundImage = `url("assets/banners/${premium ? "premium.webp" : "vip.png"}")`;
+    slide.style.backgroundImage = `url("assets/banners/${premium ? "premium.webp" : "vip.png"}?art=20261122d")`;
     copy.className = "promo-slide-copy";
     label(
       copy,
@@ -63,15 +63,15 @@
       product.click();
     }
   };
-  events.style.backgroundImage = 'url("assets/banners/pets.webp?art=20261122b")';
+  events.style.backgroundImage = 'url("assets/banners/pets.webp?art=20261122d")';
   label(events, "Предложения", "Питомцы", "Выбери верного друга для арены");
   const offers = document.querySelector(".promo-offers");
   const eventBanners = {
-    "ether-alchemy-v1": "assets/events/ether-alchemy/v1/banner-v2.webp?art=20261122b",
-    "black-friday-v1": "assets/events/black-friday/banner-v2.webp?art=20261122b",
-    "easter-hunt-v1": "assets/events/easter-hunt/banner.png?art=20261122b",
-    "lucky-week-v1": "assets/events/lucky-week/banner-v3.webp?art=20261122b",
-    "core-v1": "assets/events/lucky-week/banner-v3.webp?art=20261122b",
+    "ether-alchemy-v1": "assets/events/ether-alchemy/v1/banner-v2.webp?art=20261122d",
+    "black-friday-v1": "assets/events/black-friday/banner-v2.webp?art=20261122d",
+    "easter-hunt-v1": "assets/events/easter-hunt/banner.png?art=20261122d",
+    "lucky-week-v1": "assets/events/lucky-week/banner-v3.webp?art=20261122d",
+    "core-v1": "assets/events/lucky-week/banner-v3.webp?art=20261122d",
   };
   if (offers) {
     offers.tabIndex = 0;

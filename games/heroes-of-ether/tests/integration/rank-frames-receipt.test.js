@@ -9,6 +9,30 @@ const { ProfileStore } = require("../../src/server/profiles/profile-store"),
   titles = require("../../src/server/progression/title-chest-rewards"),
   { temporary } = require("../temp");
 const AT = Date.UTC(2026, 10, 1, 12);
+test("new frame variants preserve originals, inherit access and expiry, and cannot replace backgrounds", () => {
+  const store = new ProfileStore({ filePath:null,now:()=>AT,unlockLeagueFrames:false });
+  const user=store.open(),p=store.find(user.token),appearance=require('../../src/server/profiles/league-appearance');
+  const catalog=require('../../public/shared/league-appearance');
+  assert.equal(catalog.variantFrames.length,11);
+  for(const f of catalog.variantFrames){
+    assert(catalog.valid(f.id,'avatarFrame'));assert(catalog.valid(f.id,'arenaFrame'));
+    assert(!catalog.valid(f.id,'lobbyBackground'));assert(!catalog.valid(f.id,'uiTheme'));
+    assert.throws(()=>appearance.update(p,{slot:'frames',themeId:f.id},{},AT));
+  }
+  p.honors.medals.prince={at:AT};(p.account ||= {}).vipUntil=AT+1000;
+  appearance.grant(p,0,AT);
+  for(const id of ['title_prince','canon_title_prince','vip','canon_vip','bronze','canon_bronze']){
+    appearance.update(p,{slot:'frames',themeId:id},{},AT);
+    assert.equal(appearance.selected(p,{},AT).avatarFrame,id);
+  }
+  appearance.update(p,{slot:'frames',themeId:'canon_vip'},{},AT);
+  assert.equal(appearance.selected(p,{},AT+1000).avatarFrame,'default');
+  assert(!appearance.view(p,{},AT).unlocked.includes('canon_premium'));
+  assert(!appearance.view(p,{},AT).unlocked.includes('canon_title_king'));
+  assert(!appearance.view(p,{},AT).unlocked.includes('canon_diamond'));
+  assert.equal(catalog.source('title_prince','frame').startsWith('assets/title-frames/'),true);
+  assert.equal(catalog.source('canon_title_prince','frame').startsWith('assets/frames/canon-v1/'),true);
+});
 test("rank frames require an earned rank even with preview; permanent selection survives restart and account expiry", (t) => {
   const filePath = path.join(temporary(t, "rank-frames"), "profiles.json"),
     store = new ProfileStore({ filePath, now: () => AT, unlockLeagueFrames: true }),

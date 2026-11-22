@@ -105,6 +105,7 @@ function createGameServer({
     throw new RangeError("Invalid shutdown grace period");
   if (!Number.isInteger(arenaProgressGroupSize) || arenaProgressGroupSize < 1 || arenaProgressGroupSize > 16)
     throw new RangeError("Invalid progress group size");
+  const emotes = new (require("./arena/emotes").ArenaEmotes)();
   const root = path.resolve(publicDir);
   const newsMedia = new (require('./admin/news-media').NewsMedia)(profiles.filePath ? path.join(path.dirname(profiles.filePath),'news-media') : null);
   const feedback = ownerAccess.sendFeedback ? null : new (require('./admin/feedback-store').FeedbackStore)({
@@ -1225,6 +1226,7 @@ function createGameServer({
       p.quickSlots = [...(profile.quickSlots || [])];
     }
     ws.playerId = p.id;
+    emotes.join(room, ws);
     ws.alive = true;
     ws.stateStream = stateWorkers.createStream(room.id, ws, safeSend);
     let tokens = 80,
@@ -1324,6 +1326,11 @@ function createGameServer({
       }
       if (message?.type === "stateAck") return;
       if (profile && !p.dead) kill.observe(killSession,profile.id,message,receivedAt,{stalled:receivedAt-stalledAt<2000});
+      if (message?.type === "emote") {
+        emotes.send(room, p, message, receivedAt, safeSend,
+          (profiles.byId(p.profileId)?.account?.premiumUntil || 0) > wallNow());
+        return;
+      }
       if (message?.type === "viewport") {
         const view = arenaVisibility.viewport(message, arena.world);
         if (view) ws.stateStream.viewport = view;
@@ -1835,6 +1842,7 @@ function createGameServer({
     const remove = () => {
       if (removed) return;
       removed = true;
+      emotes.leave(room, ws);
       ws.stateStream.dispose?.();
       // Закрытие между тиками сохраняет накопление за последний активный интервал.
       const departedAt=Math.min(maintenanceFreezeAt??Infinity,arenaTestingFreezeAt??Infinity,now());
