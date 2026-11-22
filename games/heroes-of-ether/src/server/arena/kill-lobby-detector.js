@@ -102,7 +102,7 @@ class KillLobbyDetector {
     if (at - w.start < WINDOW) return;
     const sample = summarize(w), m = this.models[kind];
     s.window = fresh(at);
-    const enough = sample.count >= 20 && sample.medianIntervalMs >= 150 &&
+    const enough = sample.count >= 20 && sample.medianIntervalMs >= 50 &&
       sample.medianIntervalMs <= 3000 && sample.burstFraction <= .1;
     const regular = enough && sample.regularFraction >= .75;
     if (!enough) { s.samples = []; return; }

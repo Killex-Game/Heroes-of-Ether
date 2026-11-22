@@ -57,6 +57,13 @@ test('state is bounded across accounts and expired lazily, no separate poller ne
   assert.equal(f.detector.states.size, 5);
   f.player = { id: 'later' }; send(f, 2000000); assert.equal(f.detector.states.size, 1);
 });
+test('sustained fast commands at the HTTP rate limit are not discarded as one network burst', async () => {
+  const f = setup(); for (let at = 0; at < 330000; at += 125) send(f, at);
+  await flush(); assert.equal(f.reports.length, 1);
+  const e = f.reports[0].evidence; assert.equal(e.lobbyEvidence.trigger.kind, 'rapid-commands');
+  assert(e.lobbyEvidence.samples.every(w => w.medianIntervalMs === 125 && w.burstFraction === 0));
+  validate({id:randomUUID(),status:'new',createdAt:340000,...e});
+});
 test('detailed inspection starts only at a trigger and ends after a pause or its deadline', () => {
   const f = setup();
   for (let n = 0; n < 10; n++) send(f, n * 1000);
