@@ -33,14 +33,16 @@ test("Кристальная жила выдаёт 375 + 40 кристаллов
 });
 
 test("Каждая новая покупка одного пакета двигает достижения; повтор номера не даёт второй прогресс или награду", (t) => {
+  let now = NOW;
   const filePath = path.join(temporary(t, "purchase-achievements"), "profiles.json");
-  const store = new ProfileStore({ filePath, now: () => NOW }),
+  const store = new ProfileStore({ filePath, now: () => now }),
     { token } = store.open();
   for (const [productId, achievement, paidAmount] of [
     ["coins:treasury", "wealthy", 37500],
     ["crystals:source", "miner", 1875],
     ["bucks:bank", "banker", 2500],
   ]) {
+    now += 86400000;
     const first = order(productId);
     store.confirmMockPurchase(token, first);
     assert.equal(store.find(token).activity.values[achievement], paidAmount);
@@ -53,12 +55,13 @@ test("Каждая новая покупка одного пакета двиг�
     assert.equal(store.find(token).activity.values[achievement], paidAmount * 2);
     assert.throws(() => store.confirmMockPurchase(token, order(productId, { confirmed: false })));
     assert.equal(store.find(token).activity.values[achievement], paidAmount * 2);
-    const restored = new ProfileStore({ filePath, now: () => NOW });
+    const restored = new ProfileStore({ filePath, now: () => now });
     const saved = structuredClone(restored.find(token));
     restored.confirmMockPurchase(token, second);
     assert.deepEqual(restored.find(token), saved);
   }
   for (const kind of ["vip", "premium"]) {
+    now += 86400000;
     store.confirmMockPurchase(token, order("account:" + kind));
     store.confirmMockPurchase(token, order("account:" + kind));
     assert.equal(store.find(token).activity.values[kind], 2);

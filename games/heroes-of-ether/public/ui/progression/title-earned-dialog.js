@@ -97,7 +97,7 @@
         prizes.replaceChildren();
         const item = (src, label, note) => {
           const card = el("div", "title-earned-prize"), image = el("img");
-          image.src = src; image.alt = ""; card.append(image, el("strong", "", label));
+          image.src = window.KillexArtRevision.url(src); image.alt = ""; card.append(image, el("strong", "", label));
           if (note) card.append(el("small", "", note));
           prizes.append(card);
         };

@@ -638,9 +638,10 @@ test("Q fire applies level damage at swept boundary; replay and stale lives neve
   assert.equal(pets.use(arena, p, m, 200).replay, true);
   assert.equal(p.pet.stock.fire, 10);
   arena.combat.update(1000);
-  assert.equal(target.mass, 300);
+  assert.equal(target.dead, true);
+  assert.equal(arena.combatEvents.filter(e => e.type === "burned").length, 1);
   arena.combat.update(1500);
-  assert.equal(target.mass, 300);
+  assert.equal(arena.combatEvents.filter(e => e.type === "burned").length, 1);
   assert.throws(
     () => pets.use(arena, p, { ...message(p, "fire", 2), spawnSerial: 99 }, 2000),
     /жизни/,
@@ -692,7 +693,7 @@ test("Огонь питомца соблюдает порог смерти, за
           )();
         arena.combat.update(2000);
         outcomes.push({ mass: target.mass, dead: target.dead, events: arena.combatEvents.length });
-        if (mode === "normal" || mode === "shield") assert.equal(target.dead, mass <= 300);
+        if (mode === "normal" || mode === "shield") assert.equal(target.dead, mass - Math.floor(mass / 2) <= 300);
       }
       assert.deepEqual(outcomes[0], outcomes[1], `${mode}, mass=${mass}`);
     }

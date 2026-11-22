@@ -19,7 +19,7 @@
   const nextGoal = (a) => a.thresholds[Math.min(a.claimed, a.thresholds.length - 1)];
   const image = (src, cls, size = 48) => {
     const n = el("img", cls);
-    n.src = src;
+    n.src = window.KillexArtRevision.url(src);
     n.alt = "";
     n.width = size;
     n.height = size;
@@ -423,7 +423,7 @@
       ]) {
         const li = el("li");
         li.append(
-          image(`assets/menu-icons/64/currency_${key}.webp`, "", 28),
+          image(`assets/menu-icons/64/currency_${key}.webp?art=20261122b`, "", 28),
           el("span", "", `${number(reward[key])} ${name}`),
         );
         wallet.append(li);

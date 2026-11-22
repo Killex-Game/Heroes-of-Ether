@@ -1,0 +1,14 @@
+/* Asset URL revision for server-provided art; no timers or eager image loads. */
+"use strict";
+window.KillexArtRevision = Object.freeze({
+  url(value) {
+    if (typeof value !== "string" || !/^\/?assets\//.test(value)) return value;
+    const parts = value.split("#"), base = parts[0]
+      .replace(/([?&])art=[^&]*(&?)/g, (_, a, b) => b ? a : "").replace(/[?&]$/, "");
+    const revised = /assets\/achievements\/illustrated-v2\/(?!easter_)/.test(base)
+      || /assets\/(?:title-frames|league-frames)\//.test(base)
+      || /assets\/skins\/(?:transparent-v[12]\/\d+\/vip-[13]|premium-v2\/\d+\/premium-2)\.webp/.test(base);
+    return base + (base.includes("?") ? "&" : "?") + "art=" + (revised ? "20261122c" : "20261122b")
+      + (parts.length > 1 ? "#" + parts.slice(1).join("#") : "");
+  },
+});

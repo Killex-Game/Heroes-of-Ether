@@ -1528,6 +1528,13 @@ class ProfileStore {
     const product = virtualProducts.get(input.productId);
     if (!product) throw new BoosterError("Этот игровой продукт не найден.");
     if (input.confirmed !== true) throw new BoosterError("Сначала подтверди тестовую покупку.");
+    const quota = require("../shop/mock-purchase-limit");
+    const current = this.find(token);
+    // Reject exhausted accounts before copying their inventories and histories.
+    // Existing receipts still follow the normal replay/conflict path.
+    if (current && typeof input.requestId === "string" && requestPattern.test(input.requestId) &&
+        operationReceipts.read(current, input.requestId) === operationReceipts.MISSING)
+      quota.assertAvailable(current, this.now());
     const result = this.transactProfile(
       token,
       input.requestId,
@@ -1537,6 +1544,7 @@ class ProfileStore {
           : ["mock-purchase", product.id],
       ),
       (p) => {
+        quota.assertAvailable(p, this.now());
         if (product.type === "manya-coupon") {
           blackFriday.activateCoupon(p, this.events, input.eventId, this.now());
         } else if (product.type === "lite") {

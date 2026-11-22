@@ -3,7 +3,7 @@ const assert = require("node:assert/strict"), fs = require("node:fs"), path = re
 const engines = require("playwright"), fixture = require("../helpers/black-friday-fixture");
 const { createGameServer } = require("../../src/server/game-server"), { Arena } = require("../../src/server/arena/arena-simulation");
 const rules = require("../../public/shared/alchemy-rules");
-const output = path.resolve(__dirname, "../../../../artifacts/ether-alchemy-20261116");
+const output = path.resolve(__dirname, process.env.ALCHEMY_OUTPUT || "../../../../artifacts/ether-alchemy-20261116");
 const results = [];
 async function until(check) { for (let i=0;i<160;i++) { if (check()) return; await new Promise(r=>setTimeout(r,25)); } assert.fail("Server action did not complete"); }
 (async()=>{
@@ -65,7 +65,27 @@ async function until(check) { for (let i=0;i<160;i++) { if (check()) return; awa
    await until(()=>f.p().alchemy.queue?.join(',')==='strength,knowledge,swiftness');
    await page.screenshot({path:path.join(output,engine+'-potion-queue.png')});
    await page.evaluate(()=>document.querySelector('dialog[data-mode="inventory"]').close());
-   await page.locator("#etherGeneratorButton").tap(); await page.locator("#alchemyBook").tap();
+   if(await page.locator('.effi-lobby-dismiss').isVisible())await page.locator('.effi-lobby-dismiss').click(); await page.locator("#etherGeneratorButton").tap();
+   await page.locator('#etherGeneratorDialog').waitFor({state:'visible'});
+   assert.equal(await page.locator('#etherGeneratorDialog #alchemyBook').count(),0);
+   assert.equal(await page.locator('#alchemyButton').isVisible(),false);
+   let lostExchange=true;
+   await page.unroute('**/api/alchemy/action');
+   const exchanges=[];
+   await page.route('**/api/alchemy/action',async route=>{
+    exchanges.push(route.request().postDataJSON());
+    if(lostExchange){lostExchange=false;const response=await route.fetch();assert.equal(response.status(),200);await route.abort();}
+    else await route.continue();
+   });
+   await page.locator('#alchemyExchange').tap();await until(()=>f.p().alchemy.natural===50000);
+   await page.waitForFunction(()=>!document.getElementById('alchemyExchange').disabled);
+   await page.evaluate(()=>document.getElementById('etherGeneratorDialog').close());
+   if(await page.locator('.effi-lobby-dismiss').isVisible())await page.locator('.effi-lobby-dismiss').click(); await page.locator('#etherGeneratorButton').tap();
+   await page.locator('#alchemyExchange').tap();
+   await page.waitForFunction(()=>document.querySelector('.ether-generator-notice').textContent.includes('Получено'));
+   assert.equal(f.p().alchemy.natural,50000);assert.equal(exchanges[0].requestId,exchanges[1].requestId);
+   await page.unroute('**/api/alchemy/action');
+   await page.evaluate(()=>{document.getElementById('etherGeneratorDialog').close();document.dispatchEvent(new CustomEvent('killex:alchemy-open',{detail:'strength'}));});
    assert.equal(await brew.isDisabled(),true);
    await page.evaluate(()=>document.getElementById("alchemyDialog").close());
    await page.locator('#arenaPickerButton').tap();

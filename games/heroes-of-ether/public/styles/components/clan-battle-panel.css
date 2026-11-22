@@ -413,10 +413,10 @@
   height: 36px;
   object-fit: contain;
 }
-.treasury-waiting-row img[src$="/quest-small.webp"] {
+.treasury-waiting-row img[src*="/quest-small.webp"] {
   scale: 0.86;
 }
-.treasury-waiting-row img[src$="/quest-medium.webp"] {
+.treasury-waiting-row img[src*="/quest-medium.webp"] {
   scale: 0.9;
 }
 .treasury-waiting-row > .sf-button {

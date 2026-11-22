@@ -28,7 +28,7 @@
         for (const value of [1, 2, 3, 5, 10]) this.tiles.set(value, tile);
         for (const cell of this.cells.values()) cell.dirty = true;
       };
-      img.src = "assets/food/ether-drop-v1.webp";
+      img.src = "assets/food/ether-drop-v1.webp?art=20261122b";
     }
     cellKeys(orb) {
       const size = this.cellSize,

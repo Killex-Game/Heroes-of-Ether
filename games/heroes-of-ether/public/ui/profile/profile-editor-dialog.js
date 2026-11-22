@@ -154,7 +154,7 @@
     }
     crystal() {
       const image = el("img", "inline-currency");
-      image.src = "assets/menu-icons/64/currency_crystals.webp";
+      image.src = "assets/menu-icons/64/currency_crystals.webp?art=20261122b";
       image.alt = "кристаллов";
       image.width = 24;
       image.height = 24;

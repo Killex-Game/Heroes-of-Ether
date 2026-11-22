@@ -5,7 +5,7 @@ body[data-screen="lobby"] #lobby[data-event-background="easter"]:not(.has-league
   background-color: #e5eacb;
   background-image:
     radial-gradient(ellipse at 52% 47%, #fff9e8ed 0%, #fff9e8a6 29%, #fff9e800 63%),
-    url("../../assets/events/lobby/easter-pattern.svg"),
+    url("../../assets/events/lobby/easter-pattern.svg?art=20261122b"),
     radial-gradient(ellipse at 8% 95%, #a7cbb7, #a7cbb700 55%),
     radial-gradient(ellipse at 95% 8%, #f1c5ba, #f1c5ba00 65%),
     linear-gradient(140deg, #e6eed3, #fcf0d7 50%, #ead4b3);
@@ -17,7 +17,7 @@ body[data-screen="lobby"] #lobby[data-event-background="black-friday"]:not(.has-
   background-color: #111d24;
   background-image:
     radial-gradient(ellipse at 52% 49%, #254b50d9 0%, #1a3239a6 28%, #10182100 66%),
-    url("../../assets/events/lobby/black-friday-pattern.svg"),
+    url("../../assets/events/lobby/black-friday-pattern.svg?art=20261122b"),
     radial-gradient(ellipse at 94% 3%, #74522d66, #74522d00 48%),
     radial-gradient(ellipse at 2% 98%, #976b2833, #976b2800 52%),
     linear-gradient(135deg, #0c171e, #17272c 49%, #11141d);

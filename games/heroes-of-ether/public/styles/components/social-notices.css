@@ -1,11 +1,11 @@
 /* The same celebratory silhouette as earned achievements, with a player portrait. */
-.social-notice-dialog { overflow: auto; --social-avatar-size: 112px; --social-portrait-overlap: 55px; }
-.social-notice-dialog[data-marriage-state] { width: min(470px, calc(100vw - 24px)); max-width: calc(100vw - 24px); height: min(430px, calc(100dvh - 24px)); padding-bottom: 12px; }
+.social-notice-dialog { height: fit-content; min-height: 0; overflow: auto; --social-avatar-size: 112px; --social-portrait-overlap: 55px; }
+.social-notice-dialog[data-marriage-state] { width: min(470px, calc(100vw - 24px)); max-width: calc(100vw - 24px); padding-bottom: 18px; }
 .social-notice-dialog .achievement-earned-banner { padding-bottom: calc(var(--social-portrait-overlap) + 3px); }
 .social-notice-dialog[data-marriage-state] .achievement-earned-banner { background-size: cover; background-position: center; }
-.social-notice-dialog[data-marriage-state="proposal"] .achievement-earned-banner { background-image: linear-gradient(#11112644,#11112611),url("../../assets/social/banners/proposal.webp"); }
-.social-notice-dialog[data-marriage-state="confirmed"] .achievement-earned-banner { background-image: linear-gradient(#24101e44,#24101e11),url("../../assets/social/banners/confirmed.webp"); }
-.social-notice-dialog:is([data-marriage-state="divorced"], [data-marriage-state="declined"]) .achievement-earned-banner { background-image: linear-gradient(#10192a44,#10192a11),url("../../assets/social/banners/divorced.webp"); }
+.social-notice-dialog[data-marriage-state="proposal"] .achievement-earned-banner { background-image: linear-gradient(#11112644,#11112611),url("../../assets/social/banners/proposal.webp?art=20261122b"); }
+.social-notice-dialog[data-marriage-state="confirmed"] .achievement-earned-banner { background-image: linear-gradient(#24101e44,#24101e11),url("../../assets/social/banners/confirmed.webp?art=20261122b"); }
+.social-notice-dialog:is([data-marriage-state="divorced"], [data-marriage-state="declined"]) .achievement-earned-banner { background-image: linear-gradient(#10192a44,#10192a11),url("../../assets/social/banners/divorced.webp?art=20261122b"); }
 .social-notice-dialog .social-content { display: grid; justify-items: center; gap: 14px; padding: 0; overflow: visible; max-height: none; }
 .social-notice-dialog.marriage-dialog .social-content { padding: 0; }
 .social-notice-dialog.marriage-dialog .achievement-earned-description { margin: 0; }
@@ -21,6 +21,7 @@
 .social-anonymous-avatar { display: grid; place-items: center; width: 100%; height: 100%; border: 3px solid #d6ae62; border-radius: 50%; background: linear-gradient(145deg,#345c72,#152e44); color: #ffe2a5; font: bold 64px Georgia,serif; box-sizing: border-box; }
 .social-notice-dialog .achievement-earned-name { margin: 0; overflow-wrap: anywhere; }
 .social-notice-dialog .social-status { margin: 0; font-size: 13px; }
+.social-notice-dialog .social-status:empty { display: none; }
 .social-notice-dialog .social-status:not(:empty) { margin-top: 12px; }
 .social-notice-dialog .social-actions, .social-invitation-pages { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; }
 .social-notice-dialog .social-invite-form { display: grid; gap: 12px; justify-items: center; }

@@ -1,0 +1,32 @@
+[
+  {
+    "path": "public/index.html",
+    "before": "53a11f0ea4416e7414af2fbe3b5c32cbffbb67e70d3e0ab9321d5acb9fb7678e",
+    "after": "c75e40440a1c1cac652482fd03c083650e63b28189366ec2f60f99c3ce25e62d",
+    "bytes": 43274
+  },
+  {
+    "path": "public/ui/progression/ether-alchemy.js",
+    "before": "c8c40f09f1da16005bdd26aa848afad6de4b964873be4b922fb897c7f225e99e",
+    "after": "c3e9871fe0221b3b50cbd03018a4459951ae8dc66af88f5be6b211cb46593849",
+    "bytes": 16923
+  },
+  {
+    "path": "public/styles/components/ether-alchemy.css",
+    "before": "699aec7c3677f7f241c7e496f1e1730947b7f7bf965f7dcc1764a26fe26495bf",
+    "after": "9de8fa40d2ff12c11760b644f4ea72ad9c6d78986ef2b31ddc98c9f92f6726b6",
+    "bytes": 10247
+  },
+  {
+    "path": "public/ui/progression/ether-generator.js",
+    "before": null,
+    "after": "5ea84f13fc6ac559dab0876abcf5269cbf82be0eafed0a21593d0d3fa48717d5",
+    "bytes": 5053
+  },
+  {
+    "path": "public/assets/events/ether-alchemy/v1/cauldron-v1.webp",
+    "before": null,
+    "after": "1b9d0529269d589af0bda2616654f885dd5cfca26dc70751f5b2376477094660",
+    "bytes": 60790
+  }
+]

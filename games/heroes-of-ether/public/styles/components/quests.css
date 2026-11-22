@@ -49,13 +49,13 @@
   object-fit: contain;
 }
 /* Общая градация рисунков заданий в карточках, Сокровищнице и при открытии. */
-img[src$="/quest-small.webp"] {
+img[src*="/quest-small.webp"] {
   scale: 0.62;
 }
-img[src$="/quest-medium.webp"] {
+img[src*="/quest-medium.webp"] {
   scale: 0.80;
 }
-.quest-treasury-chest img[src$="/quest-small.webp"] {
+.quest-treasury-chest img[src*="/quest-small.webp"] {
   scale: 0.78;
 }
 .quest-card h3 {

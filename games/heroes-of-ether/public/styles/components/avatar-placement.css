@@ -17,14 +17,14 @@ img[data-skin-fit="portrait"] {
 }
 [data-skin-fit="portrait"] { transition: none; }
 /* Normalize transparent medal canvases inside the unchanged insignia column. */
-#lobby #profileMedal { position: relative; width: 52px; height: 52px; flex: 0 0 52px; }
+#lobby #profileMedal { position: relative; width: 60px; height: 60px; flex: 0 0 60px; }
 #lobby #profileMedal .title-medal {
   position: absolute; left: 50%; top: 50%;
-  width: calc(52px * var(--lobby-medal-scale, 1));
-  height: calc(52px * var(--lobby-medal-scale, 1));
+  width: calc(60px * var(--lobby-medal-scale, 1));
+  height: calc(60px * var(--lobby-medal-scale, 1));
   max-width: none; object-fit: contain; transform: translate(-50%, -50%); pointer-events: none;
 }
 @media (max-width: 700px) {
-  #lobby #profileMedal { width: 36px; height: 36px; flex-basis: 36px; }
-  #lobby #profileMedal .title-medal { width: calc(36px * var(--lobby-medal-scale, 1)); height: calc(36px * var(--lobby-medal-scale, 1)); }
+  #lobby #profileMedal { width: 44px; height: 44px; flex-basis: 44px; }
+  #lobby #profileMedal .title-medal { width: calc(44px * var(--lobby-medal-scale, 1)); height: calc(44px * var(--lobby-medal-scale, 1)); }
 }

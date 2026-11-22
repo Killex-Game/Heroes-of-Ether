@@ -1,4 +1,4 @@
-/* Animate lobby water and fire in the painted landscape's source coordinates.
+/* Animate lobby clouds and fire in the painted landscape's source coordinates.
    One GPU surface, no image readback, no work while the arena is visible. */
 "use strict";
 (() => {
@@ -57,23 +57,6 @@
       f = f * f * (3.0 - 2.0 * f);
       return mix(mix(hash(i), hash(i + vec2(1., 0.)), f.x),
         mix(hash(i + vec2(0., 1.)), hash(i + vec2(1., 1.)), f.x), f.y);
-    }
-    // Water has continuous downward advection, not a flashing horizontal band.
-    // Only the water material changes; the painted rocks and banks never move.
-    vec3 water(vec3 base, vec2 p, vec4 box, float phase) {
-      float mask = rectangle(p, box);
-      if (mask < .001) return base;
-      float x = p.x - box.x, y = p.y - box.y;
-      float speed = 105.0 + phase * 34.0;
-      float streams = noise(vec2(x * .28 + phase * 13.0, (y - time * speed) * .026));
-      float threads = noise(vec2(x * .65 + phase * 7.0, (y - time * speed * 1.32) * .065));
-      float mist = noise(vec2(x * .13, (y - time * speed * .72) * .047 + phase));
-      float foam = smoothstep(.43, .78, streams * .64 + threads * .36);
-      float trough = smoothstep(.48, .78, 1.0 - streams);
-      vec3 result = mix(base, vec3(.50, .73, .86), mask * trough * .24);
-      result = mix(result, vec3(.94, .98, 1.0), mask * foam * .70);
-      float foot = smoothstep(.65, .95, y / (box.w - box.y));
-      return mix(result, vec3(.94, .97, 1.0), mask * foot * mist * .12);
     }
     vec3 bubble(vec3 base, vec2 p, float seed) {
       float cycle = fract(time / (66.0 + seed * 2.7) + seed * .137);
@@ -166,26 +149,6 @@
       vec2 q = (p - centre) / size;
       return 1.0 - smoothstep(.65, 1.0, dot(q,q));
     }
-    // A tapered, curved channel follows the painted lip and falling stream.
-    // Sampling stays inside its banks; rocks are never repainted as water.
-    vec3 fall(vec3 base, vec2 p, vec2 lip, vec2 foot, vec2 widths, float seed) {
-      float u = (p.y - lip.y) / (foot.y - lip.y);
-      if (u <= 0.0 || u >= 1.0) return base;
-      float centre = mix(lip.x, foot.x, sqrt(u));
-      float width = mix(widths.x, widths.y, u);
-      float across = p.x - centre;
-      float mask = (1.0 - smoothstep(width*.65, width, abs(across)))
-        * smoothstep(0.0, .07, u) * (1.0 - smoothstep(.82, 1.0, u));
-      if (mask < .001) return base;
-      // Preserve the painting's material and its reflected sunset colour.
-      float desaturated = 1.0 - smoothstep(.16, .33, max(base.r,max(base.g,base.b))-min(base.r,min(base.g,base.b)));
-      mask *= desaturated;
-      float along = u * (foot.y-lip.y) - time * (28.0 + seed*8.0);
-      float strands = noise(vec2(across*1.35 + seed*7.0, along*.10));
-      float fine = noise(vec2(across*2.6, along*.19 + seed));
-      float foam = smoothstep(.46,.78,strands*.7+fine*.3);
-      return mix(base, base * (.94 + .10*strands) + vec3(.10,.105,.11)*foam, mask*.78);
-    }
     float banner(vec2 p, vec4 box, float point) {
       float u=clamp((p.y-box.y)/(box.w-box.y),0.0,1.0);
       float edge=1.0-smoothstep(.88,1.0,abs((p.x-(box.x+box.z)*.5)/((box.z-box.x)*.5)));
@@ -230,9 +193,6 @@
       vec2 shifted=p-livingShift(p,base);
       base=texture2D(scene,shifted/vec2(1672.,941.)).rgb;
       if (portrait > .5) {
-        base = fall(base,p,vec2(938.,404.),vec2(930.,442.),vec2(2.0,3.5),.0);
-        base = fall(base,p,vec2(982.,405.),vec2(970.,458.),vec2(5.5,7.5),.27);
-        base = fall(base,p,vec2(1031.,421.),vec2(1024.,461.),vec2(1.7,3.3),.54);
         base = lantern(base,p,vec2(392.,347.),vec2(28.,36.),1.7);
         base = lantern(base,p,vec2(1283.,349.),vec2(28.,36.),4.2);
         base = glint(base,p,vec2(1022.,328.),.5);
@@ -243,9 +203,6 @@
           base=leaf(base,p,vec2(1120.,438.),float(i)+3.0,-1.0);
         }
       } else {
-        base = fall(base,p,vec2(888.,478.),vec2(877.,516.),vec2(2.0,4.2),.0);
-        base = fall(base,p,vec2(959.,464.),vec2(946.,538.),vec2(5.5,8.5),.27);
-        base = fall(base,p,vec2(1053.,511.),vec2(1046.,560.),vec2(3.,6.5),.79);
         base = lantern(base,p,vec2(394.,390.),vec2(29.,39.),1.7);
         base = lantern(base,p,vec2(1280.,390.),vec2(29.,39.),4.2);
         base = lantern(base,p,vec2(90.,665.),vec2(44.,50.),8.1);
@@ -287,19 +244,7 @@
         color = heroicScene(color, p);
       } else if (royal > .5) {
         color = royalFire(color, p);
-      } else if (citadel > .5) {
-        // Two streams spill over separate lips of the left island.
-        color = water(color, p, vec4(789.0, 488.0, 807.0, 604.0), .0);
-        color = water(color, p, vec4(819.0, 492.0, 835.0, 610.0), .18);
-        color = water(color, p, vec4(1105.0, 610.0, 1165.0, 713.0), .37);
-        color = water(color, p, vec4(304.0, 494.0, 362.0, 560.0), .74);
-      } else {
-        color = water(color, p, vec4(76.0, 388.0, 154.0, 586.0), .0);
-        color = water(color, p, vec4(193.0, 402.0, 251.0, 582.0), .19);
-        color = water(color, p, vec4(397.0, 470.0, 453.0, 628.0), .37);
-        color = water(color, p, vec4(1518.0, 585.0, 1558.0, 675.0), .58);
-        color = water(color, p, vec4(1520.0, 738.0, 1562.0, 888.0), .74);
-        color = water(color, p, vec4(1648.0, 736.0, 1751.0, 879.0), .92);
+      } else if (citadel < .5) {
         for (int i = 0; i < 7; i++) color = bubble(color, p, float(i) + 1.0);
       }
       gl_FragColor = vec4(color, 1.0);
@@ -313,7 +258,7 @@
       !lobby.hidden && lobby.isConnected &&
       (!profileScene || !!lobby.closest("dialog[open]")) &&
       document.body.dataset.screen === "lobby" &&
-      ["glass", "prism", "visual", "heroic"].includes(lobby.dataset.leagueBackground)
+      ["glass", "visual", "heroic"].includes(lobby.dataset.leagueBackground)
     );
   }
   function shader(type, source) {
@@ -425,7 +370,7 @@
       failed = true;
       pause();
     };
-    next.src = `assets/interface-packs/${theme}/${profileScene ? "profile" : "lobby"}.webp`;
+    next.src = `assets/interface-packs/${theme}/${profileScene ? "profile" : "lobby"}.webp?art=20261122b`;
   }
   function pause() {
     cancelAnimationFrame(frame);
@@ -467,7 +412,7 @@
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform2f(locations.viewport, width, height);
       // Share the static backdrop's actual positioning; no offset between
-      // the waterfall animation, the platform and the avatar after resizing.
+      // the scene, the platform and the avatar after resizing.
       const css = getComputedStyle(lobby);
       const size = css.backgroundSize.split(" ");
       const cover = Math.max(width / image.naturalWidth, height / image.naturalHeight);

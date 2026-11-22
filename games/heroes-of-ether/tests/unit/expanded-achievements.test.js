@@ -69,7 +69,7 @@ test("Витрина содержит 44 цепочки без Карьеры; �
   assert.equal(entries.filter((a) => !a.available).length, 0);
   assert.equal(new Set(entries.map((a) => a.id)).size, 44);
   for (const a of [...entries, { id: "career" }])
-    assert.ok(fs.existsSync(path.resolve(__dirname, "../../public", art.achievement(a.id))), a.id);
+    assert.ok(fs.existsSync(path.resolve(__dirname, "../../public", art.achievement(a.id).split("?")[0])), a.id);
   const by = (id) => entries.find((a) => a.id === id);
   assert.deepEqual(by("vip").rewards, [100, 150, 300, 500]);
   assert.deepEqual(by("premium").rewards, [150, 300, 500, 1000]);

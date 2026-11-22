@@ -14,9 +14,9 @@
   const themes = Object.freeze(["default", "heroic", "visual", "prism", "glass"]);
   function source(theme, icon) {
     if (!themes.includes(theme)) theme = "default";
-    if (theme === "default") return icon === "pets" ? "assets/menu-icons/community-v2/pets.webp" :
-      icon === "top" ? "assets/menu-icons/v2/nav_tops.webp" : null;
-    return `assets/interface-packs/${theme}/${theme === "heroic" || ["promo","news","pets"].includes(icon) ? "menu-v2/" : ""}nav-${icon}.webp`;
+    if (theme === "default") return icon === "pets" ? "assets/menu-icons/community-v2/pets.webp?art=20261122b" :
+      icon === "top" ? "assets/menu-icons/v2/nav_tops.webp?art=20261122b" : null;
+    return `assets/interface-packs/${theme}/${theme === "heroic" || ["promo","news","pets"].includes(icon) ? "menu-v2/" : ""}nav-${icon}.webp?art=20261122b`;
   }
   return Object.freeze({ buttons, themes, source });
 });

@@ -192,7 +192,7 @@ function snapshot(p, now) {
         vitality: (pet.vitalityMs / pet.stats.capacityMs) * 100,
         stock: { ...pet.stock },
         sequence: pet.sequence,
-        firePercent: pet.stats.firePercent,
+        firePercent: fireFraction(p) * 100,
         thornMeals: pet.thornMeals,
         thornRefillMs: pet.thornRefillAtMs === null ? 0 : Math.max(0, pet.thornRefillAtMs - pet.activeMs),
         nextGiftMs: pet.nextGiftMs - pet.activeMs,

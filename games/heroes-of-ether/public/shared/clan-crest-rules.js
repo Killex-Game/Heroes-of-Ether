@@ -174,7 +174,7 @@
   }
   function symbolSource(id, size = 512) {
     return symbols.some((symbol) => symbol.id === id)
-      ? `assets/clan-crests/prism-refined-v5/${size <= 128 ? 128 : 512}/${id}.webp?v=20261108-complete`
+      ? `assets/clan-crests/prism-refined-v5/${size <= 128 ? 128 : 512}/${id}.webp?art=20261122b`
       : null;
   }
   function svg(value) {

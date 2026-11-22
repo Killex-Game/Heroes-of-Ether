@@ -117,7 +117,7 @@ for (const skin of identity.allSkins) {
     localUrl(asset, __filename, publicRoot);
 }
 for (const item of require("../../src/server/boosters/booster-catalog").BOOSTERS.values()) {
-  exists(path.join(publicRoot, item.icon), __filename);
+  localUrl(item.icon, __filename, publicRoot);
 }
 const renames = require("../../docs/file-renames.json");
 for (const entry of renames) {

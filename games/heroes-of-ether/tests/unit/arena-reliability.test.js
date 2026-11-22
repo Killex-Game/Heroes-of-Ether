@@ -27,10 +27,10 @@ test("fire removes small parts including mass2, exactly300, and last-life event 
     assert.equal(p.dead, true);
     assert.equal(arena.combatEvents.filter(e => e.type === "burned").length, 1);
   }
-  const { arena, p } = scene(302);
+  const { arena, p } = scene(602);
   arena.boosterEffects.burn(p, p, 3000);
   assert.equal(p.dead, false);
-  assert.equal(p.mass, 151);
+  assert.equal(p.mass, 301);
 });
 test("sword destroys a part when the burn reaches300; natural decay never kills", () => {
   const { arena, p } = scene(350);

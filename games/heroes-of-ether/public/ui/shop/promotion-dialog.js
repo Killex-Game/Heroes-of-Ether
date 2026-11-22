@@ -8,7 +8,7 @@
   };
   const number = value => value.toLocaleString("ru-RU");
   const isClanBundle = offer => offer.weekendId === "promotion:weekend:23";
-  const clanBundleIcon = "assets/boosters/bundles-v1/256/clan.webp";
+  const clanBundleIcon = "assets/boosters/bundles-v1/256/clan.webp?art=20261122b";
   function rewards(offer) {
     if (isClanBundle(offer)) return [{id:"clan",name:"Клановые бустеры*",icon:clanBundleIcon,
       note:"*По 200 штук каждого кланового бустера"}];
@@ -22,7 +22,7 @@
         icon:"assets/boosters/bundles-v1/256/"+id+".webp", note:"Случайный набор"});
     }
     if (offer.vipMs) items.push({id:"vip",name:"VIP",amount:offer.vipMs/86400000,
-      unit:"дня",icon:"assets/accounts/vip.png"});
+      unit:"дня",icon:"assets/accounts/vip.png?art=20261122b"});
     return items;
   }
   class PromotionsUI {
@@ -108,7 +108,7 @@
       this.tabs.replaceChildren();
       for (const item of offers) {
         const tab = el("button", "promotion-tab");
-        const icon = el("img"); icon.src = isClanBundle(item) ? clanBundleIcon : item.icon; icon.alt = ""; icon.width = icon.height = 40;
+        const icon = el("img"); icon.src = window.KillexArtRevision.url(isClanBundle(item) ? clanBundleIcon : item.icon); icon.alt = ""; icon.width = icon.height = 40;
         tab.append(icon,el("span","",item.name));
         tab.type = "button";
         tab.dataset.productId = item.id;
@@ -134,7 +134,7 @@
         const row = el("li");
         row.dataset.rewardId = item.id;
         const art = el("div", "promotion-reward-art"), image = el("img");
-        image.src = item.icon; image.alt = ""; image.width = image.height = 88;
+        image.src = window.KillexArtRevision.url(item.icon); image.alt = ""; image.width = image.height = 88;
         if (item.icon.startsWith("assets/boosters/bundles-v1/256/"))
           image.srcset = (item.id === "clan" ? [256,512] : [128,256,512]).map((size,index) =>
             item.icon.replace("/256/", "/"+size+"/")+" "+(2**index)+"x").join(", ");

@@ -354,7 +354,7 @@ test("Наземную мину Клановый щит отражает, Тор
 test("Огонь поражает только пересечённые шары, один раз на снаряд, проходит щит и других игроков", () => {
   const { arena, a, b } = scene(500);
   b.parts = [
-    { id: "b", x: 1250, y: 5000, mass: 500, radius: radiusForMass(500) },
+    { id: "b", x: 1250, y: 5000, mass: 1000, radius: radiusForMass(1000) },
     { id: "remote", x: 1250, y: 5500, mass: 500, radius: radiusForMass(500) },
   ];
   arena.syncParts(b);
@@ -363,10 +363,10 @@ test("Огонь поражает только пересечённые шары
   Object.assign(c, { x: 1380, y: 5000, mass: 49, radius: radiusForMass(49), protectedUntil: 0 });
   launch(arena, a, "fire");
   arena.combat.update(8000);
-  assert.equal(b.parts[0].mass, 250);
+  assert.equal(b.parts[0].mass, 500);
   assert.equal(b.parts[1].mass, 500);
   arena.combat.update(8100);
-  assert.equal(b.parts[0].mass, 250);
+  assert.equal(b.parts[0].mass, 500);
   arena.combat.update(10000);
   assert.equal(c.dead, true);
   assert.deepEqual(

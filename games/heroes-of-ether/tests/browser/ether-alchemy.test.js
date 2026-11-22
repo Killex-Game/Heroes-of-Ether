@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{once}=require('node:events');
-const output=path.resolve(__dirname,'../../../../artifacts/ether-alchemy-20261116');fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(__dirname,process.env.ALCHEMY_OUTPUT || '../../../../artifacts/ether-alchemy-20261116');fs.mkdirSync(output,{recursive:true});
 const pw=require('playwright');
 const game=path.resolve(__dirname,'../..'),req=require('node:module').createRequire(game+'/package.json');
 const f=req('./tests/helpers/black-friday-fixture')();f.command('stop',{runId:f.run.id});f.time(Math.floor(Date.now()/60000)*60000);
@@ -17,7 +17,7 @@ const results=[];
   f.p().alchemy.natural=150000;
   const browser=await pw[engine].launch({headless:true,...(engine==='chromium'?{channel:'chrome'}:{})});
   try{
-   const context=await browser.newContext({viewport:{width:1366,height:768}});await context.addCookies([{name:'sferorumiya_session',value:f.user.token,url}]);
+   const context=await browser.newContext({viewport:{width:1366,height:768}});await req('./tests/helpers/browser-established-profile').prepareContext(context);await context.addCookies([{name:'sferorumiya_session',value:f.user.token,url}]);
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(url);await page.waitForFunction(()=>!window.KillexBoot?.active);
    for(let i=0;i<8;i++){await page.evaluate(()=>{for(const d of document.querySelectorAll('dialog[open]'))d.close()});await page.waitForTimeout(100)}
@@ -57,8 +57,23 @@ const results=[];
    await page.locator('.alchemy-result:not([hidden])').waitFor();assert.equal(f.p().inventory.alchemy_strength,before+5);
    assert.equal(await page.evaluate(()=>document.activeElement===document.querySelector('.alchemy-result button')),true);
    await page.locator('.alchemy-result button').click();
-   await page.locator('#alchemyExchange').click();await page.locator('.alchemy-result:not([hidden])').waitFor();
+   assert.equal(await page.locator('#alchemyDialog #alchemyExchange').count(),0);
+   assert.equal(await page.locator('#alchemyDialog .alchemy-cauldron img').count(),1);
+   await page.evaluate(()=>document.getElementById('alchemyDialog').close());
+   if(await page.locator('.effi-lobby-dismiss').isVisible())await page.locator('.effi-lobby-dismiss').click(); await page.locator('#etherGeneratorButton').click();
+   await page.locator('#etherGeneratorDialog').waitFor({state:'visible'});
+   assert.equal(await page.locator('#etherGeneratorDialog .alchemy-shelf, #etherGeneratorDialog #alchemyBook, #etherGeneratorDialog .alchemy-ingredients').count(),0);
+   for(const [width,height] of [[1366,768],[390,844]]) {
+    await page.setViewportSize({width,height});await page.locator('.ether-generator-art').evaluate(n=>n.decode());
+    await page.screenshot({path:path.join(output,engine+'-generator-'+width+'.png')});
+    const box=await page.locator('#etherGeneratorDialog').evaluate(n=>({w:n.clientWidth,sw:n.scrollWidth,h:n.getBoundingClientRect().height,tail:n.getBoundingClientRect().bottom-n.querySelector('main').getBoundingClientRect().bottom}));
+    assert(box.sw<=box.w+1&&box.h<=height&&box.tail<=26,JSON.stringify(box));
+   }
+   await page.locator('#alchemyExchange').click();
+   await page.waitForFunction(()=>document.querySelector('.ether-generator-notice').textContent.includes('Получено'));
    assert.equal(f.p().alchemy.natural,50000);assert.match(await page.locator('.alchemy-natural').textContent(),/50\s000/);
+   await page.evaluate(()=>document.getElementById('etherGeneratorDialog').close());
+   await page.setViewportSize({width:1366,height:768});
    // Closing from a result must not leave the next visit inert.
    await page.evaluate(()=>document.getElementById('alchemyDialog').close());
    await page.locator('#alchemyButton').click();
@@ -66,6 +81,7 @@ const results=[];
    await page.emulateMedia({reducedMotion:'reduce'});
    assert.equal(await page.locator('.alchemy-book img').evaluate(n=>getComputedStyle(n).animationName),'none');
    await page.waitForFunction(()=>window.KillexAlchemyRules.ingredients.every(i=>window.KillexAlchemyArt.sprite(i.id)));
+   await page.waitForFunction(()=>{const sizes=[],ctx={drawImage:(...a)=>sizes.push(a[3])},item={alchemyIngredient:'leaf'};window.KillexAlchemyArt.draw(ctx,item,0,0,14,0);window.KillexAlchemyArt.draw(ctx,item,0,0,14,750);return sizes[1]===sizes[0]});
    const reduced=await page.evaluate(()=>{const sizes=[],ctx={drawImage:(...args)=>sizes.push(args[3])},a=window.KillexAlchemyArt,item={alchemyIngredient:'leaf'};a.draw(ctx,item,0,0,14,0);a.draw(ctx,item,0,0,14,750);return sizes});
    assert.equal(reduced[0],reduced[1]);
    await page.emulateMedia({reducedMotion:'no-preference'});

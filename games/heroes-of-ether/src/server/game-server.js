@@ -1096,10 +1096,12 @@ function createGameServer({
             "INVALID_ARENA",
             "RESERVATION_EXPIRED",
             "REQUEST_CONFLICT",
+            "MOCK_DAILY_LIMIT",
           ].includes(error.code)
             ? error.code
             : undefined,
           chatModeration: error.chatModeration,
+          ...(error.code === "MOCK_DAILY_LIMIT" ? { nextPurchaseAt: error.nextPurchaseAt } : {}),
         });
       }
     }

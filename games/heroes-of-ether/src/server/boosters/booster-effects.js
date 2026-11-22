@@ -385,21 +385,21 @@ class BoosterEffects {
     // Доля насыщенного шара не переходит другим: сила Торта остаётся прежней.
     for (const s of shares) a.gainMass(p, s.gain, s.part, now);
   }
-  burn(p, body, now, fraction = 0.5, powerFactor = 1) {
+  burn(p, body, now, fraction = 0.5) {
     const a = this.arena;
+    if (p.dead || !a.bodies(p).includes(body)) return;
     const resistance = arenaPets.damageFactor(p);
-    if (body.mass > BOOSTERS.get("fire").destroyAtOrBelowMass) {
-      const damageFraction =
-        body.mass > BOOSTERS.get("fire").destroyAtOrBelowMass ? fraction : powerFactor;
-      body.mass = Math.max(
-        RULES.MIN_PART_MASS,
-        body.mass - Math.floor(body.mass * damageFraction * resistance),
-      );
-      body.radius = radius(body.mass);
-      a.syncParts(p);
+    const threshold = BOOSTERS.get("fire").destroyAtOrBelowMass;
+    const damageFraction = Math.max(0, Math.min(1, fraction * resistance));
+    // Remove binary floating-point noise before integer mass rounding (e.g. 57%).
+    const loss = Math.floor(body.mass * damageFraction + 1e-9);
+    if (body.mass <= threshold || body.mass - loss <= threshold) {
+      this.removeBurnedBody(p, body, now);
       return;
     }
-    this.removeBurnedBody(p, body, now);
+    body.mass -= loss;
+    body.radius = radius(body.mass);
+    a.syncParts(p);
   }
   removeBurnedBody(p, body, now) {
     const a = this.arena;

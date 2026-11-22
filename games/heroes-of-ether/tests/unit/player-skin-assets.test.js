@@ -14,7 +14,7 @@ test("Каждый набор аватарок содержит ровно пя�
     assert.equal(new Set(skins.map((s) => s.id)).size, 5);
     for (const skin of skins)
       for (const asset of Object.values(skin.variants))
-        assert(fs.existsSync(path.resolve(__dirname, "../../public", asset)), asset);
+        assert(fs.existsSync(path.resolve(__dirname, "../../public", asset.split(/[?#]/)[0])), asset);
   }
 });
 test("Пять сохранённых VIP ID разрешаются в реальные файлы каждого размера", () => {
@@ -26,7 +26,7 @@ test("Пять сохранённых VIP ID разрешаются в реал�
   for (const skin of vip) {
     assert.deepEqual(Object.keys(skin.variants).map(Number), [64, 128, 256, 512, 1024]);
     for (const asset of Object.values(skin.variants)) {
-      const bytes = fs.readFileSync(path.resolve(__dirname, "../../public", asset));
+      const bytes = fs.readFileSync(path.resolve(__dirname, "../../public", asset.split(/[?#]/)[0]));
       assert.equal(bytes.subarray(0, 4).toString(), "RIFF");
       assert.equal(bytes.subarray(8, 12).toString(), "WEBP");
     }
@@ -46,11 +46,11 @@ test("Смена VIP-портрета на обычный заменяет вс�
   identity.setSkinImage(image, "vip-2", 64);
   assert.match(
     attributes.get("srcset"),
-    /transparent-v2\/64\/vip-2\.webp 1x, .*128\/vip-2\.webp 2x$/,
+    /transparent-v2\/64\/vip-2\.webp\?art=20261122b 1x, .*128\/vip-2\.webp\?art=20261122b 2x$/,
   );
   identity.setSkinImage(image, "moon-dragon", 64);
-  assert.match(attributes.get("srcset"), /64\/moon-dragon\.webp 1x, .*128\/moon-dragon\.webp 2x$/);
-  assert.equal(attributes.get("src"), "assets/skins/transparent-v2/64/moon-dragon.webp");
+  assert.match(attributes.get("srcset"), /64\/moon-dragon\.webp\?art=20261122b 1x, .*128\/moon-dragon\.webp\?art=20261122b 2x$/);
+  assert.equal(attributes.get("src"), "assets/skins/transparent-v2/64/moon-dragon.webp?art=20261122b");
   assert.equal(image.dataset.skinId, "moon-dragon");
   identity.setSkinImage(image, "unknown-skin");
   assert.equal(image.dataset.skinId, "moon-dragon");

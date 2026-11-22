@@ -1,0 +1,14 @@
+[
+  {
+    "name": "easter-gift-guardian",
+    "prompt": "Use case: precise-object-edit. Edit target image 1, transparent game gift icon. Preserve this exact white rabbit statue, golden round pedestal, green and gold cape, gold armor, pose, friendly expression, scale and composition. Change ONLY the egg held by the rabbit: it must be exactly the pink/ruby egg in reference 2, pink shell with white five-petal daisies and small yellow centers. No green egg with daisies, no mixed patterns. References 2-5 are the four canonical collectible egg designs; use just reference 2 for the held egg. Soft casual fantasy 2.5D rendering, restrained small highlights, true transparent background, no text/frame/extra props. Output square.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-471271b3-50b4-4469-8f35-f0a57d729aa5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  },
+  {
+    "name": "easter-chest",
+    "prompt": "Use case: precise-object-edit. Edit target image 1, transparent game chest icon. Preserve the same open pastel purple/gold chest, cyan front panels, purple bow, faceted gems and composition. Correct ONLY the four eggs inside to match exactly references 2-5: ruby/pink and blue both WHITE FIVE-PETAL DAISIES WITH YELLOW CENTERS; green pale lime leafy sprigs and dots; yellow-orange cream zigzag bands with small cream triangles. One of each, clearly separated, no extra types/patterns. Match soft rounded casual fantasy 2.5D, restrained small highlights. True transparent background, no text/frame, square.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-4de0913f-759f-4b8d-8f98-b9862cf7047d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  }
+]

@@ -25,7 +25,7 @@
   ]) {
     const card = el("div", "collection-earned-prize"),
       art = el("img", "");
-    art.src = `assets/events/easter-hunt/${file}.webp`;
+    art.src = `assets/events/easter-hunt/${file}.webp?art=20261122b`;
     art.alt = name;
     card.append(art, el("small", "", kind), el("strong", "", name));
     prizes.append(card);

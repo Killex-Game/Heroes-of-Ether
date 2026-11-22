@@ -199,7 +199,7 @@
         if (tickets) {
           const line = el("p", "quest-tickets", `+${tickets} бил. рулетки`),
             img = el("img");
-          img.src = "assets/roulette/ticket-v2.webp";
+          img.src = "assets/roulette/ticket-v2.webp?art=20261122b";
           img.alt = "";
           line.prepend(img);
           rewards.append(line);

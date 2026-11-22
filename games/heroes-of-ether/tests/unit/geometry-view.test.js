@@ -408,10 +408,10 @@ test("Однострочный ник растёт умеренно и впис�
   assert.ok(view.nameSize(24, 1) < view.nameSize(100, 1));
   assert.ok(view.nameSize(10000, 1) <= 26);
   for (const radius of [24, 100, 450])
-    for (const scale of [0.6, 1, 1.6]) {
+    for (const scale of [0.15, 0.6, 1, 1.6]) {
       const layout = view.nameLayout(name, "12", radius, scale, measure);
-      assert.ok(layout.size >= 6 && layout.size <= 26);
-      assert.ok(layout.textWidth + layout.badgeRadius * 2 + 3 <= radius * scale * 2.15 + 1e-8);
+      assert.ok(layout.size > 0 && layout.size <= 26);
+      assert.ok(layout.textWidth + layout.badgeRadius * 2 + layout.size * 0.2 <= radius * scale * 1.8 + 1e-8);
       assert.ok(layout.textWidth > 0);
     }
 });

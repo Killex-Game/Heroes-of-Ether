@@ -23,7 +23,7 @@
     const price = el("span", "social-gift-price", Number(item.price).toLocaleString("ru-RU")),
       icon = el("img");
     price.setAttribute("aria-label", item.price + " " + currency[item.currency]);
-    icon.src = "assets/menu-icons/64/currency_" + item.currency + ".webp";
+    icon.src = "assets/menu-icons/64/currency_" + item.currency + ".webp?art=20261122b";
     icon.alt = "";
     icon.width = icon.height = 22;
     price.append(icon);
@@ -84,7 +84,7 @@
     );
     if (gift) {
       const line = el("div", "social-notice-gift"), art = el("img");
-      art.src = gift.icon;
+      art.src = window.KillexArtRevision.url(gift.icon);
       art.alt = "";
       line.append(art, el("strong", "", gift.name));
       box.body.append(line);
@@ -164,7 +164,7 @@
         const list = el("div", "gift-summary-list");
         for (const group of groups) {
           const row = el("div", "social-notice-gift"), art = el("img");
-          art.src = group.gift.icon; art.alt = "";
+          art.src = window.KillexArtRevision.url(group.gift.icon); art.alt = "";
           row.append(art, el("strong", "", group.gift.name + " × " + group.count.toLocaleString("ru-RU"))); list.append(row);
         }
         box.body.append(list);
@@ -402,7 +402,7 @@
       const card = el("article", "social-gift-card"),
         img = el("img");
       if (item.eventId) card.classList.add("social-event-gift");
-      img.src = item.icon;
+      img.src = window.KillexArtRevision.url(item.icon);
       img.alt = "";
       const choose = button("", () => {
         const confirmation = el("section", "social-gift-confirm"),
@@ -415,7 +415,7 @@
           });
         const gift = el("img", "social-gift-confirm-icon"),
           actions = el("div", "social-actions");
-        gift.src = item.icon;
+        gift.src = window.KillexArtRevision.url(item.icon);
         gift.alt = item.name;
         gift.width = gift.height = 96;
         actions.append(send, back);
@@ -532,7 +532,7 @@
         spouse.setAttribute("aria-label", "Открыть профиль " + marriage.partner.name);
         spouse.title = "Открыть профиль " + marriage.partner.name;
         spouse.append(avatar(marriage.partner));
-        rings.src = "assets/social/marriage-rings.webp";
+        rings.src = "assets/social/marriage-rings.webp?art=20261122b";
         rings.alt = "Обручальные кольца";
         pair.append(
           avatar(p),

@@ -190,20 +190,21 @@
     return clamp(2 * Math.sqrt(Math.max(0, radius * scale)), 6, 26);
   }
   function nameLayout(name, medal, radius, scale, measure, availableWidth = Infinity) {
-    const budget = Math.max(12, Math.min(radius * scale * 2.15, availableWidth));
-    let size = nameSize(radius, scale);
-    const badge = (s) => (medal ? s * 1.8 + 3 : 0);
-    size = Math.max(6, size * Math.min(1, budget / (measure(name, size) + badge(size))));
-    const badgeWidth = badge(size),
-      textWidth = Math.max(1, Math.min(measure(name, size), budget - badgeWidth));
+    const budget = Math.max(1, Math.min(radius * scale * 1.8, availableWidth));
+    const preferred = nameSize(radius, scale);
+    const size = preferred * Math.min(1, budget / Math.max(1, measure(name, preferred) + (medal ? preferred * 2 : 0)));
+    const gap = medal ? size * 0.2 : 0;
+    const badgeWidth = medal ? size * 1.8 + gap : 0;
+    const textWidth = Math.max(0.1, Math.min(measure(name, size), budget - badgeWidth));
     return {
       size,
       textWidth,
       textOffset: badgeWidth / 2,
-      badgeRadius: size * 0.9,
-      badgeOffset: -(textWidth + 3) / 2,
+      badgeRadius: medal ? size * 0.9 : 0,
+      badgeOffset: -(textWidth + gap) / 2,
     };
   }
+
   return {
     desiredScale,
     groupFrame,

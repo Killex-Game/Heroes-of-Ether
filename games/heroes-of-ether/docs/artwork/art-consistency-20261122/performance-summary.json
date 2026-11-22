@@ -1,0 +1,114 @@
+[
+  {
+    "mode": "old",
+    "index": 0,
+    "actualSeconds": 67.39372420000001,
+    "renderP95": 13,
+    "frameP95": 26.600000000002183,
+    "longTasks": 2,
+    "coldPortraitRequests": 71,
+    "coldPortraitBytes": 8682344,
+    "rendererMemoryMiB": [
+      456,
+      463,
+      463,
+      485,
+      482,
+      484,
+      484
+    ],
+    "heapUsedMiB": [
+      16,
+      24,
+      15,
+      16,
+      37,
+      21,
+      18
+    ]
+  },
+  {
+    "mode": "new",
+    "index": 1,
+    "actualSeconds": 68.61196939999999,
+    "renderP95": 13.600000023841858,
+    "frameP95": 26.69999999999709,
+    "longTasks": 7,
+    "coldPortraitRequests": 34,
+    "coldPortraitBytes": 832010,
+    "rendererMemoryMiB": [
+      470,
+      476,
+      479,
+      502,
+      503,
+      506,
+      506
+    ],
+    "heapUsedMiB": [
+      25,
+      24,
+      21,
+      19,
+      32,
+      16,
+      14
+    ]
+  },
+  {
+    "mode": "new",
+    "index": 2,
+    "actualSeconds": 68.93080120000002,
+    "renderP95": 18.799999952316284,
+    "frameP95": 36.69999999999709,
+    "longTasks": 38,
+    "coldPortraitRequests": 34,
+    "coldPortraitBytes": 832010,
+    "rendererMemoryMiB": [
+      480,
+      486,
+      485,
+      495,
+      510,
+      515,
+      516
+    ],
+    "heapUsedMiB": [
+      15,
+      13,
+      16,
+      32,
+      25,
+      23,
+      21
+    ]
+  },
+  {
+    "mode": "old",
+    "index": 3,
+    "actualSeconds": 67.13046600000001,
+    "renderP95": 15.600000023841858,
+    "frameP95": 30,
+    "longTasks": 15,
+    "coldPortraitRequests": 71,
+    "coldPortraitBytes": 8682344,
+    "rendererMemoryMiB": [
+      439,
+      464,
+      463,
+      476,
+      485,
+      483,
+      489
+    ],
+    "heapUsedMiB": [
+      16,
+      25,
+      11,
+      21,
+      20,
+      16,
+      38
+    ]
+  }
+]

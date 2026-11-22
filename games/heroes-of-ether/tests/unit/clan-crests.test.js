@@ -11,14 +11,16 @@ const kit = require("../../public/shared/clan-crest-rules"),
   { temporary } = require("../temp");
 const { clanProgress } = require("../../src/server/clans/clan-level-progress");
 function assertSafeArtwork(svg) {
-  // Only the bundled PNG illustration is allowed; arbitrary image URLs and active SVG stay forbidden.
+  // Only bundled WebP illustrations are allowed; external images and active SVG stay forbidden.
   const vector = svg.replace(
-    /<image x="96" y="96" width="320" height="320" href="data:image\/png;base64,([A-Za-z0-9+/=]+)"\/>/g,
+    /<image x="96" y="96" width="320" height="320" href="data:image\/webp;base64,([A-Za-z0-9+/=]+)"\/>/g,
     (_, encoded) => {
-      assert.equal(
-        Buffer.from(encoded, "base64").subarray(0, 8).toString("hex"),
-        "89504e470d0a1a0a",
-      );
+      const image = Buffer.from(encoded, "base64");
+      assert.equal(image.subarray(0, 4).toString(), "RIFF");
+      assert.equal(image.subarray(8, 12).toString(), "WEBP");
+      const fs = require("node:fs");
+      assert.ok(kit.symbols.some(symbol => image.equals(fs.readFileSync(path.resolve(__dirname,
+        "../../public/assets/clan-crests/prism-refined-v5/512", symbol.id + ".webp")))));
       return "";
     },
   );

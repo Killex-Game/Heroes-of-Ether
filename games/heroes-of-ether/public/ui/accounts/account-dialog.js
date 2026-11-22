@@ -115,7 +115,7 @@
       const lite = (this.liteCard = el("article", "account-plan lite"));
       const liteHead = el("header", "account-plan-heading"),
         liteIcon = el("img", "account-emblem");
-      liteIcon.src = "assets/accounts/lite.svg";
+      liteIcon.src = "assets/accounts/lite.svg?art=20261122b";
       liteIcon.alt = "";
       this.liteBadge = el("span", "account-active-badge", "Активен");
       liteHead.append(liteIcon, el("h3", "", "Lite"), this.liteBadge);
@@ -226,7 +226,7 @@
             img = el("img"),
             copy = el("div");
           row.dataset.active = String(active);
-          img.src = `assets/accounts/${kind}.png`;
+          img.src = `assets/accounts/${kind}.png?art=20261122b`;
           img.alt = "";
           const time = el(
             active ? "time" : "span",

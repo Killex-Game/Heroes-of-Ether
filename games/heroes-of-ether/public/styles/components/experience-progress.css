@@ -58,7 +58,7 @@
   background: var(--ui-c-82459a, #82459a)
     var(
       --ui-art-surfaces-progress_fill_xp-svg,
-      url("../../assets/ui/svg/surfaces/progress_fill_xp.svg")
+      url("../../assets/ui/svg/surfaces/progress_fill_xp.svg?art=20261122b")
     )
     center/100% 100% no-repeat;
 }

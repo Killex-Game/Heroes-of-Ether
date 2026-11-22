@@ -165,23 +165,7 @@
   let recoveryTimer = null;
   let recoveryRequest = null;
   let recoveryDelay = 3000;
-  const arenaSkins = Object.fromEntries(
-    SKINS.map((skin) => {
-      const image = new Image();
-      if (!skin.collection && !skin.ownerGift) image.src = skin.arena;
-      return [skin.id, image];
-    }),
-  );
-  // Purchased collections load arena-size art only when that character is encountered.
-  for (const skin of SKINS.filter((skin) => skin.collection || skin.ownerGift)) {
-    const image = arenaSkins[skin.id];
-    Object.defineProperty(arenaSkins, skin.id, {
-      get() {
-        if (!image.getAttribute("src")) image.src = skin.arena;
-        return image;
-      },
-    });
-  }
+  const arenaPortraits = new window.KillexArenaPortraits.Portraits(window.KillexIdentity);
   const accessoryView = new window.KillexAccessoryView.Renderer();
   const shieldView = new window.KillexShields.Renderer();
 
@@ -1575,7 +1559,7 @@
       y = displayed.y,
       radius = displayed.radius;
     const color = goodColor(player.color, "#b59ee6");
-    const skin = arenaSkins[player.skinId];
+    const skin = arenaPortraits.get(player.skinId, radius * 2 * camera.scale * pixelRatio);
     bodyArt.body(ctx, {
       x,
       y,
@@ -1666,9 +1650,7 @@
     const p = player,
       d = displayed,
       scale = camera.scale;
-    const isMain = part.id === (p.mainPartId || p.id);
     const ids = window.KillexEffects.active(p, elapsed);
-    if (!isMain && !ids.length) return;
     const x = (d.x - camera.x) * scale + width / 2;
     const y = (d.y - camera.y) * scale + height / 2;
     ctx.save();
@@ -1676,7 +1658,7 @@
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     let nameSize = 0;
-    if (isMain) {
+    {
       const { name, medal, layout } = bodyNameLayout(p, d, x, scale);
       nameSize = layout.size;
       const nameX = x + layout.textOffset;
@@ -1721,16 +1703,7 @@
       }
     }
     if (ids.length) {
-      const effectLayout = window.KillexEffects.layout(ids.length, d.radius, scale);
-      const massSize = Math.max(
-        8,
-        Math.min(22, window.KillexArenaView.nameSize(d.radius, scale) * 0.85),
-      );
-      const effectY = isMain
-        ? y + nameSize * 0.5 + 4
-        : p.id === myId && preferences.showMass
-          ? y + massSize * 0.5 + 4
-          : y - effectLayout.height / 2;
+      const effectY = y + nameSize * 0.5 + 4;
       effectsView.draw(ctx, ids, {
         x,
         y: effectY,
@@ -1746,24 +1719,19 @@
     const scale = camera.scale,
       x = (displayed.x - camera.x) * scale + width / 2,
       y = (displayed.y - camera.y) * scale + height / 2;
-    const isMain = part.id === (player.mainPartId || player.id);
     ctx.save();
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    const nameSize = isMain ? bodyNameLayout(player, displayed, x, scale).layout.size : 0;
+    const nameSize = bodyNameLayout(player, displayed, x, scale).layout.size;
     const massSize = Math.max(
       8,
       Math.min(22, window.KillexArenaView.nameSize(displayed.radius, scale) * 0.85),
     );
-    const effectsHeight = isMain
-      ? window.KillexEffects.layout(
+    const effectsHeight = window.KillexEffects.layout(
           window.KillexEffects.active(player, elapsed).length,
           displayed.radius,
           scale,
-        ).height
-      : 0;
-    const massY = isMain
-      ? y + nameSize * 0.5 + massSize * 0.65 + 2 + (effectsHeight ? effectsHeight + 6 : 0)
-      : y;
+        ).height;
+    const massY = y + nameSize * 0.5 + massSize * 0.65 + 2 + (effectsHeight ? effectsHeight + 6 : 0);
     const text = formatMass(part.mass),
       maxWidth = Math.max(12, displayed.radius * scale * 1.65);
     bodyArt.text(ctx, text, x, massY, massSize, maxWidth, "#fff1c7", 0.18, pixelRatio);

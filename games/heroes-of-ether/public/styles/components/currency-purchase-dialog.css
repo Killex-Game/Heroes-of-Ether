@@ -92,7 +92,7 @@
   background: transparent
     var(
       --ui-art-controls-button_round_default-svg,
-      url("../../assets/ui/svg/controls/button_round_default.svg")
+      url("../../assets/ui/svg/controls/button_round_default.svg?art=20261122b")
     )
     center/contain no-repeat;
   font: 700 25px var(--game-font);
@@ -117,7 +117,7 @@
 .currency-add:hover {
   background-image: var(
     --ui-art-controls-button_round_hover-svg,
-    url("../../assets/ui/svg/controls/button_round_hover.svg")
+    url("../../assets/ui/svg/controls/button_round_hover.svg?art=20261122b")
   );
 }
 .currency-add .currency-bonus-dot {
@@ -198,7 +198,7 @@
 .currency-add:active {
   background-image: var(
     --ui-art-controls-button_round_pressed-svg,
-    url("../../assets/ui/svg/controls/button_round_pressed.svg")
+    url("../../assets/ui/svg/controls/button_round_pressed.svg?art=20261122b")
   );
 }
 #walletStatus > .sf-currency,

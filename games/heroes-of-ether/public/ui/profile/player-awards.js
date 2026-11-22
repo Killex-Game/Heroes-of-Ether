@@ -40,7 +40,7 @@
       item.type = "button";
       item.dataset.league = league.id;
       item.setAttribute("aria-label", name + ". " + usage);
-      img.src = `assets/season-trophies/128/${league.id}.webp`;
+      img.src = `assets/season-trophies/128/${league.id}.webp?art=20261122b`;
       img.alt = "";
       item.append(img);
       if (history.length > 1) item.append(el("b", "regalia-count", number(history.length)));
@@ -51,7 +51,7 @@
     for (const earned of player.eventRegalia || []) {
       const item = el("div", "public-trophy"),
         img = el("img", "");
-      img.src = earned.image;
+      img.src = window.KillexArtRevision.url(earned.image);
       img.alt = earned.name;
       item.append(img);
       item.dataset.regalia = earned.id;
@@ -65,7 +65,7 @@
     for (const trophy of player.easter?.trophies || []) {
       const item = el("div", "public-trophy"),
         img = el("img", "");
-      img.src = "assets/events/easter-hunt/golden-egg.webp";
+      img.src = "assets/events/easter-hunt/golden-egg.webp?art=20261122b";
       img.alt = "Золотое яйцо";
       item.append(img);
       item.dataset.regalia = "golden_egg";
@@ -81,7 +81,7 @@
       const item = el("div", "public-trophy daily-regalia"),
         img = el("img", "");
       item.dataset.regalia = medal.id;
-      img.src = medal.image;
+      img.src = window.KillexArtRevision.url(medal.image);
       img.alt = medal.name;
       item.append(img);
       if (earned.count > 1) item.append(el("span", "regalia-count", "×" + number(earned.count)));
@@ -94,7 +94,7 @@
       const item = el("button", "public-trophy public-gift"),
         img = el("img", "");
       item.type = "button";
-      img.src = info.icon;
+      img.src = window.KillexArtRevision.url(info.icon);
       img.alt = info.name;
       item.append(img);
       const usage =
@@ -136,27 +136,14 @@
       item.dataset.titleMedal = earned.id;
       medal.removeAttribute("title");
       if (medal.tagName === "IMG") {
-        // Visible bounds of the 256px artwork; transparent padding must not
-        // make the first medal tiny or break the title size progression.
-        const extent =
-          {
-            novice: 90,
-            experienced: 190,
-            expert: 197,
-            sage: 203,
-            master: 209,
-            pro: 215,
-            prince: 221,
-            king: 233,
-            emperor: 227,
-            boss: 240,
-          }[earned.id] || 256;
+        // Measured opaque bounds of the current 256px rank artwork. Use the
+        // visible height: the novice shield is upright, later medals are wide.
+        const [width, height] = window.KillexProgressionArt.rankBounds(earned.id) || [256, 256];
         const degree = Math.max(1, Math.min(10, earned.degree || 1));
-        // The upright novice shield needs less height than the wide winged
-        // medals; matching their longest side would make it visually dominant.
-        const visibleSize = earned.id === "novice" ? 30 : 56 + ((degree - 1) * 16) / 9;
+        const visibleHeight = earned.id === "novice" ? 28 : 28 + (degree - 1) * 4;
+        const scale = Math.min(visibleHeight / height, 72 / width) * 4;
         medal.src = window.KillexProgressionArt.rank(earned.id, 256);
-        medal.style.setProperty("--shelf-medal-scale", String(((visibleSize / 64) * 256) / extent));
+        medal.style.setProperty("--shelf-medal-scale", String(scale));
       }
       item.append(medal);
       const name = "Медаль за титул «" + earned.name + "»";
@@ -171,7 +158,7 @@
     if (player.clanFrame === "champion") {
       const item = el("div", "public-trophy"),
         img = el("img", "");
-      img.src = "assets/clan-roles/head.png";
+      img.src = "assets/clan-roles/head.png?art=20261122b";
       img.alt = "";
       item.append(img, el("small", "", "Клан чемпионов"));
       add(item);

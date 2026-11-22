@@ -72,8 +72,8 @@
       node.count.textContent = ready ? "Готово" : `${format(row.progress, row.metric)} / ${format(row.target, row.metric)}`;
       node.text.textContent = row.description;
       node.fill.style.width = Math.min(100, Math.max(0, row.progress / row.target * 100)) + "%";
-      node.reward.src = node.index ? row.icon || "assets/events/black-friday/order-timer.webp"
-        : `assets/chests/prism-unified-v4/64/quest-${row.reward}.webp`;
+      node.reward.src = node.index ? row.icon || "assets/events/black-friday/order-timer.webp?art=20261122b"
+        : `assets/chests/prism-unified-v4/64/quest-${row.reward}.webp?art=20261122b`;
       node.reward.alt = node.index ? row.name : ({ large: "Большой сундук", medium: "Средний сундук", small: "Малый сундук" })[row.reward];
     }
     host.hidden = nodes.every((node) => node.card.hidden);

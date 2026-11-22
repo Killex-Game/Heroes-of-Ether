@@ -2,7 +2,7 @@
   'use strict';
   const defaultLayout='banner';
   const layouts=Object.freeze({banner:'Баннер сверху',left:'Картинка слева',right:'Картинка справа',columns:'Газета в две колонки'});
-  const banners=Object.freeze({news:'assets/news/v1/news.webp',event:'assets/news/v1/event.webp',release:'assets/news/v1/release.webp'});
+  const banners=Object.freeze({news:'assets/news/v1/news.webp?art=20261122b',event:'assets/news/v1/event.webp?art=20261122b',release:'assets/news/v1/release.webp?art=20261122b'});
   const day=value=>new Date(value).toLocaleDateString('sv-SE',{timeZone:'Europe/Moscow'});
   const date=value=>new Date(value+'T12:00:00Z').toLocaleDateString('ru-RU',{year:'numeric',month:'long',day:'numeric'});
   function sources(releases,event,scheduledEvent){
@@ -10,7 +10,7 @@
     const events=[[event,false],[scheduledEvent,true]].filter(([e])=>e).map(([e,future])=>{
       const friday=e.contentPack==='black-friday-v1',easter=e.contentPack==='easter-hunt-v1',alchemy=e.contentPack==='ether-alchemy-v1';
       const details=friday?'Лавка Мани ждёт помощников. Выполняй заказы на арене, собирай жетоны и выбирай подарки в лавке. Каждый день доступны 12 заказов.\n\nЗа 50 выполненных заказов можно получить регалию и уникальную картину для Альбома. Загляни в книгу заказов: там указаны условия и награды каждого поручения.':e.description||'Открой раздел события, чтобы узнать условия участия и посмотреть награды.';
-      return {id:'event:'+e.runId,sourceId:'event:'+e.runId,runId:e.runId,category:'event',date:day(e.startsAt),title:e.title||e.name||'Событие в игре',future,visible:true,layout:defaultLayout,image:friday?'assets/events/black-friday/banner-v2.webp':easter?'assets/events/easter-hunt/banner.png':alchemy?'assets/events/ether-alchemy/v1/banner-v2.webp':banners.event,caption:future?'Скоро в Эфире':'',
+      return {id:'event:'+e.runId,sourceId:'event:'+e.runId,runId:e.runId,category:'event',date:day(e.startsAt),title:e.title||e.name||'Событие в игре',future,visible:true,layout:defaultLayout,image:friday?'assets/events/black-friday/banner-v2.webp?art=20261122b':easter?'assets/events/easter-hunt/banner.png?art=20261122b':alchemy?'assets/events/ether-alchemy/v1/banner-v2.webp?art=20261122b':banners.event,caption:future?'Скоро в Эфире':'',
         action:future?null:friday?['В Лавку Мани','blackFridayButton']:easter?['К событию','eventsSection']:alchemy?['В лабораторию','alchemyButton']:e.features?.roulette?['К рулетке','rouletteButton']:['К событию','eventsSection'],
         body:(future?'Начало: '+date(day(e.startsAt))+'\n\n':'')+details+(e.endsAt?'\n\nЗавершение события: '+date(day(e.endsAt)):'')};
     });return [...changes,...events];

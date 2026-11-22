@@ -262,13 +262,13 @@
           .querySelector(".hall-volume > path")
           .setAttribute("d", `M-70 18H390L302 250A142 ${depth} 0 0 1 18 250Z`);
       });
-      this.background.src = "assets/hall-of-fame/v1/" + theme + "-1672.webp";
+      this.background.src = "assets/hall-of-fame/v1/" + theme + "-1672.webp?art=20261122b";
       this.background.srcset =
         "assets/hall-of-fame/v1/" +
         theme +
-        "-960.webp 960w, assets/hall-of-fame/v1/" +
+        "-960.webp?art=20261122b 960w, assets/hall-of-fame/v1/" +
         theme +
-        "-1672.webp 1672w";
+        "-1672.webp?art=20261122b 1672w";
       this.background.sizes = "100vw";
     }
     open() {

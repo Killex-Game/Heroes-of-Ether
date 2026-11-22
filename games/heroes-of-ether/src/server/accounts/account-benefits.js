@@ -79,4 +79,4 @@ function publicAccount(p, at = Date.now()) {
     ),
   };
 }
-module.exports = { WEEK, benefits, validate, fresh, publicAccount, loginRewardDay };
+module.exports = { WEEK, benefits, validate, fresh, publicAccount, loginRewardDay, loginRewardResetAt };

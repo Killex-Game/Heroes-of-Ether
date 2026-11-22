@@ -153,7 +153,7 @@
         document.createTextNode(" = 5 "),
       );
       const etherIcon = el("img", "easter-ether-icon");
-      etherIcon.src = "assets/menu-icons/128/currency_bucks.webp";
+      etherIcon.src = "assets/menu-icons/128/currency_bucks.webp?art=20261122b";
       etherIcon.alt = "эфира";
       this.ether.append(etherIcon);
       this.ether.onclick = () => this.act("ether");
@@ -289,7 +289,7 @@
       } else {
         this.multiplierInfo.append(document.createTextNode("3 часа - 250 "));
         const ether = el("img", "easter-ether-icon");
-        ether.src = "assets/menu-icons/128/currency_bucks.webp";
+        ether.src = "assets/menu-icons/128/currency_bucks.webp?art=20261122b";
         ether.alt = "эфира";
         this.multiplierInfo.append(ether);
       }

@@ -56,19 +56,19 @@
     Object.freeze({ id: "premium", name: "Premium", title: "Аметистовый блеск" }),
   ]);
   // Opaque inner contour, including all angles, plus a small overlap behind the rim.
-  // Measured from the 20261122 artwork; includes the renderer's 0.98 inset.
+  // Restored pre-redesign artwork and its measured opening together.
   // No image scans run in the game.
   const titleFrameFits = {
-    novice: [0.498047,0.503906,0.397316],
-    experienced: [0.499349,0.503906,0.396984],
-    expert: [0.498698,0.505208,0.400638],
-    sage: [0.498698,0.507161,0.400638],
-    master: [0.498698,0.513672,0.411931],
-    pro: [0.498698,0.504557,0.398645],
-    prince: [0.498047,0.505208,0.397648],
-    king: [0.498698,0.504557,0.39798],
-    emperor: [0.499349,0.503255,0.397648],
-    boss: [0.498047,0.502604,0.399973],
+    novice: [0.4992,0.486659,0.388305],
+    experienced: [0.49962,0.504426,0.349774],
+    expert: [0.496467,0.489469,0.377344],
+    sage: [0.497007,0.492264,0.351435],
+    master: [0.499449,0.494755,0.34446],
+    pro: [0.498229,0.494607,0.358078],
+    prince: [0.497672,0.514641,0.328516],
+    king: [0.497751,0.510638,0.322537],
+    emperor: [0.496407,0.50859,0.33383],
+    boss: [0.498421,0.50908,0.341138],
   };
   const rankFrames = Object.freeze(
     [
@@ -106,12 +106,12 @@
   const accountFrame = (id) => accountsById.get(id);
   const theme = (id) => themesById.get(id);
   const leagueFrameFits = {
-    bronze: [0.498437,0.500781,0.393463],
-    silver: [0.498437,0.500781,0.393463],
-    gold: [0.498437,0.500781,0.393463],
-    platinum: [0.498437,0.500781,0.393463],
-    diamond: [0.498437,0.500781,0.393463],
-    champions: [0.498437,0.500781,0.393463],
+    bronze: [0.49632,0.508343,0.34957],
+    silver: [0.498586,0.50462,0.349968],
+    gold: [0.496891,0.507611,0.340402],
+    platinum: [0.497602,0.505645,0.31808],
+    diamond: [0.498516,0.498904,0.329241],
+    champions: [0.497125,0.508957,0.319276],
   };
   const frameThemes = themes.map((t) =>
     Object.freeze({
@@ -145,13 +145,13 @@
   const resolveFrame = (id) => (theme(id) || accountFrame(id) || rankFrame(id) || interfaceTheme(id) ? id : "default");
   const source = (id, kind) =>
     rankFrame(id) && kind === "frame"
-      ? `assets/title-frames/${["novice", "experienced", "master"].includes(rankFrame(id).titleId) ? "v1" : "v2"}/${rankFrame(id).titleId}.webp`
+      ? `assets/title-frames/${["novice", "experienced", "master"].includes(rankFrame(id).titleId) ? "v1" : "v2"}/${rankFrame(id).titleId}.webp?art=20261122c`
       : theme(id) && kind === "frame"
-        ? `assets/league-frames/v2/${id}.webp`
+        ? `assets/league-frames/v2/${id}.webp?art=20261122c`
         : interfaceTheme(id) && ["frame", "profile", "lobby"].includes(kind)
-          ? `assets/interface-packs/${id}/${kind}.webp`
+          ? `assets/interface-packs/${id}/${kind}.webp?art=${kind === "frame" ? "20261122c" : "20261122b"}`
           : theme(id) && ["lobby", "profile", "frame", "clan"].includes(kind)
-            ? `assets/league-appearance/${id}-${kind}.svg?v=20261031-laurels`
+            ? `assets/league-appearance/${id}-${kind}.svg?art=20261122b`
             : null;
   return {
     themes,

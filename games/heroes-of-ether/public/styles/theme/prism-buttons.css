@@ -214,7 +214,7 @@ body
   background: transparent
     var(
       --ui-art-controls-button_round_default-svg,
-      url("../../assets/ui/svg/controls/button_round_default.svg")
+      url("../../assets/ui/svg/controls/button_round_default.svg?art=20261122b")
     )
     center/100% 100% no-repeat !important;
   box-shadow: none !important;
@@ -235,7 +235,7 @@ body
   ):hover {
   background-image: var(
     --ui-art-controls-button_round_hover-svg,
-    url("../../assets/ui/svg/controls/button_round_hover.svg")
+    url("../../assets/ui/svg/controls/button_round_hover.svg?art=20261122b")
   ) !important;
 }
 body
@@ -254,7 +254,7 @@ body
   width: 100% !important;
   height: 100% !important;
   transform: none !important;
-  background: url("../../assets/ui/svg/controls/icon_close.svg") center/100% 100% no-repeat !important;
+  background: url("../../assets/ui/svg/controls/icon_close.svg?art=20261122b") center/100% 100% no-repeat !important;
   pointer-events: none;
 }
 @media (max-height: 560px) {

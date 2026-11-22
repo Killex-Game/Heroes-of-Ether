@@ -9,7 +9,7 @@
   };
   const picture = (src, className) => {
     const img = el("img", className);
-    img.src = src;
+    img.src = window.KillexArtRevision.url(src);
     img.alt = "";
     img.draggable = false;
     img.decoding = "async";
@@ -106,7 +106,7 @@
         }
         tile.append(frame, el("strong", "", art.name), el("small", "", status));
         tile.onclick = () => {
-          this.fullImage.src = art.image;
+          this.fullImage.src = window.KillexArtRevision.url(art.image);
           this.caption.textContent = art.name;
           this.viewer.showModal();
         };
@@ -119,7 +119,7 @@
       if (event.available) {
         button.append(
           `Забрать ${event.available}`,
-          picture("assets/menu-icons/64/currency_bucks.webp", ""),
+          picture("assets/menu-icons/64/currency_bucks.webp?art=20261122b", ""),
         );
         button.setAttribute("aria-label", `Забрать ${event.available} эфира`);
       } else {

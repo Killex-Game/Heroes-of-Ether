@@ -2,7 +2,7 @@
 (() => {
   const R = window.KillexAlchemyRules;
   const el = (tag, cls, text) => { const n = document.createElement(tag); n.className = cls || ""; if (text !== undefined) n.textContent = text; return n; };
-  const img = (src, cls = "") => { const n = el("img", cls); n.loading = "lazy"; n.src = src; n.alt = ""; n.draggable = false; return n; };
+  const img = (src, cls = "") => { const n = el("img", cls); n.loading = "lazy"; n.src = window.KillexArtRevision.url(src); n.alt = ""; n.draggable = false; return n; };
   const button = (text, action, cls = "sf-button") => { const n = el("button", cls, text); n.type = "button"; n.onclick = action; return n; };
   const number = n => Number(n || 0).toLocaleString("ru-RU");
   class AlchemyUI {
@@ -12,19 +12,11 @@
       this.reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
       this.reducedMotion.addEventListener("change", () => { this.motion(); if (this.reducedMotion.matches) this.cancelAnimations(); });
       this.trigger = document.getElementById("alchemyButton"); this.trigger.onclick = () => this.open();
-      this.permanent = button("", () => this.open(), "menu-tile sf-button sf-secondary alchemy-permanent");
-      this.permanent.id = "etherGeneratorButton";
-      this.permanent.append(img(R.asset("generator"), "menu-icon"), el("strong", "", "Эфирный генератор"));
-      let tools = document.querySelector(".lobby-generator-tools");
-      if (!tools) {
-        tools = el("div", "lobby-generator-tools");
-        document.querySelector("#lobby .lobby-header").append(tools);
-      }
-      tools.prepend(this.permanent);
-      for (const b of [this.trigger, this.permanent]) { b.setAttribute("aria-haspopup", "dialog"); b.setAttribute("aria-controls", "alchemyDialog"); }
+      this.generatorUI = new window.KillexEtherGenerator(owner);
+      this.trigger.setAttribute("aria-haspopup", "dialog"); this.trigger.setAttribute("aria-controls", "alchemyDialog");
       this.dialog = el("dialog", "alchemy-lab"); this.dialog.id = "alchemyDialog"; this.dialog.dataset.layout = "fullscreen";
       this.dialog.setAttribute("aria-labelledby", "alchemyTitle");
-      const header = el("header", "alchemy-heading"); this.title = el("h1", "", "Лаборатория"); this.title.id = "alchemyTitle";
+      const header = el("header", "alchemy-heading"); this.title = el("h1", "", "Эфирная алхимия"); this.title.id = "alchemyTitle";
       const close = button("×", () => this.dialog.close(), "booster-close"); close.setAttribute("aria-label", "Вернуться в лобби");
       header.append(this.title, close);
       const stage = el("main", "alchemy-stage"); this.stage = stage; this.header = header;
@@ -32,30 +24,14 @@
       this.potions = new Map();
       for (const [index, p] of R.potions.entries()) {
         const b = button("", () => this.showRecipes(p.id), "alchemy-potion"); b.dataset.potion = p.id; b.title = p.name;
-        b.style.setProperty("--column", index % 4); b.style.setProperty("--row", Math.floor(index / 4));
+        b.style.setProperty("--column", index % 4); b.style.setProperty("--shelf-bottom", ["27.3%", "44.5%", "61.6%", "80.1%"][Math.floor(index / 4)]);
         b.append(img(p.image), el("span", "alchemy-potion-count", ""));
         this.shelf.append(b); this.potions.set(p.id, b);
       }
       const center = el("section", "alchemy-center");
-      this.generator = el("div", "alchemy-generator"); this.generator.append(img(R.asset("generator")));
-      // Only the blue interior rotates. The two clipped windows preserve the gold casing.
-      const ns = "http://www.w3.org/2000/svg", svg = (tag, attrs) => {
-        const n = document.createElementNS(ns, tag); for (const [key, value] of Object.entries(attrs)) n.setAttribute(key, value); return n;
-      };
-      this.magic = svg("svg", { class: "alchemy-generator-magic", viewBox: "0 0 1536 1024", "aria-hidden": "true" });
-      const defs = svg("defs", {}), clip = svg("clipPath", { id: "alchemy-orb-window" });
-      clip.append(svg("path", { d: "M614 405C635 292 687 181 751 160C885 114 988 182 1022 310Q833 376 614 405Z M620 486Q857 451 1033 385C1053 502 969 606 848 622C741 629 660 591 620 486Z" }));
-      defs.append(clip); const orbWindow = svg("g", { "clip-path": "url(#alchemy-orb-window)" });
-      this.rotor = svg("image", { x: "550", y: "130", width: "550", height: "550", preserveAspectRatio: "none", class: "alchemy-generator-rotor" });
-      orbWindow.append(this.rotor); this.magic.append(defs, orbWindow); this.generator.append(this.magic);
+      this.generator = el("div", "alchemy-cauldron"); this.generator.append(img(R.asset("cauldron-v1")));
       this.glow = el("span", "alchemy-generator-glow"); this.generator.append(this.glow);
-      this.sparks = Array.from({ length: 8 }, () => { const n = el("span", "alchemy-generator-spark"); this.generator.append(n); return n; });
-      const gauge = el("section", "alchemy-gauge");
-      this.amount = el("strong", "alchemy-natural"); this.bar = el("progress"); this.bar.max = R.NATURAL_PER_EXCHANGE;
-      this.bar.setAttribute("aria-label", "Природный эфир");
-      this.exchange = button("Создать 10 концентрированного эфира", () => this.act("exchange")); this.exchange.id = "alchemyExchange";
-      gauge.append(el("span", "", "Природный эфир"), this.amount, this.bar, this.exchange);
-      center.append(this.generator, gauge);
+      center.append(this.generator);
       const right = el("section", "alchemy-right");
       this.book = button("", () => this.showRecipes(), "alchemy-book"); this.book.id = "alchemyBook";
       this.book.append(img(R.asset("book")), el("span", "", "Сборник рецептов"));
@@ -117,13 +93,10 @@
     state() { return this.owner.getProfile()?.alchemy; }
     active() { const s = this.state(); return !!s?.active && s.endsAt > (window.KillexAppearance?.now?.() ?? Date.now()); }
     sync() {
-      const active = this.active(); this.trigger.hidden = !active; this.permanent.hidden = active;
+      const active = this.active(); this.trigger.hidden = !active;
       if (!this.dialog.open) return;
       const s = this.state(); if (!s) return;
-      this.title.textContent = active ? "Лаборатория" : "Эфирный генератор";
-      this.amount.textContent = number(s.natural) + " / " + number(R.NATURAL_PER_EXCHANGE);
-      this.bar.value = Math.min(s.natural, R.NATURAL_PER_EXCHANGE);
-      this.exchange.disabled = this.busy || s.natural < R.NATURAL_PER_EXCHANGE;
+      this.title.textContent = "Эфирная алхимия";
       for (const [id, node] of this.ingredientCounts) node.textContent = number(s.ingredients[id]);
       for (const [id, b] of this.potions) {
         b.dataset.learned = String(s.learned.includes(id)); b.dataset.selected = String(R.equipped(s).includes(id));
@@ -146,7 +119,6 @@
     open() {
       if (!this.owner.isLobby()) return;
       this.visit++;
-      if (!this.rotor.hasAttribute("href")) this.rotor.setAttribute("href", R.asset("generator-orb-v2"));
       this.notice.textContent = ""; this.result.hidden = true; this.overlay();
       window.KillexWindows.open(this.dialog); this.sync(); this.motion(); this.owner.loadProfile();
     }
@@ -203,17 +175,9 @@
       await Promise.all(promises);
       for (const n of this.flights) n.remove(); this.flights.clear();
       if (!visible()) return;
-      const timing = { duration: 1800, easing: "cubic-bezier(.35,0,.2,1)" };
       await Promise.all([
-        this.play(this.magic, [{ opacity: 0 }, { opacity: 1, offset: .12 }, { opacity: 1, offset: .82 }, { opacity: 0 }], timing),
-        this.play(this.rotor, [{ transform: "rotate(0deg) scale(1.08)" }, { transform: "rotate(720deg) scale(1.08)" }], timing),
-        this.play(this.glow, [{ opacity: 0, transform: "scale(.5)" }, { opacity: .65, transform: "scale(1.05)", offset: .65 }, { opacity: 0, transform: "scale(1.5)" }], timing),
-        ...this.sparks.map((node, i) => {
-          const angle = i * Math.PI / 4, radius = Math.min(target.width * .3, 155);
-          return this.play(node, [{ opacity: 0, transform: "translate(0,0) scale(.2)" },
-            { opacity: 1, transform: `translate(${Math.cos(angle + .7) * radius * .65}px,${Math.sin(angle + .7) * radius * .65}px) rotate(90deg) scale(1)`, offset: .45 },
-            { opacity: 0, transform: `translate(${Math.cos(angle) * radius}px,${Math.sin(angle) * radius}px) rotate(180deg) scale(.25)` }], { duration: 1500, delay: i * 35, easing: "ease-out" });
-        }),
+        this.play(this.generator, [{transform:"scale(1)"},{transform:"scale(1.025)",offset:.5},{transform:"scale(1)"}], {duration:900,easing:"ease-in-out"}),
+        this.play(this.glow, [{opacity:0},{opacity:.4,offset:.5},{opacity:0}], {duration:900,easing:"ease-in-out"}),
       ]);
     }
     async act(action, potionId) {
@@ -238,7 +202,7 @@
         if (action !== "equip" && this.dialog.open && visit === this.visit) { this.closeRecipes(); await this.animate(origins); }
         if (action !== "equip" && this.dialog.open && visit === this.visit) {
           this.result.replaceChildren(); const reward = action === "brew" ? R.get(potionId) : null;
-          this.result.append(el("h2", "", "Получено"), img(reward?.image || "assets/food/ether-drop-v1.webp"),
+          this.result.append(el("h2", "", "Получено"), img(reward?.image || "assets/food/ether-drop-v1.webp?art=20261122b"),
             el("strong", "", reward ? reward.name + " × " + reward.yield : "Концентрированный эфир × 10"), button("Продолжить", () => this.closeResult()));
           this.result.hidden = false; this.overlay(); this.result.querySelector("button").focus({ preventScroll: true });
         }

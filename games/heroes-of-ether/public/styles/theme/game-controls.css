@@ -28,15 +28,15 @@ button:focus-visible,
 .sf-button {
   --sf-default: var(
     --ui-art-controls-button_primary_default-svg,
-    url("../../assets/ui/svg/controls/button_primary_default.svg")
+    url("../../assets/ui/svg/controls/button_primary_default.svg?art=20261122b")
   );
   --sf-hover: var(
     --ui-art-controls-button_primary_hover-svg,
-    url("../../assets/ui/svg/controls/button_primary_hover.svg")
+    url("../../assets/ui/svg/controls/button_primary_hover.svg?art=20261122b")
   );
   --sf-pressed: var(
     --ui-art-controls-button_primary_pressed-svg,
-    url("../../assets/ui/svg/controls/button_primary_pressed.svg")
+    url("../../assets/ui/svg/controls/button_primary_pressed.svg?art=20261122b")
   );
   --sf-art: var(--sf-default);
   position: relative;
@@ -69,36 +69,36 @@ button:focus-visible,
 .sf-secondary {
   --sf-default: var(
     --ui-art-controls-button_secondary_default-svg,
-    url("../../assets/ui/svg/controls/button_secondary_default.svg")
+    url("../../assets/ui/svg/controls/button_secondary_default.svg?art=20261122b")
   );
   --sf-hover: var(
     --ui-art-controls-button_secondary_hover-svg,
-    url("../../assets/ui/svg/controls/button_secondary_hover.svg")
+    url("../../assets/ui/svg/controls/button_secondary_hover.svg?art=20261122b")
   );
   --sf-pressed: var(
     --ui-art-controls-button_secondary_pressed-svg,
-    url("../../assets/ui/svg/controls/button_secondary_pressed.svg")
+    url("../../assets/ui/svg/controls/button_secondary_pressed.svg?art=20261122b")
   );
   color: #fffaee;
 }
 .sf-tertiary {
   --sf-default: var(
     --ui-art-controls-button_tertiary_default-svg,
-    url("../../assets/ui/svg/controls/button_tertiary_default.svg")
+    url("../../assets/ui/svg/controls/button_tertiary_default.svg?art=20261122b")
   );
   --sf-hover: var(
     --ui-art-controls-button_tertiary_hover-svg,
-    url("../../assets/ui/svg/controls/button_tertiary_hover.svg")
+    url("../../assets/ui/svg/controls/button_tertiary_hover.svg?art=20261122b")
   );
   --sf-pressed: var(
     --ui-art-controls-button_tertiary_pressed-svg,
-    url("../../assets/ui/svg/controls/button_tertiary_pressed.svg")
+    url("../../assets/ui/svg/controls/button_tertiary_pressed.svg?art=20261122b")
   );
 }
 .sf-danger {
   --sf-default: var(
     --ui-art-controls-button_danger_default-svg,
-    url("../../assets/ui/svg/controls/button_danger_default.svg")
+    url("../../assets/ui/svg/controls/button_danger_default.svg?art=20261122b")
   );
   --sf-hover: var(--sf-default);
   --sf-pressed: var(--sf-default);
@@ -107,7 +107,7 @@ button:focus-visible,
 .sf-button:disabled:not([data-pending]) {
   --sf-art: var(
     --ui-art-controls-button_primary_disabled-svg,
-    url("../../assets/ui/svg/controls/button_primary_disabled.svg")
+    url("../../assets/ui/svg/controls/button_primary_disabled.svg?art=20261122b")
   );
   color: #776e61 !important;
   opacity: 1;
@@ -199,7 +199,7 @@ button:focus-visible,
   background: transparent
     var(
       --ui-art-identity-player_card_default-svg,
-      url("../../assets/ui/svg/identity/player_card_default.svg")
+      url("../../assets/ui/svg/identity/player_card_default.svg?art=20261122b")
     )
     center/100% 100% no-repeat;
 }
@@ -280,13 +280,13 @@ button:focus-visible,
 .sf-currency-coins {
   background-image: var(
     --ui-art-surfaces-currency_coin-svg,
-    url("../../assets/ui/svg/surfaces/currency_coin.svg")
+    url("../../assets/ui/svg/surfaces/currency_coin.svg?art=20261122b")
   );
 }
 .sf-currency-crystals {
   background-image: var(
     --ui-art-surfaces-currency_crystal-svg,
-    url("../../assets/ui/svg/surfaces/currency_crystal.svg")
+    url("../../assets/ui/svg/surfaces/currency_crystal.svg?art=20261122b")
   );
 }
 .sf-currency-value {
@@ -320,7 +320,7 @@ button:focus-visible,
   border: 18px solid transparent;
   border-image: var(
       --ui-art-surfaces-input_default-svg,
-      url("../../assets/ui/svg/surfaces/input_default.svg")
+      url("../../assets/ui/svg/surfaces/input_default.svg?art=20261122b")
     )
     23 23 25 23 fill;
   background: none;
@@ -333,7 +333,7 @@ button:focus-visible,
 .booster-search:focus {
   border-image-source: var(
     --ui-art-surfaces-input_focus-svg,
-    url("../../assets/ui/svg/surfaces/input_focus.svg")
+    url("../../assets/ui/svg/surfaces/input_focus.svg?art=20261122b")
   );
 }
 .skin-arrow,
@@ -344,7 +344,7 @@ body[data-screen="lobby"] #settingsButton,
   background: transparent
     var(
       --ui-art-controls-button_round_default-svg,
-      url("../../assets/ui/svg/controls/button_round_default.svg")
+      url("../../assets/ui/svg/controls/button_round_default.svg?art=20261122b")
     )
     center/100% 100% no-repeat;
   border: 0;
@@ -364,7 +364,7 @@ body[data-screen="lobby"] #settingsButton:hover,
 .booster-close:hover {
   background-image: var(
     --ui-art-controls-button_round_hover-svg,
-    url("../../assets/ui/svg/controls/button_round_hover.svg")
+    url("../../assets/ui/svg/controls/button_round_hover.svg?art=20261122b")
   );
 }
 .skin-arrow:active,
@@ -373,7 +373,7 @@ body[data-screen="lobby"] #settingsButton:hover,
 .booster-close:active {
   background-image: var(
     --ui-art-controls-button_round_pressed-svg,
-    url("../../assets/ui/svg/controls/button_round_pressed.svg")
+    url("../../assets/ui/svg/controls/button_round_pressed.svg?art=20261122b")
   );
 }
 .skin-arrow::after,
@@ -389,19 +389,19 @@ body[data-screen="lobby"] #settingsButton:hover,
 #previousSkin::after {
   background-image: var(
     --ui-art-controls-icon_chevron_left-svg,
-    url("../../assets/ui/svg/controls/icon_chevron_left.svg")
+    url("../../assets/ui/svg/controls/icon_chevron_left.svg?art=20261122b")
   );
 }
 #nextSkin::after {
   background-image: var(
     --ui-art-controls-icon_chevron_right-svg,
-    url("../../assets/ui/svg/controls/icon_chevron_right.svg")
+    url("../../assets/ui/svg/controls/icon_chevron_right.svg?art=20261122b")
   );
 }
 #settingsButton::after {
   background-image: var(
     --ui-art-controls-icon_gear-svg,
-    url("../../assets/ui/svg/controls/icon_gear.svg")
+    url("../../assets/ui/svg/controls/icon_gear.svg?art=20261122b")
   );
 }
 #closeSettings::after,
@@ -409,7 +409,7 @@ body[data-screen="lobby"] #settingsButton:hover,
   inset: 21.875% 25% 28.125%;
   background-image: var(
     --ui-art-controls-icon_close-svg,
-    url("../../assets/ui/svg/controls/icon_close.svg")
+    url("../../assets/ui/svg/controls/icon_close.svg?art=20261122b")
   );
 }
 .skin-option .thumb {
@@ -417,7 +417,7 @@ body[data-screen="lobby"] #settingsButton:hover,
   background: transparent
     var(
       --ui-art-identity-avatar_frame_default-svg,
-      url("../../assets/ui/svg/identity/avatar_frame_default.svg")
+      url("../../assets/ui/svg/identity/avatar_frame_default.svg?art=20261122b")
     )
     center/contain no-repeat;
   overflow: hidden;
@@ -434,14 +434,14 @@ body[data-screen="lobby"] #settingsButton:hover,
   outline: 0;
   background-image: var(
     --ui-art-identity-avatar_frame_selected-svg,
-    url("../../assets/ui/svg/identity/avatar_frame_selected.svg")
+    url("../../assets/ui/svg/identity/avatar_frame_selected.svg?art=20261122b")
   );
 }
 .booster-dialog {
   border: 24px solid transparent;
   border-image: var(
       --ui-art-surfaces-window_large-svg,
-      url("../../assets/ui/svg/surfaces/window_large.svg")
+      url("../../assets/ui/svg/surfaces/window_large.svg?art=20261122b")
     )
     112 48 40 48 fill;
   border-image-width: 84px 36px 30px;
@@ -470,7 +470,7 @@ body[data-screen="lobby"] #settingsButton:hover,
 }
 .sf-tab {
   background: transparent
-    var(--ui-art-controls-tab_default-svg, url("../../assets/ui/svg/controls/tab_default.svg"))
+    var(--ui-art-controls-tab_default-svg, url("../../assets/ui/svg/controls/tab_default.svg?art=20261122b"))
     center/100% 100% no-repeat !important;
   border: 0 !important;
   box-shadow: none;
@@ -481,14 +481,14 @@ body[data-screen="lobby"] #settingsButton:hover,
 .sf-tab[aria-pressed="true"] {
   background-image: var(
     --ui-art-controls-tab_selected-svg,
-    url("../../assets/ui/svg/controls/tab_selected.svg")
+    url("../../assets/ui/svg/controls/tab_selected.svg?art=20261122b")
   ) !important;
   color: #fffaee !important;
 }
 .sf-tab:disabled:not([data-pending]) {
   background-image: var(
     --ui-art-controls-tab_disabled-svg,
-    url("../../assets/ui/svg/controls/tab_disabled.svg")
+    url("../../assets/ui/svg/controls/tab_disabled.svg?art=20261122b")
   ) !important;
   color: #776e61 !important;
   opacity: 1 !important;
@@ -497,7 +497,7 @@ body[data-screen="lobby"] #settingsButton:hover,
   border: 16px solid transparent;
   border-image: var(
       --ui-art-surfaces-section_panel-svg,
-      url("../../assets/ui/svg/surfaces/section_panel.svg")
+      url("../../assets/ui/svg/surfaces/section_panel.svg?art=20261122b")
     )
     36 fill;
   padding: 0;
@@ -517,14 +517,14 @@ body[data-screen="lobby"] #settingsButton:hover,
 }
 .booster-art-slot,
 .booster-slot {
-  --slot: url("../../assets/ui/svg/surfaces/item_slot_common.svg");
+  --slot: url("../../assets/ui/svg/surfaces/item_slot_common.svg?art=20261122b");
   background: var(--slot) center/100% 100% no-repeat;
 }
 [data-tier="advanced"] {
-  --slot: url("../../assets/ui/svg/surfaces/item_slot_advanced.svg");
+  --slot: url("../../assets/ui/svg/surfaces/item_slot_advanced.svg?art=20261122b");
 }
 [data-tier="rare"] {
-  --slot: url("../../assets/ui/svg/surfaces/item_slot_rare.svg");
+  --slot: url("../../assets/ui/svg/surfaces/item_slot_rare.svg?art=20261122b");
 }
 .booster-art-slot {
   position: relative;
@@ -561,13 +561,13 @@ body[data-screen="lobby"] #settingsButton:hover,
 .booster-slot[aria-pressed="true"]::after {
   background-image: var(
     --ui-art-surfaces-item_overlay_selected-svg,
-    url("../../assets/ui/svg/surfaces/item_overlay_selected.svg")
+    url("../../assets/ui/svg/surfaces/item_overlay_selected.svg?art=20261122b")
   );
 }
 .booster-art-slot[data-locked="true"]::after {
   inset: 10% 10% 12%;
   border-radius: 12%;
-  background: #34213e8f url("../../assets/ui/svg/identity/access-lock.svg") center / 62% auto
+  background: #34213e8f url("../../assets/ui/svg/identity/access-lock.svg?art=20261122b") center / 62% auto
     no-repeat;
 }
 .booster-slot[data-cooldown="true"]::after {
@@ -684,7 +684,7 @@ body[data-screen="lobby"] #settingsMenu {
   border: 20px solid transparent;
   border-image: var(
       --ui-art-surfaces-window_compact-svg,
-      url("../../assets/ui/svg/surfaces/window_compact.svg")
+      url("../../assets/ui/svg/surfaces/window_compact.svg?art=20261122b")
     )
     112 48 40 48 fill;
   border-image-width: 77px 28px 24px;
@@ -712,7 +712,7 @@ body[data-screen="lobby"] #settingsMenu {
 .switch,
 .switch[aria-checked="true"] {
   background: transparent
-    var(--ui-art-surfaces-toggle_off-svg, url("../../assets/ui/svg/surfaces/toggle_off.svg"))
+    var(--ui-art-surfaces-toggle_off-svg, url("../../assets/ui/svg/surfaces/toggle_off.svg?art=20261122b"))
     center/contain no-repeat;
   border: 0;
   width: 62px;
@@ -723,13 +723,13 @@ body[data-screen="lobby"] #settingsMenu {
 .switch[aria-checked="true"] {
   background-image: var(
     --ui-art-surfaces-toggle_on-svg,
-    url("../../assets/ui/svg/surfaces/toggle_on.svg")
+    url("../../assets/ui/svg/surfaces/toggle_on.svg?art=20261122b")
   );
 }
 .switch:disabled:not([data-pending]) {
   background-image: var(
     --ui-art-surfaces-toggle_disabled-svg,
-    url("../../assets/ui/svg/surfaces/toggle_disabled.svg")
+    url("../../assets/ui/svg/surfaces/toggle_disabled.svg?art=20261122b")
   );
   opacity: 1;
 }

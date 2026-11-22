@@ -10,7 +10,7 @@
   const number = value => Number(value || 0).toLocaleString("ru-RU");
   function art(src, className, size) {
     const img = el("img", className);
-    img.src = src; img.alt = ""; img.width = img.height = size;
+    img.src = window.KillexArtRevision.url(src); img.alt = ""; img.width = img.height = size;
     img.loading = "lazy"; img.decoding = "async";
     return img;
   }
@@ -55,7 +55,7 @@
       header.append(art(window.KillexProgressionArt.chest(t.id, 128), "title-road-chest", 80), copy);
       const rewards = el("div", "title-road-rewards");
       for (const [currency, label] of [["coins", "монет"], ["crystals", "кристаллов"], ["bucks", "эфира"]])
-        rewards.append(prize(`assets/menu-icons/64/currency_${currency}.webp`, number(t[currency]), label));
+        rewards.append(prize(`assets/menu-icons/64/currency_${currency}.webp?art=20261122b`, number(t[currency]), label));
       const contents = el("div", "title-road-contents");
       contents.append(el("strong", "", "Бустеры: " + number(t.boosters)), el("p", "", t.contents));
       const appearance = el("div", "title-road-appearance");
@@ -66,7 +66,7 @@
         appearance.append(prize(window.KillexLeagueAppearance.source("heroic", "lobby"), "Героическое оформление", "Тема интерфейса и фон лобби навсегда", "title-road-theme"));
       }
       if (t.accountDays) for (const [kind, days] of Object.entries(t.accountDays))
-        rewards.append(prize(`assets/accounts/${kind}.png`, kind === "vip" ? "VIP" : "Premium", number(days) + " дн."));
+        rewards.append(prize(`assets/accounts/${kind}.png?art=20261122b`, kind === "vip" ? "VIP" : "Premium", number(days) + " дн."));
       card.append(header, rewards, contents, appearance);
       if (earned && t.state !== "opened") {
         const chest = el("button", "sf-button sf-tertiary title-road-open", "К сундукам");

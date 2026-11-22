@@ -197,7 +197,7 @@ test("All fifteen paid pack avatars retain one identity across size variants; lo
     );
     assert.equal(identity.skinSource(skin, 128), skin.variants[128]);
     assert.equal(identity.skinSource(skin, 1024), skin.arena);
-    assert(fs.existsSync(path.resolve(__dirname, "../../public", skin.arena)));
+    assert(fs.existsSync(path.resolve(__dirname, "../../public", skin.arena.split("?")[0])));
     store.setLoadout(user.token, {
       skinId: skin.id,
       name: "Путник",

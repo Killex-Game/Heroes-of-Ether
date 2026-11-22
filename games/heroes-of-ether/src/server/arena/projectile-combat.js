@@ -47,10 +47,11 @@ class Combat {
   prepare(player, booster, message, now) {
     const outgoing = gifts.arena(player, "outgoing");
     if (booster.kind === "fire") {
-      const base = booster.pet ? booster.firePercent / 100 : arenaPets.fireFraction(player);
+      const base = arenaPets.fireFraction(player);
       booster = {
         ...gifts.adjust(booster, outgoing),
-        fireFraction: clamp((base + (outgoing - 1)) * (booster.alchemyFireFactor || 1), 0, 1),
+        // +25% strength multiplies the base damage; it is not +25 percentage points.
+        fireFraction: base * outgoing * (booster.alchemyFireFactor || 1),
       };
     } else booster = gifts.adjust(booster, outgoing);
     if (player.protectedUntil > now)
@@ -447,11 +448,7 @@ class Combat {
         target,
         part,
         now,
-        booster.fireFraction ??
-          (booster.pet
-            ? booster.firePercent / 100
-            : arenaPets.fireFraction(this.alive(shot.ownerId, shot.ownerLife))),
-        booster.effectFactor || 1,
+        booster.fireFraction ?? arenaPets.fireFraction(this.alive(shot.ownerId, shot.ownerLife)),
       );
       return;
     }

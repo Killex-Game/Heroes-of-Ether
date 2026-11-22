@@ -35,6 +35,6 @@ test('newspaper editor: authorized media, full Russian article, overrides, trash
  const deleted=await call('/api/admin/news',{...remove,id:builtin.id,revision:3,requestId:randomUUID()});assert.equal(deleted.status,200);assert.ok(deleted.data.hiddenSources.includes(builtin.id));
  const bin=(await call('/api/admin/trash')).data.items.find(x=>x.objectId===builtin.id);
  assert.ok(bin);
- assert.equal((await call('/api/admin/trash',{trashId:bin.id,revision:bin.revision,confirmed:true,requestId:randomUUID(),reason:'Вернуть исходную статью'})).status,200);
+ const restoreBuiltin=await call('/api/admin/trash',{trashId:bin.id,revision:bin.revision,confirmed:true,requestId:randomUUID(),reason:'Вернуть исходную статью'});assert.equal(restoreBuiltin.status,200,JSON.stringify(restoreBuiltin.data));
  assert.ok((await call('/api/news',null,player.token)).data.items.some(x=>x.sourceId===builtin.id));
 });

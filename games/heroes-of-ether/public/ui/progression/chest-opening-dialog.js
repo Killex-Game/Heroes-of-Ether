@@ -175,7 +175,7 @@
           source: "friday",
           chestName: "Сундук Чёрной пятницы",
           name: "Чёрная пятница",
-          icon: "assets/events/black-friday/chest.webp",
+          icon: "assets/events/black-friday/chest.webp?art=20261122b",
         };
       const easter = this.owner.profile?.easter?.chests.find((c) => c.id === id);
       if (easter)
@@ -184,7 +184,7 @@
           source: "easter",
           chestName: "Пасхальный сундук",
           name: "Пасхальная охота",
-          icon: "assets/events/easter-hunt/chest.webp",
+          icon: "assets/events/easter-hunt/chest.webp?art=20261122b",
           reward: easter.reward,
         };
       const quest = this.owner.profile?.quests?.pending.find((r) => r.id === id);
@@ -220,7 +220,7 @@
       const title = this.title(id);
       if (!title) return;
       this.confirm.dataset.chestTheme = title.art || id;
-      this.confirmIcon.src = title.icon || window.KillexProgressionArt.chest(title.art || id, 256);
+      this.confirmIcon.src = window.KillexArtRevision.url(title.icon || window.KillexProgressionArt.chest(title.art || id, 256));
       this.confirmText.textContent = `Вы уверены что хотите открыть «${title.chestName}»?`;
       this.confirm.message.textContent = "";
       window.KillexWindows.open(this.confirm);
@@ -264,7 +264,7 @@
       this.rewardTitle.textContent = received
         ? offer.receiptTitle || "Полученные бустеры"
         : `Открыв «${title.chestName}», вы нашли:`;
-      this.rewardIcon.src = title.icon || window.KillexProgressionArt.chest(title.art || r.id, 256);
+      this.rewardIcon.src = window.KillexArtRevision.url(title.icon || window.KillexProgressionArt.chest(title.art || r.id, 256));
       // A fresh opening (including the same prepared chest) starts on page one.
       this.rewardOpenSequence = (this.rewardOpenSequence || 0) + 1;
       this.rewardGrid.dataset.collectionKey = `${r.id}:${this.rewardOpenSequence}`;
@@ -272,7 +272,7 @@
       const add = (name, src, count) => {
         const cell = el("div", "chest-reward-item"),
           img = el("img");
-        img.src = src;
+        img.src = window.KillexArtRevision.url(src);
         img.alt = name;
         cell.append(img);
         if (count !== undefined) {
@@ -292,7 +292,7 @@
         ["crystals", "Кристаллы"],
         ["bucks", "Эфир"],
       ])
-        if (r[id]) add(name, `assets/menu-icons/128/currency_${id}.webp`, r[id]);
+        if (r[id]) add(name, `assets/menu-icons/128/currency_${id}.webp?art=20261122b`, r[id]);
       for (const [kind, days] of Object.entries(r.accountDays || {})) {
         const name = { vip: "VIP", premium: "Premium", lite: "Lite" }[kind];
         if (!name || !Number.isSafeInteger(days) || days <= 0) continue;
@@ -305,10 +305,10 @@
         cell.firstElementChild.alt = "";
       }
       if (r.greatness) add("Величие", window.KillexGreatnessUI.SOURCE, r.greatness);
-      if (r.vipMs) add("VIP на 1 час", "assets/accounts/vip.png");
-      if (r.tickets) add("Билеты рулетки", "assets/roulette/ticket-v2.webp", r.tickets);
+      if (r.vipMs) add("VIP на 1 час", "assets/accounts/vip.png?art=20261122b");
+      if (r.tickets) add("Билеты рулетки", "assets/roulette/ticket-v2.webp?art=20261122b", r.tickets);
       if (r.fridayTokens)
-        add("Жетоны Мани", "assets/events/black-friday/token-v2.webp", r.fridayTokens);
+        add("Жетоны Мани", "assets/events/black-friday/token-v2.webp?art=20261122b", r.fridayTokens);
       if (r.fragment) {
         const rules = window.KillexEaster,
           collection =

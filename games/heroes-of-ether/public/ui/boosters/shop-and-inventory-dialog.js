@@ -264,7 +264,7 @@
       this.turboButton.id = "turboButton";
       this.turboButton.hidden = true;
       const turboIcon = make("img", "turbo-symbol");
-      turboIcon.src = "assets/boosters/turbo-bolt-v1.svg"; turboIcon.alt = "";
+      turboIcon.src = "assets/boosters/turbo-bolt-v1.svg?art=20261122b"; turboIcon.alt = "";
       turboIcon.width = turboIcon.height = 48;
       this.turboButton.append(
         turboIcon,
@@ -496,7 +496,7 @@
         icon.alt = "";
         icon.width = 64;
         icon.height = 64;
-        icon.src = `assets/menu-icons/64/currency_${currency}.webp`;
+        icon.src = `assets/menu-icons/64/currency_${currency}.webp?art=20261122b`;
         icon.srcset = `assets/menu-icons/64/currency_${currency}.webp 1x, assets/menu-icons/128/currency_${currency}.webp 2x`;
         pill.append(icon);
         const group = make("span", "sf-currency-wallet");
@@ -663,7 +663,7 @@
         card.dataset.ready = String(item.ready);
         card.style.setProperty("--tier-color", this.catalog.tiers[item.tier].rarity_color);
         const img = make("img");
-        img.src = item.icon;
+        img.src = window.KillexArtRevision.url(item.icon);
         img.alt = "";
         img.width = 96;
         img.height = 96;
@@ -733,7 +733,7 @@
           );
           if (item.purchasable) {
             const currencyIcon = make("img", "booster-price-icon");
-            currencyIcon.src = `assets/menu-icons/64/currency_${currency}.webp`;
+            currencyIcon.src = `assets/menu-icons/64/currency_${currency}.webp?art=20261122b`;
             currencyIcon.alt = "";
             currencyIcon.width = 24;
             currencyIcon.height = 24;
@@ -835,7 +835,7 @@
         const card = make("article", "booster-card accessory-card");
         card.dataset.accessoryId = item.id;
         const image = make("img", "accessory-shop-art");
-        image.src = item.icon;
+        image.src = window.KillexArtRevision.url(item.icon);
         image.alt = item.name;
         image.width = image.height = 112;
         const action = button(
@@ -1113,7 +1113,7 @@
           const key = make("span", "booster-slot-key", window.KillexLoadout.keys[i]);
           if (item) {
             const img = make("img");
-            img.src = item.icon;
+            img.src = window.KillexArtRevision.url(item.icon);
             img.alt = "";
             control.append(img, make("span", "booster-slot-count", String(count)), key);
             const overlay = make("span", "booster-slot-cooldown"),
@@ -1198,7 +1198,7 @@
       const state = [id, owned, used.join(","), pending].join(":");
       if (state !== this.potionRenderKey) {
         this.potionRenderKey = state;
-        const image = make("img"); image.src = potion.image; image.alt = "";
+        const image = make("img"); image.src = window.KillexArtRevision.url(potion.image); image.alt = "";
         this.potionButton.replaceChildren(image, make("span", "booster-slot-key", "Z"), make("span", "booster-slot-count", next ? String(owned) : "✓"));
         this.potionButton.title = (next ? "Следующее: " + potion.name + ". " + potion.effect + "\n" : "") +
           "Действуют: " + (used.map(id => window.KillexAlchemyRules.get(id).name).join(", ") || "нет");

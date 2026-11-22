@@ -6,10 +6,10 @@
   // Remove the old painted shell's corner glints in presentation only.
   // The accepted ingredient files and their own glossy highlights stay unchanged.
   const cuts = {
-    leaf: [[0,.61],[.61,0],[1,0],[1,1],[0,1]],
-    berries: [[0,.61],[.61,0],[1,0],[1,1],[0,1]],
-    mushroom: [[0,.61],[.505,.105],[1,.6],[1,1],[0,1]],
-    dew: [[0,.68],[.525,.155],[1,.63],[1,1],[0,1]],
+    leaf: [[0,.73],[.73,0],[1,0],[1,1],[0,1]],
+    berries: [[0,.73],[.73,0],[1,0],[1,1],[0,1]],
+    mushroom: [[0,.73],[.53,.20],[1,.65],[1,1],[0,1]],
+    dew: [[0,.80],[.55,.20],[1,.67],[1,1],[0,1]],
   };
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   function sprite(id) {

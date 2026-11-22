@@ -1,5 +1,5 @@
 {
-  "source": "Owner-supplied STYLE_CANON.md v1.2 and Актуальное1/_canon references, 22.11.2026",
+  "source": "Owner-supplied STYLE_CANON.md v1.3 from Heroes_of_Ether_Avatars_Canon_2026-11-22.zip; original 14 base references preserved",
   "files": [
     {
       "path": "CANON_OVERVIEW.png",
@@ -8,6 +8,14 @@
     {
       "path": "REFERENCES.png",
       "sha256": "5d87727b484789999775616871ab24dcbe8f801fd4c622656f8b05eb857a107c"
+    },
+    {
+      "path": "refs/avatars/winged-man-approved.png",
+      "sha256": "9c6b0d3307ab1ad0e7216db02a94a27503afd946c8f384fe9027cb49607552b7"
+    },
+    {
+      "path": "refs/avatars/winged-woman-approved.png",
+      "sha256": "d47781d29a836d000861c0af2530a165aba4e4d403ee5d77ad908e4dfe2aa41e"
     },
     {
       "path": "refs/currency_bucks.webp",
@@ -67,7 +75,7 @@
     },
     {
       "path": "STYLE_CANON.md",
-      "sha256": "c757d65ccbe10bfc2da9bc2e6d7dade1b399136b8a790d2e6c15abd30d010e17"
+      "sha256": "573f69e4c08efa91e8afac10bfb4e7ab115c7abd90f419c76377c74068d38763"
     }
   ]
 }

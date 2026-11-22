@@ -269,7 +269,7 @@
         const action = button("sf-button sf-secondary", "Надеть", () => this.toggleAccessory(item));
         info.append(action);
         const lock = el("img", "accessory-lock");
-        lock.src = "assets/ui/svg/identity/access-lock-small.svg";
+        lock.src = "assets/ui/svg/identity/access-lock-small.svg?art=20261122b";
         lock.alt = "Недоступно";
         lock.width = 32;
         lock.height = 36;

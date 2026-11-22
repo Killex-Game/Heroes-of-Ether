@@ -21,7 +21,7 @@
         const response=await fetch("/api/social/gifts?"+query,{signal:abort.signal,cache:"no-store"});const result=await response.json();
         if(!response.ok)throw Error(result.error||"Не удалось загрузить подарки.");if(current!==generation||!dialog.open)return;
         list.replaceChildren();for(const received of result.history){
-          const row=el("div","gift-history-row"), image=el("img");image.src=gift.info.icon;image.alt="";
+          const row=el("div","gift-history-row"), image=el("img");image.src=window.KillexArtRevision.url(gift.info.icon);image.alt="";
           const text=el("div");text.append(el("strong","",received.anonymous?"Анонимно":"От "+received.fromName),
             el("small","",new Date(received.at).toLocaleString("ru-RU")));row.append(image,text);list.append(row);
         }

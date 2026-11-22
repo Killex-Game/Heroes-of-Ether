@@ -370,9 +370,9 @@
   position: absolute;
   inset: 0;
   /* Solid enamel also fills the transparent illustration of «Модник». */
-  background: radial-gradient(ellipse at 32% 25%, #a058f3, #4b11bb 38%, #210268 80%);
-  -webkit-mask: url('../../assets/achievements/template/interior-mask.svg') center / 100% 100% no-repeat;
-  mask: url('../../assets/achievements/template/interior-mask.svg') center / 100% 100% no-repeat;
+  background: var(--achievement-background, radial-gradient(ellipse at 32% 25%, #a058f3, #4b11bb 38%, #210268 80%));
+  -webkit-mask: url('../../assets/achievements/template/interior-mask.svg?art=20261122b') center / 100% 100% no-repeat;
+  mask: url('../../assets/achievements/template/interior-mask.svg?art=20261122b') center / 100% 100% no-repeat;
 }
 .achievement-badge > .achievement-symbol {
   position: absolute;
@@ -382,15 +382,15 @@
   max-width: none;
   object-fit: contain;
   /* Only the illustration is individual. The approved frame is shared below. */
-  -webkit-mask: url('../../assets/achievements/template/interior-mask.svg') center / 100% 100% no-repeat;
-  mask: url('../../assets/achievements/template/interior-mask.svg') center / 100% 100% no-repeat;
+  -webkit-mask: url('../../assets/achievements/template/interior-mask.svg?art=20261122b') center / 100% 100% no-repeat;
+  mask: url('../../assets/achievements/template/interior-mask.svg?art=20261122b') center / 100% 100% no-repeat;
 }
 .achievement-badge::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: url('../../assets/achievements/template/canonical-gold-frame.png') center / 100% 100% no-repeat;
+  background: url('../../assets/achievements/template/canonical-gold-frame.png?art=20261122b') center / 100% 100% no-repeat;
 }
 .achievement-card[data-earned="false"] .achievement-badge::after,
 .achievement-card[data-earned="false"] .achievement-badge::before,
@@ -822,7 +822,7 @@
 .achievement-earned-banner {
   margin: 0 -24px; padding: 24px 42px 65px;
   border-radius: 19px 19px 0 0; border-bottom: 2px solid #cda95d;
-  background: linear-gradient(#10292e88, #152629cc), url('../../assets/interface-packs/heroic/lobby.webp') center 42% / cover;
+  background: linear-gradient(#10292e88, #152629cc), url('../../assets/interface-packs/heroic/lobby.webp?art=20261122b') center 42% / cover;
   color: #ffedba;
 }
 .achievement-earned-banner h2 { margin: 0; font-size: 25px; line-height: 1.15; text-shadow: 0 2px 3px #000; }
@@ -836,11 +836,11 @@
 .achievement-earned-reward { margin: 18px 0; padding-top: 14px; border-top: 1px solid #b8915044; font-size: 17px; font-weight: bold; }
 .achievement-earned-dialog > .sf-button { min-width: 175px; margin-top: 6px; }
 .achievement-earned-dialog[data-event-style="black-friday"] { background: #20232c; color: #f4e5c4; }
-.achievement-earned-dialog[data-event-style="black-friday"] .achievement-earned-banner { background: linear-gradient(#11182055, #131c2399), url('../../assets/events/black-friday/banner-v2.webp') center / cover; }
+.achievement-earned-dialog[data-event-style="black-friday"] .achievement-earned-banner { background: linear-gradient(#11182055, #131c2399), url('../../assets/events/black-friday/banner-v2.webp?art=20261122b') center / cover; }
 .achievement-earned-dialog[data-event-style="easter"] { background: #fff8e7; color: #46614b; }
-.achievement-earned-dialog[data-event-style="easter"] .achievement-earned-banner { background: linear-gradient(#274b4d55, #274b4d99), url('../../assets/events/easter-hunt/banner.png') center / cover; }
+.achievement-earned-dialog[data-event-style="easter"] .achievement-earned-banner { background: linear-gradient(#274b4d55, #274b4d99), url('../../assets/events/easter-hunt/banner.png?art=20261122b') center / cover; }
 .achievement-earned-dialog[data-event-style="lucky-week"] { background: #182439; color: #f4e5c4; }
-.achievement-earned-dialog[data-event-style="lucky-week"] .achievement-earned-banner { background: linear-gradient(#15243b55, #15243b99), url('../../assets/events/lucky-week/banner-v3.webp') center / cover; }
+.achievement-earned-dialog[data-event-style="lucky-week"] .achievement-earned-banner { background: linear-gradient(#15243b55, #15243b99), url('../../assets/events/lucky-week/banner-v3.webp?art=20261122b') center / cover; }
 @media (max-width: 500px) { .achievement-earned-banner h2 { font-size: 21px; } .achievement-earned-dialog { padding-inline: 18px; } .achievement-earned-banner { margin-inline: -18px; } }
 
 /* One composition for every earned achievement; social avatars use their own layout. */

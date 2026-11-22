@@ -73,7 +73,7 @@
         if (!this.inventory) control.setAttribute("aria-haspopup", "dialog");
         if (item) {
           const image = el("img");
-          image.src = item.icon;
+          image.src = window.KillexArtRevision.url(item.icon);
           image.alt = "";
           image.draggable = false;
           control.append(

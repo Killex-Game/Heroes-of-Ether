@@ -111,7 +111,7 @@
         if (this.promo) {
           const tokens = el("span", "donation-token-badge");
           const tokenIcon = el("img");
-          tokenIcon.src = "assets/events/black-friday/token-v2.webp";
+          tokenIcon.src = "assets/events/black-friday/token-v2.webp?art=20261122b";
           tokenIcon.alt = "жетонов";
           tokens.append(el("strong", "", `+${number(item.votes * 10)}`), tokenIcon);
           const multiplier = el("span", "donation-multiplier-badge", "x2");
@@ -122,7 +122,7 @@
         icon.alt = "";
         icon.width = 96;
         icon.height = 96;
-        icon.src = window.KillexVirtualProducts.get(`${currency}:${item.id}`).icon;
+        icon.src = window.KillexArtRevision.url(window.KillexVirtualProducts.get(`${currency}:${item.id}`).icon);
         const name = el("h3", "", item.name);
         const total = (item.base + item.bonus) * (this.promo ? 2 : 1);
         const extra = total - item.base;
@@ -169,7 +169,7 @@
         card.dataset.accountKind = kind;
         const heading = el("div", "donation-card-heading");
         const icon = el("img", "donation-account-icon");
-        icon.src = `assets/accounts/${kind}.png`;
+        icon.src = `assets/accounts/${kind}.png?art=20261122b`;
         icon.alt = "";
         heading.append(icon, el("h3", "", `Бонус ${label}`));
         const amount = el("p", "donation-amount");

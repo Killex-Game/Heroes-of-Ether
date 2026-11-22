@@ -45,7 +45,7 @@
   height: 21px;
   flex: none;
   border-radius: 3px;
-  background: #86662d url("../../assets/events/easter-hunt/golden-egg.webp") 50% 33.3333% / 300%
+  background: #86662d url("../../assets/events/easter-hunt/golden-egg.webp?art=20261122b") 50% 33.3333% / 300%
     400%;
 }
 .easter-exchange-egg-icon {
@@ -219,7 +219,7 @@
   text-shadow:
     0 1px 3px #000,
     0 0 5px #000;
-  background-image: url("../../assets/events/easter-hunt/golden-egg.webp");
+  background-image: url("../../assets/events/easter-hunt/golden-egg.webp?art=20261122b");
   background-size: 300% 400%;
   filter: grayscale(1) brightness(0.24);
   border: 1px solid #e2c47755;

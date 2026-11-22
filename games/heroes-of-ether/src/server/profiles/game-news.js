@@ -16,11 +16,13 @@ function normalize(input) {
       !Number.isFinite(Date.parse(input.date)) || new Date(input.date).toISOString().slice(0, 10) !== input.date)
     fail("Заполни заголовок, текст (до 6000 знаков), дату и раздел новости.");
   if(input.layout!==undefined&&!['left','right','banner','columns'].includes(input.layout))fail('Неизвестный макет новости.');
-  if(input.image!==undefined&&(typeof input.image!=='string'||(input.image!==''&&!/^\/news-media\/[a-f0-9]{64}\.png$/.test(input.image)&&!/^assets\/[a-zA-Z0-9_/-]+\.(webp|png)$/.test(input.image))))fail('Некорректный баннер новости.');
+  // Built-in art URLs carry a public cache revision; persist the canonical asset path.
+  const image = typeof input.image === 'string' ? input.image.replace(/\?art=\d{8}[a-z]?$/, '') : input.image;
+  if(image!==undefined&&(typeof image!=='string'||(image!==''&&!/^\/news-media\/[a-f0-9]{64}\.png$/.test(image)&&!/^assets\/[a-zA-Z0-9_/-]+\.(webp|png)$/.test(image))))fail('Некорректный баннер новости.');
   if(input.sourceId!==undefined&&(typeof input.sourceId!=='string'||!/^(alfa-test-[a-z0-9.-]+|event:[a-zA-Z0-9_-]+)$/.test(input.sourceId)||input.sourceId.length>100))fail('Некорректный источник новости.');
   return { ...(input.id ? { id: input.id } : {}), title: input.title.trim(), body: input.body.trim(),
     date: input.date, category: input.category, visible: input.visible,
-    layout:input.layout ?? defaultLayout,...(input.image!==undefined?{image:input.image}:{}),...(input.sourceId?{sourceId:input.sourceId}:{}) };
+    layout:input.layout ?? defaultLayout,...(image!==undefined?{image}:{}),...(input.sourceId?{sourceId:input.sourceId}:{}) };
 }
 function view(store, admin = false) {
   const data = store.data.gameNews;

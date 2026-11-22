@@ -45,7 +45,7 @@
     hide();
     if (!root) {
       root = el("aside", "effi-helper"); root.setAttribute("aria-label", "Подсказка Эффи");
-      art = el("img", "effi-character"); art.src = "assets/guide/effi-v1.webp";
+      art = el("img", "effi-character"); art.src = "assets/guide/effi-v1.webp?art=20261122b";
       art.width = 213; art.height = 320; art.alt = "Эффи"; art.draggable = false;
       bubble = el("div", "effi-bubble");
       const close = el("button", "effi-close", "×"); close.type = "button";

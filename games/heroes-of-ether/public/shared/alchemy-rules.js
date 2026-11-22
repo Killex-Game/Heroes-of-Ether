@@ -4,7 +4,7 @@
   else root.KillexAlchemyRules = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, () => {
   "use strict";
-  const asset = name => `assets/events/ether-alchemy/v1/${name}.webp`;
+  const asset = name => `assets/events/ether-alchemy/v1/${name}.webp?art=20261122b`;
   const ingredients = [
     ["mushroom", "Медовый гриб", "#c58a44", 10],
     ["leaf", "Лунолист", "#76ad43", 10],

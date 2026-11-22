@@ -109,10 +109,10 @@ test("Ракета делит 20 на 16/2/2, не создаёт части н�
 });
 
 test("Огонь уничтожает массу до 300 включительно, без награды за поглощение", () => {
-  for (const mass of [2, 49, 50, 51, 299, 300, 301, 600]) {
+  for (const mass of [2, 49, 50, 51, 299, 300, 301, 600, 601, 602]) {
     const { arena, a, b } = scene(mass);
     hit(arena, a, b, "fire");
-    if (mass <= 300) assert.equal(b.dead, true);
+    if (mass <= 600) assert.equal(b.dead, true);
     else {
       assert.equal(b.dead, false);
       assert.equal(b.mass, Math.ceil(mass / 2));

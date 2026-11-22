@@ -46,9 +46,9 @@
         const image = el("img");
         image.src =
           currency === "fridayTokens"
-            ? "assets/events/black-friday/token-v2.webp"
+            ? "assets/events/black-friday/token-v2.webp?art=20261122b"
             : currency === "tickets"
-            ? "assets/roulette/ticket-v2.webp"
+            ? "assets/roulette/ticket-v2.webp?art=20261122b"
             : "assets/menu-icons/128/currency_" + currency + ".webp";
         image.alt = label;
         image.setAttribute("aria-label", label);
@@ -119,14 +119,12 @@
     const badge = window.KillexIdentity.createMedal(profile);
     badge?.removeAttribute("title");
     if (badge) {
-      // Measured alpha bounds of the 256px originals, not their transparent canvas.
-      const extent = {novice:90, experienced:190, expert:197, sage:203, master:209,
-        pro:215, prince:221, king:233, emperor:227, boss:240}[profile.title.id] || 256;
-      // The novice is a tall narrow shield; matching its long edge to a winged
-      // medal made it visually larger than the next rank. Keep that shield small.
-      const visible = {novice:22, experienced:44, expert:45, sage:46, master:47,
-        pro:48, prince:49, king:50, emperor:51, boss:52}[profile.title.id] || 44;
-      badge.style.setProperty("--lobby-medal-scale", String(visible / 52 * 256 / extent));
+      // Normalize visible artwork, not its transparent export canvas.
+      const [width, height] = window.KillexProgressionArt.rankBounds(profile.title.id) || [256, 256];
+      const degree = Math.max(1, Math.min(10, profile.title.degree || 1));
+      const visibleHeight = profile.title.id === "novice" ? 34 : 40 + (degree - 2) * 2;
+      const scale = Math.min(visibleHeight / height, 60 / width) * 256 / 60;
+      badge.style.setProperty("--lobby-medal-scale", String(scale));
       badge.src = window.KillexProgressionArt.rank(profile.title.id, 256);
     }
     $("profileMedal").replaceChildren(...(badge ? [badge] : []));

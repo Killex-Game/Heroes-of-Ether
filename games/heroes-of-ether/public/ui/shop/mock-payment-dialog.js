@@ -26,7 +26,7 @@
       const notice = el(
         "p",
         "mock-payment-notice",
-        "Это симуляция оплаты. Настоящие деньги и голоса не списываются.",
+        `Это симуляция оплаты. Настоящие деньги и голоса не списываются. На аккаунт доступно ${window.KillexVirtualProducts.mockDailyPurchaseLimit} покупок в сутки.`,
       );
       notice.id = "mockPaymentNotice";
       const product = el("div", "mock-payment-product");
@@ -100,7 +100,7 @@
       } catch (_) {}
       this.title.textContent = "Подтверждение покупки";
       this.dialog.dataset.state = "confirmation";
-      this.icon.src = product.icon;
+      this.icon.src = window.KillexArtRevision.url(product.icon);
       this.name.textContent = product.name;
       this.description.textContent =
         product.type === "currency"
@@ -171,6 +171,16 @@
           signal: AbortSignal.timeout(10000),
         });
         const data = await response.json();
+        if (!response.ok && data.code === "MOCK_DAILY_LIMIT") {
+          this.complete = true;
+          this.dialog.dataset.state = "limit";
+          this.status.textContent = data.error + (Number.isSafeInteger(data.nextPurchaseAt)
+            ? " Новые покупки доступны " + new Date(data.nextPurchaseAt).toLocaleString("ru-RU") + "." : "");
+          this.confirmButton.textContent = "Понятно";
+          this.cancelButton.hidden = true;
+          try { sessionStorage.removeItem(this.storageKey); } catch (_) {}
+          return;
+        }
         if (!response.ok) throw Error(data.error || "Сервер не подтвердил операцию.");
         if (data.payment?.status !== "confirmed" || data.payment.requestId !== this.requestId)
           throw Error("Не удалось проверить подтверждение сервера.");

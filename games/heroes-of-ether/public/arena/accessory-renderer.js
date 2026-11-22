@@ -54,7 +54,7 @@
     // Поля шапки опираются на верхнюю дугу шара.
     if (worn.hat) {
       const fit = hatFits[worn.hat] || hatFits.novice_hat,
-        width = Math.min(r * fit.widthRatio, MAX_HAT_WIDTH_PX / screenScale),
+        width = Math.min(r * fit.widthRatio, MAX_HAT_WIDTH_PX / screenScale) * 0.85,
         height = width * fit.aspect;
       result.push({
         id: worn.hat,
@@ -66,7 +66,7 @@
       });
     }
     if (worn.bow) {
-      const width = Math.min(r * 0.92, MAX_BOW_WIDTH_PX / screenScale);
+      const width = Math.min(r * 0.92, MAX_BOW_WIDTH_PX / screenScale) * 0.9;
       result.push({
         id: worn.bow,
         x: x - width / 2,

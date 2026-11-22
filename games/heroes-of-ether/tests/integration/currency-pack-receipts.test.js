@@ -55,9 +55,9 @@ test("Every currency package: votes x 10 tokens, unchanged by coupon or both acc
 });
 
 test("Regular purchases have currency-only receipts; replay during event never adds tokens retrospectively", () => {
-  const f = fixture();
-  f.time(f.run.startsAt - 60000);
   for (const product of catalog.products.filter((p) => p.type === "currency")) {
+    const f = fixture();
+    f.time(f.run.startsAt - 60000);
     const input = order(product.id, { currencyPromoRunId: null });
     const result = f.store.confirmMockPurchase(f.user.token, input);
     assert.deepEqual(result.reward, {
@@ -68,7 +68,6 @@ test("Regular purchases have currency-only receipts; replay during event never a
     const before = f.view().tokens;
     assert.deepEqual(f.store.confirmMockPurchase(f.user.token, input).reward, result.reward);
     assert.equal(f.view().tokens, before);
-    f.time(f.run.startsAt - 60000);
   }
 });
 

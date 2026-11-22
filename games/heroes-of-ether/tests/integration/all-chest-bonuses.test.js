@@ -241,8 +241,8 @@ test("Сундуки званий: карточка и подготовленн�
   assert.equal(fresh.honors.tiers.at(-1).accountDays.vip, 90);
 });
 test("Покупные пакеты валют за голоса: ровно состав каталога, без множителей и билетов сундука", () => {
-  const f = fixture(true, true, true);
   for (const product of products.products.filter((p) => p.type === "currency")) {
+    const f = fixture(true, true, true);
     const before = structuredClone(f.p()),
       req = randomUUID();
     f.store.confirmMockPurchase(f.auth.token, {

@@ -1,0 +1,24 @@
+{
+  "source": "C:/Users/semen/.codex/generated_images/01a14abe-e850-7ca1-be9b-f32a856dbaba/exec-d7651f3a-eac5-4c19-90e1-d6cef734fb33.png",
+  "output": "public/assets/events/ether-alchemy/v1/cauldron-v1.webp",
+  "sourceMetadata": {
+    "format": "png",
+    "mediaType": "image/png",
+    "size": 896453,
+    "width": 1254,
+    "height": 1254,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "density": 72,
+    "isProgressive": false,
+    "isPalette": false,
+    "bitsPerSample": 8,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 1254,
+      "height": 1254
+    }
+  }
+}

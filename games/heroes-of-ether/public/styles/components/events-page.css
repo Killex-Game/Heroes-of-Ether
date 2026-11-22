@@ -26,13 +26,13 @@ body #eventsDialog[open] {
 /* Only purchased interface themes replace the event sky. League appearances
    deliberately keep the original event background. */
 [data-ui-theme="visual"] #eventsDialog {
-  --events-sky: url("../../assets/interface-packs/visual/lobby.webp");
+  --events-sky: url("../../assets/interface-packs/visual/lobby.webp?art=20261122b");
 }
 [data-ui-theme="prism"] #eventsDialog {
-  --events-sky: url("../../assets/interface-packs/prism/lobby.webp");
+  --events-sky: url("../../assets/interface-packs/prism/lobby.webp?art=20261122b");
 }
 [data-ui-theme="glass"] #eventsDialog {
-  --events-sky: url("../../assets/interface-packs/glass/lobby.webp");
+  --events-sky: url("../../assets/interface-packs/glass/lobby.webp?art=20261122b");
 }
 body[data-ui-theme="visual"] #eventsDialog,
 body[data-ui-theme="prism"] #eventsDialog,

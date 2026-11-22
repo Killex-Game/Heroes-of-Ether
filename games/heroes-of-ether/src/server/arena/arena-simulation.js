@@ -791,6 +791,7 @@ class Arena {
     )
       throw new BoosterError("Лимит этого слота на эту жизнь исчерпан.", 409);
     const sharedCooldown = booster.sharedCooldownMs ?? BOOSTER_RULES.COOLDOWN_MS;
+    const itemCooldownEnabled = BOOSTER_RULES.COOLDOWNS_ENABLED || booster.id === "easter_egg";
     const hasCooldown = BOOSTER_RULES.COOLDOWNS_ENABLED && booster.kind !== "mass" && booster.kind !== "shield" && sharedCooldown > 0;
     if (hasCooldown && p.boosterReadyAt > now)
       throw new BoosterError("Бустеры перезаряжаются одну секунду.", 409);
@@ -799,7 +800,7 @@ class Arena {
         "Достигнут предел массы главного шара для вашего уровня. Предмет сохранён.",
         409,
       );
-    if (BOOSTER_RULES.COOLDOWNS_ENABLED && p.boosterItemReadyAt[booster.id] > now)
+    if (itemCooldownEnabled && p.boosterItemReadyAt[booster.id] > now)
       throw new BoosterError(
         booster.id === "fire_sword"
           ? "Огненный меч перезаряжается 5 секунд после применения."
@@ -846,6 +847,9 @@ class Arena {
       if (launch) launch();
       else if (booster.kind === "sponge") this.boosterEffects.startSponge(p, now);
       else if (booster.kind === "easter_growth") {
+        // Finish due growth before replacing its schedule, including the last
+        // +50 at the exact ten-second cooldown boundary.
+        this.boosterEffects.tick(p, now);
         p.easterGiftFactor = giftEffects.arena(p, "outgoing");
         p.easterAlchemyAmount = booster.amount;
         p.effects.easter_egg = now + Math.floor(booster.durationMs * p.easterGiftFactor);
@@ -883,7 +887,7 @@ class Arena {
       }
       if (hasCooldown) p.boosterReadyAt = now + sharedCooldown;
       alchemy.commit(p, alchemyCast, now);
-      if (BOOSTER_RULES.COOLDOWNS_ENABLED && booster.cooldownMs) p.boosterItemReadyAt[booster.id] = now + booster.cooldownMs;
+      if (itemCooldownEnabled && booster.cooldownMs) p.boosterItemReadyAt[booster.id] = now + booster.cooldownMs;
       p.boostersUsed++;
       require("./quest-actions").record(this, p, "boosterUses", null, booster.id, null, accessory ? 'accessory' : 'inventory');
       if (!accessory) p.boosterUses[booster.id] = (p.boosterUses[booster.id] || 0) + 1;

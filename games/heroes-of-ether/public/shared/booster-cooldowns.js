@@ -6,8 +6,15 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, () => {
   "use strict";
   function cooldown(item, me, elapsed = 0, rules = {}) {
-    if (!item || !me || item.kind === "mass" || rules.cooldownsEnabled === false) return { ms: 0, duration: 1 };
+    if (!item || !me || item.kind === "mass") return { ms: 0, duration: 1 };
     const remaining = (value) => Math.max(0, (Number(value) || 0) - Math.max(0, elapsed));
+    // The egg keeps its own ten-second cooldown even when other timers are off.
+    // An extended growth effect does not extend the reuse delay.
+    if (item.id === "easter_egg") return {
+      ms: remaining(me.boosterCooldowns?.[item.id]),
+      duration: item.cooldownMs || 10000,
+    };
+    if (rules.cooldownsEnabled === false) return { ms: 0, duration: 1 };
     if (item.kind === "shield")
       return {
         // The server permits immediate replacement after a shield was broken

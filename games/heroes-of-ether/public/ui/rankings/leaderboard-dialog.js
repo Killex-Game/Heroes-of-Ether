@@ -306,8 +306,8 @@
               const icon = el("img");
               icon.src =
                 key === "tickets"
-                  ? "assets/roulette/ticket-v2.webp"
-                  : `assets/menu-icons/128/currency_${key}.webp`;
+                  ? "assets/roulette/ticket-v2.webp?art=20261122b"
+                  : `assets/menu-icons/128/currency_${key}.webp?art=20261122b`;
               icon.alt = { coins: "монет", crystals: "кристаллов", tickets: "билетов" }[key];
               item.append(document.createTextNode(number(value) + " "), icon);
             }
@@ -407,11 +407,11 @@
         ),
       );
       const icons = {
-        greatness: ["assets/menu-icons/128/nav_achievements.webp", "величия"],
-        bucks: ["assets/menu-icons/128/currency_bucks.webp", "эфира"],
-        coins: ["assets/menu-icons/128/currency_coins.webp", "монет"],
-        crystals: ["assets/menu-icons/128/currency_crystals.webp", "кристаллов"],
-        tickets: ["assets/roulette/ticket-v2.webp", "билетов"],
+        greatness: ["assets/menu-icons/128/nav_achievements.webp?art=20261122b", "величия"],
+        bucks: ["assets/menu-icons/128/currency_bucks.webp?art=20261122b", "эфира"],
+        coins: ["assets/menu-icons/128/currency_coins.webp?art=20261122b", "монет"],
+        crystals: ["assets/menu-icons/128/currency_crystals.webp?art=20261122b", "кристаллов"],
+        tickets: ["assets/roulette/ticket-v2.webp?art=20261122b", "билетов"],
       };
       const rewards = (prize) => {
         const list = el("span", "event-ranking-reward");
@@ -549,7 +549,7 @@
         );
         if (this.clanOrder === "treasury") {
           const icon = el("img");
-          icon.src = "assets/menu-icons/64/currency_bucks.webp";
+          icon.src = "assets/menu-icons/64/currency_bucks.webp?art=20261122b";
           icon.alt = "эфира";
           score.append(icon);
         }

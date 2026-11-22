@@ -31,11 +31,11 @@
       const meta=el('div','clan-daily-progress-meta'),greatness=el('span','clan-daily-greatness');
       const bonus=q.greatness??(q.metric==='xp'?15:q.metric==='kills'?10:5);
       greatness.title=`Величие: +${num(bonus)}`;greatness.setAttribute('aria-label',greatness.title);
-      const medal=el('img');medal.src='assets/menu-icons/128/nav_achievements.webp';medal.alt='';
+      const medal=el('img');medal.src='assets/menu-icons/128/nav_achievements.webp?art=20261122b';medal.alt='';
       greatness.append(medal,el('span','',`+${num(bonus)}`));
       meta.append(greatness,el('span','clan-daily-value',`${num(Math.floor(q.progress/unit))} / ${num(q.target/unit)}${unit===60000?' мин.':''}`));text.append(bar,meta);
       const reward=el('div','clan-daily-reward');reward.title=rewardName(q.reward)+' × '+num(q.reward.amount);
-      const image=el('img');image.alt=rewardName(q.reward);image.src=q.reward.kind==='clanChest'?window.KillexProgressionArt.clanChest(q.reward.tier):`assets/menu-icons/128/currency_${q.reward.kind}.webp`;
+      const image=el('img');image.alt=rewardName(q.reward);image.src=q.reward.kind==='clanChest'?window.KillexProgressionArt.clanChest(q.reward.tier):`assets/menu-icons/128/currency_${q.reward.kind}.webp?art=20261122b`;
       reward.append(image,el('strong','',num(q.reward.amount)));row.append(text,reward);root.append(row);
     }
     return root;

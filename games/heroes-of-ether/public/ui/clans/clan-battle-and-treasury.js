@@ -24,7 +24,7 @@
   };
   const art = (src, cls) => {
     const img = el("img", cls);
-    img.src = src;
+    img.src = window.KillexArtRevision.url(src);
     img.alt = "";
     return img;
   };
@@ -225,7 +225,7 @@
           art(
             spec
               ? window.KillexProgressionArt.clanChest(tier)
-              : "assets/menu-icons/128/currency_coins.webp",
+              : "assets/menu-icons/128/currency_coins.webp?art=20261122b",
             "clan-prize-art",
           ),
           el("b", "", percent + "%"),
@@ -367,7 +367,7 @@
           ? art(
               spec
                 ? window.KillexProgressionArt.clanChest(tier)
-                : "assets/menu-icons/128/currency_coins.webp",
+                : "assets/menu-icons/128/currency_coins.webp?art=20261122b",
               "clan-personal-reward-art",
             )
           : el("span", "clan-personal-reward-placeholder", "?");
@@ -883,7 +883,7 @@
         const card = el("article", "clan-owned-chest friday-treasury-chest");
         card.dataset.chestId = item.id;
         card.append(
-          art("assets/events/black-friday/chest.webp", "clan-prize-art"),
+          art("assets/events/black-friday/chest.webp?art=20261122b", "clan-prize-art"),
           el("strong", "", "Сундук Чёрной пятницы"),
           el("small", "", "Лавка Мани"),
           el("small", "", "Без срока открытия"),
@@ -907,7 +907,7 @@
         const card = el("article", "clan-owned-chest easter-treasury-chest");
         card.dataset.chestId = item.id;
         card.append(
-          art("assets/events/easter-hunt/chest.webp", "clan-prize-art"),
+          art("assets/events/easter-hunt/chest.webp?art=20261122b", "clan-prize-art"),
           el("strong", "", "Пасхальный сундук"),
           el("small", "", "Пасхальная охота"),
           el("small", "", "Без срока открытия"),
@@ -995,7 +995,7 @@
             .filter((c) => !c.stored)
             .map((c) => ({
               name: "Сундук Чёрной пятницы",
-              art: "assets/events/black-friday/chest.webp",
+              art: "assets/events/black-friday/chest.webp?art=20261122b",
               until: c.expiresAt,
             })),
           ...queuedClans.map((c) => ({
@@ -1020,7 +1020,7 @@
             .filter((c) => !c.stored)
             .map((c) => ({
               name: "Пасхальный сундук",
-              art: "assets/events/easter-hunt/chest.webp",
+              art: "assets/events/easter-hunt/chest.webp?art=20261122b",
               until: c.expiresAt,
             })),
         ];

@@ -62,7 +62,7 @@
           for (const item of recipe) {
             const group = document.createElement("span"),
               icon = document.createElement("img");
-            icon.src = item.image;
+            icon.src = window.KillexArtRevision.url(item.image);
             icon.alt = item.name;
             icon.width = 24;
             icon.height = 28;

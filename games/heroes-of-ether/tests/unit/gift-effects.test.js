@@ -61,11 +61,12 @@ test("Подарки: независимые сроки, компенсация 
 });
 test("Огонь инвентаря использует процент активного питомца, без питомца сохраняет 50%", () => {
   for (const [percent, remaining] of [
-    [0, 500],
-    [50, 500],
-    [90, 100],
+    [0, 5000],
+    [50, 5000],
+    [90, 1000],
   ]) {
     const s = scene();
+    Object.assign(s.b, { mass: 10000, radius: radiusForMass(10000) });
     if (percent) s.a.pet = { id: "manya", vitalityMs: 10000, stats: { firePercent: percent } };
     s.hit("fire");
     assert.equal(s.b.mass, remaining);
@@ -77,11 +78,11 @@ test("Огонь инвентаря использует процент акти
 });
 test("Подарки меняют урон Огня и сопротивление, сохраняя дальность и скорость полёта", () => {
   for (const [outgoing, incoming, remaining] of [
-    [1.25, 1, 250],
-    [0.75, 1, 750],
+    [1.25, 1, 375],
+    [0.75, 1, 625],
     [1, 0.75, 625],
     [1, 1.25, 375],
-    [1.25, 0.75, 438],
+    [1.25, 0.75, 532],
   ]) {
     const s = scene(outgoing, incoming),
       shot = s.hit("fire");
@@ -91,13 +92,14 @@ test("Подарки меняют урон Огня и сопротивлени�
     assert.equal(shot.landsAt - shot.launchedAt, 3000);
   }
   const s = scene(1.25);
+  Object.assign(s.b, { mass: 10000, radius: radiusForMass(10000) });
   s.a.pet = { id: "manya", vitalityMs: 1, stats: { firePercent: 70 } };
   s.hit("fire");
-  assert.equal(s.b.mass, 50, "Огонь 70% с Кристаллом сжигает 95%");
+  assert.equal(s.b.mass, 1250, "Огонь 70% с Кристаллом сжигает 87,5%");
   const strong = scene(1.25);
   strong.a.pet = { id: "drakosha", vitalityMs: 1, stats: { firePercent: 90 } };
   strong.hit("fire");
-  assert.equal(strong.b.mass, 2, "минимальная масса сохраняется");
+  assert.equal(strong.b.dead, true, "полное сгорание не оставляет часть с 2 массы");
 });
 test("Перчатка проверяет щит при касании, уже полученный толчок сохраняется", () => {
   for (const shield of ["colorful_shield", "sphere", "golden_shield", "clan_shield"]) {
