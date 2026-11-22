@@ -826,6 +826,12 @@
     render() {
       const c = this.owner.profile?.clanChests;
       if (!c) return;
+      const profile = this.owner.profile;
+      const key = JSON.stringify([c, profile.quests?.pending, profile.easter?.chests, profile.fridayChests,
+        (profile.account?.vipUntil || 0) > Date.now(), (profile.account?.premiumUntil || 0) > Date.now(),
+        this.busy, this.owner.purchasesBlocked()]);
+      if (key === this.renderKey) return;
+      this.renderKey = key;
       const pending = this.owner.profile?.quests?.pending || [];
       const questChests = pending.filter((item) => item.stored !== false);
       const easter = this.owner.profile?.easter?.chests || [];

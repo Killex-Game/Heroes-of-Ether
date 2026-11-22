@@ -147,6 +147,9 @@
         this.summary.textContent = "";
         return;
       }
+      const key = JSON.stringify([q.items, q.pending, q.rerollCost, this.busy, this.pending, this.owner.inArena()]);
+      if (key === this.renderKey) { this.paginate(); return; }
+      this.renderKey = key;
       this.summary.textContent = "Ежедневные 4 задания, обновляются каждый день.";
       const cards = [];
       for (const row of q.items) {

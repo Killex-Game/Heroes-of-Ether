@@ -71,8 +71,9 @@ class MongoSync {
         void this.worker.terminate();
         reject(Object.assign(Error("MONGO_SYNC_TIMEOUT"), { code: "MONGO_SYNC_TIMEOUT" }));
       // Cold snapshot reads include the complete database and checksum scan.
+      // Allow throttled cold transfers to finish their full verification.
       // Keep ordinary writes bounded separately; no arena ACK waits on Atlas.
-      }, command === "open" || command === "resume" ? 600000 : 45000);
+      }, command === "open" || command === "resume" ? 1260000 : 45000);
       this.waiting = { id, timeout, resolve, reject };
       this.worker.postMessage({ id, command, profileSnapshot });
     });

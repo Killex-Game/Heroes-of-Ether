@@ -274,7 +274,6 @@
       this.multiplier.setAttribute("aria-pressed", String(multiplierActive));
       this.multiplier.title =
         "Каждое подобранное яйцо даёт 3 яйца в запас. В топе считается один подбор. Действует только в текущем событии.";
-      this.multiplierInfo.replaceChildren();
       if (multiplierActive) {
         const seconds = Math.max(
           0,
@@ -286,8 +285,8 @@
         );
         this.multiplierInfo.textContent =
           "Осталось " + window.KillexIdentity.formatDuration(seconds);
-      } else {
-        this.multiplierInfo.append(document.createTextNode("3 часа - 250 "));
+      } else if (!this.multiplierInfo.querySelector("img")) {
+        this.multiplierInfo.replaceChildren(document.createTextNode("3 часа - 250 "));
         const ether = el("img", "easter-ether-icon");
         ether.src = "assets/menu-icons/128/currency_bucks.webp?art=20261122b";
         ether.alt = "эфира";

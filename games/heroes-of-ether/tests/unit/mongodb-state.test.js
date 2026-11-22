@@ -53,8 +53,8 @@ test("Full read fences one causal majority session and rejects concurrent metada
   const state={
     metrics:require('../../src/server/persistence/mongodb-metrics').observeMongo(),
     reader:{async connect(){},startSession(options){assert.deepEqual(options,{causalConsistency:true});active=true;readCount=0;return session;},async close(){assert.equal(active,false);}},
-    readMeta:{async findOne(query,options){assert.strictEqual(options.session,session);assert.equal(active,true);assert.deepEqual(options.readConcern,{level:'majority'});assert.equal(options.readPreference,'primary');assert.equal(options.maxTimeMS,540000);signal=options.signal;assert(signal instanceof AbortSignal);return ++readCount===2&&concurrent?{...manifest,...concurrent}:manifest;}},
-    readState:{find(query,options){assert.strictEqual(options.session,session);assert.strictEqual(options.signal,signal);assert.equal(active,true);assert.equal(options.batchSize,100);return {async *[Symbol.asyncIterator](){yield* guarded;if(cursorFails)throw Object.assign(Error('snapshot expired'),{code:239});}};}}
+    readMeta:{async findOne(query,options){assert.strictEqual(options.session,session);assert.equal(active,true);assert.deepEqual(options.readConcern,{level:'majority'});assert.equal(options.readPreference,'primary');assert.equal(options.maxTimeMS,1200000);signal=options.signal;assert(signal instanceof AbortSignal);return ++readCount===2&&concurrent?{...manifest,...concurrent}:manifest;}},
+    readState:{find(query,options){assert.strictEqual(options.session,session);assert.strictEqual(options.signal,signal);assert.equal(active,true);assert.equal(options.batchSize,8);return {async *[Symbol.asyncIterator](){yield* guarded;if(cursorFails)throw Object.assign(Error('snapshot expired'),{code:239});}};}}
   };
   const result=await MongoState.prototype.read.call(state);
   assert.deepEqual(result.world,world());assert.ok(checks>0);

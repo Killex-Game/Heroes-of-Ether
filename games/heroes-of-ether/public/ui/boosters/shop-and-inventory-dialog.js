@@ -645,6 +645,11 @@
       this.skinShop.update(this.profile, this.skinCollectionPurchase, this.purchasesBlocked());
       if (accessoriesMode) this.renderAccessories();
       if (chestsMode || skinsMode || accessoriesMode) return;
+      const gridKey = JSON.stringify([this.mode, this.catalog, this.profile.inventory, this.profile.level,
+        this.profile.wallet, this.profile.account, this.profile.easter?.batches, window.KillexAlchemyRules.equipped(this.profile.alchemy),
+        this.slots, this.purchasesBlocked(), !!this.purchase, !!this.slotSaving, !!this.potionSaving]);
+      if (gridKey === this.gridKey) return;
+      this.gridKey = gridKey;
       const rarity = { common: 0, advanced: 1, rare: 2, clan: 3, event: 4 };
       const items = this.catalog.items
         .filter(
@@ -826,6 +831,10 @@
       this.grid.replaceChildren(fragment);
     }
     renderAccessories() {
+      const key = JSON.stringify([this.accessoryCategory, this.profile.wardrobe?.owned, this.profile.wallet,
+        this.purchasesBlocked(), !!this.accessoryPurchase]);
+      if (key === this.accessoryRenderKey) return;
+      this.accessoryRenderKey = key;
       const fragment = document.createDocumentFragment();
       for (const item of window.KillexAccessories.items
         .filter((item) => item.price && item.slot === this.accessoryCategory)
@@ -1107,39 +1116,47 @@
         const signature = `${item?.id}:${count}:${!!me}:${pending}:${this.targeting?.id}:${blocked}:${locked}`;
         if (control.dataset.state !== signature) {
           control.dataset.state = signature;
-          control.replaceChildren();
-          control.dataset.tier = item?.tier || "common";
-          const key = make("span", "booster-slot-key", window.KillexLoadout.keys[i]);
-          if (item) {
-            const img = make("img");
-            img.src = window.KillexArtRevision.url(item.icon);
-            img.alt = "";
-            control.append(img, make("span", "booster-slot-count", String(count)), key);
-            const overlay = make("span", "booster-slot-cooldown"),
-              text = make("span", "booster-cooldown-seconds");
-            overlay.setAttribute("aria-hidden", "true");
-            overlay.append(text);
-            control.append(overlay);
-            control.cooldownOverlay = overlay;
-            control.cooldownText = text;
-            control.setAttribute(
-              "aria-label",
-              `${window.KillexLoadout.keys[i]}. ${item.name}, доступно за жизнь ${count}`,
-            );
-          } else {
-            control.cooldownOverlay = null;
-            control.cooldownText = null;
-            control.append(make("span", "", "-"), key);
-            control.setAttribute("aria-label", `Пустой слот ${window.KillexLoadout.keys[i]}`);
+          const artworkKey = `${item?.id}:${locked}`;
+          if (control.dataset.artwork !== artworkKey) {
+            control.dataset.artwork = artworkKey;
+            control.replaceChildren();
+            control.dataset.tier = item?.tier || "common";
+            const key = make("span", "booster-slot-key", window.KillexLoadout.keys[i]);
+            if (item) {
+              const img = make("img");
+              img.src = window.KillexArtRevision.url(item.icon);
+              img.alt = "";
+              control.append(img, make("span", "booster-slot-count", String(count)), key);
+              const overlay = make("span", "booster-slot-cooldown"),
+                text = make("span", "booster-cooldown-seconds");
+              overlay.setAttribute("aria-hidden", "true");
+              overlay.append(text);
+              control.append(overlay);
+              control.cooldownOverlay = overlay;
+              control.cooldownText = text;
+              control.setAttribute(
+                "aria-label",
+                `${window.KillexLoadout.keys[i]}. ${item.name}, доступно за жизнь ${count}`,
+              );
+            } else {
+              control.cooldownOverlay = null;
+              control.cooldownText = null;
+              control.append(make("span", "", "-"), key);
+              control.setAttribute("aria-label", `Пустой слот ${window.KillexLoadout.keys[i]}`);
+            }
+            control.dataset.locked = String(locked);
+            if (locked) {
+              const unlock = window.KillexLoadout.unlockLabel(i);
+              control.append(
+                make("span", "loadout-lock", i === 3 ? "12 ур." : i === 4 ? "VIP / P" : "Premium"),
+              );
+              const reason = i === 3 ? "Этот слот доступен с 12 уровня." : "Нужен активный " + unlock;
+              control.setAttribute("aria-label", key.textContent + ". " + reason);
+            }
           }
-          control.dataset.locked = String(locked);
-          if (locked) {
-            const unlock = window.KillexLoadout.unlockLabel(i);
-            control.append(
-              make("span", "loadout-lock", i === 3 ? "12 ур." : i === 4 ? "VIP / P" : "Premium"),
-            );
-            const reason = i === 3 ? "Этот слот доступен с 12 уровня." : "Нужен активный " + unlock;
-            control.setAttribute("aria-label", key.textContent + ". " + reason);
+          if (item) {
+            control.querySelector(".booster-slot-count").textContent = String(count);
+            if (!locked) control.setAttribute("aria-label", `${window.KillexLoadout.keys[i]}. ${item.name}, доступно за жизнь ${count}`);
           }
           window.KillexControls.state(
             control,
@@ -1197,8 +1214,12 @@
       const state = [id, owned, used.join(","), pending].join(":");
       if (state !== this.potionRenderKey) {
         this.potionRenderKey = state;
-        const image = make("img"); image.src = window.KillexArtRevision.url(potion.image); image.alt = "";
-        this.potionButton.replaceChildren(image, make("span", "booster-slot-key", "Z"), make("span", "booster-slot-count", next ? String(owned) : "✓"));
+        const source = window.KillexArtRevision.url(potion.image);
+        if (this.potionButton.querySelector("img")?.getAttribute("src") !== source) {
+          const image = make("img"); image.src = source; image.alt = "";
+          this.potionButton.replaceChildren(image, make("span", "booster-slot-key", "Z"), make("span", "booster-slot-count"));
+        }
+        this.potionButton.querySelector(".booster-slot-count").textContent = next ? String(owned) : "✓";
         this.potionButton.title = (next ? "Следующее: " + potion.name + ". " + potion.effect + "\n" : "") +
           "Действуют: " + (used.map(id => window.KillexAlchemyRules.get(id).name).join(", ") || "нет");
         this.potionButton.setAttribute("aria-label", next ? potion.name + ", клавиша Z" : "Все выбранные зелья действуют до конца жизни");

@@ -218,7 +218,7 @@ class MongoState {
     // Cursor getMore uses connection-level socket options. A separate cold
     // reader permits slow transfers without extending live write timeouts.
     this.reader = new MongoClient(uri, { ...connection, maxPoolSize: 1,
-      socketTimeoutMS: 120000, compressors: ['zlib'], zlibCompressionLevel: 1 });
+      socketTimeoutMS: 300000, compressors: ['zlib'], zlibCompressionLevel: 1 });
     this.db = this.client.db(config.database);
     this.metrics = require('./mongodb-metrics').observeMongo(this.client);
     this.state = this.metrics.collection(this.db.collection("state"));
@@ -247,7 +247,7 @@ class MongoState {
     // the generation fence required by acquire(). Snapshot expiry fails closed.
     const session = this.reader.startSession(snapshot ? { snapshot: true } : { causalConsistency: true });
     const options = { session, readPreference: 'primary', readConcern: { level: snapshot ? 'snapshot' : 'majority' },
-      maxTimeMS: 540000, signal: AbortSignal.timeout(540000) };
+      maxTimeMS: 1200000, signal: AbortSignal.timeout(1200000) };
     let manifest;
     const documents = [];
     try {
@@ -256,11 +256,14 @@ class MongoState {
       if (!manifest) fail("MONGO_NOT_INITIALIZED");
       // One completed cursor read, regardless of its internal wire batches.
       await this.metrics.run('read',async()=>{
-        for await (const document of this.readState.find({}, { ...options, batchSize: 100 }))
+        for await (const document of this.readState.find({}, { ...options, batchSize: 8 }))
           documents.push(document);
       });
       const after = await this.readMeta.findOne({ _id: 'state' }, options);
       if (!isDeepStrictEqual(manifest, after)) fail('MONGO_CONCURRENT_READ');
+    } catch (error) {
+      if (options.signal.aborted) fail('MONGO_READ_TIMEOUT');
+      throw error;
     } finally {
       try { await session.endSession(); } finally { await this.reader.close(); }
     }

@@ -105,6 +105,9 @@
       this.tabs.hidden = offers.length < 2;
       const offer = offers.find(p => p.id === this.selected) || offers[0];
       this.selected = offer?.id;
+      const renderKey = JSON.stringify([offers, this.selected, profile?.promotionEndsAt, this.preview, offers.map(p => profile?.promotions?.includes(p.id) && profile?.promotionEndsAt?.[p.id] > Date.now() + this.clockOffset)]);
+      if (renderKey === this.renderKey) { this.updateCountdown(); return; }
+      this.renderKey = renderKey;
       this.tabs.replaceChildren();
       for (const item of offers) {
         const tab = el("button", "promotion-tab");

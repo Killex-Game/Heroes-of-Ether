@@ -359,27 +359,32 @@
       const granted = identity.allSkins.filter(s => this.profile?.grantedSkins?.includes(s.id) && !inSets.has(s.id));
       if (granted.length) sets.push({ id: "gifts", name: "Подарочные аватары", skins: granted });
       this.emptySets.hidden = sets.length > 0;
-      this.accountSets.replaceChildren();
-      for (const set of sets) {
-        const showcase = el("section", "avatar-set-showcase");
-        showcase.dataset.setId = set.id;
-        showcase.append(el("h4", "", set.name));
-        const grid = el("div", "account-avatar-grid");
-        for (const skin of set.skins) {
-          const control = button("account-avatar", "", () => {
-            document.dispatchEvent(new CustomEvent("killex:choose-skin", { detail: skin.id }));
-          });
-          control.dataset.skinId = skin.id;
-          control.setAttribute("aria-pressed", String(this.owner.getSkin() === skin.id));
-          const img = el("img");
-          setSkinImage(img, skin, 128);
-          img.alt = "";
-          control.append(img, el("span", "", skin.name));
-          grid.append(control);
+      const setsKey = JSON.stringify(sets);
+      if (setsKey !== this.setsKey) {
+        this.setsKey = setsKey;
+        this.accountSets.replaceChildren();
+        for (const set of sets) {
+          const showcase = el("section", "avatar-set-showcase");
+          showcase.dataset.setId = set.id;
+          showcase.append(el("h4", "", set.name));
+          const grid = el("div", "account-avatar-grid");
+          for (const skin of set.skins) {
+            const control = button("account-avatar", "", () => {
+              document.dispatchEvent(new CustomEvent("killex:choose-skin", { detail: skin.id }));
+            });
+            control.dataset.skinId = skin.id;
+            control.setAttribute("aria-pressed", String(this.owner.getSkin() === skin.id));
+            const img = el("img");
+            setSkinImage(img, skin, 128);
+            img.alt = "";
+            control.append(img, el("span", "", skin.name));
+            grid.append(control);
+          }
+          showcase.append(grid);
+          this.accountSets.append(showcase);
         }
-        showcase.append(grid);
-        this.accountSets.append(showcase);
       }
+      this.renderSelection();
       const api = window.KillexAccessories,
         worn = api.outfit(this.profile?.wardrobe?.equipped);
       this.accessoryList.dataset.collectionKey = this.category;
@@ -433,7 +438,7 @@
         const item = api.item(worn[slot]);
         icon.hidden = !item;
         if (item) {
-          icon.src = item.icon;
+          if (icon.getAttribute("src") !== item.icon) icon.src = item.icon;
           icon.alt = item.name;
         } else {
           icon.removeAttribute("src");

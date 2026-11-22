@@ -103,10 +103,12 @@
       }
     }
     render({ clan, competition }) {
+      const scroll = this.content.querySelector(".clan-preview-member-list")?.scrollTop || 0;
+      const panelScroll = this.content.querySelector(".clan-preview-grid > :last-child")?.scrollTop || 0;
       this.title.textContent = `[${clan.prefix}] ${clan.name}`;
       window.KillexAppearance.paintBackground(this.dialog, clan.appearance?.background, "clan");
       const banner = el("section", "clan-preview-banner clan-panel");
-      const crest = el("img", "clan-crest");
+      const crest = this.content.querySelector(".clan-preview-banner > .clan-crest") || el("img", "clan-crest");
       crest.alt = "";
       window.KillexClanCrests.paintImage(crest, clan.crest, clan.emblem);
       const info = el("div", "clan-preview-info");
@@ -117,12 +119,17 @@
       );
       info.append(el("p", "", clan.description), meta);
       banner.append(crest, info);
-      const awards = el("div", "clan-award-showcases clan-preview-awards");
-      awards.setAttribute("aria-label", "Награды клана за всё время");
-      for (const shelf of [this.owner.medalShelf(competition, { earnedOnly: true }),
-        this.owner.trophyShelf(competition, { earnedOnly: true })]) {
-        if (shelf.querySelector(".clan-league-medal")) awards.append(shelf);
+      const awardsKey = JSON.stringify([competition.medals, competition.trophies, competition.questSeasonMedals, competition.season, competition.seasonPeak]);
+      if (this.awardsKey !== awardsKey || !this.awards) {
+        this.awardsKey = awardsKey;
+        this.awards = el("div", "clan-award-showcases clan-preview-awards");
+        this.awards.setAttribute("aria-label", "Награды клана за всё время");
+        for (const shelf of [this.owner.medalShelf(competition, { earnedOnly: true }),
+          this.owner.trophyShelf(competition, { earnedOnly: true })]) {
+          if (shelf.querySelector(".clan-league-medal")) this.awards.append(shelf);
+        }
       }
+      const awards = this.awards;
       if (awards.childElementCount) banner.append(awards);
       const layout = el("div", "clan-preview-grid");
       const members = el("section", "clan-panel clan-preview-members");
@@ -130,9 +137,8 @@
       const list = el("div", "clan-preview-member-list");
       list.tabIndex = 0;
       list.setAttribute("aria-label", "Участники клана");
-      for (const p of clan.members) list.append(this.owner.memberRow(p, clan, { readOnly: true, competitionMode:competition.mode }));
-      const scroll = this.content.querySelector(".clan-preview-member-list")?.scrollTop || 0;
-      const panelScroll = this.content.querySelector(".clan-preview-grid > :last-child")?.scrollTop || 0;
+      const previousRows = new Map([...this.content.querySelectorAll(".clan-member[data-member-id]")].map(row => [row.dataset.memberId, row]));
+      for (const p of clan.members) list.append(this.owner.memberRow(p, clan, { readOnly: true, competitionMode:competition.mode, retainedRow:previousRows.get(p.id) }));
       members.append(list);
       this.battles.countdown=null;
       layout.append(members, competition.mode==='quests'

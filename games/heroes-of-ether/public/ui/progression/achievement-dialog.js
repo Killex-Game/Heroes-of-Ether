@@ -160,6 +160,9 @@
     }
     render(profile) {
       this.profile = profile;
+      const key = JSON.stringify([profile.id, profile.honors, profile.greatness, profile.progress.achievements]);
+      if (key === this.profileRenderKey) return;
+      this.profileRenderKey = key;
       this.renderHonor();
       this.renderGrid();
     }

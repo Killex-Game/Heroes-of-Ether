@@ -81,6 +81,9 @@
         this.root.replaceChildren(el("p", "", ""));
         return;
       }
+      const key = JSON.stringify([honors, o.catalog, this.busy, o.purchasesBlocked()]);
+      if (key === this.renderKey) return;
+      this.renderKey = key;
       const grid = el("div", "chest-grid");
       for (const t of honors.tiers) {
         const card = el("article", "clan-panel chest-card");

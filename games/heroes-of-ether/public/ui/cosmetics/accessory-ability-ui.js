@@ -40,10 +40,11 @@
       const signature = item.accessoryId + ":" + count;
       if (this.signature !== signature) {
         this.signature = signature;
-        const image = document.createElement("img"),
+        const oldImage = this.button.querySelector("img");
+        const image = oldImage?.getAttribute("src") === def.icon ? oldImage : document.createElement("img"),
           key = document.createElement("span"),
           amount = document.createElement("span");
-        image.src = def.icon;
+        if (image.getAttribute("src") !== def.icon) image.src = def.icon;
         image.alt = "";
         key.className = "booster-slot-key";
         key.textContent = "E";

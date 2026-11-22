@@ -112,22 +112,29 @@
   function renderLobby(profile, p) {
     $("progressLevel").textContent = `Уровень ${number(profile.level)}`;
     $("progressXp").textContent = `${number(p.levelXp)} / ${number(p.nextLevelXp)} опыта`;
-    const greatness = window.KillexGreatnessUI.value(number(profile.greatness));
-    greatness.querySelectorAll("[title]").forEach((node) => node.removeAttribute("title"));
-    $("progressGreatness").replaceChildren(greatness);
-    $("profileTitle").textContent = profile.title?.name || "Без титула";
-    const badge = window.KillexIdentity.createMedal(profile);
-    badge?.removeAttribute("title");
-    if (badge) {
-      // Normalize visible artwork, not its transparent export canvas.
-      const [width, height] = window.KillexProgressionArt.rankBounds(profile.title.id) || [256, 256];
-      const degree = Math.max(1, Math.min(10, profile.title.degree || 1));
-      const visibleHeight = profile.title.id === "novice" ? 34 : 40 + (degree - 2) * 2;
-      const scale = Math.min(visibleHeight / height, 60 / width) * 256 / 60;
-      badge.style.setProperty("--lobby-medal-scale", String(scale));
-      badge.src = window.KillexProgressionArt.rank(profile.title.id, 256);
+    if ($("progressGreatness").dataset.value !== String(profile.greatness)) {
+      $("progressGreatness").dataset.value = String(profile.greatness);
+      const greatness = window.KillexGreatnessUI.value(number(profile.greatness));
+      greatness.querySelectorAll("[title]").forEach((node) => node.removeAttribute("title"));
+      $("progressGreatness").replaceChildren(greatness);
     }
-    $("profileMedal").replaceChildren(...(badge ? [badge] : []));
+    $("profileTitle").textContent = profile.title?.name || "Без титула";
+    const medalKey = JSON.stringify(profile.title || null);
+    if ($("profileMedal").dataset.medalKey !== medalKey) {
+      $("profileMedal").dataset.medalKey = medalKey;
+      const badge = window.KillexIdentity.createMedal(profile);
+      badge?.removeAttribute("title");
+      if (badge) {
+        // Normalize visible artwork, not its transparent export canvas.
+        const [width, height] = window.KillexProgressionArt.rankBounds(profile.title.id) || [256, 256];
+        const degree = Math.max(1, Math.min(10, profile.title.degree || 1));
+        const visibleHeight = profile.title.id === "novice" ? 34 : 40 + (degree - 2) * 2;
+        const scale = Math.min(visibleHeight / height, 60 / width) * 256 / 60;
+        badge.style.setProperty("--lobby-medal-scale", String(scale));
+        badge.src = window.KillexProgressionArt.rank(profile.title.id, 256);
+      }
+      $("profileMedal").replaceChildren(...(badge ? [badge] : []));
+    }
     $("xpBar").setAttribute("aria-valuemax", p.nextLevelXp);
     $("xpBar").setAttribute("aria-valuenow", p.levelXp);
     $("xpBar").setAttribute(

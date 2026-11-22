@@ -197,6 +197,8 @@
       rim.width = target.clientWidth + 16;
       rim.height = target.clientHeight + 16;
       const dpr = Math.min(devicePixelRatio || 1, 2);
+      if (rim.canvas.width === Math.round(rim.width * dpr) &&
+          rim.canvas.height === Math.round(rim.height * dpr)) continue;
       rim.canvas.width = Math.round(rim.width * dpr);
       rim.canvas.height = Math.round(rim.height * dpr);
       rim.canvas.getContext("2d").setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -240,6 +242,7 @@
       return;
     }
     if (rims.has(host)) {
+      if (rims.get(host).id === id) return;
       rims.get(host).id = id;
       requestRims();
       return;

@@ -208,7 +208,9 @@
       document.body.classList.toggle("account-vip", !!a.vip);
       document.body.classList.toggle("account-premium", !!a.premium);
       const marks = document.getElementById("accountMarks");
-      marks.replaceChildren();
+      const marksKey = JSON.stringify([!!a.vip, a.vipUntil, !!a.premium, a.premiumUntil]);
+      const updateMarks = marks.dataset.renderKey !== marksKey;
+      if (updateMarks) { marks.dataset.renderKey = marksKey; marks.replaceChildren(); }
       for (const [kind, { state, activate, activeBadge }] of this.controls) {
         const active = !!a[kind];
         activeBadge.hidden = !active;
@@ -221,7 +223,7 @@
           minute: "2-digit",
         });
         state.textContent = active ? "До " + expiry : "Не активирован";
-        {
+        if (updateMarks) {
           const row = el("div", "profile-account " + kind),
             img = el("img"),
             copy = el("div");

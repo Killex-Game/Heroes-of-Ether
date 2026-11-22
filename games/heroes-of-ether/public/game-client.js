@@ -542,6 +542,7 @@
     bodyArt.clear();
     window.KillexShields.clearSphereCache();
     myId = null;
+    delete ui.leaders.dataset.rankingKey;
     ui.leaders.replaceChildren();
     $("arenaClanList").replaceChildren();
     ui.mass.textContent = "-";
@@ -1049,6 +1050,9 @@
     const list = Array.isArray(serverLeaderboard)
       ? serverLeaderboard.filter((p) => p && typeof p.id === "string").slice(0, 10)
       : [...players].sort((a, b) => (b.mass || 0) - (a.mass || 0)).slice(0, 10);
+    const rankingKey = JSON.stringify([list, clanLeaderboard, myId, me?.clanId]);
+    if (ui.leaders.dataset.rankingKey === rankingKey) return;
+    ui.leaders.dataset.rankingKey = rankingKey;
     const fragment = document.createDocumentFragment();
     list.forEach((entry, i) => {
       const row = document.createElement("div");

@@ -908,11 +908,11 @@
       }
       return shelf;
     }
-    memberRow(p, clan, { readOnly = false, competitionMode = this.data.competition?.mode } = {}) {
+    memberRow(p, clan, { readOnly = false, competitionMode = this.data.competition?.mode, retainedRow = null } = {}) {
       const battle = readOnly ? { kills: p.kills } : this.data.competition?.personal?.[p.id],
         reward = !readOnly && window.KillexClanBattleUI.previewTier(this.data.competition, p.id),
         canJoin = !readOnly && p.canJoinArena && this.game.isLobby(),
-        previousRow = !readOnly && this.previousMemberRows?.get(p.id),
+        previousRow = retainedRow || (readOnly ? null : this.previousMemberRows?.get(p.id)),
         contentKey = JSON.stringify([p, readOnly, competitionMode, battle?.kills ?? 0, reward, canJoin]);
       if (previousRow?.memberContentKey === contentKey) return previousRow;
       const signature = JSON.stringify([p.skinId, p.appearance?.avatarFrame,

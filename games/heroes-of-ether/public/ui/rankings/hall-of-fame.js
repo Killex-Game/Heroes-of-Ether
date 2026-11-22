@@ -342,9 +342,11 @@
                 ". Открыть профиль"
             : "Место " + (i + 1) + " ждёт Героя",
         );
-        slot.portrait.replaceChildren(
-          ...(hero ? [this.skin(hero)] : [el("span", "hall-empty-mark", "✧")]),
-        );
+        const portraitKey = hero ? hero.skinId : "empty";
+        if (slot.portraitKey !== portraitKey) {
+          slot.portraitKey = portraitKey;
+          slot.portrait.replaceChildren(...(hero ? [this.skin(hero)] : [el("span", "hall-empty-mark", "✧")]));
+        }
         slot.plate.replaceChildren();
         slot.plate.title = hero
           ? hero.name + ": " + number(hero.greatness) + " величия"
@@ -394,6 +396,9 @@
     }
     renderCompact() {
       if (!this.data) return;
+      const compactKey = JSON.stringify([this.data.top, this.compactPage, innerHeight < 700]);
+      if (compactKey === this.compactKey) return;
+      this.compactKey = compactKey;
       this.compact.replaceChildren();
       const size = innerHeight < 700 ? 2 : 4;
       const pages = Math.ceil(this.data.top.length / size);
@@ -453,6 +458,9 @@
       this.refresh();
     }
     renderList() {
+      const listKey = JSON.stringify([this.data?.heroes, this.data?.page, this.data?.pages, this.data?.total]);
+      if (listKey === this.listKey) return;
+      this.listKey = listKey;
       this.listBody.replaceChildren();
       if (!this.data) {
         this.listBody.append(el("p", "", ""));

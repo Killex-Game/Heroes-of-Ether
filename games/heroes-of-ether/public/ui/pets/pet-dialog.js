@@ -223,6 +223,9 @@
     }
     render() {
       const state = this.state();
+      const key = JSON.stringify([this.profile?.id, state, this.profile?.wallet, this.profile?.progress?.achievements, this.selected, this.tab, this.busy, this.pending, this.owner.inArena()]);
+      if (key === this.renderKey) return;
+      this.renderKey = key;
       this.wallet.replaceChildren();
       for (const id of ["coins", "crystals", "bucks"])
         this.wallet.append(
@@ -232,36 +235,41 @@
             `${number(this.profile?.wallet?.[id])} ${currency[id]}`,
           ),
         );
-      this.collection.replaceChildren();
-      for (const p of R.pets) {
-        const owned = state?.owned[p.id],
-          b = button(
-            "",
-            () => {
-              this.selected = p.id;
-              this.render();
-            },
-            "pet-choice",
+      const collectionKey = JSON.stringify([state?.equipped, state?.prices, R.pets.map(p => [p.id, state?.owned[p.id]?.level ?? null])]);
+      if (collectionKey !== this.collectionKey) {
+        this.collectionKey = collectionKey;
+        this.collection.replaceChildren();
+        for (const p of R.pets) {
+          const owned = state?.owned[p.id],
+            b = button(
+              "",
+              () => {
+                this.selected = p.id;
+                this.render();
+              },
+              "pet-choice",
+            );
+          b.dataset.pet = p.id;
+          b.setAttribute("aria-pressed", String(p.id === this.selected));
+          const text = el("span", "pet-choice-text");
+          text.append(
+            el("strong", "", p.name),
+            el(
+              "small",
+              "",
+              owned
+                ? owned.level
+                  ? `Уровень ${owned.level}`
+                  : "Обучение"
+                : `${number(this.price(p.id))} ${currency[p.currency]}`,
+            ),
           );
-        b.dataset.pet = p.id;
-        b.setAttribute("aria-pressed", String(p.id === this.selected));
-        const text = el("span", "pet-choice-text");
-        text.append(
-          el("strong", "", p.name),
-          el(
-            "small",
-            "",
-            owned
-              ? owned.level
-                ? `Уровень ${owned.level}`
-                : "Обучение"
-              : `${number(this.price(p.id))} ${currency[p.currency]}`,
-          ),
-        );
-        if (state?.equipped === p.id) text.append(el("span", "pet-equipped-label", "Со мной"));
-        b.append(img(R.imageFor(p.id, owned?.level)), text);
-        this.collection.append(b);
+          if (state?.equipped === p.id) text.append(el("span", "pet-equipped-label", "Со мной"));
+          b.append(img(R.imageFor(p.id, owned?.level)), text);
+          this.collection.append(b);
+        }
       }
+      for (const b of this.collection.children) b.setAttribute("aria-pressed", String(b.dataset.pet === this.selected));
       this.renderHero();
       this.renderDetails();
       this.retry.hidden = !this.pending || this.busy;
@@ -274,6 +282,7 @@
         owned = state?.owned[this.selected],
         equipped = state?.equipped === def.id,
         minutes = R.capacityMs(def.id, owned?.games || 0) / 60000;
+      const previousPortrait = this.hero.querySelector(".pet-portrait");
       this.hero.replaceChildren();
       const name = el("header", "pet-name");
       name.append(
@@ -291,7 +300,9 @@
       );
       const stage = el("div", "pet-stage");
       stage.dataset.pet = def.id;
-      stage.append(img(R.imageFor(def.id, owned?.level), "pet-portrait"));
+      const portraitSource = R.imageFor(def.id, owned?.level);
+      stage.append(previousPortrait?.getAttribute("src") === portraitSource
+        ? previousPortrait : img(portraitSource, "pet-portrait"));
       const desc = el("p", "pet-description", def.description);
       const care = el("div", "pet-care");
       const top = el("div", "pet-care-line");
@@ -381,6 +392,9 @@
       }
     }
     renderDetails() {
+      const detailsKey = JSON.stringify([this.selected, this.tab, this.state()?.owned[this.selected], this.profile?.progress?.achievements]);
+      if (detailsKey === this.detailsKey) return;
+      this.detailsKey = detailsKey;
       this.tabs.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.tab === this.tab)));
       const root = this.detailBody;
       root.replaceChildren();

@@ -76,3 +76,20 @@ test("a failed expiry settlement stays due, then retries exactly once without ch
   assert.equal(store.byId(saved.profiles[key].id).clanChests.notices.length, 0);
   assert.equal(store.refreshCompetition(AT + 101), false);
 });
+
+
+test("idle five-second checks preserve the world and never request a save", () => {
+  const store = fixture(), before = store.data, bytes = JSON.stringify(before);
+  let saves = 0;
+  const save = store.save.bind(store);
+  store.save = (...args) => { saves++; return save(...args); };
+  for (let n = 0; n < 120; n++) assert.equal(store.refreshCompetition(AT + n * 5000), false);
+  assert.equal(saves, 0);
+  assert.strictEqual(store.data, before);
+  assert.equal(JSON.stringify(store.data), bytes);
+  const { ChatService } = require("../../src/server/chat/chat-service");
+  const chat = new ChatService({ now: () => AT });
+  let credits = 0; chat.applyCredit = () => credits++;
+  for (let n = 0; n < 120; n++) chat.syncProgress();
+  assert.equal(credits, 0);
+});

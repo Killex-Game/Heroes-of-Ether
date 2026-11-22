@@ -19,6 +19,16 @@ function fixture() {
   }, { filename });
   return new module.exports.MongoSync("unused", { intervalMs: 5000 });
 }
+
+test("Slow cold verification does not extend ordinary write deadlines", async () => {
+  const sync = fixture();
+  for (const command of ['open', 'resume', 'sync']) {
+    const result = sync.command(command);
+    assert.equal(sync.waiting.timeout._idleTimeout, command === 'sync' ? 45000 : 1260000);
+    sync.worker.emit('message', { id: sync.waiting.id, result: { revision: 1 } });
+    await result;
+  }
+});
 test("Idle Mongo telemetry and disabled-metrics acknowledgement cannot crash or resolve a command", async () => {
   const sync = fixture();
   sync.worker.emit("message", { type: "metrics", metrics: { reads: 3 } });
