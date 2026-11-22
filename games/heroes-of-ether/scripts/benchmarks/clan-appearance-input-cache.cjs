@@ -6,7 +6,7 @@ const file=require.resolve('../../src/server/profiles/settlement-cache');
 const old=new Module(file,module);old.filename=file;old.paths=Module._nodeModulePaths(path.dirname(file));
 old._compile(fs.readFileSync(process.env.BASELINE_SETTLEMENT_CACHE,'utf8'),file);
 const variants=[old.exports,require(file)],at=Date.parse('2026-11-11T12:00:00Z');
-const fixture=require('./mongodb-room-fixture.cjs').createFixture(at),results=[];
+const fixture=require('./database-room-fixture.cjs').createFixture(at),results=[];
 const comparable=data=>{const out=structuredClone(data);for(const p of Object.values(out.profiles))
   for(const [i,e] of p.transactions.entries.entries())e.id='entry-'+i;return out;};
 let expected;

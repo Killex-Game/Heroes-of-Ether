@@ -44,11 +44,11 @@ test("Windows UTF-8 BOM configs load with the same values as Node JSON modules",
 });
 test("Doctor reports stale sync without exposing credentials or profile contents", t => {
   const { root } = fixture(t); fs.mkdirSync(path.join(root, "data"));
-  fs.writeFileSync(path.join(root, "config/mongodb.local.json"), JSON.stringify({ enabled: true, credentialsFile: path.join(root, "never-open-secret.env"), database: "hero_ether_test_doctor", sourceId: "11111111-1111-1111-1111-111111111111" }));
-  fs.writeFileSync(path.join(root, "data/mongodb-status.json"), JSON.stringify({ connected: true, syncedAt: 1, checkedAt: 1, revision: 7, password: "must-not-leak", uri: "mongodb+srv://secret" }));
+  fs.writeFileSync(path.join(root, "config/postgresql.local.json"), JSON.stringify({ enabled: true, host:"example.invalid",port:5432,schema:"heroether_test_doctor",caFile:path.join(root,"never-open-ca.pem"),credentialsFile: path.join(root, "never-open-secret.env"), database: "hero_ether_test_doctor", sourceId: "11111111-1111-1111-1111-111111111111" }));
+  fs.writeFileSync(path.join(root, "data/postgresql-status.json"), JSON.stringify({ connected: true, syncedAt: 1, checkedAt: 1, revision: 7, password: "must-not-leak", uri: "postgresql://secret" }));
   fs.writeFileSync(path.join(root, "data/profiles.json.wal-7"), "private profile data");
   const report = inspect(root, { env: {}, now: 100000 });
-  assert.equal(report.mongo.state, "stale"); assert.equal(report.mongo.revision, 7);
+  assert.equal(report.database.state, "stale"); assert.equal(report.database.revision, 7);
   assert.doesNotMatch(JSON.stringify(report), /secret|must-not-leak|sourceId|credentialsFile/);
   assert.equal(report.server.processPresent, false);
   assert.deepEqual(report.localStorage.files, [{ name: "profiles.json.wal-7", bytes: 20 }]);

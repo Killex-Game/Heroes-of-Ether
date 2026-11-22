@@ -1,5 +1,5 @@
 "use strict";
-// Read and validate startup settings before opening data files or MongoDB.
+// Read and validate startup settings before opening data files or PostgreSQL.
 const fs = require("node:fs"), path = require("node:path"), os = require("node:os"), net = require("node:net");
 const { STATE_WORKER_LIMITS } = require("../arena/state-worker-policy");
 const PROFILE_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;

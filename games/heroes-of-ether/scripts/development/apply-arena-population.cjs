@@ -5,17 +5,18 @@ const root=path.resolve(__dirname,'../..'),dir=path.join(root,'data');
 const {acquireServerLock}=require('../../src/server/runtime/process-lock');
 const {ProfileStore}=require('../../src/server/profiles/profile-store');
 const {prepareBattlePopulation}=require('../../src/server/testing/battle-population');
-const {MongoState,readLocal,hash}=require('../../src/server/persistence/mongodb-state');
-const {loadConfig,safeError}=require('../../src/server/persistence/mongodb-config');
+const {readLocal,hash}=require('../../src/server/persistence/state-snapshot');
+const {PostgreSQLState}=require('../../src/server/persistence/postgresql-state');
+const {loadConfig,safeError}=require('../../src/server/persistence/postgresql-config');
 const B=require('../../src/server/events/black-friday');
 const OWNER='c39fe041-62a0-4047-87d1-2be4e8ee6562';
 const RUN='41ba6351-a7c3-4743-bcfa-e5b24d7993c4';
 (async()=>{
- const release=acquireServerLock(path.join(dir,'server.lock'));let store,mongo;
+ const release=acquireServerLock(path.join(dir,'server.lock'));let store,database;
  try{
   const before=readLocal(dir,true),config=loadConfig(root);
-  if(!config||config.database!=='hero_ether_test_sweb_play')throw Error('Wrong test database');
-  mongo=new MongoState(config);await mongo.client.connect();await mongo.acquire(before.snapshot);
+  if(!config||config.schema !== 'heroether')throw Error('Wrong test database');
+  database=new PostgreSQLState(config);await database.client.connect();await database.acquire(before.snapshot);
   const at=Date.now();store=new ProfileStore({filePath:path.join(dir,'profiles.json'),journal:true,now:()=>at});
   const ownerClan=Object.values(store.data.profiles).find(p=>p.id===OWNER)?.clanId;
   if(!ownerClan||!store.data.clans[ownerClan])throw Error('Expected owner clan missing');
@@ -42,12 +43,12 @@ const RUN='41ba6351-a7c3-4743-bcfa-e5b24d7993c4';
   }
   if(prepared.added||oldCompleted!==state.completedOrders)store.save(next,at);
   await store.close();store=null;
-  const after=readLocal(dir,true);await mongo.sync(after.snapshot);
-  assert.equal((await mongo.read()).snapshot.digest,after.snapshot.digest);
+  const after=readLocal(dir,true);await database.sync(after.snapshot);
+  assert.equal((await database.read()).snapshot.digest,after.snapshot.digest);
   const bots=Object.values(after.world.profiles).filter(p=>p.testBot==='local-clan-test-v1');
   const clans=Object.values(after.world.clans).filter(c=>c.testOnly==='local-clan-test-v1');
   assert.ok(clans.every(c=>c.members.length>=10));
   assert.ok(after.world.clans[ownerClan].members.length>=10);
   console.log(JSON.stringify({ok:true,addedBots:prepared.added,bots:bots.length,testClans:clans.length,minRoster:Math.min(...clans.map(c=>c.members.length)),ownerClanMembers:after.world.clans[ownerClan].members.length,levels:{sandbox:bots.filter(p=>p.level<12).length,glade:bots.filter(p=>p.level>=12&&p.level<=120).length,arena:bots.filter(p=>p.level>120).length},ownerOrdersBefore:oldCompleted,ownerOrdersAfter:state.completedOrders,revision:after.snapshot.revision,digest:after.snapshot.digest,existingProfilesPreserved:true}));
- }finally{await store?.close();await mongo?.close();release();}
+ }finally{await store?.close();await database?.close();release();}
 })().catch(e=>{console.error(safeError(e));process.exitCode=1;});

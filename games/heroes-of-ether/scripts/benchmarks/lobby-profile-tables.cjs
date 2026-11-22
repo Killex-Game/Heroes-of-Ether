@@ -5,7 +5,7 @@ const current=require("../../src/server/profiles/profile-store");
 const file=require.resolve("../../src/server/profiles/profile-store");
 const old=new Module(file,module);old.filename=file;old.paths=Module._nodeModulePaths(path.dirname(file));
 old._compile(fs.readFileSync(process.env.BASELINE_PROFILE_STORE,"utf8"),file);
-const at=Date.parse("2026-11-11T12:00:00Z"),fixture=require("./mongodb-room-fixture.cjs").createFixture(at);
+const at=Date.parse("2026-11-11T12:00:00Z"),fixture=require("./database-room-fixture.cjs").createFixture(at);
 const variants=[old.exports,current],results=[];let expected;
 function comparable(data) {
   const copy=structuredClone(data);

@@ -4,7 +4,7 @@ const old='/srv/heroether-test/play/releases/20261110-lobby-polish';
 const next='/srv/heroether-test/play/releases/20261111-social-king';
 const filePath='/srv/heroether-test/play/data/profiles.json';
 const {recover}=require(next+'/src/server/profiles/profile-journal');
-const {hash}=require(next+'/src/server/persistence/mongodb-state');
+const {hash}=require(next+'/src/server/persistence/state-snapshot');
 const {migrateKingProgress,validateProgress}=require(next+'/src/server/progression/experience-progression');
 const before=recover(filePath).data,at=Date.now();
 const OldStore=require(old+'/src/server/profiles/profile-store').ProfileStore;

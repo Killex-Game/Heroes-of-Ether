@@ -1,7 +1,7 @@
 "use strict";
 // ISOLATED EXPERIMENT ONLY. Not imported by game-server. The normal store
 // rejects version 15 so an experimental world cannot silently run without its
-// reservation/recovery coordinator. Mongo is a mirror, never a second writer.
+// reservation/recovery coordinator. database is a mirror, never a second writer.
 const { ChildProcess }=require('node:child_process');
 const { createHash }=require('node:crypto');
 const { arenaCastDraft }=require('../../profiles/profile-store');

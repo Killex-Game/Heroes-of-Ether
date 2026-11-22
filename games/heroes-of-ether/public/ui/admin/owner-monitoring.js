@@ -1,9 +1,9 @@
 "use strict";
 (() => {
   const $=id=>document.getElementById(id),node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
-  const reasons={LOCAL_JOURNAL_FAILED:'Ошибка локального журнала сохранений',CHECKPOINT_FAILED:'Не удалось создать снимок сохранений',ARENA_SAVE_FAILED:'Не удалось сохранить прогресс арены',MONGODB_FAILED:'Ошибка связи или синхронизации MongoDB',MONGODB_STALE:'MongoDB не подтверждает синхронизацию вовремя',SERVER_UNREACHABLE:'Сервер не ответил на проверку доступности'};
+  const reasons={LOCAL_JOURNAL_FAILED:'Ошибка локального журнала сохранений',CHECKPOINT_FAILED:'Не удалось создать снимок сохранений',ARENA_SAVE_FAILED:'Не удалось сохранить прогресс арены',DATABASE_FAILED:'Ошибка связи или синхронизации базы данных',DATABASE_STALE:'База данных не подтверждает синхронизацию вовремя',SERVER_UNREACHABLE:'Сервер не ответил на проверку доступности'};
   const titles={maintenance:'Технические работы',failure:'Сбой',unavailable:'Недоступность'};
-  const time=n=>new Date(n).toLocaleString('ru-RU',{timeZone:'Europe/Moscow'});
+  const time=n=>new Date(n).toLocaleString('ru-RU');
   const number=n=>Number(n).toLocaleString('ru-RU',{maximumFractionDigits:2});
   const svg=(name,attributes)=>{const n=document.createElementNS('http://www.w3.org/2000/svg',name);for(const [k,v]of Object.entries(attributes))n.setAttribute(k,v);return n;};
   class OwnerMonitoring{
@@ -26,11 +26,12 @@
     render(data){
       const state=data.availability,warning=data.stale||data.logError;
       const current=$('monitorStatus');current.dataset.health=state.automatic.active?'critical':warning?'warning':'normal';
-      current.textContent=state.automatic.active?'Сбой · '+state.automatic.faults.map(OwnerMonitoring.reason).join(', '):state.status.maintenance?state.status.title:warning?'Мониторинг: нет свежих измерений':'Игра доступна';
+      current.textContent=state.automatic.active?'Сбой: '+state.automatic.faults.map(OwnerMonitoring.reason).join(', '):state.status.maintenance?state.status.title:warning?'Мониторинг: нет свежих измерений':'Игра доступна';
       const watch=data.watchdog,watchFresh=watch&&Date.now()-watch.checkedAt<20000;
-      $('monitorUpdated').textContent=(data.checkedAt?'Проверка админкой: '+time(data.checkedAt)+' МСК. ':'')+(data.at?(data.stale?'Последний игровой замер: ':'Игровой замер: ')+time(data.at)+' МСК. ':'Свежих игровых замеров нет. ')+(watchFresh?'Внешняя проверка: '+(watch.active?'сбой':watch.healthy?'отвечает':'проверяем')+'.':'Внешняя проверка: нет свежего ответа.')+(data.logError?' Ошибка записи/чтения журнала мониторинга.':'');
+      $('monitorUpdated').textContent=(data.checkedAt?'Проверка админкой: '+time(data.checkedAt)+'. ':'')+(data.at?(data.stale?'Последний игровой замер: ':'Игровой замер: ')+time(data.at)+'. ':'Свежих игровых замеров нет. ')+(watchFresh?'Внешняя проверка: '+(watch.active?'сбой':watch.healthy?'отвечает':'проверяем')+'.':'Внешняя проверка: нет свежего ответа.')+(data.logError?' Ошибка записи/чтения журнала мониторинга.':'');
+      const database='PostgreSQL';
       const graphs=$('monitorGraphs');graphs.replaceChildren();
-      for(const [key,title,unit,scale,description]of [['mongo','MongoDB','операций/с',1,'Завершённые операции хранилища игры. Пакетная запись и чтение курсора считаются одной операцией; это не число документов и не вся нагрузка Atlas.'],['disk','Диск VPS','КиБ/с',1024,data.disk?.available?'Устройство '+data.disk.device+' · весь ввод-вывод диска.':data.disk?.reason||'Нет измерений диска.']]){
+      for(const [key,title,unit,scale,description]of [['database',database,'операций/с',1,'Завершённые операции хранилища игры. Одна транзакция записи или полного чтения считается одной операцией; это не число документов и не вся нагрузка базы данных.'],['disk','Диск VPS','КиБ/с',1024,data.disk?.available?'Устройство '+data.disk.device+': весь ввод-вывод диска.':data.disk?.reason||'Нет измерений диска.']]){
         const card=node('article');card.className='monitor-chart';card.append(node('h3',title));
         const independent=key==='disk'&&data.independent;
         const finish=data.checkedAt||Date.now(),begin=finish-3600000;
@@ -45,9 +46,9 @@
           for(const p of points){if(!p[key]||p.at<begin){previous=0;continue;}const x=48+(p.at-begin)/3600000*542,y=141-p[key][field]/scale/max*126;d+=(previous&&p.at-previous<20000?' L':' M')+x.toFixed(2)+' '+y.toFixed(2);previous=p.at;}
           plot.append(svg('path',{d,'data-series':field,fill:'none','stroke-width':2.5,'vector-effect':'non-scaling-stroke'}));
         }
-        card.append(plot);const axis=node('div');axis.className='monitor-axis';axis.append(node('span','−60 мин'),node('span','−30 мин'),node('span','Сейчас'));card.append(axis,node('p',independent?(independent.disk.available?'Независимый замер админки · устройство '+independent.disk.device+' · весь ввод-вывод диска.':independent.disk.reason||'Нет измерений диска.'):description));
-        if(key==='mongo'&&data.stale)card.append(node('p','Игра недоступна. Показана история; свежие операции MongoDB не измеряются.'));
-        else if(key==='mongo'&&!data.mongo?.enabled)card.append(node('p','MongoDB не подключена.'));
+        card.append(plot);const axis=node('div');axis.className='monitor-axis';axis.append(node('span','−60 мин'),node('span','−30 мин'),node('span','Сейчас'));card.append(axis,node('p',independent?(independent.disk.available?'Независимый замер админки: устройство '+independent.disk.device+': весь ввод-вывод диска.':independent.disk.reason||'Нет измерений диска.'):description));
+        if(key==='database'&&data.stale)card.append(node('p','Игра недоступна. Показана история; свежие операции '+database+' не измеряются.'));
+        else if(key==='database'&&!data.database?.enabled)card.append(node('p',database+' не подключена.'));
         else if(!values.length)card.append(node('p','Недостаточно измерений для графика.'));
         graphs.append(card);
       }

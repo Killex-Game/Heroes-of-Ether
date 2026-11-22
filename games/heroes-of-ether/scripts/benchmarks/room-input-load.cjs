@@ -129,17 +129,17 @@ if (process.env.LOAD_CLIENT === "1") {
     ? JSON.parse(fs.readFileSync(process.env.LOAD_WORLD_FIXTURE, "utf8")) : null;
   if (fixture && (fixture.summary?.profiles !== 1280 || fixture.summary?.clans !== 128 ||
       Object.keys(fixture.data.profiles).length !== 1280 || fixture.tokens?.length !== 1280 ||
-      Object.values(fixture.data.profiles).some(p => p.testFixture !== "mongo-capacity-20261110")))
+      Object.values(fixture.data.profiles).some(p => p.testFixture !== "database-capacity-20261110")))
     throw Error("Invalid synthetic world");
   const dataDir = fixture ? path.join(dir, "data") : dir;
   fs.mkdirSync(dataDir, { recursive: true });
   if (fixture) fs.writeFileSync(path.join(dataDir, "profiles.json"), JSON.stringify(fixture.data));
-  if (process.env.LOAD_MONGO_CONFIG) {
-    if (!fixture) throw Error("Mongo benchmark requires a synthetic world");
+  if (process.env.LOAD_DATABASE_CONFIG) {
+    if (!fixture) throw Error("database benchmark requires a synthetic world");
     fs.mkdirSync(path.join(dir, "config"));
-    fs.copyFileSync(process.env.LOAD_MONGO_CONFIG, path.join(dir, "config/mongodb.local.json"));
+    fs.copyFileSync(process.env.LOAD_DATABASE_CONFIG, path.join(dir, "config/postgresql.local.json"));
   }
-  let mongo;
+  let database;
   const monitorMode = process.env.LOAD_MONITORING;
   if (monitorMode && !["off", "on", "alternate"].includes(monitorMode)) throw Error("Invalid monitoring mode");
   let monitorTimer, monitorStarted = 0;
@@ -244,8 +244,8 @@ if (process.env.LOAD_CLIENT === "1") {
     // a single NAT's abuse limit rather than hundreds of separate users.
     trustLoopbackProxy: process.env.LOAD_LOBBY_DISTINCT_IPS === "1",
     ...(monitorMode ? {monitorDirectory:path.join(dataDir,"monitoring"),
-      mongoMonitor:()=>mongo?.sync.monitoring() || null,
-      mongoMetrics:enabled=>mongo ? mongo.sync.setMetrics(enabled) : true} : {}),
+      databaseMonitor:()=>database?.sync.monitoring() || null,
+      databaseMetrics:enabled=>database ? database.sync.setMetrics(enabled) : true} : {}),
     events,
     chat,
     experimentalStepPool,
@@ -558,8 +558,8 @@ if (process.env.LOAD_CLIENT === "1") {
       c.p.splitSequence = 0;
     }
     if (fixture) profiles.save(structuredClone(profiles.data));
-    if (process.env.LOAD_MONGO_CONFIG)
-      mongo = await require("./mongodb-load-store.cjs").attachTestMongo(dir, profiles, chat);
+    if (process.env.LOAD_DATABASE_CONFIG)
+      database = await require("./database-load-store.cjs").attachTestDatabase(dir, profiles, chat);
     const stageMeter=process.env.LOAD_STAGE_METRICS==='1'
       ?require('./tick-stage-meter.cjs').install({app,profiles,arenas}):null;
     let massPeak, partsPeak, persistence = {};
@@ -715,7 +715,7 @@ if (process.env.LOAD_CLIENT === "1") {
         persistence,
         ...(process.env.LOAD_QUEUE_TIMING === "1" ? { queueTiming } : {}),
         ...(process.env.LOAD_PROFILE_TIMING === "1" ? { profileTiming } : {}),
-        ...(mongo ? { mongo: mongo.samples.slice() } : {}),
+        ...(database ? { database: database.samples.slice() } : {}),
         stateWorkers: { ...app.stateWorkers.stats, lanes: app.stateWorkers.lanes.length },
         profileWorker: profiles.arenaPreparer ? { ...profiles.arenaPreparer.stats } : null,
         effects: applied,
@@ -730,8 +730,8 @@ if (process.env.LOAD_CLIENT === "1") {
   }
   main()
     .catch((e) => {
-      console.error(process.env.LOAD_MONGO_CONFIG
-        ? require("../../src/server/persistence/mongodb-config").safeError(e) : e.stack);
+      console.error(process.env.LOAD_DATABASE_CONFIG
+        ? require("../../src/server/persistence/postgresql-config").safeError(e) : e.stack);
       process.exitCode = 1;
     })
     .finally(async () => {
@@ -740,16 +740,16 @@ if (process.env.LOAD_CLIENT === "1") {
       clearInterval(inputTimer);
       for (const driver of drivers) driver.kill();
       lobbyDriver?.kill();
-      mongo?.sync.pause();
+      database?.sync.pause();
       await app.close();
       await experimentalStepPool?.close();
       fs.writeFileSync(path.join(dir, "close-status.json"), JSON.stringify({
         capturedAt: Date.now(), persistence: app.persistenceStatus(),
       }, null, 2));
-      if (mongo) {
-        await mongo.sync.close();
-        try { await mongo.verify(); }
-        catch (e) { console.error(require("../../src/server/persistence/mongodb-config").safeError(e)); process.exitCode = 1; }
+      if (database) {
+        await database.sync.close();
+        try { await database.verify(); }
+        catch (e) { console.error(require("../../src/server/persistence/postgresql-config").safeError(e)); process.exitCode = 1; }
       }
       if (process.env.LOAD_RECOVERY_MS) {
         const recovery = { before: process.memoryUsage(), seconds: Number(process.env.LOAD_RECOVERY_MS) / 1000 };

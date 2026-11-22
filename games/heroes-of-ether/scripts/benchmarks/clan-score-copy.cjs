@@ -6,7 +6,7 @@ const file=require.resolve("../../src/server/clans/clan-competition-service");
 const old=new Module(file,module);old.filename=file;old.paths=Module._nodeModulePaths(path.dirname(file));
 old._compile(fs.readFileSync(process.env.BASELINE_CLAN_SCORE,"utf8"),file);
 const variants=[old.exports,current],at=Date.parse("2026-11-11T12:00:00Z");
-const root=require("./mongodb-room-fixture.cjs").createFixture(at).data;
+const root=require("./database-room-fixture.cjs").createFixture(at).data;
 const keys=Object.keys(root.profiles).slice(0,35),results=[];
 for(const receipts of [0,1000,10000]) {
   const history=Object.freeze(Object.fromEntries(Array.from({length:receipts},(_,i)=>[

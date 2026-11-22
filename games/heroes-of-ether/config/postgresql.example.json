@@ -1,0 +1,10 @@
+{
+  "enabled": false,
+  "host": "database.example.invalid",
+  "port": 5432,
+  "database": "game",
+  "schema": "heroether",
+  "sourceId": "00000000-0000-4000-8000-000000000000",
+  "credentialsFile": "/private/game/database.env",
+  "caFile": "/private/game/database-ca.pem"
+}

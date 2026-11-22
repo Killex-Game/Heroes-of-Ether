@@ -211,7 +211,7 @@
           event.features?.roulette &&
           this.profile?.roulette?.available
         );
-      const calendar=window.KillexClanCalendar,season=calendar.season(now),seasonArt='assets/events/clans/'+season.mode+'.webp';
+      const calendar=window.KillexClanCalendar,season=this.profile?.clanCalendar?.find(s=>s.start<=now&&now<s.end)||calendar.season(now),seasonArt='assets/events/clans/'+season.mode+'.webp';
       this.clanSeasonTitle.textContent=season.name;
       if(this.clanSeasonImage.getAttribute('src')!==seasonArt)this.clanSeasonImage.src=seasonArt;
       this.clanSeasonStatus.textContent='До конца: '+calendar.countdown(season.end,now);

@@ -7,7 +7,7 @@ const { applyTransfer } = require("./profile-transfer");
 const store = new ProfileStore();
 let base = { profiles: {}, clans: {} }, prediction = null, at = 0;
 store.now = () => at;
-// Calculation only. This worker has no WAL, MongoDB, sockets or authority to
+// Calculation only. This worker has no WAL, PostgreSQL, sockets or authority to
 // publish a reward. Global competition/calendar settlement stays with the owner.
 parentPort.on("message", message => {
   const started = performance.now();

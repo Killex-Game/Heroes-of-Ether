@@ -10,6 +10,7 @@ backups/
 **/.env.*
 !**/.env.example
 **/config/mongodb.local.json
+**/config/postgresql.local.json
 **/*.credentials.env
 **/*.key
 

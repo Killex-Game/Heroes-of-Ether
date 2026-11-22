@@ -11,7 +11,7 @@ function normalize(input) {
   return { requestId: input.requestId, text };
 }
 // Single writer: the independent admin service. Its directory is already part
-// of the protected administrative backup. No profile/world copies or Atlas I/O.
+// of the protected administrative backup. No profile/world copies or PostgreSQL I/O.
 class FeedbackStore {
   constructor({ file = null, now = Date.now } = {}) {
     Object.assign(this, { file, now }); this.rows = new Map(); this.requests = new Map(); this.players = new Map();

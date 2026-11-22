@@ -916,6 +916,7 @@ class ProfileStore {
       roulette: roulette.view(profile, this.rouletteConfig, this.now(), this.events),
       event: this.events?.publicView(this.now()) || null,
       scheduledEvent: this.events?.publicScheduled?.(this.now()) || null,
+      clanCalendar: [0,1].reduce((list) => { list.push(require('../../../public/shared/clan-season-calendar').season(list.length ? list[0].end : this.now(), this.data.clanQuests?.calendarSchedule)); return list; }, []),
       newsRevision: this.data.gameNews?.revision || 0,
       easter: easter.view(profile, this.events, this.now(), this.rouletteConfig, easterPictures),
       eventAlbum: eventAlbum.view(profile, easterPictures),

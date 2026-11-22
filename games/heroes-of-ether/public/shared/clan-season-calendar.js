@@ -6,18 +6,34 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, () => {
   "use strict";
   const HOUR = 3600000, DAY = 24 * HOUR, OFFSET = 3 * HOUR;
-  function season(at) {
+  function season(at, schedule = []) {
     if (!Number.isFinite(at)) throw Error("Invalid clan calendar time");
     const date = new Date(at + OFFSET), year = date.getUTCFullYear();
     const block = Math.floor(date.getUTCMonth() / 2), month = block * 2;
-    const mode = block % 2 ? "quests" : "battle";
+    const start = Date.UTC(year, month, 1) - OFFSET;
+    const mode = schedule.find(row => row.start === start)?.mode || (block % 2 ? "quests" : "battle");
+    let number = (year - 2026) * 3 + (mode === 'quests' ? Math.floor(block / 2) : Math.ceil(block / 2)) + 1;
+    for (const row of schedule) if (row.start < start) {
+      const original = Math.floor(new Date(row.start + OFFSET).getUTCMonth() / 2) % 2 ? 'quests' : 'battle';
+      number += Number(row.mode === mode) - Number(original === mode);
+    }
     return {
       id: `clan-${mode}-${year}-${String(month + 1).padStart(2, "0")}`,
       mode, name: mode === "quests" ? "Сезон клановых заданий" : "Сезон клановых битв",
-      number: (year - 2026) * 3 + Math.floor(block / 2) + 1,
-      start: Date.UTC(year, month, 1) - OFFSET,
+      number,
+      start,
       end: Date.UTC(year, month + 2, 1) - OFFSET,
     };
+  }
+  function validateSchedule(schedule) {
+    if (!Array.isArray(schedule) || schedule.length > 1200) throw Error('Invalid clan calendar schedule');
+    let previous = -Infinity;
+    for (const row of schedule) {
+      if (!row || Object.keys(row).sort().join(',') !== 'mode,start' || !['quests','battle'].includes(row.mode) ||
+          !Number.isSafeInteger(row.start) || row.start < Date.UTC(2026,0,1)-OFFSET || row.start <= previous ||
+          season(row.start).start !== row.start) throw Error('Invalid clan calendar schedule');
+      previous = row.start;
+    }
   }
   function daily(at, mode = "battle") {
     const midnight = Math.floor((at + OFFSET) / DAY) * DAY - OFFSET;
@@ -45,5 +61,5 @@
     return (days ? `${days} д ` : "") + [Math.floor(s / 3600) % 24, Math.floor(s / 60) % 60, s % 60]
       .map(n => String(n).padStart(2, "0")).join(":");
   };
-  return {season, daily, QUEST_PRIZES, questPrize, localTime, localDate, localRange, seasonRange, countdown};
+  return {season, validateSchedule, daily, QUEST_PRIZES, questPrize, localTime, localDate, localRange, seasonRange, countdown};
 });

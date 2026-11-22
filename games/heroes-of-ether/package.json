@@ -35,7 +35,6 @@
     "test:browser:bonuses": "node tests/browser/showcase-and-daily-bonuses.test.js",
     "config:check": "node scripts/development/doctor.cjs --config-only",
     "doctor": "node scripts/development/doctor.cjs",
-    "benchmark:capacity": "node scripts/benchmarks/mongodb-capacity.cjs",
     "benchmark:audit": "node scripts/benchmarks/audit-capacity.cjs",
     "test:browser:legacy": "node tests/browser/full-game-flow.test.js"
   },
@@ -43,10 +42,13 @@
     "node": ">=24.22.3"
   },
   "dependencies": {
-    "mongodb": "7.8.0",
+    "pg": "8.23.1",
     "ws": "8.23.0"
   },
   "devDependencies": {
+    "acorn": "8.19.0",
+    "css-tree": "3.2.1",
+    "parse5": "8.1.1",
     "prettier": "3.9.10"
   }
 }

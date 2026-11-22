@@ -7,7 +7,7 @@ const receipts = require("../../src/server/profiles/operation-receipts");
 const history = require("../../src/server/profiles/transaction-history");
 function audit(directory) {
   const output = path.resolve(directory);
-  const runs = fs.readdirSync(output).filter(n => /^(local|mongo)-\d+-\d+$/.test(n));
+  const runs = fs.readdirSync(output).filter(n => /^(local|database)-\d+-\d+$/.test(n));
   let summary, resident;
   if (!runs.length && fs.existsSync(path.join(output, "report.json"))) {
     resident = JSON.parse(fs.readFileSync(path.join(output, "report.json")));
@@ -23,7 +23,7 @@ function audit(directory) {
   const world = recover(path.join(summary.evidence, "data/profiles.json")).data;
   const chat = recover(path.join(summary.evidence, "data/clan-chat.json")).data;
   const profiles = Object.values(world.profiles);
-  assert(profiles.length > 0 && profiles.every(p => p.testFixture === "mongo-capacity-20261110"), "Synthetic world marker missing");
+  assert(profiles.length > 0 && profiles.every(p => p.testFixture === "database-capacity-20261110"), "Synthetic world marker missing");
   const byId = new Map(profiles.map(p => [p.id, p]));
   const seen = new Set(), types = {}, giftCounts = new Map();
   let acknowledged = 0, gifts = 0, notices = 0;

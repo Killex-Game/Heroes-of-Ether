@@ -44,7 +44,7 @@ function rows(data, state) {
     .map((row,i)=>({...row,rank:i+1,prize:row.completed ? calendar.questPrize(i+1)?.id || null : null}));
 }
 function current(data, at) {
-  const season = calendar.season(at), saved = data.clanQuests?.questSeason;
+  const season = calendar.season(at, data.clanQuests?.calendarSchedule), saved = data.clanQuests?.questSeason;
   if (season.mode !== "quests") return saved || null;
   const state = saved?.id === season.id ? structuredClone(saved) : fresh(season);
   hydrateContributors(state,data);
@@ -58,7 +58,7 @@ function current(data, at) {
 // Counts each durable quest once, independently of the number of contributors.
 function capture(data, at, boards, {canSettle=true}={}) {
   if (data.clanQuests?.calendarVersion !== 1) return data;
-  const season = calendar.season(at), control = data.clanQuests;
+  const season = calendar.season(at, data.clanQuests?.calendarSchedule), control = data.clanQuests;
   let state = control.questSeason && structuredClone(control.questSeason);
   if (!state && season.mode === "quests") {
     state = fresh(season);
@@ -113,15 +113,16 @@ function validate(data) {
   const c = data.clanQuests;
   if (c?.calendarVersion === undefined) return;
   if (c.calendarVersion !== 1 || !Number.isSafeInteger(c.calendarActivatedAt)) throw Error("Invalid clan calendar version");
+  calendar.validateSchedule(c.calendarSchedule || []);
   const validMedal = m => m && typeof m.seasonId === "string" && Number.isSafeInteger(m.number) &&
     Number.isSafeInteger(m.place) && m.place>=1 && m.place<=30 &&
     calendar.questPrize(m.place)?.id===m.tier && Number.isSafeInteger(m.completed) && m.completed>0 && Number.isSafeInteger(m.awardedAt) &&
-    calendar.season(m.awardedAt-1).id===m.seasonId && calendar.season(m.awardedAt-1).end===m.awardedAt && calendar.season(m.awardedAt-1).number===m.number;
+    calendar.season(m.awardedAt-1, c.calendarSchedule).id===m.seasonId && calendar.season(m.awardedAt-1, c.calendarSchedule).end===m.awardedAt && calendar.season(m.awardedAt-1, c.calendarSchedule).number===m.number;
   for (const [id, archive] of Object.entries(c.questSeasonHistory || {}))
     if (!archive || archive.id !== id || !Number.isSafeInteger(archive.settledAt) || !Array.isArray(archive.recipients))
       throw Error("Invalid clan season archive");
   for (const state of [c.questSeason,...Object.values(c.questSeasonHistory||{})].filter(Boolean)) {
-    const s = calendar.season(state.start);
+    const s = calendar.season(state.start, c.calendarSchedule);
     if (s.mode!=="quests" || s.id!==state.id || s.end!==state.end || s.number!==state.number || !state.scores || !state.days ||
         (state.settledAt!==undefined && (!Number.isSafeInteger(state.settledAt)||state.settledAt<state.end))) throw Error("Invalid clan quest season");
     if (state.contributorVersion !== undefined && state.contributorVersion !== 1) throw Error("Invalid clan season contribution version");

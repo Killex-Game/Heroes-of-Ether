@@ -1,6 +1,0 @@
-{
-  "enabled": false,
-  "database": "hero_ether",
-  "credentialsFile": "C:/path/to/atlas-credentials.env",
-  "sourceId": "GENERATE-ONE-UUID-FOR-THIS-SAVE"
-}

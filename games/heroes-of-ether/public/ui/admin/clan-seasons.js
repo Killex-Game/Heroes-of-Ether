@@ -7,9 +7,37 @@
     constructor({api}){this.api=api;this.root=document.getElementById('clanSeasonsPanel');this.generation=0;}
     lock(){this.generation++;this.pending=null;this.root.replaceChildren();}
     async load(){const g=this.generation;try{const data=await this.api('clan-seasons');if(g===this.generation)this.render(data);}catch(e){if(g===this.generation)this.root.textContent=e.message;}}
+    renderSchedule(data){
+      const range=s=>new Date(s.start+10800000).toLocaleDateString('ru-RU',{timeZone:'UTC'})+' - '+new Date(s.end-1+10800000).toLocaleDateString('ru-RU',{timeZone:'UTC'});
+      this.root.append(node('p','Сейчас '+data.current.name.toLowerCase()+' с '+range(data.current)));
+      this.root.append(node('p','Каждый сезон длится 2 месяца. Выбирай задания или битвы отдельно для каждого периода. Текущий сезон и заработанные награды сохраняются.'));
+      if(data.readiness)this.root.append(node('p','Кланов с составом от '+data.readiness.minimumMembers+' участников: '+data.readiness.eligibleClans+' из '+data.readiness.clans+'. Для группы лиги нужно от 10 кланов.'));
+      const form=node('form'),table=node('div'),inputs=[];form.className='clan-schedule-form';table.className='clan-schedule-grid';
+      for(const season of data.upcoming){
+        const label=node('label',range(season)),select=node('select');select.setAttribute('aria-label','Тип сезона '+range(season));
+        for(const [value,title]of [['quests','Клановые задания'],['battle','Клановые битвы']]){const option=node('option',title);option.value=value;select.append(option);}select.value=season.mode;
+        label.append(select);table.append(label);inputs.push({season,select});
+      }
+      const presets=node('div');presets.className='clan-schedule-presets';
+      for(const count of [1,2]){const button=node('button',count===1?'Сначала 1 сезон заданий':'Сначала 2 сезона заданий');button.type='button';button.onclick=()=>{for(let i=0;i<=count;i++)inputs[i].select.value=i<count?'quests':'battle';};presets.append(button);}
+      const reasonLabel=node('label','Причина изменения'),reason=node('input');reason.type='text';reason.required=true;reason.minLength=3;reason.maxLength=500;reasonLabel.append(reason);
+      const submit=node('button','Сохранить расписание'),status=node('p');submit.type='submit';status.setAttribute('role','status');
+      form.append(presets,table,reasonLabel,submit,status);this.root.append(form);
+      form.onsubmit=async event=>{
+        event.preventDefault();if(this.busy)return;
+        const changes=inputs.filter(x=>x.select.value!==x.season.mode).map(x=>({start:x.season.start,mode:x.select.value}));
+        if(!changes.length){status.textContent='Расписание не изменилось';return;}
+        const payload={action:'schedule',revision:data.revision,changes,reason:reason.value.trim()},signature=JSON.stringify(payload);
+        if(this.pending?.signature!==signature)this.pending={signature,requestId:KillexRequestIds.create()};
+        const generation=this.generation;this.busy=true;submit.disabled=true;
+        try{const next=await this.api('clan-seasons',{...payload,requestId:this.pending.requestId});if(generation===this.generation){this.pending=null;this.render(next);this.root.append(node('p','Расписание сохранено'));}}
+        catch(error){if(generation===this.generation)status.textContent=error.message;}
+        finally{this.busy=false;submit.disabled=false;}
+      };
+    }
     render(data){
       this.root.replaceChildren(node('h2','Сезоны кланов'));
-      if(data.automatic){this.root.append(node('p','Сезоны сменяются автоматически каждые 2 месяца. Битвы: январь–февраль, май–июнь, сентябрь–октябрь. Задания: март–апрель, июль–август, ноябрь–декабрь.'),node('p',data.current.name+': '+date(data.current.start)+' — '+date(data.current.end)),node('p','Сезонные призы за задания и кубки за битвы выдаются в конце сезона; медали лиг — по итогам недели.'));return;}
+      if(data.automatic){this.renderSchedule(data);return;}
       this.root.append(node('p','Во время сезона клановые битвы и лиги заменяют ежедневные задания. После его окончания задания возвращаются, если ещё не наступило 20:00 МСК. Уже заработанные награды сохраняются.'));
       const form=node('form'), fields={};
       for(const [key,label,type] of [['name','Название сезона','text'],['startsAt','Начало, МСК','datetime-local'],['endsAt','Окончание, МСК','datetime-local'],['reason','Причина для журнала','text']]){

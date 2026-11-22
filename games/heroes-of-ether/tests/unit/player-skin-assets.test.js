@@ -46,7 +46,7 @@ test("Смена VIP-портрета на обычный заменяет вс�
   identity.setSkinImage(image, "vip-2", 64);
   assert.match(
     attributes.get("srcset"),
-    /transparent-v2\/64\/vip-2\.webp\?art=20261122b 1x, .*128\/vip-2\.webp\?art=20261122b 2x$/,
+    /transparent-v2\/64\/vip-2\.webp\?art=20261122-canon16 1x, .*128\/vip-2\.webp\?art=20261122-canon16 2x$/,
   );
   identity.setSkinImage(image, "moon-dragon", 64);
   assert.match(attributes.get("srcset"), /64\/moon-dragon\.webp\?art=20261122b 1x, .*128\/moon-dragon\.webp\?art=20261122b 2x$/);

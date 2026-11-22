@@ -3,7 +3,7 @@
   const $ = id => document.getElementById(id), fmt = n => Number(n).toLocaleString('ru-RU');
   const el = (tag, text, cls) => { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; };
   const button = (text, click) => { const b = el('button', text); b.type = 'button'; b.onclick = click; return b; };
-  const stamp = at => new Date(at).toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' }) + ' МСК';
+  const stamp = at => new Date(at).toLocaleString('ru-RU');
   class PlayerTabs {
     constructor({ api, selectPlayer }) {
       Object.assign(this, { api, selectPlayer, active: false, view: 'settings', serial: 0, page: 1, historyPage: 1 });
@@ -16,7 +16,7 @@
     ready(role) { this.active = true; this.role = role; this.buttons.get('grants').hidden = role !== 'owner'; if (role !== 'owner' && this.view === 'grants') this.view = 'settings'; this.paint(); }
     killCount(count) {
       const n = Number.isSafeInteger(count) && count > 0 ? count : 0, b = this.buttons.get('kill');
-      b.textContent = n ? 'Kill · ' + fmt(n) : 'Kill';
+      b.textContent = n ? 'Kill: ' + fmt(n) : 'Kill';
       b.dataset.pending = String(n > 0);
       b.setAttribute('aria-label', n ? 'Kill: новых проверок ' + fmt(n) : 'Kill');
     }
@@ -58,7 +58,7 @@
       const serial = ++this.serial, view = this.view, [sort, order] = this.sort.value.split(':');
       this.heading.textContent = view === 'registrations' ? 'Регистрации' : view === 'online' ? 'Игроки онлайн' : 'Игроки нарушители';
       this.hint.textContent = view === 'registrations' ? 'Реальные аккаунты. Время: МСК. Для старых аккаунтов дата восстановлена по первым сохранениям.' : view === 'online' ? 'Реальные игроки в лобби и на арене.' : 'Действующие страйки, ограничения чата и блокировки.';
-      if(view==='kill'){this.heading.textContent='Kill — проверка подозрений';this.hint.textContent='Ритм команд — повод для проверки, а не доказательство. Отклоняйте случаи, вызванные задержками сети или обычной игрой. Подтверждение скрипта блокирует аккаунт на 180 дней по п. 3.2.';}
+      if(view==='kill'){this.heading.textContent='Kill: проверка подозрений';this.hint.textContent='Ритм команд и серии отправки подарков служат поводом для проверки, а не доказательством. Отклоняйте случаи, вызванные задержками сети или обычной игрой. Подтверждение скрипта блокирует аккаунт на 180 дней по п. 3.2.';}
       this.rows.replaceChildren();
       this.directoryStatus.textContent = '';
       try {
@@ -70,7 +70,7 @@
           if(view==='kill'){this.rows.append(this.killRow(p,serial));continue;}
           const row = button('', () => this.selectPlayer(p.id)); row.className = 'player-directory-row';
           row.append(el('strong',p.name));
-          if(p.killReview?.status==='new')row.append(el('span','Kill · На проверке','kill-review-badge'));
+          if(p.killReview?.status==='new')row.append(el('span','Kill: На проверке','kill-review-badge'));
           if (view === 'registrations') {
             const date = el('time', p.registeredAt == null ? 'Дата не сохранена' : stamp(p.registeredAt));
             if (p.registeredAt != null) date.dateTime = new Date(p.registeredAt).toISOString();
@@ -78,14 +78,14 @@
           } else row.append(el('span','Уровень '+fmt(p.level)), el('span',p.inArena?'На арене':p.online?'В лобби':'Не в сети'));
           if (view === 'violators') {
             const m = p.chatModeration, summary = el('span', [
-              m.flood.strikes ? 'Флуд: '+m.flood.strikes+' · п. 2.1' : '',
-              m.profanity.strikes ? 'Мат: '+m.profanity.strikes+' · п. 2.2' : '',
+              m.flood.strikes ? 'Флуд: '+m.flood.strikes+': п. 2.1' : '',
+              m.profanity.strikes ? 'Мат: '+m.profanity.strikes+': п. 2.2' : '',
               m.mute ? 'Чат ограничен до '+stamp(m.mute.until) : '',
-            ].filter(Boolean).join(' · '));
+            ].filter(Boolean).join(': '));
             summary.className = 'player-violation-summary';
             if (p.ban) {
               const rule = window.KillexModerationCatalog.forReason(p.ban.reason);
-              summary.append(el('strong', 'Блокировка: '+(rule ? rule.name+' · п. '+rule.id : 'Причина указана вручную')),
+              summary.append(el('strong', 'Блокировка: '+(rule ? rule.name+': п. '+rule.id : 'Причина указана вручную')),
                 el('span', p.ban.until === null ? 'Бессрочно' : 'До '+stamp(p.ban.until)), el('span', p.ban.reason));
             }
             row.append(summary);
@@ -94,7 +94,7 @@
         }
         if (!result.players.length) this.rows.append(el('p',view === 'kill' && !this.query.value.trim() ? 'Система Kill пока не зарегистрировала подозрительных случаев.' : 'Игроки не найдены.'));
         this.previous.disabled = result.page <= 1; this.next.disabled = result.page >= result.pages;
-        this.pageText.textContent = result.page+' / '+result.pages; this.directoryStatus.textContent = 'Всего: '+fmt(result.total)+' · Обновлено: '+stamp(result.capturedAt);
+        this.pageText.textContent = result.page+' / '+result.pages; this.directoryStatus.textContent = 'Всего: '+fmt(result.total)+': Обновлено: '+stamp(result.capturedAt);
       } catch (error) { if (this.active && serial === this.serial) this.directoryStatus.textContent = error.message; }
     }
     killRow(p,serial) {
@@ -102,8 +102,18 @@
       row.append(button(p.name,()=>this.selectPlayer(p.id)),el('strong',c.status==='new'?'На проверке':c.status==='confirmed'?'Скрипт подтверждён':'Подозрение отклонено'),el('time',stamp(c.createdAt)));
       const details=el('div',undefined,'player-violation-summary');
       details.append(el('span','ID игрока: '+p.id));
+      if(c.reason==='gift-dispatch-pattern'){
+        const g=c.giftEvidence;
+        details.append(el('strong','Ночная рассылка подарков'),
+          el('span',stamp(g.start)+' по '+stamp(g.end)),
+          el('span',g.count+' подарков, получателей '+g.recipients),
+          el('span','Серия без пауз более 10 секунд: '+g.longestSeries+' подарков'),
+          el('span','Медианный интервал '+g.medianIntervalMs+' мс, максимум за минуту '+g.peakPerMinute),
+          el('span','Материалы для обучения после ручной проверки. Автоматизация пока не подтверждена. Это отдельный тип примеров, он не обучает модель нажатий на бустеры.'),
+          el('span','Контрольная сумма источника: '+g.sourceSha256));
+      }
       for(const w of c.windows)details.append(el('span',`${Math.round((w.end-w.start)/1000)} с: ${w.count} команд, ${w.kinds} видов бустеров, ${w.rate}/с; короткие интервалы ${Math.round(w.shortFraction*100)}%.`));
-      details.append(el('span',c.modelReady?'Сигнал локальной модели и серверной телеметрии. Оценка не является доказательством.':'Сбор обучающих примеров. Локальная модель ещё не обучена.'));
+      if(c.reason!=='gift-dispatch-pattern')details.append(el('span',c.modelReady?'Сигнал локальной модели и серверной телеметрии. Оценка не является доказательством.':'Сбор обучающих примеров. Локальная модель ещё не обучена.'));
       if(c.status!=='new'){details.append(el('p',c.reviewReason));row.append(details);return row;}
       const reason=el('textarea');reason.maxLength=500;reason.rows=2;reason.placeholder='Основание решения: что проверено';reason.setAttribute('aria-label','Основание решения Kill');
       const result=el('p');result.setAttribute('role','status');let pending=null,busy=false;
@@ -152,7 +162,7 @@
       try {
         const data=await this.api('game-grants?page='+this.historyPage);if(!this.active||serial!==this.serial)return;
         this.catalog=data.catalog;if(!this.rewardRows.children.length)this.addReward();this.history.replaceChildren();
-        for(const c of data.campaigns){const row=el('article',undefined,'game-grant-record');row.append(el('h4',c.title+' · '+c.id),el('p',stamp(c.at),'muted'),el('p',c.rewards.map(r=>r.name+' × '+fmt(r.amount)).join(' · ')),el('p',`Начислено: ${fmt(c.delivered)} / ${fmt(c.total)} · Ожидают: ${fmt(c.pending)}`));
+        for(const c of data.campaigns){const row=el('article',undefined,'game-grant-record');row.append(el('h4',c.title+': '+c.id),el('p',stamp(c.at),'muted'),el('p',c.rewards.map(r=>r.name+' × '+fmt(r.amount)).join(': ')),el('p',`Начислено: ${fmt(c.delivered)} / ${fmt(c.total)}: Ожидают: ${fmt(c.pending)}`));
           if(c.pending)row.append(el('p','Игроки на арене получат подарок после выхода в лобби.','muted'));
           if(c.excluded)row.append(el('p','Исключено: '+fmt(c.excluded)));
           if(c.errors.length){row.append(el('p','Не начислено: '+c.errors.map(e=>e.name+' — '+e.message).join('; ')));
@@ -169,7 +179,7 @@
       try{
         const rewards=[...this.rewardRows.children].map(row=>{const[kind,id]=row.querySelector('select').value.split(':');return{kind,id,amount:Number(row.querySelector('input').value)};});
         const p=await this.api('game-grants/preview',{title:this.title.value,message:this.message.value,rewards});if(!this.active||serial!==this.serial)return;
-        this.preview=p;this.pending={previewId:p.previewId,requestId:window.KillexRequestIds.create(),confirmed:true};this.previewBox.replaceChildren(el('h3',p.title),el('p',p.message),el('p',p.rewards.map(r=>r.name+' × '+fmt(r.amount)).join(' · ')),el('strong','Получателей: '+fmt(p.recipients)),el('p','Полный набор каждому. Новые аккаунты после предпросмотра не включаются.','muted'));
+        this.preview=p;this.pending={previewId:p.previewId,requestId:window.KillexRequestIds.create(),confirmed:true};this.previewBox.replaceChildren(el('h3',p.title),el('p',p.message),el('p',p.rewards.map(r=>r.name+' × '+fmt(r.amount)).join(': ')),el('strong','Получателей: '+fmt(p.recipients)),el('p','Полный набор каждому. Новые аккаунты после предпросмотра не включаются.','muted'));
         this.send=button('Подтвердить начисление',()=>this.submit());this.send.className='primary';this.previewBox.append(this.send);
       }catch(error){if(this.active)this.giftStatus.textContent=error.message;}finally{this.setBusy(false);}
     }

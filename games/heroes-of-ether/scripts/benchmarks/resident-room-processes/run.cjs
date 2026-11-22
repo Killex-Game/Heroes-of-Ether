@@ -38,8 +38,8 @@ async function run(){
   const full=process.env.ROOM_BENCH_FULL_WORLD==='1';
   const fixture=full?(process.env.ROOM_BENCH_FIXTURE
     ? JSON.parse(fs.readFileSync(process.env.ROOM_BENCH_FIXTURE))
-    : require('../mongodb-room-fixture.cjs').createFixture()):null;
-  if(fixture&&!Object.values(fixture.data.profiles).every(p=>p.testFixture==='mongo-capacity-20261110'))throw Error('Synthetic fixture marker required');
+    : require('../database-room-fixture.cjs').createFixture()):null;
+  if(fixture&&!Object.values(fixture.data.profiles).every(p=>p.testFixture==='database-capacity-20261110'))throw Error('Synthetic fixture marker required');
   const lobbyCount=full?30:0;
   const filePath=path.join(output,'data/profiles.json');
   fs.mkdirSync(path.dirname(filePath),{recursive:true});
@@ -162,7 +162,7 @@ async function run(){
   const report={scope:'isolated resident simulation + direct WebSocket state + local durable progress'+
       (durableCasts?' + real inventory/WAL casts':' (casts bypass inventory)')+
       (full?' + 1280 synthetic profiles/128 clans/30 real HTTP lobby clients':'')+
-      (serviceResults.mongo?' + Atlas verified':'')+'; no production arena admission in this run',
+      (serviceResults.database?' + PostgreSQL verified':'')+'; no production arena admission in this run',
     rooms:count,players:count*35,processes:workers,seconds,aborted,shards:reports,peers:peerReports,
     scenario:{inputs:process.env.ROOM_BENCH_INPUTS||'in-process tick-based',layout:process.env.ROOM_BENCH_SCENARIO||'mixed-mass',event:eventKind||null,mixedSocial:process.env.LOAD_MIXED_SOCIAL==='1',respawnDelayMs:Number(process.env.ROOM_BENCH_RESPAWN_DELAY_MS)||0,meanAlive:rooms.reduce((sum,r)=>sum+r.meanAlive,0)},
     viewMode:process.env.ROOM_BENCH_VIEWS==='camera'?'synthetic moving mass-dependent cameras':

@@ -1,9 +1,9 @@
 "use strict";
-// Read-only local diagnostics. Does not open ProfileStore, acquire a writer or connect to Atlas.
+// Read-only local diagnostics. Does not open ProfileStore, acquire a writer or connect to PostgreSQL.
 const fs = require("node:fs"), path = require("node:path"), os = require("node:os");
 const { loadServerSettings } = require("../../src/server/runtime/server-settings");
-const { loadConfig } = require("../../src/server/persistence/mongodb-config");
-const { syncHealth } = require("../../src/server/persistence/mongodb-health");
+const { loadConfig } = require("../../src/server/persistence/postgresql-config");
+const { syncHealth } = require("../../src/server/persistence/database-health");
 function readOptional(file) {
   try { return JSON.parse(fs.readFileSync(file, "utf8")); }
   catch (error) { if (error.code === "ENOENT") return null; throw error; }
@@ -36,8 +36,8 @@ function inspect(root, { configOnly = false, env = process.env, now = Date.now()
   }) };
   const disk = fs.statfsSync(root);
   report.resources = { freeMemoryMiB: Math.floor(os.freemem() / 1048576), freeDiskMiB: Math.floor(disk.bavail * disk.bsize / 1048576) };
-  const mongo = loadConfig(root);
-  report.mongo = mongo ? { enabled: true, ...syncHealth(readOptional(path.join(s.dataDir, "mongodb-status.json")), now, mongo.intervalMs) } : { enabled: false };
+  const database = loadConfig(root);
+  report.database = database ? { enabled: true, backend: 'postgresql', ...syncHealth(readOptional(path.join(s.dataDir, "postgresql-status.json")), now, database.intervalMs) } : { enabled: false };
   return report;
 }
 if (require.main === module) {
@@ -45,7 +45,7 @@ if (require.main === module) {
     if (process.argv.slice(2).some(a => a !== "--config-only")) throw Error("Используй doctor.cjs [--config-only]");
     const report = inspect(path.resolve(__dirname, "../.."), { configOnly: process.argv.includes("--config-only") });
     console.log(JSON.stringify(report, null, 2));
-    if (report.server?.processPresent && report.mongo?.enabled && report.mongo.state !== "ok") process.exitCode = 2;
+    if (report.server?.processPresent && report.database?.enabled && report.database.state !== "ok") process.exitCode = 2;
   } catch (error) {
     console.error(["SERVER_CONFIG", "DOCTOR_DATA"].includes(error.code) ? error.message : "Не удалось прочитать настройки или локальное состояние.");
     process.exitCode = 1;

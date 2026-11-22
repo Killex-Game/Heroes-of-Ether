@@ -172,7 +172,7 @@ test('21:00 read waits for queued pre-deadline progress before paying or replaci
 test('automatic seasons alternate and reject manual overrides; unmatched clans earn no cups',t=>{
   const f=fixture(t),access={isOwner:a=>a.id===f.a.profile.id},actor={id:f.a.profile.id};
   assert.throws(()=>admin.apply(f.store,access,{id:'stranger'},{}),/владелец/);
-  assert.throws(()=>admin.apply(f.store,access,actor,{}),/автоматически/);
+  assert.throws(()=>admin.apply(f.store,access,actor,{}),e=>e.status===409);
   assert.equal(f.clanApi.state(f.a.token).competition.mode,'quests');
   f.at(Date.parse('2027-01-01T05:00:00Z'));f.store.refreshCompetition();
   assert.equal(f.clanApi.state(f.a.token).competition.mode,'battle');

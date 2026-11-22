@@ -4,8 +4,9 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'../..');
 const daily=require('../../src/server/clans/daily-quests/service');
-const {MongoState,readLocal,sameContents}=require('../../src/server/persistence/mongodb-state');
-const {loadConfig,safeError}=require('../../src/server/persistence/mongodb-config');
+const {readLocal,sameContents}=require('../../src/server/persistence/state-snapshot');
+const {PostgreSQLState}=require('../../src/server/persistence/postgresql-state');
+const {loadConfig,safeError}=require('../../src/server/persistence/postgresql-config');
 const {ProfileJournal,REVISION}=require('../../src/server/profiles/profile-journal');
 const {acquireServerLock}=require('../../src/server/runtime/process-lock');
 function prepare(before,at){
@@ -44,7 +45,7 @@ function prepare(before,at){
  const check=process.argv[2]==='--check',apply=process.argv[2]==='--apply';
  if((!check&&!apply)||!process.argv[3]||(check&&!process.argv[4]))throw Error('Use --check DATA_DIRECTORY REPORT_DIRECTORY or --apply REPORT_DIRECTORY');
  const dir=check?path.resolve(process.argv[3]):path.join(root,'data'),report=path.resolve(process.argv[check?4:3]);
- fs.mkdirSync(report,{mode:0o700});let release,journal,mongo;
+ fs.mkdirSync(report,{mode:0o700});let release,journal,database;
  try{
   if(apply)release=acquireServerLock(path.join(dir,'server.lock'));
   const before=readLocal(dir,true),at=Date.now(),{next,changes}=prepare(before.world,at);
@@ -54,15 +55,15 @@ function prepare(before,at){
   if(check){console.log(JSON.stringify({dryRun:true,clans:changes.length,boards:changes.filter(c=>c.boardUpgraded).length,recruits:changes.reduce((n,c)=>n+c.recruits.length,0),allProfilesUnchanged:true}));return;}
   assert(!Object.values(before.world.profiles).some(p=>p.progress?.session),'Life not settled');
   const config=loadConfig(root);
-  if(!config||!['hero_ether','hero_ether_test_sweb_play'].includes(config.database))throw Error('Unexpected database');
-  mongo=new MongoState(config);await mongo.client.connect();await mongo.acquire(before.snapshot);
-  assert(sameContents(await mongo.read(),before),'Cloud differs before migration');
+  if(!config||config.schema!=='heroether')throw Error('Unexpected database');
+  database=new PostgreSQLState(config);await database.client.connect();await database.acquire(before.snapshot);
+  assert(sameContents(await database.read(),before),'Cloud differs before migration');
   if(next!==before.world){journal=new ProfileJournal(path.join(dir,'profiles.json'));journal.commit(next);await journal.close();journal=null;}
   const after=readLocal(dir,true),actual=structuredClone(after.world);
   if(Object.hasOwn(approved,REVISION))actual[REVISION]=approved[REVISION];else delete actual[REVISION];
   assert.deepEqual(actual,approved,'Committed migration differs from approved plan');
-  await mongo.sync(after.snapshot);assert(sameContents(await mongo.read(),after),'Cloud differs after migration');
+  await database.sync(after.snapshot);assert(sameContents(await database.read(),after),'Cloud differs after migration');
   const result={ok:true,at,clans:changes.length,allProfilesUnchanged:true,revision:after.snapshot.revision,digest:after.snapshot.digest};
   fs.writeFileSync(path.join(report,'result.json'),JSON.stringify(result,null,2),{mode:0o600});console.log(JSON.stringify(result));
- }finally{await journal?.close();await mongo?.close();release?.();}
+ }finally{await journal?.close();await database?.close();release?.();}
 })().catch(error=>{console.error(error.code==='ERR_ASSERTION'?error.message.split('\n')[0]:safeError(error));process.exitCode=1});

@@ -8,7 +8,7 @@ if(fs.existsSync(config))throw Error('Independent administration already configu
 if(!fs.existsSync(path.join(data,'owner-access.json')))throw Error('Existing owner credentials required');
 fs.mkdirSync(directory,{recursive:true,mode:0o700});
 if(fs.existsSync(path.join(directory,'editor-outbox.json')))throw Error('An editor outbox already exists; preserve and inspect it');
-const world=require('../../src/server/persistence/mongodb-state').readLocal(data,true).world;
+const world=require('../../src/server/persistence/state-snapshot').readLocal(data,true).world;
 const events=new(require('../../src/server/events/event-manager').EventManager)({filePath:path.join(data,'game-events.json')});
 const content=require('../../src/server/admin/control-content'),now=Date.now();
 new content.ContentOutbox({file:path.join(directory,'editor-outbox.json'),access:{}}).refresh(

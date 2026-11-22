@@ -94,8 +94,8 @@ function createGameServer({
   maintenance = new Maintenance(),
   arenaTesting = new ArenaTestingGate(),
   monitorDirectory = null,
-  mongoMonitor = () => null,
-  mongoMetrics = () => {},
+  databaseMonitor = () => null,
+  databaseMetrics = () => {},
 } = {}) {
   // Construct the first grouped room at its actual size before food is spawned.
   // Explicit Arena instances remain a fixture/embedding override.
@@ -288,12 +288,12 @@ function createGameServer({
   const arenaClosedError=()=>Object.assign(new BoosterError(arenaTesting.status().message,503),{code:'ARENA_TEMPORARILY_CLOSED'});
   let serviceObserver=null;
   function observation(){
-    const mongo=mongoMonitor(),faults=[];
+    const database=databaseMonitor(),faults=[];
     if(profiles.journal?.fault)faults.push('LOCAL_JOURNAL_FAILED');
     if(profiles.journal?.lastError)faults.push('CHECKPOINT_FAILED');
     if(progressErrorReported)faults.push('ARENA_SAVE_FAILED');
-    if(mongo?.enabled&&!['ok','starting'].includes(mongo.health?.state))faults.push('MONGODB_'+(mongo.health?.state==='stale'?'STALE':'FAILED'));
-    return {mongo,faults,windows:profiles.data.serviceAvailability?.windows||[],deployment:maintenance.manual};
+    if(database?.enabled&&!['ok','starting'].includes(database.health?.state))faults.push('DATABASE_'+(database.health?.state==='stale'?'STALE':'FAILED'));
+    return {database,faults,windows:profiles.data.serviceAvailability?.windows||[],deployment:maintenance.manual};
   }
   function requireRunning() {
     if (closing) throw new BoosterError("Сервер перезапускается. Попробуй чуть позже.", 503);
@@ -2285,7 +2285,7 @@ function createGameServer({
     return arenaTestingDrain;
   }
   arenaTesting.refreshState();
-  if(monitorDirectory)serviceObserver=new (require('./runtime/service-observer').ServiceObserver)({directory:monitorDirectory,source:observation,onFailure:faults=>maintenance.setFailure(faults),onMetrics:mongoMetrics,now:wallNow});
+  if(monitorDirectory)serviceObserver=new (require('./runtime/service-observer').ServiceObserver)({directory:monitorDirectory,source:observation,onFailure:faults=>maintenance.setFailure(faults),onMetrics:databaseMetrics,now:wallNow});
   function close() {
     if (closePromise) return closePromise;
     closing = true;
@@ -2385,15 +2385,15 @@ async function startServer() {
   const control = require('./admin/control-config').read(dataDir);
   const release = require("./runtime/process-lock").acquireServerLock(path.join(dataDir, "server.lock"));
   process.on("exit", release);
-  // Atlas preflight occurs before opening the server. Credentials are confined
+  // PostgreSQL preflight occurs before opening the server. Credentials are confined
   // to a worker; simulation/HTTP handlers retain their durable local journal.
-  const mongo = await require("./persistence/mongodb-sync").MongoSync.open(root);
+  const database = await require("./persistence/database-sync").DatabaseSync.open(root);
   let app;
   try {
     app = createGameServer({
       monitorDirectory:path.join(dataDir,'monitoring'),
-      mongoMonitor:()=>mongo?.monitoring()||null,
-      mongoMetrics:enabled=>mongo?.setMetrics(enabled),
+      databaseMonitor:()=>database?.monitoring()||null,
+      databaseMetrics:enabled=>database?.setMetrics(enabled),
       stateWorkerRoomLimit: settings.stateWorkers.maxRooms,
       stateWorkerCount: settings.stateWorkerCount,
       trustLoopbackProxy: settings.trustLoopbackProxy,
@@ -2437,27 +2437,27 @@ async function startServer() {
       },
     });
   } catch (error) {
-    await mongo?.close(false);
+    await database?.close(false);
     throw error;
   }
-  if (mongo) {
+  if (database) {
     const closeLocal = app.close;
     let closing;
     app.close = () => {
       if (closing) return closing;
-      mongo.pause();
+      database.pause();
       closing = (async () => {
         let saved = false;
         try {
           await closeLocal();
           saved = true;
         } finally {
-          await mongo.close(saved);
+          await database.close(saved);
         }
       })();
       return closing;
     };
-    mongo.attach(app.profiles, app.chat);
+    database.attach(app.profiles, app.chat);
   }
   app.httpServer.on("error", (error) => {
     console.error(
@@ -2477,8 +2477,8 @@ async function startServer() {
     console.log(
       "Для компьютеров в той же сети:\n" +
         networkUrls.join("\n") +
-        (mongo
-          ? "\nХранилище: MongoDB HeroEther с локальным журналом. Статус: data/mongodb-status.json."
+        (database
+          ? `\nХранилище: PostgreSQL с локальным журналом. Статус: data/postgresql-status.json.`
           : "\nВсе профили и прогресс сохраняются на этом компьютере в data/profiles.json."),
     );
     console.log(

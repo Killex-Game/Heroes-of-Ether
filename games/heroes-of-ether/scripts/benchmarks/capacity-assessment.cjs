@@ -7,8 +7,8 @@ const TARGETS = Object.freeze({ updatesHz: 19, tickP95Ms: 100, stateGapP99Ms: 15
 function assessCapacity(rows, summary) {
   const problems = [];
   if (summary.code !== 0 || summary.failure) problems.push("run-not-completed");
-  if (summary.mode === "mongo" && summary.mongoVerification?.matched !== true)
-    problems.push("mongo-consistency-unverified");
+  if (summary.mode === "database" && summary.databaseVerification?.matched !== true)
+    problems.push("database-consistency-unverified");
   // A soak run consists of consecutive mixed minutes, not the five diagnostic
   // phases. Judge EVERY requested window without averaging away a slow minute.
   const mixed = summary.mixedMinutes !== undefined && summary.mixedMinutes !== 0;

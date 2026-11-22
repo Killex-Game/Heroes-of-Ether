@@ -28,7 +28,7 @@ for (const [name, reason] of Object.entries(policy.pinned)) {
 }
 const latest = new Set(entries.filter(e => !Object.hasOwn(policy.pinned, e.name)).slice(0, policy.keepLatest).map(e => e.name));
 assert.equal(latest.size, policy.keepLatest, "Fewer than three unpinned backups; no deletion");
-const game = path.join(root, "games/heroes-of-ether"), { readLocal } = require(path.join(game, "src/server/persistence/mongodb-state")),
+const game = path.join(root, "games/heroes-of-ether"), { readLocal } = require(path.join(game, "src/server/persistence/state-snapshot")),
   { ProfileStore } = require(path.join(game, "src/server/profiles/profile-store"));
 function manifest(directory, output = []) {
   for (const name of fs.readdirSync(directory)) {

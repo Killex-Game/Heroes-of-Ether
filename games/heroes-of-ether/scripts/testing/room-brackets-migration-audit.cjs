@@ -4,7 +4,7 @@ const old='/srv/heroether-test/play/releases/20261111-social-king';
 const next='/srv/heroether-test/play/releases/20261111-room-brackets';
 const filePath='/srv/heroether-test/play/data/profiles.json';
 const {recover}=require(next+'/src/server/profiles/profile-journal');
-const {hash}=require(next+'/src/server/persistence/mongodb-state');
+const {hash}=require(next+'/src/server/persistence/state-snapshot');
 const {BOOSTERS}=require(next+'/src/server/boosters/booster-catalog');
 const loadout=require(next+'/public/shared/quick-slot-rules');
 const before=recover(filePath).data,at=Date.now();

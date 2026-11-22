@@ -10,7 +10,7 @@ function fixture(t){const dir=fs.mkdtempSync(path.join(os.tmpdir(),'control-moni
 }
 const performance=at=>({capturedAt:at,arena:{rooms:3},persistence:{queuedActions:1},memoryMiB:{resident:2200},tickWorkMs:{p95:21},tickIntervalMs:{p95:51},updatesHz:20});
 test('overview survives control restart; game timestamps stay old while independent disk stays live',async t=>{
-  const f=fixture(t),m=f.make(),at=f.now(),value=performance(at),monitor={at,stale:false,series:[{at,mongo:{read:2,write:3}}],mongo:{enabled:true},availability:{status:{maintenance:false},automatic:{active:false,faults:[]}}};
+  const f=fixture(t),m=f.make(),at=f.now(),value=performance(at),monitor={at,stale:false,series:[{at,database:{read:2,write:3}}],database:{enabled:true},availability:{status:{maintenance:false},automatic:{active:false,faults:[]}}};
   await m.result('/api/admin/performance',value,{gameReady:true});await m.result('/api/admin/overview-calendar',{serverNow:at,active:null,scheduled:null},{gameReady:true});
   await m.result('/api/admin/monitoring',monitor,{gameReady:true});await m.close();
   f.advance(5000);const next=f.make(),saved=await next.result('/api/admin/performance',null,{gameReady:false});assert.equal(saved.capturedAt,at);assert.equal(saved.stale,true);assert.equal(saved.available,true);

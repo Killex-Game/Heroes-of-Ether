@@ -6,16 +6,17 @@ const {ProfileStore}=require('../../src/server/profiles/profile-store');
 const {prepareBattlePopulation}=require('../../src/server/testing/battle-population');
 const {renamePopulation}=require('../../src/server/testing/population-names');
 const {MARKER}=require('../../src/server/testing/arena-test-bots');
-const {MongoState,readLocal,hash}=require('../../src/server/persistence/mongodb-state');
-const {loadConfig,safeError}=require('../../src/server/persistence/mongodb-config');
+const {readLocal,hash}=require('../../src/server/persistence/state-snapshot');
+const {PostgreSQLState}=require('../../src/server/persistence/postgresql-state');
+const {loadConfig,safeError}=require('../../src/server/persistence/postgresql-config');
 const {acquireServerLock}=require('../../src/server/runtime/process-lock');
 (async()=>{
  if(process.argv[2]!=='--apply')throw Error('Explicit --apply required');
- const release=acquireServerLock(path.join(dir,'server.lock'));let store,mongo;
+ const release=acquireServerLock(path.join(dir,'server.lock'));let store,database;
  try{
   const before=readLocal(dir,true),config=loadConfig(root);
-  if(!config||!['hero_ether','hero_ether_test_sweb_play'].includes(config.database))throw Error('Unexpected database');
-  mongo=new MongoState(config);await mongo.client.connect();await mongo.acquire(before.snapshot);
+  if(!config||config.schema!=='heroether')throw Error('Unexpected database');
+  database=new PostgreSQLState(config);await database.client.connect();await database.acquire(before.snapshot);
   const at=Date.now();store=new ProfileStore({filePath:path.join(dir,'profiles.json'),journal:true,now:()=>at});
   const normalized=structuredClone(store.data);
   // Verify that loading new code did not change balances, rewards or social state.
@@ -45,8 +46,8 @@ const {acquireServerLock}=require('../../src/server/runtime/process-lock');
   }
   store.save(next,at);await store.close();store=null;
   if(prepared.sessions.length)fs.renameSync(sessionsFile+'.next',sessionsFile);
-  const after=readLocal(dir,true);await mongo.sync(after.snapshot);
-  assert.equal((await mongo.read()).snapshot.digest,after.snapshot.digest);
+  const after=readLocal(dir,true);await database.sync(after.snapshot);
+  assert.equal((await database.read()).snapshot.digest,after.snapshot.digest);
   console.log(JSON.stringify({ok:true,database:config.database,sourceId:config.sourceId,addedBots:prepared.added,renamedBots:named.renamedBots,renamedClans:named.renamedClans,profiles:Object.keys(after.world.profiles).length,clans:Object.keys(after.world.clans).length,minRoster:Math.min(...Object.values(after.world.clans).map(c=>c.members.length)),revision:after.snapshot.revision,digest:after.snapshot.digest,existingProgressPreserved:true}));
- }finally{await store?.close();await mongo?.close();release();}
+ }finally{await store?.close();await database?.close();release();}
 })().catch(e=>{console.error(e.code==='ERR_ASSERTION'?e.message:safeError(e));process.exitCode=1;});

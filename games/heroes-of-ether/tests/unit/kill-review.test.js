@@ -79,3 +79,27 @@ test('model waits for independently labelled classes, learns locally, does not t
  const examples=Array.from({length:40},(_,i)=>row('p'+i,i%2)),m=model.train(examples);assert(m.ready);assert.equal(m.positive,20);assert.equal(m.negative,20);
  assert(model.predict(m,[.9,.9,.7,.8,.9])>model.predict(m,[.1,.05,.2,.1,.1]));assert.deepEqual(m,model.train(examples));
 });
+
+test('historical gift evidence is durable and reviewable without manufacturing booster training labels',async t=>{
+ const f=await fixture(t),g={version:1,domain:'gift-dispatch-v1',sourceSha256:'a'.repeat(64),eventsSha256:'b'.repeat(64),start:f.at-3600000,end:f.at-1000,count:1000,recipients:3,longestSeries:800,medianIntervalMs:1300,peakPerMinute:46,relatedIds:[]};
+ const e={version:1,reason:'gift-dispatch-pattern',features:null,windows:[],modelReady:false,modelScore:null,giftEvidence:g};
+ assert(await f.kill.report(f.target.id,e));const p=f.profiles.byId(f.target.id);validate(p.kill);
+ assert(!p.moderation?.ban);assert.equal(f.service.players('',1,{view:'kill'}).players[0].kill.giftEvidence.count,1000);
+ const saved=Object.values(recover(f.file).data.profiles).find(x=>x.id===p.id);assert.deepEqual(saved.kill,p.kill);
+ f.service.apply(f.owner,f.command('dismissed'));
+ const trained=model.train(f.profiles.data.administration.audit);assert.equal(trained.positive,0);assert.equal(trained.negative,0);
+ const fabricated=Array.from({length:40},(_,i)=>({action:'killReview',targetId:String(i),after:{case:{...p.kill,status:i%2?'confirmed':'dismissed',features:[1,1,1,1,1]}}}));
+ assert.equal(model.train(fabricated).ready,false);assert.equal(model.train(fabricated).positive,0);
+});
+test('historical review import preserves all other fields and refuses duplicate players or an existing open case',()=>{
+ const {register}=require('../../src/server/arena/kill-gift-evidence'),id=randomUUID();
+ const record={id:randomUUID(),version:1,status:'new',createdAt:1,reason:'gift-dispatch-pattern',features:null,windows:[],modelReady:false,modelScore:null,
+ giftEvidence:{version:1,domain:'gift-dispatch-v1',sourceSha256:'a'.repeat(64),eventsSha256:'b'.repeat(64),start:1,end:2,count:10,recipients:1,longestSeries:10,medianIntervalMs:1,peakPerMinute:10,relatedIds:[]}};
+ const p={id,revision:1,wallet:{coins:42},gifts:{history:[1,2,3]}},world={profiles:{key:p},clans:{c:{members:[id]}},events:{},_journalRevision:9};
+ const entry={playerId:id,record},result=register(world,[entry],100);
+ assert.deepEqual(result.world.profiles.key.wallet,p.wallet);assert.strictEqual(result.world.clans,world.clans);assert.equal(p.kill,undefined);
+ assert.equal(result.world.profiles.key.revision,2);assert.equal(result.world.profiles.key.kill.status,'new');assert.equal(result.world.profiles.key.moderation,undefined);
+ assert.strictEqual(register(result.world,[entry],200).world,result.world);
+ assert.throws(()=>register(world,[entry,entry],100),/Duplicate/);
+ assert.throws(()=>register(result.world,[{playerId:id,record:{...record,id:randomUUID()}}],100),/open case/);
+});

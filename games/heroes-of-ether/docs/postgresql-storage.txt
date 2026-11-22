@@ -1,0 +1,23 @@
+PostgreSQL storage and operational recovery
+
+The sole remote persistence backend is PostgreSQL. The game keeps its existing durable local checkpoint and fsynced write-ahead journal. Arena acknowledgements continue to follow that journal; PostgreSQL mirrors only durable revisions.
+
+Private configuration is config/postgresql.local.json. See postgresql.example.json. Credentials are PGUSER and PGPASSWORD in an external absolute-path environment file. TLS requires the configured CA and certificate verification. Never commit either file or print connection credentials.
+
+A single PostgreSQL schema contains compressed binary snapshot documents and one metadata record. All changed documents, removals, source identity, revision, checksum and writer lease are committed in one transaction. Independent reads use REPEATABLE READ. Losing the COMMIT acknowledgement is reconciled using the exact generation and digest. A second writer, divergent revision or damaged fragment fails closed.
+
+The database worker prepares checksummed documents outside the network write deadline. After acknowledgement it retains a compact index of document hashes rather than the previous full world. The simulation thread does not perform database I/O.
+
+The snapshot format retains version-1 fragment boundaries so existing backups remain readable. Its size calculation has no database-driver dependency and is checked against a preserved independent 2000-case reference. Removing a driver does not authorize deleting histories, receipts, old backups or WAL segments.
+
+Operational commands:
+node scripts/deployment/postgresql-health.cjs
+node scripts/deployment/postgresql-health.cjs --database
+node scripts/deployment/postgresql-backup.cjs export NEW_DIRECTORY
+node scripts/deployment/postgresql-backup.cjs verify DIRECTORY
+
+A backup streams compressed BYTEA rows within one consistent database transaction and verifies each content hash. The new directory contains a manifest plus gzip documents. Verification checks file names, sizes, duplicate/extra files, hashes and the aggregate digest. The offline loadSnapshot API additionally reconstructs and validates the complete logical world. Never copy a backup over live data. Stop admission and the sole writer, preserve the current checkpoint/WAL and verify the source before an explicitly planned restore.
+
+The VPS backup timer remains four-hourly with three regular snapshots retained. Recovery and artwork backups remain separately protected. The independent admin service is not restarted with the game.
+
+Capacity limits and sync timings are measurements, not a guarantee for a given concurrent player count. Whole-process RSS and snapshot preparation remain separate performance concerns.

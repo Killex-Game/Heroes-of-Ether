@@ -489,7 +489,7 @@ class ProfileJournal {
     if (this.arenaFlush) { await this.arenaFlush.catch(() => {}); return this.pinSnapshot(); }
     // No await between sealing and linking: a checkpoint cannot start/delete
     // segments in this turn. Hard links keep immutable bytes alive afterwards.
-    // The active append is never read or copied by the MongoDB worker.
+    // The active append is never read or copied by the PostgreSQL worker.
     this.sealActive();
     return require("./profile-read-snapshot").pin(this.file, segments(this.file), this.revision);
   }

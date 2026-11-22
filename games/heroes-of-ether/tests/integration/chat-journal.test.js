@@ -3,7 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const {randomUUID,createHash}=require('node:crypto');
 const {ChatService}=require('../../src/server/chat/chat-service');
 const {recover}=require('../../src/server/profiles/profile-journal');
-const {readLocal}=require('../../src/server/persistence/mongodb-state');
+const {readLocal}=require('../../src/server/persistence/state-snapshot');
 const {temporary}=require('../temp');
 const input=text=>({requestId:randomUUID(),text});
 function fixture(t,seed){
@@ -77,7 +77,7 @@ test('large legacy history is retained while one new WAL entry stays bounded',as
   for(const [id,value]of Object.entries(receipts))assert.deepEqual(saved.messageReceipts[id],value);
   await f.chat.writer.checkpoint();assert.deepEqual(JSON.parse(fs.readFileSync(f.file)),saved);
 });
-test('offline Atlas source includes acknowledged chat WAL before its first checkpoint',async t=>{
+test('offline PostgreSQL source includes acknowledged chat WAL before its first checkpoint',async t=>{
   const f=fixture(t);fs.writeFileSync(path.join(f.dir,'profiles.json'),JSON.stringify({version:13,profiles:{},clans:{}}));
   const reply=await f.chat.send(f.p,null,'clan',input('Облачная копия'));
   const offline=readLocal(f.dir,true);assert.equal(offline.auxiliary['clan-chat.json'].clans.clan[0].id,reply.message.id);

@@ -20,7 +20,7 @@ function valid(route,value){
   return Number.isFinite(value.serverNow);
 }
 // Diagnostics only: separate files from game saves, the game observer and watchdog.
-// Reading the overview never opens profiles or connects to Atlas.
+// Reading the overview never opens profiles or connects to PostgreSQL.
 class ControlMonitoring{
   constructor({directory,dataDir,now=Date.now,disk=diskCounters}){
     this.file=path.join(directory,'overview-cache.json');this.dataDir=dataDir;this.now=now;this.disk=disk;

@@ -224,7 +224,7 @@ window.KillexReleaseArchive=Object.freeze([
     "version": "Alfa-test 0.0.19",
     "date": "2026-11-14",
     "changes": [
-      "Исправлена статистика чтения и записи MongoDB в панели владельца."
+      "Исправлена статистика чтения и записи PostgreSQL в панели владельца."
     ]
   },
   {

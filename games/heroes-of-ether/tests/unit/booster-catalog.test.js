@@ -70,7 +70,7 @@ test("Подготовка не запускает таймер до успеш�
   apply();
   assert.equal(a.boosterItemReadyAt.hook, undefined);
 });
-test("Карточки сохраняют правила каталога; PNG и новые SVG доступны", () => {
+test("Карточки сохраняют правила каталога; действующие изображения доступны", () => {
   const directory = path.join(__dirname, "../../public/assets/boosters");
   const source = readCatalog(path.join(directory, "catalog.html"));
   // Исходный лист рисунков хранит старые подписи; утверждённый баланс живёт в JSON.
@@ -94,10 +94,6 @@ test("Карточки сохраняют правила каталога; PNG �
       assert.equal(actual.flightMs, item.params.flight_seconds * 1000);
       assert.equal(BOOSTERS.get(item.id).durationMs, item.params.immobilize_seconds * 1000);
     }
-    const svg = fs.readFileSync(path.join(directory, "svg", item.tier, item.id + ".svg"), "utf8");
-    assert.match(svg, /<svg[^>]+viewBox="0 0 256 256"/);
-    assert(svg.includes(`<title id="${item.id}-title">`), item.id);
-    assert(!/<script|https?:\/\//.test(svg.replace("http://www.w3.org/2000/svg", "")), item.id);
     const iconPath = actual.icon.split("?")[0];
     assert.equal(iconPath, `assets/boosters/png/${item.id}.png`);
     const png = fs.readFileSync(path.join(__dirname, "../../public", iconPath));

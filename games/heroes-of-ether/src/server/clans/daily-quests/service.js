@@ -15,7 +15,7 @@ const calendar = require('../../../../public/shared/clan-season-calendar');
 const seasonal = require('./season-ranking');
 const active = (data, at) => {
   if (data.clanQuests?.calendarVersion !== 1) return seasons.active(data.clanQuests?.seasons || [], at);
-  const s = calendar.season(at);
+  const s = calendar.season(at, data.clanQuests?.calendarSchedule);
   return s.mode === 'battle' ? {...s,startsAt:s.start,endsAt:s.end} : null;
 };
 const eligible = (clan, start) => Object.fromEntries(clan.members
@@ -30,7 +30,7 @@ function availableDuration(data,start,end) {
     let total=0;
     for (let from=start;from<end;) {
       const day=calendar.daily(from,"quests"), until=Math.min(end,day.end+9*3600000);
-      if(calendar.season(from).mode==='quests')total+=Math.max(0,Math.min(end,day.end)-Math.max(from,day.start));
+      if(calendar.season(from, data.clanQuests?.calendarSchedule).mode==='quests')total+=Math.max(0,Math.min(end,day.end)-Math.max(from,day.start));
       from=until;
     }
     return total;
@@ -166,7 +166,7 @@ function capture(next, previous, at, {canSettle=true} = {}) {
   let control = next.clanQuests;
   if (boundary) {
     const edges = control.seasons.filter(s=>!s.cancelled).flatMap(s=>[s.startsAt,s.endsAt]).filter(n=>n>at);
-    control = {...control,catalogVersion:catalog.version,recruitRulesVersion:1,windowVersion:engine.WINDOW_VERSION,nextAt:Math.min(day.active?day.end:day.nextStart,...(control.calendarVersion===1?[calendar.season(at).end]:edges),deferredEnd)};
+    control = {...control,catalogVersion:catalog.version,recruitRulesVersion:1,windowVersion:engine.WINDOW_VERSION,nextAt:Math.min(day.active?day.end:day.nextStart,...(control.calendarVersion===1?[calendar.season(at, control.calendarSchedule).end]:edges),deferredEnd)};
   }
   const result=clans===next.clans && profiles===next.profiles && control===next.clanQuests && ledger===next.clanQuestRewards ? next : {...next,clans,profiles,clanQuests:control,...(ledger?{clanQuestRewards:ledger}:{})};
   return boundary ? seasonal.capture(result,at,sourceBoards,{canSettle}) : result;
@@ -224,7 +224,7 @@ function gift(data,p,at) {
 function view(data,clan,at,part) {
   if(!data.clanQuests) return {};
   const season=active(data,at), day=engine.period(at), board=clan.dailyQuests?.board;
-  const result={mode:season?'battle':'quests',announcedSeason:season,calendarSeason:calendar.season(at),questSeasonMedals:structuredClone(clan.questSeasonMedals||[])};
+  const result={mode:season?'battle':'quests',announcedSeason:season,calendarSeason:calendar.season(at, data.clanQuests?.calendarSchedule),questSeasonMedals:structuredClone(clan.questSeasonMedals||[])};
   if(!part || part==='battle' || part==='preview') result.dailyQuests={
     active:!!(board?.day===day.id && day.active && !season && board.quests.length),
     resultsVisible:!!(board?.day===day.id && !season && board.quests.length && at>=board.end && at<board.end+engine.RESULTS_MS),

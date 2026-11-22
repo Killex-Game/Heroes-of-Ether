@@ -6,7 +6,7 @@ const { EventManager } = require("../events/event-manager");
 const { difference } = require("./profile-journal");
 const { applyTransfer } = require("./profile-transfer");
 const competition = require("../clans/clan-competition-service");
-// Persistent calculation replica. No file descriptors, sockets, Mongo client or
+// Persistent calculation replica. No file descriptors, sockets, database client or
 // authority to publish rewards. Only the owner can accept and persist a result.
 const store = new ProfileStore();
 const Shards = workerData?.batched

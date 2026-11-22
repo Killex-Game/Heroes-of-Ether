@@ -3,7 +3,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const { assessCapacity } = require("../../scripts/benchmarks/capacity-assessment.cjs");
 const make = () => ({
-  summary: { code: 0, mode: "mongo", players: 35, lobby: 30, mongoVerification: { matched: true } },
+  summary: { code: 0, mode: "database", players: 35, lobby: 30, databaseVerification: { matched: true } },
   rows: ["move", "split", "feed", "boosters", "combined"].map(phase => ({
     phase, connections: 35, updatesPerClient: 20, tickGaps: {p95: 65}, clientGaps: {p99: 80},
     actionRequests: 500, actionPending: 2, actionLatencyP95Max: 100,
@@ -43,8 +43,8 @@ test("no passing result from missing, duplicate or missing-measurement phases", 
     assert.equal(assessCapacity(rows, summary).shortRunMeetsTargets, false);
   }
 });
-test("Mongo consistency and successful process exit are required independently of speed", () => {
-  for (const change of [s => s.code = 1, s => delete s.mongoVerification, s => s.mongoVerification.matched = false]) {
+test("database consistency and successful process exit are required independently of speed", () => {
+  for (const change of [s => s.code = 1, s => delete s.databaseVerification, s => s.databaseVerification.matched = false]) {
     const { rows, summary } = make(); change(summary);
     assert.equal(assessCapacity(rows, summary).shortRunMeetsTargets, false);
   }
@@ -118,7 +118,7 @@ test("missing, extra, wrong-phase and incomplete mixed windows fail assessment",
   }
 });
 test("mixed mode retains storage, lobby and action requirements and rejects invalid durations", () => {
-  for (const change of [s => s.code = 1, s => s.mongoVerification.matched = false,
+  for (const change of [s => s.code = 1, s => s.databaseVerification.matched = false,
     s => s.phaseSeconds = 30, s => s.mixedMinutes = 1.5, s => s.mixedMinutes = -1]) {
     const { rows, summary } = mixedRun(); change(summary);
     assert.equal(assessCapacity(rows, summary).shortRunMeetsTargets, false);

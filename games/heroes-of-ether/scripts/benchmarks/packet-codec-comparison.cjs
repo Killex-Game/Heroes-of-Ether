@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),{EventEmitter}=require('node:events');
 const {RoomFixture}=require('./resident-room-processes/room-fixture.cjs');
-const {createFixture}=require('./mongodb-room-fixture.cjs');
+const {createFixture}=require('./database-room-fixture.cjs');
 const wire=require('../../public/shared/arena-wire');
 const {Encoder,Decoder}=require(process.env.MSGPACK_MODULE||'@msgpack/msgpack');
 const profiles=Object.values(createFixture().data.profiles).slice(0,35);

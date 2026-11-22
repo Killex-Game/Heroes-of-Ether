@@ -2,8 +2,8 @@
 // Read-only check of the Git index. Never print file contents or secret values.
 const {execFileSync}=require('node:child_process');
 const path=require('node:path'),{createHash}=require('node:crypto');
-const forbidden=/(^|\/)(?:data|admin-control|secrets|backups|artifacts|node_modules|\.cache)(\/|$)|(^|\/)\.env(?:\.|$)|\.credentials\.env$|\.(?:key|pem|pfx|p12|cpuprofile|heapsnapshot|log)$|(^|\/)config\/(?:mongodb\.local|owner-admin)\.json$|(^|\/)operations\/runtimes\//i;
-const markers=[/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,/\bgh[pousr]_[a-zA-Z0-9]{30,}\b/,/\bgithub_pat_[a-zA-Z0-9_]{40,}\b/,/mongodb(?:\+srv)?:\/\/[^\s/:@]+:[^\s/@]+@/i];
+const forbidden=/(^|\/)(?:data|admin-control|secrets|backups|artifacts|node_modules|\.cache)(\/|$)|(^|\/)\.env(?:\.|$)|\.credentials\.env$|\.(?:key|pem|pfx|p12|cpuprofile|heapsnapshot|log)$|(^|\/)config\/(?:mongodb\.local|postgresql\.local|owner-admin)\.json$|(^|\/)operations\/runtimes\//i;
+const markers=[/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,/\bgh[pousr]_[a-zA-Z0-9]{30,}\b/,/\bgithub_pat_[a-zA-Z0-9_]{40,}\b/,/(?:postgres(?:ql)?|mongodb(?:\+srv)?):\/\/[^\s/:@]+:[^\s/@]+@/i];
 function check(root){
   const git=(args,input)=>execFileSync('git',args,{cwd:root,input,maxBuffer:16*1024*1024,stdio:['pipe','pipe','pipe']});
   const base=git(['rev-parse','--show-toplevel']).toString().trim(),problems=[];
