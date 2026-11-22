@@ -1,15 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261123-kill-signals",
-  "sourceTag": "release/20261123-kill-signals",
-  "sourceCommit": "d22f2c687edf1b4b7327c23fca0fdccf29850b99",
-  "branch": "feature/art-redesign-20261122",
+  "gameRelease": "20261123-interface-mechanics",
+  "sourceTag": "release/20261123-interface-mechanics",
+  "sourceCommit": "907b8bab2ec14d6a4c4cc9c6a8070adf08102024",
+  "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": false,
-  "entryReopenedAtUtc": "2026-11-22T19:24:59.893Z",
+  "rootSourceSynchronized": true,
+  "entryReopenedAtUtc": "2026-11-22T23:35:38.537Z",
   "runtime": {
-    "gamePid": 323546,
+    "gamePid": 344918,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
@@ -19,136 +20,144 @@
     "hold": false
   },
   "installed": [
-    "Event-triggered Kill inspection for arena and lobby actions, including separate rejected currency-purchase attempts",
-    "Detailed inspection only after a suspicious event signal; no added permanent scans or client polling",
-    "Existing Kill reviews retained, no automatic bans or fabricated classifier training labels",
-    "Slightly wider arena view, up to 5%, with original camera follow and maximum-view limits",
-    "Durable owner-confirmed Kill evidence for lobby scripts, without automatic bans or booster-model training",
-    "PostgreSQL-only runtime, administration monitoring and verified backups",
-    "Future clan season scheduling with one or two quest seasons in succession",
-    "Three unreviewed historical gift-dispatch cases in Kill",
-    "Production game code without comments, development sources preserved",
-    "Recovery safeguards and individual avatar portrait fit"
+    "Mobile lobby and arena controls use icons and retain accessible names",
+    "Separate profile frames and arena rims, 15 retired theme identities map to existing accessible avatars",
+    "Per-item booster cooldowns 500 ms, food 200 ms, egg 10000 ms, authoritative server enforcement",
+    "Title accessories and once-per-life E stock follow the owner document and clarifications",
+    "Censored profanity, one strike per offending message, one-hour chat mute every third message, expanded chat refocus",
+    "Emote 5-second cooldown and occlusion, lower arena labels, reduced avatar scale",
+    "Four negative gifts cost 5 ether, unavailable achievement checkbox removed, larger generator icon",
+    "Browser compatibility hotfix retained; no raster graphics installed"
   ],
   "data": {
     "before": {
-      "at": 1795374708236,
-      "revision": 3350379,
-      "digest": "acf56d7796e4b5f15e3737fb450fa960cbfd120afa9d08b6952db606d67d8a96",
-      "worldHash": "769a6b0f0738b5184d83198305bacacaf1ed1168f36359f7b48182b25d0f3140",
-      "profiles": 1703,
+      "at": 1795390257921,
+      "revision": 3500495,
+      "digest": "b8fb24283f13d7c3ff9492acfebe892750aee08a21681b2db4e6d51fdb5f30f0",
+      "worldHash": "b549249189747ad9ca109c6b8b127118a4e87121b0397bc4c3c5e4ac72099b09",
+      "profiles": 1704,
       "clans": 135,
       "fullWorldAndAuxEqual": true,
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "backup": "/srv/heroether-test/play/backups/kill-signals-20261123"
+      "backup": "/srv/heroether-test/play/backups/interface-mechanics-20261123"
     },
     "after": {
       "calendarReplayExact": true,
+      "approvedMigrationsExact": true,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 3350379,
-      "revision": 3350383,
-      "digest": "54383a1d6fd65926322d1131d5992566f38046bf69f5482321c173dd605e4a96",
-      "worldHash": "fff1665e92162585bc2144a7471e007fb577c17e5bef67191c43319e635f6cba",
-      "profiles": 1703,
+      "beforeRevision": 3500495,
+      "revision": 3500496,
+      "digest": "12ea58e4eb732e600a2ae09c2045f485bc80008bae431df3d8846a3d75dba056",
+      "worldHash": "e74df7066959e2926c8ebfcaf13495e0475a66f0ddeeb3f1b970fbcc79078e1e",
+      "profiles": 1704,
       "clans": 135,
-      "at": 1795374826680,
+      "at": 1795390311364,
       "transitionTimes": [
-        1795374826680,
-        1795374851682,
-        1795374891683,
-        1795375026688
+        1795390311364
+      ],
+      "retiredAvatarProfiles": 7,
+      "constructorChanges": [
+        [
+          "appearance",
+          "revision"
+        ],
+        [
+          "revision",
+          "skinId"
+        ],
+        [
+          "revision",
+          "skinId"
+        ],
+        [
+          "revision",
+          "skinId"
+        ],
+        [
+          "revision",
+          "skinId"
+        ],
+        [
+          "revision",
+          "skinId"
+        ],
+        [
+          "revision",
+          "skinId"
+        ],
+        [
+          "revision",
+          "skinId"
+        ]
       ]
     },
-    "localBackupSha256": "aefddffde0f7134271f4ec87560819b5c7dd42854b0a4f2cffd107ab557c2427",
-    "firstStartupComparison": {
-      "calendarReplayExact": true,
-      "allOtherFieldsEqual": true,
-      "beforeRevision": 3350379,
-      "revision": 3350383,
-      "digest": "54383a1d6fd65926322d1131d5992566f38046bf69f5482321c173dd605e4a96",
-      "worldHash": "fff1665e92162585bc2144a7471e007fb577c17e5bef67191c43319e635f6cba",
-      "profiles": 1703,
-      "clans": 135,
-      "at": 1795374826680,
-      "transitionTimes": [
-        1795374826680,
-        1795374851682,
-        1795374891683,
-        1795375026688
-      ]
-    },
+    "localBackupSha256": "81edfe3adf582bf57b8f1884c0bca617a1aef5796758331d9cb005d98917813b",
     "reopened": {
-      "at": 1795375499893,
-      "gamePid": 323546,
+      "at": 1795390538537,
+      "gamePid": 344918,
       "adminPid": 1163,
-      "revision": 3350383,
-      "generation": 409,
+      "revision": 3500496,
+      "generation": 903,
       "entryOpened": true,
       "backend": "postgresql"
     }
   },
   "verification": {
-    "windowsTargeted": 39,
-    "linuxTargeted": 39,
-    "windowsCamera": 26,
-    "linuxCamera": 26,
-    "windowsFastBoundary": 15,
-    "linuxFastBoundary": 15,
-    "fullSuiteRun": false,
+    "linuxFull": {
+      "total": 2298,
+      "passed": 2297,
+      "failed": 0,
+      "skipped": 1
+    },
+    "windowsFull": {
+      "total": 2298,
+      "passed": 2281,
+      "failed": 16,
+      "skipped": 1
+    },
+    "windowsFinalAffectedFiles": {
+      "total": 129,
+      "passed": 123,
+      "failed": 6,
+      "remainingCause": "EPERM atomic rename"
+    },
     "browsers": {
       "engines": [
         "Chromium",
         "Firefox",
         "WebKit"
       ],
-      "widths": 3,
+      "viewports": 5,
+      "casesPerEngine": 18,
       "pageErrors": 0
     },
-    "historicalReplay": {
-      "events": 18498,
-      "expectedAccounts": 4,
-      "matchedAccounts": 4,
-      "independentAccuracyEvaluation": false
+    "networkExercisePlayers": 35,
+    "networkExercisePhases": 5,
+    "finalPendingActions": 0,
+    "generatorAuditTests": 5,
+    "avatarGallery": 85,
+    "achievementDocument": {
+      "entries": 69,
+      "pages": 24
     },
-    "httpExactChecks": 8,
-    "publicSurfaces": 4,
+    "httpExactChecks": 87,
     "structure": {
-      "javascript": 1042,
-      "references": 5461
+      "javascript": 1048,
+      "references": 5391
     },
-    "repositoryCheck": true,
-    "productionChangedFiles": 7,
-    "productionCommentsRemoved": 125
+    "productionChangedFiles": 42,
+    "commentsRemoved": 573,
+    "rasterAssetsChanged": 0
   },
-  "report": "artifacts/kill-lobby-patterns-20261122/report.txt",
-  "previousRelease": "20261122-kill-owner-mark",
+  "report": "artifacts/interface-mechanics-20261123/report.txt",
+  "previousRelease": "20261123-kill-signals",
   "notes": [
-    "The first camera and incomplete test-fixture failures are preserved in validation-notes.txt",
-    "First startup comparison assumed one timestamp; final verifier replays all evidenced calendar times exactly",
-    "An additional closed-entry restart installed the fast-request boundary correction before reopening",
-    "No trained-model or broad performance claim; RSS and scaling remain separate work",
-    "All protected backups retained, including previous art stages; new backup exists on VPS and locally",
-    "Root experimental game and independent admin process were not updated",
-    "VPS disk measured during final verification: 98% used, about 1.5 GiB free. Protected backups were retained."
-  ],
-  "staticPatches": [
-    {
-      "id": "20261123-browser-abort-compat",
-      "sourceCommit": "4aa43f9338cabcdd5e7407a0a67d675d7ebe84ca",
-      "installedAt": "2026-11-22T21:59:36.158Z",
-      "files": 4,
-      "restarted": false,
-      "report": "artifacts/browser-abort-compat-20261123/report.txt",
-      "unitTests": 6,
-      "browserEngines": [
-        "Chromium",
-        "Firefox",
-        "WebKit"
-      ],
-      "missingNativeMethodsSimulated": true,
-      "actualWindows7Tested": false,
-      "exactHttpChecks": 15
-    }
+    "All protected backups retained on VPS and locally",
+    "Initial Windows and Linux failures and fixture corrections are preserved in validation-notes.txt",
+    "Root source synchronized; local private config and running experimental process not restarted",
+    "Eleven graphics drafts prepared separately; original avatars and newspaper banners preserved",
+    "No new capacity, RSS or anti-cheat accuracy claim",
+    "Follow-up avatar lower-edge correction in progress after owner screenshot; original fit QA did not catch the visible bottom gap"
   ]
 }
