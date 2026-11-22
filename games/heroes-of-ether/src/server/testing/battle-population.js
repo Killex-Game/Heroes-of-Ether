@@ -25,6 +25,9 @@ function prepareBattlePopulation(data, at = Date.now(), { includeClanIds = [] } 
       p.progress = freshProgress(p.level);
       p.skinId = skins[n % skins.length].id;
       p.clanId = c.id; p.wallet = { coins: 2000, crystals: 100, bucks: 20 };
+      const transactions = require('../profiles/transaction-history');
+      transactions.capture(p, at, { kind: 'test-population', label: 'Начальный баланс тестового бота' });
+      transactions.validate(p);
       c.members.push(p.id); c.roles[p.id] = 'member';
       Object.assign(next.profiles, fresh.data.profiles);
       sessions.push({ id: p.id, token: auth.token });

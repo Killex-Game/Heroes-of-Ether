@@ -49,3 +49,16 @@ test('after removing underlevel bots the repaired rosters form full groups and p
  assert.equal(new Set(assigned).size,12);
  assert.equal(prepareBattlePopulation(filled.data,start).added,0);
 });
+
+test('new roster bots retain valid currency history after a saved-world restart',t=>{
+ const fs=require('node:fs'),path=require('node:path'),tx=require('../../src/server/profiles/transaction-history');
+ const dir=require('../temp').temporary(t,'battle-population-ledger');
+ const d=tx.syncWorld(fixture(),at);for(const c of Object.values(d.clans)){leave(d,c);leave(d,c);}
+ const before=structuredClone(d),filled=prepareBattlePopulation(d,at);assert.equal(filled.added,24);
+ for(const [key,p]of Object.entries(before.profiles))assert.deepEqual(filled.data.profiles[key],p);
+ for(const p of Object.values(filled.data.profiles))tx.validate(p);
+ const file=path.join(dir,'profiles.json');fs.writeFileSync(file,JSON.stringify(filled.data));
+ const restored=new ProfileStore({filePath:file,now:()=>at});
+ for(const s of filled.sessions){const p=restored.find(s.token);assert.deepEqual(p.wallet,{coins:2000,crystals:100,bucks:20});assert(p.transactions.entries.some(e=>e.kind==='test-population'));tx.validate(p);}
+ assert.equal(prepareBattlePopulation(restored.data,at).added,0);
+});
