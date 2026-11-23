@@ -5,6 +5,7 @@ const {ProfileStore}=require("../../src/server/profiles/profile-store");
 const history=require("../../src/server/profiles/transaction-history");
 const roulette=require("../../src/server/roulette/roulette-service");
 const rules=require("../../public/shared/roulette-rules");
+const operations=require("../../src/server/profiles/operation-receipts");
 const at=Date.parse("2026-11-16T12:00:00Z");
 const freeze=x=>{if(x&&typeof x==="object"&&!Object.isFrozen(x)){Object.freeze(x);Object.values(x).forEach(freeze);}return x;};
 function fixture(){
@@ -15,10 +16,10 @@ function fixture(){
  return {s,u};
 }
 test("audited copies isolate all mutable and unknown fields, retaining only immutable archives",()=>{
- const p=freeze({wallet:{coins:1},inventory:{a:2},future:{nested:[{x:1}]},transactions:{entries:[{id:"a"}]},receipts:{a:"b"},roulette:{offer:{slots:[{amount:3}]},results:{a:{index:1}}}});
+ const p=freeze({wallet:{coins:1},inventory:{a:2},future:{nested:[{x:1}]},transactions:{entries:[{id:"a"}]},receipts:{a:"b"},arenaReceipts:{0:{a:"b"}},roulette:{offer:{slots:[{amount:3}]},results:{a:{index:1}}}});
  for(const copy of [copyProfile,lobbyDraft]){
   const q=copy(p);assert.deepEqual(q,p);
-  for(const k of ["transactions","receipts"])assert.strictEqual(q[k],p[k]);
+  for(const k of ["transactions","receipts","arenaReceipts"])assert.strictEqual(q[k],p[k]);
   assert.strictEqual(q.roulette.results,p.roulette.results);
   q.wallet.coins++;q.inventory.a++;q.future.nested[0].x++;q.roulette.offer.slots[0].amount++;
   assert.equal(p.wallet.coins,1);assert.equal(p.inventory.a,2);assert.equal(p.future.nested[0].x,1);assert.equal(p.roulette.offer.slots[0].amount,3);
@@ -26,11 +27,46 @@ test("audited copies isolate all mutable and unknown fields, retaining only immu
  assert.deepEqual(copyProfile({id:"legacy"}),{id:"legacy"});
 });
 test("generic transaction callbacks retain full isolation even for historical archives",()=>{
- const {s,u}=fixture(),old=freeze(s.data),p=s.find(u.token),before=JSON.stringify(old);
+ const {s,u}=fixture(),id=randomUUID();operations.recordArena(s.find(u.token),id,"old-cast");
+ const old=freeze(s.data),p=s.find(u.token),before=JSON.stringify(old);
  assert.throws(()=>s.transact(u.token,randomUUID(),"arbitrary",draft=>{
+  draft.arenaReceipts[operations.bucketFor(id)][id]="changed";
   draft.transactions.entries[0].label="changed";draft.receipts.extra="test";draft.roulette.results.extra={};throw Error("rollback");
  }),/rollback/);
  assert.strictEqual(s.data,old);assert.equal(JSON.stringify(old),before);assert.strictEqual(s.find(u.token),p);
+});
+
+test("arena receipt append detaches the changed bucket and keeps earlier snapshots and duplicate lookup intact",()=>{
+ const ids=Array.from({length:200},()=>randomUUID()),p={wallet:{coins:20},receipts:{}};
+ for(const id of ids)operations.recordArena(p,id,"prior");freeze(p);
+ for(const copy of [copyProfile,lobbyDraft]){
+  const q=copy(p),id=randomUUID(),key=operations.bucketFor(id),old=p.arenaReceipts;
+  operations.recordArena(q,id,"new");q.wallet.coins--;
+  assert.notStrictEqual(q.arenaReceipts,old);assert.notStrictEqual(q.arenaReceipts[key],old[key]);
+  for(const bucket of Object.keys(old))if(bucket!==key)assert.strictEqual(q.arenaReceipts[bucket],old[bucket]);
+  for(const oldId of ids)assert.equal(operations.read(q,oldId),"prior");
+  assert.equal(operations.read(p,id),operations.MISSING);assert.equal(operations.read(q,id),"new");
+  assert.equal(p.wallet.coins,20);operations.validate(q,14);
+ }
+});
+
+test("failed audited commit cannot publish an appended arena receipt or wallet change",()=>{
+ const {s,u}=fixture(),first=randomUUID();operations.recordArena(s.find(u.token),first,"old");
+ const old=freeze(s.data),before=JSON.stringify(old),id=randomUUID();
+ s.save=()=>{throw Error("simulated durable save failure")};
+ assert.throws(()=>s.transactProfile(u.token,randomUUID(),"owned",p=>{
+  p.wallet.coins--;operations.recordArena(p,id,"new");
+ }),/simulated durable save failure/);
+ assert.strictEqual(s.data,old);assert.equal(JSON.stringify(old),before);
+ assert.equal(operations.read(s.find(u.token),id),operations.MISSING);
+});
+
+test("unchanged profile open never traverses its validated arena operation archive",()=>{
+ const {s,u}=fixture(),id=randomUUID();operations.recordArena(s.find(u.token),id,"old");s.open(u.token);
+ const p=s.find(u.token),old=s.data,key=operations.bucketFor(id),bucket=p.arenaReceipts[key];
+ Object.defineProperty(p.arenaReceipts,key,{get(){throw Error("arena archive read")},enumerable:true,configurable:true});
+ try{assert.equal(s.open(u.token).created,false);assert.strictEqual(s.data,old);}
+ finally{Object.defineProperty(p.arenaReceipts,key,{value:bucket,enumerable:true,configurable:true,writable:true});}
 });
 test("repeated roulette spins detach the result table and keep old snapshots immutable",()=>{
  const {s,u}=fixture();
