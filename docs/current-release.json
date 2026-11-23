@@ -1,8 +1,8 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
   "gameRelease": "20261123-avatar-arena-followup",
-  "sourceTag": "release/20261123-league-frames",
-  "sourceCommit": "cd352ad93a41728a1678eb0b76faf4d76da715ca",
+  "sourceTag": "release/20261123-guardian-neck",
+  "sourceCommit": "7656b83aa7ddb3d5a2ddf76a2f599830bd1d9240",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
@@ -36,7 +36,8 @@
     "Arena bows up to 20% larger, capped below equipped hats; lobby portrait dimensions unchanged",
     "Prepared interface artwork and 14 lobby menu icons installed; protected artwork and controls retained",
     "Ten ornate title profile frames, 22 saturated arena rim palettes with unchanged rim geometry",
-    "Six moderately ornate league profile frames and higher-contrast league arena rims with exact original geometry"
+    "Six moderately ornate league profile frames and higher-contrast league arena rims with exact original geometry",
+    "Owner corrected-neck winged guardian imported in five resolutions with unchanged canonical fit"
   ],
   "data": {
     "before": {
@@ -160,7 +161,7 @@
     "commentsRemoved": 159,
     "rasterAssetsChanged": 0
   },
-  "report": "artifacts/league-frames-20261123/report.txt",
+  "report": "artifacts/guardian-neck-20261123/report.txt",
   "previousRelease": "20261123-interface-mechanics",
   "notes": [
     "Initial Linux failures were obsolete expectations, preserved with final complete rerun",
@@ -770,5 +771,119 @@
       "No new full-backend regression or capacity benchmark",
       "Low VPS disk capacity remains unresolved; protected backups retained"
     ]
+  },
+  "staticGuardianNeckUpdate": {
+    "at": "2026-11-23T07:50:14.658Z",
+    "release": "/srv/heroether-test/play/releases/20261123-avatar-arena-followup",
+    "backup": {
+      "archiveSha256": "43f5c58034ba6a65a620c71ba6807241e397b6e4ff69768afd9886c82699c8b9",
+      "checked": 9,
+      "manifestEqual": true
+    },
+    "files": 9,
+    "added": 0,
+    "unchangedPublic": 2296,
+    "gamePid": 363098,
+    "adminPid": 1163,
+    "noProcessRestart": true,
+    "noWorldWrites": true,
+    "diskFreeBefore": 516833280,
+    "diskFreeAfter": 515719168,
+    "sourceCommit": "7656b83aa7ddb3d5a2ddf76a2f599830bd1d9240",
+    "sourceTag": "release/20261123-guardian-neck",
+    "published": true,
+    "asset": {
+      "sourceSha256": "dddd4047904e2516f6ed2ac4c7e07c0e8cf7e75a5d2f6b4ab6519de75807e80f",
+      "outputs": [
+        {
+          "size": 64,
+          "exact": true,
+          "transparent": true,
+          "revision": true
+        },
+        {
+          "size": 128,
+          "exact": true,
+          "transparent": true,
+          "revision": true
+        },
+        {
+          "size": 256,
+          "exact": true,
+          "transparent": true,
+          "revision": true
+        },
+        {
+          "size": 512,
+          "exact": true,
+          "transparent": true,
+          "revision": true
+        },
+        {
+          "size": 1024,
+          "exact": true,
+          "transparent": true,
+          "revision": true
+        }
+      ],
+      "unchangedSkinFiles": 497,
+      "fitUnchanged": true
+    },
+    "browsers": [
+      {
+        "engine": "chromium",
+        "screens": 7,
+        "fitChecks": 5,
+        "arenaMasses": [
+          100,
+          1500,
+          6210
+        ],
+        "errors": 0,
+        "missing": 0
+      },
+      {
+        "engine": "firefox",
+        "screens": 7,
+        "fitChecks": 5,
+        "arenaMasses": [
+          100,
+          1500,
+          6210
+        ],
+        "errors": 0,
+        "missing": 0
+      },
+      {
+        "engine": "webkit",
+        "screens": 7,
+        "fitChecks": 5,
+        "arenaMasses": [
+          100,
+          1500,
+          6210
+        ],
+        "errors": 0,
+        "missing": 0
+      }
+    ],
+    "tests": {
+      "pass": 6,
+      "fail": 0,
+      "fullSuite": false
+    },
+    "httpExact": 27,
+    "commentsRemoved": 14,
+    "lineEndingCorrection": {
+      "at": "2026-11-23T07:52:00.444Z",
+      "file": "public/shared/art-revision.js",
+      "before": "99617886a7a2bb4210d0c445c571016e28654fddc2780e3ce1acd6cc6b205aa8",
+      "after": "d6fcce3553626b05526dc3bf27e6a5e767a60bf0375009ee7310d353979f9663",
+      "exact": true,
+      "noRestart": true
+    },
+    "rootSynchronized": true,
+    "developerToProductionExact": true,
+    "report": "artifacts/guardian-neck-20261123/report.txt"
   }
 }
