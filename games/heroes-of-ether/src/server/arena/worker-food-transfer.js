@@ -68,6 +68,16 @@ function sameMetadata(row, prior) {
 class FoodTransferEncoder {
   constructor({ packed = false } = {}) { this.rows = []; this.index = new Map(); this.packed = packed; }
   encode(rows) {
+    // Natural food snapshots keep a frozen primitive record until any value
+    // changes. Reuse the whole transfer state only when every ordinal is that
+    // exact validated record; mutable extensions and getters still use values.
+    if (rows.length === this.rows.length) {
+      let unchanged = true;
+      // Ejected/moving particles are normally appended after natural food.
+      for (let i = rows.length - 1; i >= 0; i--)
+        if (this.rows[i].source !== rows[i]) { unchanged = false; break; }
+      if (unchanged) return null;
+    }
     const next = [], index = new Map(), entries = [];
     // One code per output row: even = old row, odd = old row + next exact
     // Float64 coordinate pair, negative = new full object in added[]. The

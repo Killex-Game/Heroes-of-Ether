@@ -2,6 +2,27 @@
 const test = require("node:test"), assert = require("node:assert/strict");
 const { FoodTransferEncoder, FoodTransferDecoder } = require("../../src/server/arena/worker-food-transfer");
 
+test('unchanged frozen fields keep their transport state until pickup, movement or extension changes', () => {
+  for (const packed of [false, true]) {
+    const encoder = new FoodTransferEncoder({packed}), decoder = new FoodTransferDecoder();
+    let rows = Array.from({length: 300}, (_, i) => Object.freeze({id: String(i), x:i, y:-i, value:1, radius:4, color:'blue'}));
+    const original = decoder.decode(structuredClone(encoder.encode(rows))), saved = structuredClone(original);
+    const index = encoder.index, records = encoder.rows;
+    for (let frame = 0; frame < 100; frame++) {
+      assert.equal(encoder.encode(rows.slice()), null);
+      assert.strictEqual(encoder.index, index);
+      assert.strictEqual(encoder.rows, records);
+    }
+    const check = () => assert.deepEqual(decoder.decode(structuredClone(encoder.encode(rows))), rows);
+    rows[299] = Object.freeze({...rows[299],x:5}); check();
+    rows.reverse(); check(); rows.pop(); check();
+    rows[2] = Object.freeze({...rows[2],extension:{value:1}}); check();
+    rows[2].extension.value++; check();
+    rows = []; check(); assert.equal(encoder.index.size,0);
+    assert.deepEqual(original,saved);
+  }
+});
+
 test('food ordinal cache retains exact references through reorder and duplicate IDs', () => {
   for (const packed of [false,true]) {
     const encoder=new FoodTransferEncoder({packed}),decoder=new FoodTransferDecoder();
