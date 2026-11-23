@@ -1,8 +1,8 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
   "gameRelease": "20261123-avatar-arena-followup",
-  "sourceTag": "release/20261123-title-frames-rims",
-  "sourceCommit": "fc7671c94f62980e78f17c94d82fac49498bf3c0",
+  "sourceTag": "release/20261123-league-frames",
+  "sourceCommit": "cd352ad93a41728a1678eb0b76faf4d76da715ca",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
@@ -35,7 +35,8 @@
     "Owner archive selectively updates premium-2, desert-cat and grove-faun in five resolutions; other 488 portrait files remain byte-identical",
     "Arena bows up to 20% larger, capped below equipped hats; lobby portrait dimensions unchanged",
     "Prepared interface artwork and 14 lobby menu icons installed; protected artwork and controls retained",
-    "Ten ornate title profile frames, 22 saturated arena rim palettes with unchanged rim geometry"
+    "Ten ornate title profile frames, 22 saturated arena rim palettes with unchanged rim geometry",
+    "Six moderately ornate league profile frames and higher-contrast league arena rims with exact original geometry"
   ],
   "data": {
     "before": {
@@ -159,7 +160,7 @@
     "commentsRemoved": 159,
     "rasterAssetsChanged": 0
   },
-  "report": "artifacts/title-frames-rims-20261123/report.txt",
+  "report": "artifacts/league-frames-20261123/report.txt",
   "previousRelease": "20261123-interface-mechanics",
   "notes": [
     "Initial Linux failures were obsolete expectations, preserved with final complete rerun",
@@ -628,6 +629,146 @@
     "limitations": [
       "No new full-backend regression or capacity benchmark",
       "Low VPS disk capacity is still unresolved; protected backups retained"
+    ]
+  },
+  "staticLeagueFramesUpdate": {
+    "at": "2026-11-23T07:38:06.763Z",
+    "release": "/srv/heroether-test/play/releases/20261123-avatar-arena-followup",
+    "backup": {
+      "archiveSha256": "53bc9347ac717c948e0cfc7974827c2d78d6269bb09de5173a9fa835bb6e57ae",
+      "checked": 17,
+      "manifestEqual": true
+    },
+    "files": 47,
+    "added": 30,
+    "unchangedPublic": 2258,
+    "gamePid": 363098,
+    "adminPid": 1163,
+    "noProcessRestart": true,
+    "noWorldWrites": true,
+    "diskFreeBefore": 515973120,
+    "diskFreeAfter": 513482752,
+    "sourceCommit": "cd352ad93a41728a1678eb0b76faf4d76da715ca",
+    "sourceTag": "release/20261123-league-frames",
+    "published": true,
+    "leagueFrames": 6,
+    "leagueWebpVariants": 30,
+    "rimPalettes": 6,
+    "rimRasterFiles": 12,
+    "originalRimAlphaExact": true,
+    "profileFramesIndependentFromArenaRims": true,
+    "contrast": [
+      {
+        "id": "bronze",
+        "before": 7.212257289736897,
+        "after": 12.102125354070097,
+        "geometryUnchanged": true
+      },
+      {
+        "id": "silver",
+        "before": 8.877361348111132,
+        "after": 15.95483949382178,
+        "geometryUnchanged": true
+      },
+      {
+        "id": "gold",
+        "before": 6.862151287857854,
+        "after": 12.134482067691005,
+        "geometryUnchanged": true
+      },
+      {
+        "id": "platinum",
+        "before": 7.139442617835257,
+        "after": 12.285434226890539,
+        "geometryUnchanged": true
+      },
+      {
+        "id": "diamond",
+        "before": 7.845709997634277,
+        "after": 14.849453481734146,
+        "geometryUnchanged": true
+      },
+      {
+        "id": "champions",
+        "before": 9.88744506311789,
+        "after": 14.977632499724558,
+        "geometryUnchanged": true
+      }
+    ],
+    "productionBytes": 1751977,
+    "commentsRemoved": 58,
+    "developerToProductionExact": true,
+    "rootSynchronized": true,
+    "assetsDecoded": 42,
+    "browsers": [
+      {
+        "engine": "chromium",
+        "screens": 8,
+        "leagueFrames": 6,
+        "stableRepaintsPerFrame": 25,
+        "rimGeometry": {
+          "cases": 66,
+          "alphaUnchanged": true
+        },
+        "errors": 0,
+        "missing": 0
+      },
+      {
+        "engine": "firefox",
+        "screens": 8,
+        "leagueFrames": 6,
+        "stableRepaintsPerFrame": 25,
+        "rimGeometry": {
+          "cases": 66,
+          "alphaUnchanged": true
+        },
+        "errors": 0,
+        "missing": 0
+      },
+      {
+        "engine": "webkit",
+        "screens": 8,
+        "leagueFrames": 6,
+        "stableRepaintsPerFrame": 25,
+        "rimGeometry": {
+          "cases": 66,
+          "alphaUnchanged": true
+        },
+        "errors": 0,
+        "missing": 0
+      }
+    ],
+    "tests": {
+      "firstPass": 18,
+      "firstFailures": 2,
+      "firstFailureKind": "Windows temporary file rename EPERM",
+      "repeatPass": 20,
+      "repeatFail": 0,
+      "scope": [
+        "arena-appearance-cache",
+        "league-appearance",
+        "ui-refresh-signature"
+      ]
+    },
+    "structure": {
+      "javascript": 1051,
+      "references": 6101,
+      "renamed": 247
+    },
+    "httpExact": 141,
+    "cleanup": {
+      "at": "2026-11-23T07:39:27.774Z",
+      "removed": [
+        "/srv/heroether-test/play/results/league-frames-20261123/patch/public",
+        "/srv/heroether-test/play/results/league-frames-20261123/patch.tar.gz"
+      ],
+      "backupsPreserved": true,
+      "diskFree": 514650112
+    },
+    "report": "artifacts/league-frames-20261123/report.txt",
+    "limitations": [
+      "No new full-backend regression or capacity benchmark",
+      "Low VPS disk capacity remains unresolved; protected backups retained"
     ]
   }
 }
