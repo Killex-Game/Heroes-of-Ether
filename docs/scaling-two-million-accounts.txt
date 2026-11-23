@@ -178,3 +178,5 @@ CCU/долиарены/bytesвсек/CPUнакомнату/скоростиза�
 Календарный индекс установлен отдельно, полный Linux2310/2309/0fail/1skip.
 Food fast path остаётся кандидатом. Дальше: shareArenaData, раздельные истории и
 активные профили, затем повторная нагрузочная лестница. Полный отчёт: games/heroes-of-ether/docs/performance/calendar-startup-portraits-20261123.txt
+
+23.11.2026: исправление кланового вклада установлено отдельным выпуском 20261123-clan-contributions. Полный Linux2317/2316pass/0fail/1skip. Нагрузочная лестница и память не закрыты; продолжать по предыдущему плану. Отчёт games/heroes-of-ether/docs/performance/clan-contributions-20261123.txt

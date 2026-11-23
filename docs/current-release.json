@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261123-calendar-index",
-  "sourceTag": "release/20261123-portrait-edge",
-  "sourceCommit": "d89128963213ca7c1de5639af4bd8adbbfb17f12",
+  "gameRelease": "20261123-clan-contributions",
+  "sourceTag": "release/20261123-clan-contributions",
+  "sourceCommit": "04ec5cfae825ae2bf6b5f7ec8d45b38b5979ae95",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": false,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-23T13:54:00.197Z",
+  "entryReopenedAtUtc": "2026-11-23T14:31:23.618Z",
   "runtime": {
-    "gamePid": 416632,
+    "gamePid": 427659,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
@@ -42,42 +42,51 @@
     "News editor restores built-in banners with named artwork revisions",
     "Startup screen uses original human heroes and azure/champagne pattern",
     "Eleven portrait lower anchors corrected including Sun Phoenix; scale and 503 avatar raster files unchanged",
-    "Social calendar reuses immutable profile ID index while reading spouses from the current world"
+    "Social calendar reuses immutable profile ID index while reading spouses from the current world",
+    "Every actual absorbed enemy part contributes its server-confirmed mass independently of personal opponent cooldowns",
+    "Per-life physics cursor rejects duplicate absorption delivery",
+    "Configured worker retains owner calendarSchedule"
   ],
   "data": {
     "before": {
-      "at": 1795441547622,
-      "revision": 3910465,
-      "digest": "d2e3a3ecba2bca6b8fd4a93ad93be0e5bbefc53154755ac60eb9b7f0adcd6c85",
-      "worldHash": "293d7083ebd6299d7136a5885f3ac814231ef3c5481c87f027b235bf0a710439",
-      "profiles": 1711,
-      "clans": 135,
+      "at": 1795443762499,
+      "revision": 3923076,
+      "digest": "5e088aa818093a82980f412154861c1f9056a31115b7f104a23913b5566d1dfd",
+      "worldHash": "87cb8a1994572ac6b63f59b6fb63b62c7505a559d3f35a1d8836d1efda54398b",
+      "profiles": 1712,
+      "clans": 136,
       "fullWorldAndAuxEqual": true,
-      "backup": "/dev/shm/heroether-calendar-index-20261123/calendar-index-20261123",
+      "backup": "/dev/shm/heroether-clan-progress-audit-20261123/clan-progress-audit-20261123",
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/calendar-index-20261123/data-before.tar.gz"
+      "durableBackup": "/srv/heroether-test/play/backups/clan-progress-audit-20261123/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
-      "noCalendarChange": true,
-      "expiredChat": 0,
+      "approvedMigrationsExact": true,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 3910465,
-      "revision": 3910465,
-      "digest": "d2e3a3ecba2bca6b8fd4a93ad93be0e5bbefc53154755ac60eb9b7f0adcd6c85",
-      "worldHash": "293d7083ebd6299d7136a5885f3ac814231ef3c5481c87f027b235bf0a710439",
-      "profiles": 1711,
-      "clans": 135
+      "beforeRevision": 3923076,
+      "revision": 3923078,
+      "digest": "8add129c4c6fc6b0172549ccd9728ff2d6a278a48f79538026d7192972853840",
+      "worldHash": "6943d8476b8c3b072ed9faf18c089d57ca14edb2d871a0e197548692c862c1b2",
+      "profiles": 1712,
+      "clans": 136,
+      "at": 1795444108565,
+      "transitionTimes": [
+        1795444108565,
+        1795444148567
+      ],
+      "retiredAvatarProfiles": [],
+      "constructorChanges": []
     },
     "archive": {
       "verified": true,
-      "archiveSha256": "b95c3878bca5ca8ebe4adfc28421087a3c906ee78071406fbacc236275bd3f06",
-      "revision": 3910465,
-      "digest": "d2e3a3ecba2bca6b8fd4a93ad93be0e5bbefc53154755ac60eb9b7f0adcd6c85",
-      "worldHash": "293d7083ebd6299d7136a5885f3ac814231ef3c5481c87f027b235bf0a710439",
-      "profiles": 1711,
-      "clans": 135,
+      "archiveSha256": "d3176cfa8722a136dc0d7b534771d7939028fa3507cce7ba81708a7ae0a4d275",
+      "revision": 3923076,
+      "digest": "5e088aa818093a82980f412154861c1f9056a31115b7f104a23913b5566d1dfd",
+      "worldHash": "87cb8a1994572ac6b63f59b6fb63b62c7505a559d3f35a1d8836d1efda54398b",
+      "profiles": 1712,
+      "clans": 136,
       "postgresqlArchiveVerified": true
     }
   },
@@ -1088,45 +1097,44 @@
     "foodTransferInstalled": false
   },
   "latestObservation": {
-    "atUtc": "2026-11-23T13:58:48.235Z",
+    "atUtc": "2026-11-23T14:32:49.102Z",
     "online": {
       "arena": 1,
-      "lobby": 6,
-      "total": 7
+      "lobby": 4,
+      "total": 5
     },
     "tickWorkMs": {
-      "count": 1190,
-      "p50": 8.11,
-      "p95": 23.6,
-      "p99": 35.31,
-      "max": 43.15
-    },
-    "tickIntervalMs": {
-      "count": 1190,
-      "p50": 50.05,
-      "p95": 60.8,
-      "p99": 85.94,
-      "max": 287.46
+      "count": 1200,
+      "p50": 0.77,
+      "p95": 1.14,
+      "p99": 5.33,
+      "max": 56.26
     },
     "memoryMiB": {
-      "resident": 3179,
-      "heapUsed": 682,
+      "resident": 1461,
+      "heapUsed": 413,
       "limit": 5120
     },
     "queuedActions": 0,
     "arenaBatches": 0,
     "paused": false,
-    "databaseConnected": true,
-    "inspectorClosed": true,
+    "database": {
+      "connected": true,
+      "lastError": null,
+      "revision": 3923085,
+      "syncAgeMs": 16829,
+      "prepareMs": 8535,
+      "writeMs": 156
+    },
     "entryOpen": true,
     "latencyAndMemoryWorkComplete": false,
     "comparableAB": false
   },
   "previousInstalledRelease": {
-    "release": "20261123-snapshot-cache",
-    "sourceCommit": "d228b39da12c44b6bd3fcd09433dd89301334870"
+    "release": "20261123-calendar-index",
+    "sourceCommit": "d89128963213ca7c1de5639af4bd8adbbfb17f12"
   },
-  "backendSourceCommit": "4d5fd904063382b7c96f934d7331e3b93feffe47",
+  "backendSourceCommit": "04ec5cfae825ae2bf6b5f7ec8d45b38b5979ae95",
   "calendarIndexUpdate": {
     "installed": true,
     "published": true,
@@ -1250,5 +1258,118 @@
     "scaleChanged": false,
     "archiveSha256": "f7ab8c33c46612e27f1700d9a2c7e4be3d9cfb2a8a5d0c6be16da74c8ad7e022",
     "report": "artifacts/avatar-fit-recheck-20261123/report.txt"
+  },
+  "clanContributionUpdate": {
+    "installed": true,
+    "published": false,
+    "release": "20261123-clan-contributions",
+    "sourceCommit": "04ec5cfae825ae2bf6b5f7ec8d45b38b5979ae95",
+    "mechanicsCommit": "ae3d6092f1ffdfbbdc0eefa73412ad571ad4ed2f",
+    "entryOpenedAtUtc": "2026-11-23T14:31:23.618Z",
+    "gamePid": 427659,
+    "adminPid": 1163,
+    "changes": [
+      "Every actual absorbed enemy part contributes its server-confirmed mass independently of personal opponent cooldowns",
+      "Per-life physics cursor rejects duplicate absorption delivery",
+      "Configured worker retains owner calendarSchedule"
+    ],
+    "validation": {
+      "windowsTargeted": 59,
+      "linuxFull": {
+        "total": 2317,
+        "passed": 2316,
+        "failed": 0,
+        "skipped": 1
+      },
+      "runtimeFiles": 2549,
+      "changed": 3,
+      "commentsRemoved": 29,
+      "allOtherRuntimeAndGraphicsUnchanged": true,
+      "rootFiles": 5
+    },
+    "data": {
+      "before": {
+        "at": 1795443762499,
+        "revision": 3923076,
+        "digest": "5e088aa818093a82980f412154861c1f9056a31115b7f104a23913b5566d1dfd",
+        "worldHash": "87cb8a1994572ac6b63f59b6fb63b62c7505a559d3f35a1d8836d1efda54398b",
+        "profiles": 1712,
+        "clans": 136,
+        "fullWorldAndAuxEqual": true,
+        "backup": "/dev/shm/heroether-clan-progress-audit-20261123/clan-progress-audit-20261123",
+        "backupEqual": true,
+        "preservedFormatVerified": true,
+        "durableBackup": "/srv/heroether-test/play/backups/clan-progress-audit-20261123/data-before.tar.gz"
+      },
+      "after": {
+        "calendarReplayExact": true,
+        "approvedMigrationsExact": true,
+        "allOtherFieldsEqual": true,
+        "beforeRevision": 3923076,
+        "revision": 3923078,
+        "digest": "8add129c4c6fc6b0172549ccd9728ff2d6a278a48f79538026d7192972853840",
+        "worldHash": "6943d8476b8c3b072ed9faf18c089d57ca14edb2d871a0e197548692c862c1b2",
+        "profiles": 1712,
+        "clans": 136,
+        "at": 1795444108565,
+        "transitionTimes": [
+          1795444108565,
+          1795444148567
+        ],
+        "retiredAvatarProfiles": [],
+        "constructorChanges": []
+      },
+      "archive": {
+        "verified": true,
+        "archiveSha256": "d3176cfa8722a136dc0d7b534771d7939028fa3507cce7ba81708a7ae0a4d275",
+        "revision": 3923076,
+        "digest": "5e088aa818093a82980f412154861c1f9056a31115b7f104a23913b5566d1dfd",
+        "worldHash": "87cb8a1994572ac6b63f59b6fb63b62c7505a559d3f35a1d8836d1efda54398b",
+        "profiles": 1712,
+        "clans": 136,
+        "postgresqlArchiveVerified": true
+      }
+    },
+    "lastObservation": {
+      "atUtc": "2026-11-23T14:32:49.102Z",
+      "online": {
+        "arena": 1,
+        "lobby": 4,
+        "total": 5
+      },
+      "tickWorkMs": {
+        "count": 1200,
+        "p50": 0.77,
+        "p95": 1.14,
+        "p99": 5.33,
+        "max": 56.26
+      },
+      "memoryMiB": {
+        "resident": 1461,
+        "heapUsed": 413,
+        "limit": 5120
+      },
+      "queuedActions": 0,
+      "arenaBatches": 0,
+      "paused": false,
+      "database": {
+        "connected": true,
+        "lastError": null,
+        "revision": 3923085,
+        "syncAgeMs": 16829,
+        "prepareMs": 8535,
+        "writeMs": 156
+      }
+    },
+    "historicalCompensationApplied": false,
+    "allPossibleGameplayLossRuledOut": false,
+    "wholeGamePerformanceImprovementProven": false,
+    "notes": [
+      "Original negative reproductions saved in calendar-index-20261123/clan-mass-before.txt and clan-schedule-before.txt",
+      "Real arena test fixture initially lacked input sequence and spawnSerial, corrected before successful full run",
+      "Two 40-second readiness checks expired during the same normal 77-second cold startup; no restart loop",
+      "Exact duplicate 126891984-byte diagnostic Node binary replaced by a hardlink to identical canonical binary; both paths retained, no saves or history removed",
+      "Old archives and all backup stages retained; low VPS disk reserve remains unresolved"
+    ]
   }
 }
