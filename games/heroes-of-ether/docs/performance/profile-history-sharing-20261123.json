@@ -1,6 +1,6 @@
 {
   "installed": false,
-  "published": false,
+  "published": true,
   "branch": "codex/20261123-history-sharing",
   "baselineCommit": "b628592039caf2e1e2d486e904f0a25f5852fcd5",
   "windowsTargeted": 105,
@@ -206,5 +206,6 @@
     "Initial worktree lacked pg dependency; linked existing identical node_modules and reran successfully",
     "Full Linux regression and representative mixed workload must pass before release",
     "No production code, saves, settings or service restart for this candidate"
-  ]
+  ],
+  "sourceCommit": "caaef1591fec4b82ec08d18a7a6551518b5f429e"
 }
