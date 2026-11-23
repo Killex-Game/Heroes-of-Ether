@@ -1,0 +1,46 @@
+{
+  "source": "Verified offline checkpoint before snapshot-cache release",
+  "profiles": 1706,
+  "profileBytes": 195519492,
+  "sizes": {
+    "min": 6895,
+    "median": 42820,
+    "p95": 75614,
+    "max": 16145083
+  },
+  "fields": [
+    {
+      "field": "roulette",
+      "bytes": 75016518,
+      "count": 1706,
+      "maxBytes": 10324741
+    },
+    {
+      "field": "transactions",
+      "bytes": 57002757,
+      "count": 1706,
+      "maxBytes": 6381710
+    },
+    {
+      "field": "receipts",
+      "bytes": 24815102,
+      "count": 1706,
+      "maxBytes": 1694544
+    },
+    {
+      "field": "arenaReceipts",
+      "bytes": 13818714,
+      "count": 75,
+      "maxBytes": 1328940
+    },
+    {
+      "field": "social",
+      "bytes": 4483125,
+      "count": 1497,
+      "maxBytes": 663585
+    }
+  ],
+  "rouletteResultsBytes": 74216509,
+  "transactionEntriesBytes": 56789471,
+  "caveat": "UTF-8 JSON bytes, not heap allocation. No identity, names, balances, request IDs or history contents included. Histories and receipts are retained, not truncated."
+}

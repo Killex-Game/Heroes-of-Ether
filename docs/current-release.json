@@ -1011,5 +1011,31 @@
     "rootSynchronized": true,
     "developerToProductionExact": true,
     "report": "artifacts/guardian-neck-20261123/report.txt"
+  },
+  "capacityValidation": {
+    "report": "games/heroes-of-ether/docs/performance/capacity-20261123.json",
+    "shortRunPass": [
+      35,
+      70
+    ],
+    "shortRunFail": [
+      105
+    ],
+    "cpuQuota": 3,
+    "includesLoadClients": true,
+    "acknowledged": 6212,
+    "recovered": 6212,
+    "duplicates": 0,
+    "allPostgreSQLComparisonsEqual": true,
+    "ladderStopped": true,
+    "admissionLimitsChanged": false,
+    "reproductionRunner": {
+      "players": 35,
+      "acknowledged": 1080,
+      "recovered": 1080,
+      "removedTestSchema": true
+    },
+    "maximumCcuEstablished": false,
+    "profileFootprint": "games/heroes-of-ether/docs/performance/profile-footprint-20261123.json"
   }
 }

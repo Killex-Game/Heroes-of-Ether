@@ -377,5 +377,1097 @@
       }
     ]
   },
-  "next": "Repeat with incrementalSettlement enabled and persist actual benchmark configuration in every phase. Do not raise admission limits based on this initial run."
+  "next": "Keep admission limits unchanged. Profile coordinator/physics on a controlled workload, separate current profiles from history according to docs/scaling-two-million-accounts.txt, then repeat the same workload and a longer soak. Do not enable experimental room owners without durable-state validation.",
+  "environment": {
+    "cpuQuota": "300% shared by server, workers and synthetic clients",
+    "memoryLimitMiB": 3072,
+    "nice": 10,
+    "physicalHostSharedWithLiveGame": true,
+    "liveGameCpuQuota": "600%",
+    "profiles": 1280,
+    "clans": 128,
+    "playersPerRoom": 35,
+    "lobby": 5,
+    "phaseSeconds": 30,
+    "phases": [
+      "move",
+      "split",
+      "feed",
+      "boosters",
+      "combined"
+    ],
+    "network": "loopback",
+    "database": "PostgreSQL 17, unique synthetic schema per run",
+    "productionDataTouched": false
+  },
+  "currentConfigurationRuns": [
+    {
+      "players": 35,
+      "rooms": 1,
+      "lobby": 5,
+      "diagnosticInstrumentation": true,
+      "acknowledged": 1078,
+      "recovered": 1078,
+      "duplicates": 0,
+      "databaseEqual": true,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "move",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "split",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "feed",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "boosters",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "preferredTickWorkP95Below25ms": true,
+      "phases": [
+        {
+          "phase": "move",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 1,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 599,
+            "p50": 3.842593000001216,
+            "p95": 12.085598000001482,
+            "p99": 19.75367499999993,
+            "max": 95.94882300000063
+          },
+          "tickGaps": {
+            "n": 598,
+            "p50": 50.01451900000029,
+            "p95": 50.77755199999956,
+            "p99": 51.24379100000078,
+            "max": 121.05507500000022
+          },
+          "updatesHz": 19.935198588051808,
+          "stateGapP99Ms": 61.36486500000319,
+          "actionLatencyP95Ms": 0,
+          "successfulActionLatencyP95Ms": 0,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 8.60877199999959,
+            "p95": 17.120159000000058,
+            "max": 227.30582999999933
+          },
+          "rssMiB": 870.9765625,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 0,
+          "cpu": {
+            "elapsedMs": 30002.381326000002,
+            "processCpu": {
+              "userMs": 13653.1,
+              "systemMs": 882.388,
+              "percent": 48.447781001315306
+            },
+            "mainThreadCpu": {
+              "userMs": 4606.639,
+              "systemMs": 616.776,
+              "percent": 17.410001370369223
+            },
+            "mainThreadElu": {
+              "activeMs": 5182.240429988854,
+              "idleMs": 24820.054431,
+              "utilization": 0.17272813476435686
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.0033333333333333335
+          }
+        },
+        {
+          "phase": "split",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 1,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 601,
+            "p50": 9.246160999995482,
+            "p95": 15.917197999995551,
+            "p99": 20.286266000002797,
+            "max": 35.008264999996754
+          },
+          "tickGaps": {
+            "n": 600,
+            "p50": 50.02594799999497,
+            "p95": 50.84835100000055,
+            "p99": 51.373899999998685,
+            "max": 56.94091499999922
+          },
+          "updatesHz": 20.053319463803778,
+          "stateGapP99Ms": 59.98974199999793,
+          "actionLatencyP95Ms": 0,
+          "successfulActionLatencyP95Ms": 0,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 7.599957000005816,
+            "p95": 23.826763999997638,
+            "max": 38.30630499999825
+          },
+          "rssMiB": 896.640625,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 0,
+          "cpu": {
+            "elapsedMs": 29999.781383,
+            "processCpu": {
+              "userMs": 18380.494,
+              "systemMs": 844.201,
+              "percent": 64.0827836528638
+            },
+            "mainThreadCpu": {
+              "userMs": 8220.799,
+              "systemMs": 668.091,
+              "percent": 29.62984925295847
+            },
+            "mainThreadElu": {
+              "activeMs": 8885.82286999025,
+              "idleMs": 21113.952452,
+              "utilization": 0.2961963139596189
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.01
+          }
+        },
+        {
+          "phase": "feed",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 1,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 600,
+            "p50": 7.8409020000108285,
+            "p95": 14.636536999998498,
+            "p99": 22.70922399999108,
+            "max": 34.440740999998525
+          },
+          "tickGaps": {
+            "n": 599,
+            "p50": 50.01830699999118,
+            "p95": 50.78936199999589,
+            "p99": 51.91790299999411,
+            "max": 57.321068999997806
+          },
+          "updatesHz": 20.066225408800836,
+          "stateGapP99Ms": 62.181226000000606,
+          "actionLatencyP95Ms": 0,
+          "successfulActionLatencyP95Ms": 0,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 7.444768999994267,
+            "p95": 17.56881300000532,
+            "max": 20.861652999999933
+          },
+          "rssMiB": 957.7265625,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 0,
+          "cpu": {
+            "elapsedMs": 30000.690548,
+            "processCpu": {
+              "userMs": 18715.601,
+              "systemMs": 824.44,
+              "percent": 65.13197077492818
+            },
+            "mainThreadCpu": {
+              "userMs": 6961.785,
+              "systemMs": 647.701,
+              "percent": 25.36436948951259
+            },
+            "mainThreadElu": {
+              "activeMs": 7611.598357000796,
+              "idleMs": 22389.091539999994,
+              "utilization": 0.25371411067989263
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0
+          }
+        },
+        {
+          "phase": "boosters",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 1,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 601,
+            "p50": 8.141308999998728,
+            "p95": 15.303599000006216,
+            "p99": 20.52249400000437,
+            "max": 29.259208000003127
+          },
+          "tickGaps": {
+            "n": 600,
+            "p50": 50.015030000009574,
+            "p95": 50.99661099999503,
+            "p99": 52.26776699999755,
+            "max": 60.72406299998693
+          },
+          "updatesHz": 20.016865247651225,
+          "stateGapP99Ms": 62.81434699999227,
+          "actionLatencyP95Ms": 15.488656000001356,
+          "successfulActionLatencyP95Ms": 15.681725999995251,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 7.744894999996177,
+            "p95": 17.809308999989298,
+            "max": 23.725867000001017
+          },
+          "rssMiB": 966.59765625,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 1,
+          "cpu": {
+            "elapsedMs": 30011.86401399999,
+            "processCpu": {
+              "userMs": 21921.783,
+              "systemMs": 995.534,
+              "percent": 76.36085845687387
+            },
+            "mainThreadCpu": {
+              "userMs": 8255.647,
+              "systemMs": 664.363,
+              "percent": 29.7216127456761
+            },
+            "mainThreadElu": {
+              "activeMs": 9086.06419199724,
+              "idleMs": 20925.772652,
+              "utilization": 0.3027493531711163
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0
+          }
+        },
+        {
+          "phase": "combined",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 1,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 603,
+            "p50": 15.423299999994924,
+            "p95": 23.194615000014892,
+            "p99": 27.64703500000178,
+            "max": 37.57538699998986
+          },
+          "tickGaps": {
+            "n": 602,
+            "p50": 50.011413000000175,
+            "p95": 51.127662999992026,
+            "p99": 53.11791699999594,
+            "max": 97.01748700000462
+          },
+          "updatesHz": 19.849564055795884,
+          "stateGapP99Ms": 78.78910100000212,
+          "actionLatencyP95Ms": 28.658691999997245,
+          "successfulActionLatencyP95Ms": 28.71152399998391,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 8.837277000013273,
+            "p95": 22.339227999997092,
+            "max": 27.087208000011742
+          },
+          "rssMiB": 977.8125,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 1,
+          "cpu": {
+            "elapsedMs": 30000.39335300002,
+            "processCpu": {
+              "userMs": 32778.505,
+              "systemMs": 1680.682,
+              "percent": 114.86245061701534
+            },
+            "mainThreadCpu": {
+              "userMs": 13423.447,
+              "systemMs": 942.289,
+              "percent": 47.88515880763755
+            },
+            "mainThreadElu": {
+              "activeMs": 23416.243055002997,
+              "idleMs": 6584.154383999994,
+              "utilization": 0.7805310947167636
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.0033333333333333335
+          }
+        }
+      ]
+    },
+    {
+      "players": 70,
+      "rooms": 2,
+      "lobby": 5,
+      "diagnosticInstrumentation": false,
+      "acknowledged": 2083,
+      "recovered": 2083,
+      "duplicates": 0,
+      "databaseEqual": true,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "move",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "split",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "feed",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "boosters",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "preferredTickWorkP95Below25ms": false,
+      "phases": [
+        {
+          "phase": "move",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 599,
+            "p50": 6.294281000002229,
+            "p95": 22.33176100000128,
+            "p99": 34.83712100000412,
+            "max": 72.51839700000164
+          },
+          "tickGaps": {
+            "n": 598,
+            "p50": 50.037248000000545,
+            "p95": 50.799307000001136,
+            "p99": 51.197940999998536,
+            "max": 96.06498000000101
+          },
+          "updatesHz": 19.935702204763803,
+          "stateGapP99Ms": 76.8107600000003,
+          "actionLatencyP95Ms": 0,
+          "successfulActionLatencyP95Ms": 0,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 9.385796999999002,
+            "p95": 32.281889000001684,
+            "max": 239.46978900000067
+          },
+          "rssMiB": 936.6328125,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 1,
+          "cpu": {
+            "elapsedMs": 30002.167397999998,
+            "processCpu": {
+              "userMs": 22725.716,
+              "systemMs": 1307.956,
+              "percent": 80.10645258116296
+            },
+            "mainThreadCpu": {
+              "userMs": 7198.247,
+              "systemMs": 996.503,
+              "percent": 27.313859999815474
+            },
+            "mainThreadElu": {
+              "activeMs": 8432.517139979642,
+              "idleMs": 21569.526358,
+              "utilization": 0.2810647594903825
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.016666666666666666
+          }
+        },
+        {
+          "phase": "split",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 600,
+            "p50": 16.13054700000066,
+            "p95": 28.76228699999774,
+            "p99": 34.86752999998862,
+            "max": 55.02462199999718
+          },
+          "tickGaps": {
+            "n": 599,
+            "p50": 50.00971800000116,
+            "p95": 51.0744260000065,
+            "p99": 62.777705000000424,
+            "max": 94.13112600000022
+          },
+          "updatesHz": 19.935338125231368,
+          "stateGapP99Ms": 78.7215240000005,
+          "actionLatencyP95Ms": 0,
+          "successfulActionLatencyP95Ms": 0,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 8.428799000001163,
+            "p95": 45.95476699999563,
+            "max": 80.56977999999799
+          },
+          "rssMiB": 1030.59765625,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 0,
+          "cpu": {
+            "elapsedMs": 30012.542703,
+            "processCpu": {
+              "userMs": 33062.389,
+              "systemMs": 1537.579,
+              "percent": 115.28502713814198
+            },
+            "mainThreadCpu": {
+              "userMs": 13800.931,
+              "systemMs": 1207.088,
+              "percent": 50.00582306043608
+            },
+            "mainThreadElu": {
+              "activeMs": 15228.61656900133,
+              "idleMs": 14783.924610000002,
+              "utilization": 0.5074084356327758
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.01
+          }
+        },
+        {
+          "phase": "feed",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 601,
+            "p50": 13.993218000003253,
+            "p95": 27.771083999992697,
+            "p99": 42.244003999992856,
+            "max": 78.31585600000108
+          },
+          "tickGaps": {
+            "n": 600,
+            "p50": 50.00815700000385,
+            "p95": 51.207666000002064,
+            "p99": 57.277662000007695,
+            "max": 85.64711000000534
+          },
+          "updatesHz": 20.038410158263943,
+          "stateGapP99Ms": 77.02421099999628,
+          "actionLatencyP95Ms": 0,
+          "successfulActionLatencyP95Ms": 0,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 9.427184000000125,
+            "p95": 31.39165399999183,
+            "max": 41.16926799999783
+          },
+          "rssMiB": 1044.70703125,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 0,
+          "cpu": {
+            "elapsedMs": 29999.736212999996,
+            "processCpu": {
+              "userMs": 35294.424,
+              "systemMs": 1513.155,
+              "percent": 122.69300882735733
+            },
+            "mainThreadCpu": {
+              "userMs": 12491.012,
+              "systemMs": 1129.531,
+              "percent": 45.40220921708543
+            },
+            "mainThreadElu": {
+              "activeMs": 13767.830281010989,
+              "idleMs": 16231.904620000001,
+              "utilization": 0.4589317314449673
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.013333333333333334
+          }
+        },
+        {
+          "phase": "boosters",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 600,
+            "p50": 14.081359000003431,
+            "p95": 25.35853599999973,
+            "p99": 36.59873700000753,
+            "max": 69.1339169999992
+          },
+          "tickGaps": {
+            "n": 599,
+            "p50": 50.030558999977075,
+            "p95": 51.308394000006956,
+            "p99": 56.09436200000346,
+            "max": 108.5111590000015
+          },
+          "updatesHz": 19.955251276720055,
+          "stateGapP99Ms": 76.02857599999697,
+          "actionLatencyP95Ms": 28.21083899999212,
+          "successfulActionLatencyP95Ms": 28.21083899999212,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 10.920595999996294,
+            "p95": 49.41367499998887,
+            "max": 119.52921100000094
+          },
+          "rssMiB": 1105.7265625,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 5,
+          "cpu": {
+            "elapsedMs": 30000.264352,
+            "processCpu": {
+              "userMs": 40866.402,
+              "systemMs": 1782.125,
+              "percent": 142.16050398621502
+            },
+            "mainThreadCpu": {
+              "userMs": 14642.487,
+              "systemMs": 1177.555,
+              "percent": 52.73300866412312
+            },
+            "mainThreadElu": {
+              "activeMs": 16140.186617013758,
+              "idleMs": 13860.073782,
+              "utilization": 0.5380015507313516
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.03333333333333333
+          }
+        },
+        {
+          "phase": "combined",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 600,
+            "p50": 26.079884000006132,
+            "p95": 40.41695600000094,
+            "p99": 51.49463200001628,
+            "max": 85.22382899999502
+          },
+          "tickGaps": {
+            "n": 599,
+            "p50": 49.93681899999501,
+            "p95": 58.732711999997264,
+            "p99": 76.64028299998608,
+            "max": 115.54696499998681
+          },
+          "updatesHz": 19.824192329980754,
+          "stateGapP99Ms": 108.26276599999983,
+          "actionLatencyP95Ms": 84.9562900000019,
+          "successfulActionLatencyP95Ms": 85.07120799997938,
+          "oldestPendingActionMs": 75.9138099999982,
+          "lobbyLatencyMs": {
+            "p50": 16.700104999996256,
+            "p95": 116.17381100001512,
+            "max": 130.82565899999463
+          },
+          "rssMiB": 1184.734375,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 5,
+          "cpu": {
+            "elapsedMs": 30030.007436000014,
+            "processCpu": {
+              "userMs": 60285.805,
+              "systemMs": 2308.071,
+              "percent": 208.43776390465482
+            },
+            "mainThreadCpu": {
+              "userMs": 23160.248,
+              "systemMs": 1643.03,
+              "percent": 82.59497788290852
+            },
+            "mainThreadElu": {
+              "activeMs": 25324.642856014587,
+              "idleMs": 4705.362821000002,
+              "utilization": 0.8433112909931431
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.15666666666666668
+          }
+        }
+      ]
+    },
+    {
+      "players": 105,
+      "rooms": 3,
+      "lobby": 5,
+      "diagnosticInstrumentation": false,
+      "acknowledged": 3051,
+      "recovered": 3051,
+      "duplicates": 0,
+      "databaseEqual": true,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": false,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "move",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "split",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "feed",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "boosters",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "meetsTargets": false,
+            "issues": [
+              "action-delay",
+              "successful-action-delay",
+              "state-frequency",
+              "lobby-delay"
+            ]
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "preferredTickWorkP95Below25ms": false,
+      "phases": [
+        {
+          "phase": "move",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 3,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 597,
+            "p50": 9.139179000001604,
+            "p95": 29.669753000001947,
+            "p99": 42.33040799999799,
+            "max": 142.9337459999988
+          },
+          "tickGaps": {
+            "n": 596,
+            "p50": 50.026208999996015,
+            "p95": 51.447079999998095,
+            "p99": 74.54454600000099,
+            "max": 215.57046199999968
+          },
+          "updatesHz": 19.84522124005858,
+          "stateGapP99Ms": 85.42897100000118,
+          "actionLatencyP95Ms": 0,
+          "successfulActionLatencyP95Ms": 0,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 10.114219000002777,
+            "p95": 34.95058599999902,
+            "max": 370.569059999998
+          },
+          "rssMiB": 1021.75390625,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 0,
+          "cpu": {
+            "elapsedMs": 30002.224564,
+            "processCpu": {
+              "userMs": 34444.48,
+              "systemMs": 2101.052,
+              "percent": 121.80940757256842
+            },
+            "mainThreadCpu": {
+              "userMs": 10179.662,
+              "systemMs": 1562.359,
+              "percent": 39.13716789550792
+            },
+            "mainThreadElu": {
+              "activeMs": 12315.174448023034,
+              "idleMs": 17686.939175,
+              "utilization": 0.4104768951535671
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.05
+          }
+        },
+        {
+          "phase": "split",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 3,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 598,
+            "p50": 22.97945400000026,
+            "p95": 40.06305799999973,
+            "p99": 50.08001199999853,
+            "max": 58.500167999998666
+          },
+          "tickGaps": {
+            "n": 597,
+            "p50": 49.97558199999912,
+            "p95": 54.76495699999941,
+            "p99": 71.73423299999558,
+            "max": 122.03608800000075
+          },
+          "updatesHz": 19.90714429893661,
+          "stateGapP99Ms": 91.84490899999946,
+          "actionLatencyP95Ms": 0,
+          "successfulActionLatencyP95Ms": 0,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 12.356508999997459,
+            "p95": 51.5253389999998,
+            "max": 82.86611699999776
+          },
+          "rssMiB": 1090.17578125,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 11,
+          "cpu": {
+            "elapsedMs": 30001.230994999998,
+            "processCpu": {
+              "userMs": 47639.523,
+              "systemMs": 2073.844,
+              "percent": 165.70442395608774
+            },
+            "mainThreadCpu": {
+              "userMs": 19337.244,
+              "systemMs": 1570.42,
+              "percent": 69.68935375846567
+            },
+            "mainThreadElu": {
+              "activeMs": 21281.707465001142,
+              "idleMs": 8719.509538999999,
+              "utilization": 0.7093614723083695
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.06333333333333334
+          }
+        },
+        {
+          "phase": "feed",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 3,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 595,
+            "p50": 20.857792000009795,
+            "p95": 42.120198000004166,
+            "p99": 63.85637799999677,
+            "max": 75.64373600001272
+          },
+          "tickGaps": {
+            "n": 594,
+            "p50": 50.00818900000013,
+            "p95": 56.681380000009085,
+            "p99": 80.93343900000036,
+            "max": 108.3600759999972
+          },
+          "updatesHz": 19.838710802573825,
+          "stateGapP99Ms": 96.95641400000022,
+          "actionLatencyP95Ms": 0,
+          "successfulActionLatencyP95Ms": 0,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 11.361623000004329,
+            "p95": 33.12879200000316,
+            "max": 34.291437000007136
+          },
+          "rssMiB": 1101.67578125,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 1,
+          "cpu": {
+            "elapsedMs": 30001.031267,
+            "processCpu": {
+              "userMs": 51074.265,
+              "systemMs": 1985.365,
+              "percent": 176.85935369282987
+            },
+            "mainThreadCpu": {
+              "userMs": 17849.215,
+              "systemMs": 1585.246,
+              "percent": 64.7793098411826
+            },
+            "mainThreadElu": {
+              "activeMs": 19929.140836004633,
+              "idleMs": 10071.888179000001,
+              "utilization": 0.6642819093317541
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.06
+          }
+        },
+        {
+          "phase": "boosters",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 3,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 601,
+            "p50": 18.999038000009023,
+            "p95": 33.163518000001204,
+            "p99": 50.16738199998508,
+            "max": 63.128163999994285
+          },
+          "tickGaps": {
+            "n": 600,
+            "p50": 50.01601599997957,
+            "p95": 54.31057199998759,
+            "p99": 67.81598899999517,
+            "max": 89.7559590000019
+          },
+          "updatesHz": 20.03397225961839,
+          "stateGapP99Ms": 85.69874300000083,
+          "actionLatencyP95Ms": 62.71579099999508,
+          "successfulActionLatencyP95Ms": 62.782311000002665,
+          "oldestPendingActionMs": 0,
+          "lobbyLatencyMs": {
+            "p50": 12.519121999997878,
+            "p95": 31.92916700000933,
+            "max": 67.91719899998861
+          },
+          "rssMiB": 1194.2109375,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 6,
+          "cpu": {
+            "elapsedMs": 29999.69239200001,
+            "processCpu": {
+              "userMs": 54734.685,
+              "systemMs": 2194.967,
+              "percent": 189.7674524662172
+            },
+            "mainThreadCpu": {
+              "userMs": 18536.614,
+              "systemMs": 1599.594,
+              "percent": 67.12138156913137
+            },
+            "mainThreadElu": {
+              "activeMs": 20599.42727599948,
+              "idleMs": 9400.258625999995,
+              "utilization": 0.6866547650962749
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.08333333333333333
+          }
+        },
+        {
+          "phase": "combined",
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 3,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "tickWorkMs": {
+            "n": 480,
+            "p50": 29.315941999986535,
+            "p95": 54.887515000009444,
+            "p99": 72.25960000001942,
+            "max": 128.6132510000025
+          },
+          "tickGaps": {
+            "n": 479,
+            "p50": 58.51369299998623,
+            "p95": 96.2982170000032,
+            "p99": 124.66028499999084,
+            "max": 156.1184779999894
+          },
+          "updatesHz": 15.653681386457626,
+          "stateGapP99Ms": 130.34577800001716,
+          "actionLatencyP95Ms": 1516.5331759999972,
+          "successfulActionLatencyP95Ms": 1516.5331759999972,
+          "oldestPendingActionMs": 623.2029350000084,
+          "lobbyLatencyMs": {
+            "p50": 125.89100500001223,
+            "p95": 1513.4307079999999,
+            "max": 1571.171875
+          },
+          "rssMiB": 1257.7265625,
+          "pausedSamples": 0,
+          "queuedActionsPeak": 104,
+          "cpu": {
+            "elapsedMs": 30085.831684000004,
+            "processCpu": {
+              "userMs": 71003.521,
+              "systemMs": 1974.993,
+              "percent": 242.5677134889072
+            },
+            "mainThreadCpu": {
+              "userMs": 26442.124,
+              "systemMs": 1293.417,
+              "percent": 92.18804815274588
+            },
+            "mainThreadElu": {
+              "activeMs": 30060.56680701152,
+              "idleMs": 25.25375100000383,
+              "utilization": 0.9991606095319452
+            },
+            "cpuMax": "300000 100000",
+            "throttledPeriodFraction": 0.6345514950166113
+          }
+        }
+      ]
+    }
+  ],
+  "conclusion": {
+    "shortRunPass": [
+      35,
+      70
+    ],
+    "shortRunFail": [
+      105
+    ],
+    "ladderStopped": true,
+    "admissionLimitsChanged": false,
+    "warning": "Not a maximum CCU estimate: short synthetic phases, 3 CPU quota including load clients, shared host, smaller histories than live data, no browser or WAN/soak measurement",
+    "observed105": "Mixed phase: 15.65 Hz, tick work p95 54.89 ms, action p95 1516.53 ms, queue peak 104; all 3051 ACKs recovered exactly",
+    "constraints": "105 mixed phase: main-thread ELU 99.92%, main-thread CPU 92.19%, cgroup throttled in 63.46% of quota periods. Both coordinator work and test CPU quota matter; not a pure database bottleneck."
+  },
+  "reproductionRun": {
+    "players": 35,
+    "rooms": 1,
+    "lobby": 5,
+    "shortRunMeetsTargets": true,
+    "acknowledged": 1080,
+    "recovered": 1080,
+    "duplicates": 0,
+    "databaseEqual": true,
+    "testSchemaRemoved": true,
+    "phases": [
+      {
+        "phase": "move",
+        "tickWorkP95Ms": 12.304113999998663,
+        "updatesHz": 19.96711145662254
+      },
+      {
+        "phase": "split",
+        "tickWorkP95Ms": 17.03114800000185,
+        "updatesHz": 20.060073402244264
+      },
+      {
+        "phase": "feed",
+        "tickWorkP95Ms": 15.330195000002277,
+        "updatesHz": 20.011242116146235
+      },
+      {
+        "phase": "boosters",
+        "tickWorkP95Ms": 14.92230799999379,
+        "updatesHz": 20.01634539591802
+      },
+      {
+        "phase": "combined",
+        "tickWorkP95Ms": 25.041316999995615,
+        "updatesHz": 20.00454094323022
+      }
+    ]
+  }
 }
