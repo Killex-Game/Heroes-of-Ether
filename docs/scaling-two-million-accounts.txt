@@ -182,3 +182,5 @@ Food fast path остаётся кандидатом. Дальше: shareArenaDa
 23.11.2026: исправление кланового вклада установлено отдельным выпуском 20261123-clan-contributions. Полный Linux2317/2316pass/0fail/1skip. Нагрузочная лестница и память не закрыты; продолжать по предыдущему плану. Отчёт games/heroes-of-ether/docs/performance/clan-contributions-20261123.txt
 
 23.11.2026: опубликован НЕ установленный кандидат caaef1591fec4b82ec08d18a7a6551518b5f429e в codex/20261123-history-sharing. Убирает копирование неизменяемой истории arenaReceipts, Windows105/Linux105pass. Микрозамер подтверждает ускорение участка, whole-game ещё не доказан. Перед установкой полный Linux и смешанная нагрузка с ACK/WAL/PG. Отчёт games/heroes-of-ether/docs/performance/profile-history-sharing-20261123.json
+
+23.11.2026: 20261123-profile-history установлен, полный Linux2320/2319pass/0fail/1skip; короткий mixed35+5 прошёл на обеих версиях, история и ACK сохранены. Продолжать пункты3/4 и длительную нагрузку; максимум CCU/RSS не закрыты. games/heroes-of-ether/docs/performance/profile-history-installed-20261123.json

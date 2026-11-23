@@ -1,3 +1,11 @@
+## История операций - УСТАНОВЛЕНО 23.11.2026
+
+- Current 20261123-profile-history, source f9a39d47b9a4980f912321bc167fd6e02de256d1, game444501/admin1163/NRestarts0. Один runtime-файл,6 production-комментариев,2549 хешей; графика и private config прежние
+- Неизменяемая arenaReceipts сохраняется в audited drafts; новый receipt по-прежнему COW, generic transact полностью изолирован. Windows105/Linux105, полный Linux2320/2319pass/0fail/1skip
+- Короткий A/B35арена+5лобби,3CPUвместесгенераторами: обе версии прошли; ACK1274/1291 без дублей, PG=WAL,600000старыхквитанций сохранены. Все числа и ограничения games/heroes-of-ether/docs/performance/profile-history-installed-20261123.json. Не максимум CCU и не доказательство всей игры
+- 1718профилей/136кланов/rev4065482 до,rev4065484после, полный мир/aux/PG сверены. Backup обеих сторон SHA 39fbf0ea4d6275d4e63a15e5f2a27eaecb35164c4e2cc5e198af84e5fc737e68, сохранять все копии. Root4файла синхронизированы
+- Освобождены112346410байт восстанавливаемых apt-индексов; данные/backup/WAL не тронуты. Диск тесный, RSS/адресныепрофили/независимыекомнаты остаются работой. Первые ошибки preflight/fixture сохранены
+
 ## Продолжение оптимизации истории 23.11.2026
 
 - НЕ установленный кандидат caaef1591fec4b82ec08d18a7a6551518b5f429e, ветка codex/20261123-history-sharing, Windows105/Linux105 pass. Отчёт games/heroes-of-ether/docs/performance/profile-history-sharing-20261123.json. Полный Linux и mixed-нагрузка остаются. Active runtime кланового выпуска прежний; все копии сохранять
