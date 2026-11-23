@@ -232,10 +232,12 @@ class Combat {
     return body;
   }
   updateSwords(now) {
-    this.swords = this.swords.filter((s) => s.until > now && this.alive(s.ownerId, s.ownerLife));
     for (const sword of this.swords) {
-      const owner = this.alive(sword.ownerId, sword.ownerLife),
-        body = this.positionSword(sword, owner);
+      if (sword.until <= now) continue;
+      const owner = this.alive(sword.ownerId, sword.ownerLife);
+      // An earlier sword can kill this owner during the same update.
+      if (!owner) continue;
+      const body = this.positionSword(sword, owner);
       const ax = body.x + sword.dx * body.radius,
         ay = body.y + sword.dy * body.radius;
       const bx = ax + sword.dx * sword.length,
@@ -274,6 +276,7 @@ class Combat {
       }
       sword.contacts = contacts;
     }
+    this.swords = this.swords.filter((s) => s.until > now && this.alive(s.ownerId, s.ownerLife));
   }
   pullToPoint(shot, x, y, now) {
     const owner = this.alive(shot.ownerId, shot.ownerLife);

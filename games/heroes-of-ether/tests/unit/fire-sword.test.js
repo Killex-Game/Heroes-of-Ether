@@ -163,3 +163,19 @@ test("Частота обновления не меняет итог поджо�
     assert.equal(b.dead, true);
   }
 });
+
+test("Меч погибшего в этом такте владельца исчезает до его удара", () => {
+  const { arena, a, b } = scene();
+  b.mass = 2;
+  b.radius = radiusForMass(b.mass);
+  b.x = a.x + a.radius + 40;
+  b.targetX = a.x;
+  arena.combat.prepare(a, sword, { aimX: 2000, aimY: 1000 }, 5000)();
+  arena.combat.prepare(b, sword, { aimX: a.x, aimY: a.y }, 5000)();
+  assert.equal(arena.combat.swords.length, 2);
+  assert.doesNotThrow(() => arena.combat.updateSwords(5000));
+  assert.equal(b.dead, true);
+  assert.equal(a.swordBurns.length, 0);
+  assert.deepEqual(arena.combat.swords.map(s => s.ownerId), [a.id]);
+  assert.doesNotThrow(() => arena.combat.updateSwords(5050));
+});
