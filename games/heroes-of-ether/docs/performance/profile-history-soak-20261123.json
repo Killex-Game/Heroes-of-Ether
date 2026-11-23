@@ -1,0 +1,465 @@
+{
+  "at": "2026-11-23T18:25:51.311Z",
+  "source": "f9a39d47b9a4980f912321bc167fd6e02de256d1",
+  "release": "20261123-profile-history",
+  "startedAt": "2026-11-23T18:11:43.559Z",
+  "endedAt": "2026-11-23T18:18:44.039Z",
+  "scenario": {
+    "arenaPlayers": 35,
+    "lobbyClients": 5,
+    "rooms": 1,
+    "syntheticProfiles": 1280,
+    "syntheticClans": 128,
+    "retainedArenaReceipts": 600000,
+    "mixedSeconds": 300,
+    "idleSeconds": 60,
+    "cpuQuota": 3,
+    "memoryMaxGiB": 3,
+    "generatorsIncludedInQuota": true,
+    "sharedHostWithLiveGame": true,
+    "fixture": {
+      "sha256": "8d430327174c0d3e83d903131f29a700907a3c55b94ea663be7be96f69951df8",
+      "bytes": 38853801
+    }
+  },
+  "rows": [
+    {
+      "minute": 1,
+      "updatesHz": 19.825257999503656,
+      "tickP95Ms": 25.82380800000101,
+      "lobbyP95Ms": 33.159959000004164,
+      "actionP95Ms": 31.97355599999719,
+      "rssMiB": 2419.0234375,
+      "heapMiB": 933.2278518676758,
+      "queuedAtWindowEnd": 0,
+      "maxQueuedActions": 23,
+      "activeClanQuestBoards": 0
+    },
+    {
+      "minute": 2,
+      "updatesHz": 19.887773171362177,
+      "tickP95Ms": 27.800579999995534,
+      "lobbyP95Ms": 42.34249599999748,
+      "actionP95Ms": 37.501161000007414,
+      "rssMiB": 2344.4453125,
+      "heapMiB": 770.5362243652344,
+      "queuedAtWindowEnd": 0,
+      "maxQueuedActions": 10,
+      "activeClanQuestBoards": 0
+    },
+    {
+      "minute": 3,
+      "updatesHz": 19.662020309395754,
+      "tickP95Ms": 30.2955039999797,
+      "lobbyP95Ms": 40.5048700000043,
+      "actionP95Ms": 45.85760200000368,
+      "rssMiB": 2384.8359375,
+      "heapMiB": 266.80130767822266,
+      "queuedAtWindowEnd": 0,
+      "maxQueuedActions": 6,
+      "activeClanQuestBoards": 0
+    },
+    {
+      "minute": 4,
+      "updatesHz": 19.95865566017619,
+      "tickP95Ms": 27.846954999986337,
+      "lobbyP95Ms": 32.842376000015065,
+      "actionP95Ms": 32.453567999997176,
+      "rssMiB": 2410.4921875,
+      "heapMiB": 307.6195373535156,
+      "queuedAtWindowEnd": 0,
+      "maxQueuedActions": 1,
+      "activeClanQuestBoards": 0
+    },
+    {
+      "minute": 5,
+      "updatesHz": 19.847953944748706,
+      "tickP95Ms": 30.645244000013918,
+      "lobbyP95Ms": 38.968748999992386,
+      "actionP95Ms": 43.8612130000256,
+      "rssMiB": 2532.50390625,
+      "heapMiB": 345.6560287475586,
+      "queuedAtWindowEnd": 0,
+      "maxQueuedActions": 5,
+      "activeClanQuestBoards": 0
+    }
+  ],
+  "assessment": {
+    "targets": {
+      "updatesHz": 19,
+      "tickP95Ms": 100,
+      "stateGapP99Ms": 150,
+      "lobbyP95Ms": 1000,
+      "actionP95Ms": 500
+    },
+    "shortRunMeetsTargets": true,
+    "problems": [],
+    "phases": [
+      {
+        "phase": "combined",
+        "window": 1,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 2,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 3,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 4,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 5,
+        "meetsTargets": true,
+        "issues": []
+      }
+    ],
+    "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+  },
+  "preferredTickP95Below25MsMet": false,
+  "ackAudit": {
+    "acknowledged": 5508,
+    "recovered": 5508,
+    "duplicates": 0,
+    "profiles": 1280,
+    "types": {
+      "booster:sphere": 199,
+      "booster:donut": 148,
+      "booster:glove": 236,
+      "booster:freeze": 166,
+      "booster:hook": 208,
+      "booster:mine": 142,
+      "booster:candy": 269,
+      "booster:stone": 138,
+      "booster:easter_egg": 146,
+      "booster:knuckles": 142,
+      "booster:mega_poison": 135,
+      "booster:colorful_shield": 197,
+      "booster:ice_cream": 246,
+      "booster:rocket": 263,
+      "booster:web": 215,
+      "booster:speed": 149,
+      "booster:lock": 137,
+      "booster:fire_sword": 137,
+      "booster:axe": 121,
+      "booster:meat": 148,
+      "booster:poison": 169,
+      "booster:golden_shield": 147,
+      "booster:sponge": 145,
+      "booster:cake": 141,
+      "booster:vortex": 146,
+      "booster:clan_shield": 147,
+      "booster:harpoon": 137,
+      "booster:warheads": 144,
+      "booster:fire": 133,
+      "booster:awl": 133,
+      "lobby:loadout": 123,
+      "lobby:purchase": 124,
+      "lobby:account-bonus": 30,
+      "lobby:gift": 124,
+      "lobby:gift-read": 123
+    },
+    "gifts": 124,
+    "notices": 123,
+    "validInventoriesAndTransactions": true
+  },
+  "database": {
+    "matched": true,
+    "revision": 10638,
+    "profiles": 1280,
+    "clans": 128,
+    "samples": [
+      {
+        "revision": 42,
+        "generation": 2,
+        "changedDocuments": 0,
+        "payloadBytes": 0,
+        "syncedAt": 1795457537552,
+        "prepareMs": 3707,
+        "writeMs": 100,
+        "durationMs": 3811.8765600000006,
+        "final": false
+      },
+      {
+        "revision": 1101,
+        "generation": 3,
+        "changedDocuments": 45,
+        "payloadBytes": 2405944,
+        "syncedAt": 1795457568353,
+        "prepareMs": 4246,
+        "writeMs": 338,
+        "durationMs": 4599.613986000004,
+        "final": false
+      },
+      {
+        "revision": 2227,
+        "generation": 4,
+        "changedDocuments": 45,
+        "payloadBytes": 2449108,
+        "syncedAt": 1795457598369,
+        "prepareMs": 4268,
+        "writeMs": 324,
+        "durationMs": 4614.386683999997,
+        "final": false
+      },
+      {
+        "revision": 3272,
+        "generation": 5,
+        "changedDocuments": 45,
+        "payloadBytes": 2482450,
+        "syncedAt": 1795457628518,
+        "prepareMs": 4424,
+        "writeMs": 316,
+        "durationMs": 4752.789127999989,
+        "final": false
+      },
+      {
+        "revision": 4351,
+        "generation": 6,
+        "changedDocuments": 45,
+        "payloadBytes": 2506405,
+        "syncedAt": 1795457659662,
+        "prepareMs": 4936,
+        "writeMs": 313,
+        "durationMs": 5890.020864999999,
+        "final": false
+      },
+      {
+        "revision": 5338,
+        "generation": 7,
+        "changedDocuments": 45,
+        "payloadBytes": 2527338,
+        "syncedAt": 1795457689392,
+        "prepareMs": 5275,
+        "writeMs": 338,
+        "durationMs": 5626.243986999994,
+        "final": false
+      },
+      {
+        "revision": 6383,
+        "generation": 8,
+        "changedDocuments": 45,
+        "payloadBytes": 2555056,
+        "syncedAt": 1795457719401,
+        "prepareMs": 5299,
+        "writeMs": 324,
+        "durationMs": 5664.220694999996,
+        "final": false
+      },
+      {
+        "revision": 7468,
+        "generation": 9,
+        "changedDocuments": 45,
+        "payloadBytes": 2585290,
+        "syncedAt": 1795457749108,
+        "prepareMs": 5018,
+        "writeMs": 311,
+        "durationMs": 5363.266081999987,
+        "final": false
+      },
+      {
+        "revision": 8500,
+        "generation": 10,
+        "changedDocuments": 45,
+        "payloadBytes": 2613772,
+        "syncedAt": 1795457779932,
+        "prepareMs": 5805,
+        "writeMs": 331,
+        "durationMs": 6148.772228999995,
+        "final": false
+      },
+      {
+        "revision": 9577,
+        "generation": 11,
+        "changedDocuments": 45,
+        "payloadBytes": 2641936,
+        "syncedAt": 1795457810478,
+        "prepareMs": 6349,
+        "writeMs": 320,
+        "durationMs": 6701.715584999998,
+        "final": false
+      },
+      {
+        "revision": 10590,
+        "generation": 12,
+        "changedDocuments": 45,
+        "payloadBytes": 2669277,
+        "syncedAt": 1795457840139,
+        "prepareMs": 6039,
+        "writeMs": 306,
+        "durationMs": 6365.685737999971,
+        "final": false
+      },
+      {
+        "revision": 10638,
+        "generation": 13,
+        "changedDocuments": 36,
+        "payloadBytes": 2331746,
+        "syncedAt": 1795457845448,
+        "prepareMs": 4991,
+        "writeMs": 301,
+        "durationMs": 5294.617687999969,
+        "final": true
+      }
+    ]
+  },
+  "history": [
+    {
+      "label": "soak",
+      "profiles": 40,
+      "retainedReceipts": 600000,
+      "allOriginalValuesEqual": true,
+      "fixtureSha256": "8d430327174c0d3e83d903131f29a700907a3c55b94ea663be7be96f69951df8"
+    }
+  ],
+  "recovery": {
+    "before": {
+      "rss": 2019115008,
+      "heapTotal": 1271697408,
+      "heapUsed": 1141913000,
+      "external": 3569165,
+      "arrayBuffers": 656169
+    },
+    "seconds": 60,
+    "afterIdle": {
+      "rss": 1640386560,
+      "heapTotal": 1271697408,
+      "heapUsed": 1141943224,
+      "external": 3569165,
+      "arrayBuffers": 656169
+    },
+    "afterGc": {
+      "rss": 1640386560,
+      "heapTotal": 813531136,
+      "heapUsed": 164924600,
+      "external": 3569165,
+      "arrayBuffers": 656169
+    }
+  },
+  "evidence": {
+    "archive": "artifacts/profile-history-candidate-20261123/soak-evidence.tar.gz",
+    "sha256": "61418bf224526f05cc1dfe39ebe2cdb8bd0e6338c6707f161e77d98273d0131c",
+    "bytes": 5370476,
+    "localArchiveHashVerified": true,
+    "rawAndCompressedCopiesPreserved": true
+  },
+  "disk": {
+    "aptMetadataBytesReclaimed": 112346410,
+    "closedNginxLogBytesReclaimed": 81813170,
+    "totalBytesReclaimed": 194159580,
+    "allLogRecordsPreserved": true,
+    "localAndRemoteDecompressionShaVerified": true,
+    "activeLogsUntouched": true,
+    "workingDataWalHistoryBackupsUntouched": true,
+    "capacityStillTight": true
+  },
+  "limitations": [
+    "Five minutes is not a multi-hour stability or memory-leak proof.",
+    "No browser rendering or maximum CCU measurement.",
+    "Short-run gate checks tick INTERVAL p95 <=100 ms. It does not certify the preferred WORK p95 below 25 ms, which was NOT met.",
+    "Clan daily tasks were closed after 18:00 UTC: 128 boards exist, zero active. This soak does not measure active contribution settlement.",
+    "The 3 CPU quota includes generators, and the live game shares the physical host.",
+    "Forced GC was only after shutdown in the synthetic test. Heap fell, RSS remained high; memory optimization is still open."
+  ],
+  "next": [
+    "Profile full-world copies and retained V8/native memory separately.",
+    "Continue plan steps 3/4: separate history and addressable active-profile repository, preserving WAL/idempotency/single writer.",
+    "Repeat 70/105 on equivalent active-task scenario before raising admission limits.",
+    "Run an isolated multi-hour soak after remaining memory work."
+  ],
+  "liveAfter": {
+    "samples": [
+      {
+        "at": "2026-11-23T18:24:48.706Z",
+        "online": {
+          "arena": 2,
+          "lobby": 10,
+          "total": 12
+        },
+        "tickP95Ms": 17.44,
+        "rssMiB": 3774,
+        "queued": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4071509,
+          "syncAgeMs": 24427,
+          "prepareMs": 10517,
+          "writeMs": 336
+        }
+      },
+      {
+        "at": "2026-11-23T18:25:03.724Z",
+        "online": {
+          "arena": 3,
+          "lobby": 11,
+          "total": 14
+        },
+        "tickP95Ms": 16.61,
+        "rssMiB": 2520,
+        "queued": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4071752,
+          "syncAgeMs": 2927,
+          "prepareMs": 10690,
+          "writeMs": 295
+        }
+      },
+      {
+        "at": "2026-11-23T18:25:18.736Z",
+        "online": {
+          "arena": 4,
+          "lobby": 10,
+          "total": 14
+        },
+        "tickP95Ms": 17.47,
+        "rssMiB": 2943,
+        "queued": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4071752,
+          "syncAgeMs": 17939,
+          "prepareMs": 10690,
+          "writeMs": 295
+        }
+      },
+      {
+        "at": "2026-11-23T18:25:33.752Z",
+        "online": {
+          "arena": 3,
+          "lobby": 11,
+          "total": 14
+        },
+        "tickP95Ms": 17.81,
+        "rssMiB": 2993,
+        "queued": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4071917,
+          "syncAgeMs": 9881,
+          "prepareMs": 10124,
+          "writeMs": 321
+        }
+      }
+    ],
+    "noAdditionalTestUnitsRunning": true,
+    "diskAvailableBytes": 783519744,
+    "comparableAB": false
+  }
+}

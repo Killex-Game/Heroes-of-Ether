@@ -1100,29 +1100,29 @@
     "foodTransferInstalled": false
   },
   "latestObservation": {
-    "at": "2026-11-23T18:12:59.274Z",
+    "at": "2026-11-23T18:25:33.752Z",
     "online": {
-      "arena": 1,
-      "lobby": 4,
-      "total": 5
+      "arena": 3,
+      "lobby": 11,
+      "total": 14
     },
     "tickWorkMs": {
-      "count": 1200,
-      "p50": 5.56,
-      "p95": 16.69,
-      "p99": 25.11,
-      "max": 49.92
+      "count": 1199,
+      "p50": 7.33,
+      "p95": 17.81,
+      "p99": 24.8,
+      "max": 34.61
     },
     "tickIntervalMs": {
-      "count": 1200,
-      "p50": 49.99,
-      "p95": 50.86,
-      "p99": 59.03,
-      "max": 68.69
+      "count": 1199,
+      "p50": 50.02,
+      "p95": 52.02,
+      "p99": 82.39,
+      "max": 107.31
     },
     "memoryMiB": {
-      "resident": 1784,
-      "heapUsed": 470,
+      "resident": 2993,
+      "heapUsed": 523,
       "limit": 5120
     },
     "queuedActions": 0,
@@ -1130,10 +1130,10 @@
     "database": {
       "connected": true,
       "lastError": null,
-      "revision": 4065832,
-      "syncAgeMs": 6218,
-      "prepareMs": 9446,
-      "writeMs": 214
+      "revision": 4071917,
+      "syncAgeMs": 9881,
+      "prepareMs": 10124,
+      "writeMs": 321
     },
     "entryOpen": true,
     "comparableAB": false,
@@ -1829,5 +1829,17 @@
       "Two 40-second readiness probes expired during the same cold startup; server listened after about 85 seconds and the first PG preparation took 28 seconds, no restart loop",
       "The original offline verifier allowed only expiry notices. End-of-day rewards required exact payout replay and verification of all chest fields, mapping only generated UUIDs. All 7 payouts and 100 chests matched. Entry stayed closed until full PG readback matched"
     ]
+  },
+  "profileHistorySoak": {
+    "report": "games/heroes-of-ether/docs/performance/profile-history-soak-20261123.json",
+    "source": "f9a39d47b9a4980f912321bc167fd6e02de256d1",
+    "mixedMinutes": 5,
+    "acknowledged": 5508,
+    "recovered": 5508,
+    "duplicates": 0,
+    "all600000OldReceiptsPreserved": true,
+    "postgresqlMatchesWal": true,
+    "preferred25msTickTargetMet": false,
+    "memoryOptimizationComplete": false
   }
 }
