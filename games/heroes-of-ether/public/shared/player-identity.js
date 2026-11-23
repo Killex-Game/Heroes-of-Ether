@@ -613,7 +613,7 @@
       Object.fromEntries(
         [64, 128, 256, 512, 1024].map((size) => [
           size,
-          `assets/skins/${directory}/${size}/${skin.id}.webp?art=${skin.tier === "vip" ? "20261122-canon16" : ["vip-1", "vip-3", "premium-2"].includes(skin.id) ? "20261122c" : "20261122b"}`,
+          `assets/skins/${directory}/${size}/${skin.id}.webp?art=${skin.id === "premium-2" ? "20261123-selected-portraits" : skin.tier === "vip" ? "20261122-canon16" : ["vip-1", "vip-3"].includes(skin.id) ? "20261122c" : "20261122b"}`,
         ]),
       ),
     );
@@ -687,7 +687,7 @@
           Object.fromEntries(
             [64, 128, 256, 512, 1024].map((size) => [
               size,
-              "assets/skins/collections-v1/" + size + "/" + m.id + ".webp?v=20261122-canon16",
+              "assets/skins/collections-v1/" + size + "/" + m.id + ".webp?v=" + (["desert-cat", "grove-faun"].includes(m.id) ? "20261123-selected-portraits" : "20261122-canon16"),
             ]),
           ),
         );
