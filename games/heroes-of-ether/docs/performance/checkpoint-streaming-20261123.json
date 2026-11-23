@@ -1,0 +1,346 @@
+{
+  "at": "2026-11-23T18:46:37.139Z",
+  "source": "12aefd994005b30a5f5aae29ba9acd66b4f968cd",
+  "installed": false,
+  "activeRelease": "20261123-profile-history",
+  "activeSource": "f9a39d47b9a4980f912321bc167fd6e02de256d1",
+  "purpose": "Bound intermediate checkpoint JSON to individual persisted records; preserve exact bytes, WAL, fsync and atomic rename.",
+  "windowsTargeted": {
+    "tests": 32,
+    "pass": 32,
+    "fail": 0
+  },
+  "linuxFull": "running",
+  "networkMixed": "pending",
+  "offlineLinux": {
+    "inputSha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+    "rows": [
+      {
+        "round": 0,
+        "mode": "native",
+        "readMs": 5063.86425,
+        "writeMs": 5674.53959,
+        "totalMs": 10738.403839999999,
+        "peakRssKiB": 2077772,
+        "afterRead": {
+          "rss": 986738688,
+          "heapTotal": 916484096,
+          "heapUsed": 846619696,
+          "external": 2348617,
+          "arrayBuffers": 143631
+        },
+        "afterWrite": {
+          "rss": 1049784320,
+          "heapTotal": 977825792,
+          "heapUsed": 818902704,
+          "external": 2348657,
+          "arrayBuffers": 143631
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 0,
+        "mode": "records",
+        "readMs": 6742.627881,
+        "writeMs": 3732.9931829999987,
+        "totalMs": 10475.621063999999,
+        "peakRssKiB": 782108,
+        "afterRead": {
+          "rss": 606744576,
+          "heapTotal": 506892288,
+          "heapUsed": 403246416,
+          "external": 71542653,
+          "arrayBuffers": 26998740
+        },
+        "afterWrite": {
+          "rss": 771317760,
+          "heapTotal": 579588096,
+          "heapUsed": 451609416,
+          "external": 45277408,
+          "arrayBuffers": 733455
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 1,
+        "mode": "records",
+        "readMs": 6745.83314,
+        "writeMs": 3121.7547289999993,
+        "totalMs": 9867.587868999999,
+        "peakRssKiB": 789872,
+        "afterRead": {
+          "rss": 606027776,
+          "heapTotal": 507154432,
+          "heapUsed": 403233856,
+          "external": 71542653,
+          "arrayBuffers": 26998740
+        },
+        "afterWrite": {
+          "rss": 762617856,
+          "heapTotal": 579325952,
+          "heapUsed": 451596856,
+          "external": 45277408,
+          "arrayBuffers": 733455
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 1,
+        "mode": "native",
+        "readMs": 5246.152169,
+        "writeMs": 4927.849251,
+        "totalMs": 10174.00142,
+        "peakRssKiB": 2078188,
+        "afterRead": {
+          "rss": 986484736,
+          "heapTotal": 916484096,
+          "heapUsed": 846583736,
+          "external": 2348617,
+          "arrayBuffers": 143631
+        },
+        "afterWrite": {
+          "rss": 1910116352,
+          "heapTotal": 1835094016,
+          "heapUsed": 1698266880,
+          "external": 2348657,
+          "arrayBuffers": 143631
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 2,
+        "mode": "native",
+        "readMs": 5556.48596,
+        "writeMs": 5346.86927,
+        "totalMs": 10903.355230000001,
+        "peakRssKiB": 2078192,
+        "afterRead": {
+          "rss": 987000832,
+          "heapTotal": 916484096,
+          "heapUsed": 846665112,
+          "external": 2348617,
+          "arrayBuffers": 143631
+        },
+        "afterWrite": {
+          "rss": 1049759744,
+          "heapTotal": 978350080,
+          "heapUsed": 818903864,
+          "external": 2348657,
+          "arrayBuffers": 143631
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 2,
+        "mode": "records",
+        "readMs": 6610.05393,
+        "writeMs": 3109.8623989999987,
+        "totalMs": 9719.916329,
+        "peakRssKiB": 790052,
+        "afterRead": {
+          "rss": 606449664,
+          "heapTotal": 507154432,
+          "heapUsed": 403248088,
+          "external": 71542653,
+          "arrayBuffers": 26998740
+        },
+        "afterWrite": {
+          "rss": 762933248,
+          "heapTotal": 579325952,
+          "heapUsed": 451587824,
+          "external": 45277408,
+          "arrayBuffers": 733455
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      }
+    ],
+    "allOutputBytesEqual": true
+  },
+  "offlineWindowsFirstUnbuffered": {
+    "inputSha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+    "rows": [
+      {
+        "round": 0,
+        "mode": "native",
+        "readMs": 4515.9394,
+        "writeMs": 5800.556400000001,
+        "totalMs": 10316.4958,
+        "peakRssKiB": 2062544,
+        "afterRead": {
+          "rss": 974925824,
+          "heapTotal": 917004288,
+          "heapUsed": 846811008,
+          "external": 2433704,
+          "arrayBuffers": 143631
+        },
+        "afterWrite": {
+          "rss": 1892872192,
+          "heapTotal": 1835352064,
+          "heapUsed": 1698464072,
+          "external": 2433744,
+          "arrayBuffers": 143631
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 0,
+        "mode": "records",
+        "readMs": 8927.555400000001,
+        "writeMs": 6755.674999999999,
+        "totalMs": 15683.2304,
+        "peakRssKiB": 691404,
+        "afterRead": {
+          "rss": 540688384,
+          "heapTotal": 507412480,
+          "heapUsed": 403402608,
+          "external": 71627679,
+          "arrayBuffers": 26998740
+        },
+        "afterWrite": {
+          "rss": 666193920,
+          "heapTotal": 572825600,
+          "heapUsed": 445389736,
+          "external": 45362434,
+          "arrayBuffers": 733455
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 1,
+        "mode": "records",
+        "readMs": 6688.0772,
+        "writeMs": 15897.830299999998,
+        "totalMs": 22585.907499999998,
+        "peakRssKiB": 691440,
+        "afterRead": {
+          "rss": 541229056,
+          "heapTotal": 507150336,
+          "heapUsed": 403385584,
+          "external": 71627679,
+          "arrayBuffers": 26998740
+        },
+        "afterWrite": {
+          "rss": 664604672,
+          "heapTotal": 572825600,
+          "heapUsed": 445372760,
+          "external": 45362434,
+          "arrayBuffers": 733455
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 1,
+        "mode": "native",
+        "readMs": 4075.5836,
+        "writeMs": 6438.4417,
+        "totalMs": 10514.025300000001,
+        "peakRssKiB": 2061832,
+        "afterRead": {
+          "rss": 974168064,
+          "heapTotal": 916742144,
+          "heapUsed": 846840064,
+          "external": 2433704,
+          "arrayBuffers": 143631
+        },
+        "afterWrite": {
+          "rss": 1032646656,
+          "heapTotal": 978083840,
+          "heapUsed": 819077472,
+          "external": 2433744,
+          "arrayBuffers": 143631
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 2,
+        "mode": "native",
+        "readMs": 4244.5521,
+        "writeMs": 5395.4774,
+        "totalMs": 9640.0295,
+        "peakRssKiB": 2062828,
+        "afterRead": {
+          "rss": 975491072,
+          "heapTotal": 916742144,
+          "heapUsed": 846855840,
+          "external": 2433704,
+          "arrayBuffers": 143631
+        },
+        "afterWrite": {
+          "rss": 1032863744,
+          "heapTotal": 978345984,
+          "heapUsed": 819077472,
+          "external": 2433744,
+          "arrayBuffers": 143631
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 2,
+        "mode": "records",
+        "readMs": 5720.275,
+        "writeMs": 5732.8533,
+        "totalMs": 11453.1283,
+        "peakRssKiB": 692784,
+        "afterRead": {
+          "rss": 540725248,
+          "heapTotal": 507412480,
+          "heapUsed": 403387912,
+          "external": 71627679,
+          "arrayBuffers": 26998740
+        },
+        "afterWrite": {
+          "rss": 666513408,
+          "heapTotal": 573087744,
+          "heapUsed": 445375040,
+          "external": 45362434,
+          "arrayBuffers": 733455
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      }
+    ],
+    "allOutputBytesEqual": true
+  },
+  "limitations": [
+    "All read/write measurements use a closed 218010505-byte backup, not browser FPS or CCU.",
+    "Reading alone is slower; the Linux buffered combined cycle is similar or slightly faster.",
+    "The world tree remains resident. This is not the addressable profile repository.",
+    "Windows storage timings varied strongly; no Windows I/O speedup claim.",
+    "Do not deploy before full Linux, network ACK/WAL/PG checks and protected backup."
+  ]
+}
