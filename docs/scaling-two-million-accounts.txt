@@ -186,3 +186,5 @@ Food fast path остаётся кандидатом. Дальше: shareArenaDa
 23.11.2026: 20261123-profile-history установлен, полный Linux2320/2319pass/0fail/1skip; короткий mixed35+5 прошёл на обеих версиях, история и ACK сохранены. Продолжать пункты3/4 и длительную нагрузку; максимум CCU/RSS не закрыты. games/heroes-of-ether/docs/performance/profile-history-installed-20261123.json
 
 23.11.2026 18:19 UTC: 5мин mixed35+5 завершён, 5508ACK восстановлены, PG=WAL, 600000 прежних квитанций сохранены. Более строгая цель tick p95<25мс НЕ достигнута, RSS остаётся высоким. Задания закрыты (active0); не считать прогон проверкой активного вклада или максимума CCU. Продолжить пункты3/4; отчёт games/heroes-of-ether/docs/performance/profile-history-soak-20261123.json
+
+23.11.2026: 20261123-checkpoint-streaming установлен. Промежуточная память JSON по записям, неизменные данные/WAL. Полный Linux2326/2325pass/0fail/1skip, realPG10pass, короткий mixed35+5 обе версии pass. Адресные профили и независимые комнаты НЕ завершены. games/heroes-of-ether/docs/performance/checkpoint-streaming-installed-20261123.json

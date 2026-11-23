@@ -1,0 +1,591 @@
+{
+  "installed": true,
+  "published": true,
+  "release": "20261123-checkpoint-streaming",
+  "sourceCommit": "12aefd994005b30a5f5aae29ba9acd66b4f968cd",
+  "entryOpenedAtUtc": "2026-11-23T19:13:28.105Z",
+  "gamePid": 462677,
+  "adminPid": 1163,
+  "change": "Large checkpoint JSON is read and written record by record, preserving exact bytes and every history entry. WAL, fsync, atomic rename and single-writer fencing are unchanged.",
+  "validation": {
+    "windowsTargeted": {
+      "total": 32,
+      "passed": 32,
+      "failed": 0
+    },
+    "linuxFull": {
+      "total": 2326,
+      "passed": 2325,
+      "failed": 0,
+      "skipped": 1
+    },
+    "realPostgresql": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "runtimeFiles": 2550,
+    "changed": 2,
+    "commentsRemoved": 54,
+    "graphicsUnchanged": true,
+    "rootFiles": 4
+  },
+  "offlineLinux": {
+    "inputSha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+    "rows": [
+      {
+        "round": 0,
+        "mode": "native",
+        "readMs": 5063.86425,
+        "writeMs": 5674.53959,
+        "totalMs": 10738.403839999999,
+        "peakRssKiB": 2077772,
+        "afterRead": {
+          "rss": 986738688,
+          "heapTotal": 916484096,
+          "heapUsed": 846619696,
+          "external": 2348617,
+          "arrayBuffers": 143631
+        },
+        "afterWrite": {
+          "rss": 1049784320,
+          "heapTotal": 977825792,
+          "heapUsed": 818902704,
+          "external": 2348657,
+          "arrayBuffers": 143631
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 0,
+        "mode": "records",
+        "readMs": 6742.627881,
+        "writeMs": 3732.9931829999987,
+        "totalMs": 10475.621063999999,
+        "peakRssKiB": 782108,
+        "afterRead": {
+          "rss": 606744576,
+          "heapTotal": 506892288,
+          "heapUsed": 403246416,
+          "external": 71542653,
+          "arrayBuffers": 26998740
+        },
+        "afterWrite": {
+          "rss": 771317760,
+          "heapTotal": 579588096,
+          "heapUsed": 451609416,
+          "external": 45277408,
+          "arrayBuffers": 733455
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 1,
+        "mode": "records",
+        "readMs": 6745.83314,
+        "writeMs": 3121.7547289999993,
+        "totalMs": 9867.587868999999,
+        "peakRssKiB": 789872,
+        "afterRead": {
+          "rss": 606027776,
+          "heapTotal": 507154432,
+          "heapUsed": 403233856,
+          "external": 71542653,
+          "arrayBuffers": 26998740
+        },
+        "afterWrite": {
+          "rss": 762617856,
+          "heapTotal": 579325952,
+          "heapUsed": 451596856,
+          "external": 45277408,
+          "arrayBuffers": 733455
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 1,
+        "mode": "native",
+        "readMs": 5246.152169,
+        "writeMs": 4927.849251,
+        "totalMs": 10174.00142,
+        "peakRssKiB": 2078188,
+        "afterRead": {
+          "rss": 986484736,
+          "heapTotal": 916484096,
+          "heapUsed": 846583736,
+          "external": 2348617,
+          "arrayBuffers": 143631
+        },
+        "afterWrite": {
+          "rss": 1910116352,
+          "heapTotal": 1835094016,
+          "heapUsed": 1698266880,
+          "external": 2348657,
+          "arrayBuffers": 143631
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 2,
+        "mode": "native",
+        "readMs": 5556.48596,
+        "writeMs": 5346.86927,
+        "totalMs": 10903.355230000001,
+        "peakRssKiB": 2078192,
+        "afterRead": {
+          "rss": 987000832,
+          "heapTotal": 916484096,
+          "heapUsed": 846665112,
+          "external": 2348617,
+          "arrayBuffers": 143631
+        },
+        "afterWrite": {
+          "rss": 1049759744,
+          "heapTotal": 978350080,
+          "heapUsed": 818903864,
+          "external": 2348657,
+          "arrayBuffers": 143631
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      },
+      {
+        "round": 2,
+        "mode": "records",
+        "readMs": 6610.05393,
+        "writeMs": 3109.8623989999987,
+        "totalMs": 9719.916329,
+        "peakRssKiB": 790052,
+        "afterRead": {
+          "rss": 606449664,
+          "heapTotal": 507154432,
+          "heapUsed": 403248088,
+          "external": 71542653,
+          "arrayBuffers": 26998740
+        },
+        "afterWrite": {
+          "rss": 762933248,
+          "heapTotal": 579325952,
+          "heapUsed": 451587824,
+          "external": 45277408,
+          "arrayBuffers": 733455
+        },
+        "sha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
+        "bytes": 218010505,
+        "profiles": 1718,
+        "revision": 4065482
+      }
+    ],
+    "allOutputBytesEqual": true
+  },
+  "comparison": {
+    "fixture": {
+      "sha256": "8d430327174c0d3e83d903131f29a700907a3c55b94ea663be7be96f69951df8",
+      "bytes": 38853801
+    },
+    "players": 35,
+    "lobby": 5,
+    "arenaReceiptProfiles": 40,
+    "retainedReceipts": 600000,
+    "phaseSeconds": 30,
+    "cpuQuota": 3,
+    "changedRuntimeFiles": 2,
+    "linuxFull": {
+      "total": 2326,
+      "passed": 2325,
+      "failed": 0,
+      "skipped": 1
+    },
+    "beforeAssessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": true,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "move",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "split",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "feed",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "boosters",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "meetsTargets": true,
+          "issues": []
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "afterAssessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": true,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "move",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "split",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "feed",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "boosters",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "meetsTargets": true,
+          "issues": []
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "acknowledgedBefore": 1281,
+    "acknowledgedAfter": 1291,
+    "rows": [
+      {
+        "phase": "move",
+        "before": {
+          "hz": 19.93170259596105,
+          "tickP95Ms": 13.85350599999947,
+          "eventLoopP95Ms": 14.131199,
+          "lobbyP95Ms": 19.1513930000001,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1539.1640625,
+          "heapMiB": 366.31536865234375,
+          "cpuPercent": 64.73153406482353,
+          "gcTotalMs": 65.71096396446228,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 19.963802747237015,
+          "tickP95Ms": 11.801601999999548,
+          "eventLoopP95Ms": 13.885439,
+          "lobbyP95Ms": 18.559450000000652,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1198.8515625,
+          "heapMiB": 346.6370849609375,
+          "cpuPercent": 60.77697962142722,
+          "gcTotalMs": 65.14069283008575,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -14.811441955559845,
+        "lobbyChangePercent": -3.0908613279433172
+      },
+      {
+        "phase": "split",
+        "before": {
+          "hz": 20.00806679039506,
+          "tickP95Ms": 16.65832400000363,
+          "eventLoopP95Ms": 21.053439,
+          "lobbyP95Ms": 18.138300999999046,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1373.8359375,
+          "heapMiB": 511.7333755493164,
+          "cpuPercent": 81.4873977887062,
+          "gcTotalMs": 117.14838427305222,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 20.04733203284515,
+          "tickP95Ms": 14.781139999991865,
+          "eventLoopP95Ms": 20.545535,
+          "lobbyP95Ms": 17.26540700001351,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1201.12109375,
+          "heapMiB": 499.1996841430664,
+          "cpuPercent": 78.783430177436,
+          "gcTotalMs": 108.96547585725784,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -11.268744682906618,
+        "lobbyChangePercent": -4.812435299125218
+      },
+      {
+        "phase": "feed",
+        "before": {
+          "hz": 20.054257892813666,
+          "tickP95Ms": 18.049131000007037,
+          "eventLoopP95Ms": 20.692991,
+          "lobbyP95Ms": 19.844891000000644,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1483.125,
+          "heapMiB": 688.7773895263672,
+          "cpuPercent": 88.15586334643963,
+          "gcTotalMs": 143.66708213090897,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 20.02594947620084,
+          "tickP95Ms": 15.597938999999315,
+          "eventLoopP95Ms": 19.464191,
+          "lobbyP95Ms": 17.245335999992676,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1390.58984375,
+          "heapMiB": 642.3416213989258,
+          "cpuPercent": 83.61705811653287,
+          "gcTotalMs": 139.14802211523056,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -13.58066490850317,
+        "lobbyChangePercent": -13.099366481820852
+      },
+      {
+        "phase": "boosters",
+        "before": {
+          "hz": 19.817121430032724,
+          "tickP95Ms": 17.820312999974703,
+          "eventLoopP95Ms": 22.020095,
+          "lobbyP95Ms": 19.967253000009805,
+          "actionP95Ms": 21.027742999998736,
+          "successActionP95Ms": 21.737602000008337,
+          "rssMiB": 1536.7578125,
+          "heapMiB": 325.0347595214844,
+          "cpuPercent": 117.92459379391494,
+          "gcTotalMs": 533.9246853590012,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 19.881266648152387,
+          "tickP95Ms": 17.296824999997625,
+          "eventLoopP95Ms": 20.840447,
+          "lobbyP95Ms": 25.159115000002203,
+          "actionP95Ms": 17.55700900001102,
+          "successActionP95Ms": 17.650679000013042,
+          "rssMiB": 1191.859375,
+          "heapMiB": 274.53160858154297,
+          "cpuPercent": 117.3286998013446,
+          "gcTotalMs": 498.17186492681503,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -2.9375915000921737,
+        "lobbyChangePercent": 26.001884185019584
+      },
+      {
+        "phase": "combined",
+        "before": {
+          "hz": 19.850291710501764,
+          "tickP95Ms": 27.141954999999143,
+          "eventLoopP95Ms": 34.537471,
+          "lobbyP95Ms": 36.239133999974,
+          "actionP95Ms": 38.75781899999129,
+          "successActionP95Ms": 39.02129000000423,
+          "rssMiB": 1943.2421875,
+          "heapMiB": 258.45479583740234,
+          "cpuPercent": 155.99099315780816,
+          "gcTotalMs": 561.8741577267647,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 20.007613833817175,
+          "tickP95Ms": 26.48317599997972,
+          "eventLoopP95Ms": 32.178175,
+          "lobbyP95Ms": 28.726384999987204,
+          "actionP95Ms": 30.380239000020083,
+          "successActionP95Ms": 30.42888099999982,
+          "rssMiB": 1578.09765625,
+          "heapMiB": 578.1824340820312,
+          "cpuPercent": 146.74031043635154,
+          "gcTotalMs": 304.33485609292984,
+          "pendingActions": 1,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -2.427161197560912,
+        "lobbyChangePercent": -20.731038992245754
+      }
+    ],
+    "limitations": [
+      "One sequential A/B pair on a shared host; live population and timing differ",
+      "Synthetic actions and physics random sources are not seeded identically",
+      "Short run, not maximum CCU, browser FPS or a long-duration stability guarantee",
+      "No change to limits, WAL durability, single writer or production database schema"
+    ]
+  },
+  "retainedHistory": [
+    {
+      "label": "baseline",
+      "profiles": 40,
+      "retainedReceipts": 600000,
+      "allOriginalValuesEqual": true,
+      "fixtureSha256": "8d430327174c0d3e83d903131f29a700907a3c55b94ea663be7be96f69951df8"
+    },
+    {
+      "label": "candidate",
+      "profiles": 40,
+      "retainedReceipts": 600000,
+      "allOriginalValuesEqual": true,
+      "fixtureSha256": "8d430327174c0d3e83d903131f29a700907a3c55b94ea663be7be96f69951df8"
+    }
+  ],
+  "data": {
+    "before": {
+      "at": 1795460696789,
+      "revision": 4104404,
+      "digest": "ed6185d02b6884289d80edfcb223fa8cfea1ea6d92f628487975a5a68d63bbd7",
+      "worldHash": "cc70526acd91cc8165421252eff226598ba0fa07848eefa93df7625b1e10b7d1",
+      "profiles": 1719,
+      "clans": 136,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/dev/shm/heroether-checkpoint-streaming-install-20261123/checkpoint-streaming-install-20261123",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/checkpoint-streaming-install-20261123/data-before.tar.gz"
+    },
+    "after": {
+      "calendarReplayExact": true,
+      "approvedMigrationsExact": true,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 4104404,
+      "revision": 4104405,
+      "digest": "a50f5838a5b75a3587e65b4a03a38ad8811c648ac6573ef69d83cee5fe7e4a15",
+      "worldHash": "d26f3a20b22e0298887f9bce4eac03fdca57d6fc71dc1ac727da5ec426233377",
+      "profiles": 1719,
+      "clans": 136,
+      "at": 1795461036780,
+      "transitionTimes": [
+        1795461036780
+      ],
+      "retiredAvatarProfiles": [],
+      "constructorChanges": [],
+      "questPayouts": 0,
+      "questChests": 0
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "b101513ae53eb5d00000003d82345c71aa9f3190046c8dcc99790c78cfa277c6",
+      "revision": 4104404,
+      "digest": "ed6185d02b6884289d80edfcb223fa8cfea1ea6d92f628487975a5a68d63bbd7",
+      "worldHash": "cc70526acd91cc8165421252eff226598ba0fa07848eefa93df7625b1e10b7d1",
+      "profiles": 1719,
+      "clans": 136,
+      "postgresqlArchiveVerified": true
+    }
+  },
+  "storage": {
+    "archive": "/srv/heroether-test/play/backups/checkpoint-streaming-install-20261123/data-before.tar.gz",
+    "sha256": "b101513ae53eb5d00000003d82345c71aa9f3190046c8dcc99790c78cfa277c6",
+    "bytes": 101611379,
+    "checkpointReserve": 629145600,
+    "rawStagingRetained": "/dev/shm/heroether-checkpoint-streaming-install-20261123",
+    "durableArchiveVerified": true
+  },
+  "lastObservation": {
+    "at": "2026-11-23T19:15:00.126Z",
+    "online": {
+      "arena": 4,
+      "lobby": 5,
+      "total": 9
+    },
+    "tickWorkMs": {
+      "count": 1194,
+      "p50": 2.01,
+      "p95": 14.08,
+      "p99": 25.31,
+      "max": 207.86
+    },
+    "tickIntervalMs": {
+      "count": 1194,
+      "p50": 49.97,
+      "p95": 51.18,
+      "p99": 59.64,
+      "max": 209.54
+    },
+    "memoryMiB": {
+      "resident": 2474,
+      "heapUsed": 471,
+      "limit": 5120
+    },
+    "queuedActions": 0,
+    "paused": false,
+    "database": {
+      "connected": true,
+      "lastError": null,
+      "revision": 4104704,
+      "syncAgeMs": 204,
+      "prepareMs": 12400,
+      "writeMs": 251
+    }
+  },
+  "limitations": [
+    "The full world is still resident; only the large intermediate JSON buffers are bounded to individual records or root fields",
+    "Three offline Linux pairs show peak RSS about 2029 MiB to 764–772 MiB; reading alone is slower, total read/write similar. This is not whole-game RSS or FPS",
+    "One sequential 35+5 mixed A/B on a shared VPS; random physics and live population differ. Daily clan quests were closed, not an active-quest load test",
+    "Short load test, not maximum CCU or proof of many-hour stability",
+    "Windows filesystem timings varied strongly; no Windows speed improvement is claimed",
+    "All old data, histories, failed attempts and backups remain. VPS disk reserve remains narrow"
+  ],
+  "validationNotes": "Initial new test fixture had a missing brace; corrected, first output preserved.\nDifferential malformed-input fixture compared an unpaired UTF-16 surrogate with encoded UTF-8; expected value now reads the same bytes as production.\nA relative restore path used the wrong cwd; no files changed; corrected from workspace root, reran 32 tests on final v2.\nOne SSH upload failed before handshake; retry completed before remote staging.\nBuffered v2 selected. Byte-search v3 and regex v4 were slower on Linux and were excluded. All outputs/source files remain in artifacts.\nThe SSH downloader rejected the tmpfs archive path before reading. A checksum-verified durable copy was created inside the allowed test stand, then downloaded and verified locally.\r\nThe first 40-second readiness probe expired during cold startup. The process remained active with NRestarts=0 and entry closed; readiness was awaited without restarting it.\r\nA second readiness window expired; the third passed. The same process began listening approximately 88 seconds after start and PostgreSQL reached the expected revision. No restart was triggered.\r\nThe first generated capacity guard failed local syntax validation because a replacement string interpreted dollar-apostrophe. Replaced through a callback, saved the rejected file, and reran syntax validation before upload; no remote run used it.\r\n"
+}

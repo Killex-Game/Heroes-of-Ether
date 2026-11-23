@@ -1,17 +1,303 @@
 {
   "at": "2026-11-23T18:46:37.139Z",
   "source": "12aefd994005b30a5f5aae29ba9acd66b4f968cd",
-  "installed": false,
-  "activeRelease": "20261123-profile-history",
-  "activeSource": "f9a39d47b9a4980f912321bc167fd6e02de256d1",
+  "installed": true,
+  "activeRelease": "20261123-checkpoint-streaming",
+  "activeSource": "12aefd994005b30a5f5aae29ba9acd66b4f968cd",
   "purpose": "Bound intermediate checkpoint JSON to individual persisted records; preserve exact bytes, WAL, fsync and atomic rename.",
   "windowsTargeted": {
     "tests": 32,
     "pass": 32,
     "fail": 0
   },
-  "linuxFull": "running",
-  "networkMixed": "pending",
+  "linuxFull": {
+    "total": 2326,
+    "passed": 2325,
+    "failed": 0,
+    "skipped": 1
+  },
+  "networkMixed": {
+    "fixture": {
+      "sha256": "8d430327174c0d3e83d903131f29a700907a3c55b94ea663be7be96f69951df8",
+      "bytes": 38853801
+    },
+    "players": 35,
+    "lobby": 5,
+    "arenaReceiptProfiles": 40,
+    "retainedReceipts": 600000,
+    "phaseSeconds": 30,
+    "cpuQuota": 3,
+    "changedRuntimeFiles": 2,
+    "linuxFull": {
+      "total": 2326,
+      "passed": 2325,
+      "failed": 0,
+      "skipped": 1
+    },
+    "beforeAssessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": true,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "move",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "split",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "feed",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "boosters",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "meetsTargets": true,
+          "issues": []
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "afterAssessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": true,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "move",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "split",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "feed",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "boosters",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "meetsTargets": true,
+          "issues": []
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "acknowledgedBefore": 1281,
+    "acknowledgedAfter": 1291,
+    "rows": [
+      {
+        "phase": "move",
+        "before": {
+          "hz": 19.93170259596105,
+          "tickP95Ms": 13.85350599999947,
+          "eventLoopP95Ms": 14.131199,
+          "lobbyP95Ms": 19.1513930000001,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1539.1640625,
+          "heapMiB": 366.31536865234375,
+          "cpuPercent": 64.73153406482353,
+          "gcTotalMs": 65.71096396446228,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 19.963802747237015,
+          "tickP95Ms": 11.801601999999548,
+          "eventLoopP95Ms": 13.885439,
+          "lobbyP95Ms": 18.559450000000652,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1198.8515625,
+          "heapMiB": 346.6370849609375,
+          "cpuPercent": 60.77697962142722,
+          "gcTotalMs": 65.14069283008575,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -14.811441955559845,
+        "lobbyChangePercent": -3.0908613279433172
+      },
+      {
+        "phase": "split",
+        "before": {
+          "hz": 20.00806679039506,
+          "tickP95Ms": 16.65832400000363,
+          "eventLoopP95Ms": 21.053439,
+          "lobbyP95Ms": 18.138300999999046,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1373.8359375,
+          "heapMiB": 511.7333755493164,
+          "cpuPercent": 81.4873977887062,
+          "gcTotalMs": 117.14838427305222,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 20.04733203284515,
+          "tickP95Ms": 14.781139999991865,
+          "eventLoopP95Ms": 20.545535,
+          "lobbyP95Ms": 17.26540700001351,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1201.12109375,
+          "heapMiB": 499.1996841430664,
+          "cpuPercent": 78.783430177436,
+          "gcTotalMs": 108.96547585725784,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -11.268744682906618,
+        "lobbyChangePercent": -4.812435299125218
+      },
+      {
+        "phase": "feed",
+        "before": {
+          "hz": 20.054257892813666,
+          "tickP95Ms": 18.049131000007037,
+          "eventLoopP95Ms": 20.692991,
+          "lobbyP95Ms": 19.844891000000644,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1483.125,
+          "heapMiB": 688.7773895263672,
+          "cpuPercent": 88.15586334643963,
+          "gcTotalMs": 143.66708213090897,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 20.02594947620084,
+          "tickP95Ms": 15.597938999999315,
+          "eventLoopP95Ms": 19.464191,
+          "lobbyP95Ms": 17.245335999992676,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1390.58984375,
+          "heapMiB": 642.3416213989258,
+          "cpuPercent": 83.61705811653287,
+          "gcTotalMs": 139.14802211523056,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -13.58066490850317,
+        "lobbyChangePercent": -13.099366481820852
+      },
+      {
+        "phase": "boosters",
+        "before": {
+          "hz": 19.817121430032724,
+          "tickP95Ms": 17.820312999974703,
+          "eventLoopP95Ms": 22.020095,
+          "lobbyP95Ms": 19.967253000009805,
+          "actionP95Ms": 21.027742999998736,
+          "successActionP95Ms": 21.737602000008337,
+          "rssMiB": 1536.7578125,
+          "heapMiB": 325.0347595214844,
+          "cpuPercent": 117.92459379391494,
+          "gcTotalMs": 533.9246853590012,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 19.881266648152387,
+          "tickP95Ms": 17.296824999997625,
+          "eventLoopP95Ms": 20.840447,
+          "lobbyP95Ms": 25.159115000002203,
+          "actionP95Ms": 17.55700900001102,
+          "successActionP95Ms": 17.650679000013042,
+          "rssMiB": 1191.859375,
+          "heapMiB": 274.53160858154297,
+          "cpuPercent": 117.3286998013446,
+          "gcTotalMs": 498.17186492681503,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -2.9375915000921737,
+        "lobbyChangePercent": 26.001884185019584
+      },
+      {
+        "phase": "combined",
+        "before": {
+          "hz": 19.850291710501764,
+          "tickP95Ms": 27.141954999999143,
+          "eventLoopP95Ms": 34.537471,
+          "lobbyP95Ms": 36.239133999974,
+          "actionP95Ms": 38.75781899999129,
+          "successActionP95Ms": 39.02129000000423,
+          "rssMiB": 1943.2421875,
+          "heapMiB": 258.45479583740234,
+          "cpuPercent": 155.99099315780816,
+          "gcTotalMs": 561.8741577267647,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 20.007613833817175,
+          "tickP95Ms": 26.48317599997972,
+          "eventLoopP95Ms": 32.178175,
+          "lobbyP95Ms": 28.726384999987204,
+          "actionP95Ms": 30.380239000020083,
+          "successActionP95Ms": 30.42888099999982,
+          "rssMiB": 1578.09765625,
+          "heapMiB": 578.1824340820312,
+          "cpuPercent": 146.74031043635154,
+          "gcTotalMs": 304.33485609292984,
+          "pendingActions": 1,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": -2.427161197560912,
+        "lobbyChangePercent": -20.731038992245754
+      }
+    ],
+    "limitations": [
+      "One sequential A/B pair on a shared host; live population and timing differ",
+      "Synthetic actions and physics random sources are not seeded identically",
+      "Short run, not maximum CCU, browser FPS or a long-duration stability guarantee",
+      "No change to limits, WAL durability, single writer or production database schema"
+    ]
+  },
   "offlineLinux": {
     "inputSha256": "898f17f1a606e9cc388e237b96803b177a27aad8c66d2369a87025ff88703978",
     "rows": [
@@ -342,5 +628,12 @@
     "The world tree remains resident. This is not the addressable profile repository.",
     "Windows storage timings varied strongly; no Windows I/O speedup claim.",
     "Do not deploy before full Linux, network ACK/WAL/PG checks and protected backup."
-  ]
+  ],
+  "realPostgresql": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0
+  },
+  "installedReport": "games/heroes-of-ether/docs/performance/checkpoint-streaming-installed-20261123.json",
+  "published": true
 }
