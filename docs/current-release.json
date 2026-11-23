@@ -1,8 +1,8 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
   "gameRelease": "20261123-avatar-arena-followup",
-  "sourceTag": "release/20261123-interface-art",
-  "sourceCommit": "d611ec7752ac8613e45f28b01e68944d7f35b62c",
+  "sourceTag": "release/20261123-title-frames-rims",
+  "sourceCommit": "fc7671c94f62980e78f17c94d82fac49498bf3c0",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
@@ -34,7 +34,8 @@
     "Bot roster eligibility reused across unrelated profile changes, with live membership/level/spawn/ban checks preserved",
     "Owner archive selectively updates premium-2, desert-cat and grove-faun in five resolutions; other 488 portrait files remain byte-identical",
     "Arena bows up to 20% larger, capped below equipped hats; lobby portrait dimensions unchanged",
-    "Prepared interface artwork and 14 lobby menu icons installed; protected artwork and controls retained"
+    "Prepared interface artwork and 14 lobby menu icons installed; protected artwork and controls retained",
+    "Ten ornate title profile frames, 22 saturated arena rim palettes with unchanged rim geometry"
   ],
   "data": {
     "before": {
@@ -158,7 +159,7 @@
     "commentsRemoved": 159,
     "rasterAssetsChanged": 0
   },
-  "report": "artifacts/interface-install-20261123/report.txt",
+  "report": "artifacts/title-frames-rims-20261123/report.txt",
   "previousRelease": "20261123-interface-mechanics",
   "notes": [
     "Initial Linux failures were obsolete expectations, preserved with final complete rerun",
@@ -528,5 +529,105 @@
       "Disk capacity remains a separate unresolved issue"
     ],
     "report": "artifacts/interface-install-20261123/report.txt"
+  },
+  "staticTitleFramesUpdate": {
+    "at": "2026-11-23T07:12:17.155Z",
+    "release": "/srv/heroether-test/play/releases/20261123-avatar-arena-followup",
+    "backup": {
+      "archiveSha256": "7e3f342176c46fb69a95392bea346c258af3cf76ec60c247d5a366eff0c2d4de",
+      "checked": 34,
+      "manifestEqual": true
+    },
+    "files": 84,
+    "added": 50,
+    "unchangedPublic": 2191,
+    "gamePid": 363098,
+    "adminPid": 1163,
+    "noProcessRestart": true,
+    "noWorldWrites": true,
+    "diskFreeBefore": 526528512,
+    "diskFreeAfter": 521744384,
+    "sourceCommit": "fc7671c94f62980e78f17c94d82fac49498bf3c0",
+    "sourceTag": "release/20261123-title-frames-rims",
+    "published": true,
+    "titleFrames": 10,
+    "titleWebpVariants": 50,
+    "rimPalettes": 22,
+    "rimRasterFiles": 29,
+    "originalRimAlphaExact": true,
+    "championPalette": "ruby red and gold",
+    "profileFramesIndependentFromArenaRims": true,
+    "productionBytes": 3948053,
+    "commentsRemoved": 57,
+    "developerToProductionExact": true,
+    "rootSynchronized": true,
+    "assetsDecoded": 79,
+    "browsers": [
+      {
+        "engine": "chromium",
+        "screens": 8,
+        "titleFrames": 10,
+        "stableRepaintsPerFrame": 25,
+        "rimGeometry": {
+          "cases": 66,
+          "alphaUnchanged": true
+        },
+        "errors": 0,
+        "missing": 0
+      },
+      {
+        "engine": "firefox",
+        "screens": 7,
+        "titleFrames": 10,
+        "stableRepaintsPerFrame": 25,
+        "rimGeometry": {
+          "cases": 66,
+          "alphaUnchanged": true
+        },
+        "errors": 0,
+        "missing": 0
+      },
+      {
+        "engine": "webkit",
+        "screens": 7,
+        "titleFrames": 10,
+        "stableRepaintsPerFrame": 25,
+        "rimGeometry": {
+          "cases": 66,
+          "alphaUnchanged": true
+        },
+        "errors": 0,
+        "missing": 0
+      }
+    ],
+    "tests": {
+      "passed": 20,
+      "failed": 0,
+      "scope": [
+        "arena-appearance-cache",
+        "league-appearance",
+        "ui-refresh-signature"
+      ]
+    },
+    "structure": {
+      "javascript": 1051,
+      "references": 6101,
+      "renamed": 247
+    },
+    "httpExact": 252,
+    "cleanup": {
+      "at": "2026-11-23T07:13:54.666Z",
+      "removed": [
+        "/srv/heroether-test/play/results/title-frames-rims-20261123/patch/public",
+        "/srv/heroether-test/play/results/title-frames-rims-20261123/patch.tar.gz"
+      ],
+      "backupsPreserved": true,
+      "diskFree": 331419648
+    },
+    "report": "artifacts/title-frames-rims-20261123/report.txt",
+    "limitations": [
+      "No new full-backend regression or capacity benchmark",
+      "Low VPS disk capacity is still unresolved; protected backups retained"
+    ]
   }
 }
