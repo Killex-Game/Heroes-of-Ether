@@ -13,7 +13,7 @@
       .game-booting body > :not(#gameLoading):not(script):not(noscript):not(#maintenanceDialog) { visibility: hidden !important; }
       #gameLoading { position: fixed; inset: 0; margin: 0; width: 100%; height: 100%; max-width: none; max-height: none; border: 0; background: #112f42; color: #fff1cf; }
     </style>
-    <link rel="stylesheet" href="styles/components/game-loading.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/game-loading.css?v=20261123-startup-heroes" />
     <link
       rel="preload"
       href="assets/fonts/inter/InterVariable.woff2"
@@ -105,18 +105,18 @@
   </head>
   <body data-screen="lobby">
     <dialog id="gameLoading" open aria-labelledby="gameLoadingTitle" aria-describedby="gameLoadingStatus">
-      <div class="boot-stars" aria-hidden="true"></div>
+      <div class="boot-pattern" aria-hidden="true"></div>
       <div class="boot-content">
         <p class="boot-eyebrow">Твоя история начинается здесь</p>
         <h1 id="gameLoadingTitle">Герои <span>Эфира</span></h1>
         <div class="boot-heroes" aria-hidden="true">
           <div class="boot-orbit"></div>
-          <div class="boot-hero boot-hero-left"><img src="assets/skins/transparent-v2/256/amber-fox.webp?art=20261123-interface-art" alt="" /></div>
-          <div class="boot-hero boot-hero-main"><img src="assets/skins/transparent-v2/512/moon-dragon.webp?art=20261123-interface-art" alt="" fetchpriority="high" /></div>
-          <div class="boot-hero boot-hero-right"><img src="assets/skins/transparent-v2/256/little-owl.webp?art=20261123-interface-art" alt="" /></div>
+          <div class="boot-hero boot-hero-left" style="--boot-skin-scale:1.015;--boot-skin-x:0%;--boot-skin-y:3.04%"><img src="assets/skins/collections-v1/256/norse-freyja.webp?v=20261122-canon16" width="256" height="256" alt="" /></div>
+          <div class="boot-hero boot-hero-main" style="--boot-skin-scale:0.991;--boot-skin-x:0%;--boot-skin-y:2.31%"><img src="assets/skins/premium-v2/512/premium-2.webp?art=20261123-selected-portraits" width="512" height="512" alt="" fetchpriority="high" /></div>
+          <div class="boot-hero boot-hero-right" style="--boot-skin-scale:1.002;--boot-skin-x:0%;--boot-skin-y:2.75%"><img src="assets/skins/collections-v1/256/norse-loki.webp?v=20261122-canon16" width="256" height="256" alt="" /></div>
           <span class="boot-star">✦</span>
         </div>
-        <p class="boot-tagline">Собирай силу. Находи союзников. Стань Героем.</p>
+        <p class="boot-tagline">Собирай силу, находи союзников, стань Героем</p>
         <div class="boot-readiness">
           <p id="gameLoadingStatus" role="status" aria-live="polite"></p>
           <progress id="gameLoadingProgress" max="3" value="0" aria-label="Подготовка игры"></progress>
