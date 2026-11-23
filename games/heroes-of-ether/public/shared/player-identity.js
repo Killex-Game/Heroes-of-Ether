@@ -700,7 +700,7 @@
     ["gift-winged-guardianess", "Крылатая хранительница"],
   ].map(([id, name]) => {
     const variants = Object.freeze(Object.fromEntries([64, 128, 256, 512, 1024]
-      .map(size => [size, `assets/skins/owner-gifts-v1/${size}/${id}.webp?art=20261123-interface-art`])));
+      .map(size => [size, `assets/skins/owner-gifts-v1/${size}/${id}.webp?art=${id === "gift-winged-guardian" ? "20261123-guardian-neck" : "20261123-interface-art"}`])));
     return Object.freeze({ id, name, ownerGift: true, variants, arena: variants[1024] });
   }));
   const allSkins = Object.freeze([...skins, ...accountSkins, ...themeSkins, ...collectionSkins, ...ownerGiftSkins]);

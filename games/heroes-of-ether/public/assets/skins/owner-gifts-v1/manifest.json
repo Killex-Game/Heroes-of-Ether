@@ -1,36 +1,36 @@
 [
   {
     "id": "gift-winged-guardian",
-    "source": "Мужественный фэнтезийный герой с крыльями.png",
+    "source": "codex-clipboard-444d11e6-8bfd-4068-8c3e-786e63c9cbd2.png",
     "width": 1254,
     "height": 1254,
-    "sourceSha256": "9c6b0d3307ab1ad0e7216db02a94a27503afd946c8f384fe9027cb49607552b7",
-    "provenance": "Provided directly by the game owner for use as a personal gift avatar; original pixels preserved. No external asset downloaded.",
+    "sourceSha256": "dddd4047904e2516f6ed2ac4c7e07c0e8cf7e75a5d2f6b4ab6519de75807e80f",
+    "provenance": "Owner-provided corrected neck portrait. Original transparent pixels preserved; only proportional resizing and WebP encoding.",
     "outputs": [
       {
         "size": 64,
-        "bytes": 2766,
-        "sha256": "edabd13f3599e9589c970aead0945c2773e138d521711b852f779f9ef76c54d8"
+        "bytes": 2792,
+        "sha256": "77abf15b981323f42bf477f88639827045e9136b4c78ea62a41765fadc7b79ae"
       },
       {
         "size": 128,
-        "bytes": 6562,
-        "sha256": "8c74d8506e281dd91e29ca9df29f37ca6a1ab1f55b292dc45ab7575243aad9fa"
+        "bytes": 6632,
+        "sha256": "1b7b1ab00c882510a41d0b288e274fa7ea4cf1e6391ffce40f5b8505003ae930"
       },
       {
         "size": 256,
-        "bytes": 16670,
-        "sha256": "8ba3c8fd57e76d8d5cbaf6a8a3307eb3b99d1d583bd6217a6dd38a24fb31a01e"
+        "bytes": 16722,
+        "sha256": "e40d9d2349def9d75cec4f77b411f767978e6d2fdf5dd684888e3f846335b5c9"
       },
       {
         "size": 512,
-        "bytes": 41268,
-        "sha256": "b1f3a0bf42a7ef4eb9cd2ed7153427ffea6c42c0af93a3b23ab3a7e9fa8a5318"
+        "bytes": 41334,
+        "sha256": "95ef5d7da02ae6dee4cacaafe3fcad836474b55324d5114f878969fa10bc049c"
       },
       {
         "size": 1024,
-        "bytes": 107322,
-        "sha256": "640f4c679b57783744971be479b4b0322f5f9c4ebb0e0016ed3f015638dc0398"
+        "bytes": 107956,
+        "sha256": "91ef449f5ccaf0df081a894f7895374454349e1e4cc1c897b958a2e77bad62d3"
       }
     ]
   },
