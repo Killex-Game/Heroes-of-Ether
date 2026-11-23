@@ -61,6 +61,101 @@ function fixture(t,journal=false,options={}){
   const progress=(who,event,time=now,batch=randomUUID())=>{now=time;return store.applyArenaProgress(batch,[{profileId:who.profile.id,...event}],time);};
   return {store,clanApi,a,b,late,id,at,act,board,task,progress,file,now:()=>now};
 }
+
+test('real split-body absorption credits the same total mass to the clan as physics',t=>{
+  const f=fixture(t);f.task('absorbedMass',100000);
+  const {Arena}=require('../../src/server/arena/arena-simulation'),arena=new Arena({etherCount:0});
+  const eater=arena.addPlayer(0,'eater'),victim=arena.addPlayer(0,'victim');
+  eater.profileId=f.a.profile.id;victim.profileId=f.b.profile.id;
+  for(const p of [eater,victim])Object.assign(p,{x:1000,y:1000,targetX:1100,targetY:1000,protectedUntil:0,level:25});
+  arena.gainMass(eater,2000-eater.mass);arena.gainMass(victim,400-victim.mass);
+  arena.handleInput(victim.id,{type:'split',sequence:1,spawnSerial:victim.spawnSerial},1000);
+  assert(arena.bodies(victim).length>1);
+  for(const part of arena.bodies(victim)){part.x=eater.x;part.y=eater.y;}
+  f.progress(f.a,{type:'lifeStarted',lifeId:eater.lifeId},start);
+  const beforeMass=eater.mass,events=arena.resolveAbsorptions(1100);
+  assert(events.length>1);
+  const expected=events.reduce((sum,event)=>sum+event.gain,0);
+  assert.equal(eater.mass-beforeMass,expected);
+  const progress=events.map(event=>({...event,profileId:f.a.profile.id,victimProfileId:f.b.profile.id}));
+  f.store.applyArenaProgress('real-parts',progress,start+1100);
+  assert.equal(f.board().quests[0].progress,expected);
+  f.store.applyArenaProgress('duplicate-real-parts',progress,start+1101);
+  assert.equal(f.board().quests[0].progress,expected);
+});
+
+test('clan mass credits every absorbed part once without changing kill cooldowns or personal records',t=>{
+  const f=fixture(t,true);f.task('absorbedMass',100000);
+  const data=structuredClone(f.store.data);
+  data.clans[f.id].dailyQuests.board.quests.push({...service.catalog.items.find(q=>q.metric==='kills'),progress:0,completedAt:null});
+  f.store.save(data);f.progress(f.a,{type:'lifeStarted',lifeId:'mass-collector'},start);
+  const part=(sequence,gain,defeated=false)=>({type:'absorbed',eaterLifeId:'mass-collector',absorptionSequence:sequence,
+    victimProfileId:f.b.profile.id,lifeId:'victim-life',victimPartId:'part-'+sequence,gain,victimDefeated:defeated});
+  f.progress(f.a,part(1,100),start+1);
+  f.progress(f.a,part(2,200,true),start+2);
+  assert.deepEqual(f.board().quests.map(q=>q.progress),[300,1]);
+  f.progress(f.a,part(2,200,true),start+3);
+  assert.deepEqual(f.board().quests.map(q=>q.progress),[300,1],'duplicate part is not credited');
+  f.progress(f.a,{...part(3,150,true),lifeId:'victim-next-life'},start+4);
+  assert.deepEqual(f.board().quests.map(q=>q.progress),[450,1],'actual mass counts, repeated kill retains cooldown');
+  f.progress(f.a,{...part(4,600),eaterLifeId:'stale-life'},start+5);
+  f.progress(f.a,{...part(4,600),victimProfileId:f.a.profile.id},start+6);
+  f.progress(f.a,{...part(5,600),gain:NaN},start+7);
+  assert.equal(f.board().quests[0].progress,450,'stale, own and malformed contributions are excluded');
+  const player=f.store.find(f.a.token);
+  assert.equal(player.progress.absorbedMass,100,'personal achievement rules are unchanged');
+  assert.equal(player.progress.absorptionKills,1);
+  const saved=require('../../src/server/profiles/profile-journal').recover(f.file).data;
+  assert.deepEqual(saved.clans[f.id].dailyQuests.board,f.board());
+});
+
+for (const metrics of [
+  ['allBoosterUses','advancedUses','rareUses','shieldUses','boosterUses'],
+  ['hazards','hazardHits','freezeHits','hookHits','splitParts'],
+  ['poisonHits','food','arenaMs','top10Ms','top1Ms'],
+]) test('burst contributions from two members survive worker, replay and WAL: '+metrics.join(','),async t=>{
+  const f=fixture(t,true,{arenaProgressWorker:true});
+  t.after(()=>f.store.arenaPreparer.close());
+  const data=structuredClone(f.store.data);
+  data.clans[f.id].dailyQuests.board.quests=metrics.map(metric=>({
+    ...service.catalog.items.find(q=>q.metric===metric),target:10000000,progress:0,completedAt:null,
+  }));
+  f.store.save(data);
+  const members=[f.a,f.b];
+  for(const [i,who] of members.entries()) {
+    f.progress(who,{type:'lifeStarted',lifeId:'burst-'+i},start);
+    f.progress(who,{type:'questSample',lifeId:'burst-'+i,clanFood:0,food:0,rank:i+1},start+1);
+  }
+  const inputs=[];
+  for(let n=1;n<=40;n++) for(const [i,who] of members.entries()) {
+    const base={profileId:who.profile.id,lifeId:'burst-'+i,targetProfileId:members[1-i].profile.id};
+    for(const [j,boosterId]of ['candy','donut','meat','golden_shield','clan_shield','pet_carrot'].entries())
+      inputs.push({...base,type:'arenaAction',sequence:(n-1)*10+j+1,metric:'boosterUses',boosterId});
+    for(const [j,metric]of ['hazards','hazardHits','freezeHits','hookHits'].entries())
+      inputs.push({...base,type:'arenaAction',sequence:(n-1)*10+j+7,metric});
+    inputs.push({...base,type:'clanArenaAction',sequence:(n-1)*2+1,metric:'splitParts',amount:3});
+    inputs.push({...base,type:'clanArenaAction',sequence:n*2,metric:'clanPoisonHits'});
+  }
+  const batch={id:'burst-two-members',at:start+4001,progress:inputs};
+  f.at(batch.at);
+  await f.store.applyArenaGroup([batch]);
+  const first=f.store.data;
+  assert.deepEqual(await f.store.applyArenaGroup([batch]),[[]]);
+  assert.equal(f.store.data,first,'same batch does not publish twice');
+  const tail={id:'burst-tail',at:start+4251,progress:members.map((who,i)=>({
+    type:'lifeEnded',profileId:who.profile.id,lifeId:'burst-'+i,clanFood:57+i,food:40,
+    durationSeconds:4,reason:i?'left':'absorbed',
+  }))};
+  f.at(tail.at);await f.store.applyArenaGroup([tail]);
+  const expected={allBoosterUses:480,advancedUses:80,rareUses:240,shieldUses:160,boosterUses:400,
+    hazards:80,hazardHits:80,freezeHits:80,hookHits:80,splitParts:240,poisonHits:80,
+    food:115,arenaMs:8502,top10Ms:8500,top1Ms:4250};
+  assert.deepEqual(f.board().quests.map(q=>[q.metric,q.progress]),metrics.map(m=>[m,expected[m]]));
+  assert.equal(Object.keys(f.board().contributors).length,2);
+  const recovered=require('../../src/server/profiles/profile-journal').recover(f.file).data;
+  assert.deepEqual(recovered.clans[f.id].dailyQuests.board,f.board());
+  assert.equal(f.store.arenaPreparer.stats.failures,0);
+});
 test('approved catalog: exact values, rejected rows absent, feasible time bounds and one XP',()=>{
   assert.equal(service.catalog.items.length,57);assert(!service.catalog.items.some(q=>['cq_16','cq_17','cq_18'].includes(q.id)));
   assert.equal(service.catalog.items.find(q=>q.id==='cq_54').target,20000*60000);

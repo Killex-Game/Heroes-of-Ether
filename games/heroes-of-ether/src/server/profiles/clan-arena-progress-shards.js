@@ -12,7 +12,7 @@ const optionKeys=['petEvents','baseRouletteConfig','promotionConfig','unlockLeag
 const schedules=new WeakMap();
 function progressSchedule(control){
   let schedule=schedules.get(control);
-  if(!schedule){schedule={calendarVersion:control.calendarVersion,seasons:control.seasons||[]};schedules.set(control,schedule);}
+  if(!schedule){schedule={calendarVersion:control.calendarVersion,calendarSchedule:control.calendarSchedule,seasons:control.seasons||[]};schedules.set(control,schedule);}
   return schedule;
 }
 class ClanArenaProgressShards extends ArenaProgressShards {

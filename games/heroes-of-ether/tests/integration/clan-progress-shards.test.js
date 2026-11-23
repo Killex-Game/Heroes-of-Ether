@@ -10,8 +10,8 @@ const {recover}=require('../../src/server/profiles/profile-journal');
 const start=Date.parse('2026-11-15T05:00:00Z');
 function comparable(data){const copy=structuredClone(data);for(const p of Object.values(copy.profiles))
   p.transactions.entries.forEach((e,i)=>{e.id='entry-'+i;});return copy;}
-function fixture(t,pipeline=false){
- let cleanup,now=start-86400000;
+function fixture(t,pipeline=false,day=start){
+ let cleanup,now=day-86400000;
  const dir=temporary({after:fn=>{cleanup=fn;}},'clan-progress-shards');
  const store=new ProfileStore({filePath:path.join(dir,'profiles.json'),journal:true,now:()=>now,
    clanDailyQuests:true,incrementalSettlement:true});
@@ -28,14 +28,14 @@ function fixture(t,pipeline=false){
    const clanId=store.find(leader.token).clanId;
    for(const u of users.slice(i*4+1,i*4+4))api.mutate(u.token,{action:'apply',requestId:randomUUID(),clanId});
  }
- now=start;store.refreshCompetition();
+ now=day;store.refreshCompetition();
  for(const [i,u]of users.entries())store.startLife(u.profile.id,'life-'+i);
  const data=structuredClone(store.data),catalog=require('../../src/server/clans/daily-quests/catalog.json');
  for(const clan of Object.values(data.clans))clan.dailyQuests.board.quests=['xp','food','arenaMs'].map(metric=>({
    ...catalog.items.find(q=>q.metric===metric),progress:0,completedAt:null}));
  for(const p of Object.values(data.profiles))p.quests.items.forEach((q,i)=>{q.questId=['harvest','great_feast','hunter','feast'][i];});
  store.save(data);serial.data=structuredClone(store.data);
- const batch=n=>({id:'clan-tick-'+n,at:start+n*1000,progress:users.flatMap((u,i)=>[
+ const batch=n=>({id:'clan-tick-'+n,at:day+n*1000,progress:users.flatMap((u,i)=>[
    {type:'questSample',profileId:u.profile.id,lifeId:'life-'+i,food:10*n,rank:i+1},
    {type:'massPeak',profileId:u.profile.id,mass:1000+n*200},
    {type:'absorbed',profileId:u.profile.id,victimProfileId:users[(i+5)%12].profile.id,
@@ -43,6 +43,19 @@ function fixture(t,pipeline=false){
  ])});
  return {store,serial,pool,users,batch};
 }
+
+for(const pipeline of [false,true])test(`clan progress respects an owner-scheduled extra quest season, pipeline=${pipeline}`,async t=>{
+ const day=Date.parse('2027-01-15T05:00:00Z'),f=fixture(t,pipeline,day);
+ const schedule=[{start:Date.parse('2026-12-31T21:00:00Z'),mode:'quests'}];
+ for(const s of [f.store,f.serial]) {
+   const next={...s.data,clanQuests:{...s.data.clanQuests,calendarSchedule:schedule}};
+   s.save(next,day);
+ }
+ const b=f.batch(1);await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
+ assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+ assert.equal(Object.values(f.store.data.clans).reduce((n,c)=>n+c.dailyQuests.board.quests.find(q=>q.metric==='food').progress,0),120);
+ assert.deepEqual(recover(f.store.filePath).data.clans,f.store.data.clans);
+});
 for(const pipeline of [false,true])test(`clan-partitioned progress preserves shared boards, rewards and WAL, pipeline=${pipeline}`,async t=>{
  const f=fixture(t,pipeline);
  for(let n=1;n<=8;n++){

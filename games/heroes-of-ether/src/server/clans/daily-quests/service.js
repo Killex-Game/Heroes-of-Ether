@@ -199,9 +199,11 @@ function progress(data, clanDrafts, p, event, at, changes, earned, before) {
     if (event.type === 'questSample') session.rank = event.rank;
   }
   if (board && !blocked(data,board,at) && (data.clanQuests.calendarVersion!==1 || engine.period(at).active) && at >= board.start && at < board.end && Object.hasOwn(board.eligible,p.id)) {
-    // Existing persistent victim cooldowns, including clanmates, remain authoritative.
+    // Kill cooldowns remain authoritative. Mass uses the independent physics
+    // cursor; legacy events without that cursor retain their previous rules.
     deltas.kills = Math.max(0,p.progress.absorptionKills-before.kills);
-    deltas.absorbedMass = Math.max(0,p.progress.absorbedMass-before.mass);
+    if(event.absorptionSequence===undefined && event.eaterLifeId===undefined)
+      deltas.absorbedMass = Math.max(0,p.progress.absorbedMass-before.mass);
     deltas.xp = Math.max(0,earned);
     const result=engine.record(board,{playerId:p.id,clanId:clan.id,at,sequence:(board.cursors[p.id]||0)+1,deltas});
     if(result.accepted) clanDrafts.set(clan.id,{...clan,dailyQuests:{...clan.dailyQuests,board:result.board}});

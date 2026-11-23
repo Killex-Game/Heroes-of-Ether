@@ -9,6 +9,15 @@ const tierMetrics = new Map([['common','commonUses'],['advanced','advancedUses']
 // Clan objectives have their own life cursor. Personal quest rotation, completion
 // and opponent limits cannot suppress otherwise valid clan actions.
 function deltas(session,event,playerId) {
+  if(event.type==='absorbed') {
+    // Physics assigns a monotonic cursor to each eater life. Count all actual
+    // parts independently of the personal record's repeated-victim cooldown.
+    if(!session || event.eaterLifeId!==session.id || !Number.isSafeInteger(event.absorptionSequence) ||
+      event.absorptionSequence<1 || event.absorptionSequence<=(session.absorptionSequence||0))return {};
+    session.absorptionSequence=event.absorptionSequence;
+    if(!event.victimProfileId || event.victimProfileId===playerId || !Number.isSafeInteger(event.gain) || event.gain<=0)return {};
+    return {absorbedMass:event.gain};
+  }
   if(!session || event.lifeId!==session.id || !Number.isSafeInteger(event.sequence) || event.sequence<1)return {};
   if(event.type==='arenaAction') {
     if(event.sequence<=(session.actionSequence||0))return {};
