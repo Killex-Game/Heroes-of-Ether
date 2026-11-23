@@ -1,5 +1,6 @@
 "use strict";
 const { copyProfile } = require("../profiles/owned-profile-draft");
+const { profileKeys } = require("../profiles/profile-index");
 
 const { awardExtra, validateActivity } = require("./activity-achievements");
 const { awardTitles } = require("./title-chest-rewards");
@@ -32,8 +33,11 @@ function settle(world, at, keys) {
     validate(original);
     const m = original.social?.marriage;
     if (!m) continue;
-    byId ||= new Map(Object.values(world.profiles).map((p) => [p.id, p]));
-    const spouse = byId.get(m.partnerId);
+    // Reuse only the identity-to-key index. Read the spouse from this exact
+    // world so progress, divorce and clan changes never use an old profile.
+    byId ||= profileKeys(world.profiles);
+    const spouseKey = byId.get(m.partnerId);
+    const spouse = spouseKey === undefined ? undefined : world.profiles[spouseKey];
     if (spouse?.social?.marriage?.partnerId !== original.id) continue;
     const loveKey = `${m.partnerId}:${m.at}`;
     const shared = original.clanId && original.clanId === spouse.clanId;
