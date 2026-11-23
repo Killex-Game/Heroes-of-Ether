@@ -323,7 +323,7 @@ function createGameServer({
         retryAfter: result.retryAfter,
       });
   }
-  function requireLobby(token, { allowEndedRead = false } = {}) {
+  function requireLobby(token, { allowEndedRead = false, allowArena = false } = {}) {
     requireRunning();
     const profile = profiles.find(token);
     if (!profile) throw new BoosterError("Сначала открой лобби.", 401);
@@ -331,7 +331,7 @@ function createGameServer({
     const connection = profileConnections.get(profile.id), player = connection?.arena.players.get(connection.playerId);
     const endedRead = allowEndedRead && connection?.lastLifeResult &&
       (!player || ((player.dead || player.isRemnant) && connection.lastLifeResult.id === player.lifeId));
-    if (connection && !endedRead)
+    if (connection && !endedRead && !allowArena)
       throw Object.assign(
         new BoosterError("Это действие доступно только в лобби. Профиль уже на арене.", 409),
         { code: "ARENA_ACTIVE" },
@@ -889,11 +889,11 @@ function createGameServer({
         }
         if (apiUrl.pathname === "/api/social" && req.method === "GET") {
           const token = sessionToken(req);
-          requireLobby(token);
+          requireLobby(token, { allowArena: true });
           return reply(200, profiles.socialState(token));
         }
         if (apiUrl.pathname === "/api/social/gifts" && req.method === "GET") {
-          requireLobby(sessionToken(req), { allowEndedRead: true });
+          requireLobby(sessionToken(req), { allowArena: true });
           const player = profiles.byId(apiUrl.searchParams.get("playerId"));
           if (!player) throw new BoosterError("Игрок не найден.", 404);
           return reply(200, require("./profiles/gift-history").page(player,
@@ -904,7 +904,7 @@ function createGameServer({
           return reply(200, require("./profiles/game-news").view(profiles));
         }
         if (apiUrl.pathname.startsWith("/api/players/") && req.method === "GET") {
-          requireLobby(sessionToken(req), { allowEndedRead: true });
+          requireLobby(sessionToken(req), { allowArena: true });
           return reply(200, {
             player: profiles.publicPlayer(apiUrl.pathname.slice("/api/players/".length)),
           });
@@ -981,7 +981,9 @@ function createGameServer({
             throw new BoosterError("Нужен JSON-запрос.", 415);
           const body = await playableBody(req),
             token = sessionToken(req);
-          requireLobby(token);
+          const arenaGift = req.url === "/api/social/action" &&
+            ["gift", "gift-anonymous"].includes(body.action);
+          requireLobby(token, { allowArena: arenaGift });
           if (req.url === '/api/profile/game-gifts/read') return reply(200, require('./admin/game-grants').acknowledge(profiles,token,body));
           if (req.url === '/api/profile/admin-notices/read') return reply(200, require('./admin/adjustment-notices').acknowledge(profiles,token,body));
           if (req.url === "/api/promo-code/redeem") {
