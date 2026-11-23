@@ -29,12 +29,13 @@ function syncDirectory(directory) {
     fs.closeSync(fd);
   }
 }
-function atomicSnapshot(file, data) {
+function atomicSnapshot(file, data, checkpointTree = false) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   const temporary = file + ".tmp",
     fd = fs.openSync(temporary, "w", 0o600);
   try {
-    fs.writeFileSync(fd, JSON.stringify(data) + "\n");
+    if (checkpointTree) require("./checkpoint-json").writeCheckpoint(fd, data);
+    else fs.writeFileSync(fd, JSON.stringify(data) + "\n");
     fs.fsyncSync(fd);
   } finally {
     fs.closeSync(fd);
@@ -171,7 +172,7 @@ function arenaProfileEdit(old, row) {
   return edit;
 }
 function recover(file, includeActive = true, sealedFiles = null) {
-  const data = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : {};
+  const data = fs.existsSync(file) ? require("./checkpoint-json").readCheckpoint(file) : {};
   let revision = data[REVISION] || 0,
     activeBytes = 0;
   if (!Number.isSafeInteger(revision) || revision < 0)
@@ -209,7 +210,7 @@ function checkpoint(file) {
   // Take one immutable set of sealed files. A booster may publish a newer
   // segment while this checkpoint is being reconstructed in another worker.
   const { data, revision } = recover(file, false, files);
-  atomicSnapshot(file, data);
+  atomicSnapshot(file, data, true);
   let bytes = 0;
   try {
     for (const source of files) {
