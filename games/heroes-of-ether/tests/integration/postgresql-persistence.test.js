@@ -2,6 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),{randomUUID}=require('node:crypto');
 const {PostgreSQLState}=require('../../src/server/persistence/postgresql-state');
 const {pack}=require('../../src/server/persistence/state-snapshot');
+const {SnapshotBuilder}=require('../../src/server/persistence/snapshot-builder');
 test('PostgreSQL persistence against an isolated real database schema',{skip:!process.env.HEROETHER_PG_TEST_CONFIG},async t=>{
  const config={...JSON.parse(fs.readFileSync(process.env.HEROETHER_PG_TEST_CONFIG,'utf8')),schema:'heroether_test_'+randomUUID().replaceAll('-','')};
  const state=new PostgreSQLState(config),second=new PostgreSQLState(config);
@@ -9,6 +10,7 @@ test('PostgreSQL persistence against an isolated real database schema',{skip:!pr
  let world={version:13,_journalRevision:1,profiles:Object.fromEntries(Array.from({length:80},(_,i)=>['p'+i,{wallet:{coins:i},receipts:[{id:'r'+i}],name:'Игрок 😀 '+i}])),clans:{c:{members:['p0']}}};
  world.profiles.p0.archive='Ж😀'.repeat(1800000);
  let snapshot=pack(world,aux);
+ const builder=new SnapshotBuilder();
  try{
   await t.test('full independent compressed read preserves large fragmented profiles and auxiliary documents',async()=>{
    const result=await state.initialize(snapshot);assert.deepEqual(result.world,world);assert.deepEqual(result.auxiliary,aux);
@@ -20,16 +22,22 @@ test('PostgreSQL persistence against an isolated real database schema',{skip:!pr
    await state.sync(state.previous);assert.deepEqual((await state.read()).world,world);
    await assert.rejects(second.acquire(snapshot),{code:'PG_WRITER_BUSY'});
   });
+  await t.test('cached canonical bytes preserve the independent full read and warm snapshots',async()=>{
+   const cold=builder.pack(world,aux),warm=builder.pack(world,aux);
+   assert.equal(cold.digest,snapshot.digest);assert.equal(warm.worldHash,snapshot.worldHash);assert.equal(builder.stats.rebuilt,0);
+   state.prepare(warm);await state.sync(warm);
+   const read=await state.read();assert.deepEqual(read.world,world);assert.deepEqual(read.auxiliary,aux);
+  });
   await t.test('rollback leaves all wallet, receipts, deletions and manifest unchanged',async()=>{
    const changed=structuredClone(world);changed._journalRevision++;changed.profiles.p1.wallet.coins++;delete changed.profiles.p2;
-   const next=pack(changed,aux),put=state.put;state.put=async function(c,docs){await put.call(this,c,docs.slice(0,1));throw Error('injected write failure');};
+   const next=builder.pack(changed,aux),put=state.put;state.put=async function(c,docs){await put.call(this,c,docs.slice(0,1));throw Error('injected write failure');};
    await assert.rejects(state.sync(next),/injected write failure/);state.put=put;
    assert.deepEqual((await state.read()).world,world);
    const saved=await state.sync(next);assert.equal(saved.revision,2);world=changed;snapshot=next;
   });
   await t.test('lost commit acknowledgement reconciles without replay or duplicate rewards',async()=>{
    const changed=structuredClone(world);changed._journalRevision++;changed.profiles.p1.wallet.coins+=5;changed.profiles.p1.receipts.push({id:'unique',amount:5});
-   const next=pack(changed,aux),transaction=state.transaction;let lost=true;
+   const next=builder.pack(changed,aux),transaction=state.transaction;let lost=true;
    state.transaction=async function(fn,options){const result=await transaction.call(this,fn,options);if(lost){lost=false;throw Error('lost commit acknowledgement');}return result;};
    await assert.rejects(state.sync(next),/lost commit/);state.transaction=transaction;
    const remote=(await state.read()).manifest;await state.sync(next);
@@ -37,7 +45,7 @@ test('PostgreSQL persistence against an isolated real database schema',{skip:!pr
   });
   await t.test('repeatable read never mixes two generations during a concurrent save',async()=>{
    const changed=structuredClone(world);changed._journalRevision++;changed.profiles.p79.wallet.coins+=7;
-   const next=pack(changed,aux),transaction=state.transaction;let triggered=false;
+   const next=builder.pack(changed,aux),transaction=state.transaction;let triggered=false;
    state.transaction=function(fn,options){return transaction.call(this,async c=>fn({query:async(...args)=>{
     const result=await c.query(...args);
     if(options?.readOnly&&!triggered&&String(args[0]).includes('ORDER BY id LIMIT 64')){triggered=true;await state.sync(next);}

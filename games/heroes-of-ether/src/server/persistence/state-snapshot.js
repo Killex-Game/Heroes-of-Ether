@@ -119,7 +119,7 @@ function unpack(documents, manifest) {
     fail("DATABASE_CHECKSUM_FAILED");
   return { world, auxiliary, snapshot, manifest };
 }
-function readLocal(dataDir, journal = false, profileSnapshot = null) {
+function readLocal(dataDir, journal = false, profileSnapshot = null, packSnapshot = pack) {
   const file = path.join(dataDir, "profiles.json");
   let world;
   if (profileSnapshot) {
@@ -137,7 +137,7 @@ function readLocal(dataDir, journal = false, profileSnapshot = null) {
       if (fs.existsSync(source) || saved.revision) auxiliary[name] = saved.data;
     } else if (fs.existsSync(source)) auxiliary[name] = JSON.parse(fs.readFileSync(source, "utf8"));
   }
-  return { world, auxiliary, snapshot: pack(world, auxiliary) };
+  return { world, auxiliary, snapshot: packSnapshot(world, auxiliary) };
 }
 // Offline verification/export compare every logical value after each reader
 // has verified its own stored checksums. Chat sharding changes document IDs and
