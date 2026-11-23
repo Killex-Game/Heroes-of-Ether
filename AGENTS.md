@@ -1,3 +1,9 @@
+## Выборочная замена аватаров - УСТАНОВЛЕНО 23.11.2026
+
+- Статически поверх 20261123-avatar-arena-followup, source 1cda6678cfbaff84fd5cc3e84a460f7f80170e79, game363098/admin1163 без restart. Из skins.zip изменены только premium-2, desert-cat, grove-faun:15WebP/5размеров. desert-jackal и gift-winged-guardian в архиве уже побайтно текущие; отдельный PNG хранителя та же редакция в исходном формате. Остальные488растров прежние.
+- Новые URL revisions в player-identity/art-revision/index.18runtimeфайлов,14комментариев удалены в VPS-версии. 54HTTPхеша/3поверхности,6unitpass,425посадок×3браузера без зазора. Backup /srv/heroether-test/play/backups/selected-portraits-20261123 плюс local before/root-before; не удалять. Данные/службы не менялись, вход открыт. Отчёт artifacts/avatar-selective-20261123/report.txt.
+- Перерисовка интерфейса остаётся отдельной подготовкой, НЕ установленной и НЕ завершённой. Новые требования: титульные сундуки с ростом видимого размера по рангу, минимальными бликами; единые широкие невысокие пропорции.
+
 ## Арена, подарки, посадка и графика - УСТАНОВЛЕНО 23.11.2026
 
 - VPS current 20261123-avatar-arena-followup, source 458bc8a7cbe8fc39b9bbc5a3483368b0461ca35d, game363098/admin1163, вход открыт 2026-11-23T00:28:21.750Z. Админку и pin20261117-player-feedback не меняли. PostgreSQL17/semenovkir/TLS. Читать docs/current-release.json.

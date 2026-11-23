@@ -1,8 +1,8 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
   "gameRelease": "20261123-avatar-arena-followup",
-  "sourceTag": "release/20261123-avatar-arena-followup",
-  "sourceCommit": "458bc8a7cbe8fc39b9bbc5a3483368b0461ca35d",
+  "sourceTag": "release/20261123-selected-portraits",
+  "sourceCommit": "1cda6678cfbaff84fd5cc3e84a460f7f80170e79",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
@@ -27,11 +27,12 @@
     "Censored profanity, one strike per offending message, one-hour chat mute every third message, expanded chat refocus",
     "Emote 5-second cooldown and occlusion, lower arena labels, reduced avatar scale",
     "Four negative gifts cost 5 ether, unavailable achievement checkbox removed, larger generator icon",
-    "Browser compatibility hotfix retained; no raster graphics installed",
+    "Browser compatibility hotfix retained; only three owner-supplied portrait replacements installed",
     "Gifts and anonymous gifts can be sent while connected to arena; ordinary other lobby mutations remain restricted",
     "Portrait lower contours aligned without enlarging original avatar scale or changing raster bytes",
     "Arena nickname, title, effects and mass share a lower anchor at 0.28 displayed radius",
-    "Bot roster eligibility reused across unrelated profile changes, with live membership/level/spawn/ban checks preserved"
+    "Bot roster eligibility reused across unrelated profile changes, with live membership/level/spawn/ban checks preserved",
+    "Owner archive selectively updates premium-2, desert-cat and grove-faun in five resolutions; other 488 portrait files remain byte-identical"
   ],
   "data": {
     "before": {
@@ -204,5 +205,50 @@
     },
     "fullSamples": "artifacts/avatar-bottom-fit-20261123/performance-after.json",
     "comparableControlledBenchmark": false
+  },
+  "staticPortraitUpdate": {
+    "at": "2026-11-23T00:51:37.226Z",
+    "release": "/srv/heroether-test/play/releases/20261123-avatar-arena-followup",
+    "backup": "/srv/heroether-test/play/backups/selected-portraits-20261123",
+    "files": 18,
+    "raster": 15,
+    "unchangedPublic": 2161,
+    "gamePid": 363098,
+    "adminPid": 1163,
+    "noProcessRestart": true,
+    "noWorldWrites": true,
+    "sourceCommit": "1cda6678cfbaff84fd5cc3e84a460f7f80170e79",
+    "changedAvatars": [
+      "Лунный рыцарь",
+      "Караванщик",
+      "Лесной следопыт"
+    ],
+    "alreadyCurrent": [
+      "Следопыт барханов",
+      "Крылатый хранитель"
+    ],
+    "archiveSha256": "89fec29d6317b11ec39cc95ac7c7536121b2850352e8237756e2cddcaa5bfeff",
+    "unchangedRasterFiles": 488,
+    "resolutions": [
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "httpExactChecks": 54,
+    "unitTests": {
+      "passed": 6,
+      "failed": 0
+    },
+    "portraitChecks": {
+      "chromium": 425,
+      "firefox": 425,
+      "webkit": 425,
+      "failed": 0
+    },
+    "rootSynchronized": true,
+    "graphicsRedrawInstalled": false,
+    "report": "artifacts/avatar-selective-20261123/report.txt"
   }
 }
