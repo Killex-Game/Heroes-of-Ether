@@ -1399,7 +1399,7 @@
   },
   "profileHistoryUpdate": {
     "installed": true,
-    "published": false,
+    "published": true,
     "release": "20261123-profile-history",
     "sourceCommit": "f9a39d47b9a4980f912321bc167fd6e02de256d1",
     "testedCandidate": "caaef1591fec4b82ec08d18a7a6551518b5f429e",
