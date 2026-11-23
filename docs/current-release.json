@@ -1129,7 +1129,7 @@
   "backendSourceCommit": "4d5fd904063382b7c96f934d7331e3b93feffe47",
   "calendarIndexUpdate": {
     "installed": true,
-    "published": false,
+    "published": true,
     "sourceCommit": "4d5fd904063382b7c96f934d7331e3b93feffe47",
     "release": "20261123-calendar-index",
     "fullLinux": {
@@ -1228,7 +1228,7 @@
   "startupUpdate": {
     "sourceCommit": "7d2dbfa09cd908676beb80f9f74cc29b532a1ed3",
     "installed": true,
-    "published": false,
+    "published": true,
     "files": 3,
     "browserCases": 18,
     "httpExact": 9,
@@ -1239,7 +1239,7 @@
   "portraitEdgeUpdate": {
     "sourceCommit": "d89128963213ca7c1de5639af4bd8adbbfb17f12",
     "installed": true,
-    "published": false,
+    "published": true,
     "files": 2,
     "portraitsAdjusted": 11,
     "portraitsChecked": 85,
