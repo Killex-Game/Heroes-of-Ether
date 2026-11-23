@@ -1,6 +1,6 @@
 {
   "installed": true,
-  "published": false,
+  "published": true,
   "release": "20261123-checkpoint-streaming",
   "sourceCommit": "12aefd994005b30a5f5aae29ba9acd66b4f968cd",
   "entryOpenedAtUtc": "2026-11-23T19:13:28.105Z",
