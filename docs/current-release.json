@@ -1261,7 +1261,7 @@
   },
   "clanContributionUpdate": {
     "installed": true,
-    "published": false,
+    "published": true,
     "release": "20261123-clan-contributions",
     "sourceCommit": "04ec5cfae825ae2bf6b5f7ec8d45b38b5979ae95",
     "mechanicsCommit": "ae3d6092f1ffdfbbdc0eefa73412ad571ad4ed2f",
