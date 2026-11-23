@@ -18,7 +18,13 @@ test('dates, edited source identity and hidden releases retain their semantics',
 
 test('stored built-in banners use the current art revision; uploaded images are unchanged',()=>{
  const {imageSource}=require('../../public/shared/news-layout');
- assert.equal(imageSource('assets/news/v1/news.webp'),'assets/news/v1/news.webp?art=20261122d');
- assert.equal(imageSource('assets/events/easter-hunt/banner.png?art=20261122b'),'assets/events/easter-hunt/banner.png?art=20261122d');
+ assert.equal(imageSource('assets/news/v1/news.webp'),'assets/news/v1/news.webp?art=20261123-interface-art');
+ assert.equal(imageSource('assets/events/easter-hunt/banner.png?art=20261122b'),'assets/events/easter-hunt/banner.png?art=20261123-interface-art');
  const upload='/news-media/'+ 'a'.repeat(64)+'.png';assert.equal(imageSource(upload),upload);
+});
+test('news restore accepts current named revisions but rejects extra query parameters and unsafe paths',()=>{
+ const {normalize}=require('../../src/server/profiles/game-news');
+ const article={title:'Новость',body:'Текст',date:'2026-11-23',category:'news',visible:true};
+ assert.equal(normalize({...article,image:layout.banners.news}).image,'assets/news/v1/news.webp');
+ for(const image of ['assets/news/v1/news.webp?art=current&other=1','assets/../secret.png?art=current','https://example.test/news.png?art=current'])assert.throws(()=>normalize({...article,image}),/баннер/);
 });

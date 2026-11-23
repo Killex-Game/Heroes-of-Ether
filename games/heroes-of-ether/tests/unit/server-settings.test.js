@@ -6,7 +6,7 @@ const { inspect } = require("../../scripts/development/doctor.cjs");
 function fixture(t) {
   const root = temporary(t, "server-settings"), config = path.join(root, "config"); fs.mkdirSync(config);
   for (const file of ["arena-rooms", "arena-state-workers", "appearance-testing", "owner-admin", "pet-events", "roulette-events", "promotions"])
-    fs.copyFileSync(path.join(__dirname, "../../config", file + ".json"), path.join(config, file + ".json"));
+    fs.copyFileSync(path.join(__dirname, "../../config", (file === "owner-admin" ? "owner-admin.example" : file) + ".json"), path.join(config, file + ".json"));
   const change = (name, update) => { const file = path.join(config, name + ".json"); const value = JSON.parse(fs.readFileSync(file)); update(value); fs.writeFileSync(file, JSON.stringify(value)); };
   return { root, change };
 }

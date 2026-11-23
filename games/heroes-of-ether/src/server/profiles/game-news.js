@@ -17,7 +17,7 @@ function normalize(input) {
     fail("Заполни заголовок, текст (до 6000 знаков), дату и раздел новости.");
   if(input.layout!==undefined&&!['left','right','banner','columns'].includes(input.layout))fail('Неизвестный макет новости.');
   // Built-in art URLs carry a public cache revision; persist the canonical asset path.
-  const image = typeof input.image === 'string' ? input.image.replace(/\?art=\d{8}[a-z]?$/, '') : input.image;
+  const image = typeof input.image === 'string' ? input.image.replace(/\?art=[a-zA-Z0-9_-]{1,80}$/, '') : input.image;
   if(image!==undefined&&(typeof image!=='string'||(image!==''&&!/^\/news-media\/[a-f0-9]{64}\.png$/.test(image)&&!/^assets\/[a-zA-Z0-9_/-]+\.(webp|png)$/.test(image))))fail('Некорректный баннер новости.');
   if(input.sourceId!==undefined&&(typeof input.sourceId!=='string'||!/^(alfa-test-[a-z0-9.-]+|event:[a-zA-Z0-9_-]+)$/.test(input.sourceId)||input.sourceId.length>100))fail('Некорректный источник новости.');
   return { ...(input.id ? { id: input.id } : {}), title: input.title.trim(), body: input.body.trim(),
