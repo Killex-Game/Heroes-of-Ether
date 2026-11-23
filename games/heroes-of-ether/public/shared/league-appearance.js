@@ -123,10 +123,10 @@
     }),
   );
   const packFrames = [
-    ["visual", "#dbad4b", "#fff1c1", "#243c68", [0.490234,0.521484,0.350813]],
-    ["prism", "#95dafa", "#fcf4dd", "#253c89", [0.494141,0.525391,0.375227]],
-    ["glass", "#dbbfea", "#fff5ff", "#66578d", [0.496094,0.542969,0.356294]],
-    ["heroic", "#ecc35c", "#fff0bf", "#851f37", [0.491211,0.527344,0.346827]],
+    ["visual", "#f5b322", "#fff0a3", "#8e3010", [0.490234,0.521484,0.350813]],
+    ["prism", "#29a9f5", "#ddfaff", "#174d9f", [0.494141,0.525391,0.375227]],
+    ["glass", "#ad6ee9", "#f4dbff", "#582188", [0.496094,0.542969,0.356294]],
+    ["heroic", "#ffbe16", "#fff09a", "#9d102c", [0.491211,0.527344,0.346827]],
   ].map(([id, metal, light, dark, fit]) => Object.freeze({ ...interfaceTheme(id), metal, light, dark, fit, rank: 3 }));
   const variantFrames = Object.freeze([{"id":"canon_title_prince","baseId":"title_prince","name":"Принц","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_title_king","baseId":"title_king","name":"Король","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_title_emperor","baseId":"title_emperor","name":"Император","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_vip","baseId":"vip","name":"VIP","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_premium","baseId":"premium","name":"Premium","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_bronze","baseId":"bronze","name":"Бронзовая","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_silver","baseId":"silver","name":"Серебряная","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_gold","baseId":"gold","name":"Золотая","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_platinum","baseId":"platinum","name":"Платиновая","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_diamond","baseId":"diamond","name":"Бриллиантовая","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]},{"id":"canon_champions","baseId":"champions","name":"Чемпионская","title":"Тонкий ободок","fit":[0.5,0.5,0.4521484375]}].map(Object.freeze));
   const variantsById = new Map(variantFrames.map(item => [item.id,item]));
@@ -137,6 +137,12 @@
     : slot === "arenaFrame" ? arenaVariants.get(baseFrame(id)) || id : id;
   const framesById = new Map([...frameThemes, ...rankFrames, ...packFrames, ...variantFrames].map((item) => [item.id, item]));
   const frameTheme = (id) => framesById.get(id);
+  // Profile ornaments have independent measured fits; arena rim geometry is unchanged.
+  const titleProfileFits = {"title_novice":[0.4960802520498726,0.5350580501666561,0.3615369592813202],"title_experienced":[0.4984100202013826,0.5294213618990071,0.3489242586986948],"title_expert":[0.49641071231311545,0.5239693433811239,0.35095856524427954],"title_sage":[0.4947862253890017,0.5175578148157163,0.34607622953487616],"title_master":[0.49566221112560566,0.5231587107258937,0.3346841128796016],"title_pro":[0.496427334693173,0.5198926838020498,0.3354978354978355],"title_prince":[0.49636518686513004,0.5231052472625249,0.3513654265533965],"title_king":[0.49561820955446556,0.5283429706013979,0.32614002538814574],"title_emperor":[0.4931919062966485,0.5306584799346615,0.3322429450248999],"title_boss":[0.49402483121063484,0.5250226946402605,0.32939491586108127]};
+  const titleProfileFrame = (id) => {
+    const base = baseFrame(id), fit = titleProfileFits[base];
+    return fit ? { fit, source: `assets/frames/titles-v4/512/${base.slice(6)}.webp?art=20261123-title-frames` } : null;
+  };
   const valid = (id, slot) =>
     id === "default" ||
     !!theme(id) ||
@@ -152,14 +158,14 @@
   const resolveFrame = (id) => (theme(id) || accountFrame(id) || rankFrame(id) || interfaceTheme(id) || variantFrame(id) ? id : "default");
   const source = (id, kind) =>
     kind === "frame" && !!(variantFrame(id) || rankFrame(id) || theme(id) || accountFrame(id))
-      ? `assets/frames/rims-v2/${id}.webp?art=20261123-interface-art`
+      ? `assets/frames/rims-v2/${id}.webp?art=20261123-title-frames`
         : interfaceTheme(id) && ["frame", "profile", "lobby"].includes(kind)
           ? `assets/interface-packs/${id}/${kind}.webp?art=${kind === "frame" ? "20261122c" : "20261122b"}`
           : theme(id) && ["lobby", "profile", "frame", "clan"].includes(kind)
             ? `assets/league-appearance/${id}-${kind}.svg?art=20261123-interface-art`
             : null;
   return {
-    variantFrames, variantFrame, baseFrame, frameForSlot,
+    titleProfileFrame, variantFrames, variantFrame, baseFrame, frameForSlot,
     themes,
     interfaceThemes,
     interfaceTheme,

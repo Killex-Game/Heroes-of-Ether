@@ -268,7 +268,8 @@
   function paintFrame(host, id, account) {
     if (!host) return;
     let image = host.querySelector(":scope > .league-avatar-frame");
-    const source = catalog.interfaceTheme(id) ? catalog.source(id, "frame") : null;
+    const titleFrame = catalog.titleProfileFrame(id);
+    const source = titleFrame?.source || (catalog.interfaceTheme(id) ? catalog.source(id, "frame") : null);
     if (!source) {
       image?.remove();
       const resolved = catalog.resolveFrame(id, account);
@@ -283,7 +284,7 @@
       image.alt = "";
       host.append(image);
     }
-    const fit = catalog.frameTheme(id)?.fit;
+    const fit = titleFrame?.fit || catalog.frameTheme(id)?.fit;
     for (const property of ["top", "left", "right", "bottom", "width", "height"])
       image.style.removeProperty(property);
     if (fit) {
