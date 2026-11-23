@@ -1,8 +1,8 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
   "gameRelease": "20261123-avatar-arena-followup",
-  "sourceTag": "release/20261123-selected-portraits",
-  "sourceCommit": "1cda6678cfbaff84fd5cc3e84a460f7f80170e79",
+  "sourceTag": "release/20261123-interface-art",
+  "sourceCommit": "d611ec7752ac8613e45f28b01e68944d7f35b62c",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
@@ -32,7 +32,9 @@
     "Portrait lower contours aligned without enlarging original avatar scale or changing raster bytes",
     "Arena nickname, title, effects and mass share a lower anchor at 0.28 displayed radius",
     "Bot roster eligibility reused across unrelated profile changes, with live membership/level/spawn/ban checks preserved",
-    "Owner archive selectively updates premium-2, desert-cat and grove-faun in five resolutions; other 488 portrait files remain byte-identical"
+    "Owner archive selectively updates premium-2, desert-cat and grove-faun in five resolutions; other 488 portrait files remain byte-identical",
+    "Arena bows up to 20% larger, capped below equipped hats; lobby portrait dimensions unchanged",
+    "Prepared interface artwork and 14 lobby menu icons installed; protected artwork and controls retained"
   ],
   "data": {
     "before": {
@@ -156,16 +158,16 @@
     "commentsRemoved": 159,
     "rasterAssetsChanged": 0
   },
-  "report": "artifacts/avatar-bottom-fit-20261123/report.txt",
+  "report": "artifacts/interface-install-20261123/report.txt",
   "previousRelease": "20261123-interface-mechanics",
   "notes": [
     "Initial Linux failures were obsolete expectations, preserved with final complete rerun",
     "Previous Windows full failures remain documented; production writes/fsync were not weakened",
     "Avatar alpha contour checks retain a naturally floating cloud-whale exception",
-    "Graphics prepared separately only; 19 drafts are not the entire requested interface redraw",
     "No new paid service, automatic ban, permanent polling timer or capacity guarantee",
     "Protected backups retained; low VPS free disk space requires separate storage work",
-    "Root developer sources synchronized, experimental process and private local data unchanged"
+    "Root developer sources synchronized, experimental process and private local data unchanged",
+    "Prepared graphics installed 23 November; four rejected theme-frame trials excluded and original frames retained"
   ],
   "performance": {
     "before": {
@@ -250,5 +252,281 @@
     "rootSynchronized": true,
     "graphicsRedrawInstalled": false,
     "report": "artifacts/avatar-selective-20261123/report.txt"
+  },
+  "preparedGraphicsReview": {
+    "date": "2026-11-23T04:15:40.405Z",
+    "chests": 18,
+    "titleChests": 10,
+    "chestWebp": 90,
+    "titleChestStepPx": 3,
+    "titleChestHeightRangePx": [
+      76,
+      103
+    ],
+    "rims": 18,
+    "preciseCircularRims": true,
+    "themeFrameGeometryPrototypes": 4,
+    "leagueSurfaceDrafts": 18,
+    "nativeUiMaterials": 104,
+    "achievements": 69,
+    "achievementWebp": 345,
+    "items": 232,
+    "itemWebp": 1160,
+    "archivedItemDesigns": 34,
+    "itemCategories": {
+      "gifts": 16,
+      "boosters": 33,
+      "potions": 16,
+      "accessories": 54,
+      "rewards": 30,
+      "pets": 24,
+      "emotes": 18,
+      "offers": 13,
+      "currency": 18,
+      "ingredients": 10
+    },
+    "clanFrameDrafts": 0,
+    "clanFrameWebp": 0,
+    "archivedClanFrameDrafts": 21,
+    "petPreview": "deliveries/interface-preview-20261123/pets.html",
+    "drakoshaCrestDesigns": 11,
+    "sceneDrafts": 2,
+    "bannerDrafts": 3,
+    "eventItems": 15,
+    "eventFiles": 90,
+    "additionalScenes": 29,
+    "sceneFiles": 121,
+    "supportItems": 15,
+    "supportFiles": 60,
+    "gameScreens": 6,
+    "exceptions": [
+      "avatars",
+      "button styling and Heroic menu icons",
+      "newspaper banners",
+      "all arena backgrounds",
+      "clan crests including symbols and shapes",
+      "arena shield effects",
+      "title medals, including their depiction in title-share cards"
+    ],
+    "graphicsInstalled": true,
+    "fullInterfaceRedrawComplete": false,
+    "originalAvatarRastersChanged": false,
+    "report": "artifacts/interface-preview-20261123/report.txt",
+    "preview": "deliveries/interface-preview-20261123/index.html",
+    "gallery": "deliveries/graphics-prepared-20261123/index.html",
+    "chestPreview": "deliveries/interface-preview-20261123/chests.html",
+    "achievementPreview": "deliveries/interface-preview-20261123/achievements.html",
+    "itemPreview": "deliveries/interface-preview-20261123/items.html",
+    "latestCrestCorrection": {
+      "at": "2026-11-23T04:21:46.050Z",
+      "graphicsInstalled": true,
+      "editedDesigns": 2,
+      "otherDrakoshaDesignsUnchanged": 9,
+      "webpSizes": [
+        64,
+        128,
+        256,
+        512,
+        1024
+      ],
+      "bannerSize": [
+        1536,
+        1024
+      ],
+      "galleryUpdated": true,
+      "bundleUpdated": true,
+      "visualReview": "Three fins now sweep toward the nape for both right-facing heads; two original horns retained; all 11 Drakosha variants reviewed",
+      "prompts": "deliveries/graphics-prepared-20261123/item-prompts/crest-direction/prompts.json"
+    },
+    "referenceReview": {
+      "at": "2026-11-23T04:34:31.844Z",
+      "groupsReviewed": 31,
+      "counts": {
+        "legacy unused by current catalog": 19,
+        "prepared": 1,
+        "prepared alias": 3,
+        "preserve": 4,
+        "requires artwork review": 4
+      },
+      "remainingThemeFrames": 4,
+      "installed": true
+    },
+    "achievementFrame": {
+      "source": "achievement-frame-v4",
+      "titleMedalsChanged": false
+    },
+    "galleryImages": 384,
+    "installedBy": "artifacts/interface-install-20261123/report.txt"
+  },
+  "staticArenaBowUpdate": {
+    "at": "2026-11-23T01:55:11.597Z",
+    "release": "/srv/heroether-test/play/releases/20261123-avatar-arena-followup",
+    "backup": "/srv/heroether-test/play/backups/arena-bow-size-20261123",
+    "files": 2,
+    "raster": 0,
+    "unchangedPublic": 2177,
+    "gamePid": 363098,
+    "adminPid": 1163,
+    "noProcessRestart": true,
+    "noWorldWrites": true,
+    "sourceCommit": "e3f7e7bf348606288c60385ba9c4fe001fdd9b57",
+    "sourceTag": "release/20261123-arena-bow-size",
+    "oldMaxWidthPx": 31.2,
+    "newMaxWidthPx": 37.44,
+    "hatMaxWidthPx": 46.8,
+    "belowEquippedHat": true,
+    "portraitUnchanged": true,
+    "tests": {
+      "passed": 14,
+      "failed": 0
+    },
+    "browsers": [
+      {
+        "engine": "chromium",
+        "cases": 3,
+        "pageErrors": 0
+      },
+      {
+        "engine": "firefox",
+        "cases": 3,
+        "pageErrors": 0
+      },
+      {
+        "engine": "webkit",
+        "cases": 3,
+        "pageErrors": 0
+      }
+    ],
+    "httpExactChecks": 6,
+    "productionCommentsRemoved": 9,
+    "rootSynchronized": true,
+    "graphicsRedrawInstalled": false,
+    "report": "artifacts/arena-bow-size-20261123/report.txt"
+  },
+  "staticInterfaceArtUpdate": {
+    "at": "2026-11-23T05:39:59.839Z",
+    "release": "/srv/heroether-test/play/releases/20261123-avatar-arena-followup",
+    "backup": {
+      "archiveSha256": "e5a7a741a36cb2ddc058c5e689d7c70fe3618ed0aa860bbcaa28b81f10252748",
+      "checked": 772,
+      "manifestEqual": true
+    },
+    "files": 818,
+    "added": 46,
+    "unchangedPublic": 1407,
+    "gamePid": 363098,
+    "adminPid": 1163,
+    "noProcessRestart": true,
+    "noWorldWrites": true,
+    "diskFreeBefore": 616869888,
+    "diskFreeAfter": 458416128,
+    "sourceCommit": "d611ec7752ac8613e45f28b01e68944d7f35b62c",
+    "sourceTag": "release/20261123-interface-art",
+    "published": true,
+    "productionBytes": 79474371,
+    "imagesAndSvg": 740,
+    "preservedAssets": 764,
+    "menuIcons": 14,
+    "lobbyNavIcons": 12,
+    "generatorAndRouletteIcons": 2,
+    "heroicMenuPreserved": true,
+    "commentsRemoved": 307,
+    "developerToProductionExact": true,
+    "rootSynchronized": true,
+    "assetDecodes": [
+      {
+        "engine": "chromium",
+        "decoded": 740,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "decoded": 740,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "decoded": 740,
+        "errors": []
+      }
+    ],
+    "gameScreens": [
+      {
+        "engine": "chromium",
+        "screens": 6,
+        "errors": 0,
+        "missing": 0
+      },
+      {
+        "engine": "firefox",
+        "screens": 6,
+        "errors": 0,
+        "missing": 0
+      },
+      {
+        "engine": "webkit",
+        "screens": 6,
+        "errors": 0,
+        "missing": 0
+      }
+    ],
+    "mobile": [
+      {
+        "width": 390,
+        "height": 844,
+        "icons": 12,
+        "overflow": false
+      },
+      {
+        "width": 915,
+        "height": 412,
+        "icons": 12,
+        "overflow": false
+      },
+      {
+        "width": 1336,
+        "height": 768,
+        "icons": 12,
+        "overflow": false
+      }
+    ],
+    "unitTests": {
+      "passed": 28,
+      "failed": 0,
+      "scope": [
+        "lobby-menu-art",
+        "arena-appearance-cache",
+        "accessory-preview",
+        "league-appearance"
+      ]
+    },
+    "structure": {
+      "javascript": 1051,
+      "references": 6101,
+      "renamed": 247
+    },
+    "httpExact": 2453,
+    "restrictedHttp": [
+      {
+        "origin": "https://195.208.123.221",
+        "file": "public/maintenance.html",
+        "status": 404
+      }
+    ],
+    "cleanup": {
+      "at": "2026-11-23T05:43:11.332Z",
+      "removedOnly": [
+        "patch/public",
+        "patch.tar.gz"
+      ],
+      "backupsPreserved": true,
+      "free": 544550912
+    },
+    "remaining": [
+      "Four interface-theme frames retain original assets; rejected geometry trials excluded",
+      "Full-game regression and new capacity benchmark not performed for this static release",
+      "Disk capacity remains a separate unresolved issue"
+    ],
+    "report": "artifacts/interface-install-20261123/report.txt"
   }
 }
