@@ -176,7 +176,8 @@ test("Крупные шары: аксессуары ограничены на э
     const body = { x: 1500, y: 1500, radius: 1000, scale };
     const [hat, bow] = placements(outfit, body);
     assert.ok(hat.width * scale <= 47);
-    assert.ok(bow.width * scale <= 32);
+    assert.ok(bow.width * scale <= 38);
+    assert.ok(bow.width < hat.width);
     for (const item of [hat, bow]) assert.ok(Math.abs(item.x + item.width / 2 - body.x) < 1e-8);
     assert.ok(hat.y < body.y - body.radius);
     assert.ok(hat.y + hat.height > body.y - body.radius);

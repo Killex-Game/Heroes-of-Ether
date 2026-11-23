@@ -47,7 +47,7 @@
     novice_hat: { cx: .5, cy: 1.485, radius: 0.85, aspect: 1, widthRatio: 1.12525029 },
     rabbit_ears: { cx: .5, cy: 1.58572, radius: 0.825, aspect: 1, widthRatio: 1.18000000 },
   };
-  function placements(outfit, { x, y, radius: r, scale = 1 }) {
+  function placements(outfit, { x, y, radius: r, scale = 1, portrait = false }) {
     const worn = accessories.outfit(outfit),
       result = [],
       screenScale = Math.max(0.01, scale);
@@ -66,7 +66,8 @@
       });
     }
     if (worn.bow) {
-      const width = Math.min(r * 0.92, MAX_BOW_WIDTH_PX / screenScale) * 0.65;
+      const desiredWidth = Math.min(r * 0.92, MAX_BOW_WIDTH_PX / screenScale) * (portrait ? 0.65 : 0.78),
+        width = !portrait && result.length ? Math.min(desiredWidth, result[0].width * 0.9) : desiredWidth;
       result.push({
         id: worn.bow,
         x: x - width / 2,
@@ -141,7 +142,7 @@
   const portraitImages = new Map();
   function portrait(image, id) {
     const item = accessories.item(id),
-      rect = placements({ [item.slot]: id }, { x: .5, y: .5, radius: .5 })[0];
+      rect = placements({ [item.slot]: id }, { x: .5, y: .5, radius: .5, portrait: true })[0];
     image.dataset.accessoryId = id;
     const apply = (src, top = 0, height = rect.height) => {
       if (image.dataset.accessoryId !== id || image.hidden) return;
