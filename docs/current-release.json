@@ -1100,29 +1100,29 @@
     "foodTransferInstalled": false
   },
   "latestObservation": {
-    "at": "2026-11-23T19:15:00.126Z",
+    "at": "2026-11-23T19:18:30.302Z",
     "online": {
-      "arena": 4,
-      "lobby": 5,
-      "total": 9
+      "arena": 5,
+      "lobby": 6,
+      "total": 11
     },
     "tickWorkMs": {
-      "count": 1194,
-      "p50": 2.01,
-      "p95": 14.08,
-      "p99": 25.31,
-      "max": 207.86
+      "count": 1198,
+      "p50": 8.99,
+      "p95": 22.09,
+      "p99": 29.67,
+      "max": 40.05
     },
     "tickIntervalMs": {
-      "count": 1194,
-      "p50": 49.97,
-      "p95": 51.18,
-      "p99": 59.64,
-      "max": 209.54
+      "count": 1198,
+      "p50": 49.99,
+      "p95": 51.06,
+      "p99": 59.76,
+      "max": 125.99
     },
     "memoryMiB": {
-      "resident": 2474,
-      "heapUsed": 471,
+      "resident": 2560,
+      "heapUsed": 599,
       "limit": 5120
     },
     "queuedActions": 0,
@@ -1130,10 +1130,10 @@
     "database": {
       "connected": true,
       "lastError": null,
-      "revision": 4104704,
-      "syncAgeMs": 204,
-      "prepareMs": 12400,
-      "writeMs": 251
+      "revision": 4106482,
+      "syncAgeMs": 10607,
+      "prepareMs": 12290,
+      "writeMs": 279
     },
     "entryOpen": true,
     "comparableAB": false,
@@ -2387,29 +2387,29 @@
       "durableArchiveVerified": true
     },
     "lastObservation": {
-      "at": "2026-11-23T19:15:00.126Z",
+      "at": "2026-11-23T19:18:30.302Z",
       "online": {
-        "arena": 4,
-        "lobby": 5,
-        "total": 9
+        "arena": 5,
+        "lobby": 6,
+        "total": 11
       },
       "tickWorkMs": {
-        "count": 1194,
-        "p50": 2.01,
-        "p95": 14.08,
-        "p99": 25.31,
-        "max": 207.86
+        "count": 1198,
+        "p50": 8.99,
+        "p95": 22.09,
+        "p99": 29.67,
+        "max": 40.05
       },
       "tickIntervalMs": {
-        "count": 1194,
-        "p50": 49.97,
-        "p95": 51.18,
-        "p99": 59.64,
-        "max": 209.54
+        "count": 1198,
+        "p50": 49.99,
+        "p95": 51.06,
+        "p99": 59.76,
+        "max": 125.99
       },
       "memoryMiB": {
-        "resident": 2474,
-        "heapUsed": 471,
+        "resident": 2560,
+        "heapUsed": 599,
         "limit": 5120
       },
       "queuedActions": 0,
@@ -2417,10 +2417,10 @@
       "database": {
         "connected": true,
         "lastError": null,
-        "revision": 4104704,
-        "syncAgeMs": 204,
-        "prepareMs": 12400,
-        "writeMs": 251
+        "revision": 4106482,
+        "syncAgeMs": 10607,
+        "prepareMs": 12290,
+        "writeMs": 279
       }
     },
     "limitations": [
@@ -2431,6 +2431,459 @@
       "Windows filesystem timings varied strongly; no Windows speed improvement is claimed",
       "All old data, histories, failed attempts and backups remain. VPS disk reserve remains narrow"
     ],
-    "validationNotes": "Initial new test fixture had a missing brace; corrected, first output preserved.\nDifferential malformed-input fixture compared an unpaired UTF-16 surrogate with encoded UTF-8; expected value now reads the same bytes as production.\nA relative restore path used the wrong cwd; no files changed; corrected from workspace root, reran 32 tests on final v2.\nOne SSH upload failed before handshake; retry completed before remote staging.\nBuffered v2 selected. Byte-search v3 and regex v4 were slower on Linux and were excluded. All outputs/source files remain in artifacts.\nThe SSH downloader rejected the tmpfs archive path before reading. A checksum-verified durable copy was created inside the allowed test stand, then downloaded and verified locally.\r\nThe first 40-second readiness probe expired during cold startup. The process remained active with NRestarts=0 and entry closed; readiness was awaited without restarting it.\r\nA second readiness window expired; the third passed. The same process began listening approximately 88 seconds after start and PostgreSQL reached the expected revision. No restart was triggered.\r\nThe first generated capacity guard failed local syntax validation because a replacement string interpreted dollar-apostrophe. Replaced through a callback, saved the rejected file, and reran syntax validation before upload; no remote run used it.\r\n"
+    "validationNotes": "Initial new test fixture had a missing brace; corrected, first output preserved.\nDifferential malformed-input fixture compared an unpaired UTF-16 surrogate with encoded UTF-8; expected value now reads the same bytes as production.\nA relative restore path used the wrong cwd; no files changed; corrected from workspace root, reran 32 tests on final v2.\nOne SSH upload failed before handshake; retry completed before remote staging.\nBuffered v2 selected. Byte-search v3 and regex v4 were slower on Linux and were excluded. All outputs/source files remain in artifacts.\nThe SSH downloader rejected the tmpfs archive path before reading. A checksum-verified durable copy was created inside the allowed test stand, then downloaded and verified locally.\r\nThe first 40-second readiness probe expired during cold startup. The process remained active with NRestarts=0 and entry closed; readiness was awaited without restarting it.\r\nA second readiness window expired; the third passed. The same process began listening approximately 88 seconds after start and PostgreSQL reached the expected revision. No restart was triggered.\r\nThe first generated capacity guard failed local syntax validation because a replacement string interpreted dollar-apostrophe. Replaced through a callback, saved the rejected file, and reran syntax validation before upload; no remote run used it.\r\n",
+    "postInstallObservation": {
+      "from": "2026-11-23T19:13:30.033Z",
+      "to": "2026-11-23T19:18:30.302Z",
+      "durationSeconds": 300.269,
+      "samples": 21,
+      "syntheticLoadRunning": false,
+      "summaryAfterFirst120Seconds": {
+        "samples": 13,
+        "online": [
+          10,
+          12
+        ],
+        "arena": [
+          4,
+          5
+        ],
+        "observedTickP95Ms": [
+          20.89,
+          22.89
+        ],
+        "rssMiB": [
+          2034,
+          2752
+        ],
+        "maxQueuedActions": 0
+      },
+      "rows": [
+        {
+          "at": 1795461210033,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.09,
+          "intervalP99Ms": 51.77,
+          "rssMiB": 973,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104405,
+            "syncAgeMs": 22817,
+            "prepareMs": 3,
+            "writeMs": 99
+          }
+        },
+        {
+          "at": 1795461225046,
+          "online": {
+            "arena": 1,
+            "lobby": 4,
+            "total": 5
+          },
+          "tickP95Ms": 5.06,
+          "intervalP99Ms": 52.13,
+          "rssMiB": 1536,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104405,
+            "syncAgeMs": 37830,
+            "prepareMs": 3,
+            "writeMs": 99
+          }
+        },
+        {
+          "at": 1795461240061,
+          "online": {
+            "arena": 1,
+            "lobby": 4,
+            "total": 5
+          },
+          "tickP95Ms": 10.97,
+          "intervalP99Ms": 57.33,
+          "rssMiB": 1601,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104406,
+            "syncAgeMs": 11376,
+            "prepareMs": 11335,
+            "writeMs": 231
+          }
+        },
+        {
+          "at": 1795461255074,
+          "online": {
+            "arena": 0,
+            "lobby": 7,
+            "total": 7
+          },
+          "tickP95Ms": 11.04,
+          "intervalP99Ms": 58.2,
+          "rssMiB": 1647,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104406,
+            "syncAgeMs": 26389,
+            "prepareMs": 11335,
+            "writeMs": 231
+          }
+        },
+        {
+          "at": 1795461270084,
+          "online": {
+            "arena": 0,
+            "lobby": 8,
+            "total": 8
+          },
+          "tickP95Ms": 10.97,
+          "intervalP99Ms": 59.05,
+          "rssMiB": 1717,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104566,
+            "syncAgeMs": 9699,
+            "prepareMs": 13006,
+            "writeMs": 257
+          }
+        },
+        {
+          "at": 1795461285117,
+          "online": {
+            "arena": 3,
+            "lobby": 6,
+            "total": 9
+          },
+          "tickP95Ms": 13.18,
+          "intervalP99Ms": 58.71,
+          "rssMiB": 2180,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104566,
+            "syncAgeMs": 24732,
+            "prepareMs": 13006,
+            "writeMs": 257
+          }
+        },
+        {
+          "at": 1795461300126,
+          "online": {
+            "arena": 4,
+            "lobby": 5,
+            "total": 9
+          },
+          "tickP95Ms": 14.08,
+          "intervalP99Ms": 59.64,
+          "rssMiB": 2474,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104704,
+            "syncAgeMs": 204,
+            "prepareMs": 12400,
+            "writeMs": 251
+          }
+        },
+        {
+          "at": 1795461315142,
+          "online": {
+            "arena": 4,
+            "lobby": 5,
+            "total": 9
+          },
+          "tickP95Ms": 18.54,
+          "intervalP99Ms": 59.64,
+          "rssMiB": 2547,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104704,
+            "syncAgeMs": 15220,
+            "prepareMs": 12400,
+            "writeMs": 251
+          }
+        },
+        {
+          "at": 1795461330156,
+          "online": {
+            "arena": 5,
+            "lobby": 5,
+            "total": 10
+          },
+          "tickP95Ms": 20.89,
+          "intervalP99Ms": 59.64,
+          "rssMiB": 2545,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104883,
+            "syncAgeMs": 11256,
+            "prepareMs": 11513,
+            "writeMs": 265
+          }
+        },
+        {
+          "at": 1795461345169,
+          "online": {
+            "arena": 5,
+            "lobby": 5,
+            "total": 10
+          },
+          "tickP95Ms": 22.89,
+          "intervalP99Ms": 58.67,
+          "rssMiB": 2575,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4104883,
+            "syncAgeMs": 26269,
+            "prepareMs": 11513,
+            "writeMs": 265
+          }
+        },
+        {
+          "at": 1795461360180,
+          "online": {
+            "arena": 4,
+            "lobby": 6,
+            "total": 10
+          },
+          "tickP95Ms": 22.85,
+          "intervalP99Ms": 60.89,
+          "rssMiB": 2038,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4105109,
+            "syncAgeMs": 10595,
+            "prepareMs": 12128,
+            "writeMs": 337
+          }
+        },
+        {
+          "at": 1795461375188,
+          "online": {
+            "arena": 4,
+            "lobby": 7,
+            "total": 11
+          },
+          "tickP95Ms": 22.11,
+          "intervalP99Ms": 60.99,
+          "rssMiB": 2061,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4105109,
+            "syncAgeMs": 25603,
+            "prepareMs": 12128,
+            "writeMs": 337
+          }
+        },
+        {
+          "at": 1795461390195,
+          "online": {
+            "arena": 4,
+            "lobby": 7,
+            "total": 11
+          },
+          "tickP95Ms": 21.32,
+          "intervalP99Ms": 58.67,
+          "rssMiB": 2116,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4105346,
+            "syncAgeMs": 10987,
+            "prepareMs": 11802,
+            "writeMs": 285
+          }
+        },
+        {
+          "at": 1795461405220,
+          "online": {
+            "arena": 4,
+            "lobby": 7,
+            "total": 11
+          },
+          "tickP95Ms": 21.01,
+          "intervalP99Ms": 56.35,
+          "rssMiB": 2616,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4105346,
+            "syncAgeMs": 26012,
+            "prepareMs": 11802,
+            "writeMs": 285
+          }
+        },
+        {
+          "at": 1795461420232,
+          "online": {
+            "arena": 4,
+            "lobby": 7,
+            "total": 11
+          },
+          "tickP95Ms": 20.92,
+          "intervalP99Ms": 54.54,
+          "rssMiB": 2672,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4105629,
+            "syncAgeMs": 10570,
+            "prepareMs": 11811,
+            "writeMs": 276
+          }
+        },
+        {
+          "at": 1795461435244,
+          "online": {
+            "arena": 5,
+            "lobby": 6,
+            "total": 11
+          },
+          "tickP95Ms": 20.98,
+          "intervalP99Ms": 54.86,
+          "rssMiB": 2752,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4105629,
+            "syncAgeMs": 25582,
+            "prepareMs": 11811,
+            "writeMs": 276
+          }
+        },
+        {
+          "at": 1795461450263,
+          "online": {
+            "arena": 5,
+            "lobby": 7,
+            "total": 12
+          },
+          "tickP95Ms": 22.08,
+          "intervalP99Ms": 60.52,
+          "rssMiB": 2401,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4105895,
+            "syncAgeMs": 11188,
+            "prepareMs": 11685,
+            "writeMs": 270
+          }
+        },
+        {
+          "at": 1795461465274,
+          "online": {
+            "arena": 5,
+            "lobby": 7,
+            "total": 12
+          },
+          "tickP95Ms": 22.04,
+          "intervalP99Ms": 61.84,
+          "rssMiB": 2419,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4105895,
+            "syncAgeMs": 26198,
+            "prepareMs": 11685,
+            "writeMs": 270
+          }
+        },
+        {
+          "at": 1795461480284,
+          "online": {
+            "arena": 5,
+            "lobby": 5,
+            "total": 10
+          },
+          "tickP95Ms": 22.1,
+          "intervalP99Ms": 62.39,
+          "rssMiB": 2034,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4106227,
+            "syncAgeMs": 9735,
+            "prepareMs": 13082,
+            "writeMs": 341
+          }
+        },
+        {
+          "at": 1795461495292,
+          "online": {
+            "arena": 5,
+            "lobby": 5,
+            "total": 10
+          },
+          "tickP95Ms": 22.1,
+          "intervalP99Ms": 63.05,
+          "rssMiB": 2245,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4106227,
+            "syncAgeMs": 24743,
+            "prepareMs": 13082,
+            "writeMs": 341
+          }
+        },
+        {
+          "at": 1795461510302,
+          "online": {
+            "arena": 5,
+            "lobby": 6,
+            "total": 11
+          },
+          "tickP95Ms": 22.09,
+          "intervalP99Ms": 59.76,
+          "rssMiB": 2560,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4106482,
+            "syncAgeMs": 10607,
+            "prepareMs": 12290,
+            "writeMs": 279
+          }
+        }
+      ],
+      "limitations": [
+        "Includes startup and returning players; live before/after populations differ",
+        "Five minutes is not proof of long-term leak freedom, whole-game speedup or maximum CCU"
+      ]
+    }
   }
 }

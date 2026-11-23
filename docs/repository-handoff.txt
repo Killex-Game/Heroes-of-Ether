@@ -1,12 +1,18 @@
 Сменная работа над Heroes of Ether, актуализация 23.11.2026
 
-Текущий код VPS: tag release/20261123-snapshot-cache,
-commit d228b39da12c44b6bd3fcd09433dd89301334870.
+Текущий код VPS: tag release/20261123-checkpoint-streaming,
+commit 12aefd994005b30a5f5aae29ba9acd66b4f968cd.
 Актуальные отчёты и план: ветка codex/20261123-interface-mechanics.
 origin/main остаётся на старом выпуске, не использовать его как текущий VPS.
-Эксперименты: codex/20261123-runtime-candidates, НЕ установлены.
-2e5e1a5 меняет только индекс календаря супругов, a377fae добавляет food fast path
-и отчёт о его ограничениях. Обе правки можно рассматривать независимо.
+Индекс календаря 2e5e1a5, учёт кланового вклада, разделение неизменяемой
+истории профилей и чтение/запись контрольных точек по записям УСТАНОВЛЕНЫ.
+Эксперимент food fast path a377fae из codex/20261123-runtime-candidates
+НЕ установлен: улучшение всей игры не доказано. Не развёртывать ветку целиком.
+Полный Linux текущего выпуска: 2326 тестов, 2325 pass, 0 fail, 1 skip;
+изолированный PostgreSQL: 10 pass; mixed35+5 обе версии сохраняют ACK и историю.
+Отчёт: games/heroes-of-ether/docs/performance/checkpoint-streaming-installed-20261123.json.
+Все backup, истории и WAL сохранять. Память всего мира, адресные профили,
+независимые комнаты и предельный CCU остаются открытыми задачами.
 План оптимизации: docs/scaling-two-million-accounts.txt, этапы и замеры
 games/heroes-of-ether/docs/performance/runtime-optimization-20261123.txt.
 Далее приведены исходная точка репозитория и правила передачи смены.
