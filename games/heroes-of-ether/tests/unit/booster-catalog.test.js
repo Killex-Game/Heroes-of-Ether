@@ -58,7 +58,7 @@ test("Атакующие бустеры: независимые полсекун
     assert.equal(a.boosterUses[id], 2, id);
   }
   assert.equal(a.boosterReadyAt, 0);
-  assert.equal(BOOSTERS.get("candy").cooldownMs, 200);
+  assert.equal(BOOSTERS.get("candy").cooldownMs, 100);
 });
 
 test("Подготовка не запускает таймер до успешного сохранения и применения", () => {
