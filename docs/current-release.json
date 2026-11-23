@@ -1097,38 +1097,45 @@
     "foodTransferInstalled": false
   },
   "latestObservation": {
-    "atUtc": "2026-11-23T14:32:49.102Z",
+    "atUtc": "2026-11-23T14:38:48.015Z",
     "online": {
-      "arena": 1,
-      "lobby": 4,
-      "total": 5
+      "arena": 3,
+      "lobby": 3,
+      "total": 6
     },
     "tickWorkMs": {
-      "count": 1200,
-      "p50": 0.77,
-      "p95": 1.14,
-      "p99": 5.33,
-      "max": 56.26
+      "count": 1194,
+      "p50": 7.76,
+      "p95": 19.75,
+      "p99": 30.22,
+      "max": 261.73
+    },
+    "tickIntervalMs": {
+      "count": 1194,
+      "p50": 50,
+      "p95": 51.15,
+      "p99": 65.85,
+      "max": 266.11
     },
     "memoryMiB": {
-      "resident": 1461,
-      "heapUsed": 413,
+      "resident": 3330,
+      "heapUsed": 405,
       "limit": 5120
     },
     "queuedActions": 0,
     "arenaBatches": 0,
-    "paused": false,
     "database": {
       "connected": true,
       "lastError": null,
-      "revision": 3923085,
-      "syncAgeMs": 16829,
-      "prepareMs": 8535,
-      "writeMs": 156
+      "revision": 3925719,
+      "syncAgeMs": 7123,
+      "prepareMs": 9775,
+      "writeMs": 288
     },
     "entryOpen": true,
-    "latencyAndMemoryWorkComplete": false,
-    "comparableAB": false
+    "comparableAB": false,
+    "isolatedCandidateBenchmarkRunning": true,
+    "latencyAndMemoryWorkComplete": false
   },
   "previousInstalledRelease": {
     "release": "20261123-calendar-index",
@@ -1371,5 +1378,19 @@
       "Exact duplicate 126891984-byte diagnostic Node binary replaced by a hardlink to identical canonical binary; both paths retained, no saves or history removed",
       "Old archives and all backup stages retained; low VPS disk reserve remains unresolved"
     ]
+  },
+  "profileHistoryCandidate": {
+    "branch": "codex/20261123-history-sharing",
+    "sourceCommit": "caaef1591fec4b82ec08d18a7a6551518b5f429e",
+    "installed": false,
+    "published": true,
+    "windowsTargeted": 105,
+    "linuxTargeted": 105,
+    "wholeGameImprovementEstablished": false,
+    "remaining": [
+      "full Linux regression",
+      "representative mixed workload with persisted ledger and ACK verification"
+    ],
+    "report": "games/heroes-of-ether/docs/performance/profile-history-sharing-20261123.json"
   }
 }
