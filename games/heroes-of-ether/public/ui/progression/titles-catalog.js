@@ -55,7 +55,7 @@
       header.append(art(window.KillexProgressionArt.chest(t.id, 128), "title-road-chest", 80), copy);
       const rewards = el("div", "title-road-rewards");
       for (const [currency, label] of [["coins", "монет"], ["crystals", "кристаллов"], ["bucks", "эфира"]])
-        rewards.append(prize(`assets/menu-icons/64/currency_${currency}.webp?art=20261122b`, number(t[currency]), label));
+        rewards.append(prize(`assets/menu-icons/64/currency_${currency}.webp?art=20261123-interface-art`, number(t[currency]), label));
       const contents = el("div", "title-road-contents");
       contents.append(el("strong", "", "Бустеры: " + number(t.boosters)), el("p", "", t.contents));
       const appearance = el("div", "title-road-appearance");
@@ -67,7 +67,7 @@
         appearance.append(el("p", "", "Специальный подарок от игры"));
       }
       if (t.accountDays) for (const [kind, days] of Object.entries(t.accountDays))
-        rewards.append(prize(`assets/accounts/${kind}.png?art=20261122b`, kind === "vip" ? "VIP" : "Premium", number(days) + " дн."));
+        rewards.append(prize(`assets/accounts/${kind}.png?art=20261123-interface-art`, kind === "vip" ? "VIP" : "Premium", number(days) + " дн."));
       card.append(header, rewards, contents, appearance);
       if (earned && t.state !== "opened") {
         const chest = el("button", "sf-button sf-tertiary title-road-open", "К сундукам");

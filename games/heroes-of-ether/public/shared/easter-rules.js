@@ -4,7 +4,7 @@
   else root.KillexEaster = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, () => {
   "use strict";
-  const asset = (name) => `assets/events/easter-hunt/${name}.webp?art=20261122b`;
+  const asset = (name) => `assets/events/easter-hunt/${name}.webp?art=20261123-interface-art`;
   const eggs = [
     { id: "ruby", name: "Алое яйцо", image: asset("egg-ruby") },
     { id: "sky", name: "Небесное яйцо", image: asset("egg-sky") },

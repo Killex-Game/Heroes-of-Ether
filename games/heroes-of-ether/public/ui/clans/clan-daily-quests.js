@@ -21,7 +21,7 @@
       const title=el('strong','',p.from+'-'+p.to+' '+p.name+' медаль'),copy=el('div','clan-prize-copy');copy.append(title);
       const amounts=el('div','clan-prize-amounts');
       for(const [key,name] of [['bucks','эфира'],['coins','монет'],['crystals','кристаллов']]){
-        const item=el('span'),icon=el('img');icon.src='assets/menu-icons/128/currency_'+key+'.webp?art=20261122b';icon.alt='';
+        const item=el('span'),icon=el('img');icon.src='assets/menu-icons/128/currency_'+key+'.webp?art=20261123-interface-art';icon.alt='';
         item.append(icon,el('span','',num(p.reward[key])+' '+name));amounts.append(item);
       }
       copy.append(amounts);row.append(image,copy);list.append(row);
@@ -72,11 +72,11 @@
       const meta=el('div','clan-daily-progress-meta'),greatness=el('span','clan-daily-greatness');
       const bonus=q.greatness??(q.metric==='xp'?15:q.metric==='kills'?10:5);
       greatness.title=`Величие: +${num(bonus)}`;greatness.setAttribute('aria-label',greatness.title);
-      const medal=el('img');medal.src='assets/menu-icons/128/nav_achievements.webp?art=20261122b';medal.alt='';
+      const medal=el('img');medal.src='assets/menu-icons/128/nav_achievements.webp?art=20261123-interface-art';medal.alt='';
       greatness.append(medal,el('span','',`+${num(bonus)}`));
       meta.append(greatness,el('span','clan-daily-value',`${num(Math.floor(q.progress/unit))} / ${num(q.target/unit)}${unit===60000?' мин.':''}`));text.append(bar,meta);
       const reward=el('div','clan-daily-reward');reward.title=rewardName(q.reward)+' × '+num(q.reward.amount);
-      const image=el('img');image.alt=rewardName(q.reward);image.src=q.reward.kind==='clanChest'?window.KillexProgressionArt.clanChest(q.reward.tier):`assets/menu-icons/128/currency_${q.reward.kind}.webp?art=20261122b`;
+      const image=el('img');image.alt=rewardName(q.reward);image.src=q.reward.kind==='clanChest'?window.KillexProgressionArt.clanChest(q.reward.tier):`assets/menu-icons/128/currency_${q.reward.kind}.webp?art=20261123-interface-art`;
       reward.append(image,el('strong','',num(q.reward.amount)));row.append(text,reward);root.append(row);
     }
     return root;

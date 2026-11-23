@@ -370,7 +370,7 @@
       failed = true;
       pause();
     };
-    next.src = `assets/interface-packs/${theme}/${profileScene ? "profile" : "lobby"}.webp?art=20261122b`;
+    next.src = `assets/interface-packs/${theme}/${profileScene ? "profile" : "lobby"}.webp?art=20261123-interface-art`;
   }
   function pause() {
     cancelAnimationFrame(frame);

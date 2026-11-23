@@ -44,7 +44,7 @@ img.title-medal {
 .sf-currency-bucks {
   background-image: var(
     --ui-art-surfaces-currency_coin-svg,
-    url("../../assets/ui/svg/surfaces/currency_coin.svg?art=20261122b")
+    url("../../assets/ui/svg/surfaces/currency_coin.svg?art=20261123-interface-art")
   );
 }
 .bucks-label {

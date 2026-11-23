@@ -124,12 +124,12 @@
       image.alt = "";
       image.draggable = false;
       image.src = index
-        ? "assets/ui/svg/identity/access-lock.svg?art=20261122d"
-        : "assets/events/lucky-week/card-banner.webp?art=20261122d";
+        ? "assets/ui/svg/identity/access-lock.svg?art=20261123-interface-art"
+        : "assets/events/lucky-week/card-banner.webp?art=20261123-interface-art";
       card.append(number, image, title, status);
       if (index === 2) {
         image.className = "event-card-banner";
-        image.src = "assets/events/easter-hunt/card-banner.webp?art=20261122-zaya";
+        image.src = "assets/events/easter-hunt/card-banner.webp?art=20261123-interface-art";
         title.textContent = "Пасхальная охота";
         this.easterStatus = status;
         this.related = el("span", "event-card-related", "Удачная неделя");
@@ -144,7 +144,7 @@
         };
       } else if (index === 1) {
         image.className = "event-card-banner";
-        image.src = "assets/events/black-friday/card-banner.webp?art=20261122d";
+        image.src = "assets/events/black-friday/card-banner.webp?art=20261123-interface-art";
         title.textContent = "Чёрная пятница";
         this.blackFridayStatus = status;
         card.append(el("span", "event-card-action", "Лавка Мани"));
@@ -155,7 +155,7 @@
           this.blackFriday.open();
         };
       } else if (index === 3) {
-        image.className = "event-card-banner"; image.src = "assets/events/ether-alchemy/v1/card-banner.webp?art=20261122d";
+        image.className = "event-card-banner"; image.src = "assets/events/ether-alchemy/v1/card-banner.webp?art=20261123-interface-art";
         title.textContent = "Эфирная алхимия"; this.alchemyStatus = status;
         card.append(el("span", "event-card-action", "Лаборатория"));
         card.onclick = () => { this.update(); if (!card.disabled) { this.dialog.close(); this.alchemy.open(); } };

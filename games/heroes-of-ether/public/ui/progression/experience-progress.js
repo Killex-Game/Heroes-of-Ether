@@ -46,9 +46,9 @@
         const image = el("img");
         image.src =
           currency === "fridayTokens"
-            ? "assets/events/black-friday/token-v2.webp?art=20261122b"
+            ? "assets/events/black-friday/token-v2.webp?art=20261123-interface-art"
             : currency === "tickets"
-            ? "assets/roulette/ticket-v2.webp?art=20261122b"
+            ? "assets/roulette/ticket-v2.webp?art=20261123-interface-art"
             : "assets/menu-icons/128/currency_" + currency + ".webp";
         image.alt = label;
         image.setAttribute("aria-label", label);

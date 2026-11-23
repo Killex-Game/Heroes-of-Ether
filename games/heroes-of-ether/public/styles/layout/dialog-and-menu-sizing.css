@@ -140,7 +140,7 @@ body #settingsMenu #closeSettings {
   background: transparent
     var(
       --ui-art-controls-button_round_default-svg,
-      url("../../assets/ui/svg/controls/button_round_default.svg?art=20261122b")
+      url("../../assets/ui/svg/controls/button_round_default.svg?art=20261123-interface-art")
     )
     center/100% 100% no-repeat;
   border: 0;
@@ -150,7 +150,7 @@ body #settingsMenu #closeSettings {
 body #settingsMenu #closeSettings:hover {
   background-image: var(
     --ui-art-controls-button_round_hover-svg,
-    url("../../assets/ui/svg/controls/button_round_hover.svg?art=20261122b")
+    url("../../assets/ui/svg/controls/button_round_hover.svg?art=20261123-interface-art")
   );
 }
 .personal-close {
@@ -181,7 +181,7 @@ body #settingsMenu #closeSettings:hover {
   width: 100%;
   height: 100%;
   transform: translate(-50%, -50%);
-  background: url("../../assets/ui/svg/controls/icon_close.svg?art=20261122b") center/100% 100% no-repeat;
+  background: url("../../assets/ui/svg/controls/icon_close.svg?art=20261123-interface-art") center/100% 100% no-repeat;
   pointer-events: none;
 }
 #boosterDialog .interface-content {

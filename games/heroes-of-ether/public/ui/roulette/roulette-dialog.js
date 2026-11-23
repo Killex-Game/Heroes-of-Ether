@@ -54,10 +54,10 @@
         () => document.dispatchEvent(new CustomEvent("killex:open-lite")),
         "roulette-lite-button",
       );
-      this.liteButton.append(image("assets/accounts/lite.svg?art=20261122b"));
+      this.liteButton.append(image("assets/accounts/lite.svg?art=20261123-interface-art"));
       this.liteButtonCopy = el("span");
       this.liteButton.append(this.liteButtonCopy);
-      head.append(image("assets/roulette/wheel.svg?art=20261122b"), brand, this.liteButton, this.close);
+      head.append(image("assets/roulette/wheel.svg?art=20261123-interface-art"), brand, this.liteButton, this.close);
       this.eventLabel = el("p", "roulette-event");
       this.viewTabs = el("nav", "roulette-view-tabs");
       this.viewTabs.setAttribute("aria-label", "Разделы рулетки");
@@ -160,7 +160,7 @@
         const buy = button("Купить", () => this.buyTickets(currency), "sf-button sf-secondary");
         amount.oninput = () => this.updateTicketControl(currency);
         card.append(
-          image(`assets/menu-icons/128/currency_${currency}.webp?art=20261122b`),
+          image(`assets/menu-icons/128/currency_${currency}.webp?art=20261123-interface-art`),
           el("strong", "", `1 билет = ${price} ${label}`),
           limit,
           amount,
@@ -542,7 +542,7 @@
       board.append(disc);
       board.append(
         svg("image", {
-          href: "assets/roulette/hub-v2.svg?art=20261122b",
+          href: "assets/roulette/hub-v2.svg?art=20261123-interface-art",
           x: -49,
           y: -49,
           width: 98,

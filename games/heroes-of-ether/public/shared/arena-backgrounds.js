@@ -9,7 +9,7 @@
     Object.freeze({ id: "astral", fill: "#171a40", outside: "#0c1533", border: "#a18dcc" }),
     Object.freeze({
       id: "cobblestone",
-      source: "assets/arena/cobblestone.png?art=20261122b",
+      source: "assets/arena/cobblestone.png?art=20261123-interface-art",
       tileSize: 640,
       fill: "#c4a878",
       outside: "#766044",
@@ -18,7 +18,7 @@
     }),
     Object.freeze({
       id: "meadow",
-      source: "assets/arena/meadow.webp?art=20261122b",
+      source: "assets/arena/meadow.webp?art=20261123-interface-art",
       tileSize: 640,
       fill: "#728642",
       outside: "#3e4d2c",
@@ -26,7 +26,7 @@
     }),
     Object.freeze({
       id: "clearing",
-      source: "assets/arena/clearing.webp?art=20261122b",
+      source: "assets/arena/clearing.webp?art=20261123-interface-art",
       tileSize: 640,
       fill: "#82904a",
       outside: "#4e5630",
@@ -34,7 +34,7 @@
     }),
     Object.freeze({
       id: "sandstone",
-      source: "assets/arena/sandstone.webp?art=20261122b",
+      source: "assets/arena/sandstone.webp?art=20261123-interface-art",
       tileSize: 640,
       fill: "#d7b274",
       outside: "#806746",
@@ -42,7 +42,7 @@
     }),
     Object.freeze({
       id: "slate",
-      source: "assets/arena/slate.webp?art=20261122b",
+      source: "assets/arena/slate.webp?art=20261123-interface-art",
       tileSize: 640,
       fill: "#657a89",
       outside: "#354752",
@@ -53,7 +53,7 @@
   const EVENT_THEMES = Object.freeze([
     Object.freeze({
       id: "easter-meadow",
-      source: "assets/arena/easter-meadow.webp?art=20261122b",
+      source: "assets/arena/easter-meadow.webp?art=20261123-interface-art",
       tileSize: 640,
       fill: "#c06b29",
       outside: "#68401f",

@@ -9,7 +9,7 @@ body:has(#alchemyDialog[open]) #lobby *::after { animation-play-state:paused!imp
 .alchemy-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
 .alchemy-heading h1 { margin:0; font-size:clamp(24px,3vw,34px); color:#fff0cb; }
 .alchemy-stage { display:grid; grid-template-columns:minmax(280px,1.1fr) minmax(300px,1.25fr) minmax(200px,.8fr); gap:18px; height:calc(100% - 100px); min-height:0; align-items:center; }
-.alchemy-shelf { position:relative; height:min(650px,100%); width:100%; max-width:450px; justify-self:center; box-sizing:border-box; background:url('../../assets/events/ether-alchemy/v1/shelf.webp?art=20261122b') center/100% 100% no-repeat; }
+.alchemy-shelf { position:relative; height:min(650px,100%); width:100%; max-width:450px; justify-self:center; box-sizing:border-box; background:url('../../assets/events/ether-alchemy/v1/shelf.webp?art=20261123-interface-art') center/100% 100% no-repeat; }
 /* Positions are relative to the painted compartments, never width-based vertical padding. */
 .alchemy-potion { position:absolute; left:calc(18% + var(--column) * 16%); top:calc(var(--shelf-bottom) - 16%); width:16%; height:16%; border:0; background:none; padding:0 2px; min-width:0; cursor:pointer; box-shadow:none; border-radius:10px; }
 .alchemy-potion img { display:block; width:100%; height:100%; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 3px 2px #0008); }
@@ -49,7 +49,7 @@ body:has(#alchemyDialog[open]) #lobby *::after { animation-play-state:paused!imp
 .alchemy-recipe-header { display:flex; align-items:center; gap:12px; width:min(620px,100%); }
 .alchemy-recipe-header h2 { flex:1; text-align:center; font-size:21px; margin:4px; }
 .alchemy-recipes { display:flex; gap:0; width:min(560px,100%); flex:1; min-height:0; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#c49f5f #173c46; }
-.alchemy-recipe { position:relative; flex:0 0 100%; min-width:0; box-sizing:border-box; scroll-snap-align:center; background:url('../../assets/events/ether-alchemy/v1/recipe.webp?art=20261122b') center/100% 100% no-repeat; }
+.alchemy-recipe { position:relative; flex:0 0 100%; min-width:0; box-sizing:border-box; scroll-snap-align:center; background:url('../../assets/events/ether-alchemy/v1/recipe.webp?art=20261123-interface-art') center/100% 100% no-repeat; }
 .alchemy-recipe-content { position:absolute; inset:14% 17% 10%; overflow-y:auto; display:flex; flex-direction:column; align-items:center; gap:8px; color:#3e3021; scrollbar-width:thin; }
 .alchemy-recipe h3 { font-size:23px; text-align:center; margin:0; padding:6px 0; }
 .alchemy-recipe-potion { width:95px; height:95px; object-fit:contain; flex-shrink:0; }

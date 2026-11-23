@@ -8,7 +8,7 @@
   };
   const number = value => value.toLocaleString("ru-RU");
   const isClanBundle = offer => offer.weekendId === "promotion:weekend:23";
-  const clanBundleIcon = "assets/boosters/bundles-v1/256/clan.webp?art=20261122b";
+  const clanBundleIcon = "assets/boosters/bundles-v1/256/clan.webp?art=20261123-interface-art";
   function rewards(offer) {
     if (isClanBundle(offer)) return [{id:"clan",name:"Клановые бустеры*",icon:clanBundleIcon,
       note:"*По 200 штук каждого кланового бустера"}];
@@ -22,7 +22,7 @@
         icon:"assets/boosters/bundles-v1/256/"+id+".webp", note:"Случайный набор"});
     }
     if (offer.vipMs) items.push({id:"vip",name:"VIP",amount:offer.vipMs/86400000,
-      unit:"дня",icon:"assets/accounts/vip.png?art=20261122b"});
+      unit:"дня",icon:"assets/accounts/vip.png?art=20261123-interface-art"});
     return items;
   }
   class PromotionsUI {

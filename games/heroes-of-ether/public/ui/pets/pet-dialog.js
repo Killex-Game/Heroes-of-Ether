@@ -56,7 +56,7 @@
       this.dialog.setAttribute("aria-labelledby", "petsTitle");
       const header = el("header", "pets-heading"),
         brand = el("div", "pets-brand");
-      brand.append(img("assets/pets/paw-v3.webp?art=20261122b"));
+      brand.append(img("assets/pets/paw-v3.webp?art=20261123-interface-art"));
       const titles = el("div");
       titles.append(el("h1", "", "Питомцы"));
       titles.lastChild.id = "petsTitle";
@@ -138,7 +138,7 @@
       this.thornCounter = el("div", "pet-thorn-counter");
       this.thornCounter.hidden = true;
       this.thornCount = el("span", "pet-thorn-count");
-      this.thornCounter.append(img("assets/arena/thorn-v2.webp?art=20261122b"), this.thornCount);
+      this.thornCounter.append(img("assets/arena/thorn-v2.webp?art=20261123-interface-art"), this.thornCount);
       this.fire = button("", () => this.use("fire"), "booster-slot pet-ability");
       this.fire.dataset.petAbility = "fire";
       this.secondary = button("", () => this.use("secondary"), "booster-slot pet-ability");
@@ -341,7 +341,7 @@
       actions.append(main);
       const food = el("div", "pet-food");
       food.append(
-        img("assets/pets/food.svg?art=20261122b"),
+        img("assets/pets/food.svg?art=20261123-interface-art"),
         el("span", "", `Порций корма: ${number(state?.food)}`),
       );
       const feed = button("Покормить +10%", () => this.action("feed", def.id));
@@ -412,7 +412,7 @@
         ];
         if (stats.thornMeals)
           rows.push([
-            "assets/arena/thorn-v2.webp?art=20261122b",
+            "assets/arena/thorn-v2.webp?art=20261123-interface-art",
             "Укротитель колючек",
             `Съедает до ${stats.thornMeals} колючек без разделения.` +
               (stats.thornRefillMs
@@ -421,7 +421,7 @@
           ]);
         if (stats.speed)
           rows.push([
-            "assets/pets/paw-v3.webp?art=20261122b",
+            "assets/pets/paw-v3.webp?art=20261123-interface-art",
             "Лёгкий шаг",
             `Скорость +${stats.speed}%${stats.resistance ? `, получаемый урон −${stats.resistance}%` : ""}.`,
           ]);
@@ -446,7 +446,7 @@
         }
         const premium = el("article", "pet-premium");
         premium.append(
-          img("assets/accounts/premium.png?art=20261122b"),
+          img("assets/accounts/premium.png?art=20261123-interface-art"),
           el("h4", "", "Вместе с Premium"),
           keyDescription("p", def.premium),
         );

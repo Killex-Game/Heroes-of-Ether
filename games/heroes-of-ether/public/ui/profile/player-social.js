@@ -23,7 +23,7 @@
     const price = el("span", "social-gift-price", Number(item.price).toLocaleString("ru-RU")),
       icon = el("img");
     price.setAttribute("aria-label", item.price + " " + currency[item.currency]);
-    icon.src = "assets/menu-icons/64/currency_" + item.currency + ".webp?art=20261122b";
+    icon.src = "assets/menu-icons/64/currency_" + item.currency + ".webp?art=20261123-interface-art";
     icon.alt = "";
     icon.width = icon.height = 22;
     price.append(icon);
@@ -532,7 +532,7 @@
         spouse.setAttribute("aria-label", "Открыть профиль " + marriage.partner.name);
         spouse.title = "Открыть профиль " + marriage.partner.name;
         spouse.append(avatar(marriage.partner));
-        rings.src = "assets/social/marriage-rings.webp?art=20261122b";
+        rings.src = "assets/social/marriage-rings.webp?art=20261123-interface-art";
         rings.alt = "Обручальные кольца";
         pair.append(
           avatar(p),

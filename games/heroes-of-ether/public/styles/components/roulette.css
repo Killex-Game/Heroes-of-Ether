@@ -101,7 +101,7 @@
   width: 100%;
   max-width: 44px;
   aspect-ratio: 1;
-  background: url("../../assets/ui/svg/identity/access-lock.svg?art=20261122b") center / contain no-repeat;
+  background: url("../../assets/ui/svg/identity/access-lock.svg?art=20261123-interface-art") center / contain no-repeat;
   filter: drop-shadow(0 2px 2px #171020b3);
   pointer-events: none;
 }
@@ -534,7 +534,7 @@
   left: calc(50% - 25px);
   width: 50px;
   height: 72px;
-  background: url("../../assets/roulette/pointer-v2.svg?art=20261122b") center / contain no-repeat;
+  background: url("../../assets/roulette/pointer-v2.svg?art=20261123-interface-art") center / contain no-repeat;
   filter: drop-shadow(0 4px 3px #1b082baa);
 }
 .roulette-spin {

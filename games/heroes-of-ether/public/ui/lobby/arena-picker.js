@@ -144,7 +144,7 @@
             card = button("", () => this.choose(arena.id), "arena-choice");
             card.dataset.arenaId = arena.id;
             const picture = el("img");
-            picture.src = "assets/ui/arena-planet-v1.webp?art=20261122b";
+            picture.src = "assets/ui/arena-planet-v1.webp?art=20261123-interface-art";
             picture.alt = "";
             card.append(picture, el("strong"), el("span", "arena-occupancy"), el("small"));
             this.cards.set(arena.id, card);

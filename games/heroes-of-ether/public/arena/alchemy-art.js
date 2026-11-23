@@ -2,7 +2,7 @@
 (() => {
   const rules = window.KillexAlchemyRules, entries = new Map();
   const shell = new Image(); shell.src = "assets/events/ether-alchemy/v1/ingredient-shell.svg?v=20261116-soft-glass";
-  const cropped = new Set(["leaf", "mushroom", "berries", "dew"]);
+  const cropped = new Set();
   // Remove the old painted shell's corner glints in presentation only.
   // The accepted ingredient files and their own glossy highlights stay unchanged.
   const cuts = {

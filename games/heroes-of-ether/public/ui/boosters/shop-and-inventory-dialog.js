@@ -264,7 +264,7 @@
       this.turboButton.id = "turboButton";
       this.turboButton.hidden = true;
       const turboIcon = make("img", "turbo-symbol");
-      turboIcon.src = "assets/boosters/turbo-bolt-v1.svg?art=20261122b"; turboIcon.alt = "";
+      turboIcon.src = "assets/boosters/turbo-bolt-v1.svg?art=20261123-interface-art"; turboIcon.alt = "";
       turboIcon.width = turboIcon.height = 48;
       this.turboButton.append(
         turboIcon,
@@ -496,7 +496,7 @@
         icon.alt = "";
         icon.width = 64;
         icon.height = 64;
-        icon.src = `assets/menu-icons/64/currency_${currency}.webp?art=20261122b`;
+        icon.src = `assets/menu-icons/64/currency_${currency}.webp?art=20261123-interface-art`;
         icon.srcset = `assets/menu-icons/64/currency_${currency}.webp 1x, assets/menu-icons/128/currency_${currency}.webp 2x`;
         pill.append(icon);
         const group = make("span", "sf-currency-wallet");
@@ -737,7 +737,7 @@
           );
           if (item.purchasable) {
             const currencyIcon = make("img", "booster-price-icon");
-            currencyIcon.src = `assets/menu-icons/64/currency_${currency}.webp?art=20261122b`;
+            currencyIcon.src = `assets/menu-icons/64/currency_${currency}.webp?art=20261123-interface-art`;
             currencyIcon.alt = "";
             currencyIcon.width = 24;
             currencyIcon.height = 24;

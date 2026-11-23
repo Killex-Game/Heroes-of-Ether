@@ -1,0 +1,14 @@
+/* Prepared artwork uses the existing controls and theme selection. */
+body[data-screen="lobby"] #lobby:not(.has-league-background):not([data-event-background="black-friday"]) {
+  background: #e8ddc8 url("../../assets/lobby/azure-champagne.webp?art=20261123-interface-art") center / cover no-repeat;
+}
+body[data-screen="lobby"] #lobby[data-event-background="easter"]:not(.has-league-background) {
+  background-image: url("../../assets/lobby/easter-azure-champagne.webp?art=20261123-interface-art");
+}
+#lobby:not(.has-league-background):not([data-event-background="black-friday"])::before,
+#lobby:not(.has-league-background):not([data-event-background="black-friday"])::after { background: none; }
+#lobby:not(.has-league-background):not([data-event-background="black-friday"]) :is(.loadout-heading,.loadout-summary,.skin-note) { color:#293e50; text-shadow:0 1px 2px #fff7e6; }
+#lobby .promo-slide-copy { max-width:52%; }
+#lobby .promo-products .promo-slide,#lobby .promo-events { background-size:cover; background-position:center; }
+.title-road-chest { width:160px; height:160px; }
+@media(max-width:650px) { .title-road-chest { width:128px; height:128px; } }

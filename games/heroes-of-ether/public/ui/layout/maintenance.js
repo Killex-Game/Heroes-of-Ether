@@ -8,7 +8,7 @@
     mode=Object.hasOwn(titles,mode)?mode:'unavailable';lastMode=mode;
     if(!dialog){
       dialog=document.createElement('dialog');dialog.id='maintenanceDialog';dialog.setAttribute('aria-labelledby','maintenanceTitle');
-      dialog.innerHTML='<img class="maintenance-banner" src="/assets/service/maintenance-v1.png?art=20261122d" alt="" width="2048" height="683"><div class="maintenance-symbol" aria-hidden="true"></div><h1 id="maintenanceTitle"></h1><p class="maintenance-copy"></p><p class="maintenance-dates"></p><p class="maintenance-status" role="status"></p><button type="button" hidden>Вернуться в игру</button>';
+      dialog.innerHTML='<img class="maintenance-banner" src="/assets/service/maintenance-v1.png?art=20261123-interface-art" alt="" width="2048" height="683"><div class="maintenance-symbol" aria-hidden="true"></div><h1 id="maintenanceTitle"></h1><p class="maintenance-copy"></p><p class="maintenance-dates"></p><p class="maintenance-status" role="status"></p><button type="button" hidden>Вернуться в игру</button>';
       document.body.append(dialog);title=dialog.querySelector('h1');copy=dialog.querySelector('.maintenance-copy');status=dialog.querySelector('.maintenance-status');dates=dialog.querySelector('.maintenance-dates');button=dialog.querySelector('button');art=dialog.querySelector('img');
       art.onerror=()=>{art.hidden=true;};button.onclick=()=>location.assign('/');dialog.addEventListener('cancel',e=>e.preventDefault());
     }

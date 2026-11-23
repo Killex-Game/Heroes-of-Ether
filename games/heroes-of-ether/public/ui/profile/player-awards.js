@@ -40,7 +40,7 @@
       item.type = "button";
       item.dataset.league = league.id;
       item.setAttribute("aria-label", name + ". " + usage);
-      img.src = `assets/season-trophies/128/${league.id}.webp?art=20261122b`;
+      img.src = `assets/season-trophies/128/${league.id}.webp?art=20261123-interface-art`;
       img.alt = "";
       item.append(img);
       if (history.length > 1) item.append(el("b", "regalia-count", number(history.length)));
@@ -70,7 +70,7 @@
     for (const trophy of player.easter?.trophies || []) {
       const item = el("div", "public-trophy"),
         img = el("img", "");
-      img.src = "assets/events/easter-hunt/golden-egg.webp?art=20261122b";
+      img.src = "assets/events/easter-hunt/golden-egg.webp?art=20261123-interface-art";
       img.alt = "Золотое яйцо";
       item.append(img);
       item.dataset.regalia = "golden_egg";
@@ -165,7 +165,7 @@
     if (player.clanFrame === "champion") {
       const item = el("div", "public-trophy"),
         img = el("img", "");
-      img.src = "assets/clan-roles/head.png?art=20261122b";
+      img.src = "assets/clan-roles/head.png?art=20261123-interface-art";
       img.alt = "";
       item.append(img, el("small", "", "Клан чемпионов"));
       add(item);

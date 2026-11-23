@@ -14,16 +14,16 @@
   const shields = Object.freeze({
     colorful_shield: Object.freeze({
       name: "Красочный щит",
-      icon: "assets/boosters/png/colorful_shield.png?art=20261122b",
+      icon: "assets/boosters/png/colorful_shield.png?art=20261123-interface-art",
     }),
-    sphere: Object.freeze({ name: "Сфера-щит", icon: "assets/boosters/png/sphere.png?art=20261122b" }),
+    sphere: Object.freeze({ name: "Сфера-щит", icon: "assets/boosters/png/sphere.png?art=20261123-interface-art" }),
     golden_shield: Object.freeze({
       name: "Золотой щит",
-      icon: "assets/boosters/png/golden_shield.png?art=20261122b",
+      icon: "assets/boosters/png/golden_shield.png?art=20261123-interface-art",
     }),
     clan_shield: Object.freeze({
       name: "Клановый щит",
-      icon: "assets/progression/webp/256/boosters/clan_shield.webp?art=20261122b",
+      icon: "assets/progression/webp/256/boosters/clan_shield.webp?art=20261123-interface-art",
     }),
   });
   const shieldLevels = Object.freeze({
@@ -82,7 +82,7 @@
     Object.freeze({
       ...p,
       premiumIntervalMs: p.id === "manya" ? 60000 : 30000,
-      image: `assets/pets/levels-v1/${p.id}-0.webp?art=20261122b`,
+      image: `assets/pets/levels-v1/${p.id}-0.webp?art=20261123-interface-art`,
     }),
   );
   const get = (id) => pets.find((p) => p.id === id);
@@ -90,7 +90,7 @@
   const capacityMs = (id, games = 0) => get(id).vitalityMinutes[level(games)] * 60000;
   const imageFor = (id, rank = 0) =>
     get(id)
-      ? `assets/pets/${id === "manya" && Number(rank) >= 5 ? "levels-v2" : "levels-v1"}/${id}-${Math.min(5, Math.max(0, Math.floor(Number(rank) || 0)))}.webp?art=20261122b`
+      ? `assets/pets/${id === "manya" && Number(rank) >= 5 ? "levels-v2" : "levels-v1"}/${id}-${Math.min(5, Math.max(0, Math.floor(Number(rank) || 0)))}.webp?art=20261123-interface-art`
       : null;
   function stats(id, games) {
     const p = get(id),
@@ -156,27 +156,27 @@
       name: "Огонь питомца",
       key: "Q",
       target: "direction",
-      icon: "assets/progression/webp/256/boosters/fire.webp?art=20261122b",
+      icon: "assets/progression/webp/256/boosters/fire.webp?art=20261123-interface-art",
     },
     claw: {
       id: "pet_claw",
       name: "Коготь",
       key: "R",
       target: "direction",
-      icon: "assets/pets/boosters/claw.webp?art=20261122b",
+      icon: "assets/pets/boosters/claw.webp?art=20261123-interface-art",
     },
     glove: {
       id: "pet_glove",
       name: "Когтистая перчатка",
       key: "R",
       target: "direction",
-      icon: "assets/pets/boosters/clawed-glove.webp?art=20261122b",
+      icon: "assets/pets/boosters/clawed-glove.webp?art=20261123-interface-art",
     },
     carrot: {
       id: "pet_carrot",
       name: "Морковь",
       key: "R",
-      icon: "assets/pets/boosters/carrot-v2.webp?art=20261122b",
+      icon: "assets/pets/boosters/carrot-v2.webp?art=20261123-interface-art",
     },
   };
   const ABILITY_COOLDOWN_MS = 500;

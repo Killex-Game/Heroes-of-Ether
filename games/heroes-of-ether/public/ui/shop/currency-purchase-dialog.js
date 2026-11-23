@@ -111,7 +111,7 @@
         if (this.promo) {
           const tokens = el("span", "donation-token-badge");
           const tokenIcon = el("img");
-          tokenIcon.src = "assets/events/black-friday/token-v2.webp?art=20261122b";
+          tokenIcon.src = "assets/events/black-friday/token-v2.webp?art=20261123-interface-art";
           tokenIcon.alt = "жетонов";
           tokens.append(el("strong", "", `+${number(item.votes * 10)}`), tokenIcon);
           const multiplier = el("span", "donation-multiplier-badge", "x2");
@@ -169,7 +169,7 @@
         card.dataset.accountKind = kind;
         const heading = el("div", "donation-card-heading");
         const icon = el("img", "donation-account-icon");
-        icon.src = `assets/accounts/${kind}.png?art=20261122b`;
+        icon.src = `assets/accounts/${kind}.png?art=20261123-interface-art`;
         icon.alt = "";
         heading.append(icon, el("h3", "", `Бонус ${label}`));
         const amount = el("p", "donation-amount");

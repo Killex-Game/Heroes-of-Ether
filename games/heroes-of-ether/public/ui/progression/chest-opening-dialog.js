@@ -178,7 +178,7 @@
           source: "friday",
           chestName: "Сундук Чёрной пятницы",
           name: "Чёрная пятница",
-          icon: "assets/events/black-friday/chest.webp?art=20261122b",
+          icon: "assets/events/black-friday/chest.webp?art=20261123-interface-art",
         };
       const easter = this.owner.profile?.easter?.chests.find((c) => c.id === id);
       if (easter)
@@ -187,7 +187,7 @@
           source: "easter",
           chestName: "Пасхальный сундук",
           name: "Пасхальная охота",
-          icon: "assets/events/easter-hunt/chest.webp?art=20261122b",
+          icon: "assets/events/easter-hunt/chest.webp?art=20261123-interface-art",
           reward: easter.reward,
         };
       const quest = this.owner.profile?.quests?.pending.find((r) => r.id === id);
@@ -295,7 +295,7 @@
         ["crystals", "Кристаллы"],
         ["bucks", "Эфир"],
       ])
-        if (r[id]) add(name, `assets/menu-icons/128/currency_${id}.webp?art=20261122b`, r[id]);
+        if (r[id]) add(name, `assets/menu-icons/128/currency_${id}.webp?art=20261123-interface-art`, r[id]);
       for (const [kind, days] of Object.entries(r.accountDays || {})) {
         const name = { vip: "VIP", premium: "Premium", lite: "Lite" }[kind];
         if (!name || !Number.isSafeInteger(days) || days <= 0) continue;
@@ -308,10 +308,10 @@
         cell.firstElementChild.alt = "";
       }
       if (r.greatness) add("Величие", window.KillexGreatnessUI.SOURCE, r.greatness);
-      if (r.vipMs) add("VIP на 1 час", "assets/accounts/vip.png?art=20261122b");
-      if (r.tickets) add("Билеты рулетки", "assets/roulette/ticket-v2.webp?art=20261122b", r.tickets);
+      if (r.vipMs) add("VIP на 1 час", "assets/accounts/vip.png?art=20261123-interface-art");
+      if (r.tickets) add("Билеты рулетки", "assets/roulette/ticket-v2.webp?art=20261123-interface-art", r.tickets);
       if (r.fridayTokens)
-        add("Жетоны Мани", "assets/events/black-friday/token-v2.webp?art=20261122b", r.fridayTokens);
+        add("Жетоны Мани", "assets/events/black-friday/token-v2.webp?art=20261123-interface-art", r.fridayTokens);
       if (r.fragment) {
         const rules = window.KillexEaster,
           collection =

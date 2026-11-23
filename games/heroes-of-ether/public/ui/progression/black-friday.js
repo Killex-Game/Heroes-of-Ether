@@ -21,7 +21,7 @@
   };
   // Silver merchant tokens are visually distinct from the gold game currency.
   const token = () => {
-    const n = img("assets/events/black-friday/token-v2.webp?art=20261122b", "manya-token");
+    const n = img("assets/events/black-friday/token-v2.webp?art=20261123-interface-art", "manya-token");
     n.alt = "жетоны Мани";
     n.setAttribute("aria-label", "жетоны Мани");
     return n;
@@ -55,7 +55,7 @@
       close.setAttribute("aria-label", "Закрыть лавку");
       const controls = el("div", "manya-header-controls");
       controls.append(this.balance);
-      brand.append(img("assets/events/black-friday/shop.webp?art=20261122b", "manya-portrait"), heading);
+      brand.append(img("assets/events/black-friday/shop.webp?art=20261123-interface-art", "manya-portrait"), heading);
       this.tabs = el("nav", "manya-tabs");
       this.tabs.setAttribute("aria-label", "Разделы лавки");
       for (const [id, label] of [
@@ -240,7 +240,7 @@
           () => this.act("swap", o.id),
           "sf-button manya-swap",
         );
-        if (s.swapCost) swap.append(img("assets/menu-icons/64/currency_bucks.webp?art=20261122b"));
+        if (s.swapCost) swap.append(img("assets/menu-icons/64/currency_bucks.webp?art=20261123-interface-art"));
         window.KillexControls.state(
           swap,
           !!this.busy || o.claimed || (this.owner.getProfile()?.wallet?.bucks || 0) < s.swapCost,
@@ -264,8 +264,8 @@
       );
       const preview = el("div", "manya-final-art");
       preview.append(
-        img("assets/events/black-friday/album.webp?art=20261122b", "manya-album-preview"),
-        img("assets/events/black-friday/regalia-v2.webp?art=20261122b", "manya-regalia-preview"),
+        img("assets/events/black-friday/album.webp?art=20261123-interface-art", "manya-album-preview"),
+        img("assets/events/black-friday/regalia-v2.webp?art=20261123-interface-art", "manya-regalia-preview"),
       );
       right.append(
         preview,
@@ -316,7 +316,7 @@
           const step = el("span", i < a.claimed ? "is-done" : "");
           step.append(
             document.createTextNode((i < a.claimed ? "✓ " : "") + amount(n) + ": +" + a.rewards[i]),
-            img("assets/menu-icons/64/nav_achievements.webp?art=20261122b"),
+            img("assets/menu-icons/64/nav_achievements.webp?art=20261123-interface-art"),
           );
           steps.append(step);
         });
@@ -369,7 +369,7 @@
         const buyChest = button("", () => this.act("chest-ether"));
         buyChest.append(
           document.createTextNode("100 "),
-          img("assets/menu-icons/64/currency_bucks.webp?art=20261122b", "manya-price-icon"),
+          img("assets/menu-icons/64/currency_bucks.webp?art=20261123-interface-art", "manya-price-icon"),
         );
         buyChest.setAttribute("aria-label", "Сундук Чёрной пятницы за 100 эфира");
         window.KillexControls.state(
@@ -378,7 +378,7 @@
           (this.owner.getProfile()?.wallet?.bucks || 0) < 100,
         );
         chest.append(
-          img("assets/events/black-friday/chest.webp?art=20261122b"),
+          img("assets/events/black-friday/chest.webp?art=20261123-interface-art"),
           el("h4", "", "Сундук Чёрной пятницы"),
           el("small", "", "Без ограничения покупок"),
           buyChest,
@@ -401,7 +401,7 @@
           const card = el("article", "manya-prize manya-exchange"),
             cost = el("strong", "manya-token-amount", amount(o.cost));
           cost.append(
-            img(`assets/menu-icons/128/currency_${o.currency}.webp?art=20261122b`),
+            img(`assets/menu-icons/128/currency_${o.currency}.webp?art=20261123-interface-art`),
             document.createTextNode(" = " + o.tokens),
             token(),
           );
@@ -415,7 +415,7 @@
               (this.owner.getProfile()?.wallet?.[o.currency] || 0) < o.cost,
           );
           card.append(
-            img("assets/events/black-friday/token-v2.webp?art=20261122b"),
+            img("assets/events/black-friday/token-v2.webp?art=20261123-interface-art"),
             cost,
             el(
               "small",
@@ -453,7 +453,7 @@
           }),
         );
         window.KillexControls.state(buy, !!this.busy || !!s.coupon?.active, !!s.coupon?.active);
-        coupon.append(img("assets/events/black-friday/coupon.webp?art=20261122b"), details, buy);
+        coupon.append(img("assets/events/black-friday/coupon.webp?art=20261123-interface-art"), details, buy);
         wrap.append(coupon);
       }
       wrap.append(grid);

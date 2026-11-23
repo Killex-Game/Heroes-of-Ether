@@ -14,9 +14,8 @@
   const themes = Object.freeze(["default", "heroic"]);
   function source(theme, icon) {
     if (!themes.includes(theme)) theme = "default";
-    if (theme === "default") return icon === "pets" ? "assets/menu-icons/community-v2/pets.webp?art=20261122b" :
-      icon === "top" ? "assets/menu-icons/v2/nav_tops.webp?art=20261122b" : null;
-    return `assets/interface-packs/${theme}/${theme === "heroic" || ["promo","news","pets"].includes(icon) ? "menu-v2/" : ""}nav-${icon}.webp?art=20261122b`;
+    if (theme === "default") return `assets/menu-icons/avatar-style-v1/128/${icon}.webp?art=20261123-interface-art`;
+    return `assets/interface-packs/${theme}/${theme === "heroic" || ["promo","news","pets"].includes(icon) ? "menu-v2/" : ""}nav-${icon}.webp?art=20261123-interface-art`;
   }
   return Object.freeze({ buttons, themes, source });
 });

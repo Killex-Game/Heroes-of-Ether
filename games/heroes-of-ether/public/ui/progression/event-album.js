@@ -81,7 +81,7 @@
         grid = el("div", "event-album-artworks");
       const owned = event.items.filter((art) => art.owned).length;
       card.setAttribute("aria-label", `${event.title}: изображения ${owned} / ${event.items.length}`);
-      cover.append(picture(event.banner + (event.banner.includes("?") ? "&" : "?") + "art=20261122d", ""));
+      cover.append(picture(event.banner + (event.banner.includes("?") ? "&" : "?") + "art=20261123-interface-art", ""));
       for (const art of event.items) {
         const tile = el("button", "event-album-tile");
         tile.type = "button";
@@ -115,7 +115,7 @@
       if (event.available) {
         button.append(
           `Забрать ${event.available}`,
-          picture("assets/menu-icons/64/currency_bucks.webp?art=20261122b", ""),
+          picture("assets/menu-icons/64/currency_bucks.webp?art=20261123-interface-art", ""),
         );
         button.setAttribute("aria-label", `Забрать ${event.available} эфира`);
       } else {

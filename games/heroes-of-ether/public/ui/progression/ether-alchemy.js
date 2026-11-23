@@ -202,7 +202,7 @@
         if (action !== "equip" && this.dialog.open && visit === this.visit) { this.closeRecipes(); await this.animate(origins); }
         if (action !== "equip" && this.dialog.open && visit === this.visit) {
           this.result.replaceChildren(); const reward = action === "brew" ? R.get(potionId) : null;
-          this.result.append(el("h2", "", "Получено"), img(reward?.image || "assets/food/ether-drop-v1.webp?art=20261122b"),
+          this.result.append(el("h2", "", "Получено"), img(reward?.image || "assets/food/ether-drop-v1.webp?art=20261123-interface-art"),
             el("strong", "", reward ? reward.name + " × " + reward.yield : "Концентрированный эфир × 10"), button("Продолжить", () => this.closeResult()));
           this.result.hidden = false; this.overlay(); this.result.querySelector("button").focus({ preventScroll: true });
         }

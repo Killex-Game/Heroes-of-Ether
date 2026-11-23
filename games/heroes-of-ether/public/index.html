@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="ru" class="game-booting">
   <head>
-    <script src="shared/browser-abort-compat.js?v=20261123-win7"></script>
-    <script src="shared/art-revision.js?v=20261123-selected-portraits"></script>
+    <script src="shared/browser-abort-compat.js?v=20261123-interface-art"></script>
+    <script src="shared/art-revision.js?v=20261123-interface-art"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#101321" />
@@ -13,7 +13,7 @@
       .game-booting body > :not(#gameLoading):not(script):not(noscript):not(#maintenanceDialog) { visibility: hidden !important; }
       #gameLoading { position: fixed; inset: 0; margin: 0; width: 100%; height: 100%; max-width: none; max-height: none; border: 0; background: #112f42; color: #fff1cf; }
     </style>
-    <link rel="stylesheet" href="styles/components/game-loading.css?v=20261122-art-consistency" />
+    <link rel="stylesheet" href="styles/components/game-loading.css?v=20261123-interface-art" />
     <link
       rel="preload"
       href="assets/fonts/inter/InterVariable.woff2"
@@ -21,87 +21,88 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="styles/base/fonts.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/player-feedback.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/maintenance.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/base/page-and-arena.css?v=20261122-clean-rims" />
-    <link rel="stylesheet" href="styles/components/shop-and-quick-slots.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/theme/game-controls.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/clan-daily-quests.css?v=20261122-clean-rims" />
-    <link rel="stylesheet" href="styles/components/clan-dialog.css?v=20261122-clan-join" />
-    <link rel="stylesheet" href="styles/components/player-chat.css?v=20261122-art-consistency" />
+    <link rel="stylesheet" href="styles/base/fonts.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/player-feedback.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/maintenance.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/base/page-and-arena.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/shop-and-quick-slots.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/theme/game-controls.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/clan-daily-quests.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/clan-dialog.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/player-chat.css?v=20261123-interface-art" />
     <link
       rel="stylesheet"
-      href="styles/components/clan-battle-panel.css?v=20261122-art-consistency"
+      href="styles/components/clan-battle-panel.css?v=20261123-interface-art"
     />
-    <link rel="stylesheet" href="styles/components/experience-progress.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/title-and-chest-panels.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/currency-purchase-dialog.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/layout/lobby-grid.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/menu-icons.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/shop-sections.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/achievement-dialog.css?v=20261122-banners-packs" />
+    <link rel="stylesheet" href="styles/components/experience-progress.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/title-and-chest-panels.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/currency-purchase-dialog.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/layout/lobby-grid.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/menu-icons.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/shop-sections.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/achievement-dialog.css?v=20261123-interface-art" />
     <link
       rel="stylesheet"
-      href="styles/components/skin-and-wardrobe-dialogs.css?v=20261122-art-consistency"
+      href="styles/components/skin-and-wardrobe-dialogs.css?v=20261123-interface-art"
     />
-    <link rel="stylesheet" href="styles/components/quests.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/arena-objectives.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/arena-touch-controls.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/account-dialog.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/layout/responsive-viewport.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/quick-slot-editor.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/theme/lobby-colors-and-controls.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/clan-crest-editor.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/theme/profile-and-clan-details.css?v=20261122-clean-rims" />
+    <link rel="stylesheet" href="styles/components/quests.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/arena-objectives.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/arena-touch-controls.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/account-dialog.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/layout/responsive-viewport.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/quick-slot-editor.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/theme/lobby-colors-and-controls.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/clan-crest-editor.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/theme/profile-and-clan-details.css?v=20261123-interface-art" />
     <link
       rel="stylesheet"
-      href="styles/layout/dialog-and-menu-sizing.css?v=20261122-clan-join"
+      href="styles/layout/dialog-and-menu-sizing.css?v=20261123-interface-art"
     />
-    <link rel="stylesheet" href="styles/theme/account-colors.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/clan-and-ranking-details.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/mock-payment-dialog.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/layout/responsive-interface.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/system-notifications.css?v=20261122-art-consistency" />
+    <link rel="stylesheet" href="styles/theme/account-colors.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/clan-and-ranking-details.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/mock-payment-dialog.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/layout/responsive-interface.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/system-notifications.css?v=20261123-interface-art" />
     <link
       rel="stylesheet"
-      href="styles/components/league-appearance.css?v=20261122-clean-rims"
+      href="styles/components/league-appearance.css?v=20261123-interface-art"
     />
-    <link rel="stylesheet" href="styles/theme/interface-themes.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/theme/interface-pack-palettes.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/lobby-progress.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/pets.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/roulette.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/event-announcement.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/events-page.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/easter-hunt.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/event-album.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/daily-ranking-notice.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/title-earned-dialog.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/arena-picker.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/menu-notifications.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/quest-treasury.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/promotions.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/theme/prism-buttons.css?v=20261122-art-consistency" />
+    <link rel="stylesheet" href="styles/theme/interface-themes.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/theme/interface-pack-palettes.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/lobby-progress.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/pets.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/roulette.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/event-announcement.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/events-page.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/easter-hunt.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/event-album.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/daily-ranking-notice.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/title-earned-dialog.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/arena-picker.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/menu-notifications.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/quest-treasury.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/promotions.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/theme/prism-buttons.css?v=20261123-interface-art" />
     <link
       rel="stylesheet"
-      href="styles/components/lobby-wallet-accessories.css?v=20261122-art-consistency"
+      href="styles/components/lobby-wallet-accessories.css?v=20261123-interface-art"
     />
-    <link rel="stylesheet" href="styles/theme/interface-packs.css?v=20261122-canon16" />
-    <link rel="stylesheet" href="styles/theme/base-palette-materials.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/theme/base-palette.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/sky-lobby.css?v=20261122-art-consistency" />
+    <link rel="stylesheet" href="styles/theme/interface-packs.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/theme/base-palette-materials.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/theme/base-palette.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/sky-lobby.css?v=20261123-interface-art" />
     <link rel="stylesheet" href="styles/components/avatar-placement.css?20261122-portrait-memory" />
-    <link rel="stylesheet" href="styles/components/hall-of-fame.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/black-friday.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/ether-alchemy.css?v=20261122-split" />
-    <link rel="stylesheet" href="styles/components/event-lobby.css?v=20261122-art-consistency" />
-  <link rel="stylesheet" href="styles/components/game-interactions.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/ranking-layout.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/components/game-news.css?v=20261122-banners-packs" />
-    <link rel="stylesheet" href="styles/components/social-notices.css?v=20261122-banners-packs" />
-    <link rel="stylesheet" href="styles/components/promo-code.css?v=20261122-art-consistency" />
-</head>
+    <link rel="stylesheet" href="styles/components/hall-of-fame.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/black-friday.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/ether-alchemy.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/event-lobby.css?v=20261123-interface-art" />
+  <link rel="stylesheet" href="styles/components/game-interactions.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/ranking-layout.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/game-news.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/social-notices.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/promo-code.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/components/interface-art.css?v=20261123-interface-art" />
+  </head>
   <body data-screen="lobby">
     <dialog id="gameLoading" open aria-labelledby="gameLoadingTitle" aria-describedby="gameLoadingStatus">
       <div class="boot-stars" aria-hidden="true"></div>
@@ -110,9 +111,9 @@
         <h1 id="gameLoadingTitle">Герои <span>Эфира</span></h1>
         <div class="boot-heroes" aria-hidden="true">
           <div class="boot-orbit"></div>
-          <div class="boot-hero boot-hero-left"><img src="assets/skins/transparent-v2/256/amber-fox.webp?art=20261122b" alt="" /></div>
-          <div class="boot-hero boot-hero-main"><img src="assets/skins/transparent-v2/512/moon-dragon.webp?art=20261122b" alt="" fetchpriority="high" /></div>
-          <div class="boot-hero boot-hero-right"><img src="assets/skins/transparent-v2/256/little-owl.webp?art=20261122b" alt="" /></div>
+          <div class="boot-hero boot-hero-left"><img src="assets/skins/transparent-v2/256/amber-fox.webp?art=20261123-interface-art" alt="" /></div>
+          <div class="boot-hero boot-hero-main"><img src="assets/skins/transparent-v2/512/moon-dragon.webp?art=20261123-interface-art" alt="" fetchpriority="high" /></div>
+          <div class="boot-hero boot-hero-right"><img src="assets/skins/transparent-v2/256/little-owl.webp?art=20261123-interface-art" alt="" /></div>
           <span class="boot-star">✦</span>
         </div>
         <p class="boot-tagline">Собирай силу. Находи союзников. Стань Героем.</p>
@@ -125,11 +126,11 @@
       </div>
       <noscript>Для игры нужен JavaScript. Включи его в настройках браузера и обнови страницу.</noscript>
     </dialog>
-    <script src="/shared/platform-contract.js?v=20261122-art-consistency"></script>
-    <script src="/shared/activity-scheduler.js?v=20261122-art-consistency"></script>
-    <script src="/shared/news-layout.js?v=20261122-banners-packs"></script>
-    <script src="/shared/control-state.js?v=20261122-art-consistency"></script>
-    <script src="ui/layout/game-loading.js?v=20261122-art-consistency"></script>
+    <script src="/shared/platform-contract.js?v=20261123-interface-art"></script>
+    <script src="/shared/activity-scheduler.js?v=20261123-interface-art"></script>
+    <script src="/shared/news-layout.js?v=20261123-interface-art"></script>
+    <script src="/shared/control-state.js?v=20261123-interface-art"></script>
+    <script src="ui/layout/game-loading.js?v=20261123-interface-art"></script>
     <main id="lobby" class="lobby" aria-label="Герои Эфира - лобби">
       <div class="lobby-inner">
         <header class="lobby-header">
@@ -187,20 +188,20 @@
                 aria-haspopup="dialog"
                 aria-controls="promotionsDialog"
               >
-                <img src="assets/promotions/starter-v1.webp?art=20261122b" alt="" /><strong>Акции</strong>
+                <img src="assets/promotions/starter-v1.webp?art=20261123-interface-art" alt="" /><strong>Акции</strong>
               </button>
             </div>
             <div class="lobby-event-actions">
               <button id="rouletteButton" disabled class="is-locked" type="button" aria-haspopup="dialog" aria-label="Рулетка закрыта до начала события">
-                <img src="assets/roulette/wheel.svg?art=20261122b" alt="" />
+                <img src="assets/menu-icons/avatar-style-v1/roulette.svg?art=20261123-interface-art" alt="" />
                 <span>Рулетка</span><small id="rouletteTicketBadge" hidden></small>
                 <span class="roulette-lock" aria-hidden="true"></span>
               </button>
               <button id="blackFridayButton" class="sf-button" type="button" aria-haspopup="dialog" aria-controls="blackFridayDialog" hidden>
-                <img src="assets/events/black-friday/shop.webp?art=20261122b" alt="" /><span>Лавка Мани</span>
+                <img src="assets/events/black-friday/shop.webp?art=20261123-interface-art" alt="" /><span>Лавка Мани</span>
               </button>
               <button id="alchemyButton" class="sf-button" type="button" aria-haspopup="dialog" aria-controls="alchemyDialog" hidden>
-                <img src="assets/events/ether-alchemy/v1/book.webp?art=20261122b" alt="" /><span>Эфирная алхимия</span>
+                <img src="assets/events/ether-alchemy/v1/book.webp?art=20261123-interface-art" alt="" /><span>Эфирная алхимия</span>
               </button>
             </div>
           </div>
@@ -299,7 +300,7 @@
                   title="Выбор арены"
                   disabled
                 >
-                  <img src="assets/ui/arena-planet-v1.webp?art=20261122b" alt="" />
+                  <img src="assets/ui/arena-planet-v1.webp?art=20261123-interface-art" alt="" />
                 </button>
                 <button
                   class="secondary sf-button sf-tertiary"
@@ -318,7 +319,7 @@
           <div class="lobby-sections">
             <nav class="side-nav" aria-label="Разделы игрока">
               <button class="menu-tile sf-button sf-secondary" id="promoCodeSection" type="button" aria-haspopup="dialog">
-                <img class="menu-icon" src="assets/menu-icons/community-v1/64/promo.webp?art=20261122b" srcset="assets/menu-icons/community-v1/128/promo.webp 2x" width="36" height="36" alt="" /><strong>Промокод</strong>
+                <img class="menu-icon" src="assets/menu-icons/avatar-style-v1/128/promo.webp?art=20261123-interface-art" width="36" height="36" alt="" /><strong>Промокод</strong>
               </button>
               <button
                 class="menu-tile sf-button sf-secondary"
@@ -328,11 +329,7 @@
               >
                 <img
                   class="menu-icon"
-                  src="assets/menu-icons/64/nav_hall.webp?art=20261122b"
-                  srcset="
-                    assets/menu-icons/64/nav_hall.webp  1x,
-                    assets/menu-icons/128/nav_hall.webp 2x
-                  "
+                  src="assets/menu-icons/avatar-style-v1/128/hall.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
@@ -341,11 +338,7 @@
               <button class="menu-tile sf-button sf-secondary" type="button" id="eventsSection">
                 <img
                   class="menu-icon"
-                  src="assets/menu-icons/64/nav_events.webp?art=20261122b"
-                  srcset="
-                    assets/menu-icons/64/nav_events.webp  1x,
-                    assets/menu-icons/128/nav_events.webp 2x
-                  "
+                  src="assets/menu-icons/avatar-style-v1/128/events.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
@@ -355,11 +348,7 @@
               <button class="menu-tile sf-button sf-secondary" type="button" id="inventorySection">
                 <img
                   class="menu-icon"
-                  src="assets/menu-icons/64/nav_inventory.webp?art=20261122b"
-                  srcset="
-                    assets/menu-icons/64/nav_inventory.webp  1x,
-                    assets/menu-icons/128/nav_inventory.webp 2x
-                  "
+                  src="assets/menu-icons/avatar-style-v1/128/inventory.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
@@ -368,11 +357,7 @@
               <button class="menu-tile sf-button" id="wardrobeSection" type="button">
                 <img
                   class="menu-icon"
-                  src="assets/menu-icons/64/nav_wardrobe.webp?art=20261122b"
-                  srcset="
-                    assets/menu-icons/64/nav_wardrobe.webp  1x,
-                    assets/menu-icons/128/nav_wardrobe.webp 2x
-                  "
+                  src="assets/menu-icons/avatar-style-v1/128/wardrobe.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
@@ -381,7 +366,7 @@
               <button class="menu-tile sf-button" id="questsSection" type="button">
                 <img
                   class="menu-icon"
-                  src="assets/ui/quest-scroll-v2.webp?art=20261122b"
+                  src="assets/menu-icons/avatar-style-v1/128/quests.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
@@ -390,11 +375,7 @@
               <button class="menu-tile sf-button sf-tertiary" type="button" id="shopSection">
                 <img
                   class="menu-icon"
-                  src="assets/menu-icons/64/nav_shop.webp?art=20261122b"
-                  srcset="
-                    assets/menu-icons/64/nav_shop.webp  1x,
-                    assets/menu-icons/128/nav_shop.webp 2x
-                  "
+                  src="assets/menu-icons/avatar-style-v1/128/shop.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
@@ -403,11 +384,7 @@
               <button class="menu-tile sf-button sf-tertiary" id="rankingsButton" type="button">
                 <img
                   class="menu-icon"
-                  src="assets/progression/webp/64/achievements/top.webp?art=20261122b"
-                  srcset="
-                    assets/progression/webp/64/achievements/top.webp  1x,
-                    assets/progression/webp/256/achievements/top.webp 2x
-                  "
+                  src="assets/menu-icons/avatar-style-v1/128/top.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
@@ -416,11 +393,7 @@
               <button class="menu-tile sf-button sf-tertiary" type="button" id="achievementsButton">
                 <img
                   class="menu-icon"
-                  src="assets/menu-icons/64/nav_achievements.webp?art=20261122b"
-                  srcset="
-                    assets/menu-icons/64/nav_achievements.webp  1x,
-                    assets/menu-icons/128/nav_achievements.webp 2x
-                  "
+                  src="assets/menu-icons/avatar-style-v1/128/achievements.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
@@ -429,11 +402,7 @@
               <button class="menu-tile sf-button sf-tertiary" id="clanSection" type="button">
                 <img
                   class="menu-icon"
-                  src="assets/menu-icons/64/nav_clan.webp?art=20261122b"
-                  srcset="
-                    assets/menu-icons/64/nav_clan.webp  1x,
-                    assets/menu-icons/128/nav_clan.webp 2x
-                  "
+                  src="assets/menu-icons/avatar-style-v1/128/clan.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
@@ -442,14 +411,14 @@
               <button class="menu-tile sf-button sf-tertiary" id="petsSection" type="button">
                 <img
                   class="menu-icon"
-                  src="assets/pets/paw-v3.webp?art=20261122b"
+                  src="assets/menu-icons/avatar-style-v1/128/pets.webp?art=20261123-interface-art"
                   width="36"
                   height="36"
                   alt=""
                 /><strong>Питомцы</strong>
               </button>
               <button class="menu-tile sf-button sf-secondary" id="newsSection" type="button" aria-haspopup="dialog">
-                <img class="menu-icon" src="assets/menu-icons/community-v1/64/news.webp?art=20261122b" srcset="assets/menu-icons/community-v1/128/news.webp 2x" width="36" height="36" alt="" /><strong>Новости</strong>
+                <img class="menu-icon" src="assets/menu-icons/avatar-style-v1/128/news.webp?art=20261123-interface-art" width="36" height="36" alt="" /><strong>Новости</strong>
               </button>
             </nav>
           </div>
@@ -669,120 +638,120 @@
       </button>
     </div>
 
-    <script src="ui/layout/game-interactions.js?v=20261122-art-consistency"></script>
-    <script src="ui/layout/modal-stack.js?v=20261122-art-consistency"></script>
-    <script src="shared/request-identifiers.js?v=20261122-art-consistency"></script>
-    <script src="ui/lobby/player-feedback.js?v=20261122-clean-rims"></script>
-    <script src="shared/weekend-promotion-catalog.js?v=20261122-art-consistency"></script>
-    <script src="shared/virtual-product-catalog.js?v=20261122-limit5"></script>
-    <script src="ui/shop/mock-payment-dialog.js?v=20261122-limit5"></script>
-    <script src="ui/shop/promotion-dialog.js?v=20261122-stable-refresh"></script>
-    <script src="shared/progression-asset-paths.js?v=20261122-portrait-memory"></script>
-    <script src="shared/achievement-badge.js?v=20261122-portrait-memory"></script>
-    <script src="ui/progression/greatness-label.js?v=20261122-art-consistency"></script>
-    <script src="shared/skin-collection-preview.js?v=20261122-canon16"></script>
-    <script src="shared/player-identity.js?v=20261123-selected-portraits"></script>
-    <script src="shared/league-appearance.js?v=20261122-clean-rims"></script>
-    <script src="shared/lobby-menu-art.js?v=20261122-art-consistency"></script>
-    <script src="shared/interface-theme.js?v=20261122-art-consistency"></script>
-    <script src="shared/accessory-catalog.js?v=20261122-art-consistency"></script>
-    <script src="arena/accessory-renderer.js?v=20261123-arena-bow-size"></script>
-    <script src="arena/shield-renderer.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/titles-catalog.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/achievement-dialog.js?v=20261122-stable-refresh"></script>
-    <script src="shared/achievement-notifications.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/event-announcement.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/event-album.js?v=20261122-banners-packs"></script>
-    <script src="ui/progression/black-friday.js?v=20261122-art-consistency"></script>
-    <script src="shared/alchemy-rules.js?v=20261122-art-consistency"></script>
-    <script src="arena/alchemy-art.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/ether-generator.js?v=20261122-split"></script>
-    <script src="ui/progression/ether-alchemy.js?v=20261122-clean-rims"></script>
-    <script src="ui/progression/events-page.js?v=20261122-postgresql-schedule"></script>
-    <script src="shared/easter-rules.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/easter-hunt-page.js?v=20261122-stable-refresh"></script>
-    <script src="arena/easter-renderer.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/experience-progress.js?v=20261122-stable-refresh"></script>
-    <script src="shared/clan-season-calendar.js?v=20261122-postgresql-schedule"></script>
-    <script src="shared/clan-competition-rules.js?v=20261122-art-consistency"></script>
-    <script src="shared/clan-quest-descriptions.js?v=20261122-art-consistency"></script>
-    <script src="shared/clan-crest-art-data.js?v=20261122-clean-rims"></script>
-    <script src="shared/clan-crest-variants.js?v=20261122-clean-rims"></script>
-    <script src="shared/clan-crest-rules.js?v=20261122-clean-rims"></script>
-    <script src="ui/clans/clan-crest-renderer.js?v=20261122-clean-rims"></script>
-    <script src="ui/clans/clan-crest-editor.js?v=20261122-art-consistency"></script>
-    <script src="ui/clans/clan-battle-and-treasury.js?v=20261122-stable-refresh2"></script>
-    <script src="ui/progression/chest-opening-dialog.js?v=20261122-stable-refresh2"></script>
-    <script src="ui/shop/currency-purchase-dialog.js?v=20261122-art-consistency"></script>
-    <script src="shared/booster-cooldowns.js?v=20261122-egg10"></script>
-    <script src="ui/cosmetics/skin-and-wardrobe-dialogs.js?v=20261122-stable-refresh"></script>
-    <script src="ui/cosmetics/league-appearance.js?v=20261122-stable-refresh"></script>
-    <script src="ui/lobby/sky-scene.js?v=20261122-portrait-memory"></script>
-    <script src="shared/quick-slot-rules.js?v=20261122-art-consistency"></script>
-    <script src="ui/boosters/booster-tooltip.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/arena-objectives.js?v=20261122-art-consistency"></script>
-    <script src="ui/boosters/quick-slot-editor.js?v=20261122-art-consistency"></script>
-    <script src="shared/daily-login-rewards.js?v=20261122-art-consistency"></script>
-    <script src="ui/boosters/shop-and-inventory-dialog.js?v=20261122-stable-refresh2"></script>
-    <script src="shared/pet-rules.js?v=20261122-art-consistency"></script>
-    <script src="ui/pets/pet-dialog.js?v=20261122-stable-refresh"></script>
-    <script src="ui/cosmetics/accessory-ability-ui.js?v=20261122-stable-refresh"></script>
-    <script src="ui/progression/quest-dialog.js?v=20261122-stable-refresh"></script>
-    <script src="shared/roulette-rules.js?v=20261122-art-consistency"></script>
-    <script src="ui/roulette/roulette-dialog.js?v=20261122-art-consistency"></script>
-    <script src="ui/accounts/account-dialog.js?v=20261122-stable-refresh"></script>
-    <script src="ui/profile/profile-editor-dialog.js?v=20261122-art-consistency"></script>
-    <script src="shared/daily-ranking-rules.js?v=20261122-art-consistency"></script>
-    <script src="ui/rankings/daily-ranking-notice.js?v=20261122-art-consistency"></script>
-    <script src="ui/progression/title-earned-dialog.js?v=20261122-clean-rims"></script>
-    <script src="ui/progression/collection-earned-dialog.js?v=20261122-art-consistency"></script>
-    <script src="ui/clans/clan-preview.js?v=20261122-stable-refresh"></script>
-    <script src="ui/rankings/leaderboard-dialog.js?v=20261122-art-consistency"></script>
-    <script src="ui/profile/gift-history.js?v=20261122-art-consistency"></script>
-    <script src="ui/profile/player-awards.js?v=20261122-clean-rims"></script>
-    <script src="ui/profile/public-player-dialog.js?v=20261122-clean-rims"></script>
-    <script src="ui/profile/player-social.js?v=20261122-art-consistency"></script>
-    <link rel="stylesheet" href="styles/components/admin-adjustment-notice.css?v=20261122-art-consistency" />
-    <script src="ui/profile/admin-adjustment-notice.js?v=20261122-clean-rims"></script>
-    <script src="ui/lobby/promotion-banners.js?v=20261122-clean-rims"></script>
-    <script src="ui/clans/clan-daily-quests.js?v=20261122-clean-rims"></script>
-    <script src="ui/clans/clan-dialog.js?v=20261122-stable-refresh"></script>
-    <script src="ui/chat/player-chat.js?v=20261122-art-consistency"></script>
-    <script src="shared/arena-camera-and-layout.js?v=20261122-fast-camera"></script>
-    <script src="shared/arena-motion.js?v=20261122-art-consistency"></script>
-    <script src="shared/arena-wire.js?v=20261122-art-consistency"></script>
-    <script src="shared/arena-backgrounds.js?v=20261122-art-consistency"></script>
-    <script src="shared/projectile-renderer.js?v=20261122-art-consistency"></script>
-    <script src="shared/booster-effect-renderer.js?v=20261122-art-consistency"></script>
-    <script src="arena/food-and-frame-renderer.js?v=20261122-clean-rims"></script>
-    <script src="arena/body-renderer.js?v=20261122-art-consistency"></script>
-    <script src="arena/portrait-loader.js?v=20261122-portrait-memory"></script>
-    <script src="ui/profile/online-presence.js?v=20261122-art-consistency"></script>
-    <script src="shared/menu-notifications.js?v=20261122-art-consistency"></script>
-    <script src="ui/lobby/menu-notifications.js?v=20261122-art-consistency"></script>
-    <script src="arena/game-audio.js?v=20261122-art-consistency"></script>
-    <script src="shared/arena-names.js?v=20261122-art-consistency"></script>
-    <script src="ui/lobby/arena-picker.js?v=20261122-clan-join"></script>
-    <script src="ui/rankings/hall-of-fame.js?v=20261122-stable-refresh"></script>
-    <script src="ui/layout/maintenance.js?v=20261122-clean-rims"></script>
-    <link rel="stylesheet" href="styles/components/arena-transition.css?v=20261122-art-consistency" />
-    <script src="ui/layout/arena-transition.js?v=20261122-art-consistency"></script>
-    <script src="ui/arena/touch-controls.js?v=20261122-art-consistency"></script>
-    <script src="shared/release-notes.js?v=20261122-art-consistency"></script>
-    <script src="ui/lobby/game-news.js?v=20261122-clean-rims"></script>
-    <script src="ui/lobby/promo-code.js?v=20261122-art-consistency"></script>
-    <script src="shared/arena-emotes.js?v=20261122-clean-rims"></script>
-    <script src="arena/emote-hotkeys.js?v=20261122-rim-clans"></script>
-    <script src="arena/emote-renderer.js?v=20261122-clean-rims"></script>
-    <script src="game-client.js?v=20261122-stable-refresh"></script>
-    <script src="ui/layout/viewport-layout.js?v=20261122-art-consistency"></script>
-    <script src="ui/layout/dialog-content-layout.js?v=20261122-art-consistency"></script>
-    <script src="ui/layout/system-notifications.js?v=20261122-art-consistency"></script>
-    <link rel="stylesheet" href="styles/components/effi-helper.css?v=20261122-art-consistency" />
-    <script src="ui/lobby/effi-helper.js?v=20261122-art-consistency"></script>
-    <link rel="stylesheet" href="styles/components/effi-lobby.css?v=20261122-art-consistency" />
-    <link rel="stylesheet" href="styles/layout/mobile-game-layout.css?v=20261123" />
-    <script src="ui/lobby/effi-lobby.js?v=20261122-art-consistency"></script>
+    <script src="ui/layout/game-interactions.js?v=20261123-interface-art"></script>
+    <script src="ui/layout/modal-stack.js?v=20261123-interface-art"></script>
+    <script src="shared/request-identifiers.js?v=20261123-interface-art"></script>
+    <script src="ui/lobby/player-feedback.js?v=20261123-interface-art"></script>
+    <script src="shared/weekend-promotion-catalog.js?v=20261123-interface-art"></script>
+    <script src="shared/virtual-product-catalog.js?v=20261123-interface-art"></script>
+    <script src="ui/shop/mock-payment-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/shop/promotion-dialog.js?v=20261123-interface-art"></script>
+    <script src="shared/progression-asset-paths.js?v=20261123-interface-art"></script>
+    <script src="shared/achievement-badge.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/greatness-label.js?v=20261123-interface-art"></script>
+    <script src="shared/skin-collection-preview.js?v=20261123-interface-art"></script>
+    <script src="shared/player-identity.js?v=20261123-interface-art"></script>
+    <script src="shared/league-appearance.js?v=20261123-interface-art"></script>
+    <script src="shared/lobby-menu-art.js?v=20261123-interface-art"></script>
+    <script src="shared/interface-theme.js?v=20261123-interface-art"></script>
+    <script src="shared/accessory-catalog.js?v=20261123-interface-art"></script>
+    <script src="arena/accessory-renderer.js?v=20261123-interface-art"></script>
+    <script src="arena/shield-renderer.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/titles-catalog.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/achievement-dialog.js?v=20261123-interface-art"></script>
+    <script src="shared/achievement-notifications.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/event-announcement.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/event-album.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/black-friday.js?v=20261123-interface-art"></script>
+    <script src="shared/alchemy-rules.js?v=20261123-interface-art"></script>
+    <script src="arena/alchemy-art.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/ether-generator.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/ether-alchemy.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/events-page.js?v=20261123-interface-art"></script>
+    <script src="shared/easter-rules.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/easter-hunt-page.js?v=20261123-interface-art"></script>
+    <script src="arena/easter-renderer.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/experience-progress.js?v=20261123-interface-art"></script>
+    <script src="shared/clan-season-calendar.js?v=20261123-interface-art"></script>
+    <script src="shared/clan-competition-rules.js?v=20261123-interface-art"></script>
+    <script src="shared/clan-quest-descriptions.js?v=20261123-interface-art"></script>
+    <script src="shared/clan-crest-art-data.js?v=20261123-interface-art"></script>
+    <script src="shared/clan-crest-variants.js?v=20261123-interface-art"></script>
+    <script src="shared/clan-crest-rules.js?v=20261123-interface-art"></script>
+    <script src="ui/clans/clan-crest-renderer.js?v=20261123-interface-art"></script>
+    <script src="ui/clans/clan-crest-editor.js?v=20261123-interface-art"></script>
+    <script src="ui/clans/clan-battle-and-treasury.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/chest-opening-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/shop/currency-purchase-dialog.js?v=20261123-interface-art"></script>
+    <script src="shared/booster-cooldowns.js?v=20261123-interface-art"></script>
+    <script src="ui/cosmetics/skin-and-wardrobe-dialogs.js?v=20261123-interface-art"></script>
+    <script src="ui/cosmetics/league-appearance.js?v=20261123-interface-art"></script>
+    <script src="ui/lobby/sky-scene.js?v=20261123-interface-art"></script>
+    <script src="shared/quick-slot-rules.js?v=20261123-interface-art"></script>
+    <script src="ui/boosters/booster-tooltip.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/arena-objectives.js?v=20261123-interface-art"></script>
+    <script src="ui/boosters/quick-slot-editor.js?v=20261123-interface-art"></script>
+    <script src="shared/daily-login-rewards.js?v=20261123-interface-art"></script>
+    <script src="ui/boosters/shop-and-inventory-dialog.js?v=20261123-interface-art"></script>
+    <script src="shared/pet-rules.js?v=20261123-interface-art"></script>
+    <script src="ui/pets/pet-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/cosmetics/accessory-ability-ui.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/quest-dialog.js?v=20261123-interface-art"></script>
+    <script src="shared/roulette-rules.js?v=20261123-interface-art"></script>
+    <script src="ui/roulette/roulette-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/accounts/account-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/profile/profile-editor-dialog.js?v=20261123-interface-art"></script>
+    <script src="shared/daily-ranking-rules.js?v=20261123-interface-art"></script>
+    <script src="ui/rankings/daily-ranking-notice.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/title-earned-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/progression/collection-earned-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/clans/clan-preview.js?v=20261123-interface-art"></script>
+    <script src="ui/rankings/leaderboard-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/profile/gift-history.js?v=20261123-interface-art"></script>
+    <script src="ui/profile/player-awards.js?v=20261123-interface-art"></script>
+    <script src="ui/profile/public-player-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/profile/player-social.js?v=20261123-interface-art"></script>
+    <link rel="stylesheet" href="styles/components/admin-adjustment-notice.css?v=20261123-interface-art" />
+    <script src="ui/profile/admin-adjustment-notice.js?v=20261123-interface-art"></script>
+    <script src="ui/lobby/promotion-banners.js?v=20261123-interface-art"></script>
+    <script src="ui/clans/clan-daily-quests.js?v=20261123-interface-art"></script>
+    <script src="ui/clans/clan-dialog.js?v=20261123-interface-art"></script>
+    <script src="ui/chat/player-chat.js?v=20261123-interface-art"></script>
+    <script src="shared/arena-camera-and-layout.js?v=20261123-interface-art"></script>
+    <script src="shared/arena-motion.js?v=20261123-interface-art"></script>
+    <script src="shared/arena-wire.js?v=20261123-interface-art"></script>
+    <script src="shared/arena-backgrounds.js?v=20261123-interface-art"></script>
+    <script src="shared/projectile-renderer.js?v=20261123-interface-art"></script>
+    <script src="shared/booster-effect-renderer.js?v=20261123-interface-art"></script>
+    <script src="arena/food-and-frame-renderer.js?v=20261123-interface-art"></script>
+    <script src="arena/body-renderer.js?v=20261123-interface-art"></script>
+    <script src="arena/portrait-loader.js?v=20261123-interface-art"></script>
+    <script src="ui/profile/online-presence.js?v=20261123-interface-art"></script>
+    <script src="shared/menu-notifications.js?v=20261123-interface-art"></script>
+    <script src="ui/lobby/menu-notifications.js?v=20261123-interface-art"></script>
+    <script src="arena/game-audio.js?v=20261123-interface-art"></script>
+    <script src="shared/arena-names.js?v=20261123-interface-art"></script>
+    <script src="ui/lobby/arena-picker.js?v=20261123-interface-art"></script>
+    <script src="ui/rankings/hall-of-fame.js?v=20261123-interface-art"></script>
+    <script src="ui/layout/maintenance.js?v=20261123-interface-art"></script>
+    <link rel="stylesheet" href="styles/components/arena-transition.css?v=20261123-interface-art" />
+    <script src="ui/layout/arena-transition.js?v=20261123-interface-art"></script>
+    <script src="ui/arena/touch-controls.js?v=20261123-interface-art"></script>
+    <script src="shared/release-notes.js?v=20261123-interface-art"></script>
+    <script src="ui/lobby/game-news.js?v=20261123-interface-art"></script>
+    <script src="ui/lobby/promo-code.js?v=20261123-interface-art"></script>
+    <script src="shared/arena-emotes.js?v=20261123-interface-art"></script>
+    <script src="arena/emote-hotkeys.js?v=20261123-interface-art"></script>
+    <script src="arena/emote-renderer.js?v=20261123-interface-art"></script>
+    <script src="game-client.js?v=20261123-interface-art"></script>
+    <script src="ui/layout/viewport-layout.js?v=20261123-interface-art"></script>
+    <script src="ui/layout/dialog-content-layout.js?v=20261123-interface-art"></script>
+    <script src="ui/layout/system-notifications.js?v=20261123-interface-art"></script>
+    <link rel="stylesheet" href="styles/components/effi-helper.css?v=20261123-interface-art" />
+    <script src="ui/lobby/effi-helper.js?v=20261123-interface-art"></script>
+    <link rel="stylesheet" href="styles/components/effi-lobby.css?v=20261123-interface-art" />
+    <link rel="stylesheet" href="styles/layout/mobile-game-layout.css?v=20261123-interface-art" />
+    <script src="ui/lobby/effi-lobby.js?v=20261123-interface-art"></script>
   </body>
 </html>
 

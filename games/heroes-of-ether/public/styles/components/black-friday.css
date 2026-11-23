@@ -874,9 +874,9 @@ body #donationDialog[data-black-friday="true"] .sf-tab {
   border-color: var(--prism-edge) !important;
 }
 body #donationDialog[data-black-friday="true"] .booster-close {
-  --ui-art-controls-button_round_default-svg: url("../../assets/ui/svg/controls/button_round_default.svg?art=20261122b");
-  --ui-art-controls-button_round_hover-svg: url("../../assets/ui/svg/controls/button_round_hover.svg?art=20261122b");
-  --ui-art-controls-button_round_pressed-svg: url("../../assets/ui/svg/controls/button_round_pressed.svg?art=20261122b");
+  --ui-art-controls-button_round_default-svg: url("../../assets/ui/svg/controls/button_round_default.svg?art=20261123-interface-art");
+  --ui-art-controls-button_round_hover-svg: url("../../assets/ui/svg/controls/button_round_hover.svg?art=20261123-interface-art");
+  --ui-art-controls-button_round_pressed-svg: url("../../assets/ui/svg/controls/button_round_pressed.svg?art=20261123-interface-art");
 }
 #donationDialog[data-black-friday="true"] :is(.donation-token-badge, .donation-multiplier-badge) {
   position: absolute;
@@ -907,7 +907,7 @@ body #donationDialog[data-black-friday="true"] .booster-close {
   padding: 0;
   border: 0;
   border-radius: 0;
-  background: url("../../assets/ui/svg/decorations/promo-seal-gold.svg?art=20261122b") center / contain no-repeat;
+  background: url("../../assets/ui/svg/decorations/promo-seal-gold.svg?art=20261123-interface-art") center / contain no-repeat;
   color: #4b2b0a;
   font-size: 19px;
   font-weight: 900;

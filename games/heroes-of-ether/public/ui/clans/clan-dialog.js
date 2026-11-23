@@ -644,7 +644,7 @@
       const kit = window.KillexClanCrests;
       const crystal = () => {
         const img = el("img", "clan-cost-crystal");
-        img.src = "assets/menu-icons/64/currency_crystals.webp?art=20261122b";
+        img.src = "assets/menu-icons/64/currency_crystals.webp?art=20261123-interface-art";
         img.alt = "кристаллов";
         return img;
       };
@@ -894,7 +894,7 @@
           history = owned.slice(1).map(rules.trophyLabel).join(". "),
           usage = `${history ? history + ". " : ""}Выдаётся за максимальную лигу сезона. Каждому участнику разово: ${number(prize.reward.coins)} монет, ${number(prize.reward.crystals)} кристаллов, ${number(prize.reward.bucks)} эфира. Скидка ${prize.discount}% на клановые бустеры и личные покупки скинов, бабочек и шапок. Действует лучший кубок; личная скидка сохраняется на время участия в клане.`;
         item.setAttribute("aria-label", name);
-        img.src = `assets/season-trophies/128/${league.id}.webp?art=20261122b`;
+        img.src = `assets/season-trophies/128/${league.id}.webp?art=20261123-interface-art`;
         img.alt = "";
         item.append(img);
         if (owned.length > 1) item.append(el("b", "clan-medal-count", number(owned.length)));
@@ -951,7 +951,7 @@
       row.append(avatar, info);
       if (["head", "manager", "officer"].includes(p.role) && !avatar.querySelector(".clan-role-icon")) {
         const roleIcon = el("img", "clan-role-icon");
-        roleIcon.src = "assets/clan-roles/" + p.role + ".png?art=20261122b";
+        roleIcon.src = "assets/clan-roles/" + p.role + ".png?art=20261123-interface-art";
         roleIcon.alt = roles[p.role];
         roleIcon.title = roles[p.role];
         avatar.append(roleIcon);

@@ -10,7 +10,7 @@
   root.setAttribute("aria-label", `Эффи: ${greeting}`);
   root.innerHTML = `
     <div class="effi-lobby-character" aria-hidden="true">
-      <img src="assets/guide/effi-v1.webp?art=20261122b" width="213" height="320" alt="" draggable="false">
+      <img src="assets/guide/effi-v1.webp?art=20261123-interface-art" width="213" height="320" alt="" draggable="false">
       <svg class="effi-lobby-eyes" viewBox="0 0 213 320" aria-hidden="true">
         <defs><linearGradient id="effi-lobby-lid" x2="0" y2="1">
           <stop stop-color="#a7ddac"/><stop offset="1" stop-color="#9dd7b0"/>

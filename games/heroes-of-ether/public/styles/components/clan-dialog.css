@@ -125,7 +125,7 @@
   border: 18px solid transparent;
   border-image: var(
       --ui-art-surfaces-section_panel-svg,
-      url("../../assets/ui/svg/surfaces/section_panel.svg?art=20261122b")
+      url("../../assets/ui/svg/surfaces/section_panel.svg?art=20261123-interface-art")
     )
     36 fill;
   margin: 12px 0;
@@ -191,7 +191,7 @@
   border: 18px solid transparent;
   border-image: var(
       --ui-art-surfaces-input_default-svg,
-      url("../../assets/ui/svg/surfaces/input_default.svg?art=20261122b")
+      url("../../assets/ui/svg/surfaces/input_default.svg?art=20261123-interface-art")
     )
     23 23 25 23 fill;
   padding: 0 4px;
@@ -203,7 +203,7 @@
 .clan-search input:focus {
   border-image-source: var(
     --ui-art-surfaces-input_focus-svg,
-    url("../../assets/ui/svg/surfaces/input_focus.svg?art=20261122b")
+    url("../../assets/ui/svg/surfaces/input_focus.svg?art=20261123-interface-art")
   );
 }
 .clan-emblems {

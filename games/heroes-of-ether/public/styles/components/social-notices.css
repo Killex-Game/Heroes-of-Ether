@@ -3,9 +3,9 @@
 .social-notice-dialog[data-marriage-state] { width: min(470px, calc(100vw - 24px)); max-width: calc(100vw - 24px); padding-bottom: 18px; }
 .social-notice-dialog .achievement-earned-banner { padding-bottom: calc(var(--social-portrait-overlap) + 3px); }
 .social-notice-dialog[data-marriage-state] .achievement-earned-banner { background-size: cover; background-position: center; }
-.social-notice-dialog[data-marriage-state="proposal"] .achievement-earned-banner { background-image: linear-gradient(#11112644,#11112611),url("../../assets/social/banners/proposal.webp?art=20261122d"); }
-.social-notice-dialog[data-marriage-state="confirmed"] .achievement-earned-banner { background-image: linear-gradient(#24101e44,#24101e11),url("../../assets/social/banners/confirmed.webp?art=20261122d"); }
-.social-notice-dialog:is([data-marriage-state="divorced"], [data-marriage-state="declined"]) .achievement-earned-banner { background-image: linear-gradient(#10192a44,#10192a11),url("../../assets/social/banners/divorced.webp?art=20261122d"); }
+.social-notice-dialog[data-marriage-state="proposal"] .achievement-earned-banner { background-image: linear-gradient(#11112644,#11112611),url("../../assets/social/banners/proposal.webp?art=20261123-interface-art"); }
+.social-notice-dialog[data-marriage-state="confirmed"] .achievement-earned-banner { background-image: linear-gradient(#24101e44,#24101e11),url("../../assets/social/banners/confirmed.webp?art=20261123-interface-art"); }
+.social-notice-dialog:is([data-marriage-state="divorced"], [data-marriage-state="declined"]) .achievement-earned-banner { background-image: linear-gradient(#10192a44,#10192a11),url("../../assets/social/banners/divorced.webp?art=20261123-interface-art"); }
 .social-notice-dialog .social-content { display: grid; justify-items: center; gap: 14px; padding: 0; overflow: visible; max-height: none; }
 .social-notice-dialog.marriage-dialog .social-content { padding: 0; }
 .social-notice-dialog.marriage-dialog .achievement-earned-description { margin: 0; }

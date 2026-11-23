@@ -197,8 +197,8 @@
       description: `${(item.base + item.bonus).toLocaleString("ru-RU")} ${catalog.label}`,
       icon:
         currency === "bucks"
-          ? `assets/currency-packs/ether-v1/${item.id}.webp?art=20261122b`
-          : `assets/currency-packs/v1/${currency}-${item.id}.webp?art=20261122b`,
+          ? `assets/currency-packs/ether-v1/${item.id}.webp?art=20261123-interface-art`
+          : `assets/currency-packs/v1/${currency}-${item.id}.webp?art=20261123-interface-art`,
     })),
   );
   for (const [kind, name, votes] of [
@@ -213,7 +213,7 @@
       days: 7,
       votes,
       description: "7 дней - срок активного статуса продлевается",
-      icon: `assets/accounts/${kind}.png?art=20261122b`,
+      icon: `assets/accounts/${kind}.png?art=20261123-interface-art`,
     });
   }
   products.push({
@@ -224,7 +224,7 @@
     votes: 50,
     description:
       "50 билетов при активации, билет за каждый сундук, покупка билетов и быстрая прокрутка",
-    icon: "assets/accounts/lite.svg?art=20261122b",
+    icon: "assets/accounts/lite.svg?art=20261123-interface-art",
   });
   for (const offer of [
     {
@@ -235,7 +235,7 @@
       wallet: { coins: 2500, crystals: 150 },
       boosters: { common: 1000, advanced: 500 },
       description: "2 500 монет, 150 кристаллов, 1 000 случайных обычных и 500 улучшенных бустеров",
-      icon: "assets/promotions/starter-v1.webp?art=20261122b",
+      icon: "assets/promotions/starter-v1.webp?art=20261123-interface-art",
     },
     {
       id: "promotion:advanced",
@@ -246,7 +246,7 @@
       boosters: { common: 2000, advanced: 1000, rare: 500 },
       description:
         "5 000 монет, 750 кристаллов, 2 000 случайных обычных, 1 000 улучшенных и 500 редких бустеров",
-      icon: "assets/promotions/advanced-v1.webp?art=20261122b",
+      icon: "assets/promotions/advanced-v1.webp?art=20261123-interface-art",
     },
   ])
     products.push({
@@ -258,7 +258,7 @@
   products.push({
     id: "event:manya-coupon", name: "Купон Мани", type: "manya-coupon", votes: 50,
     description: "500 жетонов и сундук сразу. Удвоение последующих жетонов, VIP за жетоны без лимита, шанс VIP в сундуках Чёрной пятницы 4%. На текущее событие.",
-    icon: "assets/events/black-friday/coupon.webp?art=20261122b",
+    icon: "assets/events/black-friday/coupon.webp?art=20261123-interface-art",
   });
   const freeze = (object) => {
     for (const value of Object.values(object)) {
@@ -287,7 +287,7 @@
       boosters: { common: 100, advanced: 100, rare: 100 },
       description:
         "10 000 монет, 1 000 кристаллов, по 100 обычных, улучшенных и редких бустеров, VIP на 3 дня",
-      icon: "assets/promotions/century-v2.webp?art=20261122b",
+      icon: "assets/promotions/century-v2.webp?art=20261123-interface-art",
     });
   };
   return Object.freeze({

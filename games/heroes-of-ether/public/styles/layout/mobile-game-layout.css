@@ -179,8 +179,8 @@
   #arenaTouchControls button span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
   #arenaTouchControls svg { width: 32px; height: 24px; }
   #arena .arena-panel-toggle { width: 44px; height: 44px; min-height: 44px; margin-left: auto; padding: 4px; font-size: 0; }
-  #arena .arena-panel-toggle::before { content: ""; display: block; width: 32px; height: 32px; background: center / contain no-repeat url("../../assets/menu-icons/v2/nav_tops.webp?art=20261122b"); }
-  #arena #arenaObjectives .arena-panel-toggle::before { background-image: url("../../assets/ui/quest-scroll-v2.webp?art=20261122b"); }
+  #arena .arena-panel-toggle::before { content: ""; display: block; width: 32px; height: 32px; background: center / contain no-repeat url("../../assets/menu-icons/v2/nav_tops.webp?art=20261123-interface-art"); }
+  #arena #arenaObjectives .arena-panel-toggle::before { background-image: url("../../assets/ui/quest-scroll-v2.webp?art=20261123-interface-art"); }
   #arena .arena-panel-toggle::after { display: none; }
   #arena .arena-chat-toggle { width: 44px; height: 44px; min-height: 44px; font-size: 0; padding: 9px; }
   #arena .arena-chat-toggle .mobile-control-icon { display: block; width: 26px; height: 26px; grid-area: 1 / 1; }

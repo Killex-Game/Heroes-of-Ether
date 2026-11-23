@@ -2,7 +2,7 @@
 "use strict";
 (() => {
   // One source for the value symbol; it can be replaced without editing every screen.
-  const SOURCE = "assets/menu-icons/128/nav_achievements.webp?art=20261122b";
+  const SOURCE = "assets/menu-icons/128/nav_achievements.webp?art=20261123-interface-art";
   function icon(size = 20, label = "") {
     const image = document.createElement("img");
     image.className = "greatness-icon";

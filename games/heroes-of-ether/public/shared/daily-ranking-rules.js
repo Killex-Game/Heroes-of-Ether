@@ -46,7 +46,7 @@
             "За " + (index + 1) + " место в рейтинге «" + board.name + "» по итогам дня.",
           image: "assets/regalia/daily/" +
             (board.medal === "greatness" && index > 0 ? "canonical-star-v2/" : "") +
-            board.medal + "-" + (index + 1) + ".webp?art=20261122b",
+            board.medal + "-" + (index + 1) + ".webp?art=20261123-interface-art",
           prize,
         }),
       ),

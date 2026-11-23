@@ -75,7 +75,7 @@
   });
   const url = (group, key, size) =>
     typeof key === "string"
-      ? `assets/progression/webp/${[64, 128, 256].includes(size) ? size : 128}/${group}/${key}.webp?art=20261122b`
+      ? `assets/progression/webp/${[64, 128, 256].includes(size) ? size : 128}/${group}/${key}.webp?art=20261123-interface-art`
       : null;
   // Opaque bounds of the current 256px rank artwork, shared by lobby and shelf.
   const rankBounds = Object.freeze(Object.fromEntries(Object.entries({
@@ -131,27 +131,27 @@
       ].includes(id)
         ? `assets/achievements/illustrated-v2/${id}.webp?art=${id.startsWith("easter_") ? "20261122b" : "20261122c"}`
         : ["vip", "premium"].includes(id)
-          ? `assets/accounts/${id}.png?art=20261122b`
+          ? `assets/accounts/${id}.png?art=20261123-interface-art`
           : temporary.has(id)
-            ? `assets/achievements/${id}.svg?art=20261122b`
+            ? `assets/achievements/${id}.svg?art=20261123-interface-art`
             : url("achievements", achievements[id], size),
     rank: (id, size = 128) =>
       ranks[id]
-        ? `assets/ranks/prism-progression-v2/${[64, 128, 256, 512].includes(size) ? size : 128}/${{ king: "emperor", emperor: "king" }[id] || id}.webp?art=20261122b`
+        ? `assets/ranks/prism-progression-v2/${[64, 128, 256, 512].includes(size) ? size : 128}/${{ king: "emperor", emperor: "king" }[id] || id}.webp?art=20261123-interface-art`
         : null,
     chest: (id, size = 128) =>
       ["pro", "prince", "king", "emperor"].includes(id)
-        ? `assets/chests/prism-unified-v4/${[64, 128, 256, 512].includes(size) ? size : 128}/${id}.webp?art=20261122b`
+        ? `assets/chests/prism-unified-v4/${[64, 128, 256, 512].includes(size) ? size : 128}/${id}.webp?art=20261123-interface-art`
         : url("rank_chests", ranks[id], size),
     questChest: (art) =>
-      `assets/chests/prism-unified-v4/256/quest-${art === "expert" ? "large" : art === "experienced" ? "medium" : "small"}.webp?art=20261122b`,
+      `assets/chests/prism-unified-v4/256/quest-${art === "expert" ? "large" : art === "experienced" ? "medium" : "small"}.webp?art=20261123-interface-art`,
     clanChest: (tier) =>
       ["low", "medium", "high"].includes(tier)
-        ? `assets/chests/prism-unified-v4/256/clan-${tier}.webp?art=20261122b`
+        ? `assets/chests/prism-unified-v4/256/clan-${tier}.webp?art=20261123-interface-art`
         : null,
     booster: (id, size = 256) =>
       ["rocket", "cake", "warheads"].includes(id)
-        ? `assets/boosters/png/${id}.png?art=20261122b`
+        ? `assets/boosters/png/${id}.png?art=20261123-interface-art`
         : url("boosters", boosters[id], size),
     league: (id, size = 128) => url("leagues", leagues[id], size),
     leagueMedal: (id, size = 128) => url("league_medals", leagues[id], size),

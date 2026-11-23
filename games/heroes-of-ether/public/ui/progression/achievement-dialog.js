@@ -425,7 +425,7 @@
       ]) {
         const li = el("li");
         li.append(
-          image(`assets/menu-icons/64/currency_${key}.webp?art=20261122b`, "", 28),
+          image(`assets/menu-icons/64/currency_${key}.webp?art=20261123-interface-art`, "", 28),
           el("span", "", `${number(reward[key])} ${name}`),
         );
         wallet.append(li);

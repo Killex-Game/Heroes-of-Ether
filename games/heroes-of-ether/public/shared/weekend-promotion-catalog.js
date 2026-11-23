@@ -13,14 +13,14 @@
         "id": "coins",
         "name": "Монеты",
         "amount": 1500,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "crystals",
         "name": "Кристаллы",
         "amount": 100,
-        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261123-interface-art"
       }
     ]
   },
@@ -35,21 +35,21 @@
         "id": "coins",
         "name": "Монеты",
         "amount": 1000,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "crystals",
         "name": "Кристаллы",
         "amount": 200,
-        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "freeze",
         "name": "Заморозка",
         "amount": 3000,
-        "icon": "assets/boosters/png/freeze.png?art=20261122b"
+        "icon": "assets/boosters/png/freeze.png?art=20261123-interface-art"
       }
     ]
   },
@@ -64,21 +64,21 @@
         "id": "sphere",
         "name": "Сфера",
         "amount": 500,
-        "icon": "assets/boosters/png/sphere.png?art=20261122b"
+        "icon": "assets/boosters/png/sphere.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "golden_shield",
         "name": "Золотой щит",
         "amount": 500,
-        "icon": "assets/boosters/png/golden_shield.png?art=20261122b"
+        "icon": "assets/boosters/png/golden_shield.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "colorful_shield",
         "name": "Красочный щит",
         "amount": 1000,
-        "icon": "assets/boosters/png/colorful_shield.png?art=20261122b"
+        "icon": "assets/boosters/png/colorful_shield.png?art=20261123-interface-art"
       }
     ]
   },
@@ -93,21 +93,21 @@
         "id": "golden_shield",
         "name": "Золотой щит",
         "amount": 500,
-        "icon": "assets/boosters/png/golden_shield.png?art=20261122b"
+        "icon": "assets/boosters/png/golden_shield.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "hook",
         "name": "Крюк",
         "amount": 3000,
-        "icon": "assets/boosters/png/hook.png?art=20261122b"
+        "icon": "assets/boosters/png/hook.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "speed",
         "name": "Ускорение",
         "amount": 500,
-        "icon": "assets/boosters/png/speed.png?art=20261122b"
+        "icon": "assets/boosters/png/speed.png?art=20261123-interface-art"
       }
     ]
   },
@@ -122,14 +122,14 @@
         "id": "poison",
         "name": "Яд",
         "amount": 3000,
-        "icon": "assets/boosters/png/poison.png?art=20261122b"
+        "icon": "assets/boosters/png/poison.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "mega_poison",
         "name": "Мега яд",
         "amount": 1000,
-        "icon": "assets/boosters/png/mega_poison.png?art=20261122b"
+        "icon": "assets/boosters/png/mega_poison.png?art=20261123-interface-art"
       }
     ]
   },
@@ -144,21 +144,21 @@
         "id": "donut",
         "name": "Пончик",
         "amount": 500,
-        "icon": "assets/boosters/png/donut.png?art=20261122b"
+        "icon": "assets/boosters/png/donut.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "ice_cream",
         "name": "Мороженое",
         "amount": 1000,
-        "icon": "assets/boosters/png/ice_cream.png?art=20261122b"
+        "icon": "assets/boosters/png/ice_cream.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "candy",
         "name": "Конфета",
         "amount": 2000,
-        "icon": "assets/boosters/png/candy.png?art=20261122b"
+        "icon": "assets/boosters/png/candy.png?art=20261123-interface-art"
       }
     ]
   },
@@ -173,14 +173,14 @@
         "id": "hook",
         "name": "Крюк",
         "amount": 2000,
-        "icon": "assets/boosters/png/hook.png?art=20261122b"
+        "icon": "assets/boosters/png/hook.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "harpoon",
         "name": "Гарпун",
         "amount": 2000,
-        "icon": "assets/boosters/png/harpoon.png?art=20261122b"
+        "icon": "assets/boosters/png/harpoon.png?art=20261123-interface-art"
       }
     ]
   },
@@ -195,35 +195,35 @@
         "id": "meat",
         "name": "Мясо",
         "amount": 500,
-        "icon": "assets/boosters/png/meat.png?art=20261122b"
+        "icon": "assets/boosters/png/meat.png?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "coins",
         "name": "Монеты",
         "amount": 1000,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "bucks",
         "name": "Эфир",
         "amount": 500,
-        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "axe",
         "name": "Секира",
         "amount": 1000,
-        "icon": "assets/boosters/png/axe.png?art=20261122b"
+        "icon": "assets/boosters/png/axe.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "golden_shield",
         "name": "Золотой щит",
         "amount": 500,
-        "icon": "assets/boosters/png/golden_shield.png?art=20261122b"
+        "icon": "assets/boosters/png/golden_shield.png?art=20261123-interface-art"
       }
     ]
   },
@@ -238,28 +238,28 @@
         "id": "coins",
         "name": "Монеты",
         "amount": 1500,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "glove",
         "name": "Перчатка",
         "amount": 3000,
-        "icon": "assets/boosters/png/glove.png?art=20261122b"
+        "icon": "assets/boosters/png/glove.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "colorful_shield",
         "name": "Красочный щит",
         "amount": 3000,
-        "icon": "assets/boosters/png/colorful_shield.png?art=20261122b"
+        "icon": "assets/boosters/png/colorful_shield.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "stone",
         "name": "Камень",
         "amount": 500,
-        "icon": "assets/boosters/png/stone.png?art=20261122b"
+        "icon": "assets/boosters/png/stone.png?art=20261123-interface-art"
       }
     ]
   },
@@ -274,21 +274,21 @@
         "id": "stone",
         "name": "Камень",
         "amount": 1000,
-        "icon": "assets/boosters/png/stone.png?art=20261122b"
+        "icon": "assets/boosters/png/stone.png?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "crystals",
         "name": "Кристаллы",
         "amount": 500,
-        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "web",
         "name": "Паутина",
         "amount": 1000,
-        "icon": "assets/boosters/png/web.png?art=20261122b"
+        "icon": "assets/boosters/png/web.png?art=20261123-interface-art"
       }
     ]
   },
@@ -303,28 +303,28 @@
         "id": "mine",
         "name": "Мина",
         "amount": 500,
-        "icon": "assets/boosters/png/mine.png?art=20261122b"
+        "icon": "assets/boosters/png/mine.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "sponge",
         "name": "Губка",
         "amount": 500,
-        "icon": "assets/boosters/png/sponge.png?art=20261122b"
+        "icon": "assets/boosters/png/sponge.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "golden_shield",
         "name": "Золотой щит",
         "amount": 100,
-        "icon": "assets/boosters/png/golden_shield.png?art=20261122b"
+        "icon": "assets/boosters/png/golden_shield.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "speed",
         "name": "Ускорение",
         "amount": 1000,
-        "icon": "assets/boosters/png/speed.png?art=20261122b"
+        "icon": "assets/boosters/png/speed.png?art=20261123-interface-art"
       }
     ]
   },
@@ -339,21 +339,21 @@
         "id": "coins",
         "name": "Монеты",
         "amount": 2500,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "bucks",
         "name": "Эфир",
         "amount": 2500,
-        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "crystals",
         "name": "Кристаллы",
         "amount": 250,
-        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261123-interface-art"
       }
     ]
   },
@@ -368,14 +368,14 @@
         "id": "coins",
         "name": "Монеты",
         "amount": 10000,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "bucks",
         "name": "Эфир",
         "amount": 1000,
-        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261123-interface-art"
       }
     ]
   },
@@ -390,21 +390,21 @@
         "id": "knuckles",
         "name": "Кастет",
         "amount": 100,
-        "icon": "assets/boosters/png/knuckles.png?art=20261122b"
+        "icon": "assets/boosters/png/knuckles.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "poison",
         "name": "Яд",
         "amount": 500,
-        "icon": "assets/boosters/png/poison.png?art=20261122b"
+        "icon": "assets/boosters/png/poison.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "lock",
         "name": "Замок",
         "amount": 200,
-        "icon": "assets/boosters/png/lock.png?art=20261122b"
+        "icon": "assets/boosters/png/lock.png?art=20261123-interface-art"
       }
     ]
   },
@@ -419,28 +419,28 @@
         "id": "coins",
         "name": "Монеты",
         "amount": 5000,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "mine",
         "name": "Мина",
         "amount": 200,
-        "icon": "assets/boosters/png/mine.png?art=20261122b"
+        "icon": "assets/boosters/png/mine.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "stone",
         "name": "Камень",
         "amount": 500,
-        "icon": "assets/boosters/png/stone.png?art=20261122b"
+        "icon": "assets/boosters/png/stone.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "knuckles",
         "name": "Кастет",
         "amount": 500,
-        "icon": "assets/boosters/png/knuckles.png?art=20261122b"
+        "icon": "assets/boosters/png/knuckles.png?art=20261123-interface-art"
       }
     ]
   },
@@ -455,14 +455,14 @@
         "id": "coins",
         "name": "Монеты",
         "amount": 1000,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "meat",
         "name": "Мясо",
         "amount": 3000,
-        "icon": "assets/boosters/png/meat.png?art=20261122b"
+        "icon": "assets/boosters/png/meat.png?art=20261123-interface-art"
       }
     ]
   },
@@ -477,21 +477,21 @@
         "id": "sponge",
         "name": "Губка",
         "amount": 2000,
-        "icon": "assets/boosters/png/sponge.png?art=20261122b"
+        "icon": "assets/boosters/png/sponge.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "colorful_shield",
         "name": "Красочный щит",
         "amount": 500,
-        "icon": "assets/boosters/png/colorful_shield.png?art=20261122b"
+        "icon": "assets/boosters/png/colorful_shield.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "speed",
         "name": "Ускорение",
         "amount": 300,
-        "icon": "assets/boosters/png/speed.png?art=20261122b"
+        "icon": "assets/boosters/png/speed.png?art=20261123-interface-art"
       }
     ]
   },
@@ -506,14 +506,14 @@
         "id": "crystals",
         "name": "Кристаллы",
         "amount": 250,
-        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "candy",
         "name": "Конфета",
         "amount": 3000,
-        "icon": "assets/boosters/png/candy.png?art=20261122b"
+        "icon": "assets/boosters/png/candy.png?art=20261123-interface-art"
       }
     ]
   },
@@ -528,28 +528,28 @@
         "id": "bucks",
         "name": "Эфир",
         "amount": 500,
-        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "rocket",
         "name": "Ракета",
         "amount": 2000,
-        "icon": "assets/boosters/png/rocket.png?art=20261122b"
+        "icon": "assets/boosters/png/rocket.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "meat",
         "name": "Мясо",
         "amount": 1000,
-        "icon": "assets/boosters/png/meat.png?art=20261122b"
+        "icon": "assets/boosters/png/meat.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "donut",
         "name": "Пончик",
         "amount": 1000,
-        "icon": "assets/boosters/png/donut.png?art=20261122b"
+        "icon": "assets/boosters/png/donut.png?art=20261123-interface-art"
       }
     ]
   },
@@ -564,28 +564,28 @@
         "id": "coins",
         "name": "Монеты",
         "amount": 5000,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "crystals",
         "name": "Кристаллы",
         "amount": 250,
-        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "golden_shield",
         "name": "Золотой щит",
         "amount": 500,
-        "icon": "assets/boosters/png/golden_shield.png?art=20261122b"
+        "icon": "assets/boosters/png/golden_shield.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "speed",
         "name": "Ускорение",
         "amount": 500,
-        "icon": "assets/boosters/png/speed.png?art=20261122b"
+        "icon": "assets/boosters/png/speed.png?art=20261123-interface-art"
       }
     ]
   },
@@ -600,21 +600,21 @@
         "id": "hook",
         "name": "Крюк",
         "amount": 500,
-        "icon": "assets/boosters/png/hook.png?art=20261122b"
+        "icon": "assets/boosters/png/hook.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "rocket",
         "name": "Ракета",
         "amount": 700,
-        "icon": "assets/boosters/png/rocket.png?art=20261122b"
+        "icon": "assets/boosters/png/rocket.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "mine",
         "name": "Мина",
         "amount": 400,
-        "icon": "assets/boosters/png/mine.png?art=20261122b"
+        "icon": "assets/boosters/png/mine.png?art=20261123-interface-art"
       }
     ]
   },
@@ -629,28 +629,28 @@
         "id": "bucks",
         "name": "Эфир",
         "amount": 500,
-        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "crystals",
         "name": "Кристаллы",
         "amount": 500,
-        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "mega_poison",
         "name": "Мега яд",
         "amount": 1000,
-        "icon": "assets/boosters/png/mega_poison.png?art=20261122b"
+        "icon": "assets/boosters/png/mega_poison.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "lock",
         "name": "Замок",
         "amount": 500,
-        "icon": "assets/boosters/png/lock.png?art=20261122b"
+        "icon": "assets/boosters/png/lock.png?art=20261123-interface-art"
       }
     ]
   },
@@ -665,49 +665,49 @@
         "id": "fire",
         "name": "Огонь",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/fire.webp?art=20261122b"
+        "icon": "assets/progression/webp/256/boosters/fire.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "cake",
         "name": "Торт",
         "amount": 200,
-        "icon": "assets/boosters/png/cake.png?art=20261122b"
+        "icon": "assets/boosters/png/cake.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "warheads",
         "name": "Боеголовки",
         "amount": 200,
-        "icon": "assets/boosters/png/warheads.png?art=20261122b"
+        "icon": "assets/boosters/png/warheads.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "vortex",
         "name": "Вихрь",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/whirlwind.webp?art=20261122b"
+        "icon": "assets/progression/webp/256/boosters/whirlwind.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "awl",
         "name": "Шило",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/awl.webp?art=20261122b"
+        "icon": "assets/progression/webp/256/boosters/awl.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "clan_shield",
         "name": "Клановый щит",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/clan_shield.webp?art=20261122b"
+        "icon": "assets/progression/webp/256/boosters/clan_shield.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "fire_sword",
         "name": "Огненный меч",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/flaming_sword.webp?art=20261122b"
+        "icon": "assets/progression/webp/256/boosters/flaming_sword.webp?art=20261123-interface-art"
       }
     ]
   },
@@ -722,21 +722,21 @@
         "id": "knuckles",
         "name": "Кастет",
         "amount": 500,
-        "icon": "assets/boosters/png/knuckles.png?art=20261122b"
+        "icon": "assets/boosters/png/knuckles.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "axe",
         "name": "Секира",
         "amount": 500,
-        "icon": "assets/boosters/png/axe.png?art=20261122b"
+        "icon": "assets/boosters/png/axe.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "rocket",
         "name": "Ракета",
         "amount": 1000,
-        "icon": "assets/boosters/png/rocket.png?art=20261122b"
+        "icon": "assets/boosters/png/rocket.png?art=20261123-interface-art"
       }
     ]
   },
@@ -751,35 +751,35 @@
         "id": "hook",
         "name": "Крюк",
         "amount": 3000,
-        "icon": "assets/boosters/png/hook.png?art=20261122b"
+        "icon": "assets/boosters/png/hook.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "knuckles",
         "name": "Кастет",
         "amount": 500,
-        "icon": "assets/boosters/png/knuckles.png?art=20261122b"
+        "icon": "assets/boosters/png/knuckles.png?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "bucks",
         "name": "Эфир",
         "amount": 500,
-        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "harpoon",
         "name": "Гарпун",
         "amount": 500,
-        "icon": "assets/boosters/png/harpoon.png?art=20261122b"
+        "icon": "assets/boosters/png/harpoon.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "meat",
         "name": "Мясо",
         "amount": 500,
-        "icon": "assets/boosters/png/meat.png?art=20261122b"
+        "icon": "assets/boosters/png/meat.png?art=20261123-interface-art"
       }
     ]
   },
@@ -794,35 +794,35 @@
         "id": "coins",
         "name": "Монеты",
         "amount": 10000,
-        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_coins.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "crystals",
         "name": "Кристаллы",
         "amount": 1000,
-        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_crystals.webp?art=20261123-interface-art"
       },
       {
         "kind": "currency",
         "id": "bucks",
         "name": "Эфир",
         "amount": 2000,
-        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261122b"
+        "icon": "assets/menu-icons/128/currency_bucks.webp?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "axe",
         "name": "Секира",
         "amount": 1000,
-        "icon": "assets/boosters/png/axe.png?art=20261122b"
+        "icon": "assets/boosters/png/axe.png?art=20261123-interface-art"
       },
       {
         "kind": "booster",
         "id": "golden_shield",
         "name": "Золотой щит",
         "amount": 1000,
-        "icon": "assets/boosters/png/golden_shield.png?art=20261122b"
+        "icon": "assets/boosters/png/golden_shield.png?art=20261123-interface-art"
       }
     ]
   }

@@ -28,7 +28,7 @@
         for (const value of [1, 2, 3, 5, 10]) this.tiles.set(value, tile);
         for (const cell of this.cells.values()) cell.dirty = true;
       };
-      img.src = "assets/food/ether-drop-v1.webp?art=20261122b";
+      img.src = "assets/food/ether-drop-v1.webp?art=20261123-interface-art";
     }
     cellKeys(orb) {
       const size = this.cellSize,
@@ -340,7 +340,30 @@
     ctx.lineWidth = 0.7;
     ctx.stroke();
   }
+  // Native circles reproduce the approved rims without asynchronous texture swaps.
+  const preparedRimColors = {"vip":["#a56a24","#dba64b","#f2d18a","#b77725"],"premium":["#655175","#a07abb","#d7b7df","#c5a564"],"bronze":["#714c36","#b77d50","#d8b190","#8c5838"],"silver":["#5d6c7a","#a9bac7","#dde5e8","#82929d"],"gold":["#8b7145","#c9ad74","#ead7ab","#b6975d"],"platinum":["#496c70","#9fbfb9","#d6e5da","#81a5a4"],"diamond":["#4c819c","#99cbdc","#d4ebef","#81adc4"],"champions":["#683c40","#9d5360","#ca98a0","#c3a16b"],"title_novice":["#596675","#9dabb9","#d3dce1","#8294a7"],"title_experienced":["#355b83","#89add0","#cfdfec","#86b5d4"],"title_expert":["#815b30","#bd9454","#e7cca1","#799bad"],"title_master":["#7d453a","#c18b4d","#e9caa0","#af6371"],"title_sage":["#2c6675","#84c0cb","#d3e6e8","#79a6be"],"title_pro":["#31694e","#8aac73","#d9dfae","#bba16c"],"title_prince":["#355887","#8ca8cf","#dfd7b8","#c3a06c"],"title_king":["#793741","#ad6670","#e2c7a7","#c4a164"],"title_emperor":["#324667","#8b9dbd","#e5d6ad","#bc9b67"],"title_boss":["#6e3d70","#ac7ab0","#e2c4df","#c5a36b"]};
+  function preparedRim(ctx, id, radius) {
+    const colors = preparedRimColors[id.replace(/^canon_/, "")];
+    if (!colors) return false;
+    const [dark, metal, light, trim] = colors, band = rimWidth(radius), center = radius + 0.4;
+    const gradient = ctx.createLinearGradient(-radius, -radius, radius, radius);
+    [[0,light],[.38,metal],[.72,dark],[1,metal]].forEach(([at,color]) => gradient.addColorStop(at,color));
+    ring(ctx, center, band + 1.3, dark);
+    ring(ctx, center, band, gradient);
+    ring(ctx, center + band * .32, Math.max(.4, band * .1), light);
+    ring(ctx, center - band * .32, Math.max(.4, band * .16), trim);
+    ring(ctx, center - band * .45, Math.max(.4, band * .1), dark);
+    if (radius >= 24) for (let i=0;i<8;i++) {
+      ctx.save(); ctx.rotate(i * Math.PI / 4);
+      const w=Math.min(5,band*.7), h=band*.22;
+      ctx.beginPath(); ctx.moveTo(-w,-center); ctx.lineTo(0,-center-h);
+      ctx.lineTo(w,-center); ctx.lineTo(0,-center+h); ctx.closePath();
+      ctx.strokeStyle=light; ctx.lineWidth=Math.max(.4,band*.08); ctx.stroke(); ctx.restore();
+    }
+    return true;
+  }
   function paintRim(ctx, t, radius, simple = false) {
+    if (preparedRim(ctx, t.id, radius)) return;
     const band = rimWidth(radius),
       center = radius + 0.4;
     const metal = metalGradient(ctx, t, radius);
@@ -505,7 +528,7 @@
     ctx.translate(extent, extent);
     paintRim(ctx, theme, radius, simple);
     let shine = null;
-    if (!simple && radius >= 24 && !["vip", "premium"].includes(theme.id)) {
+    if (!simple && radius >= 24 && !preparedRimColors[theme.id.replace(/^canon_/, "")] && !["vip", "premium"].includes(theme.id)) {
       // Bake the annulus once. Clipping a large rotating square for every
       // part on every frame creates avoidable mask/compositing work in Chrome.
       shine = document.createElement("canvas");
