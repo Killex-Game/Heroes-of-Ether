@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261123-avatar-arena-followup",
-  "sourceTag": "release/20261123-guardian-neck",
-  "sourceCommit": "7656b83aa7ddb3d5a2ddf76a2f599830bd1d9240",
+  "gameRelease": "20261123-snapshot-cache",
+  "sourceTag": "release/20261123-snapshot-cache",
+  "sourceCommit": "d228b39da12c44b6bd3fcd09433dd89301334870",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": false,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-23T00:28:21.750Z",
+  "entryReopenedAtUtc": "2026-11-23T08:52:27.555Z",
   "runtime": {
-    "gamePid": 363098,
+    "gamePid": 391955,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
@@ -37,77 +37,134 @@
     "Prepared interface artwork and 14 lobby menu icons installed; protected artwork and controls retained",
     "Ten ornate title profile frames, 22 saturated arena rim palettes with unchanged rim geometry",
     "Six moderately ornate league profile frames and higher-contrast league arena rims with exact original geometry",
-    "Owner corrected-neck winged guardian imported in five resolutions with unchanged canonical fit"
+    "Owner corrected-neck winged guardian imported in five resolutions with unchanged canonical fit",
+    "PostgreSQL worker reuses SHA-256 verified canonical record bytes; exact legacy document/world hashes and durability retained",
+    "News editor restores built-in banners with named artwork revisions"
   ],
   "data": {
     "before": {
-      "at": 1795393477967,
-      "revision": 3522209,
-      "digest": "8345bb2db42f610f8aea35394610a8dd16941ff55c96ae7486ec449cb453b3f5",
-      "worldHash": "596575c91a41dbf69a58a4fe33ce5bd3ebb6bb8735e30d6b533eabee8b9af568",
-      "profiles": 1704,
+      "at": 1795423613675,
+      "revision": 3689548,
+      "digest": "e407ec7edc950d8ab42f0ba7af3a05e54b3071d9e1476e4f44b313dd230e91c8",
+      "worldHash": "8a03f78477f46fcee5771a825988e2ece8b268fc5781aef38fa333608ad7bf6d",
+      "profiles": 1706,
       "clans": 135,
       "fullWorldAndAuxEqual": true,
+      "backup": "/srv/heroether-test/play/backups/runtime-optimization-20261123",
       "backupEqual": true,
-      "preservedFormatVerified": true,
-      "backup": "/srv/heroether-test/play/backups/avatar-arena-followup-20261123"
+      "preservedFormatVerified": true
     },
     "after": {
       "calendarReplayExact": true,
       "noCalendarChange": true,
       "expiredChat": 0,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 3522209,
-      "revision": 3522209,
-      "digest": "8345bb2db42f610f8aea35394610a8dd16941ff55c96ae7486ec449cb453b3f5",
-      "worldHash": "596575c91a41dbf69a58a4fe33ce5bd3ebb6bb8735e30d6b533eabee8b9af568",
-      "profiles": 1704,
+      "beforeRevision": 3689548,
+      "revision": 3689548,
+      "digest": "e407ec7edc950d8ab42f0ba7af3a05e54b3071d9e1476e4f44b313dd230e91c8",
+      "worldHash": "8a03f78477f46fcee5771a825988e2ece8b268fc5781aef38fa333608ad7bf6d",
+      "profiles": 1706,
       "clans": 135
     },
-    "localBackupSha256": "ddcc05fdd789cbfc9fa6fa647bc87e12b7fa5fe733e194df3fddbdb2d98d984e",
+    "localBackupSha256": "3956d734810fb3d21497d4a925f561d9108bc964e1f2a375173eab6b618b8cf0",
     "reopened": {
-      "at": 1795393701750,
-      "gamePid": 363098,
+      "at": 1795423947555,
+      "gamePid": 391955,
       "adminPid": 1163,
-      "revision": 3522209,
-      "generation": 1002,
+      "revision": 3689548,
+      "generation": 2001,
       "entryOpened": true,
       "backend": "postgresql"
     }
   },
   "verification": {
-    "linuxFull": {
-      "total": 2304,
-      "passed": 2303,
-      "failed": 0,
+    "linuxFullInitial": {
+      "total": 2308,
+      "passed": 2301,
+      "failed": 6,
       "skipped": 1
     },
-    "windowsGiftAndBoosterIntegration": {
-      "passed": 25,
+    "affectedFilesAfterFix": {
+      "windows": 9,
+      "linux": 9,
       "failed": 0
     },
-    "windowsTargeted": {
-      "passed": 37,
+    "snapshotTargeted": {
+      "windows": 48,
+      "linux": 48,
       "failed": 0
     },
-    "previousBatch": {
+    "realPostgreSQL": {
+      "passed": 10,
+      "failed": 0,
+      "initialNetworkTimeoutRetained": true
+    },
+    "runtimeFilesVerified": 2548,
+    "previousPublicAndOtherRuntimeUnchanged": true,
+    "productionChangedFiles": 4,
+    "commentsRemoved": 28,
+    "rasterAssetsChanged": 0,
+    "previousReleaseChecks": {
       "linuxFull": {
-        "total": 2298,
-        "passed": 2297,
+        "total": 2304,
+        "passed": 2303,
         "failed": 0,
         "skipped": 1
       },
-      "windowsFull": {
-        "total": 2298,
-        "passed": 2281,
-        "failed": 16,
-        "skipped": 1
+      "windowsGiftAndBoosterIntegration": {
+        "passed": 25,
+        "failed": 0
       },
-      "windowsFinalAffectedFiles": {
-        "total": 129,
-        "passed": 123,
-        "failed": 6,
-        "remainingCause": "EPERM atomic rename"
+      "windowsTargeted": {
+        "passed": 37,
+        "failed": 0
+      },
+      "previousBatch": {
+        "linuxFull": {
+          "total": 2298,
+          "passed": 2297,
+          "failed": 0,
+          "skipped": 1
+        },
+        "windowsFull": {
+          "total": 2298,
+          "passed": 2281,
+          "failed": 16,
+          "skipped": 1
+        },
+        "windowsFinalAffectedFiles": {
+          "total": 129,
+          "passed": 123,
+          "failed": 6,
+          "remainingCause": "EPERM atomic rename"
+        },
+        "browsers": {
+          "engines": [
+            "Chromium",
+            "Firefox",
+            "WebKit"
+          ],
+          "viewports": 5,
+          "casesPerEngine": 18,
+          "pageErrors": 0
+        },
+        "networkExercisePlayers": 35,
+        "networkExercisePhases": 5,
+        "finalPendingActions": 0,
+        "generatorAuditTests": 5,
+        "avatarGallery": 85,
+        "achievementDocument": {
+          "entries": 69,
+          "pages": 24
+        },
+        "httpExactChecks": 87,
+        "structure": {
+          "javascript": 1048,
+          "references": 5391
+        },
+        "productionChangedFiles": 42,
+        "commentsRemoved": 573,
+        "rasterAssetsChanged": 0
       },
       "browsers": {
         "engines": [
@@ -115,54 +172,27 @@
           "Firefox",
           "WebKit"
         ],
-        "viewports": 5,
-        "casesPerEngine": 18,
+        "arenaMassCases": [
+          100,
+          1500,
+          6210
+        ],
+        "giftSentFromArena": true,
         "pageErrors": 0
       },
-      "networkExercisePlayers": 35,
-      "networkExercisePhases": 5,
-      "finalPendingActions": 0,
-      "generatorAuditTests": 5,
-      "avatarGallery": 85,
-      "achievementDocument": {
-        "entries": 69,
-        "pages": 24
-      },
-      "httpExactChecks": 87,
+      "portraitVariantsPerEngine": 425,
+      "httpExactChecks": 8,
       "structure": {
-        "javascript": 1048,
-        "references": 5391
+        "javascript": 1051,
+        "references": 5402
       },
-      "productionChangedFiles": 42,
-      "commentsRemoved": 573,
+      "productionChangedFiles": 6,
+      "commentsRemoved": 159,
       "rasterAssetsChanged": 0
-    },
-    "browsers": {
-      "engines": [
-        "Chromium",
-        "Firefox",
-        "WebKit"
-      ],
-      "arenaMassCases": [
-        100,
-        1500,
-        6210
-      ],
-      "giftSentFromArena": true,
-      "pageErrors": 0
-    },
-    "portraitVariantsPerEngine": 425,
-    "httpExactChecks": 8,
-    "structure": {
-      "javascript": 1051,
-      "references": 5402
-    },
-    "productionChangedFiles": 6,
-    "commentsRemoved": 159,
-    "rasterAssetsChanged": 0
+    }
   },
-  "report": "artifacts/guardian-neck-20261123/report.txt",
-  "previousRelease": "20261123-interface-mechanics",
+  "report": "artifacts/runtime-optimization-20261123/report.txt",
+  "previousRelease": "20261123-avatar-arena-followup",
   "notes": [
     "Initial Linux failures were obsolete expectations, preserved with final complete rerun",
     "Previous Windows full failures remain documented; production writes/fsync were not weakened",
@@ -170,46 +200,142 @@
     "No new paid service, automatic ban, permanent polling timer or capacity guarantee",
     "Protected backups retained; low VPS free disk space requires separate storage work",
     "Root developer sources synchronized, experimental process and private local data unchanged",
-    "Prepared graphics installed 23 November; four rejected theme-frame trials excluded and original frames retained"
+    "Prepared graphics installed 23 November; four rejected theme-frame trials excluded and original frames retained",
+    "Last optimization plan verified on GitHub and updated for PostgreSQL: docs/scaling-two-million-accounts.txt. Capacity ladder and addressable profile/history split remain open.",
+    "Old closed CPU diagnostics compressed losslessly; every file and local archive verified. Protected game backups and histories retained."
   ],
   "performance": {
-    "before": {
-      "p95": 20.67,
-      "hz": 19.98,
+    "status": "installed; collecting live samples and capacity ladder",
+    "controlledSnapshotBenchmark": {
+      "inputBytes": 197039882,
+      "profiles": 1706,
+      "clans": 135,
+      "linuxCpuQuota": 1,
+      "baselineMs": [
+        17283.36,
+        16543.34,
+        16601.14,
+        16741.93
+      ],
+      "cachedMs": [
+        18296.3,
+        3674.56,
+        3252.55,
+        4677.91
+      ],
+      "allFourManifestsEqual": true,
+      "scope": "Packing only, not game tick or capacity"
+    },
+    "beforeInstall": {
+      "windowMs": 60000,
+      "ticks": 1200,
+      "advancedTicks": 1200,
+      "updatesHz": 20,
+      "tickWorkMs": {
+        "count": 1200,
+        "p50": 15.38,
+        "p95": 37.93,
+        "p99": 56.33,
+        "max": 71.35
+      },
+      "tickIntervalMs": {
+        "count": 1200,
+        "p50": 50.01,
+        "p95": 52.73,
+        "p99": 62.49,
+        "max": 93.73
+      },
+      "eventLoop": {
+        "windowMs": 9999.3,
+        "resolutionMs": 20,
+        "samples": 379,
+        "p95Ms": 42.47,
+        "p99Ms": 64.95,
+        "maxMs": 87.36
+      },
+      "capturedAt": 1795423467616,
+      "uptimeSeconds": 29963,
+      "targetTickMs": 50,
       "arena": {
         "rooms": 3,
-        "activePlayers": 22,
-        "parts": 66,
-        "connections": 4
+        "activePlayers": 51,
+        "parts": 167,
+        "connections": 5
       },
       "online": {
-        "arena": 4,
-        "lobby": 0,
-        "total": 4
+        "arena": 5,
+        "lobby": 1,
+        "total": 6
+      },
+      "memoryMiB": {
+        "resident": 3729,
+        "heapUsed": 460,
+        "limit": 5120
+      },
+      "persistence": {
+        "arenaBatches": 1,
+        "queuedActions": 0,
+        "paused": false,
+        "staging": false,
+        "walRevision": 3688872,
+        "pendingWalBytes": 4250980,
+        "maxWalBytes": 67108864
+      },
+      "stateWorkers": {
+        "jobs": 538169,
+        "replaced": 17,
+        "workerMs": 951223.7041085772,
+        "cloneMs": 283138.9335595635,
+        "turnaroundMs": 3261406.312270548,
+        "failures": 0,
+        "overflowStreams": 0,
+        "retiredRooms": 46,
+        "drained": 0,
+        "delivered": 755277,
+        "deliveryMs": 71408.42383400878
       }
     },
-    "settledSamples": 8,
-    "settledP95Range": [
-      12.14,
-      14.1
-    ],
-    "afterLast": {
-      "hz": 20,
-      "arena": {
-        "rooms": 3,
-        "activePlayers": 21,
-        "parts": 49,
-        "connections": 1
+    "capacityVerified": false,
+    "fullSamples": "artifacts/runtime-optimization-20261123",
+    "previousReleaseMeasurement": {
+      "before": {
+        "p95": 20.67,
+        "hz": 19.98,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 22,
+          "parts": 66,
+          "connections": 4
+        },
+        "online": {
+          "arena": 4,
+          "lobby": 0,
+          "total": 4
+        }
       },
-      "online": {
-        "arena": 1,
-        "lobby": 1,
-        "total": 2
+      "settledSamples": 8,
+      "settledP95Range": [
+        12.14,
+        14.1
+      ],
+      "afterLast": {
+        "hz": 20,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 21,
+          "parts": 49,
+          "connections": 1
+        },
+        "online": {
+          "arena": 1,
+          "lobby": 1,
+          "total": 2
+        },
+        "queuedActions": 0
       },
-      "queuedActions": 0
-    },
-    "fullSamples": "artifacts/avatar-bottom-fit-20261123/performance-after.json",
-    "comparableControlledBenchmark": false
+      "fullSamples": "artifacts/avatar-bottom-fit-20261123/performance-after.json",
+      "comparableControlledBenchmark": false
+    }
   },
   "staticPortraitUpdate": {
     "at": "2026-11-23T00:51:37.226Z",
