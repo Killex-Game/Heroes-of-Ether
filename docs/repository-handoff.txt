@@ -1,20 +1,17 @@
-Сменная работа над Heroes of Ether, актуализация 23.11.2026
+Сменная работа над Heroes of Ether, актуализация 24.11.2026
 
-Текущий код VPS: tag release/20261123-checkpoint-streaming,
-commit 12aefd994005b30a5f5aae29ba9acd66b4f968cd.
-Актуальные отчёты и план: ветка codex/20261123-interface-mechanics.
-origin/main остаётся на старом выпуске, не использовать его как текущий VPS.
-Индекс календаря 2e5e1a5, учёт кланового вклада, разделение неизменяемой
-истории профилей и чтение/запись контрольных точек по записям УСТАНОВЛЕНЫ.
-Эксперимент food fast path a377fae из codex/20261123-runtime-candidates
-НЕ установлен: улучшение всей игры не доказано. Не развёртывать ветку целиком.
-Полный Linux текущего выпуска: 2326 тестов, 2325 pass, 0 fail, 1 skip;
-изолированный PostgreSQL: 10 pass; mixed35+5 обе версии сохраняют ACK и историю.
-Отчёт: games/heroes-of-ether/docs/performance/checkpoint-streaming-installed-20261123.json.
-Все backup, истории и WAL сохранять. Память всего мира, адресные профили,
-независимые комнаты и предельный CCU остаются открытыми задачами.
-План оптимизации: docs/scaling-two-million-accounts.txt, этапы и замеры
-games/heroes-of-ether/docs/performance/runtime-optimization-20261123.txt.
+Текущий VPS: tag release/20261124-sword-stability,
+commit 92cc7c4bc904b1152989e14d14b962541877a712.
+Отчёты и план: codex/20261123-interface-mechanics. origin/main старый.
+Потоковая обработка контрольных точек и повторное использование неизменяемой истории установлены ранее.
+Исправлен воспроизводимый crash владельца меча, Windows87, Linux2327/2326pass/0fail/1skip.
+Нагрузка70+5 и отрицательные прогоны: games/heroes-of-ether/docs/performance/checkpoint-capacity-20261123.json.
+Кандидат codex/20261124-checkpoint-threshold НЕ установлен и не квалифицирован.
+Исходники/проверки: games/heroes-of-ether/docs/performance/sword-stability-20261124.json.
+42 исторические backup копии имеют hardlinks: не редактировать на месте,
+сохранять пути и локальные копии; дальнейшая замена только атомарно.
+Полные профили, истории, нагрузка физики и независимые комнаты остаются работой.
+
 Далее приведены исходная точка репозитория и правила передачи смены.
 
 Репозиторий владельца: https://github.com/Killex-Game/Heroes-of-Ether.git

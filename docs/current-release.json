@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261123-checkpoint-streaming",
-  "sourceTag": "release/20261123-checkpoint-streaming",
-  "sourceCommit": "12aefd994005b30a5f5aae29ba9acd66b4f968cd",
+  "gameRelease": "20261124-sword-stability",
+  "sourceTag": "release/20261124-sword-stability",
+  "sourceCommit": "92cc7c4bc904b1152989e14d14b962541877a712",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": false,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-23T19:13:28.105Z",
+  "entryReopenedAtUtc": "2026-11-23T20:11:39.738Z",
   "runtime": {
-    "gamePid": 462677,
+    "gamePid": 479513,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
@@ -47,35 +47,37 @@
     "Per-life physics cursor rejects duplicate absorption delivery",
     "Configured worker retains owner calendarSchedule",
     "Audited profile writes retain immutable arena operation receipts by reference. Appending still copies the changed bucket and outer map. Arbitrary transact retains full isolation.",
-    "Large checkpoint JSON is read and written record by record, preserving exact bytes and every history entry. WAL, fsync, atomic rename and single-writer fencing are unchanged."
+    "Large checkpoint JSON is read and written record by record, preserving exact bytes and every history entry. WAL, fsync, atomic rename and single-writer fencing are unchanged.",
+    "Resolve the living sword owner immediately before each strike; a sword whose owner was killed earlier in the same tick no longer crashes the arena or strikes after death. Remove dead and expired swords after processing."
   ],
   "data": {
     "before": {
-      "at": 1795460696789,
-      "revision": 4104404,
-      "digest": "ed6185d02b6884289d80edfcb223fa8cfea1ea6d92f628487975a5a68d63bbd7",
-      "worldHash": "cc70526acd91cc8165421252eff226598ba0fa07848eefa93df7625b1e10b7d1",
+      "at": 1795463786150,
+      "revision": 4133790,
+      "digest": "f588e213b41278881dec55b855910a50111b38b6c15780939d285319da1c969d",
+      "worldHash": "3a620e799edeecaa746b460f9d4b0b2fbc50da1e9c3d16a87cc8c5a88061b975",
       "profiles": 1719,
       "clans": 136,
       "fullWorldAndAuxEqual": true,
-      "backup": "/dev/shm/heroether-checkpoint-streaming-install-20261123/checkpoint-streaming-install-20261123",
+      "backup": "/dev/shm/heroether-sword-stability-install-20261124/sword-stability-install-20261124",
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/checkpoint-streaming-install-20261123/data-before.tar.gz"
+      "durableBackup": "/srv/heroether-test/play/backups/sword-stability-install-20261124/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
       "approvedMigrationsExact": true,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 4104404,
-      "revision": 4104405,
-      "digest": "a50f5838a5b75a3587e65b4a03a38ad8811c648ac6573ef69d83cee5fe7e4a15",
-      "worldHash": "d26f3a20b22e0298887f9bce4eac03fdca57d6fc71dc1ac727da5ec426233377",
+      "beforeRevision": 4133790,
+      "revision": 4133792,
+      "digest": "9ddc4c1f2ab62ccd7b9c1015c2ec6b623183671511ff102565222dc73be6e0a3",
+      "worldHash": "79d2dedd06909b8d049bea7fd6f4ce1bf044c86f7b802d3a0a8b60e2aea2b1fb",
       "profiles": 1719,
       "clans": 136,
-      "at": 1795461036780,
+      "at": 1795464105637,
       "transitionTimes": [
-        1795461036780
+        1795464105637,
+        1795464108779
       ],
       "retiredAvatarProfiles": [],
       "constructorChanges": [],
@@ -84,10 +86,10 @@
     },
     "backup": {
       "verified": true,
-      "archiveSha256": "b101513ae53eb5d00000003d82345c71aa9f3190046c8dcc99790c78cfa277c6",
-      "revision": 4104404,
-      "digest": "ed6185d02b6884289d80edfcb223fa8cfea1ea6d92f628487975a5a68d63bbd7",
-      "worldHash": "cc70526acd91cc8165421252eff226598ba0fa07848eefa93df7625b1e10b7d1",
+      "archiveSha256": "efb00c642a3981d17a745b75704b7cf90493bc4724c981530cd7265948487bc2",
+      "revision": 4133790,
+      "digest": "f588e213b41278881dec55b855910a50111b38b6c15780939d285319da1c969d",
+      "worldHash": "3a620e799edeecaa746b460f9d4b0b2fbc50da1e9c3d16a87cc8c5a88061b975",
       "profiles": 1719,
       "clans": 136,
       "postgresqlArchiveVerified": true
@@ -1100,50 +1102,39 @@
     "foodTransferInstalled": false
   },
   "latestObservation": {
-    "at": "2026-11-23T19:18:30.302Z",
+    "at": 1795465002473,
     "online": {
       "arena": 5,
-      "lobby": 6,
-      "total": 11
+      "lobby": 0,
+      "total": 5
     },
-    "tickWorkMs": {
-      "count": 1198,
-      "p50": 8.99,
-      "p95": 22.09,
-      "p99": 29.67,
-      "max": 40.05
+    "arena": {
+      "rooms": 3,
+      "activePlayers": 23,
+      "parts": 86,
+      "connections": 5
     },
-    "tickIntervalMs": {
-      "count": 1198,
-      "p50": 49.99,
-      "p95": 51.06,
-      "p99": 59.76,
-      "max": 125.99
-    },
-    "memoryMiB": {
-      "resident": 2560,
-      "heapUsed": 599,
-      "limit": 5120
-    },
-    "queuedActions": 0,
-    "paused": false,
+    "tickP95Ms": 19.24,
+    "intervalP99Ms": 51.96,
+    "rssMiB": 2592,
+    "queue": 0,
     "database": {
       "connected": true,
       "lastError": null,
-      "revision": 4106482,
-      "syncAgeMs": 10607,
-      "prepareMs": 12290,
-      "writeMs": 279
+      "revision": 4136142,
+      "syncAgeMs": 15251,
+      "prepareMs": 12950,
+      "writeMs": 405
     },
     "entryOpen": true,
     "comparableAB": false,
     "latencyAndMemoryWorkComplete": false
   },
   "previousInstalledRelease": {
-    "release": "20261123-profile-history",
-    "sourceCommit": "f9a39d47b9a4980f912321bc167fd6e02de256d1"
+    "release": "20261123-checkpoint-streaming",
+    "sourceCommit": "12aefd994005b30a5f5aae29ba9acd66b4f968cd"
   },
-  "backendSourceCommit": "12aefd994005b30a5f5aae29ba9acd66b4f968cd",
+  "backendSourceCommit": "92cc7c4bc904b1152989e14d14b962541877a712",
   "calendarIndexUpdate": {
     "installed": true,
     "published": true,
@@ -2884,6 +2875,4428 @@
         "Includes startup and returning players; live before/after populations differ",
         "Five minutes is not proof of long-term leak freedom, whole-game speedup or maximum CCU"
       ]
+    }
+  },
+  "latestCapacityValidation": {
+    "sourceCommit": "12aefd994005b30a5f5aae29ba9acd66b4f968cd",
+    "report": "games/heroes-of-ether/docs/performance/checkpoint-capacity-20261123.json",
+    "runs": [
+      {
+        "players": 70,
+        "passed": false,
+        "ack": 2073,
+        "pgEqual": true
+      },
+      {
+        "players": 70,
+        "passed": true,
+        "ack": 2080,
+        "pgEqual": true
+      },
+      {
+        "players": 70,
+        "passed": false,
+        "ack": 2085,
+        "pgEqual": true
+      },
+      {
+        "players": 70,
+        "passed": true,
+        "ack": 2081,
+        "pgEqual": true
+      }
+    ],
+    "notMaximumCCU": true
+  },
+  "swordStabilityUpdate": {
+    "installed": true,
+    "published": false,
+    "release": "20261124-sword-stability",
+    "sourceCommit": "92cc7c4bc904b1152989e14d14b962541877a712",
+    "entryOpenedAtUtc": "2026-11-23T20:11:39.738Z",
+    "gamePid": 479513,
+    "adminPid": 1163,
+    "change": "Resolve the living sword owner immediately before each strike; a sword whose owner was killed earlier in the same tick no longer crashes the arena or strikes after death. Remove dead and expired swords after processing.",
+    "validation": {
+      "windowsTargeted": 87,
+      "linuxFull": {
+        "total": 2327,
+        "passed": 2326,
+        "failed": 0,
+        "skipped": 1
+      },
+      "regressionFailedBefore": true,
+      "runtimeFiles": 2550,
+      "changed": 1,
+      "commentsRemoved": 65,
+      "graphicsUnchanged": true,
+      "rootFiles": 2,
+      "sourceParity": {
+        "sourceCommit": "92cc7c4bc904b1152989e14d14b962541877a712",
+        "files": 3231,
+        "equal": true
+      }
+    },
+    "trial": {
+      "players": 70,
+      "lobby": 5,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "move",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "split",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "feed",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "boosters",
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 2081,
+        "recovered": 2081,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:rocket": 103,
+          "booster:web": 88,
+          "booster:fire": 57,
+          "booster:ice_cream": 97,
+          "booster:warheads": 54,
+          "booster:awl": 54,
+          "booster:fire_sword": 60,
+          "booster:poison": 69,
+          "booster:colorful_shield": 80,
+          "booster:speed": 60,
+          "booster:lock": 58,
+          "booster:axe": 50,
+          "booster:meat": 60,
+          "booster:golden_shield": 60,
+          "booster:candy": 109,
+          "booster:mega_poison": 59,
+          "booster:glove": 96,
+          "booster:easter_egg": 60,
+          "booster:cake": 56,
+          "booster:vortex": 57,
+          "booster:clan_shield": 59,
+          "booster:freeze": 66,
+          "booster:sphere": 80,
+          "booster:donut": 60,
+          "booster:mine": 57,
+          "booster:hook": 85,
+          "booster:stone": 55,
+          "booster:knuckles": 59,
+          "booster:harpoon": 59,
+          "booster:sponge": 39,
+          "lobby:loadout": 25,
+          "lobby:purchase": 25,
+          "lobby:account-bonus": 25
+        },
+        "gifts": 0,
+        "notices": 0,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 3963,
+        "databaseRevision": 3963,
+        "profiles": 1280,
+        "clans": 128,
+        "samples": [
+          {
+            "revision": 77,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795463481726,
+            "prepareMs": 1180,
+            "writeMs": 114,
+            "durationMs": 1299.1978450000024,
+            "final": false
+          },
+          {
+            "revision": 300,
+            "generation": 3,
+            "changedDocuments": 83,
+            "payloadBytes": 197079,
+            "syncedAt": 1795463510964,
+            "prepareMs": 317,
+            "writeMs": 202,
+            "durationMs": 557.2054320000025,
+            "final": false
+          },
+          {
+            "revision": 1001,
+            "generation": 4,
+            "changedDocuments": 83,
+            "payloadBytes": 209038,
+            "syncedAt": 1795463541280,
+            "prepareMs": 553,
+            "writeMs": 253,
+            "durationMs": 858.1441650000052,
+            "final": false
+          },
+          {
+            "revision": 1529,
+            "generation": 5,
+            "changedDocuments": 83,
+            "payloadBytes": 213666,
+            "syncedAt": 1795463571079,
+            "prepareMs": 398,
+            "writeMs": 201,
+            "durationMs": 634.8470940000116,
+            "final": false
+          },
+          {
+            "revision": 2730,
+            "generation": 6,
+            "changedDocuments": 83,
+            "payloadBytes": 266564,
+            "syncedAt": 1795463601246,
+            "prepareMs": 565,
+            "writeMs": 222,
+            "durationMs": 834.5208320000092,
+            "final": false
+          },
+          {
+            "revision": 3875,
+            "generation": 7,
+            "changedDocuments": 83,
+            "payloadBytes": 314714,
+            "syncedAt": 1795463631173,
+            "prepareMs": 463,
+            "writeMs": 237,
+            "durationMs": 888.5049280000094,
+            "final": false
+          },
+          {
+            "revision": 3963,
+            "generation": 8,
+            "changedDocuments": 73,
+            "payloadBytes": 279540,
+            "syncedAt": 1795463632133,
+            "prepareMs": 339,
+            "writeMs": 189,
+            "durationMs": 536.1152650000004,
+            "final": true
+          }
+        ]
+      },
+      "rows": [
+        {
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "clanQuests": {
+            "enabled": true,
+            "boards": 128,
+            "active": 0,
+            "eligible": 1280,
+            "contributors": 0,
+            "contributions": 0
+          },
+          "chat": {
+            "durable": true,
+            "receipts": 0,
+            "pending": 0
+          },
+          "phase": "move",
+          "mass": {
+            "initial": [
+              20,
+              50,
+              150,
+              1000,
+              4000,
+              15000,
+              25000,
+              40000,
+              75000,
+              120000,
+              384000
+            ],
+            "peak": 384000,
+            "mostParts": 16,
+            "end": {
+              "n": 70,
+              "p50": 3848,
+              "p95": 115863,
+              "p99": 363413,
+              "max": 363413
+            }
+          },
+          "players": 70,
+          "receiptHistory": 0,
+          "lobby": {
+            "clients": 5,
+            "mode": "active-lobby-actions",
+            "ipMode": "single-generator-address",
+            "requests": 30,
+            "success": 30,
+            "errors": {},
+            "actions": {
+              "profile": 5,
+              "rankings": 5,
+              "loadout": 5,
+              "purchase": 5,
+              "account-bonus": 5,
+              "social-view": 5
+            },
+            "pending": 0,
+            "latencyMs": {
+              "p50": 10.754934000000503,
+              "p95": 53.00421499999902,
+              "max": 366.460153
+            }
+          },
+          "roomCount": 2,
+          "alive": 70,
+          "parts": 178,
+          "food": 600,
+          "elapsed": 30001.885152000003,
+          "cpuPercent": 94.05375647909553,
+          "resourceUsage": {
+            "elapsedMs": 30003.255597999996,
+            "processCpu": {
+              "userMs": 26180.083,
+              "systemMs": 2040.442,
+              "percent": 94.05820947604488
+            },
+            "mainThreadCpu": {
+              "userMs": 8331.376,
+              "systemMs": 1296.104,
+              "percent": 32.0881177995956
+            },
+            "mainThreadElu": {
+              "activeMs": 10000.67431202858,
+              "idleMs": 20002.424445,
+              "utilization": 0.3333213810018808
+            },
+            "cgroup": {
+              "scope": "/sys/fs/cgroup/system.slice/heroether-checkpoint-capacity-70-sword-20261123.service",
+              "cpuMax": "300000 100000",
+              "counters": {
+                "usage_usec": 35107081,
+                "user_usec": 31491754,
+                "system_usec": 3615328,
+                "nice_usec": 31057921,
+                "nr_periods": 300,
+                "nr_throttled": 10,
+                "throttled_usec": 1562045,
+                "nr_bursts": 0,
+                "burst_usec": 0
+              },
+              "throttledPeriodFraction": 0.03333333333333333
+            }
+          },
+          "mainThreadGc": {
+            "n": 34,
+            "p50": 3.931546986103058,
+            "p95": 9.111483037471771,
+            "p99": 14.928358018398285,
+            "max": 14.928358018398285,
+            "totalMs": 151.17718905210495
+          },
+          "socketMbps": 33.878045024522194,
+          "rssMB": 890.8515625,
+          "heapUsedMB": 69.03785705566406,
+          "tickGaps": {
+            "n": 597,
+            "p50": 49.98068400000193,
+            "p95": 51.300796000003174,
+            "p99": 52.6262080000015,
+            "max": 209.22327700000096
+          },
+          "tickWorkMs": {
+            "n": 598,
+            "p50": 7.726175999996485,
+            "p95": 21.71499600000243,
+            "p99": 33.566561999999976,
+            "max": 113.04651100000046
+          },
+          "eventLoop": {
+            "p95": 18.972671,
+            "max": 211.812351
+          },
+          "stats": {
+            "step": {
+              "n": 1196,
+              "ms": 1737.794192999998,
+              "max": 19.379777999998623
+            },
+            "snapshot": {
+              "n": 1208,
+              "ms": 437.204594000068,
+              "max": 3.2609269999993558
+            },
+            "startArenaCommit": {
+              "n": 199,
+              "ms": 177.55052200003774,
+              "max": 7.458381000000372
+            },
+            "applyArenaProgress": {
+              "n": 597,
+              "ms": 1371.48905499994,
+              "max": 69.61557099999845
+            },
+            "handleInput": {
+              "n": 20930,
+              "ms": 37.830703000028734,
+              "max": 0.27586499999961234
+            },
+            "publishStaged": {
+              "n": 25,
+              "ms": 6.60002500000337,
+              "max": 0.5006189999985509
+            },
+            "writeSnapshot": {
+              "n": 25,
+              "ms": 6.781457000000955,
+              "max": 0.5061990000031074
+            }
+          },
+          "persistence": {
+            "maxArenaBatches": 2,
+            "maxQueuedActions": 0,
+            "pausedSamples": 0,
+            "end": {
+              "arenaBatches": 0,
+              "queuedActions": 0,
+              "paused": false,
+              "staging": false,
+              "restages": {
+                "profile": 0,
+                "date": 0,
+                "validity": 0,
+                "journal": 0
+              }
+            }
+          },
+          "database": [
+            {
+              "revision": 77,
+              "generation": 2,
+              "changedDocuments": 0,
+              "payloadBytes": 0,
+              "syncedAt": 1795463481726,
+              "prepareMs": 1180,
+              "writeMs": 114,
+              "durationMs": 1299.1978450000024,
+              "final": false
+            }
+          ],
+          "stateWorkers": {
+            "jobs": 1277,
+            "replaced": 1,
+            "workerMs": 8257.090564999933,
+            "cloneMs": 1021.0990860001241,
+            "turnaroundMs": 13518.080024000064,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 41871,
+            "deliveryMs": 1019.9369179999903,
+            "lanes": 2
+          },
+          "profileWorker": null,
+          "effects": {},
+          "connections": 70,
+          "drivers": [
+            {
+              "clients": 35,
+              "cpuPercent": 10.989096399631984,
+              "loopP99Ms": 13.410303,
+              "loopMaxMs": 62.554111
+            },
+            {
+              "clients": 35,
+              "cpuPercent": 10.840631999281607,
+              "loopP99Ms": 13.918207,
+              "loopMaxMs": 54.132735
+            }
+          ],
+          "updatesPerClient": 19.866318254499998,
+          "clientGapP99Max": 75.2255350000014,
+          "clientGapMax": 111.29619900000034,
+          "rooms": [
+            {
+              "roomId": "arena-1",
+              "connections": 35,
+              "updatesPerClient": 19.865890249944492,
+              "gaps": {
+                "p50": 49.81339300000036,
+                "p95": 62.974145999996836,
+                "p99": 75.13436100000035,
+                "max": 102.59865399999944
+              }
+            },
+            {
+              "roomId": "arena-2",
+              "connections": 35,
+              "updatesPerClient": 19.866746259055503,
+              "gaps": {
+                "p50": 49.74726499999815,
+                "p95": 62.97546700000021,
+                "p99": 75.2255350000014,
+                "max": 111.29619900000034
+              }
+            }
+          ],
+          "boosters": 0,
+          "actionRequests": 0,
+          "actionPending": 0,
+          "actionLatencyP95Max": 0,
+          "actionLatencyP99Max": 0,
+          "actionLatencyMax": 0,
+          "successfulActionLatencyP95Max": 0,
+          "oldestPendingActionMs": 0,
+          "networkMbps": 32.19390761189901,
+          "usedByType": {
+            "freeze": 0,
+            "colorful_shield": 0,
+            "hook": 0,
+            "ice_cream": 0,
+            "candy": 0,
+            "rocket": 0,
+            "glove": 0,
+            "web": 0,
+            "sphere": 0,
+            "poison": 0,
+            "donut": 0,
+            "speed": 0,
+            "mine": 0,
+            "lock": 0,
+            "harpoon": 0,
+            "axe": 0,
+            "stone": 0,
+            "meat": 0,
+            "knuckles": 0,
+            "golden_shield": 0,
+            "mega_poison": 0,
+            "sponge": 0,
+            "easter_egg": 0,
+            "fire": 0,
+            "cake": 0,
+            "warheads": 0,
+            "vortex": 0,
+            "awl": 0,
+            "clan_shield": 0,
+            "fire_sword": 0
+          }
+        },
+        {
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "clanQuests": {
+            "enabled": true,
+            "boards": 128,
+            "active": 0,
+            "eligible": 1280,
+            "contributors": 0,
+            "contributions": 0
+          },
+          "chat": {
+            "durable": true,
+            "receipts": 0,
+            "pending": 0
+          },
+          "phase": "split",
+          "mass": {
+            "initial": [
+              20,
+              50,
+              150,
+              1000,
+              4000,
+              15000,
+              25000,
+              40000,
+              75000,
+              120000,
+              384000
+            ],
+            "peak": 364500,
+            "mostParts": 16,
+            "end": {
+              "n": 70,
+              "p50": 151,
+              "p95": 193252,
+              "p99": 348842,
+              "max": 348842
+            }
+          },
+          "players": 70,
+          "receiptHistory": 0,
+          "lobby": {
+            "clients": 5,
+            "mode": "active-lobby-actions",
+            "ipMode": "single-generator-address",
+            "requests": 30,
+            "success": 30,
+            "errors": {},
+            "actions": {
+              "profile": 5,
+              "rankings": 5,
+              "loadout": 5,
+              "purchase": 5,
+              "account-bonus": 5,
+              "social-view": 5
+            },
+            "pending": 0,
+            "latencyMs": {
+              "p50": 12.13099699999293,
+              "p95": 34.261433000006946,
+              "max": 92.63095199999952
+            }
+          },
+          "roomCount": 2,
+          "alive": 70,
+          "parts": 1049,
+          "food": 600,
+          "elapsed": 30001.016233999995,
+          "cpuPercent": 130.70352915432514,
+          "resourceUsage": {
+            "elapsedMs": 30001.74466499999,
+            "processCpu": {
+              "userMs": 37504.741,
+              "systemMs": 1708.859,
+              "percent": 130.70439882033446
+            },
+            "mainThreadCpu": {
+              "userMs": 16268.638,
+              "systemMs": 1275.509,
+              "percent": 58.47708923563697
+            },
+            "mainThreadElu": {
+              "activeMs": 17608.4046129771,
+              "idleMs": 12393.329077999995,
+              "utilization": 0.5869129029124327
+            },
+            "cgroup": {
+              "scope": "/sys/fs/cgroup/system.slice/heroether-checkpoint-capacity-70-sword-20261123.service",
+              "cpuMax": "300000 100000",
+              "counters": {
+                "usage_usec": 45261785,
+                "user_usec": 42130965,
+                "system_usec": 3130821,
+                "nice_usec": 41602634,
+                "nr_periods": 300,
+                "nr_throttled": 2,
+                "throttled_usec": 95186,
+                "nr_bursts": 0,
+                "burst_usec": 0
+              },
+              "throttledPeriodFraction": 0.006666666666666667
+            }
+          },
+          "mainThreadGc": {
+            "n": 62,
+            "p50": 3.227712035179138,
+            "p95": 5.917083978652954,
+            "p99": 40.84421104192734,
+            "max": 40.84421104192734,
+            "totalMs": 266.40341275930405
+          },
+          "socketMbps": 54.0106418849785,
+          "rssMB": 968.6484375,
+          "heapUsedMB": 86.03229522705078,
+          "tickGaps": {
+            "n": 598,
+            "p50": 50.00781900000584,
+            "p95": 50.964131000000634,
+            "p99": 58.017854999998235,
+            "max": 80.80578400000377
+          },
+          "tickWorkMs": {
+            "n": 599,
+            "p50": 18.64585100000113,
+            "p95": 29.106990000000224,
+            "p99": 45.59047699999792,
+            "max": 49.85556300000462
+          },
+          "eventLoop": {
+            "p95": 34.799615,
+            "max": 82.575359
+          },
+          "stats": {
+            "handleInput": {
+              "n": 42000,
+              "ms": 228.00644600034866,
+              "max": 0.2900990000052843
+            },
+            "step": {
+              "n": 1198,
+              "ms": 6875.654359999993,
+              "max": 12.01947300000029
+            },
+            "snapshot": {
+              "n": 1320,
+              "ms": 977.9218219996474,
+              "max": 1.7756929999959539
+            },
+            "startArenaCommit": {
+              "n": 598,
+              "ms": 342.8100879998674,
+              "max": 5.058039000010467
+            },
+            "applyArenaProgress": {
+              "n": 599,
+              "ms": 2228.8703009999444,
+              "max": 27.621136999994633
+            },
+            "publishStaged": {
+              "n": 105,
+              "ms": 24.675009999955364,
+              "max": 1.3416859999997541
+            },
+            "writeSnapshot": {
+              "n": 105,
+              "ms": 25.221301999998104,
+              "max": 1.3582949999981793
+            }
+          },
+          "persistence": {
+            "maxArenaBatches": 2,
+            "maxQueuedActions": 11,
+            "pausedSamples": 0,
+            "end": {
+              "arenaBatches": 1,
+              "queuedActions": 0,
+              "paused": false,
+              "staging": false,
+              "restages": {
+                "profile": 0,
+                "date": 0,
+                "validity": 0,
+                "journal": 0
+              }
+            }
+          },
+          "database": [
+            {
+              "revision": 77,
+              "generation": 2,
+              "changedDocuments": 0,
+              "payloadBytes": 0,
+              "syncedAt": 1795463481726,
+              "prepareMs": 1180,
+              "writeMs": 114,
+              "durationMs": 1299.1978450000024,
+              "final": false
+            },
+            {
+              "revision": 300,
+              "generation": 3,
+              "changedDocuments": 83,
+              "payloadBytes": 197079,
+              "syncedAt": 1795463510964,
+              "prepareMs": 317,
+              "writeMs": 202,
+              "durationMs": 557.2054320000025,
+              "final": false
+            }
+          ],
+          "stateWorkers": {
+            "jobs": 2561,
+            "replaced": 30,
+            "workerMs": 17966.269282999994,
+            "cloneMs": 2063.765461000168,
+            "turnaroundMs": 28406.947416999927,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 83894,
+            "deliveryMs": 1902.729166999945,
+            "lanes": 2
+          },
+          "profileWorker": null,
+          "effects": {},
+          "connections": 70,
+          "drivers": [
+            {
+              "clients": 35,
+              "cpuPercent": 9.799057841245151,
+              "loopP99Ms": 13.033471,
+              "loopMaxMs": 21.135359
+            },
+            {
+              "clients": 35,
+              "cpuPercent": 9.932750476920344,
+              "loopP99Ms": 12.509183,
+              "loopMaxMs": 27.410431
+            }
+          ],
+          "updatesPerClient": 20.00697323088999,
+          "clientGapP99Max": 76.1826860000001,
+          "clientGapMax": 98.06098800000473,
+          "rooms": [
+            {
+              "roomId": "arena-1",
+              "connections": 35,
+              "updatesPerClient": 20.008912083326937,
+              "gaps": {
+                "p50": 49.79656800000521,
+                "p95": 62.54722899999615,
+                "p99": 75.43876499999897,
+                "max": 98.06098800000473
+              }
+            },
+            {
+              "roomId": "arena-2",
+              "connections": 35,
+              "updatesPerClient": 20.005034378453043,
+              "gaps": {
+                "p50": 49.763404999997874,
+                "p95": 62.43250400000397,
+                "p99": 76.1826860000001,
+                "max": 96.47192900000664
+              }
+            }
+          ],
+          "boosters": 0,
+          "actionRequests": 0,
+          "actionPending": 0,
+          "actionLatencyP95Max": 0,
+          "actionLatencyP99Max": 0,
+          "actionLatencyMax": 0,
+          "successfulActionLatencyP95Max": 0,
+          "oldestPendingActionMs": 0,
+          "networkMbps": 50.76779364275871,
+          "usedByType": {
+            "freeze": 0,
+            "colorful_shield": 0,
+            "hook": 0,
+            "ice_cream": 0,
+            "candy": 0,
+            "rocket": 0,
+            "glove": 0,
+            "web": 0,
+            "sphere": 0,
+            "poison": 0,
+            "donut": 0,
+            "speed": 0,
+            "mine": 0,
+            "lock": 0,
+            "harpoon": 0,
+            "axe": 0,
+            "stone": 0,
+            "meat": 0,
+            "knuckles": 0,
+            "golden_shield": 0,
+            "mega_poison": 0,
+            "sponge": 0,
+            "easter_egg": 0,
+            "fire": 0,
+            "cake": 0,
+            "warheads": 0,
+            "vortex": 0,
+            "awl": 0,
+            "clan_shield": 0,
+            "fire_sword": 0
+          }
+        },
+        {
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "clanQuests": {
+            "enabled": true,
+            "boards": 128,
+            "active": 0,
+            "eligible": 1280,
+            "contributors": 0,
+            "contributions": 0
+          },
+          "chat": {
+            "durable": true,
+            "receipts": 0,
+            "pending": 0
+          },
+          "phase": "feed",
+          "mass": {
+            "initial": [
+              20,
+              50,
+              150,
+              1000,
+              4000,
+              15000,
+              25000,
+              40000,
+              75000,
+              120000,
+              384000
+            ],
+            "peak": 348849,
+            "mostParts": 16,
+            "end": {
+              "n": 70,
+              "p50": 121,
+              "p95": 47447,
+              "p99": 327229,
+              "max": 327229
+            }
+          },
+          "players": 70,
+          "receiptHistory": 0,
+          "lobby": {
+            "clients": 5,
+            "mode": "active-lobby-actions",
+            "ipMode": "single-generator-address",
+            "requests": 30,
+            "success": 30,
+            "errors": {},
+            "actions": {
+              "profile": 5,
+              "rankings": 5,
+              "loadout": 5,
+              "purchase": 5,
+              "account-bonus": 5,
+              "social-view": 5
+            },
+            "pending": 0,
+            "latencyMs": {
+              "p50": 12.950514999989537,
+              "p95": 39.957254000008106,
+              "max": 79.69339000000036
+            }
+          },
+          "roomCount": 2,
+          "alive": 70,
+          "parts": 259,
+          "food": 2448,
+          "elapsed": 30013.470184000005,
+          "cpuPercent": 142.20356639317424,
+          "resourceUsage": {
+            "elapsedMs": 30014.041476,
+            "processCpu": {
+              "userMs": 41056.468,
+              "systemMs": 1624.272,
+              "percent": 142.2025755316178
+            },
+            "mainThreadCpu": {
+              "userMs": 14677.491,
+              "systemMs": 1294.255,
+              "percent": 53.21424644785482
+            },
+            "mainThreadElu": {
+              "activeMs": 16211.422865970679,
+              "idleMs": 13802.603156999998,
+              "utilization": 0.5401282338318614
+            },
+            "cgroup": {
+              "scope": "/sys/fs/cgroup/system.slice/heroether-checkpoint-capacity-70-sword-20261123.service",
+              "cpuMax": "300000 100000",
+              "counters": {
+                "usage_usec": 49338668,
+                "user_usec": 46371124,
+                "system_usec": 2967543,
+                "nice_usec": 45867909,
+                "nr_periods": 300,
+                "nr_throttled": 7,
+                "throttled_usec": 1319430,
+                "nr_bursts": 0,
+                "burst_usec": 0
+              },
+              "throttledPeriodFraction": 0.023333333333333334
+            }
+          },
+          "mainThreadGc": {
+            "n": 58,
+            "p50": 3.6858240365982056,
+            "p95": 11.68350601196289,
+            "p99": 15.835629999637604,
+            "max": 15.835629999637604,
+            "totalMs": 251.99624282121658
+          },
+          "socketMbps": 63.36737779205144,
+          "rssMB": 991.8125,
+          "heapUsedMB": 126.184814453125,
+          "tickGaps": {
+            "n": 601,
+            "p50": 49.98008399999526,
+            "p95": 50.9667080000072,
+            "p99": 58.01350600000296,
+            "max": 81.13730299999588
+          },
+          "tickWorkMs": {
+            "n": 602,
+            "p50": 17.298106000002008,
+            "p95": 29.65276699999231,
+            "p99": 44.618562000003294,
+            "max": 60.82529300000169
+          },
+          "eventLoop": {
+            "p95": 31.047679,
+            "max": 81.199103
+          },
+          "stats": {
+            "step": {
+              "n": 1204,
+              "ms": 5357.287648000056,
+              "max": 52.24100800001179
+            },
+            "snapshot": {
+              "n": 1250,
+              "ms": 1067.3983470003586,
+              "max": 39.07841300001019
+            },
+            "startArenaCommit": {
+              "n": 471,
+              "ms": 254.98109400000249,
+              "max": 5.583274999997229
+            },
+            "applyArenaProgress": {
+              "n": 602,
+              "ms": 1807.4419850001868,
+              "max": 35.23587899999984
+            },
+            "handleInput": {
+              "n": 31570,
+              "ms": 137.61961299934774,
+              "max": 1.0032869999995455
+            },
+            "publishStaged": {
+              "n": 60,
+              "ms": 14.613242000021273,
+              "max": 0.46999899999354966
+            },
+            "writeSnapshot": {
+              "n": 60,
+              "ms": 14.961749999973108,
+              "max": 0.4795129999984056
+            }
+          },
+          "persistence": {
+            "maxArenaBatches": 2,
+            "maxQueuedActions": 0,
+            "pausedSamples": 0,
+            "end": {
+              "arenaBatches": 1,
+              "queuedActions": 0,
+              "paused": false,
+              "staging": false,
+              "restages": {
+                "profile": 0,
+                "date": 0,
+                "validity": 0,
+                "journal": 0
+              }
+            }
+          },
+          "database": [
+            {
+              "revision": 77,
+              "generation": 2,
+              "changedDocuments": 0,
+              "payloadBytes": 0,
+              "syncedAt": 1795463481726,
+              "prepareMs": 1180,
+              "writeMs": 114,
+              "durationMs": 1299.1978450000024,
+              "final": false
+            },
+            {
+              "revision": 300,
+              "generation": 3,
+              "changedDocuments": 83,
+              "payloadBytes": 197079,
+              "syncedAt": 1795463510964,
+              "prepareMs": 317,
+              "writeMs": 202,
+              "durationMs": 557.2054320000025,
+              "final": false
+            },
+            {
+              "revision": 1001,
+              "generation": 4,
+              "changedDocuments": 83,
+              "payloadBytes": 209038,
+              "syncedAt": 1795463541280,
+              "prepareMs": 553,
+              "writeMs": 253,
+              "durationMs": 858.1441650000052,
+              "final": false
+            }
+          ],
+          "stateWorkers": {
+            "jobs": 3805,
+            "replaced": 206,
+            "workerMs": 31457.081197000072,
+            "cloneMs": 3159.598799999736,
+            "turnaroundMs": 47076.386029999936,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 125974,
+            "deliveryMs": 2848.942621000073,
+            "lanes": 2
+          },
+          "profileWorker": null,
+          "effects": {},
+          "connections": 70,
+          "drivers": [
+            {
+              "clients": 35,
+              "cpuPercent": 10.777052388711763,
+              "loopP99Ms": 13.950975,
+              "loopMaxMs": 50.200575
+            },
+            {
+              "clients": 35,
+              "cpuPercent": 10.980895771615918,
+              "loopP99Ms": 13.582335,
+              "loopMaxMs": 45.187071
+            }
+          ],
+          "updatesPerClient": 19.925492043880553,
+          "clientGapP99Max": 76.08294300000125,
+          "clientGapMax": 117.32128199998988,
+          "rooms": [
+            {
+              "roomId": "arena-1",
+              "connections": 35,
+              "updatesPerClient": 19.94515043851053,
+              "gaps": {
+                "p50": 49.89012399999774,
+                "p95": 61.91437099999166,
+                "p99": 71.17835599998944,
+                "max": 117.32128199998988
+              }
+            },
+            {
+              "roomId": "arena-2",
+              "connections": 35,
+              "updatesPerClient": 19.90583364925057,
+              "gaps": {
+                "p50": 49.62979800000903,
+                "p95": 63.22624899999937,
+                "p99": 76.08294300000125,
+                "max": 110.01547399999981
+              }
+            }
+          ],
+          "boosters": 0,
+          "actionRequests": 0,
+          "actionPending": 0,
+          "actionLatencyP95Max": 0,
+          "actionLatencyP99Max": 0,
+          "actionLatencyMax": 0,
+          "successfulActionLatencyP95Max": 0,
+          "oldestPendingActionMs": 0,
+          "networkMbps": 61.03775011054303,
+          "usedByType": {
+            "freeze": 0,
+            "colorful_shield": 0,
+            "hook": 0,
+            "ice_cream": 0,
+            "candy": 0,
+            "rocket": 0,
+            "glove": 0,
+            "web": 0,
+            "sphere": 0,
+            "poison": 0,
+            "donut": 0,
+            "speed": 0,
+            "mine": 0,
+            "lock": 0,
+            "harpoon": 0,
+            "axe": 0,
+            "stone": 0,
+            "meat": 0,
+            "knuckles": 0,
+            "golden_shield": 0,
+            "mega_poison": 0,
+            "sponge": 0,
+            "easter_egg": 0,
+            "fire": 0,
+            "cake": 0,
+            "warheads": 0,
+            "vortex": 0,
+            "awl": 0,
+            "clan_shield": 0,
+            "fire_sword": 0
+          }
+        },
+        {
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "clanQuests": {
+            "enabled": true,
+            "boards": 128,
+            "active": 0,
+            "eligible": 1280,
+            "contributors": 0,
+            "contributions": 0
+          },
+          "chat": {
+            "durable": true,
+            "receipts": 0,
+            "pending": 0
+          },
+          "phase": "boosters",
+          "mass": {
+            "initial": [
+              20,
+              50,
+              150,
+              1000,
+              4000,
+              15000,
+              25000,
+              40000,
+              75000,
+              120000,
+              384000
+            ],
+            "peak": 327284,
+            "mostParts": 16,
+            "end": {
+              "n": 70,
+              "p50": 876,
+              "p95": 24000,
+              "p99": 128266,
+              "max": 128266
+            }
+          },
+          "players": 70,
+          "receiptHistory": 0,
+          "lobby": {
+            "clients": 5,
+            "mode": "active-lobby-actions",
+            "ipMode": "single-generator-address",
+            "requests": 30,
+            "success": 30,
+            "errors": {},
+            "actions": {
+              "profile": 5,
+              "rankings": 5,
+              "loadout": 5,
+              "purchase": 5,
+              "account-bonus": 5,
+              "social-view": 5
+            },
+            "pending": 0,
+            "latencyMs": {
+              "p50": 8.759978000001865,
+              "p95": 28.695108999992954,
+              "max": 44.76823400000285
+            }
+          },
+          "roomCount": 2,
+          "alive": 70,
+          "parts": 174,
+          "food": 1137,
+          "elapsed": 30022.12362899998,
+          "cpuPercent": 149.2923836896909,
+          "resourceUsage": {
+            "elapsedMs": 30022.429464,
+            "processCpu": {
+              "userMs": 42984.487,
+              "systemMs": 1836.535,
+              "percent": 149.29178883989067
+            },
+            "mainThreadCpu": {
+              "userMs": 15525.19,
+              "systemMs": 1311.172,
+              "percent": 56.079279060971864
+            },
+            "mainThreadElu": {
+              "activeMs": 16926.487064036897,
+              "idleMs": 13095.933144000002,
+              "utilization": 0.5637948888446287
+            },
+            "cgroup": {
+              "scope": "/sys/fs/cgroup/system.slice/heroether-checkpoint-capacity-70-sword-20261123.service",
+              "cpuMax": "300000 100000",
+              "counters": {
+                "usage_usec": 51669272,
+                "user_usec": 48517436,
+                "system_usec": 3151835,
+                "nice_usec": 48047762,
+                "nr_periods": 301,
+                "nr_throttled": 8,
+                "throttled_usec": 336153,
+                "nr_bursts": 0,
+                "burst_usec": 0
+              },
+              "throttledPeriodFraction": 0.026578073089700997
+            }
+          },
+          "mainThreadGc": {
+            "n": 57,
+            "p50": 4.580650985240936,
+            "p95": 9.205834984779358,
+            "p99": 18.2637779712677,
+            "max": 18.2637779712677,
+            "totalMs": 291.6974647641182
+          },
+          "socketMbps": 46.71322792919676,
+          "rssMB": 1048.34375,
+          "heapUsedMB": 156.4676055908203,
+          "tickGaps": {
+            "n": 601,
+            "p50": 50.00905600000988,
+            "p95": 51.070705000005546,
+            "p99": 54.71944999998959,
+            "max": 63.84161000000313
+          },
+          "tickWorkMs": {
+            "n": 602,
+            "p50": 15.799559999999474,
+            "p95": 27.699950999987777,
+            "p99": 38.79709899998852,
+            "max": 46.978275000001304
+          },
+          "eventLoop": {
+            "p95": 29.720575,
+            "max": 61.374463
+          },
+          "stats": {
+            "step": {
+              "n": 1204,
+              "ms": 4455.19398399959,
+              "max": 9.74558600000455
+            },
+            "snapshot": {
+              "n": 1254,
+              "ms": 1196.139222999831,
+              "max": 4.8296469999913825
+            },
+            "startArenaCommit": {
+              "n": 521,
+              "ms": 273.6770800000377,
+              "max": 6.844712000005529
+            },
+            "applyArenaProgress": {
+              "n": 602,
+              "ms": 1860.4808440002962,
+              "max": 31.952852000002167
+            },
+            "handleInput": {
+              "n": 21070,
+              "ms": 36.6820140005002,
+              "max": 0.8512360000167973
+            },
+            "consume": {
+              "n": 1054,
+              "ms": 789.356438999821,
+              "max": 2.776687999998103
+            },
+            "publishStaged": {
+              "n": 686,
+              "ms": 108.62816899968311,
+              "max": 0.48292100000253413
+            },
+            "writeSnapshot": {
+              "n": 686,
+              "ms": 111.7333009998838,
+              "max": 0.4881989999994403
+            }
+          },
+          "persistence": {
+            "maxArenaBatches": 2,
+            "maxQueuedActions": 2,
+            "pausedSamples": 0,
+            "end": {
+              "arenaBatches": 0,
+              "queuedActions": 0,
+              "paused": false,
+              "staging": false,
+              "restages": {
+                "profile": 0,
+                "date": 0,
+                "validity": 0,
+                "journal": 0
+              }
+            }
+          },
+          "database": [
+            {
+              "revision": 77,
+              "generation": 2,
+              "changedDocuments": 0,
+              "payloadBytes": 0,
+              "syncedAt": 1795463481726,
+              "prepareMs": 1180,
+              "writeMs": 114,
+              "durationMs": 1299.1978450000024,
+              "final": false
+            },
+            {
+              "revision": 300,
+              "generation": 3,
+              "changedDocuments": 83,
+              "payloadBytes": 197079,
+              "syncedAt": 1795463510964,
+              "prepareMs": 317,
+              "writeMs": 202,
+              "durationMs": 557.2054320000025,
+              "final": false
+            },
+            {
+              "revision": 1001,
+              "generation": 4,
+              "changedDocuments": 83,
+              "payloadBytes": 209038,
+              "syncedAt": 1795463541280,
+              "prepareMs": 553,
+              "writeMs": 253,
+              "durationMs": 858.1441650000052,
+              "final": false
+            },
+            {
+              "revision": 1529,
+              "generation": 5,
+              "changedDocuments": 83,
+              "payloadBytes": 213666,
+              "syncedAt": 1795463571079,
+              "prepareMs": 398,
+              "writeMs": 201,
+              "durationMs": 634.8470940000116,
+              "final": false
+            }
+          ],
+          "stateWorkers": {
+            "jobs": 5057,
+            "replaced": 206,
+            "workerMs": 44760.24743500031,
+            "cloneMs": 4327.7283430001025,
+            "turnaroundMs": 65573.43028100034,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 168164,
+            "deliveryMs": 3697.3197139998865,
+            "lanes": 2
+          },
+          "profileWorker": null,
+          "effects": {
+            "fire_sword": {
+              "attempts": 75,
+              "applied": 75
+            },
+            "mega_poison": {
+              "attempts": 2,
+              "applied": 2
+            },
+            "lock": {
+              "attempts": 6,
+              "applied": 6
+            },
+            "poison": {
+              "attempts": 2,
+              "applied": 2
+            },
+            "cake": {
+              "attempts": 3,
+              "applied": 3
+            }
+          },
+          "connections": 70,
+          "drivers": [
+            {
+              "clients": 35,
+              "cpuPercent": 11.454435696218344,
+              "loopP99Ms": 12.533759,
+              "loopMaxMs": 28.540927
+            },
+            {
+              "clients": 35,
+              "cpuPercent": 10.969886068029002,
+              "loopP99Ms": 12.468223,
+              "loopMaxMs": 17.399807
+            }
+          ],
+          "updatesPerClient": 19.992726562352885,
+          "clientGapP99Max": 72.03539400000591,
+          "clientGapMax": 101.57350600000063,
+          "rooms": [
+            {
+              "roomId": "arena-1",
+              "connections": 35,
+              "updatesPerClient": 19.99577615534446,
+              "gaps": {
+                "p50": 49.63592499999504,
+                "p95": 61.79902399999264,
+                "p99": 72.03539400000591,
+                "max": 93.56910499998776
+              }
+            },
+            {
+              "roomId": "arena-2",
+              "connections": 35,
+              "updatesPerClient": 19.989676969361316,
+              "gaps": {
+                "p50": 49.828166000006604,
+                "p95": 60.483649000001606,
+                "p99": 71.9333190000034,
+                "max": 101.57350600000063
+              }
+            }
+          ],
+          "boosters": 990,
+          "actionRequests": 1050,
+          "actionPending": 0,
+          "actionLatencyP95Max": 31.708262999978615,
+          "actionLatencyP99Max": 57.93716199998744,
+          "actionLatencyMax": 74.39306899999792,
+          "successfulActionLatencyP95Max": 31.708262999978615,
+          "oldestPendingActionMs": 0,
+          "networkMbps": 43.44384306590334,
+          "usedByType": {
+            "freeze": 31,
+            "colorful_shield": 42,
+            "hook": 39,
+            "ice_cream": 52,
+            "candy": 51,
+            "rocket": 55,
+            "glove": 44,
+            "web": 46,
+            "sphere": 36,
+            "poison": 36,
+            "donut": 28,
+            "speed": 32,
+            "mine": 27,
+            "lock": 32,
+            "harpoon": 27,
+            "axe": 27,
+            "stone": 27,
+            "meat": 32,
+            "knuckles": 27,
+            "golden_shield": 32,
+            "mega_poison": 27,
+            "sponge": 11,
+            "easter_egg": 29,
+            "fire": 30,
+            "cake": 25,
+            "warheads": 29,
+            "vortex": 26,
+            "awl": 30,
+            "clan_shield": 28,
+            "fire_sword": 32
+          }
+        },
+        {
+          "configuration": {
+            "incrementalSettlement": true,
+            "profileWorker": false,
+            "stateWorkerCount": 2,
+            "packedFood": false,
+            "packedParts": true
+          },
+          "clanQuests": {
+            "enabled": true,
+            "boards": 128,
+            "active": 0,
+            "eligible": 1280,
+            "contributors": 0,
+            "contributions": 0
+          },
+          "chat": {
+            "durable": true,
+            "receipts": 0,
+            "pending": 0
+          },
+          "phase": "combined",
+          "mass": {
+            "initial": [
+              20,
+              50,
+              150,
+              1000,
+              4000,
+              15000,
+              25000,
+              40000,
+              75000,
+              120000,
+              384000
+            ],
+            "peak": 128266,
+            "mostParts": 16,
+            "end": {
+              "n": 69,
+              "p50": 609,
+              "p95": 30664,
+              "p99": 60920,
+              "max": 60920
+            }
+          },
+          "players": 70,
+          "receiptHistory": 0,
+          "lobby": {
+            "clients": 5,
+            "mode": "active-lobby-actions",
+            "ipMode": "single-generator-address",
+            "requests": 30,
+            "success": 30,
+            "errors": {},
+            "actions": {
+              "profile": 5,
+              "rankings": 5,
+              "loadout": 5,
+              "purchase": 5,
+              "account-bonus": 5,
+              "social-view": 5
+            },
+            "pending": 0,
+            "latencyMs": {
+              "p50": 29.968766000005417,
+              "p95": 80.11992800000007,
+              "max": 88.21804000000702
+            }
+          },
+          "roomCount": 2,
+          "alive": 69,
+          "parts": 988,
+          "food": 2374,
+          "elapsed": 30022.057556999993,
+          "cpuPercent": 225.56045624598033,
+          "resourceUsage": {
+            "elapsedMs": 30022.452043999976,
+            "processCpu": {
+              "userMs": 65591.082,
+              "systemMs": 2127.305,
+              "percent": 225.55914786958115
+            },
+            "mainThreadCpu": {
+              "userMs": 25594.622,
+              "systemMs": 1417.884,
+              "percent": 89.97434973136541
+            },
+            "mainThreadElu": {
+              "activeMs": 28056.467125053707,
+              "idleMs": 1965.9860220000119,
+              "utilization": 0.9345161432221955
+            },
+            "cgroup": {
+              "scope": "/sys/fs/cgroup/system.slice/heroether-checkpoint-capacity-70-sword-20261123.service",
+              "cpuMax": "300000 100000",
+              "counters": {
+                "usage_usec": 79650797,
+                "user_usec": 75604559,
+                "system_usec": 4046238,
+                "nice_usec": 75378480,
+                "nr_periods": 300,
+                "nr_throttled": 82,
+                "throttled_usec": 4116102,
+                "nr_bursts": 0,
+                "burst_usec": 0
+              },
+              "throttledPeriodFraction": 0.2733333333333333
+            }
+          },
+          "mainThreadGc": {
+            "n": 111,
+            "p50": 4.486741006374359,
+            "p95": 16.205348014831543,
+            "p99": 40.02375400066376,
+            "max": 71.94745200872421,
+            "totalMs": 704.8206318020821
+          },
+          "socketMbps": 164.62336275974656,
+          "rssMB": 1120.484375,
+          "heapUsedMB": 196.55419158935547,
+          "tickGaps": {
+            "n": 590,
+            "p50": 50.063380999985384,
+            "p95": 64.66887500000303,
+            "p99": 77.64072299998952,
+            "max": 121.74278599998797
+          },
+          "tickWorkMs": {
+            "n": 591,
+            "p50": 26.625599999999395,
+            "p95": 39.994447999983095,
+            "p99": 55.195696999988286,
+            "max": 93.52473399997689
+          },
+          "eventLoop": {
+            "p95": 63.864831,
+            "max": 121.765887
+          },
+          "stats": {
+            "publishStaged": {
+              "n": 565,
+              "ms": 100.18504600031883,
+              "max": 0.4598359999945387
+            },
+            "writeSnapshot": {
+              "n": 634,
+              "ms": 120.37930200004485,
+              "max": 0.4650510000064969
+            },
+            "step": {
+              "n": 1182,
+              "ms": 11710.419467000058,
+              "max": 78.34135000000242
+            },
+            "snapshot": {
+              "n": 1336,
+              "ms": 1914.3725109992083,
+              "max": 14.700814000010723
+            },
+            "startArenaCommit": {
+              "n": 587,
+              "ms": 447.0420909996028,
+              "max": 5.2731039999926
+            },
+            "applyArenaProgress": {
+              "n": 657,
+              "ms": 3332.7767419995507,
+              "max": 41.27088900000672
+            },
+            "handleInput": {
+              "n": 52430,
+              "ms": 563.972781000426,
+              "max": 3.2170329999935348
+            },
+            "consume": {
+              "n": 1050,
+              "ms": 699.0272559997684,
+              "max": 7.180733999994118
+            },
+            "syncCommit": {
+              "n": 69,
+              "ms": 17.618620000081137,
+              "max": 0.3378030000021681
+            },
+            "save": {
+              "n": 69,
+              "ms": 61.658879999944475,
+              "max": 1.289913999993587
+            }
+          },
+          "persistence": {
+            "maxArenaBatches": 3,
+            "maxQueuedActions": 7,
+            "pausedSamples": 0,
+            "end": {
+              "arenaBatches": 2,
+              "queuedActions": 0,
+              "paused": false,
+              "staging": true,
+              "restages": {
+                "profile": 0,
+                "date": 0,
+                "validity": 1,
+                "journal": 0
+              }
+            }
+          },
+          "database": [
+            {
+              "revision": 77,
+              "generation": 2,
+              "changedDocuments": 0,
+              "payloadBytes": 0,
+              "syncedAt": 1795463481726,
+              "prepareMs": 1180,
+              "writeMs": 114,
+              "durationMs": 1299.1978450000024,
+              "final": false
+            },
+            {
+              "revision": 300,
+              "generation": 3,
+              "changedDocuments": 83,
+              "payloadBytes": 197079,
+              "syncedAt": 1795463510964,
+              "prepareMs": 317,
+              "writeMs": 202,
+              "durationMs": 557.2054320000025,
+              "final": false
+            },
+            {
+              "revision": 1001,
+              "generation": 4,
+              "changedDocuments": 83,
+              "payloadBytes": 209038,
+              "syncedAt": 1795463541280,
+              "prepareMs": 553,
+              "writeMs": 253,
+              "durationMs": 858.1441650000052,
+              "final": false
+            },
+            {
+              "revision": 1529,
+              "generation": 5,
+              "changedDocuments": 83,
+              "payloadBytes": 213666,
+              "syncedAt": 1795463571079,
+              "prepareMs": 398,
+              "writeMs": 201,
+              "durationMs": 634.8470940000116,
+              "final": false
+            },
+            {
+              "revision": 2730,
+              "generation": 6,
+              "changedDocuments": 83,
+              "payloadBytes": 266564,
+              "syncedAt": 1795463601246,
+              "prepareMs": 565,
+              "writeMs": 222,
+              "durationMs": 834.5208320000092,
+              "final": false
+            }
+          ],
+          "stateWorkers": {
+            "jobs": 6229,
+            "replaced": 843,
+            "workerMs": 67707.38691200071,
+            "cloneMs": 6012.7718800002385,
+            "turnaroundMs": 110578.22179400102,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 208879,
+            "deliveryMs": 4673.561139000047,
+            "lanes": 2
+          },
+          "profileWorker": null,
+          "effects": {
+            "cake": {
+              "attempts": 17,
+              "applied": 17
+            },
+            "mega_poison": {
+              "attempts": 8,
+              "applied": 8
+            },
+            "fire_sword": {
+              "attempts": 74,
+              "applied": 74
+            },
+            "lock": {
+              "attempts": 6,
+              "applied": 6
+            },
+            "poison": {
+              "attempts": 3,
+              "applied": 3
+            }
+          },
+          "connections": 70,
+          "drivers": [
+            {
+              "clients": 35,
+              "cpuPercent": 19.594497686522946,
+              "loopP99Ms": 23.740415,
+              "loopMaxMs": 71.237631
+            },
+            {
+              "clients": 35,
+              "cpuPercent": 19.723415696926928,
+              "loopP99Ms": 24.510463,
+              "loopMaxMs": 44.826623
+            }
+          ],
+          "updatesPerClient": 19.28879482057173,
+          "clientGapP99Max": 108.02388900000369,
+          "clientGapMax": 145.52450999998837,
+          "rooms": [
+            {
+              "roomId": "arena-1",
+              "connections": 35,
+              "updatesPerClient": 19.39154496615069,
+              "gaps": {
+                "p50": 49.63115599998855,
+                "p95": 86.80345100001432,
+                "p99": 102.97030200000154,
+                "max": 133.89622599998256
+              }
+            },
+            {
+              "roomId": "arena-2",
+              "connections": 35,
+              "updatesPerClient": 19.186044674992768,
+              "gaps": {
+                "p50": 50.124305999983335,
+                "p95": 84.23917400001665,
+                "p99": 108.02388900000369,
+                "max": 145.52450999998837
+              }
+            }
+          ],
+          "boosters": 1011,
+          "actionRequests": 1042,
+          "actionPending": 1,
+          "actionLatencyP95Max": 105.65174599998863,
+          "actionLatencyP99Max": 149.32256699999562,
+          "actionLatencyMax": 177.70690900000045,
+          "successfulActionLatencyP95Max": 105.65174599998863,
+          "oldestPendingActionMs": 88.37607699999353,
+          "networkMbps": 160.86293868657611,
+          "usedByType": {
+            "freeze": 35,
+            "colorful_shield": 38,
+            "hook": 45,
+            "ice_cream": 45,
+            "candy": 58,
+            "rocket": 48,
+            "glove": 52,
+            "web": 42,
+            "sphere": 44,
+            "poison": 33,
+            "donut": 32,
+            "speed": 28,
+            "mine": 30,
+            "lock": 26,
+            "harpoon": 32,
+            "axe": 23,
+            "stone": 28,
+            "meat": 28,
+            "knuckles": 32,
+            "golden_shield": 28,
+            "mega_poison": 31,
+            "sponge": 28,
+            "easter_egg": 29,
+            "fire": 27,
+            "cake": 30,
+            "warheads": 25,
+            "vortex": 31,
+            "awl": 24,
+            "clan_shield": 31,
+            "fire_sword": 28
+          }
+        }
+      ]
+    },
+    "data": {
+      "before": {
+        "at": 1795463786150,
+        "revision": 4133790,
+        "digest": "f588e213b41278881dec55b855910a50111b38b6c15780939d285319da1c969d",
+        "worldHash": "3a620e799edeecaa746b460f9d4b0b2fbc50da1e9c3d16a87cc8c5a88061b975",
+        "profiles": 1719,
+        "clans": 136,
+        "fullWorldAndAuxEqual": true,
+        "backup": "/dev/shm/heroether-sword-stability-install-20261124/sword-stability-install-20261124",
+        "backupEqual": true,
+        "preservedFormatVerified": true,
+        "durableBackup": "/srv/heroether-test/play/backups/sword-stability-install-20261124/data-before.tar.gz"
+      },
+      "after": {
+        "calendarReplayExact": true,
+        "approvedMigrationsExact": true,
+        "allOtherFieldsEqual": true,
+        "beforeRevision": 4133790,
+        "revision": 4133792,
+        "digest": "9ddc4c1f2ab62ccd7b9c1015c2ec6b623183671511ff102565222dc73be6e0a3",
+        "worldHash": "79d2dedd06909b8d049bea7fd6f4ce1bf044c86f7b802d3a0a8b60e2aea2b1fb",
+        "profiles": 1719,
+        "clans": 136,
+        "at": 1795464105637,
+        "transitionTimes": [
+          1795464105637,
+          1795464108779
+        ],
+        "retiredAvatarProfiles": [],
+        "constructorChanges": [],
+        "questPayouts": 0,
+        "questChests": 0
+      },
+      "backup": {
+        "verified": true,
+        "archiveSha256": "efb00c642a3981d17a745b75704b7cf90493bc4724c981530cd7265948487bc2",
+        "revision": 4133790,
+        "digest": "f588e213b41278881dec55b855910a50111b38b6c15780939d285319da1c969d",
+        "worldHash": "3a620e799edeecaa746b460f9d4b0b2fbc50da1e9c3d16a87cc8c5a88061b975",
+        "profiles": 1719,
+        "clans": 136,
+        "postgresqlArchiveVerified": true
+      }
+    },
+    "storageDedup": {
+      "at": "2026-11-23T19:42:15.472Z",
+      "files": [
+        {
+          "path": "/srv/heroether-test/play/backups/clan-contributors-rims-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 1227473
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/clan-fixed-greatness-20261117/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 318145
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/clan-join-ui-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 1236141
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/daily-quests-revision-20261117/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 318108
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/kill-checkpoints-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 319702
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/kill-review-20261121/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 319513
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/lobby-limits-art-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 1222749
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/mongo-journal-read-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 319770
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/owner-gift-avatars-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 319860
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/preload-recovery-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 1238436
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/profanity-dictionary-20261117/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 314435
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/season-camera-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 1226686
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/service-recovery-20261121/before-startup-repair/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 450556
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/service-recovery-20261121/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+          "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+          "bytes": 27965588,
+          "priorInode": 318428
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/clan-contributors-rims-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 1228282
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/clan-fixed-greatness-20261117/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 318146
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/clan-join-ui-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 1236142
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/daily-quests-revision-20261117/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 318110
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/kill-checkpoints-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 319703
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/kill-review-20261121/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 319514
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/lobby-limits-art-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 1222750
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/mongo-journal-read-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 319771
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/owner-gift-avatars-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 319862
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/preload-recovery-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 1238437
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/profanity-dictionary-20261117/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 314436
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/season-camera-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 1226687
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/service-recovery-20261121/before-startup-repair/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 450557
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/service-recovery-20261121/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+          "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+          "bytes": 28358083,
+          "priorInode": 318429
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/clan-contributors-rims-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 1228283
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/clan-fixed-greatness-20261117/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 318147
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/clan-join-ui-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 1236143
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/daily-quests-revision-20261117/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 318111
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/kill-checkpoints-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 319704
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/kill-review-20261121/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 319515
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/lobby-limits-art-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 1222751
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/mongo-journal-read-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 319773
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/owner-gift-avatars-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 319863
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/preload-recovery-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 1238438
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/profanity-dictionary-20261117/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 314437
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/season-camera-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 1226688
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/service-recovery-20261121/before-startup-repair/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 450558
+        },
+        {
+          "path": "/srv/heroether-test/play/backups/service-recovery-20261121/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "canonical": "/srv/heroether-test/play/backups/arena-reliability-20261122/data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+          "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+          "bytes": 29685530,
+          "priorInode": 318430
+        }
+      ],
+      "bytesFreed": 1204128814,
+      "completed": true,
+      "policy": "All historical paths and bytes preserved. Treat linked snapshots as immutable; future replacement must be atomic, never in-place."
+    },
+    "postInstallObservation": {
+      "durationSeconds": 300.255,
+      "syntheticLoadRunning": false,
+      "summaryAfterFirst120Seconds": {
+        "online": [
+          3,
+          5
+        ],
+        "arena": [
+          2,
+          5
+        ],
+        "tickP95Ms": [
+          17.36,
+          19.83
+        ],
+        "rssMiB": [
+          1810,
+          2657
+        ],
+        "maxQueue": 0
+      },
+      "rows": [
+        {
+          "at": 1795464702218,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 0,
+            "parts": 0,
+            "connections": 0
+          },
+          "tickP95Ms": 0.08,
+          "intervalP99Ms": 51.08,
+          "rssMiB": 1063,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4133792,
+            "syncAgeMs": 1434,
+            "prepareMs": 2,
+            "writeMs": 112
+          }
+        },
+        {
+          "at": 1795464717230,
+          "online": {
+            "arena": 0,
+            "lobby": 2,
+            "total": 2
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 0,
+            "parts": 0,
+            "connections": 0
+          },
+          "tickP95Ms": 1.11,
+          "intervalP99Ms": 51.66,
+          "rssMiB": 1114,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4133792,
+            "syncAgeMs": 16446,
+            "prepareMs": 2,
+            "writeMs": 112
+          }
+        },
+        {
+          "at": 1795464732241,
+          "online": {
+            "arena": 1,
+            "lobby": 2,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 21,
+            "parts": 21,
+            "connections": 1
+          },
+          "tickP95Ms": 1.26,
+          "intervalP99Ms": 61.07,
+          "rssMiB": 1310,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4133792,
+            "syncAgeMs": 31457,
+            "prepareMs": 2,
+            "writeMs": 112
+          }
+        },
+        {
+          "at": 1795464747252,
+          "online": {
+            "arena": 2,
+            "lobby": 1,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 20,
+            "parts": 33,
+            "connections": 2
+          },
+          "tickP95Ms": 10.4,
+          "intervalP99Ms": 70.48,
+          "rssMiB": 1760,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4133807,
+            "syncAgeMs": 3684,
+            "prepareMs": 12539,
+            "writeMs": 353
+          }
+        },
+        {
+          "at": 1795464762261,
+          "online": {
+            "arena": 1,
+            "lobby": 2,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 21,
+            "parts": 51,
+            "connections": 1
+          },
+          "tickP95Ms": 12.36,
+          "intervalP99Ms": 71.71,
+          "rssMiB": 1765,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4133807,
+            "syncAgeMs": 18693,
+            "prepareMs": 12539,
+            "writeMs": 353
+          }
+        },
+        {
+          "at": 1795464777270,
+          "online": {
+            "arena": 2,
+            "lobby": 1,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 21,
+            "parts": 55,
+            "connections": 2
+          },
+          "tickP95Ms": 14.73,
+          "intervalP99Ms": 71.71,
+          "rssMiB": 1846,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4134131,
+            "syncAgeMs": 4283,
+            "prepareMs": 11979,
+            "writeMs": 328
+          }
+        },
+        {
+          "at": 1795464792295,
+          "online": {
+            "arena": 2,
+            "lobby": 1,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 0,
+            "parts": 0,
+            "connections": 2
+          },
+          "tickP95Ms": 17.57,
+          "intervalP99Ms": 65.36,
+          "rssMiB": 1858,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4134131,
+            "syncAgeMs": 19309,
+            "prepareMs": 11979,
+            "writeMs": 328
+          }
+        },
+        {
+          "at": 1795464807318,
+          "online": {
+            "arena": 2,
+            "lobby": 1,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 21,
+            "parts": 26,
+            "connections": 2
+          },
+          "tickP95Ms": 17.53,
+          "intervalP99Ms": 66.27,
+          "rssMiB": 1917,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4134464,
+            "syncAgeMs": 4147,
+            "prepareMs": 12116,
+            "writeMs": 370
+          }
+        },
+        {
+          "at": 1795464822332,
+          "online": {
+            "arena": 2,
+            "lobby": 1,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 21,
+            "parts": 37,
+            "connections": 2
+          },
+          "tickP95Ms": 17.36,
+          "intervalP99Ms": 68.06,
+          "rssMiB": 1926,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4134464,
+            "syncAgeMs": 19161,
+            "prepareMs": 12116,
+            "writeMs": 370
+          }
+        },
+        {
+          "at": 1795464837346,
+          "online": {
+            "arena": 2,
+            "lobby": 1,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 22,
+            "parts": 55,
+            "connections": 2
+          },
+          "tickP95Ms": 17.36,
+          "intervalP99Ms": 67.01,
+          "rssMiB": 2374,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4134730,
+            "syncAgeMs": 3654,
+            "prepareMs": 12646,
+            "writeMs": 347
+          }
+        },
+        {
+          "at": 1795464852358,
+          "online": {
+            "arena": 3,
+            "lobby": 0,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 22,
+            "parts": 76,
+            "connections": 3
+          },
+          "tickP95Ms": 17.78,
+          "intervalP99Ms": 68.06,
+          "rssMiB": 2423,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4134730,
+            "syncAgeMs": 18666,
+            "prepareMs": 12646,
+            "writeMs": 347
+          }
+        },
+        {
+          "at": 1795464867376,
+          "online": {
+            "arena": 3,
+            "lobby": 0,
+            "total": 3
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 23,
+            "parts": 55,
+            "connections": 3
+          },
+          "tickP95Ms": 18.23,
+          "intervalP99Ms": 66.3,
+          "rssMiB": 2656,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4134974,
+            "syncAgeMs": 3068,
+            "prepareMs": 13235,
+            "writeMs": 379
+          }
+        },
+        {
+          "at": 1795464882384,
+          "online": {
+            "arena": 3,
+            "lobby": 1,
+            "total": 4
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 22,
+            "parts": 59,
+            "connections": 3
+          },
+          "tickP95Ms": 19,
+          "intervalP99Ms": 62.08,
+          "rssMiB": 2657,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4134974,
+            "syncAgeMs": 18076,
+            "prepareMs": 13235,
+            "writeMs": 379
+          }
+        },
+        {
+          "at": 1795464897404,
+          "online": {
+            "arena": 3,
+            "lobby": 1,
+            "total": 4
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 23,
+            "parts": 75,
+            "connections": 3
+          },
+          "tickP95Ms": 19.43,
+          "intervalP99Ms": 62.08,
+          "rssMiB": 2355,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4135251,
+            "syncAgeMs": 4097,
+            "prepareMs": 12251,
+            "writeMs": 359
+          }
+        },
+        {
+          "at": 1795464912416,
+          "online": {
+            "arena": 3,
+            "lobby": 1,
+            "total": 4
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 23,
+            "parts": 70,
+            "connections": 3
+          },
+          "tickP95Ms": 19.54,
+          "intervalP99Ms": 60.19,
+          "rssMiB": 1810,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4135251,
+            "syncAgeMs": 19109,
+            "prepareMs": 12251,
+            "writeMs": 359
+          }
+        },
+        {
+          "at": 1795464927426,
+          "online": {
+            "arena": 3,
+            "lobby": 1,
+            "total": 4
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 20,
+            "parts": 88,
+            "connections": 3
+          },
+          "tickP95Ms": 19.26,
+          "intervalP99Ms": 60.45,
+          "rssMiB": 1914,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4135517,
+            "syncAgeMs": 4066,
+            "prepareMs": 12280,
+            "writeMs": 381
+          }
+        },
+        {
+          "at": 1795464942435,
+          "online": {
+            "arena": 2,
+            "lobby": 3,
+            "total": 5
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 20,
+            "parts": 67,
+            "connections": 2
+          },
+          "tickP95Ms": 19.83,
+          "intervalP99Ms": 61.12,
+          "rssMiB": 1935,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4135517,
+            "syncAgeMs": 19075,
+            "prepareMs": 12280,
+            "writeMs": 381
+          }
+        },
+        {
+          "at": 1795464957445,
+          "online": {
+            "arena": 3,
+            "lobby": 2,
+            "total": 5
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 22,
+            "parts": 57,
+            "connections": 3
+          },
+          "tickP95Ms": 19.34,
+          "intervalP99Ms": 60.45,
+          "rssMiB": 2008,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4135855,
+            "syncAgeMs": 3668,
+            "prepareMs": 12694,
+            "writeMs": 383
+          }
+        },
+        {
+          "at": 1795464972460,
+          "online": {
+            "arena": 4,
+            "lobby": 1,
+            "total": 5
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 23,
+            "parts": 53,
+            "connections": 4
+          },
+          "tickP95Ms": 19.24,
+          "intervalP99Ms": 54.64,
+          "rssMiB": 2412,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4135855,
+            "syncAgeMs": 18683,
+            "prepareMs": 12694,
+            "writeMs": 383
+          }
+        },
+        {
+          "at": 1795464987468,
+          "online": {
+            "arena": 4,
+            "lobby": 1,
+            "total": 5
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 21,
+            "parts": 72,
+            "connections": 4
+          },
+          "tickP95Ms": 19.54,
+          "intervalP99Ms": 52.5,
+          "rssMiB": 2610,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4136142,
+            "syncAgeMs": 247,
+            "prepareMs": 12950,
+            "writeMs": 405
+          }
+        },
+        {
+          "at": 1795465002473,
+          "online": {
+            "arena": 5,
+            "lobby": 0,
+            "total": 5
+          },
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 23,
+            "parts": 86,
+            "connections": 5
+          },
+          "tickP95Ms": 19.24,
+          "intervalP99Ms": 51.96,
+          "rssMiB": 2592,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4136142,
+            "syncAgeMs": 15251,
+            "prepareMs": 12950,
+            "writeMs": 405
+          }
+        }
+      ],
+      "comparableAB": false
+    },
+    "limitations": [
+      "The 70-player test is a short synthetic run on a shared VPS with 3 CPU including load drivers, not maximum CCU or browser FPS",
+      "Other 70-player runs fell below 19 Hz; no admission limit was raised and the capacity issue remains open",
+      "The 16 MiB checkpoint threshold remains a separate uninstalled candidate; its run crashed on the pre-existing sword bug and has no qualified performance result",
+      "Memory of the complete world, PostgreSQL prepare work and independent room ownership remain open",
+      "All backup paths and bytes are retained; deduplicated historical snapshots must never be edited in place",
+      "Cold startup took approximately 117 seconds; no restart loop, but startup latency remains open"
+    ],
+    "validationNotes": "Initial new test fixture had a missing brace; corrected, first output preserved.\nDifferential malformed-input fixture compared an unpaired UTF-16 surrogate with encoded UTF-8; expected value now reads the same bytes as production.\nA relative restore path used the wrong cwd; no files changed; corrected from workspace root, reran 32 tests on final v2.\nOne SSH upload failed before handshake; retry completed before remote staging.\nBuffered v2 selected. Byte-search v3 and regex v4 were slower on Linux and were excluded. All outputs/source files remain in artifacts.\nThe SSH downloader rejected the tmpfs archive path before reading. A checksum-verified durable copy was created inside the allowed test stand, then downloaded and verified locally.\r\nThe first 40-second readiness probe expired during cold startup. The process remained active with NRestarts=0 and entry closed; readiness was awaited without restarting it.\r\nA second readiness window expired; the third passed. The same process began listening approximately 88 seconds after start and PostgreSQL reached the expected revision. No restart was triggered.\r\nThe first generated capacity guard failed local syntax validation because a replacement string interpreted dollar-apostrophe. Replaced through a callback, saved the rejected file, and reran syntax validation before upload; no remote run used it.\r\nThe 70-player native baseline finished simulation and PG comparison, but its harness exited PG_OPERATION_FAILED before final ACK/schema-cleanup evidence. Original summary and logs retained. An independent audit recovered all 2080 ACKs, and the exact random test schema was then removed. The first exit remains a recorded failure; its exact transient cause is not proven.\r\n70-threshold aborted with TypeError in positionSword: another sword killed its owner during updateSwords. The original failed summary and stdout/stderr remain unchanged. Independent abnormal-exit audit recovered all 775 ACKs, no duplicates; PostgreSQL revision1524 lagged WAL2246 at crash. The isolated PG snapshot was exported before dropping only its random synthetic schema. Threshold performance is unqualified, candidate not installed.\nNew real-physics regression test reproduced the same null.targetX error before the fix (sword-regression-before.txt). After per-sword liveness validation and final cleanup, Windows87 passed. New source92cc7c4 touches one runtime file plus its test.\nFirst full-source verification helper lacked the prior manifest locally and failed ENOENT without mutating any source. Fetched the existing remote manifest, then all3231 files matched the new candidate exactly; only the expected two paths differ from prior full suite.\nDisk: SHA and exact mode/uid/gid/mtime verified for45 immutable historical recovery-file paths;42 replaced atomically with hardlinks to3 identical canonical files. All paths/bytes retained,1204128814 bytes reclaimed; independent local files verified first. Never overwrite these linked backup files in place.\r\nOne SSH metadata download lost connection before handshake during sword release backup transfer; retried successfully. Backup bytes were independently downloaded and checked against their SHA and full world/PG contents.\r\nSword release cold startup exceeded the readiness polling window; the next readiness check succeeded with the same PID479513 and NRestarts0. Entry remained closed throughout. Readiness was reported at syncedAt1795464129391, roughly117 seconds after systemd start; cold startup remains an open performance issue.\r\nFirst post-start calendar comparison rejected one profile notice/revision and world revision: an old clan-chest expiry notification reached its exact24h deadline1795464108779 during cold startup after restartAt1795464012061. Original verifier is saved as sword-stability-install-20261124/verify-calendar-first.cjs; first failure retained in tool log. Existing clan-chest-rewards.expire removes only notifications at n.at+DAY, not chest rewards. Verifier now derives the exact deadline from each removed old notice and replays it after constructor/startup, still requiring complete equality of every world/auxiliary field. Game runtime and game data were not modified to force a match. Entry stays closed until the stronger replay and full PG read succeed.\r\nSecond calendar verifier attempt also rejected: an already-expired notice deadline was inserted before the evidenced constructor time, causing a newly-created expiry notification to receive the wrong replay timestamp. Saved verify-calendar-notice-first.cjs. Corrected verifier adds only deadlines later than the first evidenced calendar transition, preserving actual constructor time and exact timestamp equality. No live code or data changes.\r\n",
+    "postInstallProfile": {
+      "pid": 479513,
+      "start": "2026-11-23T20:17:01.382Z",
+      "workers": [
+        {
+          "info": {
+            "workerId": "1",
+            "type": "worker",
+            "title": "[worker 7] WorkerThread",
+            "url": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/profile-checkpoint-worker.js"
+          },
+          "memory": {
+            "threadId": 7,
+            "memory": {
+              "rss": 2808020992,
+              "heapTotal": 588742656,
+              "heapUsed": 461367272,
+              "external": 18585750,
+              "arrayBuffers": 733359
+            },
+            "heap": {
+              "total_heap_size": 588742656,
+              "total_heap_size_executable": 524288,
+              "total_physical_size": 588926976,
+              "total_available_size": 1832865168,
+              "used_heap_size": 461517696,
+              "heap_size_limit": 2348810240,
+              "malloced_memory": 8413256,
+              "peak_malloced_memory": 26156672,
+              "does_zap_garbage": 0,
+              "number_of_native_contexts": 1,
+              "number_of_detached_contexts": 0,
+              "total_global_handles_size": 49152,
+              "used_global_handles_size": 2752,
+              "external_memory": 18613949
+            }
+          },
+          "cpu": {
+            "totalMs": 33100.14,
+            "self": [
+              {
+                "percent": 97.15,
+                "ms": 32157,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 2.85,
+                "ms": 944,
+                "fn": "(program)",
+                "file": "",
+                "line": 0
+              }
+            ],
+            "inclusive": [
+              {
+                "percent": 100,
+                "ms": 33100,
+                "fn": "(root)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 97.15,
+                "ms": 32157,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 2.85,
+                "ms": 944,
+                "fn": "(program)",
+                "file": "",
+                "line": 0
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "workerId": "2",
+            "type": "worker",
+            "title": "[worker 5] WorkerThread",
+            "url": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-worker.js"
+          },
+          "memory": {
+            "threadId": 5,
+            "memory": {
+              "rss": 2808020992,
+              "heapTotal": 51695616,
+              "heapUsed": 13299328,
+              "external": 3478074,
+              "arrayBuffers": 475093
+            },
+            "heap": {
+              "total_heap_size": 51695616,
+              "total_heap_size_executable": 1048576,
+              "total_physical_size": 47779840,
+              "total_available_size": 161604336,
+              "used_heap_size": 13435432,
+              "heap_size_limit": 184549376,
+              "malloced_memory": 286792,
+              "peak_malloced_memory": 29509624,
+              "does_zap_garbage": 0,
+              "number_of_native_contexts": 1,
+              "number_of_detached_contexts": 0,
+              "total_global_handles_size": 8192,
+              "used_global_handles_size": 2688,
+              "external_memory": 3506273
+            }
+          },
+          "cpu": {
+            "totalMs": 32114.721,
+            "self": [
+              {
+                "percent": 89.31,
+                "ms": 28682,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 2.29,
+                "ms": 736,
+                "fn": "(program)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 1.54,
+                "ms": 493,
+                "fn": "(garbage collector)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.92,
+                "ms": 295,
+                "fn": "encodeFood",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 298
+              },
+              {
+                "percent": 0.67,
+                "ms": 215,
+                "fn": "playerProjection",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 453
+              },
+              {
+                "percent": 0.48,
+                "ms": 153,
+                "fn": "encodeShared",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 470
+              },
+              {
+                "percent": 0.4,
+                "ms": 127,
+                "fn": "flush",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 728
+              },
+              {
+                "percent": 0.37,
+                "ms": 117,
+                "fn": "encodeFields",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 395
+              },
+              {
+                "percent": 0.33,
+                "ms": 107,
+                "fn": "jsonField",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 16
+              },
+              {
+                "percent": 0.23,
+                "ms": 73,
+                "fn": "jsonField",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 16
+              },
+              {
+                "percent": 0.22,
+                "ms": 71,
+                "fn": "decode",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/worker-food-transfer.js",
+                "line": 107
+              },
+              {
+                "percent": 0.21,
+                "ms": 66,
+                "fn": "",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-worker.js",
+                "line": 12
+              },
+              {
+                "percent": 0.17,
+                "ms": 56,
+                "fn": "publish",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 672
+              },
+              {
+                "percent": 0.17,
+                "ms": 56,
+                "fn": "playersDelta",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 620
+              },
+              {
+                "percent": 0.17,
+                "ms": 56,
+                "fn": "select",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/visibility.js",
+                "line": 125
+              },
+              {
+                "percent": 0.11,
+                "ms": 36,
+                "fn": "encodeFields",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 395
+              },
+              {
+                "percent": 0.1,
+                "ms": 33,
+                "fn": "playerDelta",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 547
+              },
+              {
+                "percent": 0.1,
+                "ms": 31,
+                "fn": "playerDelta",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 547
+              },
+              {
+                "percent": 0.1,
+                "ms": 31,
+                "fn": "postMessage",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.1,
+                "ms": 31,
+                "fn": "motionDelta",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/public/shared/arena-wire.js",
+                "line": 87
+              },
+              {
+                "percent": 0.09,
+                "ms": 30,
+                "fn": "buildFoodSection",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 206
+              },
+              {
+                "percent": 0.09,
+                "ms": 30,
+                "fn": "",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.09,
+                "ms": 28,
+                "fn": "visibleRows",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 161
+              },
+              {
+                "percent": 0.08,
+                "ms": 26,
+                "fn": "",
+                "file": "node:internal/event_target",
+                "line": 814
+              },
+              {
+                "percent": 0.07,
+                "ms": 24,
+                "fn": "unpackPlayers",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/worker-part-transfer.js",
+                "line": 43
+              }
+            ],
+            "inclusive": [
+              {
+                "percent": 100,
+                "ms": 32115,
+                "fn": "(root)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 89.31,
+                "ms": 28682,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 6.86,
+                "ms": 2203,
+                "fn": "",
+                "file": "node:internal/per_context/messageport",
+                "line": 19
+              },
+              {
+                "percent": 6.85,
+                "ms": 2198,
+                "fn": "",
+                "file": "node:internal/event_target",
+                "line": 814
+              },
+              {
+                "percent": 6.77,
+                "ms": 2173,
+                "fn": "",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-worker.js",
+                "line": 12
+              },
+              {
+                "percent": 5.95,
+                "ms": 1909,
+                "fn": "publish",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 672
+              },
+              {
+                "percent": 5.63,
+                "ms": 1807,
+                "fn": "flush",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 728
+              },
+              {
+                "percent": 2.29,
+                "ms": 736,
+                "fn": "(program)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 2.16,
+                "ms": 694,
+                "fn": "encodeShared",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 470
+              },
+              {
+                "percent": 1.83,
+                "ms": 586,
+                "fn": "sectionFor",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 631
+              },
+              {
+                "percent": 1.54,
+                "ms": 493,
+                "fn": "(garbage collector)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 1.26,
+                "ms": 406,
+                "fn": "playersDelta",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 620
+              },
+              {
+                "percent": 1.09,
+                "ms": 350,
+                "fn": "playerDelta",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 547
+              },
+              {
+                "percent": 0.97,
+                "ms": 311,
+                "fn": "encodeFood",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 298
+              },
+              {
+                "percent": 0.97,
+                "ms": 311,
+                "fn": "",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 377
+              },
+              {
+                "percent": 0.97,
+                "ms": 311,
+                "fn": "encode",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 374
+              },
+              {
+                "percent": 0.73,
+                "ms": 234,
+                "fn": "get fields",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 424
+              },
+              {
+                "percent": 0.7,
+                "ms": 224,
+                "fn": "encodeFields",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 395
+              },
+              {
+                "percent": 0.68,
+                "ms": 220,
+                "fn": "playerProjection",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 453
+              },
+              {
+                "percent": 0.39,
+                "ms": 126,
+                "fn": "select",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/visibility.js",
+                "line": 125
+              },
+              {
+                "percent": 0.36,
+                "ms": 115,
+                "fn": "entityDelta",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 584
+              },
+              {
+                "percent": 0.34,
+                "ms": 109,
+                "fn": "playerDelta",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 547
+              },
+              {
+                "percent": 0.33,
+                "ms": 107,
+                "fn": "jsonField",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 16
+              },
+              {
+                "percent": 0.31,
+                "ms": 100,
+                "fn": "playerDelta",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 547
+              },
+              {
+                "percent": 0.27,
+                "ms": 88,
+                "fn": "encodeFields",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-stream.js",
+                "line": 395
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "workerId": "3",
+            "type": "worker",
+            "title": "[worker 4] WorkerThread",
+            "url": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/profile-booster-worker.js"
+          },
+          "memory": {
+            "threadId": 4,
+            "memory": {
+              "rss": 2808414208,
+              "heapTotal": 11849728,
+              "heapUsed": 7600536,
+              "external": 24201471,
+              "arrayBuffers": 21174449
+            },
+            "heap": {
+              "total_heap_size": 11849728,
+              "total_heap_size_executable": 524288,
+              "total_physical_size": 10514432,
+              "total_available_size": 2341062696,
+              "used_heap_size": 7735600,
+              "heap_size_limit": 2348810240,
+              "malloced_memory": 172128,
+              "peak_malloced_memory": 23993088,
+              "does_zap_garbage": 0,
+              "number_of_native_contexts": 1,
+              "number_of_detached_contexts": 0,
+              "total_global_handles_size": 8192,
+              "used_global_handles_size": 2592,
+              "external_memory": 24229670
+            }
+          },
+          "cpu": {
+            "totalMs": 31981.791,
+            "self": [
+              {
+                "percent": 99.44,
+                "ms": 31803,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.29,
+                "ms": 93,
+                "fn": "(program)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.16,
+                "ms": 50,
+                "fn": "fsync",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.08,
+                "ms": 26,
+                "fn": "open",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.02,
+                "ms": 5,
+                "fn": "",
+                "file": "node:internal/per_context/messageport",
+                "line": 19
+              },
+              {
+                "percent": 0.02,
+                "ms": 5,
+                "fn": "",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/profile-booster-worker.js",
+                "line": 7
+              }
+            ],
+            "inclusive": [
+              {
+                "percent": 100,
+                "ms": 31982,
+                "fn": "(root)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 99.44,
+                "ms": 31803,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.29,
+                "ms": 93,
+                "fn": "(program)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.27,
+                "ms": 86,
+                "fn": "",
+                "file": "node:internal/per_context/messageport",
+                "line": 19
+              },
+              {
+                "percent": 0.25,
+                "ms": 81,
+                "fn": "",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/profile-booster-worker.js",
+                "line": 7
+              },
+              {
+                "percent": 0.25,
+                "ms": 81,
+                "fn": "",
+                "file": "node:internal/event_target",
+                "line": 814
+              },
+              {
+                "percent": 0.16,
+                "ms": 50,
+                "fn": "fsync",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.16,
+                "ms": 50,
+                "fn": "fsyncSync",
+                "file": "node:fs",
+                "line": 1341
+              },
+              {
+                "percent": 0.08,
+                "ms": 26,
+                "fn": "open",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.08,
+                "ms": 26,
+                "fn": "openSync",
+                "file": "node:fs",
+                "line": 620
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "workerId": "4",
+            "type": "worker",
+            "title": "[worker 2] WorkerThread",
+            "url": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/runtime/service-observer-worker.js"
+          },
+          "memory": {
+            "threadId": 2,
+            "memory": {
+              "rss": 2809200640,
+              "heapTotal": 9490432,
+              "heapUsed": 8041152,
+              "external": 3313458,
+              "arrayBuffers": 77999
+            },
+            "heap": {
+              "total_heap_size": 9490432,
+              "total_heap_size_executable": 524288,
+              "total_physical_size": 9703424,
+              "total_available_size": 2341671016,
+              "used_heap_size": 8175800,
+              "heap_size_limit": 2348810240,
+              "malloced_memory": 434296,
+              "peak_malloced_memory": 24316384,
+              "does_zap_garbage": 0,
+              "number_of_native_contexts": 1,
+              "number_of_detached_contexts": 0,
+              "total_global_handles_size": 8192,
+              "used_global_handles_size": 2752,
+              "external_memory": 3341657
+            }
+          },
+          "cpu": {
+            "totalMs": 31864.19,
+            "self": [
+              {
+                "percent": 99.75,
+                "ms": 31784,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.24,
+                "ms": 76,
+                "fn": "(program)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.02,
+                "ms": 5,
+                "fn": "wrappedFn",
+                "file": "node:internal/errors",
+                "line": 538
+              }
+            ],
+            "inclusive": [
+              {
+                "percent": 100,
+                "ms": 31864,
+                "fn": "(root)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 99.75,
+                "ms": 31784,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.24,
+                "ms": 76,
+                "fn": "(program)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.02,
+                "ms": 5,
+                "fn": "wrappedFn",
+                "file": "node:internal/errors",
+                "line": 538
+              },
+              {
+                "percent": 0.02,
+                "ms": 5,
+                "fn": "join",
+                "file": "node:path",
+                "line": 1329
+              },
+              {
+                "percent": 0.02,
+                "ms": 5,
+                "fn": "",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/runtime/service-observer-worker.js",
+                "line": 7
+              },
+              {
+                "percent": 0.02,
+                "ms": 5,
+                "fn": "",
+                "file": "node:internal/event_target",
+                "line": 814
+              },
+              {
+                "percent": 0.02,
+                "ms": 5,
+                "fn": "",
+                "file": "node:internal/per_context/messageport",
+                "line": 19
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "workerId": "5",
+            "type": "worker",
+            "title": "[worker 1] WorkerThread",
+            "url": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/database-worker.js"
+          },
+          "memory": {
+            "threadId": 1,
+            "memory": {
+              "rss": 2812215296,
+              "heapTotal": 272683008,
+              "heapUsed": 14462256,
+              "external": 239988263,
+              "arrayBuffers": 236348047
+            },
+            "heap": {
+              "total_heap_size": 272683008,
+              "total_heap_size_executable": 1310720,
+              "total_physical_size": 272678912,
+              "total_available_size": 2209953944,
+              "used_heap_size": 14538776,
+              "heap_size_limit": 2348810240,
+              "malloced_memory": 8937568,
+              "peak_malloced_memory": 27180744,
+              "does_zap_garbage": 0,
+              "number_of_native_contexts": 1,
+              "number_of_detached_contexts": 0,
+              "total_global_handles_size": 262144,
+              "used_global_handles_size": 2976,
+              "external_memory": 240008775
+            }
+          },
+          "cpu": {
+            "totalMs": 31753.552,
+            "self": [
+              {
+                "percent": 62.79,
+                "ms": 19937,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 13.38,
+                "ms": 4248,
+                "fn": "token",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/checkpoint-json.js",
+                "line": 21
+              },
+              {
+                "percent": 7.46,
+                "ms": 2370,
+                "fn": "add",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-builder.js",
+                "line": 49
+              },
+              {
+                "percent": 5.89,
+                "ms": 1871,
+                "fn": "(garbage collector)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 1.91,
+                "ms": 607,
+                "fn": "update",
+                "file": "node:internal/crypto/hash",
+                "line": 186
+              },
+              {
+                "percent": 1.27,
+                "ms": 404,
+                "fn": "update",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.96,
+                "ms": 303,
+                "fn": "update",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.72,
+                "ms": 230,
+                "fn": "utf8Slice",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.49,
+                "ms": 157,
+                "fn": "read",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.44,
+                "ms": 140,
+                "fn": "get",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-builder.js",
+                "line": 33
+              },
+              {
+                "percent": 0.4,
+                "ms": 128,
+                "fn": "writeSync",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.35,
+                "ms": 112,
+                "fn": "object",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/checkpoint-json.js",
+                "line": 46
+              },
+              {
+                "percent": 0.32,
+                "ms": 103,
+                "fn": "hash",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-documents.js",
+                "line": 7
+              },
+              {
+                "percent": 0.29,
+                "ms": 93,
+                "fn": "encode",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/postgresql-state.js",
+                "line": 15
+              },
+              {
+                "percent": 0.29,
+                "ms": 92,
+                "fn": "recordFor",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-builder.js",
+                "line": 14
+              },
+              {
+                "percent": 0.25,
+                "ms": 79,
+                "fn": "(program)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 0.24,
+                "ms": 77,
+                "fn": "toString",
+                "file": "node:buffer",
+                "line": 918
+              },
+              {
+                "percent": 0.19,
+                "ms": 62,
+                "fn": "canonical",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/state-snapshot.js",
+                "line": 19
+              },
+              {
+                "percent": 0.15,
+                "ms": 47,
+                "fn": "concat",
+                "file": "node:buffer",
+                "line": 628
+              },
+              {
+                "percent": 0.11,
+                "ms": 35,
+                "fn": "pack",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-builder.js",
+                "line": 42
+              },
+              {
+                "percent": 0.1,
+                "ms": 31,
+                "fn": "canonical",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/state-snapshot.js",
+                "line": 19
+              },
+              {
+                "percent": 0.1,
+                "ms": 31,
+                "fn": "update",
+                "file": "node:internal/crypto/hash",
+                "line": 186
+              },
+              {
+                "percent": 0.1,
+                "ms": 31,
+                "fn": "documentSize",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-size.js",
+                "line": 4
+              },
+              {
+                "percent": 0.1,
+                "ms": 31,
+                "fn": "canonical",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/state-snapshot.js",
+                "line": 19
+              },
+              {
+                "percent": 0.1,
+                "ms": 31,
+                "fn": "canonical",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/state-snapshot.js",
+                "line": 19
+              }
+            ],
+            "inclusive": [
+              {
+                "percent": 100,
+                "ms": 31754,
+                "fn": "(root)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 62.79,
+                "ms": 19937,
+                "fn": "(idle)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 30.95,
+                "ms": 9829,
+                "fn": "",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/database-worker.js",
+                "line": 30
+              },
+              {
+                "percent": 30.95,
+                "ms": 9829,
+                "fn": "",
+                "file": "node:internal/event_target",
+                "line": 814
+              },
+              {
+                "percent": 30.95,
+                "ms": 9829,
+                "fn": "",
+                "file": "node:internal/per_context/messageport",
+                "line": 19
+              },
+              {
+                "percent": 29.62,
+                "ms": 9407,
+                "fn": "snapshot",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/checkpoint-cache.js",
+                "line": 18
+              },
+              {
+                "percent": 29.61,
+                "ms": 9401,
+                "fn": "readLocal",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/state-snapshot.js",
+                "line": 122
+              },
+              {
+                "percent": 29.61,
+                "ms": 9401,
+                "fn": "",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/database-worker.js",
+                "line": 12
+              },
+              {
+                "percent": 15.66,
+                "ms": 4973,
+                "fn": "recover",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/profile-journal.js",
+                "line": 174
+              },
+              {
+                "percent": 15.53,
+                "ms": 4932,
+                "fn": "object",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/checkpoint-json.js",
+                "line": 46
+              },
+              {
+                "percent": 15.53,
+                "ms": 4932,
+                "fn": "readCheckpoint",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/checkpoint-json.js",
+                "line": 61
+              },
+              {
+                "percent": 15.5,
+                "ms": 4922,
+                "fn": "object",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/checkpoint-json.js",
+                "line": 46
+              },
+              {
+                "percent": 15.13,
+                "ms": 4805,
+                "fn": "token",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/checkpoint-json.js",
+                "line": 21
+              },
+              {
+                "percent": 13.86,
+                "ms": 4402,
+                "fn": "pack",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-builder.js",
+                "line": 42
+              },
+              {
+                "percent": 13.86,
+                "ms": 4402,
+                "fn": "",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/database-worker.js",
+                "line": 12
+              },
+              {
+                "percent": 12.11,
+                "ms": 3844,
+                "fn": "add",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-builder.js",
+                "line": 49
+              },
+              {
+                "percent": 5.89,
+                "ms": 1871,
+                "fn": "(garbage collector)",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 2.88,
+                "ms": 915,
+                "fn": "digest",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-builder.js",
+                "line": 9
+              },
+              {
+                "percent": 2.87,
+                "ms": 910,
+                "fn": "update",
+                "file": "node:internal/crypto/hash",
+                "line": 186
+              },
+              {
+                "percent": 1.75,
+                "ms": 554,
+                "fn": "recordFor",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-builder.js",
+                "line": 14
+              },
+              {
+                "percent": 1.33,
+                "ms": 422,
+                "fn": "differences",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/postgresql-state.js",
+                "line": 22
+              },
+              {
+                "percent": 1.33,
+                "ms": 422,
+                "fn": "prepare",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/postgresql-state.js",
+                "line": 97
+              },
+              {
+                "percent": 1.31,
+                "ms": 417,
+                "fn": "encode",
+                "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/postgresql-state.js",
+                "line": 15
+              },
+              {
+                "percent": 1.27,
+                "ms": 404,
+                "fn": "update",
+                "file": "",
+                "line": 0
+              },
+              {
+                "percent": 1.27,
+                "ms": 404,
+                "fn": "update",
+                "file": "node:internal/crypto/hash",
+                "line": 186
+              }
+            ]
+          }
+        }
+      ],
+      "mainMemory": {
+        "threadId": 0,
+        "memory": {
+          "rss": 2808020992,
+          "heapTotal": 771072000,
+          "heapUsed": 594672736,
+          "external": 5965276,
+          "arrayBuffers": 1656729
+        },
+        "heap": {
+          "total_heap_size": 771072000,
+          "total_heap_size_executable": 9437184,
+          "total_physical_size": 750678016,
+          "total_available_size": 1753160952,
+          "used_heap_size": 594747592,
+          "heap_size_limit": 2348810240,
+          "malloced_memory": 8413256,
+          "peak_malloced_memory": 34814368,
+          "does_zap_garbage": 0,
+          "number_of_native_contexts": 1,
+          "number_of_detached_contexts": 0,
+          "total_global_handles_size": 106496,
+          "used_global_handles_size": 53824,
+          "external_memory": 5985748
+        }
+      },
+      "main": {
+        "totalMs": 31329.604,
+        "self": [
+          {
+            "percent": 68.93,
+            "ms": 21595,
+            "fn": "(idle)",
+            "file": "",
+            "line": 0
+          },
+          {
+            "percent": 4.95,
+            "ms": 1551,
+            "fn": "(program)",
+            "file": "",
+            "line": 0
+          },
+          {
+            "percent": 1.44,
+            "ms": 451,
+            "fn": "postMessage",
+            "file": "node:internal/worker",
+            "line": 462
+          },
+          {
+            "percent": 1.07,
+            "ms": 336,
+            "fn": "",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/arena-simulation.js",
+            "line": 1332
+          },
+          {
+            "percent": 0.67,
+            "ms": 211,
+            "fn": "",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/game-server.js",
+            "line": 1298
+          },
+          {
+            "percent": 0.65,
+            "ms": 204,
+            "fn": "encode",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/worker-food-transfer.js",
+            "line": 70
+          },
+          {
+            "percent": 0.6,
+            "ms": 188,
+            "fn": "writev",
+            "file": "",
+            "line": 0
+          },
+          {
+            "percent": 0.57,
+            "ms": 179,
+            "fn": "step",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/arena-simulation.js",
+            "line": 1238
+          },
+          {
+            "percent": 0.55,
+            "ms": 174,
+            "fn": "collectEther",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/arena-simulation.js",
+            "line": 980
+          },
+          {
+            "percent": 0.55,
+            "ms": 172,
+            "fn": "arenaProgressDraft",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/profile-store.js",
+            "line": 1208
+          },
+          {
+            "percent": 0.54,
+            "ms": 170,
+            "fn": "",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/rankings/event-leaderboards.js",
+            "line": 74
+          },
+          {
+            "percent": 0.51,
+            "ms": 159,
+            "fn": "copyRecord",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/copy-record.js",
+            "line": 6
+          },
+          {
+            "percent": 0.5,
+            "ms": 156,
+            "fn": "(garbage collector)",
+            "file": "",
+            "line": 0
+          },
+          {
+            "percent": 0.43,
+            "ms": 135,
+            "fn": "update",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/testing/arena-test-bots.js",
+            "line": 298
+          },
+          {
+            "percent": 0.43,
+            "ms": 134,
+            "fn": "",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/rankings/event-leaderboards.js",
+            "line": 74
+          },
+          {
+            "percent": 0.39,
+            "ms": 123,
+            "fn": "",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/arena-simulation.js",
+            "line": 1422
+          },
+          {
+            "percent": 0.33,
+            "ms": 102,
+            "fn": "beginStep",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/arena-hazards.js",
+            "line": 112
+          },
+          {
+            "percent": 0.31,
+            "ms": 97,
+            "fn": "moveFeed",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/arena-simulation.js",
+            "line": 576
+          },
+          {
+            "percent": 0.29,
+            "ms": 92,
+            "fn": "sameMetadata",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/worker-food-transfer.js",
+            "line": 42
+          },
+          {
+            "percent": 0.28,
+            "ms": 87,
+            "fn": "",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/admin/moderation.js",
+            "line": 75
+          },
+          {
+            "percent": 0.24,
+            "ms": 77,
+            "fn": "resolveAbsorptions",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/arena-simulation.js",
+            "line": 1075
+          },
+          {
+            "percent": 0.23,
+            "ms": 71,
+            "fn": "prepareRoomStep",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/room-step.js",
+            "line": 10
+          },
+          {
+            "percent": 0.23,
+            "ms": 71,
+            "fn": "",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/testing/arena-test-bots.js",
+            "line": 308
+          },
+          {
+            "percent": 0.22,
+            "ms": 70,
+            "fn": "CircleIndex",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/spatial-collision-index.js",
+            "line": 7
+          },
+          {
+            "percent": 0.21,
+            "ms": 67,
+            "fn": "shareArenaData",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/arena-profile-copy.js",
+            "line": 53
+          }
+        ],
+        "inclusive": [
+          {
+            "percent": 100,
+            "ms": 31330,
+            "fn": "(root)",
+            "file": "",
+            "line": 0
+          },
+          {
+            "percent": 68.93,
+            "ms": 21595,
+            "fn": "(idle)",
+            "file": "",
+            "line": 0
+          },
+          {
+            "percent": 18.66,
+            "ms": 5846,
+            "fn": "listOnTimeout",
+            "file": "node:internal/timers",
+            "line": 623
+          },
+          {
+            "percent": 18.66,
+            "ms": 5846,
+            "fn": "processTimers",
+            "file": "node:internal/timers",
+            "line": 603
+          },
+          {
+            "percent": 18.46,
+            "ms": 5784,
+            "fn": "run",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/tick-clock.js",
+            "line": 15
+          },
+          {
+            "percent": 18.4,
+            "ms": 5764,
+            "fn": "tickOnce",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/game-server.js",
+            "line": 2104
+          },
+          {
+            "percent": 18.4,
+            "ms": 5764,
+            "fn": "tick",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/game-server.js",
+            "line": 2099
+          },
+          {
+            "percent": 7.53,
+            "ms": 2360,
+            "fn": "stepRoom",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/game-server.js",
+            "line": 2090
+          },
+          {
+            "percent": 7.47,
+            "ms": 2339,
+            "fn": "stepRoom",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/room-step.js",
+            "line": 6
+          },
+          {
+            "percent": 5.64,
+            "ms": 1767,
+            "fn": "writeArenaBatches",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/game-server.js",
+            "line": 2035
+          },
+          {
+            "percent": 5.57,
+            "ms": 1746,
+            "fn": "applyArenaProgress",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/profile-store.js",
+            "line": 1148
+          },
+          {
+            "percent": 5,
+            "ms": 1565,
+            "fn": "broadcast",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/game-server.js",
+            "line": 1906
+          },
+          {
+            "percent": 4.95,
+            "ms": 1551,
+            "fn": "(program)",
+            "file": "",
+            "line": 0
+          },
+          {
+            "percent": 4.62,
+            "ms": 1448,
+            "fn": "step",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/arena-simulation.js",
+            "line": 1238
+          },
+          {
+            "percent": 3.46,
+            "ms": 1085,
+            "fn": "arenaProgressDraft",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/profile-store.js",
+            "line": 1208
+          },
+          {
+            "percent": 2.85,
+            "ms": 891,
+            "fn": "dispatch",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-workers.js",
+            "line": 164
+          },
+          {
+            "percent": 2.85,
+            "ms": 891,
+            "fn": "flush",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/state-workers.js",
+            "line": 373
+          },
+          {
+            "percent": 2.57,
+            "ms": 805,
+            "fn": "prepareRoomStep",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/room-step.js",
+            "line": 10
+          },
+          {
+            "percent": 2.2,
+            "ms": 690,
+            "fn": "onStreamRead",
+            "file": "node:internal/stream_base_commons",
+            "line": 171
+          },
+          {
+            "percent": 2.12,
+            "ms": 664,
+            "fn": "arenaSnapshot",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/game-server.js",
+            "line": 314
+          },
+          {
+            "percent": 2.1,
+            "ms": 659,
+            "fn": "snapshot",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/arena/arena-simulation.js",
+            "line": 1329
+          },
+          {
+            "percent": 2.08,
+            "ms": 651,
+            "fn": "Readable.push",
+            "file": "node:internal/streams/readable",
+            "line": 395
+          },
+          {
+            "percent": 2.05,
+            "ms": 641,
+            "fn": "drain",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/arena-booster-queue.js",
+            "line": 282
+          },
+          {
+            "percent": 1.98,
+            "ms": 620,
+            "fn": "readableAddChunkPushByteMode",
+            "file": "node:internal/streams/readable",
+            "line": 471
+          },
+          {
+            "percent": 1.98,
+            "ms": 619,
+            "fn": "commit",
+            "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/arena-booster-queue.js",
+            "line": 129
+          }
+        ]
+      },
+      "end": "2026-11-23T20:17:34.980Z",
+      "archive": {
+        "sha256": "c080e4f3a01ba43b499bdd16c3512d771be346d1f9d28e28c3040c8f425f918a",
+        "bytes": 97669,
+        "verified": true,
+        "inspectorClosed": true
+      },
+      "limitations": [
+        "One short live CPU sample, after the five-minute observation, not matched A/B or maximum capacity",
+        "CPU percentages include idle time; inclusive entries overlap and cannot be added",
+        "RSS is process-wide and must not be summed across workers"
+      ],
+      "findings": {
+        "mainIdlePercent": 68.93,
+        "databaseTokenSelf": {
+          "percent": 13.38,
+          "ms": 4248,
+          "fn": "token",
+          "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/profiles/checkpoint-json.js",
+          "line": 21
+        },
+        "databaseSnapshotAddSelf": {
+          "percent": 7.46,
+          "ms": 2370,
+          "fn": "add",
+          "file": "file:///srv/heroether-test/play/releases/20261124-sword-stability/src/server/persistence/snapshot-builder.js",
+          "line": 49
+        },
+        "databaseGcSelf": {
+          "percent": 5.89,
+          "ms": 1871,
+          "fn": "(garbage collector)",
+          "file": "",
+          "line": 0
+        },
+        "coldStartupSeconds": 117,
+        "next": "Addressable profiles and separated history are still required to avoid re-reading and hashing the entire world; main-thread physics and worker transfers need a reproducible large-part benchmark"
+      }
     }
   }
 }
