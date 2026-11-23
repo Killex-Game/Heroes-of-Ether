@@ -1,3 +1,7 @@
+## Кандидат установлен 23.11.2026
+
+Проверенная версия установлена как 20261123-profile-history, source f9a39d47b9a4980f912321bc167fd6e02de256d1. Основная ветка codex/20261123-interface-mechanics, тег release/20261123-profile-history. Полный Linux2320/2319pass/0fail/1skip, A/B35+5: ACK1274/1291, PG=WAL, все600000прежних квитанций сохранены. Подробности в актуальной основной ветке: games/heroes-of-ether/docs/performance/profile-history-installed-20261123.json. Не возвращать старый runtime или старые значения docs/current-release.json из этой ветки кандидата.
+
 ## Кандидат истории операций, НЕ установлен 23.11.2026
 
 - Ветка codex/20261123-history-sharing основана на установленном клановом выпуске b628592. copyProfile/lobbyDraft сохраняет неизменяемый arenaReceipts; писатель по-прежнему копирует только изменяемую корзину и внешнюю карту. Записи не удаляются, generic transact сохраняет полную изоляцию

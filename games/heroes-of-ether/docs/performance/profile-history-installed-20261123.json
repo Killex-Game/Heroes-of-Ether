@@ -1,0 +1,433 @@
+{
+  "installed": true,
+  "published": true,
+  "release": "20261123-profile-history",
+  "sourceCommit": "f9a39d47b9a4980f912321bc167fd6e02de256d1",
+  "testedCandidate": "caaef1591fec4b82ec08d18a7a6551518b5f429e",
+  "entryOpenedAtUtc": "2026-11-23T18:11:38.918Z",
+  "gamePid": 444501,
+  "adminPid": 1163,
+  "change": "Audited profile writes retain immutable arena operation receipts by reference. Appending still copies the changed bucket and outer map. Arbitrary transact retains full isolation.",
+  "validation": {
+    "windowsTargeted": 105,
+    "linuxTargeted": 105,
+    "linuxFull": {
+      "total": 2320,
+      "passed": 2319,
+      "failed": 0,
+      "skipped": 1
+    },
+    "runtimeFiles": 2549,
+    "changed": 1,
+    "commentsRemoved": 6,
+    "graphicsUnchanged": true,
+    "rootFiles": 4
+  },
+  "comparison": {
+    "fixture": {
+      "sha256": "8d430327174c0d3e83d903131f29a700907a3c55b94ea663be7be96f69951df8",
+      "bytes": 38853801
+    },
+    "players": 35,
+    "lobby": 5,
+    "arenaReceiptProfiles": 40,
+    "retainedReceipts": 600000,
+    "phaseSeconds": 30,
+    "cpuQuota": 3,
+    "changedRuntimeFiles": 1,
+    "linuxFull": {
+      "total": 2320,
+      "passed": 2319,
+      "failed": 0,
+      "skipped": 1
+    },
+    "beforeAssessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": true,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "move",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "split",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "feed",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "boosters",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "meetsTargets": true,
+          "issues": []
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "afterAssessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": true,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "move",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "split",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "feed",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "boosters",
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "meetsTargets": true,
+          "issues": []
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "acknowledgedBefore": 1274,
+    "acknowledgedAfter": 1291,
+    "rows": [
+      {
+        "phase": "move",
+        "before": {
+          "hz": 19.965882439287174,
+          "tickP95Ms": 12.043553000003158,
+          "eventLoopP95Ms": 15.507455,
+          "lobbyP95Ms": 39.85427100000015,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1553.65234375,
+          "heapMiB": 340.55469512939453,
+          "cpuPercent": 62.80286746712543,
+          "gcTotalMs": 64.46499699354172,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 19.968007658689086,
+          "tickP95Ms": 12.214570999996795,
+          "eventLoopP95Ms": 13.484031,
+          "lobbyP95Ms": 18.3232050000006,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1592.5546875,
+          "heapMiB": 371.6903839111328,
+          "cpuPercent": 60.393700117420316,
+          "gcTotalMs": 53.07815504074097,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": 1.4199962419195744,
+        "lobbyChangePercent": -54.02448836662819
+      },
+      {
+        "phase": "split",
+        "before": {
+          "hz": 19.95056887413103,
+          "tickP95Ms": 16.423892999999225,
+          "eventLoopP95Ms": 22.822911,
+          "lobbyP95Ms": 38.4057499999908,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1439.3046875,
+          "heapMiB": 251.3310089111328,
+          "cpuPercent": 92.15937597228418,
+          "gcTotalMs": 240.1180112361908,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 20.010535133225787,
+          "tickP95Ms": 18.511034000010113,
+          "eventLoopP95Ms": 22.216703,
+          "lobbyP95Ms": 17.093321000007563,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1638.64453125,
+          "heapMiB": 504.8347625732422,
+          "cpuPercent": 90.75951910677661,
+          "gcTotalMs": 127.22737801074982,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": 12.707955415996608,
+        "lobbyChangePercent": -55.49280771756402
+      },
+      {
+        "phase": "feed",
+        "before": {
+          "hz": 19.939307505347436,
+          "tickP95Ms": 15.981081999998423,
+          "eventLoopP95Ms": 21.282815,
+          "lobbyP95Ms": 41.020593000008375,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1571.1640625,
+          "heapMiB": 371.3174591064453,
+          "cpuPercent": 93.78359329393386,
+          "gcTotalMs": 145.57570785284042,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 20.052829074504807,
+          "tickP95Ms": 18.110602999993716,
+          "eventLoopP95Ms": 20.479999,
+          "lobbyP95Ms": 17.448130999997375,
+          "actionP95Ms": 0,
+          "successActionP95Ms": 0,
+          "rssMiB": 1872.51171875,
+          "heapMiB": 650.328857421875,
+          "cpuPercent": 92.31872643230984,
+          "gcTotalMs": 147.46111208200455,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": 13.325261706281854,
+        "lobbyChangePercent": -57.46494693532633
+      },
+      {
+        "phase": "boosters",
+        "before": {
+          "hz": 20.055865981716323,
+          "tickP95Ms": 15.369568000023719,
+          "eventLoopP95Ms": 21.774335,
+          "lobbyP95Ms": 36.996306999993976,
+          "actionP95Ms": 26.773065999994287,
+          "successActionP95Ms": 27.080558000001474,
+          "rssMiB": 1849.83203125,
+          "heapMiB": 541.4687881469727,
+          "cpuPercent": 102.36822664830896,
+          "gcTotalMs": 190.61510199308395,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 19.744632294273927,
+          "tickP95Ms": 17.127645000000484,
+          "eventLoopP95Ms": 21.381119,
+          "lobbyP95Ms": 23.950089999998454,
+          "actionP95Ms": 23.385707999987062,
+          "successActionP95Ms": 23.50830699999642,
+          "rssMiB": 1557.4921875,
+          "heapMiB": 293.15838623046875,
+          "cpuPercent": 110.45492128541039,
+          "gcTotalMs": 473.51014733314514,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": 11.438688452232704,
+        "lobbyChangePercent": -35.2635656310173
+      },
+      {
+        "phase": "combined",
+        "before": {
+          "hz": 19.94622024563699,
+          "tickP95Ms": 25.446819999982836,
+          "eventLoopP95Ms": 32.358399,
+          "lobbyP95Ms": 51.45781000002171,
+          "actionP95Ms": 36.51442500000121,
+          "successActionP95Ms": 35.59333100001095,
+          "rssMiB": 1865.41796875,
+          "heapMiB": 572.021484375,
+          "cpuPercent": 148.17046046523356,
+          "gcTotalMs": 349.81596302986145,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "after": {
+          "hz": 19.783820332536408,
+          "tickP95Ms": 26.250210999976844,
+          "eventLoopP95Ms": 30.801919,
+          "lobbyP95Ms": 29.622844000026817,
+          "actionP95Ms": 34.32768499999656,
+          "successActionP95Ms": 34.32768499999656,
+          "rssMiB": 1738.0546875,
+          "heapMiB": 634.2086181640625,
+          "cpuPercent": 146.84811253447478,
+          "gcTotalMs": 319.93178206682205,
+          "pendingActions": 0,
+          "pausedSamples": 0,
+          "lobbyErrors": {}
+        },
+        "tickChangePercent": 3.1571371196658315,
+        "lobbyChangePercent": -42.43275413389276
+      }
+    ],
+    "limitations": [
+      "One sequential A/B pair on a shared host; live population and timing differ",
+      "Synthetic actions and physics random sources are not seeded identically",
+      "Short run, not maximum CCU, browser FPS or a long-duration stability guarantee",
+      "No change to limits, WAL durability, single writer or production database schema"
+    ]
+  },
+  "retainedHistory": [
+    {
+      "label": "baseline",
+      "profiles": 40,
+      "retainedReceipts": 600000,
+      "allOriginalValuesEqual": true,
+      "fixtureSha256": "8d430327174c0d3e83d903131f29a700907a3c55b94ea663be7be96f69951df8"
+    },
+    {
+      "label": "candidate",
+      "profiles": 40,
+      "retainedReceipts": 600000,
+      "allOriginalValuesEqual": true,
+      "fixtureSha256": "8d430327174c0d3e83d903131f29a700907a3c55b94ea663be7be96f69951df8"
+    }
+  ],
+  "data": {
+    "before": {
+      "at": 1795456803030,
+      "revision": 4065482,
+      "digest": "a3b53c0be94a8e06df68a24160965d541b0d25c9bf836d13280648b45584e21a",
+      "worldHash": "bb159e81d3780646158158c386b700de286cd7efcfe36631b6e6db4c81b4c94d",
+      "profiles": 1718,
+      "clans": 136,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/dev/shm/heroether-profile-history-install-20261123/profile-history-install-20261123",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/profile-history-install-20261123/data-before.tar.gz"
+    },
+    "after": {
+      "calendarReplayExact": true,
+      "approvedMigrationsExact": true,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 4065482,
+      "revision": 4065484,
+      "digest": "cf7c8270e60efd94f1b04abb61db38e9187853ddc02e38b9a8d638e5eca32a4e",
+      "worldHash": "d7c8fb37ca87973757646f44e44374fc2e8814ce65c49fc0e2a33a47fd51c66d",
+      "profiles": 1718,
+      "clans": 136,
+      "at": 1795457088355,
+      "transitionTimes": [
+        1795457088355,
+        1795457223360
+      ],
+      "retiredAvatarProfiles": [],
+      "constructorChanges": [],
+      "questPayouts": 7,
+      "questChests": 100
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "39fbf0ea4d6275d4e63a15e5f2a27eaecb35164c4e2cc5e198af84e5fc737e68",
+      "revision": 4065482,
+      "digest": "a3b53c0be94a8e06df68a24160965d541b0d25c9bf836d13280648b45584e21a",
+      "worldHash": "bb159e81d3780646158158c386b700de286cd7efcfe36631b6e6db4c81b4c94d",
+      "profiles": 1718,
+      "clans": 136,
+      "postgresqlArchiveVerified": true
+    }
+  },
+  "storage": {
+    "at": "2026-11-23T17:47:43.730Z",
+    "removed": [
+      {
+        "file": "/var/cache/apt/pkgcache.bin",
+        "bytes": 56183591
+      },
+      {
+        "file": "/var/cache/apt/srcpkgcache.bin",
+        "bytes": 56162819
+      }
+    ],
+    "reclaimedBytes": 112346410,
+    "diskBefore": 720551936,
+    "diskAfter": 832901120,
+    "scope": "Rebuildable package metadata only; no installed package, game data, log or backup touched"
+  },
+  "lastObservation": {
+    "at": "2026-11-23T18:12:59.274Z",
+    "online": {
+      "arena": 1,
+      "lobby": 4,
+      "total": 5
+    },
+    "tickWorkMs": {
+      "count": 1200,
+      "p50": 5.56,
+      "p95": 16.69,
+      "p99": 25.11,
+      "max": 49.92
+    },
+    "tickIntervalMs": {
+      "count": 1200,
+      "p50": 49.99,
+      "p95": 50.86,
+      "p99": 59.03,
+      "max": 68.69
+    },
+    "memoryMiB": {
+      "resident": 1784,
+      "heapUsed": 470,
+      "limit": 5120
+    },
+    "queuedActions": 0,
+    "paused": false,
+    "database": {
+      "connected": true,
+      "lastError": null,
+      "revision": 4065832,
+      "syncAgeMs": 6218,
+      "prepareMs": 9446,
+      "writeMs": 214
+    }
+  },
+  "limitations": [
+    "Measured copying hotspot and one short mixed A/B scenario; not a maximum CCU or whole-game stability claim",
+    "Full world still resides in memory, addressable ProfileRepository and independent room ownership remain open",
+    "Low VPS disk reserve remains; all game backups, WAL, histories and failed test evidence retained",
+    "First mixed setup used version-13 fixture with version-14 receipts; failed before database initialization, corrected fixture then both runs completed",
+    "Full-source preflight initially found a missing benchmark helper; uploaded exact tracked file before the full suite",
+    "Initial local hash verification ran before an asynchronous download finished and correctly rejected it. The completed download and full restored data then passed",
+    "Two 40-second readiness probes expired during the same cold startup; server listened after about 85 seconds and the first PG preparation took 28 seconds, no restart loop",
+    "The original offline verifier allowed only expiry notices. End-of-day rewards required exact payout replay and verification of all chest fields, mapping only generated UUIDs. All 7 payouts and 100 chests matched. Entry stayed closed until full PG readback matched"
+  ]
+}
