@@ -58,7 +58,8 @@ class Reader {
     }
   }
 }
-function readCheckpoint(file, { chunkSize = 256 * 1024, threshold = 1024 * 1024 } = {}) {
+// Small worlds keep the faster native parser; large worlds avoid a full text copy.
+function readCheckpoint(file, { chunkSize = 256 * 1024, threshold = 16 * 1024 * 1024 } = {}) {
   if (!Number.isSafeInteger(chunkSize) || chunkSize < 1) throw new RangeError("Invalid JSON read buffer");
   const fd = fs.openSync(file, "r");
   try {
