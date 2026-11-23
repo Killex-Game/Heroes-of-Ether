@@ -143,6 +143,12 @@
     const base = baseFrame(id), fit = titleProfileFits[base];
     return fit ? { fit, source: `assets/frames/titles-v4/512/${base.slice(6)}.webp?art=20261123-title-frames` } : null;
   };
+  // League profile decorations use their own fit, independent from arena rims.
+  const leagueProfileFits = {"bronze":[0.4959826764344392,0.5219149809158973,0.36072323666308626],"silver":[0.49318914509897993,0.5331662714202191,0.3558409009536829],"gold":[0.4972681120568017,0.5195164051115465,0.3533997330989812],"platinum":[0.4960250505034565,0.5195351411615778,0.35177228786251347],"diamond":[0.49521098639687994,0.5327396809446455,0.3566546235719168],"champions":[0.4935962894489486,0.5258975168612293,0.3586889301175015]};
+  const leagueProfileFrame = (id) => {
+    const base = baseFrame(id), fit = leagueProfileFits[base];
+    return fit ? { fit, source: `assets/frames/leagues-v3/512/${base}.webp?art=20261123-league-frames` } : null;
+  };
   const valid = (id, slot) =>
     id === "default" ||
     !!theme(id) ||
@@ -158,14 +164,14 @@
   const resolveFrame = (id) => (theme(id) || accountFrame(id) || rankFrame(id) || interfaceTheme(id) || variantFrame(id) ? id : "default");
   const source = (id, kind) =>
     kind === "frame" && !!(variantFrame(id) || rankFrame(id) || theme(id) || accountFrame(id))
-      ? `assets/frames/rims-v2/${id}.webp?art=20261123-title-frames`
+      ? `assets/frames/rims-v2/${id}.webp?art=${theme(baseFrame(id)) ? "20261123-league-frames" : "20261123-title-frames"}`
         : interfaceTheme(id) && ["frame", "profile", "lobby"].includes(kind)
           ? `assets/interface-packs/${id}/${kind}.webp?art=${kind === "frame" ? "20261122c" : "20261122b"}`
           : theme(id) && ["lobby", "profile", "frame", "clan"].includes(kind)
             ? `assets/league-appearance/${id}-${kind}.svg?art=20261123-interface-art`
             : null;
   return {
-    titleProfileFrame, variantFrames, variantFrame, baseFrame, frameForSlot,
+    leagueProfileFrame, titleProfileFrame, variantFrames, variantFrame, baseFrame, frameForSlot,
     themes,
     interfaceThemes,
     interfaceTheme,
