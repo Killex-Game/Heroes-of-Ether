@@ -2910,7 +2910,7 @@
   },
   "swordStabilityUpdate": {
     "installed": true,
-    "published": false,
+    "published": true,
     "release": "20261124-sword-stability",
     "sourceCommit": "92cc7c4bc904b1152989e14d14b962541877a712",
     "entryOpenedAtUtc": "2026-11-23T20:11:39.738Z",
