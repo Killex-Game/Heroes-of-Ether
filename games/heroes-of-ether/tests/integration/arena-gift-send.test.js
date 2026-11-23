@@ -7,7 +7,7 @@ const {recover}=require("../../src/server/profiles/profile-journal");
 async function fixture(t){
  let app;t.after(async()=>{await app?.close();});
  const filePath=path.join(temporary(t,"arena-gift"),"profiles.json"),store=new ProfileStore({filePath,journal:true});
- const a=store.open(),b=store.open();store.transact(a.token,randomUUID(),"fund",p=>{p.wallet.bucks=100;p.wallet.crystals=100;});
+ const a=store.open(),b=store.open();store.transact(a.token,randomUUID(),"fund",p=>{p.wallet.bucks=100;p.wallet.crystals=100;p.inventory.candy=5;p.quickSlots=["candy"];});
  app=createGameServer({profiles:store,arena:new Arena({etherCount:0}),autoTick:false,testBots:{enabled:false}});
  app.httpServer.listen(0,"127.0.0.1");await once(app.httpServer,"listening");const url="http://127.0.0.1:"+app.httpServer.address().port;
  const sockets=[];t.after(()=>{for(const s of sockets)s.terminate();});
@@ -15,7 +15,7 @@ async function fixture(t){
  const sender=await join(a),target=await join(b);
  const request=async(route,body)=>{const r=await fetch(url+route,{method:body?"POST":"GET",headers:{Cookie:"sferorumiya_session="+a.token,Origin:url,"Content-Type":"application/json"},...(body?{body:JSON.stringify(body)}:{})});return {status:r.status,body:await r.json()};};
  const gift=extra=>({action:"gift",giftId:"skull",targetId:b.profile.id,confirmed:true,requestId:randomUUID(),...extra});
- return {app,store,a,b,sender,target,request,gift,saved:()=>recover(filePath).data};
+ return {app,store,a,b,sender,target,sockets,request,gift,saved:()=>recover(filePath).data};
 }
 test("arena profile, gift catalogue and named or anonymous gifts work with exactly-once durable debits",async t=>{
  const f=await fixture(t);assert.equal((await f.request("/api/players/"+f.b.profile.id)).status,200);assert.equal((await f.request("/api/social")).status,200);
@@ -37,4 +37,16 @@ test("failed arena gift write changes neither participant and the same request c
  const mock=t.mock.method(f.store,"save",()=>{throw Error("test disk failure");});
  assert.equal((await f.request("/api/social/action",body)).status,500);assert.deepEqual(f.store.data,before);mock.mock.restore();
  assert.equal((await f.request("/api/social/action",body)).status,200);assert.equal(f.store.find(f.a.token).wallet.bucks,95);
+});
+test("gift during a pending booster write preserves both transfers and the booster rebase",async t=>{
+ const f=await fixture(t);let entered,release;
+ const ready=new Promise(r=>entered=r),gate=new Promise(r=>release=r),stage=f.store.journal.stage.bind(f.store.journal);
+ const mock=t.mock.method(f.store.journal,"stage",async next=>{const value=await stage(next);entered();await gate;return value;});
+ const id=randomUUID(),ws=f.sockets[0],reply=new Promise(resolve=>ws.on("message",raw=>{const m=JSON.parse(raw);if(m.type==="boosterResult"&&m.requestId===id)resolve(m);}));
+ try{
+  ws.send(JSON.stringify({type:"useBooster",boosterId:"candy",requestId:id,spawnSerial:f.app.arena.players.get(f.sender).spawnSerial}));await ready;
+  assert.equal((await f.request("/api/social/action",f.gift())).status,200);assert.equal(f.store.find(f.a.token).inventory.candy,5);
+  release();assert.equal((await reply).ok,true);assert.equal(f.store.find(f.a.token).inventory.candy,4);assert.equal(f.store.find(f.a.token).wallet.bucks,95);
+  const saved=Object.values(f.saved().profiles);assert.equal(saved.find(p=>p.id===f.a.profile.id).wallet.bucks,95);assert.equal(saved.find(p=>p.id===f.a.profile.id).inventory.candy,4);assert.equal(saved.find(p=>p.id===f.b.profile.id).social.gifts.find(g=>g.id==="skull").count,1);
+ }finally{release();mock.mock.restore();}
 });
