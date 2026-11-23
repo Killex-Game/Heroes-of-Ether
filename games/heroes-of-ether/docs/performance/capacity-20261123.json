@@ -1,0 +1,381 @@
+{
+  "sourceCommit": "d228b39da12c44b6bd3fcd09433dd89301334870",
+  "date": "2026-11-23",
+  "scope": "Isolated synthetic PostgreSQL schema and loopback WebSocket clients on the same VPS; CPUQuota 300%, no browser FPS measurement",
+  "initialRun": {
+    "qualifiesCurrentProduction": false,
+    "reason": "Legacy harness default disabled incrementalSettlement; live startServer enables it. Retained as full-world diagnostic, not a current-production capacity claim.",
+    "players": 35,
+    "lobby": 5,
+    "profiles": 1280,
+    "clans": 128,
+    "phaseSeconds": 30,
+    "acknowledged": 1076,
+    "recovered": 1076,
+    "duplicates": 0,
+    "databaseEqual": true,
+    "phases": [
+      {
+        "phase": "move",
+        "tickWorkMs": {
+          "n": 599,
+          "p50": 7.4404560000002675,
+          "p95": 31.242917999999918,
+          "p99": 45.678577999999106,
+          "max": 98.44188899999972
+        },
+        "tickGaps": {
+          "n": 598,
+          "p50": 49.996093000001565,
+          "p95": 51.446130000003905,
+          "p99": 63.90752000000066,
+          "max": 122.09473799999978
+        },
+        "updatesHz": 19.9309011621611,
+        "stateGapMs": {
+          "p50": 49.82771499999944,
+          "p95": 69.81952400000046,
+          "p99": 83.05763499999739,
+          "max": 90.63324400000056
+        },
+        "actionLatencyMs": {
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "lobbyLatencyMs": {
+          "p50": 26.853766000000178,
+          "p95": 77.8625749999992,
+          "max": 260.2147380000006
+        },
+        "rssMiB": 822.3203125,
+        "pausedSamples": 0,
+        "queuedActionsPeak": 0,
+        "cpu": {
+          "elapsedMs": 30007.167941,
+          "processCpu": {
+            "userMs": 18408.246,
+            "systemMs": 873.197,
+            "percent": 64.25612386317533
+          },
+          "mainThreadCpu": {
+            "userMs": 9088.326,
+            "systemMs": 614.803,
+            "percent": 32.33603723976306
+          },
+          "mainThreadElu": {
+            "activeMs": 9672.660214002175,
+            "idleMs": 20334.404131,
+            "utilization": 0.3223461016643304
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-capacity-35-20261123.service",
+            "cpuMax": "300000 100000",
+            "counters": {
+              "usage_usec": 22555691,
+              "user_usec": 20961664,
+              "system_usec": 1594026,
+              "nice_usec": 20640591,
+              "nr_periods": 301,
+              "nr_throttled": 2,
+              "throttled_usec": 100542,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0.006644518272425249
+          }
+        }
+      },
+      {
+        "phase": "split",
+        "tickWorkMs": {
+          "n": 594,
+          "p50": 25.438540999995894,
+          "p95": 37.91640400000324,
+          "p99": 42.88570199999958,
+          "max": 58.83468200000061
+        },
+        "tickGaps": {
+          "n": 593,
+          "p50": 50.010417999998026,
+          "p95": 56.74466400000529,
+          "p99": 88.3923150000046,
+          "max": 121.15111800000159
+        },
+        "updatesHz": 19.776801960896353,
+        "stateGapMs": {
+          "p50": 50.05031500000041,
+          "p95": 68.95035900000221,
+          "p99": 93.89008399999875,
+          "max": 151.1159189999962
+        },
+        "actionLatencyMs": {
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "lobbyLatencyMs": {
+          "p50": 32.22964900000079,
+          "p95": 91.89913700000034,
+          "max": 163.98099099999672
+        },
+        "rssMiB": 835.89453125,
+        "pausedSamples": 0,
+        "queuedActionsPeak": 3,
+        "cpu": {
+          "elapsedMs": 30031.704802,
+          "processCpu": {
+            "userMs": 30823.224,
+            "systemMs": 866.679,
+            "percent": 105.52149206624317
+          },
+          "mainThreadCpu": {
+            "userMs": 19849.784,
+            "systemMs": 683.019,
+            "percent": 68.37042097800784
+          },
+          "mainThreadElu": {
+            "activeMs": 20587.79495200459,
+            "idleMs": 9443.897432000002,
+            "utilization": 0.6855356231262548
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-capacity-35-20261123.service",
+            "cpuMax": "300000 100000",
+            "counters": {
+              "usage_usec": 34706394,
+              "user_usec": 33134034,
+              "system_usec": 1572360,
+              "nice_usec": 32875035,
+              "nr_periods": 300,
+              "nr_throttled": 1,
+              "throttled_usec": 45525,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0.0033333333333333335
+          }
+        }
+      },
+      {
+        "phase": "feed",
+        "tickWorkMs": {
+          "n": 601,
+          "p50": 22.335485000003246,
+          "p95": 32.511109999992186,
+          "p99": 38.70905399999174,
+          "max": 50.91202099999646
+        },
+        "tickGaps": {
+          "n": 600,
+          "p50": 50.00569700000051,
+          "p95": 51.65218299999833,
+          "p99": 59.12087300000712,
+          "max": 73.6057209999999
+        },
+        "updatesHz": 20.032204602071523,
+        "stateGapMs": {
+          "p50": 49.83039600000484,
+          "p95": 65.3440580000024,
+          "p99": 71.0801930000016,
+          "max": 117.82958200000576
+        },
+        "actionLatencyMs": {
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "lobbyLatencyMs": {
+          "p50": 23.760223999997834,
+          "p95": 50.903899999990244,
+          "max": 58.713374999992084
+        },
+        "rssMiB": 911.66015625,
+        "pausedSamples": 0,
+        "queuedActionsPeak": 0,
+        "cpu": {
+          "elapsedMs": 29999.782476000008,
+          "processCpu": {
+            "userMs": 28100.681,
+            "systemMs": 942.572,
+            "percent": 96.81154529448592
+          },
+          "mainThreadCpu": {
+            "userMs": 15196.21,
+            "systemMs": 669.38,
+            "percent": 52.885683463513644
+          },
+          "mainThreadElu": {
+            "activeMs": 15854.30037899605,
+            "idleMs": 14145.475214999999,
+            "utilization": 0.5284806324407647
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-capacity-35-20261123.service",
+            "cpuMax": "300000 100000",
+            "counters": {
+              "usage_usec": 32108317,
+              "user_usec": 30487766,
+              "system_usec": 1620551,
+              "nice_usec": 30247113,
+              "nr_periods": 300,
+              "nr_throttled": 1,
+              "throttled_usec": 5848,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0.0033333333333333335
+          }
+        }
+      },
+      {
+        "phase": "boosters",
+        "tickWorkMs": {
+          "n": 600,
+          "p50": 21.81416700000409,
+          "p95": 32.079610000000685,
+          "p99": 35.797756999993,
+          "max": 46.75757699999667
+        },
+        "tickGaps": {
+          "n": 599,
+          "p50": 50.03469200000109,
+          "p95": 65.5412639999995,
+          "p99": 70.616783999998,
+          "max": 83.68139900000824
+        },
+        "updatesHz": 19.908204461189893,
+        "stateGapMs": {
+          "p50": 49.75302100001136,
+          "p95": 78.52477000000363,
+          "p99": 93.65084200000274,
+          "max": 107.55265399999917
+        },
+        "actionLatencyMs": {
+          "p50": 31.359096000000136,
+          "p95": 65.6495939999877,
+          "p99": 84.08981700000004,
+          "max": 103.15283900000213
+        },
+        "lobbyLatencyMs": {
+          "p50": 38.484010000000126,
+          "p95": 136.90382800000953,
+          "max": 144.3323800000071
+        },
+        "rssMiB": 958.30859375,
+        "pausedSamples": 0,
+        "queuedActionsPeak": 2,
+        "cpu": {
+          "elapsedMs": 30015.091270000004,
+          "processCpu": {
+            "userMs": 38874.542,
+            "systemMs": 1032.125,
+            "percent": 132.9553411682829
+          },
+          "mainThreadCpu": {
+            "userMs": 23765.033,
+            "systemMs": 644.552,
+            "percent": 81.32437373061501
+          },
+          "mainThreadElu": {
+            "activeMs": 24481.620160002298,
+            "idleMs": 5533.463373999999,
+            "utilization": 0.81564391224394
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-capacity-35-20261123.service",
+            "cpuMax": "300000 100000",
+            "counters": {
+              "usage_usec": 43566734,
+              "user_usec": 41850626,
+              "system_usec": 1716107,
+              "nice_usec": 41640441,
+              "nr_periods": 301,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        }
+      },
+      {
+        "phase": "combined",
+        "tickWorkMs": {
+          "n": 602,
+          "p50": 18.244456999993417,
+          "p95": 35.33586799999466,
+          "p99": 42.31707699998515,
+          "max": 58.80401900000288
+        },
+        "tickGaps": {
+          "n": 601,
+          "p50": 50.10595500000636,
+          "p95": 64.19832599998335,
+          "p99": 74.77356999999029,
+          "max": 93.01694200001657
+        },
+        "updatesHz": 19.39143096921553,
+        "stateGapMs": {
+          "p50": 50.0504479999945,
+          "p95": 84.76458200000343,
+          "p99": 110.64452500001062,
+          "max": 121.85703600000124
+        },
+        "actionLatencyMs": {
+          "p50": 51.071277999988524,
+          "p95": 82.1631430000125,
+          "p99": 103.31786000001011,
+          "max": 132.24617800000124
+        },
+        "lobbyLatencyMs": {
+          "p50": 50.73076800000854,
+          "p95": 129.14392899998347,
+          "max": 200.4960049999936
+        },
+        "rssMiB": 976.26171875,
+        "pausedSamples": 0,
+        "queuedActionsPeak": 2,
+        "cpu": {
+          "elapsedMs": 30018.129255000007,
+          "processCpu": {
+            "userMs": 45382.229,
+            "systemMs": 1052.152,
+            "percent": 154.68779085314117
+          },
+          "mainThreadCpu": {
+            "userMs": 26707.756,
+            "systemMs": 687.261,
+            "percent": 91.26157318893186
+          },
+          "mainThreadElu": {
+            "activeMs": 27536.711932999387,
+            "idleMs": 2481.4210590000002,
+            "utilization": 0.9173359295975748
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-capacity-35-20261123.service",
+            "cpuMax": "300000 100000",
+            "counters": {
+              "usage_usec": 51829255,
+              "user_usec": 49922286,
+              "system_usec": 1906968,
+              "nice_usec": 49557494,
+              "nr_periods": 300,
+              "nr_throttled": 2,
+              "throttled_usec": 45865,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0.006666666666666667
+          }
+        }
+      }
+    ]
+  },
+  "next": "Repeat with incrementalSettlement enabled and persist actual benchmark configuration in every phase. Do not raise admission limits based on this initial run."
+}

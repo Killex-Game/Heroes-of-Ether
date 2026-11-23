@@ -150,7 +150,9 @@ if (process.env.LOAD_CLIENT === "1") {
     filePath: path.join(dataDir, "profiles.json"),
     journal: process.env.LOAD_JOURNAL !== "0",
     arenaProgressWorker: process.env.LOAD_PROFILE_WORKER === "1",
-    incrementalSettlement: process.env.LOAD_INCREMENTAL_SETTLEMENT === "1",
+    // Match startServer by default. Explicit 0 remains available to diagnose
+    // the old full-world path, but is recorded as a different configuration.
+    incrementalSettlement: process.env.LOAD_INCREMENTAL_SETTLEMENT !== "0",
     clanDailyQuests: true,
   });
   const chat = new (require("../../src/server/chat/chat-service").ChatService)({
@@ -562,7 +564,7 @@ if (process.env.LOAD_CLIENT === "1") {
       database = await require("./database-load-store.cjs").attachTestDatabase(dir, profiles, chat);
     const stageMeter=process.env.LOAD_STAGE_METRICS==='1'
       ?require('./tick-stage-meter.cjs').install({app,profiles,arenas}):null;
-    let massPeak, partsPeak, persistence = {};
+    let massPeak, partsPeak, persistence = {}, tickWorkSamples = [];
     function samplePeaks() {
       for (const simulation of arenas) for (const player of simulation.players.values()) {
         if (player.dead || player.isRemnant) continue;
@@ -576,6 +578,7 @@ if (process.env.LOAD_CLIENT === "1") {
         if (lastTick) tickGaps.push(at - lastTick);
         lastTick = at;
         app.tick();
+        if (tickWorkSamples.length < 32768) tickWorkSamples.push(performance.now() - at);
         const pending = app.persistenceStatus();
         persistence.maxArenaBatches = Math.max(persistence.maxArenaBatches || 0, pending.arenaBatches);
         persistence.maxQueuedActions = Math.max(persistence.maxQueuedActions || 0, pending.queuedActions);
@@ -617,6 +620,7 @@ if (process.env.LOAD_CLIENT === "1") {
       applied = {};
       botUses = {};
       tickGaps = [];
+      tickWorkSamples = [];
       lastTick = null;
       delay.reset();
       gcSamples=[];
@@ -670,6 +674,9 @@ if (process.env.LOAD_CLIENT === "1") {
         room.parts = living.reduce((sum, p) => sum + simulation.bodies(p).length, 0);
       }
       const row = {
+        configuration: { incrementalSettlement: !!profiles.settlementCache,
+          profileWorker: !!profiles.arenaPreparer, stateWorkerCount: app.stateWorkers.lanes.length,
+          packedFood: process.env.LOAD_PACKED_FOOD === "1", packedParts: process.env.LOAD_PACKED_PARTS !== "0" },
         clanQuests: (() => {
           const boards = Object.values(profiles.data.clans).map(c => c.dailyQuests?.board).filter(Boolean);
           const at = Date.now();
@@ -709,6 +716,7 @@ if (process.env.LOAD_CLIENT === "1") {
         rssMB: process.memoryUsage().rss / 1048576,
         heapUsedMB: process.memoryUsage().heapUsed / 1048576,
         tickGaps: q(tickGaps),
+        tickWorkMs: q(tickWorkSamples),
         eventLoop: { p95: delay.percentile(95) / 1e6, max: delay.max / 1e6 },
         stats,
         ...(stageMeter?{stages:stageMeter.snapshot()}:{}),
