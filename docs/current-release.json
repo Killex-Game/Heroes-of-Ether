@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261123-snapshot-cache",
-  "sourceTag": "release/20261123-snapshot-cache",
-  "sourceCommit": "d228b39da12c44b6bd3fcd09433dd89301334870",
+  "gameRelease": "20261123-calendar-index",
+  "sourceTag": "release/20261123-portrait-edge",
+  "sourceCommit": "d89128963213ca7c1de5639af4bd8adbbfb17f12",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": false,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-23T08:52:27.555Z",
+  "entryReopenedAtUtc": "2026-11-23T13:54:00.197Z",
   "runtime": {
-    "gamePid": 391955,
+    "gamePid": 416632,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
@@ -39,42 +39,46 @@
     "Six moderately ornate league profile frames and higher-contrast league arena rims with exact original geometry",
     "Owner corrected-neck winged guardian imported in five resolutions with unchanged canonical fit",
     "PostgreSQL worker reuses SHA-256 verified canonical record bytes; exact legacy document/world hashes and durability retained",
-    "News editor restores built-in banners with named artwork revisions"
+    "News editor restores built-in banners with named artwork revisions",
+    "Startup screen uses original human heroes and azure/champagne pattern",
+    "Eleven portrait lower anchors corrected including Sun Phoenix; scale and 503 avatar raster files unchanged",
+    "Social calendar reuses immutable profile ID index while reading spouses from the current world"
   ],
   "data": {
     "before": {
-      "at": 1795423613675,
-      "revision": 3689548,
-      "digest": "e407ec7edc950d8ab42f0ba7af3a05e54b3071d9e1476e4f44b313dd230e91c8",
-      "worldHash": "8a03f78477f46fcee5771a825988e2ece8b268fc5781aef38fa333608ad7bf6d",
-      "profiles": 1706,
+      "at": 1795441547622,
+      "revision": 3910465,
+      "digest": "d2e3a3ecba2bca6b8fd4a93ad93be0e5bbefc53154755ac60eb9b7f0adcd6c85",
+      "worldHash": "293d7083ebd6299d7136a5885f3ac814231ef3c5481c87f027b235bf0a710439",
+      "profiles": 1711,
       "clans": 135,
       "fullWorldAndAuxEqual": true,
-      "backup": "/srv/heroether-test/play/backups/runtime-optimization-20261123",
+      "backup": "/dev/shm/heroether-calendar-index-20261123/calendar-index-20261123",
       "backupEqual": true,
-      "preservedFormatVerified": true
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/calendar-index-20261123/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
       "noCalendarChange": true,
       "expiredChat": 0,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 3689548,
-      "revision": 3689548,
-      "digest": "e407ec7edc950d8ab42f0ba7af3a05e54b3071d9e1476e4f44b313dd230e91c8",
-      "worldHash": "8a03f78477f46fcee5771a825988e2ece8b268fc5781aef38fa333608ad7bf6d",
-      "profiles": 1706,
+      "beforeRevision": 3910465,
+      "revision": 3910465,
+      "digest": "d2e3a3ecba2bca6b8fd4a93ad93be0e5bbefc53154755ac60eb9b7f0adcd6c85",
+      "worldHash": "293d7083ebd6299d7136a5885f3ac814231ef3c5481c87f027b235bf0a710439",
+      "profiles": 1711,
       "clans": 135
     },
-    "localBackupSha256": "3956d734810fb3d21497d4a925f561d9108bc964e1f2a375173eab6b618b8cf0",
-    "reopened": {
-      "at": 1795423947555,
-      "gamePid": 391955,
-      "adminPid": 1163,
-      "revision": 3689548,
-      "generation": 2001,
-      "entryOpened": true,
-      "backend": "postgresql"
+    "archive": {
+      "verified": true,
+      "archiveSha256": "b95c3878bca5ca8ebe4adfc28421087a3c906ee78071406fbacc236275bd3f06",
+      "revision": 3910465,
+      "digest": "d2e3a3ecba2bca6b8fd4a93ad93be0e5bbefc53154755ac60eb9b7f0adcd6c85",
+      "worldHash": "293d7083ebd6299d7136a5885f3ac814231ef3c5481c87f027b235bf0a710439",
+      "profiles": 1711,
+      "clans": 135,
+      "postgresqlArchiveVerified": true
     }
   },
   "verification": {
@@ -1072,42 +1076,179 @@
   },
   "optimizationCandidates": {
     "branch": "codex/20261123-runtime-candidates",
-    "installed": false,
+    "installed": "calendar only",
     "calendarIndexCommit": "2e5e1a5",
     "foodTransferCommit": "a377fae",
     "linuxTargetedPass": 82,
     "windowsTargetedPass": 82,
     "candidateLoadAck": 1082,
     "wholeGameImprovementEstablished": false,
-    "report": "games/heroes-of-ether/docs/performance/runtime-candidates-20261123.txt (candidate branch only)"
+    "report": "games/heroes-of-ether/docs/performance/runtime-candidates-20261123.txt (candidate branch only)",
+    "calendarInstalledCommit": "4d5fd904063382b7c96f934d7331e3b93feffe47",
+    "foodTransferInstalled": false
   },
   "latestObservation": {
-    "atUtc": "2026-11-23T09:34:59.731Z",
+    "atUtc": "2026-11-23T13:58:48.235Z",
     "online": {
-      "arena": 6,
-      "lobby": 1,
+      "arena": 1,
+      "lobby": 6,
       "total": 7
     },
     "tickWorkMs": {
-      "count": 1199,
-      "p50": 17.64,
-      "p95": 45.63,
-      "p99": 63.99,
-      "max": 85.39
+      "count": 1190,
+      "p50": 8.11,
+      "p95": 23.6,
+      "p99": 35.31,
+      "max": 43.15
     },
     "tickIntervalMs": {
-      "count": 1199,
-      "p50": 49.99,
-      "p95": 55.68,
-      "p99": 70.25,
-      "max": 98.43
+      "count": 1190,
+      "p50": 50.05,
+      "p95": 60.8,
+      "p99": 85.94,
+      "max": 287.46
+    },
+    "memoryMiB": {
+      "resident": 3179,
+      "heapUsed": 682,
+      "limit": 5120
     },
     "queuedActions": 0,
+    "arenaBatches": 0,
     "paused": false,
-    "diskFreeMiB": 855,
-    "entryOpen": true,
     "databaseConnected": true,
     "inspectorClosed": true,
-    "latencyAndMemoryWorkComplete": false
+    "entryOpen": true,
+    "latencyAndMemoryWorkComplete": false,
+    "comparableAB": false
+  },
+  "previousInstalledRelease": {
+    "release": "20261123-snapshot-cache",
+    "sourceCommit": "d228b39da12c44b6bd3fcd09433dd89301334870"
+  },
+  "backendSourceCommit": "4d5fd904063382b7c96f934d7331e3b93feffe47",
+  "calendarIndexUpdate": {
+    "installed": true,
+    "published": false,
+    "sourceCommit": "4d5fd904063382b7c96f934d7331e3b93feffe47",
+    "release": "20261123-calendar-index",
+    "fullLinux": {
+      "total": 2310,
+      "pass": 2309,
+      "fail": 0,
+      "skip": 1
+    },
+    "data": {
+      "before": {
+        "at": 1795441547622,
+        "revision": 3910465,
+        "digest": "d2e3a3ecba2bca6b8fd4a93ad93be0e5bbefc53154755ac60eb9b7f0adcd6c85",
+        "worldHash": "293d7083ebd6299d7136a5885f3ac814231ef3c5481c87f027b235bf0a710439",
+        "profiles": 1711,
+        "clans": 135,
+        "fullWorldAndAuxEqual": true,
+        "backup": "/dev/shm/heroether-calendar-index-20261123/calendar-index-20261123",
+        "backupEqual": true,
+        "preservedFormatVerified": true,
+        "durableBackup": "/srv/heroether-test/play/backups/calendar-index-20261123/data-before.tar.gz"
+      },
+      "after": {
+        "calendarReplayExact": true,
+        "noCalendarChange": true,
+        "expiredChat": 0,
+        "allOtherFieldsEqual": true,
+        "beforeRevision": 3910465,
+        "revision": 3910465,
+        "digest": "d2e3a3ecba2bca6b8fd4a93ad93be0e5bbefc53154755ac60eb9b7f0adcd6c85",
+        "worldHash": "293d7083ebd6299d7136a5885f3ac814231ef3c5481c87f027b235bf0a710439",
+        "profiles": 1711,
+        "clans": 135
+      },
+      "archive": {
+        "verified": true,
+        "archiveSha256": "b95c3878bca5ca8ebe4adfc28421087a3c906ee78071406fbacc236275bd3f06",
+        "revision": 3910465,
+        "digest": "d2e3a3ecba2bca6b8fd4a93ad93be0e5bbefc53154755ac60eb9b7f0adcd6c85",
+        "worldHash": "293d7083ebd6299d7136a5885f3ac814231ef3c5481c87f027b235bf0a710439",
+        "profiles": 1711,
+        "clans": 135,
+        "postgresqlArchiveVerified": true
+      }
+    },
+    "live": {
+      "atUtc": "2026-11-23T13:58:48.235Z",
+      "online": {
+        "arena": 1,
+        "lobby": 6,
+        "total": 7
+      },
+      "tickWorkMs": {
+        "count": 1190,
+        "p50": 8.11,
+        "p95": 23.6,
+        "p99": 35.31,
+        "max": 43.15
+      },
+      "tickIntervalMs": {
+        "count": 1190,
+        "p50": 50.05,
+        "p95": 60.8,
+        "p99": 85.94,
+        "max": 287.46
+      },
+      "memoryMiB": {
+        "resident": 3179,
+        "heapUsed": 682,
+        "limit": 5120
+      },
+      "queuedActions": 0,
+      "arenaBatches": 0,
+      "paused": false,
+      "databaseConnected": true,
+      "inspectorClosed": true,
+      "entryOpen": true,
+      "latencyAndMemoryWorkComplete": false,
+      "comparableAB": false
+    },
+    "wholeGameImprovementEstablished": false,
+    "commentsRemoved": 2,
+    "report": "artifacts/calendar-index-20261123/report.txt",
+    "remaining": [
+      "history footprint and RSS",
+      "shareArenaData CPU cost",
+      "independent room ownership",
+      "capacity above validated short runs",
+      "disk reserve"
+    ],
+    "validationNotes": [
+      "Initial 40-second readiness poll expired during normal cold loading; subsequent check passed without another restart",
+      "Earlier negative full-suite and candidate load results retained; current Linux full result is a separate run"
+    ]
+  },
+  "startupUpdate": {
+    "sourceCommit": "7d2dbfa09cd908676beb80f9f74cc29b532a1ed3",
+    "installed": true,
+    "published": false,
+    "files": 3,
+    "browserCases": 18,
+    "httpExact": 9,
+    "avatarsUnchanged": 503,
+    "archiveSha256": "ba6582145760f6bed6405f06332df3258d67a2fa16189cea179639c0db90224b",
+    "report": "artifacts/startup-heroes-20261123/report.txt"
+  },
+  "portraitEdgeUpdate": {
+    "sourceCommit": "d89128963213ca7c1de5639af4bd8adbbfb17f12",
+    "installed": true,
+    "published": false,
+    "files": 2,
+    "portraitsAdjusted": 11,
+    "portraitsChecked": 85,
+    "checksPerBrowser": 425,
+    "browsers": 3,
+    "httpExact": 6,
+    "avatarsUnchanged": 503,
+    "scaleChanged": false,
+    "archiveSha256": "f7ab8c33c46612e27f1700d9a2c7e4be3d9cfb2a8a5d0c6be16da74c8ad7e022",
+    "report": "artifacts/avatar-fit-recheck-20261123/report.txt"
   }
 }
