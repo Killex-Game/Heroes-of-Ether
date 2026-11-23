@@ -1,16 +1,18 @@
 "use strict";
 const { copyArenaData } = require("./arena-profile-copy");
 
-// Internal, audited writers only. These three archives are immutable:
+// Internal, audited writers only. These four archives are immutable:
 // transaction-history replaces its log, receipt writers detach the map,
-// roulette replaces its results map before appending a spin. Everything else,
+// arena receipts detach their bucket and outer map, and roulette replaces its
+// results map before appending a spin. Everything else,
 // including unknown future fields, is private. The generic transact API keeps
 // its full-copy contract for arbitrary callbacks.
 function copyProfile(current, copy = structuredClone) {
-  const { transactions, receipts, roulette, ...mutable } = current;
+  const { transactions, receipts, arenaReceipts, roulette, ...mutable } = current;
   const draft = copy(mutable);
   if (Object.hasOwn(current, "transactions")) draft.transactions = transactions;
   if (Object.hasOwn(current, "receipts")) draft.receipts = receipts;
+  if (Object.hasOwn(current, "arenaReceipts")) draft.arenaReceipts = arenaReceipts;
   if (roulette && typeof roulette === "object" && !Array.isArray(roulette)) {
     const { results, ...state } = roulette;
     draft.roulette = copy(state);

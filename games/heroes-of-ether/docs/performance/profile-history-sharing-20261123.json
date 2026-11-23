@@ -1,0 +1,210 @@
+{
+  "installed": false,
+  "published": false,
+  "branch": "codex/20261123-history-sharing",
+  "baselineCommit": "b628592039caf2e1e2d486e904f0a25f5852fcd5",
+  "windowsTargeted": 105,
+  "linuxTargeted": 105,
+  "newFullSuite": false,
+  "description": "Audited profile drafts preserve immutable arena-operation receipt maps, whose writer copies the outer map and modified bucket",
+  "baselineRegression": "Unchanged profile open traverses arena receipts, demonstrated by failing instrumented archive getter; candidate passes",
+  "tests": [
+    "all mutable and future fields remain private",
+    "generic arbitrary transact fully copies archives",
+    "new operation copies its bucket and preserves previous snapshots",
+    "failed durable save leaves wallet and receipts unchanged",
+    "old receipt lookup and duplicate behavior preserved",
+    "clan concurrent contributions, roulette, gifts and social calendar"
+  ],
+  "windows": {
+    "kind": "offline-copy-and-reconcile-only",
+    "baseline": "installed developer sources",
+    "profiles": 1712,
+    "selected": 5,
+    "copiesPerProfilePerRound": 40,
+    "rounds": 5,
+    "receiptBytes": [
+      1493271,
+      1291594,
+      981322,
+      849355,
+      740317
+    ],
+    "profileBytes": [
+      15421779,
+      7183028,
+      16417007,
+      6490579,
+      7418973
+    ],
+    "allFieldsEqual": true,
+    "sourceUnchanged": true,
+    "samples": [
+      {
+        "round": 0,
+        "before": {
+          "ms": 1234.1842000000033,
+          "heapDeltaBytes": 4148608,
+          "receiptBuckets": 12800
+        },
+        "after": {
+          "ms": 311.9351000000024,
+          "heapDeltaBytes": 38636952,
+          "receiptBuckets": 12800
+        }
+      },
+      {
+        "round": 1,
+        "after": {
+          "ms": 335.19950000000244,
+          "heapDeltaBytes": 38635976,
+          "receiptBuckets": 12800
+        },
+        "before": {
+          "ms": 1455.6654999999955,
+          "heapDeltaBytes": 897784,
+          "receiptBuckets": 12800
+        }
+      },
+      {
+        "round": 2,
+        "before": {
+          "ms": 1444.6407000000036,
+          "heapDeltaBytes": 819560,
+          "receiptBuckets": 12800
+        },
+        "after": {
+          "ms": 346.9544999999998,
+          "heapDeltaBytes": 38637728,
+          "receiptBuckets": 12800
+        }
+      },
+      {
+        "round": 3,
+        "after": {
+          "ms": 301.5503000000026,
+          "heapDeltaBytes": 38608184,
+          "receiptBuckets": 12800
+        },
+        "before": {
+          "ms": 1405.4645999999993,
+          "heapDeltaBytes": 878336,
+          "receiptBuckets": 12800
+        }
+      },
+      {
+        "round": 4,
+        "before": {
+          "ms": 1290.0429999999978,
+          "heapDeltaBytes": 794968,
+          "receiptBuckets": 12800
+        },
+        "after": {
+          "ms": 360.8292000000001,
+          "heapDeltaBytes": 38622800,
+          "receiptBuckets": 12800
+        }
+      }
+    ],
+    "wholeGameCapacityProven": false
+  },
+  "linux": {
+    "kind": "offline-copy-and-reconcile-only",
+    "baseline": "installed production runtime",
+    "profiles": 1712,
+    "selected": 5,
+    "copiesPerProfilePerRound": 40,
+    "rounds": 5,
+    "receiptBytes": [
+      1493271,
+      1291594,
+      981322,
+      849355,
+      740317
+    ],
+    "profileBytes": [
+      15421779,
+      7183028,
+      16417007,
+      6490579,
+      7418973
+    ],
+    "allFieldsEqual": true,
+    "sourceUnchanged": true,
+    "samples": [
+      {
+        "round": 0,
+        "before": {
+          "ms": 1509.4086719999978,
+          "heapDeltaBytes": 7004328,
+          "receiptBuckets": 12800
+        },
+        "after": {
+          "ms": 504.31285399999615,
+          "heapDeltaBytes": 5260576,
+          "receiptBuckets": 12800
+        }
+      },
+      {
+        "round": 1,
+        "after": {
+          "ms": 414.2826089999944,
+          "heapDeltaBytes": 5225584,
+          "receiptBuckets": 12800
+        },
+        "before": {
+          "ms": 1679.6588669999983,
+          "heapDeltaBytes": 1543680,
+          "receiptBuckets": 12800
+        }
+      },
+      {
+        "round": 2,
+        "before": {
+          "ms": 1569.7612850000005,
+          "heapDeltaBytes": 1549048,
+          "receiptBuckets": 12800
+        },
+        "after": {
+          "ms": 411.3933459999971,
+          "heapDeltaBytes": 5223504,
+          "receiptBuckets": 12800
+        }
+      },
+      {
+        "round": 3,
+        "after": {
+          "ms": 418.27233700000215,
+          "heapDeltaBytes": 5211528,
+          "receiptBuckets": 12800
+        },
+        "before": {
+          "ms": 1587.4038419999997,
+          "heapDeltaBytes": 1532600,
+          "receiptBuckets": 12800
+        }
+      },
+      {
+        "round": 4,
+        "before": {
+          "ms": 1572.8021880000015,
+          "heapDeltaBytes": 1522896,
+          "receiptBuckets": 12800
+        },
+        "after": {
+          "ms": 474.3216429999957,
+          "heapDeltaBytes": 5212864,
+          "receiptBuckets": 12800
+        }
+      }
+    ],
+    "wholeGameCapacityProven": false
+  },
+  "evidenceLimits": [
+    "Microbenchmark of copying and reconciliation, not whole-game A/B, CCU, FPS or RSS result",
+    "Heap delta depends on garbage collection and is not an allocation or retained-memory reduction claim",
+    "Initial worktree lacked pg dependency; linked existing identical node_modules and reran successfully",
+    "Full Linux regression and representative mixed workload must pass before release",
+    "No production code, saves, settings or service restart for this candidate"
+  ]
+}
