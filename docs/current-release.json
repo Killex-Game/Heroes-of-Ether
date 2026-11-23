@@ -1036,6 +1036,78 @@
       "removedTestSchema": true
     },
     "maximumCcuEstablished": false,
-    "profileFootprint": "games/heroes-of-ether/docs/performance/profile-footprint-20261123.json"
+    "profileFootprint": "games/heroes-of-ether/docs/performance/profile-footprint-20261123.json",
+    "liveGuards": [
+      {
+        "run": "1-parity",
+        "samples": 18,
+        "aborted": false,
+        "persistenceHealthy": true
+      },
+      {
+        "run": "2-parity",
+        "samples": 19,
+        "aborted": false,
+        "persistenceHealthy": true
+      },
+      {
+        "run": "3-parity",
+        "samples": 19,
+        "aborted": false,
+        "persistenceHealthy": true
+      },
+      {
+        "run": "1-reproducible",
+        "samples": 18,
+        "aborted": false,
+        "persistenceHealthy": true
+      },
+      {
+        "run": "1-candidate",
+        "samples": 18,
+        "aborted": false,
+        "persistenceHealthy": true
+      }
+    ]
+  },
+  "optimizationCandidates": {
+    "branch": "codex/20261123-runtime-candidates",
+    "installed": false,
+    "calendarIndexCommit": "2e5e1a5",
+    "foodTransferCommit": "a377fae",
+    "linuxTargetedPass": 82,
+    "windowsTargetedPass": 82,
+    "candidateLoadAck": 1082,
+    "wholeGameImprovementEstablished": false,
+    "report": "games/heroes-of-ether/docs/performance/runtime-candidates-20261123.txt (candidate branch only)"
+  },
+  "latestObservation": {
+    "atUtc": "2026-11-23T09:34:59.731Z",
+    "online": {
+      "arena": 6,
+      "lobby": 1,
+      "total": 7
+    },
+    "tickWorkMs": {
+      "count": 1199,
+      "p50": 17.64,
+      "p95": 45.63,
+      "p99": 63.99,
+      "max": 85.39
+    },
+    "tickIntervalMs": {
+      "count": 1199,
+      "p50": 49.99,
+      "p95": 55.68,
+      "p99": 70.25,
+      "max": 98.43
+    },
+    "queuedActions": 0,
+    "paused": false,
+    "diskFreeMiB": 855,
+    "entryOpen": true,
+    "databaseConnected": true,
+    "inspectorClosed": true,
+    "latencyAndMemoryWorkComplete": false
   }
 }

@@ -1,4 +1,15 @@
-Сменная работа над Heroes of Ether — 21.11.2026
+Сменная работа над Heroes of Ether, актуализация 23.11.2026
+
+Текущий код VPS: tag release/20261123-snapshot-cache,
+commit d228b39da12c44b6bd3fcd09433dd89301334870.
+Актуальные отчёты и план: ветка codex/20261123-interface-mechanics.
+origin/main остаётся на старом выпуске, не использовать его как текущий VPS.
+Эксперименты: codex/20261123-runtime-candidates, НЕ установлены.
+2e5e1a5 меняет только индекс календаря супругов, a377fae добавляет food fast path
+и отчёт о его ограничениях. Обе правки можно рассматривать независимо.
+План оптимизации: docs/scaling-two-million-accounts.txt, этапы и замеры
+games/heroes-of-ether/docs/performance/runtime-optimization-20261123.txt.
+Далее приведены исходная точка репозитория и правила передачи смены.
 
 Репозиторий владельца: https://github.com/Killex-Game/Heroes-of-Ether.git
 Краткая машинно-читаемая передача смены: docs/current-release.json.
