@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261123-interface-mechanics",
-  "sourceTag": "release/20261123-interface-mechanics",
-  "sourceCommit": "907b8bab2ec14d6a4c4cc9c6a8070adf08102024",
+  "gameRelease": "20261123-avatar-arena-followup",
+  "sourceTag": "release/20261123-avatar-arena-followup",
+  "sourceCommit": "458bc8a7cbe8fc39b9bbc5a3483368b0461ca35d",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": false,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-22T23:35:38.537Z",
+  "entryReopenedAtUtc": "2026-11-23T00:28:21.750Z",
   "runtime": {
-    "gamePid": 344918,
+    "gamePid": 363098,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
@@ -22,105 +22,114 @@
   "installed": [
     "Mobile lobby and arena controls use icons and retain accessible names",
     "Separate profile frames and arena rims, 15 retired theme identities map to existing accessible avatars",
-    "Per-item booster cooldowns 500 ms, food 200 ms, egg 10000 ms, authoritative server enforcement",
+    "Per-item booster cooldowns 500 ms, food 100 ms, egg 10000 ms, authoritative server enforcement",
     "Title accessories and once-per-life E stock follow the owner document and clarifications",
     "Censored profanity, one strike per offending message, one-hour chat mute every third message, expanded chat refocus",
     "Emote 5-second cooldown and occlusion, lower arena labels, reduced avatar scale",
     "Four negative gifts cost 5 ether, unavailable achievement checkbox removed, larger generator icon",
-    "Browser compatibility hotfix retained; no raster graphics installed"
+    "Browser compatibility hotfix retained; no raster graphics installed",
+    "Gifts and anonymous gifts can be sent while connected to arena; ordinary other lobby mutations remain restricted",
+    "Portrait lower contours aligned without enlarging original avatar scale or changing raster bytes",
+    "Arena nickname, title, effects and mass share a lower anchor at 0.28 displayed radius",
+    "Bot roster eligibility reused across unrelated profile changes, with live membership/level/spawn/ban checks preserved"
   ],
   "data": {
     "before": {
-      "at": 1795390257921,
-      "revision": 3500495,
-      "digest": "b8fb24283f13d7c3ff9492acfebe892750aee08a21681b2db4e6d51fdb5f30f0",
-      "worldHash": "b549249189747ad9ca109c6b8b127118a4e87121b0397bc4c3c5e4ac72099b09",
+      "at": 1795393477967,
+      "revision": 3522209,
+      "digest": "8345bb2db42f610f8aea35394610a8dd16941ff55c96ae7486ec449cb453b3f5",
+      "worldHash": "596575c91a41dbf69a58a4fe33ce5bd3ebb6bb8735e30d6b533eabee8b9af568",
       "profiles": 1704,
       "clans": 135,
       "fullWorldAndAuxEqual": true,
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "backup": "/srv/heroether-test/play/backups/interface-mechanics-20261123"
+      "backup": "/srv/heroether-test/play/backups/avatar-arena-followup-20261123"
     },
     "after": {
       "calendarReplayExact": true,
-      "approvedMigrationsExact": true,
+      "noCalendarChange": true,
+      "expiredChat": 0,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 3500495,
-      "revision": 3500496,
-      "digest": "12ea58e4eb732e600a2ae09c2045f485bc80008bae431df3d8846a3d75dba056",
-      "worldHash": "e74df7066959e2926c8ebfcaf13495e0475a66f0ddeeb3f1b970fbcc79078e1e",
+      "beforeRevision": 3522209,
+      "revision": 3522209,
+      "digest": "8345bb2db42f610f8aea35394610a8dd16941ff55c96ae7486ec449cb453b3f5",
+      "worldHash": "596575c91a41dbf69a58a4fe33ce5bd3ebb6bb8735e30d6b533eabee8b9af568",
       "profiles": 1704,
-      "clans": 135,
-      "at": 1795390311364,
-      "transitionTimes": [
-        1795390311364
-      ],
-      "retiredAvatarProfiles": 7,
-      "constructorChanges": [
-        [
-          "appearance",
-          "revision"
-        ],
-        [
-          "revision",
-          "skinId"
-        ],
-        [
-          "revision",
-          "skinId"
-        ],
-        [
-          "revision",
-          "skinId"
-        ],
-        [
-          "revision",
-          "skinId"
-        ],
-        [
-          "revision",
-          "skinId"
-        ],
-        [
-          "revision",
-          "skinId"
-        ],
-        [
-          "revision",
-          "skinId"
-        ]
-      ]
+      "clans": 135
     },
-    "localBackupSha256": "81edfe3adf582bf57b8f1884c0bca617a1aef5796758331d9cb005d98917813b",
+    "localBackupSha256": "ddcc05fdd789cbfc9fa6fa647bc87e12b7fa5fe733e194df3fddbdb2d98d984e",
     "reopened": {
-      "at": 1795390538537,
-      "gamePid": 344918,
+      "at": 1795393701750,
+      "gamePid": 363098,
       "adminPid": 1163,
-      "revision": 3500496,
-      "generation": 903,
+      "revision": 3522209,
+      "generation": 1002,
       "entryOpened": true,
       "backend": "postgresql"
     }
   },
   "verification": {
     "linuxFull": {
-      "total": 2298,
-      "passed": 2297,
+      "total": 2304,
+      "passed": 2303,
       "failed": 0,
       "skipped": 1
     },
-    "windowsFull": {
-      "total": 2298,
-      "passed": 2281,
-      "failed": 16,
-      "skipped": 1
+    "windowsGiftAndBoosterIntegration": {
+      "passed": 25,
+      "failed": 0
     },
-    "windowsFinalAffectedFiles": {
-      "total": 129,
-      "passed": 123,
-      "failed": 6,
-      "remainingCause": "EPERM atomic rename"
+    "windowsTargeted": {
+      "passed": 37,
+      "failed": 0
+    },
+    "previousBatch": {
+      "linuxFull": {
+        "total": 2298,
+        "passed": 2297,
+        "failed": 0,
+        "skipped": 1
+      },
+      "windowsFull": {
+        "total": 2298,
+        "passed": 2281,
+        "failed": 16,
+        "skipped": 1
+      },
+      "windowsFinalAffectedFiles": {
+        "total": 129,
+        "passed": 123,
+        "failed": 6,
+        "remainingCause": "EPERM atomic rename"
+      },
+      "browsers": {
+        "engines": [
+          "Chromium",
+          "Firefox",
+          "WebKit"
+        ],
+        "viewports": 5,
+        "casesPerEngine": 18,
+        "pageErrors": 0
+      },
+      "networkExercisePlayers": 35,
+      "networkExercisePhases": 5,
+      "finalPendingActions": 0,
+      "generatorAuditTests": 5,
+      "avatarGallery": 85,
+      "achievementDocument": {
+        "entries": 69,
+        "pages": 24
+      },
+      "httpExactChecks": 87,
+      "structure": {
+        "javascript": 1048,
+        "references": 5391
+      },
+      "productionChangedFiles": 42,
+      "commentsRemoved": 573,
+      "rasterAssetsChanged": 0
     },
     "browsers": {
       "engines": [
@@ -128,36 +137,72 @@
         "Firefox",
         "WebKit"
       ],
-      "viewports": 5,
-      "casesPerEngine": 18,
+      "arenaMassCases": [
+        100,
+        1500,
+        6210
+      ],
+      "giftSentFromArena": true,
       "pageErrors": 0
     },
-    "networkExercisePlayers": 35,
-    "networkExercisePhases": 5,
-    "finalPendingActions": 0,
-    "generatorAuditTests": 5,
-    "avatarGallery": 85,
-    "achievementDocument": {
-      "entries": 69,
-      "pages": 24
-    },
-    "httpExactChecks": 87,
+    "portraitVariantsPerEngine": 425,
+    "httpExactChecks": 8,
     "structure": {
-      "javascript": 1048,
-      "references": 5391
+      "javascript": 1051,
+      "references": 5402
     },
-    "productionChangedFiles": 42,
-    "commentsRemoved": 573,
+    "productionChangedFiles": 6,
+    "commentsRemoved": 159,
     "rasterAssetsChanged": 0
   },
-  "report": "artifacts/interface-mechanics-20261123/report.txt",
-  "previousRelease": "20261123-kill-signals",
+  "report": "artifacts/avatar-bottom-fit-20261123/report.txt",
+  "previousRelease": "20261123-interface-mechanics",
   "notes": [
-    "All protected backups retained on VPS and locally",
-    "Initial Windows and Linux failures and fixture corrections are preserved in validation-notes.txt",
-    "Root source synchronized; local private config and running experimental process not restarted",
-    "Eleven graphics drafts prepared separately; original avatars and newspaper banners preserved",
-    "No new capacity, RSS or anti-cheat accuracy claim",
-    "Follow-up avatar lower-edge correction in progress after owner screenshot; original fit QA did not catch the visible bottom gap"
-  ]
+    "Initial Linux failures were obsolete expectations, preserved with final complete rerun",
+    "Previous Windows full failures remain documented; production writes/fsync were not weakened",
+    "Avatar alpha contour checks retain a naturally floating cloud-whale exception",
+    "Graphics prepared separately only; 19 drafts are not the entire requested interface redraw",
+    "No new paid service, automatic ban, permanent polling timer or capacity guarantee",
+    "Protected backups retained; low VPS free disk space requires separate storage work",
+    "Root developer sources synchronized, experimental process and private local data unchanged"
+  ],
+  "performance": {
+    "before": {
+      "p95": 20.67,
+      "hz": 19.98,
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 22,
+        "parts": 66,
+        "connections": 4
+      },
+      "online": {
+        "arena": 4,
+        "lobby": 0,
+        "total": 4
+      }
+    },
+    "settledSamples": 8,
+    "settledP95Range": [
+      12.14,
+      14.1
+    ],
+    "afterLast": {
+      "hz": 20,
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 21,
+        "parts": 49,
+        "connections": 1
+      },
+      "online": {
+        "arena": 1,
+        "lobby": 1,
+        "total": 2
+      },
+      "queuedActions": 0
+    },
+    "fullSamples": "artifacts/avatar-bottom-fit-20261123/performance-after.json",
+    "comparableControlledBenchmark": false
+  }
 }
