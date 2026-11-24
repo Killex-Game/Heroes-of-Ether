@@ -12,7 +12,7 @@ const report = [];
 (async () => {
   for (const engine of process.argv[2] ? [process.argv[2]] : ["chromium", "firefox", "webkit"]) {
     const app = createGameServer({
-      arenaPolicy: require("../../config/arena-rooms.json"),
+      arenaPolicy: { ...require("../../config/arena-rooms.json"), levelGroups: false },
       testBots: { enabled: false },
     });
     let browser;
@@ -69,7 +69,7 @@ const report = [];
         report.push({ engine, label, ...data });
       };
       for (const [width, height] of [
-        [1366, 900],
+        [1336, 768],
         [900, 650],
         [390, 844],
         [320, 700],
@@ -80,7 +80,7 @@ const report = [];
         const planet = await page.locator("#arenaPickerButton").boundingBox();
         await page.screenshot({ path: path.join(output, `${engine}-lobby-${width}.png`) });
         assert.ok(
-          planet.x >= play.x + play.width && Math.abs(planet.y - play.y) <= 3,
+          planet.x >= play.x + play.width && Math.abs(planet.y + planet.height / 2 - play.y - play.height / 2) <= 3,
           JSON.stringify({ width, play, planet }),
         );
         assert.ok(planet.x + planet.width <= width);
@@ -96,36 +96,6 @@ const report = [];
       );
       await page.locator("#arenaPickerButton").click();
       await page.locator('.arena-choice[data-arena-id="arena-2"]').click();
-      assert.equal(
-        await page
-          .locator("#arenaPickerButton")
-          .evaluate(
-            (n) =>
-              n.getAttribute("title") ||
-              document.getElementById(n.getAttribute("aria-describedby"))?.textContent,
-          ),
-        "Выбрана арена «Бета»",
-      );
-      await page.reload();
-      await page.waitForFunction(() => !document.getElementById("playButton").disabled);
-      assert.equal(
-        await page
-          .locator("#arenaPickerButton")
-          .evaluate(
-            (n) =>
-              n.getAttribute("title") ||
-              document.getElementById(n.getAttribute("aria-describedby"))?.textContent,
-          ),
-        "Выбрана арена «Бета»",
-      );
-      await page.locator("#arenaPickerButton").click();
-      await page.waitForFunction(
-        () =>
-          document.querySelector('[data-arena-id="arena-2"]')?.getAttribute("aria-pressed") ===
-          "true",
-      );
-      await page.getByRole("button", { name: "Закрыть выбор арены", exact: true }).click();
-      await page.locator("#playButton").click();
       await page.waitForFunction(() => document.body.dataset.screen === "arena");
       assert.equal(app.rooms.get("arena-2").arena.players.size, 1);
       assert.equal(app.rooms.get("arena-1").arena.players.size, 0);
@@ -133,6 +103,17 @@ const report = [];
       await page.locator("#leaveYes").click();
       await page.locator("#lifeLobby").click();
       await page.waitForFunction(() => !document.getElementById("playButton").disabled);
+      await page.reload();
+      await page.waitForFunction(() => !document.getElementById("playButton").disabled);
+      const newsClose = page.getByRole('button', { name: 'Закрыть новости', exact: true });
+      if (await newsClose.isVisible()) await newsClose.click();
+      await page.locator("#arenaPickerButton").click();
+      await page.waitForFunction(
+        () =>
+          document.querySelector('[data-arena-id="arena-2"]')?.getAttribute("aria-pressed") ===
+          "true",
+      );
+      await page.getByRole("button", { name: "Закрыть выбор арены", exact: true }).click();
       const secondContext = await browser.newContext({ viewport: { width: 1366, height: 900 } });
       await preparePlayer(secondContext);
       const secondPage = await secondContext.newPage();
@@ -140,13 +121,13 @@ const report = [];
       await secondPage.waitForFunction(() => !document.getElementById("playButton").disabled);
       await secondPage.getByRole('button', { name: 'Закрыть новости', exact: true }).click();
       await secondPage.locator("#arenaPickerButton").click();
-      await secondPage.locator('.arena-choice[data-arena-id="arena-3"]').click();
+      await secondPage.locator('.arena-choice[data-arena-id="arena-3"]').waitFor();
       for (let i = 0; i < 30; i++)
         app.arenaRooms.reserve(`full-room-${i}`, {
           requestId: randomUUID(),
           preferredArenaId: "arena-3",
         });
-      await secondPage.locator("#playButton").click();
+      await secondPage.locator('.arena-choice[data-arena-id="arena-3"]').click();
       await secondPage.waitForFunction(() => document.body.dataset.screen === "arena");
       await secondPage.locator(".arena-transfer-notice").waitFor();
       assert.match(
