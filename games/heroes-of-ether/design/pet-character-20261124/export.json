@@ -1,0 +1,812 @@
+[
+  {
+    "file": "public/assets/pets/levels-v1/drakosha-0.webp",
+    "source": "drakosha-0.png",
+    "before": "b24584ddcc861a21c2b633706709c48f9ad81bfc0189ece6f39542894157ebc2",
+    "after": "0686c6fde51eee4cbe4c958e9ba0873eb1d3c931e106c97813a860d2640b13a1",
+    "sourceSha256": "e41782da8ed1e0352765511eadefc8e414abf657d0ada1b33a008885a30d7800",
+    "oldBytes": 67076,
+    "bytes": 58990,
+    "frame": {
+      "old": {
+        "left": 19,
+        "top": 36,
+        "width": 466,
+        "height": 433
+      },
+      "source": {
+        "left": 42,
+        "top": 83,
+        "width": 1152,
+        "height": 1070
+      },
+      "result": {
+        "left": 19,
+        "top": 36,
+        "width": 466,
+        "height": 433
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/drakosha-1.webp",
+    "source": "drakosha-1.png",
+    "before": "fe02170ef396a4e347fe1de7b6f129c3fa4416e30ce2bc6ec924a36ebee00428",
+    "after": "ef3611211589b197f595d3212657b2960a5a6612b574c5f9079785c275d2ac9a",
+    "sourceSha256": "8070d11429929f291564d280f20ab8b052033140de8820d31b60c1072c61770b",
+    "oldBytes": 71784,
+    "bytes": 59132,
+    "frame": {
+      "old": {
+        "left": 21,
+        "top": 35,
+        "width": 463,
+        "height": 429
+      },
+      "source": {
+        "left": 50,
+        "top": 75,
+        "width": 1139,
+        "height": 1064
+      },
+      "result": {
+        "left": 23,
+        "top": 35,
+        "width": 459,
+        "height": 429
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/drakosha-2.webp",
+    "source": "drakosha-2.png",
+    "before": "a34414a01c7a41ae098204b68c38dd3dedb1cfcfb247edb6dfc492982a645b8d",
+    "after": "e624ea249325adc070ddf433af30bdbb4c1eac5537e699896d703b63f833bd6c",
+    "sourceSha256": "403ce0f4d92a661defafc7a7c88fe54e0895c1775dbae674d67363dfc19c1894",
+    "oldBytes": 72548,
+    "bytes": 61826,
+    "frame": {
+      "old": {
+        "left": 17,
+        "top": 31,
+        "width": 468,
+        "height": 448
+      },
+      "source": {
+        "left": 42,
+        "top": 73,
+        "width": 1147,
+        "height": 1102
+      },
+      "result": {
+        "left": 18,
+        "top": 31,
+        "width": 466,
+        "height": 448
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/drakosha-3.webp",
+    "source": "drakosha-3.png",
+    "before": "3d6dc9d99d0b81e0ae2f3cff05e5a4fe0c13df09ba3adfb6c342e19b25a21b2c",
+    "after": "a1fd6bbe3e6efef61341fc3a6f03698bc15f5518c456cb81b5ade8443ace28cc",
+    "sourceSha256": "b58e9636db365419136c9df3c80f5ba5290f3f84cac001f054e1b12bc3984871",
+    "oldBytes": 72256,
+    "bytes": 59682,
+    "frame": {
+      "old": {
+        "left": 18,
+        "top": 33,
+        "width": 462,
+        "height": 438
+      },
+      "source": {
+        "left": 42,
+        "top": 76,
+        "width": 1136,
+        "height": 1080
+      },
+      "result": {
+        "left": 19,
+        "top": 33,
+        "width": 461,
+        "height": 438
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/drakosha-4.webp",
+    "source": "drakosha-4.png",
+    "before": "155f99c4c3a2b12b9778ef84ae37d6a57f55eb5bc46f4b830deff62cb5df5416",
+    "after": "8bce6ca202e008393e274f57b8da35b87f7fe087f9a8a9b195fbb019207cc009",
+    "sourceSha256": "411e574478b3b6e4c3b22e87893493b91e3a6b510fd8124432ece4c2385edc49",
+    "oldBytes": 78526,
+    "bytes": 66850,
+    "frame": {
+      "old": {
+        "left": 18,
+        "top": 34,
+        "width": 469,
+        "height": 447
+      },
+      "source": {
+        "left": 39,
+        "top": 74,
+        "width": 1158,
+        "height": 1107
+      },
+      "result": {
+        "left": 19,
+        "top": 34,
+        "width": 468,
+        "height": 447
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/drakosha-5.webp",
+    "source": "drakosha-5.png",
+    "before": "6cac27354db49f7939e7ceacfb4a1415d85d5de2dd7d54c51b02d68247f1c333",
+    "after": "22ddba8432a6f3aa930b5c87a5a1977cbeb000cefad4d8fff3837a27008471f4",
+    "sourceSha256": "40272f61afb5943717ce1213295bd7f5b204c9ffe44ef49380d5b7776af0a930",
+    "oldBytes": 79554,
+    "bytes": 67002,
+    "frame": {
+      "old": {
+        "left": 17,
+        "top": 32,
+        "width": 472,
+        "height": 437
+      },
+      "source": {
+        "left": 38,
+        "top": 78,
+        "width": 1161,
+        "height": 1074
+      },
+      "result": {
+        "left": 17,
+        "top": 32,
+        "width": 472,
+        "height": 437
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/leva-0.webp",
+    "source": "leva-0.png",
+    "before": "d1ccd20a72af6f79b29d858f74fa676f34810a761e2c0b28855ae1e8d524d767",
+    "after": "e77f4286137784f8f5b3b45b3662863010c4b8c20400bd11c259e8c321011189",
+    "sourceSha256": "f87b87633c42bbafe5a955ba8f6fc2d58ef06836c77e2735ea000e164c3703e8",
+    "oldBytes": 55950,
+    "bytes": 46916,
+    "frame": {
+      "old": {
+        "left": 52,
+        "top": 35,
+        "width": 400,
+        "height": 447
+      },
+      "source": {
+        "left": 124,
+        "top": 80,
+        "width": 985,
+        "height": 1104
+      },
+      "result": {
+        "left": 53,
+        "top": 35,
+        "width": 399,
+        "height": 447
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/leva-1.webp",
+    "source": "leva-1.png",
+    "before": "022f555430a9f4db7f35024409d17482e3de7caf151e8f74c5417618dc981a32",
+    "after": "d7f7c7a3a5b206258a3c80d82333bc2bfc3f1d8d69030b0d9a7de5766edee413",
+    "sourceSha256": "1d97324940a27ffa7612658aea11dd484c6330f34dab0cc49c9c45d49ff2e3fd",
+    "oldBytes": 60596,
+    "bytes": 51902,
+    "frame": {
+      "old": {
+        "left": 48,
+        "top": 36,
+        "width": 407,
+        "height": 439
+      },
+      "source": {
+        "left": 114,
+        "top": 76,
+        "width": 1008,
+        "height": 1094
+      },
+      "result": {
+        "left": 50,
+        "top": 36,
+        "width": 404,
+        "height": 439
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/leva-2.webp",
+    "source": "leva-2.png",
+    "before": "febb5c9d6fd8292de9bd117b0a00c8c1cc079b1d490a5658442c27f0d6bc7178",
+    "after": "1ab985c19cf8421c0557bb7dacb09b76a067c5f5fba8ef7b11d8b48b94839791",
+    "sourceSha256": "6ecc8646d1def69e00352f5c5273d29e6922a20d91ac240bfc18a3e3ef6174f2",
+    "oldBytes": 61496,
+    "bytes": 55098,
+    "frame": {
+      "old": {
+        "left": 49,
+        "top": 37,
+        "width": 411,
+        "height": 440
+      },
+      "source": {
+        "left": 117,
+        "top": 76,
+        "width": 1011,
+        "height": 1092
+      },
+      "result": {
+        "left": 51,
+        "top": 37,
+        "width": 407,
+        "height": 440
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/leva-3.webp",
+    "source": "leva-3.png",
+    "before": "1fdcfee8cfa4db9ceaa6f66d490e63ae8cdbfc5b9428546bbe80ac1ed2d53a9b",
+    "after": "10d5e2cd94cbd2af4e2a47eaa4a3fd9937de44d5c46ba28512dd280330d7138d",
+    "sourceSha256": "a1915c9797288f3b830107e71bf653b9b187daae7e6746560b93369eeec4a2d1",
+    "oldBytes": 62054,
+    "bytes": 56544,
+    "frame": {
+      "old": {
+        "left": 44,
+        "top": 33,
+        "width": 407,
+        "height": 448
+      },
+      "source": {
+        "left": 102,
+        "top": 70,
+        "width": 1007,
+        "height": 1114
+      },
+      "result": {
+        "left": 45,
+        "top": 33,
+        "width": 405,
+        "height": 448
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/leva-4.webp",
+    "source": "leva-4.png",
+    "before": "bfccb0860fe4a0784454a379895edd8f6bc8f4d00f84f39c2a60668294c8a0e5",
+    "after": "466c78b7aa1827b7b18b80f6068f81512cd9bf9f4b0c62f2c4ee3656e42ede4b",
+    "sourceSha256": "b7b12b109caed66a35e041bc989762c54bcceaac285133b321c232e94eba721f",
+    "oldBytes": 66610,
+    "bytes": 55080,
+    "frame": {
+      "old": {
+        "left": 49,
+        "top": 27,
+        "width": 404,
+        "height": 456
+      },
+      "source": {
+        "left": 112,
+        "top": 61,
+        "width": 1002,
+        "height": 1125
+      },
+      "result": {
+        "left": 49,
+        "top": 29,
+        "width": 404,
+        "height": 454
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/leva-5.webp",
+    "source": "leva-5.png",
+    "before": "491939e09ecad30bae91f7c53fbc74e57c59bfd774c34f560518e66baa7fd117",
+    "after": "8e73c32059e1215ba33d9d251d43512d23ba6f84755cd161449ef2737dfce9b2",
+    "sourceSha256": "35c6eea531344e2d192a04a43bfd59f53611baa739628908080e31af0813aded",
+    "oldBytes": 70130,
+    "bytes": 60050,
+    "frame": {
+      "old": {
+        "left": 46,
+        "top": 40,
+        "width": 430,
+        "height": 441
+      },
+      "source": {
+        "left": 104,
+        "top": 89,
+        "width": 1071,
+        "height": 1094
+      },
+      "result": {
+        "left": 46,
+        "top": 42,
+        "width": 430,
+        "height": 439
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/zaya-0.webp",
+    "source": "zaya-0.png",
+    "before": "53ffbc7f14f94383c53debe78fe5590d5aa7d832790b25b3dc1cecd18c22c0a9",
+    "after": "f73a3680054de825b221f188d006917491951da8e52e8be06415378f43e855d6",
+    "sourceSha256": "85c48a60dd1c081bf534442663600dfec288bc16215166e77663725f40953870",
+    "oldBytes": 47998,
+    "bytes": 43966,
+    "frame": {
+      "old": {
+        "left": 32,
+        "top": 39,
+        "width": 448,
+        "height": 440
+      },
+      "source": {
+        "left": 78,
+        "top": 95,
+        "width": 1098,
+        "height": 1080
+      },
+      "result": {
+        "left": 33,
+        "top": 39,
+        "width": 447,
+        "height": 440
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/zaya-1.webp",
+    "source": "zaya-1.png",
+    "before": "193b515641c4e0df141f1905377f48f94688e66f5330832903e3c7b9ff4a9d2c",
+    "after": "6b3070f55c88e9bc149981c8410e0765f704123448509fac5db3ddfd884cdded",
+    "sourceSha256": "e11ab59bd542dad5ae810f573ba5e6621b68bec20aa268eb9451df871ddf804c",
+    "oldBytes": 58862,
+    "bytes": 42994,
+    "frame": {
+      "old": {
+        "left": 23,
+        "top": 34,
+        "width": 464,
+        "height": 449
+      },
+      "source": {
+        "left": 51,
+        "top": 83,
+        "width": 1146,
+        "height": 1105
+      },
+      "result": {
+        "left": 23,
+        "top": 36,
+        "width": 464,
+        "height": 447
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/zaya-2.webp",
+    "source": "zaya-2.png",
+    "before": "ec9ba435e1f255ab981f5e8b19f457d3f6ccaec36ab78902bf97148e0415ccb8",
+    "after": "c1d0125960234d4cf798036c93a7d1217a89b75223adf34b66b89b92c0f2010d",
+    "sourceSha256": "fdf97be3dd0874e330f9aaaf25634ecbfd5e8845ff1c028604e6356f3ee54532",
+    "oldBytes": 51930,
+    "bytes": 42470,
+    "frame": {
+      "old": {
+        "left": 30,
+        "top": 39,
+        "width": 451,
+        "height": 439
+      },
+      "source": {
+        "left": 67,
+        "top": 93,
+        "width": 1120,
+        "height": 1082
+      },
+      "result": {
+        "left": 30,
+        "top": 42,
+        "width": 451,
+        "height": 436
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/zaya-3.webp",
+    "source": "zaya-3.png",
+    "before": "9d85e6bc80052759fdc534aed9f3b1cc93e68e916a1a6d838053c8d54ad907e7",
+    "after": "852f2c4391e3b3b24def0cec4d9464f2ad4e9ecc2b4017fa38eb34af1d9504a5",
+    "sourceSha256": "55f810a131ffd51112bc03e599229e0bdc9ff37f4d8b2bf8a4b97dddf3adc336",
+    "oldBytes": 54916,
+    "bytes": 44038,
+    "frame": {
+      "old": {
+        "left": 28,
+        "top": 39,
+        "width": 454,
+        "height": 441
+      },
+      "source": {
+        "left": 62,
+        "top": 96,
+        "width": 1128,
+        "height": 1084
+      },
+      "result": {
+        "left": 28,
+        "top": 44,
+        "width": 454,
+        "height": 436
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/zaya-4.webp",
+    "source": "zaya-4.png",
+    "before": "f8b6af474cde42557268e860981bbb053007cf0302a9f2ed30557dd307a6b936",
+    "after": "d7dbe627f83e7dcef28b15f240915cb6d03415f41d201b15cd74d1c74ad34587",
+    "sourceSha256": "5458da99c5e088e7c50ae79a494a9e89cb037bda29f62a97e406c566ff3e5eb8",
+    "oldBytes": 59610,
+    "bytes": 50468,
+    "frame": {
+      "old": {
+        "left": 24,
+        "top": 39,
+        "width": 463,
+        "height": 447
+      },
+      "source": {
+        "left": 56,
+        "top": 92,
+        "width": 1141,
+        "height": 1103
+      },
+      "result": {
+        "left": 25,
+        "top": 39,
+        "width": 462,
+        "height": 447
+      }
+    }
+  },
+  {
+    "file": "public/assets/pets/levels-v1/zaya-5.webp",
+    "source": "zaya-5.png",
+    "before": "f57205f3e692d1a39d4d25f952ad098b7cc011bda5c84625b5130e39785fc805",
+    "after": "175e0153e1f2ecfd91fbfc4a071eed88cd51c9f12acd9a1c45c0d17d7469eca1",
+    "sourceSha256": "be4620fafd7b441602297b1919dad3bc8bf27d1e922bb06b1371340b60c4c01a",
+    "oldBytes": 72666,
+    "bytes": 60602,
+    "frame": {
+      "old": {
+        "left": 26,
+        "top": 35,
+        "width": 460,
+        "height": 457
+      },
+      "source": {
+        "left": 62,
+        "top": 76,
+        "width": 1130,
+        "height": 1134
+      },
+      "result": {
+        "left": 29,
+        "top": 35,
+        "width": 455,
+        "height": 457
+      }
+    }
+  },
+  {
+    "file": "public/assets/achievements/illustrated-v2/pet_level_drakosha.webp",
+    "source": "drakosha-3.png",
+    "before": "37c443cfe715503b05b76c9ad7b228b0c598bd0e98a28220c21bb2022587a6ae",
+    "after": "348c752d0e9c7084fbc85a0c9aa2a00b23a87be3918ec05d8b17150f3436a2ef",
+    "sourceSha256": "b58e9636db365419136c9df3c80f5ba5290f3f84cac001f054e1b12bc3984871",
+    "oldBytes": 22072,
+    "bytes": 18082,
+    "frame": {
+      "old": {
+        "left": 34,
+        "top": 26,
+        "width": 188,
+        "height": 198
+      },
+      "source": {
+        "left": 42,
+        "top": 76,
+        "width": 1136,
+        "height": 1080
+      },
+      "result": {
+        "left": 34,
+        "top": 45,
+        "width": 188,
+        "height": 179
+      }
+    }
+  },
+  {
+    "file": "public/assets/achievements/illustrated-v2/pet_level_leva.webp",
+    "source": "leva-3.png",
+    "before": "e0c76f93096222317ced7aa252c370ef0dc78942a7d21dab44a8de63f58b42db",
+    "after": "7dc1e1c91ad063687d8e52a4d4fcc64ba7bdfff28aa1ca126d8b71ad0cdb8e3a",
+    "sourceSha256": "a1915c9797288f3b830107e71bf653b9b187daae7e6746560b93369eeec4a2d1",
+    "oldBytes": 18822,
+    "bytes": 16406,
+    "frame": {
+      "old": {
+        "left": 44,
+        "top": 31,
+        "width": 161,
+        "height": 195
+      },
+      "source": {
+        "left": 102,
+        "top": 70,
+        "width": 1007,
+        "height": 1114
+      },
+      "result": {
+        "left": 44,
+        "top": 48,
+        "width": 161,
+        "height": 178
+      }
+    }
+  },
+  {
+    "file": "public/assets/achievements/illustrated-v2/pet_level_zaya.webp",
+    "source": "zaya-3.png",
+    "before": "6817050e07b07c29b58f42d7e5a2d84830e3881ac3c5fe8fe473601544097acb",
+    "after": "bbfadccbb069a58c6ed4e15d2630cc44394be3e9188d39353baa8022677bf53e",
+    "sourceSha256": "55f810a131ffd51112bc03e599229e0bdc9ff37f4d8b2bf8a4b97dddf3adc336",
+    "oldBytes": 18740,
+    "bytes": 14084,
+    "frame": {
+      "old": {
+        "left": 34,
+        "top": 26,
+        "width": 188,
+        "height": 201
+      },
+      "source": {
+        "left": 62,
+        "top": 96,
+        "width": 1128,
+        "height": 1084
+      },
+      "result": {
+        "left": 34,
+        "top": 46,
+        "width": 188,
+        "height": 181
+      }
+    }
+  },
+  {
+    "file": "public/assets/emotes/pets-v1/1.webp",
+    "source": "emote-1.png",
+    "before": "83c7f7fe9985f13d2ba539f6ce5596a783c72d06e66744e82b32f032b76ba46a",
+    "after": "0f933d4194f7f07e0f50fe9ee47f748be82b34bd41254eaa13ab5f8eec192536",
+    "sourceSha256": "ac90fafbb96cb0627b60ba972abca1e6d914a5623a99d15cdef754706fedea2e",
+    "oldBytes": 8116,
+    "bytes": 7154,
+    "frame": {
+      "old": {
+        "left": 13,
+        "top": 11,
+        "width": 101,
+        "height": 106
+      },
+      "source": {
+        "left": 114,
+        "top": 62,
+        "width": 1027,
+        "height": 1111
+      },
+      "result": {
+        "left": 15,
+        "top": 11,
+        "width": 98,
+        "height": 106
+      }
+    }
+  },
+  {
+    "file": "public/assets/emotes/pets-v1/2.webp",
+    "source": "emote-2.png",
+    "before": "7669dadf37a8ba329f2aa8d742da8cdcd8636f045e5ceb8993756400654c42c4",
+    "after": "edad7218ec1955e5f3c8f56bc73754d7ae389485c774d7180d0f068f4bf0eff5",
+    "sourceSha256": "62cbec2dae5a2705f2c87b680fc95d7a128d3a97660ae3d88744cde1c6c8c284",
+    "oldBytes": 8010,
+    "bytes": 7234,
+    "frame": {
+      "old": {
+        "left": 4,
+        "top": 10,
+        "width": 118,
+        "height": 108
+      },
+      "source": {
+        "left": 57,
+        "top": 87,
+        "width": 1135,
+        "height": 1042
+      },
+      "result": {
+        "left": 4,
+        "top": 10,
+        "width": 118,
+        "height": 108
+      }
+    }
+  },
+  {
+    "file": "public/assets/emotes/pets-v1/4.webp",
+    "source": "emote-4.png",
+    "before": "4236dff90759674f63097248dd79e8ac53c3a463a1271cae6b916b4453d6fccd",
+    "after": "657ad27ba44d026d4dd354e8cb122cc2d713f9834ee827fa6a55bbf69db0a725",
+    "sourceSha256": "e1922de031737312eeddd8461c35c408577abfc0aa04b3ba50de1b1610dd3fe0",
+    "oldBytes": 8766,
+    "bytes": 8042,
+    "frame": {
+      "old": {
+        "left": 5,
+        "top": 7,
+        "width": 117,
+        "height": 109
+      },
+      "source": {
+        "left": 37,
+        "top": 45,
+        "width": 1183,
+        "height": 1122
+      },
+      "result": {
+        "left": 6,
+        "top": 7,
+        "width": 115,
+        "height": 109
+      }
+    }
+  },
+  {
+    "file": "public/assets/emotes/pets-v1/6.webp",
+    "source": "emote-6.png",
+    "before": "45f2e1248590e3d1222eb159bb40272a7e85d34d3f13affb02aac3ae415716ba",
+    "after": "2a575eb2409db13ea48caffd4200362e266481917cbdf7d26dd1d1015745928c",
+    "sourceSha256": "5fba15d04edefde57faa60741e5bf17499019e566bb71d5943e676d5b27c4cb1",
+    "oldBytes": 8220,
+    "bytes": 7086,
+    "frame": {
+      "old": {
+        "left": 7,
+        "top": 11,
+        "width": 114,
+        "height": 101
+      },
+      "source": {
+        "left": 60,
+        "top": 61,
+        "width": 1137,
+        "height": 1049
+      },
+      "result": {
+        "left": 10,
+        "top": 11,
+        "width": 109,
+        "height": 101
+      }
+    }
+  },
+  {
+    "file": "public/assets/emotes/pets-v1/7.webp",
+    "source": "emote-7.png",
+    "before": "3ae5a73b08b37d6bcc170545f04cb3c09549736f5a270ecaf3b54557f7044f4f",
+    "after": "b9da7f3b8c98b218249fa43b415851629cc704b09fc1588492507cf434c17db3",
+    "sourceSha256": "2905072097b8316d97a425fa8f93822c8677b62f83bcbaddf6d935614d69046e",
+    "oldBytes": 7298,
+    "bytes": 5986,
+    "frame": {
+      "old": {
+        "left": 14,
+        "top": 16,
+        "width": 99,
+        "height": 95
+      },
+      "source": {
+        "left": 165,
+        "top": 110,
+        "width": 925,
+        "height": 973
+      },
+      "result": {
+        "left": 19,
+        "top": 16,
+        "width": 90,
+        "height": 95
+      }
+    }
+  },
+  {
+    "file": "public/assets/achievements/illustrated-v2/pet_exclusive.webp",
+    "source": "pet-exclusive.png",
+    "before": "2edecea3a250a1889ffe2252d24730d5a358ba85014276f2458bd2dcddafb77a",
+    "after": "a50ef7aa47d12284c7e24727ba7c3195ae83abd522e0b43cb2e7f0d50976ea4f",
+    "sourceSha256": "705839231e4742053076eb0f8c89239cee15c86f56b1e791203d3ff4166cd68b",
+    "oldBytes": 22772,
+    "bytes": 19784,
+    "frame": {
+      "old": {
+        "left": 25,
+        "top": 42,
+        "width": 211,
+        "height": 171
+      },
+      "source": {
+        "left": 117,
+        "top": 191,
+        "width": 1048,
+        "height": 824
+      },
+      "result": {
+        "left": 25,
+        "top": 47,
+        "width": 211,
+        "height": 166
+      }
+    }
+  },
+  {
+    "file": "public/assets/banners/pets.webp",
+    "source": "pets-banner.png",
+    "before": "b41f1c17d78c9c2b4f784f9f71b451d4d9da8e043162ed36d2d6b0dca67097e9",
+    "after": "be542e6c5e2a741107b58ade045c65499918a67d9c219dbd6f4230c43ac1545b",
+    "sourceSha256": "e8ba821a787145fd1354eff43d4848af5edf13b29875705d988139e9cb9ae58b",
+    "oldBytes": 140416,
+    "bytes": 137464
+  },
+  {
+    "file": "public/assets/events/easter-hunt/banner.png",
+    "source": "easter-banner-final.png",
+    "before": "8e72b76ff667d04fd8d0d8bb84308556067a3b674ef784c1f4fa7376356ad45b",
+    "after": "fb731bc3ddea4ae502b6ebe15d614d369f88633b10c875f791b009cabcf0f063",
+    "sourceSha256": "76c5c9239725a8ea7dc6fde7c3389f1767c8c998cd30e0d35ba786fbc94849c9",
+    "oldBytes": 393495,
+    "bytes": 312836
+  },
+  {
+    "file": "public/assets/events/easter-hunt/card-banner.webp",
+    "source": "easter-banner-final.png",
+    "before": "cf823bcd6a51eefaaa00918e42ca4216fe7e6911ac80f829253e872e2d64a9ed",
+    "after": "67c27c8562170626c402d62bc2601e92fcfdcda58c4c38364afdd077aabe0909",
+    "sourceSha256": "76c5c9239725a8ea7dc6fde7c3389f1767c8c998cd30e0d35ba786fbc94849c9",
+    "oldBytes": 101596,
+    "bytes": 83404
+  }
+]

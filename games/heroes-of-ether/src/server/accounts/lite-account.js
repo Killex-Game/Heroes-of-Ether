@@ -85,6 +85,7 @@ function buyTickets(p, config, at, input) {
   if (currency === "coins") record.coinTickets += quantity;
   if (currency === "crystals") record.crystalTickets += quantity;
   grantTickets(p, quantity);
+  require("../progression/activity-achievements").spend(p, currency, cost, at);
 }
 function chestOpened(p, config, at) {
   if (view(p, config, at).active) grantTickets(p, 1);

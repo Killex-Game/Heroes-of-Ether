@@ -57,6 +57,22 @@
     "regular",
     "fan",
   ]);
+  const layers = new Map();
+  const template = ["interior-mask.svg", "canonical-gold-frame.png"]
+    .map(name => `assets/achievements/template/${name}?art=20261123-interface-art`);
+  function loaded(src) {
+    if (!layers.has(src)) {
+      const image = new Image();
+      const ready = new Promise((resolve, reject) => {
+        image.onload = () => resolve();
+        image.onerror = () => reject(new Error("Achievement image unavailable"));
+        image.src = src;
+      }).then(() => typeof image.decode === "function" ? image.decode() : undefined);
+      layers.set(src, ready);
+      ready.catch(() => layers.delete(src));
+    }
+    return layers.get(src);
+  }
   function paint(badge, id) {
     badge.dataset.badge = id;
     // Easter art is already approved; every other illustration uses the same
@@ -72,7 +88,18 @@
     const src = illustrated.has(id)
       ? `assets/achievements/illustrated-v2/${id}.webp${id.startsWith("friday_") ? "?v=20261109-complete" : ""}`
       : window.KillexProgressionArt.achievement(id);
-    badge.querySelector("img").src = window.KillexArtRevision.url(src);
+    const image = badge.querySelector("img"), url = window.KillexArtRevision.url(src);
+    if (badge.dataset.source === url && badge.dataset.ready === "true") return;
+    badge.dataset.source = url;
+    badge.dataset.ready = "false";
+    image.src = url;
+    const generation = (badge._paintGeneration || 0) + 1;
+    badge._paintGeneration = generation;
+    Promise.all([...template, url].map(loaded)).then(() => {
+      if (badge._paintGeneration === generation) badge.dataset.ready = "true";
+    }).catch(() => {
+      if (badge._paintGeneration === generation) badge.dataset.ready = "error";
+    });
   }
   function create(id, cls = "achievement-emblem", size = 80) {
     const badge = document.createElement("span"),

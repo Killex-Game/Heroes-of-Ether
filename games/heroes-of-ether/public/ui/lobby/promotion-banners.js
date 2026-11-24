@@ -63,13 +63,13 @@
       product.click();
     }
   };
-  events.style.backgroundImage = 'url("assets/banners/pets.webp?art=20261124-drakosha-center")';
+  events.style.backgroundImage = 'url("assets/banners/pets.webp?art=20261124-lobby-pets")';
   label(events, "Предложения", "Питомцы", "Выбери верного друга для арены");
   const offers = document.querySelector(".promo-offers");
   const eventBanners = {
     "ether-alchemy-v1": "assets/events/ether-alchemy/v1/banner-v2.webp?art=20261123-interface-art",
     "black-friday-v1": "assets/events/black-friday/banner-v2.webp?art=20261123-interface-art",
-    "easter-hunt-v1": "assets/events/easter-hunt/banner.png?art=20261123-interface-art",
+    "easter-hunt-v1": "assets/events/easter-hunt/banner.png?art=20261124-lobby-pets",
     "lucky-week-v1": "assets/events/lucky-week/banner-v3.webp?art=20261123-interface-art",
     "core-v1": "assets/events/lucky-week/banner-v3.webp?art=20261123-interface-art",
   };

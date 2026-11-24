@@ -1,0 +1,90 @@
+[
+  {
+    "id": "emote-1",
+    "target": "emotes/pets-v1/1.webp",
+    "pet": "drakosha",
+    "note": "Keep the SAME angry teeth-baring expression, forehead purple diamond, pose and head-only silhouette. Strong straight masculine eyebrows and muzzle, no long eyelashes, exactly two horns and a central swept-back magenta crest.",
+    "prompt": "Edit FIRST reference game asset. Keep the SAME angry teeth-baring expression, forehead purple diamond, pose and head-only silhouette. Strong straight masculine eyebrows and muzzle, no long eyelashes, exactly two horns and a central swept-back magenta crest. Other references supply corrected character identity, not pose or clothing. Preserve original canonical smooth painted fantasy avatar style and saturated gold. Transparent RGBA background, same framing and padding, no text or border.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-959fdb85-0d66-4ff0-aa67-4501a52b2065.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  },
+  {
+    "id": "emote-7",
+    "target": "emotes/pets-v1/7.webp",
+    "pet": "drakosha",
+    "note": "Keep the SAME cool laughing expression, black sunglasses, forehead purple diamond, pose and head-only silhouette. Broader masculine muzzle, exactly two horns and centered swept-back magenta crest.",
+    "prompt": "Edit FIRST reference game asset. Keep the SAME cool laughing expression, black sunglasses, forehead purple diamond, pose and head-only silhouette. Broader masculine muzzle, exactly two horns and centered swept-back magenta crest. Other references supply corrected character identity, not pose or clothing. Preserve original canonical smooth painted fantasy avatar style and saturated gold. Transparent RGBA background, same framing and padding, no text or border.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-a8bbe30a-8a2d-4f29-a57d-a5b71c4352e1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  },
+  {
+    "id": "emote-4",
+    "target": "emotes/pets-v1/4.webp",
+    "pet": "leva",
+    "note": "Keep the SAME dramatic crying expression, tears, tilted crown and head-only silhouette. Male cub, thicker eyebrows, no long feminine eyelashes, broader muzzle and boyish cheek/mane planes. Do not change emotion.",
+    "prompt": "Edit FIRST reference game asset. Keep the SAME dramatic crying expression, tears, tilted crown and head-only silhouette. Male cub, thicker eyebrows, no long feminine eyelashes, broader muzzle and boyish cheek/mane planes. Do not change emotion. Other references supply corrected character identity, not pose or clothing. Preserve original canonical smooth painted fantasy avatar style and saturated gold. Transparent RGBA background, same framing and padding, no text or border.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-1a05ae48-028f-4f0d-83f8-b69e63e0acfe.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  },
+  {
+    "id": "emote-6",
+    "target": "emotes/pets-v1/6.webp",
+    "pet": "leva",
+    "note": "Keep the SAME goofy winking tongue-out expression, little crown and head-only silhouette. Male cub with thicker eyebrows, no feminine long eyelashes, broader muzzle and boyish cheek/mane planes.",
+    "prompt": "Edit FIRST reference game asset. Keep the SAME goofy winking tongue-out expression, little crown and head-only silhouette. Male cub with thicker eyebrows, no feminine long eyelashes, broader muzzle and boyish cheek/mane planes. Other references supply corrected character identity, not pose or clothing. Preserve original canonical smooth painted fantasy avatar style and saturated gold. Transparent RGBA background, same framing and padding, no text or border.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-66f29972-577d-4a23-8bd8-7a65c7b2443d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  },
+  {
+    "id": "emote-2",
+    "target": "emotes/pets-v1/2.webp",
+    "pet": "zaya",
+    "note": "ONLY change forelock colour to the same pale blush pink as facial/body fur in reference 2. Preserve female face, eyelashes, laughing closed eyes and long ears, mouth and purple bow.",
+    "prompt": "Edit FIRST reference game asset. ONLY change forelock colour to the same pale blush pink as facial/body fur in reference 2. Preserve female face, eyelashes, laughing closed eyes and long ears, mouth and purple bow. Other references supply corrected character identity, not pose or clothing. Preserve original canonical smooth painted fantasy avatar style and saturated gold. Transparent RGBA background, same framing and padding, no text or border.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-0133e4b6-35bc-4d2f-9733-afb2584a063a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  },
+  {
+    "id": "pet-exclusive",
+    "target": "achievements/illustrated-v2/pet_exclusive.webp",
+    "pet": "drakosha",
+    "note": "ONLY update the dragon's face to masculine boyish character in second reference: thicker confident brows, no long lashes, broader muzzle; one pair gold horns and one centered swept-back crest. Keep the kitten EXACTLY unchanged. Preserve both complete characters, clothes, positions, friendly emotions and layout.",
+    "prompt": "Edit FIRST reference game asset. ONLY update the dragon's face to masculine boyish character in second reference: thicker confident brows, no long lashes, broader muzzle; one pair gold horns and one centered swept-back crest. Keep the kitten EXACTLY unchanged. Preserve both complete characters, clothes, positions, friendly emotions and layout. Other references supply corrected character identity, not pose or clothing. Preserve original canonical smooth painted fantasy avatar style and saturated gold. Transparent RGBA background, same framing and padding, no text or border.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-b40e79f5-cd30-4288-ad12-1de47f409a4c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  },
+  {
+    "id": "pets-banner",
+    "target": "banners/pets.webp",
+    "pet": null,
+    "note": "Edit ONLY three pets: Drakosha (pink MALE dragon) and Leva (golden MALE lion cub) need the same masculine facial traits as references 2 and 3: no feminine long lashes, thicker brows, slightly broader muzzles. Keep friendly expressions and their individual poses. Dragon has exactly TWO horns and centered crest aligned to nose bridge swept backward. Zaya the pink bunny's forelock must become the SAME light blush pink as her fur, as reference 4. Keep the kitten Manya EXACTLY unchanged, preserve all clothes, garden/castle/rug/background/layout/lighting and original landscape aspect ratio. No new text.",
+    "prompt": "Edit FIRST reference game asset. Edit ONLY three pets: Drakosha (pink MALE dragon) and Leva (golden MALE lion cub) need the same masculine facial traits as references 2 and 3: no feminine long lashes, thicker brows, slightly broader muzzles. Keep friendly expressions and their individual poses. Dragon has exactly TWO horns and centered crest aligned to nose bridge swept backward. Zaya the pink bunny's forelock must become the SAME light blush pink as her fur, as reference 4. Keep the kitten Manya EXACTLY unchanged, preserve all clothes, garden/castle/rug/background/layout/lighting and original landscape aspect ratio. No new text. Other references supply corrected character identity, not pose or clothing. Preserve original canonical smooth painted fantasy avatar style and saturated gold. Keep full opaque scene, do not add a border or padding.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-ae807928-8f10-4a12-91bc-d97e33bc9b5a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  },
+  {
+    "id": "easter-banner",
+    "target": "events/easter-hunt/banner.png",
+    "pet": "zaya",
+    "note": "ONLY recolour the bunny's forelock to the same pale blush pink as her face/body fur, matching second reference. Keep curl shape, all characters, eyes/face/ears, egg patterns, basket, environment, layout and landscape 2:1 aspect ratio EXACTLY unchanged.",
+    "prompt": "Edit FIRST reference game asset. ONLY recolour the bunny's forelock to the same pale blush pink as her face/body fur, matching second reference. Keep curl shape, all characters, eyes/face/ears, egg patterns, basket, environment, layout and landscape 2:1 aspect ratio EXACTLY unchanged. Other references supply corrected character identity, not pose or clothing. Preserve original canonical smooth painted fantasy avatar style and saturated gold. Keep full opaque scene, do not add a border or padding.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-f61c90af-15a7-466d-a5d2-afe6f1fb1dc4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": false
+  },
+  {
+    "id": "easter-card",
+    "target": "events/easter-hunt/card-banner.webp",
+    "pet": "zaya",
+    "note": "ONLY recolour the bunny's forelock to the same pale blush pink as her face/body fur, matching second reference. Keep curl shape, all characters, eyes/face/ears, egg patterns, basket, environment and layout EXACTLY unchanged. Preserve very wide landscape aspect ratio 2.56:1.",
+    "prompt": "Edit FIRST reference game asset. ONLY recolour the bunny's forelock to the same pale blush pink as her face/body fur, matching second reference. Keep curl shape, all characters, eyes/face/ears, egg patterns, basket, environment and layout EXACTLY unchanged. Preserve very wide landscape aspect ratio 2.56:1. Other references supply corrected character identity, not pose or clothing. Preserve original canonical smooth painted fantasy avatar style and saturated gold. Keep full opaque scene, do not add a border or padding.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-7fded6c8-20ed-484c-9676-82415bc728b9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": false
+  },
+  {
+    "id": "easter-banner-final",
+    "target": "events/easter-hunt/banner.png",
+    "prompt": "Edit this exact Easter game banner, maintaining the full 2:1 landscape composition. REMOVE the bunny's TWO HIND FEET and hind legs at ground level on both sides of the basket completely from the picture. Fill their former areas naturally with the existing grass behind/beside the basket. Her LOWER BODY must be entirely hidden behind the basket, no lower paws, no pink lumps beside it. KEEP her two FRONT PAWS resting on top of the basket near the eggs. Keep the smiling face, long ears, pink bunny identity, purple bow, exact four egg colours and patterns, basket, castle and flowers unchanged. Also harmonize her top curled forelock to the same pale blush pink fur as her face/body (second reference). Do not change hairstyle geometry or other colours. No new objects, no lettering, no cropping, opaque background.",
+    "output_hint": "Generated images are saved to C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba as C:\\Users\\semen\\.codex\\generated_images\\01a14abe-e850-7ca1-be9b-f32a856dbaba\\exec-241a71e7-dcf8-4179-ad15-374af4dee88e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "selected": true
+  }
+]

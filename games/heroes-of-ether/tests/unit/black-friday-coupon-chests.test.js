@@ -61,6 +61,7 @@ test("50 token chests plus unlimited ether chests, shared capacity, eviction and
   for (let i = 0; i < 10; i++) f.act("chest-ether");
   assert.equal(f.p().blackFriday.chests.length, 60);
   assert.equal(f.p().wallet.bucks, 0);
+  assert.equal(f.p().activity.values.spendthrift_ii, 1000);
   assert.equal(treasury.stored(f.p()), 7);
   assert.ok(f.p().blackFriday.chests.filter(c => !c.stored).every(c => c.expiresAt === f.now() + 3 * HOUR));
   f.p().account = { ...require("../../src/server/accounts/account-benefits").fresh(), premiumUntil: f.now() + HOUR };

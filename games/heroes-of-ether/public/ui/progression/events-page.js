@@ -129,7 +129,7 @@
       card.append(number, image, title, status);
       if (index === 2) {
         image.className = "event-card-banner";
-        image.src = "assets/events/easter-hunt/card-banner.webp?art=20261123-interface-art";
+        image.src = "assets/events/easter-hunt/card-banner.webp?art=20261124-lobby-pets";
         title.textContent = "Пасхальная охота";
         this.easterStatus = status;
         this.related = el("span", "event-card-related", "Удачная неделя");

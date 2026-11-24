@@ -1,0 +1,182 @@
+[
+  {
+    "engine": "chromium",
+    "width": 1336,
+    "height": 768,
+    "header": {
+      "height": 98,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "width": 1920,
+    "height": 1080,
+    "header": {
+      "height": 98,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "width": 390,
+    "height": 844,
+    "header": {
+      "height": 84.5,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "width": 915,
+    "height": 412,
+    "header": {
+      "height": 80.5,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "atomicBadge": {
+      "hidden": [
+        "hidden",
+        "hidden",
+        "hidden"
+      ],
+      "visible": [
+        "visible",
+        "visible",
+        "visible"
+      ],
+      "cachedRepaint": "true"
+    }
+  },
+  {
+    "engine": "firefox",
+    "width": 1336,
+    "height": 768,
+    "header": {
+      "height": 98,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "width": 1920,
+    "height": 1080,
+    "header": {
+      "height": 98,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "width": 390,
+    "height": 844,
+    "header": {
+      "height": 84.5,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "width": 915,
+    "height": 412,
+    "header": {
+      "height": 80.5,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "atomicBadge": {
+      "hidden": [
+        "hidden",
+        "hidden",
+        "hidden"
+      ],
+      "visible": [
+        "visible",
+        "visible",
+        "visible"
+      ],
+      "cachedRepaint": "true"
+    }
+  },
+  {
+    "engine": "webkit",
+    "width": 1336,
+    "height": 768,
+    "header": {
+      "height": 98,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "width": 1920,
+    "height": 1080,
+    "header": {
+      "height": 98,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "width": 390,
+    "height": 844,
+    "header": {
+      "height": 84.5,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "width": 915,
+    "height": 412,
+    "header": {
+      "height": 80.5,
+      "overflow": false
+    },
+    "charges": 22,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "atomicBadge": {
+      "hidden": [
+        "hidden",
+        "hidden",
+        "hidden"
+      ],
+      "visible": [
+        "visible",
+        "visible",
+        "visible"
+      ],
+      "cachedRepaint": "true"
+    }
+  }
+]

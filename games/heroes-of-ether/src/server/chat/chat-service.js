@@ -241,7 +241,10 @@ class ChatService {
       JSON.stringify([room || (arenaId === "arena-1" ? null : arenaId), text]),
     );
     this.moderation.assertCanSend(profile, input.requestId, signature);
-    const visibleText = censorProfanity(text);
+    const linkFreeText = require("./chat-links").stripLinks(text);
+    if (!linkFreeText || (linkFreeText !== text && !/[\p{L}\p{N}\p{S}]/u.test(linkFreeText)))
+      throw new BoosterError("После удаления ссылки сообщение пустое. Добавь текст.");
+    const visibleText = censorProfanity(linkFreeText);
     const receipt = this.messageReceipts[receiptKey];
     const previous = rows.find(
       (m) => m.author.id === profile.id && m.requestId === input.requestId,
@@ -315,7 +318,7 @@ class ChatService {
     this.credit(profile.id);
     return { message: this.publicMessage(message), duplicate: false };
     };
-    const screened = this.moderation.check(profile, input.requestId, signature, text, room ? `clan:${room}` : `arena:${arenaId}`);
+    const screened = this.moderation.check(profile, input.requestId, signature, linkFreeText, room ? `clan:${room}` : `arena:${arenaId}`);
     // Publish censored text only after the strike has been durably recorded.
     return screened && typeof screened.then === "function" ? screened.then(publish) : publish(screened);
   }

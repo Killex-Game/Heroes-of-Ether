@@ -78,7 +78,11 @@ test("Paid themes charge the exact server price once, persist, and never grant l
   });
   assert.equal(profile().appearance.uiTheme, "default");
   assert.deepEqual(profile().wallet, { coins: 0, crystals: 0, bucks: 0 });
-  for (const key of ["greatness", "progress", "account", "honors", "inventory"])
+  assert.equal(profile().activity.values.spendthrift, 50000);
+  assert.equal(profile().activity.values.spendthrift_i, 15000);
+  assert.equal(profile().activity.values.spendthrift_ii, 3000);
+  assert(profile().greatness > before.greatness, "The new spending rule awards earned achievement degrees");
+  for (const key of ["progress", "account", "inventory"])
     assert.deepEqual(profile()[key], before[key]);
   assert.deepEqual(profile().appearance.grants, before.appearance.grants);
 });

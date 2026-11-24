@@ -1,0 +1,142 @@
+[
+  {
+    "file": "sources/drakosha-0.png",
+    "bytes": 1459012,
+    "sha256": "e41782da8ed1e0352765511eadefc8e414abf657d0ada1b33a008885a30d7800"
+  },
+  {
+    "file": "sources/drakosha-1.png",
+    "bytes": 1416124,
+    "sha256": "8070d11429929f291564d280f20ab8b052033140de8820d31b60c1072c61770b"
+  },
+  {
+    "file": "sources/drakosha-2.png",
+    "bytes": 1488603,
+    "sha256": "403ce0f4d92a661defafc7a7c88fe54e0895c1775dbae674d67363dfc19c1894"
+  },
+  {
+    "file": "sources/drakosha-3.png",
+    "bytes": 1426964,
+    "sha256": "b58e9636db365419136c9df3c80f5ba5290f3f84cac001f054e1b12bc3984871"
+  },
+  {
+    "file": "sources/drakosha-4.png",
+    "bytes": 1587910,
+    "sha256": "411e574478b3b6e4c3b22e87893493b91e3a6b510fd8124432ece4c2385edc49"
+  },
+  {
+    "file": "sources/drakosha-5.png",
+    "bytes": 1548611,
+    "sha256": "40272f61afb5943717ce1213295bd7f5b204c9ffe44ef49380d5b7776af0a930"
+  },
+  {
+    "file": "sources/easter-banner-final.png",
+    "bytes": 2434691,
+    "sha256": "76c5c9239725a8ea7dc6fde7c3389f1767c8c998cd30e0d35ba786fbc94849c9"
+  },
+  {
+    "file": "sources/easter-banner.png",
+    "bytes": 2512619,
+    "sha256": "bfa39a7f31bcdec5a89b46cbf3075514685abc7d03672ff5ecd9a1d24cdb9eb8"
+  },
+  {
+    "file": "sources/easter-card.png",
+    "bytes": 2687064,
+    "sha256": "449e02fd145eb0b50693a793d78171cef888c484703c780439c13930a880f8ef"
+  },
+  {
+    "file": "sources/emote-1.png",
+    "bytes": 1353398,
+    "sha256": "ac90fafbb96cb0627b60ba972abca1e6d914a5623a99d15cdef754706fedea2e"
+  },
+  {
+    "file": "sources/emote-2.png",
+    "bytes": 1249265,
+    "sha256": "62cbec2dae5a2705f2c87b680fc95d7a128d3a97660ae3d88744cde1c6c8c284"
+  },
+  {
+    "file": "sources/emote-4.png",
+    "bytes": 1661739,
+    "sha256": "e1922de031737312eeddd8461c35c408577abfc0aa04b3ba50de1b1610dd3fe0"
+  },
+  {
+    "file": "sources/emote-6.png",
+    "bytes": 1498690,
+    "sha256": "5fba15d04edefde57faa60741e5bf17499019e566bb71d5943e676d5b27c4cb1"
+  },
+  {
+    "file": "sources/emote-7.png",
+    "bytes": 1155965,
+    "sha256": "2905072097b8316d97a425fa8f93822c8677b62f83bcbaddf6d935614d69046e"
+  },
+  {
+    "file": "sources/leva-0.png",
+    "bytes": 1355513,
+    "sha256": "f87b87633c42bbafe5a955ba8f6fc2d58ef06836c77e2735ea000e164c3703e8"
+  },
+  {
+    "file": "sources/leva-1.png",
+    "bytes": 1407676,
+    "sha256": "1d97324940a27ffa7612658aea11dd484c6330f34dab0cc49c9c45d49ff2e3fd"
+  },
+  {
+    "file": "sources/leva-2.png",
+    "bytes": 1436070,
+    "sha256": "6ecc8646d1def69e00352f5c5273d29e6922a20d91ac240bfc18a3e3ef6174f2"
+  },
+  {
+    "file": "sources/leva-3.png",
+    "bytes": 1511751,
+    "sha256": "a1915c9797288f3b830107e71bf653b9b187daae7e6746560b93369eeec4a2d1"
+  },
+  {
+    "file": "sources/leva-4.png",
+    "bytes": 1552999,
+    "sha256": "b7b12b109caed66a35e041bc989762c54bcceaac285133b321c232e94eba721f"
+  },
+  {
+    "file": "sources/leva-5.png",
+    "bytes": 1641501,
+    "sha256": "35c6eea531344e2d192a04a43bfd59f53611baa739628908080e31af0813aded"
+  },
+  {
+    "file": "sources/pet-exclusive.png",
+    "bytes": 1250808,
+    "sha256": "705839231e4742053076eb0f8c89239cee15c86f56b1e791203d3ff4166cd68b"
+  },
+  {
+    "file": "sources/pets-banner.png",
+    "bytes": 2112747,
+    "sha256": "e8ba821a787145fd1354eff43d4848af5edf13b29875705d988139e9cb9ae58b"
+  },
+  {
+    "file": "sources/zaya-0.png",
+    "bytes": 1232383,
+    "sha256": "85c48a60dd1c081bf534442663600dfec288bc16215166e77663725f40953870"
+  },
+  {
+    "file": "sources/zaya-1.png",
+    "bytes": 1333474,
+    "sha256": "e11ab59bd542dad5ae810f573ba5e6621b68bec20aa268eb9451df871ddf804c"
+  },
+  {
+    "file": "sources/zaya-2.png",
+    "bytes": 1327358,
+    "sha256": "fdf97be3dd0874e330f9aaaf25634ecbfd5e8845ff1c028604e6356f3ee54532"
+  },
+  {
+    "file": "sources/zaya-3.png",
+    "bytes": 1327537,
+    "sha256": "55f810a131ffd51112bc03e599229e0bdc9ff37f4d8b2bf8a4b97dddf3adc336"
+  },
+  {
+    "file": "sources/zaya-4.png",
+    "bytes": 1469531,
+    "sha256": "5458da99c5e088e7c50ae79a494a9e89cb037bda29f62a97e406c566ff3e5eb8"
+  },
+  {
+    "file": "sources/zaya-5.png",
+    "bytes": 1744460,
+    "sha256": "be4620fafd7b441602297b1919dad3bc8bf27d1e922bb06b1371340b60c4c01a"
+  }
+]

@@ -62,6 +62,32 @@ function fixture(t,journal=false,options={}){
   return {store,clanApi,a,b,late,id,at,act,board,task,progress,file,now:()=>now};
 }
 
+test('actual pet shield timer reaches clan progress once at every pet level and survives WAL',t=>{
+  const f=fixture(t,true);f.task('shieldUses',1000);
+  const pets=require('../../src/server/pets/arena-pets'),rules=require('../../public/shared/pet-rules');
+  const {Arena}=require('../../src/server/arena/arena-simulation');
+  const {takePending}=require('../../src/server/arena/quest-actions');
+  let expected=0;
+  for(const id of ['zaya','leva','drakosha','manya'])for(const games of [0,...rules.thresholds]){
+    const arena=new Arena({etherCount:0}),p=arena.addPlayer(0,'pet-owner');p.profileId=f.a.profile.id;
+    const stats=rules.stats(id,games),profile={...f.store.find(f.a.token),level:100,
+      pets:{equipped:id,owned:{[id]:{games,vitalityMs:stats.capacityMs,refillAt:start+86400000}}}};
+    pets.start(p,profile,0,start);f.progress(f.a,{type:'lifeStarted',lifeId:p.lifeId},start);
+    const when=p.pet.stats.intervalMs;
+    pets.tick(arena,p,when-1);assert.equal(takePending(arena).length,0);
+    pets.tick(arena,p,when);assert(arena.hasEffect(p,'shield',when));
+    const events=takePending(arena).map(event=>({...event,profileId:p.profileId}));
+    assert.equal(events.filter(e=>e.metric==='petShield').length,1);
+    f.store.applyArenaProgress(randomUUID(),events,start+when);
+    f.store.applyArenaProgress(randomUUID(),events,start+when+1);
+    pets.tick(arena,p,when);assert.equal(takePending(arena).length,0);
+    assert.equal(f.board().quests[0].progress,++expected,`${id}/${games}`);
+    f.progress(f.a,{type:'lifeEnded',lifeId:p.lifeId,durationSeconds:when/1000},start+when+2);
+  }
+  const saved=require('../../src/server/profiles/profile-journal').recover(f.file).data;
+  assert.equal(saved.clans[f.id].dailyQuests.board.quests[0].progress,24);
+});
+
 test('real split-body absorption credits the same total mass to the clan as physics',t=>{
   const f=fixture(t);f.task('absorbedMass',100000);
   const {Arena}=require('../../src/server/arena/arena-simulation'),arena=new Arena({etherCount:0});

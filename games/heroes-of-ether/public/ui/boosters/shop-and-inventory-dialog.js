@@ -842,6 +842,9 @@
         const owned = this.profile.wardrobe?.owned?.includes(item.id);
         const card = make("article", "booster-card accessory-card");
         card.dataset.accessoryId = item.id;
+        card.dataset.boosterHintName = item.name;
+        card.dataset.boosterHint = window.KillexAccessories.descriptionFor(item);
+        card.tabIndex = 0;
         const image = make("img", "accessory-shop-art");
         image.src = window.KillexArtRevision.url(item.icon);
         image.alt = item.name;
@@ -876,7 +879,7 @@
           make(
             "p",
             "accessory-shop-note",
-            owned ? "Куплено навсегда" : "Без способностей и бонусов",
+            "Наведи чтобы узнать подробнее",
           ),
           action,
         );

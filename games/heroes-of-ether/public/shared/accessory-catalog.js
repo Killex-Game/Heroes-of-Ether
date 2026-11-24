@@ -598,5 +598,6 @@
       );
     return false;
   }
-  return { items, titleSets, slots, item, outfit, bonus, isOwned, provisionalBuffs, abilityList };
+  const descriptionFor = accessory => [...new Set([accessory.bonusLabel, accessory.description].filter(Boolean))].join(" ");
+  return { items, titleSets, slots, item, outfit, bonus, isOwned, provisionalBuffs, abilityList, descriptionFor };
 });

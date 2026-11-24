@@ -101,6 +101,9 @@ test("Два независимых лимита по 50, эфир без лим
   assert.equal(f.p().wallet.coins, wallet.coins - 5000);
   assert.equal(f.p().wallet.crystals, wallet.crystals - 500);
   assert.equal(f.p().wallet.bucks, wallet.bucks - 40000);
+  assert.equal(f.p().activity.values.spendthrift, 5000);
+  assert.equal(f.p().activity.values.spendthrift_i, 500);
+  assert.equal(f.p().activity.values.spendthrift_ii, 40000);
   assert.equal(f.p().roulette.tickets, 20150);
   assert.deepEqual(f.store.view(f.p()).roulette.lite.remaining, {
     coins: 0,
@@ -149,6 +152,8 @@ test("Ивент завершён: Lite скрыт, купить и пользо
   f.buy("coins", 50);
   f.buy("crystals", 50);
   assert.equal(Object.keys(f.p().lite.events).length, 2);
+  assert.equal(f.p().activity.values.spendthrift, 10000);
+  assert.equal(f.p().activity.values.spendthrift_i, 1000);
   f.time(NOW + 3000);
   assert.equal(
     f.store.view(f.p()).roulette.lite.available,

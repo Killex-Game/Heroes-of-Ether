@@ -120,6 +120,7 @@ test("rerolls preserve the chest mix, use one free attempt per day and never dou
   f.action(paid);
   f.action(paid);
   assert.equal(f.get().wallet.coins, balance - 100);
+  assert.equal(f.get().activity.values.spendthrift, 100);
   f.get().wallet.coins = 99;
   row = f.get().quests.items[0];
   assert.throws(

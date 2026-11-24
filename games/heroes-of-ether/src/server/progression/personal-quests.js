@@ -388,6 +388,7 @@ function act(p, input, at) {
     p,
   );
   p.wallet.coins -= cost;
+  if (cost) require("./activity-achievements").spend(p, "coins", cost, at);
   q.items[q.items.indexOf(row)] = entry(def, randomUUID(), at);
   q.rerolls++;
 }

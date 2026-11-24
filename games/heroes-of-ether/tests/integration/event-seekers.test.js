@@ -64,6 +64,7 @@ test("paid x3: atomic purchase, retry, no stacking, failed write, insufficient f
   assert.equal(f.act({ requestId }).replay, true);
   f.act();
   assert.equal(f.p().wallet.bucks, 750);
+  assert.equal(f.p().activity.values.spendthrift_ii, 250, "Only the actual debit counts, not retries or active multiplier");
   f.progress("lifeStarted", { lifeId: "life" });
   f.progress("easterPickup", { runId: f.run.id, lifeId: "life", eggType: 0 }, "pickup");
   f.progress("easterPickup", { runId: f.run.id, lifeId: "life", eggType: 0 }, "pickup");

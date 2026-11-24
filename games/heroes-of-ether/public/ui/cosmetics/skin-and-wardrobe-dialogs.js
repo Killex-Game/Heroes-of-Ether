@@ -43,9 +43,12 @@
   function accessoryDetails(item) {
     const details = el("div", "accessory-details");
     const abilities = window.KillexAccessories.abilityList(item);
-    for (const ability of abilities) {
+    if (abilities.length) {
       const key = el("kbd", "accessory-key", "E");
       key.setAttribute("aria-hidden", "true");
+      details.append(key);
+    }
+    for (const ability of abilities) {
       const line = el("span", "accessory-charge");
       line.setAttribute("aria-label", `Клавиша E: ${ability.name}, ${ability.count} за жизнь`);
       const icon = el("img", "accessory-booster-icon");
@@ -53,20 +56,16 @@
       icon.alt = "";
       icon.width = 30;
       icon.height = 30;
-      line.append(key, el("span", "", ":"), el("strong", "", `×${ability.count}`), icon);
+      line.append(icon, el("strong", "", `×${ability.count}`));
       details.append(line);
     }
     if (!abilities.length) details.append(el("span", "accessory-summary", accessorySummary(item)));
     // Shared popover supports hover, keyboard focus and touch focus. Keep the
     // full rules here instead of truncating them or repeating them in the card.
-    const full = [
-      ...abilities.map(ability => `Клавиша E: ${ability.name}, ${ability.count} применения за жизнь.`),
-      item.id !== "novice_hat" ? item.bonusLabel || item.description : "",
-      item.id !== "novice_hat" && item.description !== item.bonusLabel ? item.description : "",
-    ].filter(Boolean);
-    if (full.length) {
+    const full = window.KillexAccessories.descriptionFor(item);
+    if (full) {
       details.dataset.boosterHintName = item.name;
-      details.dataset.boosterHint = [...new Set(full)].join(" ");
+      details.dataset.boosterHint = full;
       details.tabIndex = 0;
       details.classList.add("has-details");
     }

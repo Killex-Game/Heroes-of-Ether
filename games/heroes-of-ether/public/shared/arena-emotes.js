@@ -14,7 +14,7 @@
     [9, "manya", "Маня извиняется"],
   ].map(([asset, pet, name], i) => Object.freeze({ id: i + 1, pet, name,
     image: `assets/emotes/basic-v1/${asset}.webp`,
-    premiumImage: `assets/emotes/pets-v1/${asset}.webp` })));
+    premiumImage: `assets/emotes/pets-v1/${asset}.webp${[1, 2, 4, 6, 7].includes(asset) ? "?art=20261124-lobby-pets" : ""}` })));
   const valid = id => Number.isInteger(id) && id >= 1 && id <= items.length;
   function key(event) {
     if (!event || event.defaultPrevented || event.repeat || event.isComposing ||

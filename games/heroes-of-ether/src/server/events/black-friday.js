@@ -609,11 +609,13 @@ function mutate(store, token, input, random = randomInt) {
         )
           throw new BoosterError("Не хватает валюты или исчерпан обмен на сегодня.", 409);
         p.wallet[o.currency] -= o.cost;
+        require("../progression/activity-achievements").spend(p, o.currency, o.cost, at);
         credit(s, d, o.tokens);
         d.exchanges[o.id] = add(d.exchanges[o.id] || 0, 1);
       } else if (input.action === "chest-ether") {
         if (p.wallet.bucks < 100) throw new BoosterError("Нужно 100 эфира.", 409);
         p.wallet.bucks -= 100;
+        require("../progression/activity-achievements").spend(p, "bucks", 100, at);
         s.purchases.chestEther = add(s.purchases.chestEther || 0, 1);
         chests.grant(p, run.id, at);
       } else {

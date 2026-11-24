@@ -586,6 +586,8 @@
 }
 #skinsDialog .accessory-details {
   display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
   align-items: center;
   justify-content: center;
   min-width: 0;
@@ -605,9 +607,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 3px;
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 13px;
 }
 /* Original keycap drawn with UI materials, so its label stays crisp at
    any density and its colours follow the selected interface theme. */
@@ -633,9 +635,14 @@
   line-height: 1;
 }
 #skinsDialog .accessory-booster-icon {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   object-fit: contain;
+}
+#skinsDialog .accessory-key {
+  width: 25px;
+  height: 25px;
+  font-size: 14px;
 }
 #skinsDialog .accessory-copy .sf-button {
   box-sizing: border-box;

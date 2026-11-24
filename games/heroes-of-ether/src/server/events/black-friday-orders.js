@@ -323,6 +323,7 @@ function advance(p, d, date, row, at, random, swap) {
     const cost = d.swaps ? 3 : 0;
     if (p.wallet.bucks < cost) throw new BoosterError("Для замены нужно 3 эфира.", 409);
     p.wallet.bucks -= cost;
+    if (cost) require("../progression/activity-achievements").spend(p, "bucks", cost, at);
     if (!validInt(d.swaps + 1)) throw new BoosterError("Достигнут предел замен.", 409);
     d.swaps++;
     const current = slot.current,

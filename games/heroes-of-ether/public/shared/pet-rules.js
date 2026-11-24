@@ -82,7 +82,7 @@
     Object.freeze({
       ...p,
       premiumIntervalMs: p.id === "manya" ? 60000 : 30000,
-      image: `assets/pets/levels-v1/${p.id}-0.webp?art=20261123-interface-art`,
+      image: `assets/pets/levels-v1/${p.id}-0.webp?art=${p.id === "manya" ? "20261123-interface-art" : "20261124-lobby-pets"}`,
     }),
   );
   const get = (id) => pets.find((p) => p.id === id);
@@ -90,7 +90,7 @@
   const capacityMs = (id, games = 0) => get(id).vitalityMinutes[level(games)] * 60000;
   const imageFor = (id, rank = 0) =>
     get(id)
-      ? `assets/pets/${id === "manya" && Number(rank) >= 5 ? "levels-v2" : "levels-v1"}/${id}-${Math.min(5, Math.max(0, Math.floor(Number(rank) || 0)))}.webp?art=20261123-interface-art`
+      ? `assets/pets/${id === "manya" && Number(rank) >= 5 ? "levels-v2" : "levels-v1"}/${id}-${Math.min(5, Math.max(0, Math.floor(Number(rank) || 0)))}.webp?art=${id === "manya" ? "20261123-interface-art" : "20261124-lobby-pets"}`
       : null;
   function stats(id, games) {
     const p = get(id),

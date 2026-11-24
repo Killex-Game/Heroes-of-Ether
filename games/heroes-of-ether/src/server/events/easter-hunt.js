@@ -299,6 +299,7 @@ function act(p, manager, input, at, random = randomInt) {
     if (s.multiplierExpiresAt > at) return;
     if (p.wallet.bucks < 250) throw new BoosterError("Для множителя нужно 250 эфира.", 409);
     p.wallet.bucks -= 250;
+    require("../progression/activity-achievements").spend(p, "bucks", 250, at);
     s.multiplierExpiresAt = add(at, 3 * 60 * 60 * 1000);
     return;
   } else if (input.action === "exchange") {

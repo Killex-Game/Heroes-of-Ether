@@ -194,6 +194,7 @@ function update(profile, input, clans, at, testBackgrounds = false, testFrames =
           409,
         );
       profile.wallet[pack.currency] -= pack.price;
+      require("../progression/activity-achievements").spend(profile, pack.currency, pack.price, at);
       profile.appearance ||= fresh();
       profile.appearance.purchasedThemes = { ...profile.appearance.purchasedThemes, [pack.id]: at };
       available[pack.id] = null;

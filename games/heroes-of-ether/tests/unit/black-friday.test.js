@@ -38,11 +38,13 @@ test("one free replacement across book, then 3 ether; tier, quota and replay pre
   assert.equal(n.tokens, o.tokens);
   assert.equal(n.done, 0);
   assert.equal(f.p().wallet.bucks, 10);
+  assert.equal(f.p().activity?.values?.spendthrift_ii || 0, 0);
   assert.equal(f.view().swapCost, 3);
   assert.equal(B.mutate(f.store, f.user.token, i).replay, true);
   assert.throws(() => f.act("swap", o.id));
   f.act("swap", f.view().orders[1].id);
   assert.equal(f.p().wallet.bucks, 7);
+  assert.equal(f.p().activity.values.spendthrift_ii, 3);
   f.p().wallet.bucks = 0;
   assert.throws(() => f.act("swap", f.view().orders[2].id));
   f.time((B.day(f.now()) + 1) * 86400000 - 10800000);
@@ -95,6 +97,9 @@ test("unlimited ether exchange, fixed other limits, spent tokens stay in earned 
   for (let i = 0; i < 10; i++) f.act("exchange", "bucks");
   assert.equal(f.view().tokens, 350);
   assert.equal(f.p().wallet.bucks, 0);
+  assert.equal(f.p().activity.values.spendthrift, 5000);
+  assert.equal(f.p().activity.values.spendthrift_i, 500);
+  assert.equal(f.p().activity.values.spendthrift_ii, 300);
   assert.throws(() => f.act("exchange", "bucks"));
   const before = Object.values(f.p().inventory).reduce((a, b) => a + b, 0);
   f.act("buy", "common", { tokens: 0, count: 9999 });
@@ -107,6 +112,7 @@ test("unlimited ether exchange, fixed other limits, spent tokens stay in earned 
   assert.equal(f.p().account.vipUntil, f.now() + 3600000);
   f.act("buy", "vip");
   assert.equal(f.p().account.vipUntil, f.now() + 7200000);
+  assert.equal(f.p().activity.values.spendthrift_ii, 300, "Token purchases are not ether spending");
   B.validate(f.p());
 });
 test("50 orders: final once, permanent regalia and picture, single 100-ether album reward", () => {
