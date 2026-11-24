@@ -1,0 +1,129 @@
+{
+  "at": "2026-11-24T18:44:04.032Z",
+  "runtimeSource": "f3f5b80e41170c53ed76aadbd2f5952674ce7ac6",
+  "fixtureSource": "c5329541fdf0f8d52b7cbd42879af0dae7db4fff",
+  "installed": false,
+  "readyForMixed": true,
+  "windows": {
+    "total": 2443,
+    "pass": 2439,
+    "fail": 2,
+    "skip": 2,
+    "durationMs": 541743.6823
+  },
+  "linux": {
+    "total": 2445,
+    "pass": 2443,
+    "fail": 0,
+    "skip": 2,
+    "durationMs": 586518.685048
+  },
+  "postgresql": {
+    "total": 11,
+    "pass": 11,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 24770.726826
+  },
+  "windowsFailures": {
+    "missingFixture": "docs/performance/scale-budget-300k.json absent from sparse checkout; first add was run from wrong working directory and did not restore it, retained retry failed again",
+    "randomHazard": "Fixed-mass accessory fixture allowed random thorn collection after artificial growth; reproduced mass 5050 / XP 6 versus intended mass 5000 / XP 5. Only fixture hazards disabled; runtime formula unchanged",
+    "fixed": {
+      "total": 12,
+      "pass": 12,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 935.1592
+    },
+    "repeated": {
+      "total": 20,
+      "pass": 20,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 3237.5529
+    }
+  },
+  "retirement": {
+    "windows": {
+      "node": "v24.22.3",
+      "platform": "win32",
+      "segments": 512,
+      "rows": [
+        {
+          "mode": "sync",
+          "elapsedMs": 250.34739999999988,
+          "eventLoopGapMaxMs": 250.54859999999985,
+          "eventLoopGapP95Ms": 16.16890000000012,
+          "samples": 6
+        },
+        {
+          "mode": "async",
+          "elapsedMs": 345.5130999999999,
+          "eventLoopGapMaxMs": 16.015399999999772,
+          "eventLoopGapP95Ms": 1.7734999999997854,
+          "samples": 326
+        },
+        {
+          "mode": "async",
+          "elapsedMs": 336.3719000000001,
+          "eventLoopGapMaxMs": 15.703100000000177,
+          "eventLoopGapP95Ms": 1.3892000000000735,
+          "samples": 312
+        },
+        {
+          "mode": "sync",
+          "elapsedMs": 236.3420000000001,
+          "eventLoopGapMaxMs": 236.5039999999999,
+          "eventLoopGapP95Ms": 15.49429999999984,
+          "samples": 7
+        }
+      ],
+      "sourceFilesUnchanged": true,
+      "scope": "Closed snapshot-link retirement only; excludes initial pin, game logic and PostgreSQL throughput"
+    },
+    "linux": {
+      "node": "v24.22.3",
+      "platform": "linux",
+      "segments": 512,
+      "rows": [
+        {
+          "mode": "sync",
+          "elapsedMs": 10.933397999999997,
+          "eventLoopGapMaxMs": 12.233221,
+          "eventLoopGapP95Ms": 1.209508999999997,
+          "samples": 51
+        },
+        {
+          "mode": "async",
+          "elapsedMs": 44.86387399999998,
+          "eventLoopGapMaxMs": 4.526634000000001,
+          "eventLoopGapP95Ms": 1.160174000000012,
+          "samples": 95
+        },
+        {
+          "mode": "async",
+          "elapsedMs": 42.088480000000004,
+          "eventLoopGapMaxMs": 1.706247000000019,
+          "eventLoopGapP95Ms": 1.1720419999999763,
+          "samples": 95
+        },
+        {
+          "mode": "sync",
+          "elapsedMs": 7.4385899999999765,
+          "eventLoopGapMaxMs": 8.762871000000018,
+          "eventLoopGapP95Ms": 1.194609000000014,
+          "samples": 55
+        }
+      ],
+      "sourceFilesUnchanged": true,
+      "scope": "Closed snapshot-link retirement only; excludes initial pin, game logic and PostgreSQL throughput"
+    }
+  },
+  "limitations": [
+    "Initial Windows full run remains failed in evidence; its two causes were resolved and relevant cases repeated",
+    "No mixed capacity gain proven yet",
+    "Async retirement takes longer overall but yields the main loop",
+    "All earlier failed PG bootstrap/recovery runs remain recorded; this successful suite does not explain them",
+    "No candidate installed; current live runtime is 416cef4"
+  ]
+}
