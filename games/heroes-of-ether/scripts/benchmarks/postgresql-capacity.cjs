@@ -78,10 +78,18 @@ async function main(){
   fs.writeFileSync(summaryFile,JSON.stringify(summary,null,2)+'\n',{mode:0o600});
   if(summary.code===0&&summary.databaseVerification?.matched){
     summary.ackAudit=require('./audit-capacity.cjs').audit(out);
+    // Preserve the durable-ACK result even if cleanup loses its connection.
+    fs.writeFileSync(summaryFile,JSON.stringify(summary,null,2)+'\n',{mode:0o600});
     // Cleanup only this random test schema after both independent validations.
     const {PostgreSQLState}=require('../../src/server/persistence/postgresql-state');
     const state=new PostgreSQLState({...source,schema});
     try{assert(/^heroether_test_[a-f0-9]{20}$/.test(schema));await state.pool.query(`DROP SCHEMA ${state.table} CASCADE`);}
+    catch(error){
+      summary.finalizationError={stage:'test-schema-cleanup',error:require('../../src/server/persistence/postgresql-config').safeError(error),
+        ...(typeof error.code==='string'&&/^[A-Z0-9_]{2,50}$/.test(error.code)?{code:error.code}:{})};
+      fs.writeFileSync(summaryFile,JSON.stringify(summary,null,2)+'\n',{mode:0o600});
+      throw error;
+    }
     finally{await state.close();}
     summary.testSchemaRemoved=true;
     fs.writeFileSync(summaryFile,JSON.stringify(summary,null,2)+'\n',{mode:0o600});
