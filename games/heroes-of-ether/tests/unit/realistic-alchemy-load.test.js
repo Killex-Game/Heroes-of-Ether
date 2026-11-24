@@ -3,6 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const plan=require('../../scripts/benchmarks/realistic-lobby-plan.cjs');
 const {assessCapacity}=require('../../scripts/benchmarks/capacity-assessment.cjs');
 const rules=require('../../public/shared/alchemy-rules');
+const {mergeCounts}=require('../../scripts/benchmarks/merge-action-counts.cjs');
 
 test('realistic alchemy alternates all sixteen brews and matching equipment while retaining clan, pet and chat actions',()=>{
  const client={slot:1,clanId:'clan',offerId:'offer',ownsPet:true,alchemyRunId:'run'};
@@ -29,10 +30,27 @@ test('alchemy assessment requires successful potion use separately from thirty o
   lobby:{clients:5,success:100,errors:{},latencyMs:{p95:50},actions}};
  const summary={code:0,mode:'database',databaseVerification:{matched:true},players:30,lobby:5,realistic:true,alchemy:true,mixedMinutes:1,phaseSeconds:60};
  assert.equal(assessCapacity([row],summary).shortRunMeetsTargets,true);
+ // The multi-room path formerly kept only ordinary catalogue IDs. Potions
+ // were actually used and audited, but every one disappeared from the rows.
+ const ordinary={usedByType:core},potionCounts={usedByType:Object.fromEntries(rules.potions.map(p=>[p.boosterId,1]))};
+ row.usedByType=mergeCounts([ordinary,potionCounts], 'usedByType', Object.keys(core));
+ assert.equal(assessCapacity([row],summary).shortRunMeetsTargets,true);
  row.usedByType[rules.potions[0].boosterId]=0;
  assert(assessCapacity([row],summary).problems.includes('missing-potion:'+rules.potions[0].id));
  row.usedByType[rules.potions[0].boosterId]=1;delete row.usedByType['booster-0'];
  assert(assessCapacity([row],summary).phases[0].issues.includes('booster-coverage'));
  row.usedByType['booster-0']=1;delete actions['alchemy-brew'];
  assert(assessCapacity([row],summary).problems.includes('missing-realistic-action:alchemy-brew'));
+});
+
+test('driver counters preserve dynamic IDs and failures without mutating samples or accepting invalid counts',()=>{
+ const first={usedByType:Object.freeze({fire:2,future_event:3}),failures:{cooldown:1}};
+ const second={usedByType:JSON.parse('{"fire":4,"__proto__":2}'),failures:{cooldown:2,exhausted:1}};
+ const result=mergeCounts([first,second],'usedByType',['fire','rocket']);
+ assert.deepEqual(result,JSON.parse('{"fire":6,"rocket":0,"future_event":3,"__proto__":2}'));
+ assert.equal(Object.getPrototypeOf(result),Object.prototype);
+ assert.deepEqual(mergeCounts([first,second],'failures'),{cooldown:3,exhausted:1});
+ assert.deepEqual(first.usedByType,{fire:2,future_event:3});
+ for(const count of [-1,NaN,Infinity,.5,'1'])assert.throws(()=>mergeCounts([{usedByType:{x:count}}],'usedByType'),/Invalid/);
+ assert.throws(()=>mergeCounts([{usedByType:{x:Number.MAX_SAFE_INTEGER}},{usedByType:{x:1}}],'usedByType'),/overflow/);
 });
