@@ -62,6 +62,50 @@ function fixture(t,journal=false,options={}){
   return {store,clanApi,a,b,late,id,at,act,board,task,progress,file,now:()=>now};
 }
 
+for(const worker of [false,true]) test('natural XP and credited kills reach clan together, respect cap, replay and WAL, worker='+worker,async t=>{
+  const f=fixture(t,true,{arenaProgressWorker:worker});
+  if(worker)t.after(()=>f.store.arenaPreparer.close());
+  const data=structuredClone(f.store.data);
+  data.clans[f.id].dailyQuests.board.quests=['xp','kills'].map(metric=>({
+    ...service.catalog.items.find(q=>q.metric===metric),target:1000000,progress:0,completedAt:null}));
+  f.store.save(data);
+  const accrual=require('../../src/server/arena/mass-accrual');
+  const actors=[f.a,f.b].map((who,i)=>({id:who.profile.id,profileId:who.profile.id,lifeId:'natural-'+i,
+    mass:10000,account:{premium:!!i}}));
+  for(const [i,a]of actors.entries()){
+    f.progress([f.a,f.b][i],{type:'lifeStarted',lifeId:a.lifeId},start);accrual.reset(a,start);
+  }
+  const send=async(id,events,at)=>{f.at(at);return f.store.applyArenaGroup([{id,at,progress:events}]);};
+  const sample=(from,to)=>{
+    const events=[];
+    for(let at=from+50;at<=to;at+=50)for(const a of actors){
+      const event=accrual.sample(a,at,false,2);if(event)events.push({...event,profileId:a.profileId});
+    }
+    return events;
+  };
+  const events=sample(start,start+30000);
+  const pending=f.store.data, fault=t.mock.method(fs,'fsync',(fd,done)=>setImmediate(()=>done(Error('natural clan flush failure'))));
+  await assert.rejects(send('natural-1',events,start+30000),/natural clan flush failure/);fault.mock.restore();
+  assert.equal(f.store.data,pending);
+  await send('natural-1',events,start+30000);
+  assert.deepEqual(f.board().quests.map(q=>q.progress),[30,9]);
+  await send('natural-1',events,start+30000);await send('natural-retry',events,start+30001);
+  await send('natural-old',events.map(e=>({...e,lifeId:'old-life',sequence:100})),start+30002);
+  assert.deepEqual(f.board().quests.map(q=>q.progress),[30,9]);
+  const capped=structuredClone(f.store.data);
+  for(const p of Object.values(capped.profiles))if(p.progress.session)p.progress.arenaXpTarget=p.progress.xp+p.progress.session.xp+3;
+  f.store.save(capped);
+  await send('natural-2',sample(start+30000,start+60000),start+60000);
+  assert.deepEqual(f.board().quests.map(q=>q.progress),[36,18],'only the remaining three XP per member; final credited kills are retained');
+  await send('natural-3',sample(start+60000,start+90000),start+90000);
+  assert.deepEqual(f.board().quests.map(q=>q.progress),[36,18],'display-only kills beyond the personal cap are not awarded');
+  await send('natural-exit',actors.map(a=>({type:'lifeEnded',profileId:a.profileId,lifeId:a.lifeId,durationSeconds:90,reason:'left'})),start+90001);
+  assert.deepEqual(f.board().quests.map(q=>q.progress),[36,18],'life settlement must not count XP twice');
+  const recovered=require('../../src/server/profiles/profile-journal').recover(f.file).data;
+  assert.deepEqual(recovered.clans,f.store.data.clans);assert.deepEqual(recovered.profiles,f.store.data.profiles);
+  if(worker)assert.equal(f.store.arenaPreparer.stats.failures,0);
+});
+
 test('actual pet shield timer reaches clan progress once at every pet level and survives WAL',t=>{
   const f=fixture(t,true);f.task('shieldUses',1000);
   const pets=require('../../src/server/pets/arena-pets'),rules=require('../../public/shared/pet-rules');
@@ -182,6 +226,23 @@ for (const metrics of [
   assert.deepEqual(recovered.clans[f.id].dailyQuests.board,f.board());
   assert.equal(f.store.arenaPreparer.stats.failures,0);
 });
+test('XP target upgrade preserves contributions and completes an already reached lower target once',t=>{
+  const f=fixture(t,true),data=structuredClone(f.store.data),b=data.clans[f.id].dailyQuests.board;
+  assert.deepEqual(service.catalog.items.filter(q=>q.metric==='xp').map(q=>q.target),[1000000,1500000,3000000]);
+  data.clanQuests.catalogVersion=4;b.catalogVersion=4;
+  const q=service.catalog.items.find(q=>q.id==='cq_01');
+  b.quests=[{...q,target:5000000,progress:1200000,completedAt:null}];
+  b.contributors={[f.a.profile.id]:{firstAt:start,questIds:[q.id]}};b.cursors={[f.a.profile.id]:12};
+  const history=structuredClone(data.clanQuestRewards);
+  f.store.data=data;f.at(start+1000);f.store.refreshCompetition();
+  assert.equal(f.board().quests[0].target,1000000);assert.equal(f.board().quests[0].progress,1000000);
+  assert.equal(f.board().quests[0].completedAt,start+1000);
+  assert.deepEqual(f.board().contributors,b.contributors);assert.deepEqual(f.board().cursors,b.cursors);
+  const upgraded=structuredClone(f.board());f.at(start+2000);f.store.refreshCompetition();
+  assert.deepEqual(f.board(),upgraded);assert.deepEqual(f.store.data.clanQuestRewards,history);
+  assert.deepEqual(require('../../src/server/profiles/profile-journal').recover(f.file).data.clans,f.store.data.clans);
+});
+
 test('approved catalog: exact values, rejected rows absent, feasible time bounds and one XP',()=>{
   assert.equal(service.catalog.items.length,57);assert(!service.catalog.items.some(q=>['cq_16','cq_17','cq_18'].includes(q.id)));
   assert.equal(service.catalog.items.find(q=>q.id==='cq_54').target,20000*60000);

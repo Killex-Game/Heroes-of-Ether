@@ -1231,7 +1231,8 @@ class ProfileStore {
       if (event.type === "alchemyGather") { alchemy.progress(p, this.events, event, at); continue; }
       const
         before = p.progress.xp + (p.progress.session?.xp || 0);
-      const clanBefore = {kills:p.progress.absorptionKills || 0, mass:p.progress.absorbedMass || 0};
+      const clanBefore = {kills:p.progress.absorptionKills || 0, creditedKills:p.progress.kills || 0,
+        mass:p.progress.absorbedMass || 0};
       const balance = transactions.snapshot(p),
         previousLevel = p.level;
       // Only order events inspect the pre-update session. Mass/food samples

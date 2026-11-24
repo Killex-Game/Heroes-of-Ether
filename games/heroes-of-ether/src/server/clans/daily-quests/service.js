@@ -205,6 +205,11 @@ function progress(data, clanDrafts, p, event, at, changes, earned, before) {
     // Kill cooldowns remain authoritative. Mass uses the independent physics
     // cursor; legacy events without that cursor retain their previous rules.
     deltas.kills = Math.max(0,p.progress.absorptionKills-before.kills);
+    // Natural rewards use the same accepted, capped personal credit. Their
+    // life sequence has already rejected retries; visual kills after the cap
+    // and the later life settlement must never create another contribution.
+    if (event.type === 'massAccrual' || event.type === 'massBonus')
+      deltas.kills += Math.max(0,p.progress.kills-before.creditedKills);
     if(event.absorptionSequence===undefined && event.eaterLifeId===undefined)
       deltas.absorbedMass = Math.max(0,p.progress.absorbedMass-before.mass);
     deltas.xp = Math.max(0,earned);

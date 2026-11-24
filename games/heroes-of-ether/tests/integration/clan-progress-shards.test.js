@@ -69,6 +69,24 @@ for(const pipeline of [false,true])test(`clan-partitioned progress preserves sha
  assert.deepEqual(await f.store.applyArenaGroup([f.batch(8)]),[[]]);
  assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
 });
+for(const pipeline of [false,true])test('natural XP and kills survive clan lane projection and retries, pipeline='+pipeline,async t=>{
+ const f=fixture(t,pipeline),accrual=require('../../src/server/arena/mass-accrual');
+ for(const s of [f.store,f.serial]){
+   const d=structuredClone(s.data);
+   for(const c of Object.values(d.clans))c.dailyQuests.board.quests=['xp','kills'].map(metric=>({
+     ...require('../../src/server/clans/daily-quests/catalog.json').items.find(q=>q.metric===metric),progress:0,completedAt:null}));
+   s.save(d);
+ }
+ const progress=f.users.map((u,i)=>({type:'massAccrual',ruleVersion:2,profileId:u.profile.id,lifeId:'life-'+i,
+   sequence:1,xpUnits:10*accrual.XP_DENOMINATOR,baseXpUnits:10*accrual.XP_DENOMINATOR,killUnits:3*accrual.KILL_DENOMINATOR}));
+ for(const id of ['natural-lanes','natural-lanes-retry']){
+   const b={id,at:start+30000,progress};await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(id,progress,b.at);
+   assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+   for(const c of Object.values(f.store.data.clans))assert.deepEqual(c.dailyQuests.board.quests.map(q=>q.progress),[40,12]);
+ }
+ assert.equal(f.pool.stats.failures,0);assert.deepEqual(recover(f.store.filePath).data.clans,f.store.data.clans);
+});
+
 test('clan shard crash falls back without partial clan contributions',async t=>{
  const f=fixture(t),b=f.batch(1),pending=f.store.applyArenaGroup([b]);
  await f.pool.lanes.find(Boolean).worker.terminate();await pending;
