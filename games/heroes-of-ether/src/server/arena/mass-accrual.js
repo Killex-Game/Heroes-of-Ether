@@ -4,7 +4,6 @@ const alchemy = require("./alchemy-effects");
 // Старые знаменатели нужны для воспроизведения уже записанных событий и остатков.
 const XP_DENOMINATOR = 90000000, KILL_DENOMINATOR = 300000000,
   PAYOUT_INTERVAL_MS = 30000;
-const accountFactor = account => account?.premium ? 2 : 1;
 const roundRatio = (units, denominator) =>
   Math.floor(units / denominator) + (units % denominator > denominator / 2 ? 1 : 0);
 function reset(p, now) {
@@ -29,11 +28,12 @@ function sample(p, now, force = false, playerCount = 1) {
   s.observedMs -= PAYOUT_INTERVAL_MS;
   const mass = Number.isFinite(p.mass) ? Math.max(0, p.mass) : 0,
     population = Number.isFinite(playerCount) ? Math.max(0, Math.floor(playerCount)) : 0,
-    factor = accountFactor(p.account),
+    xpFactor = p.account?.vip ? 2 : 1,
+    killFactor = p.account?.premium ? 2 : 1,
     xpEffects = (p.giftModifiers?.xp ?? 1) * (1 + (alchemy.modifiers(p).xp || 0)),
     baseXpUnits = Math.round(mass * (XP_DENOMINATOR / 1000) * xpEffects);
-  return { type: "massAccrual", ruleVersion: 2, playerId: p.id, lifeId: p.lifeId,
-    sequence: ++s.sequence, xpUnits: baseXpUnits * factor, baseXpUnits,
-    killUnits: Math.round((mass * (KILL_DENOMINATOR / 10000) + population * KILL_DENOMINATOR) * factor) };
+  return { type: "massAccrual", ruleVersion: 3, playerId: p.id, lifeId: p.lifeId,
+    sequence: ++s.sequence, xpUnits: baseXpUnits, baseXpUnits, xpMultiplier: xpFactor,
+    killUnits: Math.round((mass * (KILL_DENOMINATOR / 10000) + population * KILL_DENOMINATOR) * killFactor) };
 }
 module.exports = { XP_DENOMINATOR, KILL_DENOMINATOR, PAYOUT_INTERVAL_MS, roundRatio, reset, sample };

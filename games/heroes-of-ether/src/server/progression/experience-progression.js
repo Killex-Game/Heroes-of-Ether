@@ -175,6 +175,7 @@ function validateProgress(p) {
   for (const [key, limit] of [
     ["accessoryXpRemainder", 99],
     ["giftXpRemainder", 99],
+    ["finalXpRemainder", 999999],
     ["massAccrualSequence", Number.MAX_SAFE_INTEGER],
     ["massXpRemainder", massAccrual.XP_DENOMINATOR * 100 - 1],
     ["massKillRemainder", massAccrual.KILL_DENOMINATOR - 1],
@@ -250,29 +251,29 @@ function earnXp(
   // До завершения жизни опыт хранится отдельно и не меняет уровень/рейтинг.
   const s = p.progress;
   if (!integer(amount) || !integer(repeats)) throw Error("Неверное начисление опыта.");
-  // Каждая полная минута округляется отдельно даже в догоняющем пакете.
-  const extraUnits = add(
-    s.session?.accessoryXpRemainder || 0,
-    amount *
-      (accessoryPercent ?? (accessories.bonus(accessoryAccess.outfit(p), "xp") +
-        (absorption ? accessories.bonus(accessoryAccess.outfit(p), "killXp") : 0))) *
-      repeats,
-  );
-  amount =
-    Math.floor((amount * (100 + accountXpPercent)) / 100) * repeats + Math.floor(extraUnits / 100);
-  if (s.session) s.session.accessoryXpRemainder = extraUnits % 100;
+  const bonusPercent = accessoryPercent ?? (accessories.bonus(accessoryAccess.outfit(p), "xp") +
+    (absorption ? accessories.bonus(accessoryAccess.outfit(p), "killXp") : 0));
+  // -100 denotes the separate complete-defeat accessory bonus, without base XP.
+  const bonusOnly = accountXpPercent === -100;
+  const statusFactor = bonusOnly ? accounts.benefits(p, at).absorptionXpMultiplier : (100 + accountXpPercent) / 100;
   const giftPercent = Math.round((giftEffects ||= require("../profiles/gift-effects")).modifiers(p, at).xp * 100);
-  const giftUnits = amount * giftPercent + (s.session?.giftXpRemainder || 0);
-  amount = Math.floor(giftUnits / 100);
-  if (s.session) s.session.giftXpRemainder = giftUnits % 100;
   const activePotion = p.alchemy?.active;
   const potionXp = activePotion && s.session && activePotion.lifeId === s.session.id
     ? require("../../../public/shared/alchemy-rules").combine(activePotion.ids || [activePotion.id],
       Math.max(1, accessories.bonus(accessoryAccess.outfit(p), "potionFactor"))).xp || 0 : 0;
-  if (potionXp && s.session) {
-    const units = amount * Math.round(potionXp * 100) + (s.session.alchemyXpRemainder || 0);
-    amount += Math.floor(units / 100);
-    s.session.alchemyXpRemainder = units % 100;
+  const potionPercent = 100 + Math.round(potionXp * 100);
+  // Keep six decimal places through all percentage bonuses; multiply the full
+  // reward by the status once, then carry only its final fractional remainder.
+  const subtotal = amount * repeats * ((bonusOnly ? 0 : 100) + bonusPercent) * giftPercent * potionPercent;
+  const legacyCarry = (s.session?.accessoryXpRemainder || 0) * giftPercent * potionPercent +
+    (s.session?.giftXpRemainder || 0) * potionPercent * 100 + (s.session?.alchemyXpRemainder || 0) * 10000;
+  const units = add(add(subtotal * statusFactor, legacyCarry), s.session?.finalXpRemainder || 0);
+  amount = Math.floor(units / 1000000);
+  if (s.session) {
+    s.session.finalXpRemainder = units % 1000000;
+    delete s.session.accessoryXpRemainder;
+    delete s.session.giftXpRemainder;
+    delete s.session.alchemyXpRemainder;
   }
   if (!integer(amount)) throw Error("Неверное начисление опыта.");
   if (s.session) {
@@ -396,7 +397,8 @@ function applyEvent(p, event, at) {
     )
       return;
     if (
-      (event.ruleVersion !== undefined && event.ruleVersion !== 2) ||
+      (event.ruleVersion !== undefined && event.ruleVersion !== 2 && event.ruleVersion !== 3) ||
+      (event.ruleVersion === 3 && ![1, 2].includes(event.xpMultiplier)) ||
       !integer(event.xpUnits) ||
       !integer(event.killUnits) ||
       (event.baseXpUnits !== undefined &&
@@ -404,7 +406,7 @@ function applyEvent(p, event, at) {
     )
       throw Error("Неверное накопление за массу.");
     const denominator = massAccrual.XP_DENOMINATOR * 100;
-    const currentRule = event.ruleVersion === 2;
+    const currentRule = event.ruleVersion === 2 || event.ruleVersion === 3;
     const xpUnits = add(
       currentRule ? 0 : session.massXpRemainder || 0,
       event.xpUnits * (100 + accessories.bonus(accessoryAccess.outfit(p), "xp")) +
@@ -412,7 +414,7 @@ function applyEvent(p, event, at) {
     );
     const killUnits = add(currentRule ? 0 : session.massKillRemainder || 0, event.killUnits);
     const round = currentRule ? massAccrual.roundRatio : (n, d) => Math.floor(n / d);
-    const xp = round(xpUnits, denominator),
+    const xp = round(add(xpUnits * (event.ruleVersion === 3 ? event.xpMultiplier : 1), 0), denominator),
       kills = round(killUnits, massAccrual.KILL_DENOMINATOR);
     session.massAccrualSequence = event.sequence;
     if (!currentRule) {

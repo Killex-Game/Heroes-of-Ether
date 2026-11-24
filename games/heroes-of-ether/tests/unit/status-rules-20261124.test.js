@@ -6,8 +6,8 @@ const bonuses=require('../../src/server/progression/chest-bonuses'),pets=require
 const now=Date.UTC(2026,10,24),day=86400000;
 test('Approved four-status matrix, separate greatness/currency factors and exact expiry',()=>{
  for(const [vip,premium,start,xp,absorption,greatness,chest,turbo,count] of [
-  [false,false,20,0,1,1,1,0,5],[true,false,50,0,2,1,2,120000,6],
-  [false,true,100,100,1,2,1,0,5],[true,true,150,100,2,2,2,120000,6]]){
+  [false,false,20,0,1,1,1,0,5],[true,false,50,100,2,1,2,120000,6],
+  [false,true,100,0,1,2,1,0,5],[true,true,150,100,2,2,2,120000,6]]){
   const p={account:{vipUntil:vip?now+day:0,premiumUntil:premium?now+day:0}},b=accounts.benefits(p,now);
   assert.deepEqual([b.startMass,b.xpPercent,b.absorptionXpMultiplier,b.greatnessMultiplier,b.chestMultiplier,b.turboMs,slots.count(b)], [start,xp,absorption,greatness,chest,turbo,count]);
   assert.deepEqual(bonuses.scale({coins:10,greatness:5,items:{candy:2}},chest,greatness),{coins:10*chest,greatness:5*greatness,items:{candy:2*chest}});

@@ -194,22 +194,32 @@
   #arena .arena-chat { right: 10px; bottom: max(116px, calc(env(safe-area-inset-bottom) + 108px)); }
 }
 
-/* Match visible crown heights, including the different transparent source margins. */
+/* Fit each visible crown into the same square without distorting its proportions. */
 #lobby .status-icon { --status-visible: 24px; position: relative; display: inline-block; flex: 0 0 30px; width: 30px; height: 30px; }
+#accountDialog .status-icon { --status-visible: 48px; position: relative; display: inline-block; }
 #lobby #accountMarks .status-icon img,
-#lobby .lobby-wallet-actions #accountButton .status-icon img {
+#lobby .lobby-wallet-actions #accountButton .status-icon img,
+#accountDialog .status-icon img {
   position: absolute; max-width: none; object-fit: contain; transform: none; scale: 1;
   filter: saturate(1.1) drop-shadow(0 1px 1px #32222a66);
 }
 #lobby #accountMarks .status-icon.vip img,
-#lobby .lobby-wallet-actions #accountButton .status-icon.vip img {
-  width: calc(var(--status-visible) * 1.414365); height: calc(var(--status-visible) * 1.414365);
-  left: calc(50% - var(--status-visible) * 0.701657); top: calc(50% - var(--status-visible) * 0.679558);
+#lobby .lobby-wallet-actions #accountButton .status-icon.vip img,
+#accountDialog .status-icon.vip img {
+  width: calc(var(--status-visible) * 1.299492); height: calc(var(--status-visible) * 1.299492);
+  left: calc(50% - var(--status-visible) * 0.647208); top: calc(50% - var(--status-visible) * 0.626904);
 }
 #lobby #accountMarks .status-icon.premium img,
-#lobby .lobby-wallet-actions #accountButton .status-icon.premium img {
+#lobby .lobby-wallet-actions #accountButton .status-icon.premium img,
+#accountDialog .status-icon.premium img {
   width: calc(var(--status-visible) * 1.273632); height: calc(var(--status-visible) * 1.273632);
-  left: calc(50% - var(--status-visible) * 0.634328); top: calc(50% - var(--status-visible) * 0.606965);
+  left: calc(50% - var(--status-visible) * 0.636816); top: calc(50% - var(--status-visible) * 0.609453);
+}
+@media (max-height: 640px) {
+  #accountDialog .status-icon { --status-visible: 38px; }
+}
+@media (max-width: 700px) and (max-height: 650px) {
+  #accountDialog .status-icon { --status-visible: 28px; }
 }
 @media (max-width: 960px) {
   #lobby .status-icon { --status-visible: 20px; flex-basis: 26px; width: 26px; height: 26px; }

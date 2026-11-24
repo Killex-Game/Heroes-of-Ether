@@ -32,6 +32,38 @@ async function fixture(t,{worker=false,battle=false}={}) {
   const board=()=>store.data.clans[id].dailyQuests.board;
   return {store,users,id,file,start,end,send,event,natural,board,action,open,at:n=>{at=n;}};
 }
+for (const [vip,premium] of [[false,false],[true,false],[false,true],[true,true]])
+test('VIP XP / Premium kills: real account expiry, durable retry and deferred clan credit '+vip+'/'+premium,async t=>{
+  const f=await fixture(t),u=f.users[0];
+  f.store.transact(u.token,randomUUID(),'fixture-status',p=>{
+    p.account=require('../../src/server/accounts/account-benefits').fresh();
+    p.account.vipUntil=vip?f.start+45000:0;p.account.premiumUntil=premium?f.start+45000:0;
+  });
+  await f.send([f.event(0,'lifeStarted')],f.start);
+  const actor={id:u.profile.id,lifeId:'exit-life-0',mass:50000};accrual.reset(actor,f.start);
+  const sample=(from,to)=>{
+    let event;
+    for(let at=from+50;at<=to;at+=50){
+      f.at(at);actor.account=f.store.arenaAppearance(f.store.find(u.token)).account;
+      event=accrual.sample(actor,at,false,2)||event;
+    }
+    return {...event,profileId:u.profile.id};
+  };
+  const first=sample(f.start,f.start+30000),xp=vip?100:50,kills=premium?14:7;
+  const before=f.store.data,fault=t.mock.method(fs,'fsync',(fd,done)=>setImmediate(()=>done(Error('status fsync failure'))));
+  await assert.rejects(f.send([first],f.start+30000,'status-first'),/status fsync failure/);
+  fault.mock.restore();assert.equal(f.store.data,before);
+  await f.send([first],f.start+30000,'status-first');await f.send([first],f.start+30000,'status-repeat');
+  let p=f.store.find(u.token);assert.equal(p.progress.session.xp,xp);assert.equal(p.progress.kills,kills);
+  assert.deepEqual(f.board().quests.slice(0,2).map(q=>q.progress),[0,0]);
+  await f.send([sample(f.start+30000,f.start+60000)],f.start+60000);
+  p=f.store.find(u.token);assert.equal(p.progress.session.xp,xp+50);assert.equal(p.progress.kills,kills+7);
+  assert.deepEqual(f.store.arenaAppearance(p).account.vip,false);assert.deepEqual(f.store.arenaAppearance(p).account.premium,false);
+  const end=f.event(0,'lifeEnded',{durationSeconds:60,reason:'left'});
+  await f.send([end],f.start+60001,'status-end');await f.send([end],f.start+60001,'status-end-repeat');
+  assert.deepEqual(f.board().quests.slice(0,2).map(q=>q.progress),[xp+50,kills+7]);
+  assert.deepEqual(recover(f.file).data.profiles,f.store.data.profiles);assert.deepEqual(recover(f.file).data.clans,f.store.data.clans);
+});
 for(const worker of [false,true])test('exit publishes bounded quest totals exactly once; personal XP remains live, worker='+worker,async t=>{
   const f=await fixture(t,{worker});
   await f.send([f.event(0,'lifeStarted')],f.start);

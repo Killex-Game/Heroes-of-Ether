@@ -12,7 +12,7 @@ function benefits(p, at = Date.now()) {
     vip,
     premium,
     startMass: (vip ? 50 : 0) + (premium ? 100 : 0) || 20,
-    xpPercent: premium ? 100 : 0,
+    xpPercent: vip ? 100 : 0,
     absorptionXpMultiplier: vip ? 2 : 1,
     greatnessMultiplier: premium ? 2 : 1,
     chestMultiplier: vip ? 2 : 1,

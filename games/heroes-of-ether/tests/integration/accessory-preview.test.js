@@ -241,21 +241,21 @@ test("Солнечная лента не меняет естественную �
 
 });
 test("Бонусы опыта прибавляются к базе, поглощение отдельно от 30-секундного пакета", (t) => {
-  for (const premium of [false, true]) {
+  for (const [vip, premium] of [[false,false],[true,false],[false,true],[true,true]]) {
     const { p } = fixture(t);
     p.level = 501;
     p.progress = progression.freshProgress(501);
     p.outfit = { hat: "dawn_circlet", bow: "wanderer_knot" };
-    p.account = { vipUntil: 0, premiumUntil: premium ? 1e9 : 0 };
+    p.account = { vipUntil: vip ? 1e9 : 0, premiumUntil: premium ? 1e9 : 0 };
     progression.applyEvent(p, { type: "lifeStarted", lifeId: "life" }, 0);
-    const actor = { id: "actor", lifeId: "life", mass: 50000, account: { premium } };
+    const actor = { id: "actor", lifeId: "life", mass: 50000, account: { vip, premium } };
     accrual.reset(actor, 0);
     for (let at = 50; at <= 60000; at += 50) {
       const e = accrual.sample(actor, at);
       if (e) progression.applyEvent(p, e, at);
     }
-    // The accessory adds 15% of base XP; Premium doubles the natural payout only.
-    assert.equal(p.progress.session.xp, premium ? 214 : 114);
+    // All accessory bonuses are included before the final VIP multiplier.
+    assert.equal(p.progress.session.xp, vip ? 230 : 114);
     const before = p.progress.session.xp;
     for (let i = 0; i < 10; i++)
       progression.applyEvent(
@@ -263,7 +263,30 @@ test("Бонусы опыта прибавляются к базе, поглощ
         { type: "absorbed", victimProfileId: "v" + i, lifeId: "v-life" + i, gain: 20 },
         61000 + i,
       );
-    assert.equal(p.progress.session.xp - before, 33);
+    assert.equal(p.progress.session.xp - before, vip ? 66 : 33);
+  }
+});
+
+test("VIP multiplies the complete accessory, gift and potion reward once; Premium changes only natural kills", t => {
+  for (const [vip,premium] of [[false,false],[true,false],[false,true],[true,true]]) for (const gift of [null,'clover','skull']) {
+    const {p}=fixture(t);p.level=501;p.progress=progression.freshProgress(501);
+    p.outfit={hat:'dawn_circlet',bow:'wanderer_knot'};
+    p.account={vipUntil:vip?1e9:0,premiumUntil:premium?1e9:0};
+    p.social={...p.social,giftEffects:gift?{[gift]:1e9}:{}};
+    progression.applyEvent(p,{type:'lifeStarted',lifeId:'bonus-life'},0);
+    p.alchemy={active:{lifeId:'bonus-life',ids:['knowledge','prosperity']}};
+    const actor={id:'actor',lifeId:'bonus-life',mass:12345,account:{vip,premium},potion:{ids:['knowledge','prosperity']},
+      giftModifiers:require('../../src/server/profiles/gift-effects').modifiers(p,0)};
+    accrual.reset(actor,0);let event;
+    for(let at=50;at<=30000;at+=50)event=accrual.sample(actor,at,false,4)||event;
+    const giftFactor=gift==='clover'?1.25:gift==='skull'?.75:1,factor=vip?2:1;
+    progression.applyEvent(p,event,30000);
+    assert.equal(p.progress.session.xp,Math.ceil(12.345*1.15*giftFactor*1.4*factor-.5));
+    assert.equal(p.progress.session.kills,Math.ceil((1.2345+4)*(premium?2:1)-.5));
+    const before=p.progress.session.xp;
+    for(let i=0;i<10;i++)progression.applyEvent(p,{type:'absorbed',victimProfileId:'v'+i,lifeId:'v'+i,gain:20},31000+i);
+    assert.equal(p.progress.session.xp-before,Math.floor(30*1.1*giftFactor*1.4*factor+1e-9));
+    progression.validateProgress(p);
   }
 });
 test("Чалма мудреца: отдельные 10% запаса, одинаковое время на арене и в сохранении, без повторного начисления", (t) => {

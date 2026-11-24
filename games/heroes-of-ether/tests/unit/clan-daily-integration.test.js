@@ -74,7 +74,7 @@ for(const worker of [false,true]) test('natural XP and credited kills reach clan
   f.store.save(data);
   const accrual=require('../../src/server/arena/mass-accrual');
   const actors=[f.a,f.b].map((who,i)=>({id:who.profile.id,profileId:who.profile.id,lifeId:'natural-'+i,
-    mass:10000,account:{premium:!!i}}));
+    mass:10000,account:{vip:!!i,premium:!!i}}));
   for(const [i,a]of actors.entries()){
     f.progress([f.a,f.b][i],{type:'lifeStarted',lifeId:a.lifeId},start);accrual.reset(a,start);
   }

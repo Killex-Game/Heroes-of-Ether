@@ -110,6 +110,6 @@ body.account-premium #previewName {
 
 /* Active status is legible at the approved small crown size. */
 #lobby #accountMarks .profile-account.vip[data-active="true"] img {
-  filter: url(#killex-saturated-gold) saturate(1.2) brightness(1.08) drop-shadow(0 0 2px #fff2a8) drop-shadow(0 0 5px #ffb800) drop-shadow(0 0 8px #ffa00088);
+  filter: url(#killex-saturated-gold) saturate(1.2) brightness(1.08) drop-shadow(0 1px 1px #9b480055);
   opacity: 1;
 }

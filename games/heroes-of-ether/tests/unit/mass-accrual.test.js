@@ -26,13 +26,13 @@ function fixture(vip = false, premium = false, mass = 50000) {
 }
 
 const round = n => Math.max(0, Math.ceil(n - 0.5));
-for (const [vip,premium,factor] of [[false,false,1],[true,false,1],[false,true,2],[true,true,2]]) {
+for (const [vip,premium,xpFactor,killFactor] of [[false,false,1,1],[true,false,2,1],[false,true,1,2],[true,true,2,2]]) {
   test('Current mass payout '+vip+'/'+premium,()=>{
     for(const mass of [20,500,501,1500,1550,5000,15000,29999,30000,75000,1000000]) for(const n of [1,17,30]){
       const f=fixture(vip,premium,mass); f.run(0,29950,n);
       assert.equal(f.p.progress.session.xp,0); f.step(30000,false,n);
-      assert.equal(f.p.progress.session.xp,round(mass*.001*factor));
-      assert.equal(f.p.progress.session.kills,round((mass*.0001+n)*factor));
+      assert.equal(f.p.progress.session.xp,round(mass*.001*xpFactor));
+      assert.equal(f.p.progress.session.kills,round((mass*.0001+n)*killFactor));
       progression.validateProgress(f.p);
     }
   });
@@ -47,9 +47,9 @@ test('Half ties down, above half up, no carry into a later payout',()=>{
 });
 test('Mass, population and status are sampled at the payout, not averaged',()=>{
   const f=fixture(false,true,20);f.run(0,29950,30);f.actor.mass=50000;f.actor.account={vip:true};
-  f.step(30000,false,2);assert.equal(f.p.progress.session.xp,50);assert.equal(f.p.progress.session.kills,7);
+  f.step(30000,false,2);assert.equal(f.p.progress.session.xp,100);assert.equal(f.p.progress.session.kills,7);
   f.actor.mass=10000;f.actor.account={premium:true};f.run(30000,60000,3);
-  assert.equal(f.p.progress.session.xp,70);assert.equal(f.p.progress.session.kills,15);
+  assert.equal(f.p.progress.session.xp,110);assert.equal(f.p.progress.session.kills,15);
 });
 test('No catch-up for long pauses, no early payout on death or departure',()=>{
   const f=fixture();f.run(0,29950);assert.equal(f.step(900000),null);assert.equal(f.p.progress.session.xp,0);
@@ -57,7 +57,7 @@ test('No catch-up for long pauses, no early payout on death or departure',()=>{
   f.actor.dead=true;assert.equal(f.step(930000),null);f.actor.dead=false;f.actor.isRemnant=true;assert.equal(f.step(960000),null);
 });
 test('Duplicate/reordered packets and old lives cannot mint XP; level cap retained',()=>{
-  const f=fixture(false,true);const e=f.run(0,30000);const saved=JSON.stringify(f.p.progress);
+  const f=fixture(true,true);const e=f.run(0,30000);const saved=JSON.stringify(f.p.progress);
   progression.applyEvent(f.p,e,30000);progression.applyEvent(f.p,{...e,sequence:2,lifeId:'old'},30000);
   assert.equal(JSON.stringify(f.p.progress),saved);
   f.p.progress.arenaXpTarget=f.p.progress.xp+150;f.run(30000,60000);assert.equal(f.p.progress.session.xp,150);
@@ -68,6 +68,14 @@ test('Previously persisted v1 units/remainders remain replayable',()=>{
   progression.applyEvent(f.p,e,1000);assert.equal(f.p.progress.session.xp,1);
   progression.applyEvent(f.p,{...e,sequence:2},2000);assert.equal(f.p.progress.session.xp,3);assert.equal(f.p.progress.session.kills,3);
   assert.throws(()=>progression.applyEvent(f.p,{...e,ruleVersion:999,sequence:3},3000));
+});
+test('Persisted v2 payouts retain their exact value; new v3 multiplier is validated',()=>{
+  for(const vip of [false,true]){
+    const f=fixture(vip,false),e={type:'massAccrual',lifeId:'life',sequence:1,ruleVersion:2,xpUnits:100*accrual.XP_DENOMINATOR,baseXpUnits:50*accrual.XP_DENOMINATOR,killUnits:12*accrual.KILL_DENOMINATOR};
+    progression.applyEvent(f.p,e,1000);assert.equal(f.p.progress.session.xp,100);assert.equal(f.p.progress.session.kills,12);
+    for(const multiplier of [undefined,0,3,NaN])assert.throws(()=>progression.applyEvent(f.p,{...e,sequence:2,ruleVersion:3,xpMultiplier:multiplier},2000));
+    assert.equal(f.p.progress.session.xp,100);
+  }
 });
 test('Absorptions are 3/6/3/6 XP; natural kills do not count as actual defeats',()=>{
   for(const [vip,premium,xp] of [[false,false,3],[true,false,6],[false,true,3],[true,true,6]]){
@@ -85,6 +93,6 @@ test('Room population excludes bots, dead players and remnants, counts split hum
   const e=arena.progressEvents.find(e=>e.type==='massAccrual'&&e.playerId===p.id);assert.equal(e.xpUnits/accrual.XP_DENOMINATOR,30);assert.equal(e.killUnits/accrual.KILL_DENOMINATOR,5);
 });
 test('Gift, potion and accessory XP effects still apply to natural awards',()=>{
-  const f=fixture(false,true,10000);f.actor.giftModifiers={xp:.5};f.p.wardrobeState.legacyNovice=true;f.p.outfit={hat:'novice_hat'};
+  const f=fixture(true,true,10000);f.actor.giftModifiers={xp:.5};f.p.wardrobeState.legacyNovice=true;f.p.outfit={hat:'novice_hat'};
   f.run(0,30000);assert.equal(f.p.progress.session.xp,11);assert.equal(f.p.progress.session.kills,4);
 });
