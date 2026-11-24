@@ -1,0 +1,957 @@
+{
+  "at": "2026-11-24T02:26:11.593Z",
+  "installed": false,
+  "branch": "codex/20261124-addressed-profiles",
+  "runtimeCandidate": "c3c5d6726319ef8211e442f252c38727fd0950ee",
+  "harnessRevisionFix": "0fc2f8c",
+  "productionRelease": "20261124-room30",
+  "limits": {
+    "cpuQuota": 3,
+    "memoryGiB": 3,
+    "generatorsIncluded": true,
+    "sharedWithProduction": true
+  },
+  "tests": {
+    "windowsTargetedPassed": 78,
+    "linuxFull": {
+      "total": 2343,
+      "passed": 2341,
+      "failed": 0,
+      "skipped": 2
+    },
+    "realPostgresqlPassed": 11,
+    "browsers": {
+      "source": "c3c5d6726319ef8211e442f252c38727fd0950ee",
+      "results": [
+        {
+          "engine": "chromium",
+          "packets": 40,
+          "exact": true
+        },
+        {
+          "engine": "firefox",
+          "packets": 40,
+          "exact": true
+        },
+        {
+          "engine": "webkit",
+          "packets": 40,
+          "exact": true
+        }
+      ]
+    },
+    "baseline": {
+      "baselineCommit": "70b7be3",
+      "candidateCommit": "c3c5d6726319ef8211e442f252c38727fd0950ee",
+      "frames": 300,
+      "packets": 272,
+      "v8BytesUnchanged": true,
+      "syntheticV8Bytes": 572059,
+      "syntheticV9Bytes": 443519,
+      "scope": "Synthetic metadata churn and backpressure; not production bandwidth"
+    }
+  },
+  "offlineBytes": {
+    "scope": "Offline sparse packet replay; exact UTF-8 bytes, food decoding equality, all other fields unchanged. Player motion baselines absent; not whole-state replay, live bandwidth or capacity.",
+    "defaultProtocol": "sferorumiya-state-v8",
+    "candidateProtocol": "sferorumiya-state-v9",
+    "phases": [
+      {
+        "file": "499226-boosters.ndjson",
+        "frames": 5,
+        "originalBytes": 26167,
+        "candidateBytes": 26167,
+        "savedBytes": 0,
+        "reductionPercent": 0,
+        "foodBytesBefore": 405,
+        "foodBytesAfter": 405
+      },
+      {
+        "file": "499226-combined.ndjson",
+        "frames": 5,
+        "originalBytes": 54991,
+        "candidateBytes": 47324,
+        "savedBytes": 7667,
+        "reductionPercent": 13.942281464239603,
+        "foodBytesBefore": 25802,
+        "foodBytesAfter": 18135
+      },
+      {
+        "file": "499226-feed.ndjson",
+        "frames": 5,
+        "originalBytes": 19990,
+        "candidateBytes": 19990,
+        "savedBytes": 0,
+        "reductionPercent": 0,
+        "foodBytesBefore": 3646,
+        "foodBytesAfter": 3646
+      },
+      {
+        "file": "499226-move.ndjson",
+        "frames": 5,
+        "originalBytes": 9083,
+        "candidateBytes": 9083,
+        "savedBytes": 0,
+        "reductionPercent": 0,
+        "foodBytesBefore": 165,
+        "foodBytesAfter": 165
+      },
+      {
+        "file": "499226-split.ndjson",
+        "frames": 5,
+        "originalBytes": 23467,
+        "candidateBytes": 22570,
+        "savedBytes": 897,
+        "reductionPercent": 3.8223888865214994,
+        "foodBytesBefore": 2876,
+        "foodBytesAfter": 1979
+      }
+    ]
+  },
+  "runs": [
+    {
+      "label": "isolation-r2",
+      "seconds": 15,
+      "protocol": "sferorumiya-state-v8",
+      "arena": 60,
+      "lobby": {
+        "clients": 30,
+        "mode": "active-lobby-actions",
+        "ipMode": "single-generator-address",
+        "requests": 91,
+        "success": 91,
+        "errors": {},
+        "actions": {
+          "profile": 15,
+          "rankings": 15,
+          "loadout": 15,
+          "purchase": 16,
+          "account-bonus": 15,
+          "social-view": 15
+        },
+        "pending": 0,
+        "latencyMs": {
+          "p50": 8.743743999999424,
+          "p95": 123.37757499999998,
+          "max": 312.19478800000024
+        }
+      },
+      "loading": {
+        "addressed": true,
+        "rooms": [
+          {
+            "id": "room-0",
+            "profiles": 30,
+            "generation": 1,
+            "elapsedMs": 225.85669100000086,
+            "documents": 30,
+            "logicalBytes": 157630
+          },
+          {
+            "id": "room-1",
+            "profiles": 30,
+            "generation": 1,
+            "elapsedMs": 99.2645679999996,
+            "documents": 30,
+            "logicalBytes": 157368
+          }
+        ],
+        "projection": true,
+        "fullBytes": 315060,
+        "transferredBytes": 26945
+      },
+      "isolation": {
+        "stalledPid": 507764,
+        "healthyPid": 507772,
+        "elapsedMs": 1001.4867030000005,
+        "before": [
+          {
+            "id": "room-1",
+            "ticks": 57
+          }
+        ],
+        "after": [
+          {
+            "id": "room-1",
+            "ticks": 77
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "id": "room-0",
+          "hz": 18.15168097101303,
+          "stepMs": {
+            "n": 276,
+            "p50": 14.13166799999999,
+            "p95": 39.68542099999968,
+            "p99": 89.52164699999958,
+            "max": 96.48266899999999
+          },
+          "intervalMs": {
+            "n": 275,
+            "p50": 50.00020600000062,
+            "p95": 79.71765800000003,
+            "p99": 100.88187200000004,
+            "max": 1042.741445
+          },
+          "phases": {
+            "physics": {
+              "n": 276,
+              "p50": 3.8808380000009493,
+              "p95": 7.445365000000038,
+              "p99": 15.375600000000304,
+              "max": 41.175566
+            },
+            "snapshot": {
+              "n": 276,
+              "p50": 0.5490089999984775,
+              "p95": 0.8771939999996903,
+              "p99": 1.4869500000004336,
+              "max": 3.6800089999997
+            },
+            "broadcast": {
+              "n": 276,
+              "p50": 8.71902399999999,
+              "p95": 18.55257800000072,
+              "p99": 78.83912799999962,
+              "max": 86.50670300000002
+            }
+          },
+          "meanParts": 131.63768115942028,
+          "meanAlive": 26.41304347826087
+        },
+        {
+          "id": "room-1",
+          "hz": 19.46689998435531,
+          "stepMs": {
+            "n": 296,
+            "p50": 14.895910999999614,
+            "p95": 31.141356000000087,
+            "p99": 93.30108699999994,
+            "max": 113.99474699999996
+          },
+          "intervalMs": {
+            "n": 295,
+            "p50": 50.01323499999944,
+            "p95": 64.38334500000019,
+            "p99": 101.66809199999989,
+            "max": 116.88603899999998
+          },
+          "phases": {
+            "physics": {
+              "n": 296,
+              "p50": 4.177755000000616,
+              "p95": 8.178299000000152,
+              "p99": 38.661886000000095,
+              "max": 55.407137000000034
+            },
+            "snapshot": {
+              "n": 296,
+              "p50": 0.5097419999999602,
+              "p95": 0.8679549999997107,
+              "p99": 1.097885000000133,
+              "max": 31.901612999999998
+            },
+            "broadcast": {
+              "n": 296,
+              "p50": 8.608310999999958,
+              "p95": 15.409851000000117,
+              "p99": 67.199477,
+              "max": 87.58320100000003
+            }
+          },
+          "meanParts": 132.88175675675674,
+          "meanAlive": 24.43243243243243
+        }
+      ],
+      "writer": {
+        "cpuMs": 6520.742,
+        "peakRss": 668356608,
+        "ipcBytes": 14806538,
+        "acks": 573,
+        "errors": 0,
+        "delayMs": {
+          "n": 573,
+          "p50": 5.553377000000182,
+          "p95": 61.907249999998385,
+          "p99": 318.96370099999876,
+          "max": 420.2386320000005
+        },
+        "queueWaitMs": {
+          "n": 573,
+          "p50": 0.1914360000009765,
+          "p95": 14.930708999998387,
+          "p99": 313.24620700000014,
+          "max": 407.51606600000014
+        },
+        "batches": 573,
+        "replays": 0,
+        "coalesced": 0,
+        "flushes": 535,
+        "failures": 0,
+        "maxQueue": 8
+      },
+      "casts": {
+        "submitted": 121,
+        "completed": 78,
+        "replays": 0,
+        "rejected": 43,
+        "failures": 0,
+        "validations": 121,
+        "latency": {
+          "n": 78,
+          "p50": 31.536293999997724,
+          "p95": 91.08575700000074,
+          "p99": 109.9036159999996,
+          "max": 109.9036159999996
+        },
+        "waiting": 0,
+        "restages": {
+          "profile": 0,
+          "date": 0,
+          "validity": 0,
+          "journal": 0
+        }
+      },
+      "peers": [
+        {
+          "clients": 30,
+          "bytes": 51874293,
+          "packets": 8697,
+          "elapsedMs": 15506.021337,
+          "decoderErrors": 0,
+          "input": {}
+        },
+        {
+          "clients": 30,
+          "bytes": 50731588,
+          "packets": 8707,
+          "elapsedMs": 15295.253053999999,
+          "decoderErrors": 0,
+          "input": {}
+        }
+      ],
+      "durableSequences": 573,
+      "database": {
+        "matched": true,
+        "localRevision": 608,
+        "databaseRevision": 608,
+        "profiles": 1280,
+        "clans": 128,
+        "samples": [
+          {
+            "revision": 1,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795486784756,
+            "prepareMs": 688,
+            "writeMs": 95,
+            "durationMs": 848.8089089999994,
+            "final": false
+          },
+          {
+            "revision": 608,
+            "generation": 3,
+            "changedDocuments": 92,
+            "payloadBytes": 211121,
+            "syncedAt": 1795486801395,
+            "prepareMs": 331,
+            "writeMs": 171,
+            "durationMs": 504.4375930000024,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "liveGuard": {
+        "samples": 4,
+        "aborted": false,
+        "minDiskFreeMiB": 1450.3515625,
+        "maxLiveTickP95": 1.06
+      }
+    },
+    {
+      "label": "v8",
+      "seconds": 45,
+      "protocol": "sferorumiya-state-v8",
+      "arena": 60,
+      "lobby": {
+        "clients": 30,
+        "mode": "active-lobby-actions",
+        "ipMode": "single-generator-address",
+        "requests": 270,
+        "success": 270,
+        "errors": {},
+        "actions": {
+          "profile": 45,
+          "rankings": 45,
+          "loadout": 45,
+          "social-view": 45,
+          "purchase": 45,
+          "account-bonus": 45
+        },
+        "pending": 0,
+        "latencyMs": {
+          "p50": 8.43194399999993,
+          "p95": 26.752222000002803,
+          "max": 476.2284010000003
+        }
+      },
+      "loading": {
+        "addressed": true,
+        "rooms": [
+          {
+            "id": "room-0",
+            "profiles": 30,
+            "generation": 1,
+            "elapsedMs": 235.70058999999947,
+            "documents": 30,
+            "logicalBytes": 157484
+          },
+          {
+            "id": "room-1",
+            "profiles": 30,
+            "generation": 1,
+            "elapsedMs": 104.62498600000072,
+            "documents": 30,
+            "logicalBytes": 157402
+          }
+        ],
+        "projection": true,
+        "fullBytes": 314948,
+        "transferredBytes": 26945
+      },
+      "rooms": [
+        {
+          "id": "room-0",
+          "hz": 19.841063513650973,
+          "stepMs": {
+            "n": 895,
+            "p50": 13.062851000000592,
+            "p95": 22.854833999997936,
+            "p99": 59.50149599999986,
+            "max": 112.43868800000007
+          },
+          "intervalMs": {
+            "n": 894,
+            "p50": 50.006986000000325,
+            "p95": 51.264522999999826,
+            "p99": 82.89392199999998,
+            "max": 114.7083080000001
+          },
+          "phases": {
+            "physics": {
+              "n": 895,
+              "p50": 3.7577559999990626,
+              "p95": 7.462318000001687,
+              "p99": 13.07433200000014,
+              "max": 74.10157500000014
+            },
+            "snapshot": {
+              "n": 895,
+              "p50": 0.5148409999965224,
+              "p95": 0.8487100000002101,
+              "p99": 1.5177739999999176,
+              "max": 29.893002000000706
+            },
+            "broadcast": {
+              "n": 895,
+              "p50": 7.505527999999686,
+              "p95": 13.367086000002018,
+              "p99": 34.66617700000097,
+              "max": 74.80414699999983
+            }
+          },
+          "meanParts": 121.5608938547486,
+          "meanAlive": 23.795530726256985
+        },
+        {
+          "id": "room-1",
+          "hz": 19.841059094016128,
+          "stepMs": {
+            "n": 895,
+            "p50": 15.379162999997789,
+            "p95": 26.951884000001883,
+            "p99": 72.02380400000015,
+            "max": 98.968167
+          },
+          "intervalMs": {
+            "n": 894,
+            "p50": 50.012776999999915,
+            "p95": 51.247441999999864,
+            "p99": 76.67061400000011,
+            "max": 106.37599599999999
+          },
+          "phases": {
+            "physics": {
+              "n": 895,
+              "p50": 4.577879000004032,
+              "p95": 8.637460999998439,
+              "p99": 18.372071999998298,
+              "max": 49.024512999999956
+            },
+            "snapshot": {
+              "n": 895,
+              "p50": 0.5651219999999739,
+              "p95": 1.007861000000048,
+              "p99": 1.821680999997625,
+              "max": 17.0529549999992
+            },
+            "broadcast": {
+              "n": 895,
+              "p50": 8.95781100000022,
+              "p95": 14.881392999999662,
+              "p99": 40.505873000000065,
+              "max": 93.66834399999993
+            }
+          },
+          "meanParts": 165.4223463687151,
+          "meanAlive": 25.47709497206704
+        }
+      ],
+      "writer": {
+        "cpuMs": 17840.225,
+        "peakRss": 736575488,
+        "ipcBytes": 39660551,
+        "acks": 1782,
+        "errors": 0,
+        "delayMs": {
+          "n": 1782,
+          "p50": 4.992730000001757,
+          "p95": 14.030579999998736,
+          "p99": 85.39989299999979,
+          "max": 606.0988039999993
+        },
+        "queueWaitMs": {
+          "n": 1782,
+          "p50": 0.129837000000407,
+          "p95": 5.6088200000012876,
+          "p99": 55.498131000000285,
+          "max": 591.7188769999993
+        },
+        "batches": 1782,
+        "replays": 0,
+        "coalesced": 0,
+        "flushes": 1735,
+        "failures": 0,
+        "maxQueue": 8
+      },
+      "casts": {
+        "submitted": 433,
+        "completed": 273,
+        "replays": 0,
+        "rejected": 160,
+        "failures": 0,
+        "validations": 433,
+        "latency": {
+          "n": 273,
+          "p50": 21.916259000005084,
+          "p95": 45.39209000000119,
+          "p99": 86.0987669999995,
+          "max": 143.92518999999993
+        },
+        "waiting": 0,
+        "restages": {
+          "profile": 0,
+          "date": 0,
+          "validity": 0,
+          "journal": 0
+        }
+      },
+      "peers": [
+        {
+          "clients": 30,
+          "bytes": 154183545,
+          "packets": 27090,
+          "elapsedMs": 45350.337587999995,
+          "decoderErrors": 0,
+          "input": {}
+        },
+        {
+          "clients": 30,
+          "bytes": 155968694,
+          "packets": 27061,
+          "elapsedMs": 45134.763622,
+          "decoderErrors": 0,
+          "input": {}
+        }
+      ],
+      "durableSequences": 1782,
+      "database": {
+        "matched": true,
+        "localRevision": 2019,
+        "databaseRevision": 2019,
+        "profiles": 1280,
+        "clans": 128,
+        "samples": [
+          {
+            "revision": 1,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795486865863,
+            "prepareMs": 686,
+            "writeMs": 98,
+            "durationMs": 854.7412620000005,
+            "final": false
+          },
+          {
+            "revision": 1254,
+            "generation": 3,
+            "changedDocuments": 97,
+            "payloadBytes": 235653,
+            "syncedAt": 1795486895631,
+            "prepareMs": 429,
+            "writeMs": 187,
+            "durationMs": 620.026899000004,
+            "final": false
+          },
+          {
+            "revision": 2019,
+            "generation": 4,
+            "changedDocuments": 94,
+            "payloadBytes": 249483,
+            "syncedAt": 1795486912304,
+            "prepareMs": 350,
+            "writeMs": 171,
+            "durationMs": 522.7935980000038,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "liveGuard": {
+        "samples": 7,
+        "aborted": false,
+        "minDiskFreeMiB": 1442.15234375,
+        "maxLiveTickP95": 1.31
+      }
+    },
+    {
+      "label": "v9",
+      "seconds": 45,
+      "protocol": "sferorumiya-state-v9",
+      "arena": 60,
+      "lobby": {
+        "clients": 30,
+        "mode": "active-lobby-actions",
+        "ipMode": "single-generator-address",
+        "requests": 270,
+        "success": 270,
+        "errors": {},
+        "actions": {
+          "profile": 45,
+          "rankings": 45,
+          "loadout": 45,
+          "purchase": 45,
+          "account-bonus": 45,
+          "social-view": 45
+        },
+        "pending": 0,
+        "latencyMs": {
+          "p50": 7.506341000000248,
+          "p95": 21.050790000001143,
+          "max": 357.319303
+        }
+      },
+      "loading": {
+        "addressed": true,
+        "rooms": [
+          {
+            "id": "room-0",
+            "profiles": 30,
+            "generation": 1,
+            "elapsedMs": 241.7940040000003,
+            "documents": 30,
+            "logicalBytes": 157568
+          },
+          {
+            "id": "room-1",
+            "profiles": 30,
+            "generation": 1,
+            "elapsedMs": 109.60436800000025,
+            "documents": 30,
+            "logicalBytes": 157380
+          }
+        ],
+        "projection": true,
+        "fullBytes": 315010,
+        "transferredBytes": 26945
+      },
+      "rooms": [
+        {
+          "id": "room-0",
+          "hz": 19.881787640106673,
+          "stepMs": {
+            "n": 895,
+            "p50": 14.160608999999909,
+            "p95": 23.236861999997927,
+            "p99": 55.160695999999916,
+            "max": 101.46990699999992
+          },
+          "intervalMs": {
+            "n": 894,
+            "p50": 50.0109850000008,
+            "p95": 51.02914800000144,
+            "p99": 81.12217799999985,
+            "max": 106.33539900000005
+          },
+          "phases": {
+            "physics": {
+              "n": 895,
+              "p50": 4.181130000000849,
+              "p95": 7.773026000000073,
+              "p99": 10.856028999995033,
+              "max": 65.85680899999988
+            },
+            "snapshot": {
+              "n": 895,
+              "p50": 0.5423999999984517,
+              "p95": 0.9138149999998859,
+              "p99": 2.1386899999997695,
+              "max": 24.443131999999878
+            },
+            "broadcast": {
+              "n": 895,
+              "p50": 8.151296000000002,
+              "p95": 14.31790099999489,
+              "p99": 32.989433000002464,
+              "max": 94.66032200000018
+            }
+          },
+          "meanParts": 153.96424581005587,
+          "meanAlive": 25.546368715083798
+        },
+        {
+          "id": "room-1",
+          "hz": 19.879769086347157,
+          "stepMs": {
+            "n": 895,
+            "p50": 14.75960600000326,
+            "p95": 22.97186999999758,
+            "p99": 45.6633240000001,
+            "max": 143.98934900000006
+          },
+          "intervalMs": {
+            "n": 894,
+            "p50": 50.016210999994655,
+            "p95": 51.17488199999934,
+            "p99": 79.68473799999992,
+            "max": 146.49247200000002
+          },
+          "phases": {
+            "physics": {
+              "n": 895,
+              "p50": 4.543875999996089,
+              "p95": 7.618701999999757,
+              "p99": 11.60250300000007,
+              "max": 48.908779000000095
+            },
+            "snapshot": {
+              "n": 895,
+              "p50": 0.578813000000082,
+              "p95": 0.9369900000001508,
+              "p99": 1.5275049999982002,
+              "max": 3.902219999999943
+            },
+            "broadcast": {
+              "n": 895,
+              "p50": 8.59080700000004,
+              "p95": 14.485655000000406,
+              "p99": 21.546463000000585,
+              "max": 93.39007900000001
+            }
+          },
+          "meanParts": 177.56759776536313,
+          "meanAlive": 27.041340782122905
+        }
+      ],
+      "writer": {
+        "cpuMs": 15784.384,
+        "peakRss": 730218496,
+        "ipcBytes": 34234615,
+        "acks": 1787,
+        "errors": 0,
+        "delayMs": {
+          "n": 1787,
+          "p50": 4.311641000000236,
+          "p95": 12.89213000000018,
+          "p99": 78.1545780000015,
+          "max": 468.59940300000017
+        },
+        "queueWaitMs": {
+          "n": 1787,
+          "p50": 0.1066110000028857,
+          "p95": 4.19586100000015,
+          "p99": 21.655460000001767,
+          "max": 404.41827100000046
+        },
+        "batches": 1787,
+        "replays": 0,
+        "coalesced": 0,
+        "flushes": 1748,
+        "failures": 0,
+        "maxQueue": 8
+      },
+      "casts": {
+        "submitted": 448,
+        "completed": 275,
+        "replays": 0,
+        "rejected": 173,
+        "failures": 0,
+        "validations": 448,
+        "latency": {
+          "n": 275,
+          "p50": 19.866814000000886,
+          "p95": 37.67141999999876,
+          "p99": 46.23185100000046,
+          "max": 46.29516100000001
+        },
+        "waiting": 0,
+        "restages": {
+          "profile": 0,
+          "date": 0,
+          "validity": 0,
+          "journal": 0
+        }
+      },
+      "peers": [
+        {
+          "clients": 30,
+          "bytes": 157735959,
+          "packets": 27120,
+          "elapsedMs": 45265.704354,
+          "decoderErrors": 0,
+          "input": {}
+        },
+        {
+          "clients": 30,
+          "bytes": 153206755,
+          "packets": 27126,
+          "elapsedMs": 45071.390449,
+          "decoderErrors": 0,
+          "input": {}
+        }
+      ],
+      "durableSequences": 1787,
+      "database": {
+        "matched": true,
+        "localRevision": 2033,
+        "databaseRevision": 2033,
+        "profiles": 1280,
+        "clans": 128,
+        "samples": [
+          {
+            "revision": 1,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795486948627,
+            "prepareMs": 663,
+            "writeMs": 93,
+            "durationMs": 817.8181679999989,
+            "final": false
+          },
+          {
+            "revision": 1275,
+            "generation": 3,
+            "changedDocuments": 97,
+            "payloadBytes": 238395,
+            "syncedAt": 1795486978385,
+            "prepareMs": 384,
+            "writeMs": 187,
+            "durationMs": 574.8217860000004,
+            "final": false
+          },
+          {
+            "revision": 2033,
+            "generation": 4,
+            "changedDocuments": 94,
+            "payloadBytes": 246918,
+            "syncedAt": 1795486994951,
+            "prepareMs": 349,
+            "writeMs": 171,
+            "durationMs": 521.979668,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "liveGuard": {
+        "samples": 7,
+        "aborted": false,
+        "minDiskFreeMiB": 1443.05078125,
+        "maxLiveTickP95": 1.31
+      }
+    }
+  ],
+  "sequenceAudit": [
+    {
+      "label": "isolation-r2",
+      "progressSequences": 573,
+      "casts": 78,
+      "exact": true
+    },
+    {
+      "label": "v8",
+      "progressSequences": 1782,
+      "casts": 273,
+      "exact": true
+    },
+    {
+      "label": "v9",
+      "progressSequences": 1787,
+      "casts": 275,
+      "exact": true
+    },
+    {
+      "label": "first-failed-bootstrap",
+      "exact": true,
+      "revision": 1,
+      "testSchemaRemoved": true
+    }
+  ],
+  "archive": {
+    "sha256": "ea2b17ef7d9f9a14bf54ed3b0867f47eb37be1a075d958ad14d59d05aba1164c",
+    "verifiedFiles": 23,
+    "uncompressedBytes": 26166521,
+    "keptBothSides": true,
+    "privateConfigExcluded": true
+  },
+  "productionHealth": {
+    "at": "2026-11-24T02:24:25.667Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 4252789,
+    "gamePid": 496904,
+    "adminPid": 1163,
+    "candidateInstalled": false
+  },
+  "failures": [
+    {
+      "stage": "first resident bootstrap",
+      "reason": "Compared persisted generation revision 1 to undefined store.data._journalRevision",
+      "fixedBy": "0fc2f8c",
+      "beforeLoad": true,
+      "preserved": "isolation"
+    },
+    {
+      "stage": "sparse packet analysis",
+      "reason": "Player delta baselines absent from sparse captures; full Decoder replay failed. Analysis now verifies food equality and unchanged remaining fields; full-state stream tests are separate."
+    },
+    {
+      "stage": "browser harness",
+      "reason": "Playwright package/default browser path absent; reused installed runtime and existing .cache/browsers. All three browser reruns passed."
+    }
+  ],
+  "limitations": [
+    "Read-only adapter and isolated room benchmark; no production routing switch.",
+    "Coordinator still retains the whole world and builds the trusted locator index.",
+    "Histories remain inside profile documents. No addressed commit API or cross-profile transaction migration.",
+    "Two child processes on one VPS, not two independent machines. No multi-hour stability or maximum CCU proof.",
+    "45-second v8/v9 runs use separate generated worlds and live timing; their rates are observations, not a controlled performance A/B.",
+    "Reported application bytes exclude TCP/TLS and do not establish access-link bandwidth."
+  ]
+}
