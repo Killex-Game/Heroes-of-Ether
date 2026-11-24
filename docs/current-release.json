@@ -1,24 +1,20 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261124-clan-exit",
-  "sourceTag": "release/20261124-clan-exit",
-  "sourceCommit": "17d64554cabb143a581ed7a8fdc21128e9aa73b4",
-  "branch": "codex/20261124-combat-capacity",
+  "gameRelease": "20261124-status-copy",
+  "sourceTag": "release/20261124-status-copy",
+  "sourceCommit": "2bdbf7e5fac405cd30f130ead6e9081d3f18f539",
+  "branch": "codex/20261124-status-copy",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-24T11:52:51.099Z",
+  "entryReopenedAtUtc": "2026-11-24T13:00:35.765Z",
   "runtime": {
-    "gamePid": 625458,
+    "gamePid": 645542,
     "adminPid": 1163,
+    "restarts": 0,
     "entryOpen": true,
-    "backend": "postgresql",
-    "database": "semenovkir",
-    "postgresqlVersion": 17,
-    "tlsVerified": true,
-    "hold": false,
-    "restarts": 0
+    "hold": false
   },
   "installed": [
     "Mobile lobby and arena controls use icons and retain accessible names",
@@ -78,111 +74,80 @@
     "Zaya hind feet removed entirely from Easter banner; event card derives from same image"
   ],
   "data": {
-    "profiles": 1722,
-    "clans": 136,
-    "beforeRevision": 4445335,
-    "afterRevision": 4445339,
-    "fullWorldAndAuxEqualBefore": true,
-    "approvedMigrationsReplayedExactly": true,
-    "allOtherFieldsEqual": true,
-    "postgresqlAfterDigest": "5eaac5244636291af685c63eb2a10488787df7cbf655b0800488b39a14cbef92",
-    "backupSha256": "ed614e7ba7ca3682bd12ae401ca3533774635a7bb6cf9799b39c5a543fdfba70",
-    "backupVerifiedOnBothHosts": true,
-    "backupPathsRetained": true
-  },
-  "verification": {
-    "linux": {
-      "total": 2381,
-      "pass": 2380,
-      "fail": 0,
-      "skip": 1
+    "before": {
+      "at": 1795524331255,
+      "revision": 4471427,
+      "digest": "3292d0c6d2f7bfead0180e4549851e5704a60c3e9ed8f5ec5273da6e06a57152",
+      "worldHash": "9d57798d50ca28c0414441df89f63e196a65a66f3dc6fbec7d43d8592820a223",
+      "profiles": 1720,
+      "clans": 136,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/dev/shm/heroether-status-copy-backup-20261124/status-copy-20261124",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/status-copy-20261124/data-before.tar.gz"
     },
-    "targetedDeferred": 12,
-    "browsers": [
-      {
-        "engine": "chromium",
-        "errors": []
-      },
-      {
-        "engine": "firefox",
-        "errors": []
-      },
-      {
-        "engine": "webkit",
-        "errors": []
-      }
-    ],
-    "http": {
-      "at": "2026-11-24T11:54:08.052Z",
-      "checks": [
-        {
-          "origin": "http://127.0.0.1:3000",
-          "file": "public/index.html",
-          "bytes": 42849,
-          "exact": true
-        },
-        {
-          "origin": "http://127.0.0.1:3000",
-          "file": "public/ui/clans/clan-battle-and-treasury.js",
-          "bytes": 48840,
-          "exact": true
-        },
-        {
-          "origin": "http://127.0.0.1:3000",
-          "file": "public/ui/clans/clan-daily-quests.js",
-          "bytes": 11829,
-          "exact": true
-        },
-        {
-          "origin": "http://195.208.123.221",
-          "file": "public/index.html",
-          "bytes": 42849,
-          "exact": true
-        },
-        {
-          "origin": "http://195.208.123.221",
-          "file": "public/ui/clans/clan-battle-and-treasury.js",
-          "bytes": 48840,
-          "exact": true
-        },
-        {
-          "origin": "http://195.208.123.221",
-          "file": "public/ui/clans/clan-daily-quests.js",
-          "bytes": 11829,
-          "exact": true
-        }
-      ]
-    },
-    "localhost": {
-      "at": "2026-11-24T11:54:27.719Z",
-      "port": 3104,
-      "checks": 3,
-      "exact": true,
-      "files": [
-        {
-          "origin": "http://127.0.0.1:3104",
-          "file": "public/index.html",
-          "bytes": 42849,
-          "exact": true
-        },
-        {
-          "origin": "http://127.0.0.1:3104",
-          "file": "public/ui/clans/clan-battle-and-treasury.js",
-          "bytes": 49019,
-          "exact": true
-        },
-        {
-          "origin": "http://127.0.0.1:3104",
-          "file": "public/ui/clans/clan-daily-quests.js",
-          "bytes": 11829,
-          "exact": true
-        }
+    "after": {
+      "calendarReplayExact": true,
+      "approvedMigrationsExact": true,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 4471427,
+      "revision": 4471429,
+      "digest": "7dba63401993528f02075f5d9ec0f605afdbef4863f9a359357c2c1d9535a712",
+      "worldHash": "9ffe96ac54ff32e5e3d109b907bce49eae324798eb6c19f53b45724d21a33d3e",
+      "profiles": 1720,
+      "clans": 136,
+      "at": 1795524763290,
+      "transitionTimes": [
+        1795524763290,
+        1795524800391
       ],
-      "experimentalPort3000Untouched": true
+      "retiredAvatarProfiles": [],
+      "constructorChanges": [],
+      "questPayouts": 0,
+      "questChests": 0
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "e4eb6e627e9f91c7910295c4245459c5eb4f3198fafb968f76b16294d790089a",
+      "revision": 4471427,
+      "digest": "3292d0c6d2f7bfead0180e4549851e5704a60c3e9ed8f5ec5273da6e06a57152",
+      "worldHash": "9d57798d50ca28c0414441df89f63e196a65a66f3dc6fbec7d43d8592820a223",
+      "profiles": 1720,
+      "clans": 136,
+      "postgresqlArchiveVerified": true
     }
   },
-  "report": "games/heroes-of-ether/docs/performance/clan-exit-20261124.json",
-  "previousRelease": "20261124-lobby-pets",
+  "verification": {
+    "windows": 92,
+    "linux": {
+      "sourceCommit": "19877648ecfb6998ce35eda75f7cf444fd24160a",
+      "original": {
+        "tests": 2378,
+        "pass": 2374,
+        "fail": 3,
+        "skip": 1
+      },
+      "supplement": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0
+      },
+      "allRequiredChecksPassed": true,
+      "failedFixtureFiles": [
+        "tests/unit/production-code.test.js",
+        "tests/unit/scale-budget.test.js",
+        "tests/unit/vk-mini-app-launch.test.js"
+      ],
+      "totalPassed": 2386,
+      "totalSkipped": 1
+    },
+    "browserContexts": 18,
+    "httpChecks": 12,
+    "report": "games/heroes-of-ether/docs/performance/status-copy-20261124.json"
+  },
+  "report": "games/heroes-of-ether/docs/performance/status-copy-20261124.json",
+  "previousRelease": "20261124-clan-exit",
   "notes": "Current release includes compact lobby/accessories, atomic achievement artwork, link filtering, approved spending counters and pet artwork. Capacity limits and unfinished architecture work remain unchanged.",
   "performance": {
     "status": "installed; collecting live samples and capacity ladder",
@@ -1363,7 +1328,7 @@
       }
     }
   },
-  "backendSourceCommit": "17d64554cabb143a581ed7a8fdc21128e9aa73b4",
+  "backendSourceCommit": "2bdbf7e5fac405cd30f130ead6e9081d3f18f539",
   "calendarIndexUpdate": {
     "installed": true,
     "published": true,
@@ -3107,266 +3072,34 @@
     }
   },
   "latestCapacityValidation": {
-    "players": 60,
-    "lobby": 5,
-    "minutes": 3,
-    "quotaCpu": 6,
-    "quotaIncludesGenerators": true,
-    "scenario": {
-      "linkedLobby": 2,
-      "movementHz": 10,
-      "splitEverySeconds": 3.7,
-      "feedEverySeconds": 0.7,
-      "boosterEverySeconds": 2,
-      "emoteEverySeconds": 5.3,
-      "lobbyIntervalMs": 1500,
-      "syntheticFunds": true,
-      "notCovered": [
-        "real payment provider",
-        "external VK API",
-        "all seasonal events simultaneously",
-        "browser rendering"
-      ]
-    },
-    "assessment": {
-      "targets": {
-        "updatesHz": 19,
-        "tickP95Ms": 100,
-        "stateGapP99Ms": 150,
-        "lobbyP95Ms": 1000,
-        "actionP95Ms": 500
-      },
-      "shortRunMeetsTargets": true,
-      "problems": [],
-      "phases": [
-        {
-          "phase": "combined",
-          "window": 1,
-          "meetsTargets": true,
-          "issues": []
-        },
-        {
-          "phase": "combined",
-          "window": 2,
-          "meetsTargets": true,
-          "issues": []
-        },
-        {
-          "phase": "combined",
-          "window": 3,
-          "meetsTargets": true,
-          "issues": []
-        }
-      ],
-      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
-    },
-    "ackAudit": {
-      "acknowledged": 5486,
-      "recovered": 5486,
+    "newMechanics": {
+      "arena": 60,
+      "lobby": 5,
+      "minutes": 3,
+      "passed": true,
+      "ack": 5481,
       "duplicates": 0,
-      "profiles": 1280,
-      "types": {
-        "booster:hook": 169,
-        "booster:cake": 167,
-        "booster:candy": 176,
-        "booster:vortex": 172,
-        "booster:glove": 170,
-        "booster:clan_shield": 179,
-        "booster:sphere": 180,
-        "booster:donut": 179,
-        "booster:freeze": 168,
-        "booster:mine": 170,
-        "booster:harpoon": 168,
-        "booster:knuckles": 165,
-        "booster:mega_poison": 171,
-        "booster:easter_egg": 178,
-        "booster:colorful_shield": 180,
-        "booster:ice_cream": 177,
-        "booster:warheads": 171,
-        "booster:web": 172,
-        "booster:poison": 176,
-        "booster:rocket": 163,
-        "booster:speed": 179,
-        "booster:lock": 167,
-        "booster:fire_sword": 158,
-        "booster:axe": 161,
-        "booster:meat": 176,
-        "booster:golden_shield": 178,
-        "booster:sponge": 168,
-        "booster:fire": 166,
-        "booster:awl": 157,
-        "booster:stone": 156,
-        "lobby:loadout": 30,
-        "lobby:purchase": 30,
-        "lobby:account-bonus": 30,
-        "lobby:gift": 30,
-        "lobby:gift-read": 30,
-        "lobby:clan-create": 3,
-        "lobby:clan-deposit": 30,
-        "lobby:clan-buy": 30,
-        "lobby:clan-edit": 30,
-        "lobby:roulette-prepare": 26,
-        "lobby:roulette-spin": 25,
-        "lobby:pet-buy": 5,
-        "lobby:pet-food": 25,
-        "lobby:chat": 25,
-        "lobby:pet-equip": 20
-      },
-      "gifts": 30,
-      "notices": 30,
-      "deposits": 30,
-      "created": 3,
-      "validInventoriesAndTransactions": true
+      "postgresqlEqualsWal": true
     },
-    "databaseVerification": {
-      "matched": true,
-      "localRevision": 7909,
-      "databaseRevision": 7909,
-      "profiles": 1280,
-      "clans": 131,
-      "samples": [
-        {
-          "revision": 67,
-          "generation": 2,
-          "changedDocuments": 0,
-          "payloadBytes": 0,
-          "syncedAt": 1795519497843,
-          "prepareMs": 733,
-          "writeMs": 119,
-          "durationMs": 873.5019499999999,
-          "final": false
-        },
-        {
-          "revision": 1372,
-          "generation": 3,
-          "changedDocuments": 91,
-          "payloadBytes": 259463,
-          "syncedAt": 1795519527769,
-          "prepareMs": 430,
-          "writeMs": 209,
-          "durationMs": 769.4266260000004,
-          "final": false
-        },
-        {
-          "revision": 2687,
-          "generation": 4,
-          "changedDocuments": 91,
-          "payloadBytes": 305320,
-          "syncedAt": 1795519557766,
-          "prepareMs": 482,
-          "writeMs": 239,
-          "durationMs": 743.7651940000069,
-          "final": false
-        },
-        {
-          "revision": 3884,
-          "generation": 5,
-          "changedDocuments": 75,
-          "payloadBytes": 344470,
-          "syncedAt": 1795519587752,
-          "prepareMs": 473,
-          "writeMs": 213,
-          "durationMs": 724.3947630000039,
-          "final": false
-        },
-        {
-          "revision": 5200,
-          "generation": 6,
-          "changedDocuments": 91,
-          "payloadBytes": 388409,
-          "syncedAt": 1795519617858,
-          "prepareMs": 524,
-          "writeMs": 250,
-          "durationMs": 822.3953560000227,
-          "final": false
-        },
-        {
-          "revision": 6487,
-          "generation": 7,
-          "changedDocuments": 91,
-          "payloadBytes": 429927,
-          "syncedAt": 1795519647850,
-          "prepareMs": 521,
-          "writeMs": 213,
-          "durationMs": 787.4756119999802,
-          "final": false
-        },
-        {
-          "revision": 7838,
-          "generation": 8,
-          "changedDocuments": 91,
-          "payloadBytes": 468169,
-          "syncedAt": 1795519677984,
-          "prepareMs": 546,
-          "writeMs": 229,
-          "durationMs": 900.4173840000003,
-          "final": false
-        },
-        {
-          "revision": 7909,
-          "generation": 9,
-          "changedDocuments": 67,
-          "payloadBytes": 404766,
-          "syncedAt": 1795519678775,
-          "prepareMs": 447,
-          "writeMs": 193,
-          "durationMs": 644.0727500000212,
-          "final": true
-        }
-      ]
-    },
-    "windows": [
+    "previousMechanics": [
       {
-        "hz": 19.952380580430493,
-        "tickP95Ms": 32.3409759999995,
-        "stateGapP99Ms": 93.12861700000212,
-        "actionP95Ms": 77.93501699999615,
-        "cpuPercent": 171.03548213014363,
-        "rssMiB": 1085.5,
-        "clanQuests": {
-          "enabled": true,
-          "boards": 131,
-          "active": 128,
-          "eligible": 1277,
-          "contributors": 47,
-          "contributions": 101
-        }
+        "arena": 60,
+        "lobby": 5,
+        "minutes": 10,
+        "passed": true,
+        "ack": 17577
       },
       {
-        "hz": 20.00971656228165,
-        "tickP95Ms": 35.14150800000061,
-        "stateGapP99Ms": 93.71696499999962,
-        "actionP95Ms": 98.33725499999127,
-        "cpuPercent": 172.91764353185815,
-        "rssMiB": 1048.0546875,
-        "clanQuests": {
-          "enabled": true,
-          "boards": 131,
-          "active": 128,
-          "eligible": 1277,
-          "contributors": 54,
-          "contributions": 198
-        }
-      },
-      {
-        "hz": 20.12268359839353,
-        "tickP95Ms": 31.835103999997955,
-        "stateGapP99Ms": 89.22937099999399,
-        "actionP95Ms": 69.34667600001558,
-        "cpuPercent": 152.41128118463593,
-        "rssMiB": 1169.74609375,
-        "clanQuests": {
-          "enabled": true,
-          "boards": 131,
-          "active": 128,
-          "eligible": 1277,
-          "contributors": 57,
-          "contributions": 285
-        }
+        "arena": 90,
+        "lobby": 5,
+        "minutes": 3,
+        "passed": false,
+        "ack": 8074
       }
     ],
-    "maximumCcuProven": false,
-    "wholeGameCpuImprovementProven": false
+    "cpuQuotaIncludesGenerators": 6,
+    "ccu300kProven": false,
+    "report": "games/heroes-of-ether/docs/performance/status-copy-20261124.json"
   },
   "swordStabilityUpdate": {
     "installed": true,
@@ -32852,5 +32585,23 @@
       "sha256": "f1ffafbcbdba730ba63e187eb6fb47e435ae1f34ad18c2b96d54aa47eb130553",
       "privateDataIncluded": false
     }
+  },
+  "statusCopyUpdate": {
+    "sourceCommit": "2bdbf7e5fac405cd30f130ead6e9081d3f18f539",
+    "entryOpenedAt": "2026-11-24T13:00:35.765Z",
+    "changes": {
+      "vip": "Final multiplier of all arena XP including accessories/gifts/potions",
+      "premium": "Natural kills x2; no XP multiplier",
+      "naturalRuleVersion": 3,
+      "historicalUnitsPreserved": true,
+      "personalCapUnchanged": true,
+      "clanExitSemanticsUnchanged": true,
+      "copyUpdated": true,
+      "visibleCrownMaxExtentMatched": true,
+      "protectedRasterAssetsUnchanged": true,
+      "runtimeFiles": 7,
+      "commentsRemoved": 36
+    },
+    "report": "games/heroes-of-ether/docs/performance/status-copy-20261124.json"
   }
 }
