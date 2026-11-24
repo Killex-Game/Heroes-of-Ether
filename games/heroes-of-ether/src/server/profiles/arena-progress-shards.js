@@ -17,15 +17,20 @@ function laneFor(id, count) {
   return (hash >>> 0) % count;
 }
 class ArenaProgressShards {
-  constructor({ count = 3, timeoutMs = 10000 } = {}) {
+  constructor({ count = 3, timeoutMs = 10000, maxResidentProfiles = 256, maxResidentClans = 256 } = {}) {
     if (!Number.isInteger(count) || count < 1 || count > 8) throw Error("Invalid progress shard count");
+    for (const limit of [maxResidentProfiles, maxResidentClans])
+      if (!Number.isInteger(limit) || limit < 1 || limit > 10000) throw Error('Invalid calculation residency limit');
+    this.maxResidentProfiles = maxResidentProfiles; this.maxResidentClans = maxResidentClans;
     this.count = count; this.timeoutMs = timeoutMs; this.sequence = 0; this.lanes = [];
-    this.stats = { jobs: 0, conflicts: 0, failures: 0, computeMs: 0, transferMs: 0, roundTripMs: 0 };
+    this.stats = { jobs: 0, conflicts: 0, failures: 0, computeMs: 0, transferMs: 0, roundTripMs: 0,
+      residentProfiles: 0, residentClans: 0, evictedProfiles: 0, evictedClans: 0 };
   }
   lane(index) {
     if (this.lanes[index]) return this.lanes[index];
     const worker = new Worker(path.join(__dirname, "arena-progress-shard-worker.js"));
-    const lane = { worker, base: { profiles: {}, clans: {} } };
+    const lane = { worker, base: { profiles: {}, clans: {} }, recentProfiles: new Map(), recentClans: new Map(),
+      residentProfiles: 0, residentClans: 0 };
     this.lanes[index] = lane;
     worker.on("message", m => {
       if (!lane.pending || m.id !== lane.pending.id) return;
@@ -63,13 +68,15 @@ class ArenaProgressShards {
     const lane = this.lane(index), id = ++this.sequence;
     if (lane.pending) throw Error("Concurrent profile shard job");
     const prior = lane.prediction?.world || lane.base;
-    // Keep idle identities resident. Alternating small samples must not remove
-    // and resend their complete inventories/history on the next sample.
-    const world = { profiles: { ...prior.profiles, ...input.profiles }, clans: { ...prior.clans, ...input.clans } };
+    // Retain a bounded idle working set so alternating samples do not resend
+    // complete histories, and player churn cannot accumulate the entire world.
+    const residency = require('./calculation-residency');
+    const profiles = residency.retain(prior.profiles, input.profiles, lane.recentProfiles, this.maxResidentProfiles);
+    const clans = residency.retain(prior.clans, input.clans, lane.recentClans, this.maxResidentClans);
+    const world = { profiles: profiles.table, clans: clans.table };
+    this.stats.evictedProfiles += profiles.evicted; this.stats.evictedClans += clans.evicted;
     if (Object.hasOwn(input, 'clanQuests')) world.clanQuests = input.clanQuests;
     if (input.competition) world.competition = input.competition;
-    tableDeltas.remember(world.profiles,prior.profiles,Object.keys(input.profiles));
-    tableDeltas.remember(world.clans,prior.clans,Object.keys(input.clans));
     const patch = difference(world, prior);
     const adopt = lane.prediction?.id ?? null;
     const result = new Promise((resolve, reject) => {
@@ -81,6 +88,9 @@ class ArenaProgressShards {
       ...(Array.isArray(batch) ? { batches: batch } : { batch }), context: ctx }); }
     catch { this.fail("send"); }
     lane.base = world;
+    lane.residentProfiles = profiles.size; lane.residentClans = clans.size;
+    this.stats.residentProfiles = this.lanes.reduce((n, item) => n + (item?.residentProfiles || 0), 0);
+    this.stats.residentClans = this.lanes.reduce((n, item) => n + (item?.residentClans || 0), 0);
     return result;
   }
   async prepare(store, batches) {

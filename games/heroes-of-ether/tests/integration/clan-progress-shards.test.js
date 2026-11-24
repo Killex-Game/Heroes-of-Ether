@@ -10,13 +10,13 @@ const {recover}=require('../../src/server/profiles/profile-journal');
 const start=Date.parse('2026-11-15T05:00:00Z');
 function comparable(data){const copy=structuredClone(data);for(const p of Object.values(copy.profiles))
   p.transactions.entries.forEach((e,i)=>{e.id='entry-'+i;});return copy;}
-function fixture(t,pipeline=false,day=start){
+function fixture(t,pipeline=false,day=start,poolOptions={}){
  let cleanup,now=day-86400000;
  const dir=temporary({after:fn=>{cleanup=fn;}},'clan-progress-shards');
  const store=new ProfileStore({filePath:path.join(dir,'profiles.json'),journal:true,now:()=>now,
    clanDailyQuests:true,incrementalSettlement:true});
  const serial=new ProfileStore({now:()=>now,clanDailyQuests:true,incrementalSettlement:true});
- const pool=pipeline?new ArenaProgressPreparer({parallelism:3,computeBudgetMs:100}):new ClanArenaProgressShards({count:3});
+ const pool=pipeline?new ArenaProgressPreparer({parallelism:3,computeBudgetMs:100}):new ClanArenaProgressShards({count:3,...poolOptions});
  store.arenaPreparer=pool;
  t.after(async()=>{await store.close();await serial.close();cleanup();});
  const users=Array.from({length:12},()=>store.open()),api=new ClanService(store);
@@ -125,4 +125,32 @@ test('direct clan calculations transfer only participating profiles and their cl
  for(const [key,p]of Object.entries(before.profiles))if(!participants.has(p.id))assert.equal(f.store.data.profiles[key],p);
  assert.equal(f.pool.stats.failures,0);assert.equal(f.pool.stats.conflicts,0);
  assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+});
+
+test('clan calculation replicas remain bounded across player churn and restore exact rewards after eviction',async t=>{
+ const f=fixture(t,false,start,{count:1,maxResidentProfiles:2,maxResidentClans:1});
+ for(let n=1;n<=25;n++){
+   const actor=f.users[(n-1)%f.users.length],b=f.batch(n);
+   b.progress=b.progress.filter(e=>e.profileId===actor.profile.id);
+   if(n===13){
+     const before=f.store.data,fault=t.mock.method(fs,'fsync',(fd,done)=>setImmediate(()=>done(Error('evicted replica flush failure'))));
+     await assert.rejects(f.store.applyArenaGroup([b]),/evicted replica flush failure/);fault.mock.restore();
+     assert.equal(f.store.data,before);assert.deepEqual(recover(f.store.filePath).data.profiles,before.profiles);
+   }
+   if(n===17){
+     const pending=f.store.applyArenaGroup([b]);
+     for(const store of [f.store,f.serial])store.transact(actor.token,'eviction-concurrent-wallet','fixture',p=>{p.wallet.coins+=17;});
+     assert.equal(await pending,null);
+   }
+   await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
+   assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+   const lane=f.pool.lanes[0];
+   assert(Object.keys(lane.base.profiles).length<=2);assert(Object.keys(lane.base.clans).length<=1);
+   assert.equal(lane.recentProfiles.size,Object.keys(lane.base.profiles).length);
+   assert.equal(lane.recentClans.size,Object.keys(lane.base.clans).length);
+ }
+ assert(f.pool.stats.evictedProfiles>0);assert(f.pool.stats.evictedClans>0);
+ assert.equal(f.pool.stats.failures,0);assert.equal(f.pool.stats.conflicts,1);
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+ assert.deepEqual(recover(f.store.filePath).data.clans,f.store.data.clans);
 });
