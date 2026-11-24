@@ -68,7 +68,12 @@ function sameMetadata(row, prior) {
 class FoodTransferEncoder {
   constructor({ packed = false } = {}) { this.rows = []; this.index = new Map(); this.packed = packed; }
   encode(rows) {
-    const next = [], index = new Map(), entries = [];
+    const next = [], entries = [];
+    // Most frames only move existing particles. The ID -> ordinal lookup is
+    // immutable until membership/order changes; avoid rebuilding a large Map
+    // for every positional frame. Duplicate IDs keep the last-ordinal rule.
+    let index = rows.length === this.rows.length ? null : new Map();
+    const unique = this.index.size === this.rows.length;
     // One code per output row: even = old row, odd = old row + next exact
     // Float64 coordinate pair, negative = new full object in added[]. The
     // buffers are single-use and transferred, never held by ACK baselines.
@@ -76,7 +81,8 @@ class FoodTransferEncoder {
     const positions = [], added = [];
     let identical = rows.length === this.rows.length;
     for (let i = 0; i < rows.length; i++) {
-      const row = rows[i], ordinal = this.index.get(row.id), prior = this.rows[ordinal];
+      const row = rows[i], ordinal = unique && this.rows[i]?.id === row.id
+        ? i : this.index.get(row.id), prior = this.rows[ordinal];
       let cached;
       if (sameMetadata(row, prior)) {
         if (Object.is(row.x, prior.x) && Object.is(row.y, prior.y)) {
@@ -96,9 +102,15 @@ class FoodTransferEncoder {
         if (refs) { added.push(row); refs[i] = -added.length; } else entries.push(row);
         cached = record(row); identical = false;
       }
-      next.push(cached); index.set(row.id, i);
+      if (!index && this.rows[i]?.id !== row.id) {
+        index = new Map();
+        for (let j = 0; j < i; j++) index.set(next[j].id, j);
+      }
+      next.push(cached);
+      if (index) index.set(row.id, i);
     }
-    this.rows = next; this.index = index;
+    this.rows = next;
+    if (index) this.index = index;
     return identical ? null : refs ? { refs, positions: Float64Array.from(positions), added } : entries;
   }
 }
