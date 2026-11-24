@@ -107,7 +107,11 @@ function unpack(documents, manifest) {
     else fail("DATABASE_UNKNOWN_DOCUMENT");
   }
   chatStorage.restoreChat(auxiliary,chatShards);
-  const snapshot = pack(world, auxiliary,{chatFormat:manifest.chatFormat??0,documentFormat:manifest.documentFormat??0});
+  // Recovery still verifies every logical value and legacy manifest hash, but
+  // keeps canonical bytes instead of another complete mutable world tree.
+  // Require lazily: the builder shares canonical helpers from this module.
+  const snapshot = new (require('./snapshot-builder').SnapshotBuilder)().pack(world, auxiliary,
+    {chatFormat:manifest.chatFormat??0,documentFormat:manifest.documentFormat??0});
   if (
     snapshot.digest !== manifest.digest ||
     snapshot.worldHash !== manifest.worldHash ||

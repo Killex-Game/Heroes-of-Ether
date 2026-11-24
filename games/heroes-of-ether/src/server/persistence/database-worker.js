@@ -41,7 +41,8 @@ parentPort.on("message", async ({ id, command, type, enabled, profileSnapshot })
     let result;
     if (command === "open" || command === "resume") {
       await state.client.connect();
-      result = await state.acquire(readLocal(dataDir, command === "open", profileSnapshot).snapshot);
+      result = await state.acquire(readLocal(dataDir, command === "open", profileSnapshot,
+        (world,auxiliary)=>builder.pack(world,auxiliary),pin=>pinnedReader.read(pin)).snapshot);
       report({ ...result, connected: true, lastError: null });
     } else if (command === 'prepare') {
       const started = Date.now(), snapshot = checkpoints.snapshot(profileSnapshot);

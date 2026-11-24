@@ -63,3 +63,22 @@ test("Cloud refuses mismatched sources, rollback, divergence and invalid snapsho
     "PG_OPERATION_FAILED",
   );
 });
+
+test('Recovered snapshot remains isolated from restored world and exposed document values', () => {
+  const {encode,decode}=require('../../src/server/persistence/postgresql-state');
+  const original=world(),auxiliary={'game-events.json':{events:[{id:'kept'}]}};
+  for(const documentFormat of [0,1])for(const chatFormat of [0,1]){
+    const saved=pack(original,auxiliary,{documentFormat,chatFormat});
+    const loaded=unpack([...saved.docs.values()],saved);
+    loaded.world.profiles.a.wallet.coins=999;
+    loaded.world.profiles.a.receipts.purchase.coins=999;
+    loaded.auxiliary['game-events.json'].events[0].id='changed';
+    const exposed=loaded.snapshot.docs.get('profiles:a').value;
+    exposed.wallet.coins=555;
+    const documents=[...loaded.snapshot.docs.values()].map(doc=>{const encoded=encode(doc);return decode({...encoded,id:encoded._id});});
+    const again=unpack(documents,saved);
+    assert.deepEqual(again.world,original);
+    assert.deepEqual(again.auxiliary,auxiliary);
+    assert.equal(again.snapshot.digest,saved.digest);
+  }
+});
