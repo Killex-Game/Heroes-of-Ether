@@ -90,7 +90,7 @@ test("Дополнительный слот проверяет срок акка
   for (const id of ids) saved.inventory[id] = 3;
   app.profiles.activateAccount(token, { kind: "vip", requestId: randomUUID() });
   app.profiles.activateAccount(token, { kind: "premium", requestId: randomUUID() });
-  app.profiles.find(token).account.vipUntil = accountNow + 8 * 86400000;
+  app.profiles.find(token).account.premiumUntil = accountNow + 8 * 86400000;
   app.profiles.setLoadout(token, {
     name: "Игрок",
     skinId: "moon-dragon",
@@ -111,13 +111,13 @@ test("Дополнительный слот проверяет срок акка
   result = await use(c.ws, { boosterId: "candy", spawnSerial: p.spawnSerial });
   assert.equal(result.ok, true);
   result = await use(c.ws, { boosterId: "speed", spawnSerial: p.spawnSerial });
-  assert.equal(result.ok, true, "пятый слот доступен оставшемуся VIP");
+  assert.equal(result.ok, true, "пятый слот доступен с Premium");
   const speedStock = app.profiles.find(token).inventory.speed;
   advance(86400000);
   accountNow += 86400000;
   result = await use(c.ws, { boosterId: "speed", spawnSerial: p.spawnSerial });
-  assert.equal(result.ok, false, "после истечения VIP пятый слот закрыт");
-  assert.equal(app.profiles.find(token).inventory.speed, speedStock);
+  assert.equal(result.ok, true, "пятый слот доступен без статусов");
+  assert.equal(app.profiles.find(token).inventory.speed, speedStock - 1);
   assert.deepEqual(app.profiles.find(token).quickSlots, ids);
 });
 for (const source of ["обычный", "питомца"])
@@ -801,7 +801,7 @@ test("Смена членства ждёт сохранения XP: старый
     200,
   );
   assert.equal(app.profiles.data.clans[clanId].xp, 0);
-  assert.equal(app.profiles.byId(b.profile.id).progress.session.xp, 25);
+  assert.equal(app.profiles.byId(b.profile.id).progress.session.xp, 5);
   await advanceTicks();
   app.profiles.save = () => {
     throw Error("TEST pending XP");
@@ -829,8 +829,8 @@ test("Смена членства ждёт сохранения XP: старый
     ).status,
     200,
   );
-  assert.equal(app.profiles.data.clans[clanId].xp, 25);
-  assert.equal(app.profiles.byId(b.profile.id).progress.session.xp, 50);
+  assert.equal(app.profiles.data.clans[clanId].xp, 5);
+  assert.equal(app.profiles.byId(b.profile.id).progress.session.xp, 10);
   assert.equal(p.clanId, null);
   assert.equal(app.arena.snapshot(125000).clanLeaderboard.length, 0);
 });

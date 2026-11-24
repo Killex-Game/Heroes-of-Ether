@@ -182,8 +182,8 @@
   };
 
   const accountLoginRewards = {
-    vip: { coins: 50, crystals: 5, bucks: 5 },
-    premium: { coins: 100, crystals: 10, bucks: 10 },
+    vip: { coins: 50, crystals: 10, bucks: 5 },
+    premium: { coins: 100, crystals: 25, bucks: 10 },
   };
   const products = Object.entries(catalogs).flatMap(([currency, catalog]) =>
     catalog.packages.map((item) => ({
@@ -202,7 +202,7 @@
     })),
   );
   for (const [kind, name, votes] of [
-    ["vip", "VIP", 20],
+    ["vip", "VIP", 10],
     ["premium", "Premium", 30],
   ]) {
     products.push({
@@ -210,9 +210,9 @@
       name,
       type: "account",
       kind,
-      days: 7,
+      days: kind === "premium" ? 14 : 7,
       votes,
-      description: "7 дней - срок активного статуса продлевается",
+      description: `${kind === "premium" ? 14 : 7} дней - срок активного статуса продлевается`,
       icon: `assets/accounts/${kind}.png?art=20261123-interface-art`,
     });
   }

@@ -259,15 +259,15 @@ test("Предел XP обрезает награду, сохраняется п
   ca = await connect(a);
   assert.equal(progress().arenaXpMax, false);
   position(ca.p, 5000, 400, 400);
-  activeTicks(app, at, 246000, 255000);
+  activeTicks(app, at, 246000, 276000);
   at(306000);
   app.tick();
-  assert.equal(progress().arenaXp, 7);
+  assert.equal(progress().arenaXp, 5);
   await disconnect(ca);
-  assert.equal(progress().totalXp, 507);
+  assert.equal(progress().totalXp, 505);
 });
 
-test("Сервер: равномерный опыт за активные такты, без пересчёта прошлого по новой массе", async (t) => {
+test("Сервер: масса в момент выплаты каждые 30 активных секунд, паузы не оплачиваются", async (t) => {
   const { app, session, connect, disconnect, at } = await setup(t),
     a = await session();
   const base = xpForLevel(121);
@@ -291,21 +291,21 @@ test("Сервер: равномерный опыт за активные так
   position(ca.p, 75000);
   at(120000);
   app.tick();
-  assert.equal(xp(), 7, "новая масса не оплачивает прошлую паузу");
+  assert.equal(xp(), 0, "новая масса не оплачивает прошлую паузу");
   activeTicks(app, at, 120000, 129000);
-  assert.equal(xp(), 7);
+  assert.equal(xp(), 0);
   position(ca.p, 100000);
   at(180000);
   app.tick();
-  assert.equal(xp(), 22);
-  activeTicks(app, at, 180000, 189000);
-  assert.equal(xp(), 22, "выше порога масса больше не ускоряет начисление");
+  assert.equal(xp(), 0);
+  activeTicks(app, at, 180000, 192000);
+  assert.equal(xp(), 100, "пакет использует массу в момент выплаты");
   app.tick();
-  assert.equal(xp(), 22, "повтор такта не начисляет опыт");
-  assert.equal(app.arena.snapshot(189000).players[0].lifeSeconds, 189);
+  assert.equal(xp(), 100, "повтор такта не начисляет опыт");
+  assert.equal(app.arena.snapshot(192000).players[0].lifeSeconds, 192);
   assert.equal(app.profiles.find(a.token).progress.xp, base);
   await disconnect(ca);
-  assert.equal(app.profiles.find(a.token).progress.xp, base + 22);
+  assert.equal(app.profiles.find(a.token).progress.xp, base + 100);
 });
 test("Сервер: гибель сбрасывает остаток, выход не даёт опыта вне арены", async (t) => {
   const { app, session, connect, disconnect, at } = await setup(t),
@@ -327,25 +327,25 @@ test("Сервер: гибель сбрасывает остаток, выход
   await resume(ca);
   assert.equal(ca.p.lifeStartedAt, 120000);
   assert.equal(ca.p.mass, 20);
-  position(ca.p, 500, 200, 200);
-  position(cb.p, 1000, 2000, 1300);
-  activeTicks(app, at, 120000, 129000);
+  position(ca.p, 5000, 200, 200);
+  position(cb.p, 10000, 2000, 1300);
+  activeTicks(app, at, 120000, 150000);
   at(180000);
   app.tick();
-  assert.equal(app.profiles.find(a.token).progress.session.xp, 7);
+  assert.equal(app.profiles.find(a.token).progress.session.xp, 5);
   at(239000);
   await disconnect(ca);
   at(1000000);
   const again = await connect(a);
-  position(again.p, 500, 200, 200);
+  position(again.p, 5000, 200, 200);
   app.tick();
-  assert.equal(app.profiles.find(a.token).progress.xp, 7);
-  activeTicks(app, at, 1000000, 1009000);
+  assert.equal(app.profiles.find(a.token).progress.xp, 5);
+  activeTicks(app, at, 1000000, 1030000);
   at(1060000);
   app.tick();
-  assert.equal(app.profiles.find(a.token).progress.xp, 7);
+  assert.equal(app.profiles.find(a.token).progress.xp, 5);
   await disconnect(again);
-  assert.equal(app.profiles.find(a.token).progress.xp, 14);
+  assert.equal(app.profiles.find(a.token).progress.xp, 10);
 });
 test("Сервер: ограничение жертвы переживает перезаход, но повторное поглощение начисляет массу", async (t) => {
   const { app, session, connect, disconnect, at } = await setup(t),
@@ -415,8 +415,8 @@ for (const deathAt of [29950, 59950]) {
     position(cb.p, 100000, 3000, 1500);
     activeTicks(app, at, 0, deathAt - 50);
     const before = app.profiles.find(a.token).progress.session;
-    assert.equal(before.xp, deathAt < 30000 ? 0 : 52);
-    assert.equal(before.kills, deathAt < 30000 ? 0 : 4);
+    assert.equal(before.xp, deathAt < 30000 ? 0 : 50);
+    assert.equal(before.kills, deathAt < 30000 ? 0 : 7);
     position(cb.p, 100000, ca.p.x, ca.p.y);
     at(deathAt);
     app.tick();
@@ -434,10 +434,10 @@ test("Обрыв соединения без команды выхода так�
     a = await session(),
     ca = await connect(a);
   position(ca.p, 5000);
-  activeTicks(app, at, 0, 9000);
+  activeTicks(app, at, 0, 30000);
   at(60000);
   app.tick();
-  assert.equal(app.profiles.find(a.token).progress.session.xp, 7);
+  assert.equal(app.profiles.find(a.token).progress.session.xp, 5);
   const closed = once(
     [...app.wss.clients].find((ws) => ws.playerId === ca.p.id),
     "close",
@@ -447,11 +447,11 @@ test("Обрыв соединения без команды выхода так�
   await closed;
   const p = app.profiles.find(a.token);
   assert.equal(p.progress.session, null);
-  assert.equal(p.progress.xp, 7);
+  assert.equal(p.progress.xp, 5);
   assert.equal(p.progress.lastLife.durationSeconds, 75);
   at(180000);
   app.tick();
-  assert.equal(app.profiles.find(a.token).progress.xp, 7);
+  assert.equal(app.profiles.find(a.token).progress.xp, 5);
 });
 test("Сервер: повтор записи после сбоя не теряет и не удваивает событие поглощения", async (t) => {
   const { app, session, connect, disconnect, at } = await setup(t),
@@ -559,12 +559,12 @@ test("Ошибка записи итога/продолжения: нет ран
     b = await session(),
     ca = await connect(a),
     cb = await connect(b);
-  position(ca.p, 500, 200, 200);
-  position(cb.p, 1000, 2000, 1300);
-  activeTicks(app, at, 0, 9000);
+  position(ca.p, 5000, 200, 200);
+  position(cb.p, 10000, 2000, 1300);
+  activeTicks(app, at, 0, 30000);
   at(60000);
   app.tick();
-  assert.equal(app.profiles.find(a.token).progress.session.xp, 7);
+  assert.equal(app.profiles.find(a.token).progress.session.xp, 5);
   const save = app.profiles.save;
   app.profiles.save = () => {
     throw Error("TEST disk unavailable");
@@ -588,7 +588,7 @@ test("Ошибка записи итога/продолжения: нет ран
   app.profiles.save = save;
   app.tick();
   await settled();
-  assert.equal(app.profiles.find(a.token).progress.xp, 7);
+  assert.equal(app.profiles.find(a.token).progress.xp, 5);
   assert.equal(ca.messages.filter((m) => m.type === "lifeEnded").length, 1);
   app.profiles.save = () => {
     throw Error("TEST disk unavailable");
@@ -597,7 +597,7 @@ test("Ошибка записи итога/продолжения: нет ран
   assert.equal(ca.p.dead, true);
   app.profiles.save = save;
   assert.equal((await resume(ca)).ok, true);
-  assert.equal(app.profiles.find(a.token).progress.xp, 7);
+  assert.equal(app.profiles.find(a.token).progress.xp, 5);
   assert.equal(app.profiles.find(a.token).progress.session.xp, 0);
 });
 test("Сервер: успешное применение бустера сохраняет награду с расходом; повтор не увеличивает счётчик", async (t) => {
@@ -630,7 +630,7 @@ test("Подтверждённый выход: серверный итог, ак
   app.profiles.find(a.token).progress.xp = 495;
   const ca = await connect(a);
   position(ca.p, 5000);
-  activeTicks(app, at, 0, 15000);
+  activeTicks(app, at, 0, 30000);
   at(30000);
   app.tick();
   at(60001);
@@ -701,7 +701,7 @@ test("Выход при ошибке записи: итог только пос�
     a = await session(),
     ca = await connect(a);
   position(ca.p, 5000);
-  activeTicks(app, at, 0, 9000);
+  activeTicks(app, at, 0, 30000);
   at(60000);
   app.tick();
   activeTicks(app, at, 60000, 68950);
@@ -728,12 +728,12 @@ test("Выход при ошибке записи: итог только пос�
   app.tick();
   await settled();
   const result = ca.messages.filter((m) => m.type === "lifeEnded").at(-1).result;
-  assert.equal(result.earnedXp, 7);
+  assert.equal(result.earnedXp, 5);
   assert.equal(result.durationSeconds, 120);
   assert.equal(result.reason, "left");
   await disconnect(ca);
   app.tick();
-  assert.equal(app.profiles.find(a.token).progress.xp, 7);
+  assert.equal(app.profiles.find(a.token).progress.xp, 5);
 });
 
 test("Подтверждённый выход сохраняется после обрыва соединения во время сбоя диска", async (t) => {

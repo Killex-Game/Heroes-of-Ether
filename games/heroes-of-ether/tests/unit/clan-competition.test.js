@@ -233,7 +233,7 @@ test("Поражение: каждый текущий участник теря�
   const revision = f.p(idle).revision,
     wallet = structuredClone(f.p(loser).wallet);
   f.set("2026-10-19T21:00:00Z");
-  assert.equal(f.p(loser).greatness, 47); // -5 за поражение, +2 за второе место, +30 за «Топ» с Premium; фиксированная награда без величия.
+  assert.equal(f.p(loser).greatness, 37); // -5 за поражение, +2 за второе место, +20 за «Топ» с Premium; фиксированная награда без величия.
   assert.equal(f.p(loser).regalia["kills-2"].count, 1);
   for (const u of [idle, recruit]) assert.equal(f.p(u).greatness, 15);
   for (const u of [poor, empty]) assert.equal(f.p(u).greatness, 0);

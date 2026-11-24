@@ -256,12 +256,15 @@ function act(p, manager, input, at, random = randomInt) {
     if (chest.reward.fragmentId === undefined)
       chest.reward.fragmentId = drawFragment(state(p, chest.runId), random);
     // Старый уже показанный состав сохраняется; новый фиксируется перед показом.
-    chest.reward.multiplier ??= chest.prepared ? 1 : bonuses.multiplier(p, at);
+    if (chest.reward.multiplier === undefined) {
+      chest.reward.multiplier = chest.prepared ? 1 : bonuses.multiplier(p, at);
+      if (!chest.prepared) chest.reward.greatnessMultiplier = bonuses.greatnessMultiplier(p, at);
+    }
     if (input.action === "prepare") {
       chest.prepared = true;
       return;
     }
-    const reward = bonuses.scale({ ...chest.reward, greatness: 5 }, chest.reward.multiplier);
+    const reward = bonuses.scale({ ...chest.reward, greatness: 5 }, chest.reward.multiplier, chest.reward.greatnessMultiplier);
     for (const currency of ["coins", "crystals"])
       p.wallet[currency] = add(p.wallet[currency], reward[currency]);
     p.greatness = add(p.greatness, reward.greatness);
@@ -437,6 +440,7 @@ function view(p, manager, at, config, pictures) {
       bonuses.scale(
         { coins: [100, 150], crystals: [10, 20], greatness: 5, boosterCount: 3 },
         bonuses.multiplier(p, at),
+        bonuses.greatnessMultiplier(p, at),
       ),
       p,
       config,
@@ -450,7 +454,7 @@ function view(p, manager, at, config, pictures) {
           ? bonuses.preview(
               {
                 id: c.id,
-                ...bonuses.scale({ ...c.reward, greatness: 5 }, c.reward.multiplier ?? 1),
+                ...bonuses.scale({ ...c.reward, greatness: 5 }, c.reward.multiplier ?? 1, c.reward.greatnessMultiplier ?? c.reward.multiplier ?? 1),
                 items: { easter_egg: (c.reward.boosterCount ?? 1) * (c.reward.multiplier ?? 1) },
                 fragment:
                   c.reward.fragmentId === undefined
@@ -580,6 +584,7 @@ function validate(p) {
       !treasury.validStorage(c) ||
       !object(c.reward) ||
       (c.reward.multiplier !== undefined && ![1, 2, 3].includes(c.reward.multiplier)) ||
+      (c.reward.greatnessMultiplier !== undefined && (![1, 2].includes(c.reward.greatnessMultiplier) || c.reward.multiplier === undefined)) ||
       !integer(c.reward.coins) ||
       c.reward.coins < 100 ||
       c.reward.coins > (c.reward.version >= 2 ? 150 : 159) ||

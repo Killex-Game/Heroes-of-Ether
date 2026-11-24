@@ -5,13 +5,14 @@ const { BoosterError } = require("../boosters/booster-catalog");
 
 // Общая политика только наградных сундуков. Покупные наборы и акции сюда не входят.
 const multiplier = (p, at) => accounts.benefits(p, at).chestMultiplier;
-function scale(base, factor) {
+function scale(base, factor, greatnessFactor = factor) {
+  if (![1, 2, 3, 4].includes(greatnessFactor)) throw new BoosterError("Неверный множитель величия.");
   if (![1, 2, 3, 4].includes(factor)) throw new BoosterError("Неверный множитель сундука.");
-  const amount = (n) => {
-    if (Array.isArray(n)) return n.map(amount);
-    if (!Number.isSafeInteger(n) || n < 0 || !Number.isSafeInteger(n * factor))
+  const amount = (n, multiplier = factor) => {
+    if (Array.isArray(n)) return n.map(value => amount(value, multiplier));
+    if (!Number.isSafeInteger(n) || n < 0 || !Number.isSafeInteger(n * multiplier))
       throw new BoosterError("Превышен допустимый размер награды.", 409);
-    return n * factor;
+    return n * multiplier;
   };
   const result = structuredClone(base);
   for (const key of [
@@ -26,6 +27,7 @@ function scale(base, factor) {
     "rare",
   ])
     if (base[key] !== undefined) result[key] = amount(base[key]);
+  if (base.greatness !== undefined) result.greatness = amount(base.greatness, greatnessFactor);
   if (base.items)
     result.items = Object.fromEntries(Object.entries(base.items).map(([id, n]) => [id, amount(n)]));
   return result;
@@ -44,4 +46,5 @@ function opened(p, config, at, manager, source) {
   lite.grantTickets(p, ticketBonus(p, config, at));
   require("../events/black-friday").rewardChest(p, manager, at, source);
 }
-module.exports = { multiplier, scale, ticketBonus, preview, opened };
+const greatnessMultiplier = (p, at) => accounts.benefits(p, at).greatnessMultiplier;
+module.exports = { multiplier, greatnessMultiplier, scale, ticketBonus, preview, opened };

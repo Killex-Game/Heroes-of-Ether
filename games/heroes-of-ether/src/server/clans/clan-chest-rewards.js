@@ -171,7 +171,7 @@ function act(p, action, id, at) {
       multiplier = bonuses.multiplier(p, at);
     item.reward = {
       id: item.id,
-      version: 4,
+      version: 5,
       multiplier,
       greatnessBonus: benefits.clanChestGreatnessBonus,
       coins: (spec.coins[0] + randomInt(spec.coins[1] - spec.coins[0] + 1)) * multiplier,
@@ -203,7 +203,7 @@ function rebalanceAccountBonuses(p) {
   validate(p);
   for (const item of p.clanChests?.items || []) {
     const reward = item.reward;
-    if (!reward || [2, 3, 4].includes(reward.version)) continue;
+    if (!reward || [2, 3, 4, 5].includes(reward.version)) continue;
     const oldMultiplier = reward.multiplier;
     const bonus =
       oldMultiplier === 4
@@ -283,9 +283,13 @@ function validate(p) {
     if (x.sourceClanId !== undefined && typeof x.sourceClanId !== "string") broken();
     if (x.reward) {
       const r = x.reward,
-        s = r.version === 4 ? CHESTS[x.tier] : { ...CHESTS[x.tier], ...LEGACY_RANGES[x.tier] },
+        s = [4, 5].includes(r.version) ? CHESTS[x.tier] : { ...CHESTS[x.tier], ...LEGACY_RANGES[x.tier] },
         m = r.multiplier;
-      const validGreatness = [2, 3, 4].includes(r.version)
+      const validGreatness = r.version === 5
+        ? ((m === 1 && [0, 10].includes(r.greatnessBonus)) ||
+            (m === 2 && [5, 15].includes(r.greatnessBonus))) &&
+          r.greatness === s.greatness + r.greatnessBonus && r.greatnessMultiplier === undefined
+        : [2, 3, 4].includes(r.version)
         ? [1, 2, 3].includes(m) &&
           (m === 1
             ? r.greatnessBonus === 0

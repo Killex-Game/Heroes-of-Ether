@@ -1,0 +1,8 @@
+{
+  "tool": "image_gen",
+  "source": "pets-crest.png",
+  "reference": "public/assets/pets/levels-v1/drakosha-0.webp",
+  "prompt": "Edit only Drakosha head crest in the pet banner. Three small magenta dorsal fins follow the middle line from forehead to nape and sweep backward (left in this view). Preserve one pair of gold horns, characters, positive expressions and composition.",
+  "before": "f6f3cc744970720da9ac437ede7083786f55cc893987c637131de46a5cd8bee8",
+  "after": "bb8913f9d68399779017b5849fc4b54f0c5aed1628b4bc08f9b9c884cfa04edf"
+}

@@ -123,7 +123,7 @@ test("Все 24 продукта: полная выдача пакета с пр
       assert.equal(result.profile.roulette.lite.active, true);
       assert.deepEqual(result.profile.wallet, before);
     } else {
-      assert.equal(result.profile.account[product.kind + "Until"], NOW + accounts.WEEK);
+      assert.equal(result.profile.account[product.kind + "Until"], NOW + product.days * 86400000);
       assert.equal(store.find(token).activity.values[product.kind], 1);
     }
     const saved = structuredClone(store.find(token));
@@ -195,12 +195,12 @@ test("VIP и Premium: продление остатка, новый срок п�
     store.confirmMockPurchase(token, order("account:" + kind));
     const input = order("account:" + kind);
     store.confirmMockPurchase(token, input);
-    assert.equal(store.find(token).account[kind + "Until"], NOW + 2 * accounts.WEEK);
+    assert.equal(store.find(token).account[kind + "Until"], NOW + 2 * catalog.get("account:" + kind).days * 86400000);
     const restored = new ProfileStore({ filePath, now: () => now });
     assert.equal(restored.confirmMockPurchase(token, input).replay, true);
     assert.equal(restored.find(token).activity.values[kind], 2);
   }
-  now += 3 * accounts.WEEK;
+  now += 5 * accounts.WEEK;
   const result = store.confirmMockPurchase(token, order("account:vip"));
   assert.equal(result.profile.account.vipUntil, now + accounts.WEEK);
   const currencyOrder = order("crystals:vein");

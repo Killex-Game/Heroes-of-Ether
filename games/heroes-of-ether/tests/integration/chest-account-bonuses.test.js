@@ -14,8 +14,8 @@ const NOW = Date.UTC(2026, 9, 21, 12);
 const statuses = [
   ["обычный", false, false, 1, 0],
   ["VIP", true, false, 2, 5],
-  ["Premium", false, true, 3, 10],
-  ["оба", true, true, 3, 15],
+  ["Premium", false, true, 1, 10],
+  ["оба", true, true, 2, 15],
 ];
 function fixture(vip, premium, filePath = null) {
   let time = NOW;
@@ -129,6 +129,13 @@ test("Сохранения v9: старые подготовленные сун�
     f.act("claim", id);
     f.act("prepare", id);
   }
+  // Explicit historical fixtures: the old currency factors were 1/2/3/3.
+  for (const [index, item] of f.p().clanChests.items.entries()) {
+    const r=item.reward, oldFactor=[1,2,3,3][index], ratio=oldFactor/r.multiplier;
+    for (const key of ["coins","crystals"]) r[key]*=ratio;
+    for (const key of Object.keys(r.items)) r.items[key]*=ratio;
+    r.multiplier=oldFactor;
+  }
   const expectedClan = structuredClone(f.p().clanChests.items);
   // This fixture emulates the older high chest, whose coins started at 300.
   for (const item of expectedClan) {
@@ -185,8 +192,8 @@ test("Фиксированные и недельные призы не счит�
   assert.equal(f.p().greatness, 0);
   const before = structuredClone(f.p());
   chests.award(f.p(), { coins: 100, crystals: 50, bucks: 50, greatness: 5 }, NOW);
-  assert.equal(f.p().wallet.coins - before.wallet.coins, 400);
-  assert.equal(f.p().greatness - before.greatness, 15);
+  assert.equal(f.p().wallet.coins - before.wallet.coins, 200);
+  assert.equal(f.p().greatness - before.greatness, 10);
 });
 
 test("Баланс сундуков v4: старые подготовленные v3 сохраняются и выдаются без повторного розыгрыша", (t) => {
@@ -198,7 +205,7 @@ test("Баланс сундуков v4: старые подготовленны�
     f.act("claim", id);
     f.act("prepare", id);
     const r = f.p().clanChests.items.find(x => x.id === id).reward;
-    assert.equal(r.version, 4);
+    assert.equal(r.version, 5);
     r.version = 3;
     r.coins = legacyCoins[tier];
   }
@@ -221,6 +228,9 @@ test("Подготовленный клановый сундук v2: бонус 
   f.act("claim", id);
   f.act("prepare", id);
   const r = f.p().clanChests.items[0].reward;
+  for (const key of ["coins","crystals"]) r[key]=r[key]/r.multiplier*3;
+  for (const key of Object.keys(r.items)) r.items[key]=r.items[key]/r.multiplier*3;
+  r.multiplier=3;
   r.version = 2;
   r.coins = 450 * r.multiplier;
   r.greatnessBonus = 30;

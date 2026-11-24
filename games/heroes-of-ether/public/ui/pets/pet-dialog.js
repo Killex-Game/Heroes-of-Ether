@@ -446,8 +446,8 @@
         }
         const premium = el("article", "pet-premium");
         premium.append(
-          img("assets/accounts/premium.png?art=20261123-interface-art"),
-          el("h4", "", "Вместе с Premium"),
+          img("assets/accounts/vip.png?art=20261123-interface-art"),
+          el("h4", "", "Вместе с VIP"),
           keyDescription("p", def.premium),
         );
         root.append(premium);

@@ -286,19 +286,19 @@ test("v11 migration adds empty pets without changing property; malformed v12 pet
   fs.writeFileSync(file, JSON.stringify(data));
   assert.throws(() => new ProfileStore({ filePath: file }), /питомцев/);
 });
-function arenaFixture(id = "manya", games = 5000, premium = false) {
+function arenaFixture(id = "manya", games = 5000, vip = false) {
   const f = fixture();
   f.action("buy", id);
   f.get().pets.owned[id].games = games;
-  if (premium)
+  if (vip)
     f.get().account = {
       vipUntil: 0,
-      premiumUntil: INITIAL + 10000000,
+      vipUntil: INITIAL + 10000000,
       dailyDay: null,
       dailyAmount: 0,
     };
   const arena = new Arena({ etherCount: 0 }),
-    p = arena.addPlayer(0, "sender", { premium });
+    p = arena.addPlayer(0, "sender", { vip });
   p.level = 100;
   p.protectedUntil = 0;
   Object.assign(p, { x: 500, y: 500, targetX: 500, targetY: 500 });
@@ -465,14 +465,14 @@ test("Маня: обучение получает 5, уровни получаю
     [2500, 10],
     [5000, 11],
   ]) {
-    for (const premium of [false, true]) {
-      const { p } = arenaFixture("manya", games, premium);
+    for (const vip of [false, true]) {
+      const { p } = arenaFixture("manya", games, vip);
       assert.deepEqual(p.pet.stock, { fire: count, claw: count, glove: count, carrot: 0 });
     }
   }
 });
 
-test("Маня с Premium: ровно одна порция каждого вида за 60 активных секунд, без дублей", () => {
+test("Маня с VIP: ровно одна порция каждого вида за 60 активных секунд, без дублей", () => {
   const { arena, p } = arenaFixture("manya", 0, true);
   for (const at of [29999, 30000, 59999]) {
     pets.tick(arena, p, at);
@@ -483,17 +483,17 @@ test("Маня с Premium: ровно одна порция каждого ви�
   pets.tick(arena, p, 180000);
   assert.deepEqual(p.pet.stock, { fire: 8, claw: 8, glove: 8, carrot: 0 });
   pets.tick(arena, p, 180000);
-  p.account.premium = false;
+  p.account.vip = false;
   pets.tick(arena, p, 240000);
   assert.deepEqual(p.pet.stock, { fire: 8, claw: 8, glove: 8, carrot: 0 });
-  p.account.premium = true;
+  p.account.vip = true;
   pets.tick(arena, p, 299999);
   assert.equal(p.pet.stock.fire, 8);
   pets.tick(arena, p, 300000);
   assert.deepEqual(p.pet.stock, { fire: 9, claw: 9, glove: 9, carrot: 0 });
 });
 
-test("Premium: истощённая Маня не выдаёт запас, остальные питомцы сохраняют интервал 30 секунд", () => {
+test("VIP: истощённая Маня не выдаёт запас, остальные питомцы сохраняют интервал 30 секунд", () => {
   const { arena, p } = arenaFixture("manya", 0, true);
   p.pet.vitalityMs = 40000;
   pets.tick(arena, p, 60000);
@@ -516,10 +516,10 @@ test("Premium: истощённая Маня не выдаёт запас, ос�
   }
 });
 
-test("periodic shield/mass, Premium generation, exhaustion and passive boosts", () => {
+test("periodic shield/mass, VIP generation, exhaustion and passive boosts", () => {
   const { arena, p } = arenaFixture("manya", 5000, true),
     mass = p.mass;
-  p.account.premium = true;
+  p.account.vip = true;
   pets.tick(arena, p, 10000);
   assert.equal(p.mass, mass);
   assert.equal(arena.hasEffect(p, "shield", 10000), false);
@@ -540,7 +540,7 @@ test("periodic shield/mass, Premium generation, exhaustion and passive boosts", 
   pets.tick(arena, p, 60000);
   assert.equal(p.mass, mass + 4500);
   assert.deepEqual(p.pet.stock, { fire: 12, claw: 12, glove: 12, carrot: 0 });
-  p.account.premium = false;
+  p.account.vip = false;
   pets.tick(arena, p, 90000);
   assert.equal(p.pet.stock.fire, 12);
   assert.equal(pets.positiveFactor(p), 1);
@@ -744,7 +744,7 @@ test("R drains claws before gloves, removes protection then divides the struck b
     [500, 500],
   );
 });
-test("Manya reduces enemy burn/poison, Premium boosts food; ordinary players keep original damage", () => {
+test("Manya reduces enemy burn/poison, VIP boosts food; ordinary players keep original damage", () => {
   const { arena, p, target } = arenaFixture();
   p.mass = 1000;
   p.radius = radiusForMass(1000);
@@ -755,9 +755,9 @@ test("Manya reduces enemy burn/poison, Premium boosts food; ordinary players kee
   arena.boosterEffects.burn(target, target, 0);
   assert.equal(target.mass, 500);
 });
-test("Zaya Premium supplies R every 30 seconds; replay does not spend or grant twice", () => {
+test("Zaya VIP supplies R every 30 seconds; replay does not spend or grant twice", () => {
   const { arena, p, get } = arenaFixture("zaya", 0, true);
-  p.account.premium = true;
+  p.account.vip = true;
   pets.tick(arena, p, 30000);
   assert.equal(p.pet.stock.carrot, 1);
   const before = p.mass;

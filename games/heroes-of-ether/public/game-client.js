@@ -169,6 +169,15 @@
   const accessoryView = new window.KillexAccessoryView.Renderer();
   const emoteView = new window.KillexEmoteView.Renderer();
   let lastEmoteAt = -Infinity;
+  function sendEmote(index) {
+    if (phase !== "arena" || document.hidden || !ui.settings.hidden || lifeResult ||
+        document.querySelector("dialog[open]") || !window.KillexEmotes.items.some(item => item.id === index)) return;
+    const me = getMe(), at = performance.now();
+    if (!me || me.dead || me.departure || !Number.isSafeInteger(me.spawnSerial)) return;
+    if (at - lastEmoteAt >= window.KillexEmotes.COOLDOWN_MS &&
+        send({ type: "emote", index, spawnSerial: me.spawnSerial })) lastEmoteAt = at;
+  }
+  window.KillexEmoteHotkeys?.setActivate(sendEmote);
   const shieldView = new window.KillexShields.Renderer();
 
   function cleanName(value) {
@@ -1323,11 +1332,8 @@
     if (emoteIndex && phase === "arena" && !document.hidden && ui.settings.hidden &&
         !document.querySelector("dialog[open]") &&
         !event.target?.closest("input, textarea, select, [contenteditable], button, a, [role='button']")) {
-      const me = getMe(), at = performance.now();
-      if (!me || me.dead || me.departure || !Number.isSafeInteger(me.spawnSerial)) return;
       event.preventDefault();
-      if (at - lastEmoteAt >= window.KillexEmotes.COOLDOWN_MS &&
-          send({ type: "emote", index: emoteIndex, spawnSerial: me.spawnSerial })) lastEmoteAt = at;
+      sendEmote(emoteIndex);
       return;
     }
     if (event.key === "Enter" && phase === "arena" && !event.defaultPrevented &&

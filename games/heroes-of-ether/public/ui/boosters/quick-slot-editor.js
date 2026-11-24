@@ -37,7 +37,7 @@
         control.type = "button";
         control.dataset.loadoutSlot = String(index);
         control.dataset.locked = String(locked);
-        if (index >= 4) control.dataset.accountSlot = index === 4 ? "vip" : "premium";
+        if (index === 5) control.dataset.accountSlot = "vip";
         control.dataset.tier = item?.tier || "common";
         window.KillexControls.state(control, !owner.ready || !!owner.slotSaving, !owner.ready);
         control.draggable = !!item && !locked && !control.disabled && !owner.purchasesBlocked();
@@ -87,7 +87,7 @@
             el(
               "span",
               "loadout-lock",
-              index === 3 ? "12 ур." : index === 4 ? "VIP / P" : "Premium",
+              index === 3 ? "12 ур." : "VIP",
             ),
           );
         const hint = locked ? "Открывается с " + unlock : (item ? item.name + " - " : "") + action;

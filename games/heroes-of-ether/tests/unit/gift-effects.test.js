@@ -222,14 +222,14 @@ test("Опыт подарков: 30-секундные пакеты, компе�
     const e = accrual.sample(actor, at);
     if (e) progression.applyEvent(p, e, at);
   }
-  assert.equal(p.progress.session.xp, 191);
-  assert.equal(p.progress.session.kills, 9);
+  assert.equal(p.progress.session.xp, 186);
+  assert.equal(p.progress.session.kills, 18);
   for (let at = 90050; at <= 95000; at += 50) assert.equal(accrual.sample(actor, at), null);
   accrual.sample(actor, 95000, true);
   assert.equal(actor.massAccrual.xpUnits, 0);
-  assert.equal(p.progress.session.xp, 191);
+  assert.equal(p.progress.session.xp, 186);
   for (let i = 0; i < 4; i++)
     progression.applyEvent(p, { type: "absorbed", victimProfileId: "v" + i, gain: 20 }, 95001 + i);
-  assert.equal(p.progress.session.xp, 206, "поглощения: четыре раза по 3 опыта с +25%");
+  assert.equal(p.progress.session.xp, 201, "поглощения: четыре раза по 3 опыта с +25%");
   progression.validateProgress(p);
 });

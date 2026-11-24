@@ -39,10 +39,10 @@ function fixture() {
     },
   };
 }
-test("Слоты: 4 базовых, 5 с VIP, 6 с Premium, без сложения статусов", () => {
-  assert.equal(loadout.count(), 4);
-  assert.equal(loadout.count({ vip: true }), 5);
-  assert.equal(loadout.count({ premium: true }), 6);
+test("Слоты: 5 базовых, 6 с VIP, 5 с Premium, без сложения статусов", () => {
+  assert.equal(loadout.count(), 5);
+  assert.equal(loadout.count({ vip: true }), 6);
+  assert.equal(loadout.count({ premium: true }), 5);
   assert.equal(loadout.count({ vip: true, premium: true }), 6);
   assert.deepEqual(loadout.keys, ["A", "S", "D", "F", "G", "H"]);
   assert.equal(loadout.keyIndex("Digit1"), -1);
@@ -88,14 +88,14 @@ test("Сервер проверяет владение, уникальность
   for (const kind of ["vip", "premium"]) {
     const f = fixture();
     f.save(ids.slice(0, 4));
-    assert.throws(() => f.save(ids), /VIP или Premium/);
+    assert.throws(() => f.save(ids), /VIP/);
     f.activate(kind);
-    const allowed = kind === "vip" ? 5 : 6;
+    const allowed = kind === "vip" ? 6 : 5;
     f.save(ids.slice(0, allowed));
     assert.deepEqual(f.profile().quickSlots, ids.slice(0, allowed));
-    if (kind === "vip") {
-      assert.throws(() => f.save(ids.slice(0, 6)), /Premium/);
-      assert.throws(() => f.save(ids), /Premium/);
+    if (kind === "premium") {
+      assert.throws(() => f.save(ids.slice(0, 6)), /VIP/);
+      assert.throws(() => f.save(ids), /VIP/);
     }
     assert.throws(() => f.save([...ids, "web"]), /шести/);
     assert.throws(() => f.save([...ids.slice(0, 5), "candy"]), /разных/);
@@ -104,37 +104,37 @@ test("Сервер проверяет владение, уникальность
 });
 test("Истечение сохраняет выбор и предметы; редактирование обычных слотов не разблокирует дополнительные", () => {
   const f = fixture();
-  f.activate("premium");
+  f.activate("vip");
   f.save(ids);
   const inventory = structuredClone(f.profile().inventory);
   f.expire();
-  assert.equal(loadout.count(f.store.view(f.profile()).account), 4);
+  assert.equal(loadout.count(f.store.view(f.profile()).account), 5);
   assert.deepEqual(f.profile().quickSlots, ids);
   assert.deepEqual(f.profile().inventory, inventory);
   f.save([null, ...ids.slice(1)]);
   assert.throws(
-    () => f.save([null, ...ids.slice(1, 4), "candy", ...ids.slice(5)]),
-    /VIP или Premium/,
+    () => f.save([null, ...ids.slice(1, 5), "candy"]),
+    /VIP/,
   );
   f.store.buy(f.token, "web", randomUUID());
   assert.equal(f.profile().quickSlots[0], "web");
   assert.deepEqual(f.profile().quickSlots.slice(4), ids.slice(4));
-  f.activate("premium");
+  f.activate("vip");
   assert.equal(loadout.count(f.store.view(f.profile()).account), 6);
   assert.deepEqual(f.profile().quickSlots.slice(4), ids.slice(4));
 });
 
-test("Перезапуск сохраняет шесть слотов даже после истечения Premium; седьмой и дубли отвергаются", (t) => {
+test("Перезапуск сохраняет шесть слотов даже после истечения VIP; седьмой и дубли отвергаются", (t) => {
   const filePath = path.join(temporary(t, "loadout-disk"), "profiles.json"),
     f = fixture();
-  f.activate("premium");
+  f.activate("vip");
   f.save(ids);
   fs.writeFileSync(filePath, JSON.stringify(f.store.data));
   for (const now of [5000, 5000 + accounts.WEEK]) {
     const disk = new ProfileStore({ filePath, now: () => now });
     assert.deepEqual(disk.find(f.token).quickSlots, ids);
     assert.deepEqual(disk.find(f.token).inventory, f.profile().inventory);
-    assert.equal(loadout.count(disk.view(disk.find(f.token)).account), now === 5000 ? 6 : 4);
+    assert.equal(loadout.count(disk.view(disk.find(f.token)).account), now === 5000 ? 6 : 5);
   }
   for (const invalid of [
     [...ids, "web", "stone"],
@@ -149,19 +149,19 @@ test("Перезапуск сохраняет шесть слотов даже �
   }
 });
 
-test("Истечение Premium оставляет 5 слотов VIP, сохраняя предметы в закрытом", () => {
+test("Истечение VIP оставляет 5 слотов Premium, сохраняя предметы в закрытом", () => {
   const f = fixture();
-  f.activate("premium");
+  f.activate("vip");
   f.save(ids);
   f.profile().inventory.golden_shield = 2;
   const inventory = structuredClone(f.profile().inventory);
   f.expire();
-  f.activate("vip");
+  f.activate("premium");
   assert.equal(loadout.count(f.store.view(f.profile()).account), 5);
   assert.deepEqual(f.profile().quickSlots, ids);
   f.save([ids[1], ids[0], ...ids.slice(2)]);
   assert.deepEqual(f.profile().quickSlots.slice(5), ids.slice(5));
   assert.equal(loadout.move(f.profile().quickSlots, 5, 0, 5), null);
-  assert.throws(() => f.save([...ids.slice(0, 5), "golden_shield"]), /Premium/);
+  assert.throws(() => f.save([...ids.slice(0, 5), "golden_shield"]), /VIP/);
   assert.deepEqual(f.profile().inventory, inventory);
 });

@@ -200,7 +200,7 @@
                 ? "Валюта зачислена на баланс, все бустеры добавлены в инвентарь."
                 : this.product.type === "currency"
                   ? `${this.description.textContent} зачислено на баланс.`
-                  : `${this.product.name}: добавлено 7 дней. Аватары доступны в разделе «Скины» → «Наборы».`;
+                  : `${this.product.name}: добавлено ${this.product.days} дней. Аватары доступны в разделе «Скины» → «Наборы».`;
         this.cancelButton.hidden = true;
         this.confirmButton.textContent = "Готово";
         if (this.product.type === "currency" && data.reward && this.owner.showReward) {

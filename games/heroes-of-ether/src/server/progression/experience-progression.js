@@ -395,6 +395,7 @@ function applyEvent(p, event, at) {
     )
       return;
     if (
+      (event.ruleVersion !== undefined && event.ruleVersion !== 2) ||
       !integer(event.xpUnits) ||
       !integer(event.killUnits) ||
       (event.baseXpUnits !== undefined &&
@@ -402,17 +403,21 @@ function applyEvent(p, event, at) {
     )
       throw Error("Неверное накопление за массу.");
     const denominator = massAccrual.XP_DENOMINATOR * 100;
+    const currentRule = event.ruleVersion === 2;
     const xpUnits = add(
-      session.massXpRemainder || 0,
+      currentRule ? 0 : session.massXpRemainder || 0,
       event.xpUnits * (100 + accessories.bonus(accessoryAccess.outfit(p), "xp")) +
         (event.baseXpUnits || 0) * accessories.bonus(accessoryAccess.outfit(p), "massXp"),
     );
-    const killUnits = add(session.massKillRemainder || 0, event.killUnits);
-    const xp = Math.floor(xpUnits / denominator),
-      kills = Math.floor(killUnits / massAccrual.KILL_DENOMINATOR);
+    const killUnits = add(currentRule ? 0 : session.massKillRemainder || 0, event.killUnits);
+    const round = currentRule ? massAccrual.roundRatio : (n, d) => Math.floor(n / d);
+    const xp = round(xpUnits, denominator),
+      kills = round(killUnits, massAccrual.KILL_DENOMINATOR);
     session.massAccrualSequence = event.sequence;
-    session.massXpRemainder = xpUnits % denominator;
-    session.massKillRemainder = killUnits % massAccrual.KILL_DENOMINATOR;
+    if (!currentRule) {
+      session.massXpRemainder = xpUnits % denominator;
+      session.massKillRemainder = killUnits % massAccrual.KILL_DENOMINATOR;
+    }
     // Бонусные киллы входят в награду за удержание, не умножают этот же опыт повторно.
     awardKills(p, kills, 0, at);
     const remaining = Math.max(0, s.arenaXpTarget - s.xp - session.xp);

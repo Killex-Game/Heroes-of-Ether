@@ -355,9 +355,12 @@ function act(p, input, at) {
     }
     if (base.stored === false)
       throw new BoosterError("Освободи место: открой сундук в Сокровищнице.", 409);
-    base.multiplier ??= bonuses.multiplier(p, at);
+    if (base.multiplier === undefined) {
+      base.multiplier = bonuses.multiplier(p, at);
+      base.greatnessMultiplier = bonuses.greatnessMultiplier(p, at);
+    }
     if (input.action === "prepare") return;
-    const reward = bonuses.scale(base, base.multiplier);
+    const reward = bonuses.scale(base, base.multiplier, base.greatnessMultiplier);
     for (const [id, count] of Object.entries(reward.items))
       p.inventory[id] = add(p.inventory[id] || 0, count);
     for (const currency of ["coins", "crystals"])
@@ -403,7 +406,7 @@ function view(p, at, event, config, manager) {
       questId: row.questId,
       chest: bonuses.preview(
         {
-          ...bonuses.scale(CHESTS[byId.get(row.questId).tier], bonuses.multiplier(p, at)),
+          ...bonuses.scale(CHESTS[byId.get(row.questId).tier], bonuses.multiplier(p, at), bonuses.greatnessMultiplier(p, at)),
           tickets: event ? CHESTS[byId.get(row.questId).tier].tickets : 0,
         },
         p,
@@ -418,7 +421,7 @@ function view(p, at, event, config, manager) {
       .filter((reward) => !treasury.expired(reward, at))
       .map((reward) => ({
         ...bonuses.preview(
-          bonuses.scale(reward, reward.multiplier ?? bonuses.multiplier(p, at)),
+          bonuses.scale(reward, reward.multiplier ?? bonuses.multiplier(p, at), reward.greatnessMultiplier ?? reward.multiplier ?? bonuses.greatnessMultiplier(p, at)),
           p,
           config,
           at,
@@ -490,6 +493,7 @@ function validate(p, previousSeen, previousBuckets) {
         reward.receivedAt !== null &&
         !integer(reward.receivedAt)) ||
       (reward.multiplier !== undefined && ![1, 2, 3].includes(reward.multiplier)) ||
+      (reward.greatnessMultiplier !== undefined && (![1, 2].includes(reward.greatnessMultiplier) || reward.multiplier === undefined)) ||
       !reward.items ||
       typeof reward.items !== "object" ||
       Array.isArray(reward.items) ||

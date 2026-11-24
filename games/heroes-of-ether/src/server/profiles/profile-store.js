@@ -1517,7 +1517,7 @@ class ProfileStore {
           )
         )
           throw new BoosterError(
-            "Четвёртый слот открывается с 12 уровня, пятый - с VIP или Premium, шестой - с Premium.",
+            "Слот F открывается с 12 уровня, слот H доступен с VIP.",
             409,
           );
         // Имя меняется только отдельной подтверждённой операцией личных данных.
@@ -1612,7 +1612,7 @@ class ProfileStore {
           const at = this.now();
           p.account ||= accounts.fresh();
           const key = product.kind + "Until";
-          const until = Math.max(at, p.account[key]) + accounts.WEEK;
+          const until = Math.max(at, p.account[key]) + product.days * 86400000;
           const weeks = p.activity.values[product.kind] + 1;
           if (
             !Number.isSafeInteger(until) ||
@@ -1714,7 +1714,7 @@ class ProfileStore {
             "Этот статус уже активен. Повторное продление пока недоступно.",
             409,
           );
-        p.account[key] = at + accounts.WEEK;
+        p.account[key] = at + virtualProducts.get(`account:${input.kind}`).days * 86400000;
         const weeks = p.activity.values[input.kind] + 1;
         if (!Number.isSafeInteger(weeks))
           throw new BoosterError("Превышен допустимый срок статуса.");

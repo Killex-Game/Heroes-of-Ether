@@ -63,7 +63,7 @@
       product.click();
     }
   };
-  events.style.backgroundImage = 'url("assets/banners/pets.webp?art=20261123-interface-art")';
+  events.style.backgroundImage = 'url("assets/banners/pets.webp?art=20261124-status-natural")';
   label(events, "Предложения", "Питомцы", "Выбери верного друга для арены");
   const offers = document.querySelector(".promo-offers");
   const eventBanners = {
@@ -113,7 +113,10 @@
     const img = new Image();
     img.src = "assets/accounts/" + tier + ".png";
     img.alt = tier === "vip" ? "VIP" : "Premium";
-    icons.append(img);
+    const box = document.createElement("span");
+    box.className = "status-icon " + tier;
+    box.append(img);
+    icons.append(box);
   }
   const accountLabel = document.createElement("span");
   accountLabel.textContent = "Статусы";

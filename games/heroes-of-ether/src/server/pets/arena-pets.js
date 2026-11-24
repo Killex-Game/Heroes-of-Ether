@@ -34,7 +34,7 @@ function start(player, profile, now, wallNow) {
     sequence: 0,
     readyAt: {},
     receipts: new Map(),
-    premium: benefits(profile, wallNow).premium,
+    vip: benefits(profile, wallNow).vip,
   };
 }
 function active(p) {
@@ -57,7 +57,7 @@ function fireFraction(p) {
   return active(p) && p.pet.stats.firePercent > 0 ? p.pet.stats.firePercent / 100 : 0.5;
 }
 function positiveFactor(p) {
-  return active(p) && p.pet.id === "manya" && p.account?.premium ? 1.2 : 1;
+  return active(p) && p.pet.id === "manya" && p.account?.vip ? 1.2 : 1;
 }
 function gainMassEvenly(arena, p, amount, now) {
   const { massLimitForLevel } = require("../arena/arena-simulation"),
@@ -96,7 +96,7 @@ function tick(arena, p, now) {
     if (applied) alchemy.commit(p, gift, now);
     pet.nextGiftMs += pet.stats.intervalMs;
   }
-  if (p.account?.premium) pet.premiumMs += elapsed;
+  if (p.account?.vip) pet.premiumMs += elapsed;
   while (pet.nextPremiumMs <= pet.premiumMs) {
     const kinds =
       pet.id === "zaya"

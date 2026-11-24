@@ -1297,8 +1297,8 @@ class Arena {
     this.hazards?.collect(now);
     this.alchemyField.tick(now);
     this.collectEther(now);
-    // Удержание массы считаем по наблюдавшимся шагам, до поглощений текущего тика.
-    const playerCount = this.activePlayerCount();
+    // В населении комнаты считаем живых людей, без ботов и оставленных оболочек.
+    const playerCount = this.activeHumanCount();
     for (const p of this.players.values()) {
       if (p.dead || p.isRemnant) continue;
       this.reportMassPeak(p, now);
@@ -1326,7 +1326,13 @@ class Arena {
     for (const p of this.players.values()) if (!p.dead && !p.isRemnant) count++;
     return count;
   }
-  accrueMass(p, now, force = false, playerCount = this.activePlayerCount()) {
+  activeHumanCount() {
+    let count = 0;
+    for (const p of this.players.values())
+      if (!p.dead && !p.isRemnant && !p.departure && !p.isTestBot) count++;
+    return count;
+  }
+  accrueMass(p, now, force = false, playerCount = this.activeHumanCount()) {
     const event = massAccrual.sample(p, now, force, playerCount);
     if (event) this.progressEvents.push(event);
   }

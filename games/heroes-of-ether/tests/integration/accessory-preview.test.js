@@ -254,7 +254,8 @@ test("Бонусы опыта прибавляются к базе, поглощ
       const e = accrual.sample(actor, at);
       if (e) progression.applyEvent(p, e, at);
     }
-    assert.equal(p.progress.session.xp, premium ? 317 : 117);
+    // The accessory adds 15% of base XP; Premium doubles the natural payout only.
+    assert.equal(p.progress.session.xp, premium ? 214 : 114);
     const before = p.progress.session.xp;
     for (let i = 0; i < 10; i++)
       progression.applyEvent(
@@ -262,7 +263,7 @@ test("Бонусы опыта прибавляются к базе, поглощ
         { type: "absorbed", victimProfileId: "v" + i, lifeId: "v-life" + i, gain: 20 },
         61000 + i,
       );
-    assert.equal(p.progress.session.xp - before, premium ? 93 : 33);
+    assert.equal(p.progress.session.xp - before, 33);
   }
 });
 test("Чалма мудреца: отдельные 10% запаса, одинаковое время на арене и в сохранении, без повторного начисления", (t) => {

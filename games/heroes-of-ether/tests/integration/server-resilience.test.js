@@ -203,7 +203,7 @@ test("Остановка: повтор безопасен, итог активн
   player.mass = 1000;
   player.radius = radiusForMass(1000);
   app.tick();
-  for (time = 50; time <= 9000; time += 50) app.tick();
+  for (time = 50; time <= 30000; time += 50) app.tick();
   time = 30000;
   app.tick();
   time = 65000;
@@ -215,7 +215,7 @@ test("Остановка: повтор безопасен, итог активн
   const saved = new ProfileStore({ filePath }).find(opened.token);
   assert.equal(saved.progress.session, null);
   assert.equal(saved.progress.lastLife.durationSeconds, 65);
-  assert.equal(saved.progress.lastLife.earnedXp, 7);
+  assert.equal(saved.progress.lastLife.earnedXp, 1);
 });
 
 test("Тело POST, завершённое после начала остановки, не меняет профиль", async (t) => {

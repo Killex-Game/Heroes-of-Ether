@@ -105,18 +105,18 @@ test("alchemy pickups survive compact state deltas, and only the owner receives 
   }
 });
 
-test("XP potion affects only observed mass time after activation, never bonus kills or unplayed pauses", () => {
+test("XP potion uses the effect active at payout, never bonus kills or unplayed pauses", () => {
   const {arena,p,use}=fixture(), accrual=require("../../src/server/arena/mass-accrual");
   p.mass=10000;p.radius=radiusForMass(p.mass);accrual.reset(p,0);
   for(let at=50;at<=15000;at+=50)arena.accrueMass(p,at);
   use("alchemy_knowledge",15000);
   for(let at=15050;at<=30000;at+=50)arena.accrueMass(p,at);
   const first=arena.progressEvents.find(e=>e.type==="massAccrual");
-  assert.equal(first.xpUnits/accrual.XP_DENOMINATOR,26.875);
-  assert.equal(first.killUnits/accrual.KILL_DENOMINATOR,1);
+  assert.equal(first.xpUnits/accrual.XP_DENOMINATOR,11.5);
+  assert.equal(first.killUnits/accrual.KILL_DENOMINATOR,2);
   arena.progressEvents=[];
   for(let at=30050;at<=60000;at+=50)arena.accrueMass(p,at);
-  assert.equal(arena.progressEvents[0].xpUnits/accrual.XP_DENOMINATOR,28.75);
+  assert.equal(arena.progressEvents[0].xpUnits/accrual.XP_DENOMINATOR,11.5);
   arena.progressEvents=[];arena.accrueMass(p,90000);assert.equal(arena.progressEvents.length,0);
 });
 

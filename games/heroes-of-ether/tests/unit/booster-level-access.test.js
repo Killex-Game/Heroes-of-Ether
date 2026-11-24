@@ -39,8 +39,8 @@ test("Четвёртая ячейка закрыта до 12, бонусные V
         (_, i) =>
           i < 3 ||
           (i === 3 && level >= 12) ||
-          (i === 4 && (account.vip || account.premium)) ||
-          (i === 5 && account.premium),
+          i === 4 ||
+          (i === 5 && account.vip),
       ).map(Boolean);
       assert.deepEqual(
         Array.from({ length: 6 }, (_, i) => slots.unlocked(i, account, level)),

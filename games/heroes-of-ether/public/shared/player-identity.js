@@ -602,9 +602,9 @@
   const defaultPortraitFit = Object.freeze({ scale: 0.96, x: 0, y: 0.02 });
   const portraitFits = Object.freeze(Object.fromEntries(Object.entries(portraitAnchors)
     .map(([id, fit]) => [id, Object.freeze({
-      scale: Math.min(1.08, Math.max(0.94, 0.96 + (fit.scale - 1) * 0.1)),
+      scale: id === "gift-winged-guardian" ? 1.3 : Math.min(1.08, Math.max(0.94, 0.96 + (fit.scale - 1) * 0.1)),
       x: fit.x * 0.5,
-      y: portraitBottomAnchors[id] ?? 0.02,
+      y: id === "gift-winged-guardian" ? 0.035 : portraitBottomAnchors[id] ?? 0.02,
     })])));
   // Единый актуальный каталог портретов для всех поверхностей.
   function transparentSkin(skin) {

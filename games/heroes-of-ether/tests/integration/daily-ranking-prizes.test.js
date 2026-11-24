@@ -62,8 +62,8 @@ test("Суточные призы: отказ диска, потерянный �
   const p = profiles.find(user.token);
   assert.equal(p.wallet.coins, wallet.coins + 100);
   assert.equal(p.wallet.crystals, wallet.crystals + 10);
-  assert.equal(p.greatness, 33);
-  assert.equal(profiles.find(offline.token).greatness, 32);
+  assert.equal(p.greatness, 23);
+  assert.equal(profiles.find(offline.token).greatness, 22);
   assert.equal(p.roulette.tickets, 3);
   assert.equal(profiles.find(offline.token).roulette.tickets, 2);
   assert.equal(p.dailyRankingRewards[0].prize.tickets, 3);
@@ -80,7 +80,7 @@ test("Суточные призы: отказ диска, потерянный �
   await app.close();
   const restored = new ProfileStore({ filePath, now: () => at });
   restored.refreshCompetition();
-  assert.equal(restored.find(user.token).greatness, 33);
+  assert.equal(restored.find(user.token).greatness, 23);
   assert.equal(restored.find(user.token).roulette.tickets, 3);
   assert.equal(restored.find(offline.token).roulette.tickets, 2);
   assert.equal(restored.view(restored.find(user.token)).dailyRankingRewards.length, 1);
@@ -89,7 +89,7 @@ test("Суточные призы: отказ диска, потерянный �
   ]);
   at += 86400000;
   restored.refreshCompetition();
-  assert.equal(restored.find(user.token).greatness, 33);
+  assert.equal(restored.find(user.token).greatness, 23);
 });
 
 test("Прочтение уведомления: сессия, отказ записи, потерянный ответ, повтор и перезапуск", async (t) => {

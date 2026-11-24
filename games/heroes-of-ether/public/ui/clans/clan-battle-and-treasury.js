@@ -46,7 +46,7 @@
     if (!spec) return;
     const vip = (profile?.account?.vipUntil || 0) > Date.now(),
       premium = (profile?.account?.premiumUntil || 0) > Date.now(),
-      multiplier = reward?.multiplier ?? (premium ? 3 : vip ? 2 : 1),
+      multiplier = reward?.multiplier ?? (vip ? 2 : 1),
       bonus = reward?.greatnessBonus ?? (vip ? 5 : 0) + (premium ? 10 : 0),
       amount = (currency) =>
         reward ? num(reward[currency]) : spec[currency].map((n) => num(n * multiplier)).join("–"),

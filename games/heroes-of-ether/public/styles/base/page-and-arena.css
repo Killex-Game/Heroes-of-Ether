@@ -1286,7 +1286,11 @@ body[data-screen="lobby"] #settingsMenu {
 .arena-top #leaveButton { pointer-events: auto; flex: 0 0 auto; }
 .arena-emote-hotkeys, .arena-emote-hotkeys * { pointer-events: none; user-select: none; }
 .arena-emote-hotkeys { display: flex; gap: 5px; flex: 0 0 auto; align-items: center; }
-.arena-emote-key { position: relative; display: block; width: 44px; height: 53px; }
+.arena-emote-key { position: relative; display: block; width: 44px; height: 53px; padding: 0; border: 0; background: transparent; box-shadow: none; touch-action: manipulation; }
+.arena-emote-key:focus-visible { outline: 2px solid #fff2c4; outline-offset: 2px; }
+@media (pointer: coarse) {
+ .arena-emote-hotkeys .arena-emote-key { pointer-events: auto; }
+}
 .arena-emote-key img { display: block; width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 1px 2px #24172c80); }
 .arena-emote-key kbd { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); min-width: 17px; padding: 0 3px; border: 1px solid #e7c982; border-radius: 4px; background: #3c2b1cbd; color: #fff4d4; font: 700 11px/14px Arial,sans-serif; text-align: center; }
 @media (max-width: 1100px) {

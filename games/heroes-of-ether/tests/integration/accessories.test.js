@@ -237,8 +237,8 @@ test("HTTP: экипировка серверная, обе части видн�
   p.stopped = true;
   p.nextMassDecayAt = Infinity;
   app.tick();
-  for (now = 5050; now <= 14000; now += 50) app.tick();
+  for (now = 5050; now <= 35000; now += 50) app.tick();
   now = 65000;
   app.tick();
-  assert.equal(app.profiles.byId(opened.profile.id).progress.session.xp, 8);
+  assert.equal(app.profiles.byId(opened.profile.id).progress.session.xp, 5);
 });

@@ -1151,7 +1151,7 @@
             if (locked) {
               const unlock = window.KillexLoadout.unlockLabel(i);
               control.append(
-                make("span", "loadout-lock", i === 3 ? "12 ур." : i === 4 ? "VIP / P" : "Premium"),
+                make("span", "loadout-lock", i === 3 ? "12 ур." : "VIP"),
               );
               const reason = i === 3 ? "Этот слот доступен с 12 уровня." : "Нужен активный " + unlock;
               control.setAttribute("aria-label", key.textContent + ". " + reason);

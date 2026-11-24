@@ -89,8 +89,8 @@ const kinds = [
 for (const [vip, premium, factor] of [
   [false, false, 1],
   [true, false, 2],
-  [false, true, 3],
-  [true, true, 3],
+  [false, true, 1],
+  [true, true, 2],
 ])
   for (const withLite of [false, true])
     test(`Все 17 сундуков: VIP=${vip}, Premium=${premium}, Lite=${withLite}; показ совпадает с выдачей`, () => {
@@ -117,7 +117,7 @@ for (const [vip, premium, factor] of [
           );
         }
         if (kind === "quest") {
-          assert.equal(r.greatness, Q.CHESTS[tier].greatness * factor);
+          assert.equal(r.greatness, Q.CHESTS[tier].greatness * (premium ? 2 : 1));
           assert.equal(r.coins, Q.CHESTS[tier].coins[0] * factor);
           assert.equal(
             Object.values(r.items).reduce((a, b) => a + b, 0),
@@ -125,7 +125,7 @@ for (const [vip, premium, factor] of [
           );
         }
         if (kind === "easter") {
-          assert.equal(r.greatness, 5 * factor);
+          assert.equal(r.greatness, 5 * (premium ? 2 : 1));
           assert.equal(r.coins, 100 * factor);
           assert.equal(r.items.easter_egg, 3 * factor);
         }
