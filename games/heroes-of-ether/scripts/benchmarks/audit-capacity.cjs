@@ -93,6 +93,13 @@ function audit(directory) {
   }
   const report = { acknowledged, recovered: acknowledged, duplicates: 0, profiles: profiles.length,
     types, gifts, notices, deposits, created, ...(resident ? { appliedEffects: applied } : {}), validInventoriesAndTransactions: true };
+  if (summary.retainedHistory) {
+    const bytes = fs.readFileSync(path.join(output, "synthetic-world.json"));
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), summary.fixtureSha256, "Historical source changed");
+    const fixture = JSON.parse(bytes);
+    assert.deepEqual(fixture.summary.retainedHistory, summary.retainedHistory);
+    report.retainedHistory = require("./retained-capacity-fixture.cjs").verify(fixture, world);
+  }
   fs.writeFileSync(path.join(output, "ack-audit.json"), JSON.stringify(report, null, 2) + "\n");
   return report;
 }

@@ -39,6 +39,7 @@ async function main(){
   const summary={at:new Date().toISOString(),rooms,perRoom,protocol,fixtureSha256,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
   if(mixedMinutes)Object.assign(summary,{mixedMinutes,phaseSeconds:60});
+  if(fixtureData.summary?.retainedHistory)summary.retainedHistory={...fixtureData.summary.retainedHistory};
   if(realistic)Object.assign(summary,{realistic:true,mixedSocial:true,scenario:{linkedLobby,movementHz:10,splitEverySeconds:3.7,feedEverySeconds:.7,
     boosterEverySeconds:2,emoteEverySeconds:5.3,lobbyIntervalMs:1500,syntheticFunds:true,
     notCovered:['real payment provider','external VK API','all seasonal events simultaneously','browser rendering']}});
