@@ -8,6 +8,24 @@ function equivalent(actual,expected){
   assert.deepEqual([...actual.docs.keys()],[...expected.docs.keys()]);
   for(const [id,doc]of expected.docs){const other=actual.docs.get(id);assert.equal(other.hash,doc.hash,id);assert.equal(other.chunked,doc.chunked,id);assert.equal(JSON.stringify(other.value),JSON.stringify(doc.value),id);}
 }
+
+test('unchanged canonical records share frozen documents while returned values and replaced records remain isolated',()=>{
+  const {gzipDocumentValue}=require('../../src/server/persistence/snapshot-builder');
+  const builder=new SnapshotBuilder(),source=world(),first=builder.pack(source),original=pack(source);
+  const unchanged=builder.pack(source);
+  for(const [id,doc]of first.docs){assert.strictEqual(unchanged.docs.get(id),doc);assert(Object.isFrozen(doc));}
+  const retained=first.docs.get('profiles:a'),compressed=gzipDocumentValue(retained);
+  const returned=retained.value;returned.wallet.coins=999;returned.receipts.one.amount=999;
+  source.profiles.a.wallet.coins=11;source._journalRevision++;
+  const changed=builder.pack(source);
+  assert.notStrictEqual(changed.docs.get('profiles:a'),retained);
+  assert.strictEqual(changed.docs.get('profiles:b'),first.docs.get('profiles:b'));
+  assert.deepEqual(gzipDocumentValue(retained),compressed);equivalent(first,original);equivalent(changed,pack(source));
+  delete source.profiles.b;builder.pack(source);assert(!builder.records.has('profiles:b'));
+  source.profiles.b={wallet:{coins:7}};
+  const restored=builder.pack(source);assert.notStrictEqual(restored.docs.get('profiles:b'),first.docs.get('profiles:b'));
+  equivalent(restored,pack(source));
+});
 test('Snapshot builder preserves every manifest and document across edits, removals, cache hits and chat formats',()=>{
   const builder=new SnapshotBuilder(),source=world(),aux={'game-events.json':{events:[{id:'one'}]},'clan-chat.json':{_journalRevision:2,clans:{c:{messages:['hello']}},messageReceipts:{a:{one:1}},achievementCounts:{a:3}}};
   equivalent(builder.pack(source,aux),pack(source,aux));

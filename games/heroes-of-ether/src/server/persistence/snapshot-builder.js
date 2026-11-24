@@ -12,6 +12,10 @@ const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 // Only this builder can register immutable canonical bytes. Compression never
 // exposes the cached buffer, and arbitrary caller-owned documents stay mutable.
 const encodedValues=new WeakMap();
+// Each part belongs to one private immutable canonical record. A later
+// snapshot may reuse the frozen document wrapper while its value getter
+// continues to return a fresh caller-owned tree. No obsolete record is rooted.
+const documents=new WeakMap();
 function gzipDocumentValue(doc){
   const value=encodedValues.get(doc);
   return gzipSync(value?.segments?Buffer.concat(value.segments,value.bytes):value||Buffer.from(JSON.stringify(doc.value)),{level:1});
@@ -34,6 +38,7 @@ function recordFor(id,value,documentFormat,fingerprint){
   return {fingerprint,documentFormat,json,parts};
 }
 function documentFor(record,part){
+  const previous=documents.get(part);if(previous)return previous;
   const doc={_id:part._id,hash:part.hash};
   if(part.chunked)doc.chunked=true;
   if(part.descriptor)encodedValues.set(doc,Buffer.from(part.descriptor));
@@ -47,7 +52,7 @@ function documentFor(record,part){
     if(part.start!==undefined)return record.json.toString('utf8',part.start,part.end);
     return JSON.parse(record.json.toString('utf8'));
   }});
-  return Object.freeze(doc);
+  Object.freeze(doc);documents.set(part,doc);return doc;
 }
 class SnapshotBuilder{
   constructor({immutableSource=null}={}){this.records=new Map();this.stats=null;this.immutableSource=immutableSource;this.identities=null;this.fields=new WeakMap();}
