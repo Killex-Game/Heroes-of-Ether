@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T21:31:55.626Z",
+  "at": "2026-11-24T21:55:40.914Z",
   "installed": false,
   "runtimeSource": "70c60ff",
   "base": "2c8551a077bcf4bfd952017b079fa5f62769f26d",
@@ -11,10 +11,36 @@
   "tests": {
     "targetedWindows": 29,
     "freshHistoryWindows": 6,
-    "fullWindows": "pending",
-    "fullLinux": "pending",
-    "realPostgresql": "pending",
-    "mixed": "pending"
+    "fullWindows": {
+      "tests": 2467,
+      "pass": 2465,
+      "fail": 0,
+      "skipped": 2,
+      "exitCode": 0
+    },
+    "fullLinux": {
+      "tests": 2467,
+      "pass": 2465,
+      "fail": 0,
+      "skipped": 2,
+      "exitCode": 0
+    },
+    "realPostgresql": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    "mixed": "pending",
+    "fullWindowsInitial": {
+      "tests": 2461,
+      "pass": 2458,
+      "fail": 1,
+      "skipped": 2,
+      "exitCode": 1,
+      "reason": "Sparse checkout omitted deployment/vk-production/auth; the module never loaded. Restored tracked deployment directory; original failure retained."
+    }
   },
   "sourceSizes": {
     "at": "2026-11-24T21:29:50.861Z",
@@ -422,5 +448,85 @@
     "Root-size inspection initially selected an empty local review fixture; its incorrectly labeled result is superseded and was not used for the backup benchmark",
     "Full world canonical SHA still processes every byte; main writer still owns the entire world",
     "All backup bytes are read-only and no original field values were exported; no production changes in this candidate"
-  ]
+  ],
+  "assembledSource": "7afde680c15b0a29c0f21cfed42f9d6562b6054d",
+  "backupRootLinuxBenchmark": {
+    "at": "2026-11-24T21:54:31.461Z",
+    "node": "v24.22.3",
+    "platform": "linux",
+    "unchangedReceiptFields": true,
+    "exactFrameComparisons": 63,
+    "results": [
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "rootRows": "backup-root",
+        "coldMs": 188.83037500000046,
+        "warmMs": 1387.3416210000023,
+        "cpuMs": 2165.628,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 774742016,
+          "heapTotal": 602562560,
+          "heapUsed": 450544032,
+          "external": 14416517,
+          "arrayBuffers": 451211
+        },
+        "maxRSSKiB": 1303452
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "rootRows": "backup-root",
+        "coldMs": 114.78195600000072,
+        "warmMs": 242.51424300000508,
+        "cpuMs": 729.426,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 779808768,
+          "heapTotal": 589717504,
+          "heapUsed": 449925080,
+          "external": 3678267,
+          "arrayBuffers": 582283
+        },
+        "maxRSSKiB": 1303452
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "rootRows": "backup-root",
+        "coldMs": 88.570291,
+        "warmMs": 242.9937910000026,
+        "cpuMs": 655.63,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 779649024,
+          "heapTotal": 589717504,
+          "heapUsed": 449893088,
+          "external": 3809339,
+          "arrayBuffers": 647819
+        },
+        "maxRSSKiB": 1303452
+      },
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "rootRows": "backup-root",
+        "coldMs": 109.92366899999979,
+        "warmMs": 1359.8783839999978,
+        "cpuMs": 1838.307,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 780681216,
+          "heapTotal": 595222528,
+          "heapUsed": 449910624,
+          "external": 14775709,
+          "arrayBuffers": 647819
+        },
+        "maxRSSKiB": 1303452
+      }
+    ],
+    "scope": "Read-only backup root metadata with synthetic profile tables; no original field values exported, no actions or writes to source backup; component timing, not whole-game CCU"
+  },
+  "workerPolicy": "Candidate27 includes the corrected three-worker/five-room capacity harness; no live configuration change."
 }
