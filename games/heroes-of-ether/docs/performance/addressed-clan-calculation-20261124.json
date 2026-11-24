@@ -1,0 +1,81 @@
+{
+  "at": "2026-11-24T23:17:07.103Z",
+  "installed": false,
+  "source": "ad3fe82b2e7c1d60a00682e3af8e11b8eb6b2993",
+  "change": "Explicit benchmark backend uses ClanArenaProgressShards directly without the full-world preparation replica. Default remains canonical. Real requested worker activity/failures are acceptance criteria.",
+  "projection": "Only participants and their clans are transmitted; same-clan order is preserved. Global settlement, WAL and final publication remain with one authoritative writer.",
+  "windows": {
+    "targeted": {
+      "label": "addressed-clan-direct-unit-r1",
+      "code": 0,
+      "signal": null,
+      "at": "2026-11-24T23:03:18.461Z",
+      "tests": 36,
+      "pass": 36,
+      "fail": 0,
+      "skipped": 0
+    },
+    "projection": {
+      "label": "addressed-clan-projection-r2",
+      "code": 0,
+      "signal": null,
+      "at": "2026-11-24T23:04:35.786Z",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0
+    },
+    "full": {
+      "label": "addressed-clan-full-windows",
+      "code": 0,
+      "signal": null,
+      "at": "2026-11-24T23:16:00.097Z",
+      "tests": 2487,
+      "pass": 2484,
+      "fail": 0,
+      "skipped": 3
+    }
+  },
+  "linux": {
+    "targeted": {
+      "label": "addressed-clan-direct-linux",
+      "code": 0,
+      "tests": 37,
+      "pass": 37,
+      "fail": 0,
+      "skipped": 0
+    }
+  },
+  "boundedResidency": {
+    "source": "6d89beabb57cc6f3117561a380a7423338e20127",
+    "installed": false,
+    "limit": 256,
+    "meaning": "Per-lane idle working-set ceiling. All current participants are retained even above the ceiling. Removed rows are calculation replicas only.",
+    "targeted": {
+      "label": "bounded-clan-replicas-r1",
+      "code": 0,
+      "signal": null,
+      "at": "2026-11-24T23:10:51.349Z",
+      "tests": 21,
+      "pass": 21,
+      "fail": 0,
+      "skipped": 0
+    },
+    "retryAfterEviction": {
+      "label": "bounded-clan-churn-r2",
+      "code": 0,
+      "signal": null,
+      "at": "2026-11-24T23:12:01.564Z",
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "skipped": 0
+    }
+  },
+  "limits": [
+    "Realistic mixed performance has not been demonstrated for either calculation candidate.",
+    "The authoritative writer and pinned persistence reader still keep complete worlds.",
+    "Bounded residency full Linux/Windows regressions and churn under live-style mixed load remain required.",
+    "No maximum CCU, browser FPS or 300000-player claim."
+  ]
+}

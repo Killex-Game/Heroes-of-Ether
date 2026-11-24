@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T22:57:18.762Z",
+  "at": "2026-11-24T23:08:35.486Z",
   "source": "c2ab347beef725ee25e48941f0611bbf8cfdd609",
   "runtimeSource": "84fd44138474a08b20b77eb54a94abfe14c6f84d",
   "installed": false,
@@ -105,17 +105,94 @@
   "firstFailure": "The old test required fallback and no cached fields for oversized format-one profiles. That expectation was replaced with exact compressed fragment comparisons, sibling field reuse and previous-snapshot immutability. Original failed full run retained.",
   "linux": {
     "full": {
-      "pending": true,
-      "label": "immutable-fragments-full-linux"
+      "label": "immutable-fragments-full-linux",
+      "code": 0,
+      "tests": 2475,
+      "pass": 2472,
+      "fail": 0,
+      "skipped": 3
     },
     "realPostgresql": {
-      "pending": true,
-      "label": "immutable-fragments-real-pg"
+      "label": "immutable-fragments-real-pg",
+      "code": 0,
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0
+    },
+    "benchmark": {
+      "at": "2026-11-24T23:07:29.042Z",
+      "platform": "linux",
+      "node": "v24.22.3",
+      "scope": "Oversized synthetic profile snapshot component only; no live data, whole-game CPU or CCU claim",
+      "exactFrames": 13,
+      "results": [
+        {
+          "variant": "baseline",
+          "coldMs": 1191.94502,
+          "warmMs": 9592.085631,
+          "cpuMs": 10964.949,
+          "maxRSSKiB": 467668,
+          "memory": {
+            "rss": 403492864,
+            "heapTotal": 214884352,
+            "heapUsed": 78602904,
+            "external": 51030216,
+            "arrayBuffers": 48733553
+          },
+          "fieldsReused": 0
+        },
+        {
+          "variant": "candidate",
+          "coldMs": 753.711603,
+          "warmMs": 3263.8655490000006,
+          "cpuMs": 4116.867,
+          "maxRSSKiB": 217496,
+          "memory": {
+            "rss": 200286208,
+            "heapTotal": 219324416,
+            "heapUsed": 77134592,
+            "external": 14588859,
+            "arrayBuffers": 12292196
+          },
+          "fieldsReused": 42
+        },
+        {
+          "variant": "candidate",
+          "coldMs": 782.739957,
+          "warmMs": 3367.8289780000005,
+          "cpuMs": 4243.903,
+          "maxRSSKiB": 215356,
+          "memory": {
+            "rss": 203939840,
+            "heapTotal": 225079296,
+            "heapUsed": 84410256,
+            "external": 14967750,
+            "arrayBuffers": 12671087
+          },
+          "fieldsReused": 42
+        },
+        {
+          "variant": "baseline",
+          "coldMs": 1197.7329060000002,
+          "warmMs": 8882.094728,
+          "cpuMs": 10321.847,
+          "maxRSSKiB": 467976,
+          "memory": {
+            "rss": 401338368,
+            "heapTotal": 211214336,
+            "heapUsed": 75808328,
+            "external": 51030216,
+            "arrayBuffers": 48733553
+          },
+          "fieldsReused": 0
+        }
+      ]
     }
   },
   "limits": [
-    "Component Windows ABBA excludes actual game simulation, network and PostgreSQL.",
-    "Linux full regression, real PostgreSQL with fragmented-record failures, mixed load and retained-history checks required before deployment.",
+    "Component ABBA excludes actual game simulation and network; real PostgreSQL was validated separately.",
+    "Mixed load and retained-history checks of this exact candidate remain required before deployment.",
     "Main writer and pinned reader still retain complete world structures; not addressed persistence or 300000 CCU."
   ]
 }
