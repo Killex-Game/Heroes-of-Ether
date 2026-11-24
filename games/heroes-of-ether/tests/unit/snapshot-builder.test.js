@@ -46,3 +46,16 @@ test('Large fragmented Unicode profiles keep exact storage boundaries and round 
   source.profiles.a.history+='последняя😀';source._journalRevision++;
   equivalent(builder.pack(source),pack(source));equivalent(first,baseline);
 });
+
+test('Owned field segments preserve numeric keys, omitted fields, aliases and compressed canonical bytes',()=>{
+  const {encode}=require('../../src/server/persistence/postgresql-state');
+  let owned;const builder=new SnapshotBuilder({immutableSource:{owns:value=>value===owned}});
+  for(let i=0;i<40;i++){
+    const shared=Object.fromEntries([['10',{text:'😀'+i}],['2',[null,true,-0]],['__proto__',{value:i}],['z',undefined]]);
+    owned={_journalRevision:i,profiles:Object.fromEntries([['10',{shared,alias:shared,arenaReceipts:{'2':shared,'10':{old:'kept'}},missing:undefined}],
+      ['__proto__',{values:[undefined,'я',3]}]]),clans:{'2':{members:['10']}}};
+    const actual=builder.pack(owned),expected=pack(owned);equivalent(actual,expected);
+    for(const [id,doc]of expected.docs)assert.deepEqual(encode(actual.docs.get(id)),encode(doc));
+    equivalent(builder.pack(owned),expected);assert.equal(builder.stats.identityReused,3);
+  }
+});

@@ -162,3 +162,32 @@ test("changed earlier segment forces a full verified replay, and active appends 
   try { assert.deepEqual(f.reader.read(second).data, recover(second.file, false).data); }
   finally { fs.unlinkSync(second.file + ".wal"); }
 });
+
+test('immutable field bytes reuse untouched receipt buckets across casts and preserve every compressed byte', async t => {
+  const f=setup(t),{recordArena}=require('../../src/server/profiles/operation-receipts');
+  const {encode}=require('../../src/server/persistence/postgresql-state');
+  f.commit(w=>{const p=w.profiles.a;p.receipts={};for(let i=0;i<256;i++)recordArena(p,'old_receipt_test_'+i,'old-'+i);});
+  const builder=new SnapshotBuilder({immutableSource:f.reader});let first,reference;
+  for(let i=0;i<8;i++){
+    if(i)f.commit(w=>{recordArena(w.profiles.a,'new_receipt_test_'+i,'new-'+i);w.profiles.a.wallet.coins--;});
+    const data=freeze(f.reader.read(await f.pin()).data),actual=builder.pack(data),expected=pack(data);
+    assert.equal(actual.digest,expected.digest);assert.equal(actual.worldHash,expected.worldHash);
+    for(const [id,doc]of expected.docs)assert.deepEqual(encode(actual.docs.get(id)),encode(doc));
+    if(i){assert(builder.stats.fieldReused>=60);assert(builder.stats.fieldRebuilt<10);}
+    else{first=actual;reference=expected;}
+  }
+  for(const [id,doc]of reference.docs)assert.deepEqual(encode(first.docs.get(id)),encode(doc),'old pending snapshot remains immutable');
+  first.docs.get('profiles:a').value.arenaReceipts={};
+  assert.deepEqual(encode(first.docs.get('profiles:a')),encode(reference.docs.get('profiles:a')));
+});
+
+test('owned oversized profile fallback keeps legacy fragments and does not retain duplicate field bytes', async t => {
+  const f=setup(t);f.commit(w=>{w.profiles.a.large='😀漢я'.repeat(1500000);});
+  const builder=new SnapshotBuilder({immutableSource:f.reader});
+  const data=freeze(f.reader.read(await f.pin()).data),actual=builder.pack(data),expected=pack(data);
+  assert.equal(actual.docs.get('profiles:a').chunked,true);assert.equal(actual.digest,expected.digest);
+  assert.equal(actual.worldHash,expected.worldHash);
+  assert.equal(builder.fields.has(data.profiles.a.history),false);
+  assert.equal(builder.fields.has(data.profiles.a.wallet),false);
+  assert.deepEqual([...actual.docs.values()].map(d=>d.value),[...expected.docs.values()].map(d=>d.value));
+});
