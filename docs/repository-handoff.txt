@@ -1,3 +1,8 @@
+Актуальный выпуск 24.11.2026: 20261124-lobby-pets, 64bc35c41d6da55c4718abb005d7aee4fee797fc.
+Отчёт: games/heroes-of-ether/docs/performance/lobby-progress-pets-20261124.json.
+Выпуск публикуется в main, codex/20261123-interface-mechanics и codex/20261124-lobby-progress-pets. Тег release/20261124-lobby-pets указывает на точные runtime-исходники; последующий коммит содержит отчёты.
+Сохранены прежние ограничения производительности и все резервные копии.
+
 Актуальная передача 24.11.2026
 
 VPS: 20261124-clan-publish, backend 6f935598812f870137978d9ac7312fdd2a82341d.

@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261124-clan-publish",
-  "sourceTag": "release/20261124-clan-publish",
-  "sourceCommit": "6f935598812f870137978d9ac7312fdd2a82341d",
-  "branch": "codex/20261124-emotes-realistic-load",
+  "gameRelease": "20261124-lobby-pets",
+  "sourceTag": "release/20261124-lobby-pets",
+  "sourceCommit": "64bc35c41d6da55c4718abb005d7aee4fee797fc",
+  "branch": "codex/20261124-lobby-progress-pets",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-24T08:49:34.037Z",
+  "entryReopenedAtUtc": "2026-11-24T10:33:16.718Z",
   "runtime": {
-    "gamePid": 583521,
+    "gamePid": 606190,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
@@ -68,76 +68,237 @@
     "Default browser now negotiates v10; gameplay, cosmetics, admission and durable ACK rules unchanged",
     "Owner-approved Premium emote option 2: original art, +20% size, bounded lively motion and reduced-motion support",
     "After clan mutations, rebuild and publish only arena profiles whose immutable profile or clan changed. Global competition refresh retained.",
-    "Selected currency materials, achievement frame and VIP/Premium icons regain saturated gold; other elements and all raster files unchanged"
+    "Selected currency materials, achievement frame and VIP/Premium icons regain saturated gold; other elements and all raster files unchanged",
+    "Compact accessory E charges and current full shop tooltips",
+    "Compact lobby profile and wallet spacing",
+    "Achievement layers reveal together after decode; unchanged ready badges do not flash",
+    "Server strips links from arena/clan chat while preserving retry protection and profanity strikes",
+    "All approved actual currency debits now credit spending achievements atomically",
+    "Male features for Drakosha/Leva; Zaya forelock matches fur; all active pet levels, related achievements, five emotes and banners updated",
+    "Zaya hind feet removed entirely from Easter banner; event card derives from same image"
   ],
   "data": {
     "before": {
       "verified": true,
-      "archiveSha256": "548aefa556632a34f8e059fd7d32d745034c604d0b5489d9ecf08211cc99fa78",
-      "revision": 4348092,
-      "digest": "8da45af351c7955310ada299d6b68196dcaeb5ec6f43defcc136ed084d657c27",
-      "worldHash": "a3b5716a71dc76c648fb3bb35e9d3f1c784466e062737802f81b2328a6dea478",
-      "profiles": 1719,
+      "archiveSha256": "39bea7c8da49f3940fcbfd56d6112d201f1d94a0fbf7a95bfc23802051269b01",
+      "revision": 4407066,
+      "digest": "73cd011b64a65b70b997bab299b891f85b7ce2e5e5db084fc52e66db854d406d",
+      "worldHash": "da55fa7f85cdde6695e7125eb5da6f56650944fe5f343077773e06aeb8ddcdf0",
+      "profiles": 1720,
       "clans": 136,
       "postgresqlArchiveVerified": true
     },
     "after": {
       "calendarReplayExact": true,
-      "approvedMigrationsExact": true,
+      "noCalendarChange": true,
+      "expiredChat": 0,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 4348092,
-      "revision": 4348094,
-      "digest": "ecb17977c61fd6ce39ec948a807c0aa2f89be56b8377d570a7e4b2b830e8df8d",
-      "worldHash": "9f9f690e5dd61d565afe31b5c842eb631c66a64fc9cb0df34843f105e666c9d1",
-      "profiles": 1719,
-      "clans": 136,
-      "at": 1795509143037,
-      "transitionTimes": [
-        1795509143037,
-        1795509253466
-      ],
-      "retiredAvatarProfiles": [],
-      "constructorChanges": [],
-      "questPayouts": 0,
-      "questChests": 0,
-      "postVerificationExpiry": {
-        "priorVerifiedRevision": 4348093,
-        "profiles": 1,
-        "notices": 1,
-        "allOtherFieldsEqual": true
-      }
-    },
-    "calendarReplayExact": true,
-    "allOtherFieldsEqual": true,
-    "backup": {
-      "verified": true,
-      "archiveSha256": "548aefa556632a34f8e059fd7d32d745034c604d0b5489d9ecf08211cc99fa78",
-      "revision": 4348092,
-      "digest": "8da45af351c7955310ada299d6b68196dcaeb5ec6f43defcc136ed084d657c27",
-      "worldHash": "a3b5716a71dc76c648fb3bb35e9d3f1c784466e062737802f81b2328a6dea478",
-      "profiles": 1719,
-      "clans": 136,
-      "postgresqlArchiveVerified": true
+      "beforeRevision": 4407066,
+      "revision": 4407066,
+      "digest": "73cd011b64a65b70b997bab299b891f85b7ce2e5e5db084fc52e66db854d406d",
+      "worldHash": "da55fa7f85cdde6695e7125eb5da6f56650944fe5f343077773e06aeb8ddcdf0",
+      "profiles": 1720,
+      "clans": 136
     }
   },
   "verification": {
-    "linuxFull": {
-      "total": 2361,
-      "passed": 2360,
-      "failed": 0,
-      "skipped": 1
+    "windowsTargeted": 90,
+    "linux": {
+      "total": 2364,
+      "pass": 2363,
+      "fail": 0,
+      "skip": 1
     },
-    "windowsTargeted": 23,
-    "clanIdentityIntegration": 1,
-    "capacityCriteria": 12,
-    "browsers": [
+    "browser": [
+      {
+        "engine": "chromium",
+        "width": 1336,
+        "height": 768,
+        "header": {
+          "height": 98,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "chromium",
+        "width": 1920,
+        "height": 1080,
+        "header": {
+          "height": 98,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "header": {
+          "height": 84.5,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "chromium",
+        "width": 915,
+        "height": 412,
+        "header": {
+          "height": 80.5,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "chromium",
+        "atomicBadge": {
+          "hidden": [
+            "hidden",
+            "hidden",
+            "hidden"
+          ],
+          "visible": [
+            "visible",
+            "visible",
+            "visible"
+          ],
+          "cachedRepaint": "true"
+        }
+      },
+      {
+        "engine": "firefox",
+        "width": 1336,
+        "height": 768,
+        "header": {
+          "height": 98,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "width": 1920,
+        "height": 1080,
+        "header": {
+          "height": 98,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "width": 390,
+        "height": 844,
+        "header": {
+          "height": 84.5,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "width": 915,
+        "height": 412,
+        "header": {
+          "height": 80.5,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "atomicBadge": {
+          "hidden": [
+            "hidden",
+            "hidden",
+            "hidden"
+          ],
+          "visible": [
+            "visible",
+            "visible",
+            "visible"
+          ],
+          "cachedRepaint": "true"
+        }
+      },
+      {
+        "engine": "webkit",
+        "width": 1336,
+        "height": 768,
+        "header": {
+          "height": 98,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "width": 1920,
+        "height": 1080,
+        "header": {
+          "height": 98,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "header": {
+          "height": 84.5,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "width": 915,
+        "height": 412,
+        "header": {
+          "height": 80.5,
+          "overflow": false
+        },
+        "charges": 22,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "atomicBadge": {
+          "hidden": [
+            "hidden",
+            "hidden",
+            "hidden"
+          ],
+          "visible": [
+            "visible",
+            "visible",
+            "visible"
+          ],
+          "cachedRepaint": "true"
+        }
+      }
+    ],
+    "arena": [
       {
         "engine": "chromium",
         "width": 1336,
         "height": 768,
         "mobile": false,
         "received": 1,
-        "drawn": 399,
+        "drawn": 308,
         "atlasLoads": 7,
         "variant": "pets",
         "index": 1,
@@ -151,7 +312,7 @@
         "height": 844,
         "mobile": true,
         "received": 1,
-        "drawn": 354,
+        "drawn": 256,
         "atlasLoads": 7,
         "variant": "pets",
         "index": 1,
@@ -165,7 +326,7 @@
         "height": 768,
         "mobile": false,
         "received": 1,
-        "drawn": 69,
+        "drawn": 91,
         "atlasLoads": 7,
         "variant": "pets",
         "index": 1,
@@ -179,7 +340,7 @@
         "height": 844,
         "mobile": true,
         "received": 1,
-        "drawn": 103,
+        "drawn": 139,
         "atlasLoads": 7,
         "variant": "pets",
         "index": 1,
@@ -193,7 +354,7 @@
         "height": 768,
         "mobile": false,
         "received": 1,
-        "drawn": 11,
+        "drawn": 15,
         "atlasLoads": 7,
         "variant": "pets",
         "index": 1,
@@ -207,7 +368,7 @@
         "height": 844,
         "mobile": true,
         "received": 1,
-        "drawn": 18,
+        "drawn": 26,
         "atlasLoads": 7,
         "variant": "pets",
         "index": 1,
@@ -216,83 +377,876 @@
         "errors": []
       }
     ],
-    "httpVpsGold": {
-      "at": "2026-11-24T08:50:30.290Z",
+    "petShields": {
+      "pets": 4,
+      "levels": 6,
+      "allCountedOnce": true,
+      "walRecovery": true
+    },
+    "http": {
+      "at": "2026-11-24T10:33:37.216Z",
       "checks": [
         {
           "origin": "http://127.0.0.1:3000",
-          "file": "public/index.html",
+          "file": "public/assets/achievements/illustrated-v2/pet_exclusive.webp",
+          "bytes": 19784,
           "exact": true
         },
         {
           "origin": "http://127.0.0.1:3000",
-          "file": "public/styles/theme/gold-material.css",
+          "file": "public/assets/achievements/illustrated-v2/pet_level_drakosha.webp",
+          "bytes": 18082,
           "exact": true
         },
         {
           "origin": "http://127.0.0.1:3000",
-          "file": "public/styles/theme/account-colors.css",
+          "file": "public/assets/achievements/illustrated-v2/pet_level_leva.webp",
+          "bytes": 16406,
           "exact": true
         },
         {
           "origin": "http://127.0.0.1:3000",
-          "file": "public/shared/gold-material.js",
+          "file": "public/assets/achievements/illustrated-v2/pet_level_zaya.webp",
+          "bytes": 14084,
           "exact": true
         },
         {
-          "origin": "http://127.0.0.1:3103",
-          "file": "public/styles/theme/account-colors.css",
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/banners/pets.webp",
+          "bytes": 137464,
           "exact": true
         },
         {
-          "origin": "http://127.0.0.1:3103",
-          "file": "public/shared/gold-material.js",
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/emotes/pets-motion-v2/1.png",
+          "bytes": 442410,
           "exact": true
         },
         {
-          "origin": "http://127.0.0.1:3103",
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/emotes/pets-motion-v2/4.png",
+          "bytes": 539372,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/emotes/pets-motion-v2/6.png",
+          "bytes": 482204,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/emotes/pets-v1/1.webp",
+          "bytes": 7154,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/emotes/pets-v1/2.webp",
+          "bytes": 7234,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/emotes/pets-v1/4.webp",
+          "bytes": 8042,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/emotes/pets-v1/6.webp",
+          "bytes": 7086,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/emotes/pets-v1/7.webp",
+          "bytes": 5986,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/events/easter-hunt/banner.png",
+          "bytes": 312836,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/events/easter-hunt/card-banner.webp",
+          "bytes": 83404,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/drakosha-0.webp",
+          "bytes": 58990,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/drakosha-1.webp",
+          "bytes": 59132,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/drakosha-2.webp",
+          "bytes": 61826,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/drakosha-3.webp",
+          "bytes": 59682,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/drakosha-4.webp",
+          "bytes": 66850,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/drakosha-5.webp",
+          "bytes": 67002,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/leva-0.webp",
+          "bytes": 46916,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/leva-1.webp",
+          "bytes": 51902,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/leva-2.webp",
+          "bytes": 55098,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/leva-3.webp",
+          "bytes": 56544,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/leva-4.webp",
+          "bytes": 55080,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/leva-5.webp",
+          "bytes": 60050,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/zaya-0.webp",
+          "bytes": 43966,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/zaya-1.webp",
+          "bytes": 42994,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/zaya-2.webp",
+          "bytes": 42470,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/zaya-3.webp",
+          "bytes": 44038,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/zaya-4.webp",
+          "bytes": 50468,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/pets/levels-v1/zaya-5.webp",
+          "bytes": 60602,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
           "file": "public/index.html",
+          "bytes": 42858,
           "exact": true
         },
         {
-          "origin": "http://127.0.0.1:3103",
-          "file": "public/styles/theme/gold-material.css",
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/accessory-catalog.js",
+          "bytes": 29609,
           "exact": true
         },
         {
-          "origin": "https://195.208.123.221",
-          "file": "public/styles/theme/account-colors.css",
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/achievement-badge.js",
+          "bytes": 4039,
           "exact": true
         },
         {
-          "origin": "https://195.208.123.221",
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/arena-emotes.js",
+          "bytes": 1586,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/art-revision.js",
+          "bytes": 35612,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/news-layout.js",
+          "bytes": 5195,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/pet-rules.js",
+          "bytes": 7889,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/styles/components/achievement-dialog.css",
+          "bytes": 22741,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/styles/components/lobby-wallet-accessories.css",
+          "bytes": 3680,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/styles/components/skin-and-wardrobe-dialogs.css",
+          "bytes": 17358,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+          "bytes": 68048,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+          "bytes": 26272,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/lobby/promotion-banners.js",
+          "bytes": 6190,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/progression/events-page.js",
+          "bytes": 17235,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/achievements/illustrated-v2/pet_exclusive.webp",
+          "bytes": 19784,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/achievements/illustrated-v2/pet_level_drakosha.webp",
+          "bytes": 18082,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/achievements/illustrated-v2/pet_level_leva.webp",
+          "bytes": 16406,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/achievements/illustrated-v2/pet_level_zaya.webp",
+          "bytes": 14084,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/banners/pets.webp",
+          "bytes": 137464,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/emotes/pets-motion-v2/1.png",
+          "bytes": 442410,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/emotes/pets-motion-v2/4.png",
+          "bytes": 539372,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/emotes/pets-motion-v2/6.png",
+          "bytes": 482204,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/emotes/pets-v1/1.webp",
+          "bytes": 7154,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/emotes/pets-v1/2.webp",
+          "bytes": 7234,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/emotes/pets-v1/4.webp",
+          "bytes": 8042,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/emotes/pets-v1/6.webp",
+          "bytes": 7086,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/emotes/pets-v1/7.webp",
+          "bytes": 5986,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/events/easter-hunt/banner.png",
+          "bytes": 312836,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/events/easter-hunt/card-banner.webp",
+          "bytes": 83404,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/drakosha-0.webp",
+          "bytes": 58990,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/drakosha-1.webp",
+          "bytes": 59132,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/drakosha-2.webp",
+          "bytes": 61826,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/drakosha-3.webp",
+          "bytes": 59682,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/drakosha-4.webp",
+          "bytes": 66850,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/drakosha-5.webp",
+          "bytes": 67002,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/leva-0.webp",
+          "bytes": 46916,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/leva-1.webp",
+          "bytes": 51902,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/leva-2.webp",
+          "bytes": 55098,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/leva-3.webp",
+          "bytes": 56544,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/leva-4.webp",
+          "bytes": 55080,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/leva-5.webp",
+          "bytes": 60050,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/zaya-0.webp",
+          "bytes": 43966,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/zaya-1.webp",
+          "bytes": 42994,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/zaya-2.webp",
+          "bytes": 42470,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/zaya-3.webp",
+          "bytes": 44038,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/zaya-4.webp",
+          "bytes": 50468,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/pets/levels-v1/zaya-5.webp",
+          "bytes": 60602,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
           "file": "public/index.html",
+          "bytes": 42858,
           "exact": true
         },
         {
-          "origin": "https://195.208.123.221",
-          "file": "public/styles/theme/gold-material.css",
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/accessory-catalog.js",
+          "bytes": 29609,
           "exact": true
         },
         {
-          "origin": "https://195.208.123.221",
-          "file": "public/shared/gold-material.js",
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/achievement-badge.js",
+          "bytes": 4039,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/arena-emotes.js",
+          "bytes": 1586,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/art-revision.js",
+          "bytes": 35612,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/news-layout.js",
+          "bytes": 5195,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/pet-rules.js",
+          "bytes": 7889,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/styles/components/achievement-dialog.css",
+          "bytes": 22741,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/styles/components/lobby-wallet-accessories.css",
+          "bytes": 3680,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/styles/components/skin-and-wardrobe-dialogs.css",
+          "bytes": 17358,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+          "bytes": 68048,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+          "bytes": 26272,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/lobby/promotion-banners.js",
+          "bytes": 6190,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/progression/events-page.js",
+          "bytes": 17235,
+          "exact": true
+        }
+      ]
+    },
+    "local": {
+      "at": "2026-11-24T10:34:04.460Z",
+      "port": 3104,
+      "checks": 47,
+      "exact": true,
+      "files": [
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/achievements/illustrated-v2/pet_exclusive.webp",
+          "bytes": 19784,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/achievements/illustrated-v2/pet_level_drakosha.webp",
+          "bytes": 18082,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/achievements/illustrated-v2/pet_level_leva.webp",
+          "bytes": 16406,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/achievements/illustrated-v2/pet_level_zaya.webp",
+          "bytes": 14084,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/banners/pets.webp",
+          "bytes": 137464,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/emotes/pets-motion-v2/1.png",
+          "bytes": 442410,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/emotes/pets-motion-v2/4.png",
+          "bytes": 539372,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/emotes/pets-motion-v2/6.png",
+          "bytes": 482204,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/emotes/pets-v1/1.webp",
+          "bytes": 7154,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/emotes/pets-v1/2.webp",
+          "bytes": 7234,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/emotes/pets-v1/4.webp",
+          "bytes": 8042,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/emotes/pets-v1/6.webp",
+          "bytes": 7086,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/emotes/pets-v1/7.webp",
+          "bytes": 5986,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/events/easter-hunt/banner.png",
+          "bytes": 312836,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/events/easter-hunt/card-banner.webp",
+          "bytes": 83404,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/drakosha-0.webp",
+          "bytes": 58990,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/drakosha-1.webp",
+          "bytes": 59132,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/drakosha-2.webp",
+          "bytes": 61826,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/drakosha-3.webp",
+          "bytes": 59682,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/drakosha-4.webp",
+          "bytes": 66850,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/drakosha-5.webp",
+          "bytes": 67002,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/leva-0.webp",
+          "bytes": 46916,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/leva-1.webp",
+          "bytes": 51902,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/leva-2.webp",
+          "bytes": 55098,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/leva-3.webp",
+          "bytes": 56544,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/leva-4.webp",
+          "bytes": 55080,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/leva-5.webp",
+          "bytes": 60050,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/zaya-0.webp",
+          "bytes": 43966,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/zaya-1.webp",
+          "bytes": 42994,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/zaya-2.webp",
+          "bytes": 42470,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/zaya-3.webp",
+          "bytes": 44038,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/zaya-4.webp",
+          "bytes": 50468,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/pets/levels-v1/zaya-5.webp",
+          "bytes": 60602,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/index.html",
+          "bytes": 42858,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/accessory-catalog.js",
+          "bytes": 29652,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/achievement-badge.js",
+          "bytes": 4111,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/arena-emotes.js",
+          "bytes": 1641,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/art-revision.js",
+          "bytes": 35612,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/news-layout.js",
+          "bytes": 5195,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/pet-rules.js",
+          "bytes": 7957,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/styles/components/achievement-dialog.css",
+          "bytes": 27305,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/styles/components/lobby-wallet-accessories.css",
+          "bytes": 4702,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/styles/components/skin-and-wardrobe-dialogs.css",
+          "bytes": 21937,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+          "bytes": 68447,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+          "bytes": 26311,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/lobby/promotion-banners.js",
+          "bytes": 6279,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/progression/events-page.js",
+          "bytes": 17307,
           "exact": true
         }
       ],
-      "restricted": []
-    },
-    "httpLocal": {
-      "at": "2026-11-24T08:51:40.978Z",
-      "port": 3104,
-      "checks": 3,
-      "exact": true,
       "experimentalPort3000Untouched": true
     }
   },
-  "report": "games/heroes-of-ether/docs/performance/runtime-clan-publish-20261124.json",
+  "report": "games/heroes-of-ether/docs/performance/lobby-progress-pets-20261124.json",
   "previousRelease": "20261124-status-natural",
-  "notes": "Current backend and static revisions are installed and backed up. Historical entries below retain their original measurements; current status is given by the top-level release and latest updates. Independent admin and experimental local server remain unchanged.",
+  "notes": "Current release includes compact lobby/accessories, atomic achievement artwork, link filtering, approved spending counters and pet artwork. Capacity limits and unfinished architecture work remain unchanged.",
   "performance": {
     "status": "installed; collecting live samples and capacity ladder",
     "controlledSnapshotBenchmark": {
@@ -1298,109 +2252,181 @@
     ]
   },
   "previousInstalledRelease": {
-    "release": "20261124-wire-schema",
-    "sourceCommit": "350a63acbd1bb0a1d97ccf1c661e5020e8b53504",
-    "entryReopenedAtUtc": "2026-11-24T06:18:57.350Z",
+    "release": "20261124-clan-publish",
+    "sourceCommit": "6f935598812f870137978d9ac7312fdd2a82341d",
+    "entryReopenedAtUtc": "2026-11-24T08:49:34.037Z",
     "verification": {
       "linuxFull": {
-        "total": 2355,
-        "passed": 2354,
+        "total": 2361,
+        "passed": 2360,
         "failed": 0,
         "skipped": 1
       },
-      "windowsTargeted": 39,
-      "windowsIntegration": 15,
+      "windowsTargeted": 23,
+      "clanIdentityIntegration": 1,
+      "capacityCriteria": 12,
       "browsers": [
         {
           "engine": "chromium",
+          "width": 1336,
+          "height": 768,
           "mobile": false,
-          "states": 50,
-          "rows": 50,
-          "protocol": "sferorumiya-state-v10",
-          "errors": [],
-          "pageErrors": []
+          "received": 1,
+          "drawn": 399,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "none",
+          "errors": []
         },
         {
           "engine": "chromium",
+          "width": 390,
+          "height": 844,
           "mobile": true,
-          "states": 50,
-          "rows": 100,
-          "protocol": "sferorumiya-state-v10",
-          "errors": [],
-          "pageErrors": []
+          "received": 1,
+          "drawn": 354,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "auto",
+          "errors": []
         },
         {
           "engine": "firefox",
+          "width": 1336,
+          "height": 768,
           "mobile": false,
-          "states": 50,
-          "rows": 50,
-          "protocol": "sferorumiya-state-v10",
-          "errors": [],
-          "pageErrors": []
+          "received": 1,
+          "drawn": 69,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "none",
+          "errors": []
         },
         {
           "engine": "firefox",
+          "width": 390,
+          "height": 844,
           "mobile": true,
-          "states": 50,
-          "rows": 53,
-          "protocol": "sferorumiya-state-v10",
-          "errors": [],
-          "pageErrors": []
+          "received": 1,
+          "drawn": 103,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "auto",
+          "errors": []
         },
         {
           "engine": "webkit",
+          "width": 1336,
+          "height": 768,
           "mobile": false,
-          "states": 50,
-          "rows": 50,
-          "protocol": "sferorumiya-state-v10",
-          "errors": [],
-          "pageErrors": []
+          "received": 1,
+          "drawn": 11,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "none",
+          "errors": []
         },
         {
           "engine": "webkit",
+          "width": 390,
+          "height": 844,
           "mobile": true,
-          "states": 50,
-          "rows": 53,
-          "protocol": "sferorumiya-state-v10",
-          "errors": [],
-          "pageErrors": []
+          "received": 1,
+          "drawn": 18,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "auto",
+          "errors": []
         }
       ],
-      "crossBrowser": {
-        "source": "working-v10",
-        "results": [
+      "httpVpsGold": {
+        "at": "2026-11-24T08:50:30.290Z",
+        "checks": [
           {
-            "engine": "chromium",
-            "packets": 40,
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/index.html",
             "exact": true
           },
           {
-            "engine": "firefox",
-            "packets": 40,
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/styles/theme/gold-material.css",
             "exact": true
           },
           {
-            "engine": "webkit",
-            "packets": 40,
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/styles/theme/account-colors.css",
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/shared/gold-material.js",
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3103",
+            "file": "public/styles/theme/account-colors.css",
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3103",
+            "file": "public/shared/gold-material.js",
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3103",
+            "file": "public/index.html",
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3103",
+            "file": "public/styles/theme/gold-material.css",
+            "exact": true
+          },
+          {
+            "origin": "https://195.208.123.221",
+            "file": "public/styles/theme/account-colors.css",
+            "exact": true
+          },
+          {
+            "origin": "https://195.208.123.221",
+            "file": "public/index.html",
+            "exact": true
+          },
+          {
+            "origin": "https://195.208.123.221",
+            "file": "public/styles/theme/gold-material.css",
+            "exact": true
+          },
+          {
+            "origin": "https://195.208.123.221",
+            "file": "public/shared/gold-material.js",
             "exact": true
           }
-        ]
+        ],
+        "restricted": []
       },
-      "legacy": {
-        "baselineCommit": "c3f7eca",
-        "candidateCommit": "working-v10",
-        "frames": 300,
-        "packets": 272,
-        "v8BytesUnchanged": true,
-        "syntheticV8Bytes": 572059,
-        "syntheticV10Bytes": 439693,
-        "scope": "Synthetic metadata churn and backpressure; not production bandwidth"
-      },
-      "httpVps": 9,
-      "httpLocal": 3
+      "httpLocal": {
+        "at": "2026-11-24T08:51:40.978Z",
+        "port": 3104,
+        "checks": 3,
+        "exact": true,
+        "experimentalPort3000Untouched": true
+      }
     }
   },
-  "backendSourceCommit": "6f935598812f870137978d9ac7312fdd2a82341d",
+  "backendSourceCommit": "64bc35c41d6da55c4718abb005d7aee4fee797fc",
   "calendarIndexUpdate": {
     "installed": true,
     "published": true,
@@ -25051,5 +26077,1808 @@
     "commentsRemoved": 5,
     "backupSha256": "4af473b397341e02346a448eb1d3ad2223d5e1429ac678545c1e26c98a5a0c7d",
     "backupBothSidesVerified": true
+  },
+  "lobbyProgressPetsUpdate": {
+    "installed": true,
+    "release": "20261124-lobby-pets",
+    "sourceCommit": "64bc35c41d6da55c4718abb005d7aee4fee797fc",
+    "sourceTag": "release/20261124-lobby-pets",
+    "at": "2026-11-24T10:33:17.818Z",
+    "runtime": {
+      "at": "2026-11-24T10:33:17.818Z",
+      "entryOpen": true,
+      "databaseHealthy": true,
+      "revision": 4407066,
+      "gamePid": 606190,
+      "adminPid": 1163,
+      "candidateInstalled": true
+    },
+    "entry": {
+      "at": 1795516396718,
+      "gamePid": 606190,
+      "adminPid": 1163,
+      "revision": 4407066,
+      "generation": 4942,
+      "entryOpened": true,
+      "backend": "postgresql"
+    },
+    "stage": {
+      "release": "/srv/heroether-test/play/releases/20261124-lobby-pets",
+      "sourceCommit": "64bc35c41d6da55c4718abb005d7aee4fee797fc",
+      "files": 2609,
+      "changed": 55,
+      "previousReleaseUnchanged": true,
+      "protectedGraphicsUnchanged": true,
+      "commentsRemoved": 144
+    },
+    "data": {
+      "before": {
+        "verified": true,
+        "archiveSha256": "39bea7c8da49f3940fcbfd56d6112d201f1d94a0fbf7a95bfc23802051269b01",
+        "revision": 4407066,
+        "digest": "73cd011b64a65b70b997bab299b891f85b7ce2e5e5db084fc52e66db854d406d",
+        "worldHash": "da55fa7f85cdde6695e7125eb5da6f56650944fe5f343077773e06aeb8ddcdf0",
+        "profiles": 1720,
+        "clans": 136,
+        "postgresqlArchiveVerified": true
+      },
+      "after": {
+        "calendarReplayExact": true,
+        "noCalendarChange": true,
+        "expiredChat": 0,
+        "allOtherFieldsEqual": true,
+        "beforeRevision": 4407066,
+        "revision": 4407066,
+        "digest": "73cd011b64a65b70b997bab299b891f85b7ce2e5e5db084fc52e66db854d406d",
+        "worldHash": "da55fa7f85cdde6695e7125eb5da6f56650944fe5f343077773e06aeb8ddcdf0",
+        "profiles": 1720,
+        "clans": 136
+      }
+    },
+    "changes": [
+      "Compact accessory E charges and current full shop tooltips",
+      "Compact lobby profile and wallet spacing",
+      "Achievement layers reveal together after decode; unchanged ready badges do not flash",
+      "Server strips links from arena/clan chat while preserving retry protection and profanity strikes",
+      "All approved actual currency debits now credit spending achievements atomically",
+      "Male features for Drakosha/Leva; Zaya forelock matches fur; all active pet levels, related achievements, five emotes and banners updated",
+      "Zaya hind feet removed entirely from Easter banner; event card derives from same image"
+    ],
+    "tests": {
+      "windowsTargeted": 90,
+      "linux": {
+        "total": 2364,
+        "pass": 2363,
+        "fail": 0,
+        "skip": 1
+      },
+      "browser": [
+        {
+          "engine": "chromium",
+          "width": 1336,
+          "height": 768,
+          "header": {
+            "height": 98,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "width": 1920,
+          "height": 1080,
+          "header": {
+            "height": 98,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "width": 390,
+          "height": 844,
+          "header": {
+            "height": 84.5,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "width": 915,
+          "height": 412,
+          "header": {
+            "height": 80.5,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "atomicBadge": {
+            "hidden": [
+              "hidden",
+              "hidden",
+              "hidden"
+            ],
+            "visible": [
+              "visible",
+              "visible",
+              "visible"
+            ],
+            "cachedRepaint": "true"
+          }
+        },
+        {
+          "engine": "firefox",
+          "width": 1336,
+          "height": 768,
+          "header": {
+            "height": 98,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "width": 1920,
+          "height": 1080,
+          "header": {
+            "height": 98,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "width": 390,
+          "height": 844,
+          "header": {
+            "height": 84.5,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "width": 915,
+          "height": 412,
+          "header": {
+            "height": 80.5,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "atomicBadge": {
+            "hidden": [
+              "hidden",
+              "hidden",
+              "hidden"
+            ],
+            "visible": [
+              "visible",
+              "visible",
+              "visible"
+            ],
+            "cachedRepaint": "true"
+          }
+        },
+        {
+          "engine": "webkit",
+          "width": 1336,
+          "height": 768,
+          "header": {
+            "height": 98,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "width": 1920,
+          "height": 1080,
+          "header": {
+            "height": 98,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "width": 390,
+          "height": 844,
+          "header": {
+            "height": 84.5,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "width": 915,
+          "height": 412,
+          "header": {
+            "height": 80.5,
+            "overflow": false
+          },
+          "charges": 22,
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "atomicBadge": {
+            "hidden": [
+              "hidden",
+              "hidden",
+              "hidden"
+            ],
+            "visible": [
+              "visible",
+              "visible",
+              "visible"
+            ],
+            "cachedRepaint": "true"
+          }
+        }
+      ],
+      "arena": [
+        {
+          "engine": "chromium",
+          "width": 1336,
+          "height": 768,
+          "mobile": false,
+          "received": 1,
+          "drawn": 308,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "none",
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "width": 390,
+          "height": 844,
+          "mobile": true,
+          "received": 1,
+          "drawn": 256,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "auto",
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "width": 1336,
+          "height": 768,
+          "mobile": false,
+          "received": 1,
+          "drawn": 91,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "none",
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "width": 390,
+          "height": 844,
+          "mobile": true,
+          "received": 1,
+          "drawn": 139,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "auto",
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "width": 1336,
+          "height": 768,
+          "mobile": false,
+          "received": 1,
+          "drawn": 15,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "none",
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "width": 390,
+          "height": 844,
+          "mobile": true,
+          "received": 1,
+          "drawn": 26,
+          "atlasLoads": 7,
+          "variant": "pets",
+          "index": 1,
+          "scale": 1.2,
+          "pointer": "auto",
+          "errors": []
+        }
+      ],
+      "petShields": {
+        "pets": 4,
+        "levels": 6,
+        "allCountedOnce": true,
+        "walRecovery": true
+      },
+      "http": {
+        "at": "2026-11-24T10:33:37.216Z",
+        "checks": [
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/achievements/illustrated-v2/pet_exclusive.webp",
+            "bytes": 19784,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/achievements/illustrated-v2/pet_level_drakosha.webp",
+            "bytes": 18082,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/achievements/illustrated-v2/pet_level_leva.webp",
+            "bytes": 16406,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/achievements/illustrated-v2/pet_level_zaya.webp",
+            "bytes": 14084,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/banners/pets.webp",
+            "bytes": 137464,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/emotes/pets-motion-v2/1.png",
+            "bytes": 442410,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/emotes/pets-motion-v2/4.png",
+            "bytes": 539372,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/emotes/pets-motion-v2/6.png",
+            "bytes": 482204,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/emotes/pets-v1/1.webp",
+            "bytes": 7154,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/emotes/pets-v1/2.webp",
+            "bytes": 7234,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/emotes/pets-v1/4.webp",
+            "bytes": 8042,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/emotes/pets-v1/6.webp",
+            "bytes": 7086,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/emotes/pets-v1/7.webp",
+            "bytes": 5986,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/events/easter-hunt/banner.png",
+            "bytes": 312836,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/events/easter-hunt/card-banner.webp",
+            "bytes": 83404,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/drakosha-0.webp",
+            "bytes": 58990,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/drakosha-1.webp",
+            "bytes": 59132,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/drakosha-2.webp",
+            "bytes": 61826,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/drakosha-3.webp",
+            "bytes": 59682,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/drakosha-4.webp",
+            "bytes": 66850,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/drakosha-5.webp",
+            "bytes": 67002,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/leva-0.webp",
+            "bytes": 46916,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/leva-1.webp",
+            "bytes": 51902,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/leva-2.webp",
+            "bytes": 55098,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/leva-3.webp",
+            "bytes": 56544,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/leva-4.webp",
+            "bytes": 55080,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/leva-5.webp",
+            "bytes": 60050,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/zaya-0.webp",
+            "bytes": 43966,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/zaya-1.webp",
+            "bytes": 42994,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/zaya-2.webp",
+            "bytes": 42470,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/zaya-3.webp",
+            "bytes": 44038,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/zaya-4.webp",
+            "bytes": 50468,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/assets/pets/levels-v1/zaya-5.webp",
+            "bytes": 60602,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/index.html",
+            "bytes": 42858,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/shared/accessory-catalog.js",
+            "bytes": 29609,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/shared/achievement-badge.js",
+            "bytes": 4039,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/shared/arena-emotes.js",
+            "bytes": 1586,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/shared/art-revision.js",
+            "bytes": 35612,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/shared/news-layout.js",
+            "bytes": 5195,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/shared/pet-rules.js",
+            "bytes": 7889,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/styles/components/achievement-dialog.css",
+            "bytes": 22741,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/styles/components/lobby-wallet-accessories.css",
+            "bytes": 3680,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/styles/components/skin-and-wardrobe-dialogs.css",
+            "bytes": 17358,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+            "bytes": 68048,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+            "bytes": 26272,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/ui/lobby/promotion-banners.js",
+            "bytes": 6190,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3000",
+            "file": "public/ui/progression/events-page.js",
+            "bytes": 17235,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/achievements/illustrated-v2/pet_exclusive.webp",
+            "bytes": 19784,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/achievements/illustrated-v2/pet_level_drakosha.webp",
+            "bytes": 18082,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/achievements/illustrated-v2/pet_level_leva.webp",
+            "bytes": 16406,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/achievements/illustrated-v2/pet_level_zaya.webp",
+            "bytes": 14084,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/banners/pets.webp",
+            "bytes": 137464,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/emotes/pets-motion-v2/1.png",
+            "bytes": 442410,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/emotes/pets-motion-v2/4.png",
+            "bytes": 539372,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/emotes/pets-motion-v2/6.png",
+            "bytes": 482204,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/emotes/pets-v1/1.webp",
+            "bytes": 7154,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/emotes/pets-v1/2.webp",
+            "bytes": 7234,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/emotes/pets-v1/4.webp",
+            "bytes": 8042,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/emotes/pets-v1/6.webp",
+            "bytes": 7086,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/emotes/pets-v1/7.webp",
+            "bytes": 5986,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/events/easter-hunt/banner.png",
+            "bytes": 312836,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/events/easter-hunt/card-banner.webp",
+            "bytes": 83404,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/drakosha-0.webp",
+            "bytes": 58990,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/drakosha-1.webp",
+            "bytes": 59132,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/drakosha-2.webp",
+            "bytes": 61826,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/drakosha-3.webp",
+            "bytes": 59682,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/drakosha-4.webp",
+            "bytes": 66850,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/drakosha-5.webp",
+            "bytes": 67002,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/leva-0.webp",
+            "bytes": 46916,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/leva-1.webp",
+            "bytes": 51902,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/leva-2.webp",
+            "bytes": 55098,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/leva-3.webp",
+            "bytes": 56544,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/leva-4.webp",
+            "bytes": 55080,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/leva-5.webp",
+            "bytes": 60050,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/zaya-0.webp",
+            "bytes": 43966,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/zaya-1.webp",
+            "bytes": 42994,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/zaya-2.webp",
+            "bytes": 42470,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/zaya-3.webp",
+            "bytes": 44038,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/zaya-4.webp",
+            "bytes": 50468,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/assets/pets/levels-v1/zaya-5.webp",
+            "bytes": 60602,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/index.html",
+            "bytes": 42858,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/shared/accessory-catalog.js",
+            "bytes": 29609,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/shared/achievement-badge.js",
+            "bytes": 4039,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/shared/arena-emotes.js",
+            "bytes": 1586,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/shared/art-revision.js",
+            "bytes": 35612,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/shared/news-layout.js",
+            "bytes": 5195,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/shared/pet-rules.js",
+            "bytes": 7889,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/styles/components/achievement-dialog.css",
+            "bytes": 22741,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/styles/components/lobby-wallet-accessories.css",
+            "bytes": 3680,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/styles/components/skin-and-wardrobe-dialogs.css",
+            "bytes": 17358,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+            "bytes": 68048,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+            "bytes": 26272,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/ui/lobby/promotion-banners.js",
+            "bytes": 6190,
+            "exact": true
+          },
+          {
+            "origin": "http://195.208.123.221",
+            "file": "public/ui/progression/events-page.js",
+            "bytes": 17235,
+            "exact": true
+          }
+        ]
+      },
+      "local": {
+        "at": "2026-11-24T10:34:04.460Z",
+        "port": 3104,
+        "checks": 47,
+        "exact": true,
+        "files": [
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/achievements/illustrated-v2/pet_exclusive.webp",
+            "bytes": 19784,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/achievements/illustrated-v2/pet_level_drakosha.webp",
+            "bytes": 18082,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/achievements/illustrated-v2/pet_level_leva.webp",
+            "bytes": 16406,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/achievements/illustrated-v2/pet_level_zaya.webp",
+            "bytes": 14084,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/banners/pets.webp",
+            "bytes": 137464,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/emotes/pets-motion-v2/1.png",
+            "bytes": 442410,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/emotes/pets-motion-v2/4.png",
+            "bytes": 539372,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/emotes/pets-motion-v2/6.png",
+            "bytes": 482204,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/emotes/pets-v1/1.webp",
+            "bytes": 7154,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/emotes/pets-v1/2.webp",
+            "bytes": 7234,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/emotes/pets-v1/4.webp",
+            "bytes": 8042,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/emotes/pets-v1/6.webp",
+            "bytes": 7086,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/emotes/pets-v1/7.webp",
+            "bytes": 5986,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/events/easter-hunt/banner.png",
+            "bytes": 312836,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/events/easter-hunt/card-banner.webp",
+            "bytes": 83404,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/drakosha-0.webp",
+            "bytes": 58990,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/drakosha-1.webp",
+            "bytes": 59132,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/drakosha-2.webp",
+            "bytes": 61826,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/drakosha-3.webp",
+            "bytes": 59682,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/drakosha-4.webp",
+            "bytes": 66850,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/drakosha-5.webp",
+            "bytes": 67002,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/leva-0.webp",
+            "bytes": 46916,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/leva-1.webp",
+            "bytes": 51902,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/leva-2.webp",
+            "bytes": 55098,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/leva-3.webp",
+            "bytes": 56544,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/leva-4.webp",
+            "bytes": 55080,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/leva-5.webp",
+            "bytes": 60050,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/zaya-0.webp",
+            "bytes": 43966,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/zaya-1.webp",
+            "bytes": 42994,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/zaya-2.webp",
+            "bytes": 42470,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/zaya-3.webp",
+            "bytes": 44038,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/zaya-4.webp",
+            "bytes": 50468,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/assets/pets/levels-v1/zaya-5.webp",
+            "bytes": 60602,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/index.html",
+            "bytes": 42858,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/shared/accessory-catalog.js",
+            "bytes": 29652,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/shared/achievement-badge.js",
+            "bytes": 4111,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/shared/arena-emotes.js",
+            "bytes": 1641,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/shared/art-revision.js",
+            "bytes": 35612,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/shared/news-layout.js",
+            "bytes": 5195,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/shared/pet-rules.js",
+            "bytes": 7957,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/styles/components/achievement-dialog.css",
+            "bytes": 27305,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/styles/components/lobby-wallet-accessories.css",
+            "bytes": 4702,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/styles/components/skin-and-wardrobe-dialogs.css",
+            "bytes": 21937,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+            "bytes": 68447,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+            "bytes": 26311,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/ui/lobby/promotion-banners.js",
+            "bytes": 6279,
+            "exact": true
+          },
+          {
+            "origin": "http://127.0.0.1:3104",
+            "file": "public/ui/progression/events-page.js",
+            "bytes": 17307,
+            "exact": true
+          }
+        ],
+        "experimentalPort3000Untouched": true
+      }
+    },
+    "root": {
+      "at": "2026-11-24T10:33:43.894Z",
+      "sourceCommit": "64bc35c41d6da55c4718abb005d7aee4fee797fc",
+      "developerHead": "64bc35c41d6da55c4718abb005d7aee4fee797fc",
+      "files": [
+        {
+          "file": "games/heroes-of-ether/design/pet-character-20261124/README.txt",
+          "before": null,
+          "sha256": "699a2ee0415f31b1ee8006a6faa12e23e7fdd8dbf3e42e6773c53b82f55f1b2a"
+        },
+        {
+          "file": "games/heroes-of-ether/design/pet-character-20261124/browser.json",
+          "before": null,
+          "sha256": "b4600a744b2daa68157581b4b0ece27d08436b2b5479d8268f9638bb2a088477"
+        },
+        {
+          "file": "games/heroes-of-ether/design/pet-character-20261124/export.json",
+          "before": null,
+          "sha256": "7d7eaa31df03e388aed2adbc56aa23d018831f2c131f3f2c6b0fe2f263d80658"
+        },
+        {
+          "file": "games/heroes-of-ether/design/pet-character-20261124/generation.json",
+          "before": null,
+          "sha256": "c861c00b4a39aec445650e93f2c42c44dad45ac4fac4a292e77b8064bf1712db"
+        },
+        {
+          "file": "games/heroes-of-ether/design/pet-character-20261124/imagegen-sources.tar.gz",
+          "before": null,
+          "sha256": "ef688147b9a0daeef762f07bd235988c450c54d9627b3fd957acb33f8295a44c"
+        },
+        {
+          "file": "games/heroes-of-ether/design/pet-character-20261124/related-generation.json",
+          "before": null,
+          "sha256": "5012ee211469deafa63726bf1ee74a6b21b371dbd4197bace9a9d7dffbe5b096"
+        },
+        {
+          "file": "games/heroes-of-ether/design/pet-character-20261124/sources-manifest.json",
+          "before": null,
+          "sha256": "4ff06583a24b203fc25f0ad8e5971d0fed61183505d62bf9487f217d2c7fb3d3"
+        },
+        {
+          "file": "games/heroes-of-ether/docs/performance/lobby-progress-pets-20261124.txt",
+          "before": null,
+          "sha256": "32507087f68fefea32a0706390bcfbfa84007d8a3248d8e2ff24eb0e866b8247"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/achievements/illustrated-v2/pet_exclusive.webp",
+          "before": "2edecea3a250a1889ffe2252d24730d5a358ba85014276f2458bd2dcddafb77a",
+          "sha256": "a50ef7aa47d12284c7e24727ba7c3195ae83abd522e0b43cb2e7f0d50976ea4f"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/achievements/illustrated-v2/pet_level_drakosha.webp",
+          "before": "37c443cfe715503b05b76c9ad7b228b0c598bd0e98a28220c21bb2022587a6ae",
+          "sha256": "348c752d0e9c7084fbc85a0c9aa2a00b23a87be3918ec05d8b17150f3436a2ef"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/achievements/illustrated-v2/pet_level_leva.webp",
+          "before": "e0c76f93096222317ced7aa252c370ef0dc78942a7d21dab44a8de63f58b42db",
+          "sha256": "7dc1e1c91ad063687d8e52a4d4fcc64ba7bdfff28aa1ca126d8b71ad0cdb8e3a"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/achievements/illustrated-v2/pet_level_zaya.webp",
+          "before": "6817050e07b07c29b58f42d7e5a2d84830e3881ac3c5fe8fe473601544097acb",
+          "sha256": "bbfadccbb069a58c6ed4e15d2630cc44394be3e9188d39353baa8022677bf53e"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/banners/pets.webp",
+          "before": "b41f1c17d78c9c2b4f784f9f71b451d4d9da8e043162ed36d2d6b0dca67097e9",
+          "sha256": "be542e6c5e2a741107b58ade045c65499918a67d9c219dbd6f4230c43ac1545b"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/emotes/pets-motion-v2/1.png",
+          "before": "e537b965e050dba38419efa771712fde0a01ab55a01f3f6d32a253c68a2794ed",
+          "sha256": "963998f3846860e049e4b3c8ee14c9cd13db34617e3c83e74ee6f10b40d802d1"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/emotes/pets-motion-v2/4.png",
+          "before": "dd63a502ee84634cf2831ffc444e288862334cbe33bdf22c95660f5fa513052a",
+          "sha256": "5070bdbbbbd6a1553f49d02c91422f9d5c69bec23bfa27a78b0cb1409335e607"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/emotes/pets-motion-v2/6.png",
+          "before": "84b8bc03ca12b50f59311ec9b5287b376e20ef261d062d9b247194c4995f0667",
+          "sha256": "b8b82a41681420b574d277fd4e6cfb6103cf41078a9fc67a0758c32f1e412a4c"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/emotes/pets-v1/1.webp",
+          "before": "83c7f7fe9985f13d2ba539f6ce5596a783c72d06e66744e82b32f032b76ba46a",
+          "sha256": "0f933d4194f7f07e0f50fe9ee47f748be82b34bd41254eaa13ab5f8eec192536"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/emotes/pets-v1/2.webp",
+          "before": "7669dadf37a8ba329f2aa8d742da8cdcd8636f045e5ceb8993756400654c42c4",
+          "sha256": "edad7218ec1955e5f3c8f56bc73754d7ae389485c774d7180d0f068f4bf0eff5"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/emotes/pets-v1/4.webp",
+          "before": "4236dff90759674f63097248dd79e8ac53c3a463a1271cae6b916b4453d6fccd",
+          "sha256": "657ad27ba44d026d4dd354e8cb122cc2d713f9834ee827fa6a55bbf69db0a725"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/emotes/pets-v1/6.webp",
+          "before": "45f2e1248590e3d1222eb159bb40272a7e85d34d3f13affb02aac3ae415716ba",
+          "sha256": "2a575eb2409db13ea48caffd4200362e266481917cbdf7d26dd1d1015745928c"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/emotes/pets-v1/7.webp",
+          "before": "3ae5a73b08b37d6bcc170545f04cb3c09549736f5a270ecaf3b54557f7044f4f",
+          "sha256": "b9da7f3b8c98b218249fa43b415851629cc704b09fc1588492507cf434c17db3"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/events/easter-hunt/banner.png",
+          "before": "8e72b76ff667d04fd8d0d8bb84308556067a3b674ef784c1f4fa7376356ad45b",
+          "sha256": "fb731bc3ddea4ae502b6ebe15d614d369f88633b10c875f791b009cabcf0f063"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/events/easter-hunt/card-banner.webp",
+          "before": "cf823bcd6a51eefaaa00918e42ca4216fe7e6911ac80f829253e872e2d64a9ed",
+          "sha256": "67c27c8562170626c402d62bc2601e92fcfdcda58c4c38364afdd077aabe0909"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/drakosha-0.webp",
+          "before": "b24584ddcc861a21c2b633706709c48f9ad81bfc0189ece6f39542894157ebc2",
+          "sha256": "0686c6fde51eee4cbe4c958e9ba0873eb1d3c931e106c97813a860d2640b13a1"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/drakosha-1.webp",
+          "before": "fe02170ef396a4e347fe1de7b6f129c3fa4416e30ce2bc6ec924a36ebee00428",
+          "sha256": "ef3611211589b197f595d3212657b2960a5a6612b574c5f9079785c275d2ac9a"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/drakosha-2.webp",
+          "before": "a34414a01c7a41ae098204b68c38dd3dedb1cfcfb247edb6dfc492982a645b8d",
+          "sha256": "e624ea249325adc070ddf433af30bdbb4c1eac5537e699896d703b63f833bd6c"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/drakosha-3.webp",
+          "before": "3d6dc9d99d0b81e0ae2f3cff05e5a4fe0c13df09ba3adfb6c342e19b25a21b2c",
+          "sha256": "a1fd6bbe3e6efef61341fc3a6f03698bc15f5518c456cb81b5ade8443ace28cc"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/drakosha-4.webp",
+          "before": "155f99c4c3a2b12b9778ef84ae37d6a57f55eb5bc46f4b830deff62cb5df5416",
+          "sha256": "8bce6ca202e008393e274f57b8da35b87f7fe087f9a8a9b195fbb019207cc009"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/drakosha-5.webp",
+          "before": "6cac27354db49f7939e7ceacfb4a1415d85d5de2dd7d54c51b02d68247f1c333",
+          "sha256": "22ddba8432a6f3aa930b5c87a5a1977cbeb000cefad4d8fff3837a27008471f4"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/leva-0.webp",
+          "before": "d1ccd20a72af6f79b29d858f74fa676f34810a761e2c0b28855ae1e8d524d767",
+          "sha256": "e77f4286137784f8f5b3b45b3662863010c4b8c20400bd11c259e8c321011189"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/leva-1.webp",
+          "before": "022f555430a9f4db7f35024409d17482e3de7caf151e8f74c5417618dc981a32",
+          "sha256": "d7f7c7a3a5b206258a3c80d82333bc2bfc3f1d8d69030b0d9a7de5766edee413"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/leva-2.webp",
+          "before": "febb5c9d6fd8292de9bd117b0a00c8c1cc079b1d490a5658442c27f0d6bc7178",
+          "sha256": "1ab985c19cf8421c0557bb7dacb09b76a067c5f5fba8ef7b11d8b48b94839791"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/leva-3.webp",
+          "before": "1fdcfee8cfa4db9ceaa6f66d490e63ae8cdbfc5b9428546bbe80ac1ed2d53a9b",
+          "sha256": "10d5e2cd94cbd2af4e2a47eaa4a3fd9937de44d5c46ba28512dd280330d7138d"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/leva-4.webp",
+          "before": "bfccb0860fe4a0784454a379895edd8f6bc8f4d00f84f39c2a60668294c8a0e5",
+          "sha256": "466c78b7aa1827b7b18b80f6068f81512cd9bf9f4b0c62f2c4ee3656e42ede4b"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/leva-5.webp",
+          "before": "491939e09ecad30bae91f7c53fbc74e57c59bfd774c34f560518e66baa7fd117",
+          "sha256": "8e73c32059e1215ba33d9d251d43512d23ba6f84755cd161449ef2737dfce9b2"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/zaya-0.webp",
+          "before": "53ffbc7f14f94383c53debe78fe5590d5aa7d832790b25b3dc1cecd18c22c0a9",
+          "sha256": "f73a3680054de825b221f188d006917491951da8e52e8be06415378f43e855d6"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/zaya-1.webp",
+          "before": "193b515641c4e0df141f1905377f48f94688e66f5330832903e3c7b9ff4a9d2c",
+          "sha256": "6b3070f55c88e9bc149981c8410e0765f704123448509fac5db3ddfd884cdded"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/zaya-2.webp",
+          "before": "ec9ba435e1f255ab981f5e8b19f457d3f6ccaec36ab78902bf97148e0415ccb8",
+          "sha256": "c1d0125960234d4cf798036c93a7d1217a89b75223adf34b66b89b92c0f2010d"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/zaya-3.webp",
+          "before": "9d85e6bc80052759fdc534aed9f3b1cc93e68e916a1a6d838053c8d54ad907e7",
+          "sha256": "852f2c4391e3b3b24def0cec4d9464f2ad4e9ecc2b4017fa38eb34af1d9504a5"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/zaya-4.webp",
+          "before": "f8b6af474cde42557268e860981bbb053007cf0302a9f2ed30557dd307a6b936",
+          "sha256": "d7dbe627f83e7dcef28b15f240915cb6d03415f41d201b15cd74d1c74ad34587"
+        },
+        {
+          "file": "games/heroes-of-ether/public/assets/pets/levels-v1/zaya-5.webp",
+          "before": "f57205f3e692d1a39d4d25f952ad098b7cc011bda5c84625b5130e39785fc805",
+          "sha256": "175e0153e1f2ecfd91fbfc4a071eed88cd51c9f12acd9a1c45c0d17d7469eca1"
+        },
+        {
+          "file": "games/heroes-of-ether/public/index.html",
+          "before": "ff4be1b2d71976b0d687a8b67f17c73c07519c77377e080df75758bf175baddf",
+          "sha256": "360ff20fe002ab60c646d081f46fa5e2ae9d5fc9a6d7515098e8102eccb6733c"
+        },
+        {
+          "file": "games/heroes-of-ether/public/shared/accessory-catalog.js",
+          "before": "bc7a21be937145430e0f6a82edc764e4443162209bd2956326da85292c613469",
+          "sha256": "a4e5b39353a5908131a4b66299753b288d4dbd85167c3ee5a171f418e88ba4fb"
+        },
+        {
+          "file": "games/heroes-of-ether/public/shared/achievement-badge.js",
+          "before": "5e0e41008aee2a5293459aab067fac93399677446d162f60410549165319e1b8",
+          "sha256": "6b98b9e747d5cc6e5229beb65e6bd00840a82fcaf9e88c6cb3a30cfa5ee009b4"
+        },
+        {
+          "file": "games/heroes-of-ether/public/shared/arena-emotes.js",
+          "before": "3aa37841e8a03258960dc77e7f2d6f220c979c0508f57f80c7978b5b42f9c6e6",
+          "sha256": "54e02642e7c7ab73504cfd2b5a7ceee861d2c3ca523daa7f1c7a33ae18a9733a"
+        },
+        {
+          "file": "games/heroes-of-ether/public/shared/art-revision.js",
+          "before": "20a39026649f44201e9b502baed1d5a2ce011d2bc2c0538a9c9ea9a1f8db0fd1",
+          "sha256": "e06c6e40857fe13e28f7c8dbb914e2692c1c00878663c3e94dc62c0ac37edb3d"
+        },
+        {
+          "file": "games/heroes-of-ether/public/shared/news-layout.js",
+          "before": "f83bdf62b841e17455c8ba93372125396a10a9835bc295d2f05df8e2cdc2b70a",
+          "sha256": "c43e319529bdfc903565e971a6882121f9179ba6265f676535168c112bd7170a"
+        },
+        {
+          "file": "games/heroes-of-ether/public/shared/pet-rules.js",
+          "before": "88658f532d96df2533fc53f0fce1e33d6216e6105f48294fadbfed087e1bc0f1",
+          "sha256": "2bd3997f21c88379b164ecb79e8defde6172240e7fafdaee258cc707997c25c2"
+        },
+        {
+          "file": "games/heroes-of-ether/public/styles/components/achievement-dialog.css",
+          "before": "578f6f72980d9b9edc8454f49c8c34a42bb1faae6de4d10077a3c28becffedd6",
+          "sha256": "347e52f83eeae9e3e75c4f11d5e883ea842eaedcf4bf470003674c24544f440f"
+        },
+        {
+          "file": "games/heroes-of-ether/public/styles/components/lobby-wallet-accessories.css",
+          "before": "2a83815de4711c22e295ac53bc448417d4ab05f1d13d5b3ff80fcdee8e779e2f",
+          "sha256": "b65cd2b45fd851caf80445353d6d762ba957b9834c13d5421c5c2f73ae8de16b"
+        },
+        {
+          "file": "games/heroes-of-ether/public/styles/components/skin-and-wardrobe-dialogs.css",
+          "before": "0c799e67fac84cef59a45b8f7997801ece0d22bffe2ee09caf8769aacd0adc84",
+          "sha256": "09b9bb5fd95e1f4f454d866daac275b50f2e86b003709c74bd8b79b5d5187d0b"
+        },
+        {
+          "file": "games/heroes-of-ether/public/ui/boosters/shop-and-inventory-dialog.js",
+          "before": "ecaa5bcfe339a0a0b14142901559f651d8239896d56eef17bab6a7eed04776ff",
+          "sha256": "dea3d79cc57cf65af700746d7e63f23f5b2648ea79bb2dbe949e2f8ce1f1e6d6"
+        },
+        {
+          "file": "games/heroes-of-ether/public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+          "before": "1a84a44e7c1e98feae68caf0edc38abacb3fd1d7fb4ddc4538d363a7a52fa732",
+          "sha256": "7ea8f6d09181113b5fb4568aea360059314a78cf049c630927b884a54efa8b2d"
+        },
+        {
+          "file": "games/heroes-of-ether/public/ui/lobby/promotion-banners.js",
+          "before": "cc724dbfe467546f4035b53d4c742a077fd49dd054bf8d573a3556966aa564f5",
+          "sha256": "ba6b756c0409be8e7493ae4364370816541e5977e7bbabff1316eb34195cca66"
+        },
+        {
+          "file": "games/heroes-of-ether/public/ui/progression/events-page.js",
+          "before": "ab681a08681acd0c3a9ba8f1126adf064ef88e4247036922bc2533e5abbc029a",
+          "sha256": "56aa92fa6d7d864fee8064a9f932dd58b40ffc595f6904eb06bb7af35259d3a8"
+        },
+        {
+          "file": "games/heroes-of-ether/scripts/art/build-pet-character-20261124.cjs",
+          "before": null,
+          "sha256": "ee0cafcad0ef631b62366d3d6446a1795282f1a8fbcdbd0cec4ce052bd93498d"
+        },
+        {
+          "file": "games/heroes-of-ether/src/server/accounts/lite-account.js",
+          "before": "c77f1f49e281487a75af4a24c4840e193a26d19287327c390927e0ea1cc3bbd6",
+          "sha256": "64eb31b720f2c80a78ca395e8b9aa151795a02a5c7fa1053eaa94364dd0690eb"
+        },
+        {
+          "file": "games/heroes-of-ether/src/server/chat/chat-links.js",
+          "before": null,
+          "sha256": "07bc437f4e75af44ea1f6013a0e725157b5e5a650027f750c384ae97e6295e38"
+        },
+        {
+          "file": "games/heroes-of-ether/src/server/chat/chat-service.js",
+          "before": "3c254ec6cd162fa7724d6093e5b415a5f52fd630697044b2cbbed99e81f223a4",
+          "sha256": "1aaee5822f4a56b056ef173718eb8bf11e1480649f82b761af2cf1b0bdcd4ef7"
+        },
+        {
+          "file": "games/heroes-of-ether/src/server/events/black-friday-orders.js",
+          "before": "12b7d1931cd318bd76a92e83c30442f13a96a7e56e5021f9aff7336332804a6b",
+          "sha256": "df1b36ccb499da7ff31151b13a854894821b1c63863a3e110b481ee55b93e010"
+        },
+        {
+          "file": "games/heroes-of-ether/src/server/events/black-friday.js",
+          "before": "fbf66bb7c1b55d39e62c8b1249f582869d5537b37f0ceb47abf3eca9e6f18c3f",
+          "sha256": "087dcd075891765b6887500e85b76504d72b48840cdc8e51378870214393eb8b"
+        },
+        {
+          "file": "games/heroes-of-ether/src/server/events/easter-hunt.js",
+          "before": "17e9f9a01e787ef50098f836d482b63b4667d7d3b51cb2f2cf949283b6c1411a",
+          "sha256": "0b341ea61d48869c9577fe3fb6d79e860980fad825162a13a1296028966ba191"
+        },
+        {
+          "file": "games/heroes-of-ether/src/server/profiles/league-appearance.js",
+          "before": "ab9e86a66a8f6ae82bc9aa66dd175357a8482fca063c4682bfa52bfdb97d8d5e",
+          "sha256": "3287f5abf3f16f7e354b214561a217749a30c7d069be7994e1a16d81d506f1f1"
+        },
+        {
+          "file": "games/heroes-of-ether/src/server/progression/personal-quests.js",
+          "before": "f2269b41e2cb6b1fd5eda3c18f9b437199daec1a70a5228aaaf8a5a228371fa6",
+          "sha256": "2a9b759dff7d24b656e2a1ef91c6e85c8f7140aaf71e396bd8447511c06c8dde"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/browser/lobby-progress-pets.test.cjs",
+          "before": null,
+          "sha256": "ee08c2e047065ff84c84d3a70a3d9e970efd4e61267a9fad3589ae297bbd26fe"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/integration/chat-links.test.js",
+          "before": null,
+          "sha256": "691b165c45cb3aff5a9d5879fbeefddfa685bf2bd3e58712ea5349f2854e7311"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/integration/event-seekers.test.js",
+          "before": "ffa004194edff64f95407eae523c83af78ccc6d162076c640134c5d5b8b49887",
+          "sha256": "4c56a5b93be023a64ea1a91dd0aa6a7418d0d041e43faa150224af879fd3d722"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/integration/interface-packs.test.js",
+          "before": "48af7e92617da52168af69d5e9cf9e868c1e7348beb21db3b268a1dc92a2cf9c",
+          "sha256": "4f421c62570c2fcbbf2d4facc6db48c3a0c5b62e06e11c9ae9a9d113535cd9ba"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/unit/black-friday-coupon-chests.test.js",
+          "before": "2da043c9825f8b551eaf2a6ad8a87eedbd96e29444ea7588ea7263dc6b4b651e",
+          "sha256": "999b21f73cf4a355bb0dfe71ba0e91cadbd5021421badfbc29228ab66e6d8a88"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/unit/black-friday.test.js",
+          "before": "b51b2a9949d25e0c3db0f3ee1d4a9eb9d2ed10b8e955533a22a8c6269a27a696",
+          "sha256": "7522d6e79d64cc63365df76633900e637d236a21550c77850638492077b4be5d"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/unit/clan-daily-integration.test.js",
+          "before": "686674b55f9336b6fbe96ff1292ddb83501ff21b2dcff462eb1ef18371746d14",
+          "sha256": "048d2d7446d5a1e08b0331baba227d128080e1c0d4cb840304b21cb867b5fd92"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/unit/lite-account.test.js",
+          "before": "192d8ffe0a410fdb0c492de5a4078811e972687514279e5eeca50b36fc76c819",
+          "sha256": "cab1e005918223583becd801309e42b2b2f61ddf5d4e4e7301f48b31b74bfca4"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/unit/personal-quests.test.js",
+          "before": "66bf02765e8c20d3749750830a81750efce9a569aa7c71c80c722d3b13995106",
+          "sha256": "d86a305a60547b5c30ebe45d6aeec356c34eb5c9279ff65e2ccb60369080af25"
+        },
+        {
+          "file": "games/heroes-of-ether/tests/unit/quest-eligibility.test.js",
+          "before": "ca3f857c78448a461d8d67b9a86d5fb82a0f45d0f673dc396815e029f4b6f1b2",
+          "sha256": "31b0160eb47118739946c21bc5219f7cc9694ecfb04bfaf12382b7f79bfb3b7b"
+        }
+      ],
+      "privateConfigChanged": false
+    },
+    "graphics": {
+      "runtimeRasterFiles": 33,
+      "oldBytes": 3420613,
+      "newBytes": 3085158,
+      "decodedCanvasDimensionsUnchanged": true,
+      "protectedAssetsUnchanged": true,
+      "sourceArchive": "games/heroes-of-ether/design/pet-character-20261124/imagegen-sources.tar.gz"
+    },
+    "limitations": [
+      "No retrospective spending compensation without exact historical evidence",
+      "Room renaming awaits owner selection; current Greek names retained",
+      "Not a new capacity or full FPS benchmark; 300000 CCU not proven",
+      "Last mixed capacity result remains 60 arena + 5 lobby for 10 minutes at 6 CPU including generators; 90 + 5 unstable; independent rooms/addressed history/Firefox frame work remains",
+      "Cold start took about 82 seconds; full-world startup loading remains an optimization target"
+    ],
+    "initialFailures": [
+      "First chat-link test exposed punycode TLD ordering; fixed, repeat and full suite pass",
+      "First browser fixtures were blocked by earned-reward/news dialogs; now dismiss through their actual controls",
+      "Initial remote upload preceded directory creation; corrected without touching runtime",
+      "First Linux fixture omitted ws/pg plus deployment/budget support; full logs retained",
+      "Second Linux run: 2362 pass, one incomplete reroll fixture lacking initialized achievement state; fixture now uses ProfileStore, asserts exact 29900 spend; final full run pass",
+      "One SSH readback handshake failed and succeeded on retry",
+      "Backup guard rejected an early invocation while shutdown was still running; actual backup began only after clean stop",
+      "Two 40-second cold-start readiness windows expired; service then became ready without a restart and passed full state verification"
+    ],
+    "postInstallObservations": {
+      "purpose": "Health only; not a capacity or FPS benchmark",
+      "samples": [
+        {
+          "at": "2026-11-24T10:34:05.230Z",
+          "online": {
+            "arena": 0,
+            "lobby": 3,
+            "total": 3
+          },
+          "tickWorkMs": {
+            "count": 1192,
+            "p50": 0.68,
+            "p95": 1.04,
+            "p99": 1.47,
+            "max": 16.7
+          },
+          "tickIntervalMs": {
+            "count": 1192,
+            "p50": 50.04,
+            "p95": 51.34,
+            "p99": 51.89,
+            "max": 316.46
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 4407071,
+            "pendingWalBytes": 983325,
+            "maxWalBytes": 67108864
+          },
+          "database": {
+            "connected": true,
+            "error": null,
+            "revision": 4407066,
+            "syncAgeMs": 35476
+          }
+        },
+        {
+          "at": "2026-11-24T10:34:20.249Z",
+          "online": {
+            "arena": 1,
+            "lobby": 2,
+            "total": 3
+          },
+          "tickWorkMs": {
+            "count": 1192,
+            "p50": 0.71,
+            "p95": 1.16,
+            "p99": 6.48,
+            "max": 64.82
+          },
+          "tickIntervalMs": {
+            "count": 1192,
+            "p50": 50.11,
+            "p95": 51.39,
+            "p99": 51.89,
+            "max": 316.46
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": true,
+            "walRevision": 4407092,
+            "pendingWalBytes": 1197195,
+            "maxWalBytes": 67108864
+          },
+          "database": {
+            "connected": true,
+            "error": null,
+            "revision": 4407070,
+            "syncAgeMs": 10048
+          }
+        },
+        {
+          "at": "2026-11-24T10:34:35.259Z",
+          "online": {
+            "arena": 1,
+            "lobby": 3,
+            "total": 4
+          },
+          "tickWorkMs": {
+            "count": 1198,
+            "p50": 0.76,
+            "p95": 8.86,
+            "p99": 20.66,
+            "max": 64.82
+          },
+          "tickIntervalMs": {
+            "count": 1198,
+            "p50": 50.08,
+            "p95": 51.38,
+            "p99": 52.03,
+            "max": 105.15
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 4407244,
+            "pendingWalBytes": 2321887,
+            "maxWalBytes": 67108864
+          },
+          "database": {
+            "connected": true,
+            "error": null,
+            "revision": 4407070,
+            "syncAgeMs": 25058
+          }
+        },
+        {
+          "at": "2026-11-24T10:34:50.270Z",
+          "online": {
+            "arena": 1,
+            "lobby": 3,
+            "total": 4
+          },
+          "tickWorkMs": {
+            "count": 1199,
+            "p50": 3.19,
+            "p95": 10.96,
+            "p99": 21.74,
+            "max": 64.82
+          },
+          "tickIntervalMs": {
+            "count": 1199,
+            "p50": 50.07,
+            "p95": 51.35,
+            "p99": 52.03,
+            "max": 105.15
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 4407377,
+            "pendingWalBytes": 3397721,
+            "maxWalBytes": 67108864
+          },
+          "database": {
+            "connected": true,
+            "error": null,
+            "revision": 4407208,
+            "syncAgeMs": 10404
+          }
+        },
+        {
+          "at": "2026-11-24T10:35:05.280Z",
+          "online": {
+            "arena": 1,
+            "lobby": 3,
+            "total": 4
+          },
+          "tickWorkMs": {
+            "count": 1200,
+            "p50": 4.57,
+            "p95": 13.77,
+            "p99": 21.92,
+            "max": 64.82
+          },
+          "tickIntervalMs": {
+            "count": 1200,
+            "p50": 50.04,
+            "p95": 51.24,
+            "p99": 51.87,
+            "max": 82.37
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 4407469,
+            "pendingWalBytes": 4170682,
+            "maxWalBytes": 67108864
+          },
+          "database": {
+            "connected": true,
+            "error": null,
+            "revision": 4407208,
+            "syncAgeMs": 25414
+          }
+        }
+      ]
+    }
   }
 }
