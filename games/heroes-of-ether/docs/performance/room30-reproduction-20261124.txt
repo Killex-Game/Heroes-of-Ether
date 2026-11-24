@@ -1,0 +1,68 @@
+Воспроизведение room30, 24.11.2026
+
+Установленный исходный код: 3d71479e2b69d84cb99c7d5beec7f4b9ba79c7c0.
+Полный Linux проверял 59970e2be7c4d1180bbd1b36dd3a5ca47fce6a23;
+между ними изменён только браузерный тест под актуальный прямой вход на арену.
+Конфигурация и runtime совпадают. Планировщик бюджета добавлен отдельно.
+
+Все команды ниже из games/heroes-of-ether, кроме получения исходника через Git.
+Секреты и рабочие данные в репозиторий не добавлять.
+
+1. Функциональные проверки на временных мирах:
+node --test tests/unit/arena-capacity-policy.test.js tests/unit/server-settings.test.js tests/integration/arena-rooms-server.test.js tests/integration/arena-level-groups.test.js tests/integration/clan-arena-join.test.js
+28 проверок. Полная команда штатного набора: node scripts/testing/run-tests.js
+В этой серии TEST_CONCURRENCY=1. На Linux получено2328/2327pass/0fail/1skip.
+
+2. Эквивалентность распределителя и микрозамер:
+Получить файл games/heroes-of-ether/src/server/arena/arena-directory.js из
+commit b721a3577fafb811f734d9dc8198fc94d279d889 через git show, сохранить как
+/tmp/arena-directory-before.js в UTF-8. Не заменять им действующий runtime.
+node scripts/benchmarks/arena-directory.cjs /tmp/arena-directory-before.js /tmp/directory-result.json
+Обе версии загружают одну новую политику30. 6000 операций без групп и6000
+с группами сравнивают результаты/состояние; затем6 чередующихся замеров.
+Выигрыш~78%Windows/~80%Linux относится только к этому участку.
+
+3. Браузеры:
+Установленный Playwright или совместимый playwright-core и соответствующие
+браузеры. ARENA_PICKER_OUTPUT указывает новый каталог вне репозитория.
+node tests/browser/arena-picker.test.js
+Chrome, Firefox, WebKit;51 экран, включая1336×768,390×844,320×700,844×390.
+Фикстура явно отключает группы только для проверки всех14 комнат; отдельные
+интеграционные тесты проверяют возрастные диапазоны и вступление к соклановцу.
+
+4. Нагрузка с PostgreSQL — только на отдельном стенде/схеме:
+node scripts/benchmarks/postgresql-capacity.cjs /secure/postgresql.local.json /outside-repository/run30 1
+Последний аргумент1/2/3 означает30/60/90 игроков; добавляются5 клиентов лобби.
+Скрипт создаёт случайную синтетическую схему, не использует production data.
+При полном успехе сверяет ACK/WAL/PG и удаляет только созданную тестовую схему.
+При аварии сохранять вывод, остаточную схему и WAL до восстановления/сверки.
+Любой такой тест всё равно расходует ресурсы кластера БД: изолировать квотой
+и контролем рабочей игры, не запускать одновременно с production-релизом.
+Код выхода2 означает непрохождение нагрузочных порогов, а не потерю данных;
+смотреть отдельно code, assessment, ackAudit, databaseVerification.
+
+В этой серии использован один заранее сохранённый синтетический мир1280/128
+для всех трёх ступеней. Его точные байты и журналы сохранены локально и на VPS
+в artifacts/room30-scaling-20261124/capacity-evidence.tar.gz (закрытый артефакт).
+SHA256 архива 1df64adb29ba649f926151c75162db26ca1252874e926802bd73f2a9a62f3fd1.
+Обычный запуск создаёт новый fixture: нельзя выдавать его за идентичный A/B.
+Фазы по30с: движение, разделение, кормление, бустеры, смешанная. Квота3CPU
+включает генераторы; MemoryMax3G; Node24.22.3; общий с игрой VPS.
+Дополнительная большая история не добавлялась, задания были неактивны,
+подарки не участвовали. Это не тест памяти текущего полного production-мира.
+30+5 и60+5 прошли короткие критерии;90+5 не прошли mixed по частоте18.44Гц.
+930/1795/2652ACK восстановлены; PG=WAL, дублей0. Дальнейшую лестницу не запускали.
+
+5. Бюджет:
+node --test tests/unit/scale-budget.test.js
+node scripts/benchmarks/scale-budget.cjs docs/performance/scale-budget-300k.json
+Неизвестные поля намеренно null. Короткая лестница не заполняет поле
+sustainableRoomsPerNode: сначала длительная нагрузка и потеря одного узла.
+
+Эксплуатация
+Разворачивать release/20261124-room30, а не текущий HEAD без проверки.
+Production JS собирается scripts/deployment/production-code.cjs, комментарии
+в developer sources сохранены. В выпуске изменены три файла: arena-rooms.json,
+arena-directory.js и shared/arena-names.js; прочий runtime и графика сохранены.
+Резервные копии и старый release не удалять. Часть исторических файлов имеет
+hardlinks; любые последующие замены выполнять атомарно через новый файл.
