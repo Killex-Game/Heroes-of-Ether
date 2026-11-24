@@ -6,7 +6,7 @@ const { pin } = require("../../src/server/profiles/profile-read-snapshot");
 const { PinnedWorldReader } = require("../../src/server/persistence/pinned-world-reader");
 const { SnapshotBuilder } = require("../../src/server/persistence/snapshot-builder");
 const [mode, directory, output] = process.argv.slice(2);
-assert(["prepare", "baseline", "cached"].includes(mode) && directory);
+assert(["prepare", "prepare-rollover", "baseline", "cached", "baseline-rollover", "cached-rollover"].includes(mode) && directory);
 const dir = path.resolve(directory), base = path.join(dir, "profiles.json");
 if (mode === "prepare") {
   assert(!fs.existsSync(dir), "Refusing to overwrite benchmark input"); fs.mkdirSync(dir, { recursive: true });
@@ -37,22 +37,32 @@ if (mode === "prepare") {
   fs.writeFileSync(path.join(dir, "fixture.json"), JSON.stringify({ files, revisions, hashes,
     sourceBytes: fs.statSync(base).size, profiles: 1280, histories: 640000 }));
   console.log(JSON.stringify({ prepared: true, sourceBytes: fs.statSync(base).size }));
+} else if (mode === "prepare-rollover") {
+  const fixture = JSON.parse(fs.readFileSync(path.join(dir, "fixture.json")));
+  const target = path.join(dir, "rollover.json"); assert(!fs.existsSync(target));
+  const saved = recover(base, false, fixture.files.slice(0, 5).map(name => path.join(dir, name)));
+  assert.equal(new SnapshotBuilder().pack(saved.data).worldHash, fixture.hashes[4]);
+  atomicSnapshot(target, saved.data, true);
+  console.log(JSON.stringify({ preparedRollover: true, revision: saved.revision, bytes: fs.statSync(target).size }));
 } else {
   assert(global.gc && output && !fs.existsSync(output), "Use --expose-gc and a new output path");
   const fixture = JSON.parse(fs.readFileSync(path.join(dir, "fixture.json"))), reader = new PinnedWorldReader();
   const builder = new SnapshotBuilder({immutableSource:reader}), results = []; let saved = null, snapshot = null;
+  const cached = mode.startsWith("cached"), rollover = mode.endsWith("-rollover");
   for (let step = 0; step < fixture.files.length; step++) {
     saved = snapshot = null; global.gc();
-    const p = pin(base, fixture.files.slice(0, step + 1).map(name => path.join(dir, name)), fixture.revisions[step]);
+    const rolled = rollover && step >= 5;
+    const p = pin(rolled ? path.join(dir, "rollover.json") : base,
+      fixture.files.slice(rolled ? 5 : 0, step + 1).map(name => path.join(dir, name)), fixture.revisions[step]);
     try {
       const before = process.memoryUsage(), cpu = process.cpuUsage(), start = performance.now();
-      saved = mode === "cached" ? reader.read(p) : recover(p.file, false);
+      saved = cached ? reader.read(p) : recover(p.file, false);
       const readMs = performance.now() - start, packing = performance.now(); snapshot = builder.pack(saved.data);
       const packMs = performance.now() - packing, used = process.cpuUsage(cpu);
       assert.equal(snapshot.worldHash, fixture.hashes[step]);
       results.push({ step, readMs, packMs, totalMs: readMs + packMs, cpuMs: (used.user + used.system) / 1000,
         before, after: process.memoryUsage(), maxRSSKiB: process.resourceUsage().maxRSS,
-        reader: mode === "cached" ? reader.stats : null, builder: builder.stats, revision: snapshot.revision,
+        reader: cached ? reader.stats : null, builder: builder.stats, revision: snapshot.revision,
         worldHash: snapshot.worldHash, digest: snapshot.digest });
       console.log(JSON.stringify({ mode, step, readMs, packMs, cpuMs: results.at(-1).cpuMs, maxRSSKiB: results.at(-1).maxRSSKiB }));
     } finally { p.release(); }
