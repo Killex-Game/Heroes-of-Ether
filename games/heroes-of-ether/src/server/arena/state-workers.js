@@ -330,7 +330,7 @@ class ArenaStateWorkers {
     };
   }
   createStream(roomId, ws, send) {
-    if (!this.maxWorkers || this.closed || ![wire.PROTOCOL, wire.PRIVATE_STATE_PROTOCOL].includes(ws.protocol))
+    if (!this.maxWorkers || this.closed || ![wire.PROTOCOL, wire.PLAYER_SCHEMA_PROTOCOL, wire.SCHEMA_PROTOCOL, wire.PRIVATE_STATE_PROTOCOL].includes(ws.protocol))
       return new ArenaStateStream(ws, send, this.now);
     let room = this.rooms.get(roomId);
     if (!room && this.maxRooms && this.rooms.size >= this.maxRooms) {

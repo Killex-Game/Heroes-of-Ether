@@ -196,14 +196,14 @@ function foodChanges(current, previous) {
   current.changes.set(previous, changes);
   return changes;
 }
-function foodSection(current, previous, compact, binaryMoves) {
+function foodSection(current, previous, compact, binaryMoves, schema) {
   const cache = current.foodSections ??= new HistoryCache();
   let formats = cache.get(previous);
   if (!formats) cache.set(previous, (formats = []));
-  const format = Number(compact) | (Number(binaryMoves) << 1);
-  return formats[format] ??= buildFoodSection(current, previous, compact, binaryMoves);
+  const format = Number(compact) | (Number(binaryMoves) << 1) | (Number(schema) << 2);
+  return formats[format] ??= buildFoodSection(current, previous, compact, binaryMoves, schema);
 }
-function buildFoodSection(current, previous, compact, binaryMoves) {
+function buildFoodSection(current, previous, compact, binaryMoves, schema) {
   const { food, foodWords } = current;
   const old = previous.food, oldWords = previous.foodWords;
   const changes = old && foodChanges(food, old);
@@ -241,7 +241,9 @@ function buildFoodSection(current, previous, compact, binaryMoves) {
       // Most movement goes out as eight binary bytes. Build its JSON form
       // only if a recipient actually needs a birth or a legacy update.
       const prefix = row.position ??= JSON.stringify([row.id, row.px, row.py]).slice(0, -1);
-      upsert.push(kind === 1 ? (row.move ??= prefix + "]") : (row.full ??= prefix + "," + row.meta + "]"));
+      upsert.push(kind === 1 ? (row.move ??= prefix + "]") : schema
+        ? (row.schemaFull ??= prefix + "," + JSON.stringify(wire.packFoodMetadata(JSON.parse(row.meta))) + "]")
+        : (row.full ??= prefix + "," + row.meta + "]"));
     }
     else {
       row.legacy ??= '{"id":' + JSON.stringify(row.id) + ',"x":' + row.px +
@@ -418,6 +420,7 @@ class EncodedPlayer {
     this.deltas = new HistoryCache();
     this.motionDeltas = new HistoryCache();
     this.formationDeltas = new HistoryCache();
+    this.schemaDeltas = new HistoryCache();
     this.value = value;
     this.cachedFields = null;
   }
@@ -544,11 +547,17 @@ function encodeView(source, view, privateHud = false) {
   return encoded;
 }
 
-function playerDelta(player, previous, motion = false) {
+const playerSchemaFields = new Set(wire.playerKeys);
+function playerDelta(player, previous, motion = false, schema = false) {
   const history = previous || initialHistory;
-  const cache = motion === 2 ? player.formationDeltas : motion ? player.motionDeltas : player.deltas;
+  const cache = schema ? player.schemaDeltas : motion === 2 ? player.formationDeltas : motion ? player.motionDeltas : player.deltas;
   if (cache.has(history)) return cache.get(history);
   const changed = [];
+  const fields = schema ? new Map() : null;
+  const add = (key, value) => {
+    if (schema) fields.set(key, value);
+    else changed.push(fieldPrefix(key) + value);
+  };
   let onlyCoordinates = previous && player.coordinateChanges;
   for (const [key, value] of player.fields) {
     if (key === "id" || previous?.fields.get(key) === value) continue;
@@ -557,19 +566,36 @@ function playerDelta(player, previous, motion = false) {
       const packed = motion === 2 ? wire.formationDelta(player.parts, previous?.parts)
         : motion ? wire.motionDelta(player.parts, previous?.parts) : undefined;
       if (packed !== undefined) {
-        if (packed) changed.push(typeof packed === "string" ? '"parts":"' + packed + '"' : '"parts":' + JSON.stringify(packed));
+        if (packed) add("parts", typeof packed === "string" ? '"' + packed + '"' : JSON.stringify(packed));
         continue;
       }
       // The part diff already compares every transmitted field. Serializing
       // the entire formation first duplicates that work on every moving tick.
       const delta = wire.partDelta(player.parts, previous?.parts);
-      if (delta.ids || delta.rows.length) changed.push('"parts":' + JSON.stringify(delta));
-    } else changed.push(fieldPrefix(key) + value);
+      if (delta.ids || delta.rows.length) add("parts", JSON.stringify(delta));
+    } else if (schema && (key === "effects" || key === "instantEffects")) {
+      const effects = player.schemaEffects ??= new Map();
+      if (!effects.has(key)) effects.set(key, JSON.stringify(wire.packEffects(player.value[key])));
+      add(key, effects.get(key));
+    } else add(key, value);
   }
   const unset = previous
     ? [...previous.fields.keys()].filter((key) => !player.fields.has(key))
     : [];
-  if (unset.length) changed.push('"unset":' + JSON.stringify(unset));
+  if (unset.length) add("unset", JSON.stringify(unset));
+  if (schema) {
+    let result = null;
+    if (!previous || fields.size) {
+      let mask = 0;
+      const values = [], extra = [];
+      wire.playerKeys.forEach((key, i) => { if (fields.has(key)) { mask |= 1 << i; values.push(fields.get(key)); } });
+      for (const [key, value] of fields) if (!playerSchemaFields.has(key)) extra.push(fieldPrefix(key) + value);
+      if (extra.length) values.push("{" + extra.join(",") + "}");
+      result = "[" + JSON.stringify(player.id) + "," + mask + (values.length ? "," + values.join(",") : "") + "]";
+    }
+    cache.set(history, result);
+    return result;
+  }
   if (onlyCoordinates && !unset.length && changed.length &&
       Number.isFinite(player.x) && Number.isFinite(player.y))
     player.coordinateChanges.add(previous);
@@ -617,10 +643,10 @@ function entityDelta(rows, next, previous, motion) {
       "}";
 }
 
-function playersDelta(rows, next, previous, motion) {
+function playersDelta(rows, next, previous, motion, schema) {
   const updates = [], removed = [];
   for (const row of rows) {
-    const delta = playerDelta(row, previous.get(row.id), motion);
+    const delta = playerDelta(row, previous.get(row.id), motion, schema);
     if (delta) updates.push(delta);
   }
   for (const id of previous.keys()) if (!next.has(id)) removed.push(id);
@@ -628,17 +654,17 @@ function playersDelta(rows, next, previous, motion) {
 }
 
 const deltaSections = new WeakMap();
-function sectionFor(key, rows, previous, motion) {
+function sectionFor(key, rows, previous, motion, schema = false) {
   let section = deltaSections.get(rows);
   if (!section) {
-    section = { next: byId(rows), standard: new HistoryCache(), motion: new HistoryCache(), formation: new HistoryCache() };
+    section = { next: byId(rows), standard: new HistoryCache(), motion: new HistoryCache(), formation: new HistoryCache(), schema: new HistoryCache() };
     deltaSections.set(rows, section);
   }
-  const cache = motion === 2 ? section.formation : motion ? section.motion : section.standard;
+  const cache = schema ? section.schema : motion === 2 ? section.formation : motion ? section.motion : section.standard;
   let bytes = cache.get(previous);
   if (!bytes) {
     const encode = key === "players" ? playersDelta : entityDelta;
-    bytes = Buffer.from(',"' + key + 'Delta":' + encode(rows, section.next, previous, motion));
+    bytes = Buffer.from(',"' + key + 'Delta":' + encode(rows, section.next, previous, motion, schema));
     cache.set(previous, bytes);
   }
   return { next: section.next, bytes };
@@ -652,7 +678,9 @@ class ArenaStateStream {
     this.send = send;
     this.now = now;
     this.foodEncoder = foodEncoder;
-    this.formation = ws.protocol === wire.PROTOCOL;
+    this.playerSchema = ws.protocol === wire.PLAYER_SCHEMA_PROTOCOL;
+    this.schema = this.playerSchema || ws.protocol === wire.SCHEMA_PROTOCOL;
+    this.formation = this.schema || ws.protocol === wire.PROTOCOL;
     this.privateHud = this.formation || ws.protocol === wire.PRIVATE_STATE_PROTOCOL || ws.protocol === wire.HUD_PROTOCOL;
     this.motion = this.privateHud || ws.protocol === wire.MOTION_PROTOCOL;
     this.presentationOnly = this.motion || ws.protocol === wire.PRESENTATION_PROTOCOL;
@@ -756,7 +784,7 @@ class ArenaStateStream {
       if (!cache) encoded.wires.set(this.previousEncoded, (cache = new Map()));
       const format = Number(this.compact) | (Number(this.entityDeltas) << 1) |
         (Number(this.presentationOnly) << 2) | (Number(this.motion) << 3) | (Number(this.privateHud) << 4) |
-        (Number(this.formation) << 5);
+        (Number(this.formation) << 5) | (Number(this.schema) << 6) | (Number(this.playerSchema) << 7);
       cacheKey = format + ":" + (this.sequence + 1) + ":" +
         (ranks[0]?.id ?? "-") + ":" + (ranks[1]?.id ?? "-") + ":" + payload.signature +
         (this.privateHud ? ":" + (this.ws.playerId || "") : "");
@@ -773,7 +801,7 @@ class ArenaStateStream {
       }
     }
     if (this.acknowledged) {
-      packet.foodWire = foodSection(encoded, this.previousEncoded, this.compact, this.presentationOnly);
+      packet.foodWire = foodSection(encoded, this.previousEncoded, this.compact, this.presentationOnly, this.schema);
       packet.stateSequence = ++this.sequence;
       this.inFlight = packet.stateSequence;
     }
@@ -781,7 +809,7 @@ class ArenaStateStream {
       const common = this.entityDeltas ? encoded.core : this.compact ? encoded.compact : encoded.common;
       const pieces = [Buffer.from(common + "," + packet.foodWire)];
       if (this.compact) {
-        const section = sectionFor("players", encoded.players, this.players, this.formation ? 2 : this.motion);
+        const section = sectionFor("players", encoded.players, this.players, this.formation ? 2 : this.motion, this.playerSchema);
         pieces.push(section.bytes);
         this.players = section.next;
       }

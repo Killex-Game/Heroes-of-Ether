@@ -8,12 +8,99 @@
   const platform = typeof module === "object" && module.exports
     ? require("./platform-contract") : globalThis.KillexPlatform;
   const PROTOCOL = platform.stateProtocol(8);
+  // Opt-in until the isolated load and compatibility gates are complete.
+  const SCHEMA_PROTOCOL = platform.stateProtocol(9);
+  const PLAYER_SCHEMA_PROTOCOL = platform.stateProtocol(10);
   const PRIVATE_STATE_PROTOCOL = platform.stateProtocol(7);
   const HUD_PROTOCOL = platform.stateProtocol(6);
   const MOTION_PROTOCOL = platform.stateProtocol(5);
   const PRESENTATION_PROTOCOL = platform.stateProtocol(4);
   const ENTITY_PROTOCOL = platform.stateProtocol(3);
   const LEGACY_PROTOCOL = platform.stateProtocol(2);
+  // Versioned, append-only wire fields. Unknown extension fields retain their
+  // names, so adding a game property never silently drops it from the stream.
+  const playerKeys = Object.freeze(["x", "y", "radius", "mass", "parts", "viewRadius",
+    "effects", "instantEffects", "mainPartId", "shieldMs", "turbo", "account", "pet",
+    "spawnSerial", "departure", "unset"]);
+  const effectIds = Object.freeze(["colorful_shield", "golden_shield", "clan_shield", "sphere",
+    "speed", "cake", "poison", "mega_poison", "freeze", "lock", "stone", "web", "vortex",
+    "meat", "donut", "candy", "fire", "fire_sword", "harpoon", "glove", "knuckles",
+    "rocket", "warheads", "hook", "axe", "mine", "sponge", "ice_cream", "easter_egg", "awl"]);
+  const effectCodes = new Map(effectIds.map((id, i) => [id, i]));
+  function packEffects(rows) {
+    if (!Array.isArray(rows) || rows.some(Array.isArray)) return [0, rows];
+    return [1, rows.map(row => row && !Array.isArray(row) && Object.keys(row).length === 2 &&
+      typeof row.id === "string" && Number.isFinite(row.remainingMs)
+      ? [effectCodes.get(row.id) ?? row.id, row.remainingMs] : row)];
+  }
+  function unpackEffects(value) {
+    if (!Array.isArray(value) || value.length !== 2 || ![0, 1].includes(value[0])) throw Error("Invalid effect schema");
+    if (value[0] === 0) return value[1];
+    const rows = value[1];
+    if (!Array.isArray(rows)) throw Error("Invalid effect list");
+    return rows.map(row => {
+      if (!Array.isArray(row)) return row;
+      if (row.length !== 2 || !Number.isFinite(row[1])) throw Error("Invalid effect row");
+      const id = typeof row[0] === "string" ? row[0] : Number.isInteger(row[0]) ? effectIds[row[0]] : undefined;
+      if (id === undefined) throw Error("Unknown effect code");
+      return { id, remainingMs: row[1] };
+    });
+  }
+  function unpackPlayerChange(row) {
+    if (!Array.isArray(row)) return row;
+    const [id, mask] = row;
+    if (typeof id !== "string" || !Number.isInteger(mask) || mask < 0 || mask >= 2 ** playerKeys.length)
+      throw Error("Invalid player schema");
+    let cursor = 2;
+    const fields = {};
+    for (let i = 0; i < playerKeys.length; i++) if (mask & (1 << i)) {
+      if (cursor >= row.length) throw Error("Incomplete player schema");
+      const key = playerKeys[i], value = row[cursor++];
+      fields[key] = key === "effects" || key === "instantEffects" ? unpackEffects(value) : value;
+    }
+    const extra = cursor < row.length ? row[cursor++] : null;
+    if (cursor !== row.length || extra !== null && (typeof extra !== "object" || Array.isArray(extra) ||
+      Object.keys(extra).some(key => key === "id" || playerKeys.includes(key)))) throw Error("Invalid player extensions");
+    return { ...extra, id, ...fields };
+  }
+  const foodKeys = ["value", "radius", "color", "artValue", "ejected", "birth"];
+  function packFoodMetadata(meta) {
+    if (!meta || Array.isArray(meta) || Object.keys(meta).some(key => !foodKeys.includes(key))) return meta;
+    let mask = 0;
+    const values = [];
+    foodKeys.forEach((key, i) => {
+      if (!Object.prototype.hasOwnProperty.call(meta, key)) return;
+      mask |= 1 << i;
+      let value = meta[key];
+      if (key === "birth" && value && !Array.isArray(value) &&
+          Object.keys(value).length === 3 && ["tick", "x", "y"].every(k => typeof value[k] === "number" && Number.isFinite(value[k]))) {
+        mask |= 64;
+        value = [value.tick, value.x, value.y];
+      }
+      values.push(value);
+    });
+    return [mask, ...values];
+  }
+  function unpackFoodMetadata(meta) {
+    if (!Array.isArray(meta)) return meta;
+    const mask = meta[0];
+    if (!Number.isInteger(mask) || mask < 0 || mask > 127 || ((mask & 64) && !(mask & 32)))
+      throw Error("Invalid food metadata mask");
+    const result = {};let cursor = 1;
+    foodKeys.forEach((key, i) => {
+      if (!(mask & (1 << i))) return;
+      if (cursor >= meta.length) throw Error("Incomplete food metadata");
+      let value = meta[cursor++];
+      if (key === "birth" && (mask & 64)) {
+        if (!Array.isArray(value) || value.length !== 3 || !value.every(Number.isFinite))
+          throw Error("Invalid food birth");
+        value = {tick:value[0], x:value[1], y:value[2]};
+      }
+      result[key] = value;
+    });
+    if (cursor !== meta.length) throw Error("Excess food metadata");
+    return result;
+  }
   const round = (n) => (Number.isFinite(n) ? Math.round(n * 100) / 100 : n);
   function packPlayer(player) {
     const value = { ...player };
@@ -221,7 +308,7 @@
       const upsert = [];
       for (const id of packet.foodDelta?.removed || []) this.food.delete(id);
       for (const row of packet.foodDelta?.upsert || []) {
-        const orb = { ...(row[3] || this.food.get(row[0])), id: row[0], x: row[1], y: row[2] };
+        const orb = { ...(row[3] ? unpackFoodMetadata(row[3]) : this.food.get(row[0])), id: row[0], x: row[1], y: row[2] };
         this.food.set(orb.id, orb);
         upsert.push(orb);
       }
@@ -242,7 +329,8 @@
         }
       }
       for (const id of packet.playersDelta.removed) this.players.delete(id);
-      for (const change of packet.playersDelta.upsert) {
+      for (const row of packet.playersDelta.upsert) {
+        const change = unpackPlayerChange(row);
         const value = { ...this.players.get(change.id), ...change };
         for (const key of value.unset || []) delete value[key];
         delete value.unset;
@@ -303,5 +391,5 @@
       progress: { ...profile.progress, ...patch.progress },
     };
   }
-  return { PROTOCOL, PRIVATE_STATE_PROTOCOL, HUD_PROTOCOL, MOTION_PROTOCOL, PRESENTATION_PROTOCOL, ENTITY_PROTOCOL, LEGACY_PROTOCOL, packPlayer, partDelta, motionDelta, formationDelta, Decoder, mergeProfile };
+  return { PROTOCOL, SCHEMA_PROTOCOL, PLAYER_SCHEMA_PROTOCOL, PRIVATE_STATE_PROTOCOL, HUD_PROTOCOL, MOTION_PROTOCOL, PRESENTATION_PROTOCOL, ENTITY_PROTOCOL, LEGACY_PROTOCOL, playerKeys, packEffects, unpackEffects, unpackPlayerChange, packFoodMetadata, unpackFoodMetadata, packPlayer, partDelta, motionDelta, formationDelta, Decoder, mergeProfile };
 });

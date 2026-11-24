@@ -666,6 +666,7 @@
       const scheme = location.protocol === "https:" ? "wss:" : "ws:";
       arenaChat?.start(boosterUI.profile.id);
       attempt = new WebSocket(`${scheme}//${location.host}${reservation.wsPath}`, [
+        window.KillexArenaWire.PLAYER_SCHEMA_PROTOCOL,
         window.KillexArenaWire.PROTOCOL,
         window.KillexArenaWire.PRIVATE_STATE_PROTOCOL,
         window.KillexArenaWire.MOTION_PROTOCOL,

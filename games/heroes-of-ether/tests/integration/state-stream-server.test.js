@@ -14,9 +14,10 @@ const wire = require("../../public/shared/arena-wire");
 const { randomUUID } = require("node:crypto");
 
 for (const stateWorkerCount of [0, 2])
-test(`Arena profile patches preserve inventory receipts, live XP, replay safety and full exit profile (${stateWorkerCount} state workers)`, async (t) => {
+for (const protocol of [wire.PROTOCOL, wire.PLAYER_SCHEMA_PROTOCOL])
+test(`Arena profile patches preserve inventory receipts, live XP, replay safety and full exit profile (${stateWorkerCount} state workers, ${protocol})`, async (t) => {
   const { app, connect, advance } = await setup(t, stateWorkerCount);
-  const c = await connect(wire.PROTOCOL);
+  const c = await connect(protocol);
   const profile = app.profiles.find(c.auth.token);
   profile.inventory.meat = 3;
   profile.quickSlots = c.player.quickSlots = ["meat"];
