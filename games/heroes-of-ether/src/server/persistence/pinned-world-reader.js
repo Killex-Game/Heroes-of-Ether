@@ -78,6 +78,7 @@ function draftWriter(base) {
 }
 class PinnedWorldReader {
   constructor() { this.previous = null; this.stats = null; }
+  owns(world) { return this.previous?.data === world; }
   read(pin) {
     if (!pin || typeof pin.file !== "string" || !Number.isSafeInteger(pin.revision) || pin.revision < 0)
       fail("DATABASE_INVALID_REVISION");

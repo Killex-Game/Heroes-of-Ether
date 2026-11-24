@@ -38,26 +38,35 @@ function documentFor(record,part){
   return Object.freeze(doc);
 }
 class SnapshotBuilder{
-  constructor(){this.records=new Map();this.stats=null;}
+  constructor({immutableSource=null}={}){this.records=new Map();this.stats=null;this.immutableSource=immutableSource;this.identities=null;}
   pack(world,auxiliary={}, {chatFormat=1,documentFormat=1}={}){
     if(!object(world)||!object(world.profiles)||!object(world.clans))fail('DATABASE_INVALID_SNAPSHOT');
     const revision=world[REVISION]||0;
     if(!Number.isSafeInteger(revision)||revision<0)fail('DATABASE_INVALID_REVISION');
     if(documentFormat!==0&&documentFormat!==1)fail('DATABASE_INVALID_DOCUMENT_FORMAT');
     if(chatFormat!==0&&chatFormat!==1)fail('DATABASE_INVALID_CHAT_FORMAT');
-    const docs=new Map(),next=new Map(),stats={reused:0,rebuilt:0,bytes:0};
-    const add=(id,value)=>{
-      // Always inspect current contents, never object identity, timestamps or
-      // a gameplay revision alone. Reordered keys only cause a safe cache miss.
-      const fingerprint=digest(JSON.stringify(value));
+    const immutable=this.immutableSource?.owns(world)===true;
+    const identities=immutable?new WeakMap():null;
+    const docs=new Map(),next=new Map(),stats={reused:0,rebuilt:0,bytes:0,identityReused:0};
+    const add=(id,value,owned=false)=>{
+      // Only the verified pinned reader can share record identities: it owns
+      // this complete world and detaches every changed WAL ancestor. Generic
+      // callers, auxiliary files and future mutable sources still inspect bytes.
       let record=this.records.get(id);
-      if(record?.fingerprint===fingerprint&&record.documentFormat===documentFormat)stats.reused++;
-      else{record=recordFor(id,value,documentFormat,fingerprint);stats.rebuilt++;}
+      const identity=immutable&&owned&&value&&typeof value==='object';
+      if(identity&&record&&this.identities?.get(value)===record&&record.documentFormat===documentFormat){
+        stats.reused++;stats.identityReused++;
+      }else{
+        const fingerprint=digest(JSON.stringify(value));
+        if(record?.fingerprint===fingerprint&&record.documentFormat===documentFormat)stats.reused++;
+        else{record=recordFor(id,value,documentFormat,fingerprint);stats.rebuilt++;}
+      }
+      if(identity)identities.set(value,record);
       next.set(id,record);stats.bytes+=record.json.length;
       for(const part of record.parts)docs.set(part._id,documentFor(record,part));
     };
     for(const table of ['profiles','clans'])
-      for(const [key,value]of Object.entries(world[table]))add(`${table}:${key}`,value);
+      for(const [key,value]of Object.entries(world[table]))add(`${table}:${key}`,value,true);
     add('world',Object.fromEntries(Object.entries(world).filter(([key])=>!['profiles','clans'].includes(key))));
     for(const file of AUXILIARY)if(Object.hasOwn(auxiliary,file)){
       if(file==='clan-chat.json'&&chatFormat===1)chat.packChat(auxiliary[file],add);
@@ -88,7 +97,7 @@ class SnapshotBuilder{
       digest:hash([...docs].map(([id,doc])=>[id,doc.hash]).sort(([a],[b])=>a.localeCompare(b)))};
     // Publish cache replacements only after the entire snapshot validates.
     // Earlier snapshots retain their own bytes across retries and removals.
-    this.records=next;this.stats=stats;return snapshot;
+    this.records=next;this.identities=identities;this.stats=stats;return snapshot;
   }
 }
 module.exports={SnapshotBuilder};

@@ -40,7 +40,7 @@ if (mode === "prepare") {
 } else {
   assert(global.gc && output && !fs.existsSync(output), "Use --expose-gc and a new output path");
   const fixture = JSON.parse(fs.readFileSync(path.join(dir, "fixture.json"))), reader = new PinnedWorldReader();
-  const builder = new SnapshotBuilder(), results = []; let saved = null, snapshot = null;
+  const builder = new SnapshotBuilder({immutableSource:reader}), results = []; let saved = null, snapshot = null;
   for (let step = 0; step < fixture.files.length; step++) {
     saved = snapshot = null; global.gc();
     const p = pin(base, fixture.files.slice(0, step + 1).map(name => path.join(dir, name)), fixture.revisions[step]);

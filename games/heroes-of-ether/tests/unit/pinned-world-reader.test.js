@@ -23,7 +23,7 @@ function setup(t, missing = false) {
     async pin() { const pin = await journal.pinSnapshot(); pins.push(pin); return pin; } };
 }
 test("incremental sealed replay equals complete recovery and every database document without copying histories", async t => {
-  const f = setup(t), builder = new SnapshotBuilder(); let previous, before;
+  const f = setup(t), builder = new SnapshotBuilder({immutableSource:f.reader}); let previous, before;
   for (let i = 0; i < 12; i++) {
     if (i) f.commit(w => {
       w.profiles.a.wallet.coins--; w.profiles.a.progress.values.xp += i;
@@ -45,6 +45,7 @@ test("incremental sealed replay equals complete recovery and every database docu
       assert.strictEqual(actual.data.profiles.b, previous.profiles.b, "untouched profile is shared");
       if (i !== 3) assert.strictEqual(actual.data.profiles.a.history, previous.profiles.a.history);
       assert.equal(f.reader.stats.readFiles, 1);
+      assert(builder.stats.identityReused >= 1, "unchanged owned records reuse canonical bytes");
     }
     previous = freeze(actual.data); before = structuredClone(previous); pin.release();
   }
@@ -99,6 +100,34 @@ test("readLocal integration preserves auxiliary files and pinned revision valida
   fs.writeFileSync(path.join(f.dir, "game-events.json"), JSON.stringify({ future: [1] }));
   const pin = await f.pin();
   assert.deepEqual(readLocal(f.dir, false, pin, pack, reader), readLocal(f.dir, false, pin));
+});
+
+test("immutable record reuse keeps auxiliary edits, generic callers, failed packs and checkpoint rebases exact", async t => {
+  const f = setup(t), builder = new SnapshotBuilder({ immutableSource: f.reader });
+  const auxiliary = { "game-events.json": { events: [{ id: "first" }] } };
+  const check = source => {
+    const actual = builder.pack(source, auxiliary), expected = pack(source, auxiliary);
+    assert.equal(actual.digest, expected.digest); assert.equal(actual.worldHash, expected.worldHash);
+    assert.deepEqual([...actual.docs].map(([id, d]) => [id, d.value]), [...expected.docs].map(([id, d]) => [id, d.value]));
+  };
+  const first = freeze(f.reader.read(await f.pin()).data); check(first); check(first);
+  assert.equal(builder.stats.identityReused, 3);
+  auxiliary["game-events.json"].events.push({ id: "second" }); check(first);
+  assert.equal(builder.stats.identityReused, 3);
+  const records = builder.records, identities = builder.identities;
+  assert.throws(() => builder.pack(first, { "clan-chat.json": { _journalRevision: -1 } }), /INVALID_CHAT_REVISION/);
+  assert.strictEqual(builder.records, records); assert.strictEqual(builder.identities, identities);
+  check(first); assert.equal(builder.stats.identityReused, 3);
+  const generic = structuredClone(first); check(generic);
+  assert.equal(builder.stats.identityReused, 0);
+  generic.profiles.a.wallet.coins = 999; check(generic);
+  assert.equal(builder.stats.identityReused, 0);
+  check(first); check(first); assert.equal(builder.stats.identityReused, 3);
+  f.commit(w => { w.profiles.a.wallet.coins = 77; });
+  check(freeze(f.reader.read(await f.pin()).data)); assert.equal(builder.stats.identityReused, 2);
+  await f.journal.requestCheckpoint();
+  check(freeze(f.reader.read(await f.pin()).data));
+  assert.equal(f.reader.stats.incremental, false); assert.equal(builder.stats.identityReused, 0);
 });
 
 test("changed earlier segment forces a full verified replay, and active appends are excluded", async t => {
