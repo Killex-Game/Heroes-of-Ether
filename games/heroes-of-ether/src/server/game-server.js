@@ -401,16 +401,26 @@ function createGameServer({
       ws.close(4003, "Account blocked");
     }
   }
-  function syncIdentities() {
+  function syncIdentities(previousWorld = null) {
+    let changed = false;
     for (const [id, ws] of profileConnections) {
       const profile = profiles.byId(id),
         player = ws.arena.players.get(ws.playerId);
       if (profile && player) {
+        // Clan transactions publish immutable profile/clan replacements. A
+        // treasury action in another clan cannot change this player's view.
+        // Global competition refreshes still use the unconditional path.
+        if (previousWorld) {
+          const previous = profiles.byId(id, previousWorld);
+          if (previous === profile && previousWorld.clans[previous?.clanId] ===
+              profiles.data.clans[profile.clanId]) continue;
+        }
         Object.assign(player, profiles.identity(profile));
         safeSend(ws, JSON.stringify({ type: "profile", profile: profiles.view(profile) }));
+        changed = true;
       }
     }
-    broadcast();
+    if (changed || !previousWorld) broadcast();
   }
   const httpServer = http.createServer(async (req, res) => {
     res.once("finish", () => {
@@ -1047,6 +1057,7 @@ function createGameServer({
               { stalled: rateNow() - stalledAt < 2000 }); }
             catch (error) { console.error('Не удалось обработать сигнал покупок Kill:', error.message); }
           }
+          const clanWorldBefore = req.url === "/api/clans/action" ? profiles.data : null;
           const result =
             req.url === "/api/roulette/action"
               ? rouletteService.mutate(profiles, token, body)
@@ -1080,7 +1091,7 @@ function createGameServer({
                                       ? profiles.openChest(token, body.chestId, body.requestId)
                                       : clans.mutate(token, body);
           observeLobbyAction(token, req.url, body, result, lobbyObservedAt);
-          if (req.url === "/api/clans/action") syncIdentities();
+          if (req.url === "/api/clans/action") syncIdentities(clanWorldBefore);
           return reply(200, result);
         }
         if (req.url === "/api/shop/buy" && req.method === "POST") {
