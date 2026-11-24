@@ -1,0 +1,508 @@
+{
+  "at": "2026-11-24T17:53:47.668Z",
+  "source": "4e5f310872ea9bcf5885a6b0ad84848666422c3c",
+  "installed": false,
+  "checks": {
+    "windows": {
+      "total": 2436,
+      "pass": 2434,
+      "fail": 0,
+      "skip": 2,
+      "durationMs": 544385.4446
+    },
+    "linux": {
+      "total": 2436,
+      "pass": 2434,
+      "fail": 0,
+      "skip": 2,
+      "durationMs": 576654.911727
+    },
+    "postgresql": {
+      "first": {
+        "total": 11,
+        "pass": 10,
+        "fail": 1,
+        "error": "PG_OPERATION_FAILED"
+      },
+      "workerDiagnosticRetry": 1,
+      "workerRepeatedPasses": 5,
+      "originalCause": "unknown; intermittent startup/recovery failure, not declared fixed"
+    }
+  },
+  "abba": {
+    "windows": {
+      "source": "4e5f310872ea9bcf5885a6b0ad84848666422c3c",
+      "platform": "windows",
+      "exactRevisions": 10,
+      "exactAllRuns": true,
+      "runs": [
+        {
+          "label": "baseline-1",
+          "warmMedianMs": 845.8014999999996,
+          "peakRssMiB": 826.09375,
+          "firstReadMs": 3188.9896,
+          "warmPinMaxMs": 4.148199999999633,
+          "checkpointMaxMs": 2367.1411999999996,
+          "warmCpuMs": 10016,
+          "retainedFiles": 0,
+          "retainedBytes": 0
+        },
+        {
+          "label": "window-1",
+          "warmMedianMs": 57.20479999999952,
+          "peakRssMiB": 823.7265625,
+          "firstReadMs": 3198.3069000000005,
+          "warmPinMaxMs": 2.9970999999986816,
+          "checkpointMaxMs": 6834.654500000001,
+          "warmCpuMs": 1079,
+          "retainedFiles": 9,
+          "retainedBytes": 15212
+        },
+        {
+          "label": "window-2",
+          "warmMedianMs": 52.07599999999911,
+          "peakRssMiB": 819.0859375,
+          "firstReadMs": 3536.2164000000002,
+          "warmPinMaxMs": 1.141700000000128,
+          "checkpointMaxMs": 2862.2986999999994,
+          "warmCpuMs": 576,
+          "retainedFiles": 9,
+          "retainedBytes": 15212
+        },
+        {
+          "label": "baseline-2",
+          "warmMedianMs": 876.4858999999997,
+          "peakRssMiB": 832.87890625,
+          "firstReadMs": 3117.3214,
+          "warmPinMaxMs": 19.96689999999944,
+          "checkpointMaxMs": 2566.7838,
+          "warmCpuMs": 9471,
+          "retainedFiles": 0,
+          "retainedBytes": 0
+        }
+      ],
+      "scope": "Offline checkpoint/PG preparation only, not whole-game CPU, network or CCU; cold parse remains. Slow checkpoint outliers preserved."
+    },
+    "linux": {
+      "source": "4e5f310872ea9bcf5885a6b0ad84848666422c3c",
+      "platform": "linux",
+      "exactRevisions": 10,
+      "exactAllRuns": true,
+      "runs": [
+        {
+          "label": "baseline-1",
+          "warmMedianMs": 947.8530489999994,
+          "peakRssMiB": 912.8046875,
+          "firstReadMs": 5302.728441,
+          "warmPinMaxMs": 0.4843689999997878,
+          "checkpointMaxMs": 3183.5852499999996,
+          "warmCpuMs": 9251.818,
+          "retainedFiles": 0,
+          "retainedBytes": 0
+        },
+        {
+          "label": "window-1",
+          "warmMedianMs": 84.3764599999995,
+          "peakRssMiB": 857.6484375,
+          "firstReadMs": 4663.514577,
+          "warmPinMaxMs": 0.3007689999994909,
+          "checkpointMaxMs": 3102.770005,
+          "warmCpuMs": 818.0409999999999,
+          "retainedFiles": 9,
+          "retainedBytes": 15212
+        },
+        {
+          "label": "window-2",
+          "warmMedianMs": 82.81728699999985,
+          "peakRssMiB": 869.7109375,
+          "firstReadMs": 4854.189434,
+          "warmPinMaxMs": 0.40171100000043225,
+          "checkpointMaxMs": 3113.170818,
+          "warmCpuMs": 899.5620000000001,
+          "retainedFiles": 9,
+          "retainedBytes": 15212
+        },
+        {
+          "label": "baseline-2",
+          "warmMedianMs": 1288.9803939999983,
+          "peakRssMiB": 906.40234375,
+          "firstReadMs": 4824.039352999999,
+          "warmPinMaxMs": 0.5403080000014597,
+          "checkpointMaxMs": 3541.117855,
+          "warmCpuMs": 10135.556,
+          "retainedFiles": 0,
+          "retainedBytes": 0
+        }
+      ],
+      "scope": "Offline checkpoint/PG preparation only, not whole-game CPU, network or CCU; cold parse remains. Slow checkpoint outliers preserved."
+    }
+  },
+  "windowsMixed": {
+    "players": 60,
+    "lobby": 5,
+    "minutes": 10,
+    "allWindowsPassed": false,
+    "assessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": false,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "combined",
+          "window": 1,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 2,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 3,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 4,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 5,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 6,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 7,
+          "meetsTargets": false,
+          "issues": [
+            "pending-action-delay",
+            "state-frequency",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 8,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 9,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 10,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "ackAudit": {
+      "acknowledged": 16690,
+      "recovered": 16690,
+      "duplicates": 0,
+      "profiles": 1280,
+      "types": {
+        "booster:hook": 493,
+        "booster:cake": 531,
+        "booster:candy": 526,
+        "booster:vortex": 539,
+        "booster:glove": 518,
+        "booster:clan_shield": 550,
+        "booster:sphere": 510,
+        "booster:donut": 508,
+        "booster:freeze": 498,
+        "booster:mine": 503,
+        "booster:harpoon": 530,
+        "booster:knuckles": 535,
+        "booster:mega_poison": 542,
+        "booster:easter_egg": 553,
+        "booster:colorful_shield": 520,
+        "booster:ice_cream": 525,
+        "booster:warheads": 532,
+        "booster:fire": 506,
+        "booster:poison": 484,
+        "booster:rocket": 521,
+        "booster:web": 499,
+        "booster:speed": 526,
+        "booster:lock": 531,
+        "booster:fire_sword": 486,
+        "booster:axe": 499,
+        "booster:meat": 557,
+        "booster:golden_shield": 548,
+        "booster:sponge": 511,
+        "booster:stone": 525,
+        "booster:awl": 472,
+        "lobby:loadout": 90,
+        "lobby:purchase": 90,
+        "lobby:account-bonus": 30,
+        "lobby:gift": 90,
+        "lobby:gift-read": 89,
+        "lobby:clan-create": 3,
+        "lobby:clan-deposit": 90,
+        "lobby:clan-buy": 90,
+        "lobby:clan-edit": 90,
+        "lobby:roulette-prepare": 90,
+        "lobby:roulette-spin": 90,
+        "lobby:pet-buy": 5,
+        "lobby:pet-food": 90,
+        "lobby:chat": 90,
+        "lobby:pet-equip": 85
+      },
+      "gifts": 90,
+      "notices": 89,
+      "deposits": 90,
+      "created": 3,
+      "validInventoriesAndTransactions": true
+    },
+    "database": {
+      "matched": true,
+      "localRevision": 19178,
+      "databaseRevision": 19178
+    },
+    "testSchemaRemoved": true,
+    "windows": [
+      {
+        "window": 1,
+        "hz": 17.260682006386695,
+        "tickP95": 29.472600000000966,
+        "actionP95": 294.53629999999976,
+        "rssMiB": 685.7265625,
+        "mainCpu": 76.94614363700965,
+        "processCpu": 180.47584714457153,
+        "boosters": 1599,
+        "lobbySuccess": 199
+      },
+      {
+        "window": 2,
+        "hz": 17.27893426954154,
+        "tickP95": 29.657599999991362,
+        "actionP95": 249.13260000001173,
+        "rssMiB": 676.6640625,
+        "mainCpu": 79.32133620760656,
+        "processCpu": 181.4910192758026,
+        "boosters": 1631,
+        "lobbySuccess": 199
+      },
+      {
+        "window": 3,
+        "hz": 17.538236070004558,
+        "tickP95": 30.963199999998324,
+        "actionP95": 315.9816999999748,
+        "rssMiB": 715.1015625,
+        "mainCpu": 79.63823464541301,
+        "processCpu": 179.00110918460035,
+        "boosters": 1607,
+        "lobbySuccess": 200
+      },
+      {
+        "window": 4,
+        "hz": 17.958922008003434,
+        "tickP95": 31.6589999999851,
+        "actionP95": 220.69060000000172,
+        "rssMiB": 758.16796875,
+        "mainCpu": 79.66617162361696,
+        "processCpu": 180.9616154430635,
+        "boosters": 1612,
+        "lobbySuccess": 195
+      },
+      {
+        "window": 5,
+        "hz": 17.431011601052102,
+        "tickP95": 30.919099999999162,
+        "actionP95": 235.83660000003874,
+        "rssMiB": 782.98046875,
+        "mainCpu": 77.35584903668286,
+        "processCpu": 175.15007076156843,
+        "boosters": 1586,
+        "lobbySuccess": 197
+      },
+      {
+        "window": 6,
+        "hz": 17.338232086240158,
+        "tickP95": 30.51620000001276,
+        "actionP95": 350.1588000000338,
+        "rssMiB": 845.75,
+        "mainCpu": 79.0310462531339,
+        "processCpu": 177.79117174886255,
+        "boosters": 1441,
+        "lobbySuccess": 199
+      },
+      {
+        "window": 7,
+        "hz": 16.076105363626127,
+        "tickP95": 33.74039999995148,
+        "actionP95": 370.99599999998463,
+        "rssMiB": 751.21875,
+        "mainCpu": 82.74065729788772,
+        "processCpu": 182.51992247795025,
+        "boosters": 1418,
+        "lobbySuccess": 195
+      },
+      {
+        "window": 8,
+        "hz": 17.940927124661457,
+        "tickP95": 32.60959999996703,
+        "actionP95": 226.86630000005243,
+        "rssMiB": 826.29296875,
+        "mainCpu": 79.26182309388749,
+        "processCpu": 183.08457948668848,
+        "boosters": 1498,
+        "lobbySuccess": 198
+      },
+      {
+        "window": 9,
+        "hz": 17.190159903658248,
+        "tickP95": 33.38730000006035,
+        "actionP95": 289.68740000005346,
+        "rssMiB": 939.61328125,
+        "mainCpu": 79.07752542429319,
+        "processCpu": 180.74963556211677,
+        "boosters": 1555,
+        "lobbySuccess": 192
+      },
+      {
+        "window": 10,
+        "hz": 17.513567514642695,
+        "tickP95": 31.318100000033155,
+        "actionP95": 284.8098999999929,
+        "rssMiB": 974.5390625,
+        "mainCpu": 79.45256688254878,
+        "processCpu": 178.5586624210785,
+        "boosters": 1569,
+        "lobbySuccess": 200
+      }
+    ]
+  },
+  "linuxFirstMixed": {
+    "players": 60,
+    "lobby": 5,
+    "completedWindows": 0,
+    "error": "PG_OPERATION_FAILED",
+    "acknowledged": 0,
+    "evidence": "runs/candidate8-60-10m-cpu6"
+  },
+  "linuxInterrupted": {
+    "at": "2026-11-24T17:47:45.914Z",
+    "interrupted": true,
+    "capacityResultValid": false,
+    "reason": "Live latency guard stopped 60 players before any complete minute; no capacity conclusion",
+    "ackAudit": {
+      "acknowledged": 389,
+      "recovered": 389,
+      "duplicates": 0,
+      "types": {
+        "booster:hook": 15,
+        "booster:cake": 16,
+        "booster:candy": 16,
+        "booster:vortex": 12,
+        "booster:glove": 12,
+        "booster:clan_shield": 16,
+        "booster:sphere": 16,
+        "booster:donut": 16,
+        "booster:freeze": 14,
+        "booster:mine": 13,
+        "booster:harpoon": 14,
+        "booster:knuckles": 11,
+        "booster:mega_poison": 11,
+        "booster:easter_egg": 12,
+        "booster:colorful_shield": 12,
+        "booster:ice_cream": 12,
+        "booster:warheads": 9,
+        "booster:web": 12,
+        "booster:fire": 10,
+        "booster:poison": 12,
+        "booster:rocket": 10,
+        "booster:speed": 12,
+        "booster:lock": 10,
+        "booster:fire_sword": 10,
+        "booster:meat": 12,
+        "booster:golden_shield": 12,
+        "booster:sponge": 10,
+        "booster:stone": 8,
+        "booster:awl": 7,
+        "booster:axe": 9,
+        "lobby:loadout": 5,
+        "lobby:purchase": 5,
+        "lobby:account-bonus": 5,
+        "lobby:gift": 5,
+        "lobby:gift-read": 5,
+        "lobby:clan-create": 3
+      },
+      "gifts": 5,
+      "notices": 5,
+      "deposits": 0,
+      "created": 3,
+      "validInventoriesAndTransactions": true
+    },
+    "database": {
+      "localRevision": 562,
+      "databaseRevision": 67,
+      "worldEqual": false,
+      "auxiliaryEqual": true,
+      "digestEqual": false
+    },
+    "testSchemaRetained": true
+  },
+  "linuxRecovery": {
+    "at": "2026-11-24T17:49:22.142Z",
+    "syntheticOnly": true,
+    "capacityResultValid": false,
+    "originalFailureRetained": true,
+    "beforeRevision": 67,
+    "afterRevision": 562,
+    "allFieldsAndAuxEqual": true,
+    "acknowledged": 389,
+    "recovered": 389,
+    "backupDigest": "e397d85818712163062b7da9b835e5e61c2aa7d728283a35291805c09a915eaa"
+  },
+  "limitations": [
+    "No whole-game CPU improvement or capacity increase proven",
+    "Linux mixed stopped by protection of the colocated live game",
+    "Windows capacity is not Linux capacity",
+    "WAL limit excludes retained full base checkpoint",
+    "Historical long run and passing Linux mixed remain required"
+  ]
+}
