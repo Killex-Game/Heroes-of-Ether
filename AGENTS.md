@@ -1,3 +1,10 @@
+## Состав трафика и архитектурная записка, 24.11.2026
+
+- Guarded диагностика30арена+5лобби,5фаз по30с,3CPU с генераторами, synthetic1280/128. 940ACK восстановлены, дублей0, PG=WAL, схема теста удалена после сверки; production PID496904/admin1163 прежние
+- Capture25пакетов, поля игроков/еды основные; отдельный CPU-профиль main thread. Дополнительная сериализация влияет на timing, не A/B и не максимумCCU. Старые whole-run field counters UTF16, новый offline-анализ точный UTF8, это различие сохранено
+- Отчёт games/heroes-of-ether/docs/performance/wire-profile-20261124.json, воспроизводимый wire-sample-cost.cjs, 2unitpass. Архив обеих сторон SHAbca04f17905fa4b0c3b8cd30b5e6c3af2276d918bcafee6ab4aefc4735e7f809 сохранять
+- Присланные рекомендации разобраны в docs/scaling-advice-review-20261124.txt. AoI/сетка/дельты/DPR уже есть; VK verifier только подготовка; Redis/WebGL/смена языка/300000CCU не объявлены установленными. Изменения этого этапа только диагностика и документация
+
 ## Комнаты по 30 и распределение мест - УСТАНОВЛЕНО 24.11.2026
 
 - Current 20261124-room30, source 3d71479e2b69d84cb99c7d5beec7f4b9ba79c7c0, game496904/admin1163/NRestarts0. 3 runtime/config-файла, 16 production-комментариев, 2550 хешей; защищённая графика и private config прежние

@@ -96,7 +96,7 @@ process.on("message", async (m) => {
           }
           if (c === clients[0] && process.env.LOAD_CAPACITY !== "1")
             c.packetSizes = Object.fromEntries(
-              Object.entries(v).map(([k, value]) => [k, JSON.stringify(value).length]),
+              Object.entries(v).map(([k, value]) => [k, Buffer.byteLength(JSON.stringify(value))]),
             );
           // The 35 renderers normally run on 35 other machines. This driver parses
           // actual packets and ACKs them, but does not render/decode 35 entire worlds
@@ -110,11 +110,11 @@ process.on("message", async (m) => {
           c.maxPacket = Math.max(c.maxPacket, raw.length);
           if (process.env.LOAD_WIRE_DIAG === "1") {
             for (const [key, value] of Object.entries(v))
-              c.fieldBytes[key] = (c.fieldBytes[key] || 0) + JSON.stringify(value).length;
+              c.fieldBytes[key] = (c.fieldBytes[key] || 0) + Buffer.byteLength(JSON.stringify(value));
             if (c === clients[0]) for (const p of v.playersDelta?.upsert || [])
               for (const [key, value] of Object.entries(p)) {
                 const label = "samplePlayer:" + key;
-                c.fieldBytes[label] = (c.fieldBytes[label] || 0) + JSON.stringify(value).length;
+                c.fieldBytes[label] = (c.fieldBytes[label] || 0) + Buffer.byteLength(JSON.stringify(value));
               }
           }
           if (c.last !== null) c.gaps.push(at - c.last);

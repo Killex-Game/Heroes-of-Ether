@@ -1,0 +1,1563 @@
+{
+  "at": "2026-11-24T01:52:22.837Z",
+  "runtimeSource": "3d71479e2b69d84cb99c7d5beec7f4b9ba79c7c0",
+  "fixtureSource": "59970e2be7c4d1180bbd1b36dd3a5ca47fce6a23",
+  "diagnosticOnly": true,
+  "installedRuntimeChanges": false,
+  "scope": "30 arena plus 5 lobby, 5 phases of 30 seconds, same synthetic 1280-profile/128-clan fixture; 3 CPU quota includes generators, shared production VPS; no browser rendering.",
+  "ackAudit": {
+    "acknowledged": 940,
+    "recovered": 940,
+    "duplicates": 0,
+    "profiles": 1280,
+    "types": {
+      "booster:easter_egg": 31,
+      "booster:ice_cream": 31,
+      "booster:warheads": 30,
+      "booster:rocket": 30,
+      "booster:web": 29,
+      "booster:fire": 26,
+      "booster:awl": 29,
+      "booster:fire_sword": 27,
+      "booster:poison": 30,
+      "booster:colorful_shield": 30,
+      "booster:speed": 30,
+      "booster:lock": 29,
+      "booster:axe": 27,
+      "booster:meat": 30,
+      "booster:golden_shield": 30,
+      "booster:sponge": 23,
+      "booster:candy": 30,
+      "booster:mega_poison": 26,
+      "booster:glove": 30,
+      "booster:hook": 29,
+      "booster:cake": 29,
+      "booster:vortex": 25,
+      "booster:clan_shield": 30,
+      "booster:sphere": 30,
+      "booster:freeze": 29,
+      "booster:donut": 30,
+      "booster:mine": 28,
+      "booster:harpoon": 27,
+      "booster:stone": 30,
+      "booster:knuckles": 30,
+      "lobby:loadout": 25,
+      "lobby:purchase": 25,
+      "lobby:account-bonus": 25
+    },
+    "gifts": 0,
+    "notices": 0,
+    "validInventoriesAndTransactions": true
+  },
+  "postgresqlEqualsRecoveredWal": true,
+  "testSchemaRemoved": true,
+  "rows": [
+    {
+      "phase": "move",
+      "networkMbps": 13.180337948131356,
+      "socketMbps": 13.875898621607684,
+      "tickP95": 9.92656899999929,
+      "updatesHz": 19.93205501168148,
+      "actionLatency": {
+        "p50": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      },
+      "rssMiB": 804.87109375,
+      "stages": {
+        "physics.moveFeed": {
+          "calls": 600,
+          "inclusiveMs": 7.560641000090982,
+          "exclusiveMs": 7.560641000090982,
+          "maxMs": 0.25168500000108907
+        },
+        "physics.boosterEffects": {
+          "calls": 17999,
+          "inclusiveMs": 26.785311999754413,
+          "exclusiveMs": 26.785311999754413,
+          "maxMs": 0.2130139999990206
+        },
+        "physics.combatUpdate": {
+          "calls": 600,
+          "inclusiveMs": 6.627811000025758,
+          "exclusiveMs": 6.627811000025758,
+          "maxMs": 0.706742000000304
+        },
+        "physics.separateParts": {
+          "calls": 17999,
+          "inclusiveMs": 21.810265000052823,
+          "exclusiveMs": 21.810265000052823,
+          "maxMs": 0.07567399999970803
+        },
+        "physics.moveParts": {
+          "calls": 17999,
+          "inclusiveMs": 86.82252799965681,
+          "exclusiveMs": 65.01226299960399,
+          "maxMs": 0.36656999999831896
+        },
+        "physics.collectEther": {
+          "calls": 600,
+          "inclusiveMs": 181.82536499991875,
+          "exclusiveMs": 181.82536499991875,
+          "maxMs": 2.506236999999601
+        },
+        "physics.resolveAbsorptions": {
+          "calls": 600,
+          "inclusiveMs": 122.39027099997293,
+          "exclusiveMs": 122.39027099997293,
+          "maxMs": 2.166693999999552
+        },
+        "physics": {
+          "calls": 600,
+          "inclusiveMs": 744.3315640000346,
+          "exclusiveMs": 312.319636000615,
+          "maxMs": 15.95920500000102
+        },
+        "roomStep": {
+          "calls": 600,
+          "inclusiveMs": 907.0321340000537,
+          "exclusiveMs": 162.70057000001907,
+          "maxMs": 20.377990999999383
+        },
+        "snapshotBuild": {
+          "calls": 603,
+          "inclusiveMs": 207.92290700008743,
+          "exclusiveMs": 207.92290700008743,
+          "maxMs": 1.2595719999990251
+        },
+        "statePostMessage": {
+          "calls": 602,
+          "inclusiveMs": 359.37867199999346,
+          "exclusiveMs": 359.37867199999346,
+          "maxMs": 1.2140460000009625
+        },
+        "statePackAndPost": {
+          "calls": 1205,
+          "inclusiveMs": 494.87785199987593,
+          "exclusiveMs": 135.49917999988247,
+          "maxMs": 1.5252800000016578
+        },
+        "profilePrepare": {
+          "calls": 121,
+          "inclusiveMs": 118.9429100000034,
+          "exclusiveMs": 118.9429100000034,
+          "maxMs": 5.055153000001155
+        },
+        "tickWall": {
+          "calls": 600,
+          "inclusiveMs": 2465.2512629999837,
+          "exclusiveMs": 723.1776779999982,
+          "maxMs": 41.84275600000001
+        },
+        "wsSend": {
+          "calls": 18879,
+          "inclusiveMs": 452.9149310001285,
+          "exclusiveMs": 452.9149310001285,
+          "maxMs": 0.4756660000002739
+        },
+        "inputApply": {
+          "calls": 8970,
+          "inclusiveMs": 19.293538000312765,
+          "exclusiveMs": 19.293538000312765,
+          "maxMs": 0.18793800000094052
+        },
+        "stateResultDelivery": {
+          "calls": 602,
+          "inclusiveMs": 465.3679849999062,
+          "exclusiveMs": 58.16561699975318,
+          "maxMs": 2.3353600000009465
+        },
+        "otherPostMessage": {
+          "calls": 20,
+          "inclusiveMs": 1.2578430000048684,
+          "exclusiveMs": 1.2578430000048684,
+          "maxMs": 0.3360470000006899
+        }
+      },
+      "resources": {
+        "elapsedMs": 30002.423448999994,
+        "processCpu": {
+          "userMs": 11490.173,
+          "systemMs": 841.921,
+          "percent": 41.10365957924322
+        },
+        "mainThreadCpu": {
+          "userMs": 3982.066,
+          "systemMs": 544.437,
+          "percent": 15.087124570768205
+        },
+        "mainThreadElu": {
+          "activeMs": 4431.455601002375,
+          "idleMs": 25570.804557000003,
+          "utilization": 0.1477040588830569
+        },
+        "cgroup": {
+          "scope": "/sys/fs/cgroup/system.slice/heroether-wire-profile-30-20261124.service",
+          "cpuMax": "300000 100000",
+          "counters": {
+            "usage_usec": 15781932,
+            "user_usec": 14328834,
+            "system_usec": 1453097,
+            "nice_usec": 14056475,
+            "nr_periods": 300,
+            "nr_throttled": 1,
+            "throttled_usec": 47883,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "throttledPeriodFraction": 0.0033333333333333335
+        }
+      },
+      "legacyFieldCodeUnits": {
+        "type": 125601,
+        "serverVersion": 125601,
+        "tick": 50648,
+        "world": 502404,
+        "backgroundId": 233259,
+        "playerCount": 35886,
+        "foodDelta": 707162,
+        "playersDelta": 38329581,
+        "events": 44481,
+        "audioEvents": 35886,
+        "visualEvents": 35886,
+        "stateSequence": 50649,
+        "selfDelta": 1586406,
+        "leaderboard": 1820205,
+        "clanLeaderboard": 625941,
+        "projectilesDelta": 466518,
+        "hazardsDelta": 722820,
+        "samplePlayer:id": 288192,
+        "samplePlayer:x": 47851,
+        "samplePlayer:y": 47382,
+        "samplePlayer:radius": 1340,
+        "samplePlayer:mass": 1008,
+        "samplePlayer:parts": 172434,
+        "samplePlayer:viewRadius": 16977,
+        "samplePlayer:shieldMs": 51,
+        "samplePlayer:name": 500,
+        "samplePlayer:skinId": 650,
+        "samplePlayer:outfit": 1150,
+        "samplePlayer:account": 1350,
+        "samplePlayer:arenaFrame": 450,
+        "samplePlayer:turbo": 1850,
+        "samplePlayer:level": 150,
+        "samplePlayer:clanPrefix": 300,
+        "samplePlayer:clanId": 1900,
+        "samplePlayer:clanName": 700,
+        "samplePlayer:clanEmblem": 350,
+        "samplePlayer:clanCrest": 4057,
+        "samplePlayer:clanFrame": 200,
+        "samplePlayer:title": 2150,
+        "samplePlayer:color": 885,
+        "samplePlayer:spawnSerial": 50,
+        "samplePlayer:pet": 200,
+        "samplePlayer:mainPartId": 1976,
+        "samplePlayer:effects": 100,
+        "samplePlayer:instantEffects": 100
+      },
+      "stateWorkers": {
+        "jobs": 632,
+        "replaced": 30,
+        "workerMs": 2613.062355999982,
+        "cloneMs": 383.87484899997776,
+        "turnaroundMs": 4512.938332000005,
+        "failures": 0,
+        "overflowStreams": 0,
+        "retiredRooms": 0,
+        "drained": 0,
+        "delivered": 18003,
+        "deliveryMs": 452.828261999972,
+        "lanes": 1
+      }
+    },
+    {
+      "phase": "split",
+      "networkMbps": 20.04394743731774,
+      "socketMbps": 21.41557392819377,
+      "tickP95": 13.59867399999348,
+      "updatesHz": 20.041199729841058,
+      "actionLatency": {
+        "p50": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      },
+      "rssMiB": 903.87109375,
+      "stages": {
+        "physics.moveFeed": {
+          "calls": 601,
+          "inclusiveMs": 21.85945500007074,
+          "exclusiveMs": 21.85945500007074,
+          "maxMs": 0.15305300000181887
+        },
+        "physics.boosterEffects": {
+          "calls": 18030,
+          "inclusiveMs": 29.6814639998629,
+          "exclusiveMs": 29.6814639998629,
+          "maxMs": 0.07010900000022957
+        },
+        "physics.combatUpdate": {
+          "calls": 601,
+          "inclusiveMs": 4.072358999917924,
+          "exclusiveMs": 4.072358999917924,
+          "maxMs": 0.07495799999742303
+        },
+        "physics.separateParts": {
+          "calls": 18885,
+          "inclusiveMs": 682.0381100001541,
+          "exclusiveMs": 682.0381100001541,
+          "maxMs": 0.6592510000045877
+        },
+        "physics.moveParts": {
+          "calls": 18030,
+          "inclusiveMs": 852.8772819994629,
+          "exclusiveMs": 197.90984899926116,
+          "maxMs": 0.6982439999992494
+        },
+        "physics.collectEther": {
+          "calls": 601,
+          "inclusiveMs": 357.6023189999323,
+          "exclusiveMs": 357.6023189999323,
+          "maxMs": 3.649981000009575
+        },
+        "physics.resolveAbsorptions": {
+          "calls": 601,
+          "inclusiveMs": 865.3719559999736,
+          "exclusiveMs": 865.3719559999736,
+          "maxMs": 3.460665999999037
+        },
+        "physics": {
+          "calls": 601,
+          "inclusiveMs": 2623.3514769997855,
+          "exclusiveMs": 491.8866420005652,
+          "maxMs": 7.5652699999991455
+        },
+        "roomStep": {
+          "calls": 601,
+          "inclusiveMs": 2868.178358999925,
+          "exclusiveMs": 244.82688200013945,
+          "maxMs": 8.469840000005206
+        },
+        "snapshotBuild": {
+          "calls": 649,
+          "inclusiveMs": 479.4968079998507,
+          "exclusiveMs": 479.4968079998507,
+          "maxMs": 3.0628619999988587
+        },
+        "statePostMessage": {
+          "calls": 637,
+          "inclusiveMs": 442.81464200012124,
+          "exclusiveMs": 442.81464200012124,
+          "maxMs": 3.7044369999930495
+        },
+        "statePackAndPost": {
+          "calls": 1260,
+          "inclusiveMs": 732.7234080000198,
+          "exclusiveMs": 289.9087659998986,
+          "maxMs": 4.131789999999455
+        },
+        "tickWall": {
+          "calls": 601,
+          "inclusiveMs": 5514.650963999811,
+          "exclusiveMs": 1252.9422390000473,
+          "maxMs": 24.034448000005796
+        },
+        "wsSend": {
+          "calls": 19005,
+          "inclusiveMs": 464.99071200019534,
+          "exclusiveMs": 464.99071200019534,
+          "maxMs": 1.5350459999972372
+        },
+        "stateResultDelivery": {
+          "calls": 636,
+          "inclusiveMs": 452.5113180000262,
+          "exclusiveMs": 59.899049999665294,
+          "maxMs": 1.5480879999959143
+        },
+        "inputApply": {
+          "calls": 17994,
+          "inclusiveMs": 97.44082599946705,
+          "exclusiveMs": 70.37014899951464,
+          "maxMs": 0.3281000000060885
+        },
+        "profilePrepare": {
+          "calls": 598,
+          "inclusiveMs": 291.38245999993524,
+          "exclusiveMs": 291.38245999993524,
+          "maxMs": 3.1565909999990254
+        },
+        "otherPostMessage": {
+          "calls": 56,
+          "inclusiveMs": 3.507318999952986,
+          "exclusiveMs": 3.507318999952986,
+          "maxMs": 0.44019399999524467
+        }
+      },
+      "resources": {
+        "elapsedMs": 30001.057324999994,
+        "processCpu": {
+          "userMs": 16869.902,
+          "systemMs": 962.47,
+          "percent": 59.43914511686298
+        },
+        "mainThreadCpu": {
+          "userMs": 7582.927,
+          "systemMs": 721.271,
+          "percent": 27.67968445258788
+        },
+        "mainThreadElu": {
+          "activeMs": 8227.63077503517,
+          "idleMs": 21773.422095,
+          "utilization": 0.2742447343657351
+        },
+        "cgroup": {
+          "scope": "/sys/fs/cgroup/system.slice/heroether-wire-profile-30-20261124.service",
+          "cpuMax": "300000 100000",
+          "counters": {
+            "usage_usec": 21171996,
+            "user_usec": 19526864,
+            "system_usec": 1645133,
+            "nice_usec": 19210347,
+            "nr_periods": 300,
+            "nr_throttled": 3,
+            "throttled_usec": 127955,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "throttledPeriodFraction": 0.01
+        }
+      },
+      "legacyFieldCodeUnits": {
+        "type": 126273,
+        "serverVersion": 126273,
+        "tick": 60155,
+        "world": 505092,
+        "backgroundId": 234507,
+        "playerCount": 36078,
+        "foodDelta": 1010811,
+        "playersDelta": 58871304,
+        "events": 4300308,
+        "audioEvents": 36078,
+        "visualEvents": 56610,
+        "stateSequence": 60189,
+        "selfDelta": 1959585,
+        "projectilesDelta": 469014,
+        "hazardsDelta": 695925,
+        "samplePlayer:id": 154508,
+        "samplePlayer:x": 27422,
+        "samplePlayer:y": 26567,
+        "samplePlayer:parts": 675184,
+        "samplePlayer:viewRadius": 17936,
+        "leaderboard": 1964405,
+        "clanLeaderboard": 679672,
+        "samplePlayer:radius": 4122,
+        "samplePlayer:mass": 3390,
+        "samplePlayer:mainPartId": 5852,
+        "samplePlayer:name": 410,
+        "samplePlayer:skinId": 533,
+        "samplePlayer:outfit": 943,
+        "samplePlayer:account": 1107,
+        "samplePlayer:arenaFrame": 369,
+        "samplePlayer:turbo": 1517,
+        "samplePlayer:level": 123,
+        "samplePlayer:clanPrefix": 246,
+        "samplePlayer:clanId": 1558,
+        "samplePlayer:clanName": 574,
+        "samplePlayer:clanEmblem": 287,
+        "samplePlayer:clanCrest": 3334,
+        "samplePlayer:clanFrame": 164,
+        "samplePlayer:title": 1763,
+        "samplePlayer:color": 727,
+        "samplePlayer:spawnSerial": 41,
+        "samplePlayer:pet": 164,
+        "samplePlayer:shieldMs": 8440,
+        "samplePlayer:effects": 82,
+        "samplePlayer:instantEffects": 82
+      },
+      "stateWorkers": {
+        "jobs": 1269,
+        "replaced": 39,
+        "workerMs": 6326.72095300002,
+        "cloneMs": 839.405050000001,
+        "turnaroundMs": 9792.353765999782,
+        "failures": 0,
+        "overflowStreams": 0,
+        "retiredRooms": 0,
+        "drained": 0,
+        "delivered": 36042,
+        "deliveryMs": 884.124194999966,
+        "lanes": 1
+      }
+    },
+    {
+      "phase": "feed",
+      "networkMbps": 21.18727517920766,
+      "socketMbps": 22.125284683739302,
+      "tickP95": 11.867670999999973,
+      "updatesHz": 20.052686910408507,
+      "actionLatency": {
+        "p50": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      },
+      "rssMiB": 883.32421875,
+      "stages": {
+        "inputApply": {
+          "calls": 13476,
+          "inclusiveMs": 54.751184999753605,
+          "exclusiveMs": 54.751184999753605,
+          "maxMs": 1.2667539999965811
+        },
+        "wsSend": {
+          "calls": 18960,
+          "inclusiveMs": 430.25158599986753,
+          "exclusiveMs": 430.25158599986753,
+          "maxMs": 0.5080799999996088
+        },
+        "stateResultDelivery": {
+          "calls": 621,
+          "inclusiveMs": 435.74740900014876,
+          "exclusiveMs": 56.77304900015588,
+          "maxMs": 1.3596509999915725
+        },
+        "statePackAndPost": {
+          "calls": 1237,
+          "inclusiveMs": 831.8903309993766,
+          "exclusiveMs": 398.2939879994665,
+          "maxMs": 3.360094999996363
+        },
+        "physics.moveFeed": {
+          "calls": 600,
+          "inclusiveMs": 159.31332499990822,
+          "exclusiveMs": 159.31332499990822,
+          "maxMs": 2.7380640000046697
+        },
+        "physics.boosterEffects": {
+          "calls": 18000,
+          "inclusiveMs": 27.682682000115165,
+          "exclusiveMs": 27.682682000115165,
+          "maxMs": 0.08777600000030361
+        },
+        "physics.combatUpdate": {
+          "calls": 600,
+          "inclusiveMs": 3.0346269999427022,
+          "exclusiveMs": 3.0346269999427022,
+          "maxMs": 0.029068000003462657
+        },
+        "physics.separateParts": {
+          "calls": 18002,
+          "inclusiveMs": 196.6633509997191,
+          "exclusiveMs": 196.6633509997191,
+          "maxMs": 0.2621300000027986
+        },
+        "physics.moveParts": {
+          "calls": 18000,
+          "inclusiveMs": 353.95977900206344,
+          "exclusiveMs": 157.3892750023515,
+          "maxMs": 0.6646489999984624
+        },
+        "physics.collectEther": {
+          "calls": 600,
+          "inclusiveMs": 346.9493919998931,
+          "exclusiveMs": 346.9493919998931,
+          "maxMs": 2.2321569999912754
+        },
+        "physics.resolveAbsorptions": {
+          "calls": 600,
+          "inclusiveMs": 398.6757889997825,
+          "exclusiveMs": 398.6757889997825,
+          "maxMs": 2.613939000002574
+        },
+        "physics": {
+          "calls": 600,
+          "inclusiveMs": 1712.494821000233,
+          "exclusiveMs": 422.7863799985207,
+          "maxMs": 9.30711200000951
+        },
+        "roomStep": {
+          "calls": 600,
+          "inclusiveMs": 1891.7545489999175,
+          "exclusiveMs": 179.2597279996844,
+          "maxMs": 9.990955000001122
+        },
+        "snapshotBuild": {
+          "calls": 620,
+          "inclusiveMs": 315.47408300015377,
+          "exclusiveMs": 315.47408300015377,
+          "maxMs": 2.7852330000023358
+        },
+        "statePostMessage": {
+          "calls": 620,
+          "inclusiveMs": 433.5963429999101,
+          "exclusiveMs": 433.5963429999101,
+          "maxMs": 1.201625999994576
+        },
+        "profilePrepare": {
+          "calls": 276,
+          "inclusiveMs": 156.8325029998523,
+          "exclusiveMs": 156.8325029998523,
+          "maxMs": 3.136882999999216
+        },
+        "tickWall": {
+          "calls": 600,
+          "inclusiveMs": 4011.4028849998867,
+          "exclusiveMs": 845.5392770002945,
+          "maxMs": 19.49149599998782
+        },
+        "otherPostMessage": {
+          "calls": 37,
+          "inclusiveMs": 1.908041000016965,
+          "exclusiveMs": 1.908041000016965,
+          "maxMs": 0.0779939999920316
+        }
+      },
+      "resources": {
+        "elapsedMs": 30001.197948,
+        "processCpu": {
+          "userMs": 15773.539,
+          "systemMs": 736.186,
+          "percent": 55.030219221964785
+        },
+        "mainThreadCpu": {
+          "userMs": 5749.301,
+          "systemMs": 601.433,
+          "percent": 21.168268050520844
+        },
+        "mainThreadElu": {
+          "activeMs": 6216.715251044072,
+          "idleMs": 23784.471983000003,
+          "utilization": 0.20721564125267705
+        },
+        "cgroup": {
+          "scope": "/sys/fs/cgroup/system.slice/heroether-wire-profile-30-20261124.service",
+          "cpuMax": "300000 100000",
+          "counters": {
+            "usage_usec": 19636688,
+            "user_usec": 18367873,
+            "system_usec": 1268816,
+            "nice_usec": 18107767,
+            "nr_periods": 300,
+            "nr_throttled": 0,
+            "throttled_usec": 0,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "throttledPeriodFraction": 0
+        }
+      },
+      "legacyFieldCodeUnits": {
+        "type": 126350,
+        "serverVersion": 126350,
+        "tick": 72200,
+        "world": 505400,
+        "backgroundId": 234650,
+        "playerCount": 36100,
+        "foodDelta": 23340321,
+        "playersDelta": 43800720,
+        "events": 727097,
+        "audioEvents": 36100,
+        "visualEvents": 563133,
+        "stateSequence": 72200,
+        "selfDelta": 1646015,
+        "projectilesDelta": 469300,
+        "hazardsDelta": 1266414,
+        "samplePlayer:id": 370082,
+        "samplePlayer:x": 66963,
+        "samplePlayer:y": 66302,
+        "samplePlayer:parts": 720101,
+        "samplePlayer:viewRadius": 30775,
+        "samplePlayer:radius": 14920,
+        "samplePlayer:mass": 8470,
+        "samplePlayer:mainPartId": 10488,
+        "leaderboard": 1840733,
+        "clanLeaderboard": 636137,
+        "samplePlayer:name": 400,
+        "samplePlayer:skinId": 520,
+        "samplePlayer:outfit": 920,
+        "samplePlayer:account": 1080,
+        "samplePlayer:arenaFrame": 360,
+        "samplePlayer:turbo": 1480,
+        "samplePlayer:level": 120,
+        "samplePlayer:clanPrefix": 240,
+        "samplePlayer:clanId": 1520,
+        "samplePlayer:clanName": 560,
+        "samplePlayer:clanEmblem": 280,
+        "samplePlayer:clanCrest": 3265,
+        "samplePlayer:clanFrame": 160,
+        "samplePlayer:title": 1720,
+        "samplePlayer:color": 712,
+        "samplePlayer:spawnSerial": 40,
+        "samplePlayer:pet": 160,
+        "samplePlayer:shieldMs": 5845,
+        "samplePlayer:effects": 80,
+        "samplePlayer:instantEffects": 80
+      },
+      "stateWorkers": {
+        "jobs": 1889,
+        "replaced": 39,
+        "workerMs": 10463.761798000074,
+        "cloneMs": 1283.1262609998373,
+        "turnaroundMs": 15303.282238999673,
+        "failures": 0,
+        "overflowStreams": 0,
+        "retiredRooms": 0,
+        "drained": 0,
+        "delivered": 54092,
+        "deliveryMs": 1300.0700549998276,
+        "lanes": 1
+      }
+    },
+    {
+      "phase": "boosters",
+      "networkMbps": 20.044146127587215,
+      "socketMbps": 21.417283205209348,
+      "tickP95": 10.567580000002636,
+      "updatesHz": 20.02265755640933,
+      "actionLatency": {
+        "p50": 5.679363999995985,
+        "p95": 14.701757000002544,
+        "p99": 23.029953000004753,
+        "max": 26.04363500000909
+      },
+      "rssMiB": 775.93359375,
+      "stages": {
+        "physics.moveFeed": {
+          "calls": 601,
+          "inclusiveMs": 84.01726499997312,
+          "exclusiveMs": 84.01726499997312,
+          "maxMs": 1.0503539999917848
+        },
+        "physics.boosterEffects": {
+          "calls": 18045,
+          "inclusiveMs": 57.73260200006189,
+          "exclusiveMs": 57.73260200006189,
+          "maxMs": 0.6573349999962375
+        },
+        "physics.combatUpdate": {
+          "calls": 601,
+          "inclusiveMs": 447.0416019999684,
+          "exclusiveMs": 446.91374400000495,
+          "maxMs": 2.5977200000052107
+        },
+        "physics.separateParts": {
+          "calls": 16729,
+          "inclusiveMs": 37.2960329981579,
+          "exclusiveMs": 37.2960329981579,
+          "maxMs": 0.1811699999962002
+        },
+        "physics.moveParts": {
+          "calls": 17747,
+          "inclusiveMs": 124.48739000015485,
+          "exclusiveMs": 87.54446800195728,
+          "maxMs": 0.2604709999868646
+        },
+        "physics.collectEther": {
+          "calls": 601,
+          "inclusiveMs": 224.86749699998472,
+          "exclusiveMs": 224.86749699998472,
+          "maxMs": 1.1679239999939455
+        },
+        "physics.resolveAbsorptions": {
+          "calls": 601,
+          "inclusiveMs": 156.12199699999474,
+          "exclusiveMs": 156.12199699999474,
+          "maxMs": 1.2407209999946645
+        },
+        "physics": {
+          "calls": 601,
+          "inclusiveMs": 1545.4261020002887,
+          "exclusiveMs": 451.07605200013495,
+          "maxMs": 6.677974999998696
+        },
+        "roomStep": {
+          "calls": 601,
+          "inclusiveMs": 1763.4748599999293,
+          "exclusiveMs": 218.04875799964066,
+          "maxMs": 7.028629000007641
+        },
+        "snapshotBuild": {
+          "calls": 623,
+          "inclusiveMs": 393.03139999990526,
+          "exclusiveMs": 393.03139999990526,
+          "maxMs": 1.0994939999945927
+        },
+        "statePostMessage": {
+          "calls": 623,
+          "inclusiveMs": 477.44441600002756,
+          "exclusiveMs": 477.44441600002756,
+          "maxMs": 3.349627999996301
+        },
+        "statePackAndPost": {
+          "calls": 1239,
+          "inclusiveMs": 757.896286000323,
+          "exclusiveMs": 280.45187000029546,
+          "maxMs": 3.9058340000046883
+        },
+        "tickWall": {
+          "calls": 601,
+          "inclusiveMs": 3966.6998369999637,
+          "exclusiveMs": 912.6342520002072,
+          "maxMs": 19.22724300000118
+        },
+        "wsSend": {
+          "calls": 19416,
+          "inclusiveMs": 450.14944599913724,
+          "exclusiveMs": 450.14944599913724,
+          "maxMs": 0.5388620000012452
+        },
+        "stateResultDelivery": {
+          "calls": 623,
+          "inclusiveMs": 403.249956999789,
+          "exclusiveMs": 48.94537300056254,
+          "maxMs": 1.297233999997843
+        },
+        "inputApply": {
+          "calls": 9000,
+          "inclusiveMs": 17.682598000086728,
+          "exclusiveMs": 17.682598000086728,
+          "maxMs": 0.03549899999052286
+        },
+        "profilePrepare": {
+          "calls": 834,
+          "inclusiveMs": 327.8516170000221,
+          "exclusiveMs": 327.8516170000221,
+          "maxMs": 3.3932479999930365
+        },
+        "otherPostMessage": {
+          "calls": 424,
+          "inclusiveMs": 24.918528999973205,
+          "exclusiveMs": 24.918528999973205,
+          "maxMs": 0.5151370000094175
+        }
+      },
+      "resources": {
+        "elapsedMs": 30001.160084999996,
+        "processCpu": {
+          "userMs": 18178.97,
+          "systemMs": 884.488,
+          "percent": 63.54240284705312
+        },
+        "mainThreadCpu": {
+          "userMs": 6778.337,
+          "systemMs": 575.12,
+          "percent": 24.510575521633204
+        },
+        "mainThreadElu": {
+          "activeMs": 7255.361957981862,
+          "idleMs": 22745.797904000006,
+          "utilization": 0.24183604871810363
+        },
+        "cgroup": {
+          "scope": "/sys/fs/cgroup/system.slice/heroether-wire-profile-30-20261124.service",
+          "cpuMax": "300000 100000",
+          "counters": {
+            "usage_usec": 22649271,
+            "user_usec": 21203030,
+            "system_usec": 1446241,
+            "nice_usec": 20805490,
+            "nr_periods": 300,
+            "nr_throttled": 0,
+            "throttled_usec": 0,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "throttledPeriodFraction": 0
+        }
+      },
+      "legacyFieldCodeUnits": {
+        "type": 126154,
+        "serverVersion": 126154,
+        "tick": 72088,
+        "world": 504616,
+        "backgroundId": 234286,
+        "playerCount": 36044,
+        "foodDelta": 1349567,
+        "playersDelta": 44280942,
+        "events": 2469293,
+        "audioEvents": 1510224,
+        "visualEvents": 1440353,
+        "stateSequence": 72088,
+        "selfDelta": 1899619,
+        "projectilesDelta": 13478522,
+        "hazardsDelta": 1126427,
+        "samplePlayer:id": 412604,
+        "samplePlayer:x": 69573,
+        "samplePlayer:y": 68087,
+        "samplePlayer:parts": 228862,
+        "samplePlayer:viewRadius": 16575,
+        "samplePlayer:radius": 3913,
+        "samplePlayer:mass": 2651,
+        "samplePlayer:effects": 650523,
+        "samplePlayer:instantEffects": 32515,
+        "leaderboard": 1847638,
+        "clanLeaderboard": 636888,
+        "samplePlayer:name": 390,
+        "samplePlayer:skinId": 507,
+        "samplePlayer:outfit": 897,
+        "samplePlayer:account": 1053,
+        "samplePlayer:arenaFrame": 351,
+        "samplePlayer:turbo": 1443,
+        "samplePlayer:level": 117,
+        "samplePlayer:clanPrefix": 234,
+        "samplePlayer:clanId": 1482,
+        "samplePlayer:clanName": 546,
+        "samplePlayer:clanEmblem": 273,
+        "samplePlayer:clanCrest": 3183,
+        "samplePlayer:clanFrame": 156,
+        "samplePlayer:title": 1677,
+        "samplePlayer:color": 692,
+        "samplePlayer:spawnSerial": 39,
+        "samplePlayer:pet": 156,
+        "samplePlayer:mainPartId": 2204,
+        "samplePlayer:shieldMs": 3504
+      },
+      "stateWorkers": {
+        "jobs": 2512,
+        "replaced": 39,
+        "workerMs": 14510.753227000148,
+        "cloneMs": 1770.081986999983,
+        "turnaroundMs": 20921.656921999733,
+        "failures": 0,
+        "overflowStreams": 0,
+        "retiredRooms": 0,
+        "drained": 0,
+        "delivered": 72144,
+        "deliveryMs": 1688.1772729997012,
+        "lanes": 1
+      }
+    },
+    {
+      "phase": "combined",
+      "networkMbps": 58.799331680456504,
+      "socketMbps": 60.945696885862645,
+      "tickP95": 18.662828000000445,
+      "updatesHz": 19.81991596903514,
+      "actionLatency": {
+        "p50": 6.885752000001958,
+        "p95": 19.682139000011375,
+        "p99": 33.885970000003,
+        "max": 230.58685399999376
+      },
+      "rssMiB": 874.82421875,
+      "stages": {
+        "physics.moveFeed": {
+          "calls": 602,
+          "inclusiveMs": 329.43926000018837,
+          "exclusiveMs": 329.43926000018837,
+          "maxMs": 2.6543630000087433
+        },
+        "physics.boosterEffects": {
+          "calls": 18076,
+          "inclusiveMs": 82.63518099990324,
+          "exclusiveMs": 82.63518099990324,
+          "maxMs": 1.961418999999296
+        },
+        "physics.combatUpdate": {
+          "calls": 602,
+          "inclusiveMs": 1071.1772850003908,
+          "exclusiveMs": 1071.0491210003966,
+          "maxMs": 4.464999000017997
+        },
+        "physics.separateParts": {
+          "calls": 16253,
+          "inclusiveMs": 508.28326600327273,
+          "exclusiveMs": 508.28326600327273,
+          "maxMs": 0.4400840000016615
+        },
+        "physics.moveParts": {
+          "calls": 17731,
+          "inclusiveMs": 690.3481120009674,
+          "exclusiveMs": 210.55176099785604,
+          "maxMs": 0.44734699997934513
+        },
+        "physics.collectEther": {
+          "calls": 602,
+          "inclusiveMs": 631.5646009999036,
+          "exclusiveMs": 631.5646009999036,
+          "maxMs": 1.9523090000147931
+        },
+        "physics.resolveAbsorptions": {
+          "calls": 602,
+          "inclusiveMs": 716.855479000078,
+          "exclusiveMs": 716.855479000078,
+          "maxMs": 3.028330000001006
+        },
+        "physics": {
+          "calls": 602,
+          "inclusiveMs": 4195.150885999872,
+          "exclusiveMs": 673.2201629984193,
+          "maxMs": 12.39635399999679
+        },
+        "roomStep": {
+          "calls": 602,
+          "inclusiveMs": 4454.108562999812,
+          "exclusiveMs": 258.9576769999403,
+          "maxMs": 12.97602200001711
+        },
+        "snapshotBuild": {
+          "calls": 626,
+          "inclusiveMs": 658.5830650002754,
+          "exclusiveMs": 658.5830650002754,
+          "maxMs": 2.544498000002932
+        },
+        "statePostMessage": {
+          "calls": 626,
+          "inclusiveMs": 655.2014230001951,
+          "exclusiveMs": 655.2014230001951,
+          "maxMs": 3.1172960000112653
+        },
+        "statePackAndPost": {
+          "calls": 1249,
+          "inclusiveMs": 1445.8361499995517,
+          "exclusiveMs": 790.6347269993566,
+          "maxMs": 5.399708000011742
+        },
+        "profilePrepare": {
+          "calls": 1011,
+          "inclusiveMs": 416.77057700022124,
+          "exclusiveMs": 416.77057700022124,
+          "maxMs": 4.09203100000741
+        },
+        "tickWall": {
+          "calls": 602,
+          "inclusiveMs": 8188.20707300026,
+          "exclusiveMs": 1434.4885089996678,
+          "maxMs": 30.310395000007702
+        },
+        "wsSend": {
+          "calls": 19455,
+          "inclusiveMs": 575.2529629987548,
+          "exclusiveMs": 575.2529629987548,
+          "maxMs": 0.6923769999993965
+        },
+        "stateResultDelivery": {
+          "calls": 625,
+          "inclusiveMs": 530.3917230005027,
+          "exclusiveMs": 56.036956001480576,
+          "maxMs": 2.3915709999855608
+        },
+        "otherPostMessage": {
+          "calls": 427,
+          "inclusiveMs": 25.96432499992079,
+          "exclusiveMs": 25.96432499992079,
+          "maxMs": 0.35496699999202974
+        },
+        "inputApply": {
+          "calls": 22686,
+          "inclusiveMs": 223.3730699972657,
+          "exclusiveMs": 195.07292299708934,
+          "maxMs": 0.5964760000060778
+        }
+      },
+      "resources": {
+        "elapsedMs": 30000.71159600001,
+        "processCpu": {
+          "userMs": 29100.373,
+          "systemMs": 1681.614,
+          "percent": 102.60418957563714
+        },
+        "mainThreadCpu": {
+          "userMs": 11454.728,
+          "systemMs": 1031.981,
+          "percent": 41.62137607984222
+        },
+        "mainThreadElu": {
+          "activeMs": 22733.439001990977,
+          "idleMs": 7267.266425000009,
+          "utilization": 0.7577634818392701
+        },
+        "cgroup": {
+          "scope": "/sys/fs/cgroup/system.slice/heroether-wire-profile-30-20261124.service",
+          "cpuMax": "300000 100000",
+          "counters": {
+            "usage_usec": 36891198,
+            "user_usec": 34435126,
+            "system_usec": 2456073,
+            "nice_usec": 33843466,
+            "nr_periods": 300,
+            "nr_throttled": 0,
+            "throttled_usec": 0,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "throttledPeriodFraction": 0
+        }
+      },
+      "legacyFieldCodeUnits": {
+        "type": 126168,
+        "serverVersion": 126168,
+        "tick": 72096,
+        "world": 504672,
+        "backgroundId": 234312,
+        "playerCount": 36048,
+        "foodDelta": 81799469,
+        "playersDelta": 85806613,
+        "events": 7410898,
+        "audioEvents": 808201,
+        "visualEvents": 3898721,
+        "stateSequence": 72096,
+        "selfDelta": 2296866,
+        "leaderboard": 1916562,
+        "clanLeaderboard": 659676,
+        "projectilesDelta": 31700229,
+        "hazardsDelta": 1360104,
+        "samplePlayer:id": 184490,
+        "samplePlayer:x": 29013,
+        "samplePlayer:y": 28954,
+        "samplePlayer:radius": 12532,
+        "samplePlayer:mass": 8763,
+        "samplePlayer:parts": 841674,
+        "samplePlayer:viewRadius": 26771,
+        "samplePlayer:effects": 336426,
+        "samplePlayer:instantEffects": 26080,
+        "samplePlayer:mainPartId": 9614,
+        "samplePlayer:name": 110,
+        "samplePlayer:skinId": 143,
+        "samplePlayer:outfit": 253,
+        "samplePlayer:account": 297,
+        "samplePlayer:arenaFrame": 99,
+        "samplePlayer:turbo": 407,
+        "samplePlayer:level": 33,
+        "samplePlayer:clanPrefix": 66,
+        "samplePlayer:clanId": 418,
+        "samplePlayer:clanName": 154,
+        "samplePlayer:clanEmblem": 77,
+        "samplePlayer:clanCrest": 899,
+        "samplePlayer:clanFrame": 44,
+        "samplePlayer:title": 473,
+        "samplePlayer:color": 197,
+        "samplePlayer:spawnSerial": 11,
+        "samplePlayer:pet": 44,
+        "samplePlayer:shieldMs": 2105
+      },
+      "stateWorkers": {
+        "jobs": 3138,
+        "replaced": 39,
+        "workerMs": 22264.746545000402,
+        "cloneMs": 2437.008273999789,
+        "turnaroundMs": 30684.9749179997,
+        "failures": 0,
+        "overflowStreams": 0,
+        "retiredRooms": 0,
+        "drained": 0,
+        "delivered": 90198,
+        "deliveryMs": 2199.2135009995964,
+        "lanes": 1
+      }
+    }
+  ],
+  "cpu": {
+    "scope": "Main thread only, sampled 1ms; includes diagnostic overhead, not all worker CPU",
+    "selfTop": [
+      {
+        "ms": 18518.074,
+        "function": "(idle)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 616.106,
+        "function": "postMessage",
+        "file": "node:internal/worker",
+        "line": 462
+      },
+      {
+        "ms": 422.777,
+        "function": "updateProjectiles",
+        "file": "arena/projectile-combat.js",
+        "line": 714
+      },
+      {
+        "ms": 389.42,
+        "function": "(garbage collector)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 376.808,
+        "function": "writev",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 328.842,
+        "function": "separateParts",
+        "file": "arena/arena-simulation.js",
+        "line": 621
+      },
+      {
+        "ms": 309.177,
+        "function": "moveFeed",
+        "file": "arena/arena-simulation.js",
+        "line": 576
+      },
+      {
+        "ms": 293.033,
+        "function": "(program)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 281.424,
+        "function": "collectEther",
+        "file": "arena/arena-simulation.js",
+        "line": 980
+      },
+      {
+        "ms": 263.672,
+        "function": "target.<computed>",
+        "file": "benchmarks/tick-stage-meter.cjs",
+        "line": 8
+      },
+      {
+        "ms": 257.806,
+        "function": "resolveAbsorptions",
+        "file": "arena/arena-simulation.js",
+        "line": 1075
+      },
+      {
+        "ms": 253.73,
+        "function": "encode",
+        "file": "arena/worker-food-transfer.js",
+        "line": 70
+      },
+      {
+        "ms": 253.546,
+        "function": "",
+        "file": "arena/arena-simulation.js",
+        "line": 1332
+      },
+      {
+        "ms": 245.463,
+        "function": "post",
+        "file": "node:inspector",
+        "line": 115
+      },
+      {
+        "ms": 242.606,
+        "function": "vortex",
+        "file": "arena/projectile-combat.js",
+        "line": 919
+      },
+      {
+        "ms": 203.961,
+        "function": "sameMetadata",
+        "file": "arena/worker-food-transfer.js",
+        "line": 42
+      },
+      {
+        "ms": 182.522,
+        "function": "firstHit",
+        "file": "arena/arena-hazards.js",
+        "line": 183
+      },
+      {
+        "ms": 179.971,
+        "function": "",
+        "file": "arena/arena-simulation.js",
+        "line": 1126
+      },
+      {
+        "ms": 173.125,
+        "function": "",
+        "file": "server/game-server.js",
+        "line": 1298
+      },
+      {
+        "ms": 172.71,
+        "function": "arenaProgressDraft",
+        "file": "profiles/profile-store.js",
+        "line": 1208
+      }
+    ]
+  },
+  "samples": [
+    {
+      "file": "499226-boosters.ndjson",
+      "bytes": 26172,
+      "sha256": "e93671b460463e89361689675d51778e096acc85c9ba24f11eeb5e79e9314801"
+    },
+    {
+      "file": "499226-combined.ndjson",
+      "bytes": 54996,
+      "sha256": "11cda4bc4ccd06c4d75e04527f07e644c5d11afa7dba9fcb14528da15e578d0d"
+    },
+    {
+      "file": "499226-feed.ndjson",
+      "bytes": 19995,
+      "sha256": "269216457e5f9883cf9f278c7d175b7c40fc2c009989ab086000ecb732e2bb3e"
+    },
+    {
+      "file": "499226-move.ndjson",
+      "bytes": 9088,
+      "sha256": "476622f73062db2bcbfe1022476f33f831269693b863f681e425c19202592a31"
+    },
+    {
+      "file": "499226-split.ndjson",
+      "bytes": 23472,
+      "sha256": "28b53be6dd59983e8a2110c5553137d704f5afbd090dd0fdc1eb2c652f106fdf"
+    }
+  ],
+  "cost": {
+    "scope": "Bounded offline samples, not all traffic, latency or maximum CCU",
+    "byteUnit": "UTF-8, serialized JSON; excludes WebSocket/TLS/IP overhead",
+    "reports": [
+      {
+        "file": "499226-boosters.ndjson",
+        "packets": 5,
+        "packetBytes": 26167,
+        "valueBytes": 25117,
+        "keyAndSyntaxBytes": 1050,
+        "fields": {
+          "type": 35,
+          "serverVersion": 35,
+          "tick": 20,
+          "world": 140,
+          "backgroundId": 65,
+          "playerCount": 10,
+          "foodDelta": 405,
+          "playersDelta": 16068,
+          "events": 861,
+          "audioEvents": 10,
+          "visualEvents": 10,
+          "stateSequence": 20,
+          "selfDelta": 403,
+          "projectilesDelta": 6798,
+          "hazardsDelta": 237
+        },
+        "playerFields": {
+          "id": 3534,
+          "x": 599,
+          "y": 585,
+          "parts": 2215,
+          "viewRadius": 148,
+          "instantEffects": 249,
+          "effects": 4759,
+          "radius": 41,
+          "mass": 28,
+          "shieldMs": 1
+        },
+        "foodFields": {
+          "removed": 36,
+          "upsert": 29,
+          "moves": 212
+        },
+        "playerUpdates": 93,
+        "foodMetadataRows": 0
+      },
+      {
+        "file": "499226-combined.ndjson",
+        "packets": 5,
+        "packetBytes": 54991,
+        "valueBytes": 53941,
+        "keyAndSyntaxBytes": 1050,
+        "fields": {
+          "type": 35,
+          "serverVersion": 35,
+          "tick": 20,
+          "world": 140,
+          "backgroundId": 65,
+          "playerCount": 10,
+          "foodDelta": 25802,
+          "playersDelta": 18880,
+          "events": 2908,
+          "audioEvents": 250,
+          "visualEvents": 1152,
+          "stateSequence": 20,
+          "selfDelta": 577,
+          "projectilesDelta": 3917,
+          "hazardsDelta": 130
+        },
+        "playerFields": {
+          "id": 1672,
+          "x": 254,
+          "y": 256,
+          "parts": 9628,
+          "viewRadius": 230,
+          "effects": 3328,
+          "radius": 150,
+          "mass": 100,
+          "instantEffects": 144,
+          "mainPartId": 190
+        },
+        "foodFields": {
+          "removed": 327,
+          "upsert": 18722,
+          "moves": 6598
+        },
+        "playerUpdates": 44,
+        "foodMetadataRows": 127
+      },
+      {
+        "file": "499226-feed.ndjson",
+        "packets": 5,
+        "packetBytes": 19990,
+        "valueBytes": 18940,
+        "keyAndSyntaxBytes": 1050,
+        "fields": {
+          "type": 35,
+          "serverVersion": 35,
+          "tick": 20,
+          "world": 140,
+          "backgroundId": 65,
+          "playerCount": 10,
+          "foodDelta": 3646,
+          "playersDelta": 13744,
+          "events": 202,
+          "audioEvents": 10,
+          "visualEvents": 10,
+          "stateSequence": 20,
+          "selfDelta": 520,
+          "projectilesDelta": 130,
+          "hazardsDelta": 353
+        },
+        "playerFields": {
+          "id": 2888,
+          "x": 516,
+          "y": 523,
+          "radius": 63,
+          "mass": 39,
+          "parts": 6336,
+          "viewRadius": 227,
+          "mainPartId": 38,
+          "shieldMs": 71
+        },
+        "foodFields": {
+          "removed": 95,
+          "upsert": 10,
+          "moves": 3386
+        },
+        "playerUpdates": 76,
+        "foodMetadataRows": 0
+      },
+      {
+        "file": "499226-move.ndjson",
+        "packets": 5,
+        "packetBytes": 9083,
+        "valueBytes": 8033,
+        "keyAndSyntaxBytes": 1050,
+        "fields": {
+          "type": 35,
+          "serverVersion": 35,
+          "tick": 14,
+          "world": 140,
+          "backgroundId": 65,
+          "playerCount": 10,
+          "foodDelta": 165,
+          "playersDelta": 6849,
+          "events": 10,
+          "audioEvents": 10,
+          "visualEvents": 10,
+          "stateSequence": 14,
+          "selfDelta": 416,
+          "projectilesDelta": 130,
+          "hazardsDelta": 130
+        },
+        "playerFields": {
+          "id": 2280,
+          "x": 385,
+          "y": 367,
+          "parts": 1388,
+          "viewRadius": 139,
+          "radius": 12,
+          "mass": 11
+        },
+        "foodFields": {
+          "removed": 45,
+          "upsert": 10
+        },
+        "playerUpdates": 60,
+        "foodMetadataRows": 0
+      },
+      {
+        "file": "499226-split.ndjson",
+        "packets": 5,
+        "packetBytes": 23467,
+        "valueBytes": 22417,
+        "keyAndSyntaxBytes": 1050,
+        "fields": {
+          "type": 35,
+          "serverVersion": 35,
+          "tick": 16,
+          "world": 140,
+          "backgroundId": 65,
+          "playerCount": 10,
+          "foodDelta": 2876,
+          "playersDelta": 16341,
+          "events": 775,
+          "audioEvents": 10,
+          "visualEvents": 10,
+          "stateSequence": 16,
+          "selfDelta": 524,
+          "projectilesDelta": 130,
+          "hazardsDelta": 1434
+        },
+        "playerFields": {
+          "id": 1140,
+          "x": 207,
+          "y": 193,
+          "parts": 8694,
+          "viewRadius": 171,
+          "shieldMs": 131,
+          "name": 84,
+          "skinId": 78,
+          "outfit": 138,
+          "account": 162,
+          "arenaFrame": 54,
+          "turbo": 222,
+          "level": 18,
+          "clanPrefix": 36,
+          "clanId": 228,
+          "clanName": 144,
+          "clanEmblem": 42,
+          "clanCrest": 486,
+          "clanFrame": 24,
+          "title": 300,
+          "radius": 42,
+          "mass": 26,
+          "color": 106,
+          "spawnSerial": 6,
+          "pet": 24,
+          "mainPartId": 266,
+          "effects": 12,
+          "instantEffects": 12
+        },
+        "foodFields": {
+          "removed": 297,
+          "upsert": 2469
+        },
+        "playerUpdates": 30,
+        "foodMetadataRows": 39
+      }
+    ]
+  },
+  "archiveSha256": "bca04f17905fa4b0c3b8cd30b5e6c3af2276d918bcafee6ab4aefc4735e7f809",
+  "liveGuard": {
+    "samples": 18,
+    "aborted": false,
+    "databaseErrors": 0,
+    "maxTickP95": 0.78
+  },
+  "limitations": [
+    "Whole-run legacy field counters count JS UTF-16 units, not bytes. Offline captures and new analyzer count exact UTF-8 bytes. Nested player attribution must not be added to top-level totals.",
+    "Only five bounded samples per phase from one client; not representative of all cameras or users.",
+    "No receipt-history load, active clan quest boards or gifts. No real-world mobile transport, TLS, FPS or long-duration result.",
+    "Diagnostic serialization/profiling affects timing, so do not compare its timing directly against the plain capacity run."
+  ],
+  "next": [
+    "Measure candidate player ID/metadata encoding and ejected-food metadata on identical recordings, preserving decoder output and old-browser fallback.",
+    "Benchmark promising codec with ordinary load without diagnostics, including reconnect, slow ACK and visibility boundaries.",
+    "Keep addressed profiles/history and independent simulation owners as architectural priorities; no Redis, language or rendering rewrite is justified by this one profile."
+  ],
+  "reproduction": {
+    "offline": "node scripts/benchmarks/wire-sample-cost.cjs docs/performance/wire-profile-20261124-samples",
+    "newDiagnostic": "CAPACITY_WIRE_DIAGNOSTICS=1 CAPACITY_DIAGNOSTICS=1 node scripts/benchmarks/postgresql-capacity.cjs PRIVATE_CONFIG OUTSIDE_REPOSITORY 1",
+    "notes": "New runner creates a fresh synthetic world, so this is reproduction of the method, not exact A/B of this fixture. Original fixture/evidence and guard retained locally and on VPS. No diagnostic flag is consumed by the running game."
+  },
+  "validationNotes": [
+    "First upload preceded remote directory creation and failed; first guard launch exited without starting load. After mkdir and successful uploads, the guarded diagnostic completed. Files and evidence retained.",
+    "Original counter used string length; UTF-8 accounting corrected for future runs and checked using Cyrillic and emoji. Historical result remains unchanged."
+  ]
+}

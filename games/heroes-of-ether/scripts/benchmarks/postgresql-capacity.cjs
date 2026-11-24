@@ -35,6 +35,12 @@ async function main(){
       LOAD_STATE_WORKERS:'3',LOAD_DRIVER_PER_ROOM:'1',LOAD_LOBBY:'5',LOAD_ALL_BOOSTERS:'1',LOAD_STOCK:'3000',LOAD_GC_METRICS:'1',
       LOAD_INCREMENTAL_SETTLEMENT:'1',LOAD_WORLD_FIXTURE:fixture,LOAD_DATABASE_CONFIG:privateConfig,LOAD_ACK_DIR:path.join(out,'acks')});
   if(process.env.CAPACITY_DIAGNOSTICS==='1')Object.assign(env,{LOAD_STAGE_METRICS:'1',LOAD_PHYSICS_STAGES:'1',LOAD_CPU_PHASE:'combined'});
+  if(process.env.CAPACITY_WIRE_DIAGNOSTICS==='1'){
+    summary.diagnosticOnly=true;
+    summary.wireDiagnostics={fieldUnit:'UTF-8 bytes of JSON values',samplesPerPhasePerRoom:5,
+      caveat:'Extra client serialization and bounded capture affect timing; not a capacity or A/B run.'};
+    Object.assign(env,{LOAD_WIRE_DIAG:'1',LOAD_CAPTURE_WIRE:path.join(out,'wire')});
+  }
   const child=fork(path.join(__dirname,'room-input-load.cjs'),[],{cwd:root,execArgv:['--max-old-space-size=2048'],env,
     stdio:['ignore',stdout,stderr,'ipc']});
   child.on('message',message=>{
