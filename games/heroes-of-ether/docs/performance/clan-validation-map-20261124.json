@@ -1,0 +1,119 @@
+{
+  "at": "2026-11-24T20:59:50.525Z",
+  "installed": false,
+  "change": "Construct validation lookup without a temporary [id,profile] array for every profile. All full-world checks remain.",
+  "tests": {
+    "windows": 74,
+    "linux": "pending"
+  },
+  "benchmark": {
+    "at": "2026-11-24T20:54:29.778Z",
+    "node": "v24.22.3",
+    "platform": "win32",
+    "comparisons": 8,
+    "rows": [
+      {
+        "count": 1280,
+        "repeats": 40,
+        "mode": "baseline",
+        "elapsedMs": 39.10669999999999,
+        "cpuMs": 31,
+        "heapMiB": 24.642837524414062
+      },
+      {
+        "count": 1280,
+        "repeats": 40,
+        "mode": "candidate",
+        "elapsedMs": 35.171599999999955,
+        "cpuMs": 31,
+        "heapMiB": 22.140541076660156
+      },
+      {
+        "count": 1280,
+        "repeats": 40,
+        "mode": "candidate",
+        "elapsedMs": 34.14330000000001,
+        "cpuMs": 15,
+        "heapMiB": 20.01373291015625
+      },
+      {
+        "count": 1280,
+        "repeats": 40,
+        "mode": "baseline",
+        "elapsedMs": 35.40180000000004,
+        "cpuMs": 31,
+        "heapMiB": 24.625732421875
+      },
+      {
+        "count": 10000,
+        "repeats": 40,
+        "mode": "baseline",
+        "elapsedMs": 333.1345,
+        "cpuMs": 344,
+        "heapMiB": 26.772994995117188
+      },
+      {
+        "count": 10000,
+        "repeats": 40,
+        "mode": "candidate",
+        "elapsedMs": 318.2166000000001,
+        "cpuMs": 313,
+        "heapMiB": 47.67072296142578
+      },
+      {
+        "count": 10000,
+        "repeats": 40,
+        "mode": "candidate",
+        "elapsedMs": 295.9285,
+        "cpuMs": 297,
+        "heapMiB": 47.67095184326172
+      },
+      {
+        "count": 10000,
+        "repeats": 40,
+        "mode": "baseline",
+        "elapsedMs": 305.99929999999995,
+        "cpuMs": 312,
+        "heapMiB": 44.278663635253906
+      },
+      {
+        "count": 100000,
+        "repeats": 10,
+        "mode": "baseline",
+        "elapsedMs": 1262.7291,
+        "cpuMs": 1265,
+        "heapMiB": 97.7764663696289
+      },
+      {
+        "count": 100000,
+        "repeats": 10,
+        "mode": "candidate",
+        "elapsedMs": 1178.3997,
+        "cpuMs": 1172,
+        "heapMiB": 86.44834899902344
+      },
+      {
+        "count": 100000,
+        "repeats": 10,
+        "mode": "candidate",
+        "elapsedMs": 1205.3101000000006,
+        "cpuMs": 1203,
+        "heapMiB": 86.4484634399414
+      },
+      {
+        "count": 100000,
+        "repeats": 10,
+        "mode": "baseline",
+        "elapsedMs": 1216.6867999999995,
+        "cpuMs": 1266,
+        "heapMiB": 97.72796630859375
+      }
+    ],
+    "scope": "Full clan validator on synthetic profiles without clans; allocation-only component measurement, not game capacity or full-world copy elimination"
+  },
+  "limitations": [
+    "Small allocation improvement in an isolated full validator; no whole-game speed or memory guarantee",
+    "No incremental validation, rule removal or unvalidated cache",
+    "Existing full-world traversal remains linear; large-scale architecture is still required"
+  ]
+}
