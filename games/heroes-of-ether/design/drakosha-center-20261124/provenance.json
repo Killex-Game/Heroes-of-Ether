@@ -1,0 +1,8 @@
+{
+  "tool": "image_gen",
+  "prompt": "Use case: precise-object-edit. Edit target: the supplied fantasy pets banner. Correct ONLY the magenta dragon's head crest. The current three magenta swept-back fins are planted too far toward the viewer's left side of the skull. Anatomically center their BASES on the dragon's sagittal midline: trace from the middle of the nose bridge upward through the center of the forehead, and continue over the crown toward the nape in the head's existing three-quarter pose facing right. Shift the foremost fin's root approximately 30 pixels toward viewer's RIGHT at this 1536px-wide source. The foremost fin should grow from the top center of the forehead above the bridge between the eyes, NOT beside the left eyebrow/horn. Arrange exactly three small magenta dorsal fins one behind the other along that curved centerline, decreasing toward the back, with tips naturally swept backward toward viewer's LEFT. This is a narrow centered crest following the head in perspective, not a side-parted hair tuft and not extra horns. Keep the existing pair of gold horns, face, expression, skull pose, scale, all other characters, background, lighting, rug, composition, colors and banner dimensions unchanged. Precisely preserve everything outside the small crest and immediately adjoining scalp region. No text, no diagram, no markings.",
+  "source": "../status-natural-20261124/pets-crest.png",
+  "result": "pets-centered.png",
+  "beforeSha256": "bb8913f9d68399779017b5849fc4b54f0c5aed1628b4bc08f9b9c884cfa04edf",
+  "afterSha256": "b41f1c17d78c9c2b4f784f9f71b451d4d9da8e043162ed36d2d6b0dca67097e9"
+}

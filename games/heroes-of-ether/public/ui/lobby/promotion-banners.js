@@ -63,7 +63,7 @@
       product.click();
     }
   };
-  events.style.backgroundImage = 'url("assets/banners/pets.webp?art=20261124-status-natural")';
+  events.style.backgroundImage = 'url("assets/banners/pets.webp?art=20261124-drakosha-center")';
   label(events, "Предложения", "Питомцы", "Выбери верного друга для арены");
   const offers = document.querySelector(".promo-offers");
   const eventBanners = {

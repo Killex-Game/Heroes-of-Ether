@@ -8,7 +8,7 @@ window.KillexArtRevision = Object.freeze({
       .replace(/([?&])art=[^&]*(&?)/g, (_, a, b) => b ? a : "").replace(/[?&]$/, "");
     const prepared = preparedInterfaceAssets.has(base.split("?")[0].replace(/^\//,""));
     if (base.split("?")[0].replace(/^\//, "") === "assets/banners/pets.webp")
-      return base + (base.includes("?") ? "&" : "?") + "art=20261124-status-natural" + (parts.length > 1 ? "#" + parts.slice(1).join("#") : "");
+      return base + (base.includes("?") ? "&" : "?") + "art=20261124-drakosha-center" + (parts.length > 1 ? "#" + parts.slice(1).join("#") : "");
     const revisedGuardian = /assets\/skins\/owner-gifts-v1\/\d+\/gift-winged-guardian\.webp/.test(base);
     const revisedLeagueFrame = /assets\/frames\/(?:leagues-v3\/|rims-v2\/(?:canon_)?(?:bronze|silver|gold|platinum|diamond|champions)\.webp)/.test(base);
     const revisedFrame = /assets\/frames\/(?:rims-v2|titles-v4)\//.test(base);
