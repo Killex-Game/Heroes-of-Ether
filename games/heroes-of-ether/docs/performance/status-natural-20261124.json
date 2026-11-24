@@ -1,0 +1,357 @@
+{
+  "release": "20261124-status-natural",
+  "sourceCommit": "0d8aff582cc38f82eed396a0e9b3a013c8bdeb94",
+  "sourceTag": "release/20261124-status-natural",
+  "installed": true,
+  "openedAt": "2026-11-24T05:10:17.752Z",
+  "runtime": {
+    "gamePid": 539979,
+    "adminPid": 1163,
+    "entryOpen": true,
+    "restarts": 0,
+    "backend": "postgresql",
+    "database": "semenovkir"
+  },
+  "changes": [
+    "Approved VIP/Premium benefit matrix, 7/14-day purchases and separate chest greatness/currency factors",
+    "30-second current-mass natural rewards; Premium doubles XP and full kill formula; alive humans in own room include self and exclude bots; exact half rounds down",
+    "VIP pet supply and Manya positive mass bonus",
+    "Mobile emote taps with existing 5-second cooldown; desktop pointer passthrough",
+    "Equal visible status icon height; Winged Guardian placement only; corrected Drakosha banner crest"
+  ],
+  "previewOnly": {
+    "premiumEmotes": "deliveries/status-natural-20261124/premium-emotes.html",
+    "archive": "deliveries/status-natural-20261124/Premium-emote-variants.zip",
+    "variants": 3,
+    "rasterArtUnchanged": true,
+    "installed": false
+  },
+  "tests": {
+    "linuxFull": {
+      "total": 2346,
+      "passed": 2345,
+      "failed": 0,
+      "skipped": 1
+    },
+    "windowsTargeted": {
+      "total": 260,
+      "firstPassed": 258,
+      "firstFailed": 2,
+      "affectedFileRerunPassed": 9,
+      "affectedFileRerunFailed": 0
+    },
+    "browsers": [
+      {
+        "engine": "chromium",
+        "mobile": false,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 23.994873046875
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.996337890625
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 23.994873046875
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.996337890625
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
+      },
+      {
+        "engine": "chromium",
+        "mobile": true,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 19.9957275390625
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.9969482421875
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 19.9957275390625
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.9969482421875
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
+      },
+      {
+        "engine": "firefox",
+        "mobile": false,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 24.00370877981186
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.99960857629776
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 24.00370877981186
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.99960857629776
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
+      },
+      {
+        "engine": "firefox",
+        "mobile": true,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 19.99719476699829
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.99530690908432
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 19.99719476699829
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.99530690908432
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
+      },
+      {
+        "engine": "webkit",
+        "mobile": false,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 23.994873046875
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.996337890625
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 23.994873046875
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.996337890625
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
+      },
+      {
+        "engine": "webkit",
+        "mobile": true,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 19.9957275390625
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.9969482421875
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 19.9957275390625
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.9969482421875
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
+      }
+    ],
+    "httpVps": 54,
+    "httpLocal": 18
+  },
+  "production": {
+    "release": "/srv/heroether-test/play/releases/20261124-status-natural",
+    "sourceCommit": "0d8aff582cc38f82eed396a0e9b3a013c8bdeb94",
+    "files": 2599,
+    "changed": 28,
+    "previousReleaseUnchanged": true,
+    "protectedGraphicsUnchanged": true,
+    "commentsRemoved": 376
+  },
+  "data": {
+    "before": {
+      "profiles": 1719,
+      "clans": 136,
+      "revision": 4266627,
+      "digest": "bc2dccf73f3965f9e8d2d43604bcc2bd08967badc50928a154c7d11c3e07fd86"
+    },
+    "after": {
+      "profiles": 1719,
+      "clans": 136,
+      "revision": 4266627,
+      "digest": "bc2dccf73f3965f9e8d2d43604bcc2bd08967badc50928a154c7d11c3e07fd86"
+    },
+    "constructorFieldsUnchanged": true,
+    "calendarReplayExact": true,
+    "allOtherFieldsEqual": true,
+    "backup": {
+      "verified": true,
+      "archiveSha256": "3dc0b2236e1cec324075dcc867aef8d3d1e6229a4e1d329489f822a5aba843f0",
+      "revision": 4266627,
+      "digest": "bc2dccf73f3965f9e8d2d43604bcc2bd08967badc50928a154c7d11c3e07fd86",
+      "worldHash": "95696aa17bb5c48a21d2b0f77cd9ae4f02d7e401ff93672ca6322fdea39a46d9",
+      "profiles": 1719,
+      "clans": 136,
+      "postgresqlArchiveVerified": true
+    }
+  },
+  "local": {
+    "url": "http://localhost:3104",
+    "isolatedProfiles": true,
+    "productionPostgresqlUsed": false,
+    "privateConfigChanged": false,
+    "oldExperimentalProcessChanged": false,
+    "synchronized": 50,
+    "browser": {
+      "url": "http://localhost:3104",
+      "status": 200,
+      "playVisible": true,
+      "pageErrors": []
+    }
+  },
+  "observation": {
+    "capacityClaim": false,
+    "comparableAB": false,
+    "samples": [
+      {
+        "at": 1795497040228,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 0.95,
+        "rssMiB": 895,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4266627,
+          "syncAgeMs": 20065,
+          "prepareMs": 1,
+          "writeMs": 93
+        }
+      },
+      {
+        "at": 1795497055239,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 0.96,
+        "rssMiB": 896,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4266627,
+          "syncAgeMs": 5074,
+          "prepareMs": 2,
+          "writeMs": 95
+        }
+      },
+      {
+        "at": 1795497070255,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 0.96,
+        "rssMiB": 897,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4266627,
+          "syncAgeMs": 20091,
+          "prepareMs": 2,
+          "writeMs": 95
+        }
+      },
+      {
+        "at": 1795497085266,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 0.92,
+        "rssMiB": 866,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4266627,
+          "syncAgeMs": 5093,
+          "prepareMs": 2,
+          "writeMs": 102
+        }
+      },
+      {
+        "at": 1795497100274,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 0.87,
+        "rssMiB": 869,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4266627,
+          "syncAgeMs": 20101,
+          "prepareMs": 2,
+          "writeMs": 102
+        }
+      }
+    ]
+  },
+  "validationNotes": [
+    "First Windows full run: 2342 tests, 2282 passed, 59 failed, one skipped. Old rule expectations were updated; a real incompatibility in the clan-chest validator required version 5 while preserving versions 2–4. Two unrelated Windows atomic-rename EPERM failures are retained; final Linux full run is green.",
+    "Targeted Windows rerun initially had two outdated expected greatness/accessory values; the two affected files then passed 9/9.",
+    "Browser checks initially caught an extra CSS scale on VIP icons and a fixture using the default avatar. Both fixed. Mismatched bundled Playwright and installed browsers caused separate tooling failures; matching cached Playwright 1.65.1 passed all three engines.",
+    "The only source change after the full Linux run was CRLF/LF normalization in one CSS file, with no declaration changes.",
+    "An initial service query used the nonexistent heroether-game name; the actual heroether-play service was healthy. No recovery action was taken for that mistaken query.",
+    "Prior backups, development comments and historical chest promises were retained. New expressive emote animations are previews only.",
+    "The first 40-second startup wait expired; subsequent readiness checks succeeded without a restart. The retained old localhost review process had no listener on 3104; its isolated data was backed up and it was replaced with the reviewed source. The unrelated experimental process was not touched.",
+    "Post-install samples have zero connected players and verify service health only, not load capacity."
+  ],
+  "architectureCandidateInstalled": false,
+  "optimizationCapacityProven": false,
+  "evidence": "artifacts/status-natural-20261124"
+}

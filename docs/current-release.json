@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261124-owner-updates",
-  "sourceTag": "release/20261124-owner-updates",
-  "sourceCommit": "844034ec52985a9882abda4a4cc63f5b13618bcd",
+  "gameRelease": "20261124-status-natural",
+  "sourceTag": "release/20261124-status-natural",
+  "sourceCommit": "0d8aff582cc38f82eed396a0e9b3a013c8bdeb94",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-24T04:07:46.131Z",
+  "entryReopenedAtUtc": "2026-11-24T05:10:17.752Z",
   "runtime": {
-    "gamePid": 529699,
+    "gamePid": 539979,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
@@ -56,37 +56,35 @@
     "Five personal clan quest achievements with per-goal evidence, stable distinct-day/type counts and idempotent settlement.",
     "Updated accessory passives and once-per-life E stock; event and preview accessories hidden until owned; unknown future boosters deferred.",
     "Space no longer toggles the focused arena chat button; typing spaces and Enter behavior retained.",
-    "Seven clan booster icons and five personal achievement icons installed at four resolutions; all protected artwork retained."
+    "Seven clan booster icons and five personal achievement icons installed at four resolutions; all protected artwork retained.",
+    "Approved VIP/Premium benefit matrix, 7/14-day purchases and separate chest greatness/currency factors",
+    "30-second current-mass natural rewards; Premium doubles XP and full kill formula; alive humans in own room include self and exclude bots; exact half rounds down",
+    "VIP pet supply and Manya positive mass bonus",
+    "Mobile emote taps with existing 5-second cooldown; desktop pointer passthrough",
+    "Equal visible status icon height; Winged Guardian placement only; corrected Drakosha banner crest"
   ],
   "data": {
     "before": {
-      "revision": 4260368,
       "profiles": 1719,
       "clans": 136,
-      "digest": "46193d1cc6bdaae46e87ef12caac1dde174a792c3581e24bddfd9fef8e1bc4c1"
+      "revision": 4266627,
+      "digest": "bc2dccf73f3965f9e8d2d43604bcc2bd08967badc50928a154c7d11c3e07fd86"
     },
     "after": {
-      "revision": 4260369,
       "profiles": 1719,
       "clans": 136,
-      "digest": "8f9838493068f61599afaf694bd7cc0e132dfc97ea6da906442b8bc6c847a6b9"
+      "revision": 4266627,
+      "digest": "bc2dccf73f3965f9e8d2d43604bcc2bd08967badc50928a154c7d11c3e07fd86"
     },
-    "approvedMigrationsExact": true,
-    "allOtherFieldsEqual": true,
+    "constructorFieldsUnchanged": true,
     "calendarReplayExact": true,
-    "migration": {
-      "at": 1795492804094,
-      "readOnly": true,
-      "profiles": 1719,
-      "capacities": 67,
-      "allOtherFieldsEqual": true
-    },
+    "allOtherFieldsEqual": true,
     "backup": {
       "verified": true,
-      "archiveSha256": "6b68272a96eba8cb92773ad6f2fe10ad7ce00b2daf47970dd44f2889962cae37",
-      "revision": 4260368,
-      "digest": "46193d1cc6bdaae46e87ef12caac1dde174a792c3581e24bddfd9fef8e1bc4c1",
-      "worldHash": "526961e8dde823ad64d017051372b53b995c66a9afca37a74417ef8c2b7ee5c8",
+      "archiveSha256": "3dc0b2236e1cec324075dcc867aef8d3d1e6229a4e1d329489f822a5aba843f0",
+      "revision": 4266627,
+      "digest": "bc2dccf73f3965f9e8d2d43604bcc2bd08967badc50928a154c7d11c3e07fd86",
+      "worldHash": "95696aa17bb5c48a21d2b0f77cd9ae4f02d7e401ff93672ca6322fdea39a46d9",
       "profiles": 1719,
       "clans": 136,
       "postgresqlArchiveVerified": true
@@ -94,72 +92,175 @@
   },
   "verification": {
     "linuxFull": {
-      "total": 2344,
-      "passed": 2343,
+      "total": 2346,
+      "passed": 2345,
       "failed": 0,
       "skipped": 1
     },
-    "earlierLinuxRuns": [
-      {
-        "total": 2341,
-        "passed": 2266,
-        "failed": 74,
-        "skipped": 1
-      },
-      {
-        "total": 2344,
-        "passed": 2340,
-        "failed": 3,
-        "skipped": 1
-      }
-    ],
     "windowsTargeted": {
-      "passed": 37,
-      "failed": 0
-    },
-    "registration": {
-      "passed": 5,
-      "failed": 0
+      "total": 260,
+      "firstPassed": 258,
+      "firstFailed": 2,
+      "affectedFileRerunPassed": 9,
+      "affectedFileRerunFailed": 0
     },
     "browsers": [
       {
         "engine": "chromium",
-        "wardrobeCases": 6,
-        "chatCases": 6,
-        "abilityCases": 3,
-        "decoded": 48,
-        "errors": []
+        "mobile": false,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 23.994873046875
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.996337890625
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 23.994873046875
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.996337890625
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
+      },
+      {
+        "engine": "chromium",
+        "mobile": true,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 19.9957275390625
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.9969482421875
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 19.9957275390625
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.9969482421875
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
       },
       {
         "engine": "firefox",
-        "wardrobeCases": 6,
-        "chatCases": 6,
-        "abilityCases": 3,
-        "decoded": 48,
-        "errors": []
+        "mobile": false,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 24.00370877981186
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.99960857629776
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 24.00370877981186
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.99960857629776
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
+      },
+      {
+        "engine": "firefox",
+        "mobile": true,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 19.99719476699829
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.99530690908432
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 19.99719476699829
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.99530690908432
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
       },
       {
         "engine": "webkit",
-        "wardrobeCases": 6,
-        "chatCases": 6,
-        "abilityCases": 3,
-        "decoded": 48,
-        "errors": []
+        "mobile": false,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 23.994873046875
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.996337890625
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 23.994873046875
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 23.996337890625
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
+      },
+      {
+        "engine": "webkit",
+        "mobile": true,
+        "icons": [
+          {
+            "kind": "vip",
+            "visibleHeight": 19.9957275390625
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.9969482421875
+          },
+          {
+            "kind": "vip",
+            "visibleHeight": 19.9957275390625
+          },
+          {
+            "kind": "premium",
+            "visibleHeight": 19.9969482421875
+          }
+        ],
+        "sent": 1,
+        "received": 1,
+        "pageErrors": []
       }
     ],
-    "httpExactChecks": 180,
-    "localHttpExactChecks": 60,
-    "production": {
-      "files": 2599,
-      "changed": 78,
-      "commentsRemoved": 435,
-      "protectedGraphicsUnchanged": true,
-      "previousReleaseUnchanged": true
-    },
-    "previousEvidenceRetained": true
+    "httpVps": 54,
+    "httpLocal": 18
   },
-  "report": "games/heroes-of-ether/docs/performance/clan-owner-updates-20261124.json",
-  "previousRelease": "20261124-room30",
+  "report": "games/heroes-of-ether/docs/performance/status-natural-20261124.json",
+  "previousRelease": "20261124-owner-updates",
   "notes": [
     "Initial Linux failures were obsolete expectations, preserved with final complete rerun",
     "Previous Windows full failures remain documented; production writes/fsync were not weakened",
@@ -1051,33 +1152,34 @@
     "foodTransferInstalled": false
   },
   "latestObservation": {
-    "at": 1795484441893,
+    "at": 1795497100274,
     "online": {
       "arena": 0,
       "lobby": 0,
       "total": 0
     },
-    "tickP95Ms": 0.81,
-    "intervalP99Ms": 51.55,
-    "rssMiB": 945,
+    "tickP95Ms": 0.87,
+    "intervalP99Ms": 51.48,
+    "rssMiB": 869,
     "queue": 0,
     "database": {
       "connected": true,
       "lastError": null,
-      "revision": 4251969,
-      "syncAgeMs": 10880,
-      "prepareMs": 3,
-      "writeMs": 113
+      "revision": 4266627,
+      "syncAgeMs": 20101,
+      "prepareMs": 2,
+      "writeMs": 102
     },
     "entryOpen": true,
     "comparableAB": false,
-    "latencyAndMemoryWorkComplete": false
+    "latencyAndMemoryWorkComplete": false,
+    "note": "Zero-player post-install health observation, not a capacity test"
   },
   "previousInstalledRelease": {
-    "release": "20261124-sword-stability",
-    "sourceCommit": "92cc7c4bc904b1152989e14d14b962541877a712"
+    "release": "20261124-owner-updates",
+    "sourceCommit": "844034ec52985a9882abda4a4cc63f5b13618bcd"
   },
-  "backendSourceCommit": "3d71479e2b69d84cb99c7d5beec7f4b9ba79c7c0",
+  "backendSourceCommit": "0d8aff582cc38f82eed396a0e9b3a013c8bdeb94",
   "calendarIndexUpdate": {
     "installed": true,
     "published": true,
@@ -14934,5 +15036,362 @@
     ],
     "documentation": "docs/clan-owner-updates-20261124.txt",
     "evidence": "artifacts/owner-updates-20261124"
+  },
+  "statusNatural": {
+    "release": "20261124-status-natural",
+    "sourceCommit": "0d8aff582cc38f82eed396a0e9b3a013c8bdeb94",
+    "sourceTag": "release/20261124-status-natural",
+    "installed": true,
+    "openedAt": "2026-11-24T05:10:17.752Z",
+    "runtime": {
+      "gamePid": 539979,
+      "adminPid": 1163,
+      "entryOpen": true,
+      "restarts": 0,
+      "backend": "postgresql",
+      "database": "semenovkir"
+    },
+    "changes": [
+      "Approved VIP/Premium benefit matrix, 7/14-day purchases and separate chest greatness/currency factors",
+      "30-second current-mass natural rewards; Premium doubles XP and full kill formula; alive humans in own room include self and exclude bots; exact half rounds down",
+      "VIP pet supply and Manya positive mass bonus",
+      "Mobile emote taps with existing 5-second cooldown; desktop pointer passthrough",
+      "Equal visible status icon height; Winged Guardian placement only; corrected Drakosha banner crest"
+    ],
+    "previewOnly": {
+      "premiumEmotes": "deliveries/status-natural-20261124/premium-emotes.html",
+      "archive": "deliveries/status-natural-20261124/Premium-emote-variants.zip",
+      "variants": 3,
+      "rasterArtUnchanged": true,
+      "installed": false
+    },
+    "tests": {
+      "linuxFull": {
+        "total": 2346,
+        "passed": 2345,
+        "failed": 0,
+        "skipped": 1
+      },
+      "windowsTargeted": {
+        "total": 260,
+        "firstPassed": 258,
+        "firstFailed": 2,
+        "affectedFileRerunPassed": 9,
+        "affectedFileRerunFailed": 0
+      },
+      "browsers": [
+        {
+          "engine": "chromium",
+          "mobile": false,
+          "icons": [
+            {
+              "kind": "vip",
+              "visibleHeight": 23.994873046875
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 23.996337890625
+            },
+            {
+              "kind": "vip",
+              "visibleHeight": 23.994873046875
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 23.996337890625
+            }
+          ],
+          "sent": 1,
+          "received": 1,
+          "pageErrors": []
+        },
+        {
+          "engine": "chromium",
+          "mobile": true,
+          "icons": [
+            {
+              "kind": "vip",
+              "visibleHeight": 19.9957275390625
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 19.9969482421875
+            },
+            {
+              "kind": "vip",
+              "visibleHeight": 19.9957275390625
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 19.9969482421875
+            }
+          ],
+          "sent": 1,
+          "received": 1,
+          "pageErrors": []
+        },
+        {
+          "engine": "firefox",
+          "mobile": false,
+          "icons": [
+            {
+              "kind": "vip",
+              "visibleHeight": 24.00370877981186
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 23.99960857629776
+            },
+            {
+              "kind": "vip",
+              "visibleHeight": 24.00370877981186
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 23.99960857629776
+            }
+          ],
+          "sent": 1,
+          "received": 1,
+          "pageErrors": []
+        },
+        {
+          "engine": "firefox",
+          "mobile": true,
+          "icons": [
+            {
+              "kind": "vip",
+              "visibleHeight": 19.99719476699829
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 19.99530690908432
+            },
+            {
+              "kind": "vip",
+              "visibleHeight": 19.99719476699829
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 19.99530690908432
+            }
+          ],
+          "sent": 1,
+          "received": 1,
+          "pageErrors": []
+        },
+        {
+          "engine": "webkit",
+          "mobile": false,
+          "icons": [
+            {
+              "kind": "vip",
+              "visibleHeight": 23.994873046875
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 23.996337890625
+            },
+            {
+              "kind": "vip",
+              "visibleHeight": 23.994873046875
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 23.996337890625
+            }
+          ],
+          "sent": 1,
+          "received": 1,
+          "pageErrors": []
+        },
+        {
+          "engine": "webkit",
+          "mobile": true,
+          "icons": [
+            {
+              "kind": "vip",
+              "visibleHeight": 19.9957275390625
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 19.9969482421875
+            },
+            {
+              "kind": "vip",
+              "visibleHeight": 19.9957275390625
+            },
+            {
+              "kind": "premium",
+              "visibleHeight": 19.9969482421875
+            }
+          ],
+          "sent": 1,
+          "received": 1,
+          "pageErrors": []
+        }
+      ],
+      "httpVps": 54,
+      "httpLocal": 18
+    },
+    "production": {
+      "release": "/srv/heroether-test/play/releases/20261124-status-natural",
+      "sourceCommit": "0d8aff582cc38f82eed396a0e9b3a013c8bdeb94",
+      "files": 2599,
+      "changed": 28,
+      "previousReleaseUnchanged": true,
+      "protectedGraphicsUnchanged": true,
+      "commentsRemoved": 376
+    },
+    "data": {
+      "before": {
+        "profiles": 1719,
+        "clans": 136,
+        "revision": 4266627,
+        "digest": "bc2dccf73f3965f9e8d2d43604bcc2bd08967badc50928a154c7d11c3e07fd86"
+      },
+      "after": {
+        "profiles": 1719,
+        "clans": 136,
+        "revision": 4266627,
+        "digest": "bc2dccf73f3965f9e8d2d43604bcc2bd08967badc50928a154c7d11c3e07fd86"
+      },
+      "constructorFieldsUnchanged": true,
+      "calendarReplayExact": true,
+      "allOtherFieldsEqual": true,
+      "backup": {
+        "verified": true,
+        "archiveSha256": "3dc0b2236e1cec324075dcc867aef8d3d1e6229a4e1d329489f822a5aba843f0",
+        "revision": 4266627,
+        "digest": "bc2dccf73f3965f9e8d2d43604bcc2bd08967badc50928a154c7d11c3e07fd86",
+        "worldHash": "95696aa17bb5c48a21d2b0f77cd9ae4f02d7e401ff93672ca6322fdea39a46d9",
+        "profiles": 1719,
+        "clans": 136,
+        "postgresqlArchiveVerified": true
+      }
+    },
+    "local": {
+      "url": "http://localhost:3104",
+      "isolatedProfiles": true,
+      "productionPostgresqlUsed": false,
+      "privateConfigChanged": false,
+      "oldExperimentalProcessChanged": false,
+      "synchronized": 50,
+      "browser": {
+        "url": "http://localhost:3104",
+        "status": 200,
+        "playVisible": true,
+        "pageErrors": []
+      }
+    },
+    "observation": {
+      "capacityClaim": false,
+      "comparableAB": false,
+      "samples": [
+        {
+          "at": 1795497040228,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.95,
+          "rssMiB": 895,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4266627,
+            "syncAgeMs": 20065,
+            "prepareMs": 1,
+            "writeMs": 93
+          }
+        },
+        {
+          "at": 1795497055239,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.96,
+          "rssMiB": 896,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4266627,
+            "syncAgeMs": 5074,
+            "prepareMs": 2,
+            "writeMs": 95
+          }
+        },
+        {
+          "at": 1795497070255,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.96,
+          "rssMiB": 897,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4266627,
+            "syncAgeMs": 20091,
+            "prepareMs": 2,
+            "writeMs": 95
+          }
+        },
+        {
+          "at": 1795497085266,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.92,
+          "rssMiB": 866,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4266627,
+            "syncAgeMs": 5093,
+            "prepareMs": 2,
+            "writeMs": 102
+          }
+        },
+        {
+          "at": 1795497100274,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.87,
+          "rssMiB": 869,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4266627,
+            "syncAgeMs": 20101,
+            "prepareMs": 2,
+            "writeMs": 102
+          }
+        }
+      ]
+    },
+    "validationNotes": [
+      "First Windows full run: 2342 tests, 2282 passed, 59 failed, one skipped. Old rule expectations were updated; a real incompatibility in the clan-chest validator required version 5 while preserving versions 2–4. Two unrelated Windows atomic-rename EPERM failures are retained; final Linux full run is green.",
+      "Targeted Windows rerun initially had two outdated expected greatness/accessory values; the two affected files then passed 9/9.",
+      "Browser checks initially caught an extra CSS scale on VIP icons and a fixture using the default avatar. Both fixed. Mismatched bundled Playwright and installed browsers caused separate tooling failures; matching cached Playwright 1.65.1 passed all three engines.",
+      "The only source change after the full Linux run was CRLF/LF normalization in one CSS file, with no declaration changes.",
+      "An initial service query used the nonexistent heroether-game name; the actual heroether-play service was healthy. No recovery action was taken for that mistaken query.",
+      "Prior backups, development comments and historical chest promises were retained. New expressive emote animations are previews only.",
+      "The first 40-second startup wait expired; subsequent readiness checks succeeded without a restart. The retained old localhost review process had no listener on 3104; its isolated data was backed up and it was replaced with the reviewed source. The unrelated experimental process was not touched.",
+      "Post-install samples have zero connected players and verify service health only, not load capacity."
+    ],
+    "architectureCandidateInstalled": false,
+    "optimizationCapacityProven": false,
+    "evidence": "artifacts/status-natural-20261124"
   }
 }
