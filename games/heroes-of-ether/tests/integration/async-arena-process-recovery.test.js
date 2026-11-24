@@ -14,13 +14,14 @@ function crash(){fs.writeFileSync(filePath+'.stage',stage);process.kill(process.
 const store=new ProfileStore({filePath,journal:true,now:()=>at});
 store.journal.asyncArenaWrites=true;
 const id=store.open().profile.id;store.startLife(id,'life');
+fs.writeFileSync(filePath+'.initial',JSON.stringify({...store.data,_journalRevision:store.journal.revision}));
 const realWrite=writer.writePending;
 writer.writePending=async(file,bytes)=>{
  if(stage==='partial'){await fs.promises.writeFile(file,bytes.subarray(0,Math.floor(bytes.length/2)));crash();}
  await realWrite(file,bytes);if(stage==='synced')crash();
 };
 const publish=store.journal.publishSealed.bind(store.journal);
-store.journal.publishSealed=(...args)=>{const result=publish(...args);if(stage==='promoted'){assert.equal(result,true);crash();}return result;};
+store.journal.publishSealed=(...args)=>{const result=publish(...args);if(result)fs.writeFileSync(filePath+'.published',JSON.stringify({...args[1],_journalRevision:store.journal.revision}));if(stage==='promoted'){assert.equal(result,true);crash();}return result;};
 const event={type:'absorbed',profileId:id,victimProfileId:'other',gain:35,lifeId:'life'};
 store.applyArenaProgress('confirmed',[event],at,true).then(result=>{
  assert.deepEqual(result,[id]);assert.equal(stage,'acknowledged');
@@ -38,6 +39,7 @@ for(const stage of ['partial','synced','promoted','acknowledged'])test('Async ar
   assert.equal(fs.readFileSync(filePath+'.stage','utf8'),stage);
   assert.equal(fs.existsSync(filePath+'.ack'),stage==='acknowledged');
   const committed=['promoted','acknowledged'].includes(stage),before=recover(filePath);
+  assert.deepEqual(before.data,JSON.parse(fs.readFileSync(filePath+(committed?'.published':'.initial'))));
   assert.equal(Object.values(before.data.profiles)[0].progress.absorbedMass,committed?35:0);
   store=new ProfileStore({filePath,journal:true,now:()=>at});store.journal.asyncArenaWrites=true;
   const id=Object.values(store.data.profiles)[0].id,event={type:'absorbed',profileId:id,victimProfileId:'other',gain:35,lifeId:'life'};
@@ -46,6 +48,10 @@ for(const stage of ['partial','synced','promoted','acknowledged'])test('Async ar
   assert.equal(exact.progress.absorbedMass,35);
   assert.deepEqual(await store.applyArenaProgress('confirmed',[event],at,true),[]);
   assert.deepEqual(store.byId(id),exact);
+  // Startup settles the interrupted life in memory. A replay is deliberately
+  // read-only; explicitly persist that startup settlement before comparing its
+  // new profile revision with disk. The pre-startup WAL was checked above.
+  store.save(store.data,at);
   await store.close();store=null;
   const durable=recover(filePath);assert.equal(durable.data.progressReceipt,'confirmed');
   assert.deepEqual(Object.values(durable.data.profiles)[0],exact);
