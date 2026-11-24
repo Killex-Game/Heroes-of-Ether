@@ -2,6 +2,7 @@
 // Diagnostic only. Scope a CPU profile to one load phase, excluding seeding,
 // checkpoint shutdown and the other phases. Never imported by the live server.
 const inspector=require('node:inspector/promises'),fs=require('node:fs/promises'),path=require('node:path');
+const {randomUUID}=require('node:crypto');
 async function start(phase,directory){
   if(process.env.LOAD_CPU_PHASE!==phase)return null;
   const session=new inspector.Session();session.connect();
@@ -12,8 +13,8 @@ async function start(phase,directory){
   }catch(e){session.disconnect();throw e;}
   return async()=>{try{
     const {profile}=await session.post('Profiler.stop');
-    const file=path.join(directory,'phase-'+phase+'.cpuprofile');
-    await fs.writeFile(file,JSON.stringify(profile));return path.basename(file);
+    const file=path.join(directory,'phase-'+phase+'-'+randomUUID()+'.cpuprofile');
+    await fs.writeFile(file,JSON.stringify(profile),{flag:'wx'});return path.basename(file);
   }finally{session.disconnect();}};
 }
 module.exports={start};
