@@ -1,23 +1,24 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261124-room30",
-  "sourceTag": "release/20261124-room30",
-  "sourceCommit": "3d71479e2b69d84cb99c7d5beec7f4b9ba79c7c0",
+  "gameRelease": "20261124-owner-updates",
+  "sourceTag": "release/20261124-owner-updates",
+  "sourceCommit": "844034ec52985a9882abda4a4cc63f5b13618bcd",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
-  "localRunningGameUpdated": false,
+  "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-24T01:35:22.916Z",
+  "entryReopenedAtUtc": "2026-11-24T04:07:46.131Z",
   "runtime": {
-    "gamePid": 496904,
+    "gamePid": 529699,
     "adminPid": 1163,
     "entryOpen": true,
     "backend": "postgresql",
     "database": "semenovkir",
     "postgresqlVersion": 17,
     "tlsVerified": true,
-    "hold": false
+    "hold": false,
+    "restarts": 0
   },
   "installed": [
     "Mobile lobby and arena controls use icons and retain accessible names",
@@ -50,161 +51,115 @@
     "Large checkpoint JSON is read and written record by record, preserving exact bytes and every history entry. WAL, fsync, atomic rename and single-writer fencing are unchanged.",
     "Resolve the living sword owner immediately before each strike; a sword whose owner was killed earlier in the same tick no longer crashes the arena or strikes after death. Remove dead and expired swords after processing.",
     "Room capacity 35 to 30; maximum room count 13 to 14 retains the existing global 400 arena / 30 lobby admission policy. Fourteenth room name Кси.",
-    "Arena directory computes occupancy once per operation instead of scanning all players for each room. Reservation, level band, clan join, remnants and TTL rules unchanged."
+    "Arena directory computes occupancy once per operation instead of scanning all players for each room. Reservation, level band, clan join, remnants and TTL rules unchanged.",
+    "Approved 07:00–22:00 MSK clan quest/battle schedule, edited growth costs and league rewards, 30-day trophy benefit validity.",
+    "Five personal clan quest achievements with per-goal evidence, stable distinct-day/type counts and idempotent settlement.",
+    "Updated accessory passives and once-per-life E stock; event and preview accessories hidden until owned; unknown future boosters deferred.",
+    "Space no longer toggles the focused arena chat button; typing spaces and Enter behavior retained.",
+    "Seven clan booster icons and five personal achievement icons installed at four resolutions; all protected artwork retained."
   ],
   "data": {
     "before": {
-      "at": 1795483650429,
-      "revision": 4251969,
-      "digest": "6a179cc17f44ba84b21f6d65a2b164f34a5233b9b2ecbba2d18f03763f5af5d2",
-      "worldHash": "5e07b0c0cea185f93f23869e7517d1e6248cb48d44be336583374abc6386126c",
+      "revision": 4260368,
       "profiles": 1719,
       "clans": 136,
-      "fullWorldAndAuxEqual": true,
-      "backup": "/dev/shm/heroether-room30-scaling-20261124/room30-scaling-20261124",
-      "backupEqual": true,
-      "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/room30-scaling-20261124/data-before.tar.gz"
+      "digest": "46193d1cc6bdaae46e87ef12caac1dde174a792c3581e24bddfd9fef8e1bc4c1"
     },
     "after": {
-      "calendarReplayExact": true,
-      "noCalendarChange": true,
-      "expiredChat": 0,
-      "allOtherFieldsEqual": true,
-      "beforeRevision": 4251969,
-      "revision": 4251969,
-      "digest": "6a179cc17f44ba84b21f6d65a2b164f34a5233b9b2ecbba2d18f03763f5af5d2",
-      "worldHash": "5e07b0c0cea185f93f23869e7517d1e6248cb48d44be336583374abc6386126c",
+      "revision": 4260369,
       "profiles": 1719,
-      "clans": 136
+      "clans": 136,
+      "digest": "8f9838493068f61599afaf694bd7cc0e132dfc97ea6da906442b8bc6c847a6b9"
+    },
+    "approvedMigrationsExact": true,
+    "allOtherFieldsEqual": true,
+    "calendarReplayExact": true,
+    "migration": {
+      "at": 1795492804094,
+      "readOnly": true,
+      "profiles": 1719,
+      "capacities": 67,
+      "allOtherFieldsEqual": true
     },
     "backup": {
       "verified": true,
-      "archiveSha256": "eceee820b6d0737dfbf9c845a7aad4ecf655f4074a646c1752e01279f5456d09",
-      "revision": 4251969,
-      "digest": "6a179cc17f44ba84b21f6d65a2b164f34a5233b9b2ecbba2d18f03763f5af5d2",
-      "worldHash": "5e07b0c0cea185f93f23869e7517d1e6248cb48d44be336583374abc6386126c",
+      "archiveSha256": "6b68272a96eba8cb92773ad6f2fe10ad7ce00b2daf47970dd44f2889962cae37",
+      "revision": 4260368,
+      "digest": "46193d1cc6bdaae46e87ef12caac1dde174a792c3581e24bddfd9fef8e1bc4c1",
+      "worldHash": "526961e8dde823ad64d017051372b53b995c66a9afca37a74417ef8c2b7ee5c8",
       "profiles": 1719,
       "clans": 136,
       "postgresqlArchiveVerified": true
     }
   },
   "verification": {
-    "linuxFullInitial": {
-      "total": 2308,
-      "passed": 2301,
-      "failed": 6,
+    "linuxFull": {
+      "total": 2344,
+      "passed": 2343,
+      "failed": 0,
       "skipped": 1
     },
-    "affectedFilesAfterFix": {
-      "windows": 9,
-      "linux": 9,
-      "failed": 0
-    },
-    "snapshotTargeted": {
-      "windows": 48,
-      "linux": 48,
-      "failed": 0
-    },
-    "realPostgreSQL": {
-      "passed": 10,
-      "failed": 0,
-      "initialNetworkTimeoutRetained": true
-    },
-    "runtimeFilesVerified": 2548,
-    "previousPublicAndOtherRuntimeUnchanged": true,
-    "productionChangedFiles": 4,
-    "commentsRemoved": 28,
-    "rasterAssetsChanged": 0,
-    "previousReleaseChecks": {
-      "linuxFull": {
-        "total": 2304,
-        "passed": 2303,
-        "failed": 0,
+    "earlierLinuxRuns": [
+      {
+        "total": 2341,
+        "passed": 2266,
+        "failed": 74,
         "skipped": 1
       },
-      "windowsGiftAndBoosterIntegration": {
-        "passed": 25,
-        "failed": 0
+      {
+        "total": 2344,
+        "passed": 2340,
+        "failed": 3,
+        "skipped": 1
+      }
+    ],
+    "windowsTargeted": {
+      "passed": 37,
+      "failed": 0
+    },
+    "registration": {
+      "passed": 5,
+      "failed": 0
+    },
+    "browsers": [
+      {
+        "engine": "chromium",
+        "wardrobeCases": 6,
+        "chatCases": 6,
+        "abilityCases": 3,
+        "decoded": 48,
+        "errors": []
       },
-      "windowsTargeted": {
-        "passed": 37,
-        "failed": 0
+      {
+        "engine": "firefox",
+        "wardrobeCases": 6,
+        "chatCases": 6,
+        "abilityCases": 3,
+        "decoded": 48,
+        "errors": []
       },
-      "previousBatch": {
-        "linuxFull": {
-          "total": 2298,
-          "passed": 2297,
-          "failed": 0,
-          "skipped": 1
-        },
-        "windowsFull": {
-          "total": 2298,
-          "passed": 2281,
-          "failed": 16,
-          "skipped": 1
-        },
-        "windowsFinalAffectedFiles": {
-          "total": 129,
-          "passed": 123,
-          "failed": 6,
-          "remainingCause": "EPERM atomic rename"
-        },
-        "browsers": {
-          "engines": [
-            "Chromium",
-            "Firefox",
-            "WebKit"
-          ],
-          "viewports": 5,
-          "casesPerEngine": 18,
-          "pageErrors": 0
-        },
-        "networkExercisePlayers": 35,
-        "networkExercisePhases": 5,
-        "finalPendingActions": 0,
-        "generatorAuditTests": 5,
-        "avatarGallery": 85,
-        "achievementDocument": {
-          "entries": 69,
-          "pages": 24
-        },
-        "httpExactChecks": 87,
-        "structure": {
-          "javascript": 1048,
-          "references": 5391
-        },
-        "productionChangedFiles": 42,
-        "commentsRemoved": 573,
-        "rasterAssetsChanged": 0
-      },
-      "browsers": {
-        "engines": [
-          "Chromium",
-          "Firefox",
-          "WebKit"
-        ],
-        "arenaMassCases": [
-          100,
-          1500,
-          6210
-        ],
-        "giftSentFromArena": true,
-        "pageErrors": 0
-      },
-      "portraitVariantsPerEngine": 425,
-      "httpExactChecks": 8,
-      "structure": {
-        "javascript": 1051,
-        "references": 5402
-      },
-      "productionChangedFiles": 6,
-      "commentsRemoved": 159,
-      "rasterAssetsChanged": 0
-    }
+      {
+        "engine": "webkit",
+        "wardrobeCases": 6,
+        "chatCases": 6,
+        "abilityCases": 3,
+        "decoded": 48,
+        "errors": []
+      }
+    ],
+    "httpExactChecks": 180,
+    "localHttpExactChecks": 60,
+    "production": {
+      "files": 2599,
+      "changed": 78,
+      "commentsRemoved": 435,
+      "protectedGraphicsUnchanged": true,
+      "previousReleaseUnchanged": true
+    },
+    "previousEvidenceRetained": true
   },
-  "report": "artifacts/runtime-optimization-20261123/report.txt",
-  "previousRelease": "20261123-avatar-arena-followup",
+  "report": "games/heroes-of-ether/docs/performance/clan-owner-updates-20261124.json",
+  "previousRelease": "20261124-room30",
   "notes": [
     "Initial Linux failures were obsolete expectations, preserved with final complete rerun",
     "Previous Windows full failures remain documented; production writes/fsync were not weakened",
@@ -14428,5 +14383,556 @@
       "tag": "release/20261124-room30",
       "verifiedAt": "2026-11-24T01:42:55.909Z"
     }
+  },
+  "ownerUpdates": {
+    "release": "20261124-owner-updates",
+    "sourceCommit": "844034ec52985a9882abda4a4cc63f5b13618bcd",
+    "sourceTag": "release/20261124-owner-updates",
+    "branch": "codex/20261123-interface-mechanics",
+    "installed": true,
+    "openedAt": "2026-11-24T04:07:46.131Z",
+    "runtime": {
+      "gamePid": 529699,
+      "adminPid": 1163,
+      "entryOpen": true,
+      "restarts": 0,
+      "backend": "postgresql",
+      "database": "semenovkir"
+    },
+    "scope": "Approved clan schedules, progression and rewards; five personal clan-quest achievements; accessory rules and ownership visibility; arena chat Space fix; seven clan booster icons and five achievement icons.",
+    "tests": {
+      "linuxFull": {
+        "total": 2344,
+        "passed": 2343,
+        "failed": 0,
+        "skipped": 1
+      },
+      "earlierLinuxRuns": [
+        {
+          "total": 2341,
+          "passed": 2266,
+          "failed": 74,
+          "skipped": 1
+        },
+        {
+          "total": 2344,
+          "passed": 2340,
+          "failed": 3,
+          "skipped": 1
+        }
+      ],
+      "windowsTargeted": {
+        "passed": 37,
+        "failed": 0
+      },
+      "registration": {
+        "passed": 5,
+        "failed": 0
+      },
+      "browsers": [
+        {
+          "engine": "chromium",
+          "wardrobeCases": 6,
+          "chatCases": 6,
+          "abilityCases": 3,
+          "decoded": 48,
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "wardrobeCases": 6,
+          "chatCases": 6,
+          "abilityCases": 3,
+          "decoded": 48,
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "wardrobeCases": 6,
+          "chatCases": 6,
+          "abilityCases": 3,
+          "decoded": 48,
+          "errors": []
+        }
+      ],
+      "httpExactChecks": 180,
+      "localHttpExactChecks": 60
+    },
+    "production": {
+      "files": 2599,
+      "changed": 78,
+      "commentsRemoved": 435,
+      "protectedGraphicsUnchanged": true,
+      "previousReleaseUnchanged": true
+    },
+    "data": {
+      "before": {
+        "revision": 4260368,
+        "profiles": 1719,
+        "clans": 136,
+        "digest": "46193d1cc6bdaae46e87ef12caac1dde174a792c3581e24bddfd9fef8e1bc4c1"
+      },
+      "after": {
+        "revision": 4260369,
+        "profiles": 1719,
+        "clans": 136,
+        "digest": "8f9838493068f61599afaf694bd7cc0e132dfc97ea6da906442b8bc6c847a6b9"
+      },
+      "approvedMigrationsExact": true,
+      "allOtherFieldsEqual": true,
+      "calendarReplayExact": true,
+      "migration": {
+        "at": 1795492804094,
+        "readOnly": true,
+        "profiles": 1719,
+        "capacities": 67,
+        "allOtherFieldsEqual": true
+      },
+      "backup": {
+        "verified": true,
+        "archiveSha256": "6b68272a96eba8cb92773ad6f2fe10ad7ce00b2daf47970dd44f2889962cae37",
+        "revision": 4260368,
+        "digest": "46193d1cc6bdaae46e87ef12caac1dde174a792c3581e24bddfd9fef8e1bc4c1",
+        "worldHash": "526961e8dde823ad64d017051372b53b995c66a9afca37a74417ef8c2b7ee5c8",
+        "profiles": 1719,
+        "clans": 136,
+        "postgresqlArchiveVerified": true
+      }
+    },
+    "local": {
+      "url": "http://localhost:3104",
+      "isolatedProfiles": true,
+      "productionDatabaseUsed": false,
+      "privateConfigurationUnchanged": true,
+      "existingExperimentalProcessUnchanged": true,
+      "synchronizedFiles": 119,
+      "startupPortOverride": 3104,
+      "browser": {
+        "url": "http://localhost:3104",
+        "status": 200,
+        "playVisible": true,
+        "pageErrors": []
+      }
+    },
+    "observation": {
+      "comparableAB": false,
+      "capacityClaim": false,
+      "samples": [
+        {
+          "at": 1795493269404,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.11,
+          "rssMiB": 1105,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260369,
+            "syncAgeMs": 24028,
+            "prepareMs": 4,
+            "writeMs": 122
+          }
+        },
+        {
+          "at": 1795493284416,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 1,
+          "rssMiB": 1104,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260369,
+            "syncAgeMs": 9063,
+            "prepareMs": 2,
+            "writeMs": 103
+          }
+        },
+        {
+          "at": 1795493299422,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 1.04,
+          "rssMiB": 1105,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260369,
+            "syncAgeMs": 24069,
+            "prepareMs": 2,
+            "writeMs": 103
+          }
+        },
+        {
+          "at": 1795493314434,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 1.07,
+          "rssMiB": 1881,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260369,
+            "syncAgeMs": 39081,
+            "prepareMs": 2,
+            "writeMs": 103
+          }
+        },
+        {
+          "at": 1795493329446,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 1.03,
+          "rssMiB": 2340,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260369,
+            "syncAgeMs": 5104,
+            "prepareMs": 10830,
+            "writeMs": 104
+          }
+        },
+        {
+          "at": 1795493344454,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.99,
+          "rssMiB": 2341,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260369,
+            "syncAgeMs": 9102,
+            "prepareMs": 2,
+            "writeMs": 98
+          }
+        },
+        {
+          "at": 1795493359462,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.99,
+          "rssMiB": 2381,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260369,
+            "syncAgeMs": 24109,
+            "prepareMs": 2,
+            "writeMs": 98
+          }
+        },
+        {
+          "at": 1795493374476,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.98,
+          "rssMiB": 2410,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260369,
+            "syncAgeMs": 39123,
+            "prepareMs": 2,
+            "writeMs": 98
+          }
+        },
+        {
+          "at": 1795493389493,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.97,
+          "rssMiB": 1881,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260372,
+            "syncAgeMs": 14735,
+            "prepareMs": 9345,
+            "writeMs": 155
+          }
+        },
+        {
+          "at": 1795493404507,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.96,
+          "rssMiB": 1877,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260372,
+            "syncAgeMs": 29749,
+            "prepareMs": 9345,
+            "writeMs": 155
+          }
+        },
+        {
+          "at": 1795493419518,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.95,
+          "rssMiB": 1883,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260376,
+            "syncAgeMs": 14341,
+            "prepareMs": 9741,
+            "writeMs": 172
+          }
+        },
+        {
+          "at": 1795493434526,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.93,
+          "rssMiB": 1882,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260376,
+            "syncAgeMs": 29349,
+            "prepareMs": 9741,
+            "writeMs": 172
+          }
+        },
+        {
+          "at": 1795493449533,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.92,
+          "rssMiB": 1887,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260380,
+            "syncAgeMs": 14757,
+            "prepareMs": 9345,
+            "writeMs": 169
+          }
+        },
+        {
+          "at": 1795493464539,
+          "online": {
+            "arena": 0,
+            "lobby": 0,
+            "total": 0
+          },
+          "tickP95Ms": 0.92,
+          "rssMiB": 1882,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260380,
+            "syncAgeMs": 29762,
+            "prepareMs": 9345,
+            "writeMs": 169
+          }
+        },
+        {
+          "at": 1795493479551,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.89,
+          "rssMiB": 1887,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260381,
+            "syncAgeMs": 14537,
+            "prepareMs": 9598,
+            "writeMs": 152
+          }
+        },
+        {
+          "at": 1795493494560,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.88,
+          "rssMiB": 1865,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260381,
+            "syncAgeMs": 29546,
+            "prepareMs": 9598,
+            "writeMs": 152
+          }
+        },
+        {
+          "at": 1795493509571,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.86,
+          "rssMiB": 1890,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260382,
+            "syncAgeMs": 14129,
+            "prepareMs": 10012,
+            "writeMs": 163
+          }
+        },
+        {
+          "at": 1795493524582,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.85,
+          "rssMiB": 1903,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260382,
+            "syncAgeMs": 29140,
+            "prepareMs": 10012,
+            "writeMs": 163
+          }
+        },
+        {
+          "at": 1795493539590,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.85,
+          "rssMiB": 1908,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260386,
+            "syncAgeMs": 14573,
+            "prepareMs": 9584,
+            "writeMs": 164
+          }
+        },
+        {
+          "at": 1795493554596,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.84,
+          "rssMiB": 1905,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260386,
+            "syncAgeMs": 29579,
+            "prepareMs": 9584,
+            "writeMs": 164
+          }
+        },
+        {
+          "at": 1795493569601,
+          "online": {
+            "arena": 0,
+            "lobby": 1,
+            "total": 1
+          },
+          "tickP95Ms": 0.85,
+          "rssMiB": 1910,
+          "queue": 0,
+          "database": {
+            "connected": true,
+            "lastError": null,
+            "revision": 4260389,
+            "syncAgeMs": 14669,
+            "prepareMs": 9500,
+            "writeMs": 164
+          }
+        }
+      ]
+    },
+    "validationNotes": [
+      "Initial full Linux runs failed and are retained in artifacts. Obsolete expectations were updated to the approved rules. A real fresh-profile migration bug and a registration-cleanup whitelist bug were fixed; the final complete run is green.",
+      "A Windows atomic rename EPERM occurred in the 207-test run; the affected clan suite and new regression tests passed on repeat (37/37).",
+      "Earlier browser fixture failures and one Firefox startup failure are retained. Final Chromium, Firefox and WebKit runs pass.",
+      "Two bounded 40-second readiness polls expired during the expected full-world cold startup; the next poll succeeded with NRestarts=0.",
+      "Local port 3000 was already occupied by the old experimental process. The first new process exited with EADDRINUSE. Final local review uses port 3104, its own profiles and the latest sources; old process/data retained.",
+      "No historical per-goal contribution was guessed. Existing personal season medals provide season counts; future goal IDs are recorded authoritatively."
+    ],
+    "limitations": [
+      "Independent room ownership, separated history/writes and the addressed-profile candidate remain separate and are not installed by this release.",
+      "No 300000 CCU, whole-game throughput increase or overall traffic reduction is claimed.",
+      "VPS disk remains tight; all protected backups, WAL and history are retained."
+    ],
+    "documentation": "docs/clan-owner-updates-20261124.txt",
+    "evidence": "artifacts/owner-updates-20261124"
   }
 }

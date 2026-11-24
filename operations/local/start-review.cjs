@@ -6,7 +6,7 @@ const data=path.join(root,'.cache/local-review-data');fs.mkdirSync(data,{recursi
 const {ProfileStore}=require(game+'/src/server/profiles/profile-store');
 const {createGameServer}=require(game+'/src/server/game-server');
 const settings=require(game+'/src/server/runtime/server-settings').loadServerSettings(game);
-const port=Number(process.env.LOCAL_REVIEW_PORT||3000);
+const port=Number(process.env.LOCAL_REVIEW_PORT||3104);
 if(!Number.isInteger(port)||port<1024||port>65535)throw Error('Invalid local port');
 const release=require(game+'/src/server/runtime/process-lock').acquireServerLock(path.join(data,'server.lock'));process.on('exit',release);
 const app=createGameServer({publicDir:game+'/public',arenaPolicy:settings.arena,

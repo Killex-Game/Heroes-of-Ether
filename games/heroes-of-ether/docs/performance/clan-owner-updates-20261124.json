@@ -1,0 +1,551 @@
+{
+  "release": "20261124-owner-updates",
+  "sourceCommit": "844034ec52985a9882abda4a4cc63f5b13618bcd",
+  "sourceTag": "release/20261124-owner-updates",
+  "branch": "codex/20261123-interface-mechanics",
+  "installed": true,
+  "openedAt": "2026-11-24T04:07:46.131Z",
+  "runtime": {
+    "gamePid": 529699,
+    "adminPid": 1163,
+    "entryOpen": true,
+    "restarts": 0,
+    "backend": "postgresql",
+    "database": "semenovkir"
+  },
+  "scope": "Approved clan schedules, progression and rewards; five personal clan-quest achievements; accessory rules and ownership visibility; arena chat Space fix; seven clan booster icons and five achievement icons.",
+  "tests": {
+    "linuxFull": {
+      "total": 2344,
+      "passed": 2343,
+      "failed": 0,
+      "skipped": 1
+    },
+    "earlierLinuxRuns": [
+      {
+        "total": 2341,
+        "passed": 2266,
+        "failed": 74,
+        "skipped": 1
+      },
+      {
+        "total": 2344,
+        "passed": 2340,
+        "failed": 3,
+        "skipped": 1
+      }
+    ],
+    "windowsTargeted": {
+      "passed": 37,
+      "failed": 0
+    },
+    "registration": {
+      "passed": 5,
+      "failed": 0
+    },
+    "browsers": [
+      {
+        "engine": "chromium",
+        "wardrobeCases": 6,
+        "chatCases": 6,
+        "abilityCases": 3,
+        "decoded": 48,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "wardrobeCases": 6,
+        "chatCases": 6,
+        "abilityCases": 3,
+        "decoded": 48,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "wardrobeCases": 6,
+        "chatCases": 6,
+        "abilityCases": 3,
+        "decoded": 48,
+        "errors": []
+      }
+    ],
+    "httpExactChecks": 180,
+    "localHttpExactChecks": 60
+  },
+  "production": {
+    "files": 2599,
+    "changed": 78,
+    "commentsRemoved": 435,
+    "protectedGraphicsUnchanged": true,
+    "previousReleaseUnchanged": true
+  },
+  "data": {
+    "before": {
+      "revision": 4260368,
+      "profiles": 1719,
+      "clans": 136,
+      "digest": "46193d1cc6bdaae46e87ef12caac1dde174a792c3581e24bddfd9fef8e1bc4c1"
+    },
+    "after": {
+      "revision": 4260369,
+      "profiles": 1719,
+      "clans": 136,
+      "digest": "8f9838493068f61599afaf694bd7cc0e132dfc97ea6da906442b8bc6c847a6b9"
+    },
+    "approvedMigrationsExact": true,
+    "allOtherFieldsEqual": true,
+    "calendarReplayExact": true,
+    "migration": {
+      "at": 1795492804094,
+      "readOnly": true,
+      "profiles": 1719,
+      "capacities": 67,
+      "allOtherFieldsEqual": true
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "6b68272a96eba8cb92773ad6f2fe10ad7ce00b2daf47970dd44f2889962cae37",
+      "revision": 4260368,
+      "digest": "46193d1cc6bdaae46e87ef12caac1dde174a792c3581e24bddfd9fef8e1bc4c1",
+      "worldHash": "526961e8dde823ad64d017051372b53b995c66a9afca37a74417ef8c2b7ee5c8",
+      "profiles": 1719,
+      "clans": 136,
+      "postgresqlArchiveVerified": true
+    }
+  },
+  "local": {
+    "url": "http://localhost:3104",
+    "isolatedProfiles": true,
+    "productionDatabaseUsed": false,
+    "privateConfigurationUnchanged": true,
+    "existingExperimentalProcessUnchanged": true,
+    "synchronizedFiles": 119,
+    "startupPortOverride": 3104,
+    "browser": {
+      "url": "http://localhost:3104",
+      "status": 200,
+      "playVisible": true,
+      "pageErrors": []
+    }
+  },
+  "observation": {
+    "comparableAB": false,
+    "capacityClaim": false,
+    "samples": [
+      {
+        "at": 1795493269404,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 0.11,
+        "rssMiB": 1105,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260369,
+          "syncAgeMs": 24028,
+          "prepareMs": 4,
+          "writeMs": 122
+        }
+      },
+      {
+        "at": 1795493284416,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 1,
+        "rssMiB": 1104,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260369,
+          "syncAgeMs": 9063,
+          "prepareMs": 2,
+          "writeMs": 103
+        }
+      },
+      {
+        "at": 1795493299422,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 1.04,
+        "rssMiB": 1105,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260369,
+          "syncAgeMs": 24069,
+          "prepareMs": 2,
+          "writeMs": 103
+        }
+      },
+      {
+        "at": 1795493314434,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 1.07,
+        "rssMiB": 1881,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260369,
+          "syncAgeMs": 39081,
+          "prepareMs": 2,
+          "writeMs": 103
+        }
+      },
+      {
+        "at": 1795493329446,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 1.03,
+        "rssMiB": 2340,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260369,
+          "syncAgeMs": 5104,
+          "prepareMs": 10830,
+          "writeMs": 104
+        }
+      },
+      {
+        "at": 1795493344454,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.99,
+        "rssMiB": 2341,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260369,
+          "syncAgeMs": 9102,
+          "prepareMs": 2,
+          "writeMs": 98
+        }
+      },
+      {
+        "at": 1795493359462,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.99,
+        "rssMiB": 2381,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260369,
+          "syncAgeMs": 24109,
+          "prepareMs": 2,
+          "writeMs": 98
+        }
+      },
+      {
+        "at": 1795493374476,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.98,
+        "rssMiB": 2410,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260369,
+          "syncAgeMs": 39123,
+          "prepareMs": 2,
+          "writeMs": 98
+        }
+      },
+      {
+        "at": 1795493389493,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.97,
+        "rssMiB": 1881,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260372,
+          "syncAgeMs": 14735,
+          "prepareMs": 9345,
+          "writeMs": 155
+        }
+      },
+      {
+        "at": 1795493404507,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.96,
+        "rssMiB": 1877,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260372,
+          "syncAgeMs": 29749,
+          "prepareMs": 9345,
+          "writeMs": 155
+        }
+      },
+      {
+        "at": 1795493419518,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.95,
+        "rssMiB": 1883,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260376,
+          "syncAgeMs": 14341,
+          "prepareMs": 9741,
+          "writeMs": 172
+        }
+      },
+      {
+        "at": 1795493434526,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 0.93,
+        "rssMiB": 1882,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260376,
+          "syncAgeMs": 29349,
+          "prepareMs": 9741,
+          "writeMs": 172
+        }
+      },
+      {
+        "at": 1795493449533,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 0.92,
+        "rssMiB": 1887,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260380,
+          "syncAgeMs": 14757,
+          "prepareMs": 9345,
+          "writeMs": 169
+        }
+      },
+      {
+        "at": 1795493464539,
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "tickP95Ms": 0.92,
+        "rssMiB": 1882,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260380,
+          "syncAgeMs": 29762,
+          "prepareMs": 9345,
+          "writeMs": 169
+        }
+      },
+      {
+        "at": 1795493479551,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.89,
+        "rssMiB": 1887,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260381,
+          "syncAgeMs": 14537,
+          "prepareMs": 9598,
+          "writeMs": 152
+        }
+      },
+      {
+        "at": 1795493494560,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.88,
+        "rssMiB": 1865,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260381,
+          "syncAgeMs": 29546,
+          "prepareMs": 9598,
+          "writeMs": 152
+        }
+      },
+      {
+        "at": 1795493509571,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.86,
+        "rssMiB": 1890,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260382,
+          "syncAgeMs": 14129,
+          "prepareMs": 10012,
+          "writeMs": 163
+        }
+      },
+      {
+        "at": 1795493524582,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.85,
+        "rssMiB": 1903,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260382,
+          "syncAgeMs": 29140,
+          "prepareMs": 10012,
+          "writeMs": 163
+        }
+      },
+      {
+        "at": 1795493539590,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.85,
+        "rssMiB": 1908,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260386,
+          "syncAgeMs": 14573,
+          "prepareMs": 9584,
+          "writeMs": 164
+        }
+      },
+      {
+        "at": 1795493554596,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.84,
+        "rssMiB": 1905,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260386,
+          "syncAgeMs": 29579,
+          "prepareMs": 9584,
+          "writeMs": 164
+        }
+      },
+      {
+        "at": 1795493569601,
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "tickP95Ms": 0.85,
+        "rssMiB": 1910,
+        "queue": 0,
+        "database": {
+          "connected": true,
+          "lastError": null,
+          "revision": 4260389,
+          "syncAgeMs": 14669,
+          "prepareMs": 9500,
+          "writeMs": 164
+        }
+      }
+    ]
+  },
+  "validationNotes": [
+    "Initial full Linux runs failed and are retained in artifacts. Obsolete expectations were updated to the approved rules. A real fresh-profile migration bug and a registration-cleanup whitelist bug were fixed; the final complete run is green.",
+    "A Windows atomic rename EPERM occurred in the 207-test run; the affected clan suite and new regression tests passed on repeat (37/37).",
+    "Earlier browser fixture failures and one Firefox startup failure are retained. Final Chromium, Firefox and WebKit runs pass.",
+    "Two bounded 40-second readiness polls expired during the expected full-world cold startup; the next poll succeeded with NRestarts=0.",
+    "Local port 3000 was already occupied by the old experimental process. The first new process exited with EADDRINUSE. Final local review uses port 3104, its own profiles and the latest sources; old process/data retained.",
+    "No historical per-goal contribution was guessed. Existing personal season medals provide season counts; future goal IDs are recorded authoritatively."
+  ],
+  "limitations": [
+    "Independent room ownership, separated history/writes and the addressed-profile candidate remain separate and are not installed by this release.",
+    "No 300000 CCU, whole-game throughput increase or overall traffic reduction is claimed.",
+    "VPS disk remains tight; all protected backups, WAL and history are retained."
+  ],
+  "documentation": "docs/clan-owner-updates-20261124.txt",
+  "evidence": "artifacts/owner-updates-20261124"
+}
