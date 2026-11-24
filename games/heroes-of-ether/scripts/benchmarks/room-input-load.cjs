@@ -16,6 +16,7 @@ if (process.env.LOAD_CLIENT === "1") {
   const { ProfileStore } = require("../../src/server/profiles/profile-store");
   let queueTiming = {};
   let profileTiming = {};
+  const ioProbe = process.env.LOAD_SYNC_IO_PROBE === "1" ? require("./slow-io-probe.cjs").install() : null;
   if (process.env.LOAD_PROFILE_TIMING === "1") {
     for (const [name, file, methods] of [
       ["easter", "events/easter-hunt", ["capture"]],
@@ -622,6 +623,7 @@ if (process.env.LOAD_CLIENT === "1") {
       samplePeaks();
       stats = {};
       stageMeter?.reset();
+      ioProbe?.reset();
       queueTiming = {};
       profileTiming = {};
       persistence = {};
@@ -734,6 +736,7 @@ if (process.env.LOAD_CLIENT === "1") {
         eventLoop: { p95: delay.percentile(95) / 1e6, max: delay.max / 1e6 },
         stats,
         ...(stageMeter?{stages:stageMeter.snapshot()}:{}),
+        ...(ioProbe?{syncIo:ioProbe.snapshot()}:{}),
         persistence,
         ...(process.env.LOAD_QUEUE_TIMING === "1" ? { queueTiming } : {}),
         ...(process.env.LOAD_PROFILE_TIMING === "1" ? { profileTiming } : {}),
@@ -786,6 +789,7 @@ if (process.env.LOAD_CLIENT === "1") {
         console.log(JSON.stringify({ recovery }));
       }
       fs.writeFileSync(path.join(dir, "results.json"), JSON.stringify(rows, null, 2));
+      ioProbe?.close();
       console.log("Evidence: " + dir);
       if (coordinated) {
         process.off("disconnect", abortOnParentExit);

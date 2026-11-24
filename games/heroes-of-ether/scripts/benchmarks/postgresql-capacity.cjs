@@ -60,7 +60,11 @@ async function main(){
   if(mixedMinutes)Object.assign(env,{LOAD_PHASES:Array(mixedMinutes).fill('combined').join(','),LOAD_PHASE_MS:'60000'});
   if(realistic)Object.assign(env,{LOAD_REALISTIC:'1',LOAD_MIXED_SOCIAL:'1',LOAD_LOBBY_INTERVAL:'1500'});
   if(summary.alchemy)Object.assign(env,{LOAD_ALCHEMY:'1',LOAD_EVENT:'ether-alchemy'});
-  if(process.env.CAPACITY_DIAGNOSTICS==='1')Object.assign(env,{LOAD_STAGE_METRICS:'1',LOAD_PHYSICS_STAGES:'1',LOAD_CPU_PHASE:'combined'});
+  if(process.env.CAPACITY_DIAGNOSTICS==='1'){
+    summary.diagnosticOnly=true;
+    summary.diagnosticCaveat='Stage, CPU sampling and synchronous I/O probes add overhead; not a capacity acceptance run';
+    Object.assign(env,{LOAD_STAGE_METRICS:'1',LOAD_PHYSICS_STAGES:'1',LOAD_CPU_PHASE:'combined',LOAD_SYNC_IO_PROBE:'1'});
+  }
   if(process.env.CAPACITY_WIRE_DIAGNOSTICS==='1'){
     summary.diagnosticOnly=true;
     summary.wireDiagnostics={fieldUnit:'UTF-8 bytes of JSON values',samplesPerPhasePerRoom:5,
