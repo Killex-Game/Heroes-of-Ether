@@ -1,0 +1,17 @@
+/* Only the owner-selected material families. Source images stay unchanged. */
+img[src*="/currency-packs/"],
+img[src*="/currency_coins."],
+img[src*="/currency_bucks."],
+img[src*="/currency_crystals."] {
+  filter: url(#killex-saturated-gold);
+}
+.achievement-badge::after {
+  filter: url(#killex-rich-gold-frame);
+}
+.achievement-card[data-earned="false"] .achievement-badge::after,
+.manya-achievement[data-earned="false"] .achievement-badge::after {
+  filter: url(#killex-rich-gold-frame) saturate(0.35) brightness(0.92);
+}
+.achievement-card[data-earned="false"][data-state="planned"] .achievement-badge::after {
+  filter: url(#killex-rich-gold-frame) saturate(0.2) brightness(0.86);
+}

@@ -18,7 +18,7 @@
   font-variant-numeric: tabular-nums;
 }
 #lobby #accountMarks .profile-account[data-active="false"] img {
-  filter: saturate(0.65) brightness(0.95);
+  filter: url(#killex-saturated-gold) saturate(0.65) brightness(0.95);
   opacity: 0.72;
 }
 #lobby #accountMarks .profile-account[data-active="false"] strong {
@@ -31,13 +31,13 @@
 }
 img[src*="accounts/vip.png"],
 #achievementsDialog img[src*="accounts/vip.png"] {
-  filter: saturate(1.08) brightness(1.02) contrast(1.03) drop-shadow(0 1px 1px #9b480055)
+  filter: url(#killex-saturated-gold) saturate(1.08) brightness(1.02) contrast(1.03) drop-shadow(0 1px 1px #9b480055)
     drop-shadow(0 0 3px #ffc92c99);
   opacity: 1;
 }
 img[src*="accounts/premium.png"],
 #achievementsDialog img[src*="accounts/premium.png"] {
-  filter: saturate(1.7) brightness(1.13) contrast(1.1) drop-shadow(0 1px 1px #68009055)
+  filter: url(#killex-saturated-gold) saturate(1.7) brightness(1.13) contrast(1.1) drop-shadow(0 1px 1px #68009055)
     drop-shadow(0 0 3px #d750ff99);
   opacity: 1;
 }
@@ -110,6 +110,6 @@ body.account-premium #previewName {
 
 /* Active status is legible at the approved small crown size. */
 #lobby #accountMarks .profile-account.vip[data-active="true"] img {
-  filter: saturate(1.2) brightness(1.08) drop-shadow(0 0 2px #fff2a8) drop-shadow(0 0 5px #ffb800) drop-shadow(0 0 8px #ffa00088);
+  filter: url(#killex-saturated-gold) saturate(1.2) brightness(1.08) drop-shadow(0 0 2px #fff2a8) drop-shadow(0 0 5px #ffb800) drop-shadow(0 0 8px #ffa00088);
   opacity: 1;
 }
