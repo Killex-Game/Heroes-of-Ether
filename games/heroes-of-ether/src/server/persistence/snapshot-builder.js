@@ -102,7 +102,8 @@ class SnapshotBuilder{
     // another complete world tree or a giant UTF-16 world string.
     // A pinned root shares immutable global fields too. Hash their existing
     // canonical segments instead of parsing and encoding a second root tree.
-    // Mutable callers and oversized fragmented roots retain the legacy path.
+    // Mutable callers retain the legacy path; owned fragmented roots also
+    // preserve the same field segments and the exact whole-world checksum.
     const rootRecord=next.get('world'),rootFields=rootRecord.fields;
     const root=rootFields?null:JSON.parse(rootRecord.json.toString('utf8'));
     const checksum=createHash('sha256');checksum.update('{');let first=true;

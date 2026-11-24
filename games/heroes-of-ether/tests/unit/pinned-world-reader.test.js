@@ -181,13 +181,22 @@ test('immutable field bytes reuse untouched receipt buckets across casts and pre
   assert.deepEqual(encode(first.docs.get('profiles:a')),encode(reference.docs.get('profiles:a')));
 });
 
-test('owned oversized profile fallback keeps legacy fragments and does not retain duplicate field bytes', async t => {
+test('owned oversized profiles keep exact legacy fragments while reusing immutable sibling field bytes', async t => {
   const f=setup(t);f.commit(w=>{w.profiles.a.large='😀漢я'.repeat(1500000);});
   const builder=new SnapshotBuilder({immutableSource:f.reader});
   const data=freeze(f.reader.read(await f.pin()).data),actual=builder.pack(data),expected=pack(data);
   assert.equal(actual.docs.get('profiles:a').chunked,true);assert.equal(actual.digest,expected.digest);
   assert.equal(actual.worldHash,expected.worldHash);
-  assert.equal(builder.fields.has(data.profiles.a.history),false);
-  assert.equal(builder.fields.has(data.profiles.a.wallet),false);
+  assert.equal(builder.fields.has(data.profiles.a.history),true);
+  assert.equal(builder.fields.has(data.profiles.a.wallet),true);
   assert.deepEqual([...actual.docs.values()].map(d=>d.value),[...expected.docs.values()].map(d=>d.value));
+  const {encode}=require('../../src/server/persistence/postgresql-state');
+  for(const [id,doc]of expected.docs)assert.deepEqual(encode(actual.docs.get(id)),encode(doc));
+  const historyBytes=builder.fields.get(data.profiles.a.history);
+  f.commit(w=>{w.profiles.a.wallet.coins--;});
+  const nextData=freeze(f.reader.read(await f.pin()).data),next=builder.pack(nextData),reference=pack(nextData);
+  assert.strictEqual(builder.fields.get(nextData.profiles.a.history),historyBytes);
+  assert.equal(next.digest,reference.digest);assert.equal(next.worldHash,reference.worldHash);
+  for(const [id,doc]of reference.docs)assert.deepEqual(encode(next.docs.get(id)),encode(doc));
+  for(const [id,doc]of expected.docs)assert.deepEqual(encode(actual.docs.get(id)),encode(doc),'old pending fragments stay immutable');
 });

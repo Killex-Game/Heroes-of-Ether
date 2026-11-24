@@ -60,7 +60,7 @@ function immutableRecord(id,value,format,cache,stats,{captureFields=false}={}){
   // Fragmentable records retain immutable field segments even when large.
   if(format===0&&storedSize>14*1024*1024){
     // The fallback owns one complete canonical record. Do not also retain
-    // freshly encoded field copies of an oversized fragmented profile.
+    // freshly encoded field copies before legacy size validation rejects it.
     for(const item of inserted)cache.delete(item);
     return null;
   }
