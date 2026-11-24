@@ -1,0 +1,18 @@
+{
+  "peakCcu": 300000,
+  "roomCapacity": 30,
+  "monthlyBudgetRub": [12000, 20000],
+  "regions": [{"name": "Россия, СНГ и Европа; доли регионов ещё не измерены", "share": 1}],
+  "arenaFraction": null,
+  "roomFill": null,
+  "headroom": 1.3,
+  "failureReserveNodesPerRegion": 1,
+  "measurements": {
+    "sustainableRoomsPerNode": null,
+    "wireBytesPerArenaPlayerSecond": null,
+    "wireBytesPerLobbyPlayerSecond": null,
+    "usableNodeMbps": null,
+    "nodeMonthlyRub": null,
+    "nonComputeMonthlyRub": null
+  }
+}
