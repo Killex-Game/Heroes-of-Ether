@@ -173,6 +173,9 @@ function arenaProfileEdit(old, row) {
 }
 function recover(file, includeActive = true, sealedFiles = null) {
   const data = fs.existsSync(file) ? require("./checkpoint-json").readCheckpoint(file) : {};
+  return replay(data, file, includeActive, sealedFiles);
+}
+function replay(data, file, includeActive, sealedFiles) {
   let revision = data[REVISION] || 0,
     activeBytes = 0;
   if (!Number.isSafeInteger(revision) || revision < 0)
@@ -203,14 +206,38 @@ function recover(file, includeActive = true, sealedFiles = null) {
   if (revision) data[REVISION] = revision;
   return { data, revision, activeBytes };
 }
-function checkpoint(file) {
+function checkpointIdentity(file) {
+  try {
+    const s = fs.statSync(file, { bigint: true });
+    return [s.dev, s.ino, s.size, s.mtimeNs].join(":");
+  } catch (error) {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  }
+}
+function checkpoint(file) { return writeCheckpoint(file, null); }
+// Private to a single checkpoint worker. No mutable world crosses the worker
+// boundary. Retirement drops this cache; a replacement starts from disk.
+function createCheckpointWriter(file) {
+  const cache = { value: null };
+  return () => writeCheckpoint(file, cache);
+}
+function writeCheckpoint(file, cache) {
   // Only sealed files: the arena can append to a new active WAL concurrently.
   const files = segments(file);
   if (!files.length) return { revision: 0, bytes: 0 };
   // Take one immutable set of sealed files. A booster may publish a newer
   // segment while this checkpoint is being reconstructed in another worker.
-  const { data, revision } = recover(file, false, files);
+  const previous = cache?.value;
+  // Invalidate before any replay or I/O: even a partially applied invalid WAL
+  // must never become the next base. Only an acknowledged complete checkpoint
+  // is reusable, with identity checked against the actual atomically written file.
+  if (cache) cache.value = null;
+  const { data, revision } = previous && previous.identity === checkpointIdentity(file)
+    ? replay(previous.data, file, false, files) : recover(file, false, files);
   atomicSnapshot(file, data, true);
+  const identity = cache ? checkpointIdentity(file) : null;
+  if (cache && identity === null) throw Error("Checkpoint disappeared before journal cleanup");
   let bytes = 0;
   try {
     for (const source of files) {
@@ -224,6 +251,7 @@ function checkpoint(file) {
     error.removedBytes = bytes;
     throw error;
   }
+  if (cache) cache.value = { data, identity };
   return { revision, bytes, removedBytes: bytes };
 }
 function difference(next, previous) {
@@ -560,7 +588,8 @@ class ProfileJournal {
     const worker = this.worker;
     if (!worker) return Promise.resolve();
     // The acknowledgement follows atomicSnapshot/fsync and segment cleanup.
-    // An idle worker owns no live state; its next job recovers from disk.
+    // An idle worker retains only its acknowledged checkpoint, never live
+    // arena state. The replacement worker recovers its next job from disk.
     this.worker = null;
     const done = worker.terminate();
     this.retiringWorkers.add(done);
@@ -593,4 +622,4 @@ class ProfileJournal {
     }
   }
 }
-module.exports = { ProfileJournal, recover, checkpoint, atomicSnapshot, segments, REVISION, difference };
+module.exports = { ProfileJournal, recover, checkpoint, createCheckpointWriter, atomicSnapshot, segments, REVISION, difference };
