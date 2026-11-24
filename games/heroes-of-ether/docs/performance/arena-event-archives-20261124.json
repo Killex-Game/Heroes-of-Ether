@@ -1,0 +1,204 @@
+{
+  "at": "2026-11-24T23:33:14.565Z",
+  "installed": false,
+  "change": "Audited passive arena batches retain Easter and event-achievement archives without copying. Pickups, life boundaries, casts and unknown future events still use private archives.",
+  "targeted": {
+    "tests": 43,
+    "pass": 43,
+    "fail": 0,
+    "label": "arena-event-archive-targeted-r5"
+  },
+  "microbenchmark": {
+    "exact": true,
+    "scope": "Identical 30-profile draft batches including pickups/life completion; frozen prior worlds. No disk, PostgreSQL, network, FPS or capacity claim.",
+    "results": [
+      {
+        "archives": 0,
+        "mixed": false,
+        "variant": "previous",
+        "ms": 452.04170000000016,
+        "events": 7200
+      },
+      {
+        "archives": 0,
+        "mixed": false,
+        "variant": "shared-passive-archives",
+        "ms": 303.415599999999,
+        "events": 7200
+      },
+      {
+        "archives": 0,
+        "mixed": false,
+        "variant": "shared-passive-archives",
+        "ms": 393.3846000000012,
+        "events": 7200
+      },
+      {
+        "archives": 0,
+        "mixed": false,
+        "variant": "previous",
+        "ms": 430.2116999999994,
+        "events": 7200
+      },
+      {
+        "archives": 0,
+        "mixed": true,
+        "variant": "previous",
+        "ms": 382.1447999999971,
+        "events": 7470
+      },
+      {
+        "archives": 0,
+        "mixed": true,
+        "variant": "shared-passive-archives",
+        "ms": 368.788299999997,
+        "events": 7470
+      },
+      {
+        "archives": 0,
+        "mixed": true,
+        "variant": "shared-passive-archives",
+        "ms": 401.0438999999983,
+        "events": 7470
+      },
+      {
+        "archives": 0,
+        "mixed": true,
+        "variant": "previous",
+        "ms": 409.4080000000008,
+        "events": 7470
+      },
+      {
+        "archives": 4,
+        "mixed": false,
+        "variant": "previous",
+        "ms": 1130.3327000000031,
+        "events": 7200
+      },
+      {
+        "archives": 4,
+        "mixed": false,
+        "variant": "shared-passive-archives",
+        "ms": 512.6753000000035,
+        "events": 7200
+      },
+      {
+        "archives": 4,
+        "mixed": false,
+        "variant": "shared-passive-archives",
+        "ms": 440.3930999999948,
+        "events": 7200
+      },
+      {
+        "archives": 4,
+        "mixed": false,
+        "variant": "previous",
+        "ms": 959.141700000001,
+        "events": 7200
+      },
+      {
+        "archives": 4,
+        "mixed": true,
+        "variant": "previous",
+        "ms": 1103.0291000000007,
+        "events": 7470
+      },
+      {
+        "archives": 4,
+        "mixed": true,
+        "variant": "shared-passive-archives",
+        "ms": 557.0173000000077,
+        "events": 7470
+      },
+      {
+        "archives": 4,
+        "mixed": true,
+        "variant": "shared-passive-archives",
+        "ms": 594.5555000000022,
+        "events": 7470
+      },
+      {
+        "archives": 4,
+        "mixed": true,
+        "variant": "previous",
+        "ms": 1269.2164999999932,
+        "events": 7470
+      },
+      {
+        "archives": 16,
+        "mixed": false,
+        "variant": "previous",
+        "ms": 2555.3481000000047,
+        "events": 7200
+      },
+      {
+        "archives": 16,
+        "mixed": false,
+        "variant": "shared-passive-archives",
+        "ms": 1110.0957000000017,
+        "events": 7200
+      },
+      {
+        "archives": 16,
+        "mixed": false,
+        "variant": "shared-passive-archives",
+        "ms": 1069.7847000000074,
+        "events": 7200
+      },
+      {
+        "archives": 16,
+        "mixed": false,
+        "variant": "previous",
+        "ms": 2842.1170999999995,
+        "events": 7200
+      },
+      {
+        "archives": 16,
+        "mixed": true,
+        "variant": "previous",
+        "ms": 2633.7102000000123,
+        "events": 7470
+      },
+      {
+        "archives": 16,
+        "mixed": true,
+        "variant": "shared-passive-archives",
+        "ms": 1151.3068999999923,
+        "events": 7470
+      },
+      {
+        "archives": 16,
+        "mixed": true,
+        "variant": "shared-passive-archives",
+        "ms": 1168.4501000000237,
+        "events": 7470
+      },
+      {
+        "archives": 16,
+        "mixed": true,
+        "variant": "previous",
+        "ms": 2602.2758999999933,
+        "events": 7470
+      }
+    ]
+  },
+  "firstAttempts": [
+    {
+      "label": "arena-event-archive-r1",
+      "cause": "New fixture omitted the initially absent social object."
+    },
+    {
+      "label": "arena-event-archive-r2",
+      "cause": "Fixture mutated existing journal objects directly, so the identity-based WAL correctly omitted those unsupported setup mutations."
+    },
+    {
+      "label": "arena-event-archive-r3",
+      "cause": "Fixture reopen closes the previous life; it must start a fresh life before testing session accrual."
+    }
+  ],
+  "limitations": [
+    "Full regressions and mixed load remain pending.",
+    "Measured draft-cost reduction with accumulated event archives is not a whole-game CPU/FPS or CCU measurement.",
+    "Easter validation still examines archived state; no checks were removed."
+  ]
+}

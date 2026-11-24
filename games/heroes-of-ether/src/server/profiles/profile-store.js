@@ -154,6 +154,10 @@ function arenaDraft(current, cast = false, sharedActivityValues = false) {
   // object first forced a dictionary layout and a second full property copy.
   for (const key of Object.keys(current)) {
     if (arenaSharedFields.has(key)) continue;
+    // Audited passive batches cannot write Easter collections or completed
+    // roulette achievements. Life boundaries, pickups, casts and unknown
+    // events keep private archives; future event writers therefore opt in.
+    if (!cast && sharedActivityValues && (key === 'easter' || key === 'eventAchievements')) continue;
     // Progress only earns/settles counters and unopened prizes. Inventory writes
     // happen in separate cast/claim transactions, which still detach this map.
     if (!cast && key === "inventory") continue;
