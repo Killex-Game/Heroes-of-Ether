@@ -52,7 +52,7 @@ class Combat {
       booster = {
         ...gifts.adjust(booster, outgoing),
         // +25% strength multiplies the base damage; it is not +25 percentage points.
-        fireFraction: base * outgoing * (booster.alchemyFireFactor || 1) *
+        fireFraction: base * outgoing * (booster.alchemyFireFactor || 1) * (booster.accessoryCritical || 1) *
           (1 + accessories.bonus(player.outfit, "attack") / 100),
       };
     } else booster = gifts.adjust(booster, outgoing);
@@ -449,6 +449,7 @@ class Combat {
       return;
     }
     if (booster.kind === "fire") {
+      if (accessoryPassives.chance(target, "fireBlock", arena.random)) return;
       arena.boosterEffects.burn(
         target,
         part,
@@ -459,6 +460,7 @@ class Combat {
     }
     if (booster.kind === "awl") {
       const removed = arena.hasEffect(target, "shield", now);
+      if (removed && accessoryPassives.chance(target, "shieldResistance", arena.random)) return;
       for (const id of Object.keys(target.effects))
         if (BOOSTERS.get(id)?.kind === "shield" && target.effects[id] > now) {
           delete target.effects[id];
@@ -473,6 +475,7 @@ class Combat {
     if (booster.id === "pet_glove" && !(target.effects.clan_shield > shieldAt) &&
         arena.hasEffect(target, "shield", shieldAt)) {
       this.shieldSound(shot, target, part);
+      if (accessoryPassives.chance(target, "shieldResistance", arena.random)) return;
       for (const id of Object.keys(target.effects))
         if (BOOSTERS.get(id)?.kind === "shield" && target.effects[id] > shieldAt)
           delete target.effects[id];
@@ -967,7 +970,7 @@ class Combat {
       if (!destination) return;
       const distance = Math.hypot(destination.x - part.x, destination.y - part.y);
       if (!distance) return;
-      const ratio = Math.min(1, (100 * dt) / distance);
+      const ratio = Math.min(1, (200 * dt) / distance);
       part.x += (destination.x - part.x) * ratio;
       part.y += (destination.y - part.y) * ratio;
     };

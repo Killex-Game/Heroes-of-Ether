@@ -1,5 +1,6 @@
 "use strict";
 const accessories = require("../../../public/shared/accessory-catalog");
+const catalogAbilities = accessories.abilityList;
 const access = require("../profiles/accessory-access");
 const { BoosterError } = require("../boosters/booster-catalog");
 
@@ -8,8 +9,8 @@ function start(player, profile) {
   player.accessoryAbilities = {
     stock: access.abilities(profile).flatMap((id) => {
       const item = accessories.item(id);
-      return item?.ability && access.isOwned(profile, id)
-        ? [{ accessoryId: id, boosterId: item.ability.boosterId, count: item.ability.count }]
+      return item && access.isOwned(profile, id)
+        ? catalogAbilities(item).map(ability => ({ accessoryId: id, boosterId: ability.boosterId, count: ability.count }))
         : [];
     }),
     receipts: new Map(),
@@ -34,7 +35,7 @@ function use(arena, player, message, now) {
       throw new BoosterError("Этот запрос уже использован для другого действия.", 409);
     return { ...prior, replay: true };
   }
-  const stock = state.stock.find((item) => item.accessoryId === message.accessoryId);
+  const stock = state.stock.find((item) => item.accessoryId === message.accessoryId && item.count > 0);
   if (!stock?.count)
     throw new BoosterError("Бустер аксессуара на эту жизнь уже использован или недоступен.", 409);
   if (state.stock.find((item) => item.count > 0) !== stock)
@@ -53,7 +54,7 @@ function use(arena, player, message, now) {
   );
   const event = apply();
   stock.count--;
-  const result = { accessoryId: stock.accessoryId, remaining: stock.count };
+  const result = { accessoryId: stock.accessoryId, boosterId: stock.boosterId, remaining: stock.count };
   state.receipts.set(message.requestId, result);
   return { ...result, event };
 }

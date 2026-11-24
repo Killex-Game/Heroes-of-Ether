@@ -29,7 +29,7 @@ function launch(arena, p, id, now = 5000, aim = { x: 9000, y: 5000 }) {
     now,
   )();
 }
-test("Одиночный выстрел и все 7 ракет начинаются за краем ближайшей к курсору части", () => {
+test("Одиночный выстрел и все 5 ракет начинаются за краем ближайшей к курсору части", () => {
   const { arena, a } = scene();
   a.parts = [
     { id: "a", mass: 400, radius: radiusForMass(400), x: 2000, y: 3000 },
@@ -40,7 +40,7 @@ test("Одиночный выстрел и все 7 ракет начинают�
   assert.notEqual(main, arena.mainBody(a));
   for (const [id, at, count] of [
     ["freeze", 5000, 1],
-    ["warheads", 7000, 7],
+    ["warheads", 7000, 5],
   ]) {
     arena.combat.shots = [];
     launch(arena, a, id, at, { x: 2500, y: 3500 });

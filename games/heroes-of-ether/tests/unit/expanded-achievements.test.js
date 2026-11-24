@@ -61,13 +61,13 @@ function setup(filePath = null) {
     },
   };
 }
-test("Витрина содержит 44 цепочки без Карьеры; все иконки существуют, исключённые системы отсутствуют", () => {
+test("Витрина содержит 49 цепочек без Карьеры; все иконки существуют, исключённые системы отсутствуют", () => {
   const { store, p } = setup(),
     entries = store.view(p()).progress.achievements;
-  assert.equal(entries.length, 44);
-  assert.equal(entries.filter((a) => a.available).length, 44);
+  assert.equal(entries.length, 49);
+  assert.equal(entries.filter((a) => a.available).length, 49);
   assert.equal(entries.filter((a) => !a.available).length, 0);
-  assert.equal(new Set(entries.map((a) => a.id)).size, 44);
+  assert.equal(new Set(entries.map((a) => a.id)).size, 49);
   for (const a of [...entries, { id: "career" }])
     assert.ok(fs.existsSync(path.resolve(__dirname, "../../public", art.achievement(a.id).split("?")[0])), a.id);
   const by = (id) => entries.find((a) => a.id === id);

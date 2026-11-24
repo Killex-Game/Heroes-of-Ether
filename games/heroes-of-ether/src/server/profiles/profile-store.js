@@ -492,6 +492,7 @@ class ProfileStore {
         pets.validate(p);
         const migratedPetLevels = activity.migratePetLevels(p);
         const migratedAccessories = activity.migrateAccessories(p);
+        const migratedClanQuests = require('../progression/clan-quest-achievements').migrate(p);
         social.validate(p);
         accounts.validate(p);
         require('../admin/adjustment-notices').validate(p);
@@ -523,7 +524,8 @@ class ProfileStore {
           migratedWardrobe ||
           migratedThemeSkins ||
           migratedPetLevels ||
-          migratedAccessories
+          migratedAccessories ||
+          migratedClanQuests
         ) {
           p.revision++;
           this.achievementStagesMigrationPending = true;
@@ -875,6 +877,7 @@ class ProfileStore {
       pets: pets.fresh(),
       roulette: roulette.fresh(),
       activity: activity.freshActivity(this.now()),
+      clanQuestAchievements: require('../progression/clan-quest-achievements').fresh(),
     };
     activity.refreshCalendar(profile, this.now(), true);
     quests.ensure(profile, this.now());
@@ -906,7 +909,7 @@ class ProfileStore {
       ),
       clanId: profile.clanId,
       menuNotifications: this.menuNotifications(profile),
-      seasonBenefits: trophyBenefits(this.data.clans[profile.clanId]),
+      seasonBenefits: trophyBenefits(this.data.clans[profile.clanId], this.now()),
       seasonTrophies: personalTrophies.view(profile),
       clanQuestMedals: structuredClone(profile.clanQuestMedals || []),
       regalia: dailyRankings.publicRegalia(profile),

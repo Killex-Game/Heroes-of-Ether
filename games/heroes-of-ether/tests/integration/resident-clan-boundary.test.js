@@ -7,7 +7,7 @@ const service=require('../../src/server/clans/daily-quests/service');
 const {RoomProfileLedger}=require('../../src/server/arena/resident/room-profile-ledger');
 const {RoomOutbox}=require('../../src/server/arena/resident/room-outbox');
 const boundary=require('../../src/server/arena/resident/room-quest-boundary');
-const start=Date.parse('2026-11-15T03:00:00Z'),end=start+15*3600000;
+const start=Date.parse('2026-11-15T04:00:00Z'),end=start+15*3600000;
 async function fixture(t){
  let cleanup,at=start-86400000,child,ledger;const boxes=[];
  const root=temporary({after:f=>cleanup=f},'resident-clan-boundary');
@@ -40,7 +40,7 @@ async function fixture(t){
  const send=async(room,input)=>{const entry=await room.box.append(input);room.box.acknowledge(await ledger.accept(child,entry));return entry;};
  return {store,ledger,child,rooms,users,clanId,send,stop,boxes,at:n=>{at=n;},board:()=>store.data.clans[clanId].dailyQuests.board};
 }
-test('resident prefix requires the final food sample; all rooms must cross 21:00 before exactly-once reward',async t=>{
+test('resident prefix requires the final food sample; all rooms must cross 22:00 before exactly-once reward',async t=>{
  const f=await fixture(t),[a,b]=f.rooms;
  await f.send(a,{at:end-25,progress:[{type:'questSample',profileId:a.profileId,lifeId:a.lifeId,food:0,clanFood:3,rank:1}]});
  for(const room of f.rooms)await f.send(room,{at:end-10});

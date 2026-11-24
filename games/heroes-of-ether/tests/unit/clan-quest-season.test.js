@@ -15,7 +15,7 @@ function fixture(count=1){
   }
   return {profiles,clans,boards,clanQuests:{calendarVersion:1,calendarActivatedAt:start,nextAt:end,seasons:[]}};
 }
-test('two-month calendar alternates through year and leap February; daily window is 08–21',()=>{
+test('two-month calendar alternates through year and leap February; daily window is 07–22',()=>{
   for(let month=0;month<12;month++){
     const s=calendar.season(Date.UTC(2028,month,15)),block=Math.floor(month/2);
     assert.equal(s.mode,block%2?'quests':'battle');
@@ -23,8 +23,8 @@ test('two-month calendar alternates through year and leap February; daily window
     assert.equal(s.end,Date.UTC(2028,block*2+2,1)-10800000);
   }
   const d=calendar.daily(Date.parse('2026-11-22T12:00:00Z'));
-  assert.equal(d.start,Date.parse('2026-11-22T05:00:00Z'));
-  assert.equal(d.end,Date.parse('2026-11-22T18:00:00Z'));
+  assert.equal(d.start,Date.parse('2026-11-22T04:00:00Z'));
+  assert.equal(d.end,Date.parse('2026-11-22T19:00:00Z'));
 });
 test('all five prize tiers, 30th boundary, fixed rewards despite Premium, no rewards for zero',()=>{
   const f=fixture(32),before=structuredClone(f.profiles);
@@ -89,15 +89,15 @@ test('rejects corrupt archived rewards and invalid or duplicate personal medals'
  season.validate(paid);
 });
 
-test('quest opening is 06:00, battle opening remains 08:00, dates include the final season day in every timezone',()=>{
+test('both quest and battle opening is 07:00, dates include the final season day in every timezone',()=>{
  const at=Date.parse('2026-11-22T12:00:00Z'),q=calendar.daily(at,'quests'),b=calendar.daily(at,'battle');
- assert.equal(q.start,Date.parse('2026-11-22T03:00:00Z'));assert.equal(q.end,b.end);
- assert.equal(b.start-q.start,7200000);
+ assert.equal(q.start,Date.parse('2026-11-22T04:00:00Z'));assert.equal(q.end,b.end);
+ assert.equal(b.start-q.start,0);
  const cp=require('node:child_process'),file=require.resolve('../../public/shared/clan-season-calendar');
  for(const tz of ['UTC','Asia/Yekaterinburg','America/Los_Angeles','Pacific/Kiritimati']){
   const result=JSON.parse(cp.execFileSync(process.execPath,['-e','const c=require('+JSON.stringify(file)+');console.log(JSON.stringify({dates:c.seasonRange(c.season('+at+')),hours:c.localRange('+at+',"quests")}))'],{encoding:'utf8',env:{...process.env,TZ:tz}}));
   assert.equal(result.dates,'01.11.2026 - 31.12.2026');
-  if(tz==='Asia/Yekaterinburg')assert.equal(result.hours,'08:00 - 23:00');
+  if(tz==='Asia/Yekaterinburg')assert.equal(result.hours,'09:00 - 00:00');
  }
  assert.equal(calendar.seasonRange(calendar.season(Date.parse('2028-02-10T12:00:00Z'))),'01.01.2028 - 29.02.2028');
 });

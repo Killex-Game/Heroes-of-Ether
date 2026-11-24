@@ -120,8 +120,8 @@ test("Три заряда бабочки расходуются перед ша�
   const { p } = fixture(t),
     arena = new Arena({ etherCount: 0 }),
     actor = arena.addPlayer(0, "queue");
-  p.outfit = { bow: "cherry_sweet", hat: "star_pilot" };
-  p.accessoryAbility = "star_pilot";
+  p.outfit = { bow: "cherry_sweet", hat: "captain_tricorn" };
+  p.accessoryAbility = "captain_tricorn";
   A.start(actor, p);
   const request = (accessoryId) => ({
     accessoryId,
@@ -131,7 +131,7 @@ test("Три заряда бабочки расходуются перед ша�
     aimY: 1000,
   });
   const bow = request("cherry_sweet"),
-    hat = request("star_pilot");
+    hat = request("captain_tricorn");
   const counts = () => A.snapshot(actor).map((x) => x.count);
   assert.deepEqual(counts(), [3, 3]);
   assert.throws(() => A.use(arena, actor, hat, 5000), /Сначала/);
@@ -154,33 +154,33 @@ test("Три заряда бабочки расходуются перед ша�
   A.use(arena, actor, hat, 11000);
   assert.deepEqual(counts(), [0, 2]);
   assert.equal(A.use(arena, actor, hat, 12000).replay, true);
-  assert.equal(arena.combat.shots.filter((x) => x.boosterId === "rocket").length, 1);
+  assert.equal(arena.combat.shots.filter((x) => x.boosterId === "hook").length, 1);
   A.start(actor, p);
   assert.deepEqual(counts(), [0, 2]);
   arena.resetPlayer(actor, 15000);
   A.start(actor, p);
   assert.deepEqual(counts(), [3, 3]);
   assert.throws(() => A.use(arena, actor, bow, 16000), /этой жизни/);
-  p.outfit = { hat: "star_pilot", bow: "novice_bow" };
+  p.outfit = { hat: "captain_tricorn", bow: "novice_bow" };
   const hatOnly = {};
   A.start(hatOnly, p);
   assert.equal(A.snapshot(hatOnly)[0].count, 3);
   assert.deepEqual(
     A.snapshot(hatOnly).map((x) => x.accessoryId),
-    ["star_pilot"],
+    ["captain_tricorn"],
   );
 });
 
-test("Пассивные эффекты: скорость ограничена, радиус только природной еды, защита и заморозка", () => {
+test("Пассивные эффекты: скорость не зависит от массы, радиус только природной еды, защита и заморозка", () => {
   const actor = {
     outfit: { hat: "forest_hood", bow: "forest_moth" },
     mass: 4999,
     accessoryFeedUntil: 3000,
   };
-  assert.equal(passive.speed(actor, 1), 0.08);
+  assert.equal(passive.speed(actor, 1), 0.1);
   actor.mass = 5000;
-  assert.equal(passive.speed(actor, 1), 0.05);
-  assert.equal(passive.speed(actor, 3000), 0);
+  assert.equal(passive.speed(actor, 1), 0.1);
+  assert.equal(passive.speed(actor, 3000), 0.1);
   const arena = new Arena({ etherCount: 0 }),
     p = arena.addPlayer(0, "p"),
     q = arena.addPlayer(0, "q");
@@ -209,17 +209,15 @@ test("Пассивные эффекты: скорость ограничена, 
   delete p.effects.gold_shield;
   p.effects.golden_shield = 20000;
   p.effects.colorful_shield = 20000;
+  arena.random = () => 0;
   arena.combat.impact({ id: "awl", boosterId: "awl", ownerId: q.id }, p, 6000, arena.mainBody(p));
-  assert.equal(passive.speed(p, 6000), 0.05);
-  assert.equal(passive.speed(p, 9000), 0);
-  passive.shieldBroken(p, 10000, q.id);
-  assert.equal(p.accessoryShieldUntil, 9000);
-  passive.shieldBroken(p, 26000, q.id);
-  assert.equal(p.accessoryShieldUntil, 29000);
-  passive.shieldBroken(p, 50000, p.id);
-  assert.equal(p.accessoryShieldUntil, 29000);
+  assert.equal(p.effects.golden_shield,20000);assert.equal(p.effects.colorful_shield,20000);
+  arena.random = () => .1;
+  arena.combat.impact({ id: "awl2", boosterId: "awl", ownerId: q.id }, p, 6001, arena.mainBody(p));
+  assert.equal(arena.hasEffect(p,'shield',6001),false);assert.equal(passive.speed(p,6001),0);
+
 });
-test("Солнечная лента уменьшает только естественную потерю, сохраняет дробный остаток", () => {
+test("Солнечная лента не меняет естественную потерю, но блокирует огонь с вероятностью 10%", () => {
   const arena = new Arena({ etherCount: 0 }),
     p = arena.addPlayer(0, "p");
   p.level = 501;
@@ -228,13 +226,19 @@ test("Солнечная лента уменьшает только естест
   let expected = p.mass,
     remainder = 0;
   for (let i = 1; i <= 10; i++) {
-    const units = massDecayLoss(expected) * 92 + remainder;
+    const units = massDecayLoss(expected) * 100 + remainder;
     remainder = units % 100;
     expected -= Math.floor(units / 100);
     arena.decayMass(p, i * 2000);
   }
   assert.equal(p.mass, expected);
   assert.equal(p.massDecayRemainder, remainder);
+  const before=p.mass;p.protectedUntil=0;arena.random=()=>0;
+  arena.combat.impact({id:'fire-block',boosterId:'fire',ownerId:'other'},p,21000,arena.mainBody(p));
+  assert.equal(p.mass,before);arena.random=()=>.1;
+  arena.combat.impact({id:'fire-pass',boosterId:'fire',ownerId:'other'},p,21001,arena.mainBody(p));
+  assert.equal(p.mass,before-Math.floor(before*.5));
+
 });
 test("Бонусы опыта прибавляются к базе, поглощение отдельно от 30-секундного пакета", (t) => {
   for (const premium of [false, true]) {
@@ -261,10 +265,11 @@ test("Бонусы опыта прибавляются к базе, поглощ
     assert.equal(p.progress.session.xp - before, premium ? 93 : 33);
   }
 });
-test("Янтарная капля: отдельные 10% запаса, одинаковое время на арене и в сохранении, без повторного начисления", (t) => {
+test("Чалма мудреца: отдельные 10% запаса, одинаковое время на арене и в сохранении, без повторного начисления", (t) => {
   const { p } = fixture(t);
   p.level = 50;
-  p.outfit = { bow: "amber_drop" };
+  p.outfit = { hat: "title_sage_hat" };
+  p.honors.claimed = Math.max(p.honors.claimed,4);
   p.pets.equipped = "zaya";
   p.pets.owned.zaya = { games: 0, vitalityMs: 10000, refillAt: 1e9, purchasedAt: 0 };
   const actor = { account: {}, effects: {}, level: 50 };

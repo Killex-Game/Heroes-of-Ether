@@ -49,7 +49,6 @@ function capture(next, previous, at, {canSettle=true} = {}) {
   const day = engine.period(at), boundary = due(next, at), repairRecruits = next.clanQuests.recruitRulesVersion !== 1;
   const sourceBoards = boundary ? Object.entries(next.clans).map(([id,c])=>[id,c.dailyQuests?.board]) : [];
   const upgradeWindow = next.clanQuests.windowVersion !== engine.WINDOW_VERSION;
-  const earlierOpening = next.clanQuests.windowVersion === 3;
   let clans = next.clans, profiles = next.profiles, index, ledger = next.clanQuestRewards;
   const changedProfiles = new Set();let deferredEnd=Infinity;
   const writable = id => {
@@ -67,7 +66,7 @@ function capture(next, previous, at, {canSettle=true} = {}) {
     if (!boundary && !upgrade && clan.members === old?.members && clan.competition?.joined === old?.competition?.joined) continue;
     // One compatibility pass for members accepted under the old battle-only
     // rule. Existing role assignments remain stored, but newcomer permissions
-    // and today's quest eligibility stay closed until the next 06:00 MSK.
+    // and today's quest eligibility stay closed until the next 07:00 MSK.
     if ((repairRecruits || upgradeWindow) && !active(next,at)) {
       let recruits=clan.competition.recruits;
       for(const pid of clan.members) if(pid!==clan.ownerId && (
@@ -76,12 +75,11 @@ function capture(next, previous, at, {canSettle=true} = {}) {
         if(recruits===clan.competition.recruits)recruits={...recruits};
         recruits[pid]=day.nextStart;
       }
-      if (earlierOpening) for (const pid of clan.members) {
-        const until = recruits[pid];
-        // The former 08:00 quest opening becomes 06:00 on the same server day.
-        if (pid!==clan.ownerId && until>at && (until+3*3600000)%86400000===8*3600000) {
-          if(recruits===clan.competition.recruits)recruits={...recruits};
-          recruits[pid]=until-2*3600000;
+      if (upgradeWindow) for (const pid of clan.members) {
+        const until = recruits[pid], oldHour = (until + 3 * 3600000) % 86400000;
+        if (pid !== clan.ownerId && until > at && [6, 8].includes(oldHour / 3600000)) {
+          if (recruits === clan.competition.recruits) recruits = {...recruits};
+          recruits[pid] = until + 7 * 3600000 - oldHour;
         }
       }
       if(recruits!==clan.competition.recruits){
@@ -93,17 +91,15 @@ function capture(next, previous, at, {canSettle=true} = {}) {
       if (clans === next.clans) clans = {...clans};
       clans[id] = {...clan,dailyQuests:value}; state = value; board = value.board;
     };
-    // Extend the current legacy day only. Keep its original opening, chosen
-    // quests, eligibility and contributions, including progress earned before 06:00.
-    if (board && !board.settledAt && board.day === day.id &&
-        board.start === day.start-2*3600000 && board.end === day.end-3600000)
+    // Keep the original opening and participation of an already running board.
+    // Only extend its closing time; closed boards and paid receipts are immutable.
+    if (upgradeWindow && board && !board.settledAt && board.day === day.id && board.end < day.end)
       assign({...state,board:{...board,end:day.end}});
-    if (earlierOpening && board && !board.settledAt && board.day===day.id && board.start===day.start+2*3600000 && board.end===day.end)
-      assign({...state,board:{...board,start:day.start}});
     if(upgrade) {
       // Preserve today's selection and earned contributions. Only approved rule
       // changes apply; completed historical days and financial receipts stay intact.
       const quests=board.quests.map(q=>{
+        if (q.completedAt !== null) return q;
         const revised=catalog.items.find(row=>row.id===q.id);
         if(!revised)return q;
         const progress=Math.min(q.progress,revised.target);
@@ -147,6 +143,13 @@ function capture(next, previous, at, {canSettle=true} = {}) {
           if(ledger===next.clanQuestRewards)ledger={...(ledger||{})};
           ledger[receipt]={clanId:id,day:board.day,earnedAt:board.end,issuedAt:at,
             members:[...awarded],quests:board.quests.filter(q=>q.completedAt!==null).map(q=>({id:q.id,name:q.name,reward:structuredClone(q.reward),greatness:engine.questGreatness(q.metric),completedAt:q.completedAt}))};
+        }
+        for (const pid of Object.keys(board.contributors)) {
+          if (!Object.hasOwn(board.eligible, pid) || !clan.members.includes(pid)) continue;
+          const p = writable(pid);
+          if (!p || p.clanId !== id) continue;
+          require('../../progression/clan-quest-achievements').daily(p, board);
+          awardTitles(p, board.end);
         }
         assign({...state,board:{...board,settledAt:at,...(ledger?.[receipt]?{rewardReceipt:receipt}:{})}});
       }
@@ -208,7 +211,7 @@ function progress(data, clanDrafts, p, event, at, changes, earned, before) {
     const result=engine.record(board,{playerId:p.id,clanId:clan.id,at,sequence:(board.cursors[p.id]||0)+1,deltas});
     if(result.accepted) clanDrafts.set(clan.id,{...clan,dailyQuests:{...clan.dailyQuests,board:result.board}});
   } else if (board && at >= board.end && timeDeltas?.arenaMs > 0 && Object.hasOwn(board.eligible,p.id)) {
-    // A sample may arrive on the first tick after 21:00. Credit only the
+    // A sample may arrive on the first tick after 22:00. Credit only the
     // measured interval clipped to the deadline, never that tick's actions,
     // food or XP. The boundary barrier keeps this board open until publication.
     const result=engine.record(board,{playerId:p.id,clanId:clan.id,at:board.end-1,
@@ -242,13 +245,18 @@ function validate(data) {
   const state=data.clanQuests;
   if(state.version!==1 || !Number.isSafeInteger(state.revision) || !Number.isSafeInteger(state.nextAt) || !Array.isArray(state.seasons)) throw Error('Invalid clan quest schedule');
   if(state.recruitRulesVersion!==undefined && state.recruitRulesVersion!==1)throw Error('Invalid clan newcomer rules');
-  if(state.windowVersion!==undefined && ![1,2,3,engine.WINDOW_VERSION].includes(state.windowVersion))throw Error('Invalid clan quest window');
+  if(state.windowVersion!==undefined && ![1,2,3,4,engine.WINDOW_VERSION].includes(state.windowVersion))throw Error('Invalid clan quest window');
   seasonal.validate(data);
   let history=[];
   for(const s of state.seasons) {history=seasons.announce(history,s,{role:'owner'}); history.at(-1).cancelled=!!s.cancelled;}
   for(const c of Object.values(data.clans)) for(const b of [c.dailyQuests?.board].filter(Boolean)) {
     if(b.clanId!==c.id || !b.eligible || b.quests.length>5 || b.quests.some(q=>!Number.isSafeInteger(q.progress)||q.progress<0||q.progress>q.target || (q.completedAt!==null && (q.progress!==q.target || q.completedAt<b.start || q.completedAt>=b.end)))) throw Error('Invalid clan quest board');
     engine.validateCatalog({version:b.catalogVersion,items:[...catalog.items.filter(q=>!b.quests.some(r=>r.id===q.id)),...b.quests]});
+    for (const contribution of Object.values(b.contributors || {})) {
+      const ids = contribution.questIds;
+      if (ids !== undefined && (!Array.isArray(ids) || ids.length > 5 || new Set(ids).size !== ids.length ||
+          ids.some(id => !b.quests.some(q => q.id === id)))) throw Error('Invalid clan quest contribution proof');
+    }
   }
   for(const [key,r] of Object.entries(data.clanQuestRewards||{})) {
     if(r.quests?.some(q=>q.greatness!==undefined && (!Number.isSafeInteger(q.greatness)||q.greatness<0)))throw Error('Invalid clan quest greatness');

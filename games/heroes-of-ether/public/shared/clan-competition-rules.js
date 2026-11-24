@@ -14,10 +14,10 @@
   const battleFixedReward = (won) => (won ? BATTLE_WINNER_FIXED_REWARD : BATTLE_FIXED_REWARD);
   const LEAGUES = Object.freeze(
     [
-      ["bronze", "Бронзовая", 5000, 100, 50, 50, 5],
-      ["silver", "Серебряная", 10000, 1000, 250, 100, 10],
-      ["gold", "Золотая", 50000, 2500, 500, 250, 15],
-      ["platinum", "Платиновая", 100000, 5000, 1000, 500, 20],
+      ["bronze", "Бронзовая", 1000, 100, 50, 50, 5],
+      ["silver", "Серебряная", 2500, 1000, 250, 100, 10],
+      ["gold", "Золотая", 15000, 2500, 500, 250, 15],
+      ["platinum", "Платиновая", 50000, 5000, 1000, 500, 20],
       ["diamond", "Бриллиантовая", 500000, 10000, 2500, 750, 25],
       ["champions", "Лига Чемпионов", 1000000, 25000, 5000, 1000, 50],
     ].map(([id, name, threshold, coins, crystals, bucks, greatness], index) =>
@@ -58,9 +58,9 @@
       [2, 1000, 100, 50],
       [4, 2000, 200, 250],
       [6, 3500, 350, 500],
-      [8, 5500, 550, 2500],
-      [10, 8000, 800, 5000],
-      [15, 12000, 1200, 10000],
+      [8, 5500, 550, 1500],
+      [10, 8000, 800, 2000],
+      [15, 12000, 1200, 5000],
     ].map(([discount, coins, crystals, bucks]) =>
       Object.freeze({ discount, reward: Object.freeze({ coins, crystals, bucks }) }),
     ),
@@ -69,8 +69,8 @@
     const league = LEAGUES[trophy.league];
     return `Кубок за ${trophy.number} сезон ${league.name} ${trophy.year}`;
   }
-  function trophyBenefits(clan) {
-    const trophies = clan?.competition?.trophies || [],
+  function trophyBenefits(clan, at = Date.now()) {
+    const trophies = (clan?.competition?.trophies || []).filter(t => t.awardedAt <= at && at < t.awardedAt + 30 * DAY),
       league = trophies.reduce((best, trophy) => Math.max(best, trophy.league), -1);
     return { league: LEAGUES[league]?.id || null, discount: SEASON_PRIZES[league]?.discount || 0 };
   }

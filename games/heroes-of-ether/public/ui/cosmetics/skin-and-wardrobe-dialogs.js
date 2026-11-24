@@ -16,6 +16,14 @@
   const setSkinImage = window.KillexIdentity.setSkinImage;
   function accessorySummary(item) {
     const b = item.bonus || {};
+    if (b.generatorFactor) return `Эфир генератора ×${b.generatorFactor}, +${b.xp || 0}% опыта`;
+    if (b.fireBlock) return `${b.fireBlock}% шанса избежать Огня`;
+    if (b.boosterCritical) return `${b.boosterCritical}% шанса удвоить силу бустера`;
+    if (b.shieldResistance) return `${b.shieldResistance}% шанса сохранить щит`;
+    if (b.halfMinuteMass) return `+${b.halfMinuteMass} массы каждые 30 с`;
+    if (b.speed) return `+${b.speed}% скорости`;
+    if (b.positive) return `+${b.positive}% к положительным бустерам`;
+    if (b.negativeReduction) return `Негативные эффекты слабее на ${b.negativeReduction}%`;
     if (b.xp) return `+${b.xp}% опыта`;
     if (b.massXp) return `+${b.massXp}% опыта за массу`;
     if (b.lightSpeed) return `+${b.lightSpeed}% скорости до 5 000 массы`;
@@ -34,8 +42,8 @@
   }
   function accessoryDetails(item) {
     const details = el("div", "accessory-details");
-    if (item.ability) {
-      const ability = item.ability;
+    const abilities = window.KillexAccessories.abilityList(item);
+    for (const ability of abilities) {
       const key = el("kbd", "accessory-key", "E");
       key.setAttribute("aria-hidden", "true");
       const line = el("span", "accessory-charge");
@@ -47,13 +55,12 @@
       icon.height = 30;
       line.append(key, el("span", "", ":"), el("strong", "", `×${ability.count}`), icon);
       details.append(line);
-    } else details.append(el("span", "accessory-summary", accessorySummary(item)));
+    }
+    if (!abilities.length) details.append(el("span", "accessory-summary", accessorySummary(item)));
     // Shared popover supports hover, keyboard focus and touch focus. Keep the
     // full rules here instead of truncating them or repeating them in the card.
     const full = [
-      item.ability
-        ? `Клавиша E: ${item.ability.name}, ${item.ability.count} применения за жизнь.`
-        : "",
+      ...abilities.map(ability => `Клавиша E: ${ability.name}, ${ability.count} применения за жизнь.`),
       item.id !== "novice_hat" ? item.bonusLabel || item.description : "",
       item.id !== "novice_hat" && item.description !== item.bonusLabel ? item.description : "",
     ].filter(Boolean);
@@ -405,7 +412,8 @@
           owned = ownedIds.has(item.id),
           control = this.accessoryButtons.get(item.id),
           card = this.accessoryCards.get(item.id);
-        card.hidden = item.slot !== this.category;
+        card.hidden = item.slot !== this.category ||
+          ((item.eventReward || item.previewOnly) && !owned);
         card.dataset.equipped = String(equipped);
         card.dataset.newItem = String(
           owned && !this.profile?.wardrobe?.seen?.includes("accessory:" + item.id),

@@ -86,6 +86,7 @@
   return Object.freeze({
     rankBounds: (id) => rankBounds[id] || null,
     achievement: (id, size = 128) =>
+      id.startsWith("clan_quest_") ? `assets/achievements/clan-quests-v1/${[64,128,256,512].includes(size)?size:128}/${id}.webp?art=20261124-clan-art` :
       [
         "fashionista",
         "career",
@@ -150,7 +151,9 @@
         ? `assets/chests/prism-unified-v4/256/clan-${tier}.webp?art=20261123-interface-art`
         : null,
     booster: (id, size = 256) =>
-      ["rocket", "cake", "warheads"].includes(id)
+      ["fire","fire_sword","cake","warheads","vortex","awl","clan_shield"].includes(id)
+        ? `assets/boosters/clan-v2/${[64,128,256,512].includes(size)?size:256}/${id}.webp?art=20261124-clan-art`
+        : ["rocket"].includes(id)
         ? `assets/boosters/png/${id}.png?art=20261123-interface-art`
         : url("boosters", boosters[id], size),
     league: (id, size = 128) => url("leagues", leagues[id], size),

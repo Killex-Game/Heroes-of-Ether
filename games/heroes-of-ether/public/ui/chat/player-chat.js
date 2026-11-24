@@ -239,6 +239,11 @@
       document.getElementById("arena").append(this.root);
       this.send = send;
       this.toggle.addEventListener("click", () => this.expand(this.panel.root.hidden));
+      for (const type of ["keydown", "keyup"]) {
+        this.toggle.addEventListener(type, (event) => {
+          if (event.code === "Space" || event.key === " ") event.preventDefault();
+        });
+      }
       this.expand(false);
       this.panel.input.addEventListener("keydown", (event) => {
         if (event.code === "Escape") {

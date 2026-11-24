@@ -2,7 +2,7 @@
 // Pure daily rules. The service commits boards and prizes with the existing WAL.
 const { createHash } = require("node:crypto");
 const DAY = 86400000, HOUR = 3600000, MSK = 3 * HOUR;
-const WINDOW_VERSION = 4, ACTIVE_MS = 15 * HOUR, RESULTS_MS = 2 * HOUR;
+const WINDOW_VERSION = 5, ACTIVE_MS = 15 * HOUR, RESULTS_MS = 2 * HOUR;
 const GROUPS = ["resources", "combat", "precision", "arsenal", "endurance"];
 const METRICS = new Set(["xp", "food", "absorbedMass", "hazards", "kills", "jumpKills",
   "hazardHits", "rocketHits", "freezeHits", "hookHits", "pushHits", "poisonHits",
@@ -13,7 +13,7 @@ const hash = value => createHash("sha256").update(value).digest("hex");
 const validId = value => typeof value === "string" && /^[a-zA-Z0-9_-]{1,80}$/.test(value) && !Object.hasOwn(Object.prototype, value);
 function period(at) {
   if (!Number.isSafeInteger(at) || at < 0) throw Error("Invalid server time");
-  const start = Math.floor((at + MSK - 6 * HOUR) / DAY) * DAY - MSK + 6 * HOUR;
+  const start = Math.floor((at + MSK - 7 * HOUR) / DAY) * DAY - MSK + 7 * HOUR;
   return { id: new Date(start + MSK).toISOString().slice(0, 10), start,
     end: start + ACTIVE_MS, nextStart: start + DAY, active: at < start + ACTIVE_MS };
 }
@@ -70,13 +70,18 @@ function record(board, event, pledge = null) {
       event.sequence <= (board.cursors[event.playerId] || 0)) return no();
   const changes = board.quests.map(q => Math.min(q.target - q.progress, event.deltas[q.metric] || 0));
   if (!changes.some(n => n > 0)) return no();
+  const prior = board.contributors[event.playerId];
+  const questIds = [...new Set([...(prior?.questIds || []),
+    ...board.quests.filter((q, i) => changes[i] > 0).map(q => q.id)])];
+  const contributor = prior && questIds.length === prior.questIds?.length ? prior
+    : { ...prior, firstAt: prior?.firstAt ?? event.at, questIds };
   // Boards are immutable snapshots. Keep the catalog, eligibility and earlier
   // contributions shared; copying their full history for every arena event
   // makes the cost grow with the clan even when only one counter changes.
   const next = { ...board,
     cursors: { ...board.cursors, [event.playerId]: event.sequence },
-    contributors: board.contributors[event.playerId] != null ? board.contributors :
-      { ...board.contributors, [event.playerId]: { firstAt: event.at } },
+    contributors: contributor === prior ? board.contributors :
+      { ...board.contributors, [event.playerId]: contributor },
     quests: board.quests.map((q, i) => {
       const progress = q.progress + changes[i];
       const completedAt = progress === q.target && q.completedAt === null ? event.at : q.completedAt;

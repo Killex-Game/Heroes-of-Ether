@@ -81,7 +81,7 @@ const shop = [
     tier: "clan",
     count: 15,
     limit: 25,
-    icon: "assets/progression/webp/256/boosters/fire.webp",
+    icon: "assets/boosters/clan-v2/256/fire.webp?art=20261124-clan-art",
   },
   {
     id: "coins",

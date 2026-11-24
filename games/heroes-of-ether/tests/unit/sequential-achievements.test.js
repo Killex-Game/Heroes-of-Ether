@@ -39,7 +39,7 @@ test("Все цепочки по умолчанию расходуют цель;
     activity.EXTRA_ACHIEVEMENTS.filter((d) => d.exception)
       .map((d) => d.id)
       .sort(),
-    ["fan", "fashionista", "pet_exclusive", "pet_master", "pet_nursery"],
+    ["clan_quest_days", "clan_quest_five", "clan_quest_help", "clan_quest_seasons", "clan_quest_types", "fan", "fashionista", "pet_exclusive", "pet_master", "pet_nursery"],
   );
   const store = new ProfileStore({ now: () => now });
   for (const d of activity.EXTRA_ACHIEVEMENTS.filter((d) => !d.unavailable)) {

@@ -299,7 +299,7 @@ class ClanService {
       .map((c) => this.publicClan(c));
   }
   shop(profile) {
-    const { discount } = trophyBenefits(this.profiles.data.clans[profile.clanId]);
+    const { discount } = trophyBenefits(this.profiles.data.clans[profile.clanId], this.profiles.now());
     return [...BOOSTERS.values()]
       .filter((b) => b.tier === "clan")
       .map(({ id, name, icon, effect, price }) => ({
@@ -793,7 +793,7 @@ class ClanService {
         requireRight("buy");
         const b = BOOSTERS.get(input.boosterId);
         if (!b?.ready || b.tier !== "clan") fail("Выбери бустер из магазина клана.");
-        const amount = discountedPrice(b.price.amount, trophyBenefits(own).discount);
+        const amount = discountedPrice(b.price.amount, trophyBenefits(own, this.profiles.now()).discount);
         if ((own.treasury || 0) < amount) fail("Недостаточно эфира в казне.");
         for (const id of own.members) {
           const recipient = member(id),

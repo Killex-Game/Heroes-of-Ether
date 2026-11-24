@@ -23,7 +23,7 @@
     }),
     clan_shield: Object.freeze({
       name: "Клановый щит",
-      icon: "assets/progression/webp/256/boosters/clan_shield.webp?art=20261123-interface-art",
+      icon: "assets/boosters/clan-v2/256/clan_shield.webp?art=20261124-clan-art",
     }),
   });
   const shieldLevels = Object.freeze({
@@ -156,7 +156,7 @@
       name: "Огонь питомца",
       key: "Q",
       target: "direction",
-      icon: "assets/progression/webp/256/boosters/fire.webp?art=20261123-interface-art",
+      icon: "assets/boosters/clan-v2/256/fire.webp?art=20261124-clan-art",
     },
     claw: {
       id: "pet_claw",

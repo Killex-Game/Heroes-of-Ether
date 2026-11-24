@@ -27,8 +27,7 @@ test("Покупка восьми украшений: серверные цен�
   const start = structuredClone(store.find(auth.token).wallet);
   for (const item of paid) {
     const id = randomUUID();
-    assert.ok(Object.values(item.bonus).some(n => n > 0));
-    assert.ok(!item.ability);
+    assert.ok(item.ability || Object.values(item.bonus).some(n => n > 0));
     assert.throws(
       () =>
         store.setAccessory(auth.token, {

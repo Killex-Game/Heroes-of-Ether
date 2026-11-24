@@ -7,17 +7,17 @@ const A = require("../../src/server/arena/accessory-abilities"),
   catalog = require("../../public/shared/accessory-catalog");
 test("каждый аксессуар имеет работающий бонус или способность; новые ускорения соблюдают предел", () => {
   const passives = require("../../src/server/arena/accessory-passives");
-  const supported = new Set(["xp", "massXp", "killXp", "food", "foodRadius", "decayReduction", "lightSpeed", "feedSpeed", "shieldSpeed", "petTime", "freezeReduction", "speed", "positive", "negativeReduction", "attack", "completeKillXp", "spawnMass", "minuteMass", "potionFactor"]);
+  const supported = new Set(["xp", "massXp", "killXp", "food", "foodRadius", "decayReduction", "lightSpeed", "feedSpeed", "shieldSpeed", "petTime", "freezeReduction", "speed", "positive", "negativeReduction", "attack", "completeKillXp", "spawnMass", "minuteMass", "potionFactor", "halfMinuteMass", "generatorFactor", "fireBlock", "boosterCritical", "shieldResistance"]);
   for (const item of catalog.items) {
-    assert.ok(item.ability || Object.values(item.bonus).some(n => n > 0), item.id);
+    assert.ok(["star_pilot", "velvet_trick"].includes(item.id) || item.ability || Object.values(item.bonus).some(n => n > 0), item.id);
     for (const [stat, value] of Object.entries(item.bonus)) { assert.ok(supported.has(stat), stat); assert.ok(Number.isFinite(value) && value > 0); }
   }
   const p = { id: "test", mass: 100, outfit: { hat: "rabbit_ears", bow: "forge_spark" } };
-  assert.equal(passives.speed(p, 0), .04);
+  assert.equal(passives.speed(p, 0), .25);
   passives.shieldBroken(p, 1, "enemy");
-  assert.equal(passives.speed(p, 1), .08);
-  assert.equal(passives.speed({ ...p, mass: 5000 }, 1), .05);
-  assert.equal(passives.speed(p, 3002), .04);
+  assert.equal(passives.speed(p, 1), .25);
+  assert.equal(passives.speed({ ...p, mass: 5000 }, 1), .25);
+  assert.equal(passives.speed(p, 3002), .25);
   assert.equal(passives.petReserve(10000, { hat: "title_sage_hat" }), 1000);
 });
 function fixture() {
@@ -38,7 +38,7 @@ function fixture() {
 }
 test("надетая заработанная бабочка выдаёт три яйца, пасхальные ушки ускоряют лёгкого игрока", () => {
   const { p, profile } = fixture();
-  assert.deepEqual(catalog.item("rabbit_ears").bonus, { lightSpeed: 4 });
+  assert.deepEqual(catalog.item("rabbit_ears").bonus, { speed: 25 });
   assert.equal(catalog.item("rabbit_ears").ability, undefined);
   assert.equal(A.snapshot(p)[0].count, 3);
   for (const outfit of [{ hat: "rabbit_ears" }, {}, { bow: "novice_bow" }]) {

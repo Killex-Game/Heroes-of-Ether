@@ -127,13 +127,13 @@ for (const shield of shields) {
   });
 }
 
-test("All seven warheads travel at double speed and keep the same range", () => {
+test("All five warheads travel at double speed and keep the same range", () => {
   const { arena, owner, target } = scene();
   target.y = 9000;
   arena.combat.prepare(owner, BOOSTERS.get("warheads"), { aimX: 9000, aimY: 5000 }, 5000)();
   const shots = arena.combat.shots.slice();
   const origins = shots.map((shot) => ({ x: shot.x, y: shot.y }));
-  assert.equal(shots.length, 7);
+  assert.equal(shots.length, 5);
   arena.combat.update(5500);
   shots.forEach((shot, i) => near(Math.hypot(shot.x - origins[i].x, shot.y - origins[i].y), 100));
   arena.combat.update(7001);

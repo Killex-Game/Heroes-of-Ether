@@ -30,7 +30,7 @@ function scene() {
     });
   return { arena, a, b };
 }
-test("Меч удерживается 10 секунд, следует курсору и крупнейшей части, не летит", () => {
+test("Меч удерживается 5 секунд, следует курсору и крупнейшей части, не летит", () => {
   const { arena, a } = scene();
   arena.combat.prepare(a, BOOSTERS.get("fire_sword"), { aimX: 9000, aimY: 2000 }, 5000)();
   assert.equal(arena.combat.shots.length, 0);
@@ -47,9 +47,9 @@ test("Меч удерживается 10 секунд, следует курсо
     { id: "part2", mass: 2000, radius: radiusForMass(2000), x: 4000, y: 4000 },
   ];
   arena.syncParts(a);
-  arena.combat.update(14999);
+  arena.combat.update(9999);
   assert.equal(arena.combat.snapshot()[0].partId, "part2");
-  arena.combat.update(15000);
+  arena.combat.update(10000);
   assert.equal(arena.combat.snapshot().length, 0);
 });
 test("Непрерывное касание мечом ждёт повторного удара; щит и смерть работают", () => {

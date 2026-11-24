@@ -93,6 +93,7 @@ const PET_ACHIEVEMENTS = [
   return Object.freeze({ ...d, exception, cumulative: exception });
 });
 const EXTRA_ACHIEVEMENTS = Object.freeze([
+  ...require("./clan-quest-achievements").definitions,
   Object.freeze({
     ...entry(
       "fashionista",
@@ -382,7 +383,7 @@ const validationTargets = new Map(
 // Keep the same catalogue order, with one shape for the hot award scan. UI
 // definitions have optional presentation fields that are irrelevant here.
 const awardDefinitions = EXTRA_ACHIEVEMENTS.filter(d => !d.unavailable).map(d => ({
-  id: d.id, targets: d.thresholds, rewards: d.rewards, cumulative: d.exception === true,
+  id: d.id, targets: d.thresholds, rewards: d.rewards, cumulative: d.exception === true, fixedReward: d.fixedReward,
 }));
 const leagueSpent = LEAGUE_IDS.map((id) => {
   const d = EXTRA_ACHIEVEMENTS.find((d) => d.id === id),
@@ -492,6 +493,8 @@ function validateActivity(p, previous) {
   if (a?.marriageProgressVersion !== undefined && a.marriageProgressVersion !== 1)
     throw Error("Неизвестная версия прогресса брака.");
   (socialCalendarValidation ||= require("./social-calendar").validate)(p);
+  if (!prior || p.clanQuestAchievements !== previous.clanQuestAchievements)
+    require('./clan-quest-achievements').validate(p);
   if (!prior || p.eventAchievements !== previous.eventAchievements)
     (luckyWeekValidation ||= require("../events/lucky-week").validate)(p);
   if (a?.chatAccepted !== undefined && !integer(a.chatAccepted))
@@ -623,7 +626,7 @@ function awardExtra(p, at = Date.now()) {
         copiedClaims = true;
       }
       if (!d.cumulative) spent[id] += targets[degree];
-      p.greatness = sum(p.greatness, d.rewards[degree] * accounts.benefits(p, at).greatnessMultiplier);
+      p.greatness = sum(p.greatness, d.rewards[degree] * (d.fixedReward ? 1 : accounts.benefits(p, at).greatnessMultiplier));
       claimed[id] = ++degree;
     }
   }

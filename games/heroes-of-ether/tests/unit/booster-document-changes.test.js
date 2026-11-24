@@ -122,14 +122,14 @@ test("Огонь уничтожает массу до 300 включительн
   }
 });
 
-test("Торт растит на 3% текущей массы и сохраняет дробный остаток", () => {
+test("Торт растит на 1% текущей массы и сохраняет дробный остаток", () => {
   const { arena, a, b } = scene(1000);
   hit(arena, a, b, "cake");
   arena.boosterEffects.tick(b, 6000);
-  assert.equal(b.mass, 1030);
+  assert.equal(b.mass, 1010);
   arena.boosterEffects.tick(b, 7000);
-  assert.equal(b.mass, 1060);
-  assert.ok(Math.abs(b.cakeRemainder - 0.9) < 1e-8);
+  assert.equal(b.mass, 1020);
+  assert.ok(Math.abs(b.cakeRemainder - 0.1) < 1e-8);
 });
 
 test("Вихрь активируется без направления, следует за владельцем и работает 10 секунд", () => {
@@ -158,7 +158,7 @@ test("Вихрь активируется без направления, сле�
   arena.combat.update(6000);
   assert.equal(b.x, 1200);
   assert.equal(arena.ether[0].x, 1150);
-  assert.equal(arena.ether[1].x, 2050);
+  assert.equal(arena.ether[1].x, 2000);
   assert.equal(arena.combat.shots[0].x, 2000);
   // Movement after combat must also be reflected in the network snapshot.
   a.x = 3000;
@@ -205,7 +205,7 @@ test("Вихрь следует за каждой частью владельц�
     arena.combat.snapshot().map((s) => s.x),
     [1300, 1700],
   );
-  assert.equal(b.x, 1600); // Захват передаётся от меньшей части к более крупной.
+  assert.equal(b.x, 1700); // Захват передаётся от меньшей части к более крупной.
 });
 
 test("Указанные в документе снаряды вращаются как Торт, остановка и reduced motion отключают вращение", () => {

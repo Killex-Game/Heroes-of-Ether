@@ -200,7 +200,7 @@ test("Положительные бустеры: масса, щит, скоро�
   cake.hit("cake");
   assert.equal(cake.b.effects.cake, 55000);
   cake.arena.boosterEffects.tick(cake.b, 6000);
-  assert.equal(cake.b.mass, 1037, "защита от негативных эффектов не усиливает чужой Торт");
+  assert.equal(cake.b.mass, 1012, "защита от негативных эффектов не усиливает чужой Торт");
 });
 test("Опыт подарков: 30-секундные пакеты, компенсация и сгорание незачисленного остатка", () => {
   const store = new ProfileStore(),

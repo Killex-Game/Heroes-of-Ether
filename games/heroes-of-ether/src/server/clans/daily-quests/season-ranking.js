@@ -90,8 +90,9 @@ function capture(data, at, boards, {canSettle=true}={}) {
         if (profiles === data.profiles) profiles = copyRecord(profiles);
         const p = profiles[key] = copyProfile(original);
         p.clanQuestMedals = [...(p.clanQuestMedals || []),medal];
+        require('../../progression/clan-quest-achievements').season(p, state.end);
         chests.award(p,prize.reward,state.end,{multiply:false,label:
-          `${prize.name} медаль за сезон клановых заданий. Место ${row.rank}. ${prize.reward.bucks} эфира, ${prize.reward.coins} монет, ${prize.reward.crystals} кристаллов.`});
+          `${prize.name} медаль за сезон клановых заданий. Место ${row.rank}. ${prize.reward.bucks} эфира, ${prize.reward.coins} монет, ${prize.reward.crystals} кристаллов, ${prize.reward.greatness} величия.`});
         p.revision++; changed.push(key); members.push(id);
       }
       if (clans === data.clans) clans = {...clans};
@@ -133,7 +134,8 @@ function validate(data) {
       !Number.isSafeInteger(score.reachedAt) || score.reachedAt<state.start || score.reachedAt>=state.end) throw Error("Invalid clan season score");
     for (const ids of Object.values(state.days)) if (!Array.isArray(ids) || ids.length>5 || new Set(ids).size!==ids.length || ids.some(id=>typeof id!=="string")) throw Error("Invalid clan season counter");
     if (state.recipients?.some(r=>!validMedal(r)||!Array.isArray(r.members)||new Set(r.members).size!==r.members.length ||
-      JSON.stringify(r.reward)!==JSON.stringify(calendar.questPrize(r.place).reward))) throw Error("Invalid clan season rewards");
+      JSON.stringify(r.reward)!==JSON.stringify(calendar.questPrize(r.place).reward) &&
+      JSON.stringify(r.reward)!==JSON.stringify(Object.fromEntries(Object.entries(calendar.questPrize(r.place).reward).filter(([key])=>key!=='greatness'))))) throw Error("Invalid clan season rewards");
   }
   const validMedals = medals => medals === undefined || (Array.isArray(medals) &&
     medals.every(validMedal) && new Set(medals.map(m=>m.seasonId)).size===medals.length);

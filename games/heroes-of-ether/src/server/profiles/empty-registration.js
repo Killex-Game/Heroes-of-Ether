@@ -12,6 +12,7 @@ const defaults = {
   pets: require("../pets/pet-service").fresh(), roulette: require("../roulette/roulette-service").fresh(),
 };
 const optional = {
+  clanQuestAchievements: require('../progression/clan-quest-achievements').fresh(),
   account: require("../accounts/account-benefits").fresh(),
   social: { marriage: null, invitations: [], gifts: [], inviteReadyAt: 0 },
   appearance: { lobbyBackground: "default", avatarFrame: "default", profileBackground: "default",

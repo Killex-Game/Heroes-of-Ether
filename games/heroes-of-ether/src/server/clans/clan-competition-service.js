@@ -109,8 +109,8 @@ function groups(data, at, random) {
 }
 function startDay(data, at, random) {
   const state = data.competition,
-    start = dayStart(at) + 8 * HOUR,
-    end = dayStart(at) + (data.clanQuests?.calendarVersion===1 ? 21 : 24) * HOUR;
+    start = dayStart(at) + (data.clanQuests?.calendarVersion===1 ? 7 : 8) * HOUR,
+    end = dayStart(at) + (data.clanQuests?.calendarVersion===1 ? 22 : 24) * HOUR;
   if (at < start || at >= end) return;
   const assigned = new Set(state.week.groups.flatMap((g) => g.clans));
   for (let league = 0; league < LEAGUES.length; league++) {
@@ -358,7 +358,7 @@ function advance(
   }
   for (const c of Object.values(data.clans)) seasonTrophies.track(c, state.season);
   if (!state.week || state.week.end <= at) state.week = groups(data, at, random);
-  if (!state.day && at >= dayStart(at) + 8 * HOUR && at < dayStart(at) + (data.clanQuests?.calendarVersion===1?21:24) * HOUR && state.lastScheduledDay !== dayStart(at))
+  if (!state.day && at >= dayStart(at) + (data.clanQuests?.calendarVersion===1 ? 7 : 8) * HOUR && at < dayStart(at) + (data.clanQuests?.calendarVersion===1?22:24) * HOUR && state.lastScheduledDay !== dayStart(at))
     startDay(data, at, random);
   // A reward settled after downtime still expires from its original award time.
   expireChests(byId, at);
@@ -412,7 +412,7 @@ function advanceDeclared(data, at, random, byId) {
     state.week.start=Math.max(state.week.start,state.season.start);
     state.week.end=Math.min(state.week.end,state.season.end);
   }
-  if (!state.day && at>=dayStart(at)+8*HOUR && at<dayStart(at)+(data.clanQuests?.calendarVersion===1?21:24)*HOUR && state.lastScheduledDay!==dayStart(at)) {
+  if (!state.day && at>=dayStart(at)+(data.clanQuests?.calendarVersion===1?7:8)*HOUR && at<dayStart(at)+(data.clanQuests?.calendarVersion===1?22:24)*HOUR && state.lastScheduledDay!==dayStart(at)) {
     startDay(data,at,random);
     if(state.day) {state.day.start=Math.max(state.day.start,state.season.start);state.day.end=Math.min(state.day.end,state.season.end);}
   }
@@ -651,13 +651,13 @@ function due(data, at, cache) {
   const s = data.competition;
   if (data.clanQuests) {
     const announced = require("./daily-quests/service").active(data,at);
-    return !s?.controlled || (!s.season.settled && s.season.end<=at) || (!!announced && announced.id!==s.season.id) || (!!announced && (s.week.end<=at || (!s.day && s.lastScheduledDay!==dayStart(at) && at>=dayStart(at)+8*HOUR && at<dayStart(at)+(data.clanQuests?.calendarVersion===1?21:24)*HOUR))) || (s.day && s.day.end<=at) || (cache ? cache.worldChestExpiryDue(data.profiles,at,chests.needsExpiry) : Object.values(data.profiles).some(p=>chests.needsExpiry(p,at)));
+    return !s?.controlled || (!s.season.settled && s.season.end<=at) || (!!announced && announced.id!==s.season.id) || (!!announced && (s.week.end<=at || (!s.day && s.lastScheduledDay!==dayStart(at) && at>=dayStart(at)+(data.clanQuests?.calendarVersion===1?7:8)*HOUR && at<dayStart(at)+(data.clanQuests?.calendarVersion===1?22:24)*HOUR))) || (s.day && s.day.end<=at) || (cache ? cache.worldChestExpiryDue(data.profiles,at,chests.needsExpiry) : Object.values(data.profiles).some(p=>chests.needsExpiry(p,at)));
   }
   if (!s || s.season.end <= at || s.week?.end <= at || s.day?.end <= at) return true;
   if (cache ? cache.clanExpiryDue(data.clans, at) :
     Object.values(data.clans).some((c) => !c.competition?.seasonPeak || !c.competition?.trophies))
     return true;
-  if (!s.day && s.lastScheduledDay !== dayStart(at) && at >= dayStart(at) + 8 * HOUR && at < dayStart(at) + (data.clanQuests?.calendarVersion===1?21:24) * HOUR) return true;
+  if (!s.day && s.lastScheduledDay !== dayStart(at) && at >= dayStart(at) + (data.clanQuests?.calendarVersion===1 ? 7 : 8) * HOUR && at < dayStart(at) + (data.clanQuests?.calendarVersion===1?22:24) * HOUR) return true;
   return (
     (cache ? cache.worldChestExpiryDue(data.profiles, at, chests.needsExpiry)
       : Object.values(data.profiles).some((p) => chests.needsExpiry(p, at))) ||
@@ -701,7 +701,7 @@ function publicState(data, clan, at, parts = null) {
       return structuredClone(own.trophies || []);
     },
     seasonPeak: own.seasonPeak?.league ?? own.league,
-    trophyBenefits: rules.trophyBenefits(clan),
+    trophyBenefits: rules.trophyBenefits(clan, at),
     season: s?.season,
     week: s?.week ? { start: s.week.start, end: s.week.end } : null,
     get group() {
@@ -727,7 +727,7 @@ function publicState(data, clan, at, parts = null) {
             opponent: publicClan(data.clans[other]),
           }
         : null,
-    nextBattleAt: dayStart(at) + (at < dayStart(at) + 8 * HOUR ? 8 * HOUR : DAY + 8 * HOUR),
+    nextBattleAt: dayStart(at) + (at < dayStart(at) + (data.clanQuests?.calendarVersion===1 ? 7 : 8) * HOUR ? (data.clanQuests?.calendarVersion===1?7:8) * HOUR : DAY + (data.clanQuests?.calendarVersion===1?7:8) * HOUR),
     get personal() {
       return personalState();
     },

@@ -36,7 +36,7 @@ function setup(filePath) {
 }
 test("Вместимость: точные границы всех 15 уровней, сохранение и вступление до 50", (t) => {
   const f = setup(path.join(temporary(t, "clan-capacity"), "profiles.json"));
-  const capacities = [15, 15, 15, 20, 20, 25, 25, 30, 30, 35, 35, 40, 40, 50, 50];
+  const capacities = [15, 20, 30, 40, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50];
   for (let level = 1; level <= 15; level++) {
     const xp = clanXp(level),
       cap = capacities[level - 1];
@@ -66,21 +66,21 @@ test("Старая вместимость 15 обновляется по XP; з�
   disk.clans[f.id].crest = { ...kit.DEFAULT, frame: "f10_grand", symbol: kit.symbols[2].id };
   fs.writeFileSync(filePath, JSON.stringify(disk));
   const loaded = new ProfileStore({ filePath });
-  assert.equal(loaded.data.clans[f.id].capacity, 20);
+  assert.equal(loaded.data.clans[f.id].capacity, 40);
   assert.deepEqual(loaded.data.clans[f.id].crest, {
     ...disk.clans[f.id].crest,
     frame: kit.DEFAULT.frame,
   });
   f.act(f.head, "edit", { clanId: f.id, privacy: "closed" });
-  const applicants = Array.from({ length: 20 }, () => f.user());
+  const applicants = Array.from({ length: 40 }, () => f.user());
   for (const u of applicants) f.act(u, "apply", { clanId: f.id });
-  for (const u of applicants.slice(0, 19))
+  for (const u of applicants.slice(0, 39))
     f.act(f.head, "accept", { clanId: f.id, memberId: u.profile.id });
   assert.throws(
-    () => f.act(f.head, "accept", { clanId: f.id, memberId: applicants[19].profile.id }),
+    () => f.act(f.head, "accept", { clanId: f.id, memberId: applicants[39].profile.id }),
     /мест|вступил/,
   );
-  assert.equal(f.store.data.clans[f.id].members.length, 20);
+  assert.equal(f.store.data.clans[f.id].members.length, 40);
 });
 test("Новые пороги сохраняют XP и участников переполненного клана, но блокируют новые вступления", (t) => {
   const f = setup(path.join(temporary(t, "clan-rebalance-overflow"), "profiles.json"));
@@ -89,7 +89,7 @@ test("Новые пороги сохраняют XP и участников пе
   const outsider = f.user();
   f.store.save(f.store.data);
   const disk = JSON.parse(fs.readFileSync(f.store.filePath));
-  // This much XP used to mean level 15 with 50 seats, now level 6 with 25.
+  // This much XP used to mean level 15 with 50 seats, now level 6 with 50; all existing members remain.
   disk.clans[f.id].xp = 1740000;
   disk.clans[f.id].capacity = 50;
   fs.writeFileSync(f.store.filePath, JSON.stringify(disk));
@@ -97,7 +97,7 @@ test("Новые пороги сохраняют XP и участников пе
   const service = new ClanService(loaded);
   assert.equal(loaded.data.clans[f.id].xp, 1740000);
   assert.equal(service.state(f.head.token).mine.progress.level, 6);
-  assert.equal(loaded.data.clans[f.id].capacity, 25);
+  assert.equal(loaded.data.clans[f.id].capacity, 50);
   assert.deepEqual(loaded.data.clans[f.id].members, disk.clans[f.id].members);
   assert.throws(() => service.mutate(outsider.token, {
     action: "apply", clanId: f.id, requestId: randomUUID(),
@@ -118,7 +118,7 @@ test("Опыт участника автоматически открывает 
     ],
     Date.now(),
   );
-  assert.equal(f.store.data.clans[f.id].capacity, 20);
+  assert.equal(f.store.data.clans[f.id].capacity, 40);
   assert.equal(f.clans.state(f.head.token).mine.progress.level, 4);
 });
 test("Три особые рамки недоступны до 10 уровня и не списывают валюту при отказе", () => {

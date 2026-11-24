@@ -41,7 +41,7 @@ test("Вихрь с 16 частями сохраняет ближайшую це
         }
       }
       if (!source || !nearest) return { ...food };
-      const ratio = Math.min(1, (100 * dt) / nearest);
+      const ratio = Math.min(1, (200 * dt) / nearest);
       return { x: food.x + (source.x - food.x) * ratio, y: food.y + (source.y - food.y) * ratio };
     });
     arena.combat.vortex(shot, dt, 5000);
@@ -184,7 +184,7 @@ test("Вихрь: разные радиусы частей, одно притя�
   const x = b.x,
     y = b.y;
   arena.combat.update(5050);
-  assert.ok(Math.abs(Math.hypot(b.x - x, b.y - y) - 5) < 1e-8);
+  assert.ok(Math.abs(Math.hypot(b.x - x, b.y - y) - 10) < 1e-8);
   b.effects.sphere = 9000;
   const bx = b.x,
     by = b.y;
@@ -236,7 +236,7 @@ test("Вихрь передаёт захваченного соперника о
   assert.ok(b.x > 700 && b.y < 1100);
   assert.deepEqual(
     arena.ether.map((f) => f.y),
-    [1095, 1095, 1095],
+    [1090, 1090, 1090],
   );
   assert.deepEqual(
     arena.ether.map((f) => f.x),

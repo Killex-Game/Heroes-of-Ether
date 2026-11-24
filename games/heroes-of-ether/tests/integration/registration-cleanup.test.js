@@ -34,6 +34,8 @@ test("Every nonempty or unknown branch protects an unconfirmed nickname", async 
     const base = f.profiles.find(f.a.token);
     const changes = [
       p => p.personal.nameSet = true, p => p.personal.firstNameSetAt = 1,
+      p => p.clanQuestAchievements.lastDay = '2026-11-17',
+      p => p.clanQuestAchievements.types.push('food'), p => p.clanQuestAchievements.unknown = true,
       p => p.personal.introPending = false, p => p.level = 2, p => p.greatness = 1,
       p => p.progress.xp = 1, p => p.progress.lastLife = {}, p => p.progress.session = {},
       p => p.inventory.freeze = 1, p => p.receipts.oldPurchase = {},

@@ -23,6 +23,7 @@ function start(arena, p, now) {
   p.accessoryLife = p.lifeId;
   p.accessoryMassAt = now;
   p.accessoryMassElapsed = 0;
+  p.accessoryHalfMinuteElapsed = 0;
   const mass = catalog.bonus(p.outfit, "spawnMass");
   if (mass) arena.gainMass(p, mass, undefined, now);
 }
@@ -32,6 +33,12 @@ function tick(arena, p, now) {
   p.accessoryMassAt = now;
   // Only observed live time counts; a stalled or suspended process cannot pay minutes in bulk.
   if (elapsed <= 0 || elapsed > 250) return;
+  p.accessoryHalfMinuteElapsed = (p.accessoryHalfMinuteElapsed || 0) + elapsed;
+  if (p.accessoryHalfMinuteElapsed >= 30000) {
+    p.accessoryHalfMinuteElapsed -= 30000;
+    const mass = catalog.bonus(p.outfit, "halfMinuteMass");
+    if (mass) require("../pets/arena-pets").gainMassEvenly(arena, p, mass, now);
+  }
   p.accessoryMassElapsed += elapsed;
   if (p.accessoryMassElapsed < 60000) return;
   p.accessoryMassElapsed -= 60000;
@@ -68,4 +75,17 @@ function advancePet(state, capacity, from, to, life) {
   life.accessoryPetMs = Math.max(0, (life.accessoryPetMs || 0) - used);
   return used + petRules.advance(state, capacity, from + used, to, true);
 }
-module.exports = { speed, shieldBroken, petReserve, advancePet, outgoing, incoming, start, tick };
+function chance(p, stat, random) {
+  const percent = catalog.bonus(p.outfit, stat);
+  return percent > 0 && random() * 100 < percent;
+}
+function critical(p, booster, random) {
+  if (!chance(p, "boosterCritical", random)) return booster;
+  // Double strength once per cast. Duration, cadence and projectile count stay unchanged.
+  const result = {...booster, accessoryCritical: 2};
+  for (const key of ["amount", "fraction", "splitLimitDamage", "growthFraction", "speedBonus", "pushDistance", "fireFraction"])
+    if (Number.isFinite(result[key])) result[key] *= 2;
+  if (Number.isFinite(result.multiplier)) result.multiplier = 1 + 2 * (result.multiplier - 1);
+  return result;
+}
+module.exports = { speed, shieldBroken, petReserve, advancePet, outgoing, incoming, start, tick, chance, critical };

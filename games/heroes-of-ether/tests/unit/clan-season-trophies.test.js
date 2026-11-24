@@ -111,7 +111,7 @@ test("Кубки: перерыв в работе не создаёт награ�
   f.time("2028-08-10T08:00:00Z");
   f.profiles.refreshCompetition();
   assert.equal(f.c(head).competition.trophies.length, 1);
-  assert.equal(f.p(head).wallet.bucks, before + 5000);
+  assert.equal(f.p(head).wallet.bucks, before + 2000);
   f.time("2027-06-01T08:00:00Z");
   f.profiles.refreshCompetition();
   assert.equal(f.c(head).competition.trophies.length, 1);
@@ -154,7 +154,7 @@ test("Скидка: лучший кубок, серверная цена, пов
   f.profiles.refreshCompetition();
   assert.equal(f.c(head).competition.trophies.length, 2);
   assert.equal(f.p(member).seasonTrophies.length, 2);
-  assert.equal(f.profiles.view(f.p(member)).seasonBenefits.discount, 15);
+  assert.equal(f.profiles.view(f.p(member)).seasonBenefits.discount, 2, "expired champion cup no longer discounts; the new bronze cup applies");
   for (const price of [0, 1, 99, 100, 101, 999, Number.MAX_SAFE_INTEGER]) {
     const expected = Number(BigInt(price) - (BigInt(price) * 15n) / 100n);
     assert.equal(rules.discountedPrice(price, 15), expected);

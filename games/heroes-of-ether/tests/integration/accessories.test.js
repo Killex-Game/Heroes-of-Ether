@@ -118,12 +118,12 @@ test("Бабочка не усиливает массовые бустеры, Т
     arena.mainBody(p),
   );
   arena.boosterEffects.tick(p, 6000);
-  assert.equal(p.mass, 175);
+  assert.equal(p.mass, 171);
   Object.assign(q, { x: p.x, y: p.y, mass: 10, radius: radiusForMass(10), protectedUntil: 0 });
   p.protectedUntil = 0;
   const event = arena.resolveAbsorptions(7000)[0];
   assert.equal(event.gain, 8);
-  assert.equal(p.mass, 183);
+  assert.equal(p.mass, 179);
 });
 test("Шапка: 3 × 1,1 округляется до 3 за поглощение, каждая минута округляется отдельно, лимит сохраняется", () => {
   const store = new ProfileStore(),

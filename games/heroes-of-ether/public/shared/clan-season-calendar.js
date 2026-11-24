@@ -37,18 +37,18 @@
   }
   function daily(at, mode = "battle") {
     const midnight = Math.floor((at + OFFSET) / DAY) * DAY - OFFSET;
-    const opening = mode === "quests" ? 6 : 8;
-    return { start: midnight + opening * HOUR, end: midnight + 21 * HOUR,
+    const opening = 7;
+    return { start: midnight + opening * HOUR, end: midnight + 22 * HOUR,
       nextStart: midnight + (at < midnight + opening * HOUR ? 0 : DAY) + opening * HOUR };
   }
   const QUEST_PRIZES = Object.freeze([
-    [1, 3, "diamond", "Бриллиантовая", 250, 3000, 250],
-    [4, 10, "platinum", "Платиновая", 200, 2500, 200],
-    [11, 20, "gold", "Золотая", 150, 2000, 150],
-    [21, 25, "silver", "Серебряная", 100, 1500, 100],
-    [26, 30, "bronze", "Бронзовая", 50, 1000, 50],
-  ].map(([from, to, id, name, bucks, coins, crystals]) => Object.freeze({from, to, id, name,
-    reward: Object.freeze({bucks, coins, crystals})})));
+    [1, 3, "diamond", "Бриллиантовая", 250, 3000, 250, 100],
+    [4, 10, "platinum", "Платиновая", 200, 2500, 200, 75],
+    [11, 20, "gold", "Золотая", 150, 2000, 150, 50],
+    [21, 25, "silver", "Серебряная", 100, 1500, 100, 25],
+    [26, 30, "bronze", "Бронзовая", 50, 1000, 50, 10],
+  ].map(([from, to, id, name, bucks, coins, crystals, greatness]) => Object.freeze({from, to, id, name,
+    reward: Object.freeze({bucks, coins, crystals, greatness})})));
   const questPrize = rank => QUEST_PRIZES.find(p => rank >= p.from && rank <= p.to) || null;
   const localTime = at => new Date(at).toLocaleTimeString("ru-RU", {hour: "2-digit", minute: "2-digit"});
   const localDate = at => new Date(at).toLocaleDateString("ru-RU");

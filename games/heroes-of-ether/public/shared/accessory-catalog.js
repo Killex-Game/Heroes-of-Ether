@@ -9,11 +9,15 @@
   // Preliminary balance for formerly decorative items. Existing abilities and
   // bonuses are preserved; this table is the single place to tune the new ones.
   const provisionalBuffs = Object.freeze({
-    viking_hat: { shieldSpeed: 4 }, sombrero_hat: { decayReduction: 5 },
-    striped_bow: { feedSpeed: 3 }, black_bow: { massXp: 5 }, red_bow: { killXp: 5 },
-    mushroom_hat: { foodRadius: 5 }, cowboy_hat: { lightSpeed: 3 }, gold_bow: { petTime: 6 },
-    rabbit_ears: { lightSpeed: 4 }, may_wreath: { petTime: 8 }, royal_page: { massXp: 8 },
-    silk_peony: { freezeReduction: 8 }, royal_swallow: { feedSpeed: 4 },
+    viking_hat: {}, sombrero_hat: { speed: 15 },
+    striped_bow: { positive: 20, negativeReduction: 20, halfMinuteMass: 100 },
+    black_bow: { xp: 10 }, red_bow: { speed: 25 }, mushroom_hat: {},
+    cowboy_hat: { positive: 5, halfMinuteMass: 100 }, gold_bow: { xp: 15, generatorFactor: 2 },
+    rabbit_ears: { speed: 25 }, may_wreath: { petTime: 8 }, royal_page: { massXp: 8 },
+    forest_hood: { speed: 10 }, solar_ribbon: { fireBlock: 10 },
+    forest_moth: { negativeReduction: 20 }, amber_drop: { boosterCritical: 10 },
+    cherry_sweet: { foodRadius: 30 }, forge_spark: { shieldResistance: 10 },
+    silk_peony: { positive: 20 }, royal_swallow: { xp: 30, negativeReduction: 10 },
     title_experienced_hat: { foodRadius: 15 }, title_experienced_bow: { xp: 15 },
     title_expert_hat: { speed: 10 }, title_expert_bow: { xp: 20, positive: 20 },
     title_sage_hat: { petTime: 10 }, title_sage_bow: { xp: 25, positive: 25, speed: 5, negativeReduction: 5 },
@@ -40,6 +44,11 @@
     attack: `+${value}% к силе атакующих бустеров.`,
     completeKillXp: `+${value}% опыта за полное поглощение соперника.`,
     spawnMass: `+${value} массы при появлении на арене.`,
+    halfMinuteMass: `+${value} массы за каждые 30 секунд жизни на арене.`,
+    generatorFactor: `Природный эфир с арены учитывается Эфирным генератором в ${value} раза быстрее.`,
+    fireBlock: `${value}% вероятности отразить действие Огня.`,
+    boosterCritical: `${value}% вероятности удвоить силу применённого бустера.`,
+    shieldResistance: `${value}% вероятности сохранить щит при попытке его снятия.`,
     minuteMass: `+${value} массы за каждую минуту жизни на арене.`,
     potionFactor: `Сила и длительность эффектов зелий x${value}.`,
     shieldSpeed: `После снятия щита вражеским бустером: +${value}% скорости на 3 секунды, не чаще раза в 20 секунд.`,
@@ -58,6 +67,13 @@
     expert: "v2", sage: "v3", master: "v2", pro: "v2",
     prince: "v3", king: "v3", emperor: "v2", boss: "v2",
   });
+  const extraAbilities = {
+    viking_hat: [["fire_sword", 3, "Огненный меч"], ["meat", 3, "Мясо"]],
+    sombrero_hat: [["sponge", 3, "Губка"]],
+    mushroom_hat: [["poison", 3, "Яд"], ["mega_poison", 3, "Мега яд"]],
+    star_pilot: [], velvet_trick: [],
+  };
+  const abilityList = item => item?.abilities || (item?.ability ? [item.ability] : []);
   const items = Object.freeze([
     Object.freeze({
       id: "viking_hat",
@@ -283,7 +299,7 @@
         boosterId: "cake",
         name: "Торт",
         count: chargesPerLife,
-        icon: "assets/boosters/png/cake.png?art=20261123-interface-art",
+        icon: "assets/boosters/clan-v2/256/cake.webp?art=20261124-clan-art",
       },
       description:
         "Повторный Торт обновляет действие по текущим правилам, без накопления эффекта.",
@@ -315,7 +331,7 @@
         boosterId: "fire",
         name: "Огонь",
         count: chargesPerLife,
-        icon: "assets/progression/webp/256/boosters/fire.webp?art=20261123-interface-art",
+        icon: "assets/boosters/clan-v2/256/fire.webp?art=20261124-clan-art",
       },
       description: "Сохраняет обычные правила Огня и защиты.",
     }),
@@ -390,7 +406,7 @@
         boosterId: "vortex",
         name: "Вихрь",
         count: chargesPerLife,
-        icon: "assets/progression/webp/256/boosters/whirlwind.webp?art=20261123-interface-art",
+        icon: "assets/boosters/clan-v2/256/vortex.webp?art=20261124-clan-art",
       },
       description:
         "Обычный срок действия, без сложения силы пересекающихся зон.",
@@ -519,20 +535,33 @@
       ...(slot === "hat" && titleAbilities[t.id] && { ability: Object.freeze({
         boosterId: titleAbilities[t.id][0], count: titleAbilities[t.id][1], name: titleAbilities[t.id][2],
         icon: titleAbilities[t.id][0] === "fire"
-          ? "assets/progression/webp/256/boosters/fire.webp?art=20261123-interface-art"
+          ? "assets/boosters/clan-v2/256/fire.webp?art=20261124-clan-art"
           : "assets/boosters/png/" + titleAbilities[t.id][0] + ".png",
       }) }),
       bonus: Object.freeze({}), bonusLabel: "За титул «" + t.name + "»",
       description: "Декоративный аксессуар",
     }))),
-  ].map(accessory => {
+  ].map(original => {
+    let accessory = original;
+    if (Object.hasOwn(extraAbilities, original.id)) {
+      const abilities = Object.freeze(extraAbilities[original.id].map(([boosterId, count, name]) => Object.freeze({
+        boosterId, count, name, icon: boosterId === "fire_sword"
+          ? "assets/boosters/clan-v2/256/fire_sword.webp?art=20261124-clan-art"
+          : "assets/boosters/png/" + boosterId + ".png?art=20261123-interface-art",
+      })));
+      accessory = {...original, abilities, ability: abilities[0]};
+    }
+    const mapped = abilityList(accessory).map(a => ["fire","fire_sword","cake","warheads","vortex","awl","clan_shield"].includes(a.boosterId)
+      ? Object.freeze({...a, icon: `assets/boosters/clan-v2/256/${a.boosterId}.webp?art=20261124-clan-art`}) : a);
+    if (mapped.some((a,i) => a !== abilityList(accessory)[i])) accessory = {...accessory, abilities: Object.freeze(mapped), ability: mapped[0]};
     const buff = provisionalBuffs[accessory.id];
-    if (!buff) return accessory;
-    return Object.freeze({ ...accessory, bonus: Object.freeze(buff),
-      bonusLabel: Object.entries(buff).map(([stat, value]) => buffText(stat, value)).join(" "),
-      description: accessory.ability
-        ? `На одну жизнь: ${accessory.ability.count} применений бустера «${accessory.ability.name}» по клавише E. Одно нажатие расходует один заряд.`
-        : "Бонус действует, пока аксессуар надет.",
+    if (!buff && accessory === original) return original;
+    const abilities = abilityList(accessory);
+    return Object.freeze({ ...accessory, bonus: Object.freeze(buff || accessory.bonus),
+      bonusLabel: Object.entries(buff || accessory.bonus).map(([stat, value]) => buffText(stat, value)).join(" "),
+      description: abilities.length
+        ? "На одну жизнь по клавише E: " + abilities.map(a => `${a.count} применений «${a.name}»`).join(", затем ") + ". Одно нажатие расходует один заряд."
+        : Object.values(buff || accessory.bonus).some(v => v > 0) ? "Бонус действует, пока аксессуар надет." : "Награда события. Свойства будут доступны с его запуском.",
     });
   }));
   const slots = Object.freeze(["bow", "hat"]);
@@ -569,5 +598,5 @@
       );
     return false;
   }
-  return { items, titleSets, slots, item, outfit, bonus, isOwned, provisionalBuffs };
+  return { items, titleSets, slots, item, outfit, bonus, isOwned, provisionalBuffs, abilityList };
 });

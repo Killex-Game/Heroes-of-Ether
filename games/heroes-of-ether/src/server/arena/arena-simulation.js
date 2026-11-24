@@ -800,6 +800,7 @@ class Arena {
         "Подожди мгновение перед следующим применением этого бустера.",
         409,
       );
+    booster = accessoryPassives.critical(p, booster, this.random);
     const alchemyCast = alchemy.prepare(p, booster, now, !accessory);
     booster = booster.flightMs || booster.kind === "vortex"
       ? alchemyCast.booster : accessoryPassives.outgoing(p, alchemyCast.booster);
@@ -1049,7 +1050,10 @@ class Arena {
           const offset = hit * 4;
           bounds[offset] = body.x; bounds[offset + 1] = body.y;
           bounds[offset + 2] = body.radius * foodRadius; bounds[offset + 3] = body.radius;
-          if (!orb.ejected) { p.questFoodCount++; p.alchemyNatural = (p.alchemyNatural || 0) + orb.value; }
+          if (!orb.ejected) {
+            p.questFoodCount++;
+            p.alchemyNatural = (p.alchemyNatural || 0) + orb.value * Math.max(1, accessories.bonus(p.outfit, "generatorFactor"));
+          }
           p.clanFoodCount++;
           removed[i] = 1;
           removedCount++;

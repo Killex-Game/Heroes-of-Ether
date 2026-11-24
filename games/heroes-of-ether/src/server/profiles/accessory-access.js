@@ -32,7 +32,7 @@ function outfit(profile) {
 // Порядок E фиксирован: все заряды бабочки, затем шапки.
 function abilities(profile) {
   const worn = outfit(profile);
-  return [worn.bow, worn.hat].filter((id) => catalog.item(id)?.ability);
+  return [worn.bow, worn.hat].filter((id) => catalog.abilityList(catalog.item(id)).length);
 }
 function ability(profile) {
   return abilities(profile)[0] || null;

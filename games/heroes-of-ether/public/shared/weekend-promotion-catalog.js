@@ -665,49 +665,49 @@
         "id": "fire",
         "name": "Огонь",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/fire.webp?art=20261123-interface-art"
+        "icon": "assets/boosters/clan-v2/256/fire.webp?art=20261124-clan-art"
       },
       {
         "kind": "booster",
         "id": "cake",
         "name": "Торт",
         "amount": 200,
-        "icon": "assets/boosters/png/cake.png?art=20261123-interface-art"
+        "icon": "assets/boosters/clan-v2/256/cake.webp?art=20261124-clan-art"
       },
       {
         "kind": "booster",
         "id": "warheads",
         "name": "Боеголовки",
         "amount": 200,
-        "icon": "assets/boosters/png/warheads.png?art=20261123-interface-art"
+        "icon": "assets/boosters/clan-v2/256/warheads.webp?art=20261124-clan-art"
       },
       {
         "kind": "booster",
         "id": "vortex",
         "name": "Вихрь",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/whirlwind.webp?art=20261123-interface-art"
+        "icon": "assets/boosters/clan-v2/256/vortex.webp?art=20261124-clan-art"
       },
       {
         "kind": "booster",
         "id": "awl",
         "name": "Шило",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/awl.webp?art=20261123-interface-art"
+        "icon": "assets/boosters/clan-v2/256/awl.webp?art=20261124-clan-art"
       },
       {
         "kind": "booster",
         "id": "clan_shield",
         "name": "Клановый щит",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/clan_shield.webp?art=20261123-interface-art"
+        "icon": "assets/boosters/clan-v2/256/clan_shield.webp?art=20261124-clan-art"
       },
       {
         "kind": "booster",
         "id": "fire_sword",
         "name": "Огненный меч",
         "amount": 200,
-        "icon": "assets/progression/webp/256/boosters/flaming_sword.webp?art=20261123-interface-art"
+        "icon": "assets/boosters/clan-v2/256/fire_sword.webp?art=20261124-clan-art"
       }
     ]
   },

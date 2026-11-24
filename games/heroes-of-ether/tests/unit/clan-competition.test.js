@@ -754,8 +754,8 @@ test("Ничья даёт фиксированную награду, порог 
     chestId: null,
     expiresAt: null,
   });
-  assert.equal(comp.outcome(0, 16, 0, 4999), "stay");
-  assert.equal(comp.outcome(0, 16, 0, 5000), "promote");
+  assert.equal(comp.outcome(0, 16, 0, 999), "stay");
+  assert.equal(comp.outcome(0, 16, 0, 1000), "promote");
   assert.equal(comp.outcome(0, 16, 3, 10000), "stay");
   comp.validate(f.store.data);
   const bad = structuredClone(f.store.data);
@@ -771,7 +771,7 @@ test("Медали клана: призовое место без порога, 
     group = next.competition.week.groups[0],
     ids = [...group.clans].sort();
   ids.forEach((id, i) => {
-    next.competition.week.scores[id] = { kills: [6000, 5000, 4999, 4000][i] || 0, members: {} };
+    next.competition.week.scores[id] = { kills: [2000, 1000, 999, 900][i] || 0, members: {} };
   });
   next.clans[ids[0]].competition.medals = { bronze: 1 };
   f.store.save(next, f.now());

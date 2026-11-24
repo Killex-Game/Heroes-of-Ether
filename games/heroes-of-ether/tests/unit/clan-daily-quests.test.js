@@ -2,13 +2,13 @@
 const test = require("node:test"), assert = require("node:assert/strict");
 const q = require("../../src/server/clans/daily-quests/engine");
 const seasons = require("../../src/server/clans/daily-quests/seasons");
-const start = Date.parse("2026-11-14T03:00:00Z"), end = start + 15 * 3600000;
+const start = Date.parse("2026-11-14T04:00:00Z"), end = start + 15 * 3600000;
 const catalog = { version: 1, items: q.GROUPS.flatMap((group, i) => [0, 1].map(n => ({
   id: `${group}${n}`, group, name: group, metric: ["xp", "kills", "hookHits", "shieldUses", "arenaSeconds"][i],
   target: 10, reward: { kind: "crystals", amount: 500 },
 }))) };
 const event = (playerId, sequence, deltas, at = start) => ({ playerId, sequence, clanId: "c", deltas, at });
-test("MSK boundaries: exactly 06:00 starts; 21:00 closes; previous ranking retained until 06:00", () => {
+test("MSK boundaries: exactly 07:00 starts; 22:00 closes; previous ranking retained until 07:00", () => {
   assert.equal(q.period(start - 1).active, false); assert.equal(q.period(start).active, true);
   assert.equal(q.period(end - 1).active, true); assert.equal(q.period(end).active, false);
   assert.equal(q.period(start + 86400000 - 1).id, "2026-11-14");
@@ -56,7 +56,7 @@ test("frozen shared boards preserve earlier progress and reward plans across con
   assert.equal(q.record(later, event('p', 2, { hookHits: 1 }, end)).accepted, false);
   assert.equal(q.record(later, event('late', 1, { hookHits: 1 })).accepted, false);
 });
-test("all prizes only after 21:00, full amount for every contributor to ANY task, including late participant", () => {
+test("all prizes only after 22:00, full amount for every contributor to ANY task, including late participant", () => {
   let board = q.createBoard("c", catalog, start);
   board = q.record(board, event("p", 1, { xp: 10 })).board;
   board = q.record(board, event("late", 1, { kills: 1 }, end - 1)).board;

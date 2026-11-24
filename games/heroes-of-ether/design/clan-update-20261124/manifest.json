@@ -1,0 +1,86 @@
+[
+  {
+    "id": "fire",
+    "source": "fire.png",
+    "prompt": "Redraw the first reference as a polished hand-painted fantasy game inventory icon. The second reference is STYLE ONLY: match the refined illustrative shading, confident clean contours and rich but restrained materials of the human avatar, do not include any character or portrait. One compact upright orange-red flame with a warm golden core. Preserve recognizable silhouette and three main flame tongues. The only object is the flame, no pedestal. Single icon centered in square 1024x1024 transparent canvas, entire silhouette within 8 percent padding on every side. True transparent background and empty corners. Soft controlled highlights, no sparkle particles, no hard glossy glare, no background, no text, no label, no frame around the icon. Preserve the established item identity and palette while harmonizing painting quality with the avatar. Crisp readable at 48 and 64 pixels. Do not alter any avatar or arena shield effect.",
+    "tool": "image_gen",
+    "transparent_background": true
+  },
+  {
+    "id": "fire_sword",
+    "source": "fire_sword.png",
+    "prompt": "Redraw the first reference as a polished hand-painted fantasy game inventory icon. The second reference is STYLE ONLY: match the refined illustrative shading, confident clean contours and rich but restrained materials of the human avatar, do not include any character or portrait. One perfectly straight silver sword diagonally from bottom left to top right, gold symmetric guard, violet grip and gemstone, restrained orange flame around blade. Correct sword geometry, no bent blade. Single icon centered in square 1024x1024 transparent canvas, entire silhouette within 8 percent padding on every side. True transparent background and empty corners. Soft controlled highlights, no sparkle particles, no hard glossy glare, no background, no text, no label, no frame around the icon. Preserve the established item identity and palette while harmonizing painting quality with the avatar. Crisp readable at 48 and 64 pixels. Do not alter any avatar or arena shield effect.",
+    "tool": "image_gen",
+    "transparent_background": true
+  },
+  {
+    "id": "cake",
+    "source": "cake.png",
+    "prompt": "Redraw the first reference as a polished hand-painted fantasy game inventory icon. The second reference is STYLE ONLY: match the refined illustrative shading, confident clean contours and rich but restrained materials of the human avatar, do not include any character or portrait. One compact round golden sponge cake on a gold plate with purple icing, exactly three purple cream swirls and a few round gold sugar decorations. Preserve stout cake proportions, not a tower. Single icon centered in square 1024x1024 transparent canvas, entire silhouette within 8 percent padding on every side. True transparent background and empty corners. Soft controlled highlights, no sparkle particles, no hard glossy glare, no background, no text, no label, no frame around the icon. Preserve the established item identity and palette while harmonizing painting quality with the avatar. Crisp readable at 48 and 64 pixels. Do not alter any avatar or arena shield effect.",
+    "tool": "image_gen",
+    "transparent_background": true
+  },
+  {
+    "id": "warheads",
+    "source": "warheads.png",
+    "prompt": "Redraw the first reference as a polished hand-painted fantasy game inventory icon. The second reference is STYLE ONLY: match the refined illustrative shading, confident clean contours and rich but restrained materials of the human avatar, do not include any character or portrait. Exactly FIVE separate fantasy rockets in a clear compact fan aimed upward, one center rocket and two to each side. Gold noses, red fins, pale metal body, blue round window. Each rocket must have straight axial geometry and intact fins. Distinct clean silhouettes, no merged parts. Single icon centered in square 1024x1024 transparent canvas, entire silhouette within 8 percent padding on every side. True transparent background and empty corners. Soft controlled highlights, no sparkle particles, no hard glossy glare, no background, no text, no label, no frame around the icon. Preserve the established item identity and palette while harmonizing painting quality with the avatar. Crisp readable at 48 and 64 pixels. Do not alter any avatar or arena shield effect.",
+    "tool": "image_gen",
+    "transparent_background": true
+  },
+  {
+    "id": "vortex",
+    "source": "vortex.png",
+    "prompt": "Redraw the first reference as a polished hand-painted fantasy game inventory icon. The second reference is STYLE ONLY: match the refined illustrative shading, confident clean contours and rich but restrained materials of the human avatar, do not include any character or portrait. One upright tapered violet magic whirlwind wrapped in flowing turquoise bands. Clearly readable broad circular open top and narrow base. Coherent smooth spiral with proper perspective, no floating disconnected fragments. Single icon centered in square 1024x1024 transparent canvas, entire silhouette within 8 percent padding on every side. True transparent background and empty corners. Soft controlled highlights, no sparkle particles, no hard glossy glare, no background, no text, no label, no frame around the icon. Preserve the established item identity and palette while harmonizing painting quality with the avatar. Crisp readable at 48 and 64 pixels. Do not alter any avatar or arena shield effect.",
+    "tool": "image_gen",
+    "transparent_background": true
+  },
+  {
+    "id": "awl",
+    "source": "awl.png",
+    "prompt": "Redraw the first reference as a polished hand-painted fantasy game inventory icon. The second reference is STYLE ONLY: match the refined illustrative shading, confident clean contours and rich but restrained materials of the human avatar, do not include any character or portrait. One awl diagonally from bottom left to top right, plump violet wood handle, gold ferrule, a perfectly straight slender pointed silver metal shaft. Preserve tool recognition. Single icon centered in square 1024x1024 transparent canvas, entire silhouette within 8 percent padding on every side. True transparent background and empty corners. Soft controlled highlights, no sparkle particles, no hard glossy glare, no background, no text, no label, no frame around the icon. Preserve the established item identity and palette while harmonizing painting quality with the avatar. Crisp readable at 48 and 64 pixels. Do not alter any avatar or arena shield effect.",
+    "tool": "image_gen",
+    "transparent_background": true
+  },
+  {
+    "id": "clan_shield",
+    "source": "clan_shield.png",
+    "prompt": "Redraw the first reference as a polished hand-painted fantasy game inventory icon. The second reference is STYLE ONLY: match the refined illustrative shading, confident clean contours and rich but restrained materials of the human avatar, do not include any character or portrait. One frontal symmetrical fantasy shield icon, warm gold rim, silver recessed face, gold four-point star in center and small gold winglike side flanges. Precise bilateral symmetry, correct single shield contour. This is an inventory ICON only, no aura/effect. Single icon centered in square 1024x1024 transparent canvas, entire silhouette within 8 percent padding on every side. True transparent background and empty corners. Soft controlled highlights, no sparkle particles, no hard glossy glare, no background, no text, no label, no frame around the icon. Preserve the established item identity and palette while harmonizing painting quality with the avatar. Crisp readable at 48 and 64 pixels. Do not alter any avatar or arena shield effect.",
+    "tool": "image_gen",
+    "transparent_background": true
+  },
+  {
+    "id": "clan_quest_help",
+    "prompt": "Create a new transparent fantasy game achievement icon in exactly the polished illustrated material style of the supplied reference. A gold armoured hand gently supporting one rolled parchment with a single green check mark embossed as a simple symbol. Cooperation and first contribution. No lettering. One coherent compact centered emblem on square transparent canvas, 8 percent clear padding. Entire silhouette visible. Rich but restrained colours, hand-painted soft shading, clean convincing geometry, minimal glare, no sparkles, no border/frame, no scene, no background, no text. Readable at 64px. Use the reference only for style and colour harmony, not its flag design.",
+    "tool": "image_gen",
+    "transparent_background": true,
+    "source": "clan_quest_help.png"
+  },
+  {
+    "id": "clan_quest_five",
+    "prompt": "Create a new transparent fantasy game achievement icon in exactly the polished illustrated material style of the supplied reference. Five compact cream parchment scrolls in a clear fan, each with a small green check mark, tied together by one violet ribbon. Exactly five scrolls, easily countable. One coherent compact centered emblem on square transparent canvas, 8 percent clear padding. Entire silhouette visible. Rich but restrained colours, hand-painted soft shading, clean convincing geometry, minimal glare, no sparkles, no border/frame, no scene, no background, no text. Readable at 64px. Use the reference only for style and colour harmony, not its flag design.",
+    "tool": "image_gen",
+    "transparent_background": true,
+    "source": "clan_quest_five.png"
+  },
+  {
+    "id": "clan_quest_days",
+    "prompt": "Create a new transparent fantasy game achievement icon in exactly the polished illustrated material style of the supplied reference. A sturdy gold and warm stone pillar with a small violet pennant and three stacked cream calendar leaves without letters or numerals, a simple green check symbol on the front. One coherent compact centered emblem on square transparent canvas, 8 percent clear padding. Entire silhouette visible. Rich but restrained colours, hand-painted soft shading, clean convincing geometry, minimal glare, no sparkles, no border/frame, no scene, no background, no text. Readable at 64px. Use the reference only for style and colour harmony, not its flag design.",
+    "tool": "image_gen",
+    "transparent_background": true,
+    "source": "clan_quest_days.png"
+  },
+  {
+    "id": "clan_quest_types",
+    "prompt": "Create a new transparent fantasy game achievement icon in exactly the polished illustrated material style of the supplied reference. An open cream quest book with a small gold sword, gold hammer and green leaf arranged neatly above its pages. Different specialties, clear separated forms, no letters. One coherent compact centered emblem on square transparent canvas, 8 percent clear padding. Entire silhouette visible. Rich but restrained colours, hand-painted soft shading, clean convincing geometry, minimal glare, no sparkles, no border/frame, no scene, no background, no text. Readable at 64px. Use the reference only for style and colour harmony, not its flag design.",
+    "tool": "image_gen",
+    "transparent_background": true,
+    "source": "clan_quest_types.png"
+  },
+  {
+    "id": "clan_quest_seasons",
+    "prompt": "Create a new transparent fantasy game achievement icon in exactly the polished illustrated material style of the supplied reference. An elegant golden laurel wreath enclosing a deep violet pennant with one gold five-point star, a small cream scroll resting below. This is a new achievement icon, not a title medal. One coherent compact centered emblem on square transparent canvas, 8 percent clear padding. Entire silhouette visible. Rich but restrained colours, hand-painted soft shading, clean convincing geometry, minimal glare, no sparkles, no border/frame, no scene, no background, no text. Readable at 64px. Use the reference only for style and colour harmony, not its flag design.",
+    "tool": "image_gen",
+    "transparent_background": true,
+    "source": "clan_quest_seasons.png"
+  }
+]

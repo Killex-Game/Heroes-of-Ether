@@ -24,21 +24,21 @@
       const stock = me?.accessoryAbilities || [];
       this.current =
         stock.find(
-          (item) => Math.min(item.count, this.confirmed[item.accessoryId] ?? Infinity) > 0,
+          (item) => Math.min(item.count, this.confirmed[item.accessoryId + ":" + item.boosterId] ?? Infinity) > 0,
         ) || stock[0];
       const item = this.current,
-        def = window.KillexAccessories.item(item?.accessoryId)?.ability;
+        def = window.KillexAccessories.abilityList(window.KillexAccessories.item(item?.accessoryId)).find(a => a.boosterId === item?.boosterId);
       const hidden = !def || !this.owner.isArena() || !!me?.dead;
       if (this.button.hidden !== hidden) this.button.hidden = hidden;
       if (!def) return;
-      const count = Math.min(item.count, this.confirmed[item.accessoryId] ?? Infinity);
+      const count = Math.min(item.count, this.confirmed[item.accessoryId + ":" + item.boosterId] ?? Infinity);
       const cooldown = this.owner.cooldown?.(def.boosterId) || { ms: 0, duration: 1 };
       window.KillexControls.state(
         this.button,
         !count || !!this.pending || cooldown.ms > 0 || this.owner.inputBlocked(),
         !count || this.owner.inputBlocked(),
       );
-      const signature = item.accessoryId + ":" + count;
+      const signature = item.accessoryId + ":" + item.boosterId + ":" + count;
       if (this.signature !== signature) {
         this.signature = signature;
         const oldImage = this.button.querySelector("img");
@@ -111,7 +111,7 @@
       if (message.requestId !== this.pending?.requestId) return;
       clearTimeout(this.timer);
       this.pending = null;
-      if (message.ok) this.confirmed[message.accessoryId] = message.remaining;
+      if (message.ok) this.confirmed[message.accessoryId + ":" + message.boosterId] = message.remaining;
       else { this.cancelCooldown?.(); this.owner.notice(message.message); }
       this.updateArena();
     }

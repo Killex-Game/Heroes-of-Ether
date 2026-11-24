@@ -96,10 +96,10 @@ test("Повтор меча после 0,5 секунды обновляет е�
   const me = arena.snapshot(6000).players.find((p) => p.id === a.id);
   const item = publicCatalog().items.find((b) => b.id === sword.id);
   assert.equal(cooldown(item, me, 500, publicCatalog().rules).ms, 0);
-  assert.equal(item.heldMs, 10000);
+  assert.equal(item.heldMs, 5000);
   arena.prepareBooster(a.id, message, 10000)();
   assert.equal(arena.combat.swords.length, 1);
-  assert.equal(arena.combat.swords[0].until, 20000);
+  assert.equal(arena.combat.swords[0].until, 15000);
   arena.resetPlayer(a, 11000);
   assert.deepEqual(a.boosterItemReadyAt, {});
 });

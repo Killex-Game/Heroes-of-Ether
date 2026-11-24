@@ -892,7 +892,7 @@
         item.dataset.earned = String(owned.length > 0);
         const name = owned.length ? rules.trophyLabel(owned[0]) : `Кубок сезона: ${league.name}`,
           history = owned.slice(1).map(rules.trophyLabel).join(". "),
-          usage = `${history ? history + ". " : ""}Выдаётся за максимальную лигу сезона. Каждому участнику разово: ${number(prize.reward.coins)} монет, ${number(prize.reward.crystals)} кристаллов, ${number(prize.reward.bucks)} эфира. Скидка ${prize.discount}% на клановые бустеры и личные покупки скинов, бабочек и шапок. Действует лучший кубок; личная скидка сохраняется на время участия в клане.`;
+          usage = `${history ? history + ". " : ""}Выдаётся за максимальную лигу сезона. Каждому участнику разово: ${number(prize.reward.coins)} монет, ${number(prize.reward.crystals)} кристаллов, ${number(prize.reward.bucks)} эфира. Скидка ${prize.discount}% на клановые бустеры и личные покупки скинов, бабочек и шапок. Действует лучший из кубков, полученных за последние 30 дней; личная скидка доступна участникам клана.`;
         item.setAttribute("aria-label", name);
         img.src = `assets/season-trophies/128/${league.id}.webp?art=20261123-interface-art`;
         img.alt = "";

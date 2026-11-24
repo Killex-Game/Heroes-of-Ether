@@ -197,14 +197,14 @@ test("Замок продлевается, блокирует еду и погл
   assert.equal(arena.ether.length, 0);
   assert.equal(b.mass, 1160);
 });
-test("Торт: пропорциональные 3%, лимит 1000 на группу, перезапуск и дробные остатки", () => {
+test("Торт: пропорциональный 1%, лимит 1000 на группу, перезапуск и дробные остатки", () => {
   const { arena, a, b } = scene(1000);
   hit(arena, a, b, "rocket");
   hit(arena, a, b, "cake");
   arena.boosterEffects.tick(b, 6000);
   assert.deepEqual(
     b.parts.map((p) => p.mass),
-    [824, 103, 103],
+    [808, 101, 101],
   );
   hit(arena, a, b, "cake", 7000);
   assert.equal(b.effects.cake, 47000);
@@ -224,7 +224,7 @@ test("Торт: пропорциональные 3%, лимит 1000 на гру
   const d = arena.addPlayer(0, "d");
   hit(arena, a, d, "cake");
   arena.boosterEffects.tick(d, 7000);
-  assert.equal(d.mass, 21);
+  assert.equal(d.mass, 20);
   d.mass = 4999;
   d.radius = radiusForMass(d.mass);
   arena.boosterEffects.tick(d, 8000);
@@ -234,7 +234,7 @@ test("Повторный Торт заново запускает 40 секун�
   const { arena, a, b } = scene(1000);
   hit(arena, a, b, "cake", 5000);
   arena.boosterEffects.tick(b, 7000);
-  assert.equal(b.mass, 1060);
+  assert.equal(b.mass, 1020);
   assert.ok(b.cakeRemainder > 0);
 
   hit(arena, a, b, "cake", 7500);
@@ -250,13 +250,13 @@ test("Повторный Торт заново запускает 40 секун�
     [{ id: "cake", remainingMs: 40000 }],
   );
   arena.boosterEffects.tick(b, 8499);
-  assert.equal(b.mass, 1060, "первый прирост через секунду после нового попадания");
+  assert.equal(b.mass, 1020, "первый прирост через секунду после нового попадания");
   arena.boosterEffects.tick(b, 8500);
-  assert.equal(b.mass, 1091, "единственный прирост 3%, без второго потока роста");
-  let expected = 1060,
+  assert.equal(b.mass, 1030, "единственный прирост 1%, без второго потока роста");
+  let expected = 1020,
     remainder = 0;
   for (let i = 0; i < 40; i++) {
-    const raw = expected * 0.03 + remainder;
+    const raw = expected * 0.01 + remainder;
     expected += Math.floor(raw);
     remainder = raw % 1;
   }
@@ -269,7 +269,7 @@ test("Повторный Торт заново запускает 40 секун�
   arena.boosterEffects.tick(b, 91999);
   assert.equal(b.mass, expected);
   arena.boosterEffects.tick(b, 92000);
-  assert.equal(b.mass, expected + Math.floor(expected * 0.03));
+  assert.equal(b.mass, expected + Math.floor(expected * 0.01));
 });
 test("Перчатка переносит всю группу на 400 за 0,5 с, даже остановленную Камнем", () => {
   const { arena, a, b } = scene(1000);
@@ -392,10 +392,10 @@ test("Огонь уничтожает часть с массой 50 сразу, 
   assert.notEqual(b.mainPartId, "b");
   assert.equal(b.mass, 200);
 });
-test("Боеголовки: 7 отдельных ракет, один расход, веер −20…+20 градусов", () => {
+test("Боеголовки: 5 отдельных ракет, один расход, веер −20…+20 градусов", () => {
   const { arena, a } = scene();
   launch(arena, a, "warheads");
-  assert.equal(arena.combat.shots.length, 7);
+  assert.equal(arena.combat.shots.length, 5);
   assert.equal(a.boosterUses.warheads, 1);
   assert.ok(
     Math.abs(
@@ -413,7 +413,7 @@ test("Вихрь притягивает еду и незащищённые ча�
   const before = b.x;
   arena.combat.update(6000);
   assert.ok(b.x < before);
-  assert.equal(arena.ether[0].x, 1030);
+  assert.equal(arena.ether[0].x, 1000);
   assert.equal(b.mass, 10);
   b.effects.golden_shield = 30000;
   const protectedX = b.x;
@@ -432,17 +432,17 @@ test("Вихрь двигает природную еду из fillEther, вкл
   const beforeVortex=arena.snapshot(5000).ether;
   const savedBefore=structuredClone(beforeVortex);
   arena.combat.update(5500);
-  assert.equal(arena.ether[0].x, 4950);
+  assert.equal(arena.ether[0].x, 4900);
   assert.equal(arena.ether[0].y, 5000);
   assert.deepEqual(beforeVortex,savedBefore,'older network snapshots keep their original positions');
   const moved=arena.snapshot(5500).ether;
-  assert.equal(moved[0].x,4950);
+  assert.equal(moved[0].x,4900);
   assert.notEqual(moved[0],beforeVortex[0]);
   assert.equal(arena.snapshot(5500).ether[0],moved[0],'unchanged presentation value is reusable');
   arena.ether.length = 0;
   arena.fillEther();
   arena.combat.update(6000);
-  assert.equal(arena.ether[0].x, 4950);
+  assert.equal(arena.ether[0].x, 4900);
   assert.equal(p.mass, 10);
 });
 test("Губка снимает ожидание, не переносит части и не обходит неподвижность Паутины", () => {

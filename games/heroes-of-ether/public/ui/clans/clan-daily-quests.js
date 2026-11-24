@@ -20,8 +20,8 @@
       const image=el('img');image.src=window.KillexProgressionArt.leagueMedal(p.id,128);image.alt='';
       const title=el('strong','',p.from+'-'+p.to+' '+p.name+' медаль'),copy=el('div','clan-prize-copy');copy.append(title);
       const amounts=el('div','clan-prize-amounts');
-      for(const [key,name] of [['bucks','эфира'],['coins','монет'],['crystals','кристаллов']]){
-        const item=el('span'),icon=el('img');icon.src='assets/menu-icons/128/currency_'+key+'.webp?art=20261123-interface-art';icon.alt='';
+      for(const [key,name] of [['bucks','эфира'],['coins','монет'],['crystals','кристаллов'],['greatness','величия']]){
+        const item=el('span'),icon=el('img');icon.src=key==='greatness'?window.KillexGreatnessUI.SOURCE:'assets/menu-icons/128/currency_'+key+'.webp?art=20261123-interface-art';icon.alt='';
         item.append(icon,el('span','',num(p.reward[key])+' '+name));amounts.append(item);
       }
       copy.append(amounts);row.append(image,copy);list.append(row);
