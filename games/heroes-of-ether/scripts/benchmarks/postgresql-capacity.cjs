@@ -32,6 +32,10 @@ async function main(){
   const realistic=process.env.CAPACITY_REALISTIC==='1',mixedMinutes=Number(process.env.CAPACITY_MIXED_MINUTES||0);
   assert(Number.isInteger(mixedMinutes)&&mixedMinutes>=0&&mixedMinutes<=120);
   const perRoom=require('../../config/arena-rooms.json').arenaCapacity;
+  if(process.env.CAPACITY_RETAINED_HISTORY==='1'){
+    assert(!process.env.CAPACITY_FIXTURE,'Fresh retained histories cannot extend a supplied fixture');
+    require('./retained-capacity-fixture.cjs').extend(fixtureData,{active:rooms*perRoom+5});
+  }
   const linkedLobby=Number(process.env.CAPACITY_LINKED_LOBBY||0);
   assert(Number.isInteger(linkedLobby)&&linkedLobby>=0&&linkedLobby<=4&&(!linkedLobby||realistic));
   if(realistic)require('./realistic-lobby-plan.cjs').detachLobby(fixtureData,rooms*perRoom,5,linkedLobby);
