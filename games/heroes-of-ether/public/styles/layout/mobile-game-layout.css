@@ -201,6 +201,9 @@
 #lobby .lobby-wallet-actions #accountButton .status-icon img,
 #accountDialog .status-icon img {
   position: absolute; max-width: none; object-fit: contain; transform: none; scale: 1;
+}
+#lobby #accountMarks .status-icon img,
+#lobby .lobby-wallet-actions #accountButton .status-icon img {
   filter: saturate(1.1) drop-shadow(0 1px 1px #32222a66);
 }
 #lobby #accountMarks .status-icon.vip img,
