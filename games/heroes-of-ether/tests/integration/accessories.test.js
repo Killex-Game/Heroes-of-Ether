@@ -232,6 +232,11 @@ test("HTTP: экипировка серверная, обе части видн�
   app.arena.ether = [{ id: "food", x: p.x, y: p.y, value: 5 }];
   app.tick();
   assert.equal(p.mass, 30);
+  // This case fixes mass to test accessory XP. A thorn created while the
+  // player was small can be swallowed after the artificial size increase,
+  // legitimately adding 50 mass and moving 5.5 XP above the rounding tie.
+  app.arena.hazards.items = [];
+  app.arena.hazards.replenish = () => {};
   p.mass = 5000;
   p.radius = radiusForMass(5000);
   p.stopped = true;
