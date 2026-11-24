@@ -132,6 +132,9 @@ if (process.env.LOAD_CLIENT === "1") {
       Object.values(fixture.data.profiles).some(p => p.testFixture !== "database-capacity-20261110")))
     throw Error("Invalid synthetic world");
   const dataDir = fixture ? path.join(dir, "data") : dir;
+  const gameNow = require("./game-clock.cjs").clock(process.env.LOAD_GAME_OFFSET_MS || "0");
+  if (process.env.LOAD_GAME_OFFSET_MS && process.env.LOAD_GAME_OFFSET_MS !== "0" && !fixture)
+    throw Error("Shifted game clock requires a validated synthetic fixture");
   fs.mkdirSync(dataDir, { recursive: true });
   if (fixture) fs.writeFileSync(path.join(dataDir, "profiles.json"), JSON.stringify(fixture.data));
   if (process.env.LOAD_DATABASE_CONFIG) {
@@ -147,6 +150,7 @@ if (process.env.LOAD_CLIENT === "1") {
     (monitorMode === "alternate" && Math.floor((Date.now() - monitorStarted) / 300000) % 2 === 1);
   if (process.send) process.send({ type: "evidence", dir });
   const profiles = new ProfileStore({
+    now: gameNow,
     filePath: path.join(dataDir, "profiles.json"),
     journal: process.env.LOAD_JOURNAL !== "0",
     arenaProgressWorker: process.env.LOAD_PROFILE_WORKER === "1",
@@ -156,6 +160,7 @@ if (process.env.LOAD_CLIENT === "1") {
     clanDailyQuests: true,
   });
   const chat = new (require("../../src/server/chat/chat-service").ChatService)({
+    now: gameNow,
     filePath: path.join(dataDir, "clan-chat.json"), journal: true,
   });
   if (process.env.LOAD_PROFILE_SHARDS) {
@@ -234,13 +239,14 @@ if (process.env.LOAD_CLIENT === "1") {
   if (process.env.LOAD_EVENT || process.env.LOAD_REALISTIC === "1") {
     const kind = process.env.LOAD_EVENT || "lucky-week";
     if (!["black-friday", "easter-hunt", "ether-alchemy", "lucky-week"].includes(kind)) throw Error("Invalid synthetic event");
-    const at = Math.floor(Date.now() / 60000) * 60000;
+    const at = Math.floor(gameNow() / 60000) * 60000;
     events = new (require("../../src/server/events/event-manager").EventManager)({ now: () => at });
     events.apply("fixture", "start", { requestId: randomUUID(), revision: events.data.revision,
       eventId: require("../../src/server/events/" + kind).manifest.id });
-    events.now = () => Date.now();
+    events.now = gameNow;
   }
   const app = createGameServer({
+    wallNow: gameNow,
     // Synthetic visible-lobby users have distinct simulated proxy addresses.
     // Keep the production per-IP limits; otherwise one load generator tests
     // a single NAT's abuse limit rather than hundreds of separate users.
@@ -376,7 +382,7 @@ if (process.env.LOAD_CLIENT === "1") {
           if (!changes) return;
           const record = (ids, at) => {
             if (!ids.length) return;
-            const delay = Date.now() - at;
+            const delay = gameNow() - at;
             const stat = (measured.confirmation ||= { n: 0, ms: 0, max: 0 });
             stat.n++;
             stat.ms += delay;
@@ -479,7 +485,7 @@ if (process.env.LOAD_CLIENT === "1") {
             for(const potion of rules.potions)p.inventory[potion.boosterId]=stock;
           }
           p.account = require("../../src/server/accounts/account-benefits").fresh();
-          p.account.vipUntil = p.account.premiumUntil = Date.now() + 86400000;
+          p.account.vipUntil = p.account.premiumUntil = gameNow() + 86400000;
         });
         tokens.push(auth.token);
         profileIds.push(profiles.find(auth.token).id);
@@ -499,7 +505,7 @@ if (process.env.LOAD_CLIENT === "1") {
       p.quickSlots = [...loadouts[loadoutIndex % loadouts.length]];
       if (combat) {
         p.account = require("../../src/server/accounts/account-benefits").fresh();
-        p.account.vipUntil = p.account.premiumUntil = Date.now() + 86400000;
+        p.account.vipUntil = p.account.premiumUntil = gameNow() + 86400000;
       }
       for (const id of p.quickSlots.filter(Boolean)) p.inventory[id] = stock;
       if(process.env.LOAD_ALCHEMY==="1") {
@@ -509,7 +515,7 @@ if (process.env.LOAD_CLIENT === "1") {
       }
       if (p.quickSlots.includes("easter_egg")) {
         p.easter ||= { runs: {}, chests: [], batches: [], trophies: [] };
-        p.easter.batches.push({ count: stock, expiresAt: require("../../src/server/events/easter-hunt").expiresAt(Date.now()) });
+        p.easter.batches.push({ count: stock, expiresAt: require("../../src/server/events/easter-hunt").expiresAt(gameNow()) });
       }
       const roomId = "arena-" + (Math.floor(i / perRoom) + 1),
         reservation =
@@ -555,18 +561,8 @@ if (process.env.LOAD_CLIENT === "1") {
         protectedUntil: 0,
         ...(mixedMass ? {} : { nextMassDecayAt: Infinity }),
       });
-      // Use real split bodies/IDs. No single part may exceed the level cap.
-      while (mass > simulation.bodies(c.p).length * massLimitForLevel(p.level)) {
-        if (!simulation.splitPlayer(c.p, { spawnSerial: c.p.spawnSerial, sequence: c.p.splitSequence + 1 }, Date.now()))
-          throw Error("Cannot seed legal split parts");
-      }
-      const bodies = simulation.bodies(c.p);
-      for (const [ordinal, body] of bodies.entries()) {
-        body.mass = Math.floor(mass / bodies.length) + Number(ordinal < mass % bodies.length);
-        body.radius = radiusForMass(body.mass);
-      }
-      simulation.syncParts(c.p);
-      c.p.splitSequence = 0;
+      // The simulation uses performance.now(), not the calendar's epoch.
+      require("./seed-arena-parts.cjs").seedParts(simulation, c.p, mass, p.level);
     }
     if (fixture) profiles.save(structuredClone(profiles.data));
     if (process.env.LOAD_ALCHEMY === "1") fs.writeFileSync(path.join(dir, "alchemy-baseline.json"),
@@ -691,11 +687,12 @@ if (process.env.LOAD_CLIENT === "1") {
       }
       const row = {
         configuration: { incrementalSettlement: !!profiles.settlementCache,
+          gameClockOffsetMs: Number(process.env.LOAD_GAME_OFFSET_MS || 0), seedClockVersion: 2,
           profileWorker: !!profiles.arenaPreparer, stateWorkerCount: app.stateWorkers.lanes.length,
           packedFood: process.env.LOAD_PACKED_FOOD === "1", packedParts: process.env.LOAD_PACKED_PARTS !== "0" },
         clanQuests: (() => {
           const boards = Object.values(profiles.data.clans).map(c => c.dailyQuests?.board).filter(Boolean);
-          const at = Date.now();
+          const at = gameNow();
           return { enabled: !!profiles.data.clanQuests, boards: boards.length,
             active: boards.filter(b => b.start <= at && at < b.end && b.quests.length).length,
             eligible: boards.reduce((n,b) => n + Object.keys(b.eligible).length,0),

@@ -22,6 +22,8 @@ function assessCapacity(rows, summary) {
   }
   if(summary.alchemy)for(const potion of require('../../public/shared/alchemy-rules').potions)
     if(!rows.some(row=>row.usedByType?.[potion.boosterId]>0))problems.push('missing-potion:'+potion.id);
+  if(summary.requiresActiveClanQuests && !rows.some(row=>row.clanQuests?.contributions>0))
+    problems.push('clan-quest-contribution-unverified');
   const requested = mixed && validMixed
     ? Array.from({ length: summary.mixedMinutes }, (_, index) => ({ name: "combined", index }))
     : PHASES.map(name => ({ name }));
@@ -34,6 +36,8 @@ function assessCapacity(rows, summary) {
       if (!Number.isFinite(value) || value > limit) issues.push(label);
     };
     if (row) {
+      if(summary.requiresActiveClanQuests && !(row.clanQuests?.active>0 && row.clanQuests?.eligible>0))
+        issues.push('clan-quests-not-active');
       if(summary.realistic && name==='combined' && (!(row.inputs?.accepted?.split>0)||!(row.inputs?.accepted?.feed>0)))
         issues.push('split-feed-not-executed');
       if (window && (!Number.isFinite(row.elapsed) || row.elapsed < 60000)) issues.push("mixed-window-duration");
