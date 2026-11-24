@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T18:51:02.545Z",
+  "at": "2026-11-24T19:02:09.230Z",
   "source": "9d38f5aa04ff7eb86a62055d9ded06ebb8d6175e",
   "installed": false,
   "change": "Reuse private immutable canonical document wrappers; each public value access still returns a detached tree",
@@ -2339,7 +2339,56 @@
   },
   "limitations": [
     "Component benchmark excludes filesystem, PostgreSQL, network and gameplay",
-    "Full combined regression, real PostgreSQL and sustained mixed load remain required",
-    "This experiment does not prove an online-player capacity increase"
-  ]
+    "Original Linux full run failed one fixed-wait network test; failure retained and not reproduced in forty diagnostic tests",
+    "Combined successor passed full Windows/Linux and eleven real PostgreSQL tests; mixed capacity and whole-game CPU improvement remain unproven",
+    "Not installed in production"
+  ],
+  "fullRegression": {
+    "windows": {
+      "total": 2446,
+      "pass": 2444,
+      "fail": 0,
+      "skip": 2,
+      "durationMs": 538930.6649
+    },
+    "linux": {
+      "total": 2446,
+      "pass": 2443,
+      "fail": 1,
+      "skip": 2,
+      "durationMs": 591824.514492
+    },
+    "repeat": {
+      "total": 40,
+      "pass": 40,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 23275.805127
+    }
+  },
+  "followup": {
+    "source": "22fd856487206c668416561120b878f65736a5f0",
+    "windows": {
+      "total": 2446,
+      "pass": 2444,
+      "fail": 0,
+      "skip": 2,
+      "durationMs": 532125.3771
+    },
+    "linux": {
+      "total": 2446,
+      "pass": 2444,
+      "fail": 0,
+      "skip": 2,
+      "durationMs": 572374.436927
+    },
+    "postgresql": {
+      "total": 11,
+      "pass": 11,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 25085.485096
+    },
+    "explanation": "V14 Linux full suite missed a smart-bot WebSocket packet after a fixed 25 ms sleep. Twenty repeat runs (40 tests) all passed and did not reproduce the original delay. The fixture now waits up to two seconds for the exact packet without advancing simulation. Original failed output retained; no claim of a reproduced runtime defect."
+  }
 }
