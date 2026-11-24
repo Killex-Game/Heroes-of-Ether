@@ -19,6 +19,7 @@
     "Лямбда",
     "Мю",
     "Ню",
+    "Кси",
   ]);
   const arenaName = (id) => names[Number(String(id).slice(6)) - 1] || "Арена";
   const groups = Object.freeze([

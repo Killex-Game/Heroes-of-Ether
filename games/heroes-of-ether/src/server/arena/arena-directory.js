@@ -48,18 +48,42 @@ class ArenaDirectory {
   }
 
   occupancy() {
-    return (
-      [...this.players.values()].filter((p) => p.state !== "lobby").length + this.remnants.size
-    );
+    let total = this.remnants.size;
+    for (const player of this.players.values()) if (player.state !== "lobby") total++;
+    return total;
+  }
+
+  census() {
+    const rooms = new Map();
+    let occupied = this.remnants.size;
+    const row = id => {
+      let value = rooms.get(id);
+      if (!value) rooms.set(id, value = { members: 0, active: 0, lingering: 0 });
+      return value;
+    };
+    for (const player of this.players.values()) {
+      if (player.state !== "lobby") occupied++;
+      const value = row(player.arenaId);
+      value.members++;
+      if (player.state === "playing") value.active++;
+    }
+    for (const id of this.remnants.values()) row(id).lingering++;
+    return { rooms, occupied };
   }
 
   expand() {
     if (this.levelGroups) {
+      // A fresh operation-local census cannot go stale when a reservation,
+      // remnant or worker changes. Each player is visited once, not per room.
+      const counts = this.census().rooms;
       // One permanent home per level band; additional rooms follow actual demand.
       // A single global room/player budget applies across all three bands.
       for (const group of groups) {
         const members = [...this.rooms.values()].filter(r => r.group === group.id);
-        const occupied = members.reduce((n, r) => n + this.roomOccupancy(r.id), 0);
+        const occupied = members.reduce((n, r) => {
+          const value = counts.get(r.id);
+          return n + (value ? value.members + value.lingering : 0);
+        }, 0);
         const wanted = desiredArenaCount(occupied, { ...this.policy, minimumArenas: 1 });
         while (members.length < wanted && this.rooms.size < this.policy.maximumArenas) {
           const id = "arena-" + (this.rooms.size + 1);
@@ -79,10 +103,10 @@ class ArenaDirectory {
   }
 
   roomOccupancy(id) {
-    return (
-      [...this.players.values()].filter((p) => p.arenaId === id).length +
-      [...this.remnants.values()].filter((roomId) => roomId === id).length
-    );
+    let total = 0;
+    for (const player of this.players.values()) if (player.arenaId === id) total++;
+    for (const roomId of this.remnants.values()) if (roomId === id) total++;
+    return total;
   }
 
   markReady(id) {
@@ -165,14 +189,19 @@ class ArenaDirectory {
     if (this.levelGroups && (!groups.some(g => g.id === group) ||
         (preferredArenaId && this.rooms.get(preferredArenaId)?.group !== group)))
       return { ok: false, code: "ARENA_LEVEL", message: "Выбери комнату своего уровня." };
-    if (this.occupancy() >= this.policy.maximumArenaPlayers) return this.full();
+    const counts = this.census();
+    const roomCount = id => {
+      const value = counts.rooms.get(id);
+      return value ? value.members + value.lingering : 0;
+    };
+    if (counts.occupied >= this.policy.maximumArenaPlayers) return this.full();
     const available = [...this.rooms.values()].filter(
-      (r) => r.status === "ready" && (!this.levelGroups || r.group === group) && this.roomOccupancy(r.id) < this.policy.arenaCapacity,
+      (r) => r.status === "ready" && (!this.levelGroups || r.group === group) && roomCount(r.id) < this.policy.arenaCapacity,
     );
     // Автовход сначала наполняет уже используемые арены.
     available.sort(
       (a, b) =>
-        this.roomOccupancy(b.id) - this.roomOccupancy(a.id) ||
+        roomCount(b.id) - roomCount(a.id) ||
         Number(a.id.slice(6)) - Number(b.id.slice(6)),
     );
     const room = available.find((r) => r.id === preferredArenaId) || (!exact && available[0]);
@@ -233,22 +262,21 @@ class ArenaDirectory {
 
   list(group = null) {
     this.sweep();
+    const counts = this.census();
     return [...this.rooms.values()].filter(r => !group || r.group === group).map((room) => {
-      const members = [...this.players.values()].filter((p) => p.arenaId === room.id);
-      const active = members.filter((p) => p.state === "playing").length;
-      const lingering = [...this.remnants.values()].filter((id) => id === room.id).length;
+      const { members = 0, active = 0, lingering = 0 } = counts.rooms.get(room.id) || {};
       return {
         id: room.id,
         name: room.name || arenaName(room.id),
         ...(this.levelGroups ? { group: room.group } : {}),
         status: room.status,
         playing: active + lingering,
-        reserved: members.length - active,
+        reserved: members - active,
         capacity: this.policy.arenaCapacity,
         joinable:
           room.status === "ready" &&
-          members.length + lingering < this.policy.arenaCapacity &&
-          this.occupancy() < this.policy.maximumArenaPlayers,
+          members + lingering < this.policy.arenaCapacity &&
+          counts.occupied < this.policy.maximumArenaPlayers,
       };
     });
   }

@@ -21,6 +21,8 @@ const phases = ["move", "split", "combined", "combined"];
 const reserveMiB = 768;
 const freeMiB = () => Math.floor(os.freemem() / 2 ** 20);
 const runner = path.join(__dirname, "room-input-load.cjs");
+const perRoom = Number(process.env.LOAD_PLAYERS || require('../../config/arena-rooms.json').arenaCapacity);
+if (![30, 35].includes(perRoom)) throw Error('Supported room sizes are 30 and legacy 35');
 
 async function stage(count) {
   const workerCount = Math.max(0, Math.min(8, Number(process.env.LOAD_STATE_WORKERS || 0)));
@@ -36,7 +38,7 @@ async function stage(count) {
       for (let index = 0; index < hostCount; index++) {
         const child = fork(runner, [], {
           env: { ...process.env, LOAD_CLIENT: "0", LOAD_CAPACITY: "1", LOAD_COMBAT: "1",
-            LOAD_ROOMS: String(count / hostCount), LOAD_PLAYERS: "35", LOAD_REJOIN: "1",
+            LOAD_ROOMS: String(count / hostCount), LOAD_PLAYERS: String(perRoom), LOAD_REJOIN: "1",
             LOAD_PHASES: phases.join(","), LOAD_PHASE_MS: String(duration),
             LOAD_JOURNAL: "1", LOAD_CONNECT_INTERVAL: "100" },
           stdio: ["ignore", "ignore", "inherit", "ipc"],

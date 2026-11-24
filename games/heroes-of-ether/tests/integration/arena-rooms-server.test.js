@@ -222,22 +222,22 @@ test("Повторный вход в ту же комнату создаёт о�
   assert.equal(env.profiles.find(a.token).progress.session.id, active.lifeId);
 });
 
-test("Оставшаяся модель учитывается в 35 местах, но не занимает дополнительное место профиля в лобби", async (t) => {
+test("Оставшаяся модель учитывается в 30 местах, но не занимает дополнительное место профиля в лобби", async (t) => {
   const env = await setup(t),
     a = env.player();
   const joined = await env.join(a, "arena-1");
   joined.ws.terminate();
   await once(joined.ws, "close");
   await until(() => env.app.wss.clients.size === 0);
-  for (let i = 0; i < 34; i++)
+  for (let i = 0; i < 29; i++)
     assert.equal((await env.reserve(env.player(), "arena-1")).body.arenaId, "arena-1");
   const next = await env.reserve(a, "arena-1");
   assert.equal(next.status, 200);
   assert.equal(next.body.arenaId, "arena-2");
   assert.equal(next.body.name, "Бета");
   assert.equal(next.body.redirected, true);
-  assert.equal(env.app.arenaRooms.directory.players.size, 35);
-  assert.equal(env.app.arenaRooms.directory.occupancy(), 36);
+  assert.equal(env.app.arenaRooms.directory.players.size, 30);
+  assert.equal(env.app.arenaRooms.directory.occupancy(), 31);
 });
 
 test("Заявки обновляются через присутствие без открытия клана, только для разрешённых ролей", async (t) => {
@@ -299,19 +299,19 @@ test("Заявки обновляются через присутствие бе
   assert.equal((await env.api(head, "/api/presence")).body.menuNotifications.clanApplications, 0);
 });
 
-test("35 мест, перенаправление, расширение до пяти арен и истечение брони", async (t) => {
+test("30 мест, перенаправление, расширение до пяти арен и истечение брони", async (t) => {
   const env = await setup(t),
     players = Array.from({ length: 80 }, () => env.player());
-  for (const p of players.slice(0, 35))
+  for (const p of players.slice(0, 30))
     assert.equal((await env.reserve(p, "arena-1")).body.arenaId, "arena-1");
-  const next = await env.reserve(players[35], "arena-1");
+  const next = await env.reserve(players[30], "arena-1");
   assert.equal(next.body.arenaId, "arena-2");
   assert.equal(next.body.redirected, true);
-  for (const p of players.slice(36)) assert.equal((await env.reserve(p)).status, 200);
+  for (const p of players.slice(31)) assert.equal((await env.reserve(p)).status, 200);
   assert.equal(env.app.rooms.size, 5);
   const list = await env.api(players[0], "/api/arenas");
   assert.equal(list.body.arenas.length, 5);
-  assert.ok(list.body.arenas.every((room) => room.playing + room.reserved <= 35));
+  assert.ok(list.body.arenas.every((room) => room.capacity === 30 && room.playing + room.reserved <= 30));
   env.advance(15001);
   const expired = await env.api(players[0], "/api/arenas");
   assert.equal(

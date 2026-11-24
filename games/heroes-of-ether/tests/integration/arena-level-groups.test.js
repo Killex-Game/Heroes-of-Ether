@@ -145,7 +145,7 @@ test('Повышение уровня сохраняет текущую жизн
 test('Расширение одной группы не открывает её комнаты другой, бронь не дублируется', async t=>{
  const env=await setup(t);let first;
  for(let i=0;i<36;i++){const u=env.player();if(!first)first=u;const id=randomUUID(),r=await env.reserve(u,null,id);assert.equal(r.status,200);assert.deepEqual((await env.reserve(u,null,id)).body,r.body);}
- const a=(await env.api(first,'/api/arenas')).body.arenas;assert.ok(a.length>=3);assert.ok(a.every(r=>r.group==='sandbox'&&r.reserved<=35));
+ const a=(await env.api(first,'/api/arenas')).body.arenas;assert.ok(a.length>=3);assert.ok(a.every(r=>r.group==='sandbox'&&r.capacity===30&&r.reserved<=30));
  const high=env.player();level(env,high,121);const b=(await env.api(high,'/api/arenas')).body.arenas;assert.equal(b.length,1);assert.equal(b[0].reserved,0);
 });
 

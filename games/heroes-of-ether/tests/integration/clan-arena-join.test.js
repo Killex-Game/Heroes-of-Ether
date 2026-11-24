@@ -150,15 +150,13 @@ test("clan follow rejects outsiders, self, other level zones, dead players and r
   assert.equal((await follow(e, a, b)).body.code, "CLAN_ARENA_UNAVAILABLE");
 });
 test("full clan room does not silently redirect to another room", async (t) => {
-  const e = await setup(t, {
-      arenaCapacity: 1,
-      maximumArenaPlayers: 13,
-      spareSeatsBeforeExpansion: 0,
-    }),
+  const e = await setup(t),
     a = e.player(),
     b = e.player();
   sameClan(e, a, b);
   await e.join(b, "arena-2");
+  for (let i = 0; i < 29; i++)
+    assert.equal((await e.reserve(e.player(), "arena-2")).body.arenaId, "arena-2");
   const r = await follow(e, a, b);
   assert.equal(r.status, 503);
   assert.equal(r.body.code, "CLAN_ARENA_FULL");

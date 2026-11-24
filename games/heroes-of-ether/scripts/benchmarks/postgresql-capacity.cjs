@@ -22,14 +22,15 @@ async function main(){
   fs.writeFileSync(privateConfig,JSON.stringify({...source,schema}),{mode:0o600});
   const fixture=path.join(out,'synthetic-world.json');
   fs.writeFileSync(fixture,JSON.stringify(require('./database-room-fixture.cjs').createFixture()),{mode:0o600});
-  const summary={at:new Date().toISOString(),rooms,players:rooms*35,lobby:5,phaseSeconds:30,mode:'database',
+  const perRoom=require('../../config/arena-rooms.json').arenaCapacity;
+  const summary={at:new Date().toISOString(),rooms,perRoom,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
   const run=path.join(out,'database-'+summary.players+'-'+Date.parse(summary.at));fs.mkdirSync(run,{mode:0o700});
   const stdout=fs.openSync(path.join(run,'stdout.txt'),'wx',0o600),stderr=fs.openSync(path.join(run,'stderr.txt'),'wx',0o600);
   const env={...process.env};
   // Old shell experiment flags must not silently change a production-parity run.
   for(const key of Object.keys(env))if(key.startsWith('LOAD_'))delete env[key];
-  Object.assign(env,{LOAD_CLIENT:'0',LOAD_CAPACITY:'0',LOAD_COMBAT:'1',LOAD_ROOMS:String(rooms),LOAD_PLAYERS:'35',LOAD_REJOIN:'1',
+  Object.assign(env,{LOAD_CLIENT:'0',LOAD_CAPACITY:'0',LOAD_COMBAT:'1',LOAD_ROOMS:String(rooms),LOAD_PLAYERS:String(perRoom),LOAD_REJOIN:'1',
       LOAD_PHASES:'move,split,feed,boosters,combined',LOAD_PHASE_MS:'30000',LOAD_JOURNAL:'1',LOAD_CONNECT_INTERVAL:'100',
       LOAD_STATE_WORKERS:'3',LOAD_DRIVER_PER_ROOM:'1',LOAD_LOBBY:'5',LOAD_ALL_BOOSTERS:'1',LOAD_STOCK:'3000',LOAD_GC_METRICS:'1',
       LOAD_INCREMENTAL_SETTLEMENT:'1',LOAD_WORLD_FIXTURE:fixture,LOAD_DATABASE_CONFIG:privateConfig,LOAD_ACK_DIR:path.join(out,'acks')});

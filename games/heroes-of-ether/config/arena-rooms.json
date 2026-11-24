@@ -1,10 +1,10 @@
 {
   "enabled": true,
-  "arenaCapacity": 35,
+  "arenaCapacity": 30,
   "minimumArenas": 3,
   "expansionBatch": 2,
   "spareSeatsBeforeExpansion": 25,
-  "maximumArenas": 13,
+  "maximumArenas": 14,
   "maximumArenaPlayers": 400,
   "lobbyReserve": 30,
   "reservationTtlMs": 15000,

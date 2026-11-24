@@ -6,7 +6,7 @@ const { once } = require("node:events");
 const engines = require("playwright");
 const { randomUUID } = require("node:crypto");
 const { createGameServer } = require("../../src/server/game-server");
-const output = path.resolve(__dirname, "../../../../artifacts/arena-picker-20261025/browser");
+const output = path.resolve(process.env.ARENA_PICKER_OUTPUT || path.join(__dirname, "../../../../artifacts/arena-picker-20261025/browser"));
 fs.mkdirSync(output, { recursive: true });
 const report = [];
 (async () => {
@@ -25,6 +25,14 @@ const report = [];
         ...(engine === "chromium" ? { channel: "chrome" } : {}),
       });
       const page = await browser.newPage({ viewport: { width: 1366, height: 900 } });
+      const preparePlayer = async context => {
+        const auth = app.profiles.open(), profile = app.profiles.find(auth.token);
+        profile.name = 'Проверка арены';
+        profile.personal = { nameSet: true, introPending: false, gender: 'male', vkUrl: '' };
+        profile.loginReward = { date: require('../../src/server/accounts/account-benefits').loginRewardDay(Date.now()), day: 1 };
+        await context.addCookies([{ name: 'sferorumiya_session', value: auth.token, url }]);
+      };
+      await preparePlayer(page.context());
       const errors = [];
       page.on("pageerror", (e) => errors.push(e.message));
       page.on("response", (r) => {
@@ -32,6 +40,7 @@ const report = [];
       });
       await page.goto(url);
       await page.waitForFunction(() => !document.getElementById("playButton").disabled);
+      await page.getByRole('button', { name: 'Закрыть новости', exact: true }).click();
       const measure = async (label) => {
         const data = await page.locator("#arenaPickerDialog").evaluate((node) => {
           const b = node.getBoundingClientRect();
@@ -125,12 +134,14 @@ const report = [];
       await page.locator("#lifeLobby").click();
       await page.waitForFunction(() => !document.getElementById("playButton").disabled);
       const secondContext = await browser.newContext({ viewport: { width: 1366, height: 900 } });
+      await preparePlayer(secondContext);
       const secondPage = await secondContext.newPage();
       await secondPage.goto(url);
       await secondPage.waitForFunction(() => !document.getElementById("playButton").disabled);
+      await secondPage.getByRole('button', { name: 'Закрыть новости', exact: true }).click();
       await secondPage.locator("#arenaPickerButton").click();
       await secondPage.locator('.arena-choice[data-arena-id="arena-3"]').click();
-      for (let i = 0; i < 35; i++)
+      for (let i = 0; i < 30; i++)
         app.arenaRooms.reserve(`full-room-${i}`, {
           requestId: randomUUID(),
           preferredArenaId: "arena-3",
@@ -145,7 +156,7 @@ const report = [];
       await secondContext.close();
       for (let i = 0; i < 360; i++)
         app.arenaRooms.reserve(`fixture-${i}`, { requestId: randomUUID() });
-      assert.equal(app.rooms.size, 13);
+      assert.equal(app.rooms.size, 14);
       for (const [width, height] of [
         [1366, 900],
         [320, 700],
@@ -153,7 +164,7 @@ const report = [];
       ]) {
         await page.setViewportSize({ width, height });
         await page.locator("#arenaPickerButton").click();
-        await page.waitForFunction(() => document.querySelectorAll(".arena-choice").length === 13);
+        await page.waitForFunction(() => document.querySelectorAll(".arena-choice").length === 14);
         const seen = new Set();
         do {
           await measure(`expanded-${width}-${seen.size}`);
@@ -165,7 +176,7 @@ const report = [];
             break;
           await page.getByRole("button", { name: "Следующие арены", exact: true }).click();
         } while (true);
-        assert.equal(seen.size, 13);
+        assert.equal(seen.size, 14);
         await page.getByRole("button", { name: "Закрыть выбор арены", exact: true }).click();
       }
       assert.deepEqual(errors, []);

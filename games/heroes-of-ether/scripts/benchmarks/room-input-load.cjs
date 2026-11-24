@@ -94,7 +94,7 @@ if (process.env.LOAD_CLIENT === "1") {
   const { freshProgress } = require("../../src/server/progression/experience-progression");
   const { STATE_PROTOCOL } = require("../../src/server/arena/state-stream");
   const roomCount = Number(process.env.LOAD_ROOMS || 1),
-    perRoom = Number(process.env.LOAD_PLAYERS || 35),
+    perRoom = Number(process.env.LOAD_PLAYERS || require('../../config/arena-rooms.json').arenaCapacity),
     count = perRoom * roomCount,
     duration = Number(process.env.LOAD_PHASE_MS || 8000);
   const coordinated = process.env.LOAD_CAPACITY === "1" && !!process.send;
@@ -107,8 +107,8 @@ if (process.env.LOAD_CLIENT === "1") {
   const lobbyLimit = process.env.LOAD_LOBBY_IDLE === "1" ? 700 : 30;
   if (!Number.isInteger(lobbyCount) || lobbyCount < 0 || lobbyCount > lobbyLimit)
     throw Error("Too many synthetic lobby players for this scenario");
-  if (!Number.isInteger(roomCount) || roomCount < 1 || roomCount > (coordinated ? 20 : 3) || perRoom !== 35)
-    throw Error("Use the capacity ladder for more than three rooms of 35 players");
+  if (!Number.isInteger(roomCount) || roomCount < 1 || roomCount > (coordinated ? 20 : 3) || ![30, 35].includes(perRoom))
+    throw Error("Use the capacity ladder for more than three rooms; supported room sizes are 30 and legacy 35");
   const stock = Number(process.env.LOAD_STOCK || 100);
   if (!Number.isInteger(stock) || stock < 1 || stock > 100000) throw Error("Invalid synthetic stock");
   const combat = process.env.LOAD_COMBAT === "1";
