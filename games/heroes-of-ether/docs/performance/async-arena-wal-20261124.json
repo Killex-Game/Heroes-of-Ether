@@ -1,0 +1,1161 @@
+{
+  "at": "2026-11-24T21:18:11.017Z",
+  "installed": false,
+  "featureDefault": false,
+  "runtimeSource": "fdfd7517f51ebd9915769d535784354644f7e28f",
+  "variants": [
+    {
+      "variant": "baseline-r1",
+      "source": "fdfd7517f51ebd9915769d535784354644f7e28f",
+      "start": "2026-11-24T20:43:06.693Z",
+      "end": "2026-11-24T20:53:35.145Z",
+      "fixtureSha256": "d4c0a39eea5f0f81867403c9420cbc3df1dbdeb356cce5f1510f5820df890941",
+      "players": 30,
+      "lobby": 5,
+      "minutes": 10,
+      "gameClock": {
+        "mode": "synthetic-offset",
+        "offsetMs": -42185214,
+        "realStartAt": "2026-11-24T20:43:05.214Z",
+        "gameStartAt": "2026-11-24T09:00:00.000Z"
+      },
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 4,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 5,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 6,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 7,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 8,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 9,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 10,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "actions": {
+        "profile": 90,
+        "rankings": 90,
+        "loadout": 90,
+        "purchase": 90,
+        "account-bonus": 30,
+        "social-view": 180,
+        "gift": 90,
+        "gift-read": 89,
+        "clan-create": 3,
+        "clan-view": 177,
+        "clan-deposit": 90,
+        "clan-buy": 90,
+        "clan-edit": 90,
+        "alchemy-view": 90,
+        "alchemy-brew": 90,
+        "pet-buy": 5,
+        "pet-food": 90,
+        "chat": 90,
+        "news": 88,
+        "presence": 86,
+        "alchemy-exchange": 85,
+        "alchemy-equip": 85,
+        "pet-equip": 85,
+        "daily-reward": 60
+      },
+      "ack": {
+        "acknowledged": 9455,
+        "recovered": 9455,
+        "duplicates": 0
+      },
+      "alchemy": {
+        "version": 1,
+        "casts": 571,
+        "brews": 90,
+        "exchanges": 85,
+        "profiles": 1280,
+        "exactInventories": true,
+        "exactLobbyIngredientsAndNatural": true
+      },
+      "database": {
+        "matched": true,
+        "revision": 19096,
+        "profiles": 1280,
+        "clans": 131,
+        "testSchemaRemoved": true
+      },
+      "windows": [
+        {
+          "window": 1,
+          "hz": 19.53152971665036,
+          "tick": {
+            "n": 1181,
+            "p50": 9.16320000000269,
+            "p95": 17.85609999999724,
+            "p99": 25.48979999999574,
+            "max": 106.67480000000069
+          },
+          "stateGapP99": 98.60339999999997,
+          "stateGapMax": 417.14970000000176,
+          "actionP95": 174.2277999999933,
+          "actionMax": 573.8287999999993,
+          "rssMiB": 529.90625,
+          "cpuPercent": 106.42835727689712,
+          "mainCpuPercent": 44.16438204318358,
+          "inputs": {
+            "accepted": {
+              "split": 370,
+              "feed": 2342
+            },
+            "attempted": {
+              "split": 460,
+              "feed": 2413
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 25,
+            "contributions": 65
+          },
+          "lobbyErrors": {}
+        },
+        {
+          "window": 2,
+          "hz": 19.779416002406183,
+          "tick": {
+            "n": 1183,
+            "p50": 10.10910000000149,
+            "p95": 18.035399999993388,
+            "p99": 24.28519999999844,
+            "max": 40.48090000000957
+          },
+          "stateGapP99": 89.58179999999993,
+          "stateGapMax": 694.0451999999932,
+          "actionP95": 45.250499999994645,
+          "actionMax": 657.6333000000013,
+          "rssMiB": 576.40625,
+          "cpuPercent": 106.85192781358225,
+          "mainCpuPercent": 45.62018073791718,
+          "inputs": {
+            "accepted": {
+              "split": 333,
+              "feed": 2358
+            },
+            "attempted": {
+              "split": 461,
+              "feed": 2417
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 27,
+            "contributions": 128
+          },
+          "lobbyErrors": {}
+        },
+        {
+          "window": 3,
+          "hz": 20.003300641776676,
+          "tick": {
+            "n": 1196,
+            "p50": 10.549899999983609,
+            "p95": 18.156300000002375,
+            "p99": 22.567099999985658,
+            "max": 30.114000000001397
+          },
+          "stateGapP99": 81.43529999998282,
+          "stateGapMax": 355.4616999999853,
+          "actionP95": 34.02109999998356,
+          "actionMax": 77.5228000000061,
+          "rssMiB": 598.12890625,
+          "cpuPercent": 107.78565201805301,
+          "mainCpuPercent": 46.46052191398142,
+          "inputs": {
+            "accepted": {
+              "split": 340,
+              "feed": 2371
+            },
+            "attempted": {
+              "split": 457,
+              "feed": 2425
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 27,
+            "contributions": 169
+          },
+          "lobbyErrors": {}
+        },
+        {
+          "window": 4,
+          "hz": 19.931953626345017,
+          "tick": {
+            "n": 1192,
+            "p50": 10.708899999997811,
+            "p95": 19.364000000001397,
+            "p99": 24.747699999978067,
+            "max": 42.48170000000391
+          },
+          "stateGapP99": 90.29920000000857,
+          "stateGapMax": 430.32259999998496,
+          "actionP95": 39.77379999999539,
+          "actionMax": 199.61120000001392,
+          "rssMiB": 614.5078125,
+          "cpuPercent": 100.01841690399212,
+          "mainCpuPercent": 46.52033105241762,
+          "inputs": {
+            "accepted": {
+              "split": 305,
+              "feed": 2372
+            },
+            "attempted": {
+              "split": 461,
+              "feed": 2434
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 27,
+            "contributions": 199
+          },
+          "lobbyErrors": {}
+        },
+        {
+          "window": 5,
+          "hz": 19.97066125583598,
+          "tick": {
+            "n": 1191,
+            "p50": 10.378700000001118,
+            "p95": 17.633200000040233,
+            "p99": 23.475000000034925,
+            "max": 33.39419999998063
+          },
+          "stateGapP99": 79.88420000002952,
+          "stateGapMax": 367.1681000000099,
+          "actionP95": 75.13219999999274,
+          "actionMax": 693.0186000000103,
+          "rssMiB": 671.27734375,
+          "cpuPercent": 99.38898976667022,
+          "mainCpuPercent": 41.37459916669778,
+          "inputs": {
+            "accepted": {
+              "split": 331,
+              "feed": 2360
+            },
+            "attempted": {
+              "split": 462,
+              "feed": 2427
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 27,
+            "contributions": 234
+          },
+          "lobbyErrors": {}
+        },
+        {
+          "window": 6,
+          "hz": 19.9926810387933,
+          "tick": {
+            "n": 1189,
+            "p50": 11.303699999989476,
+            "p95": 19.537899999995716,
+            "p99": 26.038999999989755,
+            "max": 49.555999999982305
+          },
+          "stateGapP99": 84.32630000001518,
+          "stateGapMax": 548.2476000000024,
+          "actionP95": 41.58199999999488,
+          "actionMax": 454.3544000000111,
+          "rssMiB": 657.69921875,
+          "cpuPercent": 102.65368466412046,
+          "mainCpuPercent": 45.20764338934913,
+          "inputs": {
+            "accepted": {
+              "split": 317,
+              "feed": 2375
+            },
+            "attempted": {
+              "split": 457,
+              "feed": 2432
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 28,
+            "contributions": 274
+          },
+          "lobbyErrors": {}
+        },
+        {
+          "window": 7,
+          "hz": 19.886540048414595,
+          "tick": {
+            "n": 1190,
+            "p50": 10.671400000050198,
+            "p95": 18.69079999998212,
+            "p99": 24.542499999981374,
+            "max": 39.20250000001397
+          },
+          "stateGapP99": 93.00920000002952,
+          "stateGapMax": 413.19570000004023,
+          "actionP95": 41.20260000001872,
+          "actionMax": 478.46510000003036,
+          "rssMiB": 668.56640625,
+          "cpuPercent": 102.69546370898038,
+          "mainCpuPercent": 44.00440967979428,
+          "inputs": {
+            "accepted": {
+              "split": 332,
+              "feed": 2392
+            },
+            "attempted": {
+              "split": 462,
+              "feed": 2439
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 29,
+            "contributions": 308
+          },
+          "lobbyErrors": {}
+        },
+        {
+          "window": 8,
+          "hz": 19.92881948966041,
+          "tick": {
+            "n": 1191,
+            "p50": 10.101300000038464,
+            "p95": 18.79910000000382,
+            "p99": 23.77990000002319,
+            "max": 39.50479999999516
+          },
+          "stateGapP99": 84.84640000003856,
+          "stateGapMax": 438.3217000000295,
+          "actionP95": 38.65700000000652,
+          "actionMax": 365.9507000000449,
+          "rssMiB": 672.66015625,
+          "cpuPercent": 102.26370545063585,
+          "mainCpuPercent": 43.123697736201215,
+          "inputs": {
+            "accepted": {
+              "split": 360,
+              "feed": 2382
+            },
+            "attempted": {
+              "split": 463,
+              "feed": 2433
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 29,
+            "contributions": 359
+          },
+          "lobbyErrors": {}
+        },
+        {
+          "window": 9,
+          "hz": 19.76206556354361,
+          "tick": {
+            "n": 1186,
+            "p50": 11.207400000013877,
+            "p95": 19.839099999982864,
+            "p99": 24.17209999996703,
+            "max": 75.78210000006948
+          },
+          "stateGapP99": 87.11450000002515,
+          "stateGapMax": 707.5298000000184,
+          "actionP95": 40.01639999996405,
+          "actionMax": 205.64050000009593,
+          "rssMiB": 665.5390625,
+          "cpuPercent": 104.70413556660215,
+          "mainCpuPercent": 45.92160904759602,
+          "inputs": {
+            "accepted": {
+              "split": 345,
+              "feed": 2382
+            },
+            "attempted": {
+              "split": 455,
+              "feed": 2430
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 29,
+            "contributions": 396
+          },
+          "lobbyErrors": {}
+        },
+        {
+          "window": 10,
+          "hz": 19.996579170321798,
+          "tick": {
+            "n": 1190,
+            "p50": 11.687099999981001,
+            "p95": 20.194699999992736,
+            "p99": 27.069400000036694,
+            "max": 56.72489999991376
+          },
+          "stateGapP99": 87.92910000006668,
+          "stateGapMax": 524.8429999999935,
+          "actionP95": 46.65460000000894,
+          "actionMax": 501.00379999994766,
+          "rssMiB": 688.4140625,
+          "cpuPercent": 114.23287360930196,
+          "mainCpuPercent": 48.773091445330195,
+          "inputs": {
+            "accepted": {
+              "split": 326,
+              "feed": 2385
+            },
+            "attempted": {
+              "split": 462,
+              "feed": 2433
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 30,
+            "contributions": 423
+          },
+          "lobbyErrors": {}
+        }
+      ]
+    },
+    {
+      "variant": "async-r1",
+      "source": "8cb281f",
+      "start": "2026-11-24T20:54:59.879Z",
+      "end": "2026-11-24T21:05:26.867Z",
+      "fixtureSha256": "b0c0f22a2fa1d72bba0020922d8d140b60af76711ee1ae636b2d2d1d839df95f",
+      "players": 30,
+      "lobby": 5,
+      "minutes": 10,
+      "gameClock": {
+        "mode": "synthetic-offset",
+        "offsetMs": -42898334,
+        "realStartAt": "2026-11-24T20:54:58.334Z",
+        "gameStartAt": "2026-11-24T09:00:00.000Z"
+      },
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 4,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 5,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 6,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 7,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 8,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 9,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 10,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "actions": {
+        "profile": 90,
+        "rankings": 90,
+        "loadout": 90,
+        "purchase": 90,
+        "account-bonus": 30,
+        "social-view": 180,
+        "gift": 90,
+        "gift-read": 89,
+        "clan-create": 3,
+        "clan-view": 177,
+        "clan-deposit": 90,
+        "clan-buy": 90,
+        "clan-edit": 90,
+        "alchemy-view": 90,
+        "alchemy-brew": 90,
+        "pet-buy": 5,
+        "pet-food": 85,
+        "chat": 85,
+        "news": 85,
+        "presence": 85,
+        "alchemy-exchange": 84,
+        "alchemy-equip": 85,
+        "pet-equip": 82,
+        "daily-reward": 60
+      },
+      "ack": {
+        "acknowledged": 9603,
+        "recovered": 9603,
+        "duplicates": 0
+      },
+      "alchemy": {
+        "version": 1,
+        "casts": 573,
+        "brews": 90,
+        "exchanges": 85,
+        "profiles": 1280,
+        "exactInventories": true,
+        "exactLobbyIngredientsAndNatural": true
+      },
+      "database": {
+        "matched": true,
+        "revision": 18648,
+        "profiles": 1280,
+        "clans": 131,
+        "testSchemaRemoved": true
+      },
+      "windows": [
+        {
+          "window": 1,
+          "hz": 19.48643623114008,
+          "tick": {
+            "n": 1180,
+            "p50": 11.088300000003073,
+            "p95": 20.17109999999957,
+            "p99": 25.992099999999482,
+            "max": 72.3755999999994
+          },
+          "stateGapP99": 103.87240000000747,
+          "stateGapMax": 251.21659999999974,
+          "actionP95": 214.38500000000204,
+          "actionMax": 464.88790000000154,
+          "rssMiB": 566.97265625,
+          "cpuPercent": 124.98689642778234,
+          "mainCpuPercent": 50.45171141070401,
+          "inputs": {
+            "accepted": {
+              "split": 364,
+              "feed": 2386
+            },
+            "attempted": {
+              "split": 462,
+              "feed": 2428
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 26,
+            "contributions": 53
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 1999,
+            "pendingBytes": 289827,
+            "activeBytes": 0,
+            "sealedBatches": 86,
+            "checkpointRunning": false,
+            "retainedFiles": 1944,
+            "retainedBytes": 8122691,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        },
+        {
+          "window": 2,
+          "hz": 19.58518766902655,
+          "tick": {
+            "n": 1188,
+            "p50": 10.836100000000442,
+            "p95": 20.78059999999823,
+            "p99": 30.898200000010547,
+            "max": 88.2960000000021
+          },
+          "stateGapP99": 108.152700000006,
+          "stateGapMax": 409.8040999999939,
+          "actionP95": 149.43970000000263,
+          "actionMax": 1366.098100000003,
+          "rssMiB": 586.9453125,
+          "cpuPercent": 117.86163042920967,
+          "mainCpuPercent": 48.672523665902155,
+          "inputs": {
+            "accepted": {
+              "split": 346,
+              "feed": 2352
+            },
+            "attempted": {
+              "split": 462,
+              "feed": 2430
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 28,
+            "contributions": 98
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 3827,
+            "pendingBytes": 234654,
+            "activeBytes": 0,
+            "sealedBatches": 67,
+            "checkpointRunning": false,
+            "retainedFiles": 1115,
+            "retainedBytes": 3336270,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        },
+        {
+          "window": 3,
+          "hz": 19.615965223533593,
+          "tick": {
+            "n": 1188,
+            "p50": 11.255499999999302,
+            "p95": 19.781300000002375,
+            "p99": 25.652799999981653,
+            "max": 95.18370000002324
+          },
+          "stateGapP99": 100.24799999999232,
+          "stateGapMax": 353.5017999999982,
+          "actionP95": 146.4710999999952,
+          "actionMax": 1183.9327000000048,
+          "rssMiB": 588.65625,
+          "cpuPercent": 116.33081928201935,
+          "mainCpuPercent": 47.07341763173199,
+          "inputs": {
+            "accepted": {
+              "split": 317,
+              "feed": 2361
+            },
+            "attempted": {
+              "split": 453,
+              "feed": 2422
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 28,
+            "contributions": 140
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 5639,
+            "pendingBytes": 178080,
+            "activeBytes": 0,
+            "sealedBatches": 34,
+            "checkpointRunning": false,
+            "retainedFiles": 24,
+            "retainedBytes": 134354,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        },
+        {
+          "window": 4,
+          "hz": 19.904067159808072,
+          "tick": {
+            "n": 1194,
+            "p50": 10.584499999997206,
+            "p95": 18.97579999998561,
+            "p99": 23.971700000023702,
+            "max": 52.560700000001816
+          },
+          "stateGapP99": 87.0113999999885,
+          "stateGapMax": 286.3320999999996,
+          "actionP95": 48.34799999999814,
+          "actionMax": 306.2191000000166,
+          "rssMiB": 644.42578125,
+          "cpuPercent": 113.67260732775155,
+          "mainCpuPercent": 48.50390578247022,
+          "inputs": {
+            "accepted": {
+              "split": 335,
+              "feed": 2389
+            },
+            "attempted": {
+              "split": 467,
+              "feed": 2446
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 28,
+            "contributions": 193
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 7595,
+            "pendingBytes": 332423,
+            "activeBytes": 0,
+            "sealedBatches": 123,
+            "checkpointRunning": false,
+            "retainedFiles": 1972,
+            "retainedBytes": 5543330,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        },
+        {
+          "window": 5,
+          "hz": 19.93563544378872,
+          "tick": {
+            "n": 1193,
+            "p50": 11.428499999979977,
+            "p95": 20.714500000001863,
+            "p99": 27.677000000025146,
+            "max": 47.599300000001676
+          },
+          "stateGapP99": 89.34659999998985,
+          "stateGapMax": 224.88000000000466,
+          "actionP95": 93.75970000005327,
+          "actionMax": 997.6210999999894,
+          "rssMiB": 681.69921875,
+          "cpuPercent": 119.0313784992912,
+          "mainCpuPercent": 49.057605580034306,
+          "inputs": {
+            "accepted": {
+              "split": 328,
+              "feed": 2352
+            },
+            "attempted": {
+              "split": 461,
+              "feed": 2433
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 28,
+            "contributions": 237
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 9411,
+            "pendingBytes": 90884,
+            "activeBytes": 0,
+            "sealedBatches": 34,
+            "checkpointRunning": false,
+            "retainedFiles": 1132,
+            "retainedBytes": 3155836,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        },
+        {
+          "window": 6,
+          "hz": 19.696243982395277,
+          "tick": {
+            "n": 1190,
+            "p50": 11.539199999999255,
+            "p95": 20.869899999990594,
+            "p99": 27.917799999995623,
+            "max": 38.2392000000109
+          },
+          "stateGapP99": 98.82760000001872,
+          "stateGapMax": 303.742099999974,
+          "actionP95": 110.14140000002226,
+          "actionMax": 308.10639999998966,
+          "rssMiB": 785.5234375,
+          "cpuPercent": 117.98555958209258,
+          "mainCpuPercent": 48.90265371490284,
+          "inputs": {
+            "accepted": {
+              "split": 345,
+              "feed": 2356
+            },
+            "attempted": {
+              "split": 457,
+              "feed": 2428
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 28,
+            "contributions": 295
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 11216,
+            "pendingBytes": 862177,
+            "activeBytes": 0,
+            "sealedBatches": 237,
+            "checkpointRunning": false,
+            "retainedFiles": 241,
+            "retainedBytes": 814729,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        },
+        {
+          "window": 7,
+          "hz": 19.806322989147596,
+          "tick": {
+            "n": 1191,
+            "p50": 11.521399999968708,
+            "p95": 19.1706000000122,
+            "p99": 25.897199999948498,
+            "max": 44.978899999987334
+          },
+          "stateGapP99": 97.46950000000652,
+          "stateGapMax": 503.7055999999866,
+          "actionP95": 47.98660000000382,
+          "actionMax": 412.3326000000234,
+          "rssMiB": 772.9921875,
+          "cpuPercent": 116.15368593735707,
+          "mainCpuPercent": 49.13327814208947,
+          "inputs": {
+            "accepted": {
+              "split": 345,
+              "feed": 2356
+            },
+            "attempted": {
+              "split": 463,
+              "feed": 2433
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 28,
+            "contributions": 342
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 13061,
+            "pendingBytes": 744468,
+            "activeBytes": 0,
+            "sealedBatches": 232,
+            "checkpointRunning": false,
+            "retainedFiles": 230,
+            "retainedBytes": 689198,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        },
+        {
+          "window": 8,
+          "hz": 19.904605176236988,
+          "tick": {
+            "n": 1194,
+            "p50": 10.728100000007544,
+            "p95": 18.776299999968614,
+            "p99": 26.067899999965448,
+            "max": 51.82569999998668
+          },
+          "stateGapP99": 87.25310000003083,
+          "stateGapMax": 285.35229999996955,
+          "actionP95": 174.17930000001797,
+          "actionMax": 1865.3719000000274,
+          "rssMiB": 765.7734375,
+          "cpuPercent": 115.97908456358478,
+          "mainCpuPercent": 49.04806532457202,
+          "inputs": {
+            "accepted": {
+              "split": 306,
+              "feed": 2340
+            },
+            "attempted": {
+              "split": 459,
+              "feed": 2415
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 29,
+            "contributions": 394
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 14883,
+            "pendingBytes": 471193,
+            "activeBytes": 0,
+            "sealedBatches": 198,
+            "checkpointRunning": false,
+            "retainedFiles": 2030,
+            "retainedBytes": 5798269,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        },
+        {
+          "window": 9,
+          "hz": 19.968618980064885,
+          "tick": {
+            "n": 1198,
+            "p50": 11.3127000000095,
+            "p95": 20.580700000049546,
+            "p99": 26.23380000004545,
+            "max": 36.10430000000633
+          },
+          "stateGapP99": 90.17060000007041,
+          "stateGapMax": 256.92720000003465,
+          "actionP95": 60.11129999998957,
+          "actionMax": 254.89809999999125,
+          "rssMiB": 753.36328125,
+          "cpuPercent": 116.38611169793269,
+          "mainCpuPercent": 47.857144409269004,
+          "inputs": {
+            "accepted": {
+              "split": 316,
+              "feed": 2368
+            },
+            "attempted": {
+              "split": 458,
+              "feed": 2434
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 29,
+            "contributions": 437
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 16710,
+            "pendingBytes": 488955,
+            "activeBytes": 0,
+            "sealedBatches": 160,
+            "checkpointRunning": false,
+            "retainedFiles": 937,
+            "retainedBytes": 2619813,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        },
+        {
+          "window": 10,
+          "hz": 20.0544392897805,
+          "tick": {
+            "n": 1201,
+            "p50": 10.766500000027008,
+            "p95": 18.806899999966845,
+            "p99": 26.990400000009686,
+            "max": 45.083300000056624
+          },
+          "stateGapP99": 84.65130000002682,
+          "stateGapMax": 129.27370000001974,
+          "actionP95": 62.1201000000583,
+          "actionMax": 212.0280999999959,
+          "rssMiB": 804.81640625,
+          "cpuPercent": 116.35850664451434,
+          "mainCpuPercent": 47.98606467485051,
+          "inputs": {
+            "accepted": {
+              "split": 326,
+              "feed": 2334
+            },
+            "attempted": {
+              "split": 463,
+              "feed": 2428
+            }
+          },
+          "clan": {
+            "enabled": true,
+            "boards": 131,
+            "active": 128,
+            "eligible": 1277,
+            "contributors": 29,
+            "contributions": 487
+          },
+          "lobbyErrors": {},
+          "journal": {
+            "revision": 18618,
+            "pendingBytes": 169770,
+            "activeBytes": 0,
+            "sealedBatches": 64,
+            "checkpointRunning": false,
+            "retainedFiles": 34,
+            "retainedBytes": 89266,
+            "retentionError": null,
+            "pendingCleanupError": null
+          }
+        }
+      ]
+    }
+  ],
+  "correctness": {
+    "windows": {
+      "total": 2472,
+      "pass": 2470,
+      "fail": 0,
+      "skip": 2
+    },
+    "linux": {
+      "total": 2472,
+      "pass": 2470,
+      "fail": 0,
+      "skip": 2
+    },
+    "processCrashWindows": 13,
+    "processCrashLinux": 13
+  },
+  "decision": "Keep asyncArenaWrites disabled in production: durability tests pass, but ten-minute mixed runs do not establish a general latency or resource improvement.",
+  "limitations": [
+    "Sequential synthetic Windows runs; random worlds and fights differ, not a controlled performance A/B",
+    "Both passed short criteria, but rare state gaps exceeded 500 ms",
+    "Async run has additional in-memory journal counters; no filesystem scans added to those samples",
+    "Kernel power loss and real payment/VK providers are not tested",
+    "Linux realistic load with asyncArenaWrites=true and long-duration retained histories remain pending",
+    "Initial Linux process-crash fixture failures remain recorded; final passing repeat corrected startup settlement expectations only"
+  ]
+}
