@@ -1,3 +1,5 @@
+Текущий VPS 20261124-clan-exit, source/tag 17d64554cabb143a581ed7a8fdc21128e9aa73b4 / release/20261124-clan-exit. Отчёт games/heroes-of-ether/docs/performance/clan-exit-20261124.json. Новые механики установлены, projectile broadphase пока кандидат. Все backups сохранять.
+
 Актуальный выпуск 24.11.2026: 20261124-lobby-pets, 64bc35c41d6da55c4718abb005d7aee4fee797fc.
 Отчёт: games/heroes-of-ether/docs/performance/lobby-progress-pets-20261124.json.
 Выпуск публикуется в main, codex/20261123-interface-mechanics и codex/20261124-lobby-progress-pets. Тег release/20261124-lobby-pets указывает на точные runtime-исходники; последующий коммит содержит отчёты.
