@@ -539,9 +539,20 @@ class ProfileStore {
       dailyRankings.validateWorld(data);
       eventRankings.validate(data);
       require("../clans/clan-service").validateWorld(data);
-      for (const p of Object.values(data.profiles))
+      const clanRecoveryBefore={...data,profiles:{...data.profiles}},clanRecoveryAt=this.now();
+      let recoveredClanContribution=false;
+      for (const [profileKey,p] of Object.entries(data.profiles))
         if (p.progress.session && !this.residentRecoveryProfiles.has(p.id)) {
-          if(p.clanQuestSession) p.clanQuestSession=null;
+          if(p.clanArenaPending && require('../clans/arena-settlement').enabled(data)) {
+            clanRecoveryBefore.profiles[profileKey]=structuredClone(p);
+            const event={type:'lifeEnded',lifeId:p.progress.session.id,reason:'recovered'},drafts=new Map();
+            require('../clans/arena-settlement').observe(data,p,event,clanRecoveryAt,p.progress.kills);
+            clanQuests.progress(data,drafts,p,event,clanRecoveryAt,{},0,
+              {kills:p.progress.absorptionKills,mass:p.progress.absorbedMass,creditedKills:p.progress.kills});
+            if(drafts.size)data.clans={...data.clans,...Object.fromEntries(drafts)};
+            require('../clans/arena-settlement').finish(p,event);
+            recoveredClanContribution=true;
+          } else if(p.clanQuestSession) p.clanQuestSession=null;
           easter.settleLife(p, p.progress.session.id);
           pets.progress(
             p,
@@ -561,6 +572,7 @@ class ProfileStore {
           );
           p.revision++;
         }
+      if(recoveredClanContribution)Object.assign(data,clanCompetition.capture(data,clanRecoveryBefore,clanRecoveryAt));
       const currentClans = currentClanRules(data.clans, this.unlockClanCrests);
       this.appearanceMigrationPending = Object.entries(currentClans).some(
         ([id, clan]) => JSON.stringify(clan.crest) !== JSON.stringify(data.clans[id].crest),
@@ -1268,7 +1280,10 @@ class ProfileStore {
         detail: p.level > previousLevel ? `Уровень ${previousLevel} → ${p.level}` : event.type,
       });
       const earned = p.progress.xp + (p.progress.session?.xp || 0) - before;
+      const clanSettlement=require('../clans/arena-settlement');
+      clanSettlement.observe(previous,p,event,at,clanBefore.creditedKills);
       clanQuests.progress(previous, clanDrafts, p, event, at, questChanges, earned, clanBefore);
+      clanSettlement.finish(p,event);
       // Зачёт в момент заработка: вступление/исключение посреди жизни не переносит старый XP.
       if (earned > 0 && p.clanId && previous.clans[p.clanId])
         clanXp.set(p.clanId, (clanXp.get(p.clanId) || 0) + earned);

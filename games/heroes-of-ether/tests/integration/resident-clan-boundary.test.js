@@ -24,7 +24,8 @@ async function fixture(t){
  const clanId=store.find(users[0].token).clanId;
  act(users[1],'apply',{clanId});if(!store.find(users[1].token).clanId)act(users[0],'accept',{clanId,memberId:users[1].profile.id});
  at=start;store.refreshCompetition();
- const data=structuredClone(store.data);data.clans[clanId].dailyQuests.board.quests=[{
+ const data=structuredClone(store.data);data.clanQuests.arenaSettlementVersion=0; // Historical immediate-credit boundary.
+ data.clans[clanId].dailyQuests.board.quests=[{
   ...service.catalog.items.find(q=>q.metric==='food'),target:4,progress:0,completedAt:null,reward:{kind:'crystals',amount:500}}];
  store.save(data);at=end-1000;
  child=spawn(process.execPath,['-e','setInterval(()=>{},1000)'],{stdio:'ignore',windowsHide:true});await once(child,'spawn');

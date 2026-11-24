@@ -124,6 +124,7 @@ function migrateKingProgress(p) {
   return true;
 }
 function validateProgress(p) {
+  require('../clans/arena-settlement').validate(p);
   (promotionRules ||= require("../shop/promotion-offers")).validate(p);
   const s = p.progress;
   if (

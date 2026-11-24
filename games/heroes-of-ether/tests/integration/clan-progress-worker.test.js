@@ -26,6 +26,7 @@ function fixture(t){
   if(store.find(b.token).clanId!==id)act(a,'accept',{clanId:id,memberId:b.profile.id});
   now=start;store.refreshCompetition();
   const data=structuredClone(store.data);
+  data.clanQuests.arenaSettlementVersion=0; // Historical immediate-credit replay.
   data.clans[id].dailyQuests.board.quests=[{...catalog.items.find(q=>q.metric==='xp'),
     target:1,reward:{kind:'crystals',amount:500},progress:0,completedAt:null}];
   for(const p of Object.values(data.profiles))p.quests.items.forEach((row,i)=>{row.questId=['harvest','great_feast','hunter','feast'][i];});

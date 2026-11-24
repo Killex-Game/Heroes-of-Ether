@@ -29,6 +29,7 @@ function fixture(t,pipeline=false,day=start){
    for(const u of users.slice(i*4+1,i*4+4))api.mutate(u.token,{action:'apply',requestId:randomUUID(),clanId});
  }
  now=day;store.refreshCompetition();
+ store.data={...store.data,clanQuests:{...store.data.clanQuests,arenaSettlementVersion:0}};
  for(const [i,u]of users.entries())store.startLife(u.profile.id,'life-'+i);
  const data=structuredClone(store.data),catalog=require('../../src/server/clans/daily-quests/catalog.json');
  for(const clan of Object.values(data.clans))clan.dailyQuests.board.quests=['xp','food','arenaMs'].map(metric=>({

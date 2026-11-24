@@ -43,6 +43,9 @@ function fixture(t,journal=false,options={}){
   if(journal)t.after(async()=>{await store.journal.close();cleanup();});
   const clanApi=new ClanService(store), a=store.open(),b=store.open(),late=store.open();
   const initial=structuredClone(store.data);
+  // Preserve historical immediate-credit regression fixtures. New exit-only
+  // semantics are exercised end-to-end in clan-arena-settlement.test.js.
+  initial.clanQuests.arenaSettlementVersion=0;
   for(const p of Object.values(initial.profiles)){p.level=12;p.progress.xp=require('../../src/server/progression/experience-progression').xpForLevel(12);p.wallet.coins=10000;p.wallet.crystals=1000;}
   store.save(initial,now);
   const act=(who,action,data={})=>clanApi.mutate(who.token,{action,requestId:randomUUID(),...data});

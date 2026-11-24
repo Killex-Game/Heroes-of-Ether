@@ -530,7 +530,7 @@ function captureStableScores(next, previous, at, profileKeys) {
     const p = next.profiles[key];
     const before = previous.profiles[key];
     if (!before || p === before) continue;
-    const gain = p.progress.kills - before.progress.kills, c = next.clans[p.clanId];
+    const gain = require('./arena-settlement').battleGain(next,p,before,at), c = next.clans[p.clanId];
     if (gain <= 0 || before.clanId !== p.clanId || !c ||
         !eligible(c, p.id, at) || !day.rosters[c.id]?.includes(p.id)) continue;
     if (data === next) {
@@ -622,7 +622,7 @@ function capture(next, previous, at, { incremental = false, validatedPrevious = 
   }
   for (const [key, p] of Object.entries(data.profiles)) {
     const before = previous.profiles[key],
-      gain = p.progress.kills - (before?.progress.kills || 0),
+      gain = require('./arena-settlement').battleGain(data,p,before,at),
       c = data.clans[p.clanId];
     if (
       (data.clanQuests && !require("./daily-quests/service").active(data,at)) ||

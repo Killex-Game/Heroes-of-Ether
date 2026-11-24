@@ -67,6 +67,7 @@ class ArenaProgressShards {
     // and resend their complete inventories/history on the next sample.
     const world = { profiles: { ...prior.profiles, ...input.profiles }, clans: { ...prior.clans, ...input.clans } };
     if (Object.hasOwn(input, 'clanQuests')) world.clanQuests = input.clanQuests;
+    if (input.competition) world.competition = input.competition;
     tableDeltas.remember(world.profiles,prior.profiles,Object.keys(input.profiles));
     tableDeltas.remember(world.clans,prior.clans,Object.keys(input.clans));
     const patch = difference(world, prior);

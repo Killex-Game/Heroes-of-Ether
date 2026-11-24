@@ -12,7 +12,7 @@ const optionKeys=['petEvents','baseRouletteConfig','promotionConfig','unlockLeag
 const schedules=new WeakMap();
 function progressSchedule(control){
   let schedule=schedules.get(control);
-  if(!schedule){schedule={calendarVersion:control.calendarVersion,calendarSchedule:control.calendarSchedule,seasons:control.seasons||[]};schedules.set(control,schedule);}
+  if(!schedule){schedule={calendarVersion:control.calendarVersion,calendarSchedule:control.calendarSchedule,arenaSettlementVersion:control.arenaSettlementVersion,seasons:control.seasons||[]};schedules.set(control,schedule);}
   return schedule;
 }
 class ClanArenaProgressShards extends ArenaProgressShards {
@@ -34,10 +34,16 @@ class ClanArenaProgressShards extends ArenaProgressShards {
         const p=base.profiles[key],clan=base.clans[p.clanId];
         const group=groups[laneFor(clan ? clan.id : p.id,this.count)];
         order.add(p.id);group.profiles[key]=p;group.progress.push(event);
-        if(clan)group.clans[clan.id]={id:clan.id,xp:clan.xp,dailyQuests:clan.dailyQuests};
+        if(clan) {
+          group.clans[clan.id]={id:clan.id,xp:clan.xp,dailyQuests:clan.dailyQuests,
+            members:clan.members,competition:{joined:clan.competition.joined,recruits:clan.competition.recruits}};
+          const day=base.competition?.day;
+          if(day){group.competition||={day:{start:day.start,end:day.end,rosters:{}}};
+            if(day.rosters[clan.id])group.competition.day.rosters[clan.id]=day.rosters[clan.id];}
+        }
       }
       const jobs=groups.flatMap((group,index)=>group.progress.length ? [{index,
-        promise:this.submit(index,{profiles:group.profiles,clans:group.clans,clanQuests:group.clanQuests},
+        promise:this.submit(index,{profiles:group.profiles,clans:group.clans,clanQuests:group.clanQuests,competition:group.competition},
           {id:batch.id,at:batch.at,progress:group.progress},ctx)}] : []);
       this.stats.jobs++;this.stats.transferMs+=performance.now()-started;
       const results=await Promise.all(jobs.map(async job=>({index:job.index,result:await job.promise})));
@@ -70,7 +76,9 @@ class ClanArenaProgressShards extends ArenaProgressShards {
           const before=base.clans[id];
           // arenaProgressDraft owns only XP and the daily quest board in a clan.
           if(!Number.isSafeInteger(value.xp)||value.xp<before.xp||value.id!==id||
-            Object.keys(value).some(k=>!['id','xp','dailyQuests'].includes(k)))throw Error('Unexpected clan mutation');
+            Object.keys(value).some(k=>!['id','xp','dailyQuests','members','competition'].includes(k)) ||
+            !require('node:util').isDeepStrictEqual(value.members,group.clans[id].members) ||
+            !require('node:util').isDeepStrictEqual(value.competition,group.clans[id].competition))throw Error('Unexpected clan mutation');
           assignedClans.add(id);if(clans===base.clans)clans={...clans};
           clans[id]={...before,xp:value.xp,dailyQuests:shareArenaData(before.dailyQuests,value.dailyQuests)};
         }

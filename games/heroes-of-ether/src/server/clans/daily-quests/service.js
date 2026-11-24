@@ -39,9 +39,11 @@ function availableDuration(data,start,end) {
     .reduce((sum,s)=>sum+Math.max(0,Math.min(end,s.endsAt)-Math.max(start,s.startsAt)),0));
 }
 function initialize(data, at) {
+  if (data.clanQuests && data.clanQuests.arenaSettlementVersion === undefined)
+    data={...data,clanQuests:{...data.clanQuests,arenaSettlementVersion:1}};
   if (data.clanQuests?.calendarVersion === 1) return data;
   if (data.clanQuests?.calendarVersion !== undefined) throw Error('Unknown clan calendar version');
-  const control=data.clanQuests || {version:1,catalogVersion:catalog.version,revision:0,seasons:[],enabledAt:at};
+  const control=data.clanQuests || {version:1,catalogVersion:catalog.version,revision:0,seasons:[],enabledAt:at,arenaSettlementVersion:1};
   return {...data,clanQuests:{...control,calendarVersion:1,calendarActivatedAt:at,nextAt:0}};
 }
 function capture(next, previous, at, {canSettle=true} = {}) {
@@ -192,7 +194,7 @@ function progress(data, clanDrafts, p, event, at, changes, earned, before) {
   let timeDeltas;
   if (session && ['questSample','lifeEnded'].includes(event.type) && session.id === event.lifeId && at > session.sampledAt) {
     // The caller's timestamp is the sampled arena time, not delayed flush time.
-    const elapsed = board ? availableDuration(data,Math.max(session.sampledAt,board.start),Math.min(at,board.end)) : 0;
+    const elapsed = board && event.reason!=='recovered' ? availableDuration(data,Math.max(session.sampledAt,board.start),Math.min(at,board.end)) : 0;
     timeDeltas = {};
     timeDeltas.arenaMs = elapsed;
     if (session.rank >= 1 && session.rank <= 10) timeDeltas.top10Ms = elapsed;
@@ -213,9 +215,14 @@ function progress(data, clanDrafts, p, event, at, changes, earned, before) {
     if(event.absorptionSequence===undefined && event.eaterLifeId===undefined)
       deltas.absorbedMass = Math.max(0,p.progress.absorbedMass-before.mass);
     deltas.xp = Math.max(0,earned);
-    const result=engine.record(board,{playerId:p.id,clanId:clan.id,at,sequence:(board.cursors[p.id]||0)+1,deltas});
+    const deferred=require('../arena-settlement');
+    if(deferred.enabled(data)) {
+      deferred.quest(data,clan,board,p,deltas);
+      deltas=event.type==='lifeEnded' && session?.id===event.lifeId ? deferred.questDeltas(clan,board,p,at) : null;
+    }
+    const result=deltas ? engine.record(board,{playerId:p.id,clanId:clan.id,at,sequence:(board.cursors[p.id]||0)+1,deltas}) : {accepted:false};
     if(result.accepted) clanDrafts.set(clan.id,{...clan,dailyQuests:{...clan.dailyQuests,board:result.board}});
-  } else if (board && at >= board.end && timeDeltas?.arenaMs > 0 && Object.hasOwn(board.eligible,p.id)) {
+  } else if (!require('../arena-settlement').enabled(data) && board && at >= board.end && timeDeltas?.arenaMs > 0 && Object.hasOwn(board.eligible,p.id)) {
     // A sample may arrive on the first tick after 22:00. Credit only the
     // measured interval clipped to the deadline, never that tick's actions,
     // food or XP. The boundary barrier keeps this board open until publication.
@@ -228,6 +235,11 @@ function progress(data, clanDrafts, p, event, at, changes, earned, before) {
 function gift(data,p,at) {
   const clan=data.clans[p.clanId], board=clan?.dailyQuests?.board;
   if(!data.clanQuests || !board || blocked(data,board,at)) return;
+  if(require('../arena-settlement').enabled(data) && p.progress.session) {
+    if(at>=board.start && at<board.end && Object.hasOwn(board.eligible,p.id))
+      require('../arena-settlement').quest(data,clan,board,p,{gifts:1});
+    return;
+  }
   const result=engine.record(board,{playerId:p.id,clanId:clan.id,at,sequence:(board.cursors[p.id]||0)+1,deltas:{gifts:1}});
   if(result.accepted) data.clans={...data.clans,[clan.id]:{...clan,dailyQuests:{...clan.dailyQuests,board:result.board}}};
 }
@@ -248,6 +260,7 @@ function view(data,clan,at,part) {
 function validate(data) {
   if(data.clanQuests===undefined) return;
   const state=data.clanQuests;
+  if(state.arenaSettlementVersion!==undefined && ![0,1].includes(state.arenaSettlementVersion))throw Error('Invalid clan arena settlement');
   if(state.version!==1 || !Number.isSafeInteger(state.revision) || !Number.isSafeInteger(state.nextAt) || !Array.isArray(state.seasons)) throw Error('Invalid clan quest schedule');
   if(state.recruitRulesVersion!==undefined && state.recruitRulesVersion!==1)throw Error('Invalid clan newcomer rules');
   if(state.windowVersion!==undefined && ![1,2,3,4,engine.WINDOW_VERSION].includes(state.windowVersion))throw Error('Invalid clan quest window');

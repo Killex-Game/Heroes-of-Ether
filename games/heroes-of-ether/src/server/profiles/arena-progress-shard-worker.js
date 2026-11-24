@@ -38,7 +38,8 @@ parentPort.on("message", message => {
           { profiles: prior.profiles, ...(prior.clanQuests ? {clans:prior.clans} : {}) }) });
     }
     prediction = { id: message.id, world: { profiles: next.profiles, clans: next.clans,
-      ...(next.clanQuests ? {clanQuests:next.clanQuests} : {}) } };
+      ...(next.clanQuests ? {clanQuests:next.clanQuests} : {}),
+      ...(next.competition ? {competition:next.competition} : {}) } };
     parentPort.postMessage({ id: message.id, ...(message.batches ? { steps } : steps[0]),
       computeMs: performance.now() - started });
   } catch {
