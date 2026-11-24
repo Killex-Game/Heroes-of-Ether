@@ -109,3 +109,20 @@ test('concurrent clan membership and wallet change invalidates all shard output'
  await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
  assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
 });
+
+test('direct clan calculations transfer only participating profiles and their clan, without a world replica',async t=>{
+ const f=fixture(t),participants=new Set(f.users.slice(0,2).map(u=>u.profile.id));
+ const batch=f.batch(1);batch.progress=batch.progress.filter(e=>participants.has(e.profileId));
+ const before=f.store.data,requests=[],submit=f.pool.submit.bind(f.pool);
+ f.pool.submit=(lane,input,events,ctx)=>{requests.push(input);return submit(lane,input,events,ctx);};
+ await f.store.applyArenaGroup([batch]);f.serial.applyArenaProgress(batch.id,batch.progress,batch.at);
+ assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+ assert.equal(requests.length,1,'members of the same clan must share one calculation lane');
+ assert.deepEqual(new Set(Object.values(requests[0].profiles).map(p=>p.id)),participants);
+ assert.equal(Object.keys(requests[0].clans).length,1);
+ assert.equal(f.pool.lanes.filter(Boolean).length,1);
+ assert.equal(Object.keys(f.pool.lanes.find(Boolean).base.profiles).length,2);
+ for(const [key,p]of Object.entries(before.profiles))if(!participants.has(p.id))assert.equal(f.store.data.profiles[key],p);
+ assert.equal(f.pool.stats.failures,0);assert.equal(f.pool.stats.conflicts,0);
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+});

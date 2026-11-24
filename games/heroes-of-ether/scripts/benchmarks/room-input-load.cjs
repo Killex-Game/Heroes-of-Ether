@@ -170,6 +170,12 @@ if (process.env.LOAD_CLIENT === "1") {
       count: Number(process.env.LOAD_PROFILE_SHARDS),
     });
   }
+  if (process.env.LOAD_PROFILE_CLAN_SHARDS) {
+    if (profiles.arenaPreparer || !profiles.journal) throw Error('Use one journaled progress backend');
+    profiles.arenaPreparer = new (require('../../src/server/profiles/clan-arena-progress-shards').ClanArenaProgressShards)({
+      count: Number(process.env.LOAD_PROFILE_CLAN_SHARDS),
+    });
+  }
   if (process.env.LOAD_PROFILE_PIPELINE) {
     if (profiles.arenaPreparer || !profiles.journal) throw Error("Use one journaled progress backend");
     profiles.arenaPreparer = new (require("../../src/server/profiles/arena-progress-preparer").ArenaProgressPreparer)({

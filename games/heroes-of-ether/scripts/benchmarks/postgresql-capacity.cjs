@@ -35,6 +35,7 @@ async function main(){
   assert.equal(Object.keys(fixtureData.data.profiles).length,1280);
   assert(Object.values(fixtureData.data.profiles).every(p=>p.testFixture==='database-capacity-20261110'));
   const realistic=process.env.CAPACITY_REALISTIC==='1',mixedMinutes=Number(process.env.CAPACITY_MIXED_MINUTES||0);
+  const progressBackend=require('./capacity-progress-backend.cjs').progressBackend(process.env.CAPACITY_PROGRESS_BACKEND);
   assert(Number.isInteger(mixedMinutes)&&mixedMinutes>=0&&mixedMinutes<=120);
   const perRoom=require('../../config/arena-rooms.json').arenaCapacity;
   if(process.env.CAPACITY_RETAINED_HISTORY==='1'){
@@ -52,6 +53,8 @@ async function main(){
   const summary={at:new Date().toISOString(),gameClock,rooms,perRoom,protocol,fixtureSha256,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
   summary.stateWorkerPolicy={count:Number(stateWorkerPolicy.LOAD_STATE_WORKERS),maxRooms:Number(stateWorkerPolicy.LOAD_STATE_WORKER_ROOMS),source:'config/arena-state-workers.json'};
+  summary.progressBackend=progressBackend.name;
+  if(progressBackend.profileWorker){summary.profileWorker=true;summary.experimentalProgressBackend=true;}
   if(seed)summary.startingSeed=seed.proof;
   if(mixedMinutes)Object.assign(summary,{mixedMinutes,phaseSeconds:60});
   if(process.env.CAPACITY_ACTIVE_CLAN_QUESTS==='1')summary.requiresActiveClanQuests=true;
@@ -70,6 +73,7 @@ async function main(){
       ...stateWorkerPolicy,LOAD_DRIVER_PER_ROOM:'1',LOAD_LOBBY:'5',LOAD_ALL_BOOSTERS:'1',LOAD_STOCK:'3000',LOAD_GC_METRICS:'1',
       LOAD_INCREMENTAL_SETTLEMENT:'1',LOAD_WORLD_FIXTURE:fixture,LOAD_DATABASE_CONFIG:privateConfig,LOAD_ACK_DIR:path.join(out,'acks')});
   if(mixedMinutes)Object.assign(env,{LOAD_PHASES:Array(mixedMinutes).fill('combined').join(','),LOAD_PHASE_MS:'60000'});
+  Object.assign(env,progressBackend.environment);
   if(realistic)Object.assign(env,{LOAD_REALISTIC:'1',LOAD_MIXED_SOCIAL:'1',LOAD_LOBBY_INTERVAL:'1500'});
   if(summary.alchemy)Object.assign(env,{LOAD_ALCHEMY:'1',LOAD_EVENT:'ether-alchemy'});
   if(process.env.CAPACITY_DIAGNOSTICS==='1'){
