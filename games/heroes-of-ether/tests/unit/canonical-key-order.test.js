@@ -20,3 +20,16 @@ test('key ordering does not read values and covers empty, all-index and ordinary
   assert.deepEqual(canonicalKeys({}),[]);assert.deepEqual(canonicalKeys({'10':0,'2':0}),['2','10']);
   assert.deepEqual(canonicalKeys({z:0,a:0}),['a','z']);
 });
+
+test('generic Proxy input cannot change canonical numeric-key ordering or persisted checksums',()=>{
+  const {SnapshotBuilder}=require('../../src/server/persistence/snapshot-builder');
+  const {pack}=require('../../src/server/persistence/state-snapshot');
+  const target=Object.fromEntries([['2',{id:'two'}],['10',{id:'ten'}],['a',{id:'a'}],['z',{id:'z'}]]);
+  for(const order of [['10','2','z','a'],['z','10','a','2'],['2','a','10','z']]){
+    const profiles=new Proxy(target,{ownKeys:()=>order});
+    assert.deepEqual(canonicalKeys(profiles),Object.keys(canonical(profiles)));
+    const world={profiles,clans:{},_journalRevision:1},expected=pack(world),actual=new SnapshotBuilder().pack(world);
+    assert.equal(actual.worldHash,expected.worldHash);assert.equal(actual.digest,expected.digest);
+    assert.deepEqual([...actual.docs.values()],[...expected.docs.values()]);
+  }
+});
