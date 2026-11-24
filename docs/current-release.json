@@ -65,7 +65,8 @@
     "v10 uses compact player field masks and exact effect tuples",
     "v9 food metadata included without extra rounding",
     "Old v8 bytes and clients remain compatible; distinct per-format history caches",
-    "Default browser now negotiates v10; gameplay, cosmetics, admission and durable ACK rules unchanged"
+    "Default browser now negotiates v10; gameplay, cosmetics, admission and durable ACK rules unchanged",
+    "Owner-approved Premium emote option 2: original art, +20% size, bounded lively motion and reduced-motion support"
   ],
   "data": {
     "before": {
@@ -32687,5 +32688,18 @@
     ],
     "allGoalsAchieved": false,
     "evidence": "artifacts/runtime-wire-20261124"
+  },
+  "premiumEmotesStaticUpdate": {
+    "at": "2026-11-24T07:20:43.045Z",
+    "sourceCommit": "ddf6cb25b67557e3eedd588164a7f0b017b8ef78",
+    "sourceTag": "release/20261124-premium-lively",
+    "branch": "codex/20261124-emotes-realistic-load",
+    "files": 9,
+    "unchangedPublic": 2352,
+    "gamePid": 557601,
+    "adminPid": 1163,
+    "noRestart": true,
+    "noWorldWrites": true,
+    "report": "games/heroes-of-ether/docs/performance/premium-realistic-20261124.txt"
   }
 }
