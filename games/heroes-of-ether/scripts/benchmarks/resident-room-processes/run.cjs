@@ -120,7 +120,7 @@ async function run(){
     const assert=require('node:assert/strict');
     for(const c of configs){
       const at=performance.now(),selected=await services.readProfiles(c.profiles.map(p=>locators.get(p.id)));
-      assert.equal(selected.revision,store.data._journalRevision,'Room startup requires a current persisted generation');
+      assert.equal(selected.revision,store.journal.revision,'Room startup requires a current persisted generation');
       const profiles=c.profiles.map(p=>selected.profiles.get(p.id));assert.deepEqual(profiles,c.profiles);
       c.profiles=profiles;loading.rooms.push({id:c.id,profiles:profiles.length,generation:selected.generation,
         elapsedMs:performance.now()-at,documents:selected.documents,logicalBytes:selected.logicalBytes});
