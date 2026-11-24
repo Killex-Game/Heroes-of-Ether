@@ -63,7 +63,7 @@ async function main(){
   if(process.env.CAPACITY_DIAGNOSTICS==='1'){
     summary.diagnosticOnly=true;
     summary.diagnosticCaveat='Stage, CPU sampling and synchronous I/O probes add overhead; not a capacity acceptance run';
-    Object.assign(env,{LOAD_STAGE_METRICS:'1',LOAD_PHYSICS_STAGES:'1',LOAD_CPU_PHASE:'combined',LOAD_SYNC_IO_PROBE:'1'});
+    Object.assign(env,{LOAD_STAGE_METRICS:'1',LOAD_PHYSICS_STAGES:'1',LOAD_CPU_PHASE:'combined',LOAD_SYNC_IO_PROBE:'1',LOAD_DISK_TIMING:'1'});
   }
   if(process.env.CAPACITY_WIRE_DIAGNOSTICS==='1'){
     summary.diagnosticOnly=true;
