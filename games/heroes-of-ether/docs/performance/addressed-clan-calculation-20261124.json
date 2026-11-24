@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T23:29:05.134Z",
+  "at": "2026-11-24T23:50:56.554Z",
   "installed": false,
   "source": "ad3fe82b2e7c1d60a00682e3af8e11b8eb6b2993",
   "change": "Explicit benchmark backend uses ClanArenaProgressShards directly without the full-world preparation replica. Default remains canonical. Real requested worker activity/failures are acceptance criteria.",
@@ -46,6 +46,46 @@
       "skipped": 0
     }
   },
+  "mixed": {
+    "label": "candidate34-r1-30-3m-alchemy-cpu6",
+    "passed": true,
+    "windows": 3,
+    "fixtureSha256": "e2e85e36120eff282bd7a1d2ed4d74c18bec719482d828a7411ae729c223b14c",
+    "updatesHz": {
+      "min": 20.123077567564724,
+      "max": 20.206159728797363
+    },
+    "tickWorkP95Ms": {
+      "min": 12.215760000006412,
+      "max": 14.216604000001098
+    },
+    "tickWorkMaxMs": 43.73690499999975,
+    "actionP95Ms": {
+      "min": null,
+      "max": null
+    },
+    "stateGapMaxMs": null,
+    "rssMiB": {
+      "min": 1027.83984375,
+      "max": 1174.23046875
+    },
+    "worker": {
+      "jobs": 3597,
+      "conflicts": 0,
+      "failures": 0,
+      "computeMs": 7341.589589000139,
+      "transferMs": 4728.719193000214,
+      "roundTripMs": 10001.423332001026
+    },
+    "acknowledged": 3119,
+    "recovered": 3119,
+    "duplicates": 0,
+    "database": {
+      "matched": true,
+      "revision": 6143
+    },
+    "testSchemaRemoved": true
+  },
   "boundedResidency": {
     "source": "6d89beabb57cc6f3117561a380a7423338e20127",
     "installed": false,
@@ -80,12 +120,63 @@
       "pass": 2487,
       "fail": 0,
       "skipped": 3
+    },
+    "linuxFull": {
+      "label": "bounded-clan-full-linux",
+      "code": 0,
+      "tests": 2490,
+      "pass": 2487,
+      "fail": 0,
+      "skipped": 3
+    },
+    "mixed60": {
+      "label": "candidate35-r1-60-3m-alchemy-cpu6",
+      "passed": true,
+      "windows": 3,
+      "updatesHz": {
+        "min": 20.066580432928788,
+        "max": 20.241267020738206
+      },
+      "tickWorkP95Ms": {
+        "min": 21.66577399999369,
+        "max": 24.245123000000603
+      },
+      "tickWorkMaxMs": 54.8196280000011,
+      "actionP95Ms": {
+        "min": 41.80571200000122,
+        "max": 259.57820699999866
+      },
+      "stateGapMaxMs": 228.11037600000054,
+      "rssMiB": {
+        "min": 1221.921875,
+        "max": 1266.9921875
+      },
+      "worker": {
+        "jobs": 3594,
+        "conflicts": 0,
+        "failures": 0,
+        "computeMs": 12945.342925000374,
+        "transferMs": 6465.608927000594,
+        "roundTripMs": 16090.109287999856,
+        "residentProfiles": 60,
+        "residentClans": 6,
+        "evictedProfiles": 0,
+        "evictedClans": 0
+      },
+      "acknowledged": 5877,
+      "recovered": 5877,
+      "duplicates": 0,
+      "database": {
+        "matched": true,
+        "revision": 7249
+      },
+      "testSchemaRemoved": true
     }
   },
   "limits": [
-    "Realistic mixed performance has not been demonstrated for either calculation candidate.",
+    "Direct-clan mixed30+5 and bounded60+5 passed only three minutes each. No paired whole-game speedup or sustained high capacity established.",
     "The authoritative writer and pinned persistence reader still keep complete worlds.",
-    "Bounded residency full Linux regressions and churn under live-style mixed load remain required.",
+    "Bounded60 load did not evict replicas; churn and durable retry are covered by integration tests. Longer mixed90 load is in progress.",
     "No maximum CCU, browser FPS or 300000-player claim."
   ]
 }

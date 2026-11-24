@@ -1,0 +1,87 @@
+{
+  "at": "2026-11-24T23:50:56.818Z",
+  "installed": false,
+  "change": "Calculation lanes send immutable event/configuration context only when the owning references change. Worker event availability still expires at the batch timestamp. Shared clan input projection is built once per lane per batch.",
+  "validation": {
+    "targeted": {
+      "label": "calculation-context-targeted-r4",
+      "tests": 67,
+      "pass": 67
+    },
+    "projection": {
+      "label": "calculation-context-projection-r5",
+      "code": 0
+    },
+    "expiry": {
+      "label": "calculation-context-expiry-r1",
+      "tests": 13,
+      "pass": 13
+    }
+  },
+  "microbenchmark": {
+    "exact": true,
+    "scope": "Actual calculation worker threads with identical 30-profile batches and 64 archived events; old transfer policy is forced through the same code. Context byte counts exclude message envelopes and are not network traffic. No disk/PG/FPS/capacity claim.",
+    "results": [
+      {
+        "variant": "repeat-context",
+        "ms": 1095.8174999999994,
+        "warmupBatches": 20,
+        "measuredBatches": 200,
+        "jobs": 220,
+        "contextTransfers": 660,
+        "serializedContextBytes": 59797320,
+        "contextBytes": 90602
+      },
+      {
+        "variant": "changed-context-only",
+        "ms": 656.8847000000001,
+        "warmupBatches": 20,
+        "measuredBatches": 200,
+        "jobs": 220,
+        "contextTransfers": 3,
+        "serializedContextBytes": 271806,
+        "contextBytes": 90602
+      },
+      {
+        "variant": "changed-context-only",
+        "ms": 618.3380999999968,
+        "warmupBatches": 20,
+        "measuredBatches": 200,
+        "jobs": 220,
+        "contextTransfers": 3,
+        "serializedContextBytes": 271806,
+        "contextBytes": 90602
+      },
+      {
+        "variant": "repeat-context",
+        "ms": 902.3275000000012,
+        "warmupBatches": 20,
+        "measuredBatches": 200,
+        "jobs": 220,
+        "contextTransfers": 660,
+        "serializedContextBytes": 59797320,
+        "contextBytes": 90602
+      }
+    ]
+  },
+  "firstAttempts": [
+    {
+      "label": "calculation-context-r1",
+      "cause": "Fixture attempted to open a second life while alive."
+    },
+    {
+      "label": "calculation-context-r2",
+      "cause": "Fixture stop action used eventId instead of runId."
+    },
+    {
+      "label": "calculation-context-micro-r1",
+      "cause": "Random quest-completion rewards differed between comparison runs. The corrected fixture uses valid quests not completed by massPeak inputs."
+    }
+  ],
+  "limitations": [
+    "Full Windows/Linux regressions and realistic mixed load remain pending.",
+    "Component benchmark uses 30 profiles, three real worker threads, 64 archived events and 200 measured batches after 20 warmup batches.",
+    "Both compared variants use the candidate code; the old context-send policy is forced for the baseline. Context byte counts are IPC payload estimates, not network traffic.",
+    "No whole-game CPU, maximum CCU, browser FPS or 300000-player claim."
+  ]
+}
