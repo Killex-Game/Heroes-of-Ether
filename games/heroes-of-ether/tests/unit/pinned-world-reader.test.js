@@ -127,7 +127,23 @@ test("immutable record reuse keeps auxiliary edits, generic callers, failed pack
   check(freeze(f.reader.read(await f.pin()).data)); assert.equal(builder.stats.identityReused, 2);
   await f.journal.requestCheckpoint();
   check(freeze(f.reader.read(await f.pin()).data));
-  assert.equal(f.reader.stats.incremental, false); assert.equal(builder.stats.identityReused, 0);
+  assert.equal(f.reader.stats.incremental, false); assert.equal(builder.stats.identityReused, 3);
+});
+
+test("checkpoint record reuse detaches WAL edits and keeps an older world intact after failure", async t => {
+  const f=setup(t);f.commit(w=>{w.profiles.a.wallet.coins=50;});
+  const old=freeze(f.reader.read(await f.pin()).data),copy=structuredClone(old);
+  await f.journal.requestCheckpoint();
+  f.commit(w=>{w.profiles.a.wallet.coins=49;w.profiles.a.history.push(99);});
+  const pin=await f.pin(),segment=segments(pin.file)[0],bytes=fs.readFileSync(segment);
+  fs.unlinkSync(segment);fs.writeFileSync(segment,bytes.subarray(0,bytes.length-1));
+  assert.throws(()=>f.reader.read(pin),/TRUNCATED/);assert.deepEqual(old,copy);
+  fs.writeFileSync(segment,bytes);
+  const actual=f.reader.read(pin).data;
+  assert.deepEqual(actual,recover(pin.file,false).data);assert.deepEqual(old,copy);
+  assert.strictEqual(actual.profiles.b,old.profiles.b);assert.strictEqual(actual.clans.c,old.clans.c);
+  assert.notStrictEqual(actual.profiles.a,old.profiles.a);
+  assert.equal(actual.profiles.a.wallet.coins,49);assert.deepEqual(actual.profiles.a.history,[1,2,3,99]);
 });
 
 test("changed earlier segment forces a full verified replay, and active appends are excluded", async t => {

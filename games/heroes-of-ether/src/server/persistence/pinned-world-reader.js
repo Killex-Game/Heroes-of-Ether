@@ -95,6 +95,19 @@ class PinnedWorldReader {
         writer.apply(entry.change); revision = entry.revision; replayed++;
       }
       saved = { data: writer.finish(revision), revision, activeBytes: 0 };
+    } else if (previous && before.identities[0] !== "missing") {
+      const base = require("../profiles/checkpoint-json").readCheckpoint(pin.file, { reuseRecords: previous.data });
+      let revision = base[REVISION] || 0;
+      if (!Number.isSafeInteger(revision) || revision < 0) fail("DATABASE_INVALID_REVISION");
+      // Reused records belong to earlier snapshots. The ordinary recovery
+      // mutates its fresh parse; this path must detach every edited ancestor.
+      const writer = draftWriter(base);
+      for (const file of before.files.slice(1)) for (const entry of entries(file)) {
+        if (entry.revision <= revision) continue;
+        if (entry.revision !== revision + 1) fail("DATABASE_PIN_SEQUENCE");
+        writer.apply(entry.change); revision = entry.revision; replayed++;
+      }
+      saved = { data: writer.finish(revision), revision, activeBytes: 0 };
     } else saved = recover(pin.file, false, before.files.slice(1));
     if (saved.revision !== pin.revision) fail("DATABASE_INVALID_REVISION");
     if (!equal(before.identities, sources(pin.file).identities)) fail("DATABASE_PIN_CHANGED");

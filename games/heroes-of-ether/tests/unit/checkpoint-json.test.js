@@ -3,6 +3,26 @@ const test=require("node:test"),assert=require("node:assert/strict"),fs=require(
 const {readCheckpoint,writeCheckpoint}=require("../../src/server/profiles/checkpoint-json");
 const {checkpoint,recover,atomicSnapshot}=require("../../src/server/profiles/profile-journal");
 function setup(t){const dir=fs.mkdtempSync(path.join(os.tmpdir(),"checkpoint-json-"));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));return path.join(dir,"profiles.json");}
+
+test("checkpoint rollover shares only byte-identical persisted records and still rejects damaged JSON", t => {
+ const file=setup(t), prior=JSON.parse('{"profiles":{"a":{"text":"Лёва 🐲","values":[1,2]},"__proto__":{"safe":true}},"clans":{"c":{"xp":4}},"residentRooms":{"r":{"tick":1}}}');
+ for(const chunkSize of [1,3,7,1024]){
+  fs.writeFileSync(file,JSON.stringify(prior));
+  const actual=readCheckpoint(file,{chunkSize,reuseRecords:prior});
+  assert.notStrictEqual(actual.profiles,prior.profiles);
+  for(const table of ['profiles','clans','residentRooms'])for(const key of Object.keys(prior[table]))assert.strictEqual(actual[table][key],prior[table][key]);
+  fs.writeFileSync(file,JSON.stringify(prior,null,2));
+  const formatted=readCheckpoint(file,{chunkSize,reuseRecords:prior});
+  assert.deepEqual(formatted,prior);assert.notStrictEqual(formatted.profiles.a,prior.profiles.a);
+  const changed=JSON.stringify(prior).replace('"xp":4','"xp":5');fs.writeFileSync(file,changed);
+  const next=readCheckpoint(file,{chunkSize,reuseRecords:prior});assert.equal(next.clans.c.xp,5);assert.equal(prior.clans.c.xp,4);
+  assert.strictEqual(next.profiles.a,prior.profiles.a);
+  for(const bad of [changed.slice(0,-1),changed+'{}',changed.replace('"xp":5','"xp":NaN')]){
+   fs.writeFileSync(file,bad);assert.throws(()=>readCheckpoint(file,{chunkSize,reuseRecords:prior}),SyntaxError);
+  }
+ }
+ assert.equal({}.safe,undefined);
+});
 test("Record reader matches JSON.parse across UTF-8, escape and delimiter boundaries",t=>{
  const file=setup(t),texts=[
   '{"profiles":{"__proto__":{"name":"Лёва 🐲 \\u1234 \\\" } ]","n":-0},"2":[1,null,true,false,1e300],"1":{}},"clans":{},"unknown":{"a":[{},[]]}}',
@@ -33,9 +53,9 @@ test("Deterministic differential corpus agrees with native parser for values and
    // file bytes, as the existing native file reader does.
    let expected,valid=true;try{expected=JSON.parse(Buffer.from(source).toString('utf8'));}catch{valid=false;}
    fs.writeFileSync(file,source);
-   for(const chunkSize of [1,2,7,31]){
-    if(valid)assert.deepStrictEqual(readCheckpoint(file,{chunkSize,threshold:0}),expected);
-    else assert.throws(()=>readCheckpoint(file,{chunkSize,threshold:0}),SyntaxError);
+   for(const chunkSize of [1,2,7,31])for(const reuseRecords of [null,JSON.parse(original)]){
+    if(valid)assert.deepStrictEqual(readCheckpoint(file,{chunkSize,threshold:0,reuseRecords}),expected);
+    else assert.throws(()=>readCheckpoint(file,{chunkSize,threshold:0,reuseRecords}),SyntaxError);
    }
   }
  }

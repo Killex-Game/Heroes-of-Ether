@@ -8,7 +8,8 @@ const invalid = () => { throw new SyntaxError("Invalid checkpoint JSON"); };
 // Parse individual records with the native JSON parser, keeping at most one
 // record's source bytes instead of a second UTF-16 copy of the entire world.
 class Reader {
-  constructor(fd, chunkSize) { this.fd = fd; this.chunkSize = chunkSize; this.buffer = Buffer.alloc(0); this.offset = 0; }
+  constructor(fd, chunkSize, reuseRecords) { this.fd = fd; this.chunkSize = chunkSize; this.reuseRecords = reuseRecords;
+    this.buffer = Buffer.alloc(0); this.offset = 0; }
   peek() {
     if (this.offset === this.buffer.length) {
       const buffer = Buffer.allocUnsafe(this.chunkSize), n = fs.readSync(this.fd, buffer, 0, buffer.length, null);
@@ -18,7 +19,7 @@ class Reader {
   }
   space() { while (whitespace(this.peek())) this.offset++; }
   expect(byte) { this.space(); if (this.peek() !== byte) invalid(); this.offset++; }
-  token() {
+  token(previous) {
     this.space(); const first = this.peek();
     if (first === undefined || first === 44 || first === 58 || first === 93 || first === 125) invalid();
     const compound = first === 123 || first === 91, quoted = first === 34, parts = [];
@@ -41,15 +42,24 @@ class Reader {
       if (this.offset > start) parts.push(buffer.subarray(start, this.offset));
     } while (!done);
     const bytes = parts.length === 1 ? parts[0] : Buffer.concat(parts);
+    // The caller owns an immutable persisted JSON tree. Exact source-byte
+    // equality proves both syntax and value; differently formatted or changed
+    // records still use JSON.parse. Never retain a second full-world string.
+    if (previous !== undefined) {
+      const serialized = JSON.stringify(previous);
+      if (serialized !== undefined && bytes.equals(Buffer.from(serialized))) return previous;
+    }
     return JSON.parse(bytes.toString("utf8"));
   }
-  object(splitTables) {
+  object(splitTables, table) {
     this.expect(123); const result = {};
     this.space(); if (this.peek() === 125) { this.offset++; return result; }
     for (;;) {
       this.space(); if (this.peek() !== 34) invalid(); const key = this.token();
       this.expect(58); this.space();
-      const value = splitTables && TABLES.has(key) && this.peek() === 123 ? this.object(false) : this.token();
+      const prior = table && this.reuseRecords?.[table];
+      const value = splitTables && TABLES.has(key) && this.peek() === 123 ? this.object(false, key)
+        : this.token(prior && Object.hasOwn(prior, key) ? prior[key] : undefined);
       // Match JSON.parse for duplicate keys and the literal __proto__ key.
       Object.defineProperty(result, key, { value, enumerable: true, configurable: true, writable: true });
       this.space(); const next = this.peek(); this.offset++;
@@ -58,12 +68,12 @@ class Reader {
     }
   }
 }
-function readCheckpoint(file, { chunkSize = 256 * 1024, threshold = 1024 * 1024 } = {}) {
+function readCheckpoint(file, { chunkSize = 256 * 1024, threshold = 1024 * 1024, reuseRecords = null } = {}) {
   if (!Number.isSafeInteger(chunkSize) || chunkSize < 1) throw new RangeError("Invalid JSON read buffer");
   const fd = fs.openSync(file, "r");
   try {
-    if (fs.fstatSync(fd).size < threshold) return JSON.parse(fs.readFileSync(fd, "utf8"));
-    const reader = new Reader(fd, chunkSize); reader.space();
+    if (!reuseRecords && fs.fstatSync(fd).size < threshold) return JSON.parse(fs.readFileSync(fd, "utf8"));
+    const reader = new Reader(fd, chunkSize, reuseRecords); reader.space();
     const result = reader.peek() === 123 ? reader.object(true) : reader.token();
     reader.space(); if (reader.peek() !== undefined) invalid();
     return result;
