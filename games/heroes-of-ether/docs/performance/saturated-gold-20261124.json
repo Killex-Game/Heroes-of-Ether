@@ -1,0 +1,228 @@
+{
+  "at": "2026-11-24T08:50:30.092Z",
+  "release": "/srv/heroether-test/play/releases/20261124-clan-publish",
+  "backup": "/srv/heroether-test/play/backups/saturated-gold-20261124",
+  "files": 4,
+  "added": 2,
+  "unchangedPublic": 2359,
+  "gamePid": 583521,
+  "adminPid": 1163,
+  "noProcessRestart": true,
+  "noWorldWrites": true,
+  "diskFreeBefore": 5847973888,
+  "diskFreeAfter": 5847371776,
+  "sourceCommit": "344b9554eaed4134ee1c0579f5439749c1d108c9",
+  "sourceTag": "release/20261124-saturated-gold",
+  "scope": [
+    "Currency icons and packs: yellow/gold pixels only",
+    "Achievement ornamental frame; unearned dimming retained",
+    "VIP and Premium status icons; existing violet gems and effects retained"
+  ],
+  "method": "Native SVG material filters and narrowly scoped CSS. No timers, no raster bytes changed.",
+  "otherElementsUnchanged": true,
+  "browser": [
+    {
+      "engine": "chromium",
+      "filters": [
+        "url(\"#killex-saturated-gold\") saturate(1.08) brightness(1.02) contrast(1.03) drop-shadow(rgba(155, 72, 0, 0.333) 0px 1px 1px) drop-shadow(rgba(255, 201, 44, 0.6) 0px 0px 3px)",
+        "url(\"#killex-saturated-gold\") saturate(1.7) brightness(1.13) contrast(1.1) drop-shadow(rgba(104, 0, 144, 0.333) 0px 1px 1px) drop-shadow(rgba(215, 80, 255, 0.6) 0px 0px 3px)",
+        "url(\"#killex-rich-gold-frame\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "none"
+      ],
+      "unrelatedAvatarExact": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "filters": [
+        "url(\"#killex-saturated-gold\") saturate(1.08) brightness(1.02) contrast(1.03) drop-shadow(rgba(155, 72, 0, 0.333) 0px 1px 1px) drop-shadow(rgba(255, 201, 44, 0.6) 0px 0px 3px)",
+        "url(\"#killex-saturated-gold\") saturate(1.7) brightness(1.13) contrast(1.1) drop-shadow(rgba(104, 0, 144, 0.333) 0px 1px 1px) drop-shadow(rgba(215, 80, 255, 0.6) 0px 0px 3px)",
+        "url(\"#killex-rich-gold-frame\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "none"
+      ],
+      "unrelatedAvatarExact": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "filters": [
+        "url(\"#killex-saturated-gold\") saturate(1.08) brightness(1.02) contrast(1.03) drop-shadow(rgba(155, 72, 0, 0.333) 0px 1px 1px) drop-shadow(rgba(255, 201, 44, 0.6) 0px 0px 3px)",
+        "url(\"#killex-saturated-gold\") saturate(1.7) brightness(1.13) contrast(1.1) drop-shadow(rgba(104, 0, 144, 0.333) 0px 1px 1px) drop-shadow(rgba(215, 80, 255, 0.6) 0px 0px 3px)",
+        "url(\"#killex-rich-gold-frame\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "url(\"#killex-saturated-gold\")",
+        "none"
+      ],
+      "unrelatedAvatarExact": true,
+      "errors": []
+    }
+  ],
+  "http": {
+    "at": "2026-11-24T08:50:30.290Z",
+    "checks": [
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/index.html",
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/styles/theme/gold-material.css",
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/styles/theme/account-colors.css",
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/shared/gold-material.js",
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3103",
+        "file": "public/styles/theme/account-colors.css",
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3103",
+        "file": "public/shared/gold-material.js",
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3103",
+        "file": "public/index.html",
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3103",
+        "file": "public/styles/theme/gold-material.css",
+        "exact": true
+      },
+      {
+        "origin": "https://195.208.123.221",
+        "file": "public/styles/theme/account-colors.css",
+        "exact": true
+      },
+      {
+        "origin": "https://195.208.123.221",
+        "file": "public/index.html",
+        "exact": true
+      },
+      {
+        "origin": "https://195.208.123.221",
+        "file": "public/styles/theme/gold-material.css",
+        "exact": true
+      },
+      {
+        "origin": "https://195.208.123.221",
+        "file": "public/shared/gold-material.js",
+        "exact": true
+      }
+    ],
+    "restricted": []
+  },
+  "gameBrowser": [
+    {
+      "engine": "chromium",
+      "width": 1336,
+      "height": 768,
+      "mobile": false,
+      "received": 1,
+      "drawn": 399,
+      "atlasLoads": 7,
+      "variant": "pets",
+      "index": 1,
+      "scale": 1.2,
+      "pointer": "none",
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "mobile": true,
+      "received": 1,
+      "drawn": 354,
+      "atlasLoads": 7,
+      "variant": "pets",
+      "index": 1,
+      "scale": 1.2,
+      "pointer": "auto",
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1336,
+      "height": 768,
+      "mobile": false,
+      "received": 1,
+      "drawn": 69,
+      "atlasLoads": 7,
+      "variant": "pets",
+      "index": 1,
+      "scale": 1.2,
+      "pointer": "none",
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "mobile": true,
+      "received": 1,
+      "drawn": 103,
+      "atlasLoads": 7,
+      "variant": "pets",
+      "index": 1,
+      "scale": 1.2,
+      "pointer": "auto",
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 1336,
+      "height": 768,
+      "mobile": false,
+      "received": 1,
+      "drawn": 11,
+      "atlasLoads": 7,
+      "variant": "pets",
+      "index": 1,
+      "scale": 1.2,
+      "pointer": "none",
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "mobile": true,
+      "received": 1,
+      "drawn": 18,
+      "atlasLoads": 7,
+      "variant": "pets",
+      "index": 1,
+      "scale": 1.2,
+      "pointer": "auto",
+      "errors": []
+    }
+  ],
+  "commentsRemoved": 5,
+  "backupSha256": "4af473b397341e02346a448eb1d3ad2223d5e1429ac678545c1e26c98a5a0c7d",
+  "backupBothSidesVerified": true
+}

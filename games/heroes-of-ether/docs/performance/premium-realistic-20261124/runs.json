@@ -1,0 +1,2704 @@
+{
+  "scope": "Isolated synthetic PostgreSQL schema and loopback HTTP/WS load, generators share test CPU quota; live game co-hosted; not a maximum CCU or controlled deterministic CPU A/B",
+  "runs": [
+    {
+      "file": "baseline-30.json",
+      "players": 30,
+      "lobby": 5,
+      "mixedMinutes": 3,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 2949,
+        "recovered": 2949,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:hook": 86,
+          "booster:cake": 83,
+          "booster:vortex": 88,
+          "booster:clan_shield": 90,
+          "booster:candy": 90,
+          "booster:glove": 86,
+          "booster:sphere": 90,
+          "booster:donut": 90,
+          "booster:freeze": 87,
+          "booster:mine": 87,
+          "booster:harpoon": 84,
+          "booster:knuckles": 88,
+          "booster:mega_poison": 85,
+          "booster:easter_egg": 89,
+          "booster:colorful_shield": 90,
+          "booster:ice_cream": 90,
+          "booster:warheads": 86,
+          "booster:web": 83,
+          "booster:fire": 82,
+          "booster:poison": 86,
+          "booster:rocket": 86,
+          "booster:speed": 90,
+          "booster:lock": 81,
+          "booster:fire_sword": 87,
+          "booster:meat": 90,
+          "booster:golden_shield": 89,
+          "booster:sponge": 81,
+          "booster:stone": 84,
+          "booster:awl": 69,
+          "booster:axe": 78,
+          "lobby:loadout": 30,
+          "lobby:purchase": 30,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 30,
+          "lobby:gift-read": 30,
+          "lobby:clan-create": 5,
+          "lobby:clan-deposit": 30,
+          "lobby:clan-buy": 30,
+          "lobby:clan-edit": 30,
+          "lobby:roulette-prepare": 29,
+          "lobby:roulette-spin": 25,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 25,
+          "lobby:chat": 25,
+          "lobby:pet-equip": 20
+        },
+        "gifts": 30,
+        "notices": 30,
+        "deposits": 30,
+        "created": 5,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 6179,
+        "databaseRevision": 6179,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 37,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795504027466,
+            "prepareMs": 784,
+            "writeMs": 116,
+            "durationMs": 908.2349250000007,
+            "final": false
+          },
+          {
+            "revision": 1050,
+            "generation": 3,
+            "changedDocuments": 60,
+            "payloadBytes": 157593,
+            "syncedAt": 1795504057241,
+            "prepareMs": 403,
+            "writeMs": 184,
+            "durationMs": 692.1943410000022,
+            "final": false
+          },
+          {
+            "revision": 2088,
+            "generation": 4,
+            "changedDocuments": 60,
+            "payloadBytes": 182436,
+            "syncedAt": 1795504087143,
+            "prepareMs": 373,
+            "writeMs": 189,
+            "durationMs": 594.8574530000042,
+            "final": false
+          },
+          {
+            "revision": 3094,
+            "generation": 5,
+            "changedDocuments": 44,
+            "payloadBytes": 202769,
+            "syncedAt": 1795504117145,
+            "prepareMs": 380,
+            "writeMs": 198,
+            "durationMs": 582.0077849999943,
+            "final": false
+          },
+          {
+            "revision": 4122,
+            "generation": 6,
+            "changedDocuments": 60,
+            "payloadBytes": 228300,
+            "syncedAt": 1795504147247,
+            "prepareMs": 475,
+            "writeMs": 189,
+            "durationMs": 683.5223720000067,
+            "final": false
+          },
+          {
+            "revision": 5105,
+            "generation": 7,
+            "changedDocuments": 60,
+            "payloadBytes": 251075,
+            "syncedAt": 1795504177193,
+            "prepareMs": 415,
+            "writeMs": 194,
+            "durationMs": 622.8046069999982,
+            "final": false
+          },
+          {
+            "revision": 6144,
+            "generation": 8,
+            "changedDocuments": 60,
+            "payloadBytes": 272959,
+            "syncedAt": 1795504207258,
+            "prepareMs": 472,
+            "writeMs": 200,
+            "durationMs": 689.4566469999845,
+            "final": false
+          },
+          {
+            "revision": 6179,
+            "generation": 9,
+            "changedDocuments": 35,
+            "payloadBytes": 227493,
+            "syncedAt": 1795504207810,
+            "prepareMs": 367,
+            "writeMs": 168,
+            "durationMs": 544.6806419999921,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60001.861382999996,
+          "hz": 20.096324382197174,
+          "tickWorkP95": 19.107023999997182,
+          "rssMiB": 965.328125,
+          "networkMbps": 30.08072271024908
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.13474299999,
+          "hz": 20.230295427622497,
+          "tickWorkP95": 19.304498999990756,
+          "rssMiB": 877.6015625,
+          "networkMbps": 26.265027930033696
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.45599399999,
+          "hz": 20.078044885517002,
+          "tickWorkP95": 19.856781000009505,
+          "rssMiB": 993.76171875,
+          "networkMbps": 31.57688702976656
+        }
+      ]
+    },
+    {
+      "file": "baseline-60.json",
+      "players": 60,
+      "lobby": 5,
+      "mixedMinutes": 3,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": false,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": false,
+            "issues": [
+              "state-frequency",
+              "state-delay"
+            ]
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 5477,
+        "recovered": 5477,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:hook": 174,
+          "booster:candy": 177,
+          "booster:cake": 166,
+          "booster:vortex": 171,
+          "booster:glove": 170,
+          "booster:clan_shield": 179,
+          "booster:sphere": 180,
+          "booster:donut": 180,
+          "booster:freeze": 173,
+          "booster:mine": 174,
+          "booster:harpoon": 164,
+          "booster:knuckles": 170,
+          "booster:mega_poison": 167,
+          "booster:easter_egg": 179,
+          "booster:colorful_shield": 180,
+          "booster:ice_cream": 176,
+          "booster:warheads": 167,
+          "booster:web": 172,
+          "booster:fire": 157,
+          "booster:poison": 171,
+          "booster:rocket": 158,
+          "booster:speed": 180,
+          "booster:lock": 166,
+          "booster:fire_sword": 160,
+          "booster:axe": 159,
+          "booster:meat": 179,
+          "booster:golden_shield": 180,
+          "booster:sponge": 160,
+          "booster:stone": 165,
+          "booster:awl": 153,
+          "lobby:loadout": 30,
+          "lobby:purchase": 30,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 30,
+          "lobby:gift-read": 30,
+          "lobby:clan-create": 5,
+          "lobby:clan-deposit": 30,
+          "lobby:clan-buy": 30,
+          "lobby:clan-edit": 30,
+          "lobby:roulette-prepare": 25,
+          "lobby:roulette-spin": 25,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 25,
+          "lobby:chat": 25,
+          "lobby:pet-equip": 20
+        },
+        "gifts": 30,
+        "notices": 30,
+        "deposits": 30,
+        "created": 5,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 7447,
+        "databaseRevision": 7447,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 67,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795504232066,
+            "prepareMs": 1140,
+            "writeMs": 144,
+            "durationMs": 1292.5762249999989,
+            "final": false
+          },
+          {
+            "revision": 1229,
+            "generation": 3,
+            "changedDocuments": 93,
+            "payloadBytes": 252868,
+            "syncedAt": 1795504261815,
+            "prepareMs": 654,
+            "writeMs": 236,
+            "durationMs": 1050.0904759999976,
+            "final": false
+          },
+          {
+            "revision": 2473,
+            "generation": 4,
+            "changedDocuments": 93,
+            "payloadBytes": 298088,
+            "syncedAt": 1795504291407,
+            "prepareMs": 392,
+            "writeMs": 225,
+            "durationMs": 648.9084289999882,
+            "final": false
+          },
+          {
+            "revision": 3606,
+            "generation": 5,
+            "changedDocuments": 77,
+            "payloadBytes": 337116,
+            "syncedAt": 1795504321617,
+            "prepareMs": 588,
+            "writeMs": 242,
+            "durationMs": 848.1270829999994,
+            "final": false
+          },
+          {
+            "revision": 4806,
+            "generation": 6,
+            "changedDocuments": 93,
+            "payloadBytes": 381415,
+            "syncedAt": 1795504351610,
+            "prepareMs": 588,
+            "writeMs": 219,
+            "durationMs": 827.5091989999928,
+            "final": false
+          },
+          {
+            "revision": 6020,
+            "generation": 7,
+            "changedDocuments": 92,
+            "payloadBytes": 421897,
+            "syncedAt": 1795504381480,
+            "prepareMs": 441,
+            "writeMs": 248,
+            "durationMs": 693.0089520000038,
+            "final": false
+          },
+          {
+            "revision": 7363,
+            "generation": 8,
+            "changedDocuments": 93,
+            "payloadBytes": 460720,
+            "syncedAt": 1795504411901,
+            "prepareMs": 689,
+            "writeMs": 241,
+            "durationMs": 1121.7022100000177,
+            "final": false
+          },
+          {
+            "revision": 7447,
+            "generation": 9,
+            "changedDocuments": 66,
+            "payloadBytes": 400431,
+            "syncedAt": 1795504412526,
+            "prepareMs": 399,
+            "writeMs": 207,
+            "durationMs": 607.2214720000047,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60000.721179,
+          "hz": 18.98059791874421,
+          "tickWorkP95": 31.91116499999771,
+          "actionP95": 120.28724399999919,
+          "rssMiB": 1164.15234375,
+          "networkMbps": 52.66288366932099
+        },
+        {
+          "phase": "combined",
+          "seconds": 60050.30727300001,
+          "hz": 19.70402316150931,
+          "tickWorkP95": 32.083794999998645,
+          "actionP95": 76.53591000000597,
+          "rssMiB": 1185.2734375,
+          "networkMbps": 54.429219289586854
+        },
+        {
+          "phase": "combined",
+          "seconds": 60020.80500699999,
+          "hz": 19.678595371003752,
+          "tickWorkP95": 30.588492000009865,
+          "actionP95": 81.45509899998433,
+          "rssMiB": 1339.296875,
+          "networkMbps": 54.89844528532652
+        }
+      ]
+    },
+    {
+      "file": "candidate-r3-capacity-30.json",
+      "players": 30,
+      "lobby": 5,
+      "mixedMinutes": 3,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": false,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": false,
+            "issues": [
+              "mixed-window-duration"
+            ]
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 2941,
+        "recovered": 2941,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:hook": 85,
+          "booster:cake": 87,
+          "booster:candy": 90,
+          "booster:vortex": 85,
+          "booster:clan_shield": 90,
+          "booster:glove": 87,
+          "booster:sphere": 90,
+          "booster:donut": 90,
+          "booster:freeze": 87,
+          "booster:mine": 83,
+          "booster:harpoon": 87,
+          "booster:knuckles": 87,
+          "booster:mega_poison": 86,
+          "booster:easter_egg": 89,
+          "booster:colorful_shield": 90,
+          "booster:ice_cream": 90,
+          "booster:warheads": 88,
+          "booster:poison": 83,
+          "booster:rocket": 83,
+          "booster:web": 88,
+          "booster:speed": 90,
+          "booster:lock": 81,
+          "booster:fire_sword": 78,
+          "booster:axe": 75,
+          "booster:meat": 90,
+          "booster:golden_shield": 89,
+          "booster:sponge": 77,
+          "booster:stone": 82,
+          "booster:fire": 82,
+          "booster:awl": 77,
+          "lobby:loadout": 30,
+          "lobby:purchase": 30,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 30,
+          "lobby:gift-read": 30,
+          "lobby:clan-create": 5,
+          "lobby:clan-deposit": 30,
+          "lobby:clan-buy": 30,
+          "lobby:clan-edit": 30,
+          "lobby:roulette-prepare": 30,
+          "lobby:roulette-spin": 25,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 25,
+          "lobby:chat": 25,
+          "lobby:pet-equip": 20
+        },
+        "gifts": 30,
+        "notices": 30,
+        "deposits": 30,
+        "created": 5,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 6119,
+        "databaseRevision": 6119,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 37,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795505508405,
+            "prepareMs": 1038,
+            "writeMs": 127,
+            "durationMs": 1180.8143769999988,
+            "final": false
+          },
+          {
+            "revision": 1029,
+            "generation": 3,
+            "changedDocuments": 60,
+            "payloadBytes": 157211,
+            "syncedAt": 1795505537885,
+            "prepareMs": 358,
+            "writeMs": 226,
+            "durationMs": 669.2640019999963,
+            "final": false
+          },
+          {
+            "revision": 2032,
+            "generation": 4,
+            "changedDocuments": 60,
+            "payloadBytes": 182623,
+            "syncedAt": 1795505567829,
+            "prepareMs": 372,
+            "writeMs": 220,
+            "durationMs": 606.838849000007,
+            "final": false
+          },
+          {
+            "revision": 3041,
+            "generation": 5,
+            "changedDocuments": 54,
+            "payloadBytes": 205662,
+            "syncedAt": 1795505597764,
+            "prepareMs": 316,
+            "writeMs": 211,
+            "durationMs": 554.0091939999984,
+            "final": false
+          },
+          {
+            "revision": 4068,
+            "generation": 6,
+            "changedDocuments": 51,
+            "payloadBytes": 227808,
+            "syncedAt": 1795505627839,
+            "prepareMs": 381,
+            "writeMs": 214,
+            "durationMs": 616.720186999999,
+            "final": false
+          },
+          {
+            "revision": 5064,
+            "generation": 7,
+            "changedDocuments": 60,
+            "payloadBytes": 252213,
+            "syncedAt": 1795505657944,
+            "prepareMs": 485,
+            "writeMs": 219,
+            "durationMs": 717.2332380000153,
+            "final": false
+          },
+          {
+            "revision": 6084,
+            "generation": 8,
+            "changedDocuments": 60,
+            "payloadBytes": 274220,
+            "syncedAt": 1795505687878,
+            "prepareMs": 417,
+            "writeMs": 228,
+            "durationMs": 651.2867810000025,
+            "final": false
+          },
+          {
+            "revision": 6119,
+            "generation": 9,
+            "changedDocuments": 33,
+            "payloadBytes": 218146,
+            "syncedAt": 1795505688408,
+            "prepareMs": 337,
+            "writeMs": 188,
+            "durationMs": 527.2897640000156,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60000.688560999995,
+          "hz": 19.84896304389661,
+          "tickWorkP95": 18.011991999999736,
+          "rssMiB": 985.86328125,
+          "networkMbps": 27.865216047622155
+        },
+        {
+          "phase": "combined",
+          "seconds": 59999.617522000015,
+          "hz": 20.051011303038244,
+          "tickWorkP95": 18.08644600000116,
+          "rssMiB": 1029.30078125,
+          "networkMbps": 30.32089283384322
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.52925699999,
+          "hz": 20.0285581046398,
+          "tickWorkP95": 17.740377999987686,
+          "rssMiB": 987.65625,
+          "networkMbps": 29.616949737429717
+        }
+      ]
+    },
+    {
+      "file": "candidate-r4-capacity-30.json",
+      "players": 30,
+      "lobby": 5,
+      "mixedMinutes": 3,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 2919,
+        "recovered": 2919,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:hook": 86,
+          "booster:cake": 84,
+          "booster:candy": 90,
+          "booster:vortex": 81,
+          "booster:clan_shield": 89,
+          "booster:glove": 87,
+          "booster:sphere": 90,
+          "booster:donut": 90,
+          "booster:freeze": 83,
+          "booster:mine": 82,
+          "booster:harpoon": 86,
+          "booster:knuckles": 89,
+          "booster:mega_poison": 82,
+          "booster:easter_egg": 89,
+          "booster:colorful_shield": 90,
+          "booster:ice_cream": 89,
+          "booster:warheads": 80,
+          "booster:web": 86,
+          "booster:poison": 80,
+          "booster:rocket": 84,
+          "booster:speed": 90,
+          "booster:lock": 83,
+          "booster:axe": 80,
+          "booster:meat": 89,
+          "booster:golden_shield": 89,
+          "booster:sponge": 77,
+          "booster:stone": 85,
+          "booster:fire": 77,
+          "booster:awl": 73,
+          "booster:fire_sword": 84,
+          "lobby:loadout": 30,
+          "lobby:purchase": 30,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 30,
+          "lobby:gift-read": 30,
+          "lobby:clan-create": 5,
+          "lobby:clan-deposit": 30,
+          "lobby:clan-buy": 30,
+          "lobby:clan-edit": 30,
+          "lobby:roulette-prepare": 30,
+          "lobby:roulette-spin": 25,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 25,
+          "lobby:chat": 25,
+          "lobby:pet-equip": 20
+        },
+        "gifts": 30,
+        "notices": 30,
+        "deposits": 30,
+        "created": 5,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 6065,
+        "databaseRevision": 6065,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 37,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795505778912,
+            "prepareMs": 1077,
+            "writeMs": 100,
+            "durationMs": 1188.3403959999996,
+            "final": false
+          },
+          {
+            "revision": 1001,
+            "generation": 3,
+            "changedDocuments": 60,
+            "payloadBytes": 157017,
+            "syncedAt": 1795505808379,
+            "prepareMs": 389,
+            "writeMs": 166,
+            "durationMs": 659.8619780000008,
+            "final": false
+          },
+          {
+            "revision": 2043,
+            "generation": 4,
+            "changedDocuments": 60,
+            "payloadBytes": 181792,
+            "syncedAt": 1795505838293,
+            "prepareMs": 385,
+            "writeMs": 171,
+            "durationMs": 590.2836769999994,
+            "final": false
+          },
+          {
+            "revision": 3047,
+            "generation": 5,
+            "changedDocuments": 51,
+            "payloadBytes": 203104,
+            "syncedAt": 1795505868296,
+            "prepareMs": 393,
+            "writeMs": 168,
+            "durationMs": 589.7026409999962,
+            "final": false
+          },
+          {
+            "revision": 4039,
+            "generation": 6,
+            "changedDocuments": 54,
+            "payloadBytes": 225890,
+            "syncedAt": 1795505898384,
+            "prepareMs": 475,
+            "writeMs": 172,
+            "durationMs": 667.4512620000169,
+            "final": false
+          },
+          {
+            "revision": 5030,
+            "generation": 7,
+            "changedDocuments": 60,
+            "payloadBytes": 249508,
+            "syncedAt": 1795505928276,
+            "prepareMs": 370,
+            "writeMs": 169,
+            "durationMs": 553.3961220000056,
+            "final": false
+          },
+          {
+            "revision": 6029,
+            "generation": 8,
+            "changedDocuments": 60,
+            "payloadBytes": 270996,
+            "syncedAt": 1795505958372,
+            "prepareMs": 464,
+            "writeMs": 177,
+            "durationMs": 648.0029879999929,
+            "final": false
+          },
+          {
+            "revision": 6065,
+            "generation": 9,
+            "changedDocuments": 33,
+            "payloadBytes": 215317,
+            "syncedAt": 1795505958830,
+            "prepareMs": 307,
+            "writeMs": 146,
+            "durationMs": 455.1255989999918,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60003.626271,
+          "hz": 19.82596039000146,
+          "tickWorkP95": 17.968627999998716,
+          "rssMiB": 969.625,
+          "networkMbps": 23.28823195455005
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.23246700001,
+          "hz": 20.021117337508205,
+          "tickWorkP95": 17.45173599998816,
+          "rssMiB": 1041.171875,
+          "networkMbps": 23.66218844592383
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.03002599999,
+          "hz": 20.030344920372386,
+          "tickWorkP95": 19.507960999995703,
+          "rssMiB": 1084.80078125,
+          "networkMbps": 27.42388126207257
+        }
+      ]
+    },
+    {
+      "file": "candidate-r4-capacity-60.json",
+      "players": 60,
+      "lobby": 5,
+      "mixedMinutes": 3,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 5491,
+        "recovered": 5491,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:hook": 169,
+          "booster:cake": 173,
+          "booster:vortex": 172,
+          "booster:candy": 178,
+          "booster:clan_shield": 177,
+          "booster:glove": 171,
+          "booster:sphere": 180,
+          "booster:donut": 178,
+          "booster:freeze": 170,
+          "booster:mine": 167,
+          "booster:harpoon": 166,
+          "booster:knuckles": 170,
+          "booster:mega_poison": 164,
+          "booster:easter_egg": 178,
+          "booster:colorful_shield": 179,
+          "booster:ice_cream": 177,
+          "booster:warheads": 165,
+          "booster:web": 175,
+          "booster:poison": 170,
+          "booster:rocket": 168,
+          "booster:speed": 180,
+          "booster:lock": 164,
+          "booster:fire_sword": 162,
+          "booster:axe": 159,
+          "booster:meat": 180,
+          "booster:golden_shield": 178,
+          "booster:sponge": 168,
+          "booster:stone": 162,
+          "booster:fire": 163,
+          "booster:awl": 158,
+          "lobby:loadout": 30,
+          "lobby:purchase": 30,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 30,
+          "lobby:gift-read": 30,
+          "lobby:clan-create": 5,
+          "lobby:clan-deposit": 30,
+          "lobby:clan-buy": 30,
+          "lobby:clan-edit": 30,
+          "lobby:roulette-prepare": 25,
+          "lobby:roulette-spin": 25,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 25,
+          "lobby:chat": 25,
+          "lobby:pet-equip": 20
+        },
+        "gifts": 30,
+        "notices": 30,
+        "deposits": 30,
+        "created": 5,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 7651,
+        "databaseRevision": 7651,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 67,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795505982518,
+            "prepareMs": 1150,
+            "writeMs": 132,
+            "durationMs": 1364.6233889999985,
+            "final": false
+          },
+          {
+            "revision": 1303,
+            "generation": 3,
+            "changedDocuments": 93,
+            "payloadBytes": 253977,
+            "syncedAt": 1795506012319,
+            "prepareMs": 808,
+            "writeMs": 190,
+            "durationMs": 1159.337188999998,
+            "final": false
+          },
+          {
+            "revision": 2658,
+            "generation": 4,
+            "changedDocuments": 92,
+            "payloadBytes": 299516,
+            "syncedAt": 1795506042011,
+            "prepareMs": 593,
+            "writeMs": 199,
+            "durationMs": 845.7303669999965,
+            "final": false
+          },
+          {
+            "revision": 3895,
+            "generation": 5,
+            "changedDocuments": 77,
+            "payloadBytes": 338507,
+            "syncedAt": 1795506072018,
+            "prepareMs": 611,
+            "writeMs": 191,
+            "durationMs": 844.7504970000009,
+            "final": false
+          },
+          {
+            "revision": 5018,
+            "generation": 6,
+            "changedDocuments": 93,
+            "payloadBytes": 383408,
+            "syncedAt": 1795506102256,
+            "prepareMs": 847,
+            "writeMs": 195,
+            "durationMs": 1066.4926639999903,
+            "final": false
+          },
+          {
+            "revision": 6289,
+            "generation": 7,
+            "changedDocuments": 93,
+            "payloadBytes": 424081,
+            "syncedAt": 1795506132031,
+            "prepareMs": 611,
+            "writeMs": 194,
+            "durationMs": 852.6029949999938,
+            "final": false
+          },
+          {
+            "revision": 7575,
+            "generation": 8,
+            "changedDocuments": 93,
+            "payloadBytes": 463416,
+            "syncedAt": 1795506162206,
+            "prepareMs": 781,
+            "writeMs": 207,
+            "durationMs": 1008.555223000003,
+            "final": false
+          },
+          {
+            "revision": 7651,
+            "generation": 9,
+            "changedDocuments": 66,
+            "payloadBytes": 402327,
+            "syncedAt": 1795506162949,
+            "prepareMs": 404,
+            "writeMs": 170,
+            "durationMs": 576.2697629999893,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60000.810399999995,
+          "hz": 19.28188177712501,
+          "tickWorkP95": 36.877198999998654,
+          "actionP95": 104.38753400000132,
+          "rssMiB": 1129.90625,
+          "networkMbps": 51.00556491991276
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.293709000005,
+          "hz": 20.04561717385579,
+          "tickWorkP95": 34.70334799999546,
+          "actionP95": 52.8897020000004,
+          "rssMiB": 1035.71875,
+          "networkMbps": 62.06057882449298
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.621543000016,
+          "hz": 20.046592701114264,
+          "tickWorkP95": 35.3858290000062,
+          "actionP95": 53.2248209999816,
+          "rssMiB": 1153.02734375,
+          "networkMbps": 59.50410504778927
+        }
+      ]
+    },
+    {
+      "file": "candidate-r4-capacity-90.json",
+      "players": 90,
+      "lobby": 5,
+      "mixedMinutes": 3,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": false,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": false,
+            "issues": [
+              "state-frequency"
+            ]
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": false,
+            "issues": [
+              "state-frequency"
+            ]
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": false,
+            "issues": [
+              "state-frequency"
+            ]
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 8034,
+        "recovered": 8034,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:cake": 256,
+          "booster:vortex": 255,
+          "booster:hook": 262,
+          "booster:candy": 270,
+          "booster:glove": 262,
+          "booster:sphere": 268,
+          "booster:clan_shield": 270,
+          "booster:donut": 268,
+          "booster:freeze": 257,
+          "booster:mine": 243,
+          "booster:stone": 241,
+          "booster:harpoon": 245,
+          "booster:knuckles": 251,
+          "booster:mega_poison": 257,
+          "booster:easter_egg": 268,
+          "booster:colorful_shield": 270,
+          "booster:fire": 240,
+          "booster:ice_cream": 262,
+          "booster:warheads": 251,
+          "booster:web": 257,
+          "booster:poison": 248,
+          "booster:rocket": 253,
+          "booster:awl": 230,
+          "booster:fire_sword": 248,
+          "booster:speed": 269,
+          "booster:lock": 250,
+          "booster:axe": 238,
+          "booster:meat": 269,
+          "booster:golden_shield": 269,
+          "booster:sponge": 242,
+          "lobby:loadout": 30,
+          "lobby:purchase": 30,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 30,
+          "lobby:gift-read": 30,
+          "lobby:clan-create": 5,
+          "lobby:clan-deposit": 30,
+          "lobby:clan-buy": 30,
+          "lobby:clan-edit": 25,
+          "lobby:roulette-prepare": 25,
+          "lobby:roulette-spin": 25,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 25,
+          "lobby:chat": 25,
+          "lobby:pet-equip": 20
+        },
+        "gifts": 30,
+        "notices": 30,
+        "deposits": 30,
+        "created": 5,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 7574,
+        "databaseRevision": 7574,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 97,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795506197003,
+            "prepareMs": 1319,
+            "writeMs": 107,
+            "durationMs": 1564.286555999999,
+            "final": false
+          },
+          {
+            "revision": 1257,
+            "generation": 3,
+            "changedDocuments": 126,
+            "payloadBytes": 350383,
+            "syncedAt": 1795506226385,
+            "prepareMs": 620,
+            "writeMs": 196,
+            "durationMs": 943.1164649999992,
+            "final": false
+          },
+          {
+            "revision": 2625,
+            "generation": 4,
+            "changedDocuments": 117,
+            "payloadBytes": 413569,
+            "syncedAt": 1795506256306,
+            "prepareMs": 610,
+            "writeMs": 216,
+            "durationMs": 868.5055299999949,
+            "final": false
+          },
+          {
+            "revision": 3899,
+            "generation": 5,
+            "changedDocuments": 120,
+            "payloadBytes": 474932,
+            "syncedAt": 1795506286451,
+            "prepareMs": 736,
+            "writeMs": 205,
+            "durationMs": 999.0121579999977,
+            "final": false
+          },
+          {
+            "revision": 5053,
+            "generation": 6,
+            "changedDocuments": 126,
+            "payloadBytes": 536069,
+            "syncedAt": 1795506316615,
+            "prepareMs": 878,
+            "writeMs": 210,
+            "durationMs": 1133.1988910000073,
+            "final": false
+          },
+          {
+            "revision": 6257,
+            "generation": 7,
+            "changedDocuments": 126,
+            "payloadBytes": 593131,
+            "syncedAt": 1795506346895,
+            "prepareMs": 1086,
+            "writeMs": 211,
+            "durationMs": 1397.104622999992,
+            "final": false
+          },
+          {
+            "revision": 7450,
+            "generation": 8,
+            "changedDocuments": 126,
+            "payloadBytes": 651397,
+            "syncedAt": 1795506376738,
+            "prepareMs": 902,
+            "writeMs": 222,
+            "durationMs": 1171.014101000008,
+            "final": false
+          },
+          {
+            "revision": 7574,
+            "generation": 9,
+            "changedDocuments": 108,
+            "payloadBytes": 622446,
+            "syncedAt": 1795506378305,
+            "prepareMs": 484,
+            "writeMs": 222,
+            "durationMs": 710.8044620000001,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60004.469433,
+          "hz": 18.732497825575564,
+          "tickWorkP95": 42.117231000000174,
+          "actionP95": 163.60849899999448,
+          "rssMiB": 1215.390625,
+          "networkMbps": 77.39535115570371
+        },
+        {
+          "phase": "combined",
+          "seconds": 60041.19242499999,
+          "hz": 18.88879435528298,
+          "tickWorkP95": 41.003788000001805,
+          "actionP95": 131.00777599999856,
+          "rssMiB": 1168.4296875,
+          "networkMbps": 84.6079174826441
+        },
+        {
+          "phase": "combined",
+          "seconds": 60101.49037700001,
+          "hz": 18.757362670976466,
+          "tickWorkP95": 39.739354999997886,
+          "actionP95": 136.8406219999888,
+          "rssMiB": 1315.25390625,
+          "networkMbps": 81.01408793726668
+        }
+      ]
+    },
+    {
+      "file": "candidate-six-capacity-60.json",
+      "players": 60,
+      "lobby": 5,
+      "mixedMinutes": 3,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 5522,
+        "recovered": 5522,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:hook": 168,
+          "booster:cake": 170,
+          "booster:candy": 180,
+          "booster:vortex": 173,
+          "booster:glove": 174,
+          "booster:clan_shield": 180,
+          "booster:sphere": 180,
+          "booster:donut": 179,
+          "booster:freeze": 171,
+          "booster:mine": 169,
+          "booster:harpoon": 167,
+          "booster:knuckles": 173,
+          "booster:mega_poison": 172,
+          "booster:easter_egg": 178,
+          "booster:colorful_shield": 180,
+          "booster:ice_cream": 180,
+          "booster:warheads": 169,
+          "booster:poison": 174,
+          "booster:rocket": 167,
+          "booster:web": 175,
+          "booster:speed": 178,
+          "booster:lock": 167,
+          "booster:fire_sword": 164,
+          "booster:axe": 157,
+          "booster:meat": 177,
+          "booster:golden_shield": 178,
+          "booster:sponge": 166,
+          "booster:stone": 166,
+          "booster:fire": 162,
+          "booster:awl": 154,
+          "lobby:loadout": 30,
+          "lobby:purchase": 30,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 30,
+          "lobby:gift-read": 30,
+          "lobby:clan-create": 5,
+          "lobby:clan-deposit": 30,
+          "lobby:clan-buy": 30,
+          "lobby:clan-edit": 30,
+          "lobby:roulette-prepare": 29,
+          "lobby:roulette-spin": 25,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 25,
+          "lobby:chat": 25,
+          "lobby:pet-equip": 20
+        },
+        "gifts": 30,
+        "notices": 30,
+        "deposits": 30,
+        "created": 5,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 7818,
+        "databaseRevision": 7818,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 67,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795506407412,
+            "prepareMs": 772,
+            "writeMs": 145,
+            "durationMs": 926.484527999999,
+            "final": false
+          },
+          {
+            "revision": 1445,
+            "generation": 3,
+            "changedDocuments": 93,
+            "payloadBytes": 254263,
+            "syncedAt": 1795506437230,
+            "prepareMs": 416,
+            "writeMs": 232,
+            "durationMs": 750.5505600000033,
+            "final": false
+          },
+          {
+            "revision": 2660,
+            "generation": 4,
+            "changedDocuments": 93,
+            "payloadBytes": 299352,
+            "syncedAt": 1795506467272,
+            "prepareMs": 531,
+            "writeMs": 231,
+            "durationMs": 802.0923659999971,
+            "final": false
+          },
+          {
+            "revision": 3908,
+            "generation": 5,
+            "changedDocuments": 77,
+            "payloadBytes": 338572,
+            "syncedAt": 1795506497192,
+            "prepareMs": 452,
+            "writeMs": 240,
+            "durationMs": 699.9583570000104,
+            "final": false
+          },
+          {
+            "revision": 5144,
+            "generation": 6,
+            "changedDocuments": 93,
+            "payloadBytes": 383717,
+            "syncedAt": 1795506527189,
+            "prepareMs": 452,
+            "writeMs": 237,
+            "durationMs": 704.3735520000046,
+            "final": false
+          },
+          {
+            "revision": 6500,
+            "generation": 7,
+            "changedDocuments": 93,
+            "payloadBytes": 424444,
+            "syncedAt": 1795506557235,
+            "prepareMs": 485,
+            "writeMs": 246,
+            "durationMs": 743.7933989999874,
+            "final": false
+          },
+          {
+            "revision": 7745,
+            "generation": 8,
+            "changedDocuments": 93,
+            "payloadBytes": 464431,
+            "syncedAt": 1795506587575,
+            "prepareMs": 816,
+            "writeMs": 248,
+            "durationMs": 1088.6096079999988,
+            "final": false
+          },
+          {
+            "revision": 7818,
+            "generation": 9,
+            "changedDocuments": 67,
+            "payloadBytes": 410821,
+            "syncedAt": 1795506588154,
+            "prepareMs": 365,
+            "writeMs": 204,
+            "durationMs": 571.3442329999816,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60000.849593,
+          "hz": 19.750921952606234,
+          "tickWorkP95": 29.471709999997984,
+          "actionP95": 48.69911699999648,
+          "rssMiB": 1074.9453125,
+          "networkMbps": 53.99055130644559
+        },
+        {
+          "phase": "combined",
+          "seconds": 60003.97157199998,
+          "hz": 20.03415206214588,
+          "tickWorkP95": 30.92255900001328,
+          "actionP95": 40.10770200000843,
+          "rssMiB": 1178.45703125,
+          "networkMbps": 58.77789449271639
+        },
+        {
+          "phase": "combined",
+          "seconds": 60001.18497100001,
+          "hz": 20.034493628338414,
+          "tickWorkP95": 32.86647300000186,
+          "actionP95": 47.176940000004834,
+          "rssMiB": 1195.50390625,
+          "networkMbps": 58.216206165547064
+        }
+      ]
+    },
+    {
+      "file": "candidate-six-capacity-90.json",
+      "players": 90,
+      "lobby": 5,
+      "mixedMinutes": 3,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 7580,
+        "databaseRevision": 7580,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 97,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795506621778,
+            "prepareMs": 884,
+            "writeMs": 104,
+            "durationMs": 1003.7912739999992,
+            "final": false
+          },
+          {
+            "revision": 1336,
+            "generation": 3,
+            "changedDocuments": 126,
+            "payloadBytes": 351573,
+            "syncedAt": 1795506651668,
+            "prepareMs": 566,
+            "writeMs": 194,
+            "durationMs": 895.2452809999959,
+            "final": false
+          },
+          {
+            "revision": 2493,
+            "generation": 4,
+            "changedDocuments": 123,
+            "payloadBytes": 416271,
+            "syncedAt": 1795506681630,
+            "prepareMs": 546,
+            "writeMs": 204,
+            "durationMs": 838.5436449999979,
+            "final": false
+          },
+          {
+            "revision": 3855,
+            "generation": 5,
+            "changedDocuments": 114,
+            "payloadBytes": 474472,
+            "syncedAt": 1795506711649,
+            "prepareMs": 599,
+            "writeMs": 194,
+            "durationMs": 815.4032650000008,
+            "final": false
+          },
+          {
+            "revision": 5121,
+            "generation": 6,
+            "changedDocuments": 126,
+            "payloadBytes": 537377,
+            "syncedAt": 1795506741606,
+            "prepareMs": 511,
+            "writeMs": 197,
+            "durationMs": 786.5103719999897,
+            "final": false
+          },
+          {
+            "revision": 6367,
+            "generation": 7,
+            "changedDocuments": 126,
+            "payloadBytes": 596010,
+            "syncedAt": 1795506771767,
+            "prepareMs": 683,
+            "writeMs": 209,
+            "durationMs": 915.048987999995,
+            "final": false
+          },
+          {
+            "revision": 7480,
+            "generation": 8,
+            "changedDocuments": 126,
+            "payloadBytes": 653940,
+            "syncedAt": 1795506801732,
+            "prepareMs": 603,
+            "writeMs": 208,
+            "durationMs": 873.8659969999862,
+            "final": false
+          },
+          {
+            "revision": 7580,
+            "generation": 9,
+            "changedDocuments": 99,
+            "payloadBytes": 586795,
+            "syncedAt": 1795506802618,
+            "prepareMs": 470,
+            "writeMs": 199,
+            "durationMs": 669.7632910000102,
+            "final": true
+          }
+        ]
+      },
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60024.29111599999,
+          "hz": 19.29216757951249,
+          "tickWorkP95": 39.5962099999997,
+          "actionP95": 141.63220799999544,
+          "rssMiB": 1221.8828125,
+          "networkMbps": 83.35491189715837
+        },
+        {
+          "phase": "combined",
+          "seconds": 60026.922399,
+          "hz": 19.702134121922306,
+          "tickWorkP95": 39.309932000003755,
+          "actionP95": 105.99618400000327,
+          "rssMiB": 1266.25390625,
+          "networkMbps": 81.93186041123019
+        },
+        {
+          "phase": "combined",
+          "seconds": 60009.168084000004,
+          "hz": 19.643273244668347,
+          "tickWorkP95": 37.162458000006154,
+          "actionP95": 105.60226600000169,
+          "rssMiB": 1242.6640625,
+          "networkMbps": 84.25463292431452
+        }
+      ]
+    },
+    {
+      "file": "candidate-soak-capacity-60.json",
+      "players": 60,
+      "lobby": 5,
+      "mixedMinutes": 10,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 4,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 5,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 6,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 7,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 8,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 9,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 10,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 17895,
+        "recovered": 17895,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:hook": 530,
+          "booster:cake": 568,
+          "booster:candy": 543,
+          "booster:vortex": 578,
+          "booster:glove": 533,
+          "booster:clan_shield": 598,
+          "booster:sphere": 579,
+          "booster:donut": 582,
+          "booster:freeze": 531,
+          "booster:mine": 557,
+          "booster:harpoon": 567,
+          "booster:knuckles": 573,
+          "booster:mega_poison": 563,
+          "booster:easter_egg": 585,
+          "booster:colorful_shield": 545,
+          "booster:ice_cream": 545,
+          "booster:warheads": 560,
+          "booster:web": 557,
+          "booster:poison": 547,
+          "booster:rocket": 546,
+          "booster:speed": 584,
+          "booster:lock": 565,
+          "booster:fire_sword": 521,
+          "booster:axe": 521,
+          "booster:meat": 591,
+          "booster:golden_shield": 586,
+          "booster:sponge": 547,
+          "booster:stone": 550,
+          "booster:fire": 551,
+          "booster:awl": 518,
+          "lobby:loadout": 95,
+          "lobby:purchase": 95,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 95,
+          "lobby:gift-read": 95,
+          "lobby:clan-create": 5,
+          "lobby:clan-deposit": 95,
+          "lobby:clan-buy": 95,
+          "lobby:clan-edit": 95,
+          "lobby:roulette-prepare": 95,
+          "lobby:roulette-spin": 95,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 95,
+          "lobby:chat": 94,
+          "lobby:pet-equip": 90
+        },
+        "gifts": 95,
+        "notices": 95,
+        "deposits": 95,
+        "created": 5,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 25569,
+        "databaseRevision": 25569,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 67,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795507632487,
+            "prepareMs": 711,
+            "writeMs": 90,
+            "durationMs": 814.9752010000011,
+            "final": false
+          },
+          {
+            "revision": 1246,
+            "generation": 3,
+            "changedDocuments": 93,
+            "payloadBytes": 254421,
+            "syncedAt": 1795507662424,
+            "prepareMs": 496,
+            "writeMs": 164,
+            "durationMs": 763.1854749999984,
+            "final": false
+          },
+          {
+            "revision": 2513,
+            "generation": 4,
+            "changedDocuments": 92,
+            "payloadBytes": 298797,
+            "syncedAt": 1795507692323,
+            "prepareMs": 468,
+            "writeMs": 165,
+            "durationMs": 652.4541370000079,
+            "final": false
+          },
+          {
+            "revision": 3876,
+            "generation": 5,
+            "changedDocuments": 77,
+            "payloadBytes": 338672,
+            "syncedAt": 1795507722271,
+            "prepareMs": 406,
+            "writeMs": 168,
+            "durationMs": 598.7530770000012,
+            "final": false
+          },
+          {
+            "revision": 5258,
+            "generation": 6,
+            "changedDocuments": 93,
+            "payloadBytes": 383210,
+            "syncedAt": 1795507752428,
+            "prepareMs": 561,
+            "writeMs": 170,
+            "durationMs": 780.9884810000076,
+            "final": false
+          },
+          {
+            "revision": 6477,
+            "generation": 7,
+            "changedDocuments": 93,
+            "payloadBytes": 423836,
+            "syncedAt": 1795507782438,
+            "prepareMs": 589,
+            "writeMs": 170,
+            "durationMs": 791.5715380000183,
+            "final": false
+          },
+          {
+            "revision": 7754,
+            "generation": 8,
+            "changedDocuments": 93,
+            "payloadBytes": 462898,
+            "syncedAt": 1795507812445,
+            "prepareMs": 563,
+            "writeMs": 174,
+            "durationMs": 780.394226000004,
+            "final": false
+          },
+          {
+            "revision": 8999,
+            "generation": 9,
+            "changedDocuments": 93,
+            "payloadBytes": 501385,
+            "syncedAt": 1795507842447,
+            "prepareMs": 562,
+            "writeMs": 183,
+            "durationMs": 784.2604209999845,
+            "final": false
+          },
+          {
+            "revision": 10257,
+            "generation": 10,
+            "changedDocuments": 93,
+            "payloadBytes": 539594,
+            "syncedAt": 1795507872608,
+            "prepareMs": 685,
+            "writeMs": 187,
+            "durationMs": 936.6726170000038,
+            "final": false
+          },
+          {
+            "revision": 11445,
+            "generation": 11,
+            "changedDocuments": 93,
+            "payloadBytes": 576381,
+            "syncedAt": 1795507902420,
+            "prepareMs": 528,
+            "writeMs": 192,
+            "durationMs": 749.8911669999943,
+            "final": false
+          },
+          {
+            "revision": 12646,
+            "generation": 12,
+            "changedDocuments": 93,
+            "payloadBytes": 612688,
+            "syncedAt": 1795507932523,
+            "prepareMs": 632,
+            "writeMs": 183,
+            "durationMs": 856.874136999948,
+            "final": false
+          },
+          {
+            "revision": 13855,
+            "generation": 13,
+            "changedDocuments": 93,
+            "payloadBytes": 647095,
+            "syncedAt": 1795507962427,
+            "prepareMs": 548,
+            "writeMs": 183,
+            "durationMs": 757.2227019999991,
+            "final": false
+          },
+          {
+            "revision": 15107,
+            "generation": 14,
+            "changedDocuments": 93,
+            "payloadBytes": 681912,
+            "syncedAt": 1795507992600,
+            "prepareMs": 705,
+            "writeMs": 185,
+            "durationMs": 917.9845130000031,
+            "final": false
+          },
+          {
+            "revision": 16392,
+            "generation": 15,
+            "changedDocuments": 93,
+            "payloadBytes": 717605,
+            "syncedAt": 1795508022466,
+            "prepareMs": 585,
+            "writeMs": 184,
+            "durationMs": 795.7239399999962,
+            "final": false
+          },
+          {
+            "revision": 17679,
+            "generation": 16,
+            "changedDocuments": 93,
+            "payloadBytes": 753482,
+            "syncedAt": 1795508052590,
+            "prepareMs": 677,
+            "writeMs": 191,
+            "durationMs": 907.1971389999962,
+            "final": false
+          },
+          {
+            "revision": 19071,
+            "generation": 17,
+            "changedDocuments": 93,
+            "payloadBytes": 790403,
+            "syncedAt": 1795508082597,
+            "prepareMs": 693,
+            "writeMs": 193,
+            "durationMs": 912.9566029999987,
+            "final": false
+          },
+          {
+            "revision": 20407,
+            "generation": 18,
+            "changedDocuments": 93,
+            "payloadBytes": 828075,
+            "syncedAt": 1795508112623,
+            "prepareMs": 723,
+            "writeMs": 190,
+            "durationMs": 937.7438090000069,
+            "final": false
+          },
+          {
+            "revision": 21666,
+            "generation": 19,
+            "changedDocuments": 93,
+            "payloadBytes": 864660,
+            "syncedAt": 1795508142700,
+            "prepareMs": 766,
+            "writeMs": 198,
+            "durationMs": 1011.950070999912,
+            "final": false
+          },
+          {
+            "revision": 22898,
+            "generation": 20,
+            "changedDocuments": 93,
+            "payloadBytes": 901211,
+            "syncedAt": 1795508172798,
+            "prepareMs": 873,
+            "writeMs": 203,
+            "durationMs": 1115.1137240000535,
+            "final": false
+          },
+          {
+            "revision": 24143,
+            "generation": 21,
+            "changedDocuments": 93,
+            "payloadBytes": 936217,
+            "syncedAt": 1795508202662,
+            "prepareMs": 753,
+            "writeMs": 210,
+            "durationMs": 992.6025639999425,
+            "final": false
+          },
+          {
+            "revision": 25455,
+            "generation": 22,
+            "changedDocuments": 77,
+            "payloadBytes": 962008,
+            "syncedAt": 1795508232742,
+            "prepareMs": 834,
+            "writeMs": 196,
+            "durationMs": 1039.1791489999741,
+            "final": false
+          },
+          {
+            "revision": 25569,
+            "generation": 23,
+            "changedDocuments": 84,
+            "payloadBytes": 932645,
+            "syncedAt": 1795508234397,
+            "prepareMs": 650,
+            "writeMs": 197,
+            "durationMs": 855.0695070000365,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60020.77690999999,
+          "hz": 19.724699037203145,
+          "tickWorkP95": 31.37572899999941,
+          "actionP95": 49.001574000008986,
+          "rssMiB": 1150.12890625,
+          "networkMbps": 54.57885160364615
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.92200200001,
+          "hz": 20.029029666787004,
+          "tickWorkP95": 33.196432000011555,
+          "actionP95": 41.516835000002175,
+          "rssMiB": 1208.59375,
+          "networkMbps": 58.53881852334126
+        },
+        {
+          "phase": "combined",
+          "seconds": 60005.34573899998,
+          "hz": 20.0205966375022,
+          "tickWorkP95": 32.509588999993866,
+          "actionP95": 44.00393000000622,
+          "rssMiB": 1228.86328125,
+          "networkMbps": 56.91414585644151
+        },
+        {
+          "phase": "combined",
+          "seconds": 60004.27946999998,
+          "hz": 20.03141024050575,
+          "tickWorkP95": 33.42858000000706,
+          "actionP95": 39.234368000004906,
+          "rssMiB": 1236.08984375,
+          "networkMbps": 59.14950879550409
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.77069800001,
+          "hz": 20.008425861081953,
+          "tickWorkP95": 34.24131700000726,
+          "actionP95": 44.39925400004722,
+          "rssMiB": 1236.1796875,
+          "networkMbps": 57.31755447041104
+        },
+        {
+          "phase": "combined",
+          "seconds": 60014.61522400001,
+          "hz": 20.021746542333688,
+          "tickWorkP95": 34.90595500002382,
+          "actionP95": 45.96786999999313,
+          "rssMiB": 1219.41796875,
+          "networkMbps": 58.80815381458783
+        },
+        {
+          "phase": "combined",
+          "seconds": 60002.083352999995,
+          "hz": 20.01804874686053,
+          "tickWorkP95": 34.3344700000016,
+          "actionP95": 44.64402899995912,
+          "rssMiB": 1244.54296875,
+          "networkMbps": 59.92320356532832
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.40562700003,
+          "hz": 20.026963507100458,
+          "tickWorkP95": 35.49168100004317,
+          "actionP95": 55.028237999998964,
+          "rssMiB": 1252.75390625,
+          "networkMbps": 58.41604385927049
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.66138800001,
+          "hz": 20.012156027872734,
+          "tickWorkP95": 36.81046799995238,
+          "actionP95": 68.33050599996932,
+          "rssMiB": 1267.7421875,
+          "networkMbps": 59.85109027603404
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.005608999985,
+          "hz": 20.035251638874136,
+          "tickWorkP95": 36.66217400005553,
+          "actionP95": 61.7954290000489,
+          "rssMiB": 1268.6484375,
+          "networkMbps": 53.10906407924345
+        }
+      ]
+    },
+    {
+      "file": "candidate-soak-capacity-90.json",
+      "players": 90,
+      "lobby": 5,
+      "mixedMinutes": 10,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": false,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": false,
+            "issues": [
+              "state-frequency"
+            ]
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 4,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 5,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 6,
+            "meetsTargets": false,
+            "issues": [
+              "state-frequency"
+            ]
+          },
+          {
+            "phase": "combined",
+            "window": 7,
+            "meetsTargets": false,
+            "issues": [
+              "state-frequency"
+            ]
+          },
+          {
+            "phase": "combined",
+            "window": 8,
+            "meetsTargets": false,
+            "issues": [
+              "state-frequency"
+            ]
+          },
+          {
+            "phase": "combined",
+            "window": 9,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 10,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 26186,
+        "recovered": 26186,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:cake": 839,
+          "booster:hook": 820,
+          "booster:vortex": 861,
+          "booster:clan_shield": 885,
+          "booster:candy": 847,
+          "booster:glove": 825,
+          "booster:sphere": 870,
+          "booster:donut": 871,
+          "booster:freeze": 812,
+          "booster:mine": 848,
+          "booster:harpoon": 848,
+          "booster:knuckles": 821,
+          "booster:mega_poison": 799,
+          "booster:easter_egg": 871,
+          "booster:colorful_shield": 861,
+          "booster:ice_cream": 849,
+          "booster:warheads": 849,
+          "booster:web": 820,
+          "booster:fire": 811,
+          "booster:poison": 821,
+          "booster:rocket": 822,
+          "booster:speed": 872,
+          "booster:lock": 834,
+          "booster:fire_sword": 812,
+          "booster:axe": 786,
+          "booster:meat": 869,
+          "booster:golden_shield": 844,
+          "booster:sponge": 807,
+          "booster:stone": 804,
+          "booster:awl": 780,
+          "lobby:loadout": 95,
+          "lobby:purchase": 95,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 93,
+          "lobby:gift-read": 90,
+          "lobby:clan-create": 5,
+          "lobby:clan-deposit": 90,
+          "lobby:clan-buy": 90,
+          "lobby:clan-edit": 90,
+          "lobby:roulette-prepare": 90,
+          "lobby:roulette-spin": 90,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 90,
+          "lobby:chat": 90,
+          "lobby:pet-equip": 85
+        },
+        "gifts": 93,
+        "notices": 90,
+        "deposits": 90,
+        "created": 5,
+        "validInventoriesAndTransactions": true
+      },
+      "databaseVerification": {
+        "matched": true,
+        "localRevision": 23334,
+        "databaseRevision": 23334,
+        "profiles": 1280,
+        "clans": 133,
+        "samples": [
+          {
+            "revision": 97,
+            "generation": 2,
+            "changedDocuments": 0,
+            "payloadBytes": 0,
+            "syncedAt": 1795506867184,
+            "prepareMs": 763,
+            "writeMs": 114,
+            "durationMs": 919.2593759999982,
+            "final": false
+          },
+          {
+            "revision": 1266,
+            "generation": 3,
+            "changedDocuments": 126,
+            "payloadBytes": 352857,
+            "syncedAt": 1795506897417,
+            "prepareMs": 736,
+            "writeMs": 244,
+            "durationMs": 1112.2506130000038,
+            "final": false
+          },
+          {
+            "revision": 2383,
+            "generation": 4,
+            "changedDocuments": 117,
+            "payloadBytes": 415129,
+            "syncedAt": 1795506927123,
+            "prepareMs": 522,
+            "writeMs": 233,
+            "durationMs": 804.7343140000012,
+            "final": false
+          },
+          {
+            "revision": 3583,
+            "generation": 5,
+            "changedDocuments": 120,
+            "payloadBytes": 477666,
+            "syncedAt": 1795506957215,
+            "prepareMs": 614,
+            "writeMs": 234,
+            "durationMs": 899.5672829999967,
+            "final": false
+          },
+          {
+            "revision": 4752,
+            "generation": 6,
+            "changedDocuments": 126,
+            "payloadBytes": 538514,
+            "syncedAt": 1795506987183,
+            "prepareMs": 578,
+            "writeMs": 236,
+            "durationMs": 849.0832959999971,
+            "final": false
+          },
+          {
+            "revision": 5983,
+            "generation": 7,
+            "changedDocuments": 126,
+            "payloadBytes": 597029,
+            "syncedAt": 1795507017312,
+            "prepareMs": 648,
+            "writeMs": 244,
+            "durationMs": 945.6379639999941,
+            "final": false
+          },
+          {
+            "revision": 7228,
+            "generation": 8,
+            "changedDocuments": 126,
+            "payloadBytes": 654491,
+            "syncedAt": 1795507047388,
+            "prepareMs": 699,
+            "writeMs": 246,
+            "durationMs": 1004.8155310000002,
+            "final": false
+          },
+          {
+            "revision": 8405,
+            "generation": 9,
+            "changedDocuments": 126,
+            "payloadBytes": 708016,
+            "syncedAt": 1795507077366,
+            "prepareMs": 670,
+            "writeMs": 260,
+            "durationMs": 976.6714820000052,
+            "final": false
+          },
+          {
+            "revision": 9575,
+            "generation": 10,
+            "changedDocuments": 125,
+            "payloadBytes": 761373,
+            "syncedAt": 1795507107515,
+            "prepareMs": 699,
+            "writeMs": 277,
+            "durationMs": 1127.3410449999792,
+            "final": false
+          },
+          {
+            "revision": 10861,
+            "generation": 11,
+            "changedDocuments": 126,
+            "payloadBytes": 815082,
+            "syncedAt": 1795507137657,
+            "prepareMs": 764,
+            "writeMs": 258,
+            "durationMs": 1208.0595759999705,
+            "final": false
+          },
+          {
+            "revision": 12032,
+            "generation": 12,
+            "changedDocuments": 126,
+            "payloadBytes": 867419,
+            "syncedAt": 1795507167899,
+            "prepareMs": 933,
+            "writeMs": 262,
+            "durationMs": 1352.3989980000188,
+            "final": false
+          },
+          {
+            "revision": 13137,
+            "generation": 13,
+            "changedDocuments": 126,
+            "payloadBytes": 920312,
+            "syncedAt": 1795507197817,
+            "prepareMs": 743,
+            "writeMs": 300,
+            "durationMs": 1267.5451679999824,
+            "final": false
+          },
+          {
+            "revision": 14202,
+            "generation": 14,
+            "changedDocuments": 126,
+            "payloadBytes": 970577,
+            "syncedAt": 1795507227940,
+            "prepareMs": 945,
+            "writeMs": 278,
+            "durationMs": 1336.2368969999952,
+            "final": false
+          },
+          {
+            "revision": 15235,
+            "generation": 15,
+            "changedDocuments": 125,
+            "payloadBytes": 1021826,
+            "syncedAt": 1795507257943,
+            "prepareMs": 814,
+            "writeMs": 313,
+            "durationMs": 1275.055376000004,
+            "final": false
+          },
+          {
+            "revision": 16390,
+            "generation": 16,
+            "changedDocuments": 110,
+            "payloadBytes": 1066894,
+            "syncedAt": 1795507287923,
+            "prepareMs": 907,
+            "writeMs": 281,
+            "durationMs": 1252.8855029999977,
+            "final": false
+          },
+          {
+            "revision": 17440,
+            "generation": 17,
+            "changedDocuments": 126,
+            "payloadBytes": 1124883,
+            "syncedAt": 1795507317956,
+            "prepareMs": 891,
+            "writeMs": 318,
+            "durationMs": 1288.2152420000057,
+            "final": false
+          },
+          {
+            "revision": 18477,
+            "generation": 18,
+            "changedDocuments": 126,
+            "payloadBytes": 1177676,
+            "syncedAt": 1795507348102,
+            "prepareMs": 996,
+            "writeMs": 283,
+            "durationMs": 1403.340336000023,
+            "final": false
+          },
+          {
+            "revision": 19633,
+            "generation": 19,
+            "changedDocuments": 126,
+            "payloadBytes": 1229878,
+            "syncedAt": 1795507377941,
+            "prepareMs": 837,
+            "writeMs": 278,
+            "durationMs": 1187.927427000017,
+            "final": false
+          },
+          {
+            "revision": 20834,
+            "generation": 20,
+            "changedDocuments": 126,
+            "payloadBytes": 1280598,
+            "syncedAt": 1795507408002,
+            "prepareMs": 891,
+            "writeMs": 281,
+            "durationMs": 1213.0976009999868,
+            "final": false
+          },
+          {
+            "revision": 22014,
+            "generation": 21,
+            "changedDocuments": 125,
+            "payloadBytes": 1331519,
+            "syncedAt": 1795507438317,
+            "prepareMs": 1066,
+            "writeMs": 281,
+            "durationMs": 1538.2649929999607,
+            "final": false
+          },
+          {
+            "revision": 23190,
+            "generation": 22,
+            "changedDocuments": 126,
+            "payloadBytes": 1381927,
+            "syncedAt": 1795507468216,
+            "prepareMs": 1026,
+            "writeMs": 294,
+            "durationMs": 1342.168267000001,
+            "final": false
+          },
+          {
+            "revision": 23334,
+            "generation": 23,
+            "changedDocuments": 103,
+            "payloadBytes": 1331318,
+            "syncedAt": 1795507470644,
+            "prepareMs": 1014,
+            "writeMs": 289,
+            "durationMs": 1305.9722919999622,
+            "final": true
+          }
+        ]
+      },
+      "testSchemaRemoved": true,
+      "windows": [
+        {
+          "phase": "combined",
+          "seconds": 60030.246019,
+          "hz": 18.850323658589268,
+          "tickWorkP95": 38.381061000000045,
+          "actionP95": 142.5647170000011,
+          "rssMiB": 1253.8984375,
+          "networkMbps": 78.9654607790222
+        },
+        {
+          "phase": "combined",
+          "seconds": 60022.16783799998,
+          "hz": 19.3013218035837,
+          "tickWorkP95": 37.494535999998334,
+          "actionP95": 113.51940099999774,
+          "rssMiB": 1284.9140625,
+          "networkMbps": 85.12550868937782
+        },
+        {
+          "phase": "combined",
+          "seconds": 60022.96407399999,
+          "hz": 19.153593094948064,
+          "tickWorkP95": 36.234923000010895,
+          "actionP95": 124.44290199998068,
+          "rssMiB": 1285.953125,
+          "networkMbps": 86.88404331271842
+        },
+        {
+          "phase": "combined",
+          "seconds": 60039.21358699998,
+          "hz": 19.11770186379489,
+          "tickWorkP95": 37.80390799997258,
+          "actionP95": 123.54204600001685,
+          "rssMiB": 1351.265625,
+          "networkMbps": 85.4864863310367
+        },
+        {
+          "phase": "combined",
+          "seconds": 60000.25087299998,
+          "hz": 19.137370172969806,
+          "tickWorkP95": 38.9082070000004,
+          "actionP95": 122.06259000004502,
+          "rssMiB": 1351.671875,
+          "networkMbps": 83.37648618365294
+        },
+        {
+          "phase": "combined",
+          "seconds": 60042.132362000004,
+          "hz": 18.001780967086177,
+          "tickWorkP95": 37.50031900004251,
+          "actionP95": 137.53257399995346,
+          "rssMiB": 1372.57421875,
+          "networkMbps": 84.63195465876919
+        },
+        {
+          "phase": "combined",
+          "seconds": 60021.119623999984,
+          "hz": 18.26845675725588,
+          "tickWorkP95": 35.95707699999912,
+          "actionP95": 131.53397200000472,
+          "rssMiB": 1373.67578125,
+          "networkMbps": 87.75164370160695
+        },
+        {
+          "phase": "combined",
+          "seconds": 60035.34961199999,
+          "hz": 17.882691267469607,
+          "tickWorkP95": 36.32708600000478,
+          "actionP95": 150.0031060000183,
+          "rssMiB": 1373.765625,
+          "networkMbps": 89.0030525286832
+        },
+        {
+          "phase": "combined",
+          "seconds": 60014.03441600001,
+          "hz": 19.051288561262734,
+          "tickWorkP95": 37.19450899999356,
+          "actionP95": 124.00703300000168,
+          "rssMiB": 1387.671875,
+          "networkMbps": 85.59763220971927
+        },
+        {
+          "phase": "combined",
+          "seconds": 60046.91903800005,
+          "hz": 19.165541595640974,
+          "tickWorkP95": 37.568826999980956,
+          "actionP95": 120.01393700006884,
+          "rssMiB": 1406.109375,
+          "networkMbps": 81.11376383314806
+        }
+      ]
+    }
+  ]
+}

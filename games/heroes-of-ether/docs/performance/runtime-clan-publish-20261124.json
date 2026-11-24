@@ -1,0 +1,271 @@
+{
+  "at": "2026-11-24T08:49:35.376Z",
+  "installed": true,
+  "release": "20261124-clan-publish",
+  "sourceCommit": "6f935598812f870137978d9ac7312fdd2a82341d",
+  "sourceTag": "release/20261124-clan-publish",
+  "change": "After clan mutations, rebuild and publish only arena profiles whose immutable profile or clan changed. Global competition refresh retained.",
+  "staged": {
+    "release": "/srv/heroether-test/play/releases/20261124-clan-publish",
+    "sourceCommit": "6f935598812f870137978d9ac7312fdd2a82341d",
+    "files": 2606,
+    "changed": 1,
+    "previousReleaseUnchanged": true,
+    "protectedGraphicsUnchanged": true,
+    "commentsRemoved": 78
+  },
+  "runtime": {
+    "at": "2026-11-24T08:49:35.376Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 4348094,
+    "gamePid": 583521,
+    "adminPid": 1163,
+    "candidateInstalled": true
+  },
+  "entry": {
+    "at": 1795510174037,
+    "gamePid": 583521,
+    "adminPid": 1163,
+    "revision": 4348094,
+    "generation": 4746,
+    "entryOpened": true,
+    "backend": "postgresql"
+  },
+  "data": {
+    "before": {
+      "verified": true,
+      "archiveSha256": "548aefa556632a34f8e059fd7d32d745034c604d0b5489d9ecf08211cc99fa78",
+      "revision": 4348092,
+      "digest": "8da45af351c7955310ada299d6b68196dcaeb5ec6f43defcc136ed084d657c27",
+      "worldHash": "a3b5716a71dc76c648fb3bb35e9d3f1c784466e062737802f81b2328a6dea478",
+      "profiles": 1719,
+      "clans": 136,
+      "postgresqlArchiveVerified": true
+    },
+    "after": {
+      "calendarReplayExact": true,
+      "approvedMigrationsExact": true,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 4348092,
+      "revision": 4348094,
+      "digest": "ecb17977c61fd6ce39ec948a807c0aa2f89be56b8377d570a7e4b2b830e8df8d",
+      "worldHash": "9f9f690e5dd61d565afe31b5c842eb631c66a64fc9cb0df34843f105e666c9d1",
+      "profiles": 1719,
+      "clans": 136,
+      "at": 1795509143037,
+      "transitionTimes": [
+        1795509143037,
+        1795509253466
+      ],
+      "retiredAvatarProfiles": [],
+      "constructorChanges": [],
+      "questPayouts": 0,
+      "questChests": 0,
+      "postVerificationExpiry": {
+        "priorVerifiedRevision": 4348093,
+        "profiles": 1,
+        "notices": 1,
+        "allOtherFieldsEqual": true
+      }
+    }
+  },
+  "tests": {
+    "linuxFull": {
+      "total": 2361,
+      "passed": 2360,
+      "failed": 0,
+      "skipped": 1
+    },
+    "windowsTargeted": 23,
+    "clanIdentityIntegration": 1,
+    "capacityCriteria": 12
+  },
+  "rootSourceSynchronization": {
+    "at": "2026-11-24T08:51:05.974Z",
+    "sourceCommit": "6f935598812f870137978d9ac7312fdd2a82341d",
+    "developerHead": "4d993ee7f8404cea28fbde0ef107c691451c6070",
+    "files": [
+      {
+        "file": "games/heroes-of-ether/design/premium-emotes-v2/atlas-provenance.json",
+        "before": null,
+        "sha256": "55549b404bc2cb18d0e098371ce9bdb247a08a10a8a95836c039dd9346d370a4"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124.txt",
+        "before": null,
+        "sha256": "f0705b5a5c30f0a20decea9de6da62ec1472f64a64de8ba0e72303361c92e4af"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/baseline-30.json",
+        "before": null,
+        "sha256": "5daccd5525be37516e82f522586d4b5dff104b5caa506998c67104ae0db2d54c"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/baseline-60.json",
+        "before": null,
+        "sha256": "b679ff1d10a121e6d05c7a709f890ff2489ae70f6a2377554d793fd604f3d7bf"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/browser.json",
+        "before": null,
+        "sha256": "1feda71c422dfc9601141ad2112f7e788cb917a42e747bcb7dd6ac329811075e"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/diagnostic-60.json",
+        "before": null,
+        "sha256": "3440cf8d03e5b33f89a5d58cc9d5923c9dd162bbc5d1a7fa6b173e57d7ca1db6"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/evidence.json",
+        "before": null,
+        "sha256": "e0fadad7d7e9ddb14e6ad91f6fa2e2e2bdd32d024963e0a9ba88c14e5706ccb2"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/excluded-event-fixture-30.json",
+        "before": null,
+        "sha256": "691b0304d125d229f3b39506f13d0d55be94ee374171f7f9e84c6e93e6d6e976"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/game-browser.json",
+        "before": null,
+        "sha256": "44f7cdeadba0dcbd0c5dfa58328729a533ed2053c5d6ba25a894ec85799b46f3"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/http.json",
+        "before": null,
+        "sha256": "170fee069e2a220be21cc013fa757777b1d6fc6a733161dfa8fda3c28f1b891e"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/installed.json",
+        "before": null,
+        "sha256": "cf00ef713e20ca234d4defa7b5b381edecf152cd2302a4f4d60b4fecef8c140e"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/premium-realistic-20261124/static-manifest.json",
+        "before": null,
+        "sha256": "f9be64df48467e4fcdf0d3125ba649d8c5498bb732a9ce9e9c7852657a73bab3"
+      },
+      {
+        "file": "games/heroes-of-ether/public/index.html",
+        "before": "ab8c31b76528aca23c6afddb3a8df2221438106faf4d5948cc70317da47c5b6e",
+        "sha256": "ff4be1b2d71976b0d687a8b67f17c73c07519c77377e080df75758bf175baddf"
+      },
+      {
+        "file": "games/heroes-of-ether/public/shared/gold-material.js",
+        "before": null,
+        "sha256": "1ec92186051089f89d1fa9579519a570ff3c2c5f5889dbf66c56172592b214bd"
+      },
+      {
+        "file": "games/heroes-of-ether/public/styles/theme/account-colors.css",
+        "before": "1c39dd284de19c1413b7219b33b565eb3b7540331ec70f29a3f60275491be481",
+        "sha256": "984d2724b8505515ff4a813dda92a255c234208ebdfdcb743c5ee05fb3cb2aa2"
+      },
+      {
+        "file": "games/heroes-of-ether/public/styles/theme/gold-material.css",
+        "before": null,
+        "sha256": "91c378068737a1762d02c2d4698294c12df7495914313ba1190c081c4304ab93"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/art/build-emote-motion.cjs",
+        "before": null,
+        "sha256": "f4d0a9e3005a80b35fccdb03b1466718673f34e08c0199cde91cc53fbc0a9473"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/audit-capacity.cjs",
+        "before": "8dd3cc9292f0c5228ba089481918d663132e99175ac3d8b5a7716685b7e1fe97",
+        "sha256": "542dc5380f2a4a7b573f4bceb59b5f66a72c30a6bc609af4d186d2021659d4fe"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/capacity-assessment.cjs",
+        "before": "f70c3a7db0e2ec1cc2084452dc60ca2f695e88c6e68f5a30803c8c8471b0c02f",
+        "sha256": "9147b54c3c5697829087437c81e1cdc00b8a4b8d84c10a4df2241bb622ee4329"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/postgresql-capacity.cjs",
+        "before": "d80a28a4e913907b5f8872b09c3dfb147f618a166f93608181b4f232c802e161",
+        "sha256": "a0a5f08a76b9eb0028dbfdf0d02add4351450ac9b06d035c02c5ae39103be5fe"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/premium-emote-browser.cjs",
+        "before": null,
+        "sha256": "cc1622dad6cebe41cd7bac58c45e798166426f270ecb2877d6abaf4f493309ff"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/realistic-lobby-plan.cjs",
+        "before": null,
+        "sha256": "b3dc41c7ede0816109b4005ccdf9d27a4cc49e63991cb605e4adb8177ea8046e"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/room-input-clients.cjs",
+        "before": "7d36592500486f3d6c42247e94de6cbfe08ca330bd1d2c76e1b74f3e4b75c98b",
+        "sha256": "d943f60f3ebd866897e649502aa1031e14ee9c1e970b6932f45240a8a02d7c20"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/room-input-load.cjs",
+        "before": "44d894bebf93afac7d7fdf04148fb6c9ae2cbe766e7a8a5f5d992c3dc6d41890",
+        "sha256": "a162a35be2368bccd5a367fbad58cb25d2f37c06f1ddb0278a50f6799c43b424"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/room-lobby-clients.cjs",
+        "before": "25ae643ce50110864a6fcd81ee02333b33b8fc402a122611b8c7eb6d4767a4a1",
+        "sha256": "88103087286f2b780e9efe3b30990d0dd716ba8e3aab2f5cd2554885612b202e"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/game-server.js",
+        "before": "d78ed165e0203e351674bd9c626f950d9b1abb8279a1850c79ecd285e329d4f4",
+        "sha256": "ba8fbc9b182482535fa854821ff8d5d3b6b34c896efa9093a90aeb43359432c6"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/integration/clan-identity-publish.test.js",
+        "before": null,
+        "sha256": "3a85cdb71efb36053b97f190c353418658c982b36cf048b3311b4df2db537825"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/capacity-assessment.test.js",
+        "before": "166c449953515e6a8a1d36c006f96ba1841309ae31f3771ed408eb462a4a9a65",
+        "sha256": "622d3a220c12ebe97745ae4fa9ef667421052698b4b82125dee9fba288a7fa17"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/premium-emote-motion.test.js",
+        "before": null,
+        "sha256": "e225209066b4d1147bd61db811549d023a655392b324924c4170e451ba38efde"
+      }
+    ],
+    "privateConfigChanged": false
+  },
+  "localReview": {
+    "at": "2026-11-24T08:51:40.978Z",
+    "port": 3104,
+    "checks": 3,
+    "exact": true,
+    "experimentalPort3000Untouched": true
+  },
+  "validationNotes": [
+    "First cold readiness 40-second window expired; process remained active without restart. Second readiness passed.",
+    "First calendar verifier counted a no-op replay as a journal commit. All profiles/clans matched; corrected replay increments only on changes and preserves first failure.",
+    "During full readback one 24-hour chest notice expired, so entry check refused the stale revision. The exact expiry function reproduced the new profile; every other field and final PG digest matched before entry opened.",
+    "Original 90-player 6CPU short-run finalization failed; independent ACK/PG audit passed and original failure retained.",
+    "No reduction in whole-game CPU or maximum CCU claimed."
+  ],
+  "storage": {
+    "at": "2026-11-24T08:23:54.162Z",
+    "beforeFree": 813748224,
+    "afterFree": 6205091840,
+    "logicalSavedBytes": 5383949883,
+    "pathsRetained": true,
+    "allHashesVerified": true,
+    "liveReleaseUntouched": true,
+    "worldWalHistoryBackupsUntouched": true,
+    "skipped": [],
+    "localArchive": {
+      "verified": true,
+      "sha256": "b2bbba5fe23d17ccb2df59d3786f67c5e2f7fdfb0e205c6909c219e9e96f2af9",
+      "files": 177,
+      "archiveBytes": 239354134
+    },
+    "atomicReplacementRequired": true,
+    "allPathsAndBackupsRetained": true
+  },
+  "report": "games/heroes-of-ether/docs/performance/premium-realistic-20261124.txt"
+}
