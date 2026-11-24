@@ -101,7 +101,9 @@ process.on("message", async (m) => {
           // The 35 renderers normally run on 35 other machines. This driver parses
           // actual packets and ACKs them, but does not render/decode 35 entire worlds
           // on the same two CPU cores as the server under test.
-          const me = (v.playersDelta?.upsert || v.players)?.find((p) => p.id === c.playerId);
+          const ownRow = (v.playersDelta?.upsert || v.players)?.find((p) =>
+            (Array.isArray(p) ? p[0] : p.id) === c.playerId);
+          const me = wire.unpackPlayerChange(ownRow);
           if (me?.spawnSerial !== undefined) c.serial = me.spawnSerial;
           if (me?.x !== undefined) c.x = me.x;
           if (me?.y !== undefined) c.y = me.y;
@@ -112,7 +114,7 @@ process.on("message", async (m) => {
             for (const [key, value] of Object.entries(v))
               c.fieldBytes[key] = (c.fieldBytes[key] || 0) + Buffer.byteLength(JSON.stringify(value));
             if (c === clients[0]) for (const p of v.playersDelta?.upsert || [])
-              for (const [key, value] of Object.entries(p)) {
+              for (const [key, value] of Object.entries(wire.unpackPlayerChange(p))) {
                 const label = "samplePlayer:" + key;
                 c.fieldBytes[label] = (c.fieldBytes[label] || 0) + Buffer.byteLength(JSON.stringify(value));
               }

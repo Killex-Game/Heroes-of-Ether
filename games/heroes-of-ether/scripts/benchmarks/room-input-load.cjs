@@ -740,6 +740,8 @@ if (process.env.LOAD_CLIENT === "1") {
     .catch((e) => {
       console.error(process.env.LOAD_DATABASE_CONFIG
         ? require("../../src/server/persistence/postgresql-config").safeError(e) : e.stack);
+      if (process.env.LOAD_DATABASE_CONFIG) console.error(JSON.stringify({ name: e.name,
+        code: e.code, frames: String(e.stack || "").split("\n").filter(line => /^\s+at /.test(line)).slice(0, 12) }));
       process.exitCode = 1;
     })
     .finally(async () => {
