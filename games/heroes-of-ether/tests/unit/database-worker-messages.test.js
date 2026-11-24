@@ -64,6 +64,28 @@ test("A replaced database worker cannot overwrite telemetry or settle the new wo
   sync.worker.emit("message", { id, error: "DATABASE_OPERATION_FAILED" });
   await assert.rejects(response, { code: "DATABASE_OPERATION_FAILED" });
 });
+
+test('Worker failure records a safe memory category and retains it across the following exit', async () => {
+  const sync=fixture(),pending=sync.command('sync');
+  const rejected=assert.rejects(pending,{code:'DATABASE_WORKER_FAILED'});
+  sync.worker.emit('error',Object.assign(Error('postgresql://private:secret@hidden'),{code:'ERR_WORKER_OUT_OF_MEMORY'}));
+  sync.worker.emit('exit',1);await rejected;
+  assert.equal(sync.monitoring().lastWorkerFailure.code,'DATABASE_WORKER_OUT_OF_MEMORY');
+  assert.equal(sync.monitoring().lastWorkerFailure.kind,'error');
+  assert.doesNotMatch(JSON.stringify(sync.monitoring()),/secret|hidden|private/);
+  const before=sync.workerFailure,old=sync.worker;sync.spawn();
+  old.emit('error',Error('stale'));old.emit('exit',2);
+  assert.equal(sync.failed,false);assert.equal(sync.workerFailure,before);
+});
+
+test('Unexpected worker error details are never copied into diagnostics', async () => {
+  const sync=fixture();
+  sync.worker.emit('error',Object.assign(Error('password=secret'),{code:'private-hostname'}));
+  assert.equal(sync.workerFailure.code,'DATABASE_WORKER_ERROR');
+  assert.doesNotMatch(JSON.stringify(sync.monitoring()),/secret|private-hostname/);
+  sync.spawn();sync.worker.emit('exit',3);
+  assert.equal(sync.workerFailure.code,'DATABASE_WORKER_EXIT');assert.equal(sync.workerFailure.exitCode,3);
+});
 test("Optional database telemetry transport failure does not mark persistence failed or cancel a write", async () => {
   const sync=fixture(),response=sync.command("sync"),id=sync.waiting.id;
   sync.worker.postMessage=()=>{throw Error('transport');};

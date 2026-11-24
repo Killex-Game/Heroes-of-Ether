@@ -43,8 +43,21 @@ class DatabaseSync {
         pending.reject(Object.assign(Error(message.error), { code: message.error }));
       else pending.resolve(message.result);
     });
-    const failed = () => {
+    let workerError = false;
+    const failed = (kind, detail) => {
       if (worker !== this.worker) return;
+      if (kind === 'error') {
+        workerError = true;
+        const code = detail?.code === 'ERR_WORKER_OUT_OF_MEMORY' ? 'DATABASE_WORKER_OUT_OF_MEMORY'
+          : detail?.code === 'ERR_WORKER_INIT_FAILED' ? 'DATABASE_WORKER_INIT_FAILED' : 'DATABASE_WORKER_ERROR';
+        this.workerFailure = { at: Date.now(), kind, code };
+        // Keep the useful category without logging driver messages, paths,
+        // connection strings or stack traces that may contain credentials.
+        console.error(`PostgreSQL worker: ${code}.`);
+      } else if (!workerError) this.workerFailure = {
+        at: Date.now(), kind: 'exit', code: 'DATABASE_WORKER_EXIT',
+        exitCode: Number.isInteger(detail) && detail >= 0 && detail <= 255 ? detail : null,
+      };
       this.failed = true;
       if (this.waiting) {
         clearTimeout(this.waiting.timeout);
@@ -54,8 +67,8 @@ class DatabaseSync {
         this.waiting = null;
       }
     };
-    worker.on("error", failed);
-    worker.on("exit", failed);
+    worker.on("error", error => failed('error', error));
+    worker.on("exit", code => failed('exit', code));
     if(this.metricsEnabled)this.sendMetricsControl(true);
   }
   command(command, profileSnapshot = null) {
@@ -139,7 +152,8 @@ class DatabaseSync {
   monitoring(){
     const health=require('./database-health').syncHealth(this.health,Date.now(),this.config.intervalMs);
     if(this.health?.connected&&!this.health?.syncedAt&&Date.now()-this.startedAt<Math.max(90000,this.config.intervalMs*3))health.state='starting';
-    return {enabled:true,backend:'postgresql',health:this.failed?{...health,state:'error',lastError:'DATABASE_WORKER_FAILED'}:this.lastError?{...health,state:'error',lastError:this.lastError}:health,metrics:this.metrics||null,metricsError:this.metricsError||null};
+    return {enabled:true,backend:'postgresql',health:this.failed?{...health,state:'error',lastError:'DATABASE_WORKER_FAILED'}:this.lastError?{...health,state:'error',lastError:this.lastError}:health,metrics:this.metrics||null,metricsError:this.metricsError||null,
+      ...(this.workerFailure?{lastWorkerFailure:this.workerFailure}:{})};
   }
   sendMetricsControl(enabled){
     try{this.worker.postMessage({type:'metrics-control',enabled});return true;}
