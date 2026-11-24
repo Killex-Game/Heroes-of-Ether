@@ -47,6 +47,8 @@ process.on('message',async m=>{
       timer=startTickClock(()=>{const at=performance.now();for(const room of rooms.values())room.tick(at);
         peakRss=Math.max(peakRss,process.memoryUsage().rss);},50);
     }
+  }else if(m.type==='probe'){
+    send({type:'probe',rooms:[...rooms.values()].map(r=>({id:r.id,ticks:r.tickNo}))});
   }else if(m.type==='stop'&&!ending){
     ending=true;timer?.();
     const elapsed=performance.now()-started,cpu=process.cpuUsage(cpuStart),deadline=Date.now()+30000;

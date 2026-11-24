@@ -6,7 +6,7 @@ const {fork}=require('node:child_process');
 const {loadConfig,safeError}=require('../../../src/server/persistence/postgresql-config');
 const {PostgreSQLState}=require('../../../src/server/persistence/postgresql-state');
 async function startServices(store,root,lobbyTokens,externalBoosterQueue){
-  let app,peer,database,config,sequence=0,closePromise,databaseClosed=false;
+  let app,peer,database,config,sequence=0,closePromise,databaseClosed=false,addressed,readerConnection;
   const ask=payload=>new Promise((resolve,reject)=>{
     const id=++sequence,timer=setTimeout(()=>{peer.off('message',receive);reject(Error('Lobby driver timeout'));},30000);
     const receive=m=>{if(m.id!==id)return;clearTimeout(timer);peer.off('message',receive);m.error?reject(Error(m.error)):resolve(m.result);};
@@ -31,6 +31,13 @@ async function startServices(store,root,lobbyTokens,externalBoosterQueue){
       await ask({type:'setup',base:'http://127.0.0.1:'+app.httpServer.address().port,tokens:lobbyTokens,profileIds:lobbyTokens.map(token=>store.find(token).id)});
     }
     return {
+      async readProfiles(locators){
+        if(!database||!config)throw Error('Addressed benchmark requires isolated PostgreSQL');
+        if(!addressed){readerConnection=new PostgreSQLState(config);
+          addressed=new (require('../../../src/server/persistence/profile-reader').ProfileReader)(readerConnection,{maxProfiles:35});}
+        const before={...addressed.metrics},result=await addressed.read(locators);
+        return {...result,documents:addressed.metrics.documents-before.documents,logicalBytes:addressed.metrics.logicalBytes-before.logicalBytes};
+      },
       start:async()=>{if(peer)await ask({type:'phase'});},
       close(){
         return closePromise ||= (async()=>{
@@ -46,6 +53,7 @@ async function startServices(store,root,lobbyTokens,externalBoosterQueue){
           if(database){await database.sync.close();databaseClosed=true;verification=await database.verify();}
           return {lobby,database:verification};
         }finally{
+          await readerConnection?.close();readerConnection=null;addressed?.clear();
           peer?.kill();database?.sync.pause();
           if(app)await app.close();else if(!store.journal?.closed)await store.close();
           if(database&&!databaseClosed){await database.sync.close(false);databaseClosed=true;}

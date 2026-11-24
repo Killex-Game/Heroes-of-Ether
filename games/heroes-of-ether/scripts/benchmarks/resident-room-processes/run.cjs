@@ -10,11 +10,16 @@ const {BOOSTERS}=require('../../../src/server/boosters/booster-catalog');
 const durableCasts=process.env.ROOM_BENCH_DURABLE_CASTS==='1';
 const {summary}=require('./room-fixture.cjs');
 const count=Number(process.argv[2]||3),workers=Number(process.argv[3]||3),seconds=Number(process.argv[4]||30);
+const roomSize=Number(process.env.ROOM_BENCH_ROOM_SIZE||30);
+if(![30,35].includes(roomSize))throw Error('Room size must be 30 (current) or 35 (historical replay)');
+const stallMs=Number(process.env.ROOM_BENCH_STALL_MS||0);
+if(!Number.isInteger(stallMs)||stallMs<0||stallMs>2000||stallMs&&(process.platform!=='linux'||workers<2))
+  throw Error('Stall probe requires two Linux room processes and at most two seconds');
 const peerCount=Math.max(1,Math.min(count,Number(process.env.ROOM_BENCH_PEERS)||1));
 if(process.env.ROOM_BENCH_INPUTS && process.env.ROOM_BENCH_INPUTS!=='socket')throw Error('Invalid inputs');
 if(process.env.ROOM_BENCH_SCENARIO && process.env.ROOM_BENCH_SCENARIO!=='balanced-split')throw Error('Invalid scenario');
 if(process.env.ROOM_BENCH_INPUTS==='socket'&&!durableCasts)throw Error('Socket inputs require durable casts');
-if(![1,3,10,20].includes(count)||!Number.isInteger(workers)||workers<1||workers>count||seconds<10||seconds>3600)throw Error('Invalid load');
+if(![1,2,3,10,20].includes(count)||!Number.isInteger(workers)||workers<1||workers>count||seconds<10||seconds>3600)throw Error('Invalid load');
 const output=path.resolve(process.argv[5]||path.join(__dirname,'../../../../../artifacts/room-processes-20261110/resident-'+count+'-'+workers));
 const children=[];let store,services,aborted=false;
 function spawn(file){const execArgv=file==='child.cjs'&&process.env.ROOM_BENCH_PROFILE_ROOMS==='1'?
@@ -47,7 +52,7 @@ async function run(){
   const world=fixture?.data||{version:13,profiles:{},clans:{}};
   const fixtureProfiles=Object.values(world.profiles);
   const tokens=new Map(),boosters=[...BOOSTERS.values()].filter(b=>b.ready).map(b=>b.id);
-  for(let i=0;i<count*35;i++){
+  for(let i=0;i<count*roomSize;i++){
     const fresh=fixture?null:new ProfileStore(),auth=fixture?{token:fixture.tokens[i]}:fresh.open(),p=fixture?fixtureProfiles[i]:fresh.find(auth.token);
     p.level=600;p.progress=freshProgress(600);p.name='Load '+i;p.skinId='moon-dragon';
     p.personal.nameSet=true;p.personal.introPending=false;
@@ -63,8 +68,8 @@ async function run(){
     }
     if(fresh)Object.assign(world.profiles,fresh.data.profiles);
   }
-  const lobbyTokens=fixture?.tokens.slice(count*35,count*35+lobbyCount)||[];
-  for(const p of fixtureProfiles.slice(count*35,count*35+lobbyCount)){
+  const lobbyTokens=fixture?.tokens.slice(count*roomSize,count*roomSize+lobbyCount)||[];
+  for(const p of fixtureProfiles.slice(count*roomSize,count*roomSize+lobbyCount)){
     p.wallet.coins=1000000;p.inventory.candy=100;
     p.account=require('../../../src/server/accounts/account-benefits').fresh();
     p.account.vipUntil=p.account.premiumUntil=Date.now()+86400000;
@@ -108,7 +113,22 @@ async function run(){
   const sink=new RoomProgressSink(store,{maxBatchSize:Number(process.env.ROOM_BENCH_WRITER_BATCH||64)}),all=Object.values(store.data.profiles),key=randomBytes(24).toString('hex');
   const casts=durableCasts?new DurableCasts(store,sink,tokens):null;
   services=await require('./services.cjs').startServices(store,output,lobbyTokens,casts?.queue);
-  const configs=Array.from({length:count},(_,i)=>({id:'room-'+i,epoch:randomUUID(),profiles:all.slice(i*35,i*35+35)}));
+  const configs=Array.from({length:count},(_,i)=>({id:'room-'+i,epoch:randomUUID(),profiles:all.slice(i*roomSize,i*roomSize+roomSize)}));
+  const loading={addressed:process.env.ROOM_BENCH_ADDRESSED_PROFILES==='1',rooms:[],projection:process.env.ROOM_BENCH_COMPACT_PROFILES==='1'};
+  if(loading.addressed){
+    const locators=new Map(Object.entries(store.data.profiles).map(([key,p])=>[p.id,{key,id:p.id}]));
+    const assert=require('node:assert/strict');
+    for(const c of configs){
+      const at=performance.now(),selected=await services.readProfiles(c.profiles.map(p=>locators.get(p.id)));
+      assert.equal(selected.revision,store.data._journalRevision,'Room startup requires a current persisted generation');
+      const profiles=c.profiles.map(p=>selected.profiles.get(p.id));assert.deepEqual(profiles,c.profiles);
+      c.profiles=profiles;loading.rooms.push({id:c.id,profiles:profiles.length,generation:selected.generation,
+        elapsedMs:performance.now()-at,documents:selected.documents,logicalBytes:selected.logicalBytes});
+    }
+  }
+  loading.fullBytes=configs.reduce((n,c)=>n+Buffer.byteLength(JSON.stringify(c.profiles)),0);
+  if(loading.projection)for(const c of configs)c.profiles=c.profiles.map(require('./room-profile.cjs').roomProfile);
+  loading.transferredBytes=configs.reduce((n,c)=>n+Buffer.byteLength(JSON.stringify(c.profiles)),0);
   for(const c of configs)sink.claim(c.id,c.epoch,c.profiles.map(p=>p.id));
   let ipcBytes=0,acks=0,errors=0;const delays=[];
   const shards=[];
@@ -122,7 +142,7 @@ async function run(){
     const ready=wait(child,'ready');child.send({type:'init',rooms:subset,key,durableCasts});
     shards.push({child,subset,...await ready});
   }
-  const urls=shards.flatMap(s=>s.subset.flatMap(c=>Array.from({length:35},(_,i)=>
+  const urls=shards.flatMap(s=>s.subset.flatMap(c=>Array.from({length:roomSize},(_,i)=>
     `ws://127.0.0.1:${s.port}/?room=${c.id}&player=${i}&key=${key}`)));
   const peerProcesses=[];
   for(let i=0;i<peerCount;i++){
@@ -144,8 +164,20 @@ async function run(){
   for(const s of shards)s.child.send({type:'start'});
   if(process.env.ROOM_BENCH_INPUTS==='socket')for(const peer of peerProcesses)peer.send({type:'startInputs'});
   await services.start();
-  console.log(JSON.stringify({started:true,rooms:count,players:count*35,processes:workers,seconds,output}));
-  while(!aborted&&performance.now()-start<seconds*1000)await new Promise(r=>setTimeout(r,250));
+  console.log(JSON.stringify({started:true,rooms:count,players:count*roomSize,processes:workers,seconds,output}));
+  let isolation;
+  while(!aborted&&performance.now()-start<seconds*1000){
+    await new Promise(r=>setTimeout(r,250));
+    if(stallMs&&!isolation&&performance.now()-start>3000){
+      const probe=async child=>{const reply=wait(child,'probe');child.send({type:'probe'});return (await reply).rooms;};
+      const other=shards[1].child,before=await probe(other),at=performance.now();
+      try{shards[0].child.kill('SIGSTOP');await new Promise(r=>setTimeout(r,stallMs));
+        const after=await probe(other);isolation={stalledPid:shards[0].child.pid,healthyPid:other.pid,
+          elapsedMs:performance.now()-at,before,after};
+        if(after.some((room,i)=>room.ticks<=before[i].ticks))throw Error('Healthy room failed to advance during isolated stall');
+      }finally{shards[0].child.kill('SIGCONT');}
+    }
+  }
   if(process.env.ROOM_BENCH_INPUTS==='socket')await Promise.all(peerProcesses.map(async peer=>{
     const done=wait(peer,'inputsStopped');peer.send({type:'stopInputs'});await done;
   }));
@@ -163,7 +195,8 @@ async function run(){
       (durableCasts?' + real inventory/WAL casts':' (casts bypass inventory)')+
       (full?' + 1280 synthetic profiles/128 clans/30 real HTTP lobby clients':'')+
       (serviceResults.database?' + PostgreSQL verified':'')+'; no production arena admission in this run',
-    rooms:count,players:count*35,processes:workers,seconds,aborted,shards:reports,peers:peerReports,
+    rooms:count,roomSize,players:count*roomSize,processes:workers,seconds,aborted,shards:reports,peers:peerReports,loading,isolation,
+    protocol:process.env.ROOM_BENCH_PROTOCOL||require('../../../public/shared/arena-wire').PROTOCOL,
     scenario:{inputs:process.env.ROOM_BENCH_INPUTS||'in-process tick-based',layout:process.env.ROOM_BENCH_SCENARIO||'mixed-mass',event:eventKind||null,mixedSocial:process.env.LOAD_MIXED_SOCIAL==='1',respawnDelayMs:Number(process.env.ROOM_BENCH_RESPAWN_DELAY_MS)||0,meanAlive:rooms.reduce((sum,r)=>sum+r.meanAlive,0)},
     viewMode:process.env.ROOM_BENCH_VIEWS==='camera'?'synthetic moving mass-dependent cameras':
       process.env.ROOM_BENCH_INPUTS==='socket'?'socket-reported cameras':'whole room',peerProcesses:peerCount,
@@ -182,7 +215,7 @@ async function run(){
   if(aborted||report.pending||errors)process.exitCode=1;
 }
 run().catch(error=>{console.error(error);process.exitCode=1;}).finally(async()=>{
-  for(const child of children)if(child.connected)child.kill();
+  for(const child of children)if(child.connected){if(stallMs)child.kill('SIGCONT');child.kill();}
   if(services)await services.close();
   else if(store)await store.close();
 });

@@ -8,7 +8,9 @@ process.on('disconnect',()=>process.exit());
 process.on('message',async m=>{
   if(m.type==='connect'){
     await Promise.all(m.urls.map(url=>new Promise((resolve,reject)=>{
-      const ws=new WebSocket(url,wire.PROTOCOL,{perMessageDeflate:false});clients.push(ws);
+      const protocol=process.env.ROOM_BENCH_PROTOCOL||wire.PROTOCOL;
+      if(![wire.PROTOCOL,wire.SCHEMA_PROTOCOL].includes(protocol))throw Error('Unsupported benchmark protocol');
+      const ws=new WebSocket(url,protocol,{perMessageDeflate:false});clients.push(ws);
       ws.on('error',reject);ws.once('open',resolve);let last;const client=inputs?.add(ws);
       const decoder=decode&&(!inputs||inputs.inputProjection)?new wire.Decoder():null;
       ws.on('message',raw=>{bytes+=raw.length;packets++;const at=performance.now();

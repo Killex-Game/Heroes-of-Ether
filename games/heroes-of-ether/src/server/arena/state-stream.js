@@ -196,14 +196,14 @@ function foodChanges(current, previous) {
   current.changes.set(previous, changes);
   return changes;
 }
-function foodSection(current, previous, compact, binaryMoves) {
+function foodSection(current, previous, compact, binaryMoves, schema) {
   const cache = current.foodSections ??= new HistoryCache();
   let formats = cache.get(previous);
   if (!formats) cache.set(previous, (formats = []));
-  const format = Number(compact) | (Number(binaryMoves) << 1);
-  return formats[format] ??= buildFoodSection(current, previous, compact, binaryMoves);
+  const format = Number(compact) | (Number(binaryMoves) << 1) | (Number(schema) << 2);
+  return formats[format] ??= buildFoodSection(current, previous, compact, binaryMoves, schema);
 }
-function buildFoodSection(current, previous, compact, binaryMoves) {
+function buildFoodSection(current, previous, compact, binaryMoves, schema) {
   const { food, foodWords } = current;
   const old = previous.food, oldWords = previous.foodWords;
   const changes = old && foodChanges(food, old);
@@ -241,7 +241,9 @@ function buildFoodSection(current, previous, compact, binaryMoves) {
       // Most movement goes out as eight binary bytes. Build its JSON form
       // only if a recipient actually needs a birth or a legacy update.
       const prefix = row.position ??= JSON.stringify([row.id, row.px, row.py]).slice(0, -1);
-      upsert.push(kind === 1 ? (row.move ??= prefix + "]") : (row.full ??= prefix + "," + row.meta + "]"));
+      upsert.push(kind === 1 ? (row.move ??= prefix + "]") : schema
+        ? (row.schemaFull ??= prefix + "," + JSON.stringify(wire.packFoodMetadata(JSON.parse(row.meta))) + "]")
+        : (row.full ??= prefix + "," + row.meta + "]"));
     }
     else {
       row.legacy ??= '{"id":' + JSON.stringify(row.id) + ',"x":' + row.px +
@@ -652,7 +654,8 @@ class ArenaStateStream {
     this.send = send;
     this.now = now;
     this.foodEncoder = foodEncoder;
-    this.formation = ws.protocol === wire.PROTOCOL;
+    this.schema = ws.protocol === wire.SCHEMA_PROTOCOL;
+    this.formation = this.schema || ws.protocol === wire.PROTOCOL;
     this.privateHud = this.formation || ws.protocol === wire.PRIVATE_STATE_PROTOCOL || ws.protocol === wire.HUD_PROTOCOL;
     this.motion = this.privateHud || ws.protocol === wire.MOTION_PROTOCOL;
     this.presentationOnly = this.motion || ws.protocol === wire.PRESENTATION_PROTOCOL;
@@ -756,7 +759,7 @@ class ArenaStateStream {
       if (!cache) encoded.wires.set(this.previousEncoded, (cache = new Map()));
       const format = Number(this.compact) | (Number(this.entityDeltas) << 1) |
         (Number(this.presentationOnly) << 2) | (Number(this.motion) << 3) | (Number(this.privateHud) << 4) |
-        (Number(this.formation) << 5);
+        (Number(this.formation) << 5) | (Number(this.schema) << 6);
       cacheKey = format + ":" + (this.sequence + 1) + ":" +
         (ranks[0]?.id ?? "-") + ":" + (ranks[1]?.id ?? "-") + ":" + payload.signature +
         (this.privateHud ? ":" + (this.ws.playerId || "") : "");
@@ -773,7 +776,7 @@ class ArenaStateStream {
       }
     }
     if (this.acknowledged) {
-      packet.foodWire = foodSection(encoded, this.previousEncoded, this.compact, this.presentationOnly);
+      packet.foodWire = foodSection(encoded, this.previousEncoded, this.compact, this.presentationOnly, this.schema);
       packet.stateSequence = ++this.sequence;
       this.inFlight = packet.stateSequence;
     }

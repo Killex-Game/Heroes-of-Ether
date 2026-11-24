@@ -122,7 +122,7 @@ class RoomFixture {
       }catch(error){if(!(error instanceof BoosterError))throw error;this.metrics.rejected++;}
     }
     const physicsAt=performance.now();
-    const wallAt=Date.now(), result=stepRoom(this,at,wallAt,this.profiles,35);
+    const wallAt=Date.now(), result=stepRoom(this,at,wallAt,this.profiles,this.players.length);
     this.phases.physics.push(performance.now()-physicsAt);
     const progress=result.progress.filter(e=>this.lookup.has(e.profileId));
     for (const event of progress) this.metrics.progressTypes[event.type]=(this.metrics.progressTypes[event.type]||0)+1;

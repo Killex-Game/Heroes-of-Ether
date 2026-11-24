@@ -8,12 +8,52 @@
   const platform = typeof module === "object" && module.exports
     ? require("./platform-contract") : globalThis.KillexPlatform;
   const PROTOCOL = platform.stateProtocol(8);
+  // Opt-in until the isolated load and compatibility gates are complete.
+  const SCHEMA_PROTOCOL = platform.stateProtocol(9);
   const PRIVATE_STATE_PROTOCOL = platform.stateProtocol(7);
   const HUD_PROTOCOL = platform.stateProtocol(6);
   const MOTION_PROTOCOL = platform.stateProtocol(5);
   const PRESENTATION_PROTOCOL = platform.stateProtocol(4);
   const ENTITY_PROTOCOL = platform.stateProtocol(3);
   const LEGACY_PROTOCOL = platform.stateProtocol(2);
+  const foodKeys = ["value", "radius", "color", "artValue", "ejected", "birth"];
+  function packFoodMetadata(meta) {
+    if (!meta || Array.isArray(meta) || Object.keys(meta).some(key => !foodKeys.includes(key))) return meta;
+    let mask = 0;
+    const values = [];
+    foodKeys.forEach((key, i) => {
+      if (!Object.prototype.hasOwnProperty.call(meta, key)) return;
+      mask |= 1 << i;
+      let value = meta[key];
+      if (key === "birth" && value && !Array.isArray(value) &&
+          Object.keys(value).length === 3 && ["tick", "x", "y"].every(k => typeof value[k] === "number" && Number.isFinite(value[k]))) {
+        mask |= 64;
+        value = [value.tick, value.x, value.y];
+      }
+      values.push(value);
+    });
+    return [mask, ...values];
+  }
+  function unpackFoodMetadata(meta) {
+    if (!Array.isArray(meta)) return meta;
+    const mask = meta[0];
+    if (!Number.isInteger(mask) || mask < 0 || mask > 127 || ((mask & 64) && !(mask & 32)))
+      throw Error("Invalid food metadata mask");
+    const result = {};let cursor = 1;
+    foodKeys.forEach((key, i) => {
+      if (!(mask & (1 << i))) return;
+      if (cursor >= meta.length) throw Error("Incomplete food metadata");
+      let value = meta[cursor++];
+      if (key === "birth" && (mask & 64)) {
+        if (!Array.isArray(value) || value.length !== 3 || !value.every(Number.isFinite))
+          throw Error("Invalid food birth");
+        value = {tick:value[0], x:value[1], y:value[2]};
+      }
+      result[key] = value;
+    });
+    if (cursor !== meta.length) throw Error("Excess food metadata");
+    return result;
+  }
   const round = (n) => (Number.isFinite(n) ? Math.round(n * 100) / 100 : n);
   function packPlayer(player) {
     const value = { ...player };
@@ -221,7 +261,7 @@
       const upsert = [];
       for (const id of packet.foodDelta?.removed || []) this.food.delete(id);
       for (const row of packet.foodDelta?.upsert || []) {
-        const orb = { ...(row[3] || this.food.get(row[0])), id: row[0], x: row[1], y: row[2] };
+        const orb = { ...(row[3] ? unpackFoodMetadata(row[3]) : this.food.get(row[0])), id: row[0], x: row[1], y: row[2] };
         this.food.set(orb.id, orb);
         upsert.push(orb);
       }
@@ -303,5 +343,5 @@
       progress: { ...profile.progress, ...patch.progress },
     };
   }
-  return { PROTOCOL, PRIVATE_STATE_PROTOCOL, HUD_PROTOCOL, MOTION_PROTOCOL, PRESENTATION_PROTOCOL, ENTITY_PROTOCOL, LEGACY_PROTOCOL, packPlayer, partDelta, motionDelta, formationDelta, Decoder, mergeProfile };
+  return { PROTOCOL, SCHEMA_PROTOCOL, PRIVATE_STATE_PROTOCOL, HUD_PROTOCOL, MOTION_PROTOCOL, PRESENTATION_PROTOCOL, ENTITY_PROTOCOL, LEGACY_PROTOCOL, packFoodMetadata, unpackFoodMetadata, packPlayer, partDelta, motionDelta, formationDelta, Decoder, mergeProfile };
 });
