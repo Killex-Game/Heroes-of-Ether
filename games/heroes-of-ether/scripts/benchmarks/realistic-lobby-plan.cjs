@@ -35,7 +35,9 @@ function update(client,data) {
   client.offerId=p.roulette?.offer?.id || null;
   client.ownsPet=!!p.pets?.owned?.zaya;
 }
-function detachLobby(fixture,first,count) {
+function detachLobby(fixture,first,count,linked=0) {
+  if(!Number.isInteger(linked)||linked<0||linked>=count||linked>first)
+    throw Error("Invalid linked lobby count");
   for(const token of fixture.tokens.slice(first,first+count)) {
     const key=require("node:crypto").createHash("sha256").update(token).digest("hex"),p=fixture.data.profiles[key];
     const c=fixture.data.clans[p.clanId];
@@ -43,6 +45,16 @@ function detachLobby(fixture,first,count) {
       if(c.ownerId===p.id){if(!c.members.length)throw Error("Fixture clan emptied");c.ownerId=c.members[0];c.roles[c.ownerId]="head";}
     }
     p.clanId=null;
+  }
+  // Keep some lobby actors in clans whose other members are actually playing.
+  // The remaining actors still exercise clan creation through the HTTP API.
+  for(let i=0;i<linked;i++) {
+    const hash=token=>require("node:crypto").createHash("sha256").update(token).digest("hex");
+    const arena=fixture.data.profiles[hash(fixture.tokens[Math.floor(i*first/linked)])];
+    const lobby=fixture.data.profiles[hash(fixture.tokens[first+count-linked+i])];
+    const clan=fixture.data.clans[arena.clanId];
+    if(!clan||clan.members.length>=clan.capacity)throw Error("Linked clan has no slot");
+    clan.members.push(lobby.id);clan.roles[lobby.id]="manager";lobby.clanId=clan.id;
   }
   require("../../src/server/clans/clan-service").validateWorld(fixture.data);
 }

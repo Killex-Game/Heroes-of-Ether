@@ -6,6 +6,7 @@ const gifts = require("../profiles/gift-effects");
 const arenaPets = require("../pets/arena-pets");
 const accessories = require("../../../public/shared/accessory-catalog");
 const accessoryPassives = require("./accessory-passives");
+const { ProjectileCandidates } = require("./projectile-candidates");
 const vortexRadius = (part) => part.radius + Math.min(240, 100 + part.radius * 0.6);
 const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
 
@@ -43,6 +44,8 @@ class Combat {
     this.contacts = [];
     this.swords = [];
     this.hitBounds = null;
+    this.hitCandidates = null;
+    this.indexHits = false;
   }
   prepare(player, booster, message, now) {
     booster = accessoryPassives.outgoing(player, booster);
@@ -325,6 +328,25 @@ class Combat {
     }
     shot.motionVersion = (shot.motionVersion || 0) + 1;
   }
+  boundsFor(player) {
+    let bounds = this.hitBounds.get(player);
+    if (!bounds) {
+      const parts = this.arena.bodies(player);
+      bounds = { left: Infinity, right: -Infinity, top: Infinity, bottom: -Infinity, parts };
+      for (const body of parts) {
+        bounds.left = Math.min(bounds.left, body.x - body.radius);
+        bounds.right = Math.max(bounds.right, body.x + body.radius);
+        bounds.top = Math.min(bounds.top, body.y - body.radius);
+        bounds.bottom = Math.max(bounds.bottom, body.y + body.radius);
+      }
+      this.hitBounds.set(player, bounds);
+    }
+    return bounds;
+  }
+  invalidateHitBounds(player) {
+    this.hitBounds?.delete(player);
+    this.hitCandidates?.invalidate(player);
+  }
   hit(shot, ax, ay, bx, by, now) {
     let first = null;
     // Reject distant parts before allocating hit keys and solving the quadratic.
@@ -336,7 +358,13 @@ class Combat {
       top = Math.min(ay, by) - shotRadius,
       bottom = Math.max(ay, by) + shotRadius;
     const hitOwnerInFlight = BOOSTERS.get(shot.boosterId)?.hitOwnerInFlight;
-    for (const p of this.arena.players.values()) {
+    let candidates = this.arena.players.values();
+    if (this.hitBounds && this.indexHits) {
+      if (!this.hitCandidates)
+        this.hitCandidates = new ProjectileCandidates([...candidates], p => this.boundsFor(p));
+      candidates = this.hitCandidates.query(left, right);
+    }
+    for (const p of candidates) {
       if (
         p.dead ||
         (!shot.landed && !shot.ricochetUntil && !hitOwnerInFlight && p.id === shot.ownerId)
@@ -344,18 +372,7 @@ class Combat {
         continue;
       let parts;
       if (this.hitBounds) {
-        let bounds = this.hitBounds.get(p);
-        if (!bounds) {
-          parts = this.arena.bodies(p);
-          bounds = { left: Infinity, right: -Infinity, top: Infinity, bottom: -Infinity, parts };
-          for (const body of parts) {
-            bounds.left = Math.min(bounds.left, body.x - body.radius);
-            bounds.right = Math.max(bounds.right, body.x + body.radius);
-            bounds.top = Math.min(bounds.top, body.y - body.radius);
-            bounds.bottom = Math.max(bounds.bottom, body.y + body.radius);
-          }
-          this.hitBounds.set(p, bounds);
-        }
+        const bounds = this.boundsFor(p);
         if (
           bounds.right < left ||
           bounds.left > right ||
@@ -425,8 +442,8 @@ class Combat {
   impact(shot, target, now, part = this.arena.mainBody(target), contacts, shieldAt = now) {
     // A hit can split, grow, burn or move bodies before the next projectile.
     // Never reuse their old broad-phase bounds, including any additional contacts.
-    this.hitBounds?.delete(target);
-    if (contacts) for (const contact of contacts) this.hitBounds?.delete(contact.player);
+    this.invalidateHitBounds(target);
+    if (contacts) for (const contact of contacts) this.invalidateHitBounds(contact.player);
     const arena = this.arena,
       baseBooster = shot.effectBooster || shot.petBooster || BOOSTERS.get(shot.boosterId),
       booster = accessoryPassives.incoming(target, require("./alchemy-effects").incoming(target, gifts.adjust(
@@ -706,12 +723,14 @@ class Combat {
       let bodies = 0;
       for (const player of this.arena.players.values())
         if (!player.dead) bodies += player.parts?.length || 1;
-      if (bodies >= 64) this.hitBounds = new Map();
+      if (bodies >= 64) { this.hitBounds = new Map(); this.indexHits = true; }
     }
     try {
       this.updateProjectiles(now);
     } finally {
       this.hitBounds = null;
+      this.hitCandidates = null;
+      this.indexHits = false;
     }
   }
   updateProjectiles(now) {
@@ -881,7 +900,7 @@ class Combat {
       this.completedPulls.delete(p.id);
       return false;
     }
-    this.hitBounds?.delete(p);
+    this.invalidateHitBounds(p);
     const pull = this.pulls.get(p.id);
     if (!pull) return false;
     if (
@@ -921,6 +940,10 @@ class Combat {
   }
   vortex(shot, dt, now) {
     this.hitBounds?.clear();
+    // Vortex can move every player's parts. Use the direct broad phase for the
+    // rest of this update rather than rebuild an index after every vortex.
+    this.hitCandidates = null;
+    this.indexHits = false;
     const owner = this.alive(shot.ownerId, shot.ownerLife);
     if (!owner || dt <= 0) return;
     const sources = this.arena.bodies(owner);

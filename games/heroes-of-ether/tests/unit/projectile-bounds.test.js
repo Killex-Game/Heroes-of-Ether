@@ -75,4 +75,40 @@ test("Combat exceptions discard cached bounds", () => {
   combat.updateProjectiles = () => { assert.ok(combat.hitBounds); throw Error("injected failure"); };
   assert.throws(() => combat.update(1), /injected failure/);
   assert.equal(combat.hitBounds, null);
+  assert.equal(combat.hitCandidates, null);
+  assert.equal(combat.indexHits, false);
+});
+
+test("Column candidates match ordered scans after moves, growth, split and removals", () => {
+  const arena = scene(), combat = arena.combat, players = [...arena.players.values()];
+  const check = checkHits(combat);
+  let seed = 29173;
+  const random = () => ((seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0) / 2 ** 32);
+  combat.hitBounds = new Map(); combat.indexHits = true;
+  for (let i = 0; i < 3000; i++) {
+    if (i % 79 === 0) {
+      const p = players[i % players.length];
+      for (const part of p.parts) { part.x = random() * 6000; part.radius *= 1.03; }
+      if (i % 158 === 0) p.parts.push({ ...p.parts[0], id: 'extra-' + i, x: random() * 6000 });
+      if (i % 237 === 0 && p.parts.length > 1) p.parts.shift();
+      combat.invalidateHitBounds(p);
+    }
+    const ax = random() * 6000, ay = random() * 5000;
+    const shot = {boosterId:'freeze',ownerId:players[0].id,landed:i%4===0,hitParts:new Set()};
+    combat.hit(shot, ax, ay, ax + (i%3 ? 12 : 1300), ay + random()*200, 6000);
+  }
+  assert.equal(check.calls, 3000);
+  assert.ok(combat.hitCandidates);
+});
+
+test("A same-step moved target enters a previously empty projectile column", () => {
+  const arena=scene(),combat=arena.combat,players=[...arena.players.values()];
+  const shot={boosterId:'freeze',ownerId:players[0].id};
+  combat.hitBounds=new Map();combat.indexHits=true;
+  assert.equal(combat.hit(shot,9000,9000,9001,9000,6000),null);
+  const target=players[1],part=target.parts[0];
+  part.x=9000;part.y=9000;combat.invalidateHitBounds(target);
+  assert.equal(combat.hit(shot,9000,9000,9001,9000,6000)?.part,part);
+  target.dead=true;
+  assert.equal(combat.hit(shot,9000,9000,9001,9000,6000),null);
 });

@@ -29,7 +29,9 @@ async function main(){
   const realistic=process.env.CAPACITY_REALISTIC==='1',mixedMinutes=Number(process.env.CAPACITY_MIXED_MINUTES||0);
   assert(Number.isInteger(mixedMinutes)&&mixedMinutes>=0&&mixedMinutes<=120);
   const perRoom=require('../../config/arena-rooms.json').arenaCapacity;
-  if(realistic)require('./realistic-lobby-plan.cjs').detachLobby(fixtureData,rooms*perRoom,5);
+  const linkedLobby=Number(process.env.CAPACITY_LINKED_LOBBY||0);
+  assert(Number.isInteger(linkedLobby)&&linkedLobby>=0&&linkedLobby<=4&&(!linkedLobby||realistic));
+  if(realistic)require('./realistic-lobby-plan.cjs').detachLobby(fixtureData,rooms*perRoom,5,linkedLobby);
   fs.writeFileSync(fixture,JSON.stringify(fixtureData),{mode:0o600});
   const fixtureSha256=require('node:crypto').createHash('sha256').update(fs.readFileSync(fixture)).digest('hex');
   const protocol=process.env.CAPACITY_PROTOCOL||require('../../public/shared/arena-wire').PROTOCOL;
@@ -37,7 +39,7 @@ async function main(){
   const summary={at:new Date().toISOString(),rooms,perRoom,protocol,fixtureSha256,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
   if(mixedMinutes)Object.assign(summary,{mixedMinutes,phaseSeconds:60});
-  if(realistic)Object.assign(summary,{realistic:true,mixedSocial:true,scenario:{movementHz:10,splitEverySeconds:3.7,feedEverySeconds:.7,
+  if(realistic)Object.assign(summary,{realistic:true,mixedSocial:true,scenario:{linkedLobby,movementHz:10,splitEverySeconds:3.7,feedEverySeconds:.7,
     boosterEverySeconds:2,emoteEverySeconds:5.3,lobbyIntervalMs:1500,syntheticFunds:true,
     notCovered:['real payment provider','external VK API','all seasonal events simultaneously','browser rendering']}});
   const run=path.join(out,'database-'+summary.players+'-'+Date.parse(summary.at));fs.mkdirSync(run,{mode:0o700});

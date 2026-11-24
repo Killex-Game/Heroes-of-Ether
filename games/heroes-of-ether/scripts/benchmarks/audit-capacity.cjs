@@ -73,7 +73,7 @@ function audit(directory) {
   }
   assert(acknowledged > 100, "Insufficient successful action coverage");
   if (summary.mixedSocial) assert(gifts > 0 && notices > 0, "Mixed social acknowledgments missing");
-  if(summary.realistic){assert.equal(created,summary.lobby);assert(deposits>0);
+  if(summary.realistic){assert.equal(created,summary.lobby-(summary.scenario?.linkedLobby||0));assert(deposits>0);
     for(const [id,amount]of treasury)assert.equal(world.clans[id]?.treasury,amount,'Treasury debit/credit mismatch');}
   let applied;
   if (resident) {
