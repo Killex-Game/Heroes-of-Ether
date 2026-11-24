@@ -518,3 +518,5 @@ Windows36+10/Linux37pass, полныйWindows2487/2484pass/0fail/3skip.
 14targeted/720точныхкадров. Вживуюигруничегоизэтогоэтапанеустановлено.
 Отчётыimmutable-fragments-20261124.json,addressed-clan-calculation-20261124.json,
 spatial-index-reuse-20261124.txt; всеисходныеотказысохранены.
+
+23:27 UTC — V33 retained mixed30+5/10min/6CPU passed all ten windows; 9993 ACK recovered without duplicates, 3015000 historical receipts intact, PG=WAL revision19637, isolated schema removed. Work p95 16.41–19.53ms, rare state gap459.87ms remains. No whole-game gain claimed; oversized active-profile mixed scenario remains. V35 bounded calculation replicas fullWindows2490/2487pass/0fail/3skip. Two closed synthetic starting inputs archived and SHA-verified on VPS and locally; 322087512bytes released. Recoverable apt download cache cleared separately (44deb/236615888bytes); installed packages and game data untouched. V34 direct-clan mixed30+5/3min started; not installed.

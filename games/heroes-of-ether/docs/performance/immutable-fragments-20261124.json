@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T23:08:35.486Z",
+  "at": "2026-11-24T23:30:13.650Z",
   "source": "c2ab347beef725ee25e48941f0611bbf8cfdd609",
   "runtimeSource": "84fd44138474a08b20b77eb54a94abfe14c6f84d",
   "installed": false,
@@ -190,9 +190,47 @@
       ]
     }
   },
+  "mixed": {
+    "label": "candidate33-r1-30-10m-history-alchemy-cpu6",
+    "windows": 10,
+    "passed": true,
+    "fixtureSha256": "62c45427d559c42173c37dc0ee69a6c6bc1bd9db42a0a54100baeed6745503ce",
+    "updatesHz": {
+      "min": 20.075423966488263,
+      "max": 20.22865816425592
+    },
+    "tickWorkP95Ms": {
+      "min": 16.412570999993477,
+      "max": 19.5287520000129
+    },
+    "tickWorkMaxMs": 361.6837419999647,
+    "actionP95Ms": {
+      "min": 22.268370000005234,
+      "max": 96.6081220000051
+    },
+    "stateGapMaxMs": 459.87081500000204,
+    "rssMiB": {
+      "min": 2244.734375,
+      "max": 2891.36328125
+    },
+    "acknowledged": 9993,
+    "recovered": 9993,
+    "duplicates": 0,
+    "history": {
+      "matched": true,
+      "profiles": 1280,
+      "historicalReceipts": 3015000
+    },
+    "database": {
+      "matched": true,
+      "revision": 19637
+    },
+    "testSchemaRemoved": true
+  },
   "limits": [
     "Component ABBA excludes actual game simulation and network; real PostgreSQL was validated separately.",
-    "Mixed load and retained-history checks of this exact candidate remain required before deployment.",
+    "Retained mixed load passed but does not establish whole-game CPU/RSS improvement. Rare state gaps up to 459.87ms remain.",
+    "The standard retained fixture does not exercise an actively changing profile larger than 8MiB; that targeted mixed scenario remains required.",
     "Main writer and pinned reader still retain complete world structures; not addressed persistence or 300000 CCU."
   ]
 }

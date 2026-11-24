@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T23:17:07.103Z",
+  "at": "2026-11-24T23:29:05.134Z",
   "installed": false,
   "source": "ad3fe82b2e7c1d60a00682e3af8e11b8eb6b2993",
   "change": "Explicit benchmark backend uses ClanArenaProgressShards directly without the full-world preparation replica. Default remains canonical. Real requested worker activity/failures are acceptance criteria.",
@@ -70,12 +70,22 @@
       "pass": 1,
       "fail": 0,
       "skipped": 0
+    },
+    "windowsFull": {
+      "label": "bounded-clan-full-windows",
+      "code": 0,
+      "signal": null,
+      "at": "2026-11-24T23:26:20.445Z",
+      "tests": 2490,
+      "pass": 2487,
+      "fail": 0,
+      "skipped": 3
     }
   },
   "limits": [
     "Realistic mixed performance has not been demonstrated for either calculation candidate.",
     "The authoritative writer and pinned persistence reader still keep complete worlds.",
-    "Bounded residency full Linux/Windows regressions and churn under live-style mixed load remain required.",
+    "Bounded residency full Linux regressions and churn under live-style mixed load remain required.",
     "No maximum CCU, browser FPS or 300000-player claim."
   ]
 }

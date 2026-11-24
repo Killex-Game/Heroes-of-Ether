@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-24T23:27:11.571Z",
+  "files": [
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate28-r1-30-10m-history-alchemy-cpu6/synthetic-world.json",
+      "archive": "000.json.gz",
+      "bytes": 173326400,
+      "sha256": "62c45427d559c42173c37dc0ee69a6c6bc1bd9db42a0a54100baeed6745503ce",
+      "compressed": {
+        "sha256": "8186280e303b73e2a3ce0e0a70872540c5a191baa1221f984bc345b86f4c28f3",
+        "bytes": 12282644
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate33-r1-30-10m-history-alchemy-cpu6/synthetic-world.json",
+      "archive": "001.json.gz",
+      "bytes": 173326400,
+      "sha256": "62c45427d559c42173c37dc0ee69a6c6bc1bd9db42a0a54100baeed6745503ce",
+      "compressed": {
+        "sha256": "8186280e303b73e2a3ce0e0a70872540c5a191baa1221f984bc345b86f4c28f3",
+        "bytes": 12282644
+      }
+    }
+  ],
+  "freedBytes": 322087512,
+  "allArchivesVerified": true,
+  "localVerified": true,
+  "scope": "Closed synthetic starting fixtures only; runtime data/WAL/results/backups untouched",
+  "originalBytes": 346652800,
+  "compressedBytes": 24565288,
+  "manifestSha256": "ab8578e4ad2f43e645fcbec3260d01752c6e6a9abd218bbd0abf52526155e208",
+  "remoteDirectory": "/srv/heroether-test/play/results/world-copy-20261124/closed-fixtures-20261124-r2",
+  "localDirectory": "artifacts/world-copy-20261124/closed-fixtures-20261124-r2",
+  "preserved": "Both machines retain exact compressed starting fixtures and metadata; runtime saves, WAL, histories, backups and all result files remain unchanged.",
+  "restoration": "Decompress to a new temporary file; verify original SHA-256/size and restore manifest metadata before atomic rename within the closed synthetic run."
+}
