@@ -2,7 +2,14 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const Q=require('../../src/server/progression/personal-quests'),{massLimitForLevel,totalMassLimitForLevel}=require('../../src/server/arena/player-limits');
 const AT=Date.UTC(2026,10,14,9),def=id=>Q.CATALOG.find(q=>q.id===id);
-function player(level=1){const p={id:'eligibility',level,wallet:{coins:100000},quests:undefined};Q.ensure(p,AT);return p;}
+function player(level=1){
+  // Paid rerolls now credit spending achievements, so use the same initialized
+  // profile shape as the production caller, including progress and activity.
+  const {ProfileStore}=require('../../src/server/profiles/profile-store');
+  const store=new ProfileStore({now:()=>AT}),p=store.find(store.open().token);
+  Object.assign(p,{id:'eligibility',level,quests:undefined});p.wallet.coins=100000;
+  Q.ensure(p,AT);return p;
+}
 test('peak mass eligibility uses the actual room part count and per-part simulation limit at level boundaries',()=>{
   for(const [level,limit]of [[1,40000],[11,40000],[12,60000],[25,60000],[26,216000],[120,216000],[121,384000],[501,480000]]){
     assert.equal(totalMassLimitForLevel(level),limit);
@@ -36,6 +43,7 @@ test('rerolls cannot reintroduce impossible peaks, while cumulative absorbed mas
     if(p.quests.items.some(r=>r.questId==='great_feast'))cumulative=true;
   }
   assert.ok(cumulative);
+  assert.equal(p.activity.values.spendthrift,29900,'Only the 299 paid rerolls count');
 });
 test('repair publishes only after persistence, survives restart, and lobby/arena projections stay read-only',t=>{
   const path=require('path'),{temporary}=require('../temp'),{ProfileStore}=require('../../src/server/profiles/profile-store');
