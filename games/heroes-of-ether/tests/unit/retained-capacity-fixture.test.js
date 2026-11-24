@@ -34,3 +34,19 @@ test('fresh daytime retained fixture keeps membership, balances and every old re
   const broken=structuredClone(f.data),p=broken.profiles[hash(f.tokens[124])],bucket=Object.values(p.arenaReceipts)[0];
   delete bucket[Object.keys(bucket)[0]];assert.throws(()=>verify(before,broken),/changed or missing/);
 });
+
+test('an explicitly oversized active profile reaches fragmented storage and every historical receipt remains audited',()=>{
+  const f={data:{version:14,profiles:{}},tokens:[],summary:{}};
+  for(let i=0;i<1280;i++){
+    const token='oversized-token-'+i;f.tokens.push(token);
+    f.data.profiles[createHash('sha256').update(token).digest('hex')]={testFixture:'database-capacity-20261110',receipts:{},wallet:{coins:i}};
+  }
+  extend(f,{active:35,activeReceipts:3,dormantReceipts:1,oversizedProfiles:1});
+  const proof=f.summary.retainedHistory;
+  assert.equal(proof.total,180000+34*3+1245);assert.equal(proof.oversized.profiles,1);
+  assert(proof.oversized.minimumProfileBytes>8*1024*1024);
+  const saved=structuredClone(f.data);assert.equal(verify(f,saved).historicalReceipts,proof.total);
+  const profile=Object.values(saved.profiles)[0],buckets=Object.values(profile.arenaReceipts),last=buckets.at(-1);
+  delete last[Object.keys(last).at(-1)];assert.throws(()=>verify(f,saved),/changed or missing/);
+  assert.equal(Object.values(f.data.profiles)[1279].wallet.coins,1279);
+});

@@ -3,18 +3,21 @@ const fs = require("node:fs"), path = require("node:path"), assert = require("no
 const { createHash } = require("node:crypto");
 const receipts = require("../../src/server/profiles/operation-receipts");
 const sha = value => createHash("sha256").update(value).digest("hex");
-function extend(fixture, { active = 95, activeReceipts = 15000, dormantReceipts = 2000 } = {}) {
+function extend(fixture, { active = 95, activeReceipts = 15000, dormantReceipts = 2000,
+  oversizedProfiles = 0, oversizedReceipts = 180000 } = {}) {
   const profiles = Object.values(fixture.data.profiles);
   assert(profiles.length === 1280 && profiles.every(p => p.testFixture === "database-capacity-20261110"));
   assert(Array.isArray(fixture.tokens) && fixture.tokens.length === 1280);
   assert([active, activeReceipts, dormantReceipts].every(Number.isSafeInteger));
   assert(active >= 1 && active <= 365 && activeReceipts >= 0 && activeReceipts <= 30000 && dormantReceipts >= 0 && dormantReceipts <= 10000);
+  assert(Number.isSafeInteger(oversizedProfiles) && oversizedProfiles >= 0 && oversizedProfiles <= Math.min(active, 2));
+  assert(Number.isSafeInteger(oversizedReceipts) && oversizedReceipts >= activeReceipts && oversizedReceipts <= 200000);
   fixture.data.version = Math.max(14, fixture.data.version);
   let total = 0;
   for (const [i, token] of fixture.tokens.entries()) {
     const profile = fixture.data.profiles[sha(token)]; assert(profile);
     const buckets = { ...profile.arenaReceipts };
-    const count = i < active ? activeReceipts : dormantReceipts;
+    const count = i < oversizedProfiles ? oversizedReceipts : i < active ? activeReceipts : dormantReceipts;
     for (let n = 0; n < count; n++) {
       const id = "retained-fixture-" + String(n).padStart(8, "0"), key = receipts.bucketFor(id);
       if (!Object.hasOwn(buckets, key)) buckets[key] = {};
@@ -24,6 +27,8 @@ function extend(fixture, { active = 95, activeReceipts = 15000, dormantReceipts 
     profile.arenaReceipts = buckets; receipts.validate(profile, fixture.data.version); total += count;
   }
   fixture.summary.retainedHistory = { active, activeReceipts, dormantReceipts, total };
+  if (oversizedProfiles) fixture.summary.retainedHistory.oversized = { profiles: oversizedProfiles, receipts: oversizedReceipts,
+    minimumProfileBytes: Math.min(...fixture.tokens.slice(0, oversizedProfiles).map(token => Buffer.byteLength(JSON.stringify(fixture.data.profiles[sha(token)])))) };
   return fixture;
 }
 function verify(before, after) {

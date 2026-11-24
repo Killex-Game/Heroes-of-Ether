@@ -37,9 +37,12 @@ async function main(){
   const realistic=process.env.CAPACITY_REALISTIC==='1',mixedMinutes=Number(process.env.CAPACITY_MIXED_MINUTES||0);
   assert(Number.isInteger(mixedMinutes)&&mixedMinutes>=0&&mixedMinutes<=120);
   const perRoom=require('../../config/arena-rooms.json').arenaCapacity;
+  if(process.env.CAPACITY_OVERSIZED_HISTORY==='1')assert.equal(process.env.CAPACITY_RETAINED_HISTORY,'1','Oversized history requires retained-history auditing');
   if(process.env.CAPACITY_RETAINED_HISTORY==='1'){
     assert(!process.env.CAPACITY_FIXTURE,'Fresh retained histories cannot extend a supplied fixture');
-    require('./retained-capacity-fixture.cjs').extend(fixtureData,{active:rooms*perRoom+5});
+    require('./retained-capacity-fixture.cjs').extend(fixtureData,{active:rooms*perRoom+5,
+      oversizedProfiles:process.env.CAPACITY_OVERSIZED_HISTORY==='1'?1:0});
+    if(process.env.CAPACITY_OVERSIZED_HISTORY==='1')assert(fixtureData.summary.retainedHistory.oversized.minimumProfileBytes>8*1024*1024,'Fixture must exercise the fragmented record path');
   }
   const stateWorkerPolicy=require('./capacity-worker-policy.cjs').workerPolicy(require('../../config/arena-state-workers.json'));
   const linkedLobby=Number(process.env.CAPACITY_LINKED_LOBBY||0);
