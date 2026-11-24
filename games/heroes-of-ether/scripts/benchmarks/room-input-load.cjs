@@ -692,6 +692,7 @@ if (process.env.LOAD_CLIENT === "1") {
         configuration: { incrementalSettlement: !!profiles.settlementCache,
           gameClockOffsetMs: Number(process.env.LOAD_GAME_OFFSET_MS || 0), seedClockVersion: 2,
           profileWorker: !!profiles.arenaPreparer, stateWorkerCount: app.stateWorkers.lanes.length,
+          configuredStateWorkers:app.stateWorkers.maxWorkers,stateWorkerRoomLimit:app.stateWorkers.maxRooms,
           packedFood: process.env.LOAD_PACKED_FOOD === "1", packedParts: process.env.LOAD_PACKED_PARTS !== "0" },
         clanQuests: (() => {
           const boards = Object.values(profiles.data.clans).map(c => c.dailyQuests?.board).filter(Boolean);
