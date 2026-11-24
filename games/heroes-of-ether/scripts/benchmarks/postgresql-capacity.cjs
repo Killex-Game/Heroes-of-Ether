@@ -21,11 +21,17 @@ async function main(){
   const privateConfig=path.join(out,'postgresql.local.json');
   fs.writeFileSync(privateConfig,JSON.stringify({...source,schema}),{mode:0o600});
   const fixture=path.join(out,'synthetic-world.json');
-  fs.writeFileSync(fixture,JSON.stringify(require('./database-room-fixture.cjs').createFixture()),{mode:0o600});
+  const fixtureData=process.env.CAPACITY_FIXTURE
+    ? JSON.parse(fs.readFileSync(path.resolve(process.env.CAPACITY_FIXTURE),'utf8'))
+    : require('./database-room-fixture.cjs').createFixture();
+  assert.equal(Object.keys(fixtureData.data.profiles).length,1280);
+  assert(Object.values(fixtureData.data.profiles).every(p=>p.testFixture==='database-capacity-20261110'));
+  fs.writeFileSync(fixture,JSON.stringify(fixtureData),{mode:0o600});
+  const fixtureSha256=require('node:crypto').createHash('sha256').update(fs.readFileSync(fixture)).digest('hex');
   const perRoom=require('../../config/arena-rooms.json').arenaCapacity;
   const protocol=process.env.CAPACITY_PROTOCOL||require('../../public/shared/arena-wire').PROTOCOL;
   assert(['sferorumiya-state-v8','sferorumiya-state-v9','sferorumiya-state-v10'].includes(protocol),'Unsupported benchmark protocol');
-  const summary={at:new Date().toISOString(),rooms,perRoom,protocol,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
+  const summary={at:new Date().toISOString(),rooms,perRoom,protocol,fixtureSha256,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
   const run=path.join(out,'database-'+summary.players+'-'+Date.parse(summary.at));fs.mkdirSync(run,{mode:0o700});
   const stdout=fs.openSync(path.join(run,'stdout.txt'),'wx',0o600),stderr=fs.openSync(path.join(run,'stderr.txt'),'wx',0o600);
