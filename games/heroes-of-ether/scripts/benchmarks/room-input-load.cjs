@@ -569,6 +569,8 @@ if (process.env.LOAD_CLIENT === "1") {
       c.p.splitSequence = 0;
     }
     if (fixture) profiles.save(structuredClone(profiles.data));
+    if (process.env.LOAD_ALCHEMY === "1") fs.writeFileSync(path.join(dir, "alchemy-baseline.json"),
+      JSON.stringify(require("./alchemy-load-audit.cjs").capture(profiles.data)), { flag: "wx" });
     if (process.env.LOAD_DATABASE_CONFIG)
       database = await require("./database-load-store.cjs").attachTestDatabase(dir, profiles, chat);
     const stageMeter=process.env.LOAD_STAGE_METRICS==='1'

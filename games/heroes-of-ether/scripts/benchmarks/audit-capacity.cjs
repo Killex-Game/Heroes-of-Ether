@@ -28,6 +28,8 @@ function audit(directory) {
   const seen = new Set(), types = {}, giftCounts = new Map();
   let acknowledged = 0, gifts = 0, notices = 0, deposits=0, created=0;
   const treasury=new Map();
+  const alchemy = summary.alchemyInventoryVersion === 1 ? require("./alchemy-load-audit.cjs").createAudit(
+    JSON.parse(fs.readFileSync(path.join(summary.evidence, "alchemy-baseline.json")))) : null;
   for (const file of fs.readdirSync(path.join(output, "acks"))) {
     if (!file.endsWith(".ndjson")) continue;
     for (const line of fs.readFileSync(path.join(output, "acks", file), "utf8").split("\n").filter(Boolean)) {
@@ -38,6 +40,7 @@ function audit(directory) {
         assert(chat.messageReceipts?.[key], "Chat ACK absent from recovered chat WAL");
       } else assert.notEqual(receipts.read(p, ack.id), receipts.MISSING, "ACK absent from recovered WAL");
       types[ack.type] = (types[ack.type] || 0) + 1;
+      alchemy?.observe(ack, p);
       if(ack.type==='lobby:clan-create') {
         assert(world.clans[ack.clanId]?.ownerId===p.id,'Created clan missing');created++;
         const entries=p.transactions.entries.filter(e=>e.requestId===ack.id);
@@ -93,6 +96,7 @@ function audit(directory) {
   }
   const report = { acknowledged, recovered: acknowledged, duplicates: 0, profiles: profiles.length,
     types, gifts, notices, deposits, created, ...(resident ? { appliedEffects: applied } : {}), validInventoriesAndTransactions: true };
+  if (alchemy) report.alchemy = alchemy.finish(world);
   if (summary.retainedHistory) {
     const bytes = fs.readFileSync(path.join(output, "synthetic-world.json"));
     assert.equal(createHash("sha256").update(bytes).digest("hex"), summary.fixtureSha256, "Historical source changed");
