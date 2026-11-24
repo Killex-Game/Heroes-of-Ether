@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T18:07:08.674Z",
+  "at": "2026-11-24T18:29:29.938Z",
   "installed": false,
   "base": "4e5f310872ea9bcf5885a6b0ad84848666422c3c",
   "targeted": {
@@ -58,8 +58,567 @@
     }
   ],
   "limitations": [
-    "Offline hot projection only, not whole-game CPU or capacity",
-    "Full Windows/Linux and mixed load remain required",
-    "Inherited checkpoint cache and read-window candidates are not installed"
-  ]
+    "Only appearance projection speedup proven, not whole-game CPU or capacity",
+    "Windows mixed failed windows 2, 6 and 8; all 9191 ACK and exact PG/WAL revision 18204 recovered",
+    "Inherited checkpoint cache and read-window candidates are not installed",
+    "Linux mixed, historical long run and combined-candidate verification remain required"
+  ],
+  "checks": {
+    "windows": {
+      "total": 2435,
+      "pass": 2432,
+      "fail": 1,
+      "skip": 2,
+      "durationMs": 321689,
+      "failed": "Sparse checkout omitted deployment/vk-production/auth/vk-mini-app-launch",
+      "retry": {
+        "pass": 5,
+        "fail": 0,
+        "change": "Restore tracked deployment directory, no runtime change"
+      }
+    },
+    "linux": {
+      "total": 2439,
+      "pass": 2437,
+      "fail": 0,
+      "skip": 2,
+      "durationMs": 586946.939496
+    }
+  },
+  "linuxAbba": [
+    {
+      "runtime": "/srv/heroether-test/play/results/world-copy-20261124/candidate8",
+      "node": "v24.22.3",
+      "iterations": 1000,
+      "profiles": 60,
+      "calls": 60000,
+      "elapsedMs": 1571.6961259999998,
+      "cpuMs": 1561.03,
+      "hash": "b01353a1fe47b6eef5eef9a8a2bb9562629d3d41707a5a2df640a5d469f62427",
+      "rssMiB": 266.43359375,
+      "scope": "Offline immutable profile replacement/appearance projection, not complete server capacity or frame time"
+    },
+    {
+      "runtime": "/srv/heroether-test/play/results/world-copy-20261124/candidate9",
+      "node": "v24.22.3",
+      "iterations": 1000,
+      "profiles": 60,
+      "calls": 60000,
+      "elapsedMs": 646.5551529999998,
+      "cpuMs": 641.596,
+      "hash": "b01353a1fe47b6eef5eef9a8a2bb9562629d3d41707a5a2df640a5d469f62427",
+      "rssMiB": 184.546875,
+      "scope": "Offline immutable profile replacement/appearance projection, not complete server capacity or frame time"
+    },
+    {
+      "runtime": "/srv/heroether-test/play/results/world-copy-20261124/candidate9",
+      "node": "v24.22.3",
+      "iterations": 1000,
+      "profiles": 60,
+      "calls": 60000,
+      "elapsedMs": 601.6219409999999,
+      "cpuMs": 549.773,
+      "hash": "b01353a1fe47b6eef5eef9a8a2bb9562629d3d41707a5a2df640a5d469f62427",
+      "rssMiB": 184.11328125,
+      "scope": "Offline immutable profile replacement/appearance projection, not complete server capacity or frame time"
+    },
+    {
+      "runtime": "/srv/heroether-test/play/results/world-copy-20261124/candidate8",
+      "node": "v24.22.3",
+      "iterations": 1000,
+      "profiles": 60,
+      "calls": 60000,
+      "elapsedMs": 1515.6500029999997,
+      "cpuMs": 1468.35,
+      "hash": "b01353a1fe47b6eef5eef9a8a2bb9562629d3d41707a5a2df640a5d469f62427",
+      "rssMiB": 247.16015625,
+      "scope": "Offline immutable profile replacement/appearance projection, not complete server capacity or frame time"
+    }
+  ],
+  "windowsMixed": {
+    "players": 30,
+    "lobby": 5,
+    "minutes": 10,
+    "assessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": false,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "combined",
+          "window": 1,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 2,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 3,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 4,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 5,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 6,
+          "meetsTargets": false,
+          "issues": [
+            "pending-action-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 7,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 8,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 9,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 10,
+          "meetsTargets": true,
+          "issues": []
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "ackAudit": {
+      "acknowledged": 9191,
+      "recovered": 9191,
+      "duplicates": 0,
+      "profiles": 1280,
+      "types": {
+        "lobby:loadout": 90,
+        "lobby:purchase": 90,
+        "lobby:account-bonus": 30,
+        "lobby:gift": 90,
+        "lobby:gift-read": 89,
+        "lobby:clan-create": 3,
+        "lobby:clan-deposit": 90,
+        "lobby:clan-buy": 90,
+        "lobby:clan-edit": 90,
+        "lobby:alchemy-brew": 85,
+        "lobby:pet-buy": 5,
+        "lobby:pet-food": 85,
+        "lobby:chat": 85,
+        "lobby:alchemy-exchange": 85,
+        "lobby:alchemy-equip": 85,
+        "lobby:pet-equip": 80,
+        "booster:alchemy_strength": 29,
+        "booster:alchemy_swiftness": 44,
+        "booster:alchemy_satiety": 13,
+        "booster:alchemy_knowledge": 26,
+        "booster:alchemy_steadiness": 28,
+        "booster:alchemy_reach": 36,
+        "booster:alchemy_vigor": 22,
+        "booster:alchemy_longevity": 33,
+        "booster:alchemy_clarity": 58,
+        "booster:alchemy_precision": 54,
+        "booster:alchemy_magnetism": 71,
+        "booster:alchemy_gatherer": 47,
+        "booster:alchemy_tempest": 38,
+        "booster:alchemy_fortitude": 22,
+        "booster:alchemy_prosperity": 28,
+        "booster:alchemy_archmage": 20,
+        "booster:hook": 224,
+        "booster:cake": 262,
+        "booster:candy": 236,
+        "booster:vortex": 265,
+        "booster:glove": 237,
+        "booster:clan_shield": 277,
+        "booster:sphere": 234,
+        "booster:donut": 239,
+        "booster:freeze": 243,
+        "booster:mine": 246,
+        "booster:harpoon": 274,
+        "booster:knuckles": 256,
+        "booster:mega_poison": 255,
+        "booster:easter_egg": 269,
+        "booster:colorful_shield": 252,
+        "booster:ice_cream": 240,
+        "booster:warheads": 266,
+        "booster:web": 214,
+        "booster:fire": 254,
+        "booster:poison": 224,
+        "booster:rocket": 244,
+        "booster:speed": 238,
+        "booster:lock": 259,
+        "booster:fire_sword": 225,
+        "booster:axe": 239,
+        "booster:meat": 276,
+        "booster:golden_shield": 263,
+        "booster:sponge": 242,
+        "booster:stone": 257,
+        "booster:awl": 240
+      },
+      "gifts": 90,
+      "notices": 89,
+      "deposits": 90,
+      "created": 3,
+      "validInventoriesAndTransactions": true,
+      "alchemy": {
+        "version": 1,
+        "casts": 569,
+        "brews": 85,
+        "exchanges": 85,
+        "profiles": 1280,
+        "exactInventories": true,
+        "exactLobbyIngredientsAndNatural": true
+      }
+    },
+    "database": {
+      "matched": true,
+      "localRevision": 18204,
+      "databaseRevision": 18204,
+      "profiles": 1280,
+      "clans": 131,
+      "samples": [
+        {
+          "revision": 37,
+          "generation": 2,
+          "changedDocuments": 0,
+          "payloadBytes": 0,
+          "syncedAt": 1795543955954,
+          "prepareMs": 835,
+          "writeMs": 411,
+          "durationMs": 1267.2356,
+          "final": false
+        },
+        {
+          "revision": 1002,
+          "generation": 3,
+          "changedDocuments": 58,
+          "payloadBytes": 161165,
+          "syncedAt": 1795543986716,
+          "prepareMs": 975,
+          "writeMs": 643,
+          "durationMs": 2014.0506999999998,
+          "final": false
+        },
+        {
+          "revision": 1932,
+          "generation": 4,
+          "changedDocuments": 42,
+          "payloadBytes": 182748,
+          "syncedAt": 1795544016233,
+          "prepareMs": 914,
+          "writeMs": 544,
+          "durationMs": 1540.4830999999976,
+          "final": false
+        },
+        {
+          "revision": 2913,
+          "generation": 5,
+          "changedDocuments": 58,
+          "payloadBytes": 208238,
+          "syncedAt": 1795544047726,
+          "prepareMs": 692,
+          "writeMs": 528,
+          "durationMs": 3015.0896000000066,
+          "final": false
+        },
+        {
+          "revision": 3817,
+          "generation": 6,
+          "changedDocuments": 58,
+          "payloadBytes": 230490,
+          "syncedAt": 1795544076396,
+          "prepareMs": 1042,
+          "writeMs": 537,
+          "durationMs": 1659.9598000000115,
+          "final": false
+        },
+        {
+          "revision": 4758,
+          "generation": 7,
+          "changedDocuments": 58,
+          "payloadBytes": 251531,
+          "syncedAt": 1795544106633,
+          "prepareMs": 985,
+          "writeMs": 593,
+          "durationMs": 1909.3286999999837,
+          "final": false
+        },
+        {
+          "revision": 5641,
+          "generation": 8,
+          "changedDocuments": 58,
+          "payloadBytes": 273266,
+          "syncedAt": 1795544135919,
+          "prepareMs": 511,
+          "writeMs": 554,
+          "durationMs": 1172.5773000000045,
+          "final": false
+        },
+        {
+          "revision": 6593,
+          "generation": 9,
+          "changedDocuments": 58,
+          "payloadBytes": 293344,
+          "syncedAt": 1795544166563,
+          "prepareMs": 886,
+          "writeMs": 528,
+          "durationMs": 1813.005999999994,
+          "final": false
+        },
+        {
+          "revision": 7542,
+          "generation": 10,
+          "changedDocuments": 58,
+          "payloadBytes": 313706,
+          "syncedAt": 1795544196365,
+          "prepareMs": 854,
+          "writeMs": 530,
+          "durationMs": 1605.5929999999935,
+          "final": false
+        },
+        {
+          "revision": 8472,
+          "generation": 11,
+          "changedDocuments": 58,
+          "payloadBytes": 331952,
+          "syncedAt": 1795544228066,
+          "prepareMs": 905,
+          "writeMs": 532,
+          "durationMs": 3311.847599999979,
+          "final": false
+        },
+        {
+          "revision": 9334,
+          "generation": 12,
+          "changedDocuments": 42,
+          "payloadBytes": 346234,
+          "syncedAt": 1795544256761,
+          "prepareMs": 976,
+          "writeMs": 540,
+          "durationMs": 1971.923999999999,
+          "final": false
+        },
+        {
+          "revision": 10245,
+          "generation": 13,
+          "changedDocuments": 58,
+          "payloadBytes": 368587,
+          "syncedAt": 1795544286776,
+          "prepareMs": 1198,
+          "writeMs": 562,
+          "durationMs": 1999.5211000000127,
+          "final": false
+        },
+        {
+          "revision": 11205,
+          "generation": 14,
+          "changedDocuments": 58,
+          "payloadBytes": 387630,
+          "syncedAt": 1795544318041,
+          "prepareMs": 918,
+          "writeMs": 543,
+          "durationMs": 3236.454700000002,
+          "final": false
+        },
+        {
+          "revision": 12049,
+          "generation": 15,
+          "changedDocuments": 55,
+          "payloadBytes": 402083,
+          "syncedAt": 1795544346768,
+          "prepareMs": 724,
+          "writeMs": 534,
+          "durationMs": 1944.9874000000418,
+          "final": false
+        },
+        {
+          "revision": 12891,
+          "generation": 16,
+          "changedDocuments": 58,
+          "payloadBytes": 421507,
+          "syncedAt": 1795544376863,
+          "prepareMs": 1268,
+          "writeMs": 549,
+          "durationMs": 2242.5488999999943,
+          "final": false
+        },
+        {
+          "revision": 13711,
+          "generation": 17,
+          "changedDocuments": 58,
+          "payloadBytes": 438927,
+          "syncedAt": 1795544407825,
+          "prepareMs": 745,
+          "writeMs": 538,
+          "durationMs": 3000.6785999999847,
+          "final": false
+        },
+        {
+          "revision": 14605,
+          "generation": 18,
+          "changedDocuments": 58,
+          "payloadBytes": 456767,
+          "syncedAt": 1795544436603,
+          "prepareMs": 803,
+          "writeMs": 537,
+          "durationMs": 1768.3721000000369,
+          "final": false
+        },
+        {
+          "revision": 15479,
+          "generation": 19,
+          "changedDocuments": 58,
+          "payloadBytes": 475462,
+          "syncedAt": 1795544466553,
+          "prepareMs": 1016,
+          "writeMs": 551,
+          "durationMs": 1727.950499999919,
+          "final": false
+        },
+        {
+          "revision": 16366,
+          "generation": 20,
+          "changedDocuments": 52,
+          "payloadBytes": 490141,
+          "syncedAt": 1795544497673,
+          "prepareMs": 587,
+          "writeMs": 530,
+          "durationMs": 2822.35830000008,
+          "final": false
+        },
+        {
+          "revision": 17226,
+          "generation": 21,
+          "changedDocuments": 49,
+          "payloadBytes": 506496,
+          "syncedAt": 1795544526776,
+          "prepareMs": 831,
+          "writeMs": 548,
+          "durationMs": 1921.1446999999462,
+          "final": false
+        },
+        {
+          "revision": 18122,
+          "generation": 22,
+          "changedDocuments": 58,
+          "payloadBytes": 529416,
+          "syncedAt": 1795544557274,
+          "prepareMs": 1362,
+          "writeMs": 545,
+          "durationMs": 2419.7765000000363,
+          "final": false
+        },
+        {
+          "revision": 18204,
+          "generation": 23,
+          "changedDocuments": 36,
+          "payloadBytes": 458938,
+          "syncedAt": 1795544560490,
+          "prepareMs": 936,
+          "writeMs": 525,
+          "durationMs": 1476.3212000000058,
+          "final": true
+        }
+      ]
+    },
+    "testSchemaRemoved": true,
+    "windows": [
+      {
+        "window": 1,
+        "hz": 19.322802582903858,
+        "tickP95": 17.783199999990757,
+        "rssMiB": 549.46875
+      },
+      {
+        "window": 2,
+        "hz": 18.9284570429847,
+        "tickP95": 20.60979999997653,
+        "rssMiB": 581.05859375
+      },
+      {
+        "window": 3,
+        "hz": 19.31725355838684,
+        "tickP95": 18.385000000009313,
+        "rssMiB": 590.9140625
+      },
+      {
+        "window": 4,
+        "hz": 19.60265687740481,
+        "tickP95": 16.757299999997485,
+        "rssMiB": 675.859375
+      },
+      {
+        "window": 5,
+        "hz": 19.13634541671897,
+        "tickP95": 17.085300000035204,
+        "rssMiB": 690.109375
+      },
+      {
+        "window": 6,
+        "hz": 19.17911340702618,
+        "tickP95": 18.525499999988824,
+        "rssMiB": 749.90234375
+      },
+      {
+        "window": 7,
+        "hz": 19.63316185788466,
+        "tickP95": 18.305999999982305,
+        "rssMiB": 737.71875
+      },
+      {
+        "window": 8,
+        "hz": 18.947792127521243,
+        "tickP95": 17.3295999999973,
+        "rssMiB": 798.9609375
+      },
+      {
+        "window": 9,
+        "hz": 19.205817699665836,
+        "tickP95": 17.310199999948964,
+        "rssMiB": 800.5078125
+      },
+      {
+        "window": 10,
+        "hz": 19.588836438250535,
+        "tickP95": 18.670899999910034,
+        "rssMiB": 782.26171875
+      }
+    ],
+    "overlap": "A roughly three-second food-transfer unit run and checkout/file operations overlapped minute one. No timing benchmark or full suite overlapped. This is not controlled A/B."
+  }
 }
