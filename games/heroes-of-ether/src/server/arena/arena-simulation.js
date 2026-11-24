@@ -23,6 +23,7 @@ const absorptionOrders = new WeakMap();
 // Scratch space is private to a live player and never enters progress or snapshots.
 const separationScratch = new WeakMap();
 const foodPickupScratch = new WeakMap();
+const foodPickupIndexes = new WeakMap();
 
 // Общие правила арены и стартовый баланс еды.
 const RULES = Object.freeze({
@@ -982,15 +983,15 @@ class Arena {
     const food = this.ether;
     const removed = new Uint8Array(food.length);
     let removedCount = 0;
-    const foodIndex =
-      this.spatialIndex && food.length >= 128
-        ? new CircleIndex(
-            // Store ordinals without allocating a wrapper for every particle.
-            // Preserve the radius fallback used by legacy/test food rows.
-            food.map(orb => orb.radius ? orb : { x: orb.x, y: orb.y, radius: 5.5 }),
-            RULES.SPATIAL_CELL_SIZE,
-          )
-        : null;
+    let foodIndex = null;
+    if (this.spatialIndex && food.length >= 128) {
+      // Preserve legacy radius fallback and original ordinals. Only buckets
+      // and bitsets are reused; positions are rebuilt on every simulation step.
+      const indexed = food.map(orb => orb.radius ? orb : { x: orb.x, y: orb.y, radius: 5.5 });
+      foodIndex = foodPickupIndexes.get(this);
+      if (foodIndex) foodIndex.reset(indexed, RULES.SPATIAL_CELL_SIZE, false);
+      else { foodIndex = new CircleIndex(indexed, RULES.SPATIAL_CELL_SIZE); foodPickupIndexes.set(this, foodIndex); }
+    } else foodPickupIndexes.delete(this);
     // Более крупные проверяются первыми: порядок прихода соединений не решает спор о частице.
     const ordered = [...this.players.values()]
       .filter((p) => !p.dead && !p.isRemnant)

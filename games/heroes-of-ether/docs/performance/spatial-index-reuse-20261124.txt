@@ -1,0 +1,16 @@
+Spatial food-index reuse experiment — NOT SELECTED / NOT INSTALLED
+
+Base: c2ab347beef725ee25e48941f0611bbf8cfdd609. Windows Node v24.22.3.
+Private map-index reset retained typed storage and up to 4096 empty bucket arrays.
+Collision order, positions, growth/shrink, epoch rollover and linear fallback:
+14 targeted tests passed. The benchmark verified 720 exact frame digests.
+
+ABBA, 6000 food objects and 30 queries per frame, 360 frames per sample:
+sparse baseline 207.30 / 190.30 ms; candidate 209.69 / 247.78 ms;
+dense baseline 169.37 / 135.87 ms; candidate 174.65 / 167.51 ms.
+Build/query timing excludes verification; reported process CPU includes it.
+These component results do not demonstrate a gain. Keep this branch isolated;
+do not merge into the accepted persistence candidate or deploy to the game.
+No whole-game FPS, CPU or capacity claim. Linux/full suite were not requested
+for this rejected experiment. Raw local evidence is retained in
+artifacts/world-copy-20261124/spatial-index-reuse-{unit,micro-windows}-r1.txt.
