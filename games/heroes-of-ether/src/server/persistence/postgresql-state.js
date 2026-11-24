@@ -1,9 +1,10 @@
 "use strict";
 const {Pool}=require('pg'),{randomUUID}=require('node:crypto');
-const {gzipSync,gunzipSync}=require('node:zlib');
+const {gunzipSync}=require('node:zlib');
 const {isDeepStrictEqual}=require('node:util');
 const {unpack,hash}=require('./state-snapshot');
 const {connection}=require('./postgresql-config');
+const {gzipDocumentValue}=require('./snapshot-builder');
 const fail=code=>{throw Object.assign(Error(code),{code});};
 function compatible(remote,local,sourceId){
  if(!remote||remote.version!==1||remote.sourceId!==sourceId)fail('PG_SOURCE_MISMATCH');
@@ -12,7 +13,7 @@ function compatible(remote,local,sourceId){
  if(local.chatRevision<(remote.chatRevision||0))fail('PG_CHAT_CLOUD_AHEAD');
  if(remote.chatHash&&local.chatRevision===remote.chatRevision&&local.chatHash!==remote.chatHash)fail('PG_CHAT_DIVERGED');
 }
-function encode(doc){return {_id:doc._id,value:gzipSync(Buffer.from(JSON.stringify(doc.value)),{level:1}),hash:doc.hash,chunked:!!doc.chunked};}
+function encode(doc){return {_id:doc._id,value:gzipDocumentValue(doc),hash:doc.hash,chunked:!!doc.chunked};}
 function decode(row){
  if(typeof row.id!=='string'||!Buffer.isBuffer(row.value)||!/^[a-f0-9]{64}$/.test(row.hash))fail('PG_CORRUPT_DOCUMENT');
  let value;try{value=JSON.parse(gunzipSync(row.value,{maxOutputLength:32*1024*1024}).toString('utf8'));}catch{fail('PG_CORRUPT_DOCUMENT');}

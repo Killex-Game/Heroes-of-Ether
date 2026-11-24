@@ -1,5 +1,6 @@
 "use strict";
 const {createHash}=require('node:crypto');
+const {gzipSync}=require('node:zlib');
 const {canonical,hash,AUXILIARY}=require('./state-snapshot');
 const {REVISION}=require('../profiles/profile-journal');
 const storage=require('./snapshot-documents');
@@ -7,6 +8,12 @@ const chat=require('./snapshot-chat');
 const object=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 const fail=code=>{throw Object.assign(Error(code),{code});};
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
+// Only this builder can register immutable canonical bytes. Compression never
+// exposes the cached buffer, and arbitrary caller-owned documents stay mutable.
+const encodedValues=new WeakMap();
+function gzipDocumentValue(doc){
+  return gzipSync(encodedValues.get(doc)||Buffer.from(JSON.stringify(doc.value)),{level:1});
+}
 // Object enumeration places integer keys before other sorted keys. Keep the
 // same ordering as canonical(), including unusual profile IDs and root keys.
 const keys=value=>Object.keys(Object.fromEntries(Object.keys(value).sort().map(key=>[key,0])));
@@ -27,6 +34,8 @@ function recordFor(id,value,documentFormat,fingerprint){
 function documentFor(record,part){
   const doc={_id:part._id,hash:part.hash};
   if(part.chunked)doc.chunked=true;
+  if(part.descriptor)encodedValues.set(doc,Buffer.from(part.descriptor));
+  else if(part.start===undefined)encodedValues.set(doc,record.json);
   // Keep canonical bytes outside the JS object heap. PostgreSQL materializes
   // values only for changed documents. Getters cannot expose the cached buffer
   // or let callers mutate an acknowledged record used by a later snapshot.
@@ -100,4 +109,4 @@ class SnapshotBuilder{
     this.records=next;this.identities=identities;this.stats=stats;return snapshot;
   }
 }
-module.exports={SnapshotBuilder};
+module.exports={SnapshotBuilder,gzipDocumentValue};
