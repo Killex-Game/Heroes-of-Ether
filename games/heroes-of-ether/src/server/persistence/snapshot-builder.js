@@ -5,6 +5,7 @@ const {canonical,hash,AUXILIARY}=require('./state-snapshot');
 const {REVISION}=require('../profiles/profile-journal');
 const storage=require('./snapshot-documents');
 const chat=require('./snapshot-chat');
+const {immutableRecord}=require('./immutable-document');
 const object=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 const fail=code=>{throw Object.assign(Error(code),{code});};
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -12,7 +13,8 @@ const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 // exposes the cached buffer, and arbitrary caller-owned documents stay mutable.
 const encodedValues=new WeakMap();
 function gzipDocumentValue(doc){
-  return gzipSync(encodedValues.get(doc)||Buffer.from(JSON.stringify(doc.value)),{level:1});
+  const value=encodedValues.get(doc);
+  return gzipSync(value?.segments?Buffer.concat(value.segments,value.bytes):value||Buffer.from(JSON.stringify(doc.value)),{level:1});
 }
 // Object enumeration places integer keys before other sorted keys. Keep the
 // same ordering as canonical(), including unusual profile IDs and root keys.
@@ -35,11 +37,12 @@ function documentFor(record,part){
   const doc={_id:part._id,hash:part.hash};
   if(part.chunked)doc.chunked=true;
   if(part.descriptor)encodedValues.set(doc,Buffer.from(part.descriptor));
-  else if(part.start===undefined)encodedValues.set(doc,record.json);
+  else if(part.start===undefined)encodedValues.set(doc,record.segments?record:record.json);
   // Keep canonical bytes outside the JS object heap. PostgreSQL materializes
   // values only for changed documents. Getters cannot expose the cached buffer
   // or let callers mutate an acknowledged record used by a later snapshot.
   Object.defineProperty(doc,'value',{enumerable:true,get(){
+    if(record.segments)return JSON.parse(Buffer.concat(record.segments,record.bytes).toString('utf8'));
     if(part.descriptor)return JSON.parse(part.descriptor);
     if(part.start!==undefined)return record.json.toString('utf8',part.start,part.end);
     return JSON.parse(record.json.toString('utf8'));
@@ -47,7 +50,7 @@ function documentFor(record,part){
   return Object.freeze(doc);
 }
 class SnapshotBuilder{
-  constructor({immutableSource=null}={}){this.records=new Map();this.stats=null;this.immutableSource=immutableSource;this.identities=null;}
+  constructor({immutableSource=null}={}){this.records=new Map();this.stats=null;this.immutableSource=immutableSource;this.identities=null;this.fields=new WeakMap();}
   pack(world,auxiliary={}, {chatFormat=1,documentFormat=1}={}){
     if(!object(world)||!object(world.profiles)||!object(world.clans))fail('DATABASE_INVALID_SNAPSHOT');
     const revision=world[REVISION]||0;
@@ -56,7 +59,7 @@ class SnapshotBuilder{
     if(chatFormat!==0&&chatFormat!==1)fail('DATABASE_INVALID_CHAT_FORMAT');
     const immutable=this.immutableSource?.owns(world)===true;
     const identities=immutable?new WeakMap():null;
-    const docs=new Map(),next=new Map(),stats={reused:0,rebuilt:0,bytes:0,identityReused:0};
+    const docs=new Map(),next=new Map(),stats={reused:0,rebuilt:0,bytes:0,identityReused:0,fieldReused:0,fieldRebuilt:0};
     const add=(id,value,owned=false)=>{
       // Only the verified pinned reader can share record identities: it owns
       // this complete world and detaches every changed WAL ancestor. Generic
@@ -65,13 +68,16 @@ class SnapshotBuilder{
       const identity=immutable&&owned&&value&&typeof value==='object';
       if(identity&&record&&this.identities?.get(value)===record&&record.documentFormat===documentFormat){
         stats.reused++;stats.identityReused++;
+      }else if(identity){
+        record=immutableRecord(id,value,documentFormat,this.fields,stats)||recordFor(id,value,documentFormat,null);
+        stats.rebuilt++;
       }else{
         const fingerprint=digest(JSON.stringify(value));
         if(record?.fingerprint===fingerprint&&record.documentFormat===documentFormat)stats.reused++;
         else{record=recordFor(id,value,documentFormat,fingerprint);stats.rebuilt++;}
       }
       if(identity)identities.set(value,record);
-      next.set(id,record);stats.bytes+=record.json.length;
+      next.set(id,record);stats.bytes+=record.bytes??record.json.length;
       for(const part of record.parts)docs.set(part._id,documentFor(record,part));
     };
     for(const table of ['profiles','clans'])
@@ -95,7 +101,9 @@ class SnapshotBuilder{
         checksum.update('{');let firstRow=true;
         for(const id of keys(world[key])){
           if(!firstRow)checksum.update(',');firstRow=false;
-          checksum.update(JSON.stringify(id)+':');checksum.update(next.get(`${key}:${id}`).json);
+          checksum.update(JSON.stringify(id)+':');const record=next.get(`${key}:${id}`);
+          if(record.segments)for(const segment of record.segments)checksum.update(segment);
+          else checksum.update(record.json);
         }
         checksum.update('}');
       }else checksum.update(JSON.stringify(root[key]));
