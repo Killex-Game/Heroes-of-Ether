@@ -1,8 +1,8 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
   "gameRelease": "20261124-status-natural",
-  "sourceTag": "release/20261124-status-natural",
-  "sourceCommit": "0d8aff582cc38f82eed396a0e9b3a013c8bdeb94",
+  "sourceTag": "release/20261124-drakosha-center",
+  "sourceCommit": "c503278caf4c3f4d11e2053f4d81e92a41869a29",
   "branch": "codex/20261123-interface-mechanics",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
@@ -15393,5 +15393,111 @@
     "architectureCandidateInstalled": false,
     "optimizationCapacityProven": false,
     "evidence": "artifacts/status-natural-20261124"
+  },
+  "staticDrakoshaBannerUpdate": {
+    "kind": "drakosha-banner-centered-crest",
+    "installed": true,
+    "at": "2026-11-24T05:21:56.642Z",
+    "sourceCommit": "c503278caf4c3f4d11e2053f4d81e92a41869a29",
+    "sourceTag": "release/20261124-drakosha-center",
+    "runtime": {
+      "at": "2026-11-24T05:21:56.642Z",
+      "release": "/srv/heroether-test/play/releases/20261124-status-natural",
+      "backup": "/srv/heroether-test/play/backups/drakosha-center-20261124",
+      "files": 4,
+      "added": 0,
+      "unchangedPublic": 2350,
+      "gamePid": 539979,
+      "adminPid": 1163,
+      "noProcessRestart": true,
+      "noWorldWrites": true,
+      "diskFreeBefore": 1222238208,
+      "diskFreeAfter": 1156251648
+    },
+    "checks": {
+      "browser": [
+        {
+          "engine": "chromium",
+          "width": 1336,
+          "decoded": [
+            1024,
+            683
+          ],
+          "url": "url(\"http://127.0.0.1:3104/assets/banners/pets.webp?art=20261124-drakosha-center\")",
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "width": 390,
+          "decoded": [
+            1024,
+            683
+          ],
+          "url": "url(\"http://127.0.0.1:3104/assets/banners/pets.webp?art=20261124-drakosha-center\")",
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "width": 1336,
+          "decoded": [
+            1024,
+            683
+          ],
+          "url": "url(\"http://127.0.0.1:3104/assets/banners/pets.webp?art=20261124-drakosha-center\")",
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "width": 390,
+          "decoded": [
+            1024,
+            683
+          ],
+          "url": "url(\"http://127.0.0.1:3104/assets/banners/pets.webp?art=20261124-drakosha-center\")",
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "width": 1336,
+          "decoded": [
+            1024,
+            683
+          ],
+          "url": "url(\"http://127.0.0.1:3104/assets/banners/pets.webp?art=20261124-drakosha-center\")",
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "width": 390,
+          "decoded": [
+            1024,
+            683
+          ],
+          "url": "url(\"http://127.0.0.1:3104/assets/banners/pets.webp?art=20261124-drakosha-center\")",
+          "errors": []
+        }
+      ],
+      "http": 12,
+      "backupFiles": 4,
+      "rootFiles": 4
+    },
+    "backupSha256": "af97742a17e02049beaa7904839a4b3535ba0a07488ef380e38053a0854a843a",
+    "productionCommentsRemoved": 3,
+    "sourceDimensions": [
+      1535,
+      1024
+    ],
+    "runtimeDimensions": [
+      1024,
+      683
+    ],
+    "description": "Moved the crest base onto the forehead midline above the nose bridge, with three fins sweeping toward the nape in the existing three-quarter pose. Only the pet banner raster and its cache URLs changed.",
+    "validationNotes": [
+      "Initial packaging expected 1536 pixels, but both source and edited image are 1535 pixels wide. Guard now checks exact source dimensions; no distorted resize was introduced.",
+      "Browser screenshots include the unchanged onboarding overlay. Asset decode and exact content hashes passed at both viewport widths in all three engines."
+    ],
+    "fullTestsRun": false,
+    "gameMechanicsChanged": false,
+    "report": "games/heroes-of-ether/docs/performance/drakosha-center-20261124.json"
   }
 }
