@@ -73,7 +73,7 @@ class SnapshotBuilder{
       if(identity&&record&&this.identities?.get(value)===record&&record.documentFormat===documentFormat){
         stats.reused++;stats.identityReused++;
       }else if(identity){
-        record=immutableRecord(id,value,documentFormat,this.fields,stats)||recordFor(id,value,documentFormat,null);
+        record=immutableRecord(id,value,documentFormat,this.fields,stats,{captureFields:id==='world'})||recordFor(id,value,documentFormat,null);
         stats.rebuilt++;
       }else{
         const fingerprint=digest(JSON.stringify(value));
@@ -90,7 +90,7 @@ class SnapshotBuilder{
       if(immutable)for(const key of Object.keys(world[table]))add(`${table}:${key}`,world[table][key],true);
       else for(const [key,value]of Object.entries(world[table]))add(`${table}:${key}`,value,true);
     }
-    add('world',Object.fromEntries(Object.entries(world).filter(([key])=>!['profiles','clans'].includes(key))));
+    add('world',Object.fromEntries(Object.entries(world).filter(([key])=>!['profiles','clans'].includes(key))),true);
     for(const file of AUXILIARY)if(Object.hasOwn(auxiliary,file)){
       if(file==='clan-chat.json'&&chatFormat===1)chat.packChat(auxiliary[file],add);
       else add(`aux:${file}`,auxiliary[file]);
@@ -99,10 +99,14 @@ class SnapshotBuilder{
     if(!Number.isSafeInteger(chatRevision)||chatRevision<0)fail('DATABASE_INVALID_CHAT_REVISION');
     // Stream the exact legacy canonical JSON into SHA-256, without allocating
     // another complete world tree or a giant UTF-16 world string.
-    const root=JSON.parse(next.get('world').json.toString('utf8'));
+    // A pinned root shares immutable global fields too. Hash their existing
+    // canonical segments instead of parsing and encoding a second root tree.
+    // Mutable callers and oversized fragmented roots retain the legacy path.
+    const rootRecord=next.get('world'),rootFields=rootRecord.fields;
+    const root=rootFields?null:JSON.parse(rootRecord.json.toString('utf8'));
     const checksum=createHash('sha256');checksum.update('{');let first=true;
     for(const key of keys(world)){
-      if(key!=='profiles'&&key!=='clans'&&!Object.hasOwn(root,key))continue;
+      if(key!=='profiles'&&key!=='clans'&&!(rootFields?rootFields.has(key):Object.hasOwn(root,key)))continue;
       if(!first)checksum.update(',');first=false;
       checksum.update(JSON.stringify(key)+':');
       if(key==='profiles'||key==='clans'){
@@ -114,6 +118,9 @@ class SnapshotBuilder{
           else checksum.update(record.json);
         }
         checksum.update('}');
+      }else if(rootFields){
+        const encoded=rootFields.get(key);
+        for(const segment of encoded.segments||[encoded.json])checksum.update(segment);
       }else checksum.update(JSON.stringify(root[key]));
     }
     checksum.update('}');

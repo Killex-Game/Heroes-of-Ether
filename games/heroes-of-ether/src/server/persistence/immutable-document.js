@@ -15,11 +15,11 @@ const prefix=key=>{
 // Retain their canonical bytes separately instead of cloning/encoding them
 // again for every change to a sibling counter. Segments avoid a second full
 // canonical world buffer. Only verified immutable records may use this cache.
-function immutableRecord(id,value,format,cache,stats){
+function immutableRecord(id,value,format,cache,stats,{captureFields=false}={}){
   if(!value||typeof value!=='object'||Array.isArray(value))return null;
   const inserted=[];
   const remember=(item,encoded)=>{cache.set(item,encoded);inserted.push(item);};
-  const segments=[open],keys=canonicalKeys(value);
+  const segments=[open],keys=canonicalKeys(value),fields=captureFields?new Map():null;
   let size=5,bytes=2,first=true;
   for(const key of keys){
     const item=value[key];
@@ -49,6 +49,7 @@ function immutableRecord(id,value,format,cache,stats){
       size+=documentSize({[key]:item})-5;
       encoded={json:Buffer.from(JSON.stringify(item))};
     }
+    if(fields)fields.set(key,encoded);
     if(!first){segments.push(comma);bytes++;}first=false;
     const header=prefix(key);segments.push(header);bytes+=header.length;
     for(const chunk of encoded.segments||[encoded.json]){segments.push(chunk);bytes+=chunk.length;}
@@ -64,6 +65,6 @@ function immutableRecord(id,value,format,cache,stats){
     return null;
   }
   const checksum=createHash('sha256');for(const segment of segments)checksum.update(segment);
-  return {fingerprint:null,documentFormat:format,segments,bytes,parts:[{_id:id,hash:checksum.digest('hex')}]};
+  return {fingerprint:null,documentFormat:format,segments,bytes,fields,parts:[{_id:id,hash:checksum.digest('hex')}]};
 }
 module.exports={immutableRecord};
