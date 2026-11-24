@@ -659,6 +659,7 @@ if (process.env.LOAD_CLIENT === "1") {
         updatesPerClient: samples.reduce((sum, sample) => sum + sample.updatesPerClient, 0) / samples.length,
         clientGapP99Max: Math.max(...samples.map(sample => sample.clientGaps.p99)),
         clientGapMax: Math.max(...samples.map(sample => sample.clientGaps.max)),
+        longestStateGaps: require('./state-gap-context.cjs').combine(samples),
         rooms: samples.flatMap((sample) => sample.rooms),
         boosters: samples.reduce((sum, sample) => sum + sample.boosters, 0),
         actionRequests: samples.reduce((sum, sample) => sum + sample.actionRequests, 0),

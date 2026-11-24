@@ -17,6 +17,10 @@ async function main(){
   if(fs.existsSync(out))throw Error('Output directory must be new');
   const source=JSON.parse(fs.readFileSync(path.resolve(configFile),'utf8'));
   const gameClock=require('./game-clock.cjs').fromStart(process.env.CAPACITY_GAME_AT);
+  if(process.env.CAPACITY_SEED&&process.env.CAPACITY_FIXTURE)
+    throw Error('Choose a verified synthetic seed or a legacy fixture, not both');
+  if(process.env.CAPACITY_SEED&&!process.env.CAPACITY_GAME_AT)
+    throw Error('A verified synthetic seed requires CAPACITY_GAME_AT');
   if(gameClock.offsetMs && process.env.CAPACITY_FIXTURE)
     throw Error('A shifted game clock requires a freshly generated synthetic fixture');
   const schema='heroether_test_'+randomBytes(10).toString('hex');
@@ -24,7 +28,8 @@ async function main(){
   const privateConfig=path.join(out,'postgresql.local.json');
   fs.writeFileSync(privateConfig,JSON.stringify({...source,schema}),{mode:0o600});
   const fixture=path.join(out,'synthetic-world.json');
-  const fixtureData=process.env.CAPACITY_FIXTURE
+  const seed=process.env.CAPACITY_SEED?require('./capacity-seed.cjs').read(path.resolve(process.env.CAPACITY_SEED),gameClock):null;
+  const fixtureData=seed?seed.fixture:process.env.CAPACITY_FIXTURE
     ? JSON.parse(fs.readFileSync(path.resolve(process.env.CAPACITY_FIXTURE),'utf8'))
     : require('./database-room-fixture.cjs').createFixture(Date.now()+gameClock.offsetMs);
   assert.equal(Object.keys(fixtureData.data.profiles).length,1280);
@@ -47,6 +52,7 @@ async function main(){
   const summary={at:new Date().toISOString(),gameClock,rooms,perRoom,protocol,fixtureSha256,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
   summary.stateWorkerPolicy={count:Number(stateWorkerPolicy.LOAD_STATE_WORKERS),maxRooms:Number(stateWorkerPolicy.LOAD_STATE_WORKER_ROOMS),source:'config/arena-state-workers.json'};
+  if(seed)summary.startingSeed=seed.proof;
   if(mixedMinutes)Object.assign(summary,{mixedMinutes,phaseSeconds:60});
   if(process.env.CAPACITY_ACTIVE_CLAN_QUESTS==='1')summary.requiresActiveClanQuests=true;
   if(fixtureData.summary?.retainedHistory)summary.retainedHistory={...fixtureData.summary.retainedHistory};

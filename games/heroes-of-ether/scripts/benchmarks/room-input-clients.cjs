@@ -8,6 +8,7 @@ driverDelay.enable();
 let driverCpu;
 const { STATE_PROTOCOL } = require("../../src/server/arena/state-stream");
 const wire = require("../../public/shared/arena-wire");
+const gapContext = require("./state-gap-context.cjs");
 const clients = [];
 const realistic = process.env.LOAD_REALISTIC === "1";
 // Optional bounded samples for offline wire-format comparisons. Synthetic
@@ -25,6 +26,7 @@ const reset = (c) =>
     packets: 0,
     bytes: 0,
     gaps: [],
+    longGaps: [],
     last: null,
     used: 0,
     usedByType: {},
@@ -75,8 +77,10 @@ process.on("message", async (m) => {
             c.playerId = v.id;
             resolve({ playerId: v.id });
           }
-          if (process.env.LOAD_REJOIN === "1" && v.type === "lifeEnded" && v.result?.id)
-            send(c, { type: "continueLife", lifeId: v.result.id });
+          if (v.type === "lifeEnded" && v.result?.id) {
+            c.lastLifeEndAt = at;
+            if (process.env.LOAD_REJOIN === "1") send(c, { type: "continueLife", lifeId: v.result.id });
+          }
           if (v.type === "boosterResult") {
             const request = c.requests.get(v.requestId);
             const type = request?.type || "unknown";
@@ -104,7 +108,7 @@ process.on("message", async (m) => {
           // on the same two CPU cores as the server under test.
           const ownRow = (v.playersDelta?.upsert || v.players)?.find((p) =>
             (Array.isArray(p) ? p[0] : p.id) === c.playerId);
-          const me = wire.unpackPlayerChange(ownRow);
+          const previousSerial = c.serial, me = wire.unpackPlayerChange(ownRow);
           if (me?.spawnSerial !== undefined) c.serial = me.spawnSerial;
           if (me?.x !== undefined) c.x = me.x;
           if (me?.y !== undefined) c.y = me.y;
@@ -120,6 +124,7 @@ process.on("message", async (m) => {
                 c.fieldBytes[label] = (c.fieldBytes[label] || 0) + Buffer.byteLength(JSON.stringify(value));
               }
           }
+          gapContext.record(c, at, previousSerial, v.stateSequence);
           if (c.last !== null) c.gaps.push(at - c.last);
           c.last = at;
           if (v.stateSequence)
@@ -204,6 +209,7 @@ process.on("message", async (m) => {
           ((clients.reduce((s, c) => s + c.packets, 0) / clients.length) * 1000) / elapsed,
         networkMbps: (clients.reduce((s, c) => s + c.bytes, 0) * 8) / elapsed / 1000,
         clientGaps: q(clients.flatMap((c) => c.gaps)),
+        longestStateGaps: gapContext.combine(clients.map(c=>({longestStateGaps:c.longGaps}))),
         boosters: clients.reduce((s, c) => s + c.used, 0),
         actionRequests: clients.reduce((s, c) => s + c.requested, 0),
         actionPending: clients.reduce((s, c) => s + c.requests.size, 0),
