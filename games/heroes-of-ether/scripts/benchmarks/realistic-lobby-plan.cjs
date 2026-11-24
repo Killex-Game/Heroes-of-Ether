@@ -7,24 +7,31 @@ const rulesVersion = require("../../public/shared/roulette-rules").version;
 const REQUIRED = ["clan-create", "clan-deposit", "clan-buy", "clan-edit", "clan-view",
   "roulette-prepare", "roulette-spin", "pet-buy", "pet-food", "pet-equip", "chat"];
 const COUNT = 21;
-function extra(client, step) {
+const count = alchemy => alchemy ? COUNT + 1 : COUNT;
+const required = alchemy => alchemy ? [...REQUIRED.filter(id => !id.startsWith("roulette-")),
+  "alchemy-view", "alchemy-exchange", "alchemy-brew", "alchemy-equip"] : REQUIRED;
+function extra(client, step, { alchemy = false } = {}) {
   const post = (label, url, body) => [label,url,{...body,requestId:randomUUID()}];
   const clan = (action, body={}) => post("clan-"+action,"/api/clans/action",{action,clanId:client.clanId,...body});
-  switch (step % COUNT) {
+  const potion = () => require("../../public/shared/alchemy-rules").potions[
+    (Math.floor(step/count(alchemy)) + client.slot - 1) % 16].id;
+  switch (step % count(alchemy)) {
     case 8: return client.clanId ? ["clan-view","/api/clans?scope=clan"] :
       clan("create",{name:"Испытатели нагрузки "+client.slot,prefix:"L"+client.slot,emblem:"astral",privacy:"open",crest});
     case 9: return client.clanId ? clan("deposit",{amount:1000}) : ["profile","/api/profile"];
     case 10: return client.clanId ? ["clan-buy","/api/clans/action",{action:"buyBooster",clanId:client.clanId,boosterId:"warheads",requestId:randomUUID()}] : ["profile","/api/profile"];
     case 11: return client.clanId ? clan("edit",{description:"Проверка сессии "+Math.floor(step/COUNT)}) : ["profile","/api/profile"];
     case 12: return ["clan-view","/api/clans?scope=clan"];
-    case 13: return post("roulette-prepare","/api/roulette/action",{action:"prepare",rulesVersion});
-    case 14: return client.offerId ? post("roulette-spin","/api/roulette/action",{action:"spin",rulesVersion,offerId:client.offerId}) : ["profile","/api/profile"];
+    case 13: return alchemy ? ["alchemy-view", "/api/profile"] : post("roulette-prepare","/api/roulette/action",{action:"prepare",rulesVersion});
+    case 14: return alchemy ? post("alchemy-brew", "/api/alchemy/action", {action:"brew",potionId:potion(),runId:client.alchemyRunId})
+      : client.offerId ? post("roulette-spin","/api/roulette/action",{action:"spin",rulesVersion,offerId:client.offerId}) : ["profile","/api/profile"];
     case 15: return post(client.ownsPet?"pet-equip":"pet-buy","/api/pets/action",{action:client.ownsPet?"equip":"buy",petId:"zaya"});
     case 16: return post("pet-food","/api/pets/action",{action:"food"});
     case 17: return client.clanId ? post("chat","/api/clans/chat",{clanId:client.clanId,text:"Сбор команды "+step}) : ["profile","/api/profile"];
     case 18: return ["news","/api/news"];
     case 19: return ["presence","/api/presence"];
-    case 20: return ["clan-view","/api/clans?scope=clan"];
+    case 20: return alchemy ? post("alchemy-exchange", "/api/alchemy/action", {action:"exchange"}) : ["clan-view","/api/clans?scope=clan"];
+    case 21: return post("alchemy-equip", "/api/alchemy/action", {action:"equip",potionId:potion()});
     default: return null;
   }
 }
@@ -58,4 +65,4 @@ function detachLobby(fixture,first,count,linked=0) {
   }
   require("../../src/server/clans/clan-service").validateWorld(fixture.data);
 }
-module.exports={extra,update,detachLobby,REQUIRED,COUNT};
+module.exports={extra,update,detachLobby,REQUIRED,COUNT,count,required};

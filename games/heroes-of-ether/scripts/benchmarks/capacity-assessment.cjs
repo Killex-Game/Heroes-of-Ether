@@ -18,8 +18,10 @@ function assessCapacity(rows, summary) {
   if (mixed && validMixed && rows.length !== summary.mixedMinutes) problems.push("mixed-window-count");
   if(summary.realistic) {
     const actions={};for(const row of rows)for(const [key,count] of Object.entries(row.lobby?.actions||{}))actions[key]=(actions[key]||0)+count;
-    for(const name of require('./realistic-lobby-plan.cjs').REQUIRED)if(!(actions[name]>0))problems.push('missing-realistic-action:'+name);
+    for(const name of require('./realistic-lobby-plan.cjs').required(summary.alchemy))if(!(actions[name]>0))problems.push('missing-realistic-action:'+name);
   }
+  if(summary.alchemy)for(const potion of require('../../public/shared/alchemy-rules').potions)
+    if(!rows.some(row=>row.usedByType?.[potion.boosterId]>0))problems.push('missing-potion:'+potion.id);
   const requested = mixed && validMixed
     ? Array.from({ length: summary.mixedMinutes }, (_, index) => ({ name: "combined", index }))
     : PHASES.map(name => ({ name }));
@@ -38,9 +40,9 @@ function assessCapacity(rows, summary) {
       // Fast snapshots of a paused simulation are not successful gameplay.
       if (!row.persistence || row.persistence.pausedSamples !== 0 || row.persistence.end?.paused !== false)
         issues.push("progress-paused-or-unverified");
+      const ordinary = Object.entries(row.usedByType || {}).filter(([id])=>!summary.alchemy || !id.startsWith('alchemy_'));
       if (["boosters", "combined"].includes(name) &&
-          (!row.usedByType || Object.keys(row.usedByType).length !== 30 ||
-           Object.values(row.usedByType).some(count => !(count > 0))))
+          (!row.usedByType || ordinary.length !== 30 || ordinary.some(([,count]) => !(count > 0))))
         issues.push("booster-coverage");
       if (["boosters", "combined"].includes(name)) {
         if (!(row.actionRequests > 0) || !Number.isFinite(row.actionPending))

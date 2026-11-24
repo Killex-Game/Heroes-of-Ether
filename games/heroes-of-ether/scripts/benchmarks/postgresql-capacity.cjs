@@ -40,6 +40,7 @@ async function main(){
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
   if(mixedMinutes)Object.assign(summary,{mixedMinutes,phaseSeconds:60});
   if(fixtureData.summary?.retainedHistory)summary.retainedHistory={...fixtureData.summary.retainedHistory};
+  if(process.env.CAPACITY_ALCHEMY==='1')summary.alchemy=true;
   if(realistic)Object.assign(summary,{realistic:true,mixedSocial:true,scenario:{linkedLobby,movementHz:10,splitEverySeconds:3.7,feedEverySeconds:.7,
     boosterEverySeconds:2,emoteEverySeconds:5.3,lobbyIntervalMs:1500,syntheticFunds:true,
     notCovered:['real payment provider','external VK API','all seasonal events simultaneously','browser rendering']}});
@@ -54,6 +55,7 @@ async function main(){
       LOAD_INCREMENTAL_SETTLEMENT:'1',LOAD_WORLD_FIXTURE:fixture,LOAD_DATABASE_CONFIG:privateConfig,LOAD_ACK_DIR:path.join(out,'acks')});
   if(mixedMinutes)Object.assign(env,{LOAD_PHASES:Array(mixedMinutes).fill('combined').join(','),LOAD_PHASE_MS:'60000'});
   if(realistic)Object.assign(env,{LOAD_REALISTIC:'1',LOAD_MIXED_SOCIAL:'1',LOAD_LOBBY_INTERVAL:'1500'});
+  if(summary.alchemy)Object.assign(env,{LOAD_ALCHEMY:'1',LOAD_EVENT:'ether-alchemy'});
   if(process.env.CAPACITY_DIAGNOSTICS==='1')Object.assign(env,{LOAD_STAGE_METRICS:'1',LOAD_PHYSICS_STAGES:'1',LOAD_CPU_PHASE:'combined'});
   if(process.env.CAPACITY_WIRE_DIAGNOSTICS==='1'){
     summary.diagnosticOnly=true;

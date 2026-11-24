@@ -9,7 +9,7 @@ const mixedSocial = realistic || process.env.LOAD_MIXED_SOCIAL === "1";
 const chatLoad = process.env.LOAD_CHAT === "1";
 const idleLobby = process.env.LOAD_LOBBY_IDLE === "1";
 const alchemyLoad=process.env.LOAD_ALCHEMY==="1";
-const actionCount = realistic ? plan.COUNT : alchemyLoad ? 12 : chatLoad ? 9 : mixedSocial ? 8 : 6;
+const actionCount = realistic ? plan.count(alchemyLoad) : alchemyLoad ? 12 : chatLoad ? 9 : mixedSocial ? 8 : 6;
 let base,
   enabled = false,
   timers = new Set(),
@@ -40,7 +40,7 @@ function schedule(c, delay) {
 }
 function action(c) {
   const step = c.step++;
-  if(realistic){const request=plan.extra(c,step);if(request)return request;}
+  if(realistic){const request=plan.extra(c,step,{alchemy:alchemyLoad});if(request)return request;}
   switch (step % actionCount) {
     case 9:
       return ["alchemy-exchange","/api/alchemy/action",{action:"exchange",requestId:randomUUID()}];
@@ -111,6 +111,8 @@ async function run(c) {
     });
     const data = await response.json();
     if (!response.ok) throw Error(response.status + ": " + (data.error || "request failed"));
+    if(name==='alchemy-view' && (!data.profile?.alchemy?.active || data.profile.alchemy.runId!==c.alchemyRunId))
+      throw Error('Alchemy view does not match the active synthetic event');
     measured.success++;
     if(realistic)plan.update(c,data);
     if (Array.isArray(data.social?.giftNotices)) c.notices = data.social.giftNotices.map(n => n.id);
