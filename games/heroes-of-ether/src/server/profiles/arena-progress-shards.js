@@ -11,6 +11,12 @@ const context = store => ({ options: Object.fromEntries(optionKeys.map(k => [k, 
   events: store.events?.data, rankingReady: store.eventRankingReady?.() !== false });
 const sameContext = (store, ctx) => store.events?.data === ctx.events &&
   (store.eventRankingReady?.() !== false) === ctx.rankingReady && optionKeys.every(k => store[k] === ctx.options[k]);
+function sameCalculationContext(previous, next) {
+  if (!previous || previous.events !== next.events || previous.rankingReady !== next.rankingReady) return false;
+  const keys = Object.keys(next.options);
+  return keys.length === Object.keys(previous.options).length && keys.every(key =>
+    Object.hasOwn(previous.options, key) && previous.options[key] === next.options[key]);
+}
 function laneFor(id, count) {
   let hash = 2166136261;
   for (let i = 0; i < id.length; i++) hash = Math.imul(hash ^ id.charCodeAt(i), 16777619);
@@ -24,7 +30,7 @@ class ArenaProgressShards {
     this.maxResidentProfiles = maxResidentProfiles; this.maxResidentClans = maxResidentClans;
     this.count = count; this.timeoutMs = timeoutMs; this.sequence = 0; this.lanes = [];
     this.stats = { jobs: 0, conflicts: 0, failures: 0, computeMs: 0, transferMs: 0, roundTripMs: 0,
-      residentProfiles: 0, residentClans: 0, evictedProfiles: 0, evictedClans: 0 };
+      residentProfiles: 0, residentClans: 0, evictedProfiles: 0, evictedClans: 0, contextTransfers: 0 };
   }
   lane(index) {
     if (this.lanes[index]) return this.lanes[index];
@@ -84,8 +90,13 @@ class ArenaProgressShards {
       lane.pending = { id, resolve, reject, timer };
     });
     lane.worker.ref();
+    // Event history and configuration are immutable between owner updates.
+    // Send them once per lane revision, instead of structured-cloning the same
+    // complete event archive and catalog on every small progress sample.
+    const changedContext = !sameCalculationContext(lane.context, ctx);
     try { lane.worker.postMessage({ id, adopt, patch,
-      ...(Array.isArray(batch) ? { batches: batch } : { batch }), context: ctx }); }
+      ...(Array.isArray(batch) ? { batches: batch } : { batch }), ...(changedContext ? { context: ctx } : {}) });
+      lane.context = ctx; if (changedContext) this.stats.contextTransfers++; }
     catch { this.fail("send"); }
     lane.base = world;
     lane.residentProfiles = profiles.size; lane.residentClans = clans.size;

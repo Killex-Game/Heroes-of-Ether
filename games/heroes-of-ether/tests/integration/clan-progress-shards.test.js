@@ -154,3 +154,54 @@ test('clan calculation replicas remain bounded across player churn and restore e
  assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
  assert.deepEqual(recover(f.store.filePath).data.clans,f.store.data.clans);
 });
+
+test('calculation lanes reuse event context, propagate stop/config changes, and preserve canonical rewards',async t=>{
+ const f=fixture(t),{EventManager}=require('../../src/server/events/event-manager'),E=require('../../src/server/events/easter-hunt');
+ const events=new EventManager({now:()=>start});
+ events.apply('fixture','start',{eventId:E.manifest.id,revision:events.data.revision,requestId:randomUUID()});
+ f.store.events=events;f.serial.events=events;
+ const run=events.active(),messages=[],seen=new WeakSet(),lane=f.pool.lane.bind(f.pool);
+ f.pool.lane=index=>{const result=lane(index);if(!seen.has(result.worker)){
+   seen.add(result.worker);const post=result.worker.postMessage.bind(result.worker);
+   result.worker.postMessage=message=>{messages.push({lane:index,context:Object.hasOwn(message,'context')});return post(message);};
+ }return result;};
+ let lanes=0;
+ for(let n=1;n<=5;n++){
+   if(n===3)events.apply('fixture','stop',{runId:run.id,revision:events.data.revision,requestId:randomUUID()});
+   if(n===4)for(const store of [f.store,f.serial])store.petEvents={...store.petEvents};
+   const b=f.batch(n);
+   for(const [i,u]of f.users.entries()){
+     b.progress.push({type:'easterPickup',profileId:u.profile.id,lifeId:'life-'+i,runId:run.id,eggType:0});
+   }
+   const from=messages.length;await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
+   assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+   const current=messages.slice(from);if(n===1)lanes=current.length;
+   assert.equal(current.length,lanes);assert.equal(current.filter(m=>m.context).length,[1,3,4].includes(n)?lanes:0);
+ }
+ assert.equal(f.pool.stats.contextTransfers,lanes*3);assert.equal(f.pool.stats.failures,0);
+ assert.equal(f.pool.stats.conflicts,0);
+ for(const u of f.users)assert.deepEqual(f.store.find(u.token).easter.runs[run.id].found,[2,0,0,0]);
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+});
+
+test('reused event context still expires at its exact time boundary',async t=>{
+ const f=fixture(t),{EventManager}=require('../../src/server/events/event-manager'),E=require('../../src/server/events/easter-hunt');
+ const events=new EventManager({now:()=>start});
+ events.apply('fixture','start',{eventId:E.manifest.id,revision:events.data.revision,requestId:randomUUID()});
+ const runId=events.active().id;
+ events.apply('fixture','reschedule',{runId,endsAt:start+60000,revision:events.data.revision,requestId:randomUUID()});
+ f.store.events=events;f.serial.events=events;
+ let transfers;
+ for(const [index,elapsed]of [1000,59999,60000,60001].entries()){
+  const b={id:'context-expiry-'+index,at:start+elapsed,progress:f.users.map((u,i)=>({
+   type:'easterPickup',profileId:u.profile.id,lifeId:'life-'+i,runId,eggType:0,
+  }))};
+  await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
+  assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+  if(index===0)transfers=f.pool.stats.contextTransfers;
+  assert.equal(f.pool.stats.contextTransfers,transfers);
+ }
+ for(const u of f.users)assert.deepEqual(f.store.find(u.token).easter.runs[runId].found,[2,0,0,0]);
+ assert.equal(f.pool.stats.failures,0);assert.equal(f.pool.stats.conflicts,0);
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+});

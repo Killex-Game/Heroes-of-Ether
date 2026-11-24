@@ -5,7 +5,7 @@ const { EventManager } = require("../events/event-manager");
 const { difference } = require("./profile-journal");
 const { applyTransfer } = require("./profile-transfer");
 const store = new ProfileStore();
-let base = { profiles: {}, clans: {} }, prediction = null, at = 0;
+let base = { profiles: {}, clans: {} }, prediction = null, at = 0, contextReady = false;
 store.now = () => at;
 // Calculation only. This worker has no WAL, PostgreSQL, sockets or authority to
 // publish a reward. Global competition/calendar settlement stays with the owner.
@@ -18,9 +18,15 @@ parentPort.on("message", message => {
     }
     base = applyTransfer(base, message.patch);
     store.data = base;
-    Object.assign(store, message.context.options);
-    store.events = message.context.events ? new EventManager({ now: store.now }) : undefined;
-    if (store.events) store.events.data = message.context.events;
+    if (Object.hasOwn(message, 'context')) {
+      Object.assign(store, message.context.options);
+      if (message.context.events) {
+        store.events ||= new EventManager({ now: store.now });
+        store.events.data = message.context.events;
+      } else store.events = undefined;
+      contextReady = true;
+    }
+    if (!contextReady) throw Error('Missing initial calculation context');
     const batches = message.batches || [message.batch], steps = [];
     let next = base;
     for (const batch of batches) {
