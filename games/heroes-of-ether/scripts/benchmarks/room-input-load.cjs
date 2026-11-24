@@ -643,6 +643,10 @@ if (process.env.LOAD_CLIENT === "1") {
       const socketBytes = () => [...app.wss.clients].reduce((sum, ws) => sum + (ws._socket?.bytesWritten || 0), 0);
       const socketBytesBefore = socketBytes();
       await sleep(duration);
+      // Timers may wake slightly before their fractional deadline. Keep the
+      // promised full measurement window instead of weakening its assessment.
+      while (performance.now() - start < duration)
+        await sleep(Math.ceil(duration - (performance.now() - start)));
       const elapsed = performance.now() - start,
         usage = process.cpuUsage(cpu);
       const resourceUsage=resources.delta(resourceBefore);
