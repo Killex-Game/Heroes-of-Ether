@@ -56,15 +56,19 @@ function immutableRecord(id,value,format,cache,stats,{captureFields=false}={}){
   }
   segments.push(close);
   const storedSize=documentSize({_id:id,value:{},hash:'0'.repeat(64)})-5+size;
-  // Preserve the exact existing fragmentation algorithm and exceptional-size
-  // validation. Large records use the established implementation unchanged.
-  if(storedSize>(format===0?14*1024*1024:LIMIT)){
+  // Legacy format zero retains its established exceptional-size validation.
+  // Fragmentable records retain immutable field segments even when large.
+  if(format===0&&storedSize>14*1024*1024){
     // The fallback owns one complete canonical record. Do not also retain
     // freshly encoded field copies of an oversized fragmented profile.
     for(const item of inserted)cache.delete(item);
     return null;
   }
   const checksum=createHash('sha256');for(const segment of segments)checksum.update(segment);
-  return {fingerprint:null,documentFormat:format,segments,bytes,fields,parts:[{_id:id,hash:checksum.digest('hex')}]};
+  const valueHash=checksum.digest('hex');
+  const parts=format===1&&storedSize>LIMIT
+    ? require('./canonical-fragments').fragmentParts(id,segments,bytes,valueHash)
+    : [{_id:id,hash:valueHash}];
+  return {fingerprint:null,documentFormat:format,segments,bytes,fields,parts};
 }
 module.exports={immutableRecord};

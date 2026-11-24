@@ -46,8 +46,9 @@ function documentFor(record,part){
   // values only for changed documents. Getters cannot expose the cached buffer
   // or let callers mutate an acknowledged record used by a later snapshot.
   Object.defineProperty(doc,'value',{enumerable:true,get(){
-    if(record.segments)return JSON.parse(Buffer.concat(record.segments,record.bytes).toString('utf8'));
     if(part.descriptor)return JSON.parse(part.descriptor);
+    if(record.segments&&part.start!==undefined)return require('./canonical-fragments').fragmentValue(record,part);
+    if(record.segments)return JSON.parse(Buffer.concat(record.segments,record.bytes).toString('utf8'));
     if(part.start!==undefined)return record.json.toString('utf8',part.start,part.end);
     return JSON.parse(record.json.toString('utf8'));
   }});
