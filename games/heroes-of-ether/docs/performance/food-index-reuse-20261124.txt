@@ -1,0 +1,10 @@
+Food transfer ordinal reuse — candidate, not installed
+
+Source e617bf71ca4d0801f448320824956c63f9c1392f
+An unchanged food order reuses its ID map; the first order change creates a new map. Old snapshots remain immutable. Duplicate IDs preserve their former last-ordinal semantics.
+
+Windows and Linux: 8 targeted tests passed each. 320 exact frame comparisons passed across packed/unpacked data, reorder, removals, nested metadata and duplicate IDs. Each ABBA trial uses five rooms with 6000 food each and 50 measured ticks.
+
+Linux unpacked stable encoding: 505/566 ms -> 243/187 ms; moving 1000: 658/741 -> 249/200; moving 4000 with churn: 1486/1251 -> 718/768. These are total encoding times within a component benchmark. Clone/decode and process measurements are preserved in JSON; they are not proof of capacity or whole-game CPU reduction.
+
+Inherited appearance and persistence candidates remain uninstalled. Full combined validation and realistic mixed load are required.
