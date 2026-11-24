@@ -119,11 +119,11 @@ function unpack(documents, manifest) {
     fail("DATABASE_CHECKSUM_FAILED");
   return { world, auxiliary, snapshot, manifest };
 }
-function readLocal(dataDir, journal = false, profileSnapshot = null, packSnapshot = pack) {
+function readLocal(dataDir, journal = false, profileSnapshot = null, packSnapshot = pack, readPinned = null) {
   const file = path.join(dataDir, "profiles.json");
   let world;
   if (profileSnapshot) {
-    const saved = recover(profileSnapshot.file, false);
+    const saved = readPinned ? readPinned(profileSnapshot) : recover(profileSnapshot.file, false);
     if (!Number.isSafeInteger(profileSnapshot.revision) || saved.revision !== profileSnapshot.revision)
       fail("DATABASE_INVALID_REVISION");
     world = saved.data;

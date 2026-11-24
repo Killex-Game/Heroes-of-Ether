@@ -8,8 +8,9 @@ const dataDir = path.join(workerData.root, "data");
 const State = require('./postgresql-state').PostgreSQLState;
 const state = new State(workerData.config);
 const builder = new (require('./snapshot-builder').SnapshotBuilder)();
+const pinnedReader = new (require('./pinned-world-reader').PinnedWorldReader)();
 const checkpoints = new (require('./checkpoint-cache').CheckpointCache)(dataDir,
-  (directory,journal,snapshot)=>readLocal(directory,journal,snapshot,(world,auxiliary)=>builder.pack(world,auxiliary)));
+  (directory,journal,snapshot)=>readLocal(directory,journal,snapshot,(world,auxiliary)=>builder.pack(world,auxiliary),pin=>pinnedReader.read(pin)));
 let status = { mode:'postgresql-with-local-journal',backend:'postgresql', connected: false };
 let metricTimer=null;
 // Optional graph telemetry must not turn a successful database command into
