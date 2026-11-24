@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261124-status-copy",
-  "sourceTag": "release/20261124-status-copy",
-  "sourceCommit": "2bdbf7e5fac405cd30f130ead6e9081d3f18f539",
-  "branch": "codex/20261124-status-copy",
+  "gameRelease": "20261124-world-copy",
+  "sourceTag": "release/20261124-world-copy",
+  "sourceCommit": "416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8",
+  "branch": "codex/20261124-profile-field-bytes",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-24T13:00:35.765Z",
+  "entryReopenedAtUtc": "2026-11-24T17:27:00.914Z",
   "runtime": {
-    "gamePid": 645542,
+    "gamePid": 714287,
     "adminPid": 1163,
     "restarts": 0,
     "entryOpen": true,
@@ -54,7 +54,7 @@
     "Space no longer toggles the focused arena chat button; typing spaces and Enter behavior retained.",
     "Seven clan booster icons and five personal achievement icons installed at four resolutions; all protected artwork retained.",
     "Approved VIP/Premium benefit matrix, 7/14-day purchases and separate chest greatness/currency factors",
-    "30-second current-mass natural rewards; Premium doubles XP and full kill formula; alive humans in own room include self and exclude bots; exact half rounds down",
+    "30-second current-mass rewards: VIP doubles final XP after all bonuses; Premium doubles natural kills; alive humans include self and exclude bots; exact half rounds down",
     "VIP pet supply and Manya positive mass bonus",
     "Mobile emote taps with existing 5-second cooldown; desktop pointer passthrough",
     "Equal visible status icon height; Winged Guardian placement only; corrected Drakosha banner crest",
@@ -71,36 +71,41 @@
     "Server strips links from arena/clan chat while preserving retry protection and profanity strikes",
     "All approved actual currency debits now credit spending achievements atomically",
     "Male features for Drakosha/Leva; Zaya forelock matches fur; all active pet levels, related achievements, five emotes and banners updated",
-    "Zaya hind feet removed entirely from Easter banner; event card derives from same image"
+    "Zaya hind feet removed entirely from Easter banner; event card derives from same image",
+    "Pinned verified WAL replay reuses immutable records and detaches only changed ancestors",
+    "Canonical field and receipt-bucket bytes reused between database snapshots",
+    "PostgreSQL compresses canonical bytes without JSON parse/stringify round trips",
+    "Bounded Windows atomic-rename retry and safe worker failure categories"
   ],
   "data": {
     "before": {
-      "at": 1795524331255,
-      "revision": 4471427,
-      "digest": "3292d0c6d2f7bfead0180e4549851e5704a60c3e9ed8f5ec5273da6e06a57152",
-      "worldHash": "9d57798d50ca28c0414441df89f63e196a65a66f3dc6fbec7d43d8592820a223",
-      "profiles": 1720,
-      "clans": 136,
+      "at": 1795540209185,
+      "revision": 4617419,
+      "digest": "6910c5e5fa7ca6a18d09e1543e9711b7d7747bfec73732a6123b7f185b820c9c",
+      "worldHash": "d14fa48de6450d3d343a6a4d1c1ae8b50cb1a7269341ec5ceaf299c904778d3e",
+      "profiles": 1723,
+      "clans": 137,
       "fullWorldAndAuxEqual": true,
-      "backup": "/dev/shm/heroether-status-copy-backup-20261124/status-copy-20261124",
+      "backup": "/dev/shm/heroether-world-copy-backup-20261124/world-copy-release-20261124",
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/status-copy-20261124/data-before.tar.gz"
+      "durableBackup": "/srv/heroether-test/play/backups/world-copy-release-20261124/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
       "approvedMigrationsExact": true,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 4471427,
-      "revision": 4471429,
-      "digest": "7dba63401993528f02075f5d9ec0f605afdbef4863f9a359357c2c1d9535a712",
-      "worldHash": "9ffe96ac54ff32e5e3d109b907bce49eae324798eb6c19f53b45724d21a33d3e",
-      "profiles": 1720,
-      "clans": 136,
-      "at": 1795524763290,
+      "beforeRevision": 4617419,
+      "revision": 4617422,
+      "digest": "bbec62e346d586dcd2273d42f599dd457b2b4b5dbdde3d933fe7d0f21bddac79",
+      "worldHash": "55eebf6eacf2b8c7700c3393a2859feace3e00204ae06c89304dd20a2b50e9b9",
+      "profiles": 1723,
+      "clans": 137,
+      "at": 1795540540040,
       "transitionTimes": [
-        1795524763290,
-        1795524800391
+        1795540540040,
+        1795540560015,
+        1795540980580
       ],
       "retiredAvatarProfiles": [],
       "constructorChanges": [],
@@ -109,45 +114,80 @@
     },
     "backup": {
       "verified": true,
-      "archiveSha256": "e4eb6e627e9f91c7910295c4245459c5eb4f3198fafb968f76b16294d790089a",
-      "revision": 4471427,
-      "digest": "3292d0c6d2f7bfead0180e4549851e5704a60c3e9ed8f5ec5273da6e06a57152",
-      "worldHash": "9d57798d50ca28c0414441df89f63e196a65a66f3dc6fbec7d43d8592820a223",
-      "profiles": 1720,
-      "clans": 136,
+      "archiveSha256": "590fe3d9620f8d9ee9b3e37a4838758a7967a36efdcb15df6cf23e4bed67be67",
+      "revision": 4617419,
+      "digest": "6910c5e5fa7ca6a18d09e1543e9711b7d7747bfec73732a6123b7f185b820c9c",
+      "worldHash": "d14fa48de6450d3d343a6a4d1c1ae8b50cb1a7269341ec5ceaf299c904778d3e",
+      "profiles": 1723,
+      "clans": 137,
       "postgresqlArchiveVerified": true
     }
   },
   "verification": {
-    "windows": 92,
-    "linux": {
-      "sourceCommit": "19877648ecfb6998ce35eda75f7cf444fd24160a",
-      "original": {
-        "tests": 2378,
-        "pass": 2374,
-        "fail": 3,
-        "skip": 1
-      },
-      "supplement": {
-        "tests": 12,
-        "pass": 12,
-        "fail": 0
-      },
-      "allRequiredChecksPassed": true,
-      "failedFixtureFiles": [
-        "tests/unit/production-code.test.js",
-        "tests/unit/scale-budget.test.js",
-        "tests/unit/vk-mini-app-launch.test.js"
-      ],
-      "totalPassed": 2386,
-      "totalSkipped": 1
-    },
+    "source": "2f3fe01",
+    "allRequiredChecksPassed": true,
+    "totalTests": 2415,
+    "totalPassed": 2413,
+    "totalSkipped": 2,
+    "failed": 0,
+    "realPostgreSQLPassed": 11,
+    "windowsPassed": 2413,
+    "windowsSkipped": 2,
+    "scope": "Full runtime source checks; mixed-load acceptance recorded separately",
     "browserContexts": 18,
-    "httpChecks": 12,
-    "report": "games/heroes-of-ether/docs/performance/status-copy-20261124.json"
+    "http": {
+      "at": "2026-11-24T17:27:54.316Z",
+      "checks": [
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/index.html",
+          "bytes": 42837,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/release-notes.js",
+          "bytes": 21490,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/index.html",
+          "bytes": 42837,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/release-notes.js",
+          "bytes": 21490,
+          "exact": true
+        }
+      ]
+    },
+    "localHttp": {
+      "at": "2026-11-24T17:28:24.482Z",
+      "port": 3104,
+      "checks": 2,
+      "exact": true,
+      "files": [
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/index.html",
+          "bytes": 42837,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/release-notes.js",
+          "bytes": 21490,
+          "exact": true
+        }
+      ],
+      "experimentalPort3000Untouched": true
+    }
   },
-  "report": "games/heroes-of-ether/docs/performance/status-copy-20261124.json",
-  "previousRelease": "20261124-clan-exit",
+  "report": "games/heroes-of-ether/docs/performance/world-copy-installed-20261124.json",
+  "previousRelease": "20261124-status-copy",
   "notes": "Current release includes compact lobby/accessories, atomic achievement artwork, link filtering, approved spending counters and pet artwork. Capacity limits and unfinished architecture work remain unchanged.",
   "performance": {
     "status": "installed; collecting live samples and capacity ladder",
@@ -1029,126 +1069,391 @@
     "foodTransferInstalled": false
   },
   "latestObservation": {
-    "scope": "Five live samples after deployment, 0–1 human arena and 3–4 lobby; arena includes AI. Health observation, not capacity/A-B.",
+    "scope": "Post-release health observations; not capacity or causal A/B",
     "samples": [
       {
-        "at": "2026-11-24T08:51:18.837Z",
-        "online": {
-          "arena": 1,
-          "lobby": 3,
-          "total": 4
+        "at": 1795541274471,
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1070,
+          "advancedTicks": 969,
+          "updatesHz": 16.15,
+          "tickWorkMs": {
+            "count": 1070,
+            "p50": 0.68,
+            "p95": 1.01,
+            "p99": 1.3,
+            "max": 19.02
+          },
+          "tickIntervalMs": {
+            "count": 1070,
+            "p50": 50.09,
+            "p95": 51.58,
+            "p99": 52.02,
+            "max": 179046.61
+          },
+          "eventLoop": {
+            "windowMs": 10000.53,
+            "resolutionMs": 20,
+            "samples": 488,
+            "p95Ms": 21.32,
+            "p99Ms": 21.61,
+            "maxMs": 36.77
+          },
+          "capturedAt": 1795541274465,
+          "uptimeSeconds": 824,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 0,
+            "parts": 0,
+            "connections": 0
+          },
+          "online": {
+            "arena": 0,
+            "lobby": 4,
+            "total": 4
+          },
+          "memoryMiB": {
+            "resident": 2345,
+            "heapUsed": 452,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 4617429,
+            "pendingWalBytes": 7491,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 0,
+            "replaced": 0,
+            "workerMs": 0,
+            "cloneMs": 0,
+            "turnaroundMs": 0,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 0,
+            "deliveryMs": 0
+          }
         },
-        "arena": {
-          "rooms": 3,
-          "activePlayers": 29,
-          "parts": 66,
-          "connections": 1
-        },
-        "hz": 20,
-        "tickWorkP95": 24.66,
-        "rssMiB": 2620,
-        "queue": 0,
         "database": {
           "connected": true,
           "error": null,
-          "revision": 4348479,
-          "syncAgeMs": 16600
+          "syncAgeMs": 17350
         }
       },
       {
-        "at": "2026-11-24T08:51:33.851Z",
-        "online": {
-          "arena": 1,
-          "lobby": 3,
-          "total": 4
+        "at": 1795541279478,
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1170,
+          "advancedTicks": 1069,
+          "updatesHz": 17.82,
+          "tickWorkMs": {
+            "count": 1170,
+            "p50": 0.68,
+            "p95": 1,
+            "p99": 1.28,
+            "max": 19.02
+          },
+          "tickIntervalMs": {
+            "count": 1170,
+            "p50": 50.09,
+            "p95": 51.58,
+            "p99": 52.02,
+            "max": 179046.61
+          },
+          "eventLoop": {
+            "windowMs": 10000.53,
+            "resolutionMs": 20,
+            "samples": 488,
+            "p95Ms": 21.32,
+            "p99Ms": 21.61,
+            "maxMs": 36.77
+          },
+          "capturedAt": 1795541279476,
+          "uptimeSeconds": 829,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 0,
+            "parts": 0,
+            "connections": 0
+          },
+          "online": {
+            "arena": 0,
+            "lobby": 4,
+            "total": 4
+          },
+          "memoryMiB": {
+            "resident": 2345,
+            "heapUsed": 450,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 4617430,
+            "pendingWalBytes": 10423,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 0,
+            "replaced": 0,
+            "workerMs": 0,
+            "cloneMs": 0,
+            "turnaroundMs": 0,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 0,
+            "deliveryMs": 0
+          }
         },
-        "arena": {
-          "rooms": 3,
-          "activePlayers": 30,
-          "parts": 86,
-          "connections": 1
-        },
-        "hz": 20,
-        "tickWorkP95": 24.8,
-        "rssMiB": 2906,
-        "queue": 0,
         "database": {
           "connected": true,
           "error": null,
-          "revision": 4348777,
-          "syncAgeMs": 754
+          "syncAgeMs": 22357
         }
       },
       {
-        "at": "2026-11-24T08:51:48.862Z",
-        "online": {
-          "arena": 0,
-          "lobby": 4,
-          "total": 4
+        "at": 1795541284484,
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1199,
+          "advancedTicks": 1169,
+          "updatesHz": 19.48,
+          "tickWorkMs": {
+            "count": 1199,
+            "p50": 0.69,
+            "p95": 1,
+            "p99": 1.28,
+            "max": 19.02
+          },
+          "tickIntervalMs": {
+            "count": 1199,
+            "p50": 50.09,
+            "p95": 51.58,
+            "p99": 52.02,
+            "max": 102.62
+          },
+          "eventLoop": {
+            "windowMs": 9999.93,
+            "resolutionMs": 20,
+            "samples": 488,
+            "p95Ms": 21.32,
+            "p99Ms": 21.63,
+            "maxMs": 41.48
+          },
+          "capturedAt": 1795541284483,
+          "uptimeSeconds": 834,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 0,
+            "parts": 0,
+            "connections": 0
+          },
+          "online": {
+            "arena": 0,
+            "lobby": 4,
+            "total": 4
+          },
+          "memoryMiB": {
+            "resident": 2346,
+            "heapUsed": 452,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 4617430,
+            "pendingWalBytes": 10423,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 0,
+            "replaced": 0,
+            "workerMs": 0,
+            "cloneMs": 0,
+            "turnaroundMs": 0,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 0,
+            "deliveryMs": 0
+          }
         },
-        "arena": {
-          "rooms": 3,
-          "activePlayers": 0,
-          "parts": 0,
-          "connections": 0
-        },
-        "hz": 20,
-        "tickWorkP95": 16.72,
-        "rssMiB": 2840,
-        "queue": 0,
         "database": {
           "connected": true,
           "error": null,
-          "revision": 4348777,
-          "syncAgeMs": 15765
+          "syncAgeMs": 2773
         }
       },
       {
-        "at": "2026-11-24T08:52:03.873Z",
-        "online": {
-          "arena": 0,
-          "lobby": 4,
-          "total": 4
+        "at": 1795541289489,
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1198,
+          "advancedTicks": 1198,
+          "updatesHz": 19.97,
+          "tickWorkMs": {
+            "count": 1198,
+            "p50": 0.69,
+            "p95": 1.23,
+            "p99": 7.57,
+            "max": 77.73
+          },
+          "tickIntervalMs": {
+            "count": 1198,
+            "p50": 50.07,
+            "p95": 51.62,
+            "p99": 53.52,
+            "max": 102.62
+          },
+          "eventLoop": {
+            "windowMs": 9999.93,
+            "resolutionMs": 20,
+            "samples": 488,
+            "p95Ms": 21.32,
+            "p99Ms": 21.63,
+            "maxMs": 41.48
+          },
+          "capturedAt": 1795541289488,
+          "uptimeSeconds": 839,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 21,
+            "parts": 21,
+            "connections": 1
+          },
+          "online": {
+            "arena": 1,
+            "lobby": 3,
+            "total": 4
+          },
+          "memoryMiB": {
+            "resident": 2354,
+            "heapUsed": 460,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 4617449,
+            "pendingWalBytes": 134581,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 57,
+            "replaced": 0,
+            "workerMs": 120.26138999976683,
+            "cloneMs": 28.699001999921165,
+            "turnaroundMs": 389.3349959998159,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 57,
+            "deliveryMs": 11.92659300006926
+          }
         },
-        "arena": {
-          "rooms": 3,
-          "activePlayers": 0,
-          "parts": 0,
-          "connections": 0
-        },
-        "hz": 20,
-        "tickWorkP95": 14.13,
-        "rssMiB": 2749,
-        "queue": 0,
         "database": {
           "connected": true,
           "error": null,
-          "revision": 4348916,
-          "syncAgeMs": 2386
+          "syncAgeMs": 7778
         }
       },
       {
-        "at": "2026-11-24T08:52:18.884Z",
-        "online": {
-          "arena": 0,
-          "lobby": 4,
-          "total": 4
+        "at": 1795541294496,
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1197,
+          "advancedTicks": 1197,
+          "updatesHz": 19.95,
+          "tickWorkMs": {
+            "count": 1197,
+            "p50": 0.69,
+            "p95": 6.62,
+            "p99": 16.19,
+            "max": 77.73
+          },
+          "tickIntervalMs": {
+            "count": 1197,
+            "p50": 50.07,
+            "p95": 51.66,
+            "p99": 56.99,
+            "max": 102.62
+          },
+          "eventLoop": {
+            "windowMs": 9999.95,
+            "resolutionMs": 20,
+            "samples": 469,
+            "p95Ms": 22.4,
+            "p99Ms": 41.58,
+            "maxMs": 81.46
+          },
+          "capturedAt": 1795541294494,
+          "uptimeSeconds": 844,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 3,
+            "activePlayers": 21,
+            "parts": 29,
+            "connections": 1
+          },
+          "online": {
+            "arena": 1,
+            "lobby": 3,
+            "total": 4
+          },
+          "memoryMiB": {
+            "resident": 2354,
+            "heapUsed": 458,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 4617491,
+            "pendingWalBytes": 310256,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 157,
+            "replaced": 0,
+            "workerMs": 288.8757630001055,
+            "cloneMs": 81.57972000038717,
+            "turnaroundMs": 937.807085000677,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 0,
+            "drained": 0,
+            "delivered": 157,
+            "deliveryMs": 32.858329999726266
+          }
         },
-        "arena": {
-          "rooms": 3,
-          "activePlayers": 0,
-          "parts": 0,
-          "connections": 0
-        },
-        "hz": 20,
-        "tickWorkP95": 11.54,
-        "rssMiB": 2749,
-        "queue": 0,
         "database": {
           "connected": true,
           "error": null,
-          "revision": 4348916,
-          "syncAgeMs": 17397
+          "syncAgeMs": 12785
         }
       }
     ]
@@ -1328,7 +1633,7 @@
       }
     }
   },
-  "backendSourceCommit": "2bdbf7e5fac405cd30f130ead6e9081d3f18f539",
+  "backendSourceCommit": "416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8",
   "calendarIndexUpdate": {
     "installed": true,
     "published": true,
@@ -3072,34 +3377,39 @@
     }
   },
   "latestCapacityValidation": {
-    "newMechanics": {
-      "arena": 60,
-      "lobby": 5,
-      "minutes": 3,
-      "passed": true,
-      "ack": 5481,
-      "duplicates": 0,
-      "postgresqlEqualsWal": true
-    },
-    "previousMechanics": [
+    "sourceCommit": "416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8",
+    "scope": "Three ten-minute mixed scenarios on stated platforms, not maximum CCU",
+    "runs": [
       {
-        "arena": 60,
-        "lobby": 5,
-        "minutes": 10,
-        "passed": true,
-        "ack": 17577
+        "scenario": "Historical 30 arena + 5 lobby; 10 minutes; 3 CPU including generators",
+        "platform": "Linux VPS",
+        "allWindowsPassed": true,
+        "ack": 9545,
+        "pgMatched": true
       },
       {
-        "arena": 90,
-        "lobby": 5,
-        "minutes": 3,
-        "passed": false,
-        "ack": 8074
+        "scenario": "60 arena + 5 lobby; 10 minutes; 6 CPU including generators",
+        "platform": "Linux VPS",
+        "allWindowsPassed": true,
+        "ack": 17407,
+        "pgMatched": true
+      },
+      {
+        "scenario": "Alchemy 30 arena + 5 lobby; 10 minutes; real separate PostgreSQL schema",
+        "platform": "Windows local",
+        "allWindowsPassed": true,
+        "ack": 9531,
+        "pgMatched": true
       }
     ],
-    "cpuQuotaIncludesGenerators": 6,
-    "ccu300kProven": false,
-    "report": "games/heroes-of-ether/docs/performance/status-copy-20261124.json"
+    "limitations": [
+      "Not maximum CCU and not 300000-player readiness",
+      "Linux quotas include load generators; Windows alchemy result is not Linux capacity evidence",
+      "Ten-minute runs are not 24-hour stability evidence",
+      "60-player tick p95 still above 25 ms optimization target",
+      "Checkpoint worker cache and retained WAL-window leases are separate uninstalled candidates",
+      "No new browser-rendering or real-device capacity proof"
+    ]
   },
   "swordStabilityUpdate": {
     "installed": true,
@@ -32603,5 +32913,21 @@
       "commentsRemoved": 36
     },
     "report": "games/heroes-of-ether/docs/performance/status-copy-20261124.json"
+  },
+  "worldCopyUpdate": {
+    "installed": true,
+    "sourceCommit": "416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8",
+    "report": "games/heroes-of-ether/docs/performance/world-copy-installed-20261124.json",
+    "entryOpenedAtUtc": "2026-11-24T17:27:00.914Z",
+    "files": 12,
+    "commentsRemoved": 184,
+    "limitations": [
+      "Not maximum CCU and not 300000-player readiness",
+      "Linux quotas include load generators; Windows alchemy result is not Linux capacity evidence",
+      "Ten-minute runs are not 24-hour stability evidence",
+      "60-player tick p95 still above 25 ms optimization target",
+      "Checkpoint worker cache and retained WAL-window leases are separate uninstalled candidates",
+      "No new browser-rendering or real-device capacity proof"
+    ]
   }
 }

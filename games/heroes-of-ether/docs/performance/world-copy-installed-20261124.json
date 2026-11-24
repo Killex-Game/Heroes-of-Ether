@@ -1,0 +1,3793 @@
+{
+  "release": "20261124-world-copy",
+  "sourceCommit": "416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8",
+  "installed": true,
+  "entryOpenedAt": "2026-11-24T17:27:00.914Z",
+  "runtime": {
+    "at": "2026-11-24T17:28:14.683Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 4617430,
+    "gamePid": 714287,
+    "adminPid": 1163,
+    "candidateInstalled": true
+  },
+  "changes": [
+    "Pinned verified WAL replay reuses immutable records and detaches only changed ancestors",
+    "Canonical field and receipt-bucket bytes reused between database snapshots",
+    "PostgreSQL compresses canonical bytes without JSON parse/stringify round trips",
+    "Bounded Windows atomic-rename retry and safe worker failure categories"
+  ],
+  "staged": {
+    "release": "/srv/heroether-test/play/releases/20261124-world-copy",
+    "sourceCommit": "416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8",
+    "files": 2613,
+    "changed": 12,
+    "previousReleaseUnchanged": true,
+    "protectedGraphicsUnchanged": true,
+    "commentsRemoved": 184
+  },
+  "verification": {
+    "source": "2f3fe01",
+    "allRequiredChecksPassed": true,
+    "totalTests": 2415,
+    "totalPassed": 2413,
+    "totalSkipped": 2,
+    "failed": 0,
+    "realPostgreSQLPassed": 11,
+    "windowsPassed": 2413,
+    "windowsSkipped": 2,
+    "scope": "Full runtime source checks; mixed-load acceptance recorded separately"
+  },
+  "browser": [
+    {
+      "engine": "chromium",
+      "width": 1398,
+      "height": 766,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 274,
+        "y": 12,
+        "right": 1124,
+        "bottom": 754
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 1336,
+      "height": 650,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 243,
+        "y": 12,
+        "right": 1093,
+        "bottom": 638
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 412,
+      "height": 915,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 12,
+        "y": 12,
+        "right": 400,
+        "bottom": 903
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 384,
+      "height": 824,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 12,
+        "y": 12,
+        "right": 372,
+        "bottom": 812
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 915,
+      "height": 412,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 32.5,
+        "y": 12,
+        "right": 882.5,
+        "bottom": 400
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 600,
+      "height": 600,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 12,
+        "y": 12,
+        "right": 588,
+        "bottom": 588
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1398,
+      "height": 766,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 274,
+        "y": 12,
+        "right": 1124,
+        "bottom": 754
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1336,
+      "height": 650,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 243,
+        "y": 12,
+        "right": 1093,
+        "bottom": 638
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "width": 412,
+      "height": 915,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 12,
+        "y": 12,
+        "right": 400,
+        "bottom": 903
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "width": 384,
+      "height": 824,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 12,
+        "y": 12,
+        "right": 372,
+        "bottom": 812
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "width": 915,
+      "height": 412,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 32.5,
+        "y": 12,
+        "right": 882.5,
+        "bottom": 400
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "width": 600,
+      "height": 600,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 12,
+        "y": 12,
+        "right": 588,
+        "bottom": 588
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 1398,
+      "height": 766,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 274,
+        "y": 12,
+        "right": 1124,
+        "bottom": 754
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 1336,
+      "height": 650,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 243,
+        "y": 12,
+        "right": 1093,
+        "bottom": 638
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 412,
+      "height": 915,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 12,
+        "y": 12,
+        "right": 400,
+        "bottom": 903
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 384,
+      "height": 824,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 12,
+        "y": 12,
+        "right": 372,
+        "bottom": 812
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 915,
+      "height": 412,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 32.5,
+        "y": 12,
+        "right": 882.5,
+        "bottom": 400
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 600,
+      "height": 600,
+      "id": "alfa-test-0.0.45",
+      "text": "ГЕРОИ ЭФИРА, ИГРОВАЯ ГАЗЕТАВестник Эфира×24 ноября 2026 г.Что нового в «Героях Эфира»• Уменьшена повторная обработка истории операций при сохранении прогресса.• Снижены затраты памяти на восстановление сохранений из базы данных.‹1 / 41›НовостиВести ЭфираСобытияВремя приключенийОбновленияЧто новогоAlfa-test 0.0.45",
+      "version": "Герои Эфира, Alfa-test 0.0.45",
+      "bounds": {
+        "x": 12,
+        "y": 12,
+        "right": 588,
+        "bottom": 588
+      },
+      "overflow": false,
+      "singleCloseAcknowledged": true,
+      "reloadDidNotReopen": true,
+      "manualOpen": true,
+      "errors": []
+    }
+  ],
+  "http": {
+    "at": "2026-11-24T17:27:54.316Z",
+    "checks": [
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/index.html",
+        "bytes": 42837,
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/shared/release-notes.js",
+        "bytes": 21490,
+        "exact": true
+      },
+      {
+        "origin": "http://195.208.123.221",
+        "file": "public/index.html",
+        "bytes": 42837,
+        "exact": true
+      },
+      {
+        "origin": "http://195.208.123.221",
+        "file": "public/shared/release-notes.js",
+        "bytes": 21490,
+        "exact": true
+      }
+    ]
+  },
+  "localHttp": {
+    "at": "2026-11-24T17:28:24.482Z",
+    "port": 3104,
+    "checks": 2,
+    "exact": true,
+    "files": [
+      {
+        "origin": "http://127.0.0.1:3104",
+        "file": "public/index.html",
+        "bytes": 42837,
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3104",
+        "file": "public/shared/release-notes.js",
+        "bytes": 21490,
+        "exact": true
+      }
+    ],
+    "experimentalPort3000Untouched": true
+  },
+  "rootSync": {
+    "at": "2026-11-24T17:28:09.761Z",
+    "sourceCommit": "416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8",
+    "developerHead": "649383f315a46beb0c6cd9f0b1e51338fb8c6a5f",
+    "files": [
+      {
+        "file": "games/heroes-of-ether/docs/development/release-notes.txt",
+        "before": "cecdc2f253d6ce53369abc19aaa524eb4c18cca512263f48ea4517c5f30bbc51",
+        "sha256": "e2c2fdc7c00a2640f1666769a035a61b4d5f8ac9d0e96f8a7f9af946e61d9bfd"
+      },
+      {
+        "file": "games/heroes-of-ether/docs/performance/world-copy-20261124.txt",
+        "before": null,
+        "sha256": "aaf75ca216facd2f994bad8a98e78929564b22e6602792856e26c90e1582da6f"
+      },
+      {
+        "file": "games/heroes-of-ether/public/index.html",
+        "before": "36324b83ca78335a49054c7378e8713aa2b01a40672bd1dcb2759eb323fb683f",
+        "sha256": "7ed25928a4175978a47aee84ed946d6c47d4232328e1a977b80f142a2986c37c"
+      },
+      {
+        "file": "games/heroes-of-ether/public/shared/release-notes.js",
+        "before": "1984053b36066341390b25123fd42f705b4f26fab196d0fe193505b389da8eb8",
+        "sha256": "b221e99ad88c38f4c46a0504c7f00afcafe21adb753c80f701dc4cde61886fac"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/alchemy-load-audit.cjs",
+        "before": null,
+        "sha256": "cfdb8727df5351c6150fae39dc232e306805ac0072bdbb47eda3617231ea16aa"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/audit-capacity.cjs",
+        "before": "542dc5380f2a4a7b573f4bceb59b5f66a72c30a6bc609af4d186d2021659d4fe",
+        "sha256": "e32aa3e518536a85e34cb956c21c9c7f6809ba7e754d7805d49fba4c31b26b04"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/capacity-assessment.cjs",
+        "before": "9147b54c3c5697829087437c81e1cdc00b8a4b8d84c10a4df2241bb622ee4329",
+        "sha256": "c11e941703044f4ce1850b04f109897ce24c6e0f791a8162e38371ab3953c92e"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/immutable-profile-fields.cjs",
+        "before": null,
+        "sha256": "35317e512fa5e1137c98344b141dbdebddfc9b93951d33578ea03ce95e788c94"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/phase-cpu-profile.cjs",
+        "before": "c0746c624ee2aff3fe6c2a3832dc1d72b9db5c38bd773cf9c0e05e5ae9572afc",
+        "sha256": "d04bad43009f5d5bc65d5a31858f0afdebb40f41c911e4c78445bfcd2264b6b4"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/pinned-world-read.cjs",
+        "before": null,
+        "sha256": "3f7393b2687ced846492c0ea7fcaf19855dae4ac2900e5f6de701e7d1acdbb38"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/postgresql-capacity.cjs",
+        "before": "a0a5f08a76b9eb0028dbfdf0d02add4351450ac9b06d035c02c5ae39103be5fe",
+        "sha256": "6eb0abfe0d47269050f210793327a23ae35ba8abf9b636747785bc5e33411e55"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/premium-emote-browser.cjs",
+        "before": "cc1622dad6cebe41cd7bac58c45e798166426f270ecb2877d6abaf4f493309ff",
+        "sha256": "70501d42f6d6a5bb2d10bc262427573868f4ba225101808376fe138cfec5401d"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/realistic-lobby-plan.cjs",
+        "before": "b3dc41c7ede0816109b4005ccdf9d27a4cc49e63991cb605e4adb8177ea8046e",
+        "sha256": "b098451fb905cdbac674530801930ddced54c8dedf041289c410276a6cd0e8b8"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/retained-capacity-fixture.cjs",
+        "before": null,
+        "sha256": "229fdf132c4decce76baffdb9055697517f815cfc4c684534bbd98efed20f796"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/room-input-load.cjs",
+        "before": "a162a35be2368bccd5a367fbad58cb25d2f37c06f1ddb0278a50f6799c43b424",
+        "sha256": "9d87c09915eb6e015f8de490850b3d98dd3f5517ea4884da03ba0fa0834d7546"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/room-lobby-clients.cjs",
+        "before": "88103087286f2b780e9efe3b30990d0dd716ba8e3aab2f5cd2554885612b202e",
+        "sha256": "9e7f44495fba1e649d7f3e6ccc8f38630d2130b46f974a5a197db11e39932ba4"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/snapshot-compression.cjs",
+        "before": null,
+        "sha256": "ea8cd48eec88ebfe1d593f980cab7f9576b5b2c610dc8d6771ffff843e61ee3d"
+      },
+      {
+        "file": "games/heroes-of-ether/scripts/benchmarks/snapshot-recovery.cjs",
+        "before": null,
+        "sha256": "98d6bc9a4466891569193dbc4c50fd9913e36be2a39e7ba9fc99a7b39bf52eb3"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/persistence/database-sync.js",
+        "before": "05553aa0ffc9cf9391561d6ff00eeaf353c5e45310923b50861b0572f1f063d1",
+        "sha256": "c073898c2c7e63a361173a0c6735baadf50b6f79f06871b0792440f6fca927db"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/persistence/database-worker.js",
+        "before": "6e059683e24d8f0d37c507c700cbd155e22555d7863211865091eb9a44db5901",
+        "sha256": "cfbe340a208b3bb011c6e43a1e4b0bca38215a68b128c9810050d0c5c51f9df0"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/persistence/immutable-document.js",
+        "before": null,
+        "sha256": "e2c181cd5c4c4c5950fc00ec0349bb32361237f6a68f28aaa11ab768c0a68056"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/persistence/pinned-world-reader.js",
+        "before": null,
+        "sha256": "3fa251637ac6fb0221a553bcbec0fdfa8c98883f2b9d1b30b9aa4c8432add3f0"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/persistence/postgresql-state.js",
+        "before": "8218fd31ca0a464207d8657e4259147cd85dee793b039f37a0e507c5cd2d8359",
+        "sha256": "fcfcd70df202daf04a01a0ae9f9c6f8bca44addd71450c4d30460cfd22287d4b"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/persistence/snapshot-builder.js",
+        "before": "a466ba44ae3055a2fe2107062fbbaa40561fc4da55d8e45f000f854fd618734a",
+        "sha256": "25575763c6756f32d7b4015990f197e71a803b3c0027c8c6414cc584466fe889"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/persistence/state-snapshot.js",
+        "before": "1976e769bb2fac24d912c2ade43f777a48d2121bfe29da5082e8a273318da928",
+        "sha256": "fd79434a5f4718c456dafd89d9e448ff5e86e9e04478d5560398449becc45106"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/profiles/atomic-rename.js",
+        "before": null,
+        "sha256": "c0c4f0cdfdf3b093ffda74125f6d937f25b382a3f0332f186bc720cfeeb88b4a"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/profiles/checkpoint-json.js",
+        "before": "eefac67478a5a12fc3c540044e8c0fadc716f5f6c6ea5d7ff2895d23e98b5354",
+        "sha256": "979adf5d2062e46ba95a78df2217e687979c12604820bf4e99d9ab288f1511f1"
+      },
+      {
+        "file": "games/heroes-of-ether/src/server/profiles/profile-store.js",
+        "before": "984e6364050fc01aad584b818202b369fab2336d9c7edee08d957b0fbdad2673",
+        "sha256": "3537e2a8cae184ac90ed009dd70483594f1a7e5df9386e041252d22351cf0b24"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/integration/postgresql-worker-recovery.test.js",
+        "before": null,
+        "sha256": "7bcf358f49a94a238d076d35fbd9a3b00da7e94b60fe12c61bb739b74e6199a5"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/alchemy-load-audit.test.js",
+        "before": null,
+        "sha256": "82f4cf39255512ed838b2a245f949c2022f111f2ccf4f3c523eb73248aec2ee2"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/atomic-rename.test.js",
+        "before": null,
+        "sha256": "ce6112f3e6e5538ac4fe844020e623c6d8f8dd85d382694e37c262452a4db944"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/checkpoint-json.test.js",
+        "before": "7bfb431a2f037b1090513b24cf3715e260401239d379c8ad1e133dd8064ce130",
+        "sha256": "a2b70247be5f6815ee137488060baa5cbb42ebf046f66cbea7a2c5bc89060884"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/database-worker-messages.test.js",
+        "before": "172d79e8a2d274b20c9144d19faa85e6d68837182eded638eee5c0171a51ac5e",
+        "sha256": "14a2b869185b4b848aa6704efb925c16c91b412edea9ab93f7f7cb2c21405571"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/pinned-world-reader.test.js",
+        "before": null,
+        "sha256": "5e3c43134806abcf469cd981ea8935804b23ca1f5452b1d14c840c143db3c335"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/realistic-alchemy-load.test.js",
+        "before": null,
+        "sha256": "af980619b72e53cb9700adc135024449a8837b81b3ac37d35abd55c224751d76"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/realistic-linked-lobby.test.js",
+        "before": null,
+        "sha256": "2328b861af4dff9db2534d5d73d5b3eb29e7b85bff5d348fb379aef891b86521"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/retained-capacity-fixture.test.js",
+        "before": null,
+        "sha256": "124a13f0eac63e0ffc3ac216c38591177221bb275d52a8b241be94eb9ff4dfcc"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/snapshot-builder.test.js",
+        "before": "1f536ff5159f9e854e695eaa0cf6650c60692cb941db809685f98699d67eaf41",
+        "sha256": "973401e54f9e3771ced21875561c2f6e72e3d2c05efb42e6cdf5b0e71a69183b"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/snapshot-compression.test.js",
+        "before": null,
+        "sha256": "a10d9bfc5b56994f919d6c1ff5e36d5ce6a5c8c8761433eb8c431b412178a245"
+      },
+      {
+        "file": "games/heroes-of-ether/tests/unit/state-snapshot.test.js",
+        "before": "f869244f68ba4996e0039384535d9ac32046bb0d9cf2f82fe316214a8b003897",
+        "sha256": "72adf5e14306899def060da413eb9480b4035d369de03714697cb6ff41f072ed"
+      }
+    ],
+    "privateConfigChanged": false
+  },
+  "data": {
+    "before": {
+      "at": 1795540209185,
+      "revision": 4617419,
+      "digest": "6910c5e5fa7ca6a18d09e1543e9711b7d7747bfec73732a6123b7f185b820c9c",
+      "worldHash": "d14fa48de6450d3d343a6a4d1c1ae8b50cb1a7269341ec5ceaf299c904778d3e",
+      "profiles": 1723,
+      "clans": 137,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/dev/shm/heroether-world-copy-backup-20261124/world-copy-release-20261124",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/world-copy-release-20261124/data-before.tar.gz"
+    },
+    "after": {
+      "calendarReplayExact": true,
+      "approvedMigrationsExact": true,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 4617419,
+      "revision": 4617422,
+      "digest": "bbec62e346d586dcd2273d42f599dd457b2b4b5dbdde3d933fe7d0f21bddac79",
+      "worldHash": "55eebf6eacf2b8c7700c3393a2859feace3e00204ae06c89304dd20a2b50e9b9",
+      "profiles": 1723,
+      "clans": 137,
+      "at": 1795540540040,
+      "transitionTimes": [
+        1795540540040,
+        1795540560015,
+        1795540980580
+      ],
+      "retiredAvatarProfiles": [],
+      "constructorChanges": [],
+      "questPayouts": 0,
+      "questChests": 0
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "590fe3d9620f8d9ee9b3e37a4838758a7967a36efdcb15df6cf23e4bed67be67",
+      "revision": 4617419,
+      "digest": "6910c5e5fa7ca6a18d09e1543e9711b7d7747bfec73732a6123b7f185b820c9c",
+      "worldHash": "d14fa48de6450d3d343a6a4d1c1ae8b50cb1a7269341ec5ceaf299c904778d3e",
+      "profiles": 1723,
+      "clans": 137,
+      "postgresqlArchiveVerified": true
+    }
+  },
+  "capacity": [
+    {
+      "scenario": "Historical 30 arena + 5 lobby; 10 minutes; 3 CPU including generators",
+      "platform": "Linux VPS",
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 4,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 5,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 6,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 7,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 8,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 9,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 10,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 9545,
+        "recovered": 9545,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:hook": 274,
+          "booster:cake": 276,
+          "booster:candy": 275,
+          "booster:vortex": 286,
+          "booster:glove": 275,
+          "booster:clan_shield": 299,
+          "booster:sphere": 287,
+          "booster:donut": 298,
+          "booster:freeze": 268,
+          "booster:mine": 287,
+          "booster:harpoon": 283,
+          "booster:knuckles": 284,
+          "booster:mega_poison": 281,
+          "booster:easter_egg": 283,
+          "booster:colorful_shield": 288,
+          "booster:ice_cream": 275,
+          "booster:warheads": 277,
+          "booster:fire": 270,
+          "booster:poison": 277,
+          "booster:rocket": 265,
+          "booster:web": 273,
+          "booster:fire_sword": 276,
+          "booster:speed": 298,
+          "booster:lock": 278,
+          "booster:axe": 268,
+          "booster:meat": 295,
+          "booster:golden_shield": 288,
+          "booster:stone": 282,
+          "booster:sponge": 270,
+          "booster:awl": 251,
+          "lobby:loadout": 95,
+          "lobby:purchase": 95,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 95,
+          "lobby:gift-read": 94,
+          "lobby:clan-create": 3,
+          "lobby:clan-deposit": 95,
+          "lobby:clan-buy": 95,
+          "lobby:clan-edit": 95,
+          "lobby:roulette-prepare": 95,
+          "lobby:roulette-spin": 93,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 90,
+          "lobby:chat": 90,
+          "lobby:pet-equip": 88
+        },
+        "gifts": 95,
+        "notices": 94,
+        "deposits": 95,
+        "created": 3,
+        "validInventoriesAndTransactions": true,
+        "retainedHistory": {
+          "matched": true,
+          "profiles": 1280,
+          "historicalReceipts": 3795000
+        }
+      },
+      "database": {
+        "matched": true,
+        "localRevision": 19054,
+        "databaseRevision": 19054
+      },
+      "windows": [
+        {
+          "hz": 19.770716545682532,
+          "tickWorkP95": 20.955407000001287,
+          "actionP95": 86.38876800000435,
+          "lobby": {
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "account-bonus": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-create": 3,
+            "clan-view": 22,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-buy": 5,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 7,
+            "presence": 5,
+            "pet-equip": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 381,
+              "feed": 2510
+            },
+            "attempted": {
+              "split": 486,
+              "feed": 2559
+            }
+          },
+          "rssMiB": 2713.9140625,
+          "boosterTypes": {
+            "colorful_shield": 30,
+            "hook": 28,
+            "ice_cream": 30,
+            "candy": 29,
+            "rocket": 27,
+            "freeze": 27,
+            "glove": 27,
+            "web": 26,
+            "sphere": 30,
+            "poison": 26,
+            "donut": 30,
+            "speed": 30,
+            "mine": 29,
+            "lock": 27,
+            "harpoon": 29,
+            "axe": 28,
+            "stone": 27,
+            "meat": 30,
+            "knuckles": 29,
+            "golden_shield": 29,
+            "mega_poison": 27,
+            "sponge": 27,
+            "easter_egg": 29,
+            "fire": 27,
+            "cake": 28,
+            "warheads": 24,
+            "vortex": 29,
+            "awl": 24,
+            "clan_shield": 30,
+            "fire_sword": 29
+          }
+        },
+        {
+          "hz": 19.83835843834835,
+          "tickWorkP95": 24.89039899999625,
+          "actionP95": 73.27631700001075,
+          "lobby": {
+            "news": 8,
+            "presence": 10,
+            "clan-view": 30,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "account-bonus": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 9,
+            "pet-food": 5,
+            "chat": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 345,
+              "feed": 2493
+            },
+            "attempted": {
+              "split": 486,
+              "feed": 2564
+            }
+          },
+          "rssMiB": 2732.5625,
+          "boosterTypes": {
+            "freeze": 30,
+            "colorful_shield": 30,
+            "hook": 30,
+            "ice_cream": 30,
+            "candy": 30,
+            "rocket": 29,
+            "glove": 27,
+            "web": 27,
+            "sphere": 30,
+            "poison": 29,
+            "donut": 29,
+            "speed": 30,
+            "mine": 29,
+            "lock": 29,
+            "harpoon": 28,
+            "axe": 27,
+            "stone": 27,
+            "meat": 30,
+            "knuckles": 30,
+            "golden_shield": 30,
+            "mega_poison": 29,
+            "sponge": 29,
+            "easter_egg": 30,
+            "fire": 29,
+            "cake": 28,
+            "warheads": 27,
+            "vortex": 29,
+            "awl": 22,
+            "clan_shield": 30,
+            "fire_sword": 28
+          }
+        },
+        {
+          "hz": 19.492022128395188,
+          "tickWorkP95": 22.628032000007806,
+          "actionP95": 90.28239000000758,
+          "lobby": {
+            "pet-equip": 6,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "clan-view": 29,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "account-bonus": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 9,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 5,
+            "roulette-spin": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 359,
+              "feed": 2488
+            },
+            "attempted": {
+              "split": 486,
+              "feed": 2553
+            }
+          },
+          "rssMiB": 2769.60546875,
+          "boosterTypes": {
+            "freeze": 30,
+            "colorful_shield": 30,
+            "hook": 28,
+            "ice_cream": 30,
+            "candy": 30,
+            "rocket": 28,
+            "glove": 29,
+            "web": 29,
+            "sphere": 30,
+            "poison": 26,
+            "donut": 30,
+            "speed": 29,
+            "mine": 27,
+            "lock": 25,
+            "harpoon": 29,
+            "axe": 27,
+            "stone": 29,
+            "meat": 30,
+            "knuckles": 29,
+            "golden_shield": 29,
+            "mega_poison": 30,
+            "sponge": 27,
+            "easter_egg": 30,
+            "fire": 28,
+            "cake": 27,
+            "warheads": 29,
+            "vortex": 29,
+            "awl": 29,
+            "clan_shield": 30,
+            "fire_sword": 27
+          }
+        },
+        {
+          "hz": 19.419124250492285,
+          "tickWorkP95": 22.557545999996364,
+          "actionP95": 95.39224000001559,
+          "lobby": {
+            "roulette-prepare": 10,
+            "clan-view": 26,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift-read": 10,
+            "gift": 10,
+            "clan-deposit": 9,
+            "clan-buy": 7,
+            "clan-edit": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 375,
+              "feed": 2528
+            },
+            "attempted": {
+              "split": 487,
+              "feed": 2564
+            }
+          },
+          "rssMiB": 2778.78125,
+          "boosterTypes": {
+            "freeze": 29,
+            "colorful_shield": 30,
+            "ice_cream": 30,
+            "candy": 30,
+            "rocket": 29,
+            "hook": 28,
+            "glove": 29,
+            "web": 30,
+            "sphere": 30,
+            "poison": 28,
+            "donut": 30,
+            "speed": 30,
+            "mine": 29,
+            "lock": 29,
+            "harpoon": 30,
+            "axe": 27,
+            "stone": 29,
+            "meat": 28,
+            "knuckles": 29,
+            "golden_shield": 30,
+            "mega_poison": 29,
+            "sponge": 30,
+            "easter_egg": 30,
+            "fire": 28,
+            "cake": 29,
+            "warheads": 28,
+            "vortex": 29,
+            "awl": 24,
+            "clan_shield": 30,
+            "fire_sword": 28
+          }
+        },
+        {
+          "hz": 19.49893930774893,
+          "tickWorkP95": 22.241562000010163,
+          "actionP95": 87.03550599998562,
+          "lobby": {
+            "clan-buy": 8,
+            "clan-deposit": 6,
+            "clan-edit": 10,
+            "clan-view": 25,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 18,
+            "gift-read": 8,
+            "gift": 9
+          },
+          "inputs": {
+            "accepted": {
+              "split": 324,
+              "feed": 2516
+            },
+            "attempted": {
+              "split": 482,
+              "feed": 2561
+            }
+          },
+          "rssMiB": 2778.5859375,
+          "boosterTypes": {
+            "freeze": 27,
+            "colorful_shield": 30,
+            "hook": 29,
+            "ice_cream": 30,
+            "candy": 30,
+            "rocket": 30,
+            "glove": 29,
+            "web": 29,
+            "sphere": 30,
+            "poison": 29,
+            "donut": 30,
+            "speed": 30,
+            "mine": 29,
+            "lock": 26,
+            "harpoon": 29,
+            "axe": 27,
+            "stone": 30,
+            "meat": 30,
+            "knuckles": 28,
+            "golden_shield": 28,
+            "mega_poison": 28,
+            "sponge": 28,
+            "easter_egg": 27,
+            "fire": 28,
+            "cake": 29,
+            "warheads": 30,
+            "vortex": 29,
+            "awl": 26,
+            "clan_shield": 30,
+            "fire_sword": 28
+          }
+        },
+        {
+          "hz": 19.491641644184224,
+          "tickWorkP95": 23.897975000028964,
+          "actionP95": 92.25954399997136,
+          "lobby": {
+            "gift": 6,
+            "clan-view": 30,
+            "social-view": 13,
+            "gift-read": 7,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 8
+          },
+          "inputs": {
+            "accepted": {
+              "split": 332,
+              "feed": 2502
+            },
+            "attempted": {
+              "split": 482,
+              "feed": 2560
+            }
+          },
+          "rssMiB": 2799.26953125,
+          "boosterTypes": {
+            "freeze": 29,
+            "colorful_shield": 30,
+            "hook": 30,
+            "ice_cream": 30,
+            "candy": 30,
+            "rocket": 30,
+            "glove": 30,
+            "web": 29,
+            "sphere": 30,
+            "poison": 29,
+            "donut": 30,
+            "speed": 30,
+            "mine": 30,
+            "lock": 30,
+            "harpoon": 27,
+            "axe": 25,
+            "stone": 28,
+            "meat": 29,
+            "knuckles": 25,
+            "golden_shield": 25,
+            "mega_poison": 24,
+            "sponge": 23,
+            "easter_egg": 25,
+            "fire": 24,
+            "cake": 25,
+            "warheads": 29,
+            "vortex": 30,
+            "awl": 27,
+            "clan_shield": 30,
+            "fire_sword": 24
+          }
+        },
+        {
+          "hz": 19.56716305724334,
+          "tickWorkP95": 25.14253200002713,
+          "actionP95": 86.95015500002773,
+          "lobby": {
+            "social-view": 19,
+            "gift-read": 10,
+            "daily-reward": 7,
+            "gift": 10,
+            "clan-view": 30,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "profile": 10,
+            "rankings": 8,
+            "loadout": 7,
+            "purchase": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 348,
+              "feed": 2467
+            },
+            "attempted": {
+              "split": 485,
+              "feed": 2561
+            }
+          },
+          "rssMiB": 2868.67578125,
+          "boosterTypes": {
+            "freeze": 28,
+            "colorful_shield": 30,
+            "hook": 28,
+            "ice_cream": 30,
+            "candy": 30,
+            "rocket": 28,
+            "glove": 28,
+            "web": 29,
+            "sphere": 30,
+            "poison": 28,
+            "donut": 29,
+            "speed": 30,
+            "mine": 29,
+            "lock": 27,
+            "harpoon": 30,
+            "axe": 27,
+            "stone": 29,
+            "meat": 29,
+            "knuckles": 27,
+            "golden_shield": 27,
+            "mega_poison": 27,
+            "sponge": 26,
+            "easter_egg": 27,
+            "fire": 25,
+            "cake": 29,
+            "warheads": 29,
+            "vortex": 29,
+            "awl": 24,
+            "clan_shield": 30,
+            "fire_sword": 27
+          }
+        },
+        {
+          "hz": 19.752244201126278,
+          "tickWorkP95": 23.81956800003536,
+          "actionP95": 75.68970600003377,
+          "lobby": {
+            "loadout": 8,
+            "rankings": 7,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift-read": 10,
+            "gift": 10,
+            "clan-view": 28,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 8,
+            "profile": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 339,
+              "feed": 2512
+            },
+            "attempted": {
+              "split": 486,
+              "feed": 2562
+            }
+          },
+          "rssMiB": 2876.30859375,
+          "boosterTypes": {
+            "freeze": 24,
+            "colorful_shield": 28,
+            "hook": 27,
+            "ice_cream": 25,
+            "candy": 26,
+            "rocket": 26,
+            "glove": 27,
+            "web": 27,
+            "sphere": 27,
+            "poison": 25,
+            "donut": 30,
+            "speed": 29,
+            "mine": 30,
+            "lock": 28,
+            "harpoon": 28,
+            "axe": 28,
+            "stone": 26,
+            "meat": 30,
+            "knuckles": 29,
+            "golden_shield": 30,
+            "mega_poison": 29,
+            "sponge": 25,
+            "easter_egg": 25,
+            "fire": 23,
+            "cake": 25,
+            "warheads": 24,
+            "vortex": 25,
+            "awl": 26,
+            "clan_shield": 30,
+            "fire_sword": 29
+          }
+        },
+        {
+          "hz": 19.851594190084175,
+          "tickWorkP95": 23.746864999993704,
+          "actionP95": 78.61747499997728,
+          "lobby": {
+            "profile": 10,
+            "presence": 6,
+            "clan-view": 27,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift-read": 10,
+            "gift": 10,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 8,
+            "news": 7
+          },
+          "inputs": {
+            "accepted": {
+              "split": 345,
+              "feed": 2479
+            },
+            "attempted": {
+              "split": 485,
+              "feed": 2559
+            }
+          },
+          "rssMiB": 3032.265625,
+          "boosterTypes": {
+            "hook": 23,
+            "ice_cream": 20,
+            "candy": 20,
+            "rocket": 19,
+            "glove": 24,
+            "colorful_shield": 25,
+            "web": 24,
+            "sphere": 25,
+            "poison": 30,
+            "donut": 30,
+            "speed": 29,
+            "mine": 28,
+            "lock": 29,
+            "harpoon": 25,
+            "axe": 24,
+            "stone": 29,
+            "meat": 29,
+            "knuckles": 30,
+            "golden_shield": 30,
+            "mega_poison": 29,
+            "sponge": 27,
+            "easter_egg": 30,
+            "fire": 28,
+            "cake": 29,
+            "warheads": 28,
+            "vortex": 27,
+            "awl": 25,
+            "clan_shield": 29,
+            "fire_sword": 27,
+            "freeze": 20
+          }
+        },
+        {
+          "hz": 19.766934446955645,
+          "tickWorkP95": 25.31172899994999,
+          "actionP95": 47.832000999944285,
+          "lobby": {
+            "news": 8,
+            "chat": 7,
+            "presence": 10,
+            "clan-view": 30,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift-read": 10,
+            "gift": 10,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 8,
+            "pet-equip": 8,
+            "pet-food": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 336,
+              "feed": 2511
+            },
+            "attempted": {
+              "split": 488,
+              "feed": 2574
+            }
+          },
+          "rssMiB": 2995.13671875,
+          "boosterTypes": {
+            "hook": 23,
+            "ice_cream": 20,
+            "candy": 20,
+            "rocket": 19,
+            "glove": 25,
+            "colorful_shield": 25,
+            "web": 23,
+            "sphere": 25,
+            "poison": 26,
+            "donut": 30,
+            "speed": 29,
+            "mine": 27,
+            "lock": 28,
+            "harpoon": 28,
+            "axe": 27,
+            "stone": 28,
+            "meat": 30,
+            "knuckles": 28,
+            "golden_shield": 30,
+            "mega_poison": 29,
+            "sponge": 28,
+            "easter_egg": 30,
+            "fire": 30,
+            "cake": 27,
+            "warheads": 28,
+            "vortex": 30,
+            "awl": 24,
+            "clan_shield": 30,
+            "fire_sword": 29,
+            "freeze": 24
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "60 arena + 5 lobby; 10 minutes; 6 CPU including generators",
+      "platform": "Linux VPS",
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 4,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 5,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 6,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 7,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 8,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 9,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 10,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 17407,
+        "recovered": 17407,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:hook": 515,
+          "booster:cake": 561,
+          "booster:candy": 531,
+          "booster:vortex": 577,
+          "booster:glove": 510,
+          "booster:clan_shield": 595,
+          "booster:sphere": 509,
+          "booster:donut": 527,
+          "booster:freeze": 526,
+          "booster:mine": 536,
+          "booster:harpoon": 561,
+          "booster:knuckles": 565,
+          "booster:mega_poison": 553,
+          "booster:easter_egg": 584,
+          "booster:colorful_shield": 549,
+          "booster:ice_cream": 531,
+          "booster:warheads": 561,
+          "booster:web": 496,
+          "booster:fire": 542,
+          "booster:poison": 496,
+          "booster:rocket": 538,
+          "booster:speed": 532,
+          "booster:lock": 544,
+          "booster:fire_sword": 511,
+          "booster:meat": 593,
+          "booster:golden_shield": 581,
+          "booster:sponge": 526,
+          "booster:stone": 547,
+          "booster:awl": 522,
+          "booster:axe": 532,
+          "lobby:loadout": 95,
+          "lobby:purchase": 95,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 95,
+          "lobby:gift-read": 95,
+          "lobby:clan-create": 3,
+          "lobby:clan-deposit": 95,
+          "lobby:clan-buy": 95,
+          "lobby:clan-edit": 95,
+          "lobby:roulette-prepare": 95,
+          "lobby:roulette-spin": 93,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 90,
+          "lobby:chat": 90,
+          "lobby:pet-equip": 85
+        },
+        "gifts": 95,
+        "notices": 95,
+        "deposits": 95,
+        "created": 3,
+        "validInventoriesAndTransactions": true
+      },
+      "database": {
+        "matched": true,
+        "localRevision": 23813,
+        "databaseRevision": 23813
+      },
+      "windows": [
+        {
+          "hz": 19.92495462621478,
+          "tickWorkP95": 32.848769999996875,
+          "lobby": {
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "account-bonus": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-create": 3,
+            "clan-view": 22,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-buy": 5,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 6,
+            "presence": 5,
+            "pet-equip": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 791,
+              "feed": 5029
+            },
+            "attempted": {
+              "split": 972,
+              "feed": 5128
+            }
+          },
+          "rssMiB": 1043.56640625,
+          "boosterTypes": {
+            "freeze": 54,
+            "colorful_shield": 60,
+            "hook": 57,
+            "ice_cream": 56,
+            "candy": 59,
+            "rocket": 54,
+            "glove": 58,
+            "web": 57,
+            "sphere": 59,
+            "poison": 57,
+            "donut": 59,
+            "speed": 60,
+            "mine": 55,
+            "lock": 54,
+            "harpoon": 58,
+            "axe": 52,
+            "stone": 51,
+            "meat": 60,
+            "knuckles": 59,
+            "golden_shield": 58,
+            "mega_poison": 56,
+            "sponge": 51,
+            "easter_egg": 58,
+            "fire": 54,
+            "cake": 57,
+            "warheads": 54,
+            "vortex": 58,
+            "awl": 48,
+            "clan_shield": 60,
+            "fire_sword": 54
+          }
+        },
+        {
+          "hz": 20.01292053882284,
+          "tickWorkP95": 35.78307999999379,
+          "lobby": {
+            "news": 9,
+            "presence": 10,
+            "clan-view": 30,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "account-bonus": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 8,
+            "pet-food": 5,
+            "chat": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 705,
+              "feed": 5019
+            },
+            "attempted": {
+              "split": 976,
+              "feed": 5135
+            }
+          },
+          "rssMiB": 1040.7109375,
+          "boosterTypes": {
+            "freeze": 57,
+            "colorful_shield": 60,
+            "hook": 53,
+            "ice_cream": 60,
+            "candy": 60,
+            "rocket": 60,
+            "glove": 60,
+            "web": 56,
+            "sphere": 60,
+            "poison": 57,
+            "donut": 60,
+            "speed": 60,
+            "mine": 56,
+            "lock": 54,
+            "harpoon": 56,
+            "axe": 51,
+            "stone": 59,
+            "meat": 60,
+            "knuckles": 57,
+            "golden_shield": 59,
+            "mega_poison": 58,
+            "sponge": 55,
+            "easter_egg": 60,
+            "fire": 57,
+            "cake": 55,
+            "warheads": 56,
+            "vortex": 57,
+            "awl": 56,
+            "clan_shield": 60,
+            "fire_sword": 54
+          }
+        },
+        {
+          "hz": 20.12841838544324,
+          "tickWorkP95": 36.21074099998805,
+          "lobby": {
+            "pet-equip": 7,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "clan-view": 29,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "account-bonus": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 5,
+            "roulette-spin": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 693,
+              "feed": 4961
+            },
+            "attempted": {
+              "split": 974,
+              "feed": 5129
+            }
+          },
+          "rssMiB": 1145.13671875,
+          "boosterTypes": {
+            "freeze": 53,
+            "colorful_shield": 60,
+            "hook": 54,
+            "ice_cream": 60,
+            "candy": 60,
+            "rocket": 56,
+            "glove": 57,
+            "web": 57,
+            "sphere": 60,
+            "poison": 58,
+            "donut": 60,
+            "speed": 60,
+            "mine": 55,
+            "lock": 58,
+            "harpoon": 53,
+            "axe": 55,
+            "stone": 57,
+            "meat": 60,
+            "knuckles": 57,
+            "golden_shield": 59,
+            "mega_poison": 53,
+            "sponge": 52,
+            "easter_egg": 59,
+            "fire": 59,
+            "cake": 57,
+            "warheads": 52,
+            "vortex": 59,
+            "awl": 53,
+            "clan_shield": 60,
+            "fire_sword": 53
+          }
+        },
+        {
+          "hz": 19.81517932511808,
+          "tickWorkP95": 36.015826999995625,
+          "lobby": {
+            "clan-view": 26,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-deposit": 10,
+            "clan-buy": 5,
+            "clan-edit": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 677,
+              "feed": 4904
+            },
+            "attempted": {
+              "split": 969,
+              "feed": 5128
+            }
+          },
+          "rssMiB": 1139.99609375,
+          "boosterTypes": {
+            "freeze": 57,
+            "colorful_shield": 59,
+            "hook": 57,
+            "ice_cream": 60,
+            "candy": 60,
+            "rocket": 60,
+            "glove": 58,
+            "web": 59,
+            "sphere": 60,
+            "poison": 55,
+            "donut": 59,
+            "speed": 60,
+            "mine": 55,
+            "lock": 57,
+            "harpoon": 57,
+            "axe": 53,
+            "stone": 55,
+            "meat": 60,
+            "knuckles": 57,
+            "golden_shield": 58,
+            "mega_poison": 55,
+            "sponge": 54,
+            "easter_egg": 60,
+            "fire": 56,
+            "cake": 56,
+            "warheads": 54,
+            "vortex": 54,
+            "awl": 52,
+            "clan_shield": 60,
+            "fire_sword": 57
+          }
+        },
+        {
+          "hz": 20.118948827697388,
+          "tickWorkP95": 33.65954700001748,
+          "lobby": {
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "clan-view": 25,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 17,
+            "gift": 10,
+            "gift-read": 7,
+            "clan-deposit": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 704,
+              "feed": 4987
+            },
+            "attempted": {
+              "split": 960,
+              "feed": 5131
+            }
+          },
+          "rssMiB": 1210.33203125,
+          "boosterTypes": {
+            "freeze": 50,
+            "colorful_shield": 56,
+            "hook": 53,
+            "ice_cream": 56,
+            "candy": 55,
+            "rocket": 54,
+            "glove": 57,
+            "web": 54,
+            "sphere": 55,
+            "poison": 49,
+            "donut": 54,
+            "speed": 55,
+            "mine": 55,
+            "lock": 53,
+            "harpoon": 56,
+            "axe": 51,
+            "stone": 56,
+            "meat": 59,
+            "knuckles": 54,
+            "golden_shield": 56,
+            "mega_poison": 55,
+            "sponge": 49,
+            "easter_egg": 58,
+            "fire": 49,
+            "cake": 53,
+            "warheads": 58,
+            "vortex": 58,
+            "awl": 53,
+            "clan_shield": 59,
+            "fire_sword": 51
+          }
+        },
+        {
+          "hz": 20.01930762081586,
+          "tickWorkP95": 37.13853900000686,
+          "lobby": {
+            "social-view": 13,
+            "gift-read": 8,
+            "clan-view": 30,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 8,
+            "gift": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 676,
+              "feed": 4950
+            },
+            "attempted": {
+              "split": 970,
+              "feed": 5123
+            }
+          },
+          "rssMiB": 1271.8671875,
+          "boosterTypes": {
+            "freeze": 47,
+            "colorful_shield": 47,
+            "hook": 47,
+            "ice_cream": 43,
+            "candy": 43,
+            "rocket": 51,
+            "glove": 46,
+            "web": 43,
+            "sphere": 43,
+            "poison": 48,
+            "donut": 49,
+            "speed": 48,
+            "mine": 52,
+            "lock": 56,
+            "harpoon": 55,
+            "axe": 54,
+            "stone": 58,
+            "meat": 60,
+            "knuckles": 53,
+            "golden_shield": 54,
+            "mega_poison": 51,
+            "sponge": 50,
+            "easter_egg": 56,
+            "fire": 51,
+            "cake": 57,
+            "warheads": 59,
+            "vortex": 59,
+            "awl": 53,
+            "clan_shield": 59,
+            "fire_sword": 42
+          }
+        },
+        {
+          "hz": 20.067607015110944,
+          "tickWorkP95": 36.219521999999415,
+          "lobby": {
+            "daily-reward": 7,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-view": 30,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 5,
+            "purchase": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 693,
+              "feed": 4996
+            },
+            "attempted": {
+              "split": 975,
+              "feed": 5127
+            }
+          },
+          "rssMiB": 1256.1796875,
+          "boosterTypes": {
+            "freeze": 46,
+            "colorful_shield": 45,
+            "hook": 41,
+            "ice_cream": 40,
+            "candy": 40,
+            "rocket": 47,
+            "glove": 38,
+            "web": 35,
+            "sphere": 35,
+            "poison": 37,
+            "donut": 40,
+            "speed": 40,
+            "mine": 47,
+            "lock": 52,
+            "harpoon": 55,
+            "axe": 55,
+            "stone": 51,
+            "meat": 58,
+            "knuckles": 58,
+            "golden_shield": 60,
+            "mega_poison": 56,
+            "sponge": 55,
+            "easter_egg": 60,
+            "fire": 47,
+            "cake": 56,
+            "warheads": 59,
+            "vortex": 57,
+            "awl": 49,
+            "clan_shield": 60,
+            "fire_sword": 46
+          }
+        },
+        {
+          "hz": 19.95234285306273,
+          "tickWorkP95": 35.50759100000141,
+          "lobby": {
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-view": 26,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "profile": 5,
+            "rankings": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 696,
+              "feed": 4992
+            },
+            "attempted": {
+              "split": 974,
+              "feed": 5130
+            }
+          },
+          "rssMiB": 1268.64453125,
+          "boosterTypes": {
+            "freeze": 52,
+            "colorful_shield": 48,
+            "hook": 44,
+            "ice_cream": 43,
+            "candy": 42,
+            "rocket": 48,
+            "glove": 39,
+            "web": 34,
+            "sphere": 35,
+            "poison": 38,
+            "donut": 40,
+            "speed": 40,
+            "mine": 47,
+            "lock": 57,
+            "harpoon": 58,
+            "axe": 56,
+            "stone": 53,
+            "meat": 59,
+            "knuckles": 58,
+            "golden_shield": 60,
+            "mega_poison": 60,
+            "sponge": 52,
+            "easter_egg": 60,
+            "fire": 57,
+            "cake": 59,
+            "warheads": 56,
+            "vortex": 58,
+            "awl": 52,
+            "clan_shield": 58,
+            "fire_sword": 47
+          }
+        },
+        {
+          "hz": 20.030528804786442,
+          "tickWorkP95": 36.30239100003382,
+          "lobby": {
+            "clan-view": 29,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 8,
+            "news": 5,
+            "presence": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 734,
+              "feed": 4889
+            },
+            "attempted": {
+              "split": 969,
+              "feed": 5125
+            }
+          },
+          "rssMiB": 1135.515625,
+          "boosterTypes": {
+            "freeze": 54,
+            "colorful_shield": 54,
+            "hook": 51,
+            "ice_cream": 53,
+            "candy": 52,
+            "rocket": 52,
+            "glove": 42,
+            "web": 48,
+            "sphere": 46,
+            "poison": 46,
+            "donut": 50,
+            "speed": 51,
+            "mine": 55,
+            "lock": 55,
+            "harpoon": 56,
+            "axe": 52,
+            "stone": 52,
+            "meat": 60,
+            "knuckles": 59,
+            "golden_shield": 58,
+            "mega_poison": 57,
+            "sponge": 58,
+            "easter_egg": 60,
+            "fire": 58,
+            "cake": 56,
+            "warheads": 58,
+            "vortex": 59,
+            "awl": 51,
+            "clan_shield": 59,
+            "fire_sword": 54
+          }
+        },
+        {
+          "hz": 19.981232707393055,
+          "tickWorkP95": 35.74831500009168,
+          "lobby": {
+            "chat": 7,
+            "news": 10,
+            "presence": 10,
+            "clan-view": 30,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "roulette-prepare": 10,
+            "roulette-spin": 8,
+            "pet-equip": 5,
+            "pet-food": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 686,
+              "feed": 4954
+            },
+            "attempted": {
+              "split": 963,
+              "feed": 5129
+            }
+          },
+          "rssMiB": 1178.1171875,
+          "boosterTypes": {
+            "freeze": 56,
+            "colorful_shield": 60,
+            "hook": 58,
+            "ice_cream": 60,
+            "candy": 60,
+            "rocket": 56,
+            "glove": 55,
+            "web": 53,
+            "sphere": 56,
+            "poison": 51,
+            "donut": 56,
+            "speed": 58,
+            "mine": 59,
+            "lock": 48,
+            "harpoon": 57,
+            "axe": 53,
+            "stone": 55,
+            "meat": 56,
+            "knuckles": 53,
+            "golden_shield": 54,
+            "mega_poison": 52,
+            "sponge": 50,
+            "easter_egg": 53,
+            "fire": 51,
+            "cake": 55,
+            "warheads": 55,
+            "vortex": 58,
+            "awl": 55,
+            "clan_shield": 60,
+            "fire_sword": 53
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "Alchemy 30 arena + 5 lobby; 10 minutes; real separate PostgreSQL schema",
+      "platform": "Windows local",
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": true,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 4,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 5,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 6,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 7,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 8,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 9,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 10,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "ackAudit": {
+        "acknowledged": 9531,
+        "recovered": 9531,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "lobby:loadout": 90,
+          "lobby:purchase": 90,
+          "lobby:account-bonus": 30,
+          "lobby:gift": 90,
+          "lobby:gift-read": 89,
+          "lobby:clan-create": 3,
+          "lobby:clan-deposit": 90,
+          "lobby:clan-buy": 90,
+          "lobby:clan-edit": 90,
+          "lobby:alchemy-brew": 90,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 90,
+          "lobby:chat": 90,
+          "lobby:alchemy-exchange": 85,
+          "lobby:alchemy-equip": 85,
+          "lobby:pet-equip": 85,
+          "booster:alchemy_strength": 28,
+          "booster:alchemy_swiftness": 33,
+          "booster:alchemy_satiety": 34,
+          "booster:alchemy_knowledge": 31,
+          "booster:alchemy_steadiness": 47,
+          "booster:alchemy_reach": 41,
+          "booster:alchemy_vigor": 21,
+          "booster:alchemy_longevity": 49,
+          "booster:alchemy_clarity": 59,
+          "booster:alchemy_precision": 51,
+          "booster:alchemy_magnetism": 60,
+          "booster:alchemy_gatherer": 60,
+          "booster:alchemy_tempest": 54,
+          "booster:alchemy_fortitude": 17,
+          "booster:alchemy_prosperity": 29,
+          "booster:alchemy_archmage": 19,
+          "booster:hook": 228,
+          "booster:cake": 265,
+          "booster:candy": 238,
+          "booster:vortex": 259,
+          "booster:glove": 251,
+          "booster:clan_shield": 280,
+          "booster:sphere": 265,
+          "booster:donut": 269,
+          "booster:freeze": 229,
+          "booster:mine": 259,
+          "booster:harpoon": 263,
+          "booster:knuckles": 270,
+          "booster:mega_poison": 264,
+          "booster:easter_egg": 283,
+          "booster:colorful_shield": 243,
+          "booster:ice_cream": 235,
+          "booster:warheads": 267,
+          "booster:web": 255,
+          "booster:fire": 260,
+          "booster:poison": 246,
+          "booster:rocket": 254,
+          "booster:speed": 267,
+          "booster:lock": 269,
+          "booster:fire_sword": 227,
+          "booster:axe": 243,
+          "booster:meat": 281,
+          "booster:golden_shield": 279,
+          "booster:sponge": 259,
+          "booster:stone": 252,
+          "booster:awl": 246
+        },
+        "gifts": 90,
+        "notices": 89,
+        "deposits": 90,
+        "created": 3,
+        "validInventoriesAndTransactions": true,
+        "alchemy": {
+          "version": 1,
+          "casts": 633,
+          "brews": 90,
+          "exchanges": 85,
+          "profiles": 1280,
+          "exactInventories": true,
+          "exactLobbyIngredientsAndNatural": true
+        }
+      },
+      "database": {
+        "matched": true,
+        "localRevision": 19136,
+        "databaseRevision": 19136
+      },
+      "windows": [
+        {
+          "hz": 19.74229142328197,
+          "tickWorkP95": 17.586799999990035,
+          "actionP95": 221.2546000000002,
+          "lobby": {
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "account-bonus": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 10,
+            "clan-create": 3,
+            "clan-view": 17,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "alchemy-view": 10,
+            "alchemy-brew": 10,
+            "pet-buy": 5,
+            "pet-food": 8,
+            "chat": 5,
+            "news": 5,
+            "presence": 5,
+            "alchemy-exchange": 5,
+            "alchemy-equip": 5,
+            "pet-equip": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 351,
+              "feed": 2355
+            },
+            "attempted": {
+              "split": 460,
+              "feed": 2416
+            }
+          },
+          "rssMiB": 629.296875,
+          "boosterTypes": {
+            "alchemy_strength": 7,
+            "colorful_shield": 28,
+            "ice_cream": 27,
+            "candy": 30,
+            "rocket": 27,
+            "freeze": 27,
+            "hook": 25,
+            "alchemy_swiftness": 7,
+            "glove": 27,
+            "alchemy_satiety": 9,
+            "web": 28,
+            "alchemy_knowledge": 9,
+            "sphere": 28,
+            "alchemy_steadiness": 6,
+            "poison": 28,
+            "alchemy_reach": 7,
+            "donut": 28,
+            "alchemy_vigor": 4,
+            "speed": 28,
+            "alchemy_longevity": 5,
+            "mine": 26,
+            "alchemy_clarity": 7,
+            "lock": 26,
+            "alchemy_precision": 5,
+            "harpoon": 24,
+            "alchemy_magnetism": 8,
+            "axe": 25,
+            "alchemy_gatherer": 7,
+            "stone": 25,
+            "alchemy_tempest": 8,
+            "meat": 28,
+            "alchemy_fortitude": 4,
+            "knuckles": 26,
+            "alchemy_prosperity": 5,
+            "golden_shield": 25,
+            "alchemy_archmage": 4,
+            "mega_poison": 24,
+            "sponge": 26,
+            "easter_egg": 28,
+            "fire": 26,
+            "cake": 25,
+            "warheads": 26,
+            "vortex": 26,
+            "awl": 22,
+            "clan_shield": 29,
+            "fire_sword": 24
+          }
+        },
+        {
+          "hz": 19.804539704141757,
+          "tickWorkP95": 19.084700000006706,
+          "actionP95": 50.38220000000729,
+          "lobby": {
+            "pet-food": 7,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "alchemy-exchange": 10,
+            "alchemy-equip": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "account-bonus": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 9,
+            "clan-view": 18,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "alchemy-view": 5,
+            "alchemy-brew": 5,
+            "pet-equip": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 354,
+              "feed": 2400
+            },
+            "attempted": {
+              "split": 462,
+              "feed": 2436
+            }
+          },
+          "rssMiB": 705.9921875,
+          "boosterTypes": {
+            "rocket": 25,
+            "freeze": 28,
+            "colorful_shield": 28,
+            "hook": 28,
+            "ice_cream": 27,
+            "candy": 28,
+            "alchemy_strength": 4,
+            "alchemy_swiftness": 3,
+            "glove": 28,
+            "web": 27,
+            "alchemy_satiety": 6,
+            "sphere": 29,
+            "alchemy_knowledge": 4,
+            "poison": 27,
+            "alchemy_steadiness": 7,
+            "alchemy_reach": 4,
+            "donut": 30,
+            "speed": 28,
+            "mine": 28,
+            "alchemy_clarity": 6,
+            "lock": 27,
+            "harpoon": 29,
+            "axe": 17,
+            "alchemy_magnetism": 6,
+            "alchemy_gatherer": 5,
+            "stone": 27,
+            "alchemy_tempest": 6,
+            "meat": 27,
+            "knuckles": 25,
+            "alchemy_fortitude": 3,
+            "golden_shield": 28,
+            "alchemy_prosperity": 2,
+            "mega_poison": 24,
+            "alchemy_archmage": 2,
+            "sponge": 24,
+            "easter_egg": 28,
+            "fire": 23,
+            "cake": 25,
+            "warheads": 26,
+            "vortex": 26,
+            "awl": 24,
+            "alchemy_vigor": 3,
+            "alchemy_longevity": 5,
+            "clan_shield": 29,
+            "fire_sword": 28,
+            "alchemy_precision": 4
+          }
+        },
+        {
+          "hz": 19.579538816462346,
+          "tickWorkP95": 20.650499999988824,
+          "actionP95": 75.80439999999362,
+          "lobby": {
+            "alchemy-view": 10,
+            "clan-view": 12,
+            "alchemy-brew": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "alchemy-exchange": 10,
+            "alchemy-equip": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "account-bonus": 10,
+            "social-view": 18,
+            "gift-read": 8,
+            "gift": 10,
+            "clan-deposit": 5,
+            "clan-buy": 5,
+            "clan-edit": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 335,
+              "feed": 2368
+            },
+            "attempted": {
+              "split": 454,
+              "feed": 2423
+            }
+          },
+          "rssMiB": 735.9609375,
+          "boosterTypes": {
+            "ice_cream": 28,
+            "candy": 28,
+            "alchemy_strength": 2,
+            "freeze": 27,
+            "colorful_shield": 29,
+            "hook": 24,
+            "rocket": 26,
+            "glove": 26,
+            "alchemy_swiftness": 3,
+            "web": 25,
+            "alchemy_satiety": 4,
+            "alchemy_knowledge": 6,
+            "sphere": 28,
+            "alchemy_steadiness": 6,
+            "poison": 25,
+            "alchemy_reach": 4,
+            "donut": 28,
+            "alchemy_vigor": 2,
+            "speed": 28,
+            "mine": 28,
+            "lock": 28,
+            "alchemy_clarity": 5,
+            "harpoon": 25,
+            "axe": 24,
+            "alchemy_magnetism": 4,
+            "alchemy_gatherer": 5,
+            "stone": 24,
+            "alchemy_tempest": 7,
+            "meat": 28,
+            "alchemy_fortitude": 2,
+            "knuckles": 28,
+            "golden_shield": 28,
+            "alchemy_prosperity": 3,
+            "mega_poison": 27,
+            "alchemy_archmage": 2,
+            "sponge": 27,
+            "easter_egg": 29,
+            "fire": 26,
+            "cake": 27,
+            "warheads": 26,
+            "vortex": 27,
+            "awl": 27,
+            "clan_shield": 27,
+            "alchemy_longevity": 2,
+            "fire_sword": 25,
+            "alchemy_precision": 2
+          }
+        },
+        {
+          "hz": 19.778677570120276,
+          "tickWorkP95": 19.593800000002375,
+          "actionP95": 42.15340000001015,
+          "lobby": {
+            "social-view": 12,
+            "gift-read": 7,
+            "clan-view": 20,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "alchemy-view": 10,
+            "alchemy-brew": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "alchemy-exchange": 10,
+            "alchemy-equip": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 9,
+            "purchase": 7,
+            "daily-reward": 5,
+            "gift": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 353,
+              "feed": 2351
+            },
+            "attempted": {
+              "split": 459,
+              "feed": 2413
+            }
+          },
+          "rssMiB": 819.7421875,
+          "boosterTypes": {
+            "hook": 27,
+            "ice_cream": 28,
+            "candy": 28,
+            "rocket": 29,
+            "freeze": 27,
+            "colorful_shield": 28,
+            "glove": 27,
+            "alchemy_swiftness": 5,
+            "web": 28,
+            "alchemy_satiety": 4,
+            "sphere": 27,
+            "alchemy_knowledge": 4,
+            "poison": 25,
+            "alchemy_steadiness": 4,
+            "donut": 28,
+            "alchemy_reach": 2,
+            "speed": 28,
+            "mine": 26,
+            "alchemy_longevity": 8,
+            "alchemy_clarity": 6,
+            "lock": 24,
+            "harpoon": 25,
+            "alchemy_precision": 6,
+            "axe": 25,
+            "alchemy_magnetism": 4,
+            "alchemy_gatherer": 4,
+            "stone": 22,
+            "alchemy_tempest": 3,
+            "meat": 28,
+            "knuckles": 28,
+            "alchemy_fortitude": 2,
+            "golden_shield": 28,
+            "alchemy_prosperity": 5,
+            "mega_poison": 27,
+            "alchemy_archmage": 2,
+            "sponge": 23,
+            "alchemy_strength": 3,
+            "easter_egg": 28,
+            "fire": 27,
+            "cake": 27,
+            "warheads": 27,
+            "vortex": 24,
+            "awl": 24,
+            "clan_shield": 28,
+            "fire_sword": 28
+          }
+        },
+        {
+          "hz": 19.60134517166388,
+          "tickWorkP95": 18.917499999981374,
+          "actionP95": 47.604599999962375,
+          "lobby": {
+            "loadout": 6,
+            "purchase": 8,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift-read": 10,
+            "gift": 10,
+            "clan-view": 20,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "alchemy-view": 10,
+            "alchemy-brew": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 9,
+            "alchemy-exchange": 7,
+            "alchemy-equip": 5,
+            "profile": 5,
+            "rankings": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 340,
+              "feed": 2358
+            },
+            "attempted": {
+              "split": 458,
+              "feed": 2416
+            }
+          },
+          "rssMiB": 946.9375,
+          "boosterTypes": {
+            "freeze": 26,
+            "colorful_shield": 26,
+            "hook": 26,
+            "ice_cream": 28,
+            "candy": 27,
+            "rocket": 28,
+            "glove": 28,
+            "web": 28,
+            "alchemy_satiety": 3,
+            "sphere": 28,
+            "poison": 26,
+            "alchemy_steadiness": 6,
+            "donut": 28,
+            "speed": 28,
+            "mine": 25,
+            "lock": 28,
+            "alchemy_clarity": 4,
+            "harpoon": 25,
+            "alchemy_precision": 3,
+            "alchemy_magnetism": 5,
+            "axe": 26,
+            "stone": 26,
+            "alchemy_gatherer": 5,
+            "meat": 28,
+            "alchemy_tempest": 6,
+            "knuckles": 25,
+            "alchemy_fortitude": 1,
+            "alchemy_prosperity": 3,
+            "golden_shield": 28,
+            "mega_poison": 25,
+            "alchemy_archmage": 2,
+            "sponge": 25,
+            "alchemy_strength": 2,
+            "easter_egg": 28,
+            "fire": 26,
+            "alchemy_knowledge": 2,
+            "cake": 27,
+            "warheads": 28,
+            "vortex": 26,
+            "alchemy_reach": 2,
+            "awl": 26,
+            "alchemy_vigor": 2,
+            "clan_shield": 28,
+            "alchemy_longevity": 3,
+            "fire_sword": 27
+          }
+        },
+        {
+          "hz": 19.83779176403361,
+          "tickWorkP95": 19.431100000045262,
+          "actionP95": 41.807899999956135,
+          "lobby": {
+            "alchemy-exchange": 8,
+            "presence": 6,
+            "alchemy-equip": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift-read": 10,
+            "gift": 10,
+            "clan-view": 20,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "alchemy-view": 10,
+            "alchemy-brew": 10,
+            "pet-equip": 8,
+            "pet-food": 5,
+            "chat": 5,
+            "news": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 315,
+              "feed": 2379
+            },
+            "attempted": {
+              "split": 461,
+              "feed": 2428
+            }
+          },
+          "rssMiB": 955.65625,
+          "boosterTypes": {
+            "candy": 23,
+            "rocket": 28,
+            "freeze": 20,
+            "colorful_shield": 22,
+            "hook": 20,
+            "ice_cream": 23,
+            "glove": 27,
+            "web": 27,
+            "sphere": 28,
+            "alchemy_steadiness": 4,
+            "poison": 25,
+            "donut": 27,
+            "alchemy_reach": 2,
+            "speed": 28,
+            "mine": 27,
+            "alchemy_longevity": 5,
+            "alchemy_clarity": 7,
+            "lock": 26,
+            "alchemy_precision": 9,
+            "harpoon": 26,
+            "axe": 25,
+            "alchemy_magnetism": 7,
+            "stone": 24,
+            "alchemy_gatherer": 8,
+            "meat": 28,
+            "alchemy_tempest": 5,
+            "knuckles": 28,
+            "alchemy_fortitude": 1,
+            "golden_shield": 28,
+            "alchemy_prosperity": 2,
+            "mega_poison": 27,
+            "alchemy_archmage": 3,
+            "sponge": 25,
+            "alchemy_strength": 1,
+            "alchemy_swiftness": 4,
+            "easter_egg": 28,
+            "fire": 28,
+            "cake": 27,
+            "alchemy_knowledge": 4,
+            "warheads": 27,
+            "vortex": 25,
+            "awl": 25,
+            "clan_shield": 26,
+            "fire_sword": 17
+          }
+        },
+        {
+          "hz": 19.83794431662145,
+          "tickWorkP95": 18.945200000016484,
+          "actionP95": 44.70979999995325,
+          "lobby": {
+            "pet-food": 10,
+            "pet-equip": 7,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "alchemy-exchange": 10,
+            "alchemy-equip": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift-read": 10,
+            "gift": 10,
+            "clan-view": 15,
+            "clan-deposit": 10,
+            "clan-buy": 8,
+            "clan-edit": 5,
+            "alchemy-view": 5,
+            "alchemy-brew": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 328,
+              "feed": 2347
+            },
+            "attempted": {
+              "split": 453,
+              "feed": 2424
+            }
+          },
+          "rssMiB": 973.34765625,
+          "boosterTypes": {
+            "hook": 23,
+            "ice_cream": 23,
+            "candy": 24,
+            "rocket": 27,
+            "freeze": 21,
+            "colorful_shield": 23,
+            "glove": 28,
+            "alchemy_swiftness": 3,
+            "web": 28,
+            "sphere": 28,
+            "poison": 24,
+            "alchemy_steadiness": 2,
+            "donut": 28,
+            "alchemy_reach": 5,
+            "speed": 27,
+            "mine": 26,
+            "alchemy_longevity": 4,
+            "lock": 28,
+            "alchemy_clarity": 6,
+            "harpoon": 27,
+            "alchemy_precision": 7,
+            "axe": 26,
+            "alchemy_magnetism": 6,
+            "stone": 27,
+            "alchemy_gatherer": 4,
+            "alchemy_tempest": 5,
+            "meat": 29,
+            "knuckles": 28,
+            "alchemy_fortitude": 1,
+            "golden_shield": 29,
+            "alchemy_prosperity": 2,
+            "mega_poison": 27,
+            "alchemy_archmage": 1,
+            "sponge": 30,
+            "alchemy_strength": 2,
+            "easter_egg": 29,
+            "fire": 25,
+            "alchemy_satiety": 1,
+            "cake": 27,
+            "warheads": 26,
+            "vortex": 27,
+            "alchemy_vigor": 5,
+            "awl": 25,
+            "clan_shield": 28,
+            "fire_sword": 19
+          }
+        },
+        {
+          "hz": 19.772426025210663,
+          "tickWorkP95": 18.63920000003418,
+          "actionP95": 164.46199999999953,
+          "lobby": {
+            "clan-edit": 10,
+            "clan-buy": 7,
+            "clan-view": 15,
+            "alchemy-view": 10,
+            "alchemy-brew": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "alchemy-exchange": 10,
+            "alchemy-equip": 10,
+            "profile": 10,
+            "rankings": 10,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 13,
+            "gift-read": 6,
+            "gift": 5,
+            "clan-deposit": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 341,
+              "feed": 2397
+            },
+            "attempted": {
+              "split": 461,
+              "feed": 2428
+            }
+          },
+          "rssMiB": 960.71484375,
+          "boosterTypes": {
+            "colorful_shield": 20,
+            "hook": 20,
+            "ice_cream": 20,
+            "candy": 20,
+            "rocket": 25,
+            "freeze": 20,
+            "glove": 23,
+            "alchemy_swiftness": 3,
+            "web": 23,
+            "sphere": 25,
+            "poison": 20,
+            "alchemy_steadiness": 4,
+            "donut": 24,
+            "alchemy_reach": 6,
+            "speed": 24,
+            "mine": 23,
+            "alchemy_longevity": 6,
+            "alchemy_clarity": 5,
+            "lock": 26,
+            "harpoon": 26,
+            "alchemy_precision": 4,
+            "axe": 25,
+            "alchemy_magnetism": 4,
+            "stone": 26,
+            "alchemy_gatherer": 5,
+            "alchemy_tempest": 4,
+            "meat": 28,
+            "knuckles": 27,
+            "alchemy_fortitude": 1,
+            "golden_shield": 28,
+            "alchemy_prosperity": 2,
+            "alchemy_archmage": 1,
+            "mega_poison": 29,
+            "sponge": 28,
+            "alchemy_strength": 2,
+            "easter_egg": 28,
+            "fire": 27,
+            "alchemy_satiety": 2,
+            "cake": 26,
+            "warheads": 26,
+            "vortex": 28,
+            "awl": 25,
+            "alchemy_vigor": 1,
+            "clan_shield": 30,
+            "fire_sword": 20
+          }
+        },
+        {
+          "hz": 19.727827651334625,
+          "tickWorkP95": 17.95519999996759,
+          "actionP95": 48.21179999993183,
+          "lobby": {
+            "gift": 10,
+            "social-view": 17,
+            "gift-read": 10,
+            "clan-view": 20,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "alchemy-view": 10,
+            "alchemy-brew": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 10,
+            "presence": 10,
+            "alchemy-exchange": 10,
+            "alchemy-equip": 10,
+            "profile": 8,
+            "rankings": 6,
+            "loadout": 5,
+            "purchase": 5,
+            "daily-reward": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 328,
+              "feed": 2373
+            },
+            "attempted": {
+              "split": 459,
+              "feed": 2415
+            }
+          },
+          "rssMiB": 950.14453125,
+          "boosterTypes": {
+            "colorful_shield": 19,
+            "hook": 18,
+            "ice_cream": 17,
+            "candy": 17,
+            "rocket": 20,
+            "glove": 19,
+            "alchemy_swiftness": 2,
+            "web": 21,
+            "sphere": 21,
+            "poison": 22,
+            "alchemy_steadiness": 3,
+            "donut": 25,
+            "alchemy_reach": 6,
+            "speed": 23,
+            "mine": 28,
+            "alchemy_longevity": 5,
+            "lock": 27,
+            "alchemy_clarity": 5,
+            "harpoon": 28,
+            "alchemy_precision": 5,
+            "axe": 24,
+            "alchemy_magnetism": 9,
+            "stone": 26,
+            "alchemy_gatherer": 8,
+            "meat": 28,
+            "knuckles": 27,
+            "alchemy_fortitude": 1,
+            "alchemy_prosperity": 3,
+            "golden_shield": 28,
+            "alchemy_archmage": 2,
+            "mega_poison": 26,
+            "sponge": 24,
+            "alchemy_strength": 2,
+            "easter_egg": 28,
+            "fire": 27,
+            "alchemy_satiety": 2,
+            "cake": 26,
+            "warheads": 26,
+            "vortex": 25,
+            "alchemy_vigor": 3,
+            "awl": 25,
+            "clan_shield": 27,
+            "fire_sword": 20,
+            "freeze": 15,
+            "alchemy_tempest": 4
+          }
+        },
+        {
+          "hz": 19.81154668908304,
+          "tickWorkP95": 19.281700000050478,
+          "actionP95": 43.711000000010245,
+          "lobby": {
+            "profile": 7,
+            "rankings": 9,
+            "loadout": 10,
+            "purchase": 10,
+            "daily-reward": 10,
+            "social-view": 20,
+            "gift": 10,
+            "gift-read": 9,
+            "clan-view": 20,
+            "clan-deposit": 10,
+            "clan-buy": 10,
+            "clan-edit": 10,
+            "alchemy-view": 10,
+            "alchemy-brew": 10,
+            "pet-equip": 10,
+            "pet-food": 10,
+            "chat": 10,
+            "news": 8,
+            "presence": 5,
+            "alchemy-exchange": 5,
+            "alchemy-equip": 5
+          },
+          "inputs": {
+            "accepted": {
+              "split": 307,
+              "feed": 2350
+            },
+            "attempted": {
+              "split": 454,
+              "feed": 2421
+            }
+          },
+          "rssMiB": 933.1015625,
+          "boosterTypes": {
+            "rocket": 19,
+            "glove": 18,
+            "colorful_shield": 19,
+            "hook": 17,
+            "ice_cream": 13,
+            "candy": 13,
+            "alchemy_swiftness": 3,
+            "web": 20,
+            "alchemy_knowledge": 2,
+            "sphere": 22,
+            "alchemy_steadiness": 5,
+            "poison": 22,
+            "donut": 23,
+            "alchemy_reach": 3,
+            "speed": 23,
+            "alchemy_longevity": 6,
+            "mine": 21,
+            "lock": 27,
+            "alchemy_clarity": 8,
+            "harpoon": 27,
+            "alchemy_precision": 6,
+            "axe": 25,
+            "alchemy_magnetism": 7,
+            "alchemy_gatherer": 9,
+            "stone": 24,
+            "meat": 28,
+            "alchemy_tempest": 6,
+            "knuckles": 28,
+            "alchemy_fortitude": 1,
+            "golden_shield": 28,
+            "alchemy_prosperity": 2,
+            "mega_poison": 28,
+            "alchemy_strength": 3,
+            "sponge": 27,
+            "easter_egg": 29,
+            "fire": 25,
+            "alchemy_satiety": 3,
+            "cake": 28,
+            "warheads": 28,
+            "vortex": 25,
+            "awl": 23,
+            "alchemy_vigor": 1,
+            "clan_shield": 28,
+            "fire_sword": 18,
+            "freeze": 17
+          }
+        }
+      ]
+    }
+  ],
+  "health": [
+    {
+      "at": 1795541274471,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1070,
+        "advancedTicks": 969,
+        "updatesHz": 16.15,
+        "tickWorkMs": {
+          "count": 1070,
+          "p50": 0.68,
+          "p95": 1.01,
+          "p99": 1.3,
+          "max": 19.02
+        },
+        "tickIntervalMs": {
+          "count": 1070,
+          "p50": 50.09,
+          "p95": 51.58,
+          "p99": 52.02,
+          "max": 179046.61
+        },
+        "eventLoop": {
+          "windowMs": 10000.53,
+          "resolutionMs": 20,
+          "samples": 488,
+          "p95Ms": 21.32,
+          "p99Ms": 21.61,
+          "maxMs": 36.77
+        },
+        "capturedAt": 1795541274465,
+        "uptimeSeconds": 824,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2345,
+          "heapUsed": 452,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4617429,
+          "pendingWalBytes": 7491,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 17350
+      }
+    },
+    {
+      "at": 1795541279478,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1170,
+        "advancedTicks": 1069,
+        "updatesHz": 17.82,
+        "tickWorkMs": {
+          "count": 1170,
+          "p50": 0.68,
+          "p95": 1,
+          "p99": 1.28,
+          "max": 19.02
+        },
+        "tickIntervalMs": {
+          "count": 1170,
+          "p50": 50.09,
+          "p95": 51.58,
+          "p99": 52.02,
+          "max": 179046.61
+        },
+        "eventLoop": {
+          "windowMs": 10000.53,
+          "resolutionMs": 20,
+          "samples": 488,
+          "p95Ms": 21.32,
+          "p99Ms": 21.61,
+          "maxMs": 36.77
+        },
+        "capturedAt": 1795541279476,
+        "uptimeSeconds": 829,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2345,
+          "heapUsed": 450,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4617430,
+          "pendingWalBytes": 10423,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 22357
+      }
+    },
+    {
+      "at": 1795541284484,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1199,
+        "advancedTicks": 1169,
+        "updatesHz": 19.48,
+        "tickWorkMs": {
+          "count": 1199,
+          "p50": 0.69,
+          "p95": 1,
+          "p99": 1.28,
+          "max": 19.02
+        },
+        "tickIntervalMs": {
+          "count": 1199,
+          "p50": 50.09,
+          "p95": 51.58,
+          "p99": 52.02,
+          "max": 102.62
+        },
+        "eventLoop": {
+          "windowMs": 9999.93,
+          "resolutionMs": 20,
+          "samples": 488,
+          "p95Ms": 21.32,
+          "p99Ms": 21.63,
+          "maxMs": 41.48
+        },
+        "capturedAt": 1795541284483,
+        "uptimeSeconds": 834,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2346,
+          "heapUsed": 452,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4617430,
+          "pendingWalBytes": 10423,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 2773
+      }
+    },
+    {
+      "at": 1795541289489,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1198,
+        "advancedTicks": 1198,
+        "updatesHz": 19.97,
+        "tickWorkMs": {
+          "count": 1198,
+          "p50": 0.69,
+          "p95": 1.23,
+          "p99": 7.57,
+          "max": 77.73
+        },
+        "tickIntervalMs": {
+          "count": 1198,
+          "p50": 50.07,
+          "p95": 51.62,
+          "p99": 53.52,
+          "max": 102.62
+        },
+        "eventLoop": {
+          "windowMs": 9999.93,
+          "resolutionMs": 20,
+          "samples": 488,
+          "p95Ms": 21.32,
+          "p99Ms": 21.63,
+          "maxMs": 41.48
+        },
+        "capturedAt": 1795541289488,
+        "uptimeSeconds": 839,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 21,
+          "parts": 21,
+          "connections": 1
+        },
+        "online": {
+          "arena": 1,
+          "lobby": 3,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2354,
+          "heapUsed": 460,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4617449,
+          "pendingWalBytes": 134581,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 57,
+          "replaced": 0,
+          "workerMs": 120.26138999976683,
+          "cloneMs": 28.699001999921165,
+          "turnaroundMs": 389.3349959998159,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 57,
+          "deliveryMs": 11.92659300006926
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 7778
+      }
+    },
+    {
+      "at": 1795541294496,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1197,
+        "advancedTicks": 1197,
+        "updatesHz": 19.95,
+        "tickWorkMs": {
+          "count": 1197,
+          "p50": 0.69,
+          "p95": 6.62,
+          "p99": 16.19,
+          "max": 77.73
+        },
+        "tickIntervalMs": {
+          "count": 1197,
+          "p50": 50.07,
+          "p95": 51.66,
+          "p99": 56.99,
+          "max": 102.62
+        },
+        "eventLoop": {
+          "windowMs": 9999.95,
+          "resolutionMs": 20,
+          "samples": 469,
+          "p95Ms": 22.4,
+          "p99Ms": 41.58,
+          "maxMs": 81.46
+        },
+        "capturedAt": 1795541294494,
+        "uptimeSeconds": 844,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 21,
+          "parts": 29,
+          "connections": 1
+        },
+        "online": {
+          "arena": 1,
+          "lobby": 3,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2354,
+          "heapUsed": 458,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4617491,
+          "pendingWalBytes": 310256,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 157,
+          "replaced": 0,
+          "workerMs": 288.8757630001055,
+          "cloneMs": 81.57972000038717,
+          "turnaroundMs": 937.807085000677,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 157,
+          "deliveryMs": 32.858329999726266
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 12785
+      }
+    }
+  ],
+  "negativeResults": [
+    "First Linux alchemy startup failed before measured windows; separate test-only recovery preserved all data",
+    "A Linux alchemy repeat was interrupted by live-game guard after seven windows; 7331 ACK recovered, PG caught up separately",
+    "An unbounded read-only diagnostic was OOM-killed; repeated verification bounded and large diffs removed",
+    "First Windows alchemy startup failed; second completed with one failed interval overlapping an offline benchmark; clean third passed",
+    "First two calendar replays rejected revision counts (all player/clan fields equal); third uses exact process-ready journal evidence and stored calendar times, all fields and revisions equal"
+  ],
+  "limitations": [
+    "Not maximum CCU and not 300000-player readiness",
+    "Linux quotas include load generators; Windows alchemy result is not Linux capacity evidence",
+    "Ten-minute runs are not 24-hour stability evidence",
+    "60-player tick p95 still above 25 ms optimization target",
+    "Checkpoint worker cache and retained WAL-window leases are separate uninstalled candidates",
+    "No new browser-rendering or real-device capacity proof"
+  ],
+  "reportAt": "2026-11-24T17:28:35.381Z"
+}
