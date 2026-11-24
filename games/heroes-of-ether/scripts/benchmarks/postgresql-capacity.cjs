@@ -36,6 +36,7 @@ async function main(){
     assert(!process.env.CAPACITY_FIXTURE,'Fresh retained histories cannot extend a supplied fixture');
     require('./retained-capacity-fixture.cjs').extend(fixtureData,{active:rooms*perRoom+5});
   }
+  const stateWorkerPolicy=require('./capacity-worker-policy.cjs').workerPolicy(require('../../config/arena-state-workers.json'));
   const linkedLobby=Number(process.env.CAPACITY_LINKED_LOBBY||0);
   assert(Number.isInteger(linkedLobby)&&linkedLobby>=0&&linkedLobby<=4&&(!linkedLobby||realistic));
   if(realistic)require('./realistic-lobby-plan.cjs').detachLobby(fixtureData,rooms*perRoom,5,linkedLobby);
@@ -45,6 +46,7 @@ async function main(){
   assert(['sferorumiya-state-v8','sferorumiya-state-v9','sferorumiya-state-v10'].includes(protocol),'Unsupported benchmark protocol');
   const summary={at:new Date().toISOString(),gameClock,rooms,perRoom,protocol,fixtureSha256,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
+  summary.stateWorkerPolicy={count:Number(stateWorkerPolicy.LOAD_STATE_WORKERS),maxRooms:Number(stateWorkerPolicy.LOAD_STATE_WORKER_ROOMS),source:'config/arena-state-workers.json'};
   if(mixedMinutes)Object.assign(summary,{mixedMinutes,phaseSeconds:60});
   if(process.env.CAPACITY_ACTIVE_CLAN_QUESTS==='1')summary.requiresActiveClanQuests=true;
   if(fixtureData.summary?.retainedHistory)summary.retainedHistory={...fixtureData.summary.retainedHistory};
@@ -59,7 +61,7 @@ async function main(){
   for(const key of Object.keys(env))if(key.startsWith('LOAD_'))delete env[key];
   Object.assign(env,{LOAD_GAME_OFFSET_MS:String(gameClock.offsetMs),LOAD_PROTOCOL:protocol,LOAD_CLIENT:'0',LOAD_CAPACITY:'0',LOAD_COMBAT:'1',LOAD_ROOMS:String(rooms),LOAD_PLAYERS:String(perRoom),LOAD_REJOIN:'1',
       LOAD_PHASES:'move,split,feed,boosters,combined',LOAD_PHASE_MS:'30000',LOAD_JOURNAL:'1',LOAD_CONNECT_INTERVAL:'100',
-      LOAD_STATE_WORKERS:'3',LOAD_DRIVER_PER_ROOM:'1',LOAD_LOBBY:'5',LOAD_ALL_BOOSTERS:'1',LOAD_STOCK:'3000',LOAD_GC_METRICS:'1',
+      ...stateWorkerPolicy,LOAD_DRIVER_PER_ROOM:'1',LOAD_LOBBY:'5',LOAD_ALL_BOOSTERS:'1',LOAD_STOCK:'3000',LOAD_GC_METRICS:'1',
       LOAD_INCREMENTAL_SETTLEMENT:'1',LOAD_WORLD_FIXTURE:fixture,LOAD_DATABASE_CONFIG:privateConfig,LOAD_ACK_DIR:path.join(out,'acks')});
   if(mixedMinutes)Object.assign(env,{LOAD_PHASES:Array(mixedMinutes).fill('combined').join(','),LOAD_PHASE_MS:'60000'});
   if(realistic)Object.assign(env,{LOAD_REALISTIC:'1',LOAD_MIXED_SOCIAL:'1',LOAD_LOBBY_INTERVAL:'1500'});
