@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T22:17:51.307Z",
+  "at": "2026-11-24T22:57:18.613Z",
   "installed": false,
   "runtimeSource": "70c60ff",
   "base": "2c8551a077bcf4bfd952017b079fa5f62769f26d",
@@ -751,8 +751,2281 @@
           "Fresh fixture only; retained-history and Linux mixed acceptance remain pending"
         ]
       },
-      "linux": "pending",
-      "retainedHistory": "pending"
+      "linux": {
+        "report": "paired-history-20261124.json",
+        "summary": {
+          "source": "bd19b57dde2b13b2c40abf9ce98e2098ef836207",
+          "endedAt": "2026-11-24T22:54:07.557Z",
+          "assessment": {
+            "targets": {
+              "updatesHz": 19,
+              "tickP95Ms": 100,
+              "stateGapP99Ms": 150,
+              "lobbyP95Ms": 1000,
+              "actionP95Ms": 500
+            },
+            "shortRunMeetsTargets": true,
+            "problems": [],
+            "phases": [
+              {
+                "phase": "combined",
+                "window": 1,
+                "meetsTargets": true,
+                "issues": []
+              },
+              {
+                "phase": "combined",
+                "window": 2,
+                "meetsTargets": true,
+                "issues": []
+              },
+              {
+                "phase": "combined",
+                "window": 3,
+                "meetsTargets": true,
+                "issues": []
+              },
+              {
+                "phase": "combined",
+                "window": 4,
+                "meetsTargets": true,
+                "issues": []
+              },
+              {
+                "phase": "combined",
+                "window": 5,
+                "meetsTargets": true,
+                "issues": []
+              },
+              {
+                "phase": "combined",
+                "window": 6,
+                "meetsTargets": true,
+                "issues": []
+              },
+              {
+                "phase": "combined",
+                "window": 7,
+                "meetsTargets": true,
+                "issues": []
+              },
+              {
+                "phase": "combined",
+                "window": 8,
+                "meetsTargets": true,
+                "issues": []
+              },
+              {
+                "phase": "combined",
+                "window": 9,
+                "meetsTargets": true,
+                "issues": []
+              },
+              {
+                "phase": "combined",
+                "window": 10,
+                "meetsTargets": true,
+                "issues": []
+              }
+            ],
+            "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+          },
+          "ack": {
+            "acknowledged": 9909,
+            "recovered": 9909,
+            "duplicates": 0
+          },
+          "history": {
+            "matched": true,
+            "profiles": 1280,
+            "historicalReceipts": 3015000
+          },
+          "database": {
+            "matched": true,
+            "revision": 19931,
+            "profiles": 1280,
+            "clans": 131
+          },
+          "testSchemaRemoved": true,
+          "hz": {
+            "min": 20.04698876943426,
+            "max": 20.224685264541524
+          },
+          "tickWorkP95Ms": {
+            "min": 16.343479999995907,
+            "max": 19.55405499995686
+          },
+          "tickWorkMaxMs": 417.0959649999859,
+          "actionP95Ms": {
+            "min": 22.196690000011586,
+            "max": 44.17928899999242
+          },
+          "stateGapMaxMs": 463.94782800000394,
+          "rssMiB": {
+            "min": 2247.15234375,
+            "max": 2880.8125
+          },
+          "cpuPercent": {
+            "min": 98.15549435953574,
+            "max": 119.34286389156736
+          },
+          "lobbyActions": {
+            "profile": 93,
+            "rankings": 90,
+            "loadout": 90,
+            "purchase": 90,
+            "account-bonus": 30,
+            "social-view": 180,
+            "gift": 90,
+            "gift-read": 90,
+            "clan-create": 3,
+            "clan-view": 177,
+            "clan-deposit": 90,
+            "clan-buy": 90,
+            "clan-edit": 90,
+            "alchemy-view": 90,
+            "alchemy-brew": 90,
+            "pet-buy": 5,
+            "pet-food": 90,
+            "chat": 90,
+            "news": 90,
+            "presence": 90,
+            "alchemy-exchange": 90,
+            "alchemy-equip": 90,
+            "pet-equip": 85,
+            "daily-reward": 60
+          },
+          "lobbyErrors": {},
+          "boosters": {
+            "alchemy_strength": 24,
+            "colorful_shield": 251,
+            "hook": 240,
+            "ice_cream": 229,
+            "candy": 229,
+            "rocket": 244,
+            "freeze": 243,
+            "alchemy_swiftness": 35,
+            "glove": 255,
+            "alchemy_satiety": 41,
+            "web": 250,
+            "alchemy_knowledge": 16,
+            "sphere": 267,
+            "alchemy_steadiness": 39,
+            "poison": 268,
+            "alchemy_reach": 33,
+            "donut": 289,
+            "alchemy_vigor": 27,
+            "speed": 289,
+            "alchemy_longevity": 62,
+            "mine": 271,
+            "alchemy_clarity": 62,
+            "lock": 278,
+            "alchemy_precision": 61,
+            "harpoon": 272,
+            "alchemy_magnetism": 60,
+            "axe": 256,
+            "alchemy_gatherer": 63,
+            "stone": 285,
+            "alchemy_tempest": 52,
+            "meat": 299,
+            "alchemy_fortitude": 25,
+            "knuckles": 286,
+            "alchemy_prosperity": 21,
+            "golden_shield": 297,
+            "alchemy_archmage": 16,
+            "mega_poison": 282,
+            "sponge": 281,
+            "easter_egg": 299,
+            "fire": 272,
+            "cake": 273,
+            "warheads": 277,
+            "vortex": 287,
+            "awl": 254,
+            "clan_shield": 300,
+            "fire_sword": 244
+          },
+          "windows": [
+            {
+              "window": 1,
+              "hz": 20.12433795682649,
+              "tickWorkMs": {
+                "n": 1193,
+                "p50": 10.30702000000747,
+                "p95": 16.343479999995907,
+                "p99": 20.66182399999525,
+                "max": 60.03816100000404
+              },
+              "actionLatencyMs": {
+                "p50": 12.71304199998849,
+                "p95": 44.17928899999242,
+                "p99": 134.9166929999992,
+                "max": 197.14433300000383
+              },
+              "stateGaps": {
+                "p50": 49.854145999997854,
+                "p95": 57.70304100000067,
+                "p99": 65.71826000000874,
+                "max": 272.4398119999969
+              },
+              "rssMiB": 2880.8125,
+              "cpuPercent": 114.61177776650246,
+              "mainThreadGc": {
+                "n": 88,
+                "p50": 5.104135990142822,
+                "p95": 7.763666987419128,
+                "p99": 14.368637025356293,
+                "max": 14.368637025356293,
+                "totalMs": 467.2586609721184
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 26,
+                "contributions": 55
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 378,
+                  "feed": 2501
+                },
+                "attempted": {
+                  "split": 487,
+                  "feed": 2566
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": [
+                {
+                  "at": 76975.660103,
+                  "gapMs": 272.4398119999969,
+                  "roomId": "arena-1",
+                  "slot": 23,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.559681,
+                  "gapMs": 272.4290190000029,
+                  "roomId": "arena-1",
+                  "slot": 22,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 12093.014727000002,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.365911,
+                  "gapMs": 272.41528099999414,
+                  "roomId": "arena-1",
+                  "slot": 20,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 10693.581137999994,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.294313,
+                  "gapMs": 272.39732699999877,
+                  "roomId": "arena-1",
+                  "slot": 19,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 1141.333015000011,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.44884,
+                  "gapMs": 272.39547999999195,
+                  "roomId": "arena-1",
+                  "slot": 21,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 11542.238271999995,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.221899,
+                  "gapMs": 272.3759129999962,
+                  "roomId": "arena-1",
+                  "slot": 18,
+                  "stateSequence": 249,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 6634.0954959999945,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76973.81385,
+                  "gapMs": 272.36886700001196,
+                  "roomId": "arena-1",
+                  "slot": 5,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76973.885444,
+                  "gapMs": 272.3685050000058,
+                  "roomId": "arena-1",
+                  "slot": 6,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76973.713202,
+                  "gapMs": 272.35210099999676,
+                  "roomId": "arena-1",
+                  "slot": 4,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 7241.853241000004,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.096593,
+                  "gapMs": 272.346583999999,
+                  "roomId": "arena-1",
+                  "slot": 17,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76974.985326,
+                  "gapMs": 272.33568799999193,
+                  "roomId": "arena-1",
+                  "slot": 16,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76974.821892,
+                  "gapMs": 272.2955130000046,
+                  "roomId": "arena-1",
+                  "slot": 15,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76974.709603,
+                  "gapMs": 272.2611639999959,
+                  "roomId": "arena-1",
+                  "slot": 14,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 2937.6449469999934,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76973.554496,
+                  "gapMs": 272.25340600000345,
+                  "roomId": "arena-1",
+                  "slot": 3,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.720045,
+                  "gapMs": 272.2497949999961,
+                  "roomId": "arena-1",
+                  "slot": 24,
+                  "stateSequence": 249,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 5193.802695999999,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76974.616876,
+                  "gapMs": 272.23695299999963,
+                  "roomId": "arena-1",
+                  "slot": 13,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.80686,
+                  "gapMs": 272.21578800000134,
+                  "roomId": "arena-1",
+                  "slot": 25,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 11095.020464999994,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.904516,
+                  "gapMs": 272.2138149999955,
+                  "roomId": "arena-1",
+                  "slot": 26,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76973.402424,
+                  "gapMs": 272.2073919999966,
+                  "roomId": "arena-1",
+                  "slot": 2,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 11386.819707000002,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76976.084014,
+                  "gapMs": 272.20426799998677,
+                  "roomId": "arena-1",
+                  "slot": 28,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 9745.054959999994,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76975.997726,
+                  "gapMs": 272.20252200000687,
+                  "roomId": "arena-1",
+                  "slot": 27,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76976.156376,
+                  "gapMs": 272.20098500000313,
+                  "roomId": "arena-1",
+                  "slot": 29,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76974.108509,
+                  "gapMs": 272.176907999994,
+                  "roomId": "arena-1",
+                  "slot": 8,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 10789.520472000004,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76974.476489,
+                  "gapMs": 272.17613100000017,
+                  "roomId": "arena-1",
+                  "slot": 12,
+                  "stateSequence": 249,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 6039.228351999991,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76974.200204,
+                  "gapMs": 272.1668539999955,
+                  "roomId": "arena-1",
+                  "slot": 9,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76974.404883,
+                  "gapMs": 272.16314999999304,
+                  "roomId": "arena-1",
+                  "slot": 11,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 11389.433434999999,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76974.300679,
+                  "gapMs": 272.1369670000131,
+                  "roomId": "arena-1",
+                  "slot": 10,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 10045.313013000006,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76973.246491,
+                  "gapMs": 272.1270220000006,
+                  "roomId": "arena-1",
+                  "slot": 1,
+                  "stateSequence": 249,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 6288.4750369999965,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76973.951958,
+                  "gapMs": 272.1043740000023,
+                  "roomId": "arena-1",
+                  "slot": 7,
+                  "stateSequence": 247,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 76972.597206,
+                  "gapMs": 271.7567360000103,
+                  "roomId": "arena-1",
+                  "slot": 0,
+                  "stateSequence": 248,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 11687.647490000003,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                }
+              ]
+            },
+            {
+              "window": 2,
+              "hz": 20.04698876943426,
+              "tickWorkMs": {
+                "n": 1195,
+                "p50": 11.592784000007669,
+                "p95": 18.972612000012305,
+                "p99": 24.698554000002332,
+                "max": 375.22062100001494
+              },
+              "actionLatencyMs": {
+                "p50": 10.210469000012381,
+                "p95": 31.21239699999569,
+                "p99": 189.03493200000958,
+                "max": 387.5644209999882
+              },
+              "stateGaps": {
+                "p50": 49.77310199997737,
+                "p95": 58.66579799997271,
+                "p99": 67.49155299999984,
+                "max": 463.94782800000394
+              },
+              "rssMiB": 2336.16796875,
+              "cpuPercent": 114.90756451832424,
+              "mainThreadGc": {
+                "n": 140,
+                "p50": 4.341040015220642,
+                "p95": 6.658235013484955,
+                "p99": 46.71290397644043,
+                "max": 220.8981750011444,
+                "totalMs": 854.5126700997353
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 27,
+                "contributions": 100
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 352,
+                  "feed": 2476
+                },
+                "attempted": {
+                  "split": 488,
+                  "feed": 2566
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": [
+                {
+                  "at": 144392.227292,
+                  "gapMs": 463.94782800000394,
+                  "roomId": "arena-1",
+                  "slot": 0,
+                  "stateSequence": 1602,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 6630.200194999983,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.418848,
+                  "gapMs": 463.8387670000084,
+                  "roomId": "arena-1",
+                  "slot": 1,
+                  "stateSequence": 1604,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 7831.588017000002,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.476339,
+                  "gapMs": 463.7822659999947,
+                  "roomId": "arena-1",
+                  "slot": 2,
+                  "stateSequence": 1600,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 25132.295885999993,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.544412,
+                  "gapMs": 463.7157849999785,
+                  "roomId": "arena-1",
+                  "slot": 3,
+                  "stateSequence": 1598,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.595807,
+                  "gapMs": 463.67729099999997,
+                  "roomId": "arena-1",
+                  "slot": 4,
+                  "stateSequence": 1602,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 9325.744101999997,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.628194,
+                  "gapMs": 463.5976349999837,
+                  "roomId": "arena-1",
+                  "slot": 5,
+                  "stateSequence": 1600,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 11877.867008000001,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.669677,
+                  "gapMs": 463.5471869999892,
+                  "roomId": "arena-1",
+                  "slot": 6,
+                  "stateSequence": 1598,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.715791,
+                  "gapMs": 463.52673199999845,
+                  "roomId": "arena-1",
+                  "slot": 7,
+                  "stateSequence": 1600,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 25623.984536999997,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.753821,
+                  "gapMs": 463.49865599998157,
+                  "roomId": "arena-1",
+                  "slot": 8,
+                  "stateSequence": 1601,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 9831.339336999983,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.78556,
+                  "gapMs": 463.4552909999911,
+                  "roomId": "arena-1",
+                  "slot": 9,
+                  "stateSequence": 1601,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 4919.337283999979,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.826067,
+                  "gapMs": 463.3906409999763,
+                  "roomId": "arena-1",
+                  "slot": 10,
+                  "stateSequence": 1603,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 8580.14301,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.871001,
+                  "gapMs": 463.30484699999215,
+                  "roomId": "arena-1",
+                  "slot": 11,
+                  "stateSequence": 1603,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 3881.051892999996,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.933673,
+                  "gapMs": 463.23480999999447,
+                  "roomId": "arena-1",
+                  "slot": 12,
+                  "stateSequence": 1603,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 22229.65888399999,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.113153,
+                  "gapMs": 463.20206800001324,
+                  "roomId": "arena-1",
+                  "slot": 14,
+                  "stateSequence": 1601,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 35182.27497700001,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144392.970774,
+                  "gapMs": 463.19791099999566,
+                  "roomId": "arena-1",
+                  "slot": 13,
+                  "stateSequence": 1601,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 16024.327430999983,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.172115,
+                  "gapMs": 463.1450069999846,
+                  "roomId": "arena-1",
+                  "slot": 15,
+                  "stateSequence": 1599,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 25331.381821999996,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.225393,
+                  "gapMs": 463.03558900000644,
+                  "roomId": "arena-1",
+                  "slot": 16,
+                  "stateSequence": 1602,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 25232.099512999994,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.26606,
+                  "gapMs": 462.92353800000274,
+                  "roomId": "arena-1",
+                  "slot": 17,
+                  "stateSequence": 1601,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 42969.02172999999,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.347908,
+                  "gapMs": 462.88234899999225,
+                  "roomId": "arena-1",
+                  "slot": 18,
+                  "stateSequence": 1601,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 37429.02499599999,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.404066,
+                  "gapMs": 462.7274239999824,
+                  "roomId": "arena-1",
+                  "slot": 19,
+                  "stateSequence": 1600,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 37529.683420999994,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.463237,
+                  "gapMs": 462.64586199997575,
+                  "roomId": "arena-1",
+                  "slot": 20,
+                  "stateSequence": 1600,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 44377.042360999985,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.504886,
+                  "gapMs": 462.58421300002374,
+                  "roomId": "arena-1",
+                  "slot": 21,
+                  "stateSequence": 1602,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 39783.15711100001,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.578149,
+                  "gapMs": 462.5508780000091,
+                  "roomId": "arena-1",
+                  "slot": 22,
+                  "stateSequence": 1603,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 2630.6396860000095,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.622385,
+                  "gapMs": 462.48285100000794,
+                  "roomId": "arena-1",
+                  "slot": 23,
+                  "stateSequence": 1601,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 26181.103166999994,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.662628,
+                  "gapMs": 462.42797099999734,
+                  "roomId": "arena-1",
+                  "slot": 24,
+                  "stateSequence": 1603,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 14581.07946899999,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.700294,
+                  "gapMs": 462.3820620000188,
+                  "roomId": "arena-1",
+                  "slot": 25,
+                  "stateSequence": 1605,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 5281.9282300000195,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.743951,
+                  "gapMs": 462.3393450000149,
+                  "roomId": "arena-1",
+                  "slot": 26,
+                  "stateSequence": 1599,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 15629.134225000016,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.788597,
+                  "gapMs": 462.26835500000743,
+                  "roomId": "arena-1",
+                  "slot": 27,
+                  "stateSequence": 1601,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 23478.628264,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.834897,
+                  "gapMs": 461.01504399999976,
+                  "roomId": "arena-1",
+                  "slot": 28,
+                  "stateSequence": 1602,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 20830.487035,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 144393.866697,
+                  "gapMs": 460.9037899999821,
+                  "roomId": "arena-1",
+                  "slot": 29,
+                  "stateSequence": 1598,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                }
+              ]
+            },
+            {
+              "window": 3,
+              "hz": 20.08211866155708,
+              "tickWorkMs": {
+                "n": 1201,
+                "p50": 11.053041000006488,
+                "p95": 17.451482999982545,
+                "p99": 22.7982909999846,
+                "max": 34.05396900000051
+              },
+              "actionLatencyMs": {
+                "p50": 9.536426000006031,
+                "p95": 22.196690000011586,
+                "p99": 84.18896900000982,
+                "max": 181.8897660000075
+              },
+              "stateGaps": {
+                "p50": 49.983534999977564,
+                "p95": 56.939122000010684,
+                "p99": 63.672978999995394,
+                "max": 82.87319499999285
+              },
+              "rssMiB": 2275.64453125,
+              "cpuPercent": 98.15549435953574,
+              "mainThreadGc": {
+                "n": 89,
+                "p50": 4.375854969024658,
+                "p95": 5.89962500333786,
+                "p99": 34.3512099981308,
+                "max": 34.3512099981308,
+                "totalMs": 424.0059142112732
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 27,
+                "contributions": 147
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 363,
+                  "feed": 2489
+                },
+                "attempted": {
+                  "split": 488,
+                  "feed": 2570
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": []
+            },
+            {
+              "window": 4,
+              "hz": 20.163387597744528,
+              "tickWorkMs": {
+                "n": 1201,
+                "p50": 11.21541000000434,
+                "p95": 17.29910000000382,
+                "p99": 20.67186699999729,
+                "max": 27.614047000010032
+              },
+              "actionLatencyMs": {
+                "p50": 10.053977000003215,
+                "p95": 28.529460999998264,
+                "p99": 198.45341100002406,
+                "max": 281.63396500004455
+              },
+              "stateGaps": {
+                "p50": 49.89800099999411,
+                "p95": 58.00305699999444,
+                "p99": 63.16475500003435,
+                "max": 78.35626099997899
+              },
+              "rssMiB": 2586.1796875,
+              "cpuPercent": 107.21845959226903,
+              "mainThreadGc": {
+                "n": 87,
+                "p50": 5.036396026611328,
+                "p95": 6.732721984386444,
+                "p99": 8.933151960372925,
+                "max": 8.933151960372925,
+                "totalMs": 453.62013882398605
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 27,
+                "contributions": 193
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 340,
+                  "feed": 2469
+                },
+                "attempted": {
+                  "split": 486,
+                  "feed": 2562
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": []
+            },
+            {
+              "window": 5,
+              "hz": 20.060925266273223,
+              "tickWorkMs": {
+                "n": 1194,
+                "p50": 11.193730999948457,
+                "p95": 17.6225020000129,
+                "p99": 22.15118899999652,
+                "max": 417.0959649999859
+              },
+              "actionLatencyMs": {
+                "p50": 8.90771300002234,
+                "p95": 25.22287499997765,
+                "p99": 190.01107800001046,
+                "max": 426.6950770000112
+              },
+              "stateGaps": {
+                "p50": 49.9054640000104,
+                "p95": 57.31846500001848,
+                "p99": 65.96677199995611,
+                "max": 446.1322840000503
+              },
+              "rssMiB": 2247.15234375,
+              "cpuPercent": 113.09346733578221,
+              "mainThreadGc": {
+                "n": 133,
+                "p50": 4.370346009731293,
+                "p95": 6.795569002628326,
+                "p99": 30.753839015960693,
+                "max": 198.09500801563263,
+                "totalMs": 817.4688241481781
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 27,
+                "contributions": 242
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 358,
+                  "feed": 2496
+                },
+                "attempted": {
+                  "split": 482,
+                  "feed": 2571
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": [
+                {
+                  "at": 315468.156506,
+                  "gapMs": 446.1322840000503,
+                  "roomId": "arena-1",
+                  "slot": 0,
+                  "stateSequence": 5039,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 177706.12940900002,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.579071,
+                  "gapMs": 446.0545169999823,
+                  "roomId": "arena-1",
+                  "slot": 4,
+                  "stateSequence": 5047,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 1051.770510000002,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.458337,
+                  "gapMs": 446.0423109999974,
+                  "roomId": "arena-1",
+                  "slot": 2,
+                  "stateSequence": 5045,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 5796.483744999976,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.368981,
+                  "gapMs": 446.040944999957,
+                  "roomId": "arena-1",
+                  "slot": 1,
+                  "stateSequence": 5048,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 14503.61784599995,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.507495,
+                  "gapMs": 446.02731800003676,
+                  "roomId": "arena-1",
+                  "slot": 3,
+                  "stateSequence": 5035,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.617222,
+                  "gapMs": 446.0111119999783,
+                  "roomId": "arena-1",
+                  "slot": 5,
+                  "stateSequence": 5043,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 2955.311862999981,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.665662,
+                  "gapMs": 445.9853379999986,
+                  "roomId": "arena-1",
+                  "slot": 6,
+                  "stateSequence": 5035,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.702099,
+                  "gapMs": 445.9684540000162,
+                  "roomId": "arena-1",
+                  "slot": 7,
+                  "stateSequence": 5045,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 43303.382138999994,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.746851,
+                  "gapMs": 445.9578040000051,
+                  "roomId": "arena-1",
+                  "slot": 8,
+                  "stateSequence": 5045,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 19402.146534,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.849275,
+                  "gapMs": 445.89079999999376,
+                  "roomId": "arena-1",
+                  "slot": 10,
+                  "stateSequence": 5049,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 4948.125025999965,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.789825,
+                  "gapMs": 445.8855190000031,
+                  "roomId": "arena-1",
+                  "slot": 9,
+                  "stateSequence": 5044,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 4346.127983000013,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.892093,
+                  "gapMs": 445.83819400001084,
+                  "roomId": "arena-1",
+                  "slot": 11,
+                  "stateSequence": 5049,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 4903.560086000012,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.929733,
+                  "gapMs": 445.76876299997093,
+                  "roomId": "arena-1",
+                  "slot": 12,
+                  "stateSequence": 5046,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 8144.037175000005,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315468.996675,
+                  "gapMs": 445.6623150000232,
+                  "roomId": "arena-1",
+                  "slot": 13,
+                  "stateSequence": 5045,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 33144.05218900001,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.054614,
+                  "gapMs": 445.60002300003543,
+                  "roomId": "arena-1",
+                  "slot": 14,
+                  "stateSequence": 5043,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 73347.87854100001,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.099808,
+                  "gapMs": 445.553188000049,
+                  "roomId": "arena-1",
+                  "slot": 15,
+                  "stateSequence": 5043,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 1104.719380000024,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.158552,
+                  "gapMs": 445.55245900002774,
+                  "roomId": "arena-1",
+                  "slot": 16,
+                  "stateSequence": 5044,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 2304.3141349999933,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.20266,
+                  "gapMs": 445.5083539999905,
+                  "roomId": "arena-1",
+                  "slot": 17,
+                  "stateSequence": 5040,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 56003.63447600001,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.253073,
+                  "gapMs": 445.4330809999956,
+                  "roomId": "arena-1",
+                  "slot": 18,
+                  "stateSequence": 5043,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 30855.326830999984,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.306404,
+                  "gapMs": 445.43258099997183,
+                  "roomId": "arena-1",
+                  "slot": 19,
+                  "stateSequence": 5043,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 4703.65877499996,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.353909,
+                  "gapMs": 445.3990890000132,
+                  "roomId": "arena-1",
+                  "slot": 20,
+                  "stateSequence": 5042,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 20354.769386,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.397628,
+                  "gapMs": 445.368123000022,
+                  "roomId": "arena-1",
+                  "slot": 21,
+                  "stateSequence": 5042,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 20801.560950000014,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.457086,
+                  "gapMs": 445.3477249999996,
+                  "roomId": "arena-1",
+                  "slot": 22,
+                  "stateSequence": 5046,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 4946.984870999993,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.501978,
+                  "gapMs": 445.2868519999902,
+                  "roomId": "arena-1",
+                  "slot": 23,
+                  "stateSequence": 5049,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 14854.692079,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.564213,
+                  "gapMs": 445.25059800001327,
+                  "roomId": "arena-1",
+                  "slot": 24,
+                  "stateSequence": 5047,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 16201.902054000006,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.614003,
+                  "gapMs": 445.22425300005125,
+                  "roomId": "arena-1",
+                  "slot": 25,
+                  "stateSequence": 5048,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 28300.11830900004,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.648346,
+                  "gapMs": 445.2183850000147,
+                  "roomId": "arena-1",
+                  "slot": 26,
+                  "stateSequence": 5048,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 1795.9151929999935,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.695369,
+                  "gapMs": 445.0944299999974,
+                  "roomId": "arena-1",
+                  "slot": 27,
+                  "stateSequence": 5042,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 17803.956152,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.753799,
+                  "gapMs": 445.0518189999857,
+                  "roomId": "arena-1",
+                  "slot": 28,
+                  "stateSequence": 5045,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 40601.90190900001,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 315469.809526,
+                  "gapMs": 445.0267899999744,
+                  "roomId": "arena-1",
+                  "slot": 29,
+                  "stateSequence": 5035,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                }
+              ]
+            },
+            {
+              "window": 6,
+              "hz": 20.211893972948157,
+              "tickWorkMs": {
+                "n": 1201,
+                "p50": 12.084170999994967,
+                "p95": 18.88983699999517,
+                "p99": 23.849722999962978,
+                "max": 31.723396000044886
+              },
+              "actionLatencyMs": {
+                "p50": 8.964517000014894,
+                "p95": 26.344001999998,
+                "p99": 51.73967400001129,
+                "max": 202.85833999997703
+              },
+              "stateGaps": {
+                "p50": 49.79181000002427,
+                "p95": 58.56950700003654,
+                "p99": 63.84785399999237,
+                "max": 92.88877000001958
+              },
+              "rssMiB": 2314.171875,
+              "cpuPercent": 104.9397810292163,
+              "mainThreadGc": {
+                "n": 107,
+                "p50": 4.005711019039154,
+                "p95": 5.123947978019714,
+                "p99": 33.51267296075821,
+                "max": 35.249455988407135,
+                "totalMs": 536.5487398505211
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 27,
+                "contributions": 289
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 360,
+                  "feed": 2483
+                },
+                "attempted": {
+                  "split": 487,
+                  "feed": 2565
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": []
+            },
+            {
+              "window": 7,
+              "hz": 20.181138608002918,
+              "tickWorkMs": {
+                "n": 1201,
+                "p50": 12.37801300000865,
+                "p95": 19.55405499995686,
+                "p99": 23.479404999990948,
+                "max": 31.97745299997041
+              },
+              "actionLatencyMs": {
+                "p50": 8.603536000009626,
+                "p95": 25.17780899995705,
+                "p99": 57.53205599996727,
+                "max": 176.43955899996217
+              },
+              "stateGaps": {
+                "p50": 49.852175000007264,
+                "p95": 58.907881999970414,
+                "p99": 66.79415299999528,
+                "max": 89.53864899999462
+              },
+              "rssMiB": 2272.63671875,
+              "cpuPercent": 119.34286389156736,
+              "mainThreadGc": {
+                "n": 103,
+                "p50": 3.9502779841423035,
+                "p95": 6.219434976577759,
+                "p99": 25.73710197210312,
+                "max": 26.028912007808685,
+                "totalMs": 497.8784053325653
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 28,
+                "contributions": 337
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 356,
+                  "feed": 2447
+                },
+                "attempted": {
+                  "split": 488,
+                  "feed": 2571
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": []
+            },
+            {
+              "window": 8,
+              "hz": 20.078805521631942,
+              "tickWorkMs": {
+                "n": 1198,
+                "p50": 11.37445200001821,
+                "p95": 17.93088300002273,
+                "p99": 21.421015999978408,
+                "max": 30.936910999997053
+              },
+              "actionLatencyMs": {
+                "p50": 8.729606999957468,
+                "p95": 22.72792799997842,
+                "p99": 52.23577600007411,
+                "max": 168.08889800001634
+              },
+              "stateGaps": {
+                "p50": 49.90943400003016,
+                "p95": 57.161515999992844,
+                "p99": 61.46077599999262,
+                "max": 215.6988999999594
+              },
+              "rssMiB": 2277.38671875,
+              "cpuPercent": 108.50729056991824,
+              "mainThreadGc": {
+                "n": 95,
+                "p50": 3.9164369702339172,
+                "p95": 6.283432960510254,
+                "p99": 31.31461900472641,
+                "max": 31.31461900472641,
+                "totalMs": 452.428070127964
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 28,
+                "contributions": 386
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 350,
+                  "feed": 2412
+                },
+                "attempted": {
+                  "split": 486,
+                  "feed": 2563
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": [
+                {
+                  "at": 521730.158725,
+                  "gapMs": 215.6988999999594,
+                  "roomId": "arena-1",
+                  "slot": 19,
+                  "stateSequence": 9199,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 96182.90124199999,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.35635,
+                  "gapMs": 215.69056000001729,
+                  "roomId": "arena-1",
+                  "slot": 22,
+                  "stateSequence": 9207,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 7083.8697720000055,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.305509,
+                  "gapMs": 215.68730400002096,
+                  "roomId": "arena-1",
+                  "slot": 21,
+                  "stateSequence": 9198,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 137580.49676,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.6058,
+                  "gapMs": 215.67439900001045,
+                  "roomId": "arena-1",
+                  "slot": 25,
+                  "stateSequence": 9212,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 11286.248835000035,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.220148,
+                  "gapMs": 215.66384399996605,
+                  "roomId": "arena-1",
+                  "slot": 20,
+                  "stateSequence": 9201,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 24681.437172000005,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.037316,
+                  "gapMs": 215.65096299996367,
+                  "roomId": "arena-1",
+                  "slot": 18,
+                  "stateSequence": 9201,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 13685.698202,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.933057,
+                  "gapMs": 215.6475409999839,
+                  "roomId": "arena-1",
+                  "slot": 29,
+                  "stateSequence": 9188,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.501711,
+                  "gapMs": 215.64558899996337,
+                  "roomId": "arena-1",
+                  "slot": 24,
+                  "stateSequence": 9214,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 4786.477260999964,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.929791,
+                  "gapMs": 215.63558000000194,
+                  "roomId": "arena-1",
+                  "slot": 17,
+                  "stateSequence": 9197,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 46232.59531299997,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.427941,
+                  "gapMs": 215.6337979999953,
+                  "roomId": "arena-1",
+                  "slot": 23,
+                  "stateSequence": 9215,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 16835.112890999997,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.6976,
+                  "gapMs": 215.62971000000834,
+                  "roomId": "arena-1",
+                  "slot": 26,
+                  "stateSequence": 9211,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 22837.71639200003,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.783573,
+                  "gapMs": 215.62814400001662,
+                  "roomId": "arena-1",
+                  "slot": 27,
+                  "stateSequence": 9203,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 29330.671880999987,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521730.86489,
+                  "gapMs": 215.62529100000393,
+                  "roomId": "arena-1",
+                  "slot": 28,
+                  "stateSequence": 9209,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 20235.62061100005,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.866248,
+                  "gapMs": 215.6130439999979,
+                  "roomId": "arena-1",
+                  "slot": 16,
+                  "stateSequence": 9201,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 50228.95113900001,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.698719,
+                  "gapMs": 215.60837299999548,
+                  "roomId": "arena-1",
+                  "slot": 13,
+                  "stateSequence": 9208,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 9184.47831799998,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.734138,
+                  "gapMs": 215.60594600002514,
+                  "roomId": "arena-1",
+                  "slot": 14,
+                  "stateSequence": 9203,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 2783.852597000019,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.614788,
+                  "gapMs": 215.59133800002746,
+                  "roomId": "arena-1",
+                  "slot": 12,
+                  "stateSequence": 9206,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 30933.30030599999,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.79,
+                  "gapMs": 215.58078799996292,
+                  "roomId": "arena-1",
+                  "slot": 15,
+                  "stateSequence": 9203,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 31085.416492999997,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.359837,
+                  "gapMs": 215.54333800001768,
+                  "roomId": "arena-1",
+                  "slot": 9,
+                  "stateSequence": 9208,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 4285.0668220000225,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.474614,
+                  "gapMs": 215.53963600000134,
+                  "roomId": "arena-1",
+                  "slot": 11,
+                  "stateSequence": 9217,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 2186.2774349999963,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.422793,
+                  "gapMs": 215.53626199997962,
+                  "roomId": "arena-1",
+                  "slot": 10,
+                  "stateSequence": 9209,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 9276.768588999985,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521728.617927,
+                  "gapMs": 215.51516299997456,
+                  "roomId": "arena-1",
+                  "slot": 1,
+                  "stateSequence": 9208,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 23785.024433000013,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521728.349844,
+                  "gapMs": 215.50991100003012,
+                  "roomId": "arena-1",
+                  "slot": 0,
+                  "stateSequence": 9192,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 383966.322747,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521728.871186,
+                  "gapMs": 215.47781100001885,
+                  "roomId": "arena-1",
+                  "slot": 4,
+                  "stateSequence": 9205,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 11133.762158999976,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521728.934415,
+                  "gapMs": 215.47566200001165,
+                  "roomId": "arena-1",
+                  "slot": 5,
+                  "stateSequence": 9200,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 12282.862416000047,
+                  "pendingActions": 1,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.068947,
+                  "gapMs": 215.4638790000463,
+                  "roomId": "arena-1",
+                  "slot": 7,
+                  "stateSequence": 9205,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 3883.817577000009,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521729.182462,
+                  "gapMs": 215.46182899997802,
+                  "roomId": "arena-1",
+                  "slot": 8,
+                  "stateSequence": 9207,
+                  "spawnChanged": false,
+                  "spansLifeEnd": true,
+                  "lifeEndAgoMs": 5.922942999983206,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521728.796265,
+                  "gapMs": 215.45420899998862,
+                  "roomId": "arena-1",
+                  "slot": 3,
+                  "stateSequence": 9188,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": null,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521728.744191,
+                  "gapMs": 215.4496330000111,
+                  "roomId": "arena-1",
+                  "slot": 2,
+                  "stateSequence": 9203,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 20234.60363899998,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                },
+                {
+                  "at": 521728.984758,
+                  "gapMs": 215.43631800002186,
+                  "roomId": "arena-1",
+                  "slot": 6,
+                  "stateSequence": 9190,
+                  "spawnChanged": false,
+                  "spansLifeEnd": false,
+                  "lifeEndAgoMs": 25482.283850000007,
+                  "pendingActions": 0,
+                  "outgoingBytes": 0
+                }
+              ]
+            },
+            {
+              "window": 9,
+              "hz": 20.183794899312502,
+              "tickWorkMs": {
+                "n": 1201,
+                "p50": 11.583091999986209,
+                "p95": 17.580783999990672,
+                "p99": 22.452383999945596,
+                "max": 29.548576000030152
+              },
+              "actionLatencyMs": {
+                "p50": 8.575767999980599,
+                "p95": 24.772753999917768,
+                "p99": 95.09782999998424,
+                "max": 248.96671700000297
+              },
+              "stateGaps": {
+                "p50": 49.96237600001041,
+                "p95": 57.83077400003094,
+                "p99": 65.71927999996115,
+                "max": 88.57409100001678
+              },
+              "rssMiB": 2280.96875,
+              "cpuPercent": 102.38985498058435,
+              "mainThreadGc": {
+                "n": 98,
+                "p50": 4.05248898267746,
+                "p95": 5.118637025356293,
+                "p99": 24.55520898103714,
+                "max": 24.55520898103714,
+                "totalMs": 461.9295329451561
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 28,
+                "contributions": 433
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 330,
+                  "feed": 2421
+                },
+                "attempted": {
+                  "split": 486,
+                  "feed": 2567
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": []
+            },
+            {
+              "window": 10,
+              "hz": 20.224685264541524,
+              "tickWorkMs": {
+                "n": 1201,
+                "p50": 11.406782999983989,
+                "p95": 17.352403999888338,
+                "p99": 21.144705999991857,
+                "max": 29.818078999989666
+              },
+              "actionLatencyMs": {
+                "p50": 8.91925000003539,
+                "p95": 23.960179000045173,
+                "p99": 61.822191999992356,
+                "max": 179.64532799995504
+              },
+              "stateGaps": {
+                "p50": 49.88005499995779,
+                "p95": 57.64177700004075,
+                "p99": 65.0887249999214,
+                "max": 99.0354909999296
+              },
+              "rssMiB": 2284.0390625,
+              "cpuPercent": 108.81741315345066,
+              "mainThreadGc": {
+                "n": 98,
+                "p50": 4.00961697101593,
+                "p95": 8.864244997501373,
+                "p99": 22.84433901309967,
+                "max": 22.84433901309967,
+                "totalMs": 460.02661794424057
+              },
+              "clanQuests": {
+                "enabled": true,
+                "boards": 131,
+                "active": 128,
+                "eligible": 1277,
+                "contributors": 29,
+                "contributions": 474
+              },
+              "inputs": {
+                "accepted": {
+                  "split": 328,
+                  "feed": 2508
+                },
+                "attempted": {
+                  "split": 482,
+                  "feed": 2566
+                }
+              },
+              "configuration": {
+                "incrementalSettlement": true,
+                "gameClockOffsetMs": -49312680,
+                "seedClockVersion": 2,
+                "profileWorker": false,
+                "stateWorkerCount": 1,
+                "configuredStateWorkers": 3,
+                "stateWorkerRoomLimit": 5,
+                "packedFood": false,
+                "packedParts": true
+              },
+              "longestStateGaps": []
+            }
+          ]
+        }
+      },
+      "retainedHistory": {
+        "matched": true,
+        "historicalReceipts": 3015000
+      }
     },
     "fullWindowsInitial": {
       "tests": 2461,

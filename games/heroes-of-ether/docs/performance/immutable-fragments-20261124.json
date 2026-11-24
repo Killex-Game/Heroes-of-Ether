@@ -1,0 +1,121 @@
+{
+  "at": "2026-11-24T22:57:18.762Z",
+  "source": "c2ab347beef725ee25e48941f0611bbf8cfdd609",
+  "runtimeSource": "84fd44138474a08b20b77eb54a94abfe14c6f84d",
+  "installed": false,
+  "change": "Oversized immutable profile records retain canonical field segments and assemble only requested legacy fragments; no full canonical profile clone or complete JSON string is retained alongside the segments.",
+  "compatibility": "Storage format, Unicode fragment boundaries, document order, per-document hash, whole-world hash, compressed bytes and size rejection for legacy format zero remain exact.",
+  "windows": {
+    "benchmark": {
+      "at": "2026-11-24T22:30:27.545Z",
+      "platform": "win32",
+      "node": "v24.22.3",
+      "scope": "Oversized synthetic profile snapshot component only; no live data, whole-game CPU or CCU claim",
+      "exactFrames": 13,
+      "results": [
+        {
+          "variant": "baseline",
+          "coldMs": 787.0117,
+          "warmMs": 6160.1541,
+          "cpuMs": 7047,
+          "maxRSSKiB": 467084,
+          "memory": {
+            "rss": 348831744,
+            "heapTotal": 228855808,
+            "heapUsed": 91780144,
+            "external": 63267014,
+            "arrayBuffers": 60880100
+          },
+          "fieldsReused": 0
+        },
+        {
+          "variant": "candidate",
+          "coldMs": 494.398,
+          "warmMs": 2049.3897,
+          "cpuMs": 2610,
+          "maxRSSKiB": 211748,
+          "memory": {
+            "rss": 193957888,
+            "heapTotal": 225415168,
+            "heapUsed": 84806520,
+            "external": 15058001,
+            "arrayBuffers": 12671087
+          },
+          "fieldsReused": 42
+        },
+        {
+          "variant": "candidate",
+          "coldMs": 470.1131,
+          "warmMs": 2005.1965,
+          "cpuMs": 2516,
+          "maxRSSKiB": 203680,
+          "memory": {
+            "rss": 177414144,
+            "heapTotal": 209731584,
+            "heapUsed": 68638328,
+            "external": 15058001,
+            "arrayBuffers": 12671087
+          },
+          "fieldsReused": 42
+        },
+        {
+          "variant": "baseline",
+          "coldMs": 662.7488,
+          "warmMs": 5456.2782,
+          "cpuMs": 6234,
+          "maxRSSKiB": 419748,
+          "memory": {
+            "rss": 316547072,
+            "heapTotal": 211996672,
+            "heapUsed": 76066280,
+            "external": 51120467,
+            "arrayBuffers": 48733553
+          },
+          "fieldsReused": 0
+        }
+      ]
+    },
+    "firstFull": {
+      "label": "immutable-fragments-full-windows",
+      "code": 1,
+      "signal": null,
+      "at": "2026-11-24T22:43:56.482Z",
+      "tests": 2475,
+      "pass": 2471,
+      "fail": 1,
+      "skipped": 3
+    },
+    "targeted": {
+      "label": "immutable-fragments-pinned-r2",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0
+    },
+    "repeatFull": {
+      "label": "immutable-fragments-full-windows-r2",
+      "code": 0,
+      "signal": null,
+      "at": "2026-11-24T22:54:03.719Z",
+      "tests": 2475,
+      "pass": 2472,
+      "fail": 0,
+      "skipped": 3
+    }
+  },
+  "firstFailure": "The old test required fallback and no cached fields for oversized format-one profiles. That expectation was replaced with exact compressed fragment comparisons, sibling field reuse and previous-snapshot immutability. Original failed full run retained.",
+  "linux": {
+    "full": {
+      "pending": true,
+      "label": "immutable-fragments-full-linux"
+    },
+    "realPostgresql": {
+      "pending": true,
+      "label": "immutable-fragments-real-pg"
+    }
+  },
+  "limits": [
+    "Component Windows ABBA excludes actual game simulation, network and PostgreSQL.",
+    "Linux full regression, real PostgreSQL with fragmented-record failures, mixed load and retained-history checks required before deployment.",
+    "Main writer and pinned reader still retain complete world structures; not addressed persistence or 300000 CCU."
+  ]
+}

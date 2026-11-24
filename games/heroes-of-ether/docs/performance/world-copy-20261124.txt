@@ -486,3 +486,20 @@ livepreflight сохранены. Разные исходные миры не д
 одинаковомseed ac77eb0950ea3cfe93df25c5181a3a85fbd1353e5daa0b42049a08c98cd0035a.
 
 22:41 UTC — Eleven closed synthetic starting fixtures archived losslessly on VPS and locally: 451805300 → 30252765 bytes; 421552535 bytes released. All compressed and decompressed SHA-256 checks passed before redundant raw fixture removal. Real saves/WAL/history/results/backups preserved. Restoration mapping and metadata retained; see closed-fixtures-20261124.json.
+
+22:54 UTC — Парная история, один исходный SHA 62c45427...5503ce:
+база V30 и кандидат V28, 30 арена +5 лобби, 10 минут, оба 10/10 pass.
+10193/9909 ACK полностью восстановлены, дублей0, PG=WAL19768/19931.
+Все3015000старыхквитанций сохранены, обе тестовые схемы удалены.
+Общего выигрыша CPU/RSS не доказано: кандидат RSS2247–2881МиБ,
+редкий stategap464мс против335мс у базы. Пауза не связана со смертью
+клиентов; в том же окне GC221мс и step364мс, причинность не установлена.
+Отчёт paired-history-20261124.json. Production416cef4 прежний.
+
+Крупные immutable-записи, кандидатc2ab347: Windows компонент ABBA
+5456–6160→2005–2049мс на13точныхснимках;peak410–456→199–207МиБ.
+Первый полный:2471pass/1устаревшееожиданиеfallback/3skip. После
+точного сравнения фрагментов и старых снимков:12направленных pass,
+полный2475/2472pass/0fail/3skip. Linuxfull идёт;PG/mixed ещё нужны.
+Отчёт immutable-fragments-20261124.json. Это компонентный выигрыш,
+не доказательство всего сервера или готовности300000CCU.
