@@ -6,8 +6,8 @@ const {fork}=require('node:child_process'),{randomBytes}=require('node:crypto');
 const root=path.resolve(__dirname,'../..');
 async function main(){
   const [configFile,output,roomText='1']=process.argv.slice(2),rooms=Number(roomText);
-  if(!configFile||!output||!Number.isInteger(rooms)||rooms<1||rooms>3)
-    throw Error('Usage: node scripts/benchmarks/postgresql-capacity.cjs CONFIG OUTPUT_DIRECTORY ROOMS(1..3)');
+  if(!configFile||!output||!Number.isInteger(rooms)||rooms<1||rooms>(process.env.CAPACITY_REALISTIC==='1'?12:3))
+    throw Error('Usage: node scripts/benchmarks/postgresql-capacity.cjs CONFIG OUTPUT_DIRECTORY ROOMS(1..3; realistic up to 12)');
   let repository=root;
   for(let dir=root;path.dirname(dir)!==dir;dir=path.dirname(dir))
     if(fs.existsSync(path.join(dir,'.git'))){repository=dir;break;}
@@ -26,13 +26,20 @@ async function main(){
     : require('./database-room-fixture.cjs').createFixture();
   assert.equal(Object.keys(fixtureData.data.profiles).length,1280);
   assert(Object.values(fixtureData.data.profiles).every(p=>p.testFixture==='database-capacity-20261110'));
+  const realistic=process.env.CAPACITY_REALISTIC==='1',mixedMinutes=Number(process.env.CAPACITY_MIXED_MINUTES||0);
+  assert(Number.isInteger(mixedMinutes)&&mixedMinutes>=0&&mixedMinutes<=120);
+  const perRoom=require('../../config/arena-rooms.json').arenaCapacity;
+  if(realistic)require('./realistic-lobby-plan.cjs').detachLobby(fixtureData,rooms*perRoom,5);
   fs.writeFileSync(fixture,JSON.stringify(fixtureData),{mode:0o600});
   const fixtureSha256=require('node:crypto').createHash('sha256').update(fs.readFileSync(fixture)).digest('hex');
-  const perRoom=require('../../config/arena-rooms.json').arenaCapacity;
   const protocol=process.env.CAPACITY_PROTOCOL||require('../../public/shared/arena-wire').PROTOCOL;
   assert(['sferorumiya-state-v8','sferorumiya-state-v9','sferorumiya-state-v10'].includes(protocol),'Unsupported benchmark protocol');
   const summary={at:new Date().toISOString(),rooms,perRoom,protocol,fixtureSha256,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
+  if(mixedMinutes)Object.assign(summary,{mixedMinutes,phaseSeconds:60});
+  if(realistic)Object.assign(summary,{realistic:true,mixedSocial:true,scenario:{movementHz:10,splitEverySeconds:3.7,feedEverySeconds:.7,
+    boosterEverySeconds:2,emoteEverySeconds:5.3,lobbyIntervalMs:1500,syntheticFunds:true,
+    notCovered:['real payment provider','external VK API','all seasonal events simultaneously','browser rendering']}});
   const run=path.join(out,'database-'+summary.players+'-'+Date.parse(summary.at));fs.mkdirSync(run,{mode:0o700});
   const stdout=fs.openSync(path.join(run,'stdout.txt'),'wx',0o600),stderr=fs.openSync(path.join(run,'stderr.txt'),'wx',0o600);
   const env={...process.env};
@@ -42,6 +49,8 @@ async function main(){
       LOAD_PHASES:'move,split,feed,boosters,combined',LOAD_PHASE_MS:'30000',LOAD_JOURNAL:'1',LOAD_CONNECT_INTERVAL:'100',
       LOAD_STATE_WORKERS:'3',LOAD_DRIVER_PER_ROOM:'1',LOAD_LOBBY:'5',LOAD_ALL_BOOSTERS:'1',LOAD_STOCK:'3000',LOAD_GC_METRICS:'1',
       LOAD_INCREMENTAL_SETTLEMENT:'1',LOAD_WORLD_FIXTURE:fixture,LOAD_DATABASE_CONFIG:privateConfig,LOAD_ACK_DIR:path.join(out,'acks')});
+  if(mixedMinutes)Object.assign(env,{LOAD_PHASES:Array(mixedMinutes).fill('combined').join(','),LOAD_PHASE_MS:'60000'});
+  if(realistic)Object.assign(env,{LOAD_REALISTIC:'1',LOAD_MIXED_SOCIAL:'1',LOAD_LOBBY_INTERVAL:'1500'});
   if(process.env.CAPACITY_DIAGNOSTICS==='1')Object.assign(env,{LOAD_STAGE_METRICS:'1',LOAD_PHYSICS_STAGES:'1',LOAD_CPU_PHASE:'combined'});
   if(process.env.CAPACITY_WIRE_DIAGNOSTICS==='1'){
     summary.diagnosticOnly=true;
@@ -57,7 +66,7 @@ async function main(){
     summary.evidence=message.dir;
     fs.writeFileSync(path.join(run,'running.json'),JSON.stringify({...summary,pid:child.pid},null,2),{mode:0o600});
   });
-  const timer=setTimeout(()=>child.kill('SIGTERM'),600000);timer.unref();
+  const timer=setTimeout(()=>child.kill('SIGTERM'),Math.max(600000,mixedMinutes*60000+300000));timer.unref();
   try{Object.assign(summary,await new Promise((resolve,reject)=>{
     child.once('error',reject);child.once('exit',(code,signal)=>resolve({code,signal}));
   }));}finally{clearTimeout(timer);fs.closeSync(stdout);fs.closeSync(stderr);}

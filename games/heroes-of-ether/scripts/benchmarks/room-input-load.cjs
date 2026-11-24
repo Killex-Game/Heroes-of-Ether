@@ -107,7 +107,7 @@ if (process.env.LOAD_CLIENT === "1") {
   const lobbyLimit = process.env.LOAD_LOBBY_IDLE === "1" ? 700 : 30;
   if (!Number.isInteger(lobbyCount) || lobbyCount < 0 || lobbyCount > lobbyLimit)
     throw Error("Too many synthetic lobby players for this scenario");
-  if (!Number.isInteger(roomCount) || roomCount < 1 || roomCount > (coordinated ? 20 : 3) || ![30, 35].includes(perRoom))
+  if (!Number.isInteger(roomCount) || roomCount < 1 || roomCount > (coordinated ? 20 : process.env.LOAD_REALISTIC === "1" ? 12 : 3) || ![30, 35].includes(perRoom))
     throw Error("Use the capacity ladder for more than three rooms; supported room sizes are 30 and legacy 35");
   const stock = Number(process.env.LOAD_STOCK || 100);
   if (!Number.isInteger(stock) || stock < 1 || stock > 100000) throw Error("Invalid synthetic stock");
@@ -231,9 +231,9 @@ if (process.env.LOAD_CLIENT === "1") {
       delta: process.env.LOAD_STEP_DELTA === "1",
       }) : null;
   let events;
-  if (process.env.LOAD_EVENT) {
-    const kind = process.env.LOAD_EVENT;
-    if (!["black-friday", "easter-hunt", "ether-alchemy"].includes(kind)) throw Error("Invalid synthetic event");
+  if (process.env.LOAD_EVENT || process.env.LOAD_REALISTIC === "1") {
+    const kind = process.env.LOAD_EVENT || "lucky-week";
+    if (!["black-friday", "easter-hunt", "ether-alchemy", "lucky-week"].includes(kind)) throw Error("Invalid synthetic event");
     const at = Math.floor(Date.now() / 60000) * 60000;
     events = new (require("../../src/server/events/event-manager").EventManager)({ now: () => at });
     events.apply("fixture", "start", { requestId: randomUUID(), revision: events.data.revision,
@@ -322,6 +322,10 @@ if (process.env.LOAD_CLIENT === "1") {
     };
   };
   const arenas = [...app.rooms.values()].map((room) => room.arena);
+  let acceptedInputs={split:0,feed:0},attemptedInputs={split:0,feed:0};
+  if(process.env.LOAD_REALISTIC === "1")for(const a of arenas)for(const [method,key] of [["splitPlayer","split"],["feedPlayer","feed"]]) {
+    const original=a[method];a[method]=function(...args){attemptedInputs[key]++;const ok=original.apply(this,args);if(ok)acceptedInputs[key]++;return ok;};
+  }
   // All rooms must use the same food setting, including non-primary arenas.
   for (const simulation of arenas.slice(1)) {
     simulation.etherCount = naturalFood;
@@ -463,6 +467,11 @@ if (process.env.LOAD_CLIENT === "1") {
         const auth = profiles.open(fixture?.tokens[count + i]);
         profiles.transact(auth.token, randomUUID(), "synthetic-lobby-fixture", p => {
           p.wallet.coins = 100000;
+          if(process.env.LOAD_REALISTIC === "1") {
+            p.wallet.coins=1000000;p.wallet.crystals=1000000;p.wallet.bucks=1000000;
+            p.level=Math.max(121,p.level);p.progress=freshProgress(p.level);
+            p.roulette.tickets+=1000;p.roulette.earned+=1000;
+          }
           p.inventory.candy = 100;
           if(process.env.LOAD_ALCHEMY==="1") {
             const rules=require("../../public/shared/alchemy-rules");
@@ -610,6 +619,7 @@ if (process.env.LOAD_CLIENT === "1") {
         if (wantsGraphs()) app.serviceObserver.requestMetrics();
       }
       phase = name;
+      acceptedInputs={split:0,feed:0};attemptedInputs={split:0,feed:0};
       massPeak = partsPeak = 0;
       samplePeaks();
       stats = {};
@@ -690,6 +700,7 @@ if (process.env.LOAD_CLIENT === "1") {
           pending: chat.writer?.pending || 0 },
         ...(monitorMode ? {monitoring:{mode:monitorMode,requested:wantsGraphs(),collecting:app.serviceObserver.snapshot().collecting}} : {}),
         phase,
+        ...(process.env.LOAD_REALISTIC === "1" ? {inputs:{accepted:{...acceptedInputs},attempted:{...attemptedInputs}}} : {}),
         ...(experimentalStepPool ? { experimentalStepPool: { ...experimentalStepPool.stats } } : {}),
         mass: {
           initial: [...seededMasses].sort((a, b) => a - b),

@@ -14,6 +14,17 @@ const make = () => ({
       actions: { profile: 1, rankings: 1, "social-view": 1, loadout: 1, purchase: 1, "account-bonus": 1 }},
   })),
 });
+test("realistic load requires successful clan/pet/roulette actions and actual split/feed, not attempts", () => {
+  const {rows,summary}=make();summary.realistic=true;
+  const required=require('../../scripts/benchmarks/realistic-lobby-plan.cjs').REQUIRED;
+  for(const name of required)rows[0].lobby.actions[name]=1;
+  rows[4].inputs={accepted:{split:2,feed:5},attempted:{split:40,feed:60}};
+  assert.equal(assessCapacity(rows,summary).shortRunMeetsTargets,true);
+  rows[4].inputs.accepted.feed=0;
+  assert(assessCapacity(rows,summary).phases[4].issues.includes('split-feed-not-executed'));
+  delete rows[0].lobby.actions['clan-create'];
+  assert(assessCapacity(rows,summary).problems.includes('missing-realistic-action:clan-create'));
+});
 
 test("fast snapshots cannot mask delayed booster confirmations or missing measurements", () => {
   const { rows, summary } = make();

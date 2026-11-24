@@ -1,0 +1,1920 @@
+{
+  "at": "2026-11-24T07:06:54.442Z",
+  "rooms": 1,
+  "perRoom": 30,
+  "protocol": "sferorumiya-state-v10",
+  "fixtureSha256": "3418106d1db333901aa046412202bc1229a7c4caa15319a062f286232b5a36de",
+  "players": 30,
+  "lobby": 5,
+  "phaseSeconds": 60,
+  "mode": "database",
+  "scope": "Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee",
+  "evidence": "/dev/shm/heroether-realistic-r2-20261124/sferorumia-input-load-tLoAhN",
+  "mixedMinutes": 3,
+  "realistic": true,
+  "mixedSocial": true,
+  "scenario": {
+    "movementHz": 10,
+    "splitEverySeconds": 3.7,
+    "feedEverySeconds": 0.7,
+    "boosterEverySeconds": 2,
+    "emoteEverySeconds": 5.3,
+    "lobbyIntervalMs": 1500,
+    "syntheticFunds": true,
+    "notCovered": [
+      "real payment provider",
+      "external VK API",
+      "all seasonal events simultaneously",
+      "browser rendering"
+    ]
+  },
+  "code": 0,
+  "signal": null,
+  "endedAt": "2026-11-24T07:10:10.745Z",
+  "rows": [
+    {
+      "configuration": {
+        "incrementalSettlement": true,
+        "profileWorker": false,
+        "stateWorkerCount": 1,
+        "packedFood": false,
+        "packedParts": true
+      },
+      "clanQuests": {
+        "enabled": true,
+        "boards": 133,
+        "active": 128,
+        "eligible": 1275,
+        "contributors": 30,
+        "contributions": 1501
+      },
+      "chat": {
+        "durable": true,
+        "receipts": 10,
+        "pending": 0
+      },
+      "phase": "combined",
+      "inputs": {
+        "accepted": {
+          "split": 372,
+          "feed": 2531
+        },
+        "attempted": {
+          "split": 487,
+          "feed": 2564
+        }
+      },
+      "mass": {
+        "initial": [
+          20,
+          50,
+          150,
+          1000,
+          4000,
+          15000,
+          25000,
+          40000,
+          75000,
+          120000
+        ],
+        "peak": 162968,
+        "mostParts": 16,
+        "end": {
+          "n": 30,
+          "p50": 870,
+          "p95": 36168,
+          "p99": 72522,
+          "max": 72522
+        }
+      },
+      "players": 30,
+      "receiptHistory": 0,
+      "lobby": {
+        "clients": 5,
+        "mode": "active-lobby-actions",
+        "ipMode": "single-generator-address",
+        "requests": 208,
+        "success": 208,
+        "errors": {},
+        "actions": {
+          "profile": 10,
+          "rankings": 10,
+          "loadout": 10,
+          "purchase": 10,
+          "account-bonus": 10,
+          "social-view": 20,
+          "gift": 10,
+          "gift-read": 10,
+          "clan-create": 5,
+          "clan-deposit": 10,
+          "clan-buy": 10,
+          "clan-edit": 10,
+          "clan-view": 20,
+          "roulette-prepare": 10,
+          "roulette-spin": 10,
+          "pet-buy": 5,
+          "pet-food": 10,
+          "chat": 10,
+          "news": 8,
+          "presence": 5,
+          "pet-equip": 5
+        },
+        "pending": 0,
+        "latencyMs": {
+          "p50": 9.804189000002225,
+          "p95": 66.7771470000007,
+          "max": 256.1707349999997
+        }
+      },
+      "roomCount": 1,
+      "alive": 30,
+      "parts": 295,
+      "food": 1224,
+      "elapsed": 60001.861382999996,
+      "cpuPercent": 99.98707309603199,
+      "resourceUsage": {
+        "elapsedMs": 60004.18096,
+        "processCpu": {
+          "userMs": 57452.688,
+          "systemMs": 2547.915,
+          "percent": 99.9940371488407
+        },
+        "mainThreadCpu": {
+          "userMs": 23929.312,
+          "systemMs": 1618.412,
+          "percent": 42.57657315084532
+        },
+        "mainThreadElu": {
+          "activeMs": 26014.22965796341,
+          "idleMs": 33989.82186,
+          "utilization": 0.43354121929875905
+        },
+        "cgroup": {
+          "scope": "/sys/fs/cgroup/system.slice/heroether-realistic-r2-30-20261124.service",
+          "cpuMax": "300000 100000",
+          "counters": {
+            "usage_usec": 68629092,
+            "user_usec": 64597394,
+            "system_usec": 4031699,
+            "nice_usec": 63976722,
+            "nr_periods": 601,
+            "nr_throttled": 5,
+            "throttled_usec": 564193,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "throttledPeriodFraction": 0.008319467554076539
+        }
+      },
+      "mainThreadGc": {
+        "n": 105,
+        "p50": 4.2492170333862305,
+        "p95": 10.435028970241547,
+        "p99": 18.029275000095367,
+        "max": 19.842664003372192,
+        "totalMs": 525.7971777319908
+      },
+      "socketMbps": 36.13542110235771,
+      "rssMB": 965.328125,
+      "heapUsedMB": 202.61078643798828,
+      "tickGaps": {
+        "n": 1183,
+        "p50": 50.00202700000227,
+        "p95": 52.75022599999647,
+        "p99": 96.80088099999921,
+        "max": 194.30946300000141
+      },
+      "tickWorkMs": {
+        "n": 1184,
+        "p50": 11.8536249999961,
+        "p95": 19.107023999997182,
+        "p99": 26.45788000000175,
+        "max": 45.52926800000023
+      },
+      "eventLoop": {
+        "p95": 24.936447,
+        "max": 194.379775
+      },
+      "stats": {
+        "step": {
+          "n": 1184,
+          "ms": 6808.34479399999,
+          "max": 27.870732999999746
+        },
+        "snapshot": {
+          "n": 1279,
+          "ms": 1258.7382500000203,
+          "max": 4.153529999995953
+        },
+        "startArenaCommit": {
+          "n": 1116,
+          "ms": 626.1700199998213,
+          "max": 3.8850210000018706
+        },
+        "applyArenaProgress": {
+          "n": 1183,
+          "ms": 3733.9350700001705,
+          "max": 21.663347999998223
+        },
+        "handleInput": {
+          "n": 21024,
+          "ms": 249.76832700058003,
+          "max": 3.1158980000036536
+        },
+        "consume": {
+          "n": 906,
+          "ms": 810.5176019999235,
+          "max": 12.685119000001578
+        },
+        "publishStaged": {
+          "n": 841,
+          "ms": 136.87897599993084,
+          "max": 3.2075890000014624
+        },
+        "writeSnapshot": {
+          "n": 936,
+          "ms": 222.6062140000049,
+          "max": 12.330873000002612
+        },
+        "syncCommit": {
+          "n": 95,
+          "ms": 81.92377500001385,
+          "max": 12.320449999999255
+        },
+        "save": {
+          "n": 95,
+          "ms": 471.9544689999457,
+          "max": 99.49760699999752
+        }
+      },
+      "persistence": {
+        "maxArenaBatches": 2,
+        "maxQueuedActions": 2,
+        "pausedSamples": 0,
+        "end": {
+          "arenaBatches": 1,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "restages": {
+            "profile": 4,
+            "date": 0,
+            "validity": 2,
+            "journal": 0
+          }
+        }
+      },
+      "database": [
+        {
+          "revision": 37,
+          "generation": 2,
+          "changedDocuments": 0,
+          "payloadBytes": 0,
+          "syncedAt": 1795504027466,
+          "prepareMs": 784,
+          "writeMs": 116,
+          "durationMs": 908.2349250000007,
+          "final": false
+        },
+        {
+          "revision": 1050,
+          "generation": 3,
+          "changedDocuments": 60,
+          "payloadBytes": 157593,
+          "syncedAt": 1795504057241,
+          "prepareMs": 403,
+          "writeMs": 184,
+          "durationMs": 692.1943410000022,
+          "final": false
+        }
+      ],
+      "stateWorkers": {
+        "jobs": 1291,
+        "replaced": 392,
+        "workerMs": 14340.876981999674,
+        "cloneMs": 1283.32931899992,
+        "turnaroundMs": 20494.806094999883,
+        "failures": 0,
+        "overflowStreams": 0,
+        "retiredRooms": 0,
+        "drained": 0,
+        "delivered": 36268,
+        "deliveryMs": 897.8092080001463,
+        "lanes": 1
+      },
+      "profileWorker": null,
+      "effects": {
+        "cake": {
+          "attempts": 13,
+          "applied": 13
+        },
+        "mega_poison": {
+          "attempts": 9,
+          "applied": 9
+        },
+        "poison": {
+          "attempts": 11,
+          "applied": 11
+        },
+        "lock": {
+          "attempts": 10,
+          "applied": 10
+        },
+        "fire_sword": {
+          "attempts": 25,
+          "applied": 25
+        }
+      },
+      "driver": {
+        "clients": 30,
+        "cpuPercent": 12.612668821415742,
+        "loopP99Ms": 12.656639,
+        "loopMaxMs": 82.968575
+      },
+      "connections": 30,
+      "rooms": [
+        {
+          "roomId": "arena-1",
+          "connections": 30,
+          "updatesPerClient": 20.096324382197174,
+          "gaps": {
+            "p50": 49.621868000001996,
+            "p95": 61.67739500000607,
+            "p99": 98.49304300000222,
+            "max": 335.9072869999982
+          }
+        }
+      ],
+      "updatesPerClient": 20.096324382197174,
+      "networkMbps": 30.08072271024908,
+      "clientGaps": {
+        "p50": 49.621868000001996,
+        "p95": 61.67739500000607,
+        "p99": 98.49304300000222,
+        "max": 335.9072869999982
+      },
+      "boosters": 853,
+      "actionRequests": 897,
+      "actionPending": 0,
+      "actionLatencyMs": {
+        "p50": 8.835915999999997,
+        "p95": 37.51079100000061,
+        "p99": 158.8248620000013,
+        "max": 320.6307710000001
+      },
+      "successfulActionLatencyMs": {
+        "p50": 9.086417999998957,
+        "p95": 39.06788699999743,
+        "p99": 158.8248620000013,
+        "max": 320.6307710000001
+      },
+      "oldestPendingActionMs": 0,
+      "usedByType": {
+        "colorful_shield": 30,
+        "ice_cream": 30,
+        "candy": 30,
+        "rocket": 28,
+        "freeze": 29,
+        "hook": 27,
+        "glove": 29,
+        "web": 30,
+        "sphere": 30,
+        "poison": 29,
+        "donut": 30,
+        "speed": 30,
+        "mine": 30,
+        "lock": 25,
+        "harpoon": 28,
+        "axe": 23,
+        "stone": 26,
+        "meat": 30,
+        "knuckles": 29,
+        "golden_shield": 29,
+        "mega_poison": 29,
+        "sponge": 27,
+        "easter_egg": 29,
+        "fire": 27,
+        "cake": 29,
+        "warheads": 28,
+        "vortex": 30,
+        "awl": 23,
+        "clan_shield": 30,
+        "fire_sword": 29
+      },
+      "failures": {
+        "Во время защиты появления атаковать нельзя.": 41,
+        "Для Губки нужны разделённые части. Предмет сохранён.": 3
+      },
+      "wireFields": {},
+      "perClientBytes": [
+        {
+          "packets": 1207,
+          "bytes": 6269816,
+          "max": 35567
+        },
+        {
+          "packets": 1206,
+          "bytes": 7822325,
+          "max": 34891
+        },
+        {
+          "packets": 1206,
+          "bytes": 6994257,
+          "max": 34292
+        },
+        {
+          "packets": 1204,
+          "bytes": 6007309,
+          "max": 33692
+        },
+        {
+          "packets": 1206,
+          "bytes": 6897780,
+          "max": 33090
+        },
+        {
+          "packets": 1205,
+          "bytes": 5908361,
+          "max": 32490
+        },
+        {
+          "packets": 1204,
+          "bytes": 5864981,
+          "max": 31977
+        },
+        {
+          "packets": 1204,
+          "bytes": 5148269,
+          "max": 31257
+        },
+        {
+          "packets": 1205,
+          "bytes": 7836627,
+          "max": 53654
+        },
+        {
+          "packets": 1204,
+          "bytes": 8052432,
+          "max": 29635
+        },
+        {
+          "packets": 1208,
+          "bytes": 6778993,
+          "max": 46015
+        },
+        {
+          "packets": 1209,
+          "bytes": 7268978,
+          "max": 48745
+        },
+        {
+          "packets": 1204,
+          "bytes": 8857895,
+          "max": 34908
+        },
+        {
+          "packets": 1208,
+          "bytes": 7536380,
+          "max": 56572
+        },
+        {
+          "packets": 1207,
+          "bytes": 9889704,
+          "max": 30610
+        },
+        {
+          "packets": 1205,
+          "bytes": 8091382,
+          "max": 25332
+        },
+        {
+          "packets": 1206,
+          "bytes": 8763894,
+          "max": 24672
+        },
+        {
+          "packets": 1206,
+          "bytes": 7058806,
+          "max": 26118
+        },
+        {
+          "packets": 1204,
+          "bytes": 10694331,
+          "max": 23234
+        },
+        {
+          "packets": 1206,
+          "bytes": 8393626,
+          "max": 30183
+        },
+        {
+          "packets": 1206,
+          "bytes": 7423816,
+          "max": 20908
+        },
+        {
+          "packets": 1208,
+          "bytes": 6414651,
+          "max": 35790
+        },
+        {
+          "packets": 1205,
+          "bytes": 10068537,
+          "max": 19834
+        },
+        {
+          "packets": 1209,
+          "bytes": 6948970,
+          "max": 23921
+        },
+        {
+          "packets": 1206,
+          "bytes": 7743479,
+          "max": 21540
+        },
+        {
+          "packets": 1207,
+          "bytes": 7278691,
+          "max": 27380
+        },
+        {
+          "packets": 1207,
+          "bytes": 7399058,
+          "max": 21976
+        },
+        {
+          "packets": 1206,
+          "bytes": 8175740,
+          "max": 23615
+        },
+        {
+          "packets": 1205,
+          "bytes": 7252500,
+          "max": 17500
+        },
+        {
+          "packets": 1205,
+          "bytes": 6792622,
+          "max": 18844
+        }
+      ],
+      "packetSizes": {
+        "type": 7,
+        "serverVersion": 7,
+        "tick": 4,
+        "world": 28,
+        "backgroundId": 8,
+        "playerCount": 2,
+        "foodDelta": 1027,
+        "playersDelta": 3175,
+        "events": 2,
+        "audioEvents": 2,
+        "visualEvents": 2,
+        "stateSequence": 4,
+        "selfDelta": 108,
+        "leaderboard": 1909,
+        "clanLeaderboard": 743,
+        "projectilesDelta": 418,
+        "hazardsDelta": 61
+      }
+    },
+    {
+      "configuration": {
+        "incrementalSettlement": true,
+        "profileWorker": false,
+        "stateWorkerCount": 1,
+        "packedFood": false,
+        "packedParts": true
+      },
+      "clanQuests": {
+        "enabled": true,
+        "boards": 133,
+        "active": 128,
+        "eligible": 1275,
+        "contributors": 30,
+        "contributions": 2834
+      },
+      "chat": {
+        "durable": true,
+        "receipts": 15,
+        "pending": 0
+      },
+      "phase": "combined",
+      "inputs": {
+        "accepted": {
+          "split": 371,
+          "feed": 2516
+        },
+        "attempted": {
+          "split": 486,
+          "feed": 2567
+        }
+      },
+      "mass": {
+        "initial": [
+          20,
+          50,
+          150,
+          1000,
+          4000,
+          15000,
+          25000,
+          40000,
+          75000,
+          120000
+        ],
+        "peak": 134398,
+        "mostParts": 16,
+        "end": {
+          "n": 30,
+          "p50": 615,
+          "p95": 23297,
+          "p99": 131605,
+          "max": 131605
+        }
+      },
+      "players": 30,
+      "receiptHistory": 0,
+      "lobby": {
+        "clients": 5,
+        "mode": "active-lobby-actions",
+        "ipMode": "single-generator-address",
+        "requests": 207,
+        "success": 207,
+        "errors": {},
+        "actions": {
+          "news": 7,
+          "presence": 10,
+          "clan-view": 30,
+          "profile": 10,
+          "rankings": 10,
+          "loadout": 10,
+          "purchase": 10,
+          "account-bonus": 10,
+          "social-view": 20,
+          "gift": 10,
+          "gift-read": 10,
+          "clan-deposit": 10,
+          "clan-buy": 10,
+          "clan-edit": 10,
+          "roulette-prepare": 10,
+          "roulette-spin": 10,
+          "pet-equip": 10,
+          "pet-food": 5,
+          "chat": 5
+        },
+        "pending": 0,
+        "latencyMs": {
+          "p50": 9.645401999994647,
+          "p95": 59.42655299999751,
+          "max": 90.2455789999949
+        }
+      },
+      "roomCount": 1,
+      "alive": 30,
+      "parts": 254,
+      "food": 933,
+      "elapsed": 60000.13474299999,
+      "cpuPercent": 91.68330410527594,
+      "resourceUsage": {
+        "elapsedMs": 60000.580988999995,
+        "processCpu": {
+          "userMs": 52807.369,
+          "systemMs": 2204.149,
+          "percent": 91.6849755339625
+        },
+        "mainThreadCpu": {
+          "userMs": 23988.878,
+          "systemMs": 1543.874,
+          "percent": 42.554174608210815
+        },
+        "mainThreadElu": {
+          "activeMs": 25937.655187010176,
+          "idleMs": 34062.918495,
+          "utilization": 0.4322901198324209
+        },
+        "cgroup": {
+          "scope": "/sys/fs/cgroup/system.slice/heroether-realistic-r2-30-20261124.service",
+          "cpuMax": "300000 100000",
+          "counters": {
+            "usage_usec": 62594075,
+            "user_usec": 58961852,
+            "system_usec": 3632223,
+            "nice_usec": 58322557,
+            "nr_periods": 600,
+            "nr_throttled": 1,
+            "throttled_usec": 12751,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "throttledPeriodFraction": 0.0016666666666666668
+        }
+      },
+      "mainThreadGc": {
+        "n": 99,
+        "p50": 4.10275799036026,
+        "p95": 10.01034700870514,
+        "p99": 23.654312014579773,
+        "max": 23.654312014579773,
+        "totalMs": 508.03650480508804
+      },
+      "socketMbps": 31.738567657502976,
+      "rssMB": 877.6015625,
+      "heapUsedMB": 168.3968505859375,
+      "tickGaps": {
+        "n": 1194,
+        "p50": 50.01330299999972,
+        "p95": 51.711212000009255,
+        "p99": 89.52066700000432,
+        "max": 114.54754899999534
+      },
+      "tickWorkMs": {
+        "n": 1195,
+        "p50": 12.302803999991738,
+        "p95": 19.304498999990756,
+        "p99": 24.803971999994246,
+        "max": 32.04345899999316
+      },
+      "eventLoop": {
+        "p95": 24.657919,
+        "max": 98.041855
+      },
+      "stats": {
+        "publishStaged": {
+          "n": 870,
+          "ms": 125.7656109999225,
+          "max": 0.5346989999961806
+        },
+        "writeSnapshot": {
+          "n": 955,
+          "ms": 154.22486799959734,
+          "max": 0.8335919999954058
+        },
+        "step": {
+          "n": 1195,
+          "ms": 7639.94097199988,
+          "max": 14.669313999998849
+        },
+        "snapshot": {
+          "n": 1285,
+          "ms": 1421.7320309999632,
+          "max": 4.1941249999945285
+        },
+        "startArenaCommit": {
+          "n": 1081,
+          "ms": 561.2925239999022,
+          "max": 5.075270999994245
+        },
+        "applyArenaProgress": {
+          "n": 1195,
+          "ms": 3416.7952049998275,
+          "max": 18.10903099999996
+        },
+        "handleInput": {
+          "n": 21025,
+          "ms": 181.26313699963794,
+          "max": 2.2448369999910938
+        },
+        "consume": {
+          "n": 902,
+          "ms": 858.3522919998795,
+          "max": 3.869344999999157
+        },
+        "syncCommit": {
+          "n": 85,
+          "ms": 25.346212999953423,
+          "max": 0.828228999991552
+        },
+        "save": {
+          "n": 85,
+          "ms": 73.00820500006375,
+          "max": 2.3657139999995707
+        }
+      },
+      "persistence": {
+        "maxArenaBatches": 2,
+        "maxQueuedActions": 1,
+        "pausedSamples": 0,
+        "end": {
+          "arenaBatches": 1,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "restages": {
+            "profile": 6,
+            "date": 0,
+            "validity": 2,
+            "journal": 0
+          }
+        }
+      },
+      "database": [
+        {
+          "revision": 37,
+          "generation": 2,
+          "changedDocuments": 0,
+          "payloadBytes": 0,
+          "syncedAt": 1795504027466,
+          "prepareMs": 784,
+          "writeMs": 116,
+          "durationMs": 908.2349250000007,
+          "final": false
+        },
+        {
+          "revision": 1050,
+          "generation": 3,
+          "changedDocuments": 60,
+          "payloadBytes": 157593,
+          "syncedAt": 1795504057241,
+          "prepareMs": 403,
+          "writeMs": 184,
+          "durationMs": 692.1943410000022,
+          "final": false
+        },
+        {
+          "revision": 2088,
+          "generation": 4,
+          "changedDocuments": 60,
+          "payloadBytes": 182436,
+          "syncedAt": 1795504087143,
+          "prepareMs": 373,
+          "writeMs": 189,
+          "durationMs": 594.8574530000042,
+          "final": false
+        },
+        {
+          "revision": 3094,
+          "generation": 5,
+          "changedDocuments": 44,
+          "payloadBytes": 202769,
+          "syncedAt": 1795504117145,
+          "prepareMs": 380,
+          "writeMs": 198,
+          "durationMs": 582.0077849999943,
+          "final": false
+        }
+      ],
+      "stateWorkers": {
+        "jobs": 2564,
+        "replaced": 726,
+        "workerMs": 28941.970897999803,
+        "cloneMs": 2533.9726130001177,
+        "turnaroundMs": 40130.226812000015,
+        "failures": 0,
+        "overflowStreams": 0,
+        "retiredRooms": 0,
+        "drained": 0,
+        "delivered": 72714,
+        "deliveryMs": 1776.564524000389,
+        "lanes": 1
+      },
+      "profileWorker": null,
+      "effects": {
+        "cake": {
+          "attempts": 9,
+          "applied": 9
+        },
+        "mega_poison": {
+          "attempts": 3,
+          "applied": 3
+        },
+        "poison": {
+          "attempts": 5,
+          "applied": 5
+        },
+        "lock": {
+          "attempts": 4,
+          "applied": 4
+        },
+        "fire_sword": {
+          "attempts": 13,
+          "applied": 13
+        }
+      },
+      "driver": {
+        "clients": 30,
+        "cpuPercent": 11.100370767494024,
+        "loopP99Ms": 11.730943,
+        "loopMaxMs": 18.694143
+      },
+      "connections": 30,
+      "rooms": [
+        {
+          "roomId": "arena-1",
+          "connections": 30,
+          "updatesPerClient": 20.230295427622497,
+          "gaps": {
+            "p50": 49.90539400000125,
+            "p95": 60.19935800001258,
+            "p99": 92.33962800000154,
+            "max": 132.9757690000115
+          }
+        }
+      ],
+      "updatesPerClient": 20.230295427622497,
+      "networkMbps": 26.265027930033696,
+      "clientGaps": {
+        "p50": 49.90539400000125,
+        "p95": 60.19935800001258,
+        "p99": 92.33962800000154,
+        "max": 132.9757690000115
+      },
+      "boosters": 856,
+      "actionRequests": 899,
+      "actionPending": 0,
+      "actionLatencyMs": {
+        "p50": 5.745118999999249,
+        "p95": 20.37334700000065,
+        "p99": 55.95463800001016,
+        "max": 111.69545799998741
+      },
+      "successfulActionLatencyMs": {
+        "p50": 5.8225470000033965,
+        "p95": 20.440322999987984,
+        "p99": 55.95463800001016,
+        "max": 111.69545799998741
+      },
+      "oldestPendingActionMs": 0,
+      "usedByType": {
+        "freeze": 29,
+        "colorful_shield": 30,
+        "hook": 30,
+        "ice_cream": 30,
+        "candy": 30,
+        "rocket": 30,
+        "glove": 28,
+        "web": 26,
+        "sphere": 30,
+        "poison": 27,
+        "donut": 30,
+        "speed": 30,
+        "mine": 29,
+        "lock": 27,
+        "harpoon": 28,
+        "axe": 27,
+        "stone": 28,
+        "meat": 30,
+        "knuckles": 30,
+        "golden_shield": 30,
+        "mega_poison": 28,
+        "sponge": 27,
+        "easter_egg": 30,
+        "fire": 27,
+        "cake": 26,
+        "warheads": 29,
+        "vortex": 28,
+        "awl": 23,
+        "clan_shield": 30,
+        "fire_sword": 29
+      },
+      "failures": {
+        "Во время защиты появления атаковать нельзя.": 41,
+        "Для Губки нужны разделённые части. Предмет сохранён.": 3
+      },
+      "wireFields": {},
+      "perClientBytes": [
+        {
+          "packets": 1216,
+          "bytes": 7003065,
+          "max": 30297
+        },
+        {
+          "packets": 1213,
+          "bytes": 4831917,
+          "max": 72363
+        },
+        {
+          "packets": 1212,
+          "bytes": 6309839,
+          "max": 14602
+        },
+        {
+          "packets": 1213,
+          "bytes": 5735878,
+          "max": 34263
+        },
+        {
+          "packets": 1215,
+          "bytes": 6740697,
+          "max": 19815
+        },
+        {
+          "packets": 1213,
+          "bytes": 6112380,
+          "max": 29303
+        },
+        {
+          "packets": 1213,
+          "bytes": 5819195,
+          "max": 35054
+        },
+        {
+          "packets": 1213,
+          "bytes": 5304721,
+          "max": 32961
+        },
+        {
+          "packets": 1212,
+          "bytes": 5628211,
+          "max": 14753
+        },
+        {
+          "packets": 1216,
+          "bytes": 6370625,
+          "max": 25690
+        },
+        {
+          "packets": 1213,
+          "bytes": 7279810,
+          "max": 23110
+        },
+        {
+          "packets": 1215,
+          "bytes": 6112828,
+          "max": 28702
+        },
+        {
+          "packets": 1214,
+          "bytes": 7752393,
+          "max": 38970
+        },
+        {
+          "packets": 1214,
+          "bytes": 6461430,
+          "max": 29938
+        },
+        {
+          "packets": 1214,
+          "bytes": 5914911,
+          "max": 32151
+        },
+        {
+          "packets": 1214,
+          "bytes": 5315368,
+          "max": 39015
+        },
+        {
+          "packets": 1215,
+          "bytes": 7726469,
+          "max": 30563
+        },
+        {
+          "packets": 1213,
+          "bytes": 8018805,
+          "max": 19394
+        },
+        {
+          "packets": 1212,
+          "bytes": 9260986,
+          "max": 19999
+        },
+        {
+          "packets": 1217,
+          "bytes": 7411271,
+          "max": 43423
+        },
+        {
+          "packets": 1212,
+          "bytes": 5728869,
+          "max": 18125
+        },
+        {
+          "packets": 1214,
+          "bytes": 6713953,
+          "max": 18526
+        },
+        {
+          "packets": 1213,
+          "bytes": 8079157,
+          "max": 31701
+        },
+        {
+          "packets": 1216,
+          "bytes": 6372010,
+          "max": 58358
+        },
+        {
+          "packets": 1216,
+          "bytes": 6262616,
+          "max": 30435
+        },
+        {
+          "packets": 1214,
+          "bytes": 5981900,
+          "max": 19026
+        },
+        {
+          "packets": 1216,
+          "bytes": 6665922,
+          "max": 40157
+        },
+        {
+          "packets": 1213,
+          "bytes": 7481868,
+          "max": 21160
+        },
+        {
+          "packets": 1212,
+          "bytes": 5907821,
+          "max": 20417
+        },
+        {
+          "packets": 1213,
+          "bytes": 6690737,
+          "max": 19873
+        }
+      ],
+      "packetSizes": {
+        "type": 7,
+        "serverVersion": 7,
+        "tick": 4,
+        "world": 28,
+        "backgroundId": 8,
+        "playerCount": 2,
+        "foodDelta": 440,
+        "playersDelta": 1208,
+        "events": 2,
+        "audioEvents": 2,
+        "visualEvents": 204,
+        "stateSequence": 4,
+        "selfDelta": 109,
+        "projectilesDelta": 297,
+        "hazardsDelta": 226
+      }
+    },
+    {
+      "configuration": {
+        "incrementalSettlement": true,
+        "profileWorker": false,
+        "stateWorkerCount": 1,
+        "packedFood": false,
+        "packedParts": true
+      },
+      "clanQuests": {
+        "enabled": true,
+        "boards": 133,
+        "active": 128,
+        "eligible": 1275,
+        "contributors": 30,
+        "contributions": 4175
+      },
+      "chat": {
+        "durable": true,
+        "receipts": 25,
+        "pending": 0
+      },
+      "phase": "combined",
+      "inputs": {
+        "accepted": {
+          "split": 356,
+          "feed": 2483
+        },
+        "attempted": {
+          "split": 487,
+          "feed": 2568
+        }
+      },
+      "mass": {
+        "initial": [
+          20,
+          50,
+          150,
+          1000,
+          4000,
+          15000,
+          25000,
+          40000,
+          75000,
+          120000
+        ],
+        "peak": 150372,
+        "mostParts": 16,
+        "end": {
+          "n": 30,
+          "p50": 473,
+          "p95": 36385,
+          "p99": 50761,
+          "max": 50761
+        }
+      },
+      "players": 30,
+      "receiptHistory": 0,
+      "lobby": {
+        "clients": 5,
+        "mode": "active-lobby-actions",
+        "ipMode": "single-generator-address",
+        "requests": 209,
+        "success": 209,
+        "errors": {},
+        "actions": {
+          "pet-food": 10,
+          "chat": 10,
+          "news": 10,
+          "presence": 10,
+          "clan-view": 30,
+          "profile": 10,
+          "rankings": 10,
+          "loadout": 10,
+          "purchase": 10,
+          "account-bonus": 10,
+          "social-view": 20,
+          "gift": 10,
+          "gift-read": 10,
+          "clan-deposit": 10,
+          "clan-buy": 10,
+          "clan-edit": 10,
+          "roulette-prepare": 9,
+          "roulette-spin": 5,
+          "pet-equip": 5
+        },
+        "pending": 0,
+        "latencyMs": {
+          "p50": 9.674674999987474,
+          "p95": 63.8146570000099,
+          "max": 131.01838000002317
+        }
+      },
+      "roomCount": 1,
+      "alive": 30,
+      "parts": 233,
+      "food": 1040,
+      "elapsed": 60000.45599399999,
+      "cpuPercent": 94.9052870626422,
+      "resourceUsage": {
+        "elapsedMs": 60000.977606,
+        "processCpu": {
+          "userMs": 54598.19,
+          "systemMs": 2348.099,
+          "percent": 94.90893527425703
+        },
+        "mainThreadCpu": {
+          "userMs": 24289.609,
+          "systemMs": 1604.888,
+          "percent": 43.156791827689474
+        },
+        "mainThreadElu": {
+          "activeMs": 26001.664045986574,
+          "idleMs": 33999.31083,
+          "utilization": 0.43335402632587705
+        },
+        "cgroup": {
+          "scope": "/sys/fs/cgroup/system.slice/heroether-realistic-r2-30-20261124.service",
+          "cpuMax": "300000 100000",
+          "counters": {
+            "usage_usec": 65049534,
+            "user_usec": 61254344,
+            "system_usec": 3795191,
+            "nice_usec": 60597721,
+            "nr_periods": 600,
+            "nr_throttled": 1,
+            "throttled_usec": 34950,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "throttledPeriodFraction": 0.0016666666666666668
+        }
+      },
+      "mainThreadGc": {
+        "n": 102,
+        "p50": 4.158339023590088,
+        "p95": 6.294178009033203,
+        "p99": 22.208022952079773,
+        "max": 24.79817497730255,
+        "totalMs": 478.890722990036
+      },
+      "socketMbps": 36.95090931011768,
+      "rssMB": 993.76171875,
+      "heapUsedMB": 203.0186538696289,
+      "tickGaps": {
+        "n": 1186,
+        "p50": 49.989283999981126,
+        "p95": 51.86851099997875,
+        "p99": 97.97450500002014,
+        "max": 133.78323800000362
+      },
+      "tickWorkMs": {
+        "n": 1187,
+        "p50": 12.564781000022776,
+        "p95": 19.856781000009505,
+        "p99": 25.416024000005564,
+        "max": 35.20007200000691
+      },
+      "eventLoop": {
+        "p95": 25.198591,
+        "max": 108.724223
+      },
+      "stats": {
+        "handleInput": {
+          "n": 21058,
+          "ms": 193.3871889996226,
+          "max": 0.37508599998545833
+        },
+        "consume": {
+          "n": 904,
+          "ms": 812.7003259996127,
+          "max": 4.076950999995461
+        },
+        "step": {
+          "n": 1187,
+          "ms": 7673.749383999442,
+          "max": 19.061830999999074
+        },
+        "snapshot": {
+          "n": 1299,
+          "ms": 1466.9553239996603,
+          "max": 4.677253000001656
+        },
+        "publishStaged": {
+          "n": 838,
+          "ms": 122.96468699965044,
+          "max": 3.9603450000286102
+        },
+        "writeSnapshot": {
+          "n": 947,
+          "ms": 158.5978349999932,
+          "max": 3.963990999996895
+        },
+        "applyArenaProgress": {
+          "n": 1217,
+          "ms": 3524.872225999512,
+          "max": 19.64153299998725
+        },
+        "startArenaCommit": {
+          "n": 1107,
+          "ms": 576.5423649997683,
+          "max": 3.228404000023147
+        },
+        "syncCommit": {
+          "n": 109,
+          "ms": 32.68818500015186,
+          "max": 0.8017760000075214
+        },
+        "save": {
+          "n": 109,
+          "ms": 94.71019900005194,
+          "max": 4.1309520000068005
+        }
+      },
+      "persistence": {
+        "maxArenaBatches": 2,
+        "maxQueuedActions": 1,
+        "pausedSamples": 0,
+        "end": {
+          "arenaBatches": 1,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "restages": {
+            "profile": 9,
+            "date": 0,
+            "validity": 2,
+            "journal": 0
+          }
+        }
+      },
+      "database": [
+        {
+          "revision": 37,
+          "generation": 2,
+          "changedDocuments": 0,
+          "payloadBytes": 0,
+          "syncedAt": 1795504027466,
+          "prepareMs": 784,
+          "writeMs": 116,
+          "durationMs": 908.2349250000007,
+          "final": false
+        },
+        {
+          "revision": 1050,
+          "generation": 3,
+          "changedDocuments": 60,
+          "payloadBytes": 157593,
+          "syncedAt": 1795504057241,
+          "prepareMs": 403,
+          "writeMs": 184,
+          "durationMs": 692.1943410000022,
+          "final": false
+        },
+        {
+          "revision": 2088,
+          "generation": 4,
+          "changedDocuments": 60,
+          "payloadBytes": 182436,
+          "syncedAt": 1795504087143,
+          "prepareMs": 373,
+          "writeMs": 189,
+          "durationMs": 594.8574530000042,
+          "final": false
+        },
+        {
+          "revision": 3094,
+          "generation": 5,
+          "changedDocuments": 44,
+          "payloadBytes": 202769,
+          "syncedAt": 1795504117145,
+          "prepareMs": 380,
+          "writeMs": 198,
+          "durationMs": 582.0077849999943,
+          "final": false
+        },
+        {
+          "revision": 4122,
+          "generation": 6,
+          "changedDocuments": 60,
+          "payloadBytes": 228300,
+          "syncedAt": 1795504147247,
+          "prepareMs": 475,
+          "writeMs": 189,
+          "durationMs": 683.5223720000067,
+          "final": false
+        },
+        {
+          "revision": 5105,
+          "generation": 7,
+          "changedDocuments": 60,
+          "payloadBytes": 251075,
+          "syncedAt": 1795504177193,
+          "prepareMs": 415,
+          "writeMs": 194,
+          "durationMs": 622.8046069999982,
+          "final": false
+        }
+      ],
+      "stateWorkers": {
+        "jobs": 3816,
+        "replaced": 1147,
+        "workerMs": 44143.85850899926,
+        "cloneMs": 3840.1534490003646,
+        "turnaroundMs": 60515.00333100034,
+        "failures": 0,
+        "overflowStreams": 0,
+        "retiredRooms": 0,
+        "drained": 0,
+        "delivered": 108886,
+        "deliveryMs": 2613.0675280008236,
+        "lanes": 1
+      },
+      "profileWorker": null,
+      "effects": {
+        "lock": {
+          "attempts": 5,
+          "applied": 5
+        },
+        "cake": {
+          "attempts": 13,
+          "applied": 13
+        },
+        "fire_sword": {
+          "attempts": 41,
+          "applied": 41
+        },
+        "mega_poison": {
+          "attempts": 11,
+          "applied": 11
+        },
+        "poison": {
+          "attempts": 3,
+          "applied": 3
+        }
+      },
+      "driver": {
+        "clients": 30,
+        "cpuPercent": 12.106746079207579,
+        "loopP99Ms": 13.123583,
+        "loopMaxMs": 23.019519
+      },
+      "connections": 30,
+      "rooms": [
+        {
+          "roomId": "arena-1",
+          "connections": 30,
+          "updatesPerClient": 20.078044885517002,
+          "gaps": {
+            "p50": 49.78216000000248,
+            "p95": 60.48297700000694,
+            "p99": 92.44755000001169,
+            "max": 136.3561880000052
+          }
+        }
+      ],
+      "updatesPerClient": 20.078044885517002,
+      "networkMbps": 31.57688702976656,
+      "clientGaps": {
+        "p50": 49.78216000000248,
+        "p95": 60.48297700000694,
+        "p99": 92.44755000001169,
+        "max": 136.3561880000052
+      },
+      "boosters": 866,
+      "actionRequests": 899,
+      "actionPending": 0,
+      "actionLatencyMs": {
+        "p50": 6.936717000004137,
+        "p95": 22.808199999999488,
+        "p99": 73.68479500000831,
+        "max": 133.91735800000606
+      },
+      "successfulActionLatencyMs": {
+        "p50": 6.943547000002582,
+        "p95": 22.808199999999488,
+        "p99": 73.68479500000831,
+        "max": 133.91735800000606
+      },
+      "oldestPendingActionMs": 0,
+      "usedByType": {
+        "freeze": 29,
+        "colorful_shield": 30,
+        "hook": 29,
+        "ice_cream": 30,
+        "candy": 30,
+        "rocket": 28,
+        "glove": 29,
+        "web": 27,
+        "sphere": 30,
+        "poison": 30,
+        "donut": 30,
+        "speed": 30,
+        "mine": 28,
+        "lock": 29,
+        "harpoon": 28,
+        "axe": 28,
+        "stone": 30,
+        "meat": 30,
+        "knuckles": 29,
+        "golden_shield": 30,
+        "mega_poison": 28,
+        "sponge": 27,
+        "easter_egg": 30,
+        "fire": 28,
+        "cake": 28,
+        "warheads": 29,
+        "vortex": 30,
+        "awl": 23,
+        "clan_shield": 30,
+        "fire_sword": 29
+      },
+      "failures": {
+        "Во время защиты появления атаковать нельзя.": 30,
+        "Для Губки нужны разделённые части. Предмет сохранён.": 3
+      },
+      "wireFields": {},
+      "perClientBytes": [
+        {
+          "packets": 1205,
+          "bytes": 6135476,
+          "max": 32854
+        },
+        {
+          "packets": 1205,
+          "bytes": 8265834,
+          "max": 54785
+        },
+        {
+          "packets": 1205,
+          "bytes": 7751143,
+          "max": 30626
+        },
+        {
+          "packets": 1204,
+          "bytes": 9098260,
+          "max": 27379
+        },
+        {
+          "packets": 1205,
+          "bytes": 7456347,
+          "max": 29951
+        },
+        {
+          "packets": 1206,
+          "bytes": 8744586,
+          "max": 41669
+        },
+        {
+          "packets": 1205,
+          "bytes": 7618126,
+          "max": 32904
+        },
+        {
+          "packets": 1205,
+          "bytes": 8670901,
+          "max": 29303
+        },
+        {
+          "packets": 1203,
+          "bytes": 5159964,
+          "max": 20021
+        },
+        {
+          "packets": 1204,
+          "bytes": 8271569,
+          "max": 23058
+        },
+        {
+          "packets": 1205,
+          "bytes": 8475089,
+          "max": 28469
+        },
+        {
+          "packets": 1207,
+          "bytes": 7284352,
+          "max": 23915
+        },
+        {
+          "packets": 1203,
+          "bytes": 8436024,
+          "max": 20084
+        },
+        {
+          "packets": 1203,
+          "bytes": 7308447,
+          "max": 20626
+        },
+        {
+          "packets": 1204,
+          "bytes": 7782349,
+          "max": 26352
+        },
+        {
+          "packets": 1204,
+          "bytes": 8836321,
+          "max": 28192
+        },
+        {
+          "packets": 1205,
+          "bytes": 5420290,
+          "max": 24984
+        },
+        {
+          "packets": 1206,
+          "bytes": 8090530,
+          "max": 30827
+        },
+        {
+          "packets": 1203,
+          "bytes": 9429723,
+          "max": 23736
+        },
+        {
+          "packets": 1205,
+          "bytes": 8739388,
+          "max": 32896
+        },
+        {
+          "packets": 1203,
+          "bytes": 9693838,
+          "max": 19469
+        },
+        {
+          "packets": 1203,
+          "bytes": 7424246,
+          "max": 25415
+        },
+        {
+          "packets": 1205,
+          "bytes": 7242165,
+          "max": 22549
+        },
+        {
+          "packets": 1206,
+          "bytes": 7733309,
+          "max": 20603
+        },
+        {
+          "packets": 1207,
+          "bytes": 8447653,
+          "max": 31925
+        },
+        {
+          "packets": 1208,
+          "bytes": 7766485,
+          "max": 35051
+        },
+        {
+          "packets": 1205,
+          "bytes": 9497016,
+          "max": 29561
+        },
+        {
+          "packets": 1205,
+          "bytes": 7078292,
+          "max": 20562
+        },
+        {
+          "packets": 1204,
+          "bytes": 8579487,
+          "max": 29033
+        },
+        {
+          "packets": 1204,
+          "bytes": 6399398,
+          "max": 21337
+        }
+      ],
+      "packetSizes": {
+        "type": 7,
+        "serverVersion": 7,
+        "tick": 4,
+        "world": 28,
+        "backgroundId": 8,
+        "playerCount": 2,
+        "foodDelta": 485,
+        "playersDelta": 1744,
+        "events": 2,
+        "audioEvents": 2,
+        "visualEvents": 510,
+        "stateSequence": 4,
+        "selfDelta": 107,
+        "projectilesDelta": 459,
+        "hazardsDelta": 26
+      }
+    }
+  ],
+  "databaseVerification": {
+    "matched": true,
+    "localRevision": 6179,
+    "databaseRevision": 6179,
+    "profiles": 1280,
+    "clans": 133,
+    "samples": [
+      {
+        "revision": 37,
+        "generation": 2,
+        "changedDocuments": 0,
+        "payloadBytes": 0,
+        "syncedAt": 1795504027466,
+        "prepareMs": 784,
+        "writeMs": 116,
+        "durationMs": 908.2349250000007,
+        "final": false
+      },
+      {
+        "revision": 1050,
+        "generation": 3,
+        "changedDocuments": 60,
+        "payloadBytes": 157593,
+        "syncedAt": 1795504057241,
+        "prepareMs": 403,
+        "writeMs": 184,
+        "durationMs": 692.1943410000022,
+        "final": false
+      },
+      {
+        "revision": 2088,
+        "generation": 4,
+        "changedDocuments": 60,
+        "payloadBytes": 182436,
+        "syncedAt": 1795504087143,
+        "prepareMs": 373,
+        "writeMs": 189,
+        "durationMs": 594.8574530000042,
+        "final": false
+      },
+      {
+        "revision": 3094,
+        "generation": 5,
+        "changedDocuments": 44,
+        "payloadBytes": 202769,
+        "syncedAt": 1795504117145,
+        "prepareMs": 380,
+        "writeMs": 198,
+        "durationMs": 582.0077849999943,
+        "final": false
+      },
+      {
+        "revision": 4122,
+        "generation": 6,
+        "changedDocuments": 60,
+        "payloadBytes": 228300,
+        "syncedAt": 1795504147247,
+        "prepareMs": 475,
+        "writeMs": 189,
+        "durationMs": 683.5223720000067,
+        "final": false
+      },
+      {
+        "revision": 5105,
+        "generation": 7,
+        "changedDocuments": 60,
+        "payloadBytes": 251075,
+        "syncedAt": 1795504177193,
+        "prepareMs": 415,
+        "writeMs": 194,
+        "durationMs": 622.8046069999982,
+        "final": false
+      },
+      {
+        "revision": 6144,
+        "generation": 8,
+        "changedDocuments": 60,
+        "payloadBytes": 272959,
+        "syncedAt": 1795504207258,
+        "prepareMs": 472,
+        "writeMs": 200,
+        "durationMs": 689.4566469999845,
+        "final": false
+      },
+      {
+        "revision": 6179,
+        "generation": 9,
+        "changedDocuments": 35,
+        "payloadBytes": 227493,
+        "syncedAt": 1795504207810,
+        "prepareMs": 367,
+        "writeMs": 168,
+        "durationMs": 544.6806419999921,
+        "final": true
+      }
+    ]
+  },
+  "assessment": {
+    "targets": {
+      "updatesHz": 19,
+      "tickP95Ms": 100,
+      "stateGapP99Ms": 150,
+      "lobbyP95Ms": 1000,
+      "actionP95Ms": 500
+    },
+    "shortRunMeetsTargets": true,
+    "problems": [],
+    "phases": [
+      {
+        "phase": "combined",
+        "window": 1,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 2,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 3,
+        "meetsTargets": true,
+        "issues": []
+      }
+    ],
+    "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+  },
+  "ackAudit": {
+    "acknowledged": 2949,
+    "recovered": 2949,
+    "duplicates": 0,
+    "profiles": 1280,
+    "types": {
+      "booster:hook": 86,
+      "booster:cake": 83,
+      "booster:vortex": 88,
+      "booster:clan_shield": 90,
+      "booster:candy": 90,
+      "booster:glove": 86,
+      "booster:sphere": 90,
+      "booster:donut": 90,
+      "booster:freeze": 87,
+      "booster:mine": 87,
+      "booster:harpoon": 84,
+      "booster:knuckles": 88,
+      "booster:mega_poison": 85,
+      "booster:easter_egg": 89,
+      "booster:colorful_shield": 90,
+      "booster:ice_cream": 90,
+      "booster:warheads": 86,
+      "booster:web": 83,
+      "booster:fire": 82,
+      "booster:poison": 86,
+      "booster:rocket": 86,
+      "booster:speed": 90,
+      "booster:lock": 81,
+      "booster:fire_sword": 87,
+      "booster:meat": 90,
+      "booster:golden_shield": 89,
+      "booster:sponge": 81,
+      "booster:stone": 84,
+      "booster:awl": 69,
+      "booster:axe": 78,
+      "lobby:loadout": 30,
+      "lobby:purchase": 30,
+      "lobby:account-bonus": 30,
+      "lobby:gift": 30,
+      "lobby:gift-read": 30,
+      "lobby:clan-create": 5,
+      "lobby:clan-deposit": 30,
+      "lobby:clan-buy": 30,
+      "lobby:clan-edit": 30,
+      "lobby:roulette-prepare": 29,
+      "lobby:roulette-spin": 25,
+      "lobby:pet-buy": 5,
+      "lobby:pet-food": 25,
+      "lobby:chat": 25,
+      "lobby:pet-equip": 20
+    },
+    "gifts": 30,
+    "notices": 30,
+    "deposits": 30,
+    "created": 5,
+    "validInventoriesAndTransactions": true
+  },
+  "testSchemaRemoved": true
+}

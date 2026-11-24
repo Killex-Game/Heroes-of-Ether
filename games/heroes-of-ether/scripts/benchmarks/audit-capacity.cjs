@@ -26,7 +26,8 @@ function audit(directory) {
   assert(profiles.length > 0 && profiles.every(p => p.testFixture === "database-capacity-20261110"), "Synthetic world marker missing");
   const byId = new Map(profiles.map(p => [p.id, p]));
   const seen = new Set(), types = {}, giftCounts = new Map();
-  let acknowledged = 0, gifts = 0, notices = 0;
+  let acknowledged = 0, gifts = 0, notices = 0, deposits=0, created=0;
+  const treasury=new Map();
   for (const file of fs.readdirSync(path.join(output, "acks"))) {
     if (!file.endsWith(".ndjson")) continue;
     for (const line of fs.readFileSync(path.join(output, "acks", file), "utf8").split("\n").filter(Boolean)) {
@@ -37,6 +38,17 @@ function audit(directory) {
         assert(chat.messageReceipts?.[key], "Chat ACK absent from recovered chat WAL");
       } else assert.notEqual(receipts.read(p, ack.id), receipts.MISSING, "ACK absent from recovered WAL");
       types[ack.type] = (types[ack.type] || 0) + 1;
+      if(ack.type==='lobby:clan-create') {
+        assert(world.clans[ack.clanId]?.ownerId===p.id,'Created clan missing');created++;
+        const entries=p.transactions.entries.filter(e=>e.requestId===ack.id);
+        assert.equal(entries.length,1);assert.equal(entries[0].after.coins-entries[0].before.coins,-1500);
+      } else if(ack.type==='lobby:clan-deposit') {
+        const entries=p.transactions.entries.filter(e=>e.requestId===ack.id);
+        assert.equal(entries.length,1);assert.equal(entries[0].after.bucks-entries[0].before.bucks,-ack.amount);
+        treasury.set(ack.clanId,(treasury.get(ack.clanId)||0)+ack.amount);deposits++;
+      } else if(ack.type==='lobby:clan-buy') {
+        assert.equal(ack.boosterId,'warheads');treasury.set(ack.clanId,(treasury.get(ack.clanId)||0)-100);
+      }
       if (ack.type === "lobby:gift") {
         assert.equal(ack.giftId, "chocolates", "Unexpected test gift");
         const target = byId.get(ack.targetId), gift = target?.social?.gifts.find(g => g.id === ack.giftId);
@@ -61,6 +73,8 @@ function audit(directory) {
   }
   assert(acknowledged > 100, "Insufficient successful action coverage");
   if (summary.mixedSocial) assert(gifts > 0 && notices > 0, "Mixed social acknowledgments missing");
+  if(summary.realistic){assert.equal(created,summary.lobby);assert(deposits>0);
+    for(const [id,amount]of treasury)assert.equal(world.clans[id]?.treasury,amount,'Treasury debit/credit mismatch');}
   let applied;
   if (resident) {
     const appliedIds = new Set();
@@ -78,7 +92,7 @@ function audit(directory) {
     assert.equal(applied, Object.entries(types).reduce((n,[type,count])=>n+(type.startsWith("booster:")?count:0),0));
   }
   const report = { acknowledged, recovered: acknowledged, duplicates: 0, profiles: profiles.length,
-    types, gifts, notices, ...(resident ? { appliedEffects: applied } : {}), validInventoriesAndTransactions: true };
+    types, gifts, notices, deposits, created, ...(resident ? { appliedEffects: applied } : {}), validInventoriesAndTransactions: true };
   fs.writeFileSync(path.join(output, "ack-audit.json"), JSON.stringify(report, null, 2) + "\n");
   return report;
 }

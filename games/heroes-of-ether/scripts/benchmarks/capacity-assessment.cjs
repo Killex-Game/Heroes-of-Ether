@@ -16,6 +16,10 @@ function assessCapacity(rows, summary) {
     summary.mixedMinutes <= 120 && summary.phaseSeconds === 60;
   if (mixed && !validMixed) problems.push("mixed-window-configuration");
   if (mixed && validMixed && rows.length !== summary.mixedMinutes) problems.push("mixed-window-count");
+  if(summary.realistic) {
+    const actions={};for(const row of rows)for(const [key,count] of Object.entries(row.lobby?.actions||{}))actions[key]=(actions[key]||0)+count;
+    for(const name of require('./realistic-lobby-plan.cjs').REQUIRED)if(!(actions[name]>0))problems.push('missing-realistic-action:'+name);
+  }
   const requested = mixed && validMixed
     ? Array.from({ length: summary.mixedMinutes }, (_, index) => ({ name: "combined", index }))
     : PHASES.map(name => ({ name }));
@@ -28,6 +32,8 @@ function assessCapacity(rows, summary) {
       if (!Number.isFinite(value) || value > limit) issues.push(label);
     };
     if (row) {
+      if(summary.realistic && name==='combined' && (!(row.inputs?.accepted?.split>0)||!(row.inputs?.accepted?.feed>0)))
+        issues.push('split-feed-not-executed');
       if (window && (!Number.isFinite(row.elapsed) || row.elapsed < 60000)) issues.push("mixed-window-duration");
       // Fast snapshots of a paused simulation are not successful gameplay.
       if (!row.persistence || row.persistence.pausedSamples !== 0 || row.persistence.end?.paused !== false)

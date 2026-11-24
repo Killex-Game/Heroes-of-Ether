@@ -1,0 +1,68 @@
+{
+  "browser": "157.0.8103.79",
+  "width": 960,
+  "height": 576,
+  "tile": 192,
+  "artwork": 144,
+  "degrees": [
+    -7,
+    7
+  ],
+  "step": 1,
+  "columns": 5,
+  "pivot": [
+    0.5,
+    0.7
+  ],
+  "records": [
+    {
+      "source": "public/assets/emotes/pets-v1/1.webp",
+      "sourceSha256": "83c7f7fe9985f13d2ba539f6ce5596a783c72d06e66744e82b32f032b76ba46a",
+      "output": "public/assets/emotes/pets-motion-v2/1.png",
+      "outputSha256": "e537b965e050dba38419efa771712fde0a01ab55a01f3f6d32a253c68a2794ed",
+      "bytes": 452080
+    },
+    {
+      "source": "public/assets/emotes/pets-v1/6.webp",
+      "sourceSha256": "45f2e1248590e3d1222eb159bb40272a7e85d34d3f13affb02aac3ae415716ba",
+      "output": "public/assets/emotes/pets-motion-v2/6.png",
+      "outputSha256": "84b8bc03ca12b50f59311ec9b5287b376e20ef261d062d9b247194c4995f0667",
+      "bytes": 500247
+    },
+    {
+      "source": "public/assets/emotes/pets-v1/4.webp",
+      "sourceSha256": "4236dff90759674f63097248dd79e8ac53c3a463a1271cae6b916b4453d6fccd",
+      "output": "public/assets/emotes/pets-motion-v2/4.png",
+      "outputSha256": "dd63a502ee84634cf2831ffc444e288862334cbe33bdf22c95660f5fa513052a",
+      "bytes": 545401
+    },
+    {
+      "source": "public/assets/emotes/pets-v1/5.webp",
+      "sourceSha256": "fdbff245cf000943349b5c70525658a0f8e21bf4e0783e07626db32b8af35e68",
+      "output": "public/assets/emotes/pets-motion-v2/5.png",
+      "outputSha256": "4fc1b305974e5df3f0e35783f1bb3b7cb3e9d31f34319143de73f282ac2f950b",
+      "bytes": 587953
+    },
+    {
+      "source": "public/assets/emotes/pets-v1/3.webp",
+      "sourceSha256": "e1cfa0fcc56b6cff61e484af96ca3f913c4a6d4771b507d584f127c8277ccbe6",
+      "output": "public/assets/emotes/pets-motion-v2/3.png",
+      "outputSha256": "88114db09863b2d27e2193e9ee2e26c19b9716fc3d0e68e01b09eb14c883fc52",
+      "bytes": 530018
+    },
+    {
+      "source": "public/assets/emotes/pets-v1/8.webp",
+      "sourceSha256": "4dadbc7220cd800186970e8104b6a2f1838f5bf3a9cf17e9faf0349c5e87aeb7",
+      "output": "public/assets/emotes/pets-motion-v2/8.png",
+      "outputSha256": "7258692e86a5aefe5f9e51b3a0b0b4c2b1606681a3187042641c4fe266215748",
+      "bytes": 342103
+    },
+    {
+      "source": "public/assets/emotes/pets-v1/9.webp",
+      "sourceSha256": "60bcab8f8a15c4478e1d5faeecc95b2151e34380d77e41e4064752f4cac34be2",
+      "output": "public/assets/emotes/pets-motion-v2/9.png",
+      "outputSha256": "d5b689fa65aed72c8cdeba578b1a3b6cb7984383f070de0aa8554669e1b3bb6b",
+      "bytes": 512002
+    }
+  ]
+}

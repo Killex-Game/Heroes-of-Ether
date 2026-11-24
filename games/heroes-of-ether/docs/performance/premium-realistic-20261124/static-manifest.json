@@ -1,0 +1,89 @@
+{
+  "kind": "approved-premium-lively-v2",
+  "baseRelease": "20261124-wire-schema",
+  "baseGamePid": 557601,
+  "baseAdminPid": 1163,
+  "files": [
+    {
+      "file": "public/arena/emote-renderer.js",
+      "before": "9e7a70f642724c74aac27e23a175b00ff2362dcb94379936e1fae51b8190f715",
+      "sha256": "67d9cd3547d452288d861e179c71a758fe785cd0653becf7cf662021fcf09c4d",
+      "sourceSha256": "84b21a58ca6797e637a85b4b0f8ed1cc3ff8764a79a89ed5011bf97de3e50017",
+      "bytes": 7734,
+      "beforeBytes": 2983,
+      "commentsRemoved": 6
+    },
+    {
+      "file": "public/index.html",
+      "before": "1c5b9f5c6d5339317b4067bba9452d65a93179ebe089c385954e203e60c85046",
+      "sha256": "ab8c31b76528aca23c6afddb3a8df2221438106faf4d5948cc70317da47c5b6e",
+      "sourceSha256": "ab8c31b76528aca23c6afddb3a8df2221438106faf4d5948cc70317da47c5b6e",
+      "bytes": 42730,
+      "beforeBytes": 42729,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/emotes/pets-motion-v2/1.png",
+      "before": null,
+      "sha256": "e537b965e050dba38419efa771712fde0a01ab55a01f3f6d32a253c68a2794ed",
+      "sourceSha256": "e537b965e050dba38419efa771712fde0a01ab55a01f3f6d32a253c68a2794ed",
+      "bytes": 452080,
+      "beforeBytes": 0,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/emotes/pets-motion-v2/6.png",
+      "before": null,
+      "sha256": "84b8bc03ca12b50f59311ec9b5287b376e20ef261d062d9b247194c4995f0667",
+      "sourceSha256": "84b8bc03ca12b50f59311ec9b5287b376e20ef261d062d9b247194c4995f0667",
+      "bytes": 500247,
+      "beforeBytes": 0,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/emotes/pets-motion-v2/4.png",
+      "before": null,
+      "sha256": "dd63a502ee84634cf2831ffc444e288862334cbe33bdf22c95660f5fa513052a",
+      "sourceSha256": "dd63a502ee84634cf2831ffc444e288862334cbe33bdf22c95660f5fa513052a",
+      "bytes": 545401,
+      "beforeBytes": 0,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/emotes/pets-motion-v2/5.png",
+      "before": null,
+      "sha256": "4fc1b305974e5df3f0e35783f1bb3b7cb3e9d31f34319143de73f282ac2f950b",
+      "sourceSha256": "4fc1b305974e5df3f0e35783f1bb3b7cb3e9d31f34319143de73f282ac2f950b",
+      "bytes": 587953,
+      "beforeBytes": 0,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/emotes/pets-motion-v2/3.png",
+      "before": null,
+      "sha256": "88114db09863b2d27e2193e9ee2e26c19b9716fc3d0e68e01b09eb14c883fc52",
+      "sourceSha256": "88114db09863b2d27e2193e9ee2e26c19b9716fc3d0e68e01b09eb14c883fc52",
+      "bytes": 530018,
+      "beforeBytes": 0,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/emotes/pets-motion-v2/8.png",
+      "before": null,
+      "sha256": "7258692e86a5aefe5f9e51b3a0b0b4c2b1606681a3187042641c4fe266215748",
+      "sourceSha256": "7258692e86a5aefe5f9e51b3a0b0b4c2b1606681a3187042641c4fe266215748",
+      "bytes": 342103,
+      "beforeBytes": 0,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/emotes/pets-motion-v2/9.png",
+      "before": null,
+      "sha256": "d5b689fa65aed72c8cdeba578b1a3b6cb7984383f070de0aa8554669e1b3bb6b",
+      "sourceSha256": "d5b689fa65aed72c8cdeba578b1a3b6cb7984383f070de0aa8554669e1b3bb6b",
+      "bytes": 512002,
+      "beforeBytes": 0,
+      "commentsRemoved": 0
+    }
+  ]
+}

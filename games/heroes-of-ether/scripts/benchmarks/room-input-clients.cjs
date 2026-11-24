@@ -9,6 +9,7 @@ let driverCpu;
 const { STATE_PROTOCOL } = require("../../src/server/arena/state-stream");
 const wire = require("../../public/shared/arena-wire");
 const clients = [];
+const realistic = process.env.LOAD_REALISTIC === "1";
 // Optional bounded samples for offline wire-format comparisons. Synthetic
 // load profiles only; never attached to the public game or every live packet.
 let wireSamples = [], nextWireSample = 0;
@@ -150,10 +151,11 @@ process.on("message", async (m) => {
           // Fixed, explicitly reported viewport, including a generous server margin.
           if (process.env.LOAD_VISIBILITY !== "0" && beat % 3 === 0)
             send(c, { type: "viewport", x: c.x ?? x, y: c.y ?? y, width: 1800, height: 1200 });
-          if (phase === "split" || phase === "combined")
+          if ((phase === "split" || phase === "combined") && (!realistic || beat % 37 === i % 37))
             send(c, { type: "split", sequence: ++c.seq });
-          if ((phase === "feed" || phase === "combined") && beat % 2 === 0)
+          if ((phase === "feed" || phase === "combined") && (realistic ? beat % 7 === i % 7 : beat % 2 === 0))
             send(c, { type: "feed", sequence: ++c.seq, x, y });
+          if(realistic && beat % 53 === i % 53)send(c,{type:"emote",index:Math.floor(beat/53)%9+1});
           if ((phase === "boosters" || phase === "combined") && beat % 20 === i % 20) {
             const boosterId =
               c.boosters[

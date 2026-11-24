@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-24T07:20:43.045Z",
+  "release": "/srv/heroether-test/play/releases/20261124-wire-schema",
+  "backup": "/srv/heroether-test/play/backups/premium-realistic-20261124",
+  "files": 9,
+  "added": 7,
+  "unchangedPublic": 2352,
+  "gamePid": 557601,
+  "adminPid": 1163,
+  "noProcessRestart": true,
+  "noWorldWrites": true,
+  "diskFreeBefore": 859766784,
+  "diskFreeAfter": 855592960
+}

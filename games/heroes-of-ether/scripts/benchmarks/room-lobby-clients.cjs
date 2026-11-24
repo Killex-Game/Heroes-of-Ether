@@ -3,11 +3,13 @@
 const { randomUUID } = require("node:crypto"),
   { performance } = require("node:perf_hooks");
 const clients = [];
-const mixedSocial = process.env.LOAD_MIXED_SOCIAL === "1";
+const realistic = process.env.LOAD_REALISTIC === "1";
+const plan = require("./realistic-lobby-plan.cjs");
+const mixedSocial = realistic || process.env.LOAD_MIXED_SOCIAL === "1";
 const chatLoad = process.env.LOAD_CHAT === "1";
 const idleLobby = process.env.LOAD_LOBBY_IDLE === "1";
 const alchemyLoad=process.env.LOAD_ALCHEMY==="1";
-const actionCount = alchemyLoad ? 12 : chatLoad ? 9 : mixedSocial ? 8 : 6;
+const actionCount = realistic ? plan.COUNT : alchemyLoad ? 12 : chatLoad ? 9 : mixedSocial ? 8 : 6;
 let base,
   enabled = false,
   timers = new Set(),
@@ -38,6 +40,7 @@ function schedule(c, delay) {
 }
 function action(c) {
   const step = c.step++;
+  if(realistic){const request=plan.extra(c,step);if(request)return request;}
   switch (step % actionCount) {
     case 9:
       return ["alchemy-exchange","/api/alchemy/action",{action:"exchange",requestId:randomUUID()}];
@@ -109,9 +112,11 @@ async function run(c) {
     const data = await response.json();
     if (!response.ok) throw Error(response.status + ": " + (data.error || "request failed"));
     measured.success++;
+    if(realistic)plan.update(c,data);
     if (Array.isArray(data.social?.giftNotices)) c.notices = data.social.giftNotices.map(n => n.id);
     c.audit(body?.requestId, "lobby:" + name, name === "gift" ? { targetId: body.targetId, giftId: body.giftId } :
-      name === "gift-read" ? { noticeId: body.noticeId } : undefined);
+      name === "gift-read" ? { noticeId: body.noticeId } :
+      name.startsWith("clan-") ? {clanId:body?.clanId||c.clanId,amount:body?.amount,boosterId:body?.boosterId} : undefined);
     measured.actions[name] = (measured.actions[name] || 0) + 1;
     } finally { measured.latencies.push(performance.now()-start); }
   }
@@ -136,7 +141,7 @@ process.on("message", (m) => {
       throw Error("Mixed social load requires recipient profiles");
     if(chatLoad && (!Array.isArray(m.clanIds) || m.clanIds.length!==m.tokens.length || m.clanIds.some(id=>!id)))
       throw Error("Chat load requires clan membership for every lobby player");
-    clients.push(...m.tokens.map((token, i) => ({ token, step: i % actionCount, bonus: 0,alchemyRunId:m.alchemyRunId,
+    clients.push(...m.tokens.map((token, i) => ({ token, slot:i+1, step: realistic ? 0 : i % actionCount, bonus: 0,alchemyRunId:m.alchemyRunId,
       address: process.env.LOAD_LOBBY_DISTINCT_IPS === "1" ? `198.18.${Math.floor(i / 250)}.${i % 250 + 1}` : null,
       targetId: m.profileIds?.[(i + 1) % m.tokens.length], clanId:m.clanIds?.[i], notices: [],
       audit: require("./load-ack-audit.cjs").createAckAudit(token) })));

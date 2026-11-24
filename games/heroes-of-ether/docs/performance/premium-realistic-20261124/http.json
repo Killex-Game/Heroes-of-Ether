@@ -1,0 +1,141 @@
+{
+  "at": "2026-11-24T07:20:43.341Z",
+  "checks": [
+    {
+      "origin": "http://127.0.0.1:3000",
+      "file": "public/arena/emote-renderer.js",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3000",
+      "file": "public/index.html",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3000",
+      "file": "public/assets/emotes/pets-motion-v2/1.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3000",
+      "file": "public/assets/emotes/pets-motion-v2/6.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3000",
+      "file": "public/assets/emotes/pets-motion-v2/4.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3000",
+      "file": "public/assets/emotes/pets-motion-v2/3.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3000",
+      "file": "public/assets/emotes/pets-motion-v2/8.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3000",
+      "file": "public/assets/emotes/pets-motion-v2/5.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3000",
+      "file": "public/assets/emotes/pets-motion-v2/9.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3103",
+      "file": "public/arena/emote-renderer.js",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3103",
+      "file": "public/assets/emotes/pets-motion-v2/1.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3103",
+      "file": "public/index.html",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3103",
+      "file": "public/assets/emotes/pets-motion-v2/6.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3103",
+      "file": "public/assets/emotes/pets-motion-v2/5.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3103",
+      "file": "public/assets/emotes/pets-motion-v2/8.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3103",
+      "file": "public/assets/emotes/pets-motion-v2/4.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3103",
+      "file": "public/assets/emotes/pets-motion-v2/3.png",
+      "exact": true
+    },
+    {
+      "origin": "http://127.0.0.1:3103",
+      "file": "public/assets/emotes/pets-motion-v2/9.png",
+      "exact": true
+    },
+    {
+      "origin": "https://195.208.123.221",
+      "file": "public/assets/emotes/pets-motion-v2/1.png",
+      "exact": true
+    },
+    {
+      "origin": "https://195.208.123.221",
+      "file": "public/assets/emotes/pets-motion-v2/4.png",
+      "exact": true
+    },
+    {
+      "origin": "https://195.208.123.221",
+      "file": "public/arena/emote-renderer.js",
+      "exact": true
+    },
+    {
+      "origin": "https://195.208.123.221",
+      "file": "public/index.html",
+      "exact": true
+    },
+    {
+      "origin": "https://195.208.123.221",
+      "file": "public/assets/emotes/pets-motion-v2/5.png",
+      "exact": true
+    },
+    {
+      "origin": "https://195.208.123.221",
+      "file": "public/assets/emotes/pets-motion-v2/6.png",
+      "exact": true
+    },
+    {
+      "origin": "https://195.208.123.221",
+      "file": "public/assets/emotes/pets-motion-v2/9.png",
+      "exact": true
+    },
+    {
+      "origin": "https://195.208.123.221",
+      "file": "public/assets/emotes/pets-motion-v2/3.png",
+      "exact": true
+    },
+    {
+      "origin": "https://195.208.123.221",
+      "file": "public/assets/emotes/pets-motion-v2/8.png",
+      "exact": true
+    }
+  ],
+  "restricted": []
+}

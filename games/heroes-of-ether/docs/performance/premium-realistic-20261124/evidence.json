@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-24T07:28:51.059Z",
+  "status": "Premium emotes installed; server optimization candidate under test",
+  "branch": "codex/20261124-emotes-realistic-load",
+  "backendSource": "350a63acbd1bb0a1d97ccf1c661e5020e8b53504",
+  "staticBackup": {
+    "sha256": "effd1aaff082085e5049739036700963c1e922904b942908dbe4928751d95ce1",
+    "local": "artifacts/premium-realistic-20261124/before-static.tar.gz",
+    "remote": "/srv/heroether-test/play/backups/premium-realistic-20261124"
+  },
+  "resultsArchiveSha256": "613dcbae15e5c55846c7ebc9fdcdd8d10d8c040ddd27ea5c266942a74347e5c9",
+  "cpuProfileSha256": "ab33ad5aacb0995ba2ab34e2713d6e609ec68e298883144cfea4713f66d117d7",
+  "windows": {
+    "targeted": 23,
+    "clanCandidate": 1
+  },
+  "linux": "full candidate suite in progress",
+  "atlases": {
+    "count": 7,
+    "angles": 15,
+    "maximumDecodedMiB": 14.765625,
+    "bytes": 3469804,
+    "lazy": true
+  },
+  "limits": [
+    "Canvas timings are isolated CPU submission tests, not full game FPS or physical phones",
+    "3 CPU test quota includes load drivers; live game shares host with 6 CPU quota",
+    "3 minute mixed tests are not maximum sustainable CCU",
+    "300000 CCU not demonstrated",
+    "Real payments, VK API and all seasonal event mechanics are not covered"
+  ],
+  "previousFailures": [
+    "Initial realistic run lacked active roulette event: 29 HTTP conflicts; 2867 ACK still recovered and PG=WAL",
+    "Direct per-cell rotations and dynamically uploaded textures regressed Firefox; rejected",
+    "Game browser fixture required account initialization and waiting for active arena; corrected",
+    "Initial clan test lacked crystals for rename; fixed fixture only",
+    "Initial Linux command started before candidate staging; no candidate result from that attempt"
+  ]
+}
