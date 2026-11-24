@@ -1,0 +1,582 @@
+{
+  "at": "2026-11-24T20:09:11.884Z",
+  "source": "2cca6b58835ffc840598aafdcfda19ea6e7b8cd8",
+  "runtimeSource": "465e2e5a41558922a27868c6d3d15dddccb33dc5",
+  "installed": false,
+  "players": 60,
+  "lobby": 5,
+  "minutes": 10,
+  "cpuQuota": 6,
+  "code": 0,
+  "assessment": {
+    "targets": {
+      "updatesHz": 19,
+      "tickP95Ms": 100,
+      "stateGapP99Ms": 150,
+      "lobbyP95Ms": 1000,
+      "actionP95Ms": 500
+    },
+    "shortRunMeetsTargets": true,
+    "problems": [],
+    "phases": [
+      {
+        "phase": "combined",
+        "window": 1,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 2,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 3,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 4,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 5,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 6,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 7,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 8,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 9,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 10,
+        "meetsTargets": true,
+        "issues": []
+      }
+    ],
+    "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+  },
+  "gameClock": {
+    "mode": "synthetic-offset",
+    "offsetMs": -39452246,
+    "realStartAt": "2026-11-24T19:57:32.246Z",
+    "gameStartAt": "2026-11-24T09:00:00.000Z"
+  },
+  "ack": {
+    "acknowledged": 18676,
+    "recovered": 18676,
+    "duplicates": 0
+  },
+  "alchemy": {
+    "version": 1,
+    "casts": 1140,
+    "brews": 90,
+    "exchanges": 87,
+    "profiles": 1280,
+    "exactInventories": true,
+    "exactLobbyIngredientsAndNatural": true
+  },
+  "types": {
+    "booster:alchemy_satiety": 37,
+    "booster:alchemy_knowledge": 69,
+    "booster:alchemy_steadiness": 39,
+    "booster:alchemy_reach": 75,
+    "booster:alchemy_vigor": 80,
+    "booster:alchemy_longevity": 115,
+    "booster:alchemy_clarity": 100,
+    "booster:alchemy_precision": 116,
+    "booster:alchemy_swiftness": 68,
+    "booster:alchemy_magnetism": 98,
+    "booster:alchemy_gatherer": 78,
+    "booster:alchemy_tempest": 70,
+    "booster:alchemy_fortitude": 38,
+    "booster:candy": 514,
+    "booster:glove": 490,
+    "booster:clan_shield": 595,
+    "booster:sphere": 530,
+    "booster:cake": 553,
+    "booster:donut": 548,
+    "booster:freeze": 534,
+    "booster:hook": 507,
+    "booster:mine": 539,
+    "booster:knuckles": 573,
+    "booster:mega_poison": 562,
+    "booster:colorful_shield": 555,
+    "booster:ice_cream": 522,
+    "booster:web": 492,
+    "booster:fire": 556,
+    "booster:poison": 510,
+    "booster:warheads": 551,
+    "booster:alchemy_strength": 62,
+    "booster:rocket": 523,
+    "booster:alchemy_prosperity": 63,
+    "booster:alchemy_archmage": 32,
+    "booster:speed": 550,
+    "booster:lock": 555,
+    "booster:fire_sword": 518,
+    "booster:axe": 539,
+    "booster:meat": 591,
+    "booster:golden_shield": 590,
+    "booster:sponge": 554,
+    "booster:vortex": 565,
+    "booster:easter_egg": 594,
+    "booster:harpoon": 557,
+    "booster:stone": 556,
+    "booster:awl": 518,
+    "lobby:loadout": 90,
+    "lobby:purchase": 90,
+    "lobby:account-bonus": 30,
+    "lobby:gift": 90,
+    "lobby:gift-read": 90,
+    "lobby:clan-create": 3,
+    "lobby:clan-deposit": 90,
+    "lobby:clan-buy": 90,
+    "lobby:clan-edit": 90,
+    "lobby:alchemy-brew": 90,
+    "lobby:pet-buy": 5,
+    "lobby:pet-food": 90,
+    "lobby:chat": 90,
+    "lobby:alchemy-exchange": 87,
+    "lobby:alchemy-equip": 85,
+    "lobby:pet-equip": 85
+  },
+  "actions": {
+    "profile": 90,
+    "rankings": 90,
+    "loadout": 90,
+    "purchase": 90,
+    "account-bonus": 30,
+    "social-view": 180,
+    "gift": 90,
+    "gift-read": 90,
+    "clan-create": 3,
+    "clan-view": 177,
+    "clan-deposit": 90,
+    "clan-buy": 90,
+    "clan-edit": 90,
+    "alchemy-view": 90,
+    "alchemy-brew": 90,
+    "pet-buy": 5,
+    "pet-food": 90,
+    "chat": 90,
+    "news": 90,
+    "presence": 90,
+    "alchemy-exchange": 87,
+    "alchemy-equip": 85,
+    "pet-equip": 85,
+    "daily-reward": 60
+  },
+  "database": {
+    "matched": true,
+    "revision": 25066,
+    "profiles": 1280,
+    "clans": 131,
+    "testSchemaRemoved": true
+  },
+  "windows": [
+    {
+      "window": 1,
+      "hz": 19.950495736101338,
+      "tick": {
+        "n": 1185,
+        "p50": 19.41020600000047,
+        "p95": 29.47304300000542,
+        "p99": 39.3258569999889,
+        "max": 103.89264100000037
+      },
+      "stateGapP99": 89.26126800000202,
+      "stateGapMax": 422.672172999999,
+      "actionP95": 184.5557690000005,
+      "actionMax": 451.4649900000004,
+      "rssMiB": 980.9453125,
+      "cpuPercent": 163.66826367382043,
+      "mainCpuPercent": 65.74402945098969,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 50,
+        "contributions": 124
+      },
+      "inputs": {
+        "accepted": {
+          "split": 776,
+          "feed": 5020
+        },
+        "attempted": {
+          "split": 974,
+          "feed": 5119
+        }
+      },
+      "lobbyErrors": {}
+    },
+    {
+      "window": 2,
+      "hz": 20.208430560585015,
+      "tick": {
+        "n": 1203,
+        "p50": 20.74471800000174,
+        "p95": 32.61220999999205,
+        "p99": 43.0018940000009,
+        "max": 54.86975499999244
+      },
+      "stateGapP99": 81.93827899999451,
+      "stateGapMax": 136.27576300001238,
+      "actionP95": 60.27864799997769,
+      "actionMax": 214.79680199999711,
+      "rssMiB": 928.82421875,
+      "cpuPercent": 157.0000447515962,
+      "mainCpuPercent": 67.60245015893577,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 55,
+        "contributions": 238
+      },
+      "inputs": {
+        "accepted": {
+          "split": 731,
+          "feed": 4996
+        },
+        "attempted": {
+          "split": 975,
+          "feed": 5136
+        }
+      },
+      "lobbyErrors": {}
+    },
+    {
+      "window": 3,
+      "hz": 20.029810907995834,
+      "tick": {
+        "n": 1199,
+        "p50": 22.077915000001667,
+        "p95": 33.18367900000885,
+        "p99": 47.296570000005886,
+        "max": 53.75708000001032
+      },
+      "stateGapP99": 94.21895500001847,
+      "stateGapMax": 137.98830900000758,
+      "actionP95": 82.54097400000319,
+      "actionMax": 195.16461999999592,
+      "rssMiB": 960.05078125,
+      "cpuPercent": 163.69712811275085,
+      "mainCpuPercent": 71.23185012143009,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 56,
+        "contributions": 351
+      },
+      "inputs": {
+        "accepted": {
+          "split": 702,
+          "feed": 5013
+        },
+        "attempted": {
+          "split": 976,
+          "feed": 5133
+        }
+      },
+      "lobbyErrors": {}
+    },
+    {
+      "window": 4,
+      "hz": 20.163330844652155,
+      "tick": {
+        "n": 1200,
+        "p50": 22.190543999982765,
+        "p95": 34.43085200001951,
+        "p99": 43.877968000015244,
+        "max": 72.9287020000047
+      },
+      "stateGapP99": 90.85904700000538,
+      "stateGapMax": 148.43439900001977,
+      "actionP95": 75.95637299999362,
+      "actionMax": 326.04056999998284,
+      "rssMiB": 1037.71875,
+      "cpuPercent": 163.7925794198447,
+      "mainCpuPercent": 71.5046794233898,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 57,
+        "contributions": 431
+      },
+      "inputs": {
+        "accepted": {
+          "split": 668,
+          "feed": 5012
+        },
+        "attempted": {
+          "split": 971,
+          "feed": 5136
+        }
+      },
+      "lobbyErrors": {}
+    },
+    {
+      "window": 5,
+      "hz": 20.20361292829738,
+      "tick": {
+        "n": 1202,
+        "p50": 21.583757000014884,
+        "p95": 32.89765300002182,
+        "p99": 43.462226000003284,
+        "max": 55.55676000000676
+      },
+      "stateGapP99": 85.78066600003513,
+      "stateGapMax": 108.5660500000231,
+      "actionP95": 59.40879000001587,
+      "actionMax": 254.0724629999604,
+      "rssMiB": 1128.06640625,
+      "cpuPercent": 158.32874963869654,
+      "mainCpuPercent": 69.61002981539582,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 57,
+        "contributions": 536
+      },
+      "inputs": {
+        "accepted": {
+          "split": 662,
+          "feed": 4928
+        },
+        "attempted": {
+          "split": 962,
+          "feed": 5134
+        }
+      },
+      "lobbyErrors": {}
+    },
+    {
+      "window": 6,
+      "hz": 20.06977899382756,
+      "tick": {
+        "n": 1197,
+        "p50": 22.27218799997354,
+        "p95": 33.11431000003358,
+        "p99": 40.597042999987025,
+        "max": 54.1665309999953
+      },
+      "stateGapP99": 90.03760099998908,
+      "stateGapMax": 191.5931500000297,
+      "actionP95": 59.70677600003546,
+      "actionMax": 347.79663399996934,
+      "rssMiB": 1001.00390625,
+      "cpuPercent": 163.18468972648571,
+      "mainCpuPercent": 70.64919664317247,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 57,
+        "contributions": 644
+      },
+      "inputs": {
+        "accepted": {
+          "split": 692,
+          "feed": 4966
+        },
+        "attempted": {
+          "split": 974,
+          "feed": 5127
+        }
+      },
+      "lobbyErrors": {}
+    },
+    {
+      "window": 7,
+      "hz": 20.203595969354648,
+      "tick": {
+        "n": 1202,
+        "p50": 20.65077599999495,
+        "p95": 31.681559999997262,
+        "p99": 41.449989999993704,
+        "max": 55.972625999944285
+      },
+      "stateGapP99": 81.39443699998083,
+      "stateGapMax": 117.45452199998545,
+      "actionP95": 49.602445999975316,
+      "actionMax": 202.7054609999759,
+      "rssMiB": 1036.08984375,
+      "cpuPercent": 154.63647788109893,
+      "mainCpuPercent": 67.29098672431805,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 59,
+        "contributions": 749
+      },
+      "inputs": {
+        "accepted": {
+          "split": 679,
+          "feed": 5007
+        },
+        "attempted": {
+          "split": 974,
+          "feed": 5134
+        }
+      },
+      "lobbyErrors": {}
+    },
+    {
+      "window": 8,
+      "hz": 20.113928889202576,
+      "tick": {
+        "n": 1202,
+        "p50": 22.153761000023223,
+        "p95": 34.86865700001363,
+        "p99": 43.966089999943506,
+        "max": 64.91464999999152
+      },
+      "stateGapP99": 92.12865099997725,
+      "stateGapMax": 130.33165100001497,
+      "actionP95": 68.07962099998258,
+      "actionMax": 231.63090400001965,
+      "rssMiB": 1078.76953125,
+      "cpuPercent": 160.87075628017516,
+      "mainCpuPercent": 69.90583699933057,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 59,
+        "contributions": 841
+      },
+      "inputs": {
+        "accepted": {
+          "split": 677,
+          "feed": 4989
+        },
+        "attempted": {
+          "split": 973,
+          "feed": 5119
+        }
+      },
+      "lobbyErrors": {}
+    },
+    {
+      "window": 9,
+      "hz": 20.130414428151944,
+      "tick": {
+        "n": 1197,
+        "p50": 20.90614799998002,
+        "p95": 33.08325300004799,
+        "p99": 42.07514099997934,
+        "max": 63.34934499999508
+      },
+      "stateGapP99": 87.07433400000446,
+      "stateGapMax": 285.1559160000179,
+      "actionP95": 62.209123999928124,
+      "actionMax": 284.52573200000916,
+      "rssMiB": 1127.19921875,
+      "cpuPercent": 153.9141913155699,
+      "mainCpuPercent": 67.74695028076519,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 60,
+        "contributions": 937
+      },
+      "inputs": {
+        "accepted": {
+          "split": 672,
+          "feed": 4865
+        },
+        "attempted": {
+          "split": 971,
+          "feed": 5130
+        }
+      },
+      "lobbyErrors": {}
+    },
+    {
+      "window": 10,
+      "hz": 20.181225615296334,
+      "tick": {
+        "n": 1200,
+        "p50": 20.576408999972045,
+        "p95": 31.892619000049308,
+        "p99": 39.99584600003436,
+        "max": 61.615913000074215
+      },
+      "stateGapP99": 82.77661400008947,
+      "stateGapMax": 110.0331770000048,
+      "actionP95": 54.91423500003293,
+      "actionMax": 335.6857300000265,
+      "rssMiB": 1130.09375,
+      "cpuPercent": 148.9775298335573,
+      "mainCpuPercent": 65.63001659222621,
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 61,
+        "contributions": 1039
+      },
+      "inputs": {
+        "accepted": {
+          "split": 709,
+          "feed": 4950
+        },
+        "attempted": {
+          "split": 963,
+          "feed": 5141
+        }
+      },
+      "lobbyErrors": {}
+    }
+  ],
+  "limitations": [
+    "Synthetic isolated schema with actual HTTP/WS and durable ACKs; no real-player economy writes",
+    "Quota includes generators and live production shares host",
+    "Ten minutes are not maximum CCU or long-duration stability",
+    "No browser FPS, VK, real payments or all event combinations",
+    "Previous V16 original counter-aggregation failure remains failed; this is a new corrected run",
+    "Not a controlled runtime A/B comparison"
+  ]
+}
