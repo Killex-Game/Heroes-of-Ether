@@ -188,8 +188,14 @@ class BotBrain {
       best = Infinity;
     for (const orb of this.arena.ether) {
       if (orb.sourceId === p.id && orb.sourcePickupAt > at) continue;
-      const score = distance(body, orb) / Math.sqrt(orb.value);
-      if (score < best && distance(body, orb) < 650) {
+      // A point outside this square cannot lie inside the existing 650-unit
+      // circle. Keep the exact hypot/score and original order for candidates.
+      const dx = body.x - orb.x, dy = body.y - orb.y;
+      if (Math.abs(dx) >= 650 || Math.abs(dy) >= 650) continue;
+      const d = Math.hypot(dx, dy);
+      if (d >= 650) continue;
+      const score = d / Math.sqrt(orb.value);
+      if (score < best) {
         food = orb;
         best = score;
       }
