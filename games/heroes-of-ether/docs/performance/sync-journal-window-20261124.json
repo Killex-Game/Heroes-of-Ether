@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T17:53:47.668Z",
+  "at": "2026-11-24T18:07:08.503Z",
   "source": "4e5f310872ea9bcf5885a6b0ad84848666422c3c",
   "installed": false,
   "checks": {
@@ -497,6 +497,279 @@
     "acknowledged": 389,
     "recovered": 389,
     "backupDigest": "e397d85818712163062b7da9b835e5e61c2aa7d728283a35291805c09a915eaa"
+  },
+  "interruptedArchive": {
+    "file": "v8-interrupted-evidence.tar.gz",
+    "sha256": "23d70860eddcc7963820dd87103cbafd66bedd669cfd0c55e4185c920e8c0a2f",
+    "bothCopiesVerified": true
+  },
+  "windowsAlchemy": {
+    "players": 30,
+    "lobby": 5,
+    "minutes": 10,
+    "allWindowsPassed": false,
+    "assessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": false,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "combined",
+          "window": 1,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 2,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 3,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 4,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 5,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 6,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 7,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 8,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 9,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 10,
+          "meetsTargets": false,
+          "issues": [
+            "pending-action-delay"
+          ]
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "ackAudit": {
+      "acknowledged": 9543,
+      "recovered": 9543,
+      "duplicates": 0,
+      "profiles": 1280,
+      "types": {
+        "booster:alchemy_strength": 40,
+        "booster:alchemy_swiftness": 42,
+        "booster:alchemy_satiety": 20,
+        "booster:alchemy_knowledge": 32,
+        "booster:alchemy_steadiness": 32,
+        "booster:alchemy_reach": 22,
+        "booster:alchemy_vigor": 28,
+        "booster:alchemy_longevity": 39,
+        "booster:alchemy_clarity": 57,
+        "booster:alchemy_precision": 45,
+        "booster:alchemy_magnetism": 64,
+        "booster:alchemy_gatherer": 57,
+        "booster:alchemy_tempest": 51,
+        "booster:alchemy_fortitude": 19,
+        "booster:alchemy_prosperity": 23,
+        "booster:alchemy_archmage": 26,
+        "booster:hook": 238,
+        "booster:cake": 272,
+        "booster:candy": 261,
+        "booster:vortex": 271,
+        "booster:glove": 275,
+        "booster:clan_shield": 282,
+        "booster:sphere": 259,
+        "booster:donut": 259,
+        "booster:freeze": 252,
+        "booster:mine": 252,
+        "booster:harpoon": 259,
+        "booster:knuckles": 256,
+        "booster:mega_poison": 257,
+        "booster:easter_egg": 271,
+        "booster:colorful_shield": 258,
+        "booster:ice_cream": 260,
+        "booster:warheads": 263,
+        "booster:web": 249,
+        "booster:poison": 245,
+        "booster:rocket": 268,
+        "booster:speed": 257,
+        "booster:lock": 254,
+        "booster:fire_sword": 246,
+        "booster:axe": 250,
+        "booster:meat": 281,
+        "booster:golden_shield": 269,
+        "booster:sponge": 251,
+        "booster:stone": 258,
+        "booster:fire": 247,
+        "booster:awl": 241,
+        "lobby:loadout": 90,
+        "lobby:purchase": 90,
+        "lobby:account-bonus": 30,
+        "lobby:gift": 90,
+        "lobby:gift-read": 89,
+        "lobby:clan-create": 3,
+        "lobby:clan-deposit": 90,
+        "lobby:clan-buy": 90,
+        "lobby:clan-edit": 90,
+        "lobby:alchemy-brew": 90,
+        "lobby:pet-buy": 5,
+        "lobby:pet-food": 88,
+        "lobby:chat": 85,
+        "lobby:alchemy-exchange": 85,
+        "lobby:alchemy-equip": 85,
+        "lobby:pet-equip": 85
+      },
+      "gifts": 90,
+      "notices": 89,
+      "deposits": 90,
+      "created": 3,
+      "validInventoriesAndTransactions": true,
+      "alchemy": {
+        "version": 1,
+        "casts": 597,
+        "brews": 90,
+        "exchanges": 85,
+        "profiles": 1280,
+        "exactInventories": true,
+        "exactLobbyIngredientsAndNatural": true
+      }
+    },
+    "database": {
+      "matched": true,
+      "localRevision": 18422,
+      "databaseRevision": 18422
+    },
+    "windows": [
+      {
+        "window": 1,
+        "hz": 19.53290187367845,
+        "tickP95": 18.11290000000008,
+        "rssMiB": 602.55859375
+      },
+      {
+        "window": 2,
+        "hz": 18.961865576148064,
+        "tickP95": 18.14979999999923,
+        "rssMiB": 620.72265625
+      },
+      {
+        "window": 3,
+        "hz": 19.19597079772284,
+        "tickP95": 18.791299999982584,
+        "rssMiB": 617.91796875
+      },
+      {
+        "window": 4,
+        "hz": 19.602179274363092,
+        "tickP95": 17.19529999999213,
+        "rssMiB": 696.46875
+      },
+      {
+        "window": 5,
+        "hz": 19.130421687252653,
+        "tickP95": 18.95569999999134,
+        "rssMiB": 709.09375
+      },
+      {
+        "window": 6,
+        "hz": 19.55673478803804,
+        "tickP95": 18.94810000003781,
+        "rssMiB": 727.86328125
+      },
+      {
+        "window": 7,
+        "hz": 19.289019279526674,
+        "tickP95": 18.551999999966938,
+        "rssMiB": 742.22265625
+      },
+      {
+        "window": 8,
+        "hz": 19.364363453506133,
+        "tickP95": 21.69149999995716,
+        "rssMiB": 756.4453125
+      },
+      {
+        "window": 9,
+        "hz": 19.300730132866818,
+        "tickP95": 20.03090000001248,
+        "rssMiB": 771.9453125
+      },
+      {
+        "window": 10,
+        "hz": 19.077340280749798,
+        "tickP95": 20.087199999950826,
+        "rssMiB": 835.6796875
+      }
+    ]
+  },
+  "pinMetadataWindows": {
+    "node": "v24.22.3",
+    "platform": "win32",
+    "segments": 512,
+    "bytes": 524288,
+    "rows": [
+      {
+        "mode": "legacy",
+        "initialPinMs": 278.10490000000004,
+        "repeatedCaptureMs": 0,
+        "releaseMs": 242.35300000000007
+      },
+      {
+        "mode": "window",
+        "initialPinMs": 302.10429999999997,
+        "repeatedCaptureMs": 27.991599999999835,
+        "releaseMs": 221.56189999999992
+      },
+      {
+        "mode": "window",
+        "initialPinMs": 325.8129000000001,
+        "repeatedCaptureMs": 27.846000000000004,
+        "releaseMs": 210.6931999999997
+      },
+      {
+        "mode": "legacy",
+        "initialPinMs": 254.6790000000001,
+        "repeatedCaptureMs": 0,
+        "releaseMs": 223.2738000000004
+      }
+    ],
+    "scope": "Filesystem metadata overhead only; dummy closed files, no WAL replay, durability or whole-game performance conclusion"
   },
   "limitations": [
     "No whole-game CPU improvement or capacity increase proven",

@@ -152,3 +152,41 @@ test('flush holds the durable pin through preparation and the real sync acknowle
   sync.worker.emit('message',{id:sync.worker.sent.id,result:{revision:4}});
   assert.equal((await pending).revision,4);assert.equal(released,true);
 });
+
+test('prepare diagnostics distinguish unchanged cache hits, incremental replay and a new checkpoint', async () => {
+  const filename=path.resolve(__dirname,'../../src/server/persistence/database-worker.js'),port=new EventEmitter(),messages=[];
+  const sourceRequire=createRequire(filename); let reader;
+  port.postMessage=message=>messages.push(message);
+  class Reader { constructor(){reader=this;this.stats=null;} }
+  class State {
+    constructor(){this.metrics=()=>null;this.metrics.enable=()=>{};}
+    prepare(){}
+    async sync(snapshot){this.previous={...snapshot};return{revision:snapshot.revision};}
+  }
+  class Cache {
+    snapshot(source){
+      if(this.value?.revision===source.revision)return this.value;
+      reader.stats={incremental:source.revision!==1,replayed:source.revision===1?0:1,readFiles:source.revision===1?3:1};
+      return this.value={revision:source.revision};
+    }
+  }
+  vm.runInNewContext(fs.readFileSync(filename,'utf8'),{__dirname:path.dirname(filename),setInterval,clearInterval,
+    require:name=>name==='node:worker_threads'?{parentPort:port,workerData:{root:'unused',config:{}}}
+      :name==='./postgresql-state'?{PostgreSQLState:State}
+      :name==='./checkpoint-cache'?{CheckpointCache:Cache}
+      :name==='./pinned-world-reader'?{PinnedWorldReader:Reader}
+      :name==='./postgresql-config'?{safeError:()=> 'DATABASE_OPERATION_FAILED'}
+      :name==='../profiles/profile-journal'?{atomicSnapshot(){}}:sourceRequire(name)
+  },{filename});
+  const receive=port.listeners('message')[0];
+  for(const revision of [1,1,2]){
+    const source={file:'/private/location-must-not-appear-in-metrics',revision};
+    await receive({id:revision,command:'prepare',profileSnapshot:source});
+    const before=JSON.parse(JSON.stringify(messages.at(-1).result.pinnedRead));
+    await receive({id:revision,command:'sync',profileSnapshot:source});
+    assert.deepEqual(JSON.parse(JSON.stringify(messages.at(-1).result.pinnedRead)),before);
+  }
+  const diagnostics=messages.filter(m=>m.result.prepared).map(m=>JSON.parse(JSON.stringify(m.result.pinnedRead)));
+  assert.deepEqual(diagnostics,[{cacheHit:false,incremental:false,replayed:0,readFiles:3},
+    {cacheHit:true,readFiles:0,replayed:0},{cacheHit:false,incremental:true,replayed:1,readFiles:1}]);
+});
