@@ -1,0 +1,342 @@
+{
+  "at": "2026-11-24T19:21:19.292Z",
+  "runtimeSource": "465e2e5a41558922a27868c6d3d15dddccb33dc5",
+  "testedSource": "22fd856487206c668416561120b878f65736a5f0",
+  "installed": false,
+  "readyForMixed": true,
+  "windows": {
+    "total": 2446,
+    "pass": 2444,
+    "fail": 0,
+    "skip": 2,
+    "durationMs": 532125.3771
+  },
+  "linux": {
+    "total": 2446,
+    "pass": 2444,
+    "fail": 0,
+    "skip": 2,
+    "durationMs": 572374.436927
+  },
+  "postgresql": {
+    "total": 11,
+    "pass": 11,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 25085.485096
+  },
+  "previous": {
+    "windows": {
+      "total": 2446,
+      "pass": 2444,
+      "fail": 0,
+      "skip": 2,
+      "durationMs": 538930.6649
+    },
+    "linux": {
+      "total": 2446,
+      "pass": 2443,
+      "fail": 1,
+      "skip": 2,
+      "durationMs": 591824.514492
+    },
+    "repeat": {
+      "total": 40,
+      "pass": 40,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 23275.805127
+    }
+  },
+  "benchmarks": {
+    "windows": {
+      "node": "v24.22.3",
+      "platform": "win32",
+      "results": [
+        {
+          "variant": "baseline",
+          "size": 32,
+          "iterations": 1000,
+          "copyMs": 26.06050000000039,
+          "cloneMs": 124.98599999999979,
+          "reconcileMs": 47.09239999999936,
+          "cpuMs": 250,
+          "hash": "293564c4ec6d0a15b4bc563a1bc13f1bc489375172aaa2f84bbf9ce3aebd38ff",
+          "rssMiB": 54.80859375
+        },
+        {
+          "variant": "candidate",
+          "size": 32,
+          "iterations": 1000,
+          "copyMs": 22.569500000000062,
+          "cloneMs": 91.02460000000082,
+          "reconcileMs": 44.438099999999736,
+          "cpuMs": 156,
+          "hash": "293564c4ec6d0a15b4bc563a1bc13f1bc489375172aaa2f84bbf9ce3aebd38ff",
+          "rssMiB": 54.953125
+        },
+        {
+          "variant": "candidate",
+          "size": 32,
+          "iterations": 1000,
+          "copyMs": 20.455299999997976,
+          "cloneMs": 85.57980000000225,
+          "reconcileMs": 40.35519999999724,
+          "cpuMs": 140,
+          "hash": "293564c4ec6d0a15b4bc563a1bc13f1bc489375172aaa2f84bbf9ce3aebd38ff",
+          "rssMiB": 55.21484375
+        },
+        {
+          "variant": "baseline",
+          "size": 32,
+          "iterations": 1000,
+          "copyMs": 21.602800000000798,
+          "cloneMs": 131.3707000000005,
+          "reconcileMs": 47.31349999999884,
+          "cpuMs": 187,
+          "hash": "293564c4ec6d0a15b4bc563a1bc13f1bc489375172aaa2f84bbf9ce3aebd38ff",
+          "rssMiB": 54.8671875
+        },
+        {
+          "variant": "baseline",
+          "size": 1024,
+          "iterations": 80,
+          "copyMs": 49.749200000001224,
+          "cloneMs": 321.7561999999997,
+          "reconcileMs": 114.33849999999904,
+          "cpuMs": 500,
+          "hash": "25a1e726459fe4ec1f74b6ddee2a8f8f9faaf5b9a92598c962d1cd89e67f8f0b",
+          "rssMiB": 74.75390625
+        },
+        {
+          "variant": "candidate",
+          "size": 1024,
+          "iterations": 80,
+          "copyMs": 51.99300000000062,
+          "cloneMs": 206.5098999999998,
+          "reconcileMs": 103.10259999999948,
+          "cpuMs": 359,
+          "hash": "25a1e726459fe4ec1f74b6ddee2a8f8f9faaf5b9a92598c962d1cd89e67f8f0b",
+          "rssMiB": 85.82421875
+        },
+        {
+          "variant": "candidate",
+          "size": 1024,
+          "iterations": 80,
+          "copyMs": 50.7241999999992,
+          "cloneMs": 215.74860000000035,
+          "reconcileMs": 107.37590000000091,
+          "cpuMs": 359,
+          "hash": "25a1e726459fe4ec1f74b6ddee2a8f8f9faaf5b9a92598c962d1cd89e67f8f0b",
+          "rssMiB": 85.30078125
+        },
+        {
+          "variant": "baseline",
+          "size": 1024,
+          "iterations": 80,
+          "copyMs": 46.84620000000041,
+          "cloneMs": 299.8361000000009,
+          "reconcileMs": 109.8451999999993,
+          "cpuMs": 469,
+          "hash": "25a1e726459fe4ec1f74b6ddee2a8f8f9faaf5b9a92598c962d1cd89e67f8f0b",
+          "rssMiB": 85.37109375
+        },
+        {
+          "variant": "baseline",
+          "size": 10000,
+          "iterations": 12,
+          "copyMs": 81.53000000000065,
+          "cloneMs": 455.67549999999983,
+          "reconcileMs": 153.17679999999928,
+          "cpuMs": 735,
+          "hash": "e76b77ae4ad26004171f7324890e0149262989f101140d4adfca1b3189e8a10b",
+          "rssMiB": 128.83984375
+        },
+        {
+          "variant": "candidate",
+          "size": 10000,
+          "iterations": 12,
+          "copyMs": 87.63870000000088,
+          "cloneMs": 328.1191999999992,
+          "reconcileMs": 161.10310000000027,
+          "cpuMs": 672,
+          "hash": "e76b77ae4ad26004171f7324890e0149262989f101140d4adfca1b3189e8a10b",
+          "rssMiB": 200.90625
+        },
+        {
+          "variant": "candidate",
+          "size": 10000,
+          "iterations": 12,
+          "copyMs": 75.19729999999981,
+          "cloneMs": 331.2931000000003,
+          "reconcileMs": 149.18569999999954,
+          "cpuMs": 593,
+          "hash": "e76b77ae4ad26004171f7324890e0149262989f101140d4adfca1b3189e8a10b",
+          "rssMiB": 200.7734375
+        },
+        {
+          "variant": "baseline",
+          "size": 10000,
+          "iterations": 12,
+          "copyMs": 63.461999999999534,
+          "cloneMs": 459.7758999999978,
+          "reconcileMs": 155.22950000000128,
+          "cpuMs": 828,
+          "hash": "e76b77ae4ad26004171f7324890e0149262989f101140d4adfca1b3189e8a10b",
+          "rssMiB": 200.54296875
+        }
+      ],
+      "scope": "Plain persisted JSON draft arrays, reconciliation and structuredClone only; no game load, network, filesystem or PostgreSQL; not a capacity claim"
+    },
+    "linux": {
+      "node": "v24.22.3",
+      "platform": "linux",
+      "results": [
+        {
+          "variant": "baseline",
+          "size": 32,
+          "iterations": 1000,
+          "copyMs": 33.143237000000454,
+          "cloneMs": 160.103350000001,
+          "reconcileMs": 93.47519999999955,
+          "cpuMs": 282.738,
+          "hash": "293564c4ec6d0a15b4bc563a1bc13f1bc489375172aaa2f84bbf9ce3aebd38ff",
+          "rssMiB": 62.70703125
+        },
+        {
+          "variant": "candidate",
+          "size": 32,
+          "iterations": 1000,
+          "copyMs": 27.258049000001733,
+          "cloneMs": 133.6485799999994,
+          "reconcileMs": 53.337749999998834,
+          "cpuMs": 213.056,
+          "hash": "293564c4ec6d0a15b4bc563a1bc13f1bc489375172aaa2f84bbf9ce3aebd38ff",
+          "rssMiB": 63.2734375
+        },
+        {
+          "variant": "candidate",
+          "size": 32,
+          "iterations": 1000,
+          "copyMs": 23.31286800000089,
+          "cloneMs": 105.73113199999818,
+          "reconcileMs": 48.573434999999904,
+          "cpuMs": 175.68,
+          "hash": "293564c4ec6d0a15b4bc563a1bc13f1bc489375172aaa2f84bbf9ce3aebd38ff",
+          "rssMiB": 63.2734375
+        },
+        {
+          "variant": "baseline",
+          "size": 32,
+          "iterations": 1000,
+          "copyMs": 30.85297399999854,
+          "cloneMs": 155.0323939999996,
+          "reconcileMs": 57.16985600000078,
+          "cpuMs": 241.004,
+          "hash": "293564c4ec6d0a15b4bc563a1bc13f1bc489375172aaa2f84bbf9ce3aebd38ff",
+          "rssMiB": 63.2734375
+        },
+        {
+          "variant": "baseline",
+          "size": 1024,
+          "iterations": 80,
+          "copyMs": 74.02385000000118,
+          "cloneMs": 379.11856400000056,
+          "reconcileMs": 149.0999099999999,
+          "cpuMs": 606.019,
+          "hash": "25a1e726459fe4ec1f74b6ddee2a8f8f9faaf5b9a92598c962d1cd89e67f8f0b",
+          "rssMiB": 77.6796875
+        },
+        {
+          "variant": "candidate",
+          "size": 1024,
+          "iterations": 80,
+          "copyMs": 60.747610000000805,
+          "cloneMs": 248.93751299999894,
+          "reconcileMs": 128.18793400000004,
+          "cpuMs": 445.215,
+          "hash": "25a1e726459fe4ec1f74b6ddee2a8f8f9faaf5b9a92598c962d1cd89e67f8f0b",
+          "rssMiB": 94.0078125
+        },
+        {
+          "variant": "candidate",
+          "size": 1024,
+          "iterations": 80,
+          "copyMs": 62.79906300000039,
+          "cloneMs": 266.10603799999944,
+          "reconcileMs": 131.4722969999989,
+          "cpuMs": 457.665,
+          "hash": "25a1e726459fe4ec1f74b6ddee2a8f8f9faaf5b9a92598c962d1cd89e67f8f0b",
+          "rssMiB": 94.2734375
+        },
+        {
+          "variant": "baseline",
+          "size": 1024,
+          "iterations": 80,
+          "copyMs": 47.11300800000072,
+          "cloneMs": 343.86726199999794,
+          "reconcileMs": 126.43674300000157,
+          "cpuMs": 515.99,
+          "hash": "25a1e726459fe4ec1f74b6ddee2a8f8f9faaf5b9a92598c962d1cd89e67f8f0b",
+          "rssMiB": 94.28515625
+        },
+        {
+          "variant": "baseline",
+          "size": 10000,
+          "iterations": 12,
+          "copyMs": 90.13091600000098,
+          "cloneMs": 561.5895189999997,
+          "reconcileMs": 237.67509000000064,
+          "cpuMs": 953.651,
+          "hash": "e76b77ae4ad26004171f7324890e0149262989f101140d4adfca1b3189e8a10b",
+          "rssMiB": 139.94921875
+        },
+        {
+          "variant": "candidate",
+          "size": 10000,
+          "iterations": 12,
+          "copyMs": 119.15048299999853,
+          "cloneMs": 424.4798700000001,
+          "reconcileMs": 243.7575309999993,
+          "cpuMs": 858.776,
+          "hash": "e76b77ae4ad26004171f7324890e0149262989f101140d4adfca1b3189e8a10b",
+          "rssMiB": 211.79296875
+        },
+        {
+          "variant": "candidate",
+          "size": 10000,
+          "iterations": 12,
+          "copyMs": 88.40112500000032,
+          "cloneMs": 361.53894500000115,
+          "reconcileMs": 172.47914299999775,
+          "cpuMs": 683.984,
+          "hash": "e76b77ae4ad26004171f7324890e0149262989f101140d4adfca1b3189e8a10b",
+          "rssMiB": 211.828125
+        },
+        {
+          "variant": "baseline",
+          "size": 10000,
+          "iterations": 12,
+          "copyMs": 63.68971099999908,
+          "cloneMs": 520.2993080000033,
+          "reconcileMs": 217.44549799999731,
+          "cpuMs": 844.216,
+          "hash": "e76b77ae4ad26004171f7324890e0149262989f101140d4adfca1b3189e8a10b",
+          "rssMiB": 211.94921875
+        }
+      ],
+      "scope": "Plain persisted JSON draft arrays, reconciliation and structuredClone only; no game load, network, filesystem or PostgreSQL; not a capacity claim"
+    }
+  },
+  "changes": [
+    "Dense private JSON draft arrays avoid holey-array copies in the downstream clone/reconcile pipeline",
+    "Combined with immutable snapshot document reuse, bounded journal read window, yielded pin retirement and arena appearance/food-index reuse"
+  ],
+  "originalFailure": "V14 Linux full suite missed a smart-bot WebSocket packet after a fixed 25 ms sleep. Twenty repeat runs (40 tests) all passed and did not reproduce the original delay. The fixture now waits up to two seconds for the exact packet without advancing simulation. Original failed output retained; no claim of a reproduced runtime defect.",
+  "limitations": [
+    "Component ABBA uses synthetic arrays, not whole-game throughput",
+    "Mixed capacity gain remains unproven",
+    "V13 lazy food array experiment is excluded after inconsistent moving-food results",
+    "Current production remains 416cef4; this candidate is not installed"
+  ]
+}
