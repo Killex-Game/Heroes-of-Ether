@@ -9,7 +9,7 @@ const rooms=Number(process.env.REPLAY_ROOMS||1),frames=Number(process.env.REPLAY
 if(!Number.isInteger(rooms)||rooms<1||rooms>10||!Number.isInteger(frames)||frames<10||frames>36000)throw Error('Invalid replay size');
 const masses = [20, 50, 150, 1000, 5000, 25000, 40000, 75000, 120000, 480000];
 function scene(tick, room, staticFood) {
-  
+
   const players = Array.from({length:30}, (_,i) => {
     const mass = masses[i % masses.length], count = Math.max(1, Math.min(16, Math.ceil(mass / 5000)));
     const x = 400 + i % 7 * 700 + tick * 2, y = 400 + Math.floor(i / 7) * 650;
