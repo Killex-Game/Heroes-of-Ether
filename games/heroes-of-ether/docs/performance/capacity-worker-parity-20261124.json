@@ -1,0 +1,646 @@
+{
+  "at": "2026-11-24T21:46:41.266Z",
+  "installed": false,
+  "runtime": "465e2e5a41558922a27868c6d3d15dddccb33dc5",
+  "oldHarness": "2cca6b58835ffc840598aafdcfda19ea6e7b8cd8",
+  "correctedHarness": "bc8ff341bae82993b3d3ab0c43e048dc3ebb80ba",
+  "problem": "Capacity harness hard-coded three state-worker rooms while installed configuration supports five. Fourth room used main-thread encoding; this is not a measurement of the deployed policy at 120 clients.",
+  "changes": "Load worker count and room limit come from the same game configuration; record both in evidence. No production configuration or runtime changes.",
+  "tests": {
+    "windowsInitial": {
+      "pass": 12,
+      "fail": 1,
+      "reason": "Test omitted required now callback; fixture corrected only"
+    },
+    "windowsFinal": {
+      "pass": 13,
+      "fail": 0
+    },
+    "linux": {
+      "pass": 13,
+      "fail": 0
+    }
+  },
+  "original120": {
+    "players": 120,
+    "lobby": 5,
+    "minutes": 10,
+    "quotaCpu": 6,
+    "assessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": false,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "combined",
+          "window": 1,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 2,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 3,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 4,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 5,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 6,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "pending-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 7,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 8,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 9,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 10,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "ack": {
+      "acknowledged": 35350,
+      "recovered": 35350,
+      "duplicates": 0
+    },
+    "database": {
+      "matched": true,
+      "revision": 9030,
+      "schemaRemoved": true
+    },
+    "windows": [
+      {
+        "minute": 1,
+        "hz": 14.377855050743896,
+        "tickWorkP95": 58.30350300000282,
+        "tickWorkMax": 212.2986979999987,
+        "actionP95": 1048.0811089999988,
+        "stateGapMax": 319.66222299999936,
+        "cpuPercent": 214.42842510345827,
+        "resourceUsage": {
+          "elapsedMs": 60046.865632,
+          "processCpu": {
+            "userMs": 123946.396,
+            "systemMs": 4812.118,
+            "percent": 214.43003334945493
+          },
+          "mainThreadCpu": {
+            "userMs": 55201.652,
+            "systemMs": 3257.167,
+            "percent": 97.35532135560177
+          },
+          "mainThreadElu": {
+            "activeMs": 59892.86833098075,
+            "idleMs": 153.97701999999845,
+            "utilization": 0.9974357184111841
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 151956117,
+              "user_usec": 143125097,
+              "system_usec": 8831021,
+              "nice_usec": 141930747,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1144.86328125
+      },
+      {
+        "minute": 2,
+        "hz": 13.043041886231014,
+        "tickWorkP95": 62.16267800000787,
+        "tickWorkMax": 97.73609299999953,
+        "actionP95": 565.9295459999994,
+        "stateGapMax": 237.56158300000243,
+        "cpuPercent": 197.18876606891533,
+        "resourceUsage": {
+          "elapsedMs": 60065.447858,
+          "processCpu": {
+            "userMs": 114712.81,
+            "systemMs": 3729.702,
+            "percent": 197.18909327040816
+          },
+          "mainThreadCpu": {
+            "userMs": 55958.493,
+            "systemMs": 2727.663,
+            "percent": 97.70368505157779
+          },
+          "mainThreadElu": {
+            "activeMs": 60065.59049600363,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 138212354,
+              "user_usec": 130870085,
+              "system_usec": 7342270,
+              "nice_usec": 129992158,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1206.578125
+      },
+      {
+        "minute": 3,
+        "hz": 12.762891395167404,
+        "tickWorkP95": 64.50552299999981,
+        "tickWorkMax": 111.13781700000982,
+        "actionP95": 668.8819300000032,
+        "stateGapMax": 195.25025599999935,
+        "cpuPercent": 196.36947715314912,
+        "resourceUsage": {
+          "elapsedMs": 60018.79573000001,
+          "processCpu": {
+            "userMs": 114133.083,
+            "systemMs": 3726.965,
+            "percent": 196.37189744726652
+          },
+          "mainThreadCpu": {
+            "userMs": 55942.764,
+            "systemMs": 2788.127,
+            "percent": 97.85416432579925
+          },
+          "mainThreadElu": {
+            "activeMs": 60017.839810972364,
+            "idleMs": 1.0606690000022354,
+            "utilization": 0.9999823277502334
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 137239815,
+              "user_usec": 129788211,
+              "system_usec": 7451605,
+              "nice_usec": 129088620,
+              "nr_periods": 600,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1279.67578125
+      },
+      {
+        "minute": 4,
+        "hz": 12.20767541830216,
+        "tickWorkP95": 68.48042600002373,
+        "tickWorkMax": 108.5491800000018,
+        "actionP95": 1142.2958560000116,
+        "stateGapMax": 213.60014299998875,
+        "cpuPercent": 196.76017933468677,
+        "resourceUsage": {
+          "elapsedMs": 60072.39404799999,
+          "processCpu": {
+            "userMs": 114465.335,
+            "systemMs": 3732.194,
+            "percent": 196.75847928676848
+          },
+          "mainThreadCpu": {
+            "userMs": 56156.649,
+            "systemMs": 2698.177,
+            "percent": 97.9731654326493
+          },
+          "mainThreadElu": {
+            "activeMs": 60072.534307956696,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 137452183,
+              "user_usec": 129948413,
+              "system_usec": 7503771,
+              "nice_usec": 129315502,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1320.87109375
+      },
+      {
+        "minute": 5,
+        "hz": 11.745078956427347,
+        "tickWorkP95": 70.79177599999821,
+        "tickWorkMax": 110.65658499998972,
+        "actionP95": 671.3344369999832,
+        "stateGapMax": 260.48992999998154,
+        "cpuPercent": 195.01659527999112,
+        "resourceUsage": {
+          "elapsedMs": 60086.20727999997,
+          "processCpu": {
+            "userMs": 113508.945,
+            "systemMs": 3671.98,
+            "percent": 195.02133734941916
+          },
+          "mainThreadCpu": {
+            "userMs": 56129.181,
+            "systemMs": 2637.052,
+            "percent": 97.80319920368923
+          },
+          "mainThreadElu": {
+            "activeMs": 60086.43252599242,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 136628461,
+              "user_usec": 129332887,
+              "system_usec": 7295574,
+              "nice_usec": 128411523,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1295.6953125
+      },
+      {
+        "minute": 6,
+        "hz": 11.558937100320746,
+        "tickWorkP95": 69.56122600001981,
+        "tickWorkMax": 108.88867000001483,
+        "actionP95": 851.683078000031,
+        "stateGapMax": 242.65943599998718,
+        "cpuPercent": 195.2047696373211,
+        "resourceUsage": {
+          "elapsedMs": 60076.736455000006,
+          "processCpu": {
+            "userMs": 113624.023,
+            "systemMs": 3647.602,
+            "percent": 195.2030551590321
+          },
+          "mainThreadCpu": {
+            "userMs": 56176.885,
+            "systemMs": 2705.126,
+            "percent": 98.01133429427395
+          },
+          "mainThreadElu": {
+            "activeMs": 60076.91355103254,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 136992424,
+              "user_usec": 129706180,
+              "system_usec": 7286245,
+              "nice_usec": 128902993,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1342.765625
+      },
+      {
+        "minute": 7,
+        "hz": 11.586502758012381,
+        "tickWorkP95": 73.01752500003204,
+        "tickWorkMax": 118.41863199998625,
+        "actionP95": 2563.3208009999944,
+        "stateGapMax": 248.35886000003666,
+        "cpuPercent": 197.32069897307613,
+        "resourceUsage": {
+          "elapsedMs": 60057.883164,
+          "processCpu": {
+            "userMs": 114866.439,
+            "systemMs": 3641.03,
+            "percent": 197.32208788710017
+          },
+          "mainThreadCpu": {
+            "userMs": 56514.378,
+            "systemMs": 2579.331,
+            "percent": 98.39459182840805
+          },
+          "mainThreadElu": {
+            "activeMs": 60058.0287809968,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 138085877,
+              "user_usec": 130996316,
+              "system_usec": 7089561,
+              "nice_usec": 130428971,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1344.48828125
+      },
+      {
+        "minute": 8,
+        "hz": 11.344648934939364,
+        "tickWorkP95": 76.35096700000577,
+        "tickWorkMax": 127.3609980000183,
+        "actionP95": 772.3945459999959,
+        "stateGapMax": 200.5208499999717,
+        "cpuPercent": 194.56973383733924,
+        "resourceUsage": {
+          "elapsedMs": 60074.03282900003,
+          "processCpu": {
+            "userMs": 113121.616,
+            "systemMs": 3763.238,
+            "percent": 194.56801632197931
+          },
+          "mainThreadCpu": {
+            "userMs": 56024.715,
+            "systemMs": 2853.375,
+            "percent": 98.00921833830556
+          },
+          "mainThreadElu": {
+            "activeMs": 60074.16626697779,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 135760277,
+              "user_usec": 128332166,
+              "system_usec": 7428111,
+              "nice_usec": 127595232,
+              "nr_periods": 600,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1341.95703125
+      },
+      {
+        "minute": 9,
+        "hz": 10.94188115028022,
+        "tickWorkP95": 82.22641999996267,
+        "tickWorkMax": 135.30360799998743,
+        "actionP95": 1096.4623850000207,
+        "stateGapMax": 257.85005400003865,
+        "cpuPercent": 190.54817653723458,
+        "resourceUsage": {
+          "elapsedMs": 60108.032632000046,
+          "processCpu": {
+            "userMs": 110946.923,
+            "systemMs": 3586.573,
+            "percent": 190.54607343615697
+          },
+          "mainThreadCpu": {
+            "userMs": 56108.458,
+            "systemMs": 2692.328,
+            "percent": 97.82517148747255
+          },
+          "mainThreadElu": {
+            "activeMs": 60108.246859014034,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 133213880,
+              "user_usec": 126110646,
+              "system_usec": 7103233,
+              "nice_usec": 125129348,
+              "nr_periods": 602,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1346.4453125
+      },
+      {
+        "minute": 10,
+        "hz": 11.464272496677458,
+        "tickWorkP95": 73.72558100009337,
+        "tickWorkMax": 144.47192000003997,
+        "actionP95": 687.6637630000478,
+        "stateGapMax": 214.85146899998654,
+        "cpuPercent": 195.5450459349297,
+        "resourceUsage": {
+          "elapsedMs": 60047.35180000006,
+          "processCpu": {
+            "userMs": 113658.66,
+            "systemMs": 3759.919,
+            "percent": 195.54330953858965
+          },
+          "mainThreadCpu": {
+            "userMs": 55972.733,
+            "systemMs": 2750.709,
+            "percent": 97.79522366879789
+          },
+          "mainThreadElu": {
+            "activeMs": 60047.480978012085,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate19-r1-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 136230270,
+              "user_usec": 128894602,
+              "system_usec": 7335668,
+              "nice_usec": 128043932,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 30,
+        "workers": 3,
+        "rssMB": 1356.41015625
+      }
+    ]
+  },
+  "corrected120": {
+    "status": "First launch deferred by unchanged live preflight guard; repeat pending"
+  },
+  "limits": [
+    "Original failed run preserved, no capacity conclusion for the corrected policy",
+    "90+5 uses only three rooms and was unaffected by this specific room-limit mismatch",
+    "Sixth room would exceed deployed five-room worker policy; do not infer readiness beyond tested rooms",
+    "No external-client network, browser rendering, real VK payments, or 300000 CCU proof"
+  ]
+}
