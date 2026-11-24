@@ -7,6 +7,7 @@ const storage=require('./snapshot-documents');
 const chat=require('./snapshot-chat');
 const {immutableRecord}=require('./immutable-document');
 const {canonicalKeys:keys}=require('./canonical-key-order');
+const {DocumentDigest}=require('./document-digest');
 const object=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 const fail=code=>{throw Object.assign(Error(code),{code});};
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -53,7 +54,7 @@ function documentFor(record,part){
   Object.freeze(doc);documents.set(part,doc);return doc;
 }
 class SnapshotBuilder{
-  constructor({immutableSource=null}={}){this.records=new Map();this.stats=null;this.immutableSource=immutableSource;this.identities=null;this.fields=new WeakMap();}
+  constructor({immutableSource=null}={}){this.records=new Map();this.stats=null;this.immutableSource=immutableSource;this.identities=null;this.fields=new WeakMap();this.documentDigest=new DocumentDigest();}
   pack(world,auxiliary={}, {chatFormat=1,documentFormat=1}={}){
     if(!object(world)||!object(world.profiles)||!object(world.clans))fail('DATABASE_INVALID_SNAPSHOT');
     const revision=world[REVISION]||0;
@@ -118,7 +119,7 @@ class SnapshotBuilder{
     checksum.update('}');
     const snapshot={docs,revision,documentFormat,chatFormat,chatRevision,
       chatHash:hash(auxiliary['clan-chat.json']||null),worldHash:checksum.digest('hex'),
-      digest:hash([...docs].map(([id,doc])=>[id,doc.hash]).sort(([a],[b])=>a.localeCompare(b)))};
+      digest:this.documentDigest.digest(docs)};
     // Publish cache replacements only after the entire snapshot validates.
     // Earlier snapshots retain their own bytes across retries and removals.
     this.records=next;this.identities=identities;this.stats=stats;return snapshot;
