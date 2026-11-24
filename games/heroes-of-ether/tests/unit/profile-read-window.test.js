@@ -37,7 +37,7 @@ for(const limits of [{maxFiles:2},{maxBytes:500}])test('Retained journal bounds 
 });
 test('Failure to retain a link falls back to canonical recovery without losing or duplicating a commit',async t=>{
  const f=setup(t);f.reader.read(await f.pin());const oldDir=path.dirname(f.journal.readWindow.current.pin.file);f.commit(99);
- const original=fs.linkSync;let injected=false;const m=t.mock.method(fs,'linkSync',(a,b)=>{if(!injected&&path.dirname(b)===oldDir){injected=true;throw Object.assign(Error('injected'),{code:'ENOSPC'});}return original(a,b);});
+ const original=fs.promises.link;let injected=false;const m=t.mock.method(fs.promises,'link',async(a,b)=>{if(!injected&&path.dirname(b)===oldDir){injected=true;throw Object.assign(Error('injected'),{code:'ENOSPC'});}return original(a,b);});
  await f.journal.requestCheckpoint();m.mock.restore();assert(injected);assert.equal(f.journal.readWindow.current,null);
  const p=await f.pin();assert.deepEqual(f.reader.read(p).data,recover(f.file).data);assert.equal(f.reader.stats.incremental,false);
  assert.equal(f.reader.previous.revision,2);assert.equal(f.journal.readWindow.lastError,'ENOSPC');
@@ -52,4 +52,51 @@ test('A staged cast arriving during a checkpoint is retained before its later ch
  const f=setup(t);f.reader.read(await f.pin());f.commit(90);const pending=f.journal.requestCheckpoint();
  const next=structuredClone(f.journal.previous);next.profiles.p.coins=80;const entry=await f.journal.stage(next);assert(f.journal.publishStaged(entry,next));
  await pending;await f.journal.requestCheckpoint();const p=await f.pin();assert.deepEqual(f.reader.read(p).data,recover(f.file).data);assert.equal(f.reader.stats.incremental,true);assert.equal(f.reader.previous.revision,3);
+});
+
+function pauseLink(t, directory) {
+ let release, entered;const gate=new Promise(resolve=>release=resolve),ready=new Promise(resolve=>entered=resolve);
+ const original=fs.promises.link;let once=false;
+ const mock=t.mock.method(fs.promises,'link',async(a,b)=>{
+   if(!once&&path.dirname(b)===directory){once=true;entered();await gate;}
+   return original(a,b);
+ });
+ t.after(()=>{release();mock.mock.restore();});
+ return {ready,release,restore:()=>mock.mock.restore()};
+}
+
+test('Delayed async retention leaves the event loop free and preserves concurrent commits and reader order',{timeout:20000},async t=>{
+ let hold;t.after(()=>hold?.release());
+ const f=setup(t),old=await f.pin(),before=saved(old),directory=path.dirname(old.file);
+ f.commit(90);hold=pauseLink(t,directory);const pending=f.journal.requestCheckpoint();await hold.ready;
+ assert(f.journal.running);const files=segments(f.file);assert.equal(files.length,1);assert(fs.existsSync(files[0]));
+ let ready=false;const reading=f.journal.pinSnapshot().then(pin=>{ready=true;return pin;});
+ await new Promise(resolve=>setImmediate(resolve));assert.equal(ready,false);
+ f.commit(80);assert.equal(recover(f.file).data.profiles.p.coins,80);
+ hold.release();await pending;const pin=await reading;
+ try{assert.deepEqual(saved(pin),recover(f.file).data);assert.equal(saved(pin).profiles.p.coins,80);assert.deepEqual(saved(old),before);}
+ finally{pin.release();}
+});
+
+test('Retiring a window during an async link waits for capture before removing its directory',{timeout:20000},async t=>{
+ let hold;t.after(()=>hold?.release());
+ const f=setup(t),old=await f.pin(),directory=path.dirname(old.file);f.commit(90);f.journal.sealActive();
+ hold=pauseLink(t,directory);const capture=f.journal.readWindow.captureAsync(segments(f.file));await hold.ready;
+ old.release();f.journal.readWindow.reset();let drained=false;
+ const cleanup=f.journal.readWindow.drainCleanup().then(()=>drained=true);
+ await new Promise(resolve=>setImmediate(resolve));assert.equal(drained,false);assert(fs.existsSync(directory));
+ hold.release();await capture;await cleanup;assert.equal(fs.existsSync(directory),false);
+ assert.equal(recover(f.file).data.profiles.p.coins,90);
+});
+
+test('A checkpoint worker exiting during delayed retention rejects once and a fresh worker recovers the exact WAL',{timeout:20000},async t=>{
+ let hold;t.after(()=>hold?.release());
+ const f=setup(t),old=await f.pin();f.commit(95);await f.journal.requestCheckpoint();f.commit(90);
+ hold=pauseLink(t,path.dirname(old.file));const pending=f.journal.requestCheckpoint();
+ const rejected=assert.rejects(pending,/checkpoint worker exited/);await hold.ready;
+ await f.journal.worker.terminate();await rejected;
+ assert.equal(recover(f.file).data.profiles.p.coins,90);
+ hold.release();await f.journal.checkpointCapture;hold.restore();
+ await f.journal.requestCheckpoint();const latest=await f.pin();assert.deepEqual(saved(latest),recover(f.file).data);
+ assert.equal(saved(latest).profiles.p.coins,90);
 });

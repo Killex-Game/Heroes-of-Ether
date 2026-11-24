@@ -10,6 +10,7 @@ class ProfileReadWindow {
     Object.assign(this, { file, maxBytes, maxFiles, maxAgeMs, now });
     this.current = null;
     this.cleanups = new Set();
+    this.captures = new Set();
   }
   releaseOwner(owner) {
     if (owner.cleanup) return owner.cleanup;
@@ -22,7 +23,10 @@ class ProfileReadWindow {
     this.cleanups.add(cleanup);
     return cleanup;
   }
-  drainCleanup() { return Promise.all([...this.cleanups]); }
+  async drainCleanup() {
+    await Promise.all([...this.captures]);
+    await Promise.all([...this.cleanups]);
+  }
   reset() {
     const old = this.current;
     this.current = null;
@@ -56,6 +60,47 @@ class ProfileReadWindow {
       this.reset();
       this.lastError = error.code || "PROFILE_READ_WINDOW_INVALID";
     }
+  }
+  captureAsync(files) {
+    const current = this.current;
+    if (!current) return Promise.resolve();
+    // A checkpoint owns this immutable list until capture finishes. Retain the
+    // directory even if expiry/reset retires it while an async link is pending.
+    current.readers++;
+    const operation = (async () => {
+      try {
+        const age = this.now() - current.at;
+        if (age < 0 || age >= this.maxAgeMs) { this.reset(); return; }
+        for (const source of files) {
+          if (this.current !== current) return;
+          const suffix = source.slice(source.lastIndexOf('-') + 1);
+          if (!/^\d+$/.test(suffix)) throw Error('Invalid retained journal segment');
+          const stat = await fs.promises.stat(source, { bigint: true });
+          if (this.current !== current) return;
+          if (!stat.isFile()) throw Error('Invalid retained journal source');
+          const previous = current.rows.get(suffix), id = identity(stat);
+          if (previous) {
+            if (previous.identity !== id) throw Error('Retained journal source replaced');
+            continue;
+          }
+          const size = Number(stat.size);
+          if (current.rows.size + 1 > this.maxFiles || current.bytes + size > this.maxBytes) { this.reset(); return; }
+          const target = current.pin.file + '.wal-' + suffix;
+          await fs.promises.link(source, target);
+          if (this.current !== current) return;
+          current.rows.set(suffix, { target, identity: id }); current.bytes += size;
+        }
+      } catch (error) {
+        if (this.current === current) this.reset();
+        this.lastError = error.code || 'PROFILE_READ_WINDOW_INVALID';
+      } finally {
+        current.readers--;
+        if (current.retired && !current.readers) this.releaseOwner(current);
+      }
+    })();
+    this.captures.add(operation);
+    operation.then(() => this.captures.delete(operation), () => this.captures.delete(operation));
+    return operation;
   }
   pin(files, revision) {
     this.capture(files);

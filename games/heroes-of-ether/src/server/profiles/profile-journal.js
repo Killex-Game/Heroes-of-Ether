@@ -494,7 +494,7 @@ class ProfileJournal {
     return Math.min(4 * 1024 * 1024, this.maxPendingBytes / 4);
   }
   queueCheckpoint() {
-    if (this.running || this.checkpointQueued) return;
+    if (this.running || this.checkpointCapture || this.checkpointQueued) return;
     this.checkpointQueued = setImmediate(() => {
       this.checkpointQueued = null;
       this.requestCheckpoint().catch((error) => this.reportCheckpointError(error));
@@ -515,6 +515,7 @@ class ProfileJournal {
   }
   async pinSnapshot() {
     if (this.closed || this.fault) throw Error("Profile journal unavailable");
+    if (this.checkpointCapture) { await this.checkpointCapture; return this.pinSnapshot(); }
     if (this.running) { await this.running; return this.pinSnapshot(); }
     if (this.arenaFlush) { await this.arenaFlush.catch(() => {}); return this.pinSnapshot(); }
     // No await between sealing and linking: a checkpoint cannot start/delete
@@ -528,6 +529,7 @@ class ProfileJournal {
   async requestCheckpoint() {
     if (this.running) return this.running;
     if (this.closed) return Promise.resolve();
+    if (this.checkpointCapture) { await this.checkpointCapture; return this.requestCheckpoint(); }
     // Keep the active descriptor open until its off-thread fsync returns,
     // including when a different transaction superseded that append.
     if (this.arenaFlush) {
@@ -539,7 +541,6 @@ class ProfileJournal {
     if (!files.length) return Promise.resolve();
     // Capture exactly the set sent to this checkpoint. A later staged action
     // must not be deleted before its segment enters the retained read window.
-    this.readWindow?.capture(files);
     clearTimeout(this.workerIdleTimer);
     this.sealedBatches = 0;
     if (!this.worker) {
@@ -587,7 +588,20 @@ class ProfileJournal {
       this.resolve = resolve;
       this.reject = reject;
     });
-    this.worker.postMessage({ files });
+    // Link the closed WAL set without blocking the arena thread. The worker
+    // cannot checkpoint/delete a source segment until every retained link is
+    // ready (or the disposable cache has safely fallen back). New commits may
+    // continue; they are outside this captured file set.
+    const job = this.running, worker = this.worker;
+    const capture = this.readWindow?.captureAsync(files) || Promise.resolve();
+    this.checkpointCapture = capture;
+    capture.then(() => {
+      if (this.worker === worker && this.running === job) worker.postMessage({ files });
+    }).catch(error => {
+      if (this.running === job) { worker.unref(); this.workerFailed(error); }
+    }).finally(() => {
+      if (this.checkpointCapture === capture) this.checkpointCapture = null;
+    });
     return this.running;
   }
   retireCheckpointWorker() {
