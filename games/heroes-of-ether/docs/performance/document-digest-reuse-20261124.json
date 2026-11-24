@@ -9,10 +9,23 @@
   ],
   "tests": {
     "targetedWindows": 19,
-    "fullWindows": "pending",
-    "fullLinux": "pending",
-    "realPostgresql": "pending",
-    "mixed": "pending"
+    "fullWindows": {
+      "total": 2462,
+      "pass": 2460,
+      "fail": 0,
+      "skip": 2
+    },
+    "fullLinux": {
+      "total": 2462,
+      "pass": 2460,
+      "fail": 0,
+      "skip": 2
+    },
+    "realPostgresql": {
+      "pass": 11,
+      "fail": 0
+    },
+    "mixed": "pending on this exact candidate; V19 90+5 is an earlier runtime"
   },
   "benchmark": {
     "at": "2026-11-24T21:07:07.612Z",
@@ -156,5 +169,7 @@
     "Existing world SHA-256 still processes all canonical bytes; this does not introduce addressed commits or distributed ownership",
     "Component timing excludes disk, PostgreSQL and simulation; CPU improvement of the whole game is not established",
     "Private cache is bounded by the current manifest; obsolete document keys are weak references"
-  ]
+  ],
+  "updatedAt": "2026-11-24T21:33:57.386Z",
+  "source": "2c8551a077bcf4bfd952017b079fa5f62769f26d"
 }
