@@ -1,0 +1,380 @@
+{
+  "at": "2026-11-24T20:44:24.736Z",
+  "source": "185095446bc349ebf9937e84cde9cd696c0df2b7",
+  "installed": false,
+  "changes": [
+    "Pinned reader copies large profile tables without spread; unchanged nested data remains shared",
+    "Canonical keys avoid temporary objects and pair arrays for ordinary records; Proxy fallback retains legacy ordering",
+    "Checkpoint captures closed WAL links asynchronously before dispatch; concurrent reset, reader and worker-exit races are tested"
+  ],
+  "tests": {
+    "windows": {
+      "tests": 2459,
+      "pass": 2457,
+      "fail": 0,
+      "skipped": 2,
+      "duration_ms": 515231.146
+    },
+    "linux": {
+      "tests": 2459,
+      "pass": 2457,
+      "fail": 0,
+      "skipped": 2,
+      "duration_ms": 571245.842683
+    },
+    "realPostgresql": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "duration_ms": 25891.239247
+    }
+  },
+  "readerLinux": {
+    "at": "2026-11-24T20:40:20.475Z",
+    "node": "v24.22.3",
+    "platform": "linux",
+    "exact": true,
+    "scope": "Private pinned-reader table copy; synthetic in-memory replay only, no persistence or capacity claim",
+    "rows": [
+      {
+        "size": 1280,
+        "mode": "baseline",
+        "elapsedMs": 13.031222999999997,
+        "cpuMs": 13.799,
+        "heapMiB": 6.033973693847656,
+        "rssMiB": 55.00390625,
+        "hash": "48ddef2df49027c332e49f5fc543ab1e66be1546f4ac02c146fed3382a935d48"
+      },
+      {
+        "size": 1280,
+        "mode": "candidate",
+        "elapsedMs": 8.197604999999982,
+        "cpuMs": 13.411,
+        "heapMiB": 7.261543273925781,
+        "rssMiB": 56.62890625,
+        "hash": "48ddef2df49027c332e49f5fc543ab1e66be1546f4ac02c146fed3382a935d48"
+      },
+      {
+        "size": 1280,
+        "mode": "candidate",
+        "elapsedMs": 6.405932000000007,
+        "cpuMs": 9.879,
+        "heapMiB": 7.400962829589844,
+        "rssMiB": 57.25390625,
+        "hash": "48ddef2df49027c332e49f5fc543ab1e66be1546f4ac02c146fed3382a935d48"
+      },
+      {
+        "size": 1280,
+        "mode": "baseline",
+        "elapsedMs": 12.242616999999996,
+        "cpuMs": 15.419,
+        "heapMiB": 6.273704528808594,
+        "rssMiB": 57.62890625,
+        "hash": "48ddef2df49027c332e49f5fc543ab1e66be1546f4ac02c146fed3382a935d48"
+      },
+      {
+        "size": 10000,
+        "mode": "baseline",
+        "elapsedMs": 144.377037,
+        "cpuMs": 116.86,
+        "heapMiB": 11.868843078613281,
+        "rssMiB": 63.7109375,
+        "hash": "1215601bcee0609cfa3f95bb169afd4076679ab57f31f0919bc2a837d95b50ff"
+      },
+      {
+        "size": 10000,
+        "mode": "candidate",
+        "elapsedMs": 64.794013,
+        "cpuMs": 72.96,
+        "heapMiB": 11.667495727539062,
+        "rssMiB": 73.71875,
+        "hash": "1215601bcee0609cfa3f95bb169afd4076679ab57f31f0919bc2a837d95b50ff"
+      },
+      {
+        "size": 10000,
+        "mode": "candidate",
+        "elapsedMs": 95.92763100000002,
+        "cpuMs": 75.126,
+        "heapMiB": 10.992233276367188,
+        "rssMiB": 76.10546875,
+        "hash": "1215601bcee0609cfa3f95bb169afd4076679ab57f31f0919bc2a837d95b50ff"
+      },
+      {
+        "size": 10000,
+        "mode": "baseline",
+        "elapsedMs": 132.7554459999999,
+        "cpuMs": 116.409,
+        "heapMiB": 16.753738403320312,
+        "rssMiB": 80.93359375,
+        "hash": "1215601bcee0609cfa3f95bb169afd4076679ab57f31f0919bc2a837d95b50ff"
+      },
+      {
+        "size": 100000,
+        "mode": "baseline",
+        "elapsedMs": 2001.8192920000001,
+        "cpuMs": 1969.564,
+        "heapMiB": 105.53267669677734,
+        "rssMiB": 198.5703125,
+        "hash": "8272733d11d8b24f1ea178e509a93a90c095ceb69cfb927104537fc28a5c0237"
+      },
+      {
+        "size": 100000,
+        "mode": "candidate",
+        "elapsedMs": 1233.215561,
+        "cpuMs": 1172.073,
+        "heapMiB": 102.23175048828125,
+        "rssMiB": 191.4765625,
+        "hash": "8272733d11d8b24f1ea178e509a93a90c095ceb69cfb927104537fc28a5c0237"
+      },
+      {
+        "size": 100000,
+        "mode": "candidate",
+        "elapsedMs": 1069.626585,
+        "cpuMs": 1058.871,
+        "heapMiB": 108.23479461669922,
+        "rssMiB": 217.57421875,
+        "hash": "8272733d11d8b24f1ea178e509a93a90c095ceb69cfb927104537fc28a5c0237"
+      },
+      {
+        "size": 100000,
+        "mode": "baseline",
+        "elapsedMs": 1982.6605850000005,
+        "cpuMs": 1963.41,
+        "heapMiB": 82.30703735351562,
+        "rssMiB": 197.15625,
+        "hash": "8272733d11d8b24f1ea178e509a93a90c095ceb69cfb927104537fc28a5c0237"
+      }
+    ]
+  },
+  "keyOrderLinux": {
+    "at": "2026-11-24T20:40:35.190Z",
+    "node": "v24.22.3",
+    "platform": "linux",
+    "unchangedReceiptFields": true,
+    "exactFrameComparisons": 126,
+    "results": [
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "coldMs": 151.072836,
+        "warmMs": 485.101745,
+        "cpuMs": 650.52,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 98086912,
+          "heapTotal": 47767552,
+          "heapUsed": 9939104,
+          "external": 2651893,
+          "arrayBuffers": 538883
+        },
+        "maxRSSKiB": 97416
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "coldMs": 118.44776000000002,
+        "warmMs": 369.40774399999975,
+        "cpuMs": 507.25,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 115896320,
+          "heapTotal": 44879872,
+          "heapUsed": 7644504,
+          "external": 2814477,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 115832
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "coldMs": 111.89954999999986,
+        "warmMs": 298.2668209999997,
+        "cpuMs": 407.391,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 134639616,
+          "heapTotal": 80011264,
+          "heapUsed": 10195968,
+          "external": 2814477,
+          "arrayBuffers": 669955
+        },
+        "maxRSSKiB": 131484
+      },
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "coldMs": 144.60332100000028,
+        "warmMs": 392.92816099999936,
+        "cpuMs": 521.305,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 148672512,
+          "heapTotal": 78172160,
+          "heapUsed": 7424272,
+          "external": 2880013,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 146004
+      },
+      {
+        "variant": "baseline",
+        "profiles": 10000,
+        "coldMs": 786.2043570000001,
+        "warmMs": 2295.9096309999977,
+        "cpuMs": 3262.868,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 268468224,
+          "heapTotal": 172687360,
+          "heapUsed": 18058528,
+          "external": 5763597,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 289488
+      },
+      {
+        "variant": "candidate",
+        "profiles": 10000,
+        "coldMs": 505.0202279999994,
+        "warmMs": 1702.0279569999966,
+        "cpuMs": 2428.125,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 274583552,
+          "heapTotal": 170860544,
+          "heapUsed": 18440192,
+          "external": 5698061,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 293740
+      },
+      {
+        "variant": "candidate",
+        "profiles": 10000,
+        "coldMs": 569.7975800000004,
+        "warmMs": 1730.1046160000024,
+        "cpuMs": 2512.884,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 276197376,
+          "heapTotal": 170598400,
+          "heapUsed": 18471880,
+          "external": 5763597,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 299064
+      },
+      {
+        "variant": "baseline",
+        "profiles": 10000,
+        "coldMs": 564.460559000001,
+        "warmMs": 1993.0700780000043,
+        "cpuMs": 2770.628,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 276738048,
+          "heapTotal": 169549824,
+          "heapUsed": 18425176,
+          "external": 5763597,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 299784
+      }
+    ],
+    "scope": "Canonical immutable snapshot preparation only, excluding filesystem, network, PostgreSQL and game simulation; not measured CCU"
+  },
+  "retention": {
+    "windows": {
+      "at": "2026-11-24T20:28:20.274Z",
+      "node": "v24.22.3",
+      "platform": "win32",
+      "segments": 512,
+      "rows": [
+        {
+          "mode": "sync",
+          "elapsedMs": 571.6251000000001,
+          "cpuMs": 375,
+          "eventLoopGapMaxMs": 572.0165,
+          "eventLoopGapP95Ms": 16.803100000000086,
+          "samples": 7
+        },
+        {
+          "mode": "async",
+          "elapsedMs": 443.71450000000004,
+          "cpuMs": 469,
+          "eventLoopGapMaxMs": 16.104699999999866,
+          "eventLoopGapP95Ms": 1.5924999999997453,
+          "samples": 435
+        },
+        {
+          "mode": "async",
+          "elapsedMs": 430.30899999999974,
+          "cpuMs": 437,
+          "eventLoopGapMaxMs": 15.95640000000003,
+          "eventLoopGapP95Ms": 1.5443999999997686,
+          "samples": 423
+        },
+        {
+          "mode": "sync",
+          "elapsedMs": 313.0412000000001,
+          "cpuMs": 297,
+          "eventLoopGapMaxMs": 313.66820000000007,
+          "eventLoopGapP95Ms": 15.95699999999988,
+          "samples": 7
+        }
+      ],
+      "sourceFilesUnchanged": true,
+      "scope": "Closed WAL-link capture only; initial pin, checkpoint, simulation, PostgreSQL and file writes excluded; not whole-game throughput"
+    },
+    "linux": {
+      "at": "2026-11-24T20:40:35.954Z",
+      "node": "v24.22.3",
+      "platform": "linux",
+      "segments": 512,
+      "rows": [
+        {
+          "mode": "sync",
+          "elapsedMs": 13.437320999999997,
+          "cpuMs": 15.538,
+          "eventLoopGapMaxMs": 14.912572000000011,
+          "eventLoopGapP95Ms": 1.3286990000000003,
+          "samples": 51
+        },
+        {
+          "mode": "async",
+          "elapsedMs": 40.17478800000001,
+          "cpuMs": 43.898,
+          "eventLoopGapMaxMs": 3.64549199999999,
+          "eventLoopGapP95Ms": 1.1693439999999669,
+          "samples": 91
+        },
+        {
+          "mode": "async",
+          "elapsedMs": 43.58691500000003,
+          "cpuMs": 43.603,
+          "eventLoopGapMaxMs": 4.044902000000036,
+          "eventLoopGapP95Ms": 1.320005999999978,
+          "samples": 92
+        },
+        {
+          "mode": "sync",
+          "elapsedMs": 8.396423000000027,
+          "cpuMs": 5.694,
+          "eventLoopGapMaxMs": 9.665050999999949,
+          "eventLoopGapP95Ms": 1.211076999999932,
+          "samples": 52
+        }
+      ],
+      "sourceFilesUnchanged": true,
+      "scope": "Closed WAL-link capture only; initial pin, checkpoint, simulation, PostgreSQL and file writes excluded; not whole-game throughput"
+    }
+  },
+  "limitations": [
+    "Component benchmarks exclude full simulation, PostgreSQL I/O and network",
+    "Asynchronous link capture uses more total time and CPU; it reduces main-thread blocking, not total work",
+    "The observed 524 ms synchronous write remains a separate issue; an opt-in unpublished-file experiment is not installed",
+    "Mixed and retained-history runs of the combined version remain pending; no maximum CCU or 300000-player claim"
+  ]
+}

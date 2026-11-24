@@ -1,0 +1,1438 @@
+{
+  "at": "2026-11-24T20:32:24.639Z",
+  "source": "af8cb18d76e41de77e046cb00d6dea0b165d63a7",
+  "runtimeSource": "465e2e5a41558922a27868c6d3d15dddccb33dc5",
+  "installed": false,
+  "diagnosticOnly": true,
+  "players": 30,
+  "lobby": 5,
+  "minutes": 10,
+  "platform": "Windows",
+  "scope": "Stage, CPU sampling and synchronous I/O probes add overhead; not a capacity acceptance run",
+  "code": 0,
+  "assessment": {
+    "targets": {
+      "updatesHz": 19,
+      "tickP95Ms": 100,
+      "stateGapP99Ms": 150,
+      "lobbyP95Ms": 1000,
+      "actionP95Ms": 500
+    },
+    "shortRunMeetsTargets": false,
+    "problems": [],
+    "phases": [
+      {
+        "phase": "combined",
+        "window": 1,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 2,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 3,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 4,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 5,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 6,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 7,
+        "meetsTargets": false,
+        "issues": [
+          "action-delay",
+          "successful-action-delay",
+          "state-frequency"
+        ]
+      },
+      {
+        "phase": "combined",
+        "window": 8,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 9,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 10,
+        "meetsTargets": true,
+        "issues": []
+      }
+    ],
+    "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+  },
+  "ack": {
+    "acknowledged": 9788,
+    "recovered": 9788,
+    "duplicates": 0
+  },
+  "alchemy": {
+    "version": 1,
+    "casts": 570,
+    "brews": 90,
+    "exchanges": 85,
+    "profiles": 1280,
+    "exactInventories": true,
+    "exactLobbyIngredientsAndNatural": true
+  },
+  "database": {
+    "matched": true,
+    "revision": 19191,
+    "profiles": 1280,
+    "clans": 131,
+    "schemaRemoved": true
+  },
+  "windows": [
+    {
+      "window": 1,
+      "hz": 19.433593717532037,
+      "tick": {
+        "n": 1163,
+        "p50": 9.855900000002293,
+        "p95": 15.923099999999977,
+        "p99": 23.93119999999908,
+        "max": 90.01550000000134
+      },
+      "eventLoop": {
+        "p95": 22.069247,
+        "max": 512.229375
+      },
+      "gaps": {
+        "p50": 49.68260000000009,
+        "p95": 69.14329999999609,
+        "p99": 97.77230000000054,
+        "max": 564.8413
+      },
+      "action": {
+        "p50": 15.74199999999837,
+        "p95": 273.5991000000031,
+        "p99": 617.2108000000007,
+        "max": 670.0535000000018
+      },
+      "successfulAction": {
+        "p50": 15.844499999999243,
+        "p95": 140.3293999999987,
+        "p99": 612.9507000000012,
+        "max": 620.6308000000026
+      },
+      "io": {
+        "stats": {
+          "readFileSync": {
+            "calls": 5,
+            "totalMs": 2.3505999999979394,
+            "maxMs": 0.6882000000005064,
+            "failures": 0,
+            "bytes": 0
+          },
+          "writeSync": {
+            "calls": 1106,
+            "totalMs": 234.606199999791,
+            "maxMs": 1.8568999999988591,
+            "failures": 0,
+            "bytes": 6913982
+          },
+          "closeSync": {
+            "calls": 603,
+            "totalMs": 114.94330000009359,
+            "maxMs": 0.7919000000038068,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1431,
+            "totalMs": 1823.7915000002286,
+            "maxMs": 5.268199999991339,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 603,
+            "totalMs": 361.7410999999047,
+            "maxMs": 4.264200000005076,
+            "failures": 0,
+            "bytes": 0
+          },
+          "fsyncSync": {
+            "calls": 73,
+            "totalMs": 77.0325999999659,
+            "maxMs": 6.2313000000031025,
+            "failures": 0,
+            "bytes": 0
+          },
+          "readdirSync": {
+            "calls": 9,
+            "totalMs": 5.304399999997258,
+            "maxMs": 0.9492000000027474,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 1668,
+            "totalMs": 165.43260000016744,
+            "maxMs": 0.5002000000022235,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1424,
+            "totalMs": 1295.924799999906,
+            "maxMs": 12.469100000002072,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 83,
+        "p50": 4.976099967956543,
+        "p95": 7.672399997711182,
+        "p99": 27.089800000190735,
+        "max": 27.089800000190735,
+        "totalMs": 463.59250009059906
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1936,
+          "ms": 538.7526000000944,
+          "max": 11.451600000000326
+        },
+        "startArenaCommit": {
+          "n": 1028,
+          "ms": 620.1320999998643,
+          "max": 5.144500000002154
+        },
+        "applyArenaProgress": {
+          "n": 1161,
+          "ms": 3672.1586999999927,
+          "max": 47.61409999999887
+        }
+      },
+      "cpuProfile": "phase-combined-df1a0135-4f94-4963-b0ce-0554a4cbac1e.cpuprofile"
+    },
+    {
+      "window": 2,
+      "hz": 19.398037331240786,
+      "tick": {
+        "n": 1168,
+        "p50": 11.877100000012433,
+        "p95": 18.28409999998985,
+        "p99": 25.223599999997532,
+        "max": 29.4603000000061
+      },
+      "eventLoop": {
+        "p95": 24.920063,
+        "max": 725.614591
+      },
+      "gaps": {
+        "p50": 49.654899999994086,
+        "p95": 66.39349999999104,
+        "p99": 83.16599999999744,
+        "max": 744.233699999997
+      },
+      "action": {
+        "p50": 16.484700000000885,
+        "p95": 91.08499999999185,
+        "p99": 333.2716999999975,
+        "max": 669.3436999999976
+      },
+      "successfulAction": {
+        "p50": 16.508800000010524,
+        "p95": 90.86679999998887,
+        "p99": 335.0268999999971,
+        "max": 669.3436999999976
+      },
+      "io": {
+        "stats": {
+          "closeSync": {
+            "calls": 628,
+            "totalMs": 117.93289999995613,
+            "maxMs": 0.5498999999981606,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1454,
+            "totalMs": 1851.9326999995828,
+            "maxMs": 8.704900000011548,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 628,
+            "totalMs": 351.45319999994535,
+            "maxMs": 1.6239999999961583,
+            "failures": 0,
+            "bytes": 0
+          },
+          "writeSync": {
+            "calls": 1168,
+            "totalMs": 257.965299999938,
+            "maxMs": 11.70360000000801,
+            "failures": 0,
+            "bytes": 5417210
+          },
+          "readdirSync": {
+            "calls": 9,
+            "totalMs": 7.5600999999878695,
+            "maxMs": 1.6318999999930384,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 2197,
+            "totalMs": 207.46400000032736,
+            "maxMs": 0.5302999999985332,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1719,
+            "totalMs": 1474.3434000003326,
+            "maxMs": 21.979400000011083,
+            "failures": 0,
+            "bytes": 0
+          },
+          "fsyncSync": {
+            "calls": 60,
+            "totalMs": 54.34499999995751,
+            "maxMs": 1.9125000000058208,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [
+          {
+            "name": "linkSync",
+            "elapsedMs": 21.979400000011083,
+            "failed": false
+          }
+        ],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 103,
+        "p50": 4.011600017547607,
+        "p95": 6.696599960327148,
+        "p99": 29.411400079727173,
+        "max": 34.293400049209595,
+        "totalMs": 509.1212006807327
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1994,
+          "ms": 510.7620000001043,
+          "max": 2.8935999999957858
+        },
+        "startArenaCommit": {
+          "n": 1098,
+          "ms": 664.1225999997259,
+          "max": 12.154200000004494
+        },
+        "applyArenaProgress": {
+          "n": 1156,
+          "ms": 3772.5345999999117,
+          "max": 16.82940000000235
+        }
+      },
+      "cpuProfile": "phase-combined-a02cb529-c654-40a1-abf8-12abad90046c.cpuprofile"
+    },
+    {
+      "window": 3,
+      "hz": 19.63241169185772,
+      "tick": {
+        "n": 1182,
+        "p50": 11.01559999998426,
+        "p95": 17.344899999996414,
+        "p99": 23.912100000015926,
+        "max": 29.090999999985797
+      },
+      "eventLoop": {
+        "p95": 23.576575,
+        "max": 357.826559
+      },
+      "gaps": {
+        "p50": 49.65869999999995,
+        "p95": 65.35939999998664,
+        "p99": 80.23169999997481,
+        "max": 394.92070000001695
+      },
+      "action": {
+        "p50": 13.817600000009406,
+        "p95": 37.55210000000079,
+        "p99": 152.93090000000666,
+        "max": 302.14240000001155
+      },
+      "successfulAction": {
+        "p50": 13.98609999998007,
+        "p95": 38.09990000000107,
+        "p99": 152.98299999997835,
+        "max": 302.14240000001155
+      },
+      "io": {
+        "stats": {
+          "closeSync": {
+            "calls": 623,
+            "totalMs": 108.86289999974542,
+            "maxMs": 0.8893000000098255,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1463,
+            "totalMs": 1839.6780999999319,
+            "maxMs": 5.376399999979185,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 623,
+            "totalMs": 360.6192999999621,
+            "maxMs": 6.900999999983469,
+            "failures": 0,
+            "bytes": 0
+          },
+          "writeSync": {
+            "calls": 1108,
+            "totalMs": 228.899900000426,
+            "maxMs": 1.5815000000002328,
+            "failures": 0,
+            "bytes": 4524517
+          },
+          "fsyncSync": {
+            "calls": 55,
+            "totalMs": 73.67880000005243,
+            "maxMs": 27.34309999999823,
+            "failures": 0,
+            "bytes": 0
+          },
+          "readdirSync": {
+            "calls": 9,
+            "totalMs": 4.490900000004331,
+            "maxMs": 0.8716999999887776,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 1462,
+            "totalMs": 128.11319999955595,
+            "maxMs": 0.47150000001420267,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1261,
+            "totalMs": 961.4322999994329,
+            "maxMs": 21.609700000000885,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [
+          {
+            "name": "fsyncSync",
+            "elapsedMs": 27.34309999999823,
+            "failed": false
+          },
+          {
+            "name": "linkSync",
+            "elapsedMs": 21.609700000000885,
+            "failed": false
+          }
+        ],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 97,
+        "p50": 3.8444000482559204,
+        "p95": 6.493799924850464,
+        "p99": 30.602800011634827,
+        "max": 30.602800011634827,
+        "totalMs": 448.90109968185425
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1944,
+          "ms": 423.213700000284,
+          "max": 2.4109999999927823
+        },
+        "startArenaCommit": {
+          "n": 1043,
+          "ms": 547.5119999998715,
+          "max": 2.6362000000081025
+        },
+        "applyArenaProgress": {
+          "n": 1182,
+          "ms": 3111.4120000003604,
+          "max": 17.210499999986496
+        }
+      },
+      "cpuProfile": "phase-combined-7e676aba-2542-492b-95a9-03671fb1a484.cpuprofile"
+    },
+    {
+      "window": 4,
+      "hz": 19.6238157819068,
+      "tick": {
+        "n": 1176,
+        "p50": 10.083299999998417,
+        "p95": 15.744999999995343,
+        "p99": 22.841300000000047,
+        "max": 30.365500000014435
+      },
+      "eventLoop": {
+        "p95": 21.544959,
+        "max": 444.334079
+      },
+      "gaps": {
+        "p50": 49.572099999990314,
+        "p95": 62.48189999998431,
+        "p99": 78.26910000000498,
+        "max": 492.68290000001434
+      },
+      "action": {
+        "p50": 13.112499999988358,
+        "p95": 34.91359999999986,
+        "p99": 154.4418000000005,
+        "max": 452.8275999999896
+      },
+      "successfulAction": {
+        "p50": 13.177599999995437,
+        "p95": 34.91359999999986,
+        "p99": 154.4418000000005,
+        "max": 452.8275999999896
+      },
+      "io": {
+        "stats": {
+          "closeSync": {
+            "calls": 607,
+            "totalMs": 105.07680000006803,
+            "maxMs": 0.7281999999831896,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1467,
+            "totalMs": 1841.2011999991664,
+            "maxMs": 7.8870999999926426,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 607,
+            "totalMs": 335.6907999997784,
+            "maxMs": 2.3042999999888707,
+            "failures": 0,
+            "bytes": 0
+          },
+          "writeSync": {
+            "calls": 1130,
+            "totalMs": 229.96640000026673,
+            "maxMs": 1.0509000000020023,
+            "failures": 0,
+            "bytes": 4765608
+          },
+          "fsyncSync": {
+            "calls": 65,
+            "totalMs": 54.0097999999125,
+            "maxMs": 1.6363999999884982,
+            "failures": 0,
+            "bytes": 0
+          },
+          "readdirSync": {
+            "calls": 10,
+            "totalMs": 7.602700000046752,
+            "maxMs": 1.6821999999810942,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 2320,
+            "totalMs": 186.85090000051423,
+            "maxMs": 0.561199999996461,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1445,
+            "totalMs": 1167.9812999993737,
+            "maxMs": 12.291400000016438,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 85,
+        "p50": 4.0644999742507935,
+        "p95": 5.483299970626831,
+        "p99": 30.972300052642822,
+        "max": 30.972300052642822,
+        "totalMs": 414.4260002374649
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1989,
+          "ms": 454.0887000002549,
+          "max": 3.8068999999959487
+        },
+        "startArenaCommit": {
+          "n": 1055,
+          "ms": 565.3354999997537,
+          "max": 4.31239999999525
+        },
+        "applyArenaProgress": {
+          "n": 1174,
+          "ms": 3196.6306000000914,
+          "max": 16.70999999999185
+        }
+      },
+      "cpuProfile": "phase-combined-f1b87b87-ab20-4884-a3b3-34e1fb673001.cpuprofile"
+    },
+    {
+      "window": 5,
+      "hz": 19.584434541789573,
+      "tick": {
+        "n": 1178,
+        "p50": 11.303799999994226,
+        "p95": 16.98559999995632,
+        "p99": 25.650800000003073,
+        "max": 28.169799999974202
+      },
+      "eventLoop": {
+        "p95": 23.019519,
+        "max": 472.645631
+      },
+      "gaps": {
+        "p50": 49.603699999977835,
+        "p95": 66.04229999997187,
+        "p99": 87.0226000000257,
+        "max": 495.1865000000107
+      },
+      "action": {
+        "p50": 14.111000000033528,
+        "p95": 41.34799999999814,
+        "p99": 256.7240999999922,
+        "max": 445.2295999999624
+      },
+      "successfulAction": {
+        "p50": 14.355400000000373,
+        "p95": 41.414799999969546,
+        "p99": 261.0066999999981,
+        "max": 445.2295999999624
+      },
+      "io": {
+        "stats": {
+          "writeSync": {
+            "calls": 1117,
+            "totalMs": 225.58090000084485,
+            "maxMs": 1.3832999999867752,
+            "failures": 0,
+            "bytes": 4572051
+          },
+          "closeSync": {
+            "calls": 606,
+            "totalMs": 104.29480000026524,
+            "maxMs": 1.0271000000066124,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1438,
+            "totalMs": 1798.9919999997073,
+            "maxMs": 3.6667000000015832,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 606,
+            "totalMs": 336.17149999941466,
+            "maxMs": 1.7796000000089407,
+            "failures": 0,
+            "bytes": 0
+          },
+          "fsyncSync": {
+            "calls": 70,
+            "totalMs": 56.595100000093225,
+            "maxMs": 1.8536999999778345,
+            "failures": 0,
+            "bytes": 0
+          },
+          "readdirSync": {
+            "calls": 9,
+            "totalMs": 6.149099999980535,
+            "maxMs": 1.2063999999663793,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 1573,
+            "totalMs": 151.95920000079786,
+            "maxMs": 1.101699999999255,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1295,
+            "totalMs": 1122.5483999993885,
+            "maxMs": 22.009199999971315,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [
+          {
+            "name": "linkSync",
+            "elapsedMs": 22.009199999971315,
+            "failed": false
+          }
+        ],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 89,
+        "p50": 4.049799919128418,
+        "p95": 5.990700006484985,
+        "p99": 34.68540000915527,
+        "max": 34.68540000915527,
+        "totalMs": 434.8296995162964
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1946,
+          "ms": 446.41090000074473,
+          "max": 3.079200000036508
+        },
+        "startArenaCommit": {
+          "n": 1037,
+          "ms": 556.4526000014157,
+          "max": 3.7584999999962747
+        },
+        "applyArenaProgress": {
+          "n": 1178,
+          "ms": 3313.8702999987,
+          "max": 16.459000000031665
+        }
+      },
+      "cpuProfile": "phase-combined-a9fa1547-b571-4a99-9531-b39d73fb32a3.cpuprofile"
+    },
+    {
+      "window": 6,
+      "hz": 19.679887674141174,
+      "tick": {
+        "n": 1182,
+        "p50": 11.503300000040326,
+        "p95": 17.552599999995437,
+        "p99": 23.980400000000373,
+        "max": 29.338900000031572
+      },
+      "eventLoop": {
+        "p95": 23.429119,
+        "max": 446.169087
+      },
+      "gaps": {
+        "p50": 49.507400000002235,
+        "p95": 65.62880000000587,
+        "p99": 87.21590000001015,
+        "max": 541.4095000000088
+      },
+      "action": {
+        "p50": 13.892900000035297,
+        "p95": 44.57719999999972,
+        "p99": 225.33740000001853,
+        "max": 441.88730000000214
+      },
+      "successfulAction": {
+        "p50": 14.229099999996834,
+        "p95": 44.57719999999972,
+        "p99": 223.33850000001257,
+        "max": 441.88730000000214
+      },
+      "io": {
+        "stats": {
+          "closeSync": {
+            "calls": 622,
+            "totalMs": 117.49070000019856,
+            "maxMs": 1.8365999999805354,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1442,
+            "totalMs": 1838.1443000010331,
+            "maxMs": 6.081000000005588,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 622,
+            "totalMs": 351.66280000051484,
+            "maxMs": 1.7457000000285916,
+            "failures": 0,
+            "bytes": 0
+          },
+          "writeSync": {
+            "calls": 1175,
+            "totalMs": 240.49250000005122,
+            "maxMs": 0.9768000000040047,
+            "failures": 0,
+            "bytes": 5406143
+          },
+          "readdirSync": {
+            "calls": 10,
+            "totalMs": 6.892399999953341,
+            "maxMs": 1.6928000000189058,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 1677,
+            "totalMs": 141.5756999993464,
+            "maxMs": 1.362699999997858,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1076,
+            "totalMs": 914.2123999983305,
+            "maxMs": 22.427700000000186,
+            "failures": 0,
+            "bytes": 0
+          },
+          "fsyncSync": {
+            "calls": 67,
+            "totalMs": 54.117299999983516,
+            "maxMs": 1.6785999999847263,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [
+          {
+            "name": "linkSync",
+            "elapsedMs": 22.427700000000186,
+            "failed": false
+          }
+        ],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 96,
+        "p50": 4.0223000049591064,
+        "p95": 6.768599987030029,
+        "p99": 40.91690003871918,
+        "max": 40.91690003871918,
+        "totalMs": 483.34389996528625
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1996,
+          "ms": 474.02460000035353,
+          "max": 3.159400000004098
+        },
+        "startArenaCommit": {
+          "n": 1103,
+          "ms": 613.935500001011,
+          "max": 3.4614000000292435
+        },
+        "applyArenaProgress": {
+          "n": 1182,
+          "ms": 3540.34730000142,
+          "max": 16.84470000001602
+        }
+      },
+      "cpuProfile": "phase-combined-e40ab231-7e9a-4c3a-9a25-bd70d309255a.cpuprofile"
+    },
+    {
+      "window": 7,
+      "hz": 18.796324851059293,
+      "tick": {
+        "n": 1137,
+        "p50": 10.895299999974668,
+        "p95": 16.96929999999702,
+        "p99": 24.38870000001043,
+        "max": 33.75519999995595
+      },
+      "eventLoop": {
+        "p95": 24.313855,
+        "max": 979.894271
+      },
+      "gaps": {
+        "p50": 49.57290000002831,
+        "p95": 68.26540000003297,
+        "p99": 89.97299999999814,
+        "max": 1023.7314999999944
+      },
+      "action": {
+        "p50": 19.68640000000596,
+        "p95": 1253.7861000000266,
+        "p99": 3391.701599999971,
+        "max": 4820.862699999998
+      },
+      "successfulAction": {
+        "p50": 19.883399999991525,
+        "p95": 923.9697999999626,
+        "p99": 3184.6738999999943,
+        "max": 4820.862699999998
+      },
+      "io": {
+        "stats": {
+          "closeSync": {
+            "calls": 515,
+            "totalMs": 99.03269999934128,
+            "maxMs": 1.5348999999696389,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1210,
+            "totalMs": 3159.9399999981397,
+            "maxMs": 7.115499999956228,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 515,
+            "totalMs": 294.93439999892144,
+            "maxMs": 3.2756999999983236,
+            "failures": 0,
+            "bytes": 0
+          },
+          "writeSync": {
+            "calls": 991,
+            "totalMs": 825.4469999995199,
+            "maxMs": 524.0704999999725,
+            "failures": 0,
+            "bytes": 4829798
+          },
+          "fsyncSync": {
+            "calls": 53,
+            "totalMs": 74.53909999970347,
+            "maxMs": 24.167099999962375,
+            "failures": 0,
+            "bytes": 0
+          },
+          "readdirSync": {
+            "calls": 8,
+            "totalMs": 5.4571999999461696,
+            "maxMs": 1.1682000000146218,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 1308,
+            "totalMs": 127.33969999960391,
+            "maxMs": 0.38069999997969717,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1208,
+            "totalMs": 2595.338999998872,
+            "maxMs": 14.051199999987148,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [
+          {
+            "name": "writeSync",
+            "elapsedMs": 524.0704999999725,
+            "failed": false,
+            "bytes": 3877
+          },
+          {
+            "name": "writeSync",
+            "elapsedMs": 57.18650000001071,
+            "failed": false,
+            "bytes": 3924
+          },
+          {
+            "name": "writeSync",
+            "elapsedMs": 22.637300000002142,
+            "failed": false,
+            "bytes": 10280
+          },
+          {
+            "name": "fsyncSync",
+            "elapsedMs": 24.167099999962375,
+            "failed": false
+          }
+        ],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 83,
+        "p50": 4.306299924850464,
+        "p95": 6.076600074768066,
+        "p99": 39.12899994850159,
+        "max": 39.12899994850159,
+        "totalMs": 412.3482998609543
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1684,
+          "ms": 437.795399999246,
+          "max": 3.3089999999501742
+        },
+        "startArenaCommit": {
+          "n": 928,
+          "ms": 1164.4662000005483,
+          "max": 524.6263000000035
+        },
+        "applyArenaProgress": {
+          "n": 1033,
+          "ms": 3912.6188999997103,
+          "max": 532.6775999999954
+        }
+      },
+      "cpuProfile": "phase-combined-5ad0e38b-9faa-4a05-aa5a-06677dad1569.cpuprofile"
+    },
+    {
+      "window": 8,
+      "hz": 19.1425072522971,
+      "tick": {
+        "n": 1157,
+        "p50": 11.747399999992922,
+        "p95": 18.273199999995995,
+        "p99": 24.856299999984913,
+        "max": 27.291900000011083
+      },
+      "eventLoop": {
+        "p95": 24.330239,
+        "max": 1005.584383
+      },
+      "gaps": {
+        "p50": 49.44040000002133,
+        "p95": 66.87359999999171,
+        "p99": 90.96769999997923,
+        "max": 1084.8053000000073
+      },
+      "action": {
+        "p50": 17.524199999985285,
+        "p95": 64.02889999997569,
+        "p99": 477.22710000001825,
+        "max": 1043.0354999999981
+      },
+      "successfulAction": {
+        "p50": 18.057900000014342,
+        "p95": 59.46809999999823,
+        "p99": 585.8812000000034,
+        "max": 1043.0354999999981
+      },
+      "io": {
+        "stats": {
+          "writeSync": {
+            "calls": 1093,
+            "totalMs": 220.80040000076406,
+            "maxMs": 1.3115000000107102,
+            "failures": 0,
+            "bytes": 4896673
+          },
+          "closeSync": {
+            "calls": 586,
+            "totalMs": 106.37959999969462,
+            "maxMs": 1.1814000000013039,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1383,
+            "totalMs": 3887.526899999066,
+            "maxMs": 6.4249999999883585,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 586,
+            "totalMs": 336.55999999988126,
+            "maxMs": 2.838099999993574,
+            "failures": 0,
+            "bytes": 0
+          },
+          "fsyncSync": {
+            "calls": 59,
+            "totalMs": 49.752700000070035,
+            "maxMs": 1.5083000000449829,
+            "failures": 0,
+            "bytes": 0
+          },
+          "readdirSync": {
+            "calls": 10,
+            "totalMs": 7.882099999987986,
+            "maxMs": 1.5067999999737367,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 2057,
+            "totalMs": 181.16480000072625,
+            "maxMs": 0.4930000000167638,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1254,
+            "totalMs": 2173.9132999996655,
+            "maxMs": 14.012400000006892,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 100,
+        "p50": 3.9769999980926514,
+        "p95": 6.092400074005127,
+        "p99": 48.58519995212555,
+        "max": 48.58519995212555,
+        "totalMs": 473.4303994178772
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1886,
+          "ms": 431.32320000074105,
+          "max": 2.6586999999708496
+        },
+        "startArenaCommit": {
+          "n": 1024,
+          "ms": 552.0376000008546,
+          "max": 2.8740999999572523
+        },
+        "applyArenaProgress": {
+          "n": 1154,
+          "ms": 3381.302899999486,
+          "max": 15.118499999982305
+        }
+      },
+      "cpuProfile": "phase-combined-3c6211a6-0672-485b-967d-09cc7494a6ac.cpuprofile"
+    },
+    {
+      "window": 9,
+      "hz": 19.504998385271136,
+      "tick": {
+        "n": 1176,
+        "p50": 12.194200000027195,
+        "p95": 18.27760000003036,
+        "p99": 25.31959999992978,
+        "max": 28.447299999999814
+      },
+      "eventLoop": {
+        "p95": 25.296895,
+        "max": 472.645631
+      },
+      "gaps": {
+        "p50": 49.54729999997653,
+        "p95": 66.75880000006873,
+        "p99": 101.07660000002943,
+        "max": 595.8642000000109
+      },
+      "action": {
+        "p50": 19.606199999980163,
+        "p95": 173.21710000000894,
+        "p99": 689.7563000000082,
+        "max": 1308.0993000000017
+      },
+      "successfulAction": {
+        "p50": 20.136899999924935,
+        "p95": 173.14380000001984,
+        "p99": 688.6615999999922,
+        "max": 1202.1217000000179
+      },
+      "io": {
+        "stats": {
+          "writeSync": {
+            "calls": 1173,
+            "totalMs": 242.09310000092955,
+            "maxMs": 12.244699999981094,
+            "failures": 0,
+            "bytes": 5635498
+          },
+          "closeSync": {
+            "calls": 565,
+            "totalMs": 106.64139999903273,
+            "maxMs": 0.5915000000386499,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1304,
+            "totalMs": 3740.696899998118,
+            "maxMs": 96.02470000000903,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 565,
+            "totalMs": 321.5506000003079,
+            "maxMs": 2.6907999999821186,
+            "failures": 0,
+            "bytes": 0
+          },
+          "fsyncSync": {
+            "calls": 66,
+            "totalMs": 241.60060000035446,
+            "maxMs": 85.32610000000568,
+            "failures": 0,
+            "bytes": 0
+          },
+          "readdirSync": {
+            "calls": 8,
+            "totalMs": 4.91419999988284,
+            "maxMs": 0.8557999999029562,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 1303,
+            "totalMs": 111.77989999984857,
+            "maxMs": 0.9270000000251457,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1220,
+            "totalMs": 1105.8715000001248,
+            "maxMs": 32.82490000000689,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [
+          {
+            "name": "fsyncSync",
+            "elapsedMs": 39.446999999985565,
+            "failed": false
+          },
+          {
+            "name": "fsyncSync",
+            "elapsedMs": 85.32610000000568,
+            "failed": false
+          },
+          {
+            "name": "linkSync",
+            "elapsedMs": 32.82490000000689,
+            "failed": false
+          },
+          {
+            "name": "renameSync",
+            "elapsedMs": 96.02470000000903,
+            "failed": false
+          }
+        ],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 102,
+        "p50": 3.9358999729156494,
+        "p95": 5.539200067520142,
+        "p99": 40.431699991226196,
+        "max": 56.74549996852875,
+        "totalMs": 520.7499998807907
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1909,
+          "ms": 483.8524000014877,
+          "max": 2.3281000000424683
+        },
+        "startArenaCommit": {
+          "n": 1097,
+          "ms": 613.7268999971566,
+          "max": 2.673299999907613
+        },
+        "applyArenaProgress": {
+          "n": 1139,
+          "ms": 3632.5807999986573,
+          "max": 15.28049999999348
+        }
+      },
+      "cpuProfile": "phase-combined-4daff9ca-991e-4979-80f8-6a55a4cc97d7.cpuprofile"
+    },
+    {
+      "window": 10,
+      "hz": 19.53189784686043,
+      "tick": {
+        "n": 1176,
+        "p50": 11.321100000059232,
+        "p95": 17.929499999969266,
+        "p99": 24.563400000100955,
+        "max": 32.26130000001285
+      },
+      "eventLoop": {
+        "p95": 24.412159,
+        "max": 504.889343
+      },
+      "gaps": {
+        "p50": 49.47019999998156,
+        "p95": 67.38040000002366,
+        "p99": 95.16049999999814,
+        "max": 400.56400000001304
+      },
+      "action": {
+        "p50": 17.279699999955483,
+        "p95": 56.0950999999186,
+        "p99": 249.05449999996927,
+        "max": 545.1689000000479
+      },
+      "successfulAction": {
+        "p50": 17.841099999961443,
+        "p95": 56.0950999999186,
+        "p99": 249.05449999996927,
+        "max": 545.1689000000479
+      },
+      "io": {
+        "stats": {
+          "closeSync": {
+            "calls": 589,
+            "totalMs": 108.77160000172444,
+            "maxMs": 1.2386000000406057,
+            "failures": 0,
+            "bytes": 0
+          },
+          "renameSync": {
+            "calls": 1384,
+            "totalMs": 3849.251699997927,
+            "maxMs": 8.754000000073574,
+            "failures": 0,
+            "bytes": 0
+          },
+          "openSync": {
+            "calls": 589,
+            "totalMs": 331.7322999982862,
+            "maxMs": 1.7024000000674278,
+            "failures": 0,
+            "bytes": 0
+          },
+          "writeSync": {
+            "calls": 1119,
+            "totalMs": 228.9985999983037,
+            "maxMs": 3.937099999981001,
+            "failures": 0,
+            "bytes": 5173648
+          },
+          "readdirSync": {
+            "calls": 10,
+            "totalMs": 7.405800000065938,
+            "maxMs": 1.4203999999444932,
+            "failures": 0,
+            "bytes": 0
+          },
+          "statSync": {
+            "calls": 2010,
+            "totalMs": 162.57569999981206,
+            "maxMs": 0.93660000001546,
+            "failures": 0,
+            "bytes": 0
+          },
+          "linkSync": {
+            "calls": 1237,
+            "totalMs": 998.4333000009647,
+            "maxMs": 13.804300000076182,
+            "failures": 0,
+            "bytes": 0
+          },
+          "fsyncSync": {
+            "calls": 68,
+            "totalMs": 96.1879999996163,
+            "maxMs": 14.271399999968708,
+            "failures": 0,
+            "bytes": 0
+          }
+        },
+        "slow": [],
+        "discarded": 0,
+        "thresholdMs": 20,
+        "inclusive": true
+      },
+      "gc": {
+        "n": 99,
+        "p50": 3.85479998588562,
+        "p95": 7.130300045013428,
+        "p99": 59.95130002498627,
+        "max": 59.95130002498627,
+        "totalMs": 520.3083997964859
+      },
+      "stages": {
+        "encodeJournalEntry": {
+          "n": 1943,
+          "ms": 454.38280000304803,
+          "max": 2.540599999949336
+        },
+        "startArenaCommit": {
+          "n": 1043,
+          "ms": 569.468899999396,
+          "max": 4.4808000000193715
+        },
+        "applyArenaProgress": {
+          "n": 1199,
+          "ms": 3404.373300001025,
+          "max": 19.474799999967217
+        }
+      },
+      "cpuProfile": "phase-combined-6ff2a2f4-9e97-4308-b151-e7ee489f0524.cpuprofile"
+    }
+  ],
+  "findings": [
+    "Window 7 failed action latency and update frequency",
+    "The measured writeSync call wrote 3877 bytes and took 524.0705 ms; startArenaCommit max 524.6263 ms, applyArenaProgress max 532.6776 ms",
+    "GC max 39.129 ms and encodeJournalEntry max 3.309 ms in that window cannot alone explain the observed synchronous-write duration",
+    "LOAD_SLOW_DISK was not enabled; diagnostics cleared inherited LOAD flags before setting explicit probes",
+    "The probe localizes elapsed blocking in a syscall; OS/filesystem/scheduling cause is not established",
+    "Asynchronous retained-link capture is a separate optimization and does not fix this synchronous write"
+  ],
+  "limits": [
+    "Diagnostics add overhead; this is not capacity acceptance",
+    "No causal Windows-to-Linux extrapolation",
+    "No claim of 300000 CCU or complete removal of freezes"
+  ]
+}
