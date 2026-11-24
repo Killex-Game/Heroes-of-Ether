@@ -56,7 +56,7 @@ test("a new checkpoint, an older pin and a world without an initial checkpoint r
   f.commit(w => { w.profiles.a.wallet.coins = 7; });
   const second = await f.pin(); assert.equal(f.reader.read(second).data.profiles.a.wallet.coins, 7);
   assert.equal(f.reader.stats.incremental, true);
-  await f.journal.requestCheckpoint(); const latest = await f.pin();
+  await f.journal.requestCheckpoint(); f.journal.readWindow.reset(); const latest = await f.pin();
   assert.deepEqual(f.reader.read(latest).data, recover(latest.file, false).data);
   assert.equal(f.reader.stats.incremental, false);
   assert.deepEqual(f.reader.read(old).data, first.data); assert.equal(f.reader.stats.incremental, false);
@@ -125,7 +125,7 @@ test("immutable record reuse keeps auxiliary edits, generic callers, failed pack
   check(first); check(first); assert.equal(builder.stats.identityReused, 3);
   f.commit(w => { w.profiles.a.wallet.coins = 77; });
   check(freeze(f.reader.read(await f.pin()).data)); assert.equal(builder.stats.identityReused, 2);
-  await f.journal.requestCheckpoint();
+  await f.journal.requestCheckpoint(); f.journal.readWindow.reset();
   check(freeze(f.reader.read(await f.pin()).data));
   assert.equal(f.reader.stats.incremental, false); assert.equal(builder.stats.identityReused, 3);
 });
@@ -133,7 +133,7 @@ test("immutable record reuse keeps auxiliary edits, generic callers, failed pack
 test("checkpoint record reuse detaches WAL edits and keeps an older world intact after failure", async t => {
   const f=setup(t);f.commit(w=>{w.profiles.a.wallet.coins=50;});
   const old=freeze(f.reader.read(await f.pin()).data),copy=structuredClone(old);
-  await f.journal.requestCheckpoint();
+  await f.journal.requestCheckpoint(); f.journal.readWindow.reset();
   f.commit(w=>{w.profiles.a.wallet.coins=49;w.profiles.a.history.push(99);});
   const pin=await f.pin(),segment=segments(pin.file)[0],bytes=fs.readFileSync(segment);
   fs.unlinkSync(segment);fs.writeFileSync(segment,bytes.subarray(0,bytes.length-1));

@@ -19,8 +19,8 @@ function cleanup(file) {
     if (fs.lstatSync(directory).isDirectory()) remove(directory);
   }
 }
-function pin(file, files, revision) {
-  const directory = fs.mkdtempSync(path.join(path.dirname(file), prefix(file)));
+function pin(file, files, revision, ownerFile = file) {
+  const directory = fs.mkdtempSync(path.join(path.dirname(ownerFile), prefix(ownerFile)));
   const target = path.join(directory, "snapshot.json");
   try {
     if (fs.existsSync(file)) fs.linkSync(file, target);

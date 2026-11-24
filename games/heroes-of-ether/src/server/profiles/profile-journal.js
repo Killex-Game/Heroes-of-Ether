@@ -215,16 +215,16 @@ function checkpointIdentity(file) {
     throw error;
   }
 }
-function checkpoint(file) { return writeCheckpoint(file, null); }
+function checkpoint(file, files = null) { return writeCheckpoint(file, null, files); }
 // Private to a single checkpoint worker. No mutable world crosses the worker
 // boundary. Retirement drops this cache; a replacement starts from disk.
 function createCheckpointWriter(file) {
   const cache = { value: null };
-  return () => writeCheckpoint(file, cache);
+  return files => writeCheckpoint(file, cache, files);
 }
-function writeCheckpoint(file, cache) {
+function writeCheckpoint(file, cache, selected = null) {
   // Only sealed files: the arena can append to a new active WAL concurrently.
-  const files = segments(file);
+  const files = selected || segments(file);
   if (!files.length) return { revision: 0, bytes: 0 };
   // Take one immutable set of sealed files. A booster may publish a newer
   // segment while this checkpoint is being reconstructed in another worker.
@@ -295,7 +295,7 @@ function difference(next, previous) {
   return change;
 }
 class ProfileJournal {
-  constructor(file, { intervalMs = 30000, maxPendingBytes = 64 * 1024 * 1024, checkpointIdleMs = 60000 } = {}) {
+  constructor(file, { intervalMs = 30000, maxPendingBytes = 64 * 1024 * 1024, checkpointIdleMs = 60000, readWindow = {} } = {}) {
     if (!Number.isFinite(checkpointIdleMs) || checkpointIdleMs < 1)
       throw new RangeError("Invalid checkpoint idle interval");
     this.checkpointIdleMs = checkpointIdleMs;
@@ -305,6 +305,7 @@ class ProfileJournal {
     // The store has exclusive writer ownership before opening its journal.
     // Remove only flat read-link directories left by a previous process crash.
     require("./profile-read-snapshot").cleanup(file);
+    this.readWindow = readWindow === false ? null : new (require("./profile-read-window").ProfileReadWindow)(file, readWindow);
     this.revision = restored.revision;
     this.maxPendingBytes = maxPendingBytes;
     this.pendingBytes =
@@ -520,7 +521,9 @@ class ProfileJournal {
     // segments in this turn. Hard links keep immutable bytes alive afterwards.
     // The active append is never read or copied by the PostgreSQL worker.
     this.sealActive();
-    return require("./profile-read-snapshot").pin(this.file, segments(this.file), this.revision);
+    const files = segments(this.file);
+    return this.readWindow ? this.readWindow.pin(files, this.revision)
+      : require("./profile-read-snapshot").pin(this.file, files, this.revision);
   }
   async requestCheckpoint() {
     if (this.running) return this.running;
@@ -532,7 +535,11 @@ class ProfileJournal {
       return this.requestCheckpoint();
     }
     this.sealActive();
-    if (!segments(this.file).length) return Promise.resolve();
+    const files = segments(this.file);
+    if (!files.length) return Promise.resolve();
+    // Capture exactly the set sent to this checkpoint. A later staged action
+    // must not be deleted before its segment enters the retained read window.
+    this.readWindow?.capture(files);
     clearTimeout(this.workerIdleTimer);
     this.sealedBatches = 0;
     if (!this.worker) {
@@ -580,7 +587,7 @@ class ProfileJournal {
       this.resolve = resolve;
       this.reject = reject;
     });
-    this.worker.postMessage("checkpoint");
+    this.worker.postMessage({ files });
     return this.running;
   }
   retireCheckpointWorker() {
@@ -616,6 +623,7 @@ class ProfileJournal {
         this.fd = null;
       }
       await this.retireCheckpointWorker();
+      this.readWindow?.reset();
       await Promise.all(this.retiringWorkers);
       if (this.boosterWorker) await this.boosterWorker.terminate();
       fs.rmSync(this.file + ".booster-pending", { force: true });
