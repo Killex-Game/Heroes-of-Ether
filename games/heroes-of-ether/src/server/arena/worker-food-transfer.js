@@ -68,7 +68,8 @@ function sameMetadata(row, prior) {
 class FoodTransferEncoder {
   constructor({ packed = false } = {}) { this.rows = []; this.index = new Map(); this.packed = packed; }
   encode(rows) {
-    const next = [], entries = [];
+    let identical = rows.length === this.rows.length;
+    let next = identical ? null : [], entries = !this.packed && !identical ? [] : null;
     // Most frames only move existing particles. The ID -> ordinal lookup is
     // immutable until membership/order changes; avoid rebuilding a large Map
     // for every positional frame. Duplicate IDs keep the last-ordinal rule.
@@ -77,21 +78,20 @@ class FoodTransferEncoder {
     // One code per output row: even = old row, odd = old row + next exact
     // Float64 coordinate pair, negative = new full object in added[]. The
     // buffers are single-use and transferred, never held by ACK baselines.
-    const refs = this.packed ? new Int32Array(rows.length) : null;
+    let refs = this.packed && !identical ? new Int32Array(rows.length) : null;
     const positions = [], added = [];
-    let identical = rows.length === this.rows.length;
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i], ordinal = unique && this.rows[i]?.id === row.id
         ? i : this.index.get(row.id), prior = this.rows[ordinal];
-      let cached;
+      let cached, entry;
       if (sameMetadata(row, prior)) {
         if (Object.is(row.x, prior.x) && Object.is(row.y, prior.y)) {
-          if (refs) refs[i] = ordinal * 2; else entries.push(ordinal);
+          entry = this.packed ? ordinal * 2 : ordinal;
           cached = prior;
           if (ordinal !== i) identical = false;
         } else {
-          if (refs) { refs[i] = ordinal * 2 + 1; positions.push(row.x, row.y); }
-          else entries.push([ordinal, row.x, row.y]);
+          if (this.packed) { entry = ordinal * 2 + 1; positions.push(row.x, row.y); }
+          else entry = [ordinal, row.x, row.y];
           // Keep a fixed record shape in the moving-food hot path. Metadata
           // stays shared; every positional record remains independent.
           cached = { source: prior.source, id: prior.id, keys: prior.keys,
@@ -99,17 +99,32 @@ class FoodTransferEncoder {
             x: row.x, y: row.y }; identical = false;
         }
       } else {
-        if (refs) { added.push(row); refs[i] = -added.length; } else entries.push(row);
+        if (this.packed) { added.push(row); entry = -added.length; } else entry = row;
         cached = record(row); identical = false;
       }
+      // Before the first change every prefix row refers to its same ordinal.
+      // Stable frames send null, so allocate neither a new baseline array nor
+      // a transport buffer until there is something to transfer.
+      if (!identical && !entries && !refs) {
+        if (this.packed) {
+          refs = new Int32Array(rows.length);
+          for (let j = 0; j < i; j++) refs[j] = j * 2;
+        } else {
+          entries = new Array(i);
+          for (let j = 0; j < i; j++) entries[j] = j;
+        }
+      }
+      if (refs) refs[i] = entry;
+      else if (entries) entries.push(entry);
+      if (!next && cached !== this.rows[i]) next = this.rows.slice(0, i);
       if (!index && this.rows[i]?.id !== row.id) {
         index = new Map();
-        for (let j = 0; j < i; j++) index.set(next[j].id, j);
+        for (let j = 0; j < i; j++) index.set((next || this.rows)[j].id, j);
       }
-      next.push(cached);
+      if (next) next.push(cached);
       if (index) index.set(row.id, i);
     }
-    this.rows = next;
+    if (next) this.rows = next;
     if (index) this.index = index;
     return identical ? null : refs ? { refs, positions: Float64Array.from(positions), added } : entries;
   }

@@ -2,6 +2,25 @@
 const test = require("node:test"), assert = require("node:assert/strict");
 const { FoodTransferEncoder, FoodTransferDecoder } = require("../../src/server/arena/worker-food-transfer");
 
+test('late changes preserve the complete prefix and stable frames retain immutable baselines', () => {
+  for (const packed of [false,true]) {
+    const encoder=new FoodTransferEncoder({packed}),decoder=new FoodTransferDecoder();
+    let food=Array.from({length:64},(_,i)=>Object.freeze({id:'f'+i,x:i,y:i/3,value:5,radius:4,color:'gold'}));
+    decoder.decode(structuredClone(encoder.encode(food)));
+    const first=encoder.rows, firstCopy=structuredClone(first), oldDecoded=decoder.rows;
+    for(let tick=0;tick<20;tick++){
+      assert.equal(encoder.encode(food.slice()),null);
+      assert.strictEqual(encoder.rows,first);
+    }
+    food=food.slice();food[63]={...food[63],x:63.25};
+    assert.deepEqual(decoder.decode(structuredClone(encoder.encode(food))),food);
+    assert.deepEqual(first,firstCopy);assert.equal(oldDecoded[63].x,63);
+    food=food.slice(0,63);assert.deepEqual(decoder.decode(structuredClone(encoder.encode(food))),food);
+    assert.deepEqual(decoder.decode(structuredClone(encoder.encode([]))),[]);
+    assert.equal(encoder.encode([]),null);
+  }
+});
+
 test('unchanged membership reuses the ordinal index without mutating older lookup tables', () => {
   for (const packed of [false,true]) {
     const encoder=new FoodTransferEncoder({packed}),decoder=new FoodTransferDecoder();
