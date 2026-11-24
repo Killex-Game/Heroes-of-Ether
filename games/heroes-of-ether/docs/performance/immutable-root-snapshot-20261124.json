@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T21:55:40.914Z",
+  "at": "2026-11-24T22:17:51.307Z",
   "installed": false,
   "runtimeSource": "70c60ff",
   "base": "2c8551a077bcf4bfd952017b079fa5f62769f26d",
@@ -32,7 +32,728 @@
       "skipped": 0,
       "exitCode": 0
     },
-    "mixed": "pending",
+    "mixed": {
+      "windowsAlchemy": {
+        "label": "local-v27-30-10m-alchemy-small-r1",
+        "platform": "win32",
+        "source": "7afde680c15b0a29c0f21cfed42f9d6562b6054d",
+        "players": 30,
+        "lobby": 5,
+        "minutes": 10,
+        "event": "alchemy",
+        "retainedHistory": false,
+        "endedAt": "2026-11-24T22:07:58.757Z",
+        "assessment": {
+          "targets": {
+            "updatesHz": 19,
+            "tickP95Ms": 100,
+            "stateGapP99Ms": 150,
+            "lobbyP95Ms": 1000,
+            "actionP95Ms": 500
+          },
+          "shortRunMeetsTargets": true,
+          "problems": [],
+          "phases": [
+            {
+              "phase": "combined",
+              "window": 1,
+              "meetsTargets": true,
+              "issues": []
+            },
+            {
+              "phase": "combined",
+              "window": 2,
+              "meetsTargets": true,
+              "issues": []
+            },
+            {
+              "phase": "combined",
+              "window": 3,
+              "meetsTargets": true,
+              "issues": []
+            },
+            {
+              "phase": "combined",
+              "window": 4,
+              "meetsTargets": true,
+              "issues": []
+            },
+            {
+              "phase": "combined",
+              "window": 5,
+              "meetsTargets": true,
+              "issues": []
+            },
+            {
+              "phase": "combined",
+              "window": 6,
+              "meetsTargets": true,
+              "issues": []
+            },
+            {
+              "phase": "combined",
+              "window": 7,
+              "meetsTargets": true,
+              "issues": []
+            },
+            {
+              "phase": "combined",
+              "window": 8,
+              "meetsTargets": true,
+              "issues": []
+            },
+            {
+              "phase": "combined",
+              "window": 9,
+              "meetsTargets": true,
+              "issues": []
+            },
+            {
+              "phase": "combined",
+              "window": 10,
+              "meetsTargets": true,
+              "issues": []
+            }
+          ],
+          "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+        },
+        "ack": {
+          "acknowledged": 9512,
+          "recovered": 9512,
+          "duplicates": 0
+        },
+        "database": {
+          "matched": true,
+          "localRevision": 18958,
+          "databaseRevision": 18958,
+          "profiles": 1280,
+          "clans": 131
+        },
+        "testSchemaRemoved": true,
+        "hz": {
+          "min": 19.60560849908621,
+          "max": 19.92792489218619
+        },
+        "tickWorkP95Ms": {
+          "min": 18.230600000009872,
+          "max": 21.099700000020675
+        },
+        "tickWorkMaxMs": 87.55479999999807,
+        "actionP95Ms": {
+          "min": 38.28230000002077,
+          "max": 214.98799999999756
+        },
+        "stateGapMaxMs": 880.8920999999973,
+        "rssMiB": {
+          "min": 595.8828125,
+          "max": 692.4296875
+        },
+        "lobbyErrors": {},
+        "lobbyActions": {
+          "profile": 89,
+          "rankings": 90,
+          "loadout": 90,
+          "purchase": 90,
+          "account-bonus": 30,
+          "social-view": 180,
+          "gift": 90,
+          "gift-read": 89,
+          "clan-create": 3,
+          "clan-view": 177,
+          "clan-deposit": 90,
+          "clan-buy": 90,
+          "clan-edit": 90,
+          "alchemy-view": 90,
+          "alchemy-brew": 90,
+          "pet-buy": 5,
+          "pet-food": 88,
+          "chat": 89,
+          "news": 88,
+          "presence": 86,
+          "alchemy-exchange": 85,
+          "alchemy-equip": 85,
+          "pet-equip": 85,
+          "daily-reward": 60
+        },
+        "boosters": {
+          "alchemy_strength": 36,
+          "colorful_shield": 257,
+          "hook": 248,
+          "ice_cream": 234,
+          "candy": 234,
+          "freeze": 246,
+          "rocket": 249,
+          "alchemy_swiftness": 31,
+          "glove": 245,
+          "alchemy_satiety": 28,
+          "web": 245,
+          "alchemy_knowledge": 8,
+          "sphere": 260,
+          "alchemy_steadiness": 31,
+          "poison": 258,
+          "alchemy_reach": 45,
+          "donut": 282,
+          "alchemy_vigor": 40,
+          "speed": 281,
+          "alchemy_longevity": 57,
+          "mine": 269,
+          "alchemy_clarity": 50,
+          "lock": 245,
+          "alchemy_precision": 58,
+          "harpoon": 262,
+          "alchemy_magnetism": 55,
+          "axe": 255,
+          "alchemy_gatherer": 63,
+          "stone": 266,
+          "alchemy_tempest": 47,
+          "meat": 279,
+          "alchemy_fortitude": 11,
+          "knuckles": 277,
+          "alchemy_prosperity": 21,
+          "golden_shield": 267,
+          "alchemy_archmage": 23,
+          "mega_poison": 250,
+          "sponge": 244,
+          "easter_egg": 268,
+          "fire": 249,
+          "cake": 253,
+          "warheads": 256,
+          "vortex": 262,
+          "awl": 240,
+          "clan_shield": 282,
+          "fire_sword": 234
+        },
+        "windows": [
+          {
+            "window": 1,
+            "hz": 19.859320303211856,
+            "tickWorkMs": {
+              "n": 1188,
+              "p50": 10.381099999998696,
+              "p95": 19.250599999999395,
+              "p99": 25.715600000010454,
+              "max": 87.55479999999807
+            },
+            "actionLatencyMs": {
+              "p50": 17.715400000000955,
+              "p95": 214.98799999999756,
+              "p99": 398.92899999999645,
+              "max": 1045.7802999999985
+            },
+            "stateGaps": {
+              "p50": 48.5454000000027,
+              "p95": 68.48340000000098,
+              "p99": 89.0673999999999,
+              "max": 337.16879999999946
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 23,
+              "contributions": 43
+            },
+            "inputs": {
+              "accepted": {
+                "split": 364,
+                "feed": 2391
+              },
+              "attempted": {
+                "split": 460,
+                "feed": 2421
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          },
+          {
+            "window": 2,
+            "hz": 19.60560849908621,
+            "tickWorkMs": {
+              "n": 1179,
+              "p50": 10.923399999999674,
+              "p95": 20.042600000000675,
+              "p99": 25.78640000001178,
+              "max": 66.715200000006
+            },
+            "actionLatencyMs": {
+              "p50": 16.81130000000121,
+              "p95": 56.9320000000007,
+              "p99": 183.3978999999963,
+              "max": 757.8147999999928
+            },
+            "stateGaps": {
+              "p50": 48.57239999999001,
+              "p95": 69.72629999999481,
+              "p99": 95.35880000000179,
+              "max": 880.8920999999973
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 25,
+              "contributions": 89
+            },
+            "inputs": {
+              "accepted": {
+                "split": 336,
+                "feed": 2347
+              },
+              "attempted": {
+                "split": 461,
+                "feed": 2423
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          },
+          {
+            "window": 3,
+            "hz": 19.826377885980044,
+            "tickWorkMs": {
+              "n": 1188,
+              "p50": 10.96809999999823,
+              "p95": 19.40710000001127,
+              "p99": 24.309000000008382,
+              "max": 39.32459999999264
+            },
+            "actionLatencyMs": {
+              "p50": 16.151400000002468,
+              "p95": 43.66260000001057,
+              "p99": 104.83250000001863,
+              "max": 512.6932000000088
+            },
+            "stateGaps": {
+              "p50": 48.3521999999939,
+              "p95": 68.51230000000214,
+              "p99": 83.63730000000214,
+              "max": 499.5625
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 27,
+              "contributions": 138
+            },
+            "inputs": {
+              "accepted": {
+                "split": 333,
+                "feed": 2351
+              },
+              "attempted": {
+                "split": 456,
+                "feed": 2433
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          },
+          {
+            "window": 4,
+            "hz": 19.92792489218619,
+            "tickWorkMs": {
+              "n": 1195,
+              "p50": 10.224699999991572,
+              "p95": 18.230600000009872,
+              "p99": 24.00099999998929,
+              "max": 31.058799999998882
+            },
+            "actionLatencyMs": {
+              "p50": 18.011399999988498,
+              "p95": 59.313999999983935,
+              "p99": 243.65479999998934,
+              "max": 401.32730000000447
+            },
+            "stateGaps": {
+              "p50": 48.56160000001546,
+              "p95": 67.75119999999879,
+              "p99": 83.96749999999884,
+              "max": 109.9830999999831
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 27,
+              "contributions": 190
+            },
+            "inputs": {
+              "accepted": {
+                "split": 344,
+                "feed": 2383
+              },
+              "attempted": {
+                "split": 461,
+                "feed": 2431
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          },
+          {
+            "window": 5,
+            "hz": 19.87236553171892,
+            "tickWorkMs": {
+              "n": 1190,
+              "p50": 10.122699999948964,
+              "p95": 18.504500000039116,
+              "p99": 24.941899999976158,
+              "max": 30.723600000026636
+            },
+            "actionLatencyMs": {
+              "p50": 16.134199999971315,
+              "p95": 39.37180000002263,
+              "p99": 82.63880000001518,
+              "max": 156.41620000003604
+            },
+            "stateGaps": {
+              "p50": 48.682099999976344,
+              "p95": 67.42359999998007,
+              "p99": 86.09909999999218,
+              "max": 164.16729999997187
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 27,
+              "contributions": 233
+            },
+            "inputs": {
+              "accepted": {
+                "split": 326,
+                "feed": 2339
+              },
+              "attempted": {
+                "split": 458,
+                "feed": 2409
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          },
+          {
+            "window": 6,
+            "hz": 19.859215528145047,
+            "tickWorkMs": {
+              "n": 1188,
+              "p50": 10.394800000009127,
+              "p95": 18.554700000036974,
+              "p99": 23.5910000000149,
+              "max": 36.52520000003278
+            },
+            "actionLatencyMs": {
+              "p50": 15.051999999966938,
+              "p95": 38.28230000002077,
+              "p99": 79.94159999996191,
+              "max": 553.8759000000427
+            },
+            "stateGaps": {
+              "p50": 48.57360000000335,
+              "p95": 67.53569999994943,
+              "p99": 88.39689999999246,
+              "max": 206.03150000004098
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 27,
+              "contributions": 280
+            },
+            "inputs": {
+              "accepted": {
+                "split": 352,
+                "feed": 2366
+              },
+              "attempted": {
+                "split": 455,
+                "feed": 2425
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          },
+          {
+            "window": 7,
+            "hz": 19.864637036742916,
+            "tickWorkMs": {
+              "n": 1192,
+              "p50": 11.605299999995623,
+              "p95": 20.819499999983236,
+              "p99": 28.069499999983236,
+              "max": 40.597800000046846
+            },
+            "actionLatencyMs": {
+              "p50": 15.479400000011083,
+              "p95": 41.79130000004079,
+              "p99": 70.48499999998603,
+              "max": 401.15789999999106
+            },
+            "stateGaps": {
+              "p50": 48.61030000000028,
+              "p95": 69.13379999995232,
+              "p99": 86.46729999996023,
+              "max": 352.9821000000229
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 27,
+              "contributions": 321
+            },
+            "inputs": {
+              "accepted": {
+                "split": 325,
+                "feed": 2374
+              },
+              "attempted": {
+                "split": 458,
+                "feed": 2428
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          },
+          {
+            "window": 8,
+            "hz": 19.788124344425707,
+            "tickWorkMs": {
+              "n": 1188,
+              "p50": 11.452599999960512,
+              "p95": 20.42219999997178,
+              "p99": 27.650499999988824,
+              "max": 48.34830000001239
+            },
+            "actionLatencyMs": {
+              "p50": 17.320999999996275,
+              "p95": 61.98410000000149,
+              "p99": 147.35009999998147,
+              "max": 451.33699999999953
+            },
+            "stateGaps": {
+              "p50": 48.76600000000326,
+              "p95": 69.08919999998761,
+              "p99": 92.06990000000224,
+              "max": 431.9103999999934
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 28,
+              "contributions": 359
+            },
+            "inputs": {
+              "accepted": {
+                "split": 321,
+                "feed": 2392
+              },
+              "attempted": {
+                "split": 460,
+                "feed": 2421
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          },
+          {
+            "window": 9,
+            "hz": 19.792308271238372,
+            "tickWorkMs": {
+              "n": 1183,
+              "p50": 11.270299999974668,
+              "p95": 21.099700000020675,
+              "p99": 26.84969999990426,
+              "max": 36.944000000017695
+            },
+            "actionLatencyMs": {
+              "p50": 16.20230000000447,
+              "p95": 52.728499999968335,
+              "p99": 133.7029999999795,
+              "max": 748.9655999999959
+            },
+            "stateGaps": {
+              "p50": 48.426000000035856,
+              "p95": 69.83730000001378,
+              "p99": 91.26189999998314,
+              "max": 731.9610000000102
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 28,
+              "contributions": 398
+            },
+            "inputs": {
+              "accepted": {
+                "split": 321,
+                "feed": 2355
+              },
+              "attempted": {
+                "split": 461,
+                "feed": 2425
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          },
+          {
+            "window": 10,
+            "hz": 19.922614001338456,
+            "tickWorkMs": {
+              "n": 1191,
+              "p50": 10.982199999969453,
+              "p95": 19.968499999959022,
+              "p99": 26.411399999982677,
+              "max": 40.54180000000633
+            },
+            "actionLatencyMs": {
+              "p50": 16.04729999997653,
+              "p95": 40.382899999967776,
+              "p99": 85.6296999999322,
+              "max": 422.36800000001676
+            },
+            "stateGaps": {
+              "p50": 48.790599999949336,
+              "p95": 67.99829999997746,
+              "p99": 90.15469999995548,
+              "max": 473.8787000000011
+            },
+            "clanQuests": {
+              "enabled": true,
+              "boards": 131,
+              "active": 128,
+              "eligible": 1277,
+              "contributors": 29,
+              "contributions": 440
+            },
+            "inputs": {
+              "accepted": {
+                "split": 314,
+                "feed": 2367
+              },
+              "attempted": {
+                "split": 457,
+                "feed": 2436
+              }
+            },
+            "configuration": {
+              "incrementalSettlement": true,
+              "gameClockOffsetMs": -46648324,
+              "seedClockVersion": 2,
+              "profileWorker": false,
+              "stateWorkerCount": 1,
+              "configuredStateWorkers": 3,
+              "stateWorkerRoomLimit": 5,
+              "packedFood": false,
+              "packedParts": true
+            }
+          }
+        ],
+        "limitations": [
+          "Windows loopback clients on the same host; no browser rendering, CCU maximum or production installation claim",
+          "Rare state gap up to 881 ms remains; smaller tick/GC measurements do not establish its cause",
+          "Fresh fixture only; retained-history and Linux mixed acceptance remain pending"
+        ]
+      },
+      "linux": "pending",
+      "retainedHistory": "pending"
+    },
     "fullWindowsInitial": {
       "tests": 2461,
       "pass": 2458,
