@@ -13,6 +13,7 @@ test("Pinned durable revision survives later commits and checkpoint deletion wit
  f.journal.commit({...next,profiles:{p:{...next.profiles.p,coins:8}}});await f.journal.requestCheckpoint();
  assert.equal(readLocal(f.dir,false,p).snapshot.digest,expected.digest);assert.equal(readLocal(f.dir).world.profiles.p.coins,8);
  assert.equal(fs.readFileSync(p.file+'.wal-2').length>0,true);
+ f.journal.readWindow.reset();assert.equal(fs.existsSync(path.dirname(p.file)),true);
  p.release();assert.equal(fs.existsSync(path.dirname(p.file)),false);p.release();
 });
 test("Unchanged pinned revisions reuse packed cache; changed sealed WAL invalidates it",async t=>{
@@ -30,7 +31,9 @@ test("Pinned input rejects a wrong revision, missing commit and corrupt sealed d
  assert.throws(()=>readLocal(f.dir,false,{file:p.file,revision:3}),{code:"DATABASE_INVALID_REVISION"});
  // Remove a link, never modify shared bytes of the original durable WAL.
  const segment=p.file+'.wal-2',valid=fs.readFileSync(segment);fs.unlinkSync(segment);
- assert.throws(()=>readLocal(f.dir,false,p),{code:"DATABASE_INVALID_REVISION"});
+ // The explicit manifest requires this exact file; no directory rescan can
+ // silently omit the lost segment and produce a shorter revision instead.
+ assert.throws(()=>readLocal(f.dir,false,p),{code:"ENOENT"});
  fs.writeFileSync(segment,Buffer.from(valid.toString().replace('coins":8','coins":9')));
  assert.throws(()=>readLocal(f.dir,false,p),/checksum mismatch/);
 });

@@ -2,6 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os');
 const {ProfileJournal,recover,segments,checkpoint}=require('../../src/server/profiles/profile-journal');
 const {PinnedWorldReader}=require('../../src/server/persistence/pinned-world-reader');
+const saved=pin=>recover(pin.file,false,pin.files).data;
 function setup(t,limits={}){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'profile-window-')),file=path.join(dir,'profiles.json');
  const initial={profiles:{p:{coins:100,history:[1,2,3]},other:{history:['keep']}},clans:{},_journalRevision:1};
@@ -15,15 +16,15 @@ test('Repeated checkpoints preserve a single immutable reader base and exact new
   f.commit(100-n);await f.journal.requestCheckpoint();const p=await f.pin(),result=f.reader.read(p);
   assert.equal(f.reader.stats.incremental,true);assert.equal(f.reader.stats.replayed,1);
   assert.deepEqual(result.data,recover(f.file).data);assert.strictEqual(result.data.profiles.other,first.profiles.other);
-  assert.deepEqual(recover(old.file,false).data,original);p.release();
+  assert.deepEqual(saved(old),original);p.release();
  }
  assert.deepEqual(first,original);
 });
 test('Reader pins remain valid while the retained window grows and expires',async t=>{
- let at=100;const f=setup(t,{now:()=>at,maxAgeMs:10});f.commit(90);const old=await f.pin(),world=recover(old.file,false).data;
+ let at=100;const f=setup(t,{now:()=>at,maxAgeMs:10});f.commit(90);const old=await f.pin(),world=saved(old);
  f.reader.read(old);at+=10;f.commit(80);await f.journal.requestCheckpoint();const next=await f.pin();
  assert.deepEqual(f.reader.read(next).data,recover(f.file).data);assert.equal(f.reader.stats.incremental,false);
- assert.deepEqual(recover(old.file,false).data,world);assert(f.journal.readWindow.current.at===at);
+ assert.deepEqual(saved(old),world);assert(f.journal.readWindow.current.at===at);
 });
 for(const limits of [{maxFiles:2},{maxBytes:500}])test('Retained journal bounds force a complete verified rebase: '+JSON.stringify(limits),async t=>{
  const f=setup(t,limits);f.reader.read(await f.pin());let rebased=false;

@@ -32,4 +32,18 @@ function pin(file, files, revision, ownerFile = file) {
   let released = false;
   return { file: target, revision, release() { if (!released) { remove(directory); released = true; } } };
 }
-module.exports = { pin, cleanup };
+function filesFor(pin) {
+  if (!Object.hasOwn(pin, "files")) return require("./profile-journal").segments(pin.file);
+  if (!Array.isArray(pin.files)) throw Error("Invalid profile snapshot files");
+  let previous = -1;
+  for (const file of pin.files) {
+    const prefix = pin.file + ".wal-";
+    const suffix = typeof file === "string" && file.startsWith(prefix) ? file.slice(prefix.length) : "";
+    const number = Number(suffix);
+    if (!/^\d+$/.test(suffix) || !Number.isSafeInteger(number) || number <= previous)
+      throw Error("Invalid profile snapshot file order");
+    previous = number;
+  }
+  return pin.files;
+}
+module.exports = { pin, cleanup, filesFor };

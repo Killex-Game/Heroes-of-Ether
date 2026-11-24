@@ -127,7 +127,8 @@ function readLocal(dataDir, journal = false, profileSnapshot = null, packSnapsho
   const file = path.join(dataDir, "profiles.json");
   let world;
   if (profileSnapshot) {
-    const saved = readPinned ? readPinned(profileSnapshot) : recover(profileSnapshot.file, false);
+    const saved = readPinned ? readPinned(profileSnapshot) : recover(profileSnapshot.file, false,
+      require('../profiles/profile-read-snapshot').filesFor(profileSnapshot));
     if (!Number.isSafeInteger(profileSnapshot.revision) || saved.revision !== profileSnapshot.revision)
       fail("DATABASE_INVALID_REVISION");
     world = saved.data;

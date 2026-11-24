@@ -3,7 +3,7 @@ const fs = require("node:fs");
 const snapshots = require("./profile-read-snapshot");
 const identity = s => [s.dev, s.ino, s.size, s.mtimeNs].join(":");
 // A bounded, disposable set of hard links, owned by the journal writer. Each
-// reader still gets its own immutable pin; growth never changes a reader's set.
+// reader gets a frozen file manifest and a lease; growth never changes its set.
 class ProfileReadWindow {
   constructor(file, { maxBytes = 16 * 1024 * 1024, maxFiles = 2048, maxAgeMs = 300000, now = Date.now } = {}) {
     for (const n of [maxBytes, maxFiles, maxAgeMs]) if (!Number.isSafeInteger(n) || n < 1) throw new RangeError("Invalid profile read window limit");
@@ -13,7 +13,7 @@ class ProfileReadWindow {
   reset() {
     const old = this.current;
     this.current = null;
-    old?.pin.release();
+    if (old) { old.retired = true; if (!old.readers) old.pin.release(); }
   }
   capture(files) {
     const current = this.current;
@@ -48,13 +48,20 @@ class ProfileReadWindow {
     this.capture(files);
     if (!this.current) {
       const anchor = snapshots.pin(this.file, [], revision);
-      this.current = { pin: anchor, rows: new Map(), bytes: 0, at: this.now() };
+      this.current = { pin: anchor, rows: new Map(), bytes: 0, at: this.now(), readers: 0, retired: false };
       this.capture(files);
     }
     if (!this.current) return snapshots.pin(this.file, files, revision);
-    const { pin, rows } = this.current;
+    const current = this.current, { pin, rows } = current;
     const retained = [...rows].sort((a, b) => Number(a[0]) - Number(b[0])).map(([, row]) => row.target);
-    return snapshots.pin(pin.file, retained, revision, this.file);
+    current.readers++;
+    let released = false;
+    return { file: pin.file, files: Object.freeze(retained), revision, release() {
+      if (released) return;
+      released = true;
+      current.readers--;
+      if (current.retired && !current.readers) current.pin.release();
+    } };
   }
 }
 module.exports = { ProfileReadWindow };

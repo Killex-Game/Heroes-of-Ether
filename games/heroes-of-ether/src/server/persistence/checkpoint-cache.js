@@ -6,7 +6,7 @@ class CheckpointCache {
   constructor(directory,read) { this.directory=directory;this.read=read;this.files=['profiles.json','game-events.json','clan-chat.json']; }
   signature(profileSnapshot) {
     const files=profileSnapshot
-      ? [profileSnapshot.file,...require('../profiles/profile-journal').segments(profileSnapshot.file),...this.files.slice(1).map(name=>path.join(this.directory,name))]
+      ? [profileSnapshot.file,...require('../profiles/profile-read-snapshot').filesFor(profileSnapshot),...this.files.slice(1).map(name=>path.join(this.directory,name))]
       : this.files.map(name=>path.join(this.directory,name));
     return String(profileSnapshot?.revision ?? '')+'|'+files.map((file,index)=>{
       // Creating/releasing a hard link changes ctime, not immutable contents.

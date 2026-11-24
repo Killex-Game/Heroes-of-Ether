@@ -78,7 +78,7 @@ test("corruption, missing revisions and torn sealed writes cannot poison the las
   const stable = f.reader.previous;
   const body = JSON.stringify({ revision: pin.revision + 2, change: { set: {}, remove: [], tables: {} } });
   fs.writeFileSync(pin.file + ".wal-999", createHash("sha256").update(body).digest("hex") + " " + body + "\n");
-  assert.throws(() => f.reader.read({ ...pin, revision: pin.revision + 2 }), /SEQUENCE/);
+  assert.throws(() => f.reader.read({ ...pin, files: [...pin.files, pin.file + '.wal-999'], revision: pin.revision + 2 }), /SEQUENCE/);
   assert.strictEqual(f.reader.previous, stable);
 });
 test("copy-on-write replay preserves nested arrays, numeric indexes, removals and failed drafts", () => {

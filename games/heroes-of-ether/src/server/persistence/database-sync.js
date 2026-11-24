@@ -116,7 +116,8 @@ class DatabaseSync {
       // Only paths/revision cross the worker boundary; no live-world clone.
       if (!final) await this.chat?.writer?.checkpoint();
       const pinned = !final ? await this.profiles.journal.pinSnapshot() : null;
-      const source = pinned ? { file: pinned.file, revision: pinned.revision } : null;
+      const source = pinned ? { file: pinned.file, revision: pinned.revision,
+        ...(pinned.files ? { files: pinned.files } : {}) } : null;
       try {
       if (this.failed) {
         await this.worker.terminate();
