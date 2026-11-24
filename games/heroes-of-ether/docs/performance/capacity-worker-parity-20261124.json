@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T21:46:41.266Z",
+  "at": "2026-11-24T22:30:52.305Z",
   "installed": false,
   "runtime": "465e2e5a41558922a27868c6d3d15dddccb33dc5",
   "oldHarness": "2cca6b58835ffc840598aafdcfda19ea6e7b8cd8",
@@ -635,10 +635,793 @@
     ]
   },
   "corrected120": {
-    "status": "First launch deferred by unchanged live preflight guard; repeat pending"
+    "status": "Completed; all ten acceptance windows failed",
+    "source": "bc8ff341bae82993b3d3ab0c43e048dc3ebb80ba",
+    "players": 120,
+    "lobby": 5,
+    "minutes": 10,
+    "quotaCpu": 6,
+    "assessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": false,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "combined",
+          "window": 1,
+          "meetsTargets": false,
+          "issues": [
+            "action-delay",
+            "successful-action-delay",
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 2,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 3,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 4,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 5,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 6,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 7,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency",
+            "tick-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 8,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency",
+            "tick-delay",
+            "state-delay"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 9,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        },
+        {
+          "phase": "combined",
+          "window": 10,
+          "meetsTargets": false,
+          "issues": [
+            "state-frequency"
+          ]
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "ack": {
+      "acknowledged": 36460,
+      "recovered": 36460,
+      "duplicates": 0
+    },
+    "database": {
+      "matched": true,
+      "revision": 15732,
+      "profiles": 1280,
+      "clans": 131,
+      "schemaRemoved": true
+    },
+    "windows": [
+      {
+        "minute": 1,
+        "hz": 16.39025140129206,
+        "tickWorkP95": 36.981248999989475,
+        "tickWorkMax": 177.822285000002,
+        "actionP95": 614.7531830000007,
+        "stateGapMax": 578.5202690000006,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 241.82076762622546,
+        "resourceUsage": {
+          "elapsedMs": 60041.590992,
+          "processCpu": {
+            "userMs": 140049.488,
+            "systemMs": 5143.741,
+            "percent": 241.82108868391862
+          },
+          "mainThreadCpu": {
+            "userMs": 53905.595,
+            "systemMs": 3172.97,
+            "percent": 95.06504417513722
+          },
+          "mainThreadElu": {
+            "activeMs": 59205.70737104556,
+            "idleMs": 835.9803030000003,
+            "utilization": 0.9860766688048748
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 169514758,
+              "user_usec": 160013628,
+              "system_usec": 9501131,
+              "nice_usec": 158957356,
+              "nr_periods": 600,
+              "nr_throttled": 1,
+              "throttled_usec": 129034,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0.0016666666666666668
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1160.05078125,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 91,
+          "contributions": 174
+        },
+        "lobbyErrors": {}
+      },
+      {
+        "minute": 2,
+        "hz": 15.74846799983298,
+        "tickWorkP95": 39.323297000009916,
+        "tickWorkMax": 68.81793999999354,
+        "actionP95": 265.31723000000056,
+        "stateGapMax": 177.94483999999647,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 238.04440562207157,
+        "resourceUsage": {
+          "elapsedMs": 60052.03094699999,
+          "processCpu": {
+            "userMs": 138750.223,
+            "systemMs": 4199.494,
+            "percent": 238.0431015333401
+          },
+          "mainThreadCpu": {
+            "userMs": 55561.624,
+            "systemMs": 2745.494,
+            "percent": 97.09433149972897
+          },
+          "mainThreadElu": {
+            "activeMs": 60047.13952299167,
+            "idleMs": 5.073637999998027,
+            "utilization": 0.9999155128889855
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 164050022,
+              "user_usec": 156056795,
+              "system_usec": 7993227,
+              "nice_usec": 155052854,
+              "nr_periods": 600,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1250.5859375,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 105,
+          "contributions": 353
+        },
+        "lobbyErrors": {}
+      },
+      {
+        "minute": 3,
+        "hz": 16.250172901650917,
+        "tickWorkP95": 37.931065000011586,
+        "tickWorkMax": 78.87459199997829,
+        "actionP95": 218.82710600001155,
+        "stateGapMax": 193.12638100000913,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 234.60251900951198,
+        "resourceUsage": {
+          "elapsedMs": 60036.173113,
+          "processCpu": {
+            "userMs": 136624.117,
+            "systemMs": 4220.897,
+            "percent": 234.6002529756547
+          },
+          "mainThreadCpu": {
+            "userMs": 55602.916,
+            "systemMs": 2769.968,
+            "percent": 97.2295217587081
+          },
+          "mainThreadElu": {
+            "activeMs": 60034.56964298518,
+            "idleMs": 1.7562590000015916,
+            "utilization": 0.9999707467275252
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 161814434,
+              "user_usec": 153609518,
+              "system_usec": 8204915,
+              "nice_usec": 152770795,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1330.4921875,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 110,
+          "contributions": 552
+        },
+        "lobbyErrors": {}
+      },
+      {
+        "minute": 4,
+        "hz": 15.71685758689047,
+        "tickWorkP95": 38.197895999997854,
+        "tickWorkMax": 77.49553899999592,
+        "actionP95": 331.44207099999767,
+        "stateGapMax": 175.03550800000085,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 232.12020054919373,
+        "resourceUsage": {
+          "elapsedMs": 60038.794185999985,
+          "processCpu": {
+            "userMs": 135376.496,
+            "systemMs": 3983.859,
+            "percent": 232.11717838346667
+          },
+          "mainThreadCpu": {
+            "userMs": 55519.024,
+            "systemMs": 2710.388,
+            "percent": 96.98631158314984
+          },
+          "mainThreadElu": {
+            "activeMs": 60038.94186401923,
+            "idleMs": 0.07512700000006589,
+            "utilization": 0.9999987486970345
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 159865066,
+              "user_usec": 152132518,
+              "system_usec": 7732548,
+              "nice_usec": 151182630,
+              "nr_periods": 600,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1353.64453125,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 111,
+          "contributions": 733
+        },
+        "lobbyErrors": {}
+      },
+      {
+        "minute": 5,
+        "hz": 14.850213760576143,
+        "tickWorkP95": 40.44822800002294,
+        "tickWorkMax": 76.32696500001475,
+        "actionP95": 296.61399000004167,
+        "stateGapMax": 181.79364899999928,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 231.29315155312253,
+        "resourceUsage": {
+          "elapsedMs": 60093.35663200001,
+          "processCpu": {
+            "userMs": 135081.743,
+            "systemMs": 3908.824,
+            "percent": 231.2910690796507
+          },
+          "mainThreadCpu": {
+            "userMs": 55953.563,
+            "systemMs": 2581.113,
+            "percent": 97.40623469987695
+          },
+          "mainThreadElu": {
+            "activeMs": 60093.508985996246,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 159211283,
+              "user_usec": 151682849,
+              "system_usec": 7528434,
+              "nice_usec": 150550090,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1352.93359375,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 112,
+          "contributions": 913
+        },
+        "lobbyErrors": {}
+      },
+      {
+        "minute": 6,
+        "hz": 14.625260700909964,
+        "tickWorkP95": 41.47382399998605,
+        "tickWorkMax": 88.51208299997961,
+        "actionP95": 380.1808130000136,
+        "stateGapMax": 167.79086500004632,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 232.7821126783994,
+        "resourceUsage": {
+          "elapsedMs": 60035.03399299999,
+          "processCpu": {
+            "userMs": 135883.773,
+            "systemMs": 3866.213,
+            "percent": 232.7807226965086
+          },
+          "mainThreadCpu": {
+            "userMs": 55937.555,
+            "systemMs": 2561.324,
+            "percent": 97.44123574048595
+          },
+          "mainThreadElu": {
+            "activeMs": 60035.166200995445,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 159726761,
+              "user_usec": 152291286,
+              "system_usec": 7435474,
+              "nice_usec": 151346081,
+              "nr_periods": 600,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1366.578125,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 113,
+          "contributions": 1056
+        },
+        "lobbyErrors": {}
+      },
+      {
+        "minute": 7,
+        "hz": 14.63520823109157,
+        "tickWorkP95": 41.30080399999861,
+        "tickWorkMax": 91.79102800000692,
+        "actionP95": 362.6249429999734,
+        "stateGapMax": 181.42232999997213,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 229.66569308918346,
+        "resourceUsage": {
+          "elapsedMs": 60057.62672499998,
+          "processCpu": {
+            "userMs": 134109.675,
+            "systemMs": 3820.702,
+            "percent": 229.66338252354586
+          },
+          "mainThreadCpu": {
+            "userMs": 56094.218,
+            "systemMs": 2487.594,
+            "percent": 97.54266892403584
+          },
+          "mainThreadElu": {
+            "activeMs": 60056.39880202798,
+            "idleMs": 1.3595490000006976,
+            "utilization": 0.9999773626416082
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 157562458,
+              "user_usec": 150133177,
+              "system_usec": 7429280,
+              "nice_usec": 149168453,
+              "nr_periods": 600,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1435.078125,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 115,
+          "contributions": 1214
+        },
+        "lobbyErrors": {}
+      },
+      {
+        "minute": 8,
+        "hz": 13.741823707074829,
+        "tickWorkP95": 44.97718699998222,
+        "tickWorkMax": 80.25100499996915,
+        "actionP95": 416.4337580000283,
+        "stateGapMax": 219.94960100000026,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 230.1785279237692,
+        "resourceUsage": {
+          "elapsedMs": 60042.16340600001,
+          "processCpu": {
+            "userMs": 134315.382,
+            "systemMs": 3887.37,
+            "percent": 230.1761698116784
+          },
+          "mainThreadCpu": {
+            "userMs": 56062.228,
+            "systemMs": 2570.319,
+            "percent": 97.65228911478705
+          },
+          "mainThreadElu": {
+            "activeMs": 60042.30366897583,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 158913191,
+              "user_usec": 151384718,
+              "system_usec": 7528473,
+              "nice_usec": 150079988,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1483.65234375,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 116,
+          "contributions": 1358
+        },
+        "lobbyErrors": {}
+      },
+      {
+        "minute": 9,
+        "hz": 15.25552700028716,
+        "tickWorkP95": 41.78509000001941,
+        "tickWorkMax": 109.38744099996984,
+        "actionP95": 216.61405500001274,
+        "stateGapMax": 239.10519600007683,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 230.2421874335906,
+        "resourceUsage": {
+          "elapsedMs": 60047.63310999994,
+          "processCpu": {
+            "userMs": 134187.748,
+            "systemMs": 4065.944,
+            "percent": 230.24003585076554
+          },
+          "mainThreadCpu": {
+            "userMs": 55605.834,
+            "systemMs": 2749.147,
+            "percent": 97.1811509924143
+          },
+          "mainThreadElu": {
+            "activeMs": 60047.791451990546,
+            "idleMs": 0,
+            "utilization": 1
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 158449332,
+              "user_usec": 150657815,
+              "system_usec": 7791518,
+              "nice_usec": 149609121,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1464.04296875,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 118,
+          "contributions": 1519
+        },
+        "lobbyErrors": {}
+      },
+      {
+        "minute": 10,
+        "hz": 15.028187815083461,
+        "tickWorkP95": 40.54162799997721,
+        "tickWorkMax": 85.23837499995716,
+        "actionP95": 218.89506600005552,
+        "stateGapMax": 175.68757199996617,
+        "configuration": {
+          "incrementalSettlement": true,
+          "gameClockOffsetMs": -47523374,
+          "seedClockVersion": 2,
+          "profileWorker": false,
+          "stateWorkerCount": 3,
+          "configuredStateWorkers": 3,
+          "stateWorkerRoomLimit": 5,
+          "packedFood": false,
+          "packedParts": true
+        },
+        "cpuPercent": 229.5982232643339,
+        "resourceUsage": {
+          "elapsedMs": 60098.74438200006,
+          "processCpu": {
+            "userMs": 134072.707,
+            "systemMs": 3913.467,
+            "percent": 229.59909631877048
+          },
+          "mainThreadCpu": {
+            "userMs": 55949.424,
+            "systemMs": 2630.498,
+            "percent": 97.47278849563625
+          },
+          "mainThreadElu": {
+            "activeMs": 60097.695347008994,
+            "idleMs": 1.185654999997496,
+            "utilization": 0.9999802715960726
+          },
+          "cgroup": {
+            "scope": "/sys/fs/cgroup/system.slice/heroether-world-copy-load-candidate26-r3-120-10m-alchemy-cpu6-20261124.service",
+            "cpuMax": "600000 100000",
+            "counters": {
+              "usage_usec": 158059054,
+              "user_usec": 150520869,
+              "system_usec": 7538186,
+              "nice_usec": 149474535,
+              "nr_periods": 601,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            },
+            "throttledPeriodFraction": 0
+          }
+        },
+        "overflowStreams": 0,
+        "workers": 3,
+        "rssMB": 1515.64453125,
+        "clanQuests": {
+          "enabled": true,
+          "boards": 131,
+          "active": 128,
+          "eligible": 1277,
+          "contributors": 119,
+          "contributions": 1677
+        },
+        "lobbyErrors": {}
+      }
+    ],
+    "deferredLaunches": [
+      "candidate26-r1: unchanged live guard refused preflight",
+      "candidate26-r2: unchanged live guard refused preflight"
+    ],
+    "interpretation": "The corrected policy avoids main-thread overflow encoding, but the main thread remains nearly saturated without cgroup CPU throttling. Overall workload is not stable at 120. These are different generated worlds and live combat timing, so the difference from the original run is not a causal speedup estimate."
   },
   "limits": [
-    "Original failed run preserved, no capacity conclusion for the corrected policy",
+    "Both original and corrected 120-player failures are preserved; corrected policy still fails all ten windows",
     "90+5 uses only three rooms and was unaffected by this specific room-limit mismatch",
     "Sixth room would exceed deployed five-room worker policy; do not infer readiness beyond tested rooms",
     "No external-client network, browser rendering, real VK payments, or 300000 CCU proof"
