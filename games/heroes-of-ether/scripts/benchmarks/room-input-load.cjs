@@ -678,8 +678,9 @@ if (process.env.LOAD_CLIENT === "1") {
           }, {}),
           perClientBytes: samples.flatMap(sample => sample.perClientBytes || []),
         } : {}),
-        usedByType: Object.fromEntries(catalogIds.map(id =>
-          [id, samples.reduce((sum, sample) => sum + (sample.usedByType[id] || 0), 0)])),
+        usedByType: require("./merge-action-counts.cjs").mergeCounts(samples, "usedByType", catalogIds),
+        failures: require("./merge-action-counts.cjs").mergeCounts(samples, "failures"),
+        driverUsedByType: samples.map(sample => sample.usedByType),
       };
       if (coordinated) for (const room of network.rooms) {
         const simulation = app.rooms.get(room.roomId).arena;

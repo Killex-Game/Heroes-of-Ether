@@ -1,0 +1,698 @@
+{
+  "at": "2026-11-24T19:56:28.884Z",
+  "source": "c14b5e108fd055b7dfcb7d0dc65e76c7dc9918ef",
+  "runtimeSource": "465e2e5a41558922a27868c6d3d15dddccb33dc5",
+  "installed": false,
+  "platform": "Linux VPS; live service alongside isolated load; CPU quota includes generators",
+  "cpuQuota": 6,
+  "players": 60,
+  "lobby": 5,
+  "minutes": 10,
+  "code": 0,
+  "gameClock": {
+    "mode": "synthetic-offset",
+    "offsetMs": -38623234,
+    "realStartAt": "2026-11-24T19:43:43.234Z",
+    "gameStartAt": "2026-11-24T09:00:00.000Z"
+  },
+  "assessment": {
+    "targets": {
+      "updatesHz": 19,
+      "tickP95Ms": 100,
+      "stateGapP99Ms": 150,
+      "lobbyP95Ms": 1000,
+      "actionP95Ms": 500
+    },
+    "shortRunMeetsTargets": false,
+    "problems": [
+      "missing-potion:strength",
+      "missing-potion:swiftness",
+      "missing-potion:satiety",
+      "missing-potion:knowledge",
+      "missing-potion:steadiness",
+      "missing-potion:reach",
+      "missing-potion:vigor",
+      "missing-potion:longevity",
+      "missing-potion:clarity",
+      "missing-potion:precision",
+      "missing-potion:magnetism",
+      "missing-potion:gatherer",
+      "missing-potion:tempest",
+      "missing-potion:fortitude",
+      "missing-potion:prosperity",
+      "missing-potion:archmage"
+    ],
+    "phases": [
+      {
+        "phase": "combined",
+        "window": 1,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 2,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 3,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 4,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 5,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 6,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 7,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 8,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 9,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 10,
+        "meetsTargets": true,
+        "issues": []
+      }
+    ],
+    "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+  },
+  "ack": {
+    "acknowledged": 18785,
+    "recovered": 18785,
+    "duplicates": 0
+  },
+  "alchemy": {
+    "version": 1,
+    "casts": 1231,
+    "brews": 90,
+    "exchanges": 88,
+    "profiles": 1280,
+    "exactInventories": true,
+    "exactLobbyIngredientsAndNatural": true
+  },
+  "actions": {
+    "profile": 90,
+    "rankings": 90,
+    "loadout": 90,
+    "purchase": 90,
+    "account-bonus": 30,
+    "social-view": 180,
+    "gift": 90,
+    "gift-read": 90,
+    "clan-create": 3,
+    "clan-view": 177,
+    "clan-deposit": 90,
+    "clan-buy": 90,
+    "clan-edit": 89,
+    "alchemy-view": 90,
+    "alchemy-brew": 90,
+    "pet-buy": 5,
+    "pet-food": 90,
+    "chat": 90,
+    "news": 90,
+    "presence": 90,
+    "alchemy-exchange": 88,
+    "alchemy-equip": 85,
+    "pet-equip": 85,
+    "daily-reward": 60
+  },
+  "database": {
+    "matched": true,
+    "revision": 25768,
+    "profiles": 1280,
+    "clans": 131,
+    "testSchemaRemoved": true
+  },
+  "windows": [
+    {
+      "window": 1,
+      "hz": 19.925713945005423,
+      "tick": {
+        "n": 1186,
+        "p50": 19.48285500000202,
+        "p95": 30.975969999999506,
+        "p99": 42.5505550000089,
+        "max": 122.5229249999993
+      },
+      "stateGap": {
+        "p99WorstRoom": 88.28735400000005,
+        "max": 407.2382830000024
+      },
+      "action": {
+        "p95WorstRoom": 206.47056099999827,
+        "p99WorstRoom": 395.7365840000002,
+        "max": 491.0722199999982
+      },
+      "cpuPercent": 164.6295232600524,
+      "mainCpuPercent": 67.26046863977444,
+      "rssMiB": 991.9453125,
+      "gc": {
+        "n": 165,
+        "p50": 4.193607985973358,
+        "p95": 8.736707985401154,
+        "p99": 19.340131998062134,
+        "max": 26.744170010089874,
+        "totalMs": 795.9905700683594
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 51,
+        "contributions": 110
+      },
+      "inputs": {
+        "accepted": {
+          "split": 794,
+          "feed": 4995
+        },
+        "attempted": {
+          "split": 971,
+          "feed": 5114
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 7.1821469999995315
+    },
+    {
+      "window": 2,
+      "hz": 20.172130859291023,
+      "tick": {
+        "n": 1201,
+        "p50": 20.61110500000359,
+        "p95": 32.68128799999249,
+        "p99": 43.48319800000172,
+        "max": 68.45534600000246
+      },
+      "stateGap": {
+        "p99WorstRoom": 88.30015999999887,
+        "max": 114.30600300000515
+      },
+      "action": {
+        "p95WorstRoom": 68.39041200000793,
+        "p99WorstRoom": 131.663658999998,
+        "max": 226.23963199999707
+      },
+      "cpuPercent": 163.9646937569015,
+      "mainCpuPercent": 70.49164240682344,
+      "rssMiB": 1003.6953125,
+      "gc": {
+        "n": 164,
+        "p50": 4.285283029079437,
+        "p95": 6.516595005989075,
+        "p99": 24.34220200777054,
+        "max": 31.341603994369507,
+        "totalMs": 796.4903187155724
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 54,
+        "contributions": 217
+      },
+      "inputs": {
+        "accepted": {
+          "split": 736,
+          "feed": 4980
+        },
+        "attempted": {
+          "split": 975,
+          "feed": 5137
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 6.454803000000538
+    },
+    {
+      "window": 3,
+      "hz": 20.053142217169743,
+      "tick": {
+        "n": 1200,
+        "p50": 20.577789000002667,
+        "p95": 31.890356999996584,
+        "p99": 43.254006000002846,
+        "max": 56.751273999980185
+      },
+      "stateGap": {
+        "p99WorstRoom": 78.75796000001719,
+        "max": 113.02965000001132
+      },
+      "action": {
+        "p95WorstRoom": 52.35570399998687,
+        "p99WorstRoom": 92.8344700000016,
+        "max": 129.02828099997714
+      },
+      "cpuPercent": 155.06562941820442,
+      "mainCpuPercent": 67.19509320950928,
+      "rssMiB": 1093.69921875,
+      "gc": {
+        "n": 162,
+        "p50": 4.00307297706604,
+        "p95": 7.023980975151062,
+        "p99": 39.51544201374054,
+        "max": 66.12581497430801,
+        "totalMs": 838.60221773386
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 56,
+        "contributions": 313
+      },
+      "inputs": {
+        "accepted": {
+          "split": 718,
+          "feed": 5025
+        },
+        "attempted": {
+          "split": 973,
+          "feed": 5124
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 7.013097999995807
+    },
+    {
+      "window": 4,
+      "hz": 20.107778593112002,
+      "tick": {
+        "n": 1200,
+        "p50": 22.678738000016892,
+        "p95": 34.134537000005366,
+        "p99": 47.58754099998623,
+        "max": 67.38751500000944
+      },
+      "stateGap": {
+        "p99WorstRoom": 88.6429080000089,
+        "max": 156.1787100000074
+      },
+      "action": {
+        "p95WorstRoom": 77.06115699998918,
+        "p99WorstRoom": 125.19089099997655,
+        "max": 236.76614799999516
+      },
+      "cpuPercent": 160.85095326901413,
+      "mainCpuPercent": 71.05156577849687,
+      "rssMiB": 1097.94140625,
+      "gc": {
+        "n": 169,
+        "p50": 3.766020953655243,
+        "p95": 6.903487980365753,
+        "p99": 25.86860901117325,
+        "max": 26.257135033607483,
+        "totalMs": 757.1744669079781
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 56,
+        "contributions": 401
+      },
+      "inputs": {
+        "accepted": {
+          "split": 705,
+          "feed": 5031
+        },
+        "attempted": {
+          "split": 971,
+          "feed": 5133
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 27.344247000000905
+    },
+    {
+      "window": 5,
+      "hz": 20.165299957409875,
+      "tick": {
+        "n": 1201,
+        "p50": 22.302319999958854,
+        "p95": 34.09886299999198,
+        "p99": 41.21516800002428,
+        "max": 64.30653499998152
+      },
+      "stateGap": {
+        "p99WorstRoom": 87.32251600001473,
+        "max": 127.56932499998948
+      },
+      "action": {
+        "p95WorstRoom": 52.89896599994972,
+        "p99WorstRoom": 102.00679200002924,
+        "max": 272.67961500003
+      },
+      "cpuPercent": 162.48813380208236,
+      "mainCpuPercent": 71.26261777062247,
+      "rssMiB": 1098.27734375,
+      "gc": {
+        "n": 177,
+        "p50": 3.806189000606537,
+        "p95": 5.434657990932465,
+        "p99": 28.01774102449417,
+        "max": 32.25254201889038,
+        "totalMs": 774.3277183175087
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 56,
+        "contributions": 505
+      },
+      "inputs": {
+        "accepted": {
+          "split": 693,
+          "feed": 5011
+        },
+        "attempted": {
+          "split": 961,
+          "feed": 5130
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 5.982862000004388
+    },
+    {
+      "window": 6,
+      "hz": 20.19507990047957,
+      "tick": {
+        "n": 1200,
+        "p50": 22.360811999998987,
+        "p95": 34.81396899995161,
+        "p99": 42.38166899996577,
+        "max": 90.07297000003746
+      },
+      "stateGap": {
+        "p99WorstRoom": 81.96272199996747,
+        "max": 131.17905500001507
+      },
+      "action": {
+        "p95WorstRoom": 64.55198799999198,
+        "p99WorstRoom": 110.9225640000077,
+        "max": 159.4882599999546
+      },
+      "cpuPercent": 163.0928315532359,
+      "mainCpuPercent": 71.97193582188973,
+      "rssMiB": 1103.69140625,
+      "gc": {
+        "n": 179,
+        "p50": 3.9123239517211914,
+        "p95": 6.335061013698578,
+        "p99": 29.707413017749786,
+        "max": 36.01436197757721,
+        "totalMs": 844.1769977807999
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 58,
+        "contributions": 590
+      },
+      "inputs": {
+        "accepted": {
+          "split": 719,
+          "feed": 5024
+        },
+        "attempted": {
+          "split": 974,
+          "feed": 5129
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 5.86264000000665
+    },
+    {
+      "window": 7,
+      "hz": 20.180445887937605,
+      "tick": {
+        "n": 1203,
+        "p50": 22.709559000039008,
+        "p95": 34.8546830000123,
+        "p99": 41.96113800001331,
+        "max": 84.99069499998586
+      },
+      "stateGap": {
+        "p99WorstRoom": 90.48845299996901,
+        "max": 147.758925000031
+      },
+      "action": {
+        "p95WorstRoom": 68.42821600002935,
+        "p99WorstRoom": 126.12939399998868,
+        "max": 246.61670299997786
+      },
+      "cpuPercent": 166.87878099497829,
+      "mainCpuPercent": 73.17794183467095,
+      "rssMiB": 1153.46875,
+      "gc": {
+        "n": 176,
+        "p50": 4.0041199922561646,
+        "p95": 7.474636971950531,
+        "p99": 28.211989998817444,
+        "max": 42.343043982982635,
+        "totalMs": 854.1126918196678
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 58,
+        "contributions": 663
+      },
+      "inputs": {
+        "accepted": {
+          "split": 660,
+          "feed": 5038
+        },
+        "attempted": {
+          "split": 974,
+          "feed": 5137
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 6.3770430000149645
+    },
+    {
+      "window": 8,
+      "hz": 20.133814214705218,
+      "tick": {
+        "n": 1204,
+        "p50": 21.980717000027653,
+        "p95": 34.46272599999793,
+        "p99": 43.1887379999971,
+        "max": 81.66690400004154
+      },
+      "stateGap": {
+        "p99WorstRoom": 86.7058970000362,
+        "max": 111.3091719999793
+      },
+      "action": {
+        "p95WorstRoom": 57.1037859999924,
+        "p99WorstRoom": 84.59169500001008,
+        "max": 137.391009999963
+      },
+      "cpuPercent": 158.51543101907055,
+      "mainCpuPercent": 69.28719748953601,
+      "rssMiB": 1172.93359375,
+      "gc": {
+        "n": 167,
+        "p50": 4.051362991333008,
+        "p95": 6.404139995574951,
+        "p99": 28.588394045829773,
+        "max": 36.24394500255585,
+        "totalMs": 800.5223199725151
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 59,
+        "contributions": 747
+      },
+      "inputs": {
+        "accepted": {
+          "split": 671,
+          "feed": 4959
+        },
+        "attempted": {
+          "split": 974,
+          "feed": 5135
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 35.01473799999803
+    },
+    {
+      "window": 9,
+      "hz": 20.14986620081303,
+      "tick": {
+        "n": 1203,
+        "p50": 21.796211000008043,
+        "p95": 33.58818599994993,
+        "p99": 39.505871999950614,
+        "max": 53.51239099999657
+      },
+      "stateGap": {
+        "p99WorstRoom": 89.49757199996384,
+        "max": 125.77315400005318
+      },
+      "action": {
+        "p95WorstRoom": 69.08250399999088,
+        "p99WorstRoom": 115.01961199997459,
+        "max": 187.9846639999887
+      },
+      "cpuPercent": 160.75461730830745,
+      "mainCpuPercent": 70.31797695181585,
+      "rssMiB": 1174.03515625,
+      "gc": {
+        "n": 172,
+        "p50": 4.012647032737732,
+        "p95": 6.808026015758514,
+        "p99": 29.376901984214783,
+        "max": 38.94166797399521,
+        "totalMs": 813.7390563488007
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 59,
+        "contributions": 833
+      },
+      "inputs": {
+        "accepted": {
+          "split": 698,
+          "feed": 4988
+        },
+        "attempted": {
+          "split": 970,
+          "feed": 5139
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 5.263232000055723
+    },
+    {
+      "window": 10,
+      "hz": 20.19662236762611,
+      "tick": {
+        "n": 1201,
+        "p50": 22.905187999946065,
+        "p95": 35.506738000083715,
+        "p99": 45.80478700005915,
+        "max": 66.22975199995562
+      },
+      "stateGap": {
+        "p99WorstRoom": 89.17542600003071,
+        "max": 136.10296499996912
+      },
+      "action": {
+        "p95WorstRoom": 68.79391200002283,
+        "p99WorstRoom": 112.53939399996307,
+        "max": 145.80448599997908
+      },
+      "cpuPercent": 166.18116615982711,
+      "mainCpuPercent": 72.24217891596771,
+      "rssMiB": 1183.41796875,
+      "gc": {
+        "n": 180,
+        "p50": 3.938295006752014,
+        "p95": 6.801308989524841,
+        "p99": 29.51200395822525,
+        "max": 29.554140985012054,
+        "totalMs": 845.3757984638214
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 60,
+        "contributions": 902
+      },
+      "inputs": {
+        "accepted": {
+          "split": 681,
+          "feed": 5019
+        },
+        "attempted": {
+          "split": 967,
+          "feed": 5132
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 8.170818999991752
+    }
+  ],
+  "limitations": [
+    "Not maximum CCU or a 300000-player result",
+    "Game-clock and seed-clock corrections prevent direct old/new workload A/B claims",
+    "Live users share the VPS; no causal whole-game CPU percentage inferred",
+    "No browser rendering, real payments or VK traffic",
+    "Retained-history and longer mixed acceptance remain pending"
+  ],
+  "originalFailure": {
+    "assessmentPreserved": true,
+    "reason": "Multi-driver aggregation discarded all event-only potion counters by selecting ordinary catalogue IDs only. All ten timing windows passed, but original overall acceptance is false.",
+    "ackPotionTypes": {
+      "booster:alchemy_strength": 75,
+      "booster:alchemy_satiety": 59,
+      "booster:alchemy_steadiness": 65,
+      "booster:alchemy_reach": 88,
+      "booster:alchemy_vigor": 71,
+      "booster:alchemy_longevity": 109,
+      "booster:alchemy_clarity": 107,
+      "booster:alchemy_precision": 124,
+      "booster:alchemy_prosperity": 61,
+      "booster:alchemy_archmage": 45,
+      "booster:alchemy_swiftness": 67,
+      "booster:alchemy_knowledge": 67,
+      "booster:alchemy_gatherer": 92,
+      "booster:alchemy_tempest": 60,
+      "booster:alchemy_fortitude": 45,
+      "booster:alchemy_magnetism": 96
+    },
+    "response": "Correct the aggregation and repeat; no fabricated per-window counters or retroactive green assessment."
+  }
+}
