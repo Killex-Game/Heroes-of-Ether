@@ -22,7 +22,12 @@ profile-checkpoint-worker жил между задачами, но каждый 
 29 адресных тестов Windows прошли, включая внешний новый checkpoint,
 повреждение файла, пропущенную ревизию, испорченный checksum, torn sealed WAL,
 ошибки write/fsync/rename, частичную очистку, новый worker и существующий
-idle/restart-тест журнала. Полный Windows запущен; Linux и mixed ещё впереди.
+idle/restart-тест журнала.
+Полный Windows на Node24.22.3:2425total/2423pass/0fail/2skip,322445мс.
+Первый прогон2421/2417pass/2fail/2skip сохранился: sparse-worktree не имел
+deployment/vk-production, аpublic/ui-junction штатно отклонялся HTTPзащитой.
+Проверки повторены в отдельном физическом checkout; защита путей не отключалась.
+Linux и mixed проверяются отдельно; в production кандидат не установлен.
 
 Локальное ABBA, отдельный новый процесс на каждый запуск, 640000 прежних
 квитанций / 1280 профилей / 31456765 байт. Десять последовательных checkpoint,
