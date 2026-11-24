@@ -60,6 +60,10 @@ async function main(){
   if(mixedMinutes)Object.assign(env,{LOAD_PHASES:Array(mixedMinutes).fill('combined').join(','),LOAD_PHASE_MS:'60000'});
   if(realistic)Object.assign(env,{LOAD_REALISTIC:'1',LOAD_MIXED_SOCIAL:'1',LOAD_LOBBY_INTERVAL:'1500'});
   if(summary.alchemy)Object.assign(env,{LOAD_ALCHEMY:'1',LOAD_EVENT:'ether-alchemy'});
+  if(process.env.CAPACITY_ASYNC_ARENA_WRITES==='1'){
+    summary.experimentalArenaWrites=true;
+    env.LOAD_ASYNC_ARENA_WRITES='1';
+  }
   if(process.env.CAPACITY_DIAGNOSTICS==='1'){
     summary.diagnosticOnly=true;
     summary.diagnosticCaveat='Stage, CPU sampling and synchronous I/O probes add overhead; not a capacity acceptance run';

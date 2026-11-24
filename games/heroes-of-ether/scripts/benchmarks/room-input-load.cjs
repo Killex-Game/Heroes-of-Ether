@@ -160,6 +160,10 @@ if (process.env.LOAD_CLIENT === "1") {
     incrementalSettlement: process.env.LOAD_INCREMENTAL_SETTLEMENT !== "0",
     clanDailyQuests: true,
   });
+  if(process.env.LOAD_ASYNC_ARENA_WRITES==='1'){
+    if(!profiles.journal)throw Error('Async arena writes require a durable journal');
+    profiles.journal.asyncArenaWrites=true;
+  }
   const chat = new (require("../../src/server/chat/chat-service").ChatService)({
     now: gameNow,
     filePath: path.join(dataDir, "clan-chat.json"), journal: true,
@@ -690,6 +694,7 @@ if (process.env.LOAD_CLIENT === "1") {
       }
       const row = {
         configuration: { incrementalSettlement: !!profiles.settlementCache,
+          asyncArenaWrites: profiles.journal?.asyncArenaWrites===true,
           gameClockOffsetMs: Number(process.env.LOAD_GAME_OFFSET_MS || 0), seedClockVersion: 2,
           profileWorker: !!profiles.arenaPreparer, stateWorkerCount: app.stateWorkers.lanes.length,
           packedFood: process.env.LOAD_PACKED_FOOD === "1", packedParts: process.env.LOAD_PACKED_PARTS !== "0" },

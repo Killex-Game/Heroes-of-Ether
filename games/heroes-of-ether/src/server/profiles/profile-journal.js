@@ -295,10 +295,11 @@ function difference(next, previous) {
   return change;
 }
 class ProfileJournal {
-  constructor(file, { intervalMs = 30000, maxPendingBytes = 64 * 1024 * 1024, checkpointIdleMs = 60000, readWindow = {} } = {}) {
+  constructor(file, { intervalMs = 30000, maxPendingBytes = 64 * 1024 * 1024, checkpointIdleMs = 60000, readWindow = {}, asyncArenaWrites = false } = {}) {
     if (!Number.isFinite(checkpointIdleMs) || checkpointIdleMs < 1)
       throw new RangeError("Invalid checkpoint idle interval");
     this.checkpointIdleMs = checkpointIdleMs;
+    this.asyncArenaWrites = asyncArenaWrites === true;
     this.retiringWorkers = new Set();
     this.file = file;
     const restored = recover(file);
@@ -384,8 +385,11 @@ class ProfileJournal {
     return { revision, bytes: buffer.length, temporary };
   }
   publishStaged(entry, next) {
+    return this.publishSealed(entry, next, false);
+  }
+  publishSealed(entry, next, arena) {
     if (this.closed || this.fault) throw Error("Profile journal unavailable");
-    if (entry.revision !== this.revision || this.arenaFlush) return false;
+    if (entry.revision !== this.revision || (this.arenaFlush && !arena)) return false;
     // The checkpoint reader must see all older records before the staged one.
     this.sealActive();
     const sealed = walPath(this.file) + "-" + (this.revision + 1);
@@ -452,6 +456,7 @@ class ProfileJournal {
   commitArena(next, publish, change) {
     if (this.arenaFlush) return this.arenaFlush.then(() => false);
     const buffer = change === undefined ? this.encode(next) : this.encodeChange(change);
+    if (this.asyncArenaWrites) return this.commitArenaFile(next, publish, buffer);
     try {
       this.append(buffer);
     } catch (error) {
@@ -474,6 +479,25 @@ class ProfileJournal {
     }).finally(() => {
       this.arenaPending = false;
       this.arenaFlush = null;
+    });
+    return this.arenaFlush;
+  }
+  commitArenaFile(next, publish, buffer) {
+    const revision = this.revision, temporary = this.file + '.arena-pending';
+    this.arenaPending = true;
+    this.arenaFlush = require('./profile-arena-file').writePending(temporary, buffer).then(() => {
+      // A synchronous wallet/calendar commit can win while the unpublished
+      // file is being written. Never truncate a descriptor with pending I/O,
+      // publish a stale delta or acknowledge a cancelled arena operation.
+      if (!this.arenaPending || this.revision !== revision) return false;
+      this.arenaPending = false;
+      if (!this.publishSealed({revision, temporary, bytes:buffer.length}, next, true)) return false;
+      publish();
+      return true;
+    }).finally(async () => {
+      try { await fs.promises.rm(temporary, {force:true}); }
+      catch (error) { this.arenaWriteCleanupError = error.code || 'ARENA_PENDING_CLEANUP'; }
+      finally { this.arenaPending = false; this.arenaFlush = null; }
     });
     return this.arenaFlush;
   }
@@ -642,6 +666,7 @@ class ProfileJournal {
       await Promise.all(this.retiringWorkers);
       if (this.boosterWorker) await this.boosterWorker.terminate();
       fs.rmSync(this.file + ".booster-pending", { force: true });
+      fs.rmSync(this.file + ".arena-pending", { force: true });
     }
   }
 }
