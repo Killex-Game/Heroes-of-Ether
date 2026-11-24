@@ -1,6 +1,7 @@
 "use strict";
 const fs = require("node:fs"), { createHash } = require("node:crypto");
 const { recover, REVISION } = require("../profiles/profile-journal");
+const { copyRecord } = require("../profiles/copy-record");
 const fail = code => { throw Object.assign(Error(code), { code }); };
 // A pin contains hard links to a closed checkpoint and sealed journals. Their
 // contents never change in place. Link creation affects ctime, not these fields.
@@ -37,7 +38,9 @@ function draftWriter(base) {
   const own = value => {
     if (!value || typeof value !== "object") throw Error("Missing journal patch base");
     if (owned.has(value)) return value;
-    const result = Array.isArray(value) ? value.slice() : { ...value };
+    // Large JSON tables use the same spread-compatible dictionary copy as the
+    // main store. Descendants stay shared until their own WAL patch detaches them.
+    const result = Array.isArray(value) ? value.slice() : copyRecord(value);
     owned.add(result); return result;
   };
   const fields = (value, patch) => {
