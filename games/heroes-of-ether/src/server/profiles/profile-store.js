@@ -807,7 +807,7 @@ class ProfileStore {
         encoding: "utf8",
         mode: 0o600,
       });
-      fs.renameSync(temporary, this.filePath);
+      require("./atomic-rename").renameAtomic(temporary, this.filePath);
     }
     this.data = next;
     return true;
