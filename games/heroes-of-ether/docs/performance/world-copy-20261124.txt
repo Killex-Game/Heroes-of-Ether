@@ -484,3 +484,5 @@ livepreflight сохранены. Разные исходные миры не д
 полныйWindows2475/2473pass/0fail/2skip. Linux/mixedещёнепройден.
 Кандидаты НЕ установлены. Начата парная retained-проверка на
 одинаковомseed ac77eb0950ea3cfe93df25c5181a3a85fbd1353e5daa0b42049a08c98cd0035a.
+
+22:41 UTC — Eleven closed synthetic starting fixtures archived losslessly on VPS and locally: 451805300 → 30252765 bytes; 421552535 bytes released. All compressed and decompressed SHA-256 checks passed before redundant raw fixture removal. Real saves/WAL/history/results/backups preserved. Restoration mapping and metadata retained; see closed-fixtures-20261124.json.

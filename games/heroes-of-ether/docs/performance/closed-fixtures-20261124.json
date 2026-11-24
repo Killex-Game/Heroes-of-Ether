@@ -1,0 +1,126 @@
+{
+  "at": "2026-11-24T22:41:22.669Z",
+  "files": [
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate6-30-10m-history-cpu3/synthetic-world.json",
+      "archive": "000.json.gz",
+      "bytes": 216226054,
+      "sha256": "0c0542e76c47a110ca3b7f27e96aff1a98a1c3a7c8fb41905091103db08be330",
+      "compressed": {
+        "sha256": "5a0e6f32771a14d28066a6be82b001e7ea41a45df982cc14a69bab6a73f60ab1",
+        "bytes": 14903762
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate30-r1-30-10m-history-alchemy-cpu6/synthetic-world.json",
+      "archive": "001.json.gz",
+      "bytes": 173326400,
+      "sha256": "62c45427d559c42173c37dc0ee69a6c6bc1bd9db42a0a54100baeed6745503ce",
+      "compressed": {
+        "sha256": "8186280e303b73e2a3ce0e0a70872540c5a191baa1221f984bc345b86f4c28f3",
+        "bytes": 12282644
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate19-r1-60-10m-alchemy-cpu6/synthetic-world.json",
+      "archive": "002.json.gz",
+      "bytes": 6917606,
+      "sha256": "eed9350787dc6379382cb70f15633115790ad7ff6c536ef560a7a0a21e7f3d84",
+      "compressed": {
+        "sha256": "3b34bdbfdf1faca011e1f3c64e3dcbddc8f4e6dbb470cfe446416bf149bed60f",
+        "bytes": 341148
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate2-60-30m/synthetic-world.json",
+      "archive": "003.json.gz",
+      "bytes": 6917280,
+      "sha256": "d1cd9c2207f1d2f00c2a617a8c96019aaa0336e75fab878849d8049c33b28399",
+      "compressed": {
+        "sha256": "9bdcf04fc752829610ed3d36f01b1732be102dbc6a70880063dcaeb56703fd96",
+        "bytes": 340948
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate3-60-10m/synthetic-world.json",
+      "archive": "004.json.gz",
+      "bytes": 6917280,
+      "sha256": "d1cd9c2207f1d2f00c2a617a8c96019aaa0336e75fab878849d8049c33b28399",
+      "compressed": {
+        "sha256": "9bdcf04fc752829610ed3d36f01b1732be102dbc6a70880063dcaeb56703fd96",
+        "bytes": 340948
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate6-60-10m-cpu6/synthetic-world.json",
+      "archive": "005.json.gz",
+      "bytes": 6917280,
+      "sha256": "d1cd9c2207f1d2f00c2a617a8c96019aaa0336e75fab878849d8049c33b28399",
+      "compressed": {
+        "sha256": "9bdcf04fc752829610ed3d36f01b1732be102dbc6a70880063dcaeb56703fd96",
+        "bytes": 340948
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate26-r3-120-10m-alchemy-cpu6/synthetic-world.json",
+      "archive": "006.json.gz",
+      "bytes": 6917240,
+      "sha256": "57a73983215d5b6af959951e05cb86f990d47d67b2e4d940bbbe54f44b60859a",
+      "compressed": {
+        "sha256": "286f8818750bddf3aa73a5090f348c3f30dcd3317b5779775be1dc67364e4451",
+        "bytes": 340438
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate19-r2-90-10m-alchemy-cpu6/synthetic-world.json",
+      "archive": "007.json.gz",
+      "bytes": 6917224,
+      "sha256": "7e9a28822e545b78ce07989428a5460bd6cabf5bfd3e90f4145688220f25f274",
+      "compressed": {
+        "sha256": "97cdd94e2f7d30fa8b9f51edeff73ddf87077ec08da876b21dbffde089d1eeda",
+        "bytes": 339956
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate16-r1-60-10m-alchemy-cpu6/synthetic-world.json",
+      "archive": "008.json.gz",
+      "bytes": 6917036,
+      "sha256": "f355201d1285771dc212c8c512fdd23c6d380dcaf60f9dcfdcc838e49d0e174e",
+      "compressed": {
+        "sha256": "72094f2af8261472bac781ece985410813574afd20441aea1042a0a847b4fb59",
+        "bytes": 340189
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate16-r1-30-10m-alchemy-cpu3/synthetic-world.json",
+      "archive": "009.json.gz",
+      "bytes": 6916078,
+      "sha256": "35cd47e925155ffc07ef3e0e70727a6ddf50815edeb119178a3165f5b24bd74c",
+      "compressed": {
+        "sha256": "a91d5551cfcb8b9c6e884061aa8df724adf9da0edeb225dbf44b734c5ae5ed7b",
+        "bytes": 340886
+      }
+    },
+    {
+      "original": "/srv/heroether-test/play/results/world-copy-20261124/runs/candidate19-r1-120-10m-alchemy-cpu6/synthetic-world.json",
+      "archive": "010.json.gz",
+      "bytes": 6915822,
+      "sha256": "cb821f71839e48c3e6c3d997f98c1bb23dbc1d6a8eaa3805634c293e2f69e6d1",
+      "compressed": {
+        "sha256": "236dfc7e70135cc6eb9c2aae347f7b0a2f02e8b8f9ea9810a05c0224f4616f19",
+        "bytes": 340898
+      }
+    }
+  ],
+  "freedBytes": 421552535,
+  "allArchivesVerified": true,
+  "localVerified": true,
+  "scope": "Closed synthetic starting fixtures only; runtime data/WAL/results/backups untouched",
+  "originalBytes": 451805300,
+  "compressedBytes": 30252765,
+  "manifestSha256": "72c78a375590ce47b1527c9dd52d24ad5f6a48456184dcd31765ea19197e619f",
+  "remoteDirectory": "/srv/heroether-test/play/results/world-copy-20261124/closed-fixtures-20261124",
+  "localDirectory": "artifacts/world-copy-20261124/closed-fixtures-20261124",
+  "preserved": "All exact synthetic input bytes retained in verified gzip archives on both machines. Runtime saves, WAL, histories, backups and result files were not removed.",
+  "restoration": "Use manifest.json to map the numbered archive to its original path. Decompress into a new temporary file, verify original byte count and SHA-256, restore stored owner/mode/mtime, and atomically rename only within the specified closed synthetic run. Never overwrite a current runtime file."
+}
