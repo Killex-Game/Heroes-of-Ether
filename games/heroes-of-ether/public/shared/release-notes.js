@@ -1,14 +1,23 @@
 /* Public release manifest. */
 'use strict';
 window.KillexRelease=Object.freeze({
-  "date": "2026-11-16",
-  "id": "alfa-test-0.0.44",
-  "version": "Alfa-test 0.0.44",
+  "date": "2026-11-24",
+  "id": "alfa-test-0.0.45",
+  "version": "Alfa-test 0.0.45",
   "changes": [
-    "В админке добавлены отдельные кнопки изменения ника и уровня игрока."
+    "Уменьшена повторная обработка истории операций при сохранении прогресса.",
+    "Снижены затраты памяти на восстановление сохранений из базы данных."
   ]
 });
 window.KillexReleaseArchive=Object.freeze([
+  {
+    "date": "2026-11-16",
+    "id": "alfa-test-0.0.44",
+    "version": "Alfa-test 0.0.44",
+    "changes": [
+      "В админке добавлены отдельные кнопки изменения ника и уровня игрока."
+    ]
+  },
   {
     "date": "2026-11-16",
     "id": "alfa-test-0.0.43",
