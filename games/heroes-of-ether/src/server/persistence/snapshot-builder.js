@@ -6,6 +6,7 @@ const {REVISION}=require('../profiles/profile-journal');
 const storage=require('./snapshot-documents');
 const chat=require('./snapshot-chat');
 const {immutableRecord}=require('./immutable-document');
+const {canonicalKeys:keys}=require('./canonical-key-order');
 const object=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 const fail=code=>{throw Object.assign(Error(code),{code});};
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -20,9 +21,6 @@ function gzipDocumentValue(doc){
   const value=encodedValues.get(doc);
   return gzipSync(value?.segments?Buffer.concat(value.segments,value.bytes):value||Buffer.from(JSON.stringify(doc.value)),{level:1});
 }
-// Object enumeration places integer keys before other sorted keys. Keep the
-// same ordering as canonical(), including unusual profile IDs and root keys.
-const keys=value=>Object.keys(Object.fromEntries(Object.keys(value).sort().map(key=>[key,0])));
 
 function recordFor(id,value,documentFormat,fingerprint){
   const ordered=canonical(value),json=Buffer.from(JSON.stringify(ordered));
@@ -85,8 +83,12 @@ class SnapshotBuilder{
       next.set(id,record);stats.bytes+=record.bytes??record.json.length;
       for(const part of record.parts)docs.set(part._id,documentFor(record,part));
     };
-    for(const table of ['profiles','clans'])
-      for(const [key,value]of Object.entries(world[table]))add(`${table}:${key}`,value,true);
+    for(const table of ['profiles','clans']){
+      // Pinned JSON records cannot run getters or mutate during enumeration.
+      // Generic caller-owned input keeps the original eager value capture.
+      if(immutable)for(const key of Object.keys(world[table]))add(`${table}:${key}`,world[table][key],true);
+      else for(const [key,value]of Object.entries(world[table]))add(`${table}:${key}`,value,true);
+    }
     add('world',Object.fromEntries(Object.entries(world).filter(([key])=>!['profiles','clans'].includes(key))));
     for(const file of AUXILIARY)if(Object.hasOwn(auxiliary,file)){
       if(file==='clan-chat.json'&&chatFormat===1)chat.packChat(auxiliary[file],add);

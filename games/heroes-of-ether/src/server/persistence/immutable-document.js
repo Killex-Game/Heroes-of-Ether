@@ -3,6 +3,7 @@ const {createHash}=require('node:crypto');
 const {canonical}=require('./state-snapshot');
 const {documentSize}=require('./snapshot-size');
 const {LIMIT}=require('./snapshot-documents');
+const {canonicalKeys}=require('./canonical-key-order');
 const open=Buffer.from('{'),close=Buffer.from('}'),comma=Buffer.from(',');
 const prefixes=new Map();
 const prefix=key=>{
@@ -18,7 +19,7 @@ function immutableRecord(id,value,format,cache,stats){
   if(!value||typeof value!=='object'||Array.isArray(value))return null;
   const inserted=[];
   const remember=(item,encoded)=>{cache.set(item,encoded);inserted.push(item);};
-  const segments=[open],keys=Object.keys(Object.fromEntries(Object.keys(value).sort().map(key=>[key,0])));
+  const segments=[open],keys=canonicalKeys(value);
   let size=5,bytes=2,first=true;
   for(const key of keys){
     const item=value[key];
@@ -30,7 +31,7 @@ function immutableRecord(id,value,format,cache,stats){
       else{
         if(key==='arenaReceipts'&&!Array.isArray(item)&&Object.values(item).every(bucket=>bucket&&typeof bucket==='object'&&!Array.isArray(bucket))){
           const chunks=[open];let chunkSize=5,chunkFirst=true;
-          for(const bucketKey of Object.keys(Object.fromEntries(Object.keys(item).sort().map(key=>[key,0])))){
+          for(const bucketKey of canonicalKeys(item)){
             const bucket=item[bucketKey];
             let child=cache.get(bucket);
             if(child)stats.fieldReused++;
