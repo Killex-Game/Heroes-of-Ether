@@ -624,6 +624,7 @@ class ProfileJournal {
       }
       await this.retireCheckpointWorker();
       this.readWindow?.reset();
+      await this.readWindow?.drainCleanup();
       await Promise.all(this.retiringWorkers);
       if (this.boosterWorker) await this.boosterWorker.terminate();
       fs.rmSync(this.file + ".booster-pending", { force: true });

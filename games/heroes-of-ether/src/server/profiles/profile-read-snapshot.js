@@ -10,6 +10,17 @@ function remove(directory) {
   for (const name of names) fs.unlinkSync(path.join(directory, name));
   fs.rmdirSync(directory);
 }
+async function removeAsync(directory) {
+  // Retired pins are private flat directories. Validate all names/types before
+  // deleting any link, then keep metadata I/O off the authoritative game loop.
+  const names = await fs.promises.readdir(directory);
+  for (const name of names)
+    if (!/^snapshot\.json(?:\.wal-\d+)?$/.test(name) ||
+        !(await fs.promises.lstat(path.join(directory, name))).isFile())
+      throw Error("Unexpected profile read snapshot contents");
+  for (const name of names) await fs.promises.unlink(path.join(directory, name));
+  await fs.promises.rmdir(directory);
+}
 function cleanup(file) {
   const parent = path.dirname(file);
   if (!fs.existsSync(parent)) return;
@@ -29,8 +40,15 @@ function pin(file, files, revision, ownerFile = file) {
     remove(directory);
     throw error;
   }
-  let released = false;
-  return { file: target, revision, release() { if (!released) { remove(directory); released = true; } } };
+  let released = false, removal;
+  return { file: target, revision,
+    release() { if (!released) { remove(directory); released = true; } return removal; },
+    releaseAsync() {
+      if (released) return removal || Promise.resolve();
+      released = true;
+      return removal = removeAsync(directory);
+    },
+  };
 }
 function filesFor(pin) {
   if (!Object.hasOwn(pin, "files")) return require("./profile-journal").segments(pin.file);

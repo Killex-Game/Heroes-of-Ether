@@ -9,11 +9,24 @@ class ProfileReadWindow {
     for (const n of [maxBytes, maxFiles, maxAgeMs]) if (!Number.isSafeInteger(n) || n < 1) throw new RangeError("Invalid profile read window limit");
     Object.assign(this, { file, maxBytes, maxFiles, maxAgeMs, now });
     this.current = null;
+    this.cleanups = new Set();
   }
+  releaseOwner(owner) {
+    if (owner.cleanup) return owner.cleanup;
+    const cleanup = owner.pin.releaseAsync().catch(error => {
+      // This disposable cache never owns the canonical WAL. Preserve a failed
+      // directory for exclusive startup cleanup and keep the useful category.
+      this.lastError = error.code || "PROFILE_READ_CACHE_CLEANUP";
+    }).finally(() => this.cleanups.delete(cleanup));
+    owner.cleanup = cleanup;
+    this.cleanups.add(cleanup);
+    return cleanup;
+  }
+  drainCleanup() { return Promise.all([...this.cleanups]); }
   reset() {
     const old = this.current;
     this.current = null;
-    if (old) { old.retired = true; if (!old.readers) old.pin.release(); }
+    if (old) { old.retired = true; if (!old.readers) this.releaseOwner(old); }
   }
   capture(files) {
     const current = this.current;
@@ -52,16 +65,18 @@ class ProfileReadWindow {
       this.capture(files);
     }
     if (!this.current) return snapshots.pin(this.file, files, revision);
-    const current = this.current, { pin, rows } = current;
+    const current = this.current, { pin, rows } = current, window = this;
     const retained = [...rows].sort((a, b) => Number(a[0]) - Number(b[0])).map(([, row]) => row.target);
     current.readers++;
     let released = false;
-    return { file: pin.file, files: Object.freeze(retained), revision, release() {
-      if (released) return;
+    function release() {
+      if (released) return current.cleanup;
       released = true;
       current.readers--;
-      if (current.retired && !current.readers) current.pin.release();
-    } };
+      if (current.retired && !current.readers) return window.releaseOwner(current);
+    }
+    return { file: pin.file, files: Object.freeze(retained), revision,
+      release, releaseAsync: release };
   }
 }
 module.exports = { ProfileReadWindow };

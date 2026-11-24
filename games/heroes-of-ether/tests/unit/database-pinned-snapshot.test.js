@@ -14,7 +14,7 @@ test("Pinned durable revision survives later commits and checkpoint deletion wit
  assert.equal(readLocal(f.dir,false,p).snapshot.digest,expected.digest);assert.equal(readLocal(f.dir).world.profiles.p.coins,8);
  assert.equal(fs.readFileSync(p.file+'.wal-2').length>0,true);
  f.journal.readWindow.reset();assert.equal(fs.existsSync(path.dirname(p.file)),true);
- p.release();assert.equal(fs.existsSync(path.dirname(p.file)),false);p.release();
+ await p.release();assert.equal(fs.existsSync(path.dirname(p.file)),false);p.release();
 });
 test("Unchanged pinned revisions reuse packed cache; changed sealed WAL invalidates it",async t=>{
  const f=setup(t);let reads=0;const cache=new CheckpointCache(f.dir,(...args)=>{reads++;return readLocal(...args);});
@@ -57,4 +57,14 @@ test("Final database flush uses the already closed durable checkpoint without op
  const owner={profiles:{journal:{pinSnapshot(){throw Error('journal closed');}}},async command(name,source){commands.push(name);assert.equal(source,null);return{revision:5};}};
  assert.deepEqual(await DatabaseSync.prototype.flush.call(owner,true),{revision:5});
  assert.deepEqual(commands,['prepare','sync']);
+});
+
+test("Database sync waits for asynchronous pin cleanup after the durable response",async()=>{
+ let begin,finish,settled=false;const entered=new Promise(resolve=>begin=resolve),gate=new Promise(resolve=>finish=resolve);
+ const calls=[],owner={profiles:{journal:{async pinSnapshot(){return{file:'immutable',revision:4,
+  release(){throw Error('Blocking cleanup must not run');},async releaseAsync(){calls.push('cleanup');begin();await gate;}};}}},
+  async command(name){calls.push(name);return{revision:4};}};
+ const pending=DatabaseSync.prototype.flush.call(owner).then(value=>{settled=true;return value;});
+ await entered;assert.deepEqual(calls,['prepare','sync','cleanup']);assert.equal(settled,false);assert(owner.running);
+ finish();assert.deepEqual(await pending,{revision:4});assert.equal(owner.running,null);
 });

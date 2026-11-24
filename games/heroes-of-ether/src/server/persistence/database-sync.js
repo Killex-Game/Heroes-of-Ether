@@ -140,7 +140,8 @@ class DatabaseSync {
       } finally {
         // A timeout must stop the reader before unlinking its inputs.
         if (this.failed) await this.worker.terminate();
-        pinned?.release();
+        if (pinned?.releaseAsync) await pinned.releaseAsync();
+        else pinned?.release();
       }
     })().finally(() => {
       this.running = null;

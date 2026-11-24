@@ -28,7 +28,7 @@ test('Retirement and writer close cannot remove inputs until all reader leases f
  const f=setup(t),a=await f.pin(),b=await f.pin(),directory=path.dirname(a.file);
  f.journal.readWindow.reset();assert(fs.existsSync(directory));a.release();a.release();assert(fs.existsSync(directory));
  await f.journal.close();assert(fs.existsSync(directory));assert.equal(new PinnedWorldReader().read(b).data.profiles.p.coins,10);
- b.release();assert(!fs.existsSync(directory));
+ await b.release();assert(!fs.existsSync(directory));
 });
 test('Explicit WAL manifests reject duplicates, reversed order, active appends and other paths',()=>{
  const file='/snapshot.json';

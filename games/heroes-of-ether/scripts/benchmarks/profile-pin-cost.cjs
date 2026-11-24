@@ -5,6 +5,7 @@ const snapshots=require("../../src/server/profiles/profile-read-snapshot");
 const {ProfileReadWindow}=require("../../src/server/profiles/profile-read-window");
 const [output,countText="512"]=process.argv.slice(2),count=Number(countText);
 assert(output&&Number.isInteger(count)&&count>=16&&count<=2048);
+(async()=>{
 const root=fs.mkdtempSync(path.join(os.tmpdir(),"heroether-pin-cost-"));
 const file=path.join(root,"profiles.json"),files=[];
 fs.writeFileSync(file,"{}");
@@ -17,7 +18,7 @@ try{
     const initialPinMs=performance.now()-start;
     let repeatedCaptureMs=0;
     if(window){const before=performance.now();window.capture(files);repeatedCaptureMs=performance.now()-before;}
-    const releaseStart=performance.now();pin.release();window?.reset();
+    const releaseStart=performance.now();await pin.release();window?.reset();await window?.drainCleanup();
     rows.push({mode,initialPinMs,repeatedCaptureMs,releaseMs:performance.now()-releaseStart});
   }
   const result={node:process.version,platform:process.platform,segments:count,bytes:count*1024,rows,scope:"Filesystem metadata overhead only; dummy closed files, no WAL replay, durability or whole-game performance conclusion"};
@@ -29,3 +30,4 @@ try{
   }
   fs.rmdirSync(root);
 }
+})().catch(error=>{console.error(error);process.exitCode=1;});
