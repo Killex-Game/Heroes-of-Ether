@@ -110,8 +110,8 @@ class FoodTransferEncoder {
           refs = new Int32Array(rows.length);
           for (let j = 0; j < i; j++) refs[j] = j * 2;
         } else {
-          entries = new Array(i);
-          for (let j = 0; j < i; j++) entries[j] = j;
+          entries = [];
+          for (let j = 0; j < i; j++) entries.push(j);
         }
       }
       if (refs) refs[i] = entry;
