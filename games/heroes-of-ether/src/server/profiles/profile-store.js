@@ -1077,41 +1077,8 @@ class ProfileStore {
     };
   }
   arenaAppearance(profile) {
-    // Profiles are replaced on committed mutations. Do not rebuild lobby account
-    // bonuses and appearance grants at 20 Hz for an unchanged profile. Expiry
-    // boundaries are exact, including account login-day rollover and clock rewind.
-    this.arenaAppearanceCache ||= new WeakMap();
-    const at = this.now(),
-      cached = this.arenaAppearanceCache.get(profile);
-    if (
-      cached &&
-      cached.revision === profile.revision &&
-      cached.clan === this.data.clans[profile.clanId] &&
-      cached.testBackgrounds === this.unlockLeagueBackgrounds &&
-      cached.testFrames === this.unlockLeagueFrames &&
-      at >= cached.from &&
-      at < cached.until
-    )
-      return cached.value;
-    const { account, skinId, appearance: selected } = this.identity(profile);
-    let until = account.currencyBonusResetAt;
-    for (const end of [
-      account.vipUntil,
-      account.premiumUntil,
-      ...Object.values(profile.appearance?.grants || {}),
-    ])
-      if (Number.isFinite(end) && end > at) until = Math.min(until, end);
-    const value = { account, skinId, appearance: selected };
-    this.arenaAppearanceCache.set(profile, {
-      value,
-      from: at,
-      until,
-      revision: profile.revision,
-      clan: this.data.clans[profile.clanId],
-      testBackgrounds: this.unlockLeagueBackgrounds,
-      testFrames: this.unlockLeagueFrames,
-    });
-    return value;
+    this.arenaAppearanceCache ||= new (require("./arena-appearance-cache").ArenaAppearanceCache)();
+    return this.arenaAppearanceCache.get(this, profile, this.now());
   }
   publicPlayer(id) {
     this.refreshCompetition();
