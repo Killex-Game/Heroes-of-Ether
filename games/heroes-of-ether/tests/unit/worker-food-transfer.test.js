@@ -2,6 +2,24 @@
 const test = require("node:test"), assert = require("node:assert/strict");
 const { FoodTransferEncoder, FoodTransferDecoder } = require("../../src/server/arena/worker-food-transfer");
 
+test('unchanged membership reuses the ordinal index without mutating older lookup tables', () => {
+  for (const packed of [false,true]) {
+    const encoder=new FoodTransferEncoder({packed}),decoder=new FoodTransferDecoder();
+    let rows=Array.from({length:80},(_,i)=>({id:'e'+i,x:i,y:i/7,value:5,radius:3,color:'gold'}));
+    const round=()=>assert.deepEqual(decoder.decode(structuredClone(encoder.encode(rows))),rows);
+    round();const original=encoder.index, saved=[...original];
+    for(let tick=0;tick<15;tick++){
+      rows=rows.map((row,i)=>({...row,x:row.x+(i%3?.1:0),color:tick===5&&i===4?'blue':row.color}));
+      round();assert.strictEqual(encoder.index,original);
+    }
+    rows=[rows[2],rows[1],rows[0],...rows.slice(3)];round();
+    assert.notStrictEqual(encoder.index,original);assert.deepEqual([...original],saved);
+    rows.pop();round();rows.push({...rows[1],x:999});round();
+    rows=rows.map(row=>({...row,y:row.y+1}));round();
+    assert.equal(encoder.index.get(rows[1].id),rows.length-1);
+  }
+});
+
 test('food ordinal cache retains exact references through reorder and duplicate IDs', () => {
   for (const packed of [false,true]) {
     const encoder=new FoodTransferEncoder({packed}),decoder=new FoodTransferDecoder();
