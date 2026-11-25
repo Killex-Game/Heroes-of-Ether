@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261125-idle-pickup",
-  "sourceTag": "release/20261125-idle-pickup",
-  "sourceCommit": "a14a3408e98c3aa0a233830247c316e56628e3d0",
-  "branch": "codex/20261125-live-load-optimization",
+  "gameRelease": "20261125-friday-shields",
+  "sourceTag": "release/20261125-friday-shields",
+  "sourceCommit": "1398289b4e991666c8fa9de2b9df38f273feb48c",
+  "branch": "codex/20261125-friday-shields-economy",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-25T09:59:20.279Z",
+  "entryReopenedAtUtc": "2026-11-25T12:54:38.757Z",
   "runtime": {
-    "gamePid": 939112,
+    "gamePid": 953254,
     "adminPid": 1163,
     "restarts": 0,
     "entryOpen": true,
@@ -99,71 +99,90 @@
     "New static boundary check requires explicit affected profiles for production transactWorld callers; development contract documents atomic writes and proportional verification.",
     "Build the ether particle index only when a living non-remnant unlocked player can collect. Preserve mass/ID ordering.",
     "Stop hazard candidate scans when no eligible body remains, while still publishing contacts and performing the final refill/empty-room cleanup.",
-    "Food motion, expiry, replenishment, all mechanics, progress persistence, graphic assets and private configuration unchanged."
+    "Food motion, expiry, replenishment, all mechanics, progress persistence, graphic assets and private configuration unchanged.",
+    "Ether purchase prices doubled (votes 2/10/20/50/100/200). Package quantities unchanged. Black Friday purchase tokens remain votes ×10 and consequently double; the coupon does not multiply them again.",
+    "Actual pet shield grants advance personal/event shield metrics through a durable per-life sequence. Duplicate/stale events and failed saves do not double-credit. Existing clan shield handling remains in place.",
+    "Arena view expanded another 5%, bounded by the existing maximum visible world area. Clan level costs and per-level XP accounting unchanged.",
+    "Black Friday success footer removed; exchange success is a short nonblocking overlay. Current clan booster artwork also used by event preload. Clan battle explanatory footer removed.",
+    "Crest tabs show all their choices in rows. CSS stacked panels reserve the tallest category; switching tabs only toggles visibility. Removed pagination and resize measurement loop. Narrow layouts remain scrollable through normal dialog scrolling."
   ],
   "data": {
     "before": {
-      "at": 1795600156767,
-      "revision": 5073797,
-      "digest": "f3b2838dbb6fabf4e8f8f20cd3f9128dec341d93add714e0c1a05b2f668e7a0f",
-      "worldHash": "ed167a6e300dcbb31512297deef2e9ad09997d26a7d8c2e447e44db01f66e1ff",
-      "profiles": 1725,
+      "at": 1795609761588,
+      "revision": 5179711,
+      "digest": "e96960cf47cc4176e91e31ecc9b08be2ed56977c2997923a5da9e510fa74fa8c",
+      "worldHash": "41bc7b81c32ba990d94af3ba8b1c0c044712d122c9fc0ba0a06e03780f2485e6",
+      "profiles": 1724,
       "clans": 137,
       "fullWorldAndAuxEqual": true,
-      "backup": "/run/heroether-load-opt-backup-20261125/load-opt-20261125",
+      "backup": "/run/heroether-friday-shields-backup-20261125/friday-shields-20261125",
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/load-opt-20261125/data-before.tar.gz"
+      "durableBackup": "/srv/heroether-test/play/backups/friday-shields-20261125/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
-      "noCalendarChange": true,
-      "expiredChat": 0,
+      "approvedMigrationsExact": true,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 5073797,
-      "revision": 5073797,
-      "digest": "f3b2838dbb6fabf4e8f8f20cd3f9128dec341d93add714e0c1a05b2f668e7a0f",
-      "worldHash": "ed167a6e300dcbb31512297deef2e9ad09997d26a7d8c2e447e44db01f66e1ff",
-      "profiles": 1725,
-      "clans": 137
+      "beforeRevision": 5179711,
+      "revision": 5179713,
+      "digest": "2e85a4d7e9694275164b95aac9628b59fe46439233cca5f856e0e5304d32115d",
+      "worldHash": "7942e37ddea9a39319c6295f62f0ae93444be707b16bbdfeac29c985810c6959",
+      "profiles": 1724,
+      "clans": 137,
+      "at": 1795610109102,
+      "transitionTimes": [
+        1795610109102,
+        1795610319474
+      ],
+      "retiredAvatarProfiles": [],
+      "constructorChanges": [],
+      "questPayouts": 0,
+      "questChests": 0
     },
     "backup": {
       "verified": true,
-      "archiveSha256": "54020c6d959636948c340c402c5d78a11c8b22cd9da55c30c2305172fe1da858",
-      "revision": 5073797,
-      "digest": "f3b2838dbb6fabf4e8f8f20cd3f9128dec341d93add714e0c1a05b2f668e7a0f",
-      "worldHash": "ed167a6e300dcbb31512297deef2e9ad09997d26a7d8c2e447e44db01f66e1ff",
-      "profiles": 1725,
+      "archiveSha256": "7068838c4e309601e2641755f005a2768395861ce919d3eeb42e37b2ec781391",
+      "revision": 5179711,
+      "digest": "e96960cf47cc4176e91e31ecc9b08be2ed56977c2997923a5da9e510fa74fa8c",
+      "worldHash": "41bc7b81c32ba990d94af3ba8b1c0c044712d122c9fc0ba0a06e03780f2485e6",
+      "profiles": 1724,
       "clans": 137,
       "postgresqlArchiveVerified": true
     },
     "storage": {
-      "archive": "/srv/heroether-test/play/backups/load-opt-20261125/data-before.tar.gz",
-      "sha256": "54020c6d959636948c340c402c5d78a11c8b22cd9da55c30c2305172fe1da858",
-      "bytes": 113912721,
+      "archive": "/srv/heroether-test/play/backups/friday-shields-20261125/data-before.tar.gz",
+      "sha256": "7068838c4e309601e2641755f005a2768395861ce919d3eeb42e37b2ec781391",
+      "bytes": 116049014,
       "checkpointReserve": 629145600,
-      "rawStagingRetained": "/run/heroether-load-opt-backup-20261125",
+      "rawStagingRetained": "/run/heroether-friday-shields-backup-20261125",
       "durableArchiveVerified": true
     }
   },
   "verification": {
-    "source": "a14a3408e98c3aa0a233830247c316e56628e3d0",
+    "source": "1398289b4e991666c8fa9de2b9df38f273feb48c",
     "allRequiredChecksPassed": true,
-    "totalTests": 2535,
-    "totalPassed": 2532,
+    "totalTests": 2538,
+    "totalPassed": 2535,
     "totalSkipped": 3,
     "unresolvedFailures": 0,
-    "windowsPassed": 63,
-    "replayFrames": 14400,
-    "mixedAcknowledged": 1852,
-    "mixedRecovered": 1852,
-    "mixedDuplicates": 0,
-    "method": "One full Linux regression on final code; targeted Windows physics tests; deterministic identical replay; mixed local HTTP/WS and WAL recovery. No repeated full suite or unrelated UI tests.",
-    "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json"
+    "browserEngines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "viewportSizes": [
+      1920,
+      1280,
+      390
+    ],
+    "tabCases": 45,
+    "method": "One full Linux mechanics regression, followed by focused catalog/HTTP checks after the icon URL correction; targeted Windows geometry, transactions and pet shield WAL recovery. Browser failures and fixture corrections retained.",
+    "report": "games/heroes-of-ether/docs/performance/friday-shields-20261125.json"
   },
-  "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json",
-  "previousRelease": "20261125-clan-layout-copy",
-  "notes": "Оптимизация продолжается. Убраны пустые поиски подбора. Точный replay14400 кадров, смешанная нагрузка30+5/2мин и сохранность1852 ACK проверены. Полные данные/PG сверены при установке. 300000CCU и устранение всех лагов не доказаны. Все резервные копии сохранять.",
+  "report": "games/heroes-of-ether/docs/performance/friday-shields-20261125.json",
+  "previousRelease": "20261125-idle-pickup",
+  "notes": "Установлены новые цены эфира, зачёт щитов питомцев, обзор +5%, стабильный редактор герба и компактная обратная связь Чёрной пятницы. Пороги уровней клана сохранены. Предыдущие оптимизации арены сохранены. Нового максимума CCU этот выпуск не устанавливает. Все резервные копии сохранять.",
   "performance": {
     "status": "Measured live baseline; exact deterministic physics replay and short local mixed load. No maximum CCU or overall production speedup established.",
     "beforeInstall": [
@@ -1029,11 +1048,11 @@
     "scope": "Live 60-second baseline and post-deploy health observations; changed room/player mix, not a controlled whole-game speedup."
   },
   "previousInstalledRelease": {
-    "release": "20261125-clan-layout-copy",
-    "sourceCommit": "85cf88dca20dc2f2f958dde45568d998666d39cf",
-    "report": "games/heroes-of-ether/docs/performance/clan-layout-copy-20261125.json"
+    "release": "20261125-idle-pickup",
+    "sourceCommit": "a14a3408e98c3aa0a233830247c316e56628e3d0",
+    "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json"
   },
-  "backendSourceCommit": "a14a3408e98c3aa0a233830247c316e56628e3d0",
+  "backendSourceCommit": "1398289b4e991666c8fa9de2b9df38f273feb48c",
   "calendarIndexUpdate": {
     "installed": true,
     "published": true,

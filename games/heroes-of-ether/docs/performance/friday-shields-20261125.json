@@ -1,0 +1,555 @@
+{
+  "date": "2026-11-25",
+  "release": "20261125-friday-shields",
+  "sourceCommit": "1398289b4e991666c8fa9de2b9df38f273feb48c",
+  "status": "installed",
+  "changes": [
+    "Ether purchase prices doubled (votes 2/10/20/50/100/200). Package quantities unchanged. Black Friday purchase tokens remain votes ×10 and consequently double; the coupon does not multiply them again.",
+    "Actual pet shield grants advance personal/event shield metrics through a durable per-life sequence. Duplicate/stale events and failed saves do not double-credit. Existing clan shield handling remains in place.",
+    "Arena view expanded another 5%, bounded by the existing maximum visible world area. Clan level costs and per-level XP accounting unchanged.",
+    "Black Friday success footer removed; exchange success is a short nonblocking overlay. Current clan booster artwork also used by event preload. Clan battle explanatory footer removed.",
+    "Crest tabs show all their choices in rows. CSS stacked panels reserve the tallest category; switching tabs only toggles visibility. Removed pagination and resize measurement loop. Narrow layouts remain scrollable through normal dialog scrolling."
+  ],
+  "verification": {
+    "source": "1398289b4e991666c8fa9de2b9df38f273feb48c",
+    "allRequiredChecksPassed": true,
+    "totalTests": 2538,
+    "totalPassed": 2535,
+    "totalSkipped": 3,
+    "unresolvedFailures": 0,
+    "browserEngines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "viewportSizes": [
+      1920,
+      1280,
+      390
+    ],
+    "tabCases": 45,
+    "method": "One full Linux mechanics regression, followed by focused catalog/HTTP checks after the icon URL correction; targeted Windows geometry, transactions and pet shield WAL recovery. Browser failures and fixture corrections retained.",
+    "windows": {
+      "first": {
+        "total": 68,
+        "passed": 62,
+        "failed": 6
+      },
+      "retry": {
+        "total": 24,
+        "passed": 23,
+        "failed": 1
+      },
+      "finalGeometryAndTransactions": {
+        "total": 27,
+        "passed": 27
+      },
+      "petShieldTests": 3,
+      "petLevels": 24,
+      "notes": "Initial new fixture called an unexported helper; old camera assertions did not allow the earlier world-visibility cap. Both corrected. Existing green clan tests were not rerun separately."
+    },
+    "catalogLinux": {
+      "tests": 10,
+      "passed": 10
+    },
+    "browser": {
+      "engines": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "viewports": [
+        {
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "width": 1280,
+          "height": 800
+        },
+        {
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "tabCases": 45,
+      "errors": [],
+      "checks": [
+        "all available choices, no pagination or clipped tiles",
+        "same panel height across five tabs",
+        "real clan save and persistence",
+        "exchange toast without geometry changes",
+        "new price and Friday tokens in confirmation"
+      ],
+      "initialFailures": "Dependency/browser path, outdated submit label, delayed release dialog and overly short parallel timeout corrected in the fixture. Forced random order overrides were removed. A genuine missing fire icon was fixed at the server catalogue so preload also uses the current asset. Initial logs retained."
+    }
+  },
+  "deployment": {
+    "staged": {
+      "release": "/srv/heroether-test/play/releases/20261125-friday-shields",
+      "sourceCommit": "1398289b4e991666c8fa9de2b9df38f273feb48c",
+      "files": 2638,
+      "changed": 11,
+      "previousReleaseUnchanged": true,
+      "protectedGraphicsUnchanged": true,
+      "commentsRemoved": 108
+    },
+    "opened": {
+      "at": 1795611278757,
+      "gamePid": 953254,
+      "adminPid": 1163,
+      "revision": 5179713,
+      "generation": 7907,
+      "entryOpened": true,
+      "backend": "postgresql",
+      "exactVerificationWhilePaused": true
+    },
+    "health": {
+      "at": "2026-11-25T12:54:52.798Z",
+      "entryOpen": true,
+      "databaseHealthy": true,
+      "revision": 5179714,
+      "gamePid": 953254,
+      "adminPid": 1163,
+      "candidateInstalled": true
+    },
+    "sourceVerification": {
+      "unchanged": 2604,
+      "mismatches": []
+    },
+    "dataBefore": {
+      "at": 1795609761588,
+      "revision": 5179711,
+      "digest": "e96960cf47cc4176e91e31ecc9b08be2ed56977c2997923a5da9e510fa74fa8c",
+      "worldHash": "41bc7b81c32ba990d94af3ba8b1c0c044712d122c9fc0ba0a06e03780f2485e6",
+      "profiles": 1724,
+      "clans": 137,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/run/heroether-friday-shields-backup-20261125/friday-shields-20261125",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/friday-shields-20261125/data-before.tar.gz"
+    },
+    "dataAfter": {
+      "calendarReplayExact": true,
+      "approvedMigrationsExact": true,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 5179711,
+      "revision": 5179713,
+      "digest": "2e85a4d7e9694275164b95aac9628b59fe46439233cca5f856e0e5304d32115d",
+      "worldHash": "7942e37ddea9a39319c6295f62f0ae93444be707b16bbdfeac29c985810c6959",
+      "profiles": 1724,
+      "clans": 137,
+      "at": 1795610109102,
+      "transitionTimes": [
+        1795610109102,
+        1795610319474
+      ],
+      "retiredAvatarProfiles": [],
+      "constructorChanges": [],
+      "questPayouts": 0,
+      "questChests": 0
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "7068838c4e309601e2641755f005a2768395861ce919d3eeb42e37b2ec781391",
+      "revision": 5179711,
+      "digest": "e96960cf47cc4176e91e31ecc9b08be2ed56977c2997923a5da9e510fa74fa8c",
+      "worldHash": "41bc7b81c32ba990d94af3ba8b1c0c044712d122c9fc0ba0a06e03780f2485e6",
+      "profiles": 1724,
+      "clans": 137,
+      "postgresqlArchiveVerified": true
+    },
+    "storage": {
+      "archive": "/srv/heroether-test/play/backups/friday-shields-20261125/data-before.tar.gz",
+      "sha256": "7068838c4e309601e2641755f005a2768395861ce919d3eeb42e37b2ec781391",
+      "bytes": 116049014,
+      "checkpointReserve": 629145600,
+      "rawStagingRetained": "/run/heroether-friday-shields-backup-20261125",
+      "durableArchiveVerified": true
+    },
+    "http": {
+      "checked": 8,
+      "rows": [
+        {
+          "file": "public/index.html",
+          "sha256": "9df2bf66f80cd4ce0c016df29a7b9f215ef21cced8765a7f4baceee2edb4e69f",
+          "status": 200
+        },
+        {
+          "file": "public/shared/arena-camera-and-layout.js",
+          "sha256": "53f2b9786bf55fc33984aa2666dfb5c3d241c8a2f4a44fbcd2556b582f1af9f1",
+          "status": 200
+        },
+        {
+          "file": "public/shared/virtual-product-catalog.js",
+          "sha256": "c5209cfef4ab20d6c65d8cc3942f6ca9d22378a8517b921ea51c770cd011888f",
+          "status": 200
+        },
+        {
+          "file": "public/styles/components/black-friday.css",
+          "sha256": "6120a00abb69a9c9396481d19ae5b9392e22104197082c57a1508b61b032bfdc",
+          "status": 200
+        },
+        {
+          "file": "public/styles/components/clan-compact-navigation.css",
+          "sha256": "d86c964698638cdf564492c7b54c96c807579d9f26f2dc65773c7a5890634869",
+          "status": 200
+        },
+        {
+          "file": "public/ui/clans/clan-battle-and-treasury.js",
+          "sha256": "7342b09c3f07ba31b9558d64ed63f289858555ff982b179b9cdb1d95f4ee8f9f",
+          "status": 200
+        },
+        {
+          "file": "public/ui/clans/clan-crest-editor.js",
+          "sha256": "db1b72b78f23381ff8eacd59019f11eb1189639809e317d478f303a938fb659e",
+          "status": 200
+        },
+        {
+          "file": "public/ui/progression/black-friday.js",
+          "sha256": "9da9c32303dd172ed60c7230ccfd7597cb00316ae3ee63d24a8f25feb996293b",
+          "status": 200
+        }
+      ]
+    },
+    "firstGateFailure": "Startup timestamp evidence was not captured before the first comparison. Entry stayed closed and the process resumed automatically; timestamp was recovered from the actual PID journal, original failure retained, then exact verification rerun.",
+    "secondGateFailure": "Calendar replay inserted the HTTP listener timestamp before already persisted expiry timestamps, producing a false notice-time mismatch. Replay now uses evidenced transition times and compares every field; original failure and script are preserved."
+  },
+  "storage": {
+    "rows": [
+      {
+        "file": "/srv/heroether-test/results/arena-freezes-20261115/backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+        "oldInode": 3946522,
+        "oldLinks": 1,
+        "bytes": 29685530
+      },
+      {
+        "file": "/srv/heroether-test/results/avatar-side-fit-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+        "oldInode": 3693133,
+        "oldLinks": 1,
+        "bytes": 29685530
+      },
+      {
+        "file": "/srv/heroether-test/results/chat-moderation-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+        "oldInode": 3550237,
+        "oldLinks": 1,
+        "bytes": 29685530
+      },
+      {
+        "file": "/srv/heroether-test/results/chest-notices-20261115/backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+        "oldInode": 3825239,
+        "oldLinks": 1,
+        "bytes": 29685530
+      },
+      {
+        "file": "/srv/heroether-test/results/clan-awards-preview-20261115/backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+        "oldInode": 3817056,
+        "oldLinks": 1,
+        "bytes": 29685530
+      },
+      {
+        "file": "/srv/heroether-test/results/clan-quests-foundation-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+        "oldInode": 3801097,
+        "oldLinks": 1,
+        "bytes": 29685530
+      },
+      {
+        "file": "/srv/heroether-test/results/clan-quests-live-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+        "oldInode": 3808849,
+        "oldLinks": 1,
+        "bytes": 29685530
+      },
+      {
+        "file": "/srv/heroether-test/results/community-names-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+        "oldInode": 3685414,
+        "oldLinks": 1,
+        "bytes": 29685530
+      },
+      {
+        "file": "/srv/heroether-test/results/sustained-work-20261115/checkpoint-backup/after-migrations/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794662080692-d44ac0b45c81.json",
+        "sha256": "f8ea6d59bfc23802d0c05653ea629f4cf7cf73a15be4de41d3c7655234e8df60",
+        "oldInode": 3951292,
+        "oldLinks": 1,
+        "bytes": 29685530
+      },
+      {
+        "file": "/srv/heroether-test/results/arena-freezes-20261115/backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3946521,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/avatar-quest-fit-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 2253791,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/avatar-side-fit-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3693132,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/chat-moderation-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3550236,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/chest-notices-20261115/backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3825238,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/clan-awards-preview-20261115/backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3817055,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/clan-quests-foundation-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3801096,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/clan-quests-live-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3808848,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/community-names-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3685413,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/mongo-operation-metrics-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3538954,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/monitoring-message-fix-20261114/backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 1998755,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/monitoring-message-fix-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 2246139,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/sustained-work-20261115/checkpoint-backup/after-migrations/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794633565096-08628a74a11d.json",
+        "sha256": "549d6243b35631c1a4f4de378e9fba90b2d47d56c0975268f6f81c3f218856b8",
+        "oldInode": 3951291,
+        "oldLinks": 1,
+        "bytes": 28358083
+      },
+      {
+        "file": "/srv/heroether-test/results/arena-freezes-20261115/backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3946520,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/avatar-quest-fit-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 2253790,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/avatar-side-fit-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3693131,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/chat-moderation-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3550235,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/chest-notices-20261115/backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3825237,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/clan-awards-preview-20261115/backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3817054,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/clan-quests-foundation-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3801095,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/clan-quests-live-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3808847,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/community-names-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3685412,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/mongo-operation-metrics-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3538953,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/monitoring-message-fix-20261114/backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 1998754,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/monitoring-message-fix-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 2246138,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/service-controls-20261114/backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 1991742,
+        "oldLinks": 1,
+        "bytes": 27965588
+      },
+      {
+        "file": "/srv/heroether-test/results/sustained-work-20261115/checkpoint-backup/after-migrations/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "canonical": "/srv/heroether-test/results/admin-two-factor-20261114/final-backup-data/recovery-backups/profiles-1794627437497-0a491d3fbc9c.json",
+        "sha256": "6d5c2f2dea19363464546dd70f000e2e4b25873dd04b47735df063ff522c2d3c",
+        "oldInode": 3951290,
+        "oldLinks": 1,
+        "bytes": 27965588
+      }
+    ],
+    "files": 36,
+    "observedFreeDelta": 1026777088,
+    "archiveSha256": "19fa1d83da3a9943bcdec99ec345954e0975cafd61a94fd05fd178a96e66edb4",
+    "allPathsAndBytesPreserved": true,
+    "metadataPreserved": true,
+    "liveDataTouched": false
+  },
+  "localhost": {
+    "pid": 15336,
+    "port": 3104,
+    "dataIsolated": true,
+    "fullWorldEqual": true,
+    "auxiliaryEqual": true,
+    "revision": 25,
+    "entryOpen": true,
+    "experimentalPort3000Untouched": true,
+    "httpFiles": [
+      "public/index.html",
+      "public/shared/arena-camera-and-layout.js",
+      "public/shared/virtual-product-catalog.js",
+      "public/styles/components/black-friday.css",
+      "public/styles/components/clan-compact-navigation.css",
+      "public/ui/clans/clan-battle-and-treasury.js",
+      "public/ui/clans/clan-crest-editor.js",
+      "public/ui/progression/black-friday.js"
+    ]
+  },
+  "finalDatabaseVerification": {
+    "ok": true,
+    "revision": 5179713,
+    "generation": 7907,
+    "digest": "2e85a4d7e9694275164b95aac9628b59fe46439233cca5f856e0e5304d32115d",
+    "worldHash": "7942e37ddea9a39319c6295f62f0ae93444be707b16bbdfeac29c985810c6959",
+    "profiles": 1724,
+    "clans": 137,
+    "fullWorldAndAuxEqual": true,
+    "calendarComparisonRevalidated": true
+  },
+  "thirdGateFailure": "The full calendar and auxiliary comparison passed. The legacy PostgreSQL status formatter then returned PG_OPERATION_FAILED. A separate read verified the identical database digest. The final gate revalidates the already compared local digest/revision/world hash and directly compares the complete PostgreSQL world and auxiliary data, without serializing a redundant whole-world summary. Original failure is retained; no data corrections were made.",
+  "limitations": [
+    "No historical pet shield credits were fabricated. Previously missing amounts are not proven.",
+    "Payment verification uses the existing mock purchase path; no real VK charges performed.",
+    "This release is a mechanics/UI correction, not a new maximum-capacity test. Previous optimized arena runtime is preserved; 300000 CCU remains unproven.",
+    "Desktop shows all rows; small screens use normal dialog scrolling to keep controls reachable. No crest art was changed."
+  ]
+}
