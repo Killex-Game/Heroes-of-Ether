@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261126-gifts-lobby",
-  "sourceTag": "release/20261126-gifts-lobby",
-  "sourceCommit": "3116db32062eee0387e0a43d674669227d26725a",
-  "branch": "codex/20261126-gifts-lobby-retention",
+  "gameRelease": "20261126-kill-potions",
+  "sourceTag": "release/20261126-kill-potions",
+  "sourceCommit": "028cce3b4d86993400c293ee3f4ad68d3887ac96",
+  "branch": "codex/20261126-kill-patterns",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-25T20:31:31.545Z",
+  "entryReopenedAtUtc": "2026-11-25T21:54:07.517Z",
   "runtime": {
-    "gamePid": 1012306,
+    "gamePid": 1025914,
     "adminPid": 1163,
     "restarts": 0,
     "entryOpen": true,
@@ -111,190 +111,142 @@
     "Correct Russian vote labels, including 2 голоса, in currency packages, promotion buttons and payment confirmation.",
     "Negative gifts 5%; three strongest-only timed sets and dedicated temporary curse portrait; inventory, identity and expiry preserved.",
     "Effi floats independently; generator precedes promo; unique clan victory artwork.",
-    "Owner-authorized obsolete backup cleanup; latest verified recovery and unique original artwork retained."
+    "Owner-authorized obsolete backup cleanup; latest verified recovery and unique original artwork retained.",
+    "New gift potions remain equipable with an exhausted prior potion queue; newly requested unavailable potions are still rejected.",
+    "Premium emotes retain their desktop position independent of the potion panel; mobile controls remain usable.",
+    "Negative set cards use hover details; active effects show countdown and four ordered modifiers only.",
+    "Static VIP/Premium glow restored; new soft silly pig, native infection/hex overlays and a thin static mint Sphere shield.",
+    "Kill records bounded manual-cadence and repeated-route evidence for owner review; no automatic ban or punishment; ordinary move/W/feeding timers excluded."
   ],
   "data": {
     "before": {
-      "at": 1795616908370,
-      "revision": 5242724,
-      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
-      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
-      "profiles": 1726,
-      "clans": 137,
+      "at": 1795642827457,
+      "revision": 5549817,
+      "digest": "49f09c925c71616d83025898a6ff66c590c5003698796769422b8efd902922cc",
+      "worldHash": "57e8e63d1835587ab06922929cc8a08ecca6aeb50fb18ec7032ff1b5ba701138",
+      "profiles": 1728,
+      "clans": 138,
       "fullWorldAndAuxEqual": true,
-      "backup": "/run/heroether-friday-constructor-backup-20261125/friday-constructor-20261125",
+      "backup": "/run/heroether-kill-potions-backup-20261126/kill-patterns-ui-20261126",
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/friday-constructor-20261125/data-before.tar.gz"
+      "durableBackup": "/srv/heroether-test/play/backups/kill-patterns-ui-20261126/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
-      "noCalendarChange": true,
-      "expiredChat": 0,
+      "approvedMigrationsExact": true,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 5242724,
-      "revision": 5242724,
-      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
-      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
-      "profiles": 1726,
-      "clans": 137
+      "beforeRevision": 5549817,
+      "revision": 5549818,
+      "digest": "5fe43c106119b74223f07906b2bffdbae317c560b4eccda5e4fcf72b88d28dd4",
+      "worldHash": "082a42713bb4947620ab1b23cc70db2f3d5ebf022675d6a5a5c44c5432cd9d4f",
+      "profiles": 1728,
+      "clans": 138,
+      "at": 1795643333209,
+      "transitionTimes": [
+        1795643333209
+      ],
+      "retiredAvatarProfiles": [],
+      "constructorChanges": [],
+      "questPayouts": 0,
+      "questChests": 0
     },
     "backup": {
       "verified": true,
-      "archiveSha256": "ccee7b49c55824c8271baada649eaa55ad7a9042d06dfa5bf795eb69e2aac91a",
-      "revision": 5242724,
-      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
-      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
-      "profiles": 1726,
-      "clans": 137,
+      "archiveSha256": "3fd09514facb6e32b2853ed75ae80c25533dc9b08aad6024e81b861aab86cc50",
+      "revision": 5549817,
+      "digest": "49f09c925c71616d83025898a6ff66c590c5003698796769422b8efd902922cc",
+      "worldHash": "57e8e63d1835587ab06922929cc8a08ecca6aeb50fb18ec7032ff1b5ba701138",
+      "profiles": 1728,
+      "clans": 138,
       "postgresqlArchiveVerified": true
     },
     "storage": {
-      "archive": "/srv/heroether-test/play/backups/friday-constructor-20261125/data-before.tar.gz",
-      "sha256": "ccee7b49c55824c8271baada649eaa55ad7a9042d06dfa5bf795eb69e2aac91a",
-      "bytes": 116759934,
+      "archive": "/srv/heroether-test/play/backups/kill-patterns-ui-20261126/data-before.tar.gz",
+      "sha256": "3fd09514facb6e32b2853ed75ae80c25533dc9b08aad6024e81b861aab86cc50",
+      "bytes": 121765249,
       "checkpointReserve": 629145600,
-      "rawStagingRetained": "/run/heroether-friday-constructor-backup-20261125",
+      "rawStagingRetained": "/run/heroether-kill-potions-backup-20261126",
       "durableArchiveVerified": true
     }
   },
   "verification": {
-    "source": "ae0ed92f20fe479cea116a0c7a02fd129d7d92e0",
+    "at": "2026-11-25T21:37:15.600Z",
     "allRequiredChecksPassed": true,
-    "totalTests": 2546,
-    "totalPassed": 2543,
-    "totalSkipped": 3,
-    "focused": {
-      "tests": 24,
-      "pass": 24,
-      "skipped": 0
+    "totalPassed": 2565,
+    "totalSkipped": 7,
+    "sets": {
+      "linux-focused": {
+        "tests": 61,
+        "pass": 61,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "linux-refined": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "linux-full": {
+        "tests": 2572,
+        "pass": 2565,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 7
+      }
     },
-    "realPostgreSQL": true,
-    "browsers": [
-      "chromium",
-      "firefox",
-      "webkit"
+    "limitations": [
+      "WebKit automation is not a real-device Safari test.",
+      "No new whole-game maximum CCU or long mixed-load run in this UI/detection update."
     ],
-    "browserChecks": 18,
-    "unresolvedFailures": 0,
-    "method": "One full Linux regression; targeted final runtime refinement and isolated real PostgreSQL rollback/read; three browser engines via independent control server. Initial fixture and browser setup failures retained.",
-    "report": "games/heroes-of-ether/docs/performance/friday-constructor-20261125.json"
-  },
-  "report": "games/heroes-of-ether/docs/performance/friday-constructor-20261125.json",
-  "previousRelease": "20261125-friday-shields",
-  "notes": "Установлен конструктор недельных пятничных наборов и исправлены склонения голосов. Существующие цены/составы/расписание сохранены до правки владельцем. Все backups сохранять. Новый максимум CCU не измерялся.",
-  "performance": {
-    "status": "Measured live baseline; exact deterministic physics replay and short local mixed load. No maximum CCU or overall production speedup established.",
-    "beforeInstall": [
+    "browsers": [
       {
-        "at": "2026-11-25T09:25:57.188Z",
-        "online": {
-          "arena": 9,
-          "lobby": 3,
-          "total": 12
-        },
-        "arena": {
-          "rooms": 7,
-          "activePlayers": 52,
-          "parts": 211,
-          "connections": 9
-        },
-        "tickP95Ms": 39.95
+        "engine": "chromium",
+        "hudChecks": 4,
+        "giftChecks": 3,
+        "shieldChecks": 3,
+        "errors": 0
       },
       {
-        "at": "2026-11-25T09:26:07.218Z",
-        "online": {
-          "arena": 9,
-          "lobby": 4,
-          "total": 13
-        },
-        "arena": {
-          "rooms": 7,
-          "activePlayers": 51,
-          "parts": 195,
-          "connections": 9
-        },
-        "tickP95Ms": 41.18
+        "engine": "firefox",
+        "hudChecks": 4,
+        "giftChecks": 3,
+        "shieldChecks": 3,
+        "errors": 0
       },
       {
-        "at": "2026-11-25T09:26:17.233Z",
-        "online": {
-          "arena": 9,
-          "lobby": 4,
-          "total": 13
-        },
-        "arena": {
-          "rooms": 7,
-          "activePlayers": 52,
-          "parts": 195,
-          "connections": 9
-        },
-        "tickP95Ms": 42.16
-      },
-      {
-        "at": "2026-11-25T09:26:27.260Z",
-        "online": {
-          "arena": 9,
-          "lobby": 4,
-          "total": 13
-        },
-        "arena": {
-          "rooms": 7,
-          "activePlayers": 53,
-          "parts": 189,
-          "connections": 9
-        },
-        "tickP95Ms": 43.25
-      },
-      {
-        "at": "2026-11-25T09:26:37.274Z",
-        "online": {
-          "arena": 9,
-          "lobby": 4,
-          "total": 13
-        },
-        "arena": {
-          "rooms": 7,
-          "activePlayers": 52,
-          "parts": 163,
-          "connections": 9
-        },
-        "tickP95Ms": 43.98
-      },
-      {
-        "at": "2026-11-25T09:26:47.308Z",
-        "online": {
-          "arena": 9,
-          "lobby": 4,
-          "total": 13
-        },
-        "arena": {
-          "rooms": 7,
-          "activePlayers": 52,
-          "parts": 173,
-          "connections": 9
-        },
-        "tickP95Ms": 43.87
-      },
-      {
-        "at": "2026-11-25T09:26:57.321Z",
-        "online": {
-          "arena": 9,
-          "lobby": 4,
-          "total": 13
-        },
-        "arena": {
-          "rooms": 7,
-          "activePlayers": 53,
-          "parts": 164,
-          "connections": 9
-        },
-        "tickP95Ms": 43.12
+        "engine": "webkit",
+        "hudChecks": 4,
+        "giftChecks": 3,
+        "shieldChecks": 3,
+        "errors": 0
       }
     ],
-    "capacityVerified": false,
-    "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json",
-    "previousReleaseMeasurement": "games/heroes-of-ether/docs/performance/clan-layout-copy-20261125.json"
+    "windowsFocused": {
+      "pass": 11,
+      "fail": 0
+    },
+    "initialFailuresPreserved": [
+      "Browser fixtures initially did not dismiss an actual gift notice or initialize social state.",
+      "A mobile account-button rule overrode crown glow; fixed with scoped specificity and checked in three engines."
+    ],
+    "source": "028cce3b4d86993400c293ee3f4ad68d3887ac96",
+    "report": "games/heroes-of-ether/docs/performance/kill-potions-ui-20261126.json"
+  },
+  "report": "games/heroes-of-ether/docs/performance/kill-potions-ui-20261126.json",
+  "previousRelease": "20261126-gifts-lobby",
+  "notes": "Установлены Kill для проверки повторяемости без автобана, исправление подарочных зелий, HUD и статическая тонкая Сфера. Серверные снимки/IPC/прогресс остаются работой. Проверенные копии сохранены, извлечённые временные копии удалены.",
+  "performance": {
+    "status": "Live CPU baseline and bounded detector cost measured; no whole-game CPU speedup or new maximum CCU demonstrated.",
+    "report": "games/heroes-of-ether/docs/performance/kill-potions-ui-20261126.json",
+    "mainBottlenecks": [
+      "room simulation",
+      "snapshot and worker message serialization",
+      "arena progress batches"
+    ]
   },
   "staticPortraitUpdate": {
     "at": "2026-11-23T00:51:37.226Z",
@@ -33932,6 +33884,16 @@
     "report": "games/heroes-of-ether/docs/performance/alchemy-vip-hud-20261125.json",
     "sourceCommit": "b23f3972de796204a4b420191e1adc38b193a2e1"
   },
-  "latestReport": "games/heroes-of-ether/docs/performance/gifts-lobby-retention-20261126.json",
-  "backupRetention": "Latest verified recovery and previous verified recovery plus unique originals. Historical keep-all statements superseded by owner request."
+  "latestReport": "games/heroes-of-ether/docs/performance/kill-potions-ui-20261126.json",
+  "backupRetention": "Latest verified recovery and previous verified recovery plus unique originals. Historical keep-all statements superseded by owner request.",
+  "killPotionsUpdate": {
+    "source": "028cce3b4d86993400c293ee3f4ad68d3887ac96",
+    "report": "games/heroes-of-ether/docs/performance/kill-potions-ui-20261126.json",
+    "local": {
+      "port": 3104,
+      "pid": 28496,
+      "isolatedData": true,
+      "rootSyncedFiles": 37
+    }
+  }
 }
