@@ -466,6 +466,8 @@ if (process.env.LOAD_CLIENT === "1") {
     if (c.ws.readyState === 1) c.ws.send(JSON.stringify({ spawnSerial: c.p.spawnSerial, ...m }));
   };
   async function main() {
+    // Match normal startup readiness before opening admission to synthetic users.
+    await profiles.arenaPreparer?.warm?.();
     app.httpServer.listen(0, "127.0.0.1");
     await once(app.httpServer, "listening");
     const url = "ws://127.0.0.1:" + app.httpServer.address().port;

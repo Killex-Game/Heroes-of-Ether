@@ -2492,6 +2492,9 @@ async function startServer() {
     };
     database.attach(app.profiles, app.chat);
   }
+  // First arena actions must not wait for cold calculator module loading.
+  // A failed optional lane retains the existing authoritative calculation path.
+  await app.profiles.arenaPreparer?.warm?.();
   app.httpServer.on("error", (error) => {
     console.error(
       error.code === "EADDRINUSE"
