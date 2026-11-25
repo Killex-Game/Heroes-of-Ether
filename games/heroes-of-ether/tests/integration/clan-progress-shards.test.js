@@ -13,10 +13,11 @@ function comparable(data){const copy=structuredClone(data);for(const p of Object
 function fixture(t,pipeline=false,day=start,poolOptions={}){
  let cleanup,now=day-86400000;
  const dir=temporary({after:fn=>{cleanup=fn;}},'clan-progress-shards');
- const store=new ProfileStore({filePath:path.join(dir,'profiles.json'),journal:true,now:()=>now,
+ const constructorBackend=!pipeline&&!Object.keys(poolOptions).length;
+ const store=new ProfileStore({filePath:path.join(dir,'profiles.json'),journal:true,now:()=>now,arenaProgressShards:constructorBackend?3:0,
    clanDailyQuests:true,incrementalSettlement:true});
  const serial=new ProfileStore({now:()=>now,clanDailyQuests:true,incrementalSettlement:true});
- const pool=pipeline?new ArenaProgressPreparer({parallelism:3,computeBudgetMs:100}):new ClanArenaProgressShards({count:3,...poolOptions});
+ const pool=pipeline?new ArenaProgressPreparer({parallelism:3,computeBudgetMs:100}):store.arenaPreparer||new ClanArenaProgressShards({count:3,...poolOptions});
  store.arenaPreparer=pool;
  t.after(async()=>{await store.close();await serial.close();cleanup();});
  const users=Array.from({length:12},()=>store.open()),api=new ClanService(store);

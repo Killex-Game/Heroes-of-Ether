@@ -155,6 +155,7 @@ if (process.env.LOAD_CLIENT === "1") {
     filePath: path.join(dataDir, "profiles.json"),
     journal: process.env.LOAD_JOURNAL !== "0",
     arenaProgressWorker: process.env.LOAD_PROFILE_WORKER === "1",
+    arenaProgressShards: process.env.LOAD_PROFILE_CLAN_SHARDS===undefined?0:Number(process.env.LOAD_PROFILE_CLAN_SHARDS),
     // Match startServer by default. Explicit 0 remains available to diagnose
     // the old full-world path, but is recorded as a different configuration.
     incrementalSettlement: process.env.LOAD_INCREMENTAL_SETTLEMENT !== "0",
@@ -168,12 +169,6 @@ if (process.env.LOAD_CLIENT === "1") {
     if (profiles.arenaPreparer || !profiles.journal) throw Error("Use one journaled progress backend");
     profiles.arenaPreparer = new (require("../../src/server/profiles/arena-progress-shards").ArenaProgressShards)({
       count: Number(process.env.LOAD_PROFILE_SHARDS),
-    });
-  }
-  if (process.env.LOAD_PROFILE_CLAN_SHARDS) {
-    if (profiles.arenaPreparer || !profiles.journal) throw Error('Use one journaled progress backend');
-    profiles.arenaPreparer = new (require('../../src/server/profiles/clan-arena-progress-shards').ClanArenaProgressShards)({
-      count: Number(process.env.LOAD_PROFILE_CLAN_SHARDS),
     });
   }
   if (process.env.LOAD_PROFILE_PIPELINE) {

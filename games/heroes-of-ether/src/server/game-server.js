@@ -2452,6 +2452,7 @@ async function startServer() {
         // Recheck changed profiles and exact reward deadlines, retaining the
         // full settlement fallback for unknown snapshots and clock boundaries.
         incrementalSettlement: true,
+        arenaProgressShards: settings.progressWorkerCount,
         clanDailyQuests: true,
         petEvents: settings.petEvents,
         rouletteConfig: settings.roulette,
