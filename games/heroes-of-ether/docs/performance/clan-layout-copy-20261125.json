@@ -1,0 +1,354 @@
+{
+  "release": "20261125-clan-layout-copy",
+  "sourceCommit": "85cf88dca20dc2f2f958dde45568d998666d39cf",
+  "tag": "release/20261125-clan-layout-copy",
+  "at": "2026-11-25T08:17:28.371Z",
+  "entryOpenedAt": "2026-11-25T08:13:52.766Z",
+  "gamePid": 928234,
+  "adminPid": 1163,
+  "changes": [
+    "public/index.html",
+    "public/styles/components/clan-compact-navigation.css",
+    "src/server/clans/battle-history.js",
+    "src/server/clans/clan-draft.js",
+    "src/server/profiles/profile-store.js"
+  ],
+  "unchangedSourceFilesVerified": 2610,
+  "productionFiles": 2638,
+  "commentsRemoved": 113,
+  "protectedGraphicsUnchanged": true,
+  "scope": [
+    "Clan banner occupies its own row in every view; chat input and settings Save remain reachable. Rounded chat/tables and themed panels follow the home view. Treasury deposits wrap on small screens.",
+    "Audited clan transactions and calendar settlement share immutable member/battle ledgers via clan-draft. Every other and unknown future field remains private. Generic callbacks retain full isolation.",
+    "New static boundary check requires explicit affected profiles for production transactWorld callers; development contract documents atomic writes and proportional verification."
+  ],
+  "audit": {
+    "scripts": 374,
+    "sourceFiles": 235,
+    "publicFiles": 2379,
+    "configFiles": 14,
+    "sites": 490,
+    "parseErrors": [],
+    "reviewed": [
+      "ProfileStore arena/lobby/world drafts and publication order",
+      "Three production transactWorld callers: clans, gifts/marriage, promo codes",
+      "Clan ledger writers, calendar settlement and validators",
+      "WAL/delta/checkpoint, immutable fragments and PostgreSQL IPC",
+      "Profile histories and purchase/achievement/inventory recovery coverage"
+    ],
+    "findings": [
+      "Production world commands already use bounded write sets. The complete-world generic fallback remains for arbitrary isolated callbacks; it is not invoked by the three game handlers.",
+      "copyRecord copies table references, not all nested profiles. Single-player actions still create one private profile draft. Existing receipt/history sharing is preserved.",
+      "Full reads for cold start, migrations, recovery, verification and backups remain deliberate. PostgreSQL worker receives a pinned snapshot descriptor; optional full-world/room prototypes stay disabled.",
+      "Other structuredClone sites include isolated auth state, one player remnant, reward/UI projections, event manifests, season metadata and testing tools; they are not all full-world clones."
+    ]
+  },
+  "verification": {
+    "source": "85cf88dca20dc2f2f958dde45568d998666d39cf",
+    "allRequiredChecksPassed": true,
+    "totalTests": 2532,
+    "totalPassed": 2529,
+    "totalSkipped": 3,
+    "unresolvedFailures": 0,
+    "realPostgreSQLPassed": 12,
+    "windowsPassed": 2529,
+    "method": "One full suite on each OS; final generic-callback isolation guard and added test verified by 52-test focused reruns. Linux full source predates the one added generic callback test. Runtime diff restricted to audited draft selection; no full suite rerun.",
+    "rows": [
+      {
+        "name": "windows-full",
+        "tests": 2532,
+        "pass": 2529,
+        "skip": 3,
+        "fail": 0,
+        "sha256": "f0b223e52ecb5946d00fea53c2c756cb91708556d44cb43348006abba6ee48b7"
+      },
+      {
+        "name": "linux-full-1",
+        "tests": 2531,
+        "pass": 2528,
+        "skip": 3,
+        "fail": 0,
+        "sha256": "265f8a038f9c04dd0d2bedd5296ca9ef97912648548a9eaa4b33abbc9d745987"
+      },
+      {
+        "name": "copy-final-2",
+        "tests": 52,
+        "pass": 52,
+        "skip": 0,
+        "fail": 0,
+        "sha256": "5d1caf0c3290cab27da52906a531a44cec5f6fde490f6f7ed7615f7ad2340e12"
+      },
+      {
+        "name": "copy-final-linux",
+        "tests": 52,
+        "pass": 52,
+        "skip": 0,
+        "fail": 0,
+        "sha256": "f064fd062e0ad4e63fed513c09d69c95aa3e74b0252c1ae598a75fd2afbc7834"
+      },
+      {
+        "name": "real-pg",
+        "tests": 12,
+        "pass": 12,
+        "skip": 0,
+        "fail": 0,
+        "sha256": "aec3e643b6677247e749b1687a65cad4ab3b18a8987e323dc522e30364637f7a"
+      },
+      {
+        "name": "browser",
+        "contexts": 12,
+        "sha256": "ea726be26171f6a6719273308abf42b87d8ed9d7aea84d07c590bf841e933e6f"
+      }
+    ]
+  },
+  "performance": {
+    "deposits": {
+      "kind": "in-memory clan deposits; no network/fsync or capacity claim",
+      "members": 12,
+      "memberHistory": 5000,
+      "battleHistory": 500,
+      "operations": 30,
+      "pairs": [
+        {
+          "beforeMs": 638.6075,
+          "afterMs": 116.61820000000012,
+          "equal": true
+        },
+        {
+          "beforeMs": 577.2181,
+          "afterMs": 103.08050000000003,
+          "equal": true
+        },
+        {
+          "beforeMs": 571.3859000000002,
+          "afterMs": 97.92939999999999,
+          "equal": true
+        }
+      ]
+    },
+    "depositReference": "Same transaction path with a complete copyArenaData clan draft versus shared-ledger draft; not the exact previous JSON-clone runtime.",
+    "emptyHistoryHelper": {
+      "kind": "helper only; empty history,15000 copies; not whole-game CPU",
+      "rejectedPerField": {
+        "beforeMs": 212.9273,
+        "afterMs": 422.3157
+      },
+      "finalPairs": [
+        {
+          "pair": 0,
+          "name": "old",
+          "ms": 202.3626
+        },
+        {
+          "pair": 0,
+          "name": "new",
+          "ms": 242.79109999999997
+        },
+        {
+          "pair": 1,
+          "name": "new",
+          "ms": 211.08859999999993
+        },
+        {
+          "pair": 1,
+          "name": "old",
+          "ms": 203.59839999999997
+        },
+        {
+          "pair": 2,
+          "name": "old",
+          "ms": 202.18560000000002
+        },
+        {
+          "pair": 2,
+          "name": "new",
+          "ms": 232.5371
+        }
+      ]
+    }
+  },
+  "data": {
+    "before": {
+      "at": 1795593836482,
+      "revision": 5006132,
+      "digest": "e88a12ad7cd110b032656bd6d5d6b7b72d301a9a0a69745d3f087d23076164a1",
+      "worldHash": "4dc4dde0d97ad266781081c2d135c4312ca495351600df5093714e240ae613e3",
+      "profiles": 1723,
+      "clans": 137,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/run/heroether-clan-layout-backup-20261125/clan-layout-20261125",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/clan-layout-20261125/data-before.tar.gz"
+    },
+    "after": {
+      "calendarReplayExact": true,
+      "noCalendarChange": true,
+      "expiredChat": 0,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 5006132,
+      "revision": 5006132,
+      "digest": "e88a12ad7cd110b032656bd6d5d6b7b72d301a9a0a69745d3f087d23076164a1",
+      "worldHash": "4dc4dde0d97ad266781081c2d135c4312ca495351600df5093714e240ae613e3",
+      "profiles": 1723,
+      "clans": 137
+    },
+    "backup": {
+      "archive": "/srv/heroether-test/play/backups/clan-layout-20261125/data-before.tar.gz",
+      "sha256": "be34a0368e3f5dc9a082ec19a22693fa4c47070c67b3fecd5d4072bfae9182b4",
+      "bytes": 113225229,
+      "checkpointReserve": 629145600,
+      "rawStagingRetained": "/run/heroether-clan-layout-backup-20261125",
+      "durableArchiveVerified": true
+    },
+    "localBackup": {
+      "verified": true,
+      "archiveSha256": "be34a0368e3f5dc9a082ec19a22693fa4c47070c67b3fecd5d4072bfae9182b4",
+      "revision": 5006132,
+      "digest": "e88a12ad7cd110b032656bd6d5d6b7b72d301a9a0a69745d3f087d23076164a1",
+      "worldHash": "4dc4dde0d97ad266781081c2d135c4312ca495351600df5093714e240ae613e3",
+      "profiles": 1723,
+      "clans": 137,
+      "postgresqlArchiveVerified": true
+    },
+    "localReview": {
+      "worldEqual": true,
+      "auxiliaryEqual": true,
+      "beforeRevision": 25,
+      "afterRevision": 25,
+      "profiles": 0
+    }
+  },
+  "health": {
+    "at": "2026-11-25T08:15:26.996Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 5006143,
+    "gamePid": 928234,
+    "adminPid": 1163,
+    "candidateInstalled": true
+  },
+  "browser": {
+    "contexts": 12,
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "sizes": [
+      [
+        1910,
+        962
+      ],
+      [
+        1398,
+        766
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        854,
+        390
+      ]
+    ],
+    "errors": 0
+  },
+  "http": {
+    "at": "2026-11-25T08:14:32.892Z",
+    "checks": [
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/index.html",
+        "bytes": 43225,
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/styles/components/clan-compact-navigation.css",
+        "bytes": 5090,
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/shared/arena-wire.js",
+        "bytes": 17618,
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3000",
+        "file": "public/shared/player-identity.js",
+        "bytes": 20150,
+        "exact": true
+      },
+      {
+        "origin": "http://195.208.123.221",
+        "file": "public/index.html",
+        "bytes": 43225,
+        "exact": true
+      },
+      {
+        "origin": "http://195.208.123.221",
+        "file": "public/styles/components/clan-compact-navigation.css",
+        "bytes": 5090,
+        "exact": true
+      },
+      {
+        "origin": "http://195.208.123.221",
+        "file": "public/shared/arena-wire.js",
+        "bytes": 17618,
+        "exact": true
+      },
+      {
+        "origin": "http://195.208.123.221",
+        "file": "public/shared/player-identity.js",
+        "bytes": 20150,
+        "exact": true
+      }
+    ]
+  },
+  "localhost": {
+    "at": "2026-11-25T08:15:25.207Z",
+    "port": 3104,
+    "checks": 4,
+    "exact": true,
+    "files": [
+      {
+        "origin": "http://127.0.0.1:3104",
+        "file": "public/index.html",
+        "bytes": 43225,
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3104",
+        "file": "public/styles/components/clan-compact-navigation.css",
+        "bytes": 5981,
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3104",
+        "file": "public/shared/arena-wire.js",
+        "bytes": 17618,
+        "exact": true
+      },
+      {
+        "origin": "http://127.0.0.1:3104",
+        "file": "public/shared/player-identity.js",
+        "bytes": 20595,
+        "exact": true
+      }
+    ],
+    "experimentalPort3000Untouched": true
+  },
+  "localPid": 32080,
+  "limitations": [
+    "Static inventory is not formal alias analysis. Remaining shallow table copies, cold database reads and independent room deployment are separate architectural work; no 300000 CCU or lag-free claim.",
+    "Deposit comparison uses identical synthetic worlds, 12 members, 5000 member records and 500 battle records, 30 in-memory deposits per pair. It excludes fsync/network and is not whole-game CPU/FPS/capacity.",
+    "Empty-history helper has a small measured overhead versus its previous specialized form (see all three pairs); there is no blanket claim that every path became faster.",
+    "One full regression per OS, followed by 52 affected checks on the final guard and draft implementation. Full Linux source had one fewer test. PostgreSQL checks used isolated schemas; no real VK payment was initiated.",
+    "Initial browser mobile treasury overflow and rejected per-field draft overhead are retained in raw evidence. No extra capacity ladder was run."
+  ],
+  "artifactDirectory": "artifacts/clan-layout-20261125",
+  "developmentContract": "docs/world-mutation-contract.txt"
+}
