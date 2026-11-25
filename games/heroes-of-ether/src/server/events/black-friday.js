@@ -151,7 +151,8 @@ function state(p, run) {
   return s;
 }
 function usesQuestSession(event) {
-  return ["questSample", "lifeEnded", "absorbed", "arenaAction"].includes(event.type);
+  return ["questSample", "lifeEnded", "absorbed", "arenaAction"].includes(event.type) ||
+    (event.type === "clanArenaAction" && event.metric === "petShield");
 }
 function progress(p, manager, event, at, session = p.quests?.session, changes = {}) {
   if (!usesQuestSession(event)) return;

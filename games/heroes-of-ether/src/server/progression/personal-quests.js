@@ -253,6 +253,15 @@ function progress(p, event, at, activeEvent, receiptDraft) {
   const session = q.session;
   if (!session || (event.type === "questSample" && event.lifeId !== session.id)) return;
   const changes = {};
+  if (event.type === "clanArenaAction" && event.metric === "petShield") {
+    // Pet shields share the personal/event progress pipeline, but retain the
+    // separate server sequence so ordinary booster inputs cannot suppress them.
+    if (event.lifeId !== session.id || !integer(event.sequence) ||
+        event.sequence <= (session.petShieldSequence || 0) ||
+        BOOSTERS.get(event.boosterId)?.kind !== "shield") return;
+    session.petShieldSequence = event.sequence;
+    changes.shieldUses = 1;
+  }
   if (event.type === "arenaAction") {
     if (event.lifeId !== session.id || !integer(event.sequence) ||
         event.sequence <= (session.actionSequence || 0) ||
@@ -531,6 +540,7 @@ function validate(p, previousSeen, previousBuckets) {
       !s ||
       typeof s.id !== "string" ||
       (s.actionSequence !== undefined && !integer(s.actionSequence)) ||
+      (s.petShieldSequence !== undefined && !integer(s.petShieldSequence)) ||
       (s.absorptionSequence !== undefined && !integer(s.absorptionSequence)) ||
       ![s.startedAt, s.sampledAt, s.food].every(integer) ||
       (s.rank !== null && (!integer(s.rank) || !s.rank)) ||

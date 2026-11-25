@@ -2,13 +2,6 @@
 "use strict";
 (() => {
   const kit = window.KillexClanCrests;
-  const compact = matchMedia("(max-width: 760px)");
-  compact.addEventListener("change", () => {
-    for (const root of document.querySelectorAll(".clan-crest-builder")) {
-      root.crestBuilder.page = 0;
-      root.crestBuilder.render();
-    }
-  });
   const el = (tag, cls, text) => {
     const n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -34,132 +27,21 @@
       this.testAccess = testAccess;
       this.onChange = onChange;
       this.tab = "frames";
-      this.page = 0;
       this.colorLayer = "color";
-      this.columns = 6;
-      this.pageSize = 12;
-      this.pages = {};
-      this.pageSizes = {};
-      this.overview = false;
-      this.compact = compact;
       this.root = el("section", "clan-crest-builder");
       this.root.crestBuilder = this;
       this.root.setAttribute("aria-label", "Конструктор герба");
       this.render();
-      this.resize = new ResizeObserver(() => {
-        if (!this.root.isConnected) {
-          this.resize.disconnect();
-          return;
-        }
-        this.fitChoices();
-      });
-      this.resize.observe(this.root);
     }
-    fitChoices() {
-      if (!this.root.isConnected) return;
-      const controls = this.root.querySelector(".clan-crest-controls"),
-        available =
-          this.root.getBoundingClientRect().bottom -
-          controls.getBoundingClientRect().top -
-          (parseFloat(getComputedStyle(this.root).paddingBottom) || 0);
-      const overview =
-        !!this.root.closest(".clan-unified-appearance") &&
-        controls.clientWidth >= 620 &&
-        available >= 340;
-      if (overview !== this.overview) {
-        this.overview = overview;
-        this.render();
-        return;
+    selectTab(tab) {
+      this.tab = tab;
+      for (const panel of this.root.querySelectorAll(".clan-crest-category")) {
+        const active = panel.dataset.category === tab;
+        panel.classList.toggle("is-active", active);
+        panel.setAttribute("aria-hidden", String(!active));
       }
-      if (overview) return this.fitOverview(available);
-      const grid = this.root.querySelector(".clan-crest-choices"),
-        style = getComputedStyle(grid);
-      const columns = Math.max(1, style.gridTemplateColumns.split(" ").length);
-      const cell = grid.firstElementChild?.getBoundingClientRect().height || 64;
-      const gap = parseFloat(style.rowGap) || 0;
-      let rows = 2;
-      if (this.root.closest(".clan-unified-appearance")) {
-        const trailing = [...grid.parentElement.children]
-          .filter(
-            (n) => n.classList.contains("clan-muted") || n.classList.contains("clan-crest-presets"),
-          )
-          .reduce((sum, n) => {
-            const s = getComputedStyle(n);
-            return (
-              sum +
-              n.getBoundingClientRect().height +
-              (parseFloat(s.marginTop) || 0) +
-              (parseFloat(s.marginBottom) || 0)
-            );
-          }, 0);
-        const room =
-          this.root.getBoundingClientRect().bottom -
-          grid.getBoundingClientRect().top -
-          (parseFloat(getComputedStyle(this.root).paddingBottom) || 0) -
-          trailing -
-          36;
-        rows = Math.max(1, Math.floor((room + gap) / (cell + gap)));
-      }
-      const capacity = columns * rows;
-      if (capacity !== this.pageSize) {
-        this.columns = columns;
-        this.pageSize = capacity;
-        this.render();
-      }
-    }
-    fitOverview(available) {
-      let changed = false;
-      for (const column of this.root.querySelectorAll(".clan-crest-column")) {
-        const panels = [...column.children].map((panel) => {
-          const tab = panel.dataset.category,
-            grid = panel.querySelector(".clan-crest-choices"),
-            style = getComputedStyle(grid),
-            columns = Math.max(1, style.gridTemplateColumns.split(" ").length),
-            cell = grid.firstElementChild.getBoundingClientRect().height,
-            gap = parseFloat(style.rowGap) || 0,
-            count = kit[tab].length,
-            presets = panel.querySelector(".clan-crest-presets");
-          return {
-            tab,
-            columns,
-            cell,
-            gap,
-            count,
-            rows: 1,
-            desired: Math.ceil(count / columns),
-            overhead:
-              grid.getBoundingClientRect().top -
-              panel.getBoundingClientRect().top +
-              (presets ? presets.getBoundingClientRect().height + 10 : 0),
-          };
-        });
-        const height = () =>
-          panels.reduce(
-            (sum, p) =>
-              sum + p.overhead + p.rows * (p.cell + p.gap) - p.gap + (p.rows < p.desired ? 30 : 0),
-            0,
-          ) +
-          (panels.length - 1) * 10;
-        while (true) {
-          const next = panels
-            .filter(
-              (p) =>
-                p.rows < p.desired &&
-                height() + p.cell + p.gap - (p.rows + 1 === p.desired ? 30 : 0) <= available,
-            )
-            .sort((a, b) => b.desired / b.rows - a.desired / a.rows)[0];
-          if (!next) break;
-          next.rows++;
-        }
-        for (const p of panels) {
-          const size = Math.min(p.count, p.columns * p.rows);
-          if (this.pageSizes[p.tab] !== size) {
-            this.pageSizes[p.tab] = size;
-            changed = true;
-          }
-        }
-      }
-      if (changed) this.render();
+      for (const button of this.root.querySelectorAll(".clan-crest-tabs button"))
+        button.setAttribute("aria-pressed", String(button.dataset.category === tab));
     }
     change(key, value) {
       if (this.disabled || (!this.testAccess && kit.requiredLevel(value) > this.clanLevel)) return;
@@ -178,14 +60,10 @@
         symbols: "Символ",
       }[tab];
       controls.setAttribute("aria-label", label);
-      if (this.overview) controls.append(el("h4", "clan-crest-category-title", label));
       const grid = el("div", "clan-crest-choices");
       grid.dataset.category = tab;
       const values = kit.choicesForLevel(tab, this.clanLevel);
-      const pageSize = this.overview ? this.pageSizes[tab] || 1 : this.pageSize;
-      const pageCount = Math.ceil(values.length / pageSize);
-      const page = Math.min(this.overview ? this.pages[tab] || 0 : this.page, pageCount - 1);
-      for (const item of values.slice(page * pageSize, (page + 1) * pageSize)) {
+      for (const item of values) {
         const key = {
             frames: "frame",
             colors: this.colorLayer,
@@ -297,34 +175,10 @@
         }
         controls.append(presets);
       }
-      if (pageCount > 1) {
-        const pages = el("nav", "clan-symbol-pages");
-        pages.setAttribute("aria-label", "Страницы вариантов герба");
-        for (const [step, label] of [
-          [-1, "‹"],
-          [1, "›"],
-        ]) {
-          const b = el("button", "sf-button", label);
-          b.type = "button";
-          b.setAttribute(
-            "aria-label",
-            step < 0 ? "Предыдущие варианты герба" : "Следующие варианты герба",
-          );
-          window.KillexControls.state(b, step < 0 ? page === 0 : page === pageCount - 1);
-          b.onclick = () => {
-            if (this.overview) this.pages[tab] = page + step;
-            else this.page = page + step;
-            this.render();
-          };
-          pages.append(b);
-          if (step < 0) pages.append(el("span", "", `${page + 1} / ${pageCount}`));
-        }
-        controls.append(pages);
-      }
       return controls;
     }
     render() {
-      this.root.dataset.layout = this.overview ? "overview" : "tabs";
+      this.root.dataset.layout = "tabs";
       const preview = el("div", "clan-crest-preview"),
         img = el("img");
       kit.paintImage(img, this.value, this.legacy);
@@ -360,26 +214,17 @@
         const b = el("button", "sf-tab", label);
         b.type = "button";
         b.setAttribute("aria-pressed", String(this.tab === id));
-        b.onclick = () => {
-          this.tab = id;
-          this.page = 0;
-          this.render();
-        };
+        b.dataset.category = id;
+        b.onclick = () => this.selectTab(id);
         tabs.append(b);
       }
-      if (this.overview) {
-        for (const group of [
-          ["frames", "metals", "patterns"],
-          ["colors", "symbols"],
-        ]) {
-          const column = el("div", "clan-crest-column");
-          for (const tab of group) column.append(this.category(tab, c));
-          controls.append(column);
-        }
-      } else controls.append(tabs, this.category(this.tab, c));
+      const panels = el("div", "clan-crest-panels");
+      for (const tab of ["frames", "metals", "patterns", "colors", "symbols"])
+        panels.append(this.category(tab, c));
+      controls.append(tabs, panels);
       this.root.replaceChildren(preview, controls);
       if (this.heading) this.root.prepend(el("h3", "clan-generator-title", this.heading));
-      requestAnimationFrame(() => this.fitChoices());
+      this.selectTab(this.tab);
     }
   }
   window.KillexCrestBuilder = CrestBuilder;

@@ -155,17 +155,17 @@ test("Плавный зум: скорость не зависит от FPS, не
     "расширение окна не открывает всю карту во время плавного зума",
   );
 });
-test("Камера продолжает отдаляться каждые 25 000 массы на реальном размере арены", () => {
+test("Камера плавно отдаляется с массой до предела обзора 90% мира", () => {
   const world = { width: 2400, height: 1600 },
     width = 1366,
     height = 768,
     base = 768 / 650;
   const initial = view.desiredScale({ mass: 10 }, width, height, world);
-  assert(initial < base * 1.3 && initial >= base * 1.3 / 1.05);
+  assert(initial < base * 1.3 / 1.05 && initial >= base * 1.3 / 1.1025);
   let last = base * 1.3;
   for (const mass of [100, 500, 1000, 5000, 10000, 25000, 50000, 75000, 100000, 200000, 480000]) {
     const next = view.desiredScale({ mass }, width, height, world);
-    assert.ok(next < last);
+    assert.ok(next < last || next === view.minimumScale(width, height, world));
     last = next;
   }
   for (const mass of [150, 1000, 25000, 50000, 75000]) {
@@ -175,7 +175,7 @@ test("Камера продолжает отдаляться каждые 25 000
   }
 });
 
-test("Маленький герой сохраняет приближение, общий обзор расширен не более 5%", () => {
+test("Маленький герой сохраняет приближение после двух расширений обзора на 5%", () => {
   const world = { width: 2400, height: 1600 };
   for (const [mass, previous] of [
     [50, 1.179785450512734],
@@ -190,7 +190,7 @@ test("Маленький герой сохраняет приближение, �
     // Крупные тела дополнительно ограничиваются прежней геометрией группы.
     const scale = view.desiredScale({ mass }, 1366, 768, world);
     const previousScale = previous * (mass <= 150 ? 1.3 : 1);
-    assert(scale < previousScale && scale >= previousScale / 1.05);
+    assert(scale < previousScale && scale >= previousScale / 1.1025);
     if (mass <= 150) assert.equal(view.desiredScale(player, 1366, 768, world), scale);
   }
 });
@@ -219,7 +219,7 @@ test("Приближение зависит от общей массы, разл
   }
   const parts = Array.from({ length: 16 }, () => ({ mass: 1000 / 16 }));
   const scale = view.desiredScale({ parts }, 1366, 768, world);
-  assert(scale < 0.9880727129912967 && scale >= 0.9880727129912967 / 1.05);
+  assert(scale < 0.9880727129912967 && scale >= 0.9880727129912967 / 1.1025);
 });
 test("Число, площадь и габариты частей расширяют обзор даже до 25 000", () => {
   const world = { width: 2400, height: 1600 },
@@ -245,13 +245,15 @@ test("Число, площадь и габариты частей расширя
     y: 500,
   }));
   const scale = view.desiredScale({ parts }, width, height, world);
-  assert.ok(scale < view.desiredScale({ mass: 144000 }, width, height, world));
+  const singleLarge = view.desiredScale({ mass: 144000 }, width, height, world);
+  assert.ok(scale < singleLarge || scale === view.minimumScale(width, height, world));
   assert.ok(scale >= view.minimumScale(width, height, world));
   for (let i = 0; i < parts.length; i++) {
     parts[i].x = i * 1000;
     parts[i].y = 10000 - i * 1000;
   }
-  assert.ok(view.desiredScale({ parts }, width, height, world) < scale);
+  const spread = view.desiredScale({ parts }, width, height, world);
+  assert.ok(spread < scale || spread === view.minimumScale(width, height, world));
 });
 
 test("Рост второстепенной части и смена главной не перебрасывают центр камеры", () => {

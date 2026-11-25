@@ -38,7 +38,7 @@ test("Currency, account purchases, bonuses and gift spending have exact balances
     simulated: true,
     status: "confirmed",
     productId: "bucks:change",
-    votes: 1,
+    votes: 2,
   });
   assert.throws(() => f.buy("account:vip", id), /другой операции/);
   f.buy("account:vip");

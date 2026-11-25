@@ -8,6 +8,7 @@
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
   const CAMERA = Object.freeze({
     viewExpansion: 1.05,
+    extraViewExpansion: 1.05,
     massStep: 25000,
     maxWorldFraction: 0.9,
     partStep: 0.075,
@@ -23,6 +24,9 @@
       width / (world.width * CAMERA.maxWorldFraction),
       height / (world.height * CAMERA.maxWorldFraction),
     );
+  // Widen the current view by another 5% without exceeding the world limit.
+  const expandedScale = (scale, minimum) => Math.max(minimum,
+    (minimum + (scale - minimum) / CAMERA.viewExpansion) / CAMERA.extraViewExpansion);
   function groupFrame(player) {
     const parts = (player.parts?.length ? player.parts : [player]).filter(
       (p) => Number.isFinite(p.x) && Number.isFinite(p.y) && p.radius > 0,
@@ -67,7 +71,7 @@
     );
     const smallZoom = 1 + CAMERA.smallZoom * (1 - progress * progress * (3 - 2 * progress));
     const closeScale = massScale * smallZoom;
-    if (!group) return minimum + (closeScale - minimum) / CAMERA.viewExpansion;
+    if (!group) return expandedScale(closeScale, minimum);
     // Оставляем пространство вокруг группы: её габариты и суммарная площадь
     // шаров тоже требуют отдаления, даже при небольшой общей массе.
     // На широком экране вертикальная группа раньше занимала лишь 72% высоты:
@@ -101,7 +105,7 @@
     const nearZoom =
       1 + CAMERA.largeGroupZoom * largeEase;
     const compact = Math.max(normalScale, Math.min(normalScale * compactZoom, fit));
-    return minimum + (Math.max(compact, Math.min(compact * nearZoom, fit)) - minimum) / CAMERA.viewExpansion;
+    return expandedScale(Math.max(compact, Math.min(compact * nearZoom, fit)), minimum);
   }
   function followCenter(camera, target, dt, forcedMovement = false, parts = []) {
     // Track real displacement of surviving parts, not changes to the group's

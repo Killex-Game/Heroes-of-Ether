@@ -8,6 +8,8 @@
   };
   const img = (src, cls = "") => {
     const n = el("img", cls);
+    const booster = /^assets\/boosters\/png\/([a-z_]+)\.png$/.exec(src);
+    if (booster) src = window.KillexProgressionArt.booster(booster[1], 128) || src;
     n.src = window.KillexArtRevision.url(src);
     n.alt = "";
     n.draggable = false;
@@ -84,12 +86,14 @@
       this.content = el("div", "manya-content");
       this.notice = el("p", "manya-notice");
       this.notice.setAttribute("role", "status");
+      this.notice.hidden = true;
       header.append(brand, this.tabs, controls);
       this.dialog.append(close, header, this.content, this.notice);
       document.body.append(this.dialog);
       this.trigger.onclick = () => this.open();
       this.dialog.addEventListener("close", () => {
         this.clock?.();
+        this.clearNotice();
         this.trigger.focus({ preventScroll: true });
       });
       document.addEventListener("killex:profile", () => this.sync());
@@ -122,7 +126,7 @@
     open() {
       if (!this.owner.isLobby()) return;
       if (!this.dialog.open) this.tab = "orders";
-      this.notice.textContent = "";
+      this.clearNotice();
       this.renderKey = null;
       this.render();
       window.KillexWindows.open(this.dialog);
@@ -459,6 +463,19 @@
       wrap.append(grid);
       return wrap;
     }
+    clearNotice() {
+      clearTimeout(this.noticeTimer);
+      this.notice.hidden = true;
+      this.notice.textContent = "";
+    }
+    showNotice(text, error = false) {
+      this.clearNotice();
+      if (!this.dialog.open) return;
+      this.notice.textContent = text;
+      this.notice.classList.toggle("is-error", error);
+      this.notice.hidden = false;
+      this.noticeTimer = setTimeout(() => this.clearNotice(), error ? 4500 : 1800);
+    }
     async act(action, id) {
       if (this.busy || !this.owner.isLobby()) return;
       const s = this.data();
@@ -466,7 +483,7 @@
       const key = JSON.stringify([s.runId, s.day, action, id || null]);
       if (!this.requests.has(key)) this.requests.set(key, window.KillexRequestIds.create());
       this.busy = key;
-      this.notice.textContent = "";
+      this.clearNotice();
       this.render();
       try {
         const response = await fetch("/api/black-friday/action", {
@@ -498,20 +515,9 @@
             ...s.shop.find((o) => o.id === id),
             receiptTitle: "Полученная валюта",
           });
-        this.notice.textContent =
-          action === "final"
-            ? "Регалия в витрине, картина в Альбоме. Там можно забрать 100 эфира за картину."
-            : action === "order"
-              ? "Жетоны зачислены."
-              : action === "swap"
-                ? "Заказ заменён."
-                : action === "exchange"
-                  ? "Обмен выполнен."
-                  : action === "chest-ether" || (action === "buy" && id === "chest")
-                    ? "Сундук отправлен в Сокровищницу. Если мест нет, он ожидает в очереди."
-                    : "Подарок получен.";
+        if (action === "exchange") this.showNotice("Обмен выполнен");
       } catch (error) {
-        this.notice.textContent = error.message;
+        this.showNotice(error.message, true);
         this.owner.loadProfile();
       } finally {
         this.busy = null;
