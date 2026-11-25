@@ -1,0 +1,17 @@
+.friday-heading{display:flex;gap:16px;align-items:center;justify-content:space-between}
+.friday-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.friday-editor{min-width:0;padding:18px;border:1px solid #57516a;border-radius:14px;background:#ffffff05}
+.friday-editor h3{margin-top:0}.friday-form{display:grid;gap:14px}
+.friday-editor label{display:grid;gap:6px;margin-block:8px}
+.friday-editor input:not([type=checkbox]),.friday-editor select{width:100%;min-width:0;box-sizing:border-box}
+.friday-editor label:has(input[type=checkbox]){display:flex;align-items:center;gap:10px}
+.friday-editor input[type=checkbox]{width:auto;flex:none;margin-left:auto}
+.friday-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.friday-reward{display:grid;grid-template-columns:minmax(0,1fr) 100px auto;gap:8px;align-items:center;margin-bottom:8px}
+.friday-preview{padding:14px;border-radius:12px;border:1px solid #a28b54;background:#c59c2512}.friday-preview h4{margin-top:0}
+.friday-order{list-style:none;padding:0;display:grid;gap:6px;max-height:450px;overflow:auto;scrollbar-gutter:stable}
+.friday-order li{display:flex;align-items:center;gap:6px;padding:8px;background:#ffffff08;border-radius:8px}
+.friday-order li>span,.friday-order li>select{flex:1;min-width:0;overflow-wrap:anywhere}.friday-order button{padding:6px 9px;flex:none}
+.friday-upcoming{padding-left:20px;display:grid;gap:10px}.friday-state{color:#ead49a}.friday-message{min-height:1.4em;overflow-wrap:anywhere}
+@media(max-width:1100px){.friday-columns{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:520px){.friday-editor{padding:10px}.friday-reward{grid-template-columns:minmax(0,1fr) 85px}.friday-reward button{grid-column:2}.friday-fields{grid-template-columns:minmax(0,1fr)}.friday-order li{flex-wrap:wrap}.friday-order li>span{flex-basis:100%}.friday-heading{flex-wrap:wrap}}

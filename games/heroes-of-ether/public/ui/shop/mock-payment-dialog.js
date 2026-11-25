@@ -68,8 +68,8 @@
       });
     }
     open(productId, owner) {
-      const product = window.KillexVirtualProducts.get(productId);
       const profile = owner.getProfile();
+      const product = window.KillexVirtualProducts.get(productId, profile);
       if (!product || !profile || owner.unavailable() || this.dialog.open) return;
       this.owner = owner;
       this.product = product;
@@ -113,7 +113,7 @@
           ? ". До " + new Date(profile.roulette.lite.endsAt).toLocaleString("ru-RU")
           : ". Срок действия: бессрочно";
       this.recipient.textContent = profile.name;
-      this.price.textContent = `${product.votes} ${product.votes === 1 ? "голос" : "голосов"}`;
+      this.price.textContent = window.KillexVirtualProducts.votesLabel(product.votes);
       this.status.textContent = this.requestId
         ? "Предыдущая операция не получила ответа. Проверь её результат - повторного начисления не будет."
         : "Товар будет начислен только после подтверждения.";
@@ -163,6 +163,7 @@
             productId: this.product.id,
             requestId: this.requestId,
             confirmed: true,
+            ...(this.product.weekendId ? { promotionRevision: this.product.promotionRevision || 0 } : {}),
             ...(this.eventId ? { eventId: this.eventId } : {}),
             ...(this.product.type === "currency"
               ? { currencyPromoRunId: this.currencyPromoRunId }

@@ -37,6 +37,21 @@ function purchased(profile, product) {
   const signature = JSON.stringify(["mock-purchase", product.id]);
   return Object.values(profile.receipts).filter((value) => value === signature).length;
 }
+function product(config,id) {
+  const original=products.get(id);
+  if(!original?.weekendId||!config.weekendOffers)return original;
+  const offer=config.weekendOffers[original.weekendId];
+  if(!offer)return undefined;
+  if(!original.occurrenceId)return {...offer,promotionRevision:config.weekend.revision};
+  const [date,week]=original.occurrenceId.split(':');
+  const startsAt=Date.parse(date+'T'+config.weekend.startTime+':00+03:00')+Number(week)*7*86400000;
+  return {...offer,id,occurrenceId:original.occurrenceId,startsAt,endsAt:startsAt+config.weekend.durationHours*3600000,promotionRevision:config.weekend.revision};
+}
+function definitions(profile,config,at) {
+  if(!config.weekendOffers)return undefined;
+  const selected=[...view(profile,config,at),...(config.preview?config.weekend.offerIds:[])];
+  return Object.fromEntries(selected.filter(id=>products.get(id)?.weekendId).map(id=>[id,product(config,id)]));
+}
 function deadline(profile, product) {
   if (product?.weekendId) return product.endsAt || null;
   if (product?.milestone) {
@@ -118,8 +133,8 @@ function view(profile, config, at) {
   if (!config.enabled) return [];
   return ids(profile, config, at).filter(
     (id) =>
-      inTime(profile, products.get(id), at) &&
-      purchased(profile, products.get(id)) < products.get(id).purchaseLimit,
+      inTime(profile, product(config,id), at) &&
+      purchased(profile, product(config,id)) < product(config,id).purchaseLimit,
   );
 }
 function add(a, b) {
@@ -162,4 +177,4 @@ function grant(profile, product, config, at, random = randomInt) {
     profile.account.vipUntil = until;
   }
 }
-module.exports = { configuration, view, grant, deadline, ids, recordLevels, validate, acknowledge };
+module.exports = { configuration, view, grant, deadline, ids, recordLevels, validate, acknowledge, product, definitions };

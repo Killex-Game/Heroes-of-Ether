@@ -25,12 +25,14 @@
     <script src="/ui/admin/content-manager.js?v=20261123-interface-art" defer></script>
     <script src="/ui/admin/news-editor.js?v=20261123-interface-art" defer></script>
     <script src="/ui/admin/content-trash.js?v=20261123-interface-art" defer></script>
-    <script src="/ui/admin/owner-dashboard.js?v=20261123-interface-art" defer></script>
+    <script src="/ui/admin/owner-dashboard.js?v=20261125-friday-constructor" defer></script>
     <script src="/ui/admin/payment-reports.js?v=20261123-interface-art" defer></script>
     <script src="/ui/admin/server-health.js?v=20261123-interface-art" defer></script>
     <script src="/ui/admin/maintenance-panel.js?v=20261123-interface-art" defer></script>
     <script src="/ui/admin/owner-monitoring.js?v=20261123-interface-art" defer></script>
     <script src="/ui/admin/clan-seasons.js?v=20261125-gameplay-fixes" defer></script>
+    <script src="/ui/admin/weekend-promotions.js?v=20261125-friday-constructor" defer></script>
+    <link rel="stylesheet" href="/styles/owner-promotions.css?v=20261125-friday-constructor" />
     <script src="/ui/admin/journal-panels.js?v=20261123-interface-art" defer></script>
     <link rel="stylesheet" href="/styles/owner-players.css?v=20261123-interface-art" />
     <script src="/ui/admin/control-status.js?v=20261123-interface-art" defer></script>
@@ -38,7 +40,7 @@
     <script src="/ui/admin/player-tabs.js?v=20261123-interface-art" defer></script>
     <script src="/ui/admin/player-inventory.js?v=20261123-interface-art" defer></script>
     <script src="/ui/admin/player-editor.js?v=20261123-interface-art" defer></script>
-    <script src="/ui/admin/owner-panel.js?v=20261123-interface-art" defer></script>
+    <script src="/ui/admin/owner-panel.js?v=20261125-friday-constructor" defer></script>
   </head>
   <body class="owner-app">
     <aside id="ownerNavigation" class="owner-navigation" aria-label="Разделы администрирования" hidden></aside>
@@ -116,6 +118,7 @@
         </section>
         </section>
         <section id="clanSeasonsPanel" class="card clan-seasons-panel" data-admin-view="events" hidden></section>
+        <section id="weekendPromotionsPanel" class="card" data-admin-view="friday" hidden></section>
         <section id="eventsPanel" class="card events-panel" data-admin-view="events" aria-labelledby="eventsTitle" hidden></section>
         <section id="maintenancePanel" class="card" data-admin-view="maintenance" aria-label="Технические работы" hidden></section>
         <section id="feedbackPanel" class="card" data-admin-view="feedback" hidden></section>

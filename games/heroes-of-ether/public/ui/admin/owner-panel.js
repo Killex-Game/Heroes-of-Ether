@@ -47,6 +47,7 @@
   const journalPanels = new window.KillexJournalPanels({api});
   const events = new window.KillexEventManager({ api });
   const clanSeasons = new window.KillexClanSeasons({api});
+  const weekendPromotions = new window.KillexWeekendPromotions({api});
   const content = new window.KillexContentManager({ api });
   const maintenancePanel = new window.KillexMaintenancePanel({ api });
   const monitoring = new window.KillexOwnerMonitoring({api,onState:(state,data)=>{
@@ -73,6 +74,7 @@
       if (id === "trash") trash.load();
       if (id === "maintenance") maintenancePanel.load();
       if (id === "events") {events.load().catch(fail);clanSeasons.load();}
+      if (id === "friday") weekendPromotions.load();
       if (id === "moderators") securityUI.load().catch(fail);
       if (id === "feedback") feedbackPanel.load();
       if (["promos","news"].includes(id)) content.loadPanel(content.panels.find(p => p.route === (id === "promos" ? "promo-codes" : "news")));
@@ -103,6 +105,7 @@
     journalPanels.lock();
     events.lock();
     clanSeasons.lock();
+    weekendPromotions.lock();
     content.lock();
     maintenancePanel.lock();
     monitoring.lock();
@@ -574,7 +577,7 @@
     }
   };
   $("logout").onclick = async () => {
-    if (busy || pending || events.busy || content.busy || securityUI.busy) {
+    if (busy || pending || events.busy || content.busy || securityUI.busy || weekendPromotions.busy || weekendPromotions.dirty) {
       notice("Сначала получи результат текущего сохранения.", "error");
       return;
     }

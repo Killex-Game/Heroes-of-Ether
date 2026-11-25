@@ -7,7 +7,7 @@
     return node;
   };
   const number = value => value.toLocaleString("ru-RU");
-  const isClanBundle = offer => offer.weekendId === "promotion:weekend:23";
+  const isClanBundle = offer => !offer.promotionRevision && offer.weekendId === "promotion:weekend:23";
   const clanBundleIcon = "assets/boosters/bundles-v1/256/clan.webp?art=20261123-interface-art";
   function rewards(offer) {
     if (isClanBundle(offer)) return [{id:"clan",name:"Клановые бустеры*",icon:clanBundleIcon,
@@ -81,7 +81,7 @@
       if (profile?.promotionPreview && ![...active,...preview].some(id => catalog.get(id)?.milestone))
         preview.push("promotion:century:100");
       // An actual occurrence replaces its preview, never produces a second buy button.
-      return [...new Set([...active,...preview])].map(id => catalog.get(id))
+      return [...new Set([...active,...preview])].map(id => catalog.get(id,profile))
         .filter(p => p?.type === "promotion" && (!p.weekendId || p.occurrenceId ||
           !active.some(id => catalog.get(id)?.weekendId === p.weekendId)));
     }
@@ -152,9 +152,9 @@
       const deadline = el("small", "promotion-deadline");
       if (eligible) deadline.dataset.endsAt = String(profile.promotionEndsAt[offer.id]);
       else deadline.textContent = "Предпросмотр, покупка недоступна";
-      const buy = el("button", "sf-button promotion-buy", "Купить за "+offer.votes+" голосов");
+      const buy = el("button", "sf-button promotion-buy", "Купить за "+window.KillexVirtualProducts.votesLabel(offer.votes));
       buy.type = "button";
-      buy.setAttribute("aria-label", "Купить: "+offer.name+" за "+offer.votes+" голосов");
+      buy.setAttribute("aria-label", "Купить: "+offer.name+" за "+window.KillexVirtualProducts.votesLabel(offer.votes));
       window.KillexControls.state(buy, !eligible);
       buy.onclick = () => window.KillexMockPayments.open(offer.id, {
         getProfile:()=>this.owner.getProfile(),
@@ -164,7 +164,7 @@
       const footer = el("div", "promotion-footer");
       const purchase = el("div", "promotion-purchase");
       purchase.append(buy);
-      if (offer.originalVotes) purchase.append(el("del", "promotion-old-price", offer.originalVotes+" голосов"));
+      if (offer.originalVotes) purchase.append(el("del", "promotion-old-price", window.KillexVirtualProducts.votesLabel(offer.originalVotes)));
       footer.append(deadline, purchase);
       card.append(list,footer);
       this.grid.append(card);

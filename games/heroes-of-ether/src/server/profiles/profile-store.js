@@ -617,6 +617,7 @@ class ProfileStore {
       require("../admin/game-grants").validate(data);
       require("./game-news").validate(data);
       require("../admin/service-availability").validate(data);
+      require("../shop/weekend-editor").validate(data);
       this.transactionsMigrationPending = Object.values(data.profiles).some((p) => !p.transactions);
       for (const p of Object.values(data.profiles)) transactions.initialize(p, this.now());
       this.data = transactions.syncWorld(data, this.now(), {
@@ -969,18 +970,19 @@ class ProfileStore {
         this.events,
         this.now(),
       ),
-      promotions: promotions.view(profile, this.promotionConfig, this.now()),
+      promotions: promotions.view(profile, this.promotionSettings(), this.now()),
+      promotionProducts: promotions.definitions(profile, this.promotionSettings(), this.now()),
       seenPromotionIds: [...(profile.seenPromotionIds || [])],
-      promotionVersion: require("../shop/weekend-promotions").version(this.promotionConfig.weekend, this.now()),
+      promotionVersion: require("../shop/weekend-promotions").version(this.promotionSettings().weekend, this.now()),
       promotionEndsAt: Object.fromEntries(
         promotions
-          .ids(profile, this.promotionConfig, this.now())
-          .map((id) => [id, promotions.deadline(profile, virtualProducts.get(id))]),
+          .ids(profile, this.promotionSettings(), this.now())
+          .map((id) => [id, promotions.deadline(profile, this.virtualProduct(id))]),
       ),
       promotionServerTime: this.now(),
       promotionPreview:
-        this.promotionConfig.enabled && this.promotionConfig.preview
-          ? { productIds: [...this.promotionConfig.productIds, ...this.promotionConfig.weekend.offerIds], cycleMs: 7 * 86400000 }
+        this.promotionSettings().enabled && this.promotionSettings().preview
+          ? { productIds: [...this.promotionSettings().productIds, ...this.promotionSettings().weekend.offerIds], cycleMs: 7 * 86400000 }
           : null,
       personal: personalDetails.view(profile),
       social: social.view(this, profile, true),
@@ -1527,8 +1529,10 @@ class ProfileStore {
   }
   // Только локальная симуляция. Для настоящей оплаты выдача должна быть
   // связана с проверенным серверным уведомлением платёжного провайдера.
+  promotionSettings() { return require("../shop/weekend-editor").settings(this); }
+  virtualProduct(id) { return promotions.product(this.promotionSettings(), id); }
   confirmMockPurchase(token, input) {
-    const product = virtualProducts.get(input.productId);
+    const product = this.virtualProduct(input.productId);
     if (!product) throw new BoosterError("Этот игровой продукт не найден.");
     if (input.confirmed !== true) throw new BoosterError("Сначала подтверди тестовую покупку.");
     const quota = require("../shop/mock-purchase-limit");
@@ -1559,7 +1563,9 @@ class ProfileStore {
             1,
           );
         } else if (product.type === "promotion") {
-          promotions.grant(p, product, this.promotionConfig, this.now());
+          if (product.weekendId && (product.promotionRevision || 0) !== (input.promotionRevision ?? 0))
+            throw new BoosterError("Условия акции изменились. Обнови список акций и открой покупку заново.", 409);
+          promotions.grant(p, product, this.promotionSettings(), this.now());
           blackFriday.activity(
             p,
             this.events,
@@ -1636,7 +1642,7 @@ class ProfileStore {
         status: "confirmed",
         requestId: input.requestId,
         productId: product.id,
-        votes: product.votes,
+        votes: this.find(token).transactions?.entries.findLast(e=>e.requestId===input.requestId && e.payment)?.payment.votes ?? product.votes,
       },
     };
   }
@@ -1832,7 +1838,7 @@ class ProfileStore {
     transactions.record(draft, balance, at);
     change(draft);
     require("../progression/treasury-capacity").fill(draft, at);
-    transactions.capture(draft, at, transactions.operation(signature, requestId, current.id));
+    transactions.capture(draft, at, transactions.operation(signature, requestId, current.id, id=>this.virtualProduct(id)));
     const rewardBalance = transactions.snapshot(draft);
     activity.awardExtra(draft, at);
     awardTitles(draft, at);
@@ -1974,7 +1980,7 @@ class ProfileStore {
   }
   acknowledgePromotions(token, input) {
     return this.transactProfile(token, input.requestId, JSON.stringify(["promotion-notices", input.ids]),
-      p => promotions.acknowledge(p, this.promotionConfig, input, this.now()));
+      p => promotions.acknowledge(p, this.promotionSettings(), input, this.now()));
   }
   clanChestAction(token, input) {
     if (input.action === "notice") {

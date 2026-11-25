@@ -584,6 +584,16 @@ function createGameServer({
             if (req.method === 'POST') { const body = await jsonBody(req); requireRunning(); actorProfile(); return reply(200, await security.manage(body, req)); }
             return reply(405, { error: 'Метод недоступен.' });
           }
+          if(adminUrl.pathname==='/api/admin/weekend-promotions'){
+            const service=require('./shop/weekend-editor');
+            if(req.method==='GET')return reply(200,service.view(profiles));
+            if(req.method==='POST'){
+              const body=await adminBody(req,16000);
+              if(!commitProgress())throw new BoosterError('Прогресс ещё сохраняется.',503);
+              return reply(200,service.apply(profiles,ownerAccess,actorProfile(),body));
+            }
+            return reply(405,{error:'Метод недоступен.'});
+          }
           if(adminUrl.pathname==='/api/admin/clan-seasons'){
             const service=require('./clans/daily-quests/admin');
             if(req.method==='GET')return reply(200,service.view(profiles));
@@ -819,7 +829,7 @@ function createGameServer({
             online: true,
             eventVersion: events.stamp(),
             newsRevision: profiles.data.gameNews?.revision || 0,
-            promotionVersion: require("./shop/weekend-promotions").version(profiles.promotionConfig.weekend, profiles.now()),
+            promotionVersion: require("./shop/weekend-promotions").version(profiles.promotionSettings().weekend, profiles.now()),
             profileRevision: visitor.revision,
             profileId: visitor.id,
             menuNotifications: profiles.menuNotifications(visitor),

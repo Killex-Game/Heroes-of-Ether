@@ -295,6 +295,7 @@
     currencies: catalogs,
     accountLoginRewards,
     products,
-    get: (id) => products.find((product) => product.id === id) || centuryOffer(id) || weekend.get(id),
+    votesLabel: n => `${n.toLocaleString('ru-RU')} ${n % 100 >= 11 && n % 100 <= 14 ? 'голосов' : n % 10 === 1 ? 'голос' : n % 10 >= 2 && n % 10 <= 4 ? 'голоса' : 'голосов'}`,
+    get: (id, profile) => profile?.promotionProducts?.[id] || products.find((product) => product.id === id) || centuryOffer(id) || weekend.get(id),
   });
 });

@@ -136,7 +136,7 @@
         amount.append(el("strong", "", number(total)), el("span", "", catalog.label));
         const prices = el("p", "donation-prices");
         prices.append(
-          el("strong", "", `${item.votes} ${item.votes === 1 ? "голос" : "голосов"}`),
+          el("strong", "", window.KillexVirtualProducts.votesLabel(item.votes)),
           el("span", "", `${number(item.rubles)} ₽`),
         );
         const action = el("button", "sf-button donation-action", "Купить");

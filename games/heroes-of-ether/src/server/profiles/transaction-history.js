@@ -132,7 +132,7 @@ function capture(p, at, context) {
     context,
   );
 }
-function operation(signature, requestId, actorId) {
+function operation(signature, requestId, actorId, resolveProduct = products.get) {
   let parts = [];
   try {
     parts = JSON.parse(signature);
@@ -180,7 +180,7 @@ function operation(signature, requestId, actorId) {
       detail: parts[2],
     };
   if (kind === "mock-purchase") {
-    const product = products.get(action);
+    const product = resolveProduct(action);
     return {
       ...base,
       kind: "payment",
