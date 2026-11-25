@@ -1,0 +1,109 @@
+{
+  "at": "2026-11-25T00:23:08.405Z",
+  "installed": false,
+  "change": "Personal arena appearance cache no longer invalidates on clan economy/membership/crest objects. Existing appearance access reads personal grants; clan identity remains independently published.",
+  "validation": {
+    "tests": 3,
+    "pass": 3,
+    "label": "personal-appearance-clan-r2",
+    "cases": [
+      "exact status/grant/day expiry",
+      "immutable profile changes",
+      "100 clan changes with independent clan identity updates",
+      "personal frame selection change"
+    ]
+  },
+  "microbenchmark": {
+    "exact": true,
+    "scope": "Personal appearance projection only, synthetic clan changes; no whole-game speed or network claim",
+    "results": [
+      {
+        "variant": "before",
+        "clanChanges": false,
+        "profiles": 30,
+        "measuredRounds": 2000,
+        "ms": 345.90620000000104,
+        "reused": 62970,
+        "digest": "8dbac748149c2d503b58dcaef42c8e3088083b532c0837d6b32f525373b9ac4b"
+      },
+      {
+        "variant": "after",
+        "clanChanges": false,
+        "profiles": 30,
+        "measuredRounds": 2000,
+        "ms": 326.98349999999346,
+        "reused": 62970,
+        "digest": "8dbac748149c2d503b58dcaef42c8e3088083b532c0837d6b32f525373b9ac4b"
+      },
+      {
+        "variant": "after",
+        "clanChanges": false,
+        "profiles": 30,
+        "measuredRounds": 2000,
+        "ms": 370.10930000000076,
+        "reused": 62970,
+        "digest": "8dbac748149c2d503b58dcaef42c8e3088083b532c0837d6b32f525373b9ac4b"
+      },
+      {
+        "variant": "before",
+        "clanChanges": false,
+        "profiles": 30,
+        "measuredRounds": 2000,
+        "ms": 352.49799999999277,
+        "reused": 62970,
+        "digest": "8dbac748149c2d503b58dcaef42c8e3088083b532c0837d6b32f525373b9ac4b"
+      },
+      {
+        "variant": "before",
+        "clanChanges": true,
+        "profiles": 30,
+        "measuredRounds": 2000,
+        "ms": 972.5860000000098,
+        "reused": 0,
+        "digest": "8dbac748149c2d503b58dcaef42c8e3088083b532c0837d6b32f525373b9ac4b"
+      },
+      {
+        "variant": "after",
+        "clanChanges": true,
+        "profiles": 30,
+        "measuredRounds": 2000,
+        "ms": 311.5245999999993,
+        "reused": 62970,
+        "digest": "8dbac748149c2d503b58dcaef42c8e3088083b532c0837d6b32f525373b9ac4b"
+      },
+      {
+        "variant": "after",
+        "clanChanges": true,
+        "profiles": 30,
+        "measuredRounds": 2000,
+        "ms": 341.2425999999932,
+        "reused": 62970,
+        "digest": "8dbac748149c2d503b58dcaef42c8e3088083b532c0837d6b32f525373b9ac4b"
+      },
+      {
+        "variant": "before",
+        "clanChanges": true,
+        "profiles": 30,
+        "measuredRounds": 2000,
+        "ms": 1042.788999999997,
+        "reused": 0,
+        "digest": "8dbac748149c2d503b58dcaef42c8e3088083b532c0837d6b32f525373b9ac4b"
+      }
+    ]
+  },
+  "firstAttempts": [
+    {
+      "label": "personal-appearance-clan-r1",
+      "cause": "New test fixture lacked account state; fixed with the canonical fresh account."
+    },
+    {
+      "label": "personal-appearance-clan-micro-r1",
+      "cause": "Reuse counter compared calls inside one round; r2 measures reuse across rounds. Equality and duration checks already passed."
+    }
+  ],
+  "limitations": [
+    "Full regressions and whole-server mixed load remain pending.",
+    "Component benchmark uses 30 profiles and repeated synthetic clan changes; no whole-game CPU/FPS/CCU claim.",
+    "With no clan changes the timings overlap; no reliable improvement claimed there."
+  ]
+}
