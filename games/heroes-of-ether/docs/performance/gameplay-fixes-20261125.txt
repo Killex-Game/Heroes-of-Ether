@@ -1,6 +1,6 @@
 Gameplay fixes — 25 November 2026
 
-Candidate for installation; final deployment proof will be added after installation.
+INSTALLED 2026-11-25T04:26:59.599Z; release 20261125-gameplay-fixes; source af4817f5d93c9662b326ece8aec1cfeb6f1722d0; game 903342, admin 1163, restarts 0. Full proof: gameplay-fixes-20261125.json.
 Base installed source: f07d382c5ed629b1e78a64af8174c574d9709732.
 Optimization and capacity ladders remain paused by the owner. These are correctness checks, not new capacity claims.
 
@@ -24,7 +24,10 @@ Read-only live Killex audit: the two completed 24 November tasks had targets 300
 
 Evidence and known first failures
 Local detailed logs/screenshots/packaging scripts: artifacts/gameplay-fixes-20261125 (outside developer source).
-Windows full-1: 2511 total / 2495 pass / 13 fail / 3 skip; stale assertions about old stone, life wording and kill rules were corrected. Full-2: 2514 total / 2511 pass / 0 fail / 3 skip; targeted clan credit 61/61; final discount batch coverage 4/4. Final Windows and Linux results will be recorded separately.
-Linux full-1: 2516 total / 2512 pass / 1 fail / 3 skip. The source exporter incorrectly decoded a PNG news test fixture as UTF-8; corrected binary copying, not weakened validation. Full-2 reruns the suite, followed by actual PostgreSQL tests in isolated disposable schemas.
+Windows full-1: 2511 total / 2495 pass / 13 fail / 3 skip; stale assertions about old stone, life wording and kill rules were corrected. Full-2: 2514 total / 2511 pass / 0 fail / 3 skip; targeted clan credit 61/61; final discount batch coverage 4/4. Final Windows full-3: 2517 total / 2514 pass / 0 fail / 3 skip.
+Linux full-1: 2516 total / 2512 pass / 1 fail / 3 skip. The source exporter incorrectly decoded a PNG news test fixture as UTF-8; corrected binary copying, not weakened validation. Final Linux full-2: 2517 total / 2514 pass / 0 fail / 3 skip; actual PostgreSQL 12/12 in isolated disposable schemas. After the full run, three grammatical endings changed, verified as the only backend delta and covered by 46 targeted passing tests.
 Browser harness first attempts had ambiguous/incorrect selectors, undismissed achievement/news/guide overlays, an uninitialized calendar fixture and asynchronous close lifetime; these are retained as failures. Final commerce proof checks actual server debit and achievements, discount clock/expiry, removed wardrobe note, rounded titles and both season directions in Chromium/Firefox/WebKit. General UI checks use those three engines on desktop and touch viewports, including actual 100+10 purchase, silent URL chat and expiring dizziness.
 No test purchases, clans or season switches are performed on live players. Real VK payment authorization is not part of these local tests.
+
+Installation proof
+59 runtime/static files; 2629 production hashes; 684 comments stripped only from production. Previous release and private settings preserved. 1723 profiles / 137 clans; revision 4903625 -> 4903625, every world/auxiliary/PostgreSQL field verified. Backup both sides SHA f0c5afab183812552b46ad7f92332c6170510eef861423a4a073202c8d0cfc9e; preserve all copies. Root synchronized and isolated localhost 3104 checked. Nine browser contexts; 82 game HTTP and 2 admin HTTP hashes, 41 localhost hashes. Startup health samples are not a capacity measurement.

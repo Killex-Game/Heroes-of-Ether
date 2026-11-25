@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261125-world-copy-reuse",
-  "sourceTag": "release/20261125-world-copy-reuse",
-  "sourceCommit": "f07d382c5ed629b1e78a64af8174c574d9709732",
-  "branch": "codex/20261124-profile-field-bytes",
+  "gameRelease": "20261125-gameplay-fixes",
+  "sourceTag": "release/20261125-gameplay-fixes",
+  "sourceCommit": "af4817f5d93c9662b326ece8aec1cfeb6f1722d0",
+  "branch": "codex/20261125-gameplay-fixes",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-25T02:50:53.469Z",
+  "entryReopenedAtUtc": "2026-11-25T04:26:59.599Z",
   "runtime": {
-    "gamePid": 880050,
+    "gamePid": 903342,
     "adminPid": 1163,
     "restarts": 0,
     "entryOpen": true,
@@ -20,7 +20,7 @@
     "Mobile lobby and arena controls use icons and retain accessible names",
     "Separate profile frames and arena rims, 15 retired theme identities map to existing accessible avatars",
     "Per-item booster cooldowns 500 ms, food 100 ms, egg 10000 ms, authoritative server enforcement",
-    "Title accessories and once-per-life E stock follow the owner document and clarifications",
+    "Title accessories and per-arena-entry E stock follow the owner document and clarifications",
     "Censored profanity, one strike per offending message, one-hour chat mute every third message, expanded chat refocus",
     "Emote 5-second cooldown and occlusion, lower arena labels, reduced avatar scale",
     "Four negative gifts cost 5 ether, unavailable achievement checkbox removed, larger generator icon",
@@ -50,11 +50,11 @@
     "Arena directory computes occupancy once per operation instead of scanning all players for each room. Reservation, level band, clan join, remnants and TTL rules unchanged.",
     "Approved 07:00–22:00 MSK clan quest/battle schedule, edited growth costs and league rewards, 30-day trophy benefit validity.",
     "Five personal clan quest achievements with per-goal evidence, stable distinct-day/type counts and idempotent settlement.",
-    "Updated accessory passives and once-per-life E stock; event and preview accessories hidden until owned; unknown future boosters deferred.",
+    "Updated accessory passives and per-arena-entry E stock; event and preview accessories hidden until owned; unknown future boosters deferred.",
     "Space no longer toggles the focused arena chat button; typing spaces and Enter behavior retained.",
     "Seven clan booster icons and five personal achievement icons installed at four resolutions; all protected artwork retained.",
     "Approved VIP/Premium benefit matrix, 7/14-day purchases and separate chest greatness/currency factors",
-    "30-second current-mass rewards: VIP doubles final XP after all bonuses; Premium doubles natural kills; alive humans include self and exclude bots; exact half rounds down",
+    "30-second current-mass rewards: VIP doubles final XP after all bonuses; Premium doubles all credited kills; alive humans include self and exclude bots; exact half rounds down",
     "VIP pet supply and Manya positive mass bonus",
     "Mobile emote taps with existing 5-second cooldown; desktop pointer passthrough",
     "Equal visible status icon height; Winged Guardian placement only; corrected Drakosha banner crest",
@@ -79,164 +79,79 @@
     "Reuse verified immutable document fragments and canonical bytes across checkpoints without removing integrity checks.",
     "Use bounded WAL read windows and checkpoint caches; retain prior history and exact full-world hashes.",
     "Reuse immutable event archives, appearance inputs and profile indexes instead of repeating deep copies.",
-    "Optional progress calculators are configured off; canonical processing is selected. Independent room prototypes are excluded."
+    "Optional progress calculators are configured off; canonical processing is selected. Independent room prototypes are excluded.",
+    "Premium doubles all credited kills; clan quests consume actual credited kills; VIP final XP multiplier retained",
+    "10/100 booster purchases, actual spending achievements, server-side trophy cosmetic discounts and expiry timer",
+    "Early clan season settlement in administration, five-second stone dizziness, silent chat and compact UI",
+    "Original ether purchase artwork restored, circular preview backgrounds, ether generator currency icon",
+    "Simple Easter lobby pattern, earliest Black Friday pattern restored"
   ],
   "data": {
     "before": {
-      "at": 1795574485719,
-      "revision": 4878134,
-      "digest": "762cc3d02ace2033017f842164f8310ea2cd31ef14a9c8cda8e237a11c353ef0",
-      "worldHash": "a1a52f265e25ab69374402aab0e16e324d66779c94dc0eab5f1fc1339ebc40c3",
+      "at": 1795580334196,
+      "revision": 4903625,
+      "digest": "fc882e630930311c47a0889278a67f0559284d1957e2f173af586c6994c0a352",
+      "worldHash": "9452f4af5dd6de0ee8c9ca2f7724b2dc6340000fad1e84b35d05d37ca5dc03bd",
       "profiles": 1723,
       "clans": 137,
       "fullWorldAndAuxEqual": true,
-      "backup": "/dev/shm/heroether-world-copy-backup-20261125/world-copy-release-20261125",
+      "backup": "/run/heroether-gameplay-backup-20261125/gameplay-fixes-20261125",
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/world-copy-release-20261125/data-before.tar.gz"
+      "durableBackup": "/srv/heroether-test/play/backups/gameplay-fixes-20261125/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
       "noCalendarChange": true,
       "expiredChat": 0,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 4878134,
-      "revision": 4878134,
-      "digest": "762cc3d02ace2033017f842164f8310ea2cd31ef14a9c8cda8e237a11c353ef0",
-      "worldHash": "a1a52f265e25ab69374402aab0e16e324d66779c94dc0eab5f1fc1339ebc40c3",
+      "beforeRevision": 4903625,
+      "revision": 4903625,
+      "digest": "fc882e630930311c47a0889278a67f0559284d1957e2f173af586c6994c0a352",
+      "worldHash": "9452f4af5dd6de0ee8c9ca2f7724b2dc6340000fad1e84b35d05d37ca5dc03bd",
       "profiles": 1723,
       "clans": 137
     },
     "backup": {
       "verified": true,
-      "archiveSha256": "890fc01a93f505012f2f928b8ced857e49021da459a91caa06eb8245018a2dc5",
-      "revision": 4878134,
-      "digest": "762cc3d02ace2033017f842164f8310ea2cd31ef14a9c8cda8e237a11c353ef0",
-      "worldHash": "a1a52f265e25ab69374402aab0e16e324d66779c94dc0eab5f1fc1339ebc40c3",
+      "archiveSha256": "f0c5afab183812552b46ad7f92332c6170510eef861423a4a073202c8d0cfc9e",
+      "revision": 4903625,
+      "digest": "fc882e630930311c47a0889278a67f0559284d1957e2f173af586c6994c0a352",
+      "worldHash": "9452f4af5dd6de0ee8c9ca2f7724b2dc6340000fad1e84b35d05d37ca5dc03bd",
       "profiles": 1723,
       "clans": 137,
       "postgresqlArchiveVerified": true
     },
     "storage": {
-      "archive": "/srv/heroether-test/play/backups/world-copy-release-20261125/data-before.tar.gz",
-      "sha256": "890fc01a93f505012f2f928b8ced857e49021da459a91caa06eb8245018a2dc5",
-      "bytes": 111028168,
+      "archive": "/srv/heroether-test/play/backups/gameplay-fixes-20261125/data-before.tar.gz",
+      "sha256": "f0c5afab183812552b46ad7f92332c6170510eef861423a4a073202c8d0cfc9e",
+      "bytes": 111451415,
       "checkpointReserve": 629145600,
-      "rawStagingRetained": "/dev/shm/heroether-world-copy-backup-20261125",
+      "rawStagingRetained": "/run/heroether-gameplay-backup-20261125",
       "durableArchiveVerified": true
     }
   },
   "verification": {
-    "source": "f07d382c5ed629b1e78a64af8174c574d9709732",
+    "source": "af4817f5d93c9662b326ece8aec1cfeb6f1722d0",
     "allRequiredChecksPassed": true,
-    "totalTests": 2504,
-    "totalPassed": 2501,
+    "totalTests": 2517,
+    "totalPassed": 2514,
     "totalSkipped": 3,
     "failed": 0,
     "realPostgreSQLPassed": 12,
-    "windowsPassed": 2501,
-    "windowsSkipped": 3,
-    "rows": [
-      {
-        "label": "progress-readiness-full-windows",
-        "pass": 2501,
-        "skip": 3,
-        "sha256": "e7c4ec2c2aab2fab973642bb3a6efcc0ad0e73c8b1c688a8cfc117e7dd0d6f3f"
-      },
-      {
-        "label": "progress-readiness-full-linux",
-        "pass": 2501,
-        "skip": 3,
-        "sha256": "d428bd31d69692884e13c5794454ef2802192faafd5c2f780bc0c429b19e2056"
-      },
-      {
-        "label": "release-read-reuse-real-pg",
-        "pass": 11,
-        "skip": 0,
-        "sha256": "140cc766367ffaba42e5d577eefd090a631231d9eda91d03f7959742df7ff47b"
-      },
-      {
-        "label": "release-read-reuse-fragments-pg",
-        "pass": 1,
-        "skip": 0,
-        "sha256": "d010b062f19abc6fb3ca3706a1e6aaf3d6f31199d17b89cf362f2f54e1e6557d"
-      }
-    ],
-    "browserContexts": 18,
-    "http": {
-      "at": "2026-11-25T02:51:17.458Z",
-      "checks": [
-        {
-          "origin": "http://127.0.0.1:3000",
-          "file": "public/index.html",
-          "bytes": 42837,
-          "exact": true
-        },
-        {
-          "origin": "http://127.0.0.1:3000",
-          "file": "public/shared/arena-wire.js",
-          "bytes": 17618,
-          "exact": true
-        },
-        {
-          "origin": "http://127.0.0.1:3000",
-          "file": "public/shared/player-identity.js",
-          "bytes": 20150,
-          "exact": true
-        },
-        {
-          "origin": "http://195.208.123.221",
-          "file": "public/index.html",
-          "bytes": 42837,
-          "exact": true
-        },
-        {
-          "origin": "http://195.208.123.221",
-          "file": "public/shared/arena-wire.js",
-          "bytes": 17618,
-          "exact": true
-        },
-        {
-          "origin": "http://195.208.123.221",
-          "file": "public/shared/player-identity.js",
-          "bytes": 20150,
-          "exact": true
-        }
-      ]
-    },
-    "localHttp": {
-      "at": "2026-11-25T02:51:51.742Z",
-      "port": 3104,
-      "checks": 3,
-      "exact": true,
-      "files": [
-        {
-          "origin": "http://127.0.0.1:3104",
-          "file": "public/index.html",
-          "bytes": 42837,
-          "exact": true
-        },
-        {
-          "origin": "http://127.0.0.1:3104",
-          "file": "public/shared/arena-wire.js",
-          "bytes": 17618,
-          "exact": true
-        },
-        {
-          "origin": "http://127.0.0.1:3104",
-          "file": "public/shared/player-identity.js",
-          "bytes": 20595,
-          "exact": true
-        }
-      ],
-      "experimentalPort3000Untouched": true
-    }
+    "windowsPassed": 2514,
+    "browserContexts": 6,
+    "commerceContexts": 3,
+    "httpExactChecks": 82,
+    "adminHttpExactChecks": 2,
+    "localHttpExactChecks": 41,
+    "report": "games/heroes-of-ether/docs/performance/gameplay-fixes-20261125.json"
   },
-  "report": "games/heroes-of-ether/docs/performance/world-copy-reuse-installed-20261125.json",
-  "previousRelease": "20261124-world-copy",
-  "notes": "Verified stable immutable world reuse installed at the owner request. Further optimization is deferred; current task is bug fixes.",
+  "report": "games/heroes-of-ether/docs/performance/gameplay-fixes-20261125.json",
+  "previousRelease": "20261125-world-copy-reuse",
+  "notes": "Correctness and UI fixes installed. Further optimization remains deferred by owner request; historical capacity limits are unchanged.",
   "performance": {
-    "status": "Verified stable release installed; further optimization deferred by owner",
+    "status": "No capacity tests for this correctness release; remaining measurements below belong to the prior optimized release.",
     "controlledSnapshotBenchmark": {
       "inputBytes": 197039882,
       "profiles": 1706,
@@ -32982,5 +32897,11 @@
     "report": "games/heroes-of-ether/docs/performance/world-copy-reuse-installed-20261125.json",
     "optionalProgressWorkers": false,
     "independentRoomsInstalled": false
+  },
+  "gameplayFixesUpdate": {
+    "installed": true,
+    "sourceCommit": "af4817f5d93c9662b326ece8aec1cfeb6f1722d0",
+    "report": "games/heroes-of-ether/docs/performance/gameplay-fixes-20261125.json",
+    "openedAtUtc": "2026-11-25T04:26:59.599Z"
   }
 }

@@ -1,25 +1,15 @@
-Текущий VPS 20261124-world-copy, source416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8, tagrelease/20261124-world-copy. Вход17:27:00.914UTC/game714287/admin1163. Отчёт games/heroes-of-ether/docs/performance/world-copy-installed-20261124.json. Root/localhost3104 обновлены. Checkpointworker5808f26/WALwindow4e5f310 — НЕУСТАНОВЛЕННЫЕ кандидаты. Продолжается24чоптимизация до25.11 13:10:20UTC; все backups и отрицательные прогоны сохранять.
+Актуальная передача 25.11.2026
 
-Предыдущий VPS 20261124-status-copy, source 2bdbf7e5fac405cd30f130ead6e9081d3f18f539, tag release/20261124-status-copy. Формулы docs/rules/experience-and-levels.md; отчёт games/heroes-of-ether/docs/performance/status-copy-20261124.json. Все backups сохранять.
-
-Текущий VPS 20261124-clan-exit, source/tag 17d64554cabb143a581ed7a8fdc21128e9aa73b4 / release/20261124-clan-exit. Отчёт games/heroes-of-ether/docs/performance/clan-exit-20261124.json. Новые механики установлены, projectile broadphase пока кандидат. Все backups сохранять.
-
-Актуальный выпуск 24.11.2026: 20261124-lobby-pets, 64bc35c41d6da55c4718abb005d7aee4fee797fc.
-Отчёт: games/heroes-of-ether/docs/performance/lobby-progress-pets-20261124.json.
-Выпуск публикуется в main, codex/20261123-interface-mechanics и codex/20261124-lobby-progress-pets. Тег release/20261124-lobby-pets указывает на точные runtime-исходники; последующий коммит содержит отчёты.
-Сохранены прежние ограничения производительности и все резервные копии.
-
-Актуальная передача 24.11.2026
-
-VPS: 20261124-clan-publish, backend 6f935598812f870137978d9ac7312fdd2a82341d.
-Статика: Premium ddf6cb2 и яркое золото 344b955. Точные версии: docs/current-release.json.
-Публикуются main и codex/20261123-interface-mechanics; рабочая ветка codex/20261124-emotes-realistic-load.
-Комнаты по 30, допуск 400+30 прежний — это НЕ измеренная ёмкость.
-Нагрузка 60+5 за 10 минут pass; 90+5 за 10 минут неустойчиво. Квота 6 CPU включает генераторы.
-Отчёт: games/heroes-of-ether/docs/performance/premium-realistic-20261124.txt.
-Открыты адресные commits, история, независимые комнаты, физика, клиентский Firefox, долгие испытания.
-Все backups и исторические пути сохранять; hardlinks заменять атомарно.
-Независимая админка, private config и экспериментальный порт 3000 не менялись.
+VPS: 20261125-gameplay-fixes, source af4817f5d93c9662b326ece8aec1cfeb6f1722d0, tag release/20261125-gameplay-fixes.
+Вход открыт 2026-11-25T04:26:59.599Z; game903342/admin1163; PostgreSQL healthy.
+Публикуются main и codex/20261125-gameplay-fixes. Тег указывает на runtime; последующий commit содержит отчёты и документацию.
+Отчёт games/heroes-of-ether/docs/performance/gameplay-fixes-20261125.json; формулы games/heroes-of-ether/docs/rules/experience-and-levels.md.
+Premium умножает все реально начисленные киллы, VIP — итоговый опыт. Исправлены клановый зачёт, скидки кубка, x10/x100 покупки, админская смена сезона, камень и интерфейс. Сезон production не переключался.
+Windows/Linux: по2514pass/0fail/3skip; realPG12; 9браузерных контекстов. Root/localhost3104 синхронизированы.
+Оптимизация и нагрузочные испытания отложены владельцем. Независимые комнаты остаются кандидатами; 300000CCU не доказаны.
+Все резервные копии/миры/WAL/истории сохранять, hardlinks заменять атомарно. Последний backup обеих сторон SHA f0c5afab183812552b46ad7f92332c6170510eef861423a4a073202c8d0cfc9e.
+Независимая админка1163, private config и экспериментальный localhost3000 прежние.
+Предыдущий выпуск: 20261125-world-copy-reuse/f07d382c; исторические отчёты сохранены.
 
 Далее приведены исходная точка репозитория и правила передачи смены.
 

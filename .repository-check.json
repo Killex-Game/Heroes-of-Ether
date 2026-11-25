@@ -1,6 +1,10 @@
 {
   "games/heroes-of-ether/tests/unit/state-snapshot.test.js": {
-    "sha256": "f869244f68ba4996e0039384535d9ac32046bb0d9cf2f82fe316214a8b003897",
-    "reason": "Reviewed safeError unit test using a dummy database URI; no working credentials."
+    "sha256": "72adf5e14306899def060da413eb9480b4035d369de03714697cb6ff41f072ed",
+    "reason": "Reviewed synthetic credentials in redaction/error-sanitization tests only. Same fixture bytes as prior origin/main; no working credentials."
+  },
+  "games/heroes-of-ether/tests/unit/database-worker-messages.test.js": {
+    "sha256": "9d808b447ea2b0907dae97694f3a5cfed5a780db9b9fc64f64134284628e3434",
+    "reason": "Reviewed synthetic credentials in redaction/error-sanitization tests only. Same fixture bytes as prior origin/main; no working credentials."
   }
 }

@@ -1,0 +1,1392 @@
+{
+  "release": "20261125-gameplay-fixes",
+  "sourceCommit": "af4817f5d93c9662b326ece8aec1cfeb6f1722d0",
+  "sourceTag": "release/20261125-gameplay-fixes",
+  "installed": true,
+  "openedAtUtc": "2026-11-25T04:26:59.599Z",
+  "runtime": {
+    "at": "2026-11-25T04:27:59.611Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 4903625,
+    "gamePid": 903342,
+    "adminPid": 1163,
+    "candidateInstalled": true
+  },
+  "production": {
+    "release": "/srv/heroether-test/play/releases/20261125-gameplay-fixes",
+    "sourceCommit": "af4817f5d93c9662b326ece8aec1cfeb6f1722d0",
+    "files": 2629,
+    "changed": 59,
+    "previousReleaseUnchanged": true,
+    "protectedGraphicsUnchangedExceptExplicitCurrencyRestorationAndEventLobby": true,
+    "commentsRemoved": 684
+  },
+  "data": {
+    "before": {
+      "at": 1795580334196,
+      "revision": 4903625,
+      "digest": "fc882e630930311c47a0889278a67f0559284d1957e2f173af586c6994c0a352",
+      "worldHash": "9452f4af5dd6de0ee8c9ca2f7724b2dc6340000fad1e84b35d05d37ca5dc03bd",
+      "profiles": 1723,
+      "clans": 137,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/run/heroether-gameplay-backup-20261125/gameplay-fixes-20261125",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/gameplay-fixes-20261125/data-before.tar.gz"
+    },
+    "after": {
+      "calendarReplayExact": true,
+      "noCalendarChange": true,
+      "expiredChat": 0,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 4903625,
+      "revision": 4903625,
+      "digest": "fc882e630930311c47a0889278a67f0559284d1957e2f173af586c6994c0a352",
+      "worldHash": "9452f4af5dd6de0ee8c9ca2f7724b2dc6340000fad1e84b35d05d37ca5dc03bd",
+      "profiles": 1723,
+      "clans": 137
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "f0c5afab183812552b46ad7f92332c6170510eef861423a4a073202c8d0cfc9e",
+      "revision": 4903625,
+      "digest": "fc882e630930311c47a0889278a67f0559284d1957e2f173af586c6994c0a352",
+      "worldHash": "9452f4af5dd6de0ee8c9ca2f7724b2dc6340000fad1e84b35d05d37ca5dc03bd",
+      "profiles": 1723,
+      "clans": 137,
+      "postgresqlArchiveVerified": true
+    },
+    "storage": {
+      "archive": "/srv/heroether-test/play/backups/gameplay-fixes-20261125/data-before.tar.gz",
+      "sha256": "f0c5afab183812552b46ad7f92332c6170510eef861423a4a073202c8d0cfc9e",
+      "bytes": 111451415,
+      "checkpointReserve": 629145600,
+      "rawStagingRetained": "/run/heroether-gameplay-backup-20261125",
+      "durableArchiveVerified": true
+    }
+  },
+  "verification": {
+    "source": "af4817f5d93c9662b326ece8aec1cfeb6f1722d0",
+    "allRequiredChecksPassed": true,
+    "totalTests": 2517,
+    "totalPassed": 2514,
+    "totalSkipped": 3,
+    "failed": 0,
+    "realPostgreSQLPassed": 12,
+    "windowsPassed": 2514,
+    "rows": [
+      {
+        "name": "windows-full-3",
+        "pass": 2514,
+        "skip": 3,
+        "sha256": "60bac4490069bbf20764724b49f2ed34ea62666ccaabacf79c72c7e830fb938e"
+      },
+      {
+        "name": "linux-full-2",
+        "pass": 2514,
+        "skip": 3,
+        "sha256": "5796f22f85586363277dced73e96e53b82e6ed3eaaf8a69f199f5d280f637547"
+      },
+      {
+        "name": "real-pg",
+        "pass": 12,
+        "skip": 0,
+        "sha256": "e1c45b4d109fc7a52565cf69d0008d2c4a16e8e2ec9b5d40d785d3c7f5b208ba"
+      },
+      {
+        "name": "post-full-copy",
+        "pass": 46,
+        "skip": 0,
+        "sha256": "4e45a50795e5241f2d21196dc53b024ca586a5e587db431229e1428427bb658e"
+      },
+      {
+        "name": "browser",
+        "count": 6,
+        "sha256": "24a5b8f1c935843704571b13b546b308f356c2eef78da6d2a89c25d3195498c4"
+      },
+      {
+        "name": "browser-commerce",
+        "count": 3,
+        "sha256": "b0cfc3e946707bd4d33bb9a773a830184139d283183dc8cb4616cdd3d2d0f4b0"
+      }
+    ],
+    "browserContexts": [
+      {
+        "engine": "chromium",
+        "width": 1398,
+        "height": 766,
+        "bulk110": true,
+        "chatSilent": true,
+        "stoneExpires": true,
+        "errors": []
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "bulk110": true,
+        "chatSilent": true,
+        "stoneExpires": true,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "width": 1398,
+        "height": 766,
+        "bulk110": true,
+        "chatSilent": true,
+        "stoneExpires": true,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "width": 390,
+        "height": 844,
+        "bulk110": true,
+        "chatSilent": true,
+        "stoneExpires": true,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "width": 1398,
+        "height": 766,
+        "bulk110": true,
+        "chatSilent": true,
+        "stoneExpires": true,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "bulk110": true,
+        "chatSilent": true,
+        "stoneExpires": true,
+        "errors": []
+      }
+    ],
+    "commerce": [
+      {
+        "engine": "chromium",
+        "discount": 2,
+        "actualDebit": 1470,
+        "achievementDebit": 1470,
+        "timerExpires": true,
+        "wardrobeNoDiscount": true,
+        "titleRadius": "14px",
+        "adminBothDirections": true,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "discount": 2,
+        "actualDebit": 1470,
+        "achievementDebit": 1470,
+        "timerExpires": true,
+        "wardrobeNoDiscount": true,
+        "titleRadius": "14px",
+        "adminBothDirections": true,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "discount": 2,
+        "actualDebit": 1470,
+        "achievementDebit": 1470,
+        "timerExpires": true,
+        "wardrobeNoDiscount": true,
+        "titleRadius": "14px",
+        "adminBothDirections": true,
+        "errors": []
+      }
+    ],
+    "http": {
+      "at": "2026-11-25T04:27:20.555Z",
+      "checks": [
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/admin.html",
+          "bytes": 29360,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/boosters/boosters.json",
+          "bytes": 11138,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/currency-packs/ether-original/bank.png",
+          "bytes": 1421079,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/currency-packs/ether-original/change.png",
+          "bytes": 1141112,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/currency-packs/ether-original/gift.png",
+          "bytes": 1494954,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/currency-packs/ether-original/piggy.png",
+          "bytes": 1128669,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/currency-packs/ether-original/stash.png",
+          "bytes": 1126234,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/currency-packs/ether-original/treasure.png",
+          "bytes": 1266724,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/events/lobby/black-friday-pattern.svg",
+          "bytes": 2635,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/assets/events/lobby/easter-pattern-20261125.png",
+          "bytes": 1554460,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/game-client.js",
+          "bytes": 85319,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/index.html",
+          "bytes": 42963,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/accessory-catalog.js",
+          "bytes": 29620,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/arena-camera-and-layout.js",
+          "bytes": 13085,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/chat-links.js",
+          "bytes": 1020,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/clan-competition-rules.js",
+          "bytes": 7375,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/clan-season-calendar.js",
+          "bytes": 5203,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/menu-notifications.js",
+          "bytes": 4292,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/release-notes.js",
+          "bytes": 22415,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/virtual-product-catalog.js",
+          "bytes": 8807,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/styles/components/achievement-dialog.css",
+          "bytes": 22854,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/styles/components/ether-alchemy.css",
+          "bytes": 9452,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/styles/components/event-lobby.css",
+          "bytes": 1476,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/styles/components/interface-art.css",
+          "bytes": 1037,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/styles/components/player-chat.css",
+          "bytes": 4532,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/styles/layout/responsive-interface.css",
+          "bytes": 29174,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/accounts/account-dialog.js",
+          "bytes": 11906,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/admin/clan-seasons.js",
+          "bytes": 9559,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+          "bytes": 70201,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/chat/player-chat.js",
+          "bytes": 21016,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/clans/clan-battle-and-treasury.js",
+          "bytes": 48801,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/clans/clan-daily-quests.js",
+          "bytes": 11517,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/cosmetics/accessory-ability-ui.js",
+          "bytes": 5130,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/cosmetics/league-appearance.js",
+          "bytes": 34976,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+          "bytes": 25849,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/pets/pet-dialog.js",
+          "bytes": 31922,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/progression/easter-hunt-page.js",
+          "bytes": 18463,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/progression/ether-generator.js",
+          "bytes": 5321,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/ui/progression/experience-progress.js",
+          "bytes": 7832,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/arena-wire.js",
+          "bytes": 17618,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/player-identity.js",
+          "bytes": 20150,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/admin.html",
+          "bytes": 29360,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/boosters/boosters.json",
+          "bytes": 11138,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/currency-packs/ether-original/bank.png",
+          "bytes": 1421079,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/currency-packs/ether-original/change.png",
+          "bytes": 1141112,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/currency-packs/ether-original/gift.png",
+          "bytes": 1494954,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/currency-packs/ether-original/piggy.png",
+          "bytes": 1128669,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/currency-packs/ether-original/stash.png",
+          "bytes": 1126234,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/currency-packs/ether-original/treasure.png",
+          "bytes": 1266724,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/events/lobby/black-friday-pattern.svg",
+          "bytes": 2635,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/assets/events/lobby/easter-pattern-20261125.png",
+          "bytes": 1554460,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/game-client.js",
+          "bytes": 85319,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/index.html",
+          "bytes": 42963,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/accessory-catalog.js",
+          "bytes": 29620,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/arena-camera-and-layout.js",
+          "bytes": 13085,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/chat-links.js",
+          "bytes": 1020,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/clan-competition-rules.js",
+          "bytes": 7375,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/clan-season-calendar.js",
+          "bytes": 5203,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/menu-notifications.js",
+          "bytes": 4292,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/release-notes.js",
+          "bytes": 22415,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/virtual-product-catalog.js",
+          "bytes": 8807,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/styles/components/achievement-dialog.css",
+          "bytes": 22854,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/styles/components/ether-alchemy.css",
+          "bytes": 9452,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/styles/components/event-lobby.css",
+          "bytes": 1476,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/styles/components/interface-art.css",
+          "bytes": 1037,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/styles/components/player-chat.css",
+          "bytes": 4532,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/styles/layout/responsive-interface.css",
+          "bytes": 29174,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/accounts/account-dialog.js",
+          "bytes": 11906,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/admin/clan-seasons.js",
+          "bytes": 9559,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+          "bytes": 70201,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/chat/player-chat.js",
+          "bytes": 21016,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/clans/clan-battle-and-treasury.js",
+          "bytes": 48801,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/clans/clan-daily-quests.js",
+          "bytes": 11517,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/cosmetics/accessory-ability-ui.js",
+          "bytes": 5130,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/cosmetics/league-appearance.js",
+          "bytes": 34976,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+          "bytes": 25849,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/pets/pet-dialog.js",
+          "bytes": 31922,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/progression/easter-hunt-page.js",
+          "bytes": 18463,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/progression/ether-generator.js",
+          "bytes": 5321,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/ui/progression/experience-progress.js",
+          "bytes": 7832,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/arena-wire.js",
+          "bytes": 17618,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/player-identity.js",
+          "bytes": 20150,
+          "exact": true
+        }
+      ]
+    },
+    "adminHttp": {
+      "checks": [
+        {
+          "file": "public/admin.html",
+          "exact": true,
+          "bytes": 29360
+        },
+        {
+          "file": "public/ui/admin/clan-seasons.js",
+          "exact": true,
+          "bytes": 9559
+        }
+      ]
+    },
+    "localHttp": {
+      "at": "2026-11-25T04:28:00.876Z",
+      "port": 3104,
+      "checks": 41,
+      "exact": true,
+      "files": [
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/admin.html",
+          "bytes": 29360,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/boosters/boosters.json",
+          "bytes": 11138,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/currency-packs/ether-original/bank.png",
+          "bytes": 1421079,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/currency-packs/ether-original/change.png",
+          "bytes": 1141112,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/currency-packs/ether-original/gift.png",
+          "bytes": 1494954,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/currency-packs/ether-original/piggy.png",
+          "bytes": 1128669,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/currency-packs/ether-original/stash.png",
+          "bytes": 1126234,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/currency-packs/ether-original/treasure.png",
+          "bytes": 1266724,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/events/lobby/black-friday-pattern.svg",
+          "bytes": 2635,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/assets/events/lobby/easter-pattern-20261125.png",
+          "bytes": 1554460,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/game-client.js",
+          "bytes": 87102,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/index.html",
+          "bytes": 42963,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/accessory-catalog.js",
+          "bytes": 29663,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/arena-camera-and-layout.js",
+          "bytes": 14688,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/chat-links.js",
+          "bytes": 1020,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/clan-competition-rules.js",
+          "bytes": 7423,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/clan-season-calendar.js",
+          "bytes": 5261,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/menu-notifications.js",
+          "bytes": 4359,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/release-notes.js",
+          "bytes": 22415,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/virtual-product-catalog.js",
+          "bytes": 8866,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/styles/components/achievement-dialog.css",
+          "bytes": 27427,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/styles/components/ether-alchemy.css",
+          "bytes": 10497,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/styles/components/event-lobby.css",
+          "bytes": 1874,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/styles/components/interface-art.css",
+          "bytes": 1172,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/styles/components/player-chat.css",
+          "bytes": 5570,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/styles/layout/responsive-interface.css",
+          "bytes": 37815,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/accounts/account-dialog.js",
+          "bytes": 11999,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/admin/clan-seasons.js",
+          "bytes": 9559,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+          "bytes": 70600,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/chat/player-chat.js",
+          "bytes": 21071,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/clans/clan-battle-and-treasury.js",
+          "bytes": 48980,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/clans/clan-daily-quests.js",
+          "bytes": 11517,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/cosmetics/accessory-ability-ui.js",
+          "bytes": 5190,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/cosmetics/league-appearance.js",
+          "bytes": 35094,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/cosmetics/skin-and-wardrobe-dialogs.js",
+          "bytes": 25888,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/pets/pet-dialog.js",
+          "bytes": 31922,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/progression/easter-hunt-page.js",
+          "bytes": 18518,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/progression/ether-generator.js",
+          "bytes": 5321,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/ui/progression/experience-progress.js",
+          "bytes": 7936,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/arena-wire.js",
+          "bytes": 17618,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/player-identity.js",
+          "bytes": 20595,
+          "exact": true
+        }
+      ],
+      "experimentalPort3000Untouched": true
+    }
+  },
+  "local": {
+    "port": 3104,
+    "pid": 37216,
+    "filesSynchronized": 84,
+    "isolatedData": true,
+    "experimentalPort3000Unchanged": true
+  },
+  "postInstallObservation": [
+    {
+      "at": 1795580840892,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 423,
+        "advancedTicks": 325,
+        "updatesHz": 5.42,
+        "tickWorkMs": {
+          "count": 423,
+          "p50": 0.79,
+          "p95": 1.15,
+          "p99": 1.41,
+          "max": 16.19
+        },
+        "tickIntervalMs": {
+          "count": 423,
+          "p50": 49.9,
+          "p95": 51.19,
+          "p99": 51.67,
+          "max": 116478.42
+        },
+        "eventLoop": {
+          "windowMs": 10000.14,
+          "resolutionMs": 20,
+          "samples": 493,
+          "p95Ms": 20.76,
+          "p99Ms": 21.23,
+          "maxMs": 21.35
+        },
+        "capturedAt": 1795580840886,
+        "uptimeSeconds": 291,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "memoryMiB": {
+          "resident": 1758,
+          "heapUsed": 451,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4903625,
+          "pendingWalBytes": 0,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 20880
+      }
+    },
+    {
+      "at": 1795580845898,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 523,
+        "advancedTicks": 425,
+        "updatesHz": 7.08,
+        "tickWorkMs": {
+          "count": 523,
+          "p50": 0.78,
+          "p95": 1.14,
+          "p99": 1.37,
+          "max": 16.19
+        },
+        "tickIntervalMs": {
+          "count": 523,
+          "p50": 49.89,
+          "p95": 51.35,
+          "p99": 51.66,
+          "max": 116478.42
+        },
+        "eventLoop": {
+          "windowMs": 10000.14,
+          "resolutionMs": 20,
+          "samples": 493,
+          "p95Ms": 20.76,
+          "p99Ms": 21.23,
+          "maxMs": 21.35
+        },
+        "capturedAt": 1795580845896,
+        "uptimeSeconds": 296,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "memoryMiB": {
+          "resident": 1758,
+          "heapUsed": 452,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4903625,
+          "pendingWalBytes": 0,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 25886
+      }
+    },
+    {
+      "at": 1795580850903,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 623,
+        "advancedTicks": 525,
+        "updatesHz": 8.75,
+        "tickWorkMs": {
+          "count": 623,
+          "p50": 0.77,
+          "p95": 1.13,
+          "p99": 1.34,
+          "max": 16.19
+        },
+        "tickIntervalMs": {
+          "count": 623,
+          "p50": 49.92,
+          "p95": 51.3,
+          "p99": 51.62,
+          "max": 116478.42
+        },
+        "eventLoop": {
+          "windowMs": 10000.44,
+          "resolutionMs": 20,
+          "samples": 493,
+          "p95Ms": 21.17,
+          "p99Ms": 21.3,
+          "maxMs": 21.82
+        },
+        "capturedAt": 1795580850902,
+        "uptimeSeconds": 301,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "memoryMiB": {
+          "resident": 1760,
+          "heapUsed": 452,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4903625,
+          "pendingWalBytes": 0,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 1143
+      }
+    },
+    {
+      "at": 1795580855908,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 723,
+        "advancedTicks": 625,
+        "updatesHz": 10.42,
+        "tickWorkMs": {
+          "count": 723,
+          "p50": 0.76,
+          "p95": 1.11,
+          "p99": 1.34,
+          "max": 16.19
+        },
+        "tickIntervalMs": {
+          "count": 723,
+          "p50": 49.94,
+          "p95": 51.33,
+          "p99": 51.65,
+          "max": 116478.42
+        },
+        "eventLoop": {
+          "windowMs": 10000.44,
+          "resolutionMs": 20,
+          "samples": 493,
+          "p95Ms": 21.17,
+          "p99Ms": 21.3,
+          "maxMs": 21.82
+        },
+        "capturedAt": 1795580855907,
+        "uptimeSeconds": 306,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "memoryMiB": {
+          "resident": 1760,
+          "heapUsed": 452,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4903625,
+          "pendingWalBytes": 0,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 6148
+      }
+    },
+    {
+      "at": 1795580860913,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 823,
+        "advancedTicks": 725,
+        "updatesHz": 12.08,
+        "tickWorkMs": {
+          "count": 823,
+          "p50": 0.76,
+          "p95": 1.11,
+          "p99": 1.34,
+          "max": 16.19
+        },
+        "tickIntervalMs": {
+          "count": 823,
+          "p50": 49.93,
+          "p95": 51.33,
+          "p99": 51.62,
+          "max": 116478.42
+        },
+        "eventLoop": {
+          "windowMs": 9999.33,
+          "resolutionMs": 20,
+          "samples": 492,
+          "p95Ms": 21.05,
+          "p99Ms": 21.25,
+          "maxMs": 21.36
+        },
+        "capturedAt": 1795580860912,
+        "uptimeSeconds": 311,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 0,
+          "total": 0
+        },
+        "memoryMiB": {
+          "resident": 1761,
+          "heapUsed": 453,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4903625,
+          "pendingWalBytes": 0,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 11153
+      }
+    }
+  ],
+  "scope": [
+    "Premium doubles all credited kills; clan quests consume actual credited kills; VIP final XP multiplier retained",
+    "10/100 booster purchases, actual spending achievements, server-side trophy cosmetic discounts and expiry timer",
+    "Early clan season settlement in administration, five-second stone dizziness, silent chat and compact UI",
+    "Original ether purchase artwork restored, circular preview backgrounds, ether generator currency icon",
+    "Simple Easter lobby pattern, earliest Black Friday pattern restored"
+  ],
+  "limitations": [
+    "Optimization/capacity load testing remains paused by the owner. No 300000 CCU or new capacity claim.",
+    "Live seasonal switch was not executed. Browser season actions ran only on isolated fixtures.",
+    "Real VK payment authorization was not exercised.",
+    "Killex task audit showed two completed tasks contributing two points, plus three earlier points. No historical compensation was invented."
+  ],
+  "retainedFailures": [
+    "Windows full-1: 13 stale assertions; later full-3 passed.",
+    "Linux full-1: malformed copied PNG fixture; exporter binary handling corrected; full-2 passed.",
+    "Initial browser harness selector, overlay, calendar and close-lifetime errors retained.",
+    "Two readiness probes ran before cold startup completed; after readiness PostgreSQL synchronized and automatic startup closure cleared."
+  ],
+  "repositoryCheck": {
+    "passed": true,
+    "indexEntries": 4255,
+    "reviewedSyntheticFixtureFlags": 2,
+    "fixtureBytesMatchPriorMain": true
+  }
+}
