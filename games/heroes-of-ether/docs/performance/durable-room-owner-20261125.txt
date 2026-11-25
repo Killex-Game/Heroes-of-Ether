@@ -39,3 +39,5 @@ or 300000-online readiness is claimed. The existing legacy resident benchmark
 remains available separately and retains its prior crash-publication limitation.
 
 Full Windows: 2520 total / 2517 pass / 0 fail / 3 skip, 556488.5609ms. Source 8c7cc5d0bf83d5547dc8d8169a899fac34794905. Linux full running; no mixed capacity evidence for this adapter.
+
+2026-11-25 02:15 UTC update: foundation Linux full also passed2520/2517pass/0fail/3skip. Mixed adapter8352046 has Windows2523/2520pass/0fail/3skip and a precommit30+5/60s local smoke:550client ACK restored exactly,0duplicates,all30boosters applied,208lobby successes/0errors,one closed epoch/no pending reservations. No PG. Runtime measurement label corrected before commit; smoke is not exact-commit acceptance. Frame-copy candidatea0af54e has25targetedpass and exact three-pair component comparison,270–295ms vs6109–6315ms per30iterations of240outcomes; fullWindowsrunning/Linuxpending. All remain uninstalled. Detailed evidence in resident-ledger-copy-20261125.json.

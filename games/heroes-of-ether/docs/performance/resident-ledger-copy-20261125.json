@@ -1,0 +1,3603 @@
+{
+  "at": "2026-11-25T02:15:06.141Z",
+  "installed": false,
+  "foundation": {
+    "source": "8c7cc5d0bf83d5547dc8d8169a899fac34794905",
+    "linux": {
+      "tests": 2520,
+      "pass": 2517,
+      "fail": 0,
+      "skip": 3,
+      "durationMs": 584619.168847
+    }
+  },
+  "mixedAdapter": {
+    "source": "8352046ebb5baaeb3b2ea974888a4982cfc37159",
+    "windows": {
+      "tests": 2523,
+      "pass": 2520,
+      "fail": 0,
+      "skip": 3,
+      "durationMs": 570194.7376
+    },
+    "smoke": {
+      "scope": "isolated resident simulation + direct WebSocket state + local durable progress + real inventory/WAL casts + 1280 synthetic profiles/128 clans/5 real HTTP lobby clients; no production arena admission in this run",
+      "rooms": 1,
+      "perRoom": 30,
+      "players": 30,
+      "processes": 1,
+      "seconds": 60,
+      "aborted": false,
+      "shards": [
+        {
+          "elapsed": 60198.5515,
+          "cpuMs": 31219,
+          "peakRss": 267005952,
+          "measuredRooms": [
+            {
+              "id": "room-0",
+              "ticks": 1198,
+              "pauses": 0,
+              "boosters": {
+                "mine": 18,
+                "knuckles": 20,
+                "cake": 19,
+                "hook": 20,
+                "sphere": 20,
+                "harpoon": 18,
+                "mega_poison": 16,
+                "vortex": 17,
+                "candy": 19,
+                "donut": 18,
+                "stone": 19,
+                "easter_egg": 19,
+                "clan_shield": 19,
+                "freeze": 19,
+                "glove": 18,
+                "colorful_shield": 19,
+                "web": 18,
+                "lock": 19,
+                "golden_shield": 19,
+                "warheads": 18,
+                "ice_cream": 19,
+                "poison": 19,
+                "axe": 16,
+                "awl": 17,
+                "rocket": 15,
+                "speed": 18,
+                "meat": 18,
+                "fire": 17,
+                "fire_sword": 16,
+                "sponge": 16
+              },
+              "progressTypes": {
+                "lifeStarted": 106,
+                "arenaAction": 635,
+                "alchemyGather": 629,
+                "massPeak": 3874,
+                "absorbed": 1007,
+                "questSample": 1822,
+                "lifeTime": 1790,
+                "lifeEnded": 76,
+                "clanArenaAction": 65,
+                "massAccrual": 23
+              },
+              "rejected": 0,
+              "bytes": 199247966,
+              "states": 35940,
+              "maxOutbox": 0,
+              "respawns": 76,
+              "reconnections": 0,
+              "aliveSamples": 35864,
+              "minAlive": 24,
+              "maxAlive": 30,
+              "outbox": 1,
+              "clients": 30,
+              "networkEvery": 1,
+              "durableFrames": 1138,
+              "frameFsyncMs": {
+                "n": 1138,
+                "p50": 17.064900000004855,
+                "p95": 28.855900000002293,
+                "p99": 45.13680000000022,
+                "max": 139.08609999999317
+              },
+              "barrierMs": {
+                "casts": 0,
+                "progress": 0,
+                "total": 0
+              },
+              "inputs": {
+                "moves": 17327,
+                "feed": 2460,
+                "split": 480,
+                "booster": 868,
+                "rejected": 315,
+                "maxQueue": 54,
+                "accepted": {
+                  "feed": 2372,
+                  "split": 376
+                },
+                "pending": 10
+              },
+              "meanParts": 215.67028380634392,
+              "meanFullySplit": 5.183639398998331,
+              "respawnDelayMs": 0,
+              "meanAlive": 29.936560934891485,
+              "durableCasts": {
+                "submitted": 543,
+                "applied": 543,
+                "rejected": 0,
+                "replays": 0,
+                "lockPauses": 0,
+                "maxPending": 20,
+                "pending": 0,
+                "locked": 0,
+                "reservationMs": {
+                  "n": 0,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0,
+                  "max": 0
+                },
+                "ackLatencyMs": {
+                  "n": 543,
+                  "p50": 54.445599999999104,
+                  "p95": 144.66679999999906,
+                  "p99": 257.0384000000049,
+                  "max": 257.33929999999964
+                },
+                "applyLatencyMs": {
+                  "n": 543,
+                  "p50": 54.4461999999985,
+                  "p95": 144.66790000000037,
+                  "p99": 257.03889999999956,
+                  "max": 257.34010000000126
+                }
+              },
+              "alive": 30,
+              "stepMs": {
+                "n": 1198,
+                "p50": 4.477299999999559,
+                "p95": 7.703199999999924,
+                "p99": 9.761200000000827,
+                "max": 27.767100000000028
+              },
+              "intervalMs": {
+                "n": 1197,
+                "p50": 46.917999999997846,
+                "p95": 62.58020000000033,
+                "p99": 63.45880000000034,
+                "max": 139.93010000000504
+              },
+              "phaseMs": {
+                "physics": {
+                  "n": 1198,
+                  "p50": 3.6177999999999884,
+                  "p95": 6.268199999998615,
+                  "p99": 8.259299999999712,
+                  "max": 24.77120000000002
+                },
+                "snapshot": {
+                  "n": 1198,
+                  "p50": 0.6457999999984168,
+                  "p95": 1.2177000000010594,
+                  "p99": 1.6586999999999534,
+                  "max": 2.3436000000001513
+                },
+                "broadcast": {
+                  "n": 1198,
+                  "p50": 0.0006000000066705979,
+                  "p95": 0.0017000000007101335,
+                  "p99": 0.003200000000106229,
+                  "max": 0.02820000000008349
+                }
+              }
+            }
+          ],
+          "drainMs": 60.27530000000115,
+          "rooms": [
+            {
+              "id": "room-0",
+              "ticks": 1200,
+              "pauses": 0,
+              "boosters": {
+                "mine": 18,
+                "knuckles": 20,
+                "cake": 19,
+                "hook": 20,
+                "sphere": 20,
+                "harpoon": 18,
+                "mega_poison": 17,
+                "vortex": 18,
+                "candy": 20,
+                "donut": 19,
+                "stone": 20,
+                "easter_egg": 20,
+                "clan_shield": 20,
+                "freeze": 19,
+                "glove": 18,
+                "colorful_shield": 19,
+                "web": 18,
+                "lock": 19,
+                "golden_shield": 19,
+                "warheads": 18,
+                "ice_cream": 19,
+                "poison": 19,
+                "axe": 16,
+                "awl": 17,
+                "rocket": 15,
+                "speed": 18,
+                "meat": 18,
+                "fire": 17,
+                "fire_sword": 16,
+                "sponge": 16
+              },
+              "progressTypes": {
+                "lifeStarted": 106,
+                "arenaAction": 643,
+                "alchemyGather": 629,
+                "massPeak": 3879,
+                "absorbed": 1008,
+                "questSample": 1822,
+                "lifeTime": 1790,
+                "lifeEnded": 76,
+                "clanArenaAction": 65,
+                "massAccrual": 23
+              },
+              "rejected": 0,
+              "bytes": 199647894,
+              "states": 36000,
+              "maxOutbox": 0,
+              "respawns": 76,
+              "reconnections": 0,
+              "aliveSamples": 35924,
+              "minAlive": 24,
+              "maxAlive": 30,
+              "outbox": 0,
+              "clients": 30,
+              "networkEvery": 1,
+              "durableFrames": 1140,
+              "frameFsyncMs": {
+                "n": 1140,
+                "p50": 17.08179999999993,
+                "p95": 28.855900000002293,
+                "p99": 45.13680000000022,
+                "max": 139.08609999999317
+              },
+              "barrierMs": {
+                "casts": 0,
+                "progress": 0,
+                "total": 0
+              },
+              "inputs": {
+                "moves": 17327,
+                "feed": 2460,
+                "split": 480,
+                "booster": 868,
+                "rejected": 318,
+                "maxQueue": 54,
+                "accepted": {
+                  "feed": 2372,
+                  "split": 376
+                },
+                "pending": 0
+              },
+              "meanParts": 215.79083333333332,
+              "meanFullySplit": 5.1883333333333335,
+              "respawnDelayMs": 0,
+              "meanAlive": 29.936666666666667,
+              "durableCasts": {
+                "submitted": 550,
+                "applied": 550,
+                "rejected": 0,
+                "replays": 0,
+                "lockPauses": 0,
+                "maxPending": 20,
+                "pending": 0,
+                "locked": 0,
+                "reservationMs": {
+                  "n": 0,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0,
+                  "max": 0
+                },
+                "ackLatencyMs": {
+                  "n": 550,
+                  "p50": 54.243099999999686,
+                  "p95": 144.66679999999906,
+                  "p99": 257.0384000000049,
+                  "max": 257.33929999999964
+                },
+                "applyLatencyMs": {
+                  "n": 550,
+                  "p50": 54.24409999999989,
+                  "p95": 144.66790000000037,
+                  "p99": 257.03889999999956,
+                  "max": 257.34010000000126
+                }
+              },
+              "alive": 30,
+              "stepMs": {
+                "n": 1200,
+                "p50": 4.477600000000166,
+                "p95": 7.703199999999924,
+                "p99": 9.761200000000827,
+                "max": 27.767100000000028
+              },
+              "intervalMs": {
+                "n": 1199,
+                "p50": 46.917600000000675,
+                "p95": 62.58020000000033,
+                "p99": 63.45880000000034,
+                "max": 139.93010000000504
+              },
+              "phaseMs": {
+                "physics": {
+                  "n": 1200,
+                  "p50": 3.6177999999999884,
+                  "p95": 6.268199999998615,
+                  "p99": 8.259299999999712,
+                  "max": 24.77120000000002
+                },
+                "snapshot": {
+                  "n": 1200,
+                  "p50": 0.6462999999999965,
+                  "p95": 1.2177000000010594,
+                  "p99": 1.6586999999999534,
+                  "max": 2.3436000000001513
+                },
+                "broadcast": {
+                  "n": 1200,
+                  "p50": 0.0006000000066705979,
+                  "p95": 0.0017000000007101335,
+                  "p99": 0.003200000000106229,
+                  "max": 0.02820000000008349
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "peers": [
+        {
+          "clients": 30,
+          "packets": 36898,
+          "bytes": 199743481,
+          "failures": 0,
+          "elapsed": 60316.0759,
+          "cpuMs": 17000,
+          "rss": 218210304,
+          "inputs": {
+            "inputState": "browser-decoder",
+            "offered": {
+              "move": 17327,
+              "viewport": 5790,
+              "feed": 2460,
+              "booster": 868,
+              "split": 480
+            },
+            "requests": 868,
+            "successful": 550,
+            "failures": {
+              "Во время защиты появления атаковать нельзя.": 26,
+              "Неизвестный бустер.": 288,
+              "Для Губки нужны разделённые части. Предмет сохранён.": 3,
+              "Достигнут предел массы главного шара для вашего уровня. Предмет сохранён.": 1
+            },
+            "pending": 0,
+            "latencyMs": {
+              "n": 868,
+              "p50": 84.00469999999768,
+              "p95": 117.01950000000215,
+              "p99": 273.71259999999893,
+              "max": 274.0550000000003
+            },
+            "successfulLatencyMs": {
+              "n": 550,
+              "p50": 93.46680000000197,
+              "p95": 192.23619999999937,
+              "p99": 273.8443000000043,
+              "max": 274.0550000000003
+            },
+            "driverLoopP95Ms": 22.937599,
+            "confirmed": [
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "5b0ded9e-235d-49f8-bc32-16f04adf782c",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "a4fc2d44-7b62-454b-8c65-8b3dd651001b",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "19b5a011-4bcc-4089-9fce-c858dba0007d",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "bee6e2b7-a105-485a-94da-8c816e38d4fd",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "48bf9b0b-f43e-43f9-b21f-cc1ebe2536d6",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "a2d23f14-2534-4549-b8bb-f203b2290e32",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "0dfe32ee-7167-42b9-a40f-1bee92b94011",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "4df70aa2-3c4e-4f35-92ed-1fb4836d8fe4",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "5d782269-2ac4-4079-b6e3-730336d272f6",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "b5575c1f-f010-4475-9460-f2f3ced3fff1",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "4678f1d9-dcde-4a07-aaf8-f63738331e4a",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "c3dcbc07-ecb2-45b3-8377-2db9f6004c13",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "6222f18a-df65-479e-bf0d-be9ffda7b745",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "95070d7f-028f-4e3d-8136-e016db4941a9",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "d05bc56b-856b-4603-bb67-70e5d0dad412",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "113c7fb5-64e7-4bb6-8b7b-401a8af6989d",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "fd797aee-4e87-4544-aa81-45d99da09cfd",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "037628d4-adb0-46bd-a6d3-f28fdcbbe88e",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "ed31689b-33c0-4cb1-830f-18b958ed83e3",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "9e11ef9c-baa6-4dcd-b4dd-b96599fe969c",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "5cc8b9b9-2729-4c92-ac4c-cc4b4bb2d085",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "c1f47f7a-2f86-41c3-9dc8-5cc1f9e11d45",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "821bb613-e52b-4c12-abfb-879423ed3e6a",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "d6474c73-4f0f-4e0d-b551-ca8f103573be",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "4f91311f-eb55-4ee6-8c5f-b3f2e5024dad",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "a652051c-cf65-44ba-bf4c-e49a387f00ac",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "e519d553-fb8a-461e-8e85-f7bd3857b072",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "a0327117-7c5b-4cdb-a029-9c85e5cf81da",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "757e7cc8-aa3d-428e-b7e3-72b43a928c9a",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "cd128b26-1087-4a95-af4d-a31acd264100",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "0c2566f1-aa67-49c8-a105-951d5d08ba1e",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "22bb5980-f89f-4c9a-80ec-b0c24605f8c9",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "1ca2250b-0fa8-4747-a94c-0c9b347a9886",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "89ab5fdf-beec-4e55-bb59-71da04d42522",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "e2477fec-c3f4-42dc-86b5-41bf6b3109ba",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "f17c5b85-42aa-49db-b627-64093226a5cf",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "94c2e086-6f16-4671-9501-4cc93c4f9b45",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "d0936df6-7625-49cb-960c-886c016722cd",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "496f79df-4df4-4a40-8cf8-f765eb564ca5",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "136b874c-d0e9-4979-99ed-ed4f3844b58c",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "48a25d8b-082e-4978-a535-9f235722c1a4",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "f245e400-504a-482a-b6fe-ea1072685fbd",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "09f1cf2a-f17a-4ad6-971f-f79b00b4713d",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "27eb136f-99ea-4f1a-9cca-c58d48d5ec51",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "137acd57-6b1c-44af-a596-44e697319386",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "8174f50c-9d98-49de-b8df-a80d4daf9471",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "90da0bbe-b587-44d9-bc2e-25cd4fa63404",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "6dfded41-4ef4-4301-8646-372218fce845",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "6f4c57de-3640-4ebc-a4e2-735afac6a611",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "ba94fae3-a600-439f-bb40-934072fd927b",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "0828edda-6317-43c1-8c51-823440bf175a",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "a872728b-4bec-442c-97ad-5dc35b51903b",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "dca41b86-61df-4481-957f-ae39d473035a",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "a8d5109f-a4d9-4b78-b86a-217a86067e16",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "a49e0f91-c7fc-4ca0-b1c2-da239fee59dd",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "383f2c17-704f-4931-bce6-4da30344e880",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "eaea603c-4b85-42f9-a5ec-6abc63e64f19",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "4d199846-d761-41a7-ab08-45e294a89b3e",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "b2f7a78b-0c22-423c-8bde-7563ca21da21",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "87f8f6a2-9df2-47ff-a61a-fde28fb9c8bb",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "e2b51c94-b328-48cb-a3ff-410b5b0c5d85",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "239186ba-0dec-4874-aa82-e3f6561d91b2",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "762da9c6-bd83-4bb0-9ce0-8ac17e4a6909",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "f1da4206-45ad-43c9-8bcd-360da437970e",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "56267c32-5bda-4dd3-b1b9-febac5bfbcf2",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "29a108d3-a024-47d7-9311-7fc6df9f4555",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "834c4bcf-913a-4090-b3b8-6bc56d4aee84",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "4baead9e-f83d-46e1-ab12-0933b2f98cbd",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "d9f8d1ed-050c-4f49-9fdf-437c2f78c39d",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "982d1f7c-2f34-413e-bd44-3303f72600c7",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "fcfea344-c749-4c5f-9f0a-d0b03f6284dd",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "4b3dc62d-168c-4d5c-9837-da7eb49a5a63",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "76ae090c-3274-4295-9243-c61b775c5a6c",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "dda396ef-ba24-48f7-bf77-9fe5a372db1f",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "2f97380a-bfc8-409c-9236-c51d525fa89e",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "2a0e00d1-cc7d-4ebc-b44f-d5c324dbfd36",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "307611f0-3e38-4f3d-a6ac-22a909d25e16",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-7",
+                "requestId": "921faa3e-d74e-4091-8ca9-503600381c4c",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "29021e4c-b11e-4beb-9170-65121fa44a6b",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "51354188-7d68-4f65-a57f-50e69cca7d11",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "52e94a36-b654-4c13-8b27-8343e787944f",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "185fd846-7b79-476a-8269-ffa529826ac0",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "cfe812a9-bce4-4441-864a-1c88b8238843",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "d4317452-2ea6-41e6-b81a-81f138c0a0f3",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "dec36a10-a59a-41fc-af9c-587c45c505be",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "4acd023a-355b-4b22-ac07-9d12209ef3a5",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "12ace621-0e7e-4f05-bfd9-cd189d952e47",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "88a132c7-8dee-40c8-a74d-8105d78e42ab",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "1b90704b-4ca7-4fed-8af0-a5b8f1750d46",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "6014d792-b8db-4186-a932-aa275f305885",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "0627db67-83fc-4be4-aed7-9e8f3d41fce3",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "08a081a7-6aeb-4868-b456-8c201a4afad6",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "b4cb869d-60b8-4b2e-a392-1b388a95a3b6",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "006054f8-efa3-4867-b74d-98fcd21c7211",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "bdd7c57f-e5a9-4b18-bc04-70ef1662b098",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "74b60ed9-d283-445a-8183-d4fcab2c43c0",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "d44e5642-1dc0-486c-8fcb-45f25c346a70",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-7",
+                "requestId": "9f7a8ba9-17ad-4caa-a173-d7ec4181b4ff",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "44f54ade-4940-4a14-acb9-dc5e8abe1d66",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "7737c5c0-d3dd-49af-a86f-c02ebc98ce67",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "afd05080-7865-40d5-9fbe-0db03cd18ad7",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "fb8008ae-3384-4915-b861-f2b84d9d25eb",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "d9bd95fc-ae9a-420a-995e-a65ccba34219",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "7c99d458-f3ac-4ff8-ae81-4e0464bf5d2e",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "6e0dc338-c471-4b45-b6a8-db5adcde697c",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "d4272607-58dd-494a-8993-920256890ec4",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "887c2c60-f850-46af-a02c-39224c5d987a",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "6412ead4-d85a-4fb6-91bd-1d2a414beea4",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "b0b784d9-0b2a-461a-bece-01e01e62223e",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "7257e726-ae69-417e-b302-91efec50da27",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "7a7936f9-63c0-4701-aad7-ae03e10a5edf",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "261830bb-c939-42c0-903b-ae1d2ca799fd",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "955ffe16-517c-407d-b889-87c86900855f",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "4ea12163-bea2-4385-8267-5095f21568a8",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "df0f92de-ce55-48ee-9dd3-fb8d48f4b26e",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "5367df4b-30a4-4a96-8da5-1089550f9933",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "19e8db7d-e9d3-454f-968b-e8a3ce666c66",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "85efcdea-19fa-45b0-9af1-f651f1aed256",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "ec596ae2-be5f-49a5-ab36-7e38cf260dd5",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "483f84db-b441-46f0-8ba1-1cc0d428b4ab",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "711f2a23-8312-4f31-b13f-726c4bb52668",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "a6d5d74f-6358-49e7-938b-f0e9148f8f37",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "1c4ae545-1277-4cd2-9a66-de161b56f547",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "4183b17a-9e36-4031-a18a-cf5d642beee0",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "d88422f8-f907-461b-9e17-c5d1cb3a505e",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "411ae260-cbe2-4aee-b03e-ac9a3fc5f11c",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "49010d6c-2251-43e2-9b63-1f5ddef743b9",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "c5a08cfb-abf9-4260-808f-7822a34cf0cd",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "9105de8d-b754-4a98-8aab-ea3b258f525e",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "ac5d5ea4-f469-410e-bda2-5afcbc97248b",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "68a28817-613c-4669-92bd-af92db61950e",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "2ad459cd-93a5-4805-953c-dcd059cc5886",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "f8b092c8-a339-419e-85b6-59633df047f9",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "cb2ee560-c3f5-4b04-9bf9-a01183681450",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "ca07bbbc-77c0-443d-a993-283683459c75",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "9ac9437c-ab0d-42b3-9278-3ee2417b5637",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "bd374e09-943b-48d3-add1-1618f24a4ba6",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "4a7f2636-aac1-4de0-b1b0-bc173a3e97db",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "4f56b069-8d97-45d4-957d-2ed3b10296dc",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "f073efbe-180c-4de4-8ce9-23546f41ee82",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "7e55f7b8-3bbe-411f-9cdf-4185c12e15c5",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "028ff551-03c1-4652-808c-4ff54808afe7",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "6e538c5d-be7a-4a49-855c-92d1303f5a6c",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "fccdf32f-e77d-41e1-b3b4-b15ecf17eb7a",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "18351119-470c-4fd1-b27b-1a22247e0f87",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "2258285b-3a0b-4351-8455-be901ee22a59",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "d2f0e722-93a3-4f3e-8eeb-9df6f14ae06e",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "d1c9b5ed-d491-4879-a8dc-9a4de9f141e6",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "f7a06199-54c3-4170-8a45-dfe046f7426c",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "15932540-0a23-4232-b3ef-c7618cbbf8e3",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "299239af-963d-4728-a3b8-32566fd2cc75",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "bc43d7f6-64ae-4fac-9dcc-ff68db065d61",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "b08e310a-d5a8-4984-a0b1-5c3bf9f937cf",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "40978906-dd1d-4ff8-be68-36552c9021bf",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "70aa0cc8-554e-4a2f-aeb6-1fb81cdc68e5",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "fe99d45a-b9b4-44ee-9ad6-ce0d15a85044",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "1dcea09f-103b-4cb6-9c50-e878d36581b9",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "fa5acc0c-14f1-40c2-862c-77ce69f27b61",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "f3722d97-28bf-4c5a-9117-985eb375403f",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "0a31e65e-e182-4753-93f9-f6c7331726a2",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "0dbf578a-b8c9-469b-9397-23794726ddc9",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "5cc78c9a-771f-4370-b180-b69cdd363db0",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "ef281118-2a68-4dbd-acb1-759d41ba036a",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "5257eca7-bd84-406d-9f5d-5cd439b546c1",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "9f1329d8-e98d-43ea-9b83-c57dd95fcc90",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "52f9cbc8-4c24-48f5-b7f9-10fa1d10cca3",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "c044c161-d9e3-4eb5-8808-c713a566bac9",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "0fa11a1f-6edf-46be-8cba-6c3ff65e4828",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "b9b64154-8f88-4dc3-833a-34310fbc42aa",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "bcefbc1a-6c34-47fb-8a1e-bf4ecdd9d735",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "f84b3971-797d-4957-8b8c-8bf4a2e04456",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "61496802-9fc0-4fea-9f68-fa252e34bc3e",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "1a534895-5b10-47d2-9982-3f3928924ebe",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "a6bb0b50-98cc-4c33-9c01-57b0d8f56461",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "21907196-c359-4c2b-983e-dc988804bc2d",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "ff020825-7467-47ac-94df-5521a2048b3c",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "78b4a2f2-1a1d-498d-887e-c718785fcdb9",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "071850dd-99a0-40a4-8105-f3360c164b2b",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "62574930-1ecd-4812-a074-2c06df3f7b9b",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "73d36c92-2bea-443a-9705-429bb1e2ffc5",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "e5360b59-7fd3-422f-bf3a-7a75106b6868",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "1e17eecb-1b61-4073-a904-2ec6d7dde7c9",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "3fa23d17-b0bb-45d5-af56-6ce04dd4906d",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "f62d0379-afc0-488f-a7f2-d6e538b2dc23",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "33258b29-7ca3-4856-a41f-476a4bd8023c",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "3f530624-39c6-48b5-8bf7-b87e2a8ffce5",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "007f72dd-2147-4255-9496-ec80291181d0",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "e3ba615b-da95-4f23-aa26-9740609049f9",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "09a2ba52-ae1b-4870-8891-11e52ceb83ed",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "37f5873c-d14f-4790-ae2a-435a6d8b26aa",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-7",
+                "requestId": "c916a49d-6b0e-4ce7-96e8-82e643febcaa",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "853f3756-4955-4117-9d85-6daafa149b15",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "b2619396-1e81-4314-ab1a-d89cdef14573",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "42493604-8a83-48e9-bbeb-073ad49b18fc",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "5fa822a5-121d-4fa6-93c8-b79c2747444a",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "543a657b-3f32-4c63-a612-c1ffdafbbe16",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "f49c5f92-40e4-4d1d-9d19-b3eec93c9e01",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "40d508c6-7990-42cc-aca7-e0fae53ef4b1",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "ee73a613-9be1-4cbe-97d0-0776153e711a",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "c0782abb-cc73-4022-9c31-bdcd05628b21",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "1df336d3-cc6a-467a-bb60-241a330c9e71",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "15669783-9ca3-4480-8d60-248a154846c7",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "c29be18a-ecb5-4837-b70f-5bebaf3ec93a",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "4c56510d-840a-4916-b05f-8550bf12bfa4",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "4cfcf7ca-c1b0-4a1b-aa59-7d941492d472",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "bf3926f2-a914-476b-aef1-a3316b46537c",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "329fc9b1-7bd1-4f37-a68b-ff2f9195bc3a",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "5d1dd59c-19ca-4a1d-8311-10dfb6976d8a",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "21b1ed1d-eb28-43a6-995c-0dae2a613d7f",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-7",
+                "requestId": "cd6f2019-4f27-49c9-9b14-e356e3fbe182",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "79d49a55-a4a9-4e73-a367-1912ceda5335",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "1c0db4e0-945d-48fe-8198-49c068ceaed4",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "6cc53197-4fd4-4037-90a3-26a578219fb6",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "fb7c19d4-cc54-4668-9b9c-fae38c19854c",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "2101d277-3a08-4efb-b6de-ee245cd6989e",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "23cc39c6-0892-4760-9688-86af733d9810",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "ad253c53-41f6-466a-9264-e57062d95d8d",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "e66c9c4d-fbd5-4fbf-a5f0-cd7a1a41f77e",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "48c5cecf-2aa8-4731-b57e-c4181c8529c4",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "439031c6-bd78-44e4-b63e-214ffa466149",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "b2943930-40ef-4b50-b8a4-e902efe26e1b",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "cbab2bda-f1e0-42ee-bd9c-21f75f026491",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "8672e39c-694c-4b02-b218-07810f0620ad",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "e68a8faa-eb13-4a5f-a904-a1500751f1f8",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "c5f20a0e-37ee-4942-b5bb-382040e479df",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "364d55f4-41bf-47b4-9677-1291b41d7773",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "cf7195e7-f238-4624-913d-5c50f867755a",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "51478608-4248-4c9a-8a29-57d0cc756ebc",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "fe90b497-01bb-4616-83d6-fba417618212",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "555c834f-e60a-45c3-9bf2-31aecf7247e3",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "0ef01614-9c69-4397-ad9d-ceb8f00a5125",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "89f4501c-4693-4909-beeb-a8ace44b0f3e",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "278602e2-7e47-43f0-9f8e-274d1f6b0c52",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "b0087e5c-b71e-4caa-9108-8e00f3be8204",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "e0f9d572-a5b9-4070-88fa-010cc2292070",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "65f1b87c-ba0c-4ea1-9951-31945e9a80dd",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "6455ed7c-9c10-4620-a998-a681706557b7",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "a2294421-9951-4a6d-8581-e89d601ede1f",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "baab56d2-4ec0-4962-bb7a-da00c65c7b81",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "03a8affd-0e8e-436d-b10a-ed61c872b989",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "68c347b7-3f1f-487e-9a6c-517d31622706",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "2ce2d729-c960-4bb8-9fc1-46de272b0e8b",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "12ac776b-c95d-44ac-81e4-cf36c0ef9710",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "f4105a82-1d7f-436e-833a-e46937dc435b",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "8bb2ffcd-4a04-4d6c-b87a-fce64098952b",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "5de51173-2559-4e4b-8658-0a3506f602db",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "4b1263c4-5623-43bb-ae0b-b2dd250be69d",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "4d8056fe-3f00-4ac3-8441-c71bca0bd98b",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "debf8c32-996f-4782-8299-554ff92ceaa9",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "c44a08bd-fee3-4be4-a6c2-d48c31280b83",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "35694a69-64f4-400f-bde2-14015dac1e24",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "b3c16a32-75ec-455f-afc5-da7c286177a9",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "b1a857ce-a7dd-45a8-a112-d2b5ed6d4dfb",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "c9cb718e-146a-4324-8106-2b680849f85e",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "193abad1-dd9c-4e42-ad4c-d45d7ebeac4d",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "48e9145e-c27f-432d-83f2-d9ea01eb876c",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "006b7ea8-8ab0-42d1-9556-15e08fe39bac",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "db5f55ea-cd41-4412-8032-e0cffe137f56",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "0802ad5b-e84e-4454-b8b2-e1356ca068e0",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "251038d4-2c82-4f5e-b5c5-610058efcef1",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "7fb73af4-dd32-4863-adcb-8ae5fa5cb498",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "674554ae-1aaa-42f6-bf16-f794d84ceaee",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "9b6ab82e-0ed7-4b4b-8d4b-ebb402e1aa49",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "370f942b-ca8a-4c0c-bff5-61b6f26941a3",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "c6e3bfde-1f77-49ff-83e9-78fe0c241c4d",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "a1160bd5-0889-4c26-8bec-8cbc234c8379",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "5d396d40-6300-482d-9f2f-3d1fd6a545cc",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "a3f0ad50-74d0-4a5b-bb57-bb09e4e24c7e",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "7ba86ac0-2750-49ed-9bdc-5e6539ac192b",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "f4f8ffd2-fb22-47af-9cbe-f088a2ef7c69",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "9ffb30a6-cb19-4126-b229-fec0a440a0f6",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "eeb9a417-ae26-42e4-8034-20301220f72d",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "2331f5a9-ca41-4c19-bd09-211e669fdfdb",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "61c43ac2-617b-439f-8051-8286117a7f91",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "f3621fc8-e490-490a-9fd7-e7af4e044c7b",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "944959d7-0ba8-42ad-aafe-a84c3106afff",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "61c93b71-f530-4863-93c9-5e83fd404dea",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "9059a801-eaf3-4c28-8e11-d556b13db4d2",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "1fc0d79e-4348-405d-b52b-c2191abe3847",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "badb0889-c849-4a1a-814e-335d2cd1ab77",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "f6b40895-0888-4e2c-a7d2-f9ae39cd6dd9",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "386a28ae-ccd6-46fe-bf1b-f36e231a2064",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "2a4cdaae-8eba-4dd0-bed6-69a92c856ba8",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "9487a8b2-0933-401f-ac36-237d3f74a191",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "027cfbc3-d74e-4401-9bbd-168297131356",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "69827d70-4b45-4e1b-8d9f-e8ffc14c9e57",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "273d3ab2-1ac8-4cea-ad5a-1551fc534c14",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "8af7852a-3c30-4c44-ba5c-09c14502e849",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "00bc33d7-125b-473b-811f-3e927a863bc1",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "ae29de86-0fa4-48bb-9ba1-81322f297734",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "f44d3d13-1c6e-4a2f-a49a-a6424ba6420c",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "78d7058f-5619-4bd8-ac59-dbc38b702886",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "145b1b7c-b266-4ba1-8a36-51004b66d1e4",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "8c01ff0d-5275-4f8a-aa13-7253309421f4",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "c697f82b-eb1d-4ab5-93c2-b42b7cbf4946",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "1ae98e59-99dc-4d16-88dd-d342f6c8498d",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "a8225e0d-c22f-42a3-ae5c-16d002f2118b",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "c46b6a8d-6a80-4ae3-92c8-397bc622cde6",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "b4cf10e6-51b0-4805-a510-b025552b22b3",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "ba014b0a-cc39-464e-a3b7-ba5998d8f0a4",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "11428933-b2f9-4aab-887c-dec5631bd33d",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "44a83463-43e3-4324-851c-b6bf074fb297",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "6a20a084-6590-498a-ae6f-18b19c2d19ff",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "c059bb8c-aaef-45d3-8d3b-62f5554e9738",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-7",
+                "requestId": "76dd8d34-e41d-4161-bb60-b79ea99f4943",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "f14f1c5c-2dd2-47e0-9da9-cefa96c07498",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "74872d17-f7f2-458d-bf75-87a39dbecd64",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "4c752290-b72d-4b73-ba54-8213acdb0eb3",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "c451bb2b-0c89-4901-bb96-5018a31bd70a",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "938eae72-4d4c-4169-8c4d-98fed4cebdfb",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "117dd932-fa11-4618-b0e2-f0c6f14d51c3",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "f3bb51ca-5859-41c1-be63-00dce5dc5aa1",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "2ba6d2c1-6382-46d2-9a34-b1f55f1fbaea",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "74361480-b7dc-4842-934f-72601900f00f",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "5050bd57-6934-4802-b4ae-3fcf95eb2eff",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "5083de16-a8ef-4a82-bf42-b0aee5988676",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "04d57d25-afc4-4691-bfa0-60012e41e865",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "e750e450-9646-4baa-9ecb-d725cb98cabf",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "e287ae94-df43-4233-a89c-c919a8c1a63d",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "9cbdb9f4-8d1f-4d7c-a73a-f53ced9044a2",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "ddfd41f6-fdb5-4e6a-b492-4a7eab65f1c5",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-7",
+                "requestId": "d885039b-4184-4d69-9697-cddecb48fc1a",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "060ce29d-a440-4b44-8202-875956e63966",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "f036a166-a19c-41a9-9945-191be4e8b26a",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "ece20ddd-8cc1-44e5-8d7c-b3edcf0ba103",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "c27dcec9-3948-41ec-95b9-286298a89036",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "99c33b6a-adf3-4e70-b55e-d8467eb4cfca",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "8efc29ff-b4dc-46fe-9c06-ce25928053e3",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "c0e745d8-4537-4958-93ae-48a114f3cd54",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "e8e89e8c-0463-406b-9c47-3094536a7604",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "4ab4764e-df52-4229-b812-78069e90d059",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "f6747269-a868-467f-bfd7-d8f536570402",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "2735ce2a-e010-470f-86e3-06b321bc8304",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "5971f7ac-a130-4453-86d1-b07872dfbf24",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "55a4ed91-0dbd-481c-9199-23fb19f835c1",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "366a6d8f-341c-4020-8b72-2f827162c6c7",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "aeb88d9e-8136-4b6b-b518-891db1cc6c0e",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "df29dbaf-7953-4156-8aa5-91d7564c9b1b",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "3bb6f4e9-a06b-4394-9f90-8165320620c3",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "6262144c-8380-4562-8d41-d017f5ad897f",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "bb5ff736-5bc7-47a9-84dc-f56c2e7b510c",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "9d00cc17-5e2d-4320-bb03-5e53c79fc9ca",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "86e1a509-52bf-4c0f-a921-260d82d9e15c",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "16fcd053-eb18-4fc2-882e-9fb2d6ce7761",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "c71fd94e-cc38-420d-8380-17d38014ab08",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "78e72d73-a3b0-498e-9cfa-35c483d033c7",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "b3849d67-501e-476e-9c1d-97f4f365d6c3",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "565b09ad-5837-495f-9ed9-a54cb5e2e9f9",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "c74b84a4-df0c-4a2d-ba52-7b2ed0789906",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "be95f2be-3e70-4669-be6c-d0c941086fd4",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "0eba0e23-3155-4581-a695-008d7f0c40a1",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "d9a3753f-bfe0-48f1-8555-a4fb353f9266",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "6f56a97c-d67d-479e-8e91-14119754f12e",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "c8b6d87e-707d-4de2-ad12-54508d45d4c6",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "80783f5d-c622-4295-a904-d056ccf2006a",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "2a77711a-48ae-4c2b-a6a9-3e0c5f3d8b74",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "2efc4314-5f0f-4a6e-8f50-b5184ba46112",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "ed728bc5-dcf4-448b-b24d-7cbe79b0392b",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "bac85231-c181-42db-b288-6bef41c5d0a9",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "a92b2307-f8da-4e8d-9416-6cc78df34ecf",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "13a192fe-ca69-4fcc-bbee-1f7b167e7158",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "d1e74f9f-d206-4b28-936e-ad66b121545e",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "96f15ee2-eb90-45c8-a206-e304c32ad8db",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "d9a90789-d9e9-4eb0-abd0-93e1724e3ddb",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "d275cbeb-bcd0-4286-b8e7-7fd376e88001",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "7a788508-2e57-4193-9d44-5b543df91960",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "76654128-eef6-4130-8d44-50d322d69178",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "4b494874-0115-406b-aca8-620ede57eb2a",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "e171261f-ec00-4b5d-ab6c-2d6df8f85402",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "14d85602-2c1d-43e8-b968-e6dc2318a716",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "518e65e5-f757-42a0-b588-f331b0b30491",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "304383f0-df23-49ec-86ba-09bdb967e091",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "570b2b08-1040-4e8c-b54a-e223b1682e26",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "7fb94ca0-7fb5-43b0-aad5-c8405356b31b",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "05d9fa37-ebcb-432d-9a23-fff14a6a528c",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "6f3da825-cee8-4bf8-889b-8c7c0effacaf",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "c14830d4-7921-473e-9860-6e87fc8a3cfe",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "f3fe0c26-de15-4300-bb8e-48896655a5d3",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "56d93adf-2aae-4097-8a36-22d6e070d750",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "5a015cea-e487-4a2c-879c-120cc4efd343",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "782a1687-12b3-4979-91c3-a24c278db52b",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "6d71a027-4ed4-4e15-83fc-c953631be5fb",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "aa6a577e-e64b-4dac-a2e1-d8975eb26118",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "e9a7c839-ab98-4025-9fe0-7ba99e8d2a18",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "5309523e-02e2-4019-b06b-bb9e047fb3c0",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "5d432b86-6cfb-4b35-95ae-b6a88dd8db87",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "65255f21-2e3b-4318-956b-c41517e0181e",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "6b3914a6-201c-4d13-b655-e4db229945f0",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "82e52f97-008d-4119-b9fc-e8fb768feaed",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "3f600f10-d222-4a62-9b0a-09458e2a4162",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "bca3656e-1202-400c-9851-30f41fcf687a",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "04577f97-f3ec-4652-b404-d699c11e1821",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "0653fdf6-fcc9-46f0-ab49-1d5f1bdccdfa",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "805283db-58bc-448a-a5d7-2f905b99e378",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "72c754ee-905e-43a5-96b4-0f53ffb18e45",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "54dcc30b-2073-4b5b-a99d-74c50a8c56b1",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "2acc0bff-5e72-44ea-85b8-8b4eac412dee",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "5a123704-9a8e-4aed-a662-a8e2620ae74a",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "12be9ba4-98bc-40f8-a7bf-ce7fea449578",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "92708284-e0b5-47f6-be67-b413cff58067",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "b7f22bbc-500b-4af8-9558-a18123f2cfee",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "a74ae96b-8dac-4b90-912c-5ab739cce393",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "934690d0-04cf-4853-aa9d-4e389ab84eef",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "edc74663-08ce-4794-8ad0-3e3129dab0b8",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "c98c09ba-4a92-4e78-bf88-877aebcf1324",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "f427730b-f698-4cd4-8a5b-5937ab3c7c34",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "3ee1645c-497e-428c-88c4-3f7fb1d386eb",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "e1388377-3703-4002-a962-250e7cce2ba9",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "ce2219a3-3b3e-418b-9291-093f07634433",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "34ae7ce5-f740-4ce4-8796-9e71b777075b",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "0e9a671b-0baf-42e2-9e42-201eb4cde51c",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "33cc0136-92a4-47c1-8516-0f7f63049511",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "c42bac09-e916-4931-a6be-dd86138a54b5",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "aa8a41f2-7614-4770-a92c-5fad7261e045",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "c36a60e1-f922-4315-ad39-1122a4f0b974",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "1c9c089c-cceb-4a36-b1b8-141fa35ccbdc",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "43cfbc66-e942-4445-b7f5-2214a5514b47",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "318c5716-1fc6-43d9-a990-9336144e5c1f",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "470f6514-8944-4df6-a025-9d17f4878b1d",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-7",
+                "requestId": "00731ce1-8a28-49a9-bfe0-67377ec5ec3f",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "feef9e61-e9d4-43af-9a9a-9c18ebbd5a64",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "b5a138ea-c0a6-4bab-8a9d-ca98daa7e918",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "229bb541-2165-493c-9553-06a5d50fb4c9",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "2871664e-30c7-4813-b7fa-f186eed6a14a",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "58e9b31f-9133-401b-bf8e-fb6cd6d13493",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "76a60725-96f9-4c06-9012-4e157d4cd832",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "867e1410-736c-4f65-9bce-1b4576ba976f",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "9578966d-14c3-4944-9366-5f034c9ad908",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "d4d24ab6-f226-40bc-af3c-a5cf227cb77f",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "fa90e3dc-6299-463c-ad05-e76bd73fd6c3",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "cd3bac07-281a-41f2-ab7d-0f215dc6451b",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "910d329f-5267-4bf4-a926-10c8a079ef12",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "f065f1ae-70a1-4c03-8352-4fd2642ece10",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "cd879e51-df43-477a-b993-0682c815b99f",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "159a040d-871c-402a-b45e-5414577c2ab2",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "7f204b87-0e3a-4663-b501-e293517eb38c",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "ab88863b-9336-4f17-9012-f399a148593f",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "f7acead7-38f6-45e0-9805-295607742e9b",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "9bdb6407-f187-473e-b609-2a32ca1a873a",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-7",
+                "requestId": "0ed68685-34a3-494e-bb71-3889470365c8",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "e6ab98bb-7bb8-4ce7-9f72-5102ecc92234",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "1ea1a0a0-8f86-44d7-b0a1-49ba6095321d",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "5a8512e5-e0ff-48a8-b667-07dc473e326e",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "049dc53a-0ba6-4c45-9de3-8170228a8726",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "9ca01d00-9cef-4152-87e8-0fe6f4ef8a63",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "df9e8015-e0ca-47f0-8dcf-1b97363bb694",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "bd5415f6-b78d-4340-af6c-a7215f3d55e8",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "a09ce105-d84e-4c7e-9a65-f48669163e2d",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "aed3ecc7-6f94-4c2c-9c69-31823d8433a1",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "342fadbf-1f44-489a-9506-7f15262fdba9",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "9f403759-5ee2-49b9-83dc-9d1ffd3e275f",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "fdb02a9d-bb02-4da3-9017-8df6e5a8ff4f",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "3ddad0d2-cb5e-4835-8750-8e470bb9bb95",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "56bc6271-f540-4a07-a351-e924570bda20",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "8ef7a484-1d34-4c64-9e76-d3b3f85df0c2",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "1c43349c-810e-49b9-a1f7-ece590397957",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "746314ee-497b-4b6f-ac96-10ac1281a479",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "36700ce4-3d82-4314-a439-4ca6015b3616",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "0a2122de-9cb4-4743-81f3-e71203debd42",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "c806130e-80ca-41e5-b80d-5fe15eccfc51",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "2d4b98ea-f578-4b1e-bf54-88a0b1f6eb54",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "d1e1861c-1723-4f15-90f4-f26fed2d9905",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "e2a4c9d4-64b2-4340-8063-e9163adb7a6b",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "89ea8b5c-4c74-4d2e-8712-53658913f495",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "63c6fbe3-4b62-4be1-965a-339307c5464c",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "9520f643-db33-4bb6-a434-dabbec95234b",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "8b237b95-08c4-4e24-a134-26bc43c78107",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "fdcac73d-fa95-4c90-9cd1-9942eef59986",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "4a3524fe-9c4c-461f-b391-0a73bc6a77cf",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "b6bf1a2d-c749-4c4c-96be-3b1865253c5b",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "b5d4a0b6-12fd-46a5-8ade-464099ce0f2a",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "3b0793ba-bc10-4159-be30-c93eed881a36",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "fccb5178-a096-47b7-8f82-257f03d99208",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "c87b1773-d054-4085-b375-78557a3454cc",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "ac980acb-dfb5-40b0-a6c7-31ee9e7998e9",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "5f637129-6bf7-4bfe-8f28-b51e06d876a0",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "8aeed5d5-6179-4be6-a546-5d74e6494130",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "a5cf07fe-28c2-4326-8fbb-d601b9efb6e1",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "d0fe2400-29c7-4e5c-b03e-5a7f97fb2271",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "ba088eea-e42f-4544-ab5e-a3769b8a23ac",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "42829c3f-264c-4429-b3fb-276981f71fa0",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "23cb19bc-0d37-46f6-8947-4b99758d5c0f",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "488f3952-6770-40e8-88de-ca30d065ae0f",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "bd27391a-a503-4ce3-bf7c-0fda8f8ecaaa",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "300b026b-585d-41eb-9181-11072375ccc9",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-20",
+                "requestId": "774dc675-41fd-4723-a5bd-10373222c45f",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "36a32017-9847-479c-9fe0-d1274fed25bb",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "b787570e-c97f-49f6-9952-320a04932dfa",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "5ffe9f5f-fd6b-46bc-b722-bc147aca180e",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "e919c3ea-02d9-4c80-b132-b95b5a3dac95",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "073d7aea-7345-4992-87f0-4e7596523f74",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "d75a4952-1acc-42be-8131-dc5db4e00ff6",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "5b7b2914-6f3a-45c9-9005-1035380ab670",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "1c7aa386-22f3-4a16-a58e-8812ab3cffee",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "824683eb-3248-433b-8ab9-d99d72518c7d",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "da63b093-fab0-4279-ad71-a76dfdc45680",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "224e44a9-598d-44c5-87fa-e4d1895e5003",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "0ceef5e3-5ecf-4343-9c3d-9e2140d6463b",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "67bcc42d-06cf-4526-b4d6-0bc557983be0",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "8acd9c30-e333-4d0f-9b42-bf1316037f2e",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "24b6942d-054e-4fe1-af4e-df611c760cc2",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "eb6a52e0-2719-4b07-bc70-11483f2a461b",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "6f3677f2-2eef-4666-80f4-09d975e15990",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "149fe642-0184-4ea3-aa62-09237adc57fc",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "9fa03403-5ad3-4317-b3fe-f0abfb432754",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "7d81acbd-fa94-488d-a75a-a3a12e6e7b64",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "923a2ece-5265-438a-857d-40f26c40421e",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "cbe4e2d5-ce63-48b7-b0ca-d012418e4230",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "872a531d-84d7-42e6-ac7e-f74d35158926",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "5f809a49-31bb-4b54-9cba-24d110e19f50",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "d47309b9-7303-4358-af41-389ac8b00a83",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "15b6f541-a575-4b2f-adf5-fa6ad6949492",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "e8f9a022-2137-48ce-a9db-88ac0dd129a7",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "b25fca2b-5470-4227-8608-eb834c06b402",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "3d80b632-754b-4132-87c8-4e41ef7a8335",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "0fe30294-8ce9-4c38-8789-d0d1c4595f6a",
+                "boosterId": "rocket"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "23318329-afc6-4a2b-886e-929a07b860f7",
+                "boosterId": "speed"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "d9146139-185f-4546-85d0-dd5d6b208258",
+                "boosterId": "meat"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "76444efa-fee6-4214-a881-546c89a96b19",
+                "boosterId": "fire"
+              },
+              {
+                "playerId": "room-room-0-player-12",
+                "requestId": "0baa62e6-a052-466c-8a39-9f42f50a02d2",
+                "boosterId": "fire_sword"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "496b0007-b00e-485f-bd08-a6ed3dfa123d",
+                "boosterId": "colorful_shield"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "6b6c18a4-0bd0-4214-a3a0-d693d238239e",
+                "boosterId": "web"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "426d7b32-20de-44d5-9d06-7a33e389732d",
+                "boosterId": "lock"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "cdedf0d7-f5ca-4391-8682-4a4c9fdf991a",
+                "boosterId": "golden_shield"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "2f1f99a1-5dc2-4005-bb20-c9fe2dfbd1c4",
+                "boosterId": "warheads"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "0bc74bee-6f4e-4809-9ec9-dbdc6101aad3",
+                "boosterId": "ice_cream"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "3614e3b0-0d22-46f3-9f82-153435d351c1",
+                "boosterId": "poison"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "d76769e0-d0f4-4eb6-9037-048412e9fabb",
+                "boosterId": "axe"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "e60b39e5-4c79-49b4-ac8e-4f9dd315f204",
+                "boosterId": "sponge"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "38e2b73b-20d1-41c6-ae98-618faf391ef9",
+                "boosterId": "awl"
+              },
+              {
+                "playerId": "room-room-0-player-0",
+                "requestId": "943c593f-2b4a-4fe1-9cc7-4c8f9df79349",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-1",
+                "requestId": "b05e62cc-c3bd-4ea9-9e1d-2403ace573d9",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-2",
+                "requestId": "43d0d218-9201-44da-b66d-f1d0e786241a",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-3",
+                "requestId": "4a0b5ceb-6456-4b02-93e6-417dcfae9a16",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-4",
+                "requestId": "130b367a-2eba-4bb3-9d4c-a60e9b781f51",
+                "boosterId": "clan_shield"
+              },
+              {
+                "playerId": "room-room-0-player-7",
+                "requestId": "a01520cf-0c23-4fb1-bbcc-ad2a98be621f",
+                "boosterId": "freeze"
+              },
+              {
+                "playerId": "room-room-0-player-8",
+                "requestId": "ef7092c0-7b47-42b3-a432-33a133900636",
+                "boosterId": "glove"
+              },
+              {
+                "playerId": "room-room-0-player-9",
+                "requestId": "bba9bcd0-054c-49c2-a2e8-978d305e2542",
+                "boosterId": "mine"
+              },
+              {
+                "playerId": "room-room-0-player-10",
+                "requestId": "8f3c0802-3efb-441a-bcc6-f4e4ee30ca8b",
+                "boosterId": "knuckles"
+              },
+              {
+                "playerId": "room-room-0-player-11",
+                "requestId": "ff8f9804-bd13-4695-95e4-276f7694df28",
+                "boosterId": "cake"
+              },
+              {
+                "playerId": "room-room-0-player-15",
+                "requestId": "db711d4b-181f-47cd-bd4f-d4c834292270",
+                "boosterId": "hook"
+              },
+              {
+                "playerId": "room-room-0-player-16",
+                "requestId": "4a6cc40a-89e4-4364-8ca3-04393c395989",
+                "boosterId": "sphere"
+              },
+              {
+                "playerId": "room-room-0-player-17",
+                "requestId": "7913a97e-0ed4-456b-805e-0c3caa697afc",
+                "boosterId": "harpoon"
+              },
+              {
+                "playerId": "room-room-0-player-18",
+                "requestId": "13093a11-c2c3-4097-9c0f-f5f9dd38ceea",
+                "boosterId": "mega_poison"
+              },
+              {
+                "playerId": "room-room-0-player-19",
+                "requestId": "eed1e938-a337-46d3-99bd-536b7ffc2507",
+                "boosterId": "vortex"
+              },
+              {
+                "playerId": "room-room-0-player-23",
+                "requestId": "edf56ff2-2c98-4e4c-b8b2-5c7a48877f30",
+                "boosterId": "candy"
+              },
+              {
+                "playerId": "room-room-0-player-24",
+                "requestId": "82810742-b6da-474b-be35-e0123f6f09fd",
+                "boosterId": "donut"
+              },
+              {
+                "playerId": "room-room-0-player-25",
+                "requestId": "fdfec407-571c-4539-815d-aa64c87a4eb6",
+                "boosterId": "stone"
+              },
+              {
+                "playerId": "room-room-0-player-26",
+                "requestId": "373a5731-e57c-4584-940d-77ee5484ad8d",
+                "boosterId": "easter_egg"
+              },
+              {
+                "playerId": "room-room-0-player-27",
+                "requestId": "031752a0-77dd-40f6-af4b-f1bf512d3045",
+                "boosterId": "clan_shield"
+              }
+            ],
+            "driverLoopMaxMs": 47.644671
+          },
+          "intervalMs": {
+            "n": 35970,
+            "p50": 47.80479999999989,
+            "p95": 65.24389999999767,
+            "p99": 73.04559999999765,
+            "max": 142.41270000000077
+          },
+          "statePackets": 36000,
+          "allPacketIntervalMs": {
+            "n": 36868,
+            "p50": 47.53809999999794,
+            "p95": 65.1849000000002,
+            "p99": 73.32200000000012,
+            "max": 182.3407
+          },
+          "fullDecoder": true,
+          "decodeMs": {
+            "n": 36898,
+            "p50": 0.21630000000004657,
+            "p95": 0.5136999999995169,
+            "p99": 0.7672999999995227,
+            "max": 8.595399999998335
+          }
+        }
+      ],
+      "windows": [
+        {
+          "window": 1,
+          "throughSeconds": 60.177353200000006,
+          "rooms": [
+            {
+              "id": "room-0",
+              "elapsedMs": 60167.4015,
+              "ticks": 1198,
+              "updatesHz": 19.91111416038135,
+              "workMs": {
+                "n": 1198,
+                "p50": 4.477299999999559,
+                "p95": 7.703199999999924,
+                "p99": 9.761200000000827,
+                "max": 27.767100000000028
+              },
+              "intervalMs": {
+                "n": 1197,
+                "p50": 46.917999999997846,
+                "p95": 62.58020000000033,
+                "p99": 63.45880000000034,
+                "max": 139.93010000000504
+              },
+              "accepted": {
+                "feed": 2372,
+                "split": 376
+              },
+              "boosters": {
+                "mine": 17,
+                "knuckles": 19,
+                "cake": 18,
+                "hook": 19,
+                "sphere": 19,
+                "harpoon": 17,
+                "mega_poison": 16,
+                "vortex": 17,
+                "candy": 18,
+                "donut": 17,
+                "stone": 18,
+                "easter_egg": 18,
+                "clan_shield": 18,
+                "freeze": 18,
+                "glove": 17,
+                "colorful_shield": 19,
+                "web": 18,
+                "lock": 19,
+                "golden_shield": 19,
+                "warheads": 18,
+                "ice_cream": 19,
+                "poison": 19,
+                "axe": 16,
+                "awl": 17,
+                "rocket": 15,
+                "speed": 18,
+                "meat": 18,
+                "fire": 17,
+                "fire_sword": 16,
+                "sponge": 16
+              },
+              "actionMs": {
+                "n": 530,
+                "p50": 54.19279999999708,
+                "p95": 144.73529999999846,
+                "p99": 257.0384000000049,
+                "max": 257.33929999999964
+              },
+              "applyMs": {
+                "n": 530,
+                "p50": 54.19340000000011,
+                "p95": 144.73609999999826,
+                "p99": 257.03889999999956,
+                "max": 257.34010000000126
+              },
+              "pending": 0
+            }
+          ],
+          "peers": [
+            {
+              "elapsedMs": 60157.402500000004,
+              "states": 35910,
+              "clientCount": 30,
+              "maxSilenceMs": 33.82030000000668,
+              "gapMs": {
+                "n": 35880,
+                "p50": 47.81090000000404,
+                "p95": 65.2583999999988,
+                "p99": 73.05359999999928,
+                "max": 142.41270000000077
+              },
+              "actionMs": {
+                "n": 845,
+                "p50": 83.77739999999903,
+                "p95": 117.08840000000055,
+                "p99": 273.71259999999893,
+                "max": 274.0550000000003
+              },
+              "successfulActionMs": {
+                "n": 530,
+                "p50": 93.3069000000014,
+                "p95": 192.29459999999926,
+                "p99": 273.8443000000043,
+                "max": 274.0550000000003
+              },
+              "failures": 0
+            }
+          ],
+          "lobby": {
+            "clients": 5,
+            "mode": "active-lobby-actions",
+            "ipMode": "single-generator-address",
+            "requests": 208,
+            "success": 208,
+            "errors": {},
+            "actions": {
+              "profile": 10,
+              "rankings": 10,
+              "loadout": 10,
+              "purchase": 10,
+              "account-bonus": 10,
+              "social-view": 20,
+              "gift": 10,
+              "gift-read": 10,
+              "clan-create": 3,
+              "clan-view": 22,
+              "clan-deposit": 10,
+              "clan-buy": 10,
+              "clan-edit": 10,
+              "roulette-prepare": 10,
+              "roulette-spin": 10,
+              "pet-buy": 5,
+              "pet-food": 10,
+              "chat": 10,
+              "news": 8,
+              "presence": 5,
+              "pet-equip": 5
+            },
+            "pending": 0,
+            "latencySampleCount": 208,
+            "measuredLatencySamples": 208,
+            "latencyMs": {
+              "p50": 10.610099999998056,
+              "p95": 28.709200000000237,
+              "max": 730.4519
+            }
+          },
+          "writerDelay": {
+            "n": 1137,
+            "p50": 3.4372000000003027,
+            "p95": 14.981399999996938,
+            "p99": 30.882700000000114,
+            "max": 106.08520000000135
+          },
+          "castLatency": {
+            "n": 0,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0,
+            "max": 0
+          },
+          "progressPending": 0,
+          "castsPending": 0,
+          "writerRssMiB": 333,
+          "freeMiB": 2683,
+          "errors": 0,
+          "partial": false,
+          "assessment": {
+            "meetsTargets": true,
+            "problems": []
+          }
+        }
+      ],
+      "windowAssessment": {
+        "meetsTargets": true,
+        "qualifiedWindows": 1,
+        "partialWindows": 0,
+        "scope": "Sampled intervals before final drain. Intervals shorter than 55 seconds are retained as partial and do not prove a sustained window."
+      },
+      "gameClock": {
+        "mode": "synthetic-offset",
+        "offsetMs": -60961599,
+        "realStartAt": "2026-11-25T01:56:01.599Z",
+        "gameStartAt": "2026-11-24T09:00:00.000Z"
+      },
+      "projections": {
+        "messages": 17,
+        "profiles": 61,
+        "eventContexts": 1,
+        "equivalentProfiles": 5643
+      },
+      "notCovered": [
+        "production room admission",
+        "potions and pet ability inputs",
+        "deadline boundary sender",
+        "external payments and VK",
+        "browser FPS"
+      ],
+      "scenario": {
+        "inputs": "socket",
+        "layout": "mixed-mass",
+        "event": "lucky-week",
+        "realistic": true,
+        "linkedLobby": 2,
+        "lobby": 5,
+        "mixedSocial": true,
+        "respawnDelayMs": 0,
+        "meanAlive": 29.936666666666667
+      },
+      "viewMode": "socket-reported cameras",
+      "peerProcesses": 1,
+      "peerCpuAffinity": null,
+      "writer": {
+        "cpuMs": 11797,
+        "peakRss": 350564352,
+        "ipcBytes": 2575030,
+        "acks": 1140,
+        "errors": 0,
+        "delayMs": {
+          "n": 1140,
+          "p50": 3.437999999998283,
+          "p95": 14.981399999996938,
+          "p99": 30.882700000000114,
+          "max": 106.08520000000135
+        },
+        "queueWaitMs": {
+          "n": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "operations": 1693,
+        "flushes": 1277,
+        "conflicts": 9,
+        "failures": 0,
+        "maxQueue": 22
+      },
+      "durableOwner": true,
+      "residentAckAudit": {
+        "acknowledged": 550,
+        "recovered": 550,
+        "duplicates": 0,
+        "roomsClosed": 1,
+        "pendingReservations": 0
+      },
+      "residentRooms": [
+        {
+          "roomId": "room-0",
+          "status": "CLOSED",
+          "sequence": 1140
+        }
+      ],
+      "residentReservations": 550,
+      "journal": {
+        "bytes": 9507289,
+        "peakPendingBytes": 4254350,
+        "encodes": {
+          "n": 1432,
+          "p50": 0.2658999999985099,
+          "p95": 1.2686000000030617,
+          "p99": 2.243399999999383,
+          "max": 14.82890000000043
+        },
+        "checkpoints": {
+          "n": 3,
+          "p50": 391.47060000000056,
+          "p95": 585.4248000000007,
+          "p99": 585.4248000000007,
+          "max": 585.4248000000007
+        },
+        "sampledFields": {}
+      },
+      "lobby": {
+        "clients": 5,
+        "mode": "active-lobby-actions",
+        "ipMode": "single-generator-address",
+        "requests": 208,
+        "success": 208,
+        "errors": {},
+        "actions": {
+          "profile": 10,
+          "rankings": 10,
+          "loadout": 10,
+          "purchase": 10,
+          "account-bonus": 10,
+          "social-view": 20,
+          "gift": 10,
+          "gift-read": 10,
+          "clan-create": 3,
+          "clan-view": 22,
+          "clan-deposit": 10,
+          "clan-buy": 10,
+          "clan-edit": 10,
+          "roulette-prepare": 10,
+          "roulette-spin": 10,
+          "pet-buy": 5,
+          "pet-food": 10,
+          "chat": 10,
+          "news": 8,
+          "presence": 5,
+          "pet-equip": 5
+        },
+        "pending": 0,
+        "latencyMs": {
+          "p50": 10.610099999998056,
+          "p95": 28.709200000000237,
+          "max": 730.4519
+        }
+      },
+      "testDatabaseRemoved": false,
+      "casts": null,
+      "minFreeMiB": 2592,
+      "durableSequences": 1140,
+      "pending": 0,
+      "pendingCommandReplies": 0,
+      "allBoosters": [
+        "awl",
+        "axe",
+        "cake",
+        "candy",
+        "clan_shield",
+        "colorful_shield",
+        "donut",
+        "easter_egg",
+        "fire",
+        "fire_sword",
+        "freeze",
+        "glove",
+        "golden_shield",
+        "harpoon",
+        "hook",
+        "ice_cream",
+        "knuckles",
+        "lock",
+        "meat",
+        "mega_poison",
+        "mine",
+        "poison",
+        "rocket",
+        "speed",
+        "sphere",
+        "sponge",
+        "stone",
+        "vortex",
+        "warheads",
+        "web"
+      ],
+      "sourceQualification": "Working-tree smoke before commit 8352046; only measurement label fsyncMs renamed to durableFrameMs afterward. Not a committed-source acceptance or PostgreSQL run."
+    }
+  },
+  "frameCopy": {
+    "source": "a0af54e968706a0cae4e789f74d3850b4af2f155",
+    "targeted": {
+      "tests": 25,
+      "pass": 25,
+      "fail": 0
+    },
+    "component": {
+      "scope": "Repeated isolated applyEntry against one immutable reserved frame; not whole-game CPU, IPC or CCU",
+      "profiles": 1280,
+      "participants": 30,
+      "outcomes": 240,
+      "iterations": 30,
+      "pairs": 3,
+      "exact": true,
+      "resultSha256": "af67c600eab894892393d20905b4da6bf371120bbeca05d08af5ce52798a7a5f",
+      "results": [
+        {
+          "pair": 0,
+          "kind": "baseline",
+          "iterations": 30,
+          "elapsedMs": 6109.621499999999
+        },
+        {
+          "pair": 0,
+          "kind": "candidate",
+          "iterations": 30,
+          "elapsedMs": 287.3263999999999
+        },
+        {
+          "pair": 1,
+          "kind": "candidate",
+          "iterations": 30,
+          "elapsedMs": 270.07890000000043
+        },
+        {
+          "pair": 1,
+          "kind": "baseline",
+          "iterations": 30,
+          "elapsedMs": 6223.593800000001
+        },
+        {
+          "pair": 2,
+          "kind": "baseline",
+          "iterations": 30,
+          "elapsedMs": 6314.7089
+        },
+        {
+          "pair": 2,
+          "kind": "candidate",
+          "iterations": 30,
+          "elapsedMs": 295.068299999999
+        }
+      ]
+    },
+    "full": "Windows running; Linux pending"
+  },
+  "stagingIncident": {
+    "candidate47": "First hardlink clone raced temporary test-file removal during candidate45 Linux full suite. Partial tree and error preserved; retry after full completion succeeded. No production mutation.",
+    "guard": "Future staging refuses active full suites and acceptance loads."
+  },
+  "limits": [
+    "Prototype is not imported by production game-server or installed.",
+    "Main writer and PostgreSQL mirror still own the full world.",
+    "No authenticated room admission or cross-host routing.",
+    "Mixed adapter lacks potion/pet-ability inputs and deadline boundary sender.",
+    "The isolated frame calculation is not a full-game CPU, FPS or CCU measurement.",
+    "No 300000-online readiness claim."
+  ]
+}
