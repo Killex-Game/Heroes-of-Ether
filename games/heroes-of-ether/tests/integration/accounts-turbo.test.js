@@ -58,7 +58,7 @@ test("7 дней VIP и 14 дней Premium: бесплатная активац
       b.turboMs,
       b.clanChestGreatnessBonus,
     ],
-    [100, 2, 2, 3, 120000, 15],
+    [200, 2, 2, 3, 120000, 15],
   );
   assert.deepEqual(new ProfileStore({ filePath, now: () => NOW }).find(a.token), p());
   setTime(NOW + 2 * accounts.WEEK);
@@ -116,11 +116,11 @@ test("Опыт: лучший аккаунт для поглощений, пре�
   p().outfit = { hat: "novice_hat", bow: null };
   applyEvent(p(), { type: "lifeStarted", lifeId: "life" }, NOW);
   applyEvent(p(), { type: "absorbed", victimProfileId: "victim", gain: 10 }, NOW);
-  assert.equal(p().progress.session.xp, 6);
+  assert.equal(p().progress.session.xp, 9);
   applyEvent(p(), { type: "massBonus", lifeId: "life", sequence: 1, kills: 2 }, NOW);
-  assert.equal(p().progress.session.xp, 18);
+  assert.equal(p().progress.session.xp, 27);
   applyEvent(p(), { type: "massBonus", lifeId: "life", sequence: 1, kills: 2 }, NOW);
-  assert.equal(p().progress.session.xp, 18);
+  assert.equal(p().progress.session.xp, 27);
   applyEvent(p(), { type: "survivalMinute", mass: 200000, minutes: 1 }, NOW);
   assert.equal(p().progress.session.xp, 500);
   applyEvent(p(), { type: "massBonus", lifeId: "life", sequence: 2, kills: 20 }, NOW);
@@ -130,13 +130,13 @@ test("Опыт: лучший аккаунт для поглощений, пре�
   assert.equal(p().progress.session.creditedKills, 4);
   assert.equal(p().progress.session.xp, 500);
 });
-test("Поглощение: база 3 XP, VIP и оба ×2, Premium ×1; срок проверяется в момент события", () => {
+test("Поглощение: база 3 XP, VIP и оба ×3, Premium ×1; срок проверяется в момент события", () => {
   for (const [vipUntil, premiumUntil, expected] of [
     [0, 0, 3],
-    [NOW + accounts.WEEK, 0, 6],
+    [NOW + accounts.WEEK, 0, 9],
     [0, NOW + accounts.WEEK, 3],
-    [NOW + accounts.WEEK, NOW + accounts.WEEK, 6],
-    [NOW + accounts.WEEK, NOW, 6],
+    [NOW + accounts.WEEK, NOW + accounts.WEEK, 9],
+    [NOW + accounts.WEEK, NOW, 9],
     [NOW, NOW + accounts.WEEK, 3],
     [NOW, NOW, 3],
   ]) {
@@ -152,7 +152,7 @@ test("Поглощение: база 3 XP, VIP и оба ×2, Premium ×1; ср�
   }
 });
 
-test("Поглощение с VIP и Premium: сбой записи, потерянное подтверждение и восстановление не удваивают 6 XP", (t) => {
+test("Поглощение с VIP и Premium: сбой записи, потерянное подтверждение и восстановление не удваивают 9 XP", (t) => {
   const filePath = path.join(temporary(t, "absorption-xp"), "profiles.json"),
     { store, a, p } = setup(filePath);
   p().account = {
@@ -178,10 +178,10 @@ test("Поглощение с VIP и Premium: сбой записи, потер�
   store.applyArenaProgress(packet, events, NOW);
   // Повтор после потерянного подтверждения, в том числе за пределами защиты жертвы.
   store.applyArenaProgress(packet, events, NOW + 180001);
-  assert.equal(p().progress.session.xp, 6);
+  assert.equal(p().progress.session.xp, 9);
   assert.equal(p().progress.kills, 2);
   let disk = new ProfileStore({ filePath, now: () => NOW + 180001 });
-  assert.equal(disk.find(a.token).progress.xp, 6);
+  assert.equal(disk.find(a.token).progress.xp, 9);
   assert.equal(disk.find(a.token).progress.session, null);
   disk.applyArenaProgress(packet, events, NOW + 180001);
   assert.equal(disk.find(a.token).progress.kills, 2);
@@ -203,7 +203,7 @@ test("Поглощение с VIP и Premium: сбой записи, потер�
   assert.equal(disk.find(a.token).progress.session.xp, 0);
   assert.equal(disk.find(a.token).progress.kills, 2);
   disk = new ProfileStore({ filePath, now: () => NOW + 180001 });
-  assert.equal(disk.find(a.token).progress.xp, 6);
+  assert.equal(disk.find(a.token).progress.xp, 9);
 });
 
 test("Платные аватары доступны только с активным статусом; срок не уничтожает выбор", () => {

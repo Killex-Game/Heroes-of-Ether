@@ -2,6 +2,7 @@
 const rules = require("../../../public/shared/alchemy-rules");
 const { findRunAt } = require("./event-run-lookup");
 const { BoosterError } = require("../boosters/booster-catalog");
+const achievements = require("./alchemy-achievements");
 const integer = n => Number.isSafeInteger(n) && n >= 0;
 const object = value => value && typeof value === "object" && !Array.isArray(value);
 const add = (a, b) => { if (!integer(a) || !integer(b) || !integer(a + b)) throw new BoosterError("Хранилище алхимии переполнено.", 409); return a + b; };
@@ -19,6 +20,7 @@ function view(profile, manager, at) {
 // Trusted, cumulative simulation counters. The existing life and batch/WAL
 // boundaries reject old lives; duplicate totals do not create currency/items.
 function progress(profile, manager, event, at) {
+  achievements.observe(profile, manager, event, at);
   if (event.type === "lifeStarted" && profile.alchemy?.active && profile.alchemy.active.lifeId !== event.lifeId)
     profile.alchemy = { ...profile.alchemy, active: null };
   if (event.type === "lifeEnded" && profile.alchemy?.active?.lifeId === event.lifeId)
@@ -51,7 +53,11 @@ function progress(profile, manager, event, at) {
       session.alchemyRun = run.id; session.alchemyIngredients = totals;
     }
   }
-  if (next !== saved) profile.alchemy = next;
+  if (next !== saved) {
+    profile.alchemy = next;
+    const count = Object.entries(next.ingredients).reduce((sum,[id,n]) => sum + n - (saved.ingredients[id] || 0),0);
+    if (count) achievements.record(profile,run,{alchemy_ingredients:count},at);
+  }
 }
 function mutate(store, token, input, batch) {
   if (!object(input) || !["brew", "equip", "exchange"].includes(input.action) ||
@@ -90,6 +96,8 @@ function mutate(store, token, input, batch) {
       if (!rules.equipped(next).length) { next.equipped = potion.id; next.queue = [potion.id]; }
     }
     p.alchemy = next;
+    if (input.action === "brew") achievements.record(p,runAt(store.events,at),
+      {alchemy_brews:1},at);
   }, undefined, undefined, batch);
 }
 function validIds(ids) {
@@ -97,6 +105,7 @@ function validIds(ids) {
     ids.every(id => rules.potions.some(p => p.id === id));
 }
 function validate(profile) {
+  achievements.validate(profile);
   const s = profile.alchemy;
   if (s === undefined) return;
   if (!object(s) || s.version !== 1 || !integer(s.natural) || !object(s.ingredients) ||

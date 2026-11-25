@@ -4,7 +4,7 @@
 // Uploading JSON never loads JavaScript or changes reward catalogs.
 const packs = Object.freeze({
   "ether-alchemy-v1": Object.freeze({
-    id: "ether-alchemy-v1", title: "Эфирная алхимия", achievements: [],
+    id: "ether-alchemy-v1", title: "Эфирная алхимия", achievements: require("./alchemy-achievements").definitions,
     hats: [], bows: [], rewards: require("../../../public/shared/alchemy-rules").potions.map(p => p.boosterId),
   }),
   "black-friday-v1": Object.freeze({

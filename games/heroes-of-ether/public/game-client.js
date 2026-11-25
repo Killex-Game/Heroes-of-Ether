@@ -34,6 +34,7 @@
     gear: $("settingsButton"),
     closeSettings: $("closeSettings"),
     massToggle: $("massToggle"),
+    boosterSizeToggle: $("boosterSizeToggle"),
     fullscreen: $("fullscreenToggle"),
     fullscreenHelp: $("fullscreenHelp"),
     feedback: $("settingsFeedback"),
@@ -45,6 +46,7 @@
   const bodyArt = new window.KillexBodyArt.Renderer();
   let preferences = {
     showMass: true,
+    largeBoosters: false,
     music: true,
     sound: true,
     musicVolume: 100,
@@ -56,6 +58,7 @@
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
     if (saved && typeof saved === "object") {
       if (typeof saved.showMass === "boolean") preferences.showMass = saved.showMass;
+      if (typeof saved.largeBoosters === "boolean") preferences.largeBoosters = saved.largeBoosters;
       for (const key of ["music", "sound"]) {
         const value = saved[key + "Volume"];
         preferences[key + "Volume"] = typeof value === "number" && Number.isFinite(value)
@@ -1316,7 +1319,8 @@
   }
   addEventListener("keydown", (event) => {
     if (event.isComposing) return;
-    if (arenaChat?.root.contains(event.target)) return;
+    if (arenaChat?.root.contains(event.target) &&
+        event.target?.closest("input, textarea, select, [contenteditable]")) return;
     if (event.code === "Escape") {
       // Один Escape сначала выходит из fullscreen, включая браузеры, которые
       // успевают прислать fullscreenchange перед самим событием клавиатуры.
@@ -1464,6 +1468,8 @@
   function applyMassPreference() {
     ui.massPanel.hidden = phase !== "arena";
     ui.massToggle.setAttribute("aria-checked", String(preferences.showMass));
+    ui.boosterSizeToggle.setAttribute("aria-checked", String(preferences.largeBoosters));
+    ui.arena.dataset.boosterSize = preferences.largeBoosters ? "large" : "normal";
     for (const key of ["music", "sound"]) {
       const value = preferences[key + "Volume"];
       $(key + "Volume").value = value;
@@ -1483,6 +1489,11 @@
     else if (returnFocus) ui.gear.focus({ preventScroll: true });
   }
   ui.gear.addEventListener("click", () => setSettingsOpen(ui.settings.hidden, false));
+  ui.boosterSizeToggle.addEventListener("click", () => {
+    preferences.largeBoosters = !preferences.largeBoosters;
+    applyMassPreference();
+    persistPreferences();
+  });
   for (const key of ["music", "sound"]) {
     const slider = $(key + "Volume");
     slider.addEventListener("input", () => {

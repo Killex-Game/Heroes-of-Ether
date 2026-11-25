@@ -675,7 +675,8 @@ class ProfileStore {
     for (const key of keys) {
       if (cache && !cache.needs(next.profiles[key], previous.profiles[key], at)) continue;
       const p = next.profiles[key],
-        updated = easter.capture(p, at);
+        updated = require("../events/alchemy-achievements").capture(
+          easter.capture(p, at), previous.profiles[key], this.events, at);
       if (updated === p) continue;
       if (capturedProfiles === next.profiles) capturedProfiles = copyRecord(capturedProfiles);
       capturedProfiles[key] = updated;
@@ -687,6 +688,7 @@ class ProfileStore {
     const easterCapturedProfiles = next.profiles;
     next = luckyWeek.recover(next, this.events, at, cache);
     next = blackFriday.recover(next, this.events, at, cache);
+    next = require("../events/alchemy-achievements").recover(next, this.events, at, cache);
     trackChanges();
     // A changed marriage/clan can affect the untouched spouse as well. Calendar
     // boundaries already include all expired personal captures in keys.
@@ -992,6 +994,7 @@ class ProfileStore {
           ...luckyWeek.view(profile, this.events, this.now()),
           ...easter.achievementView(profile, this.events, this.now()),
           ...blackFriday.achievementView(profile, this.events, this.now()),
+          ...require("../events/alchemy-achievements").view(profile, this.events, this.now()),
           ...progress.achievements,
         ],
       },
@@ -1237,6 +1240,8 @@ class ProfileStore {
       pets.progress(p, event, at, this.petEvents);
       const luckyLevel = p.progress.session?.luckyLevel;
       const fridayLevel = p.progress.session?.fridayLevel;
+      const alchemyLevel = p.progress.session?.alchemyLevel;
+      const alchemyTogether = p.progress.session && p.progress.session.id === event.lifeId ? p.progress.session.alchemyTogether : null;
       // Only absorption writes these cooldown maps. A time/food/mass sample
       // must not copy a long life history. Detach once before the first write
       // in this private batch, retaining the original duplicate/expiry rules.
@@ -1248,6 +1253,7 @@ class ProfileStore {
       const settledGreatness = p.greatness, settledHonors = p.honors;
       luckyWeek.arena(p, this.events, { ...event, luckyLevel }, before, previousLevel, at);
       blackFriday.arena(p, this.events, { ...event, fridayLevel }, before, previousLevel, at);
+      require("../events/alchemy-achievements").arena(p,this.events,event,before,previousLevel,alchemyLevel,alchemyTogether,at);
       activity.refreshCalendar(p, at, false, awardsCurrent);
       // applyEvent already settles titles when awardsCurrent is true. Event
       // and calendar rewards can add greatness afterwards, so recheck then.
@@ -1909,6 +1915,7 @@ class ProfileStore {
       socialCalendar.due(data, at, this.settlementCache) ||
       luckyWeek.recoveryDue(data, this.events, this.settlementCache) ||
       blackFriday.recoveryDue(data, this.events, this.settlementCache) ||
+      require("../events/alchemy-achievements").recoveryDue(data, this.events, this.settlementCache) ||
       (this.settlementCache
         ? this.settlementCache.easterRefreshDue(data.profiles, at, easter.refreshDue)
         : Object.values(data.profiles).some((p) => easter.refreshDue(p, at)))

@@ -64,23 +64,23 @@ test("Остаток выхода яда не переходит в следую
   assert.equal(b.poisonFoodRemainder, 0);
 });
 
-test("Камень у конца полёта отражается только на остаток четырёх секунд", () => {
+test("Камень у конца полёта отражается только на остаток 3,6 секунды", () => {
   const { arena, a, b } = scene();
   const shot = throwStone(arena, a),
     start = shot.x;
-  b.x = start + 700 + b.radius + 10;
+  b.x = start + 628 + b.radius + 10;
   b.effects.clan_shield = 30000;
-  arena.combat.update(8950);
+  arena.combat.update(8550);
   assert.equal(shot.ownerId, b.id);
   assert.equal(shot.landed, false);
   assert.equal(shot.dx, -1);
-  assert.ok(Math.abs(shot.distanceTravelled - 700) < 1e-7);
-  assert.equal(shot.landsAt, 9000);
+  assert.ok(Math.abs(shot.distanceTravelled - 628) < 1e-7);
+  assert.equal(shot.landsAt, 8600);
   assert.equal(shot.launchedAt, 5000);
   const contactX = shot.x;
   arena.removePlayer(a.id);
   b.x += 100; // Let the stone land outside the shield's larger ground-trigger radius.
-  arena.combat.update(9000);
+  arena.combat.update(8600);
   assert.ok(Math.abs(shot.x - contactX + 9) < 1e-7);
   assert.equal(shot.landed, true);
   const landedX = shot.x;
@@ -121,7 +121,7 @@ test("Отражённый Камень возвращается к исходн
   assert.equal(shot.dx, -1, "не в сторону крупнейшей части за щитом");
 });
 
-test("Повторные отражения между двумя щитами не продлевают четыре секунды", () => {
+test("Повторные отражения между двумя щитами не продлевают 3,6 секунды", () => {
   const { arena, a, b } = scene();
   b.x = 1250;
   a.effects.clan_shield = b.effects.clan_shield = 30000;
@@ -129,13 +129,13 @@ test("Повторные отражения между двумя щитами �
   const owners = new Set();
   let reflections = 0,
     previous = shot.ownerId;
-  for (let at = 5050; at < 9000; at += 50) {
+  for (let at = 5050; at < 8600; at += 50) {
     arena.combat.update(at);
     assert.equal(arena.combat.shots.length, 1);
     if (shot.ownerId !== previous) {
       reflections++;
       owners.add(shot.ownerId);
-      assert.equal(shot.landsAt, 9000);
+      assert.equal(shot.landsAt, 8600);
       assert.ok(shot.distanceTravelled > 0);
       assert.equal(shot.speed, 180);
       previous = shot.ownerId;
@@ -145,12 +145,12 @@ test("Повторные отражения между двумя щитами �
   }
   assert.equal(owners.size, 2);
   assert.ok(reflections >= 3);
-  arena.combat.update(9000);
+  arena.combat.update(8600);
   assert.ok(shot.landed || arena.combat.shots.length === 0);
   const x = shot.x;
   arena.combat.update(12000);
   assert.equal(shot.x, x);
-  assert.equal(shot.landsAt, 9000);
+  assert.equal(shot.landsAt, 8600);
 });
 
 test("Камень при совпадении с отправителем сохраняет ненулевое направление отскока", () => {

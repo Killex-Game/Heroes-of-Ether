@@ -37,7 +37,8 @@
   gap: 3px;
 }
 #lobby .sf-currency-wallet .sf-currency {
-  height: 30px;
+  height: 40px;
+  max-width: none;
 }
 #lobby .currency-add {
   width: 26px;
@@ -203,3 +204,4 @@
 #boosterDialog .sf-currency-value {
   font-size: clamp(9px, 10cqw, 17px);
 }
+#lobby .sf-currency-value { font-size: clamp(10px, 9cqw, 16px); line-height: 1; }

@@ -92,7 +92,7 @@ test("Карточки сохраняют правила каталога; де�
     const actual = data.items.find((s) => s.id === item.id);
     assert.equal(actual.effect, revisedEffects[item.id] || item.effect);
     if (["web", "stone"].includes(item.id)) {
-      assert.equal(actual.flightMs, item.params.flight_seconds * 1000);
+      assert.equal(actual.flightMs, item.id === "stone" ? 3600 : item.params.flight_seconds * 1000);
       assert.equal(BOOSTERS.get(item.id).durationMs, item.id === 'stone' ? 5000 : item.params.immobilize_seconds * 1000);
     }
     const iconPath = actual.icon.split("?")[0];

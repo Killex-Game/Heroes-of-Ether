@@ -32,8 +32,16 @@ function finishRoomStep(room, at, profiles, prepared, arenaEvents) {
   const { botProgress, botEvents } = prepared;
   const events = [...botEvents, ...arenaEvents];
   const activeProfiles = new Set(
-    [...arena.players.values()].filter((p) => !p.dead).map((p) => p.profileId),
+    [...arena.players.values()].filter((p) => !p.dead && !p.isRemnant).map((p) => p.profileId),
   );
+  const spouses = new Map();
+  const spouseOnArena = id => {
+    if (!spouses.has(id)) {
+      const mate = profiles.byId(id)?.social?.marriage?.partnerId;
+      spouses.set(id, mate && activeProfiles.has(mate) ? mate : null);
+    }
+    return spouses.get(id);
+  };
   const inputActions = require("./quest-actions").takePending(arena);
   // Actions emitted inside this tick also occur in progressEvents. Preserve
   // their order and include between-tick inputs exactly once in the same WAL batch.
@@ -47,11 +55,7 @@ function finishRoomStep(room, at, profiles, prepared, arenaEvents) {
       victimProfileId:
         arena.players.get(event.victimId)?.profileId ||
         arena.players.get(event.victimId)?.departedProfileId,
-      spouseOnArena: (() => {
-        const actor = arena.players.get(event.playerId || event.eaterId);
-        const mate = profiles.byId(actor?.profileId)?.social?.marriage?.partnerId;
-        return mate && activeProfiles.has(mate) ? mate : null;
-      })(),
+      spouseOnArena: spouseOnArena(arena.players.get(event.playerId || event.eaterId)?.profileId),
     })),
   ];
   // Sample passive timers together, rather than rewriting the entire save
@@ -94,6 +98,7 @@ function finishRoomStep(room, at, profiles, prepared, arenaEvents) {
         profileId: p.profileId,
         lifeId: p.lifeId,
         durationSeconds,
+        spouseOnArena: spouseOnArena(p.profileId),
       });
       p.lifeTimeSample = { lifeId: p.lifeId, seconds: durationSeconds };
     }

@@ -86,6 +86,10 @@
   return Object.freeze({
     rankBounds: (id) => rankBounds[id] || null,
     achievement: (id, size = 128) =>
+      id.startsWith("alchemy_potion_") ? `assets/events/ether-alchemy/v1/potion-${id.slice(15)}.webp?art=20261123-interface-art` :
+      id === "alchemy_brews" ? "assets/events/ether-alchemy/v1/cauldron-v1.webp?art=20261123-interface-art" :
+      id === "alchemy_ingredients" ? "assets/events/ether-alchemy/v1/book.webp?art=20261123-interface-art" :
+      id.startsWith("alchemy_marriage_") ? `assets/achievements/illustrated-v2/${id.endsWith("levels") ? "loving" : "always_together"}.webp?art=20261123-interface-art` :
       id.startsWith("clan_quest_") ? `assets/achievements/clan-quests-v1/${[64,128,256,512].includes(size)?size:128}/${id}.webp?art=20261124-clan-art` :
       [
         "fashionista",

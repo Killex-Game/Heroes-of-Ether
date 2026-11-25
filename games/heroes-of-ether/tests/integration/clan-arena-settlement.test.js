@@ -113,7 +113,7 @@ test('VIP XP / Premium kills: real account expiry, durable retry and deferred cl
     }
     return {...event,profileId:u.profile.id};
   };
-  const first=sample(f.start,f.start+30000),xp=vip?100:50,kills=premium?14:7;
+  const first=sample(f.start,f.start+30000),xp=vip?150:50,kills=premium?14:7;
   const before=f.store.data,fault=t.mock.method(fs,'fsync',(fd,done)=>setImmediate(()=>done(Error('status fsync failure'))));
   await assert.rejects(f.send([first],f.start+30000,'status-first'),/status fsync failure/);
   fault.mock.restore();assert.equal(f.store.data,before);

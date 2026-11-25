@@ -24,6 +24,7 @@ const labels = {
   rename: "Смена ника",
   level: "Изменение уровня",
   wallet: "Правка валюты",
+  greatness: "Начисление величия",
   account: "Статус аккаунта",
   inventory: "Правка бустеров",
   killReview: "Проверка Kill",
@@ -60,6 +61,7 @@ class OwnerService {
       ...this.summary(p),
       chatModeration: require("../chat/chat-rules").ownerView(p, this.now()),
       wallet: clone(p.wallet),
+      greatness: p.greatness,
       inventory: clone(p.inventory),
       account: clone(p.account || accounts.fresh()),
       ownerGiftSkins: identity.ownerGiftSkins.map(s => ({ id: s.id, name: s.name,
@@ -162,6 +164,11 @@ class OwnerService {
       catch { fail("Уровень превышает допустимый размер опыта."); }
       command.level = input.level;
     }
+    if (action === "greatness") {
+      if (!Number.isSafeInteger(input.amount) || input.amount < 1 || input.amount > 2000000)
+        fail("Начисление величия: целое число от 1 до 2 000 000.");
+      command.amount = input.amount;
+    }
     if (action === "wallet") {
       if (
         !["coins", "crystals", "bucks"].includes(input.currency) ||
@@ -202,6 +209,8 @@ class OwnerService {
     if (!this.access.canManagePlayers(actor))
       throw new BoosterError("Нет права менять данные игроков.", 403);
     const command = this.normalize(input);
+    if (command.action === "greatness" && !this.access.isOwner(actor))
+      throw new BoosterError("Величие начисляет только владелец.", 403);
     if (command.action === 'killReport' && !this.access.isOwner(actor))
       throw new BoosterError('Подтверждение владельца может внести только владелец.', 403);
     if (command.action === "avatarGift" && !this.access.isOwner(actor))
@@ -322,6 +331,15 @@ class OwnerService {
         after = { level: p.level, xp: p.progress.xp };
         experience.validateProgress(p);
         require("../roulette/roulette-service").validate(p);
+        break;
+      }
+      case "greatness": {
+        before = { greatness: p.greatness };
+        const amount = p.greatness + command.amount;
+        if (!Number.isSafeInteger(amount)) fail("Недопустимое количество величия.");
+        p.greatness = amount;
+        require("../progression/title-chest-rewards").awardTitles(p, at);
+        after = { greatness: p.greatness };
         break;
       }
       case "wallet":

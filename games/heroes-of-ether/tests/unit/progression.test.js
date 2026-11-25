@@ -56,7 +56,7 @@ test('Premium doubles absorption kills immediately, without multiplying XP or ac
     const batch=[{type:'absorbed',profileId:a.profile.id,victimProfileId:b.profile.id,gain:40,finalDefeat:true}];
     store.applyArenaProgress('premium-absorption',batch,at);
     assert.equal(p().progress.kills,multiplier);assert.equal(p().progress.session.kills,multiplier);
-    assert.equal(p().progress.session.xp,vip?6:3);assert.equal(p().progress.absorptionKills,1);
+    assert.equal(p().progress.session.xp,vip?9:3);assert.equal(p().progress.absorptionKills,1);
     store.applyArenaProgress('premium-absorption',batch,at);
     assert.equal(p().progress.kills,multiplier);
     store.applyArenaProgress('same-victim',batch,at+1);assert.equal(p().progress.kills,multiplier);

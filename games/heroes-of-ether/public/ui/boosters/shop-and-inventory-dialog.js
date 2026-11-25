@@ -207,6 +207,13 @@
         this.game.stop();
       });
       const arena = document.getElementById("arena");
+      const leave = document.getElementById("leaveButton");
+      const exit = make("div", "arena-exit");
+      leave.before(exit); exit.append(leave);
+      this.potionEffects = make("section", "arena-potion-effects");
+      this.potionEffects.setAttribute("aria-label", "Зелья за вход на арену");
+      this.potionEffects.hidden = true;
+      exit.append(this.potionEffects);
       this.quick = make("div", "booster-quick");
       this.quick.setAttribute("aria-label", "Быстрые бустеры");
       // A secondary finger does not reliably produce click while a joystick touch
@@ -1210,6 +1217,19 @@
     }
     updatePotion(me) {
       const used = window.KillexAlchemyRules.activeIds(me?.potion), next = this.nextPotion(me);
+      const factor = Math.max(1, window.KillexAccessories.bonus(me?.outfit, "potionFactor"));
+      const effectKey = used.join(",") + ":" + factor;
+      if (effectKey !== this.potionEffectsKey) {
+        this.potionEffectsKey = effectKey;
+        this.potionEffects.hidden = !used.length;
+        this.potionEffects.replaceChildren(...used.map(id => {
+          const p = window.KillexAlchemyRules.get(id), row = make("div", "arena-potion-effect");
+          row.append(make("strong", "", p.name), make("span", "", p.effect));
+          return row;
+        }));
+        if (used.length && factor > 1)
+          this.potionEffects.append(make("small", "", "Сила модификаторов ×" + factor));
+      }
       const id = next || used.at(-1);
       const potion = window.KillexAlchemyRules.get(id);
       const owned = potion ? this.profile?.inventory[potion.boosterId] || 0 : 0;

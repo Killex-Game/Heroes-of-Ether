@@ -26,7 +26,7 @@ function fixture(vip = false, premium = false, mass = 50000) {
 }
 
 const round = n => Math.max(0, Math.ceil(n - 0.5));
-for (const [vip,premium,xpFactor,killFactor] of [[false,false,1,1],[true,false,2,1],[false,true,1,2],[true,true,2,2]]) {
+for (const [vip,premium,xpFactor,killFactor] of [[false,false,1,1],[true,false,3,1],[false,true,1,2],[true,true,3,2]]) {
   test('Current mass payout '+vip+'/'+premium,()=>{
     for(const mass of [20,500,501,1500,1550,5000,15000,29999,30000,75000,1000000]) for(const n of [1,17,30]){
       const f=fixture(vip,premium,mass); f.run(0,29950,n);
@@ -47,9 +47,9 @@ test('Half ties down, above half up, no carry into a later payout',()=>{
 });
 test('Mass, population and status are sampled at the payout, not averaged',()=>{
   const f=fixture(false,true,20);f.run(0,29950,30);f.actor.mass=50000;f.actor.account={vip:true};
-  f.step(30000,false,2);assert.equal(f.p.progress.session.xp,100);assert.equal(f.p.progress.session.kills,7);
+  f.step(30000,false,2);assert.equal(f.p.progress.session.xp,150);assert.equal(f.p.progress.session.kills,7);
   f.actor.mass=10000;f.actor.account={premium:true};f.run(30000,60000,3);
-  assert.equal(f.p.progress.session.xp,110);assert.equal(f.p.progress.session.kills,15);
+  assert.equal(f.p.progress.session.xp,160);assert.equal(f.p.progress.session.kills,15);
 });
 test('No catch-up for long pauses, no early payout on death or departure',()=>{
   const f=fixture();f.run(0,29950);assert.equal(f.step(900000),null);assert.equal(f.p.progress.session.xp,0);
@@ -77,8 +77,16 @@ test('Persisted v2 payouts retain their exact value; new v3 multiplier is valida
     assert.equal(f.p.progress.session.xp,100);
   }
 });
-test('Absorptions are 3/6/3/6 XP; natural kills do not count as actual defeats',()=>{
-  for(const [vip,premium,xp] of [[false,false,3],[true,false,6],[false,true,3],[true,true,6]]){
+test('Persisted v3 retains x2 even after VIP becomes x3; v4 accepts only current status factors',()=>{
+  const f=fixture(true,true),e={type:'massAccrual',lifeId:'life',sequence:1,ruleVersion:3,xpMultiplier:2,
+    xpUnits:10*accrual.XP_DENOMINATOR,baseXpUnits:10*accrual.XP_DENOMINATOR,killUnits:4*accrual.KILL_DENOMINATOR};
+  progression.applyEvent(f.p,e,1000);assert.equal(f.p.progress.session.xp,20);
+  for(const multiplier of [0,2,4,1.5])assert.throws(()=>progression.applyEvent(f.p,{...e,sequence:2,ruleVersion:4,xpMultiplier:multiplier},2000));
+  progression.applyEvent(f.p,{...e,sequence:2,ruleVersion:4,xpMultiplier:3,xpUnits:10*accrual.XP_DENOMINATOR},2000);
+  assert.equal(f.p.progress.session.xp,50);assert.equal(f.p.progress.session.kills,8);
+});
+test('Absorptions are 3/9/3/9 XP; natural kills do not count as actual defeats',()=>{
+  for(const [vip,premium,xp] of [[false,false,3],[true,false,9],[false,true,3],[true,true,9]]){
     const f=fixture(vip,premium);progression.applyEvent(f.p,{type:'absorbed',victimProfileId:'v',lifeId:'v',gain:20},1000);
     assert.equal(f.p.progress.session.xp,xp);f.run(0,30000);assert.equal(f.p.progress.session.realAbsorptions,1);
   }
@@ -94,5 +102,5 @@ test('Room population excludes bots, dead players and remnants, counts split hum
 });
 test('Gift, potion and accessory XP effects still apply to natural awards',()=>{
   const f=fixture(true,true,10000);f.actor.giftModifiers={xp:.5};f.p.wardrobeState.legacyNovice=true;f.p.outfit={hat:'novice_hat'};
-  f.run(0,30000);assert.equal(f.p.progress.session.xp,11);assert.equal(f.p.progress.session.kills,4);
+  f.run(0,30000);assert.equal(f.p.progress.session.xp,16);assert.equal(f.p.progress.session.kills,4);
 });

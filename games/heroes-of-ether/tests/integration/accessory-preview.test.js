@@ -255,7 +255,7 @@ test("Бонусы опыта прибавляются к базе, поглощ
       if (e) progression.applyEvent(p, e, at);
     }
     // All accessory bonuses are included before the final VIP multiplier.
-    assert.equal(p.progress.session.xp, vip ? 230 : 114);
+    assert.equal(p.progress.session.xp, vip ? 344 : 114);
     const before = p.progress.session.xp;
     for (let i = 0; i < 10; i++)
       progression.applyEvent(
@@ -263,7 +263,7 @@ test("Бонусы опыта прибавляются к базе, поглощ
         { type: "absorbed", victimProfileId: "v" + i, lifeId: "v-life" + i, gain: 20 },
         61000 + i,
       );
-    assert.equal(p.progress.session.xp - before, vip ? 66 : 33);
+    assert.equal(p.progress.session.xp - before, vip ? 99 : 33);
   }
 });
 
@@ -279,7 +279,7 @@ test("VIP multiplies the complete accessory, gift and potion reward once; Premiu
       giftModifiers:require('../../src/server/profiles/gift-effects').modifiers(p,0)};
     accrual.reset(actor,0);let event;
     for(let at=50;at<=30000;at+=50)event=accrual.sample(actor,at,false,4)||event;
-    const giftFactor=gift==='clover'?1.25:gift==='skull'?.75:1,factor=vip?2:1;
+    const giftFactor=gift==='clover'?1.25:gift==='skull'?.75:1,factor=vip?3:1;
     progression.applyEvent(p,event,30000);
     assert.equal(p.progress.session.xp,Math.ceil(12.345*1.15*giftFactor*1.4*factor-.5));
     assert.equal(p.progress.session.kills,Math.ceil((1.2345+4)*(premium?2:1)-.5));

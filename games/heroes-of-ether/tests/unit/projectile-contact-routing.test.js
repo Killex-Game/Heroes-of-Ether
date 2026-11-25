@@ -149,7 +149,7 @@ test("Утилита маршрута обходит закрытый прямо
   assert.ok(Math.abs(Math.hypot(previous.x - 415, previous.y - 300) - 60) < 0.001);
 });
 
-test("Камень летит 4 секунды со скоростью 180 на 720 единиц и остаётся ловушкой", () => {
+test("Камень летит 3,6 секунды со скоростью 180 на 648 единиц и остаётся ловушкой", () => {
   const arena = new Arena({ etherCount: 0, world: { width: 5000, height: 5000 } });
   const p = arena.addPlayer(0, "p");
   Object.assign(p, { x: 1000, y: 1000, protectedUntil: 0 });
@@ -158,8 +158,8 @@ test("Камень летит 4 секунды со скоростью 180 на 
     start = shot.x;
   arena.combat.update(5500);
   assert.equal(shot.x - start, 90);
-  arena.combat.update(9000);
-  assert.ok(Math.abs(shot.x - start - 720) < 1e-7);
+  arena.combat.update(8600);
+  assert.ok(Math.abs(shot.x - start - 648) < 1e-7);
   assert.equal(shot.landed, true);
   assert.equal(arena.combat.shots.length, 1);
 });

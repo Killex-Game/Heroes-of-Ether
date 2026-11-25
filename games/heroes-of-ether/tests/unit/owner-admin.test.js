@@ -49,6 +49,27 @@ function fixture(t) {
   };
 }
 
+test('owner greatness grant is exact, preserves other progress, awards titles and replays once after restart', t => {
+  const f=fixture(t), before=structuredClone(f.profiles.byId(f.target.id));
+  const cmd=f.command({action:'greatness',amount:2000000});
+  const committed=f.profiles.data, save=f.profiles.save;
+  f.profiles.save=()=>{throw Error('disk failure');};
+  assert.throws(()=>f.service.apply(f.owner,cmd),/disk failure/);
+  assert.strictEqual(f.profiles.data,committed);assert.deepEqual(f.profiles.byId(f.target.id),before);
+  f.profiles.save=save;
+  assert.throws(()=>f.service.apply(f.target,cmd));
+  f.service.apply(f.owner,cmd);
+  const p=f.profiles.byId(f.target.id);
+  const expected=structuredClone(before);expected.greatness+=2000000;
+  require('../../src/server/progression/title-chest-rewards').awardTitles(expected,f.profiles.now());
+  assert.equal(p.greatness,expected.greatness);assert(p.honors.claimed>before.honors.claimed);
+  for(const field of ['wallet','inventory','progress','clanId','alchemy','account'])assert.deepEqual(p[field],before[field],field);
+  assert.equal(f.service.apply(f.owner,cmd).duplicate,true);
+  const restored=new ProfileStore({filePath:f.filePath});
+  assert.equal(new OwnerService({profiles:restored,access:f.access}).apply(f.owner,cmd).duplicate,true);
+  assert.equal(restored.byId(p.id).greatness,p.greatness);
+});
+
 test('admin edits share unrelated profiles and isolate frozen audit/receipts on a failed save', t => {
   const f=fixture(t), idle=f.profiles.open();
   f.service.apply(f.owner,f.command({amount:1}));

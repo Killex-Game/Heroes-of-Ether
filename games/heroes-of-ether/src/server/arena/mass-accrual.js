@@ -28,11 +28,11 @@ function sample(p, now, force = false, playerCount = 1) {
   s.observedMs -= PAYOUT_INTERVAL_MS;
   const mass = Number.isFinite(p.mass) ? Math.max(0, p.mass) : 0,
     population = Number.isFinite(playerCount) ? Math.max(0, Math.floor(playerCount)) : 0,
-    xpFactor = p.account?.vip ? 2 : 1,
+    xpFactor = p.account?.vip ? 3 : 1,
     killFactor = p.account?.premium ? 2 : 1,
     xpEffects = (p.giftModifiers?.xp ?? 1) * (1 + (alchemy.modifiers(p).xp || 0)),
     baseXpUnits = Math.round(mass * (XP_DENOMINATOR / 1000) * xpEffects);
-  return { type: "massAccrual", ruleVersion: 3, playerId: p.id, lifeId: p.lifeId,
+  return { type: "massAccrual", ruleVersion: 4, playerId: p.id, lifeId: p.lifeId,
     sequence: ++s.sequence, xpUnits: baseXpUnits, baseXpUnits, xpMultiplier: xpFactor,
     killUnits: Math.round((mass * (KILL_DENOMINATOR / 10000) + population * KILL_DENOMINATOR) * killFactor) };
 }

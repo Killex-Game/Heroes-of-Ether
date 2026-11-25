@@ -225,6 +225,9 @@
       chatIcon.innerHTML = '<path d="M5 4h18a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H11l-6 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 10h12M8 15h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
       this.toggle.append(chatIcon);
       this.toggle.type = "button";
+      this.toggle.addEventListener("pointerdown", event => {
+        if (event.pointerType === "mouse") event.preventDefault();
+      });
       this.toggle.setAttribute("aria-controls", "arenaChatBody");
       this.panel.root.id = "arenaChatBody";
       this.root.append(this.toggle, this.panel.root);
@@ -242,7 +245,7 @@
           event.preventDefault();
           event.stopPropagation();
           this.expand(false);
-          this.toggle.focus();
+          this.panel.input.blur();
         }
       });
       this.disconnect();

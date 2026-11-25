@@ -1,0 +1,35 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict'),{once}=require('events');
+const root=path.resolve(__dirname,'../..'),req=require('module').createRequire(root+'/package.json'),pw=require('playwright');
+const artifacts=process.env.KILLEX_TEST_ARTIFACTS||path.join(__dirname,'../artifacts/alchemy-hud');fs.mkdirSync(artifacts,{recursive:true});
+const fixture=req('./tests/helpers/black-friday-fixture')();fixture.command('stop',{runId:fixture.run.id});fixture.command('start',{eventId:req('./src/server/events/ether-alchemy').manifest.id});
+const p=fixture.store.find(fixture.user.token);p.name='Арден';p.personal={nameSet:true,introPending:false,gender:'male',vkUrl:''};p.level=30;p.progress.xp=req('./src/server/progression/experience-progression').xpForLevel(30);p.wallet={coins:1234567,crystals:1234567,bucks:1234567};
+p.account={...req('./src/server/accounts/account-benefits').fresh(),vipUntil:fixture.now()+86400000,premiumUntil:fixture.now()+86400000};
+p.alchemy={version:1,natural:0,ingredients:{},learned:[],equipped:'knowledge',queue:['knowledge','swiftness','satiety']};
+for(const id of p.alchemy.queue)p.inventory['alchemy_'+id]=10;
+p.loginReward={date:req('./src/server/accounts/account-benefits').loginRewardDay(fixture.now()),day:1};
+(async()=>{const engine=process.argv[2]||'chromium',report={engine,errors:[],missing:[],checks:[]};let browser;
+const app=req('./src/server/game-server').createGameServer({profiles:fixture.store,events:fixture.manager,autoTick:true,testBots:{enabled:false},wallNow:fixture.now});
+try{app.httpServer.listen(0,'127.0.0.1');await once(app.httpServer,'listening');const url='http://127.0.0.1:'+app.httpServer.address().port;
+browser=await pw[engine].launch({headless:true,...(engine==='chromium'?{channel:'chrome'}:{})});const context=await browser.newContext({viewport:{width:1366,height:900}});await context.addCookies([{name:'sferorumiya_session',value:fixture.user.token,url}]);const page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));page.on('response',r=>{if(r.status()===404)report.missing.push(r.url())});
+await page.goto(url);await page.waitForFunction(()=>!document.getElementById('playButton').disabled);
+const dismiss=async()=>{for(let i=0;i<15;i++){await page.evaluate(()=>{for(const d of document.querySelectorAll('dialog[open]'))d.close()});await page.waitForTimeout(100)}};await dismiss();
+for(const width of [1366,1920,390]){await page.setViewportSize({width,height:900});await page.waitForTimeout(200);await page.screenshot({path:path.join(artifacts,engine+'-lobby-'+width+'.png')});
+ const geometry=await page.evaluate(()=>{const box=s=>document.querySelector(s).getBoundingClientRect().toJSON();return {profile:box('.profile-card'),wallet:box('#walletStatus'),header:box('.lobby-header'),progress:box('.player-progress'),effi:box('.effi-lobby'),generator:box('#etherGeneratorButton'),amounts:[...document.querySelectorAll('#walletStatus .sf-currency-value')].map(e=>({font:getComputedStyle(e).fontSize,box:e.getBoundingClientRect().toJSON(),parent:e.closest('.sf-currency').getBoundingClientRect().toJSON()}))}});
+ report.checks.push({case:'lobby geometry',width,...geometry});for(const a of geometry.amounts){assert(a.box.height<a.parent.height,'amount fits capsule');assert(a.box.width<=a.parent.width,'amount fits width')}
+}
+await page.setViewportSize({width:1366,height:900});await page.locator('#settingsButton').click();await page.locator('#boosterSizeToggle').click();assert.equal(await page.locator('#boosterSizeToggle').getAttribute('aria-checked'),'true');await page.reload();await page.waitForFunction(()=>!document.getElementById('playButton').disabled);await dismiss();assert.equal(await page.locator('#arena').getAttribute('data-booster-size'),'large');
+await page.locator('#playButton').click();await page.waitForFunction(()=>document.body.dataset.screen==='arena');await page.waitForTimeout(1300);
+const player=()=>[...app.rooms.values()].flatMap(r=>[...r.arena.players.values()]).find(x=>x.profileId===p.id);
+assert(player());await page.keyboard.press('KeyZ');await page.waitForFunction(()=>!document.querySelector('.arena-potion-effects').hidden);assert.match(await page.locator('.arena-potion-effects').innerText(),/15% опыта/);
+const slot=page.locator('#arena .booster-slot[data-slot="1"]');const large=await slot.boundingBox();
+await page.locator('#settingsButton').click();await page.locator('#boosterSizeToggle').click();await page.locator('#closeSettings').click();const small=await slot.boundingBox();assert(large.width>small.width+10);assert.equal(small.width,64);
+const chat=page.locator('.arena-chat-toggle');await chat.click();await chat.focus();const originalParts=player().parts?.length||1;await page.keyboard.press('Space');await page.waitForTimeout(300);assert((player().parts?.length||1)>originalParts,'Space splits with chat toggle focused');
+const chatHidden=await page.locator('.arena-chat').evaluate(e=>e.dataset.collapsed);await page.keyboard.press('Space');await page.waitForTimeout(100);assert.equal(await page.locator('.arena-chat').evaluate(e=>e.dataset.collapsed),chatHidden);
+await page.locator('.arena-chat input').fill('тест');await page.keyboard.press('Space');assert.equal(await page.locator('.arena-chat input').inputValue(),'тест ');await page.locator('.arena-chat input').blur();
+player().potion.ids=['knowledge','swiftness','satiety'];await page.waitForFunction(()=>document.querySelectorAll('.arena-potion-effect').length===3);
+for(const width of [1366,390]){await page.setViewportSize({width,height:900});await page.waitForTimeout(200);await page.screenshot({path:path.join(artifacts,engine+'-arena-'+width+'.png')});const box=await slot.boundingBox();assert(box.width>20);assert(Math.abs(box.width-box.height)<1);const panel=await page.locator('.arena-potion-effects').boundingBox(),leave=await page.locator('#leaveButton').boundingBox();assert(panel.y>=leave.y+leave.height);
+ if(width===390){const emotes=await page.locator('.arena-emote-hotkeys').boundingBox();assert(emotes.y>=panel.y+panel.height,'emotes below modifiers');await page.locator('#settingsButton').click();await page.locator('#boosterSizeToggle').click();await page.locator('#closeSettings').click();assert((await slot.boundingBox()).width>box.width+3);await page.locator('#settingsButton').click();await page.locator('#boosterSizeToggle').click();await page.locator('#closeSettings').click();}
+}
+await page.setViewportSize({width:1366,height:900});player().potion=null;await page.waitForFunction(()=>document.querySelector('.arena-potion-effects').hidden);assert.equal((await slot.boundingBox()).width,64);
+report.checks.push({case:'persistent booster size, stable slots, potion panel, Space and input',small,large});assert.deepEqual(report.errors,[]);assert.deepEqual(report.missing,[]);report.passed=true;
+}finally{fs.writeFileSync(path.join(artifacts,engine+'-hud.json'),JSON.stringify(report,null,2));await browser?.close();await app.close()}console.log(JSON.stringify({engine,passed:true,checks:report.checks.length}));})().catch(e=>{console.error(e);process.exitCode=1});

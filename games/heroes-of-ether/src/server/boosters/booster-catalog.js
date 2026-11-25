@@ -77,9 +77,9 @@ const implementations = {
   stone: {
     kind: "dizzy",
     target: "direction",
-    flightMs: 4000,
+    flightMs: 3600,
     flightSpeed: 180,
-    maxDistance: 720,
+    maxDistance: 648,
     trap: true,
     flightImpact: true,
     durationMs: 5000,
