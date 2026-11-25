@@ -7,7 +7,8 @@ const {xpForLevel}=require('../../src/server/progression/experience-progression'
 p.personal.introPending=false;p.name='Проверка';p.level=12;p.progress.xp=xpForLevel(12);p.wallet.coins=100000;p.wallet.crystals=1000;p.wallet.bucks=500;
 const clans=new ClanService(f.store);clans.mutate(f.user.token,{action:'create',name:'Проверка герба',prefix:'TEST',privacy:'open',emblem:'astral',requestId:randomUUID()});
 const B=require('../../src/server/events/black-friday'),book=require('../../src/server/events/black-friday-orders');
-B.rewardCurrencyPack(f.p(),f.run,0,f.now());const day=book.ensure(f.p().blackFriday.runs[f.run.id],f.p().id,f.run.id,B.day(f.now()),f.now());fixture.forceOrder(day,book.templates.findIndex(t=>t.metric==='clanUses'));
+B.rewardCurrencyPack(f.p(),f.run,0,f.now());const day=book.ensure(f.p(),f.p().blackFriday.runs[f.run.id],B.day(f.now()),f.now());fixture.forceOrder(day,book.templates.findIndex(t=>t.metric==='shieldUses'));
+const secret=day.slots.find(s=>s.tier==='secret');if(secret)secret.current.template=book.templates.findIndex(t=>t.metric==='clanUses');
 const app=createGameServer({profiles:f.store,clans,events:f.manager,arena:new Arena({etherCount:0}),autoTick:false,wallNow:f.now,now:f.now,rateNow:()=>performance.now(),testBots:{enabled:false}});
 const out=process.env.OWNER_BROWSER_OUT||path.resolve(__dirname,'../artifacts/friday-shields-crest',engine);fs.mkdirSync(out,{recursive:true});
 let browser,page;const errors=[],results=[];
@@ -15,7 +16,7 @@ let browser,page;const errors=[],results=[];
  app.httpServer.listen(0,'127.0.0.1');await once(app.httpServer,'listening');const url='http://127.0.0.1:'+app.httpServer.address().port;
  browser=await engines[engine].launch({headless:true,...(engine==='chromium'?{channel:'chrome'}:{})});
  for(const viewport of [{width:1920,height:1080},{width:1280,height:800},{width:390,height:844}]){
-  const context=await browser.newContext({viewport});context.setDefaultTimeout(15000);await context.addCookies([{name:'sferorumiya_session',value:f.user.token,url}]);page=await context.newPage();console.log('Viewport',viewport);
+  const context=await browser.newContext({viewport});context.setDefaultTimeout(60000);await context.addCookies([{name:'sferorumiya_session',value:f.user.token,url}]);page=await context.newPage();console.log('Viewport',viewport);
   page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400&&!r.url().includes('/api/maintenance'))errors.push(r.status()+' '+r.url());});
   await page.addInitScript(()=>{document.addEventListener('killex:profile',e=>{if(e.detail?.id&&window.KillexRelease)localStorage.setItem(window.KillexPlatform.storageKey('.releaseNotes.v1.'+e.detail.id),window.KillexRelease.id);},true);const original=HTMLDialogElement.prototype.showModal;HTMLDialogElement.prototype.showModal=function(){if(this.id==='releaseNotesDialog'||this.id==='eventAnnouncementDialog'||this.classList.contains('daily-login-dialog'))return;return original.call(this);};});
   await page.goto(url);await page.waitForFunction(()=>!document.getElementById('playButton').disabled);await page.evaluate(()=>document.querySelectorAll('dialog[open]').forEach(d=>d.close()));

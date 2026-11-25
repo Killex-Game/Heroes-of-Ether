@@ -113,7 +113,7 @@ templates.push({ metric: "commonUses", name: "Простые решения", te
 tiers[0].targets.push(100);
 tiers[1].targets.push(null);
 tiers[2].targets.push(null);
-templates.push({ metric: "clanUses", name: "Сила клана", text: n => "Используй {n} клановых бустеров.".replace('{n}', n.toLocaleString('ru-RU')), icon: 'assets/boosters/png/fire.png' });
+templates.push({ metric: "clanUses", name: "Сила клана", text: n => "Используй {n} клановых бустеров.".replace('{n}', n.toLocaleString('ru-RU')), icon: 'assets/boosters/clan-v2/128/fire.webp?art=20261124-clan-art' });
 tiers[0].targets.push(null);
 tiers[1].targets.push(null);
 tiers[2].targets.push(300);

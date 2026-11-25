@@ -8,8 +8,6 @@
   };
   const img = (src, cls = "") => {
     const n = el("img", cls);
-    const booster = /^assets\/boosters\/png\/([a-z_]+)\.png$/.exec(src);
-    if (booster) src = window.KillexProgressionArt.booster(booster[1], 128) || src;
     n.src = window.KillexArtRevision.url(src);
     n.alt = "";
     n.draggable = false;
