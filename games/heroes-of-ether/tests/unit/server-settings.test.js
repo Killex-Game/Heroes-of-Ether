@@ -42,6 +42,17 @@ test("Windows UTF-8 BOM configs load with the same values as Node JSON modules",
   assert.deepEqual(loadServerSettings(root,{}).arena,expected);
   assert.equal(fs.existsSync(path.join(root,'data')),false);
 });
+test('optional addressed progress configuration is bounded and defaults to canonical',t=>{
+  const f=fixture(t),file=path.join(f.root,'config/arena-progress-workers.json');
+  assert.equal(loadServerSettings(f.root,{}).progressWorkerCount,0);
+  fs.writeFileSync(file,JSON.stringify({enabled:true,maxWorkers:3}));
+  assert.equal(loadServerSettings(f.root,{},6).progressWorkerCount,3);
+  assert.equal(loadServerSettings(f.root,{},2).progressWorkerCount,1);
+  for(const value of [{enabled:true,maxWorkers:0},{enabled:true,maxWorkers:9},{enabled:'true',maxWorkers:3},{enabled:true,maxWorkers:3,worldReplica:true}]){
+    fs.writeFileSync(file,JSON.stringify(value));assert.throws(()=>loadServerSettings(f.root,{}),{code:'SERVER_CONFIG'});
+  }
+  assert.equal(fs.existsSync(path.join(f.root,'data')),false);
+});
 test("Doctor reports stale sync without exposing credentials or profile contents", t => {
   const { root } = fixture(t); fs.mkdirSync(path.join(root, "data"));
   fs.writeFileSync(path.join(root, "config/postgresql.local.json"), JSON.stringify({ enabled: true, host:"example.invalid",port:5432,schema:"heroether_test_doctor",caFile:path.join(root,"never-open-ca.pem"),credentialsFile: path.join(root, "never-open-secret.env"), database: "hero_ether_test_doctor", sourceId: "11111111-1111-1111-1111-111111111111" }));

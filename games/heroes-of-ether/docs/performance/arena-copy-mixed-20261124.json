@@ -1,0 +1,686 @@
+{
+  "at": "2026-11-24T19:36:19.097Z",
+  "source": "c14b5e108fd055b7dfcb7d0dc65e76c7dc9918ef",
+  "runtimeSource": "465e2e5a41558922a27868c6d3d15dddccb33dc5",
+  "installed": false,
+  "platform": "Windows / Ryzen 5 2600 / Node 24.22.3; generators on same host",
+  "players": 30,
+  "lobby": 5,
+  "minutes": 10,
+  "gameClock": {
+    "mode": "synthetic-offset",
+    "offsetMs": -37280331,
+    "realStartAt": "2026-11-24T19:21:20.331Z",
+    "gameStartAt": "2026-11-24T09:00:00.000Z"
+  },
+  "assessment": {
+    "targets": {
+      "updatesHz": 19,
+      "tickP95Ms": 100,
+      "stateGapP99Ms": 150,
+      "lobbyP95Ms": 1000,
+      "actionP95Ms": 500
+    },
+    "shortRunMeetsTargets": true,
+    "problems": [],
+    "phases": [
+      {
+        "phase": "combined",
+        "window": 1,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 2,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 3,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 4,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 5,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 6,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 7,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 8,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 9,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 10,
+        "meetsTargets": true,
+        "issues": []
+      }
+    ],
+    "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+  },
+  "ack": {
+    "acknowledged": 9693,
+    "recovered": 9693,
+    "duplicates": 0
+  },
+  "alchemy": {
+    "version": 1,
+    "casts": 594,
+    "brews": 90,
+    "exchanges": 85,
+    "profiles": 1280,
+    "exactInventories": true,
+    "exactLobbyIngredientsAndNatural": true
+  },
+  "actions": {
+    "profile": 90,
+    "rankings": 90,
+    "loadout": 90,
+    "purchase": 90,
+    "account-bonus": 30,
+    "social-view": 180,
+    "gift": 90,
+    "gift-read": 89,
+    "clan-create": 3,
+    "clan-view": 177,
+    "clan-deposit": 90,
+    "clan-buy": 90,
+    "clan-edit": 90,
+    "alchemy-view": 90,
+    "alchemy-brew": 90,
+    "pet-buy": 5,
+    "pet-food": 90,
+    "chat": 89,
+    "news": 87,
+    "presence": 85,
+    "alchemy-exchange": 85,
+    "alchemy-equip": 85,
+    "pet-equip": 85,
+    "daily-reward": 60
+  },
+  "database": {
+    "matched": true,
+    "revision": 18796,
+    "profiles": 1280,
+    "clans": 131,
+    "testSchemaRemoved": true
+  },
+  "windows": [
+    {
+      "window": 1,
+      "hz": 19.365043655836267,
+      "tick": {
+        "n": 1161,
+        "p50": 9.927600000002712,
+        "p95": 19.136599999997998,
+        "p99": 24.70049999999901,
+        "max": 120.22409999999945
+      },
+      "stateGap": {
+        "p50": 48.39140000000043,
+        "p95": 70.52730000000156,
+        "p99": 95.42339999999967,
+        "max": 600.7770999999993
+      },
+      "action": {
+        "p50": 16.18859999999404,
+        "p95": 234.34999999999854,
+        "p99": 341.94340000000375,
+        "max": 590.078800000003
+      },
+      "cpuPercent": 107.95001473647638,
+      "mainCpuPercent": 46.3289082325496,
+      "rssMiB": 625.88671875,
+      "gc": {
+        "n": 93,
+        "p50": 4.345900058746338,
+        "p95": 9.016499996185303,
+        "p99": 33.583899974823,
+        "max": 33.583899974823,
+        "totalMs": 486.5184998512268
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 21,
+        "contributions": 41
+      },
+      "inputs": {
+        "accepted": {
+          "split": 365,
+          "feed": 2374
+        },
+        "attempted": {
+          "split": 460,
+          "feed": 2416
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 3.431299999996554
+    },
+    {
+      "window": 2,
+      "hz": 19.53876058642526,
+      "tick": {
+        "n": 1168,
+        "p50": 9.523499999995693,
+        "p95": 18.013299999991432,
+        "p99": 22.660399999993388,
+        "max": 48.118900000001304
+      },
+      "stateGap": {
+        "p50": 48.51469999999972,
+        "p95": 68.62780000000203,
+        "p99": 86.97149999999965,
+        "max": 783.036300000007
+      },
+      "action": {
+        "p50": 15.372199999997974,
+        "p95": 55.66229999999632,
+        "p99": 342.12429999999586,
+        "max": 585.5883000000031
+      },
+      "cpuPercent": 98.50199594356083,
+      "mainCpuPercent": 43.560084883041114,
+      "rssMiB": 620.43359375,
+      "gc": {
+        "n": 84,
+        "p50": 4.24210000038147,
+        "p95": 6.419800043106079,
+        "p99": 31.623800039291382,
+        "max": 31.623800039291382,
+        "totalMs": 427.82589995861053
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 27,
+        "contributions": 82
+      },
+      "inputs": {
+        "accepted": {
+          "split": 348,
+          "feed": 2349
+        },
+        "attempted": {
+          "split": 460,
+          "feed": 2422
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 12.084300000002258
+    },
+    {
+      "window": 3,
+      "hz": 19.644437391048246,
+      "tick": {
+        "n": 1179,
+        "p50": 9.097600000008242,
+        "p95": 16.454300000012154,
+        "p99": 21.605000000010477,
+        "max": 27.781099999992875
+      },
+      "stateGap": {
+        "p50": 48.91039999999339,
+        "p95": 66.97399999998743,
+        "p99": 74.76680000001215,
+        "max": 530.1312000000034
+      },
+      "action": {
+        "p50": 13.706399999995483,
+        "p95": 30.957399999984773,
+        "p99": 112.44520000001648,
+        "max": 428.32559999998193
+      },
+      "cpuPercent": 93.1932093174882,
+      "mainCpuPercent": 41.59211730221516,
+      "rssMiB": 627.39453125,
+      "gc": {
+        "n": 78,
+        "p50": 4.182400107383728,
+        "p95": 8.01859998703003,
+        "p99": 26.192800045013428,
+        "max": 26.192800045013428,
+        "totalMs": 375.1109001636505
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 28,
+        "contributions": 128
+      },
+      "inputs": {
+        "accepted": {
+          "split": 370,
+          "feed": 2371
+        },
+        "attempted": {
+          "split": 457,
+          "feed": 2428
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 4.582699999999022
+    },
+    {
+      "window": 4,
+      "hz": 19.709469905636723,
+      "tick": {
+        "n": 1176,
+        "p50": 9.300799999997253,
+        "p95": 17.474400000006426,
+        "p99": 22.92259999999078,
+        "max": 30.971300000004703
+      },
+      "stateGap": {
+        "p50": 48.61740000001737,
+        "p95": 67.74549999998999,
+        "p99": 84.02500000002328,
+        "max": 500.75640000001295
+      },
+      "action": {
+        "p50": 15.217700000008335,
+        "p95": 53.4831000000122,
+        "p99": 255.1577999999863,
+        "max": 407.03349999999045
+      },
+      "cpuPercent": 93.27245725514547,
+      "mainCpuPercent": 41.89578284032559,
+      "rssMiB": 666.33984375,
+      "gc": {
+        "n": 80,
+        "p50": 4.032099962234497,
+        "p95": 8.222800016403198,
+        "p99": 35.44319999217987,
+        "max": 35.44319999217987,
+        "totalMs": 419.36979961395264
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 28,
+        "contributions": 170
+      },
+      "inputs": {
+        "accepted": {
+          "split": 343,
+          "feed": 2338
+        },
+        "attempted": {
+          "split": 459,
+          "feed": 2421
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 14.282099999982165
+    },
+    {
+      "window": 5,
+      "hz": 19.722127222644627,
+      "tick": {
+        "n": 1177,
+        "p50": 9.296200000040699,
+        "p95": 16.941600000020117,
+        "p99": 23.022999999986496,
+        "max": 32.422400000010384
+      },
+      "stateGap": {
+        "p50": 48.1083000000217,
+        "p95": 67.99920000002021,
+        "p99": 88.39079999999376,
+        "max": 480.4112999999779
+      },
+      "action": {
+        "p50": 14.331200000015087,
+        "p95": 45.007199999992736,
+        "p99": 248.79159999999683,
+        "max": 467.38079999998445
+      },
+      "cpuPercent": 92.81829649297222,
+      "mainCpuPercent": 42.2024595670752,
+      "rssMiB": 671.73046875,
+      "gc": {
+        "n": 81,
+        "p50": 4.044100046157837,
+        "p95": 5.677099943161011,
+        "p99": 27.275399923324585,
+        "max": 27.275399923324585,
+        "totalMs": 370.3409996032715
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 28,
+        "contributions": 214
+      },
+      "inputs": {
+        "accepted": {
+          "split": 336,
+          "feed": 2339
+        },
+        "attempted": {
+          "split": 460,
+          "feed": 2422
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 3.697699999960605
+    },
+    {
+      "window": 6,
+      "hz": 19.69533432360112,
+      "tick": {
+        "n": 1172,
+        "p50": 10.01610000000801,
+        "p95": 18.01699999999255,
+        "p99": 23.865300000004936,
+        "max": 30.652000000001863
+      },
+      "stateGap": {
+        "p50": 48.02669999998761,
+        "p95": 68.1930000000284,
+        "p99": 92.96300000004703,
+        "max": 711.8476999999839
+      },
+      "action": {
+        "p50": 16.50309999997262,
+        "p95": 72.27089999994496,
+        "p99": 472.87180000002263,
+        "max": 825.3914000000223
+      },
+      "cpuPercent": 97.21291818535711,
+      "mainCpuPercent": 44.08564123465156,
+      "rssMiB": 706.94921875,
+      "gc": {
+        "n": 94,
+        "p50": 3.9321999549865723,
+        "p95": 7.104099988937378,
+        "p99": 35.65759992599487,
+        "max": 35.65759992599487,
+        "totalMs": 463.06760013103485
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 29,
+        "contributions": 254
+      },
+      "inputs": {
+        "accepted": {
+          "split": 321,
+          "feed": 2351
+        },
+        "attempted": {
+          "split": 460,
+          "feed": 2421
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 6.788799999980256
+    },
+    {
+      "window": 7,
+      "hz": 19.576593061826017,
+      "tick": {
+        "n": 1172,
+        "p50": 10.82850000000326,
+        "p95": 19.511100000003353,
+        "p99": 25.67320000001928,
+        "max": 34.18400000000838
+      },
+      "stateGap": {
+        "p50": 48.46980000002077,
+        "p95": 69.79290000000037,
+        "p99": 84.90979999996489,
+        "max": 679.6940000000177
+      },
+      "action": {
+        "p50": 15.349400000006426,
+        "p95": 40.67560000001686,
+        "p99": 179.44249999994645,
+        "max": 602.0745999999926
+      },
+      "cpuPercent": 97.7277963212535,
+      "mainCpuPercent": 46.559832344339945,
+      "rssMiB": 711.625,
+      "gc": {
+        "n": 93,
+        "p50": 3.739300012588501,
+        "p95": 6.503399968147278,
+        "p99": 34.14429998397827,
+        "max": 34.14429998397827,
+        "totalMs": 429.89889919757843
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 29,
+        "contributions": 289
+      },
+      "inputs": {
+        "accepted": {
+          "split": 326,
+          "feed": 2349
+        },
+        "attempted": {
+          "split": 452,
+          "feed": 2419
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 3.624199999962002
+    },
+    {
+      "window": 8,
+      "hz": 19.788454838832017,
+      "tick": {
+        "n": 1189,
+        "p50": 11.475500000000466,
+        "p95": 19.8585000000312,
+        "p99": 26.133399999991525,
+        "max": 34.11579999997048
+      },
+      "stateGap": {
+        "p50": 48.41850000002887,
+        "p95": 69.47009999997681,
+        "p99": 84.52720000001136,
+        "max": 496.63610000000335
+      },
+      "action": {
+        "p50": 14.490800000028685,
+        "p95": 49.475299999990966,
+        "p99": 223.82719999999972,
+        "max": 440.3320999999996
+      },
+      "cpuPercent": 103.4818170833116,
+      "mainCpuPercent": 45.28372797913945,
+      "rssMiB": 812.66015625,
+      "gc": {
+        "n": 105,
+        "p50": 3.673799991607666,
+        "p95": 6.902399897575378,
+        "p99": 28.5110000371933,
+        "max": 31.63979995250702,
+        "totalMs": 467.76840007305145
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 29,
+        "contributions": 316
+      },
+      "inputs": {
+        "accepted": {
+          "split": 320,
+          "feed": 2370
+        },
+        "attempted": {
+          "split": 464,
+          "feed": 2438
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 7.113199999963399
+    },
+    {
+      "window": 9,
+      "hz": 19.22015102383045,
+      "tick": {
+        "n": 1160,
+        "p50": 10.709999999962747,
+        "p95": 20.150099999969825,
+        "p99": 27.293199999956414,
+        "max": 510.6077000000514
+      },
+      "stateGap": {
+        "p50": 48.75050000002375,
+        "p95": 69.01919999998063,
+        "p99": 106.68379999999888,
+        "max": 580.1361000000034
+      },
+      "action": {
+        "p50": 15.312899999902584,
+        "p95": 75.10610000003362,
+        "p99": 378.8358999999473,
+        "max": 574.4636999999639
+      },
+      "cpuPercent": 94.61598612912073,
+      "mainCpuPercent": 43.58451676671832,
+      "rssMiB": 820.81640625,
+      "gc": {
+        "n": 92,
+        "p50": 3.809299945831299,
+        "p95": 6.347000002861023,
+        "p99": 40.47379994392395,
+        "max": 40.47379994392395,
+        "totalMs": 429.32779932022095
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 30,
+        "contributions": 347
+      },
+      "inputs": {
+        "accepted": {
+          "split": 316,
+          "feed": 2348
+        },
+        "attempted": {
+          "split": 460,
+          "feed": 2416
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 484.60309999994934
+    },
+    {
+      "window": 10,
+      "hz": 19.373157378629642,
+      "tick": {
+        "n": 1155,
+        "p50": 10.339000000036322,
+        "p95": 18.466799999936484,
+        "p99": 23.96889999997802,
+        "max": 31.121299999998882
+      },
+      "stateGap": {
+        "p50": 48.39130000001751,
+        "p95": 68.44559999997728,
+        "p99": 88.18339999997988,
+        "max": 1350.2246000000741
+      },
+      "action": {
+        "p50": 15.134899999946356,
+        "p95": 56.86059999989811,
+        "p99": 480.59290000004694,
+        "max": 1291.5635000000475
+      },
+      "cpuPercent": 96.64799362997745,
+      "mainCpuPercent": 46.24100735716259,
+      "rssMiB": 837.6328125,
+      "gc": {
+        "n": 87,
+        "p50": 4.045100092887878,
+        "p95": 6.653299927711487,
+        "p99": 42.67999994754791,
+        "max": 42.67999994754791,
+        "totalMs": 431.2041006088257
+      },
+      "clan": {
+        "enabled": true,
+        "boards": 131,
+        "active": 128,
+        "eligible": 1277,
+        "contributors": 30,
+        "contributions": 381
+      },
+      "inputs": {
+        "accepted": {
+          "split": 338,
+          "feed": 2311
+        },
+        "attempted": {
+          "split": 454,
+          "feed": 2425
+        }
+      },
+      "lobbyErrors": {},
+      "commitArenaMaxMs": 3.409400000004098
+    }
+  ],
+  "limitations": [
+    "One tick reached 510.61 ms in window nine; commitArena synchronous entry reached 484.60 ms. Short percentile targets passing does not make this hitch acceptable",
+    "No runtime improvement percentage is inferred versus old seed-clock runs",
+    "Brief source/Git inspection occurred on the generator host, including one broad artifact file search; its effect on the isolated hitch is not separated",
+    "Not a Linux server capacity or a 300000-player result",
+    "Whole-game CPU benefit and retained-history mixed acceptance remain to be established"
+  ]
+}

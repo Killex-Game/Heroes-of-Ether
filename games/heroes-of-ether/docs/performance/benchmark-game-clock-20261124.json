@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-24T19:27:48.954Z",
+  "source": "c14b5e108fd055b7dfcb7d0dc65e76c7dc9918ef",
+  "runtimeSource": "465e2e5a41558922a27868c6d3d15dddccb33dc5",
+  "installed": false,
+  "changes": [
+    "Optional synthetic calendar offset is injected only into game/profile/chat/event clocks; real database leases and performance timers are unchanged",
+    "Fresh synthetic fixtures use the same calendar; pre-existing historical fixtures with an offset are rejected",
+    "Initial split bodies use performance.now like the simulation; earlier epoch timestamps could delay merging",
+    "Optional acceptance checks require active clan boards and recorded contributions"
+  ],
+  "validation": {
+    "windows": {
+      "pass": 18,
+      "fail": 0
+    },
+    "linux": {
+      "pass": 18,
+      "fail": 0
+    },
+    "firstWindowsFailure": "Sparse checkout lacked public/assets/boosters/boosters.json; first fixture-import failure retained, assets restored before 18-test retry"
+  },
+  "limitations": [
+    "Benchmark changes only; live calendars, player data and simulation rules are unchanged",
+    "Earlier capacity results used the older seed-clock behavior and must not be treated as same-scenario A/B measurements",
+    "Live mixed workload on this corrected harness is still running; no capacity claim"
+  ]
+}

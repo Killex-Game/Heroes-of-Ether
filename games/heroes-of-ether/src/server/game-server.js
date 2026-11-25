@@ -2452,6 +2452,7 @@ async function startServer() {
         // Recheck changed profiles and exact reward deadlines, retaining the
         // full settlement fallback for unknown snapshots and clock boundaries.
         incrementalSettlement: true,
+        arenaProgressShards: settings.progressWorkerCount,
         clanDailyQuests: true,
         petEvents: settings.petEvents,
         rouletteConfig: settings.roulette,
@@ -2491,6 +2492,9 @@ async function startServer() {
     };
     database.attach(app.profiles, app.chat);
   }
+  // First arena actions must not wait for cold calculator module loading.
+  // A failed optional lane retains the existing authoritative calculation path.
+  await app.profiles.arenaPreparer?.warm?.();
   app.httpServer.on("error", (error) => {
     console.error(
       error.code === "EADDRINUSE"

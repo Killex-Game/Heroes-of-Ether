@@ -34,7 +34,10 @@ class ClanArenaProgressShards extends ArenaProgressShards {
         const p=base.profiles[key],clan=base.clans[p.clanId];
         const group=groups[laneFor(clan ? clan.id : p.id,this.count)];
         order.add(p.id);group.profiles[key]=p;group.progress.push(event);
-        if(clan) {
+        // A batch may contain many food, timer and combat events for members
+        // of the same clan. Its immutable input projection is identical for
+        // all of them; build it once per lane instead of once per event.
+        if(clan && !Object.hasOwn(group.clans,clan.id)) {
           group.clans[clan.id]={id:clan.id,xp:clan.xp,dailyQuests:clan.dailyQuests,
             members:clan.members,competition:{joined:clan.competition.joined,recruits:clan.competition.recruits}};
           const day=base.competition?.day;

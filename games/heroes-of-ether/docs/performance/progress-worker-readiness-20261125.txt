@@ -1,0 +1,16 @@
+Candidate only, not installed.
+
+The queue diagnostic at 90+5 found a 653ms first wait for progress before
+preparation. The earliest actions waited 674ms; the initial burst then queued
+up to roughly 1.1 seconds. Preparing those commands itself took milliseconds.
+No action validation was skipped or moved ahead of its durable replay check.
+
+Optional addressed progress lanes now signal readiness after calculator modules
+load. Normal server startup awaits the empty lanes before listen; the mixed
+benchmark uses that same startup boundary. No profile, clan, world or context
+is sent merely to start a lane. A bounded timeout/failure retains canonical
+calculation, and shutdown resolves pending readiness without late activation.
+
+Targeted readiness/configuration checks passed. Full regressions and repeated
+mixed first-window measurements are pending. Moving initialization before
+admission is not a steady-state CPU improvement or a 300000-player claim.

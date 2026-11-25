@@ -1,6 +1,7 @@
 "use strict";
 const fs = require("node:fs"), { createHash } = require("node:crypto");
-const { recover, segments, REVISION } = require("../profiles/profile-journal");
+const { recover, REVISION } = require("../profiles/profile-journal");
+const { copyRecord } = require("../profiles/copy-record");
 const fail = code => { throw Object.assign(Error(code), { code }); };
 // A pin contains hard links to a closed checkpoint and sealed journals. Their
 // contents never change in place. Link creation affects ctime, not these fields.
@@ -9,8 +10,8 @@ function identity(file) {
   if (!s.isFile()) fail("DATABASE_PIN_NOT_FILE");
   return [s.dev, s.ino, s.size, s.mtimeNs].join(":");
 }
-function sources(file) {
-  const files = [file, ...segments(file)];
+function sources(pin) {
+  const files = [pin.file, ...require("../profiles/profile-read-snapshot").filesFor(pin)];
   return { files, identities: files.map((source, i) => {
     try { return identity(source); } catch (e) { if (i === 0 && e.code === "ENOENT") return "missing"; throw e; }
   }) };
@@ -37,7 +38,9 @@ function draftWriter(base) {
   const own = value => {
     if (!value || typeof value !== "object") throw Error("Missing journal patch base");
     if (owned.has(value)) return value;
-    const result = Array.isArray(value) ? value.slice() : { ...value };
+    // Large JSON tables use the same spread-compatible dictionary copy as the
+    // main store. Descendants stay shared until their own WAL patch detaches them.
+    const result = Array.isArray(value) ? value.slice() : copyRecord(value);
     owned.add(result); return result;
   };
   const fields = (value, patch) => {
@@ -82,7 +85,7 @@ class PinnedWorldReader {
   read(pin) {
     if (!pin || typeof pin.file !== "string" || !Number.isSafeInteger(pin.revision) || pin.revision < 0)
       fail("DATABASE_INVALID_REVISION");
-    const before = sources(pin.file), previous = this.previous;
+    const before = sources(pin), previous = this.previous;
     const reusable = previous && pin.revision >= previous.revision &&
       previous.identities.length <= before.identities.length &&
       previous.identities.every((value, i) => value === before.identities[i]);
@@ -110,7 +113,7 @@ class PinnedWorldReader {
       saved = { data: writer.finish(revision), revision, activeBytes: 0 };
     } else saved = recover(pin.file, false, before.files.slice(1));
     if (saved.revision !== pin.revision) fail("DATABASE_INVALID_REVISION");
-    if (!equal(before.identities, sources(pin.file).identities)) fail("DATABASE_PIN_CHANGED");
+    if (!equal(before.identities, sources(pin).identities)) fail("DATABASE_PIN_CHANGED");
     this.previous = { data: saved.data, revision: saved.revision, identities: before.identities };
     this.stats = { incremental: !!reusable, replayed, readFiles: reusable ? before.files.length - previous.identities.length : before.files.length };
     return saved;

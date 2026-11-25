@@ -6,19 +6,22 @@ const {REVISION}=require('../profiles/profile-journal');
 const storage=require('./snapshot-documents');
 const chat=require('./snapshot-chat');
 const {immutableRecord}=require('./immutable-document');
+const {canonicalKeys:keys}=require('./canonical-key-order');
+const {DocumentDigest}=require('./document-digest');
 const object=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 const fail=code=>{throw Object.assign(Error(code),{code});};
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 // Only this builder can register immutable canonical bytes. Compression never
 // exposes the cached buffer, and arbitrary caller-owned documents stay mutable.
 const encodedValues=new WeakMap();
+// Each part belongs to one private immutable canonical record. A later
+// snapshot may reuse the frozen document wrapper while its value getter
+// continues to return a fresh caller-owned tree. No obsolete record is rooted.
+const documents=new WeakMap();
 function gzipDocumentValue(doc){
   const value=encodedValues.get(doc);
   return gzipSync(value?.segments?Buffer.concat(value.segments,value.bytes):value||Buffer.from(JSON.stringify(doc.value)),{level:1});
 }
-// Object enumeration places integer keys before other sorted keys. Keep the
-// same ordering as canonical(), including unusual profile IDs and root keys.
-const keys=value=>Object.keys(Object.fromEntries(Object.keys(value).sort().map(key=>[key,0])));
 
 function recordFor(id,value,documentFormat,fingerprint){
   const ordered=canonical(value),json=Buffer.from(JSON.stringify(ordered));
@@ -34,6 +37,7 @@ function recordFor(id,value,documentFormat,fingerprint){
   return {fingerprint,documentFormat,json,parts};
 }
 function documentFor(record,part){
+  const previous=documents.get(part);if(previous)return previous;
   const doc={_id:part._id,hash:part.hash};
   if(part.chunked)doc.chunked=true;
   if(part.descriptor)encodedValues.set(doc,Buffer.from(part.descriptor));
@@ -42,15 +46,16 @@ function documentFor(record,part){
   // values only for changed documents. Getters cannot expose the cached buffer
   // or let callers mutate an acknowledged record used by a later snapshot.
   Object.defineProperty(doc,'value',{enumerable:true,get(){
-    if(record.segments)return JSON.parse(Buffer.concat(record.segments,record.bytes).toString('utf8'));
     if(part.descriptor)return JSON.parse(part.descriptor);
+    if(record.segments&&part.start!==undefined)return require('./canonical-fragments').fragmentValue(record,part);
+    if(record.segments)return JSON.parse(Buffer.concat(record.segments,record.bytes).toString('utf8'));
     if(part.start!==undefined)return record.json.toString('utf8',part.start,part.end);
     return JSON.parse(record.json.toString('utf8'));
   }});
-  return Object.freeze(doc);
+  Object.freeze(doc);documents.set(part,doc);return doc;
 }
 class SnapshotBuilder{
-  constructor({immutableSource=null}={}){this.records=new Map();this.stats=null;this.immutableSource=immutableSource;this.identities=null;this.fields=new WeakMap();}
+  constructor({immutableSource=null}={}){this.records=new Map();this.stats=null;this.immutableSource=immutableSource;this.identities=null;this.fields=new WeakMap();this.documentDigest=new DocumentDigest();}
   pack(world,auxiliary={}, {chatFormat=1,documentFormat=1}={}){
     if(!object(world)||!object(world.profiles)||!object(world.clans))fail('DATABASE_INVALID_SNAPSHOT');
     const revision=world[REVISION]||0;
@@ -69,7 +74,7 @@ class SnapshotBuilder{
       if(identity&&record&&this.identities?.get(value)===record&&record.documentFormat===documentFormat){
         stats.reused++;stats.identityReused++;
       }else if(identity){
-        record=immutableRecord(id,value,documentFormat,this.fields,stats)||recordFor(id,value,documentFormat,null);
+        record=immutableRecord(id,value,documentFormat,this.fields,stats,{captureFields:id==='world'})||recordFor(id,value,documentFormat,null);
         stats.rebuilt++;
       }else{
         const fingerprint=digest(JSON.stringify(value));
@@ -80,9 +85,13 @@ class SnapshotBuilder{
       next.set(id,record);stats.bytes+=record.bytes??record.json.length;
       for(const part of record.parts)docs.set(part._id,documentFor(record,part));
     };
-    for(const table of ['profiles','clans'])
-      for(const [key,value]of Object.entries(world[table]))add(`${table}:${key}`,value,true);
-    add('world',Object.fromEntries(Object.entries(world).filter(([key])=>!['profiles','clans'].includes(key))));
+    for(const table of ['profiles','clans']){
+      // Pinned JSON records cannot run getters or mutate during enumeration.
+      // Generic caller-owned input keeps the original eager value capture.
+      if(immutable)for(const key of Object.keys(world[table]))add(`${table}:${key}`,world[table][key],true);
+      else for(const [key,value]of Object.entries(world[table]))add(`${table}:${key}`,value,true);
+    }
+    add('world',Object.fromEntries(Object.entries(world).filter(([key])=>!['profiles','clans'].includes(key))),true);
     for(const file of AUXILIARY)if(Object.hasOwn(auxiliary,file)){
       if(file==='clan-chat.json'&&chatFormat===1)chat.packChat(auxiliary[file],add);
       else add(`aux:${file}`,auxiliary[file]);
@@ -91,10 +100,15 @@ class SnapshotBuilder{
     if(!Number.isSafeInteger(chatRevision)||chatRevision<0)fail('DATABASE_INVALID_CHAT_REVISION');
     // Stream the exact legacy canonical JSON into SHA-256, without allocating
     // another complete world tree or a giant UTF-16 world string.
-    const root=JSON.parse(next.get('world').json.toString('utf8'));
+    // A pinned root shares immutable global fields too. Hash their existing
+    // canonical segments instead of parsing and encoding a second root tree.
+    // Mutable callers retain the legacy path; owned fragmented roots also
+    // preserve the same field segments and the exact whole-world checksum.
+    const rootRecord=next.get('world'),rootFields=rootRecord.fields;
+    const root=rootFields?null:JSON.parse(rootRecord.json.toString('utf8'));
     const checksum=createHash('sha256');checksum.update('{');let first=true;
     for(const key of keys(world)){
-      if(key!=='profiles'&&key!=='clans'&&!Object.hasOwn(root,key))continue;
+      if(key!=='profiles'&&key!=='clans'&&!(rootFields?rootFields.has(key):Object.hasOwn(root,key)))continue;
       if(!first)checksum.update(',');first=false;
       checksum.update(JSON.stringify(key)+':');
       if(key==='profiles'||key==='clans'){
@@ -106,12 +120,15 @@ class SnapshotBuilder{
           else checksum.update(record.json);
         }
         checksum.update('}');
+      }else if(rootFields){
+        const encoded=rootFields.get(key);
+        for(const segment of encoded.segments||[encoded.json])checksum.update(segment);
       }else checksum.update(JSON.stringify(root[key]));
     }
     checksum.update('}');
     const snapshot={docs,revision,documentFormat,chatFormat,chatRevision,
       chatHash:hash(auxiliary['clan-chat.json']||null),worldHash:checksum.digest('hex'),
-      digest:hash([...docs].map(([id,doc])=>[id,doc.hash]).sort(([a],[b])=>a.localeCompare(b)))};
+      digest:this.documentDigest.digest(docs)};
     // Publish cache replacements only after the entire snapshot validates.
     // Earlier snapshots retain their own bytes across retries and removals.
     this.records=next;this.identities=identities;this.stats=stats;return snapshot;

@@ -3,6 +3,7 @@ const {createHash}=require('node:crypto');
 const {canonical}=require('./state-snapshot');
 const {documentSize}=require('./snapshot-size');
 const {LIMIT}=require('./snapshot-documents');
+const {canonicalKeys}=require('./canonical-key-order');
 const open=Buffer.from('{'),close=Buffer.from('}'),comma=Buffer.from(',');
 const prefixes=new Map();
 const prefix=key=>{
@@ -14,11 +15,11 @@ const prefix=key=>{
 // Retain their canonical bytes separately instead of cloning/encoding them
 // again for every change to a sibling counter. Segments avoid a second full
 // canonical world buffer. Only verified immutable records may use this cache.
-function immutableRecord(id,value,format,cache,stats){
+function immutableRecord(id,value,format,cache,stats,{captureFields=false}={}){
   if(!value||typeof value!=='object'||Array.isArray(value))return null;
   const inserted=[];
   const remember=(item,encoded)=>{cache.set(item,encoded);inserted.push(item);};
-  const segments=[open],keys=Object.keys(Object.fromEntries(Object.keys(value).sort().map(key=>[key,0])));
+  const segments=[open],keys=canonicalKeys(value),fields=captureFields?new Map():null;
   let size=5,bytes=2,first=true;
   for(const key of keys){
     const item=value[key];
@@ -30,7 +31,7 @@ function immutableRecord(id,value,format,cache,stats){
       else{
         if(key==='arenaReceipts'&&!Array.isArray(item)&&Object.values(item).every(bucket=>bucket&&typeof bucket==='object'&&!Array.isArray(bucket))){
           const chunks=[open];let chunkSize=5,chunkFirst=true;
-          for(const bucketKey of Object.keys(Object.fromEntries(Object.keys(item).sort().map(key=>[key,0])))){
+          for(const bucketKey of canonicalKeys(item)){
             const bucket=item[bucketKey];
             let child=cache.get(bucket);
             if(child)stats.fieldReused++;
@@ -48,21 +49,26 @@ function immutableRecord(id,value,format,cache,stats){
       size+=documentSize({[key]:item})-5;
       encoded={json:Buffer.from(JSON.stringify(item))};
     }
+    if(fields)fields.set(key,encoded);
     if(!first){segments.push(comma);bytes++;}first=false;
     const header=prefix(key);segments.push(header);bytes+=header.length;
     for(const chunk of encoded.segments||[encoded.json]){segments.push(chunk);bytes+=chunk.length;}
   }
   segments.push(close);
   const storedSize=documentSize({_id:id,value:{},hash:'0'.repeat(64)})-5+size;
-  // Preserve the exact existing fragmentation algorithm and exceptional-size
-  // validation. Large records use the established implementation unchanged.
-  if(storedSize>(format===0?14*1024*1024:LIMIT)){
+  // Legacy format zero retains its established exceptional-size validation.
+  // Fragmentable records retain immutable field segments even when large.
+  if(format===0&&storedSize>14*1024*1024){
     // The fallback owns one complete canonical record. Do not also retain
-    // freshly encoded field copies of an oversized fragmented profile.
+    // freshly encoded field copies before legacy size validation rejects it.
     for(const item of inserted)cache.delete(item);
     return null;
   }
   const checksum=createHash('sha256');for(const segment of segments)checksum.update(segment);
-  return {fingerprint:null,documentFormat:format,segments,bytes,parts:[{_id:id,hash:checksum.digest('hex')}]};
+  const valueHash=checksum.digest('hex');
+  const parts=format===1&&storedSize>LIMIT
+    ? require('./canonical-fragments').fragmentParts(id,segments,bytes,valueHash)
+    : [{_id:id,hash:valueHash}];
+  return {fingerprint:null,documentFormat:format,segments,bytes,fields,parts};
 }
 module.exports={immutableRecord};

@@ -16,19 +16,33 @@ async function main(){
     throw Error('Keep private benchmark output outside the game repository');
   if(fs.existsSync(out))throw Error('Output directory must be new');
   const source=JSON.parse(fs.readFileSync(path.resolve(configFile),'utf8'));
+  const gameClock=require('./game-clock.cjs').fromStart(process.env.CAPACITY_GAME_AT);
+  if(process.env.CAPACITY_SEED&&process.env.CAPACITY_FIXTURE)
+    throw Error('Choose a verified synthetic seed or a legacy fixture, not both');
+  if(process.env.CAPACITY_SEED&&!process.env.CAPACITY_GAME_AT)
+    throw Error('A verified synthetic seed requires CAPACITY_GAME_AT');
+  if(gameClock.offsetMs && process.env.CAPACITY_FIXTURE)
+    throw Error('A shifted game clock requires a freshly generated synthetic fixture');
   const schema='heroether_test_'+randomBytes(10).toString('hex');
   fs.mkdirSync(out,{recursive:true,mode:0o700});
   const privateConfig=path.join(out,'postgresql.local.json');
   fs.writeFileSync(privateConfig,JSON.stringify({...source,schema}),{mode:0o600});
   const fixture=path.join(out,'synthetic-world.json');
-  const fixtureData=process.env.CAPACITY_FIXTURE
+  const seed=process.env.CAPACITY_SEED?require('./capacity-seed.cjs').read(path.resolve(process.env.CAPACITY_SEED),gameClock):null;
+  const fixtureData=seed?seed.fixture:process.env.CAPACITY_FIXTURE
     ? JSON.parse(fs.readFileSync(path.resolve(process.env.CAPACITY_FIXTURE),'utf8'))
-    : require('./database-room-fixture.cjs').createFixture();
+    : require('./database-room-fixture.cjs').createFixture(Date.now()+gameClock.offsetMs);
   assert.equal(Object.keys(fixtureData.data.profiles).length,1280);
   assert(Object.values(fixtureData.data.profiles).every(p=>p.testFixture==='database-capacity-20261110'));
   const realistic=process.env.CAPACITY_REALISTIC==='1',mixedMinutes=Number(process.env.CAPACITY_MIXED_MINUTES||0);
+  const progressBackend=require('./capacity-progress-backend.cjs').progressBackend(process.env.CAPACITY_PROGRESS_BACKEND);
   assert(Number.isInteger(mixedMinutes)&&mixedMinutes>=0&&mixedMinutes<=120);
   const perRoom=require('../../config/arena-rooms.json').arenaCapacity;
+  if(process.env.CAPACITY_RETAINED_HISTORY==='1'){
+    assert(!process.env.CAPACITY_FIXTURE,'Fresh retained histories cannot extend a supplied fixture');
+    require('./retained-capacity-fixture.cjs').extend(fixtureData,{active:rooms*perRoom+5});
+  }
+  const stateWorkerPolicy=require('./capacity-worker-policy.cjs').workerPolicy(require('../../config/arena-state-workers.json'));
   const linkedLobby=Number(process.env.CAPACITY_LINKED_LOBBY||0);
   assert(Number.isInteger(linkedLobby)&&linkedLobby>=0&&linkedLobby<=4&&(!linkedLobby||realistic));
   if(realistic)require('./realistic-lobby-plan.cjs').detachLobby(fixtureData,rooms*perRoom,5,linkedLobby);
@@ -36,9 +50,14 @@ async function main(){
   const fixtureSha256=require('node:crypto').createHash('sha256').update(fs.readFileSync(fixture)).digest('hex');
   const protocol=process.env.CAPACITY_PROTOCOL||require('../../public/shared/arena-wire').PROTOCOL;
   assert(['sferorumiya-state-v8','sferorumiya-state-v9','sferorumiya-state-v10'].includes(protocol),'Unsupported benchmark protocol');
-  const summary={at:new Date().toISOString(),rooms,perRoom,protocol,fixtureSha256,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
+  const summary={at:new Date().toISOString(),gameClock,rooms,perRoom,protocol,fixtureSha256,players:rooms*perRoom,lobby:5,phaseSeconds:30,mode:'database',
     scope:'Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee',evidence:null};
+  summary.stateWorkerPolicy={count:Number(stateWorkerPolicy.LOAD_STATE_WORKERS),maxRooms:Number(stateWorkerPolicy.LOAD_STATE_WORKER_ROOMS),source:'config/arena-state-workers.json'};
+  summary.progressBackend=progressBackend.name;
+  if(progressBackend.profileWorker){summary.profileWorker=true;summary.experimentalProgressBackend=true;}
+  if(seed)summary.startingSeed=seed.proof;
   if(mixedMinutes)Object.assign(summary,{mixedMinutes,phaseSeconds:60});
+  if(process.env.CAPACITY_ACTIVE_CLAN_QUESTS==='1')summary.requiresActiveClanQuests=true;
   if(fixtureData.summary?.retainedHistory)summary.retainedHistory={...fixtureData.summary.retainedHistory};
   if(process.env.CAPACITY_ALCHEMY==='1')Object.assign(summary,{alchemy:true,alchemyInventoryVersion:1});
   if(realistic)Object.assign(summary,{realistic:true,mixedSocial:true,scenario:{linkedLobby,movementHz:10,splitEverySeconds:3.7,feedEverySeconds:.7,
@@ -49,14 +68,19 @@ async function main(){
   const env={...process.env};
   // Old shell experiment flags must not silently change a production-parity run.
   for(const key of Object.keys(env))if(key.startsWith('LOAD_'))delete env[key];
-  Object.assign(env,{LOAD_PROTOCOL:protocol,LOAD_CLIENT:'0',LOAD_CAPACITY:'0',LOAD_COMBAT:'1',LOAD_ROOMS:String(rooms),LOAD_PLAYERS:String(perRoom),LOAD_REJOIN:'1',
+  Object.assign(env,{LOAD_GAME_OFFSET_MS:String(gameClock.offsetMs),LOAD_PROTOCOL:protocol,LOAD_CLIENT:'0',LOAD_CAPACITY:'0',LOAD_COMBAT:'1',LOAD_ROOMS:String(rooms),LOAD_PLAYERS:String(perRoom),LOAD_REJOIN:'1',
       LOAD_PHASES:'move,split,feed,boosters,combined',LOAD_PHASE_MS:'30000',LOAD_JOURNAL:'1',LOAD_CONNECT_INTERVAL:'100',
-      LOAD_STATE_WORKERS:'3',LOAD_DRIVER_PER_ROOM:'1',LOAD_LOBBY:'5',LOAD_ALL_BOOSTERS:'1',LOAD_STOCK:'3000',LOAD_GC_METRICS:'1',
+      ...stateWorkerPolicy,LOAD_DRIVER_PER_ROOM:'1',LOAD_LOBBY:'5',LOAD_ALL_BOOSTERS:'1',LOAD_STOCK:'3000',LOAD_GC_METRICS:'1',
       LOAD_INCREMENTAL_SETTLEMENT:'1',LOAD_WORLD_FIXTURE:fixture,LOAD_DATABASE_CONFIG:privateConfig,LOAD_ACK_DIR:path.join(out,'acks')});
   if(mixedMinutes)Object.assign(env,{LOAD_PHASES:Array(mixedMinutes).fill('combined').join(','),LOAD_PHASE_MS:'60000'});
+  Object.assign(env,progressBackend.environment);
   if(realistic)Object.assign(env,{LOAD_REALISTIC:'1',LOAD_MIXED_SOCIAL:'1',LOAD_LOBBY_INTERVAL:'1500'});
   if(summary.alchemy)Object.assign(env,{LOAD_ALCHEMY:'1',LOAD_EVENT:'ether-alchemy'});
-  if(process.env.CAPACITY_DIAGNOSTICS==='1')Object.assign(env,{LOAD_STAGE_METRICS:'1',LOAD_PHYSICS_STAGES:'1',LOAD_CPU_PHASE:'combined'});
+  if(process.env.CAPACITY_DIAGNOSTICS==='1'){
+    summary.diagnosticOnly=true;
+    summary.diagnosticCaveat='Stage, CPU sampling and synchronous I/O probes add overhead; not a capacity acceptance run';
+    Object.assign(env,{LOAD_STAGE_METRICS:'1',LOAD_PHYSICS_STAGES:'1',LOAD_CPU_PHASE:'combined',LOAD_SYNC_IO_PROBE:'1',LOAD_DISK_TIMING:'1'});
+  }
   if(process.env.CAPACITY_WIRE_DIAGNOSTICS==='1'){
     summary.diagnosticOnly=true;
     summary.wireDiagnostics={fieldUnit:'UTF-8 bytes of JSON values',samplesPerPhasePerRoom:5,

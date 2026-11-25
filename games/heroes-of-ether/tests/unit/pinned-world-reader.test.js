@@ -56,7 +56,7 @@ test("a new checkpoint, an older pin and a world without an initial checkpoint r
   f.commit(w => { w.profiles.a.wallet.coins = 7; });
   const second = await f.pin(); assert.equal(f.reader.read(second).data.profiles.a.wallet.coins, 7);
   assert.equal(f.reader.stats.incremental, true);
-  await f.journal.requestCheckpoint(); const latest = await f.pin();
+  await f.journal.requestCheckpoint(); f.journal.readWindow.reset(); const latest = await f.pin();
   assert.deepEqual(f.reader.read(latest).data, recover(latest.file, false).data);
   assert.equal(f.reader.stats.incremental, false);
   assert.deepEqual(f.reader.read(old).data, first.data); assert.equal(f.reader.stats.incremental, false);
@@ -78,7 +78,7 @@ test("corruption, missing revisions and torn sealed writes cannot poison the las
   const stable = f.reader.previous;
   const body = JSON.stringify({ revision: pin.revision + 2, change: { set: {}, remove: [], tables: {} } });
   fs.writeFileSync(pin.file + ".wal-999", createHash("sha256").update(body).digest("hex") + " " + body + "\n");
-  assert.throws(() => f.reader.read({ ...pin, revision: pin.revision + 2 }), /SEQUENCE/);
+  assert.throws(() => f.reader.read({ ...pin, files: [...pin.files, pin.file + '.wal-999'], revision: pin.revision + 2 }), /SEQUENCE/);
   assert.strictEqual(f.reader.previous, stable);
 });
 test("copy-on-write replay preserves nested arrays, numeric indexes, removals and failed drafts", () => {
@@ -125,7 +125,7 @@ test("immutable record reuse keeps auxiliary edits, generic callers, failed pack
   check(first); check(first); assert.equal(builder.stats.identityReused, 3);
   f.commit(w => { w.profiles.a.wallet.coins = 77; });
   check(freeze(f.reader.read(await f.pin()).data)); assert.equal(builder.stats.identityReused, 2);
-  await f.journal.requestCheckpoint();
+  await f.journal.requestCheckpoint(); f.journal.readWindow.reset();
   check(freeze(f.reader.read(await f.pin()).data));
   assert.equal(f.reader.stats.incremental, false); assert.equal(builder.stats.identityReused, 3);
 });
@@ -133,7 +133,7 @@ test("immutable record reuse keeps auxiliary edits, generic callers, failed pack
 test("checkpoint record reuse detaches WAL edits and keeps an older world intact after failure", async t => {
   const f=setup(t);f.commit(w=>{w.profiles.a.wallet.coins=50;});
   const old=freeze(f.reader.read(await f.pin()).data),copy=structuredClone(old);
-  await f.journal.requestCheckpoint();
+  await f.journal.requestCheckpoint(); f.journal.readWindow.reset();
   f.commit(w=>{w.profiles.a.wallet.coins=49;w.profiles.a.history.push(99);});
   const pin=await f.pin(),segment=segments(pin.file)[0],bytes=fs.readFileSync(segment);
   fs.unlinkSync(segment);fs.writeFileSync(segment,bytes.subarray(0,bytes.length-1));
@@ -181,13 +181,22 @@ test('immutable field bytes reuse untouched receipt buckets across casts and pre
   assert.deepEqual(encode(first.docs.get('profiles:a')),encode(reference.docs.get('profiles:a')));
 });
 
-test('owned oversized profile fallback keeps legacy fragments and does not retain duplicate field bytes', async t => {
+test('owned oversized profiles keep exact legacy fragments while reusing immutable sibling field bytes', async t => {
   const f=setup(t);f.commit(w=>{w.profiles.a.large='😀漢я'.repeat(1500000);});
   const builder=new SnapshotBuilder({immutableSource:f.reader});
   const data=freeze(f.reader.read(await f.pin()).data),actual=builder.pack(data),expected=pack(data);
   assert.equal(actual.docs.get('profiles:a').chunked,true);assert.equal(actual.digest,expected.digest);
   assert.equal(actual.worldHash,expected.worldHash);
-  assert.equal(builder.fields.has(data.profiles.a.history),false);
-  assert.equal(builder.fields.has(data.profiles.a.wallet),false);
+  assert.equal(builder.fields.has(data.profiles.a.history),true);
+  assert.equal(builder.fields.has(data.profiles.a.wallet),true);
   assert.deepEqual([...actual.docs.values()].map(d=>d.value),[...expected.docs.values()].map(d=>d.value));
+  const {encode}=require('../../src/server/persistence/postgresql-state');
+  for(const [id,doc]of expected.docs)assert.deepEqual(encode(actual.docs.get(id)),encode(doc));
+  const historyBytes=builder.fields.get(data.profiles.a.history);
+  f.commit(w=>{w.profiles.a.wallet.coins--;});
+  const nextData=freeze(f.reader.read(await f.pin()).data),next=builder.pack(nextData),reference=pack(nextData);
+  assert.strictEqual(builder.fields.get(nextData.profiles.a.history),historyBytes);
+  assert.equal(next.digest,reference.digest);assert.equal(next.worldHash,reference.worldHash);
+  for(const [id,doc]of reference.docs)assert.deepEqual(encode(next.docs.get(id)),encode(doc));
+  for(const [id,doc]of expected.docs)assert.deepEqual(encode(actual.docs.get(id)),encode(doc),'old pending fragments stay immutable');
 });

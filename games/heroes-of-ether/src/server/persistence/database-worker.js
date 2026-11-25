@@ -45,10 +45,13 @@ parentPort.on("message", async ({ id, command, type, enabled, profileSnapshot })
         (world,auxiliary)=>builder.pack(world,auxiliary),pin=>pinnedReader.read(pin)).snapshot);
       report({ ...result, connected: true, lastError: null });
     } else if (command === 'prepare') {
-      const started = Date.now(), snapshot = checkpoints.snapshot(profileSnapshot);
+      const started = Date.now(), previousSnapshot = checkpoints.value, previousRead = pinnedReader.stats;
+      const snapshot = checkpoints.snapshot(profileSnapshot);
+      const pinnedRead = snapshot === previousSnapshot ? { cacheHit: true, readFiles: 0, replayed: 0 }
+        : profileSnapshot && pinnedReader.stats !== previousRead ? { cacheHit: false, ...pinnedReader.stats } : null;
       state.prepare(snapshot);
-      prepared = { snapshot, source: JSON.stringify(profileSnapshot), elapsedMs: Date.now() - started };
-      result = { prepared: true, revision: snapshot.revision, prepareMs: prepared.elapsedMs };
+      prepared = { snapshot, source: JSON.stringify(profileSnapshot), elapsedMs: Date.now() - started, pinnedRead };
+      result = { prepared: true, revision: snapshot.revision, prepareMs: prepared.elapsedMs, pinnedRead };
     } else if (command === "sync") {
       const started = Date.now(), ready = prepared?.source === JSON.stringify(profileSnapshot) ? prepared : null;
       prepared = null;
@@ -57,7 +60,8 @@ parentPort.on("message", async ({ id, command, type, enabled, profileSnapshot })
       // PostgreSQL only needs acknowledged document hashes for the next delta.
       // The unchanged immutable checkpoint can reuse that compact index too.
       if (checkpoints.value === snapshot) checkpoints.value = state.previous;
-      result = { ...result, prepareMs: ready?.elapsedMs ?? null, writeMs: Date.now() - started };
+      result = { ...result, prepareMs: ready?.elapsedMs ?? null, writeMs: Date.now() - started,
+        pinnedRead: ready?.pinnedRead ?? null };
       report({ ...result, connected: true, lastError: null });
     } else if (command === "close") {
       await state.close();

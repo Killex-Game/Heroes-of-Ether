@@ -1,0 +1,2345 @@
+{
+  "at": "2026-11-24T18:51:02.545Z",
+  "source": "9d38f5aa04ff7eb86a62055d9ded06ebb8d6175e",
+  "installed": false,
+  "change": "Reuse private immutable canonical document wrappers; each public value access still returns a detached tree",
+  "unit": {
+    "windows": {
+      "total": 8,
+      "pass": 8
+    },
+    "linux": {
+      "total": 8,
+      "pass": 8
+    }
+  },
+  "windows": {
+    "at": "2026-11-24T18:43:08.766Z",
+    "node": "v24.22.3",
+    "platform": "win32",
+    "unchangedReceiptFields": true,
+    "exactFrameComparisons": 126,
+    "results": [
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "coldMs": 106.6405,
+        "warmMs": 328.2348000000001,
+        "cpuMs": 844,
+        "reusedDocuments": 0,
+        "memory": {
+          "rss": 103165952,
+          "heapTotal": 46977024,
+          "heapUsed": 7838104,
+          "external": 2833817,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 102936,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "926b444d267accd80041c5ad734504a65c0e8ea64fe53586ebf29d8dbbd47e93",
+            "digest": "2b6155e7168f4b67257f5c81cad9310e549efbf84a9364001dfbbc34840f6e9d",
+            "documents": 1281
+          },
+          {
+            "revision": 2,
+            "worldHash": "99af6a7c67b2d8130cacb97d6e501fbed8c0eb2ced4af5b9ec04c6bc5757e96b",
+            "digest": "e0f141c442bc2896d60c97e9fb9df1352b5c901e70a2ada66d0baf125bb438e1",
+            "documents": 1281
+          },
+          {
+            "revision": 3,
+            "worldHash": "f2e4df62414091dd134ff3ee207439f2b7e8f6adf1e2bb1773a305236bb9fb0a",
+            "digest": "17bbde49cd6d8a7c3fda8d376e143bdb4d50083fc800f8e0e40504345590ca07",
+            "documents": 1281
+          },
+          {
+            "revision": 4,
+            "worldHash": "4dd5a1504ce304a225f954c61fd8e25d405598e3a798f0cb48472f809ce951a9",
+            "digest": "3e3a8748ff5cc56932dce97cc64e509820190aff86f837084a4de063099c545c",
+            "documents": 1281
+          },
+          {
+            "revision": 5,
+            "worldHash": "99c058242144fae2614153b764efa6606a65aab2f857de816cfa5205e2b2a775",
+            "digest": "1a5aca1eb0483ce9acf394da375c74b89d15202ff5fafeb5a0a0dc2d439cdd80",
+            "documents": 1281
+          },
+          {
+            "revision": 6,
+            "worldHash": "baf9a7ead82bab26c84599b014d485e1438bccda800675dd8fec87f40f966563",
+            "digest": "91a7c89ebc2377062557302d6dd9667ff43e5b762ccf625b6081a8e69bbe3499",
+            "documents": 1281
+          },
+          {
+            "revision": 7,
+            "worldHash": "8ab1cf7bbffe1e98de858c2c7ca6ecdd711ffe04d02a91debeab7b4c7ef13fc6",
+            "digest": "6b2a6c2df049ba3b697ccaa9f12aa6bdf33d8d26c562822d96eab6bc59bea15e",
+            "documents": 1281
+          },
+          {
+            "revision": 8,
+            "worldHash": "3aeb61ff6f710520b77ef2cde89acb4ec6e6761a59ed1e23a19b446ef59b02cd",
+            "digest": "88ccc6a41c40b08f1c21e72406d6b79774d3388722b6a947c042e4994ae50085",
+            "documents": 1281
+          },
+          {
+            "revision": 9,
+            "worldHash": "69bedc4bb43d24e447b80d80788b3c6b09353bf87c5825a80f193ab0275f173e",
+            "digest": "0a7f502cb63614bcd6486941ab14e5d0cda934f78a76f2cfc1d02074d9e4f1ea",
+            "documents": 1281
+          },
+          {
+            "revision": 10,
+            "worldHash": "5b84d3439f002aa86304e379f18eca1bcab170445c52b882ba62067cdf4cadf4",
+            "digest": "984b5381eab157039144f0bf3741d0e2d8d6ddd9dfa15a347fb4cee825712a6e",
+            "documents": 1281
+          },
+          {
+            "revision": 11,
+            "worldHash": "b3033d5cea97ecf56a44baa937c153d57f289d3306bdb91723d58e9cc198c416",
+            "digest": "c92088f67c992bd58b486cd20dbcd3acae7ae5dcef744420b6e66d5e31b98eb9",
+            "documents": 1281
+          },
+          {
+            "revision": 12,
+            "worldHash": "7550f87f7731ff37a44192f678fb04d9b42b9b853ceec33da19eceb50a0958a6",
+            "digest": "9a9498f83a1684460b2c0e49abffec1c23736ea668f9d741bceee449dc316350",
+            "documents": 1281
+          },
+          {
+            "revision": 13,
+            "worldHash": "d06040e51700ae5bc775cd2d1ae18b905c28d8b55875cf3b226241fc45abb736",
+            "digest": "161876bd9abf8056f0bb72af44c4195d17cdda2ba7e8d922883704be9a31cfba",
+            "documents": 1281
+          },
+          {
+            "revision": 14,
+            "worldHash": "b000175c1c761eb5217f95063ec880888e1bc2c3c2fa7eddb6c488fe71209d35",
+            "digest": "5691021a11a77415407bf2c16f6df98c4cc0a7e404c2c26062aed61f63b47bd8",
+            "documents": 1281
+          },
+          {
+            "revision": 15,
+            "worldHash": "de21f446fab1600e372e329d771ac0664c5008ba9a083a1959b4d0eeaa01a929",
+            "digest": "cadff9f42661109c745baa03a3d79dd39c86c91ae9495d9ea4f7419d3d76bc6e",
+            "documents": 1281
+          },
+          {
+            "revision": 16,
+            "worldHash": "f3a526f47b20b29a7a4d5dd722fd8c824dec69f7333328dd6a15da96dd08e148",
+            "digest": "9f5648914132e7d2b28dec537e69c7dc3c9a2a731f385780bf0c2124a2ed5960",
+            "documents": 1281
+          },
+          {
+            "revision": 17,
+            "worldHash": "b5e73f4c8601bb2cb4169bd59e48edccf4b412faf516317ca12a603502843813",
+            "digest": "8a15e31da56d46211b293577a7e692513d7182649f741b83ef88d09ab7418eb8",
+            "documents": 1281
+          },
+          {
+            "revision": 18,
+            "worldHash": "4791a1b0a3feb466bcc94ed069461e4524bbdd76e5bae4e295b92f79c3ec31b9",
+            "digest": "df026c9000849451912ac36948d2dd08a83de8cb1c791cd4072c159e72ad4353",
+            "documents": 1281
+          },
+          {
+            "revision": 19,
+            "worldHash": "be79d2c7c154b6f0ae7e6351161b4f579970368d758ece4b1b158761876dfe19",
+            "digest": "56bdbc482f597207b3c6e4ad3d3c7fad95039a1885753c52e30ec93aa0522277",
+            "documents": 1281
+          },
+          {
+            "revision": 20,
+            "worldHash": "809015382ee3058b9616e75bdad8776a7315b966268c308ba008b253c9e44cbb",
+            "digest": "e3abb999302bc2cb15e94117bdfd3f7c90029336cb8ff7957f3b52cc6ffe6cdf",
+            "documents": 1281
+          },
+          {
+            "revision": 21,
+            "worldHash": "5ad7622f1b093ec5db4c35902b8f8b42bf860c89b17dd4ed9de50382497c6376",
+            "digest": "d0d6271c6e7fe8ed3ae07c369209a062f0cd3ec033759287975fe804ea379f35",
+            "documents": 1281
+          }
+        ]
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "coldMs": 77.44619999999998,
+        "warmMs": 224.4687,
+        "cpuMs": 531,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 132239360,
+          "heapTotal": 81842176,
+          "heapUsed": 8199088,
+          "external": 2997486,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 131200,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "926b444d267accd80041c5ad734504a65c0e8ea64fe53586ebf29d8dbbd47e93",
+            "digest": "2b6155e7168f4b67257f5c81cad9310e549efbf84a9364001dfbbc34840f6e9d",
+            "documents": 1281
+          },
+          {
+            "revision": 2,
+            "worldHash": "99af6a7c67b2d8130cacb97d6e501fbed8c0eb2ced4af5b9ec04c6bc5757e96b",
+            "digest": "e0f141c442bc2896d60c97e9fb9df1352b5c901e70a2ada66d0baf125bb438e1",
+            "documents": 1281
+          },
+          {
+            "revision": 3,
+            "worldHash": "f2e4df62414091dd134ff3ee207439f2b7e8f6adf1e2bb1773a305236bb9fb0a",
+            "digest": "17bbde49cd6d8a7c3fda8d376e143bdb4d50083fc800f8e0e40504345590ca07",
+            "documents": 1281
+          },
+          {
+            "revision": 4,
+            "worldHash": "4dd5a1504ce304a225f954c61fd8e25d405598e3a798f0cb48472f809ce951a9",
+            "digest": "3e3a8748ff5cc56932dce97cc64e509820190aff86f837084a4de063099c545c",
+            "documents": 1281
+          },
+          {
+            "revision": 5,
+            "worldHash": "99c058242144fae2614153b764efa6606a65aab2f857de816cfa5205e2b2a775",
+            "digest": "1a5aca1eb0483ce9acf394da375c74b89d15202ff5fafeb5a0a0dc2d439cdd80",
+            "documents": 1281
+          },
+          {
+            "revision": 6,
+            "worldHash": "baf9a7ead82bab26c84599b014d485e1438bccda800675dd8fec87f40f966563",
+            "digest": "91a7c89ebc2377062557302d6dd9667ff43e5b762ccf625b6081a8e69bbe3499",
+            "documents": 1281
+          },
+          {
+            "revision": 7,
+            "worldHash": "8ab1cf7bbffe1e98de858c2c7ca6ecdd711ffe04d02a91debeab7b4c7ef13fc6",
+            "digest": "6b2a6c2df049ba3b697ccaa9f12aa6bdf33d8d26c562822d96eab6bc59bea15e",
+            "documents": 1281
+          },
+          {
+            "revision": 8,
+            "worldHash": "3aeb61ff6f710520b77ef2cde89acb4ec6e6761a59ed1e23a19b446ef59b02cd",
+            "digest": "88ccc6a41c40b08f1c21e72406d6b79774d3388722b6a947c042e4994ae50085",
+            "documents": 1281
+          },
+          {
+            "revision": 9,
+            "worldHash": "69bedc4bb43d24e447b80d80788b3c6b09353bf87c5825a80f193ab0275f173e",
+            "digest": "0a7f502cb63614bcd6486941ab14e5d0cda934f78a76f2cfc1d02074d9e4f1ea",
+            "documents": 1281
+          },
+          {
+            "revision": 10,
+            "worldHash": "5b84d3439f002aa86304e379f18eca1bcab170445c52b882ba62067cdf4cadf4",
+            "digest": "984b5381eab157039144f0bf3741d0e2d8d6ddd9dfa15a347fb4cee825712a6e",
+            "documents": 1281
+          },
+          {
+            "revision": 11,
+            "worldHash": "b3033d5cea97ecf56a44baa937c153d57f289d3306bdb91723d58e9cc198c416",
+            "digest": "c92088f67c992bd58b486cd20dbcd3acae7ae5dcef744420b6e66d5e31b98eb9",
+            "documents": 1281
+          },
+          {
+            "revision": 12,
+            "worldHash": "7550f87f7731ff37a44192f678fb04d9b42b9b853ceec33da19eceb50a0958a6",
+            "digest": "9a9498f83a1684460b2c0e49abffec1c23736ea668f9d741bceee449dc316350",
+            "documents": 1281
+          },
+          {
+            "revision": 13,
+            "worldHash": "d06040e51700ae5bc775cd2d1ae18b905c28d8b55875cf3b226241fc45abb736",
+            "digest": "161876bd9abf8056f0bb72af44c4195d17cdda2ba7e8d922883704be9a31cfba",
+            "documents": 1281
+          },
+          {
+            "revision": 14,
+            "worldHash": "b000175c1c761eb5217f95063ec880888e1bc2c3c2fa7eddb6c488fe71209d35",
+            "digest": "5691021a11a77415407bf2c16f6df98c4cc0a7e404c2c26062aed61f63b47bd8",
+            "documents": 1281
+          },
+          {
+            "revision": 15,
+            "worldHash": "de21f446fab1600e372e329d771ac0664c5008ba9a083a1959b4d0eeaa01a929",
+            "digest": "cadff9f42661109c745baa03a3d79dd39c86c91ae9495d9ea4f7419d3d76bc6e",
+            "documents": 1281
+          },
+          {
+            "revision": 16,
+            "worldHash": "f3a526f47b20b29a7a4d5dd722fd8c824dec69f7333328dd6a15da96dd08e148",
+            "digest": "9f5648914132e7d2b28dec537e69c7dc3c9a2a731f385780bf0c2124a2ed5960",
+            "documents": 1281
+          },
+          {
+            "revision": 17,
+            "worldHash": "b5e73f4c8601bb2cb4169bd59e48edccf4b412faf516317ca12a603502843813",
+            "digest": "8a15e31da56d46211b293577a7e692513d7182649f741b83ef88d09ab7418eb8",
+            "documents": 1281
+          },
+          {
+            "revision": 18,
+            "worldHash": "4791a1b0a3feb466bcc94ed069461e4524bbdd76e5bae4e295b92f79c3ec31b9",
+            "digest": "df026c9000849451912ac36948d2dd08a83de8cb1c791cd4072c159e72ad4353",
+            "documents": 1281
+          },
+          {
+            "revision": 19,
+            "worldHash": "be79d2c7c154b6f0ae7e6351161b4f579970368d758ece4b1b158761876dfe19",
+            "digest": "56bdbc482f597207b3c6e4ad3d3c7fad95039a1885753c52e30ec93aa0522277",
+            "documents": 1281
+          },
+          {
+            "revision": 20,
+            "worldHash": "809015382ee3058b9616e75bdad8776a7315b966268c308ba008b253c9e44cbb",
+            "digest": "e3abb999302bc2cb15e94117bdfd3f7c90029336cb8ff7957f3b52cc6ffe6cdf",
+            "documents": 1281
+          },
+          {
+            "revision": 21,
+            "worldHash": "5ad7622f1b093ec5db4c35902b8f8b42bf860c89b17dd4ed9de50382497c6376",
+            "digest": "d0d6271c6e7fe8ed3ae07c369209a062f0cd3ec033759287975fe804ea379f35",
+            "documents": 1281
+          }
+        ]
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "coldMs": 59.53049999999996,
+        "warmMs": 199.9359999999998,
+        "cpuMs": 360,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 134012928,
+          "heapTotal": 81584128,
+          "heapUsed": 10911096,
+          "external": 2931950,
+          "arrayBuffers": 604419
+        },
+        "maxRSSKiB": 134452,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "926b444d267accd80041c5ad734504a65c0e8ea64fe53586ebf29d8dbbd47e93",
+            "digest": "2b6155e7168f4b67257f5c81cad9310e549efbf84a9364001dfbbc34840f6e9d",
+            "documents": 1281
+          },
+          {
+            "revision": 2,
+            "worldHash": "99af6a7c67b2d8130cacb97d6e501fbed8c0eb2ced4af5b9ec04c6bc5757e96b",
+            "digest": "e0f141c442bc2896d60c97e9fb9df1352b5c901e70a2ada66d0baf125bb438e1",
+            "documents": 1281
+          },
+          {
+            "revision": 3,
+            "worldHash": "f2e4df62414091dd134ff3ee207439f2b7e8f6adf1e2bb1773a305236bb9fb0a",
+            "digest": "17bbde49cd6d8a7c3fda8d376e143bdb4d50083fc800f8e0e40504345590ca07",
+            "documents": 1281
+          },
+          {
+            "revision": 4,
+            "worldHash": "4dd5a1504ce304a225f954c61fd8e25d405598e3a798f0cb48472f809ce951a9",
+            "digest": "3e3a8748ff5cc56932dce97cc64e509820190aff86f837084a4de063099c545c",
+            "documents": 1281
+          },
+          {
+            "revision": 5,
+            "worldHash": "99c058242144fae2614153b764efa6606a65aab2f857de816cfa5205e2b2a775",
+            "digest": "1a5aca1eb0483ce9acf394da375c74b89d15202ff5fafeb5a0a0dc2d439cdd80",
+            "documents": 1281
+          },
+          {
+            "revision": 6,
+            "worldHash": "baf9a7ead82bab26c84599b014d485e1438bccda800675dd8fec87f40f966563",
+            "digest": "91a7c89ebc2377062557302d6dd9667ff43e5b762ccf625b6081a8e69bbe3499",
+            "documents": 1281
+          },
+          {
+            "revision": 7,
+            "worldHash": "8ab1cf7bbffe1e98de858c2c7ca6ecdd711ffe04d02a91debeab7b4c7ef13fc6",
+            "digest": "6b2a6c2df049ba3b697ccaa9f12aa6bdf33d8d26c562822d96eab6bc59bea15e",
+            "documents": 1281
+          },
+          {
+            "revision": 8,
+            "worldHash": "3aeb61ff6f710520b77ef2cde89acb4ec6e6761a59ed1e23a19b446ef59b02cd",
+            "digest": "88ccc6a41c40b08f1c21e72406d6b79774d3388722b6a947c042e4994ae50085",
+            "documents": 1281
+          },
+          {
+            "revision": 9,
+            "worldHash": "69bedc4bb43d24e447b80d80788b3c6b09353bf87c5825a80f193ab0275f173e",
+            "digest": "0a7f502cb63614bcd6486941ab14e5d0cda934f78a76f2cfc1d02074d9e4f1ea",
+            "documents": 1281
+          },
+          {
+            "revision": 10,
+            "worldHash": "5b84d3439f002aa86304e379f18eca1bcab170445c52b882ba62067cdf4cadf4",
+            "digest": "984b5381eab157039144f0bf3741d0e2d8d6ddd9dfa15a347fb4cee825712a6e",
+            "documents": 1281
+          },
+          {
+            "revision": 11,
+            "worldHash": "b3033d5cea97ecf56a44baa937c153d57f289d3306bdb91723d58e9cc198c416",
+            "digest": "c92088f67c992bd58b486cd20dbcd3acae7ae5dcef744420b6e66d5e31b98eb9",
+            "documents": 1281
+          },
+          {
+            "revision": 12,
+            "worldHash": "7550f87f7731ff37a44192f678fb04d9b42b9b853ceec33da19eceb50a0958a6",
+            "digest": "9a9498f83a1684460b2c0e49abffec1c23736ea668f9d741bceee449dc316350",
+            "documents": 1281
+          },
+          {
+            "revision": 13,
+            "worldHash": "d06040e51700ae5bc775cd2d1ae18b905c28d8b55875cf3b226241fc45abb736",
+            "digest": "161876bd9abf8056f0bb72af44c4195d17cdda2ba7e8d922883704be9a31cfba",
+            "documents": 1281
+          },
+          {
+            "revision": 14,
+            "worldHash": "b000175c1c761eb5217f95063ec880888e1bc2c3c2fa7eddb6c488fe71209d35",
+            "digest": "5691021a11a77415407bf2c16f6df98c4cc0a7e404c2c26062aed61f63b47bd8",
+            "documents": 1281
+          },
+          {
+            "revision": 15,
+            "worldHash": "de21f446fab1600e372e329d771ac0664c5008ba9a083a1959b4d0eeaa01a929",
+            "digest": "cadff9f42661109c745baa03a3d79dd39c86c91ae9495d9ea4f7419d3d76bc6e",
+            "documents": 1281
+          },
+          {
+            "revision": 16,
+            "worldHash": "f3a526f47b20b29a7a4d5dd722fd8c824dec69f7333328dd6a15da96dd08e148",
+            "digest": "9f5648914132e7d2b28dec537e69c7dc3c9a2a731f385780bf0c2124a2ed5960",
+            "documents": 1281
+          },
+          {
+            "revision": 17,
+            "worldHash": "b5e73f4c8601bb2cb4169bd59e48edccf4b412faf516317ca12a603502843813",
+            "digest": "8a15e31da56d46211b293577a7e692513d7182649f741b83ef88d09ab7418eb8",
+            "documents": 1281
+          },
+          {
+            "revision": 18,
+            "worldHash": "4791a1b0a3feb466bcc94ed069461e4524bbdd76e5bae4e295b92f79c3ec31b9",
+            "digest": "df026c9000849451912ac36948d2dd08a83de8cb1c791cd4072c159e72ad4353",
+            "documents": 1281
+          },
+          {
+            "revision": 19,
+            "worldHash": "be79d2c7c154b6f0ae7e6351161b4f579970368d758ece4b1b158761876dfe19",
+            "digest": "56bdbc482f597207b3c6e4ad3d3c7fad95039a1885753c52e30ec93aa0522277",
+            "documents": 1281
+          },
+          {
+            "revision": 20,
+            "worldHash": "809015382ee3058b9616e75bdad8776a7315b966268c308ba008b253c9e44cbb",
+            "digest": "e3abb999302bc2cb15e94117bdfd3f7c90029336cb8ff7957f3b52cc6ffe6cdf",
+            "documents": 1281
+          },
+          {
+            "revision": 21,
+            "worldHash": "5ad7622f1b093ec5db4c35902b8f8b42bf860c89b17dd4ed9de50382497c6376",
+            "digest": "d0d6271c6e7fe8ed3ae07c369209a062f0cd3ec033759287975fe804ea379f35",
+            "documents": 1281
+          }
+        ]
+      },
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "coldMs": 64.14670000000001,
+        "warmMs": 265.755100000001,
+        "cpuMs": 422,
+        "reusedDocuments": 0,
+        "memory": {
+          "rss": 134754304,
+          "heapTotal": 81317888,
+          "heapUsed": 8136824,
+          "external": 2997486,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 136040,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "926b444d267accd80041c5ad734504a65c0e8ea64fe53586ebf29d8dbbd47e93",
+            "digest": "2b6155e7168f4b67257f5c81cad9310e549efbf84a9364001dfbbc34840f6e9d",
+            "documents": 1281
+          },
+          {
+            "revision": 2,
+            "worldHash": "99af6a7c67b2d8130cacb97d6e501fbed8c0eb2ced4af5b9ec04c6bc5757e96b",
+            "digest": "e0f141c442bc2896d60c97e9fb9df1352b5c901e70a2ada66d0baf125bb438e1",
+            "documents": 1281
+          },
+          {
+            "revision": 3,
+            "worldHash": "f2e4df62414091dd134ff3ee207439f2b7e8f6adf1e2bb1773a305236bb9fb0a",
+            "digest": "17bbde49cd6d8a7c3fda8d376e143bdb4d50083fc800f8e0e40504345590ca07",
+            "documents": 1281
+          },
+          {
+            "revision": 4,
+            "worldHash": "4dd5a1504ce304a225f954c61fd8e25d405598e3a798f0cb48472f809ce951a9",
+            "digest": "3e3a8748ff5cc56932dce97cc64e509820190aff86f837084a4de063099c545c",
+            "documents": 1281
+          },
+          {
+            "revision": 5,
+            "worldHash": "99c058242144fae2614153b764efa6606a65aab2f857de816cfa5205e2b2a775",
+            "digest": "1a5aca1eb0483ce9acf394da375c74b89d15202ff5fafeb5a0a0dc2d439cdd80",
+            "documents": 1281
+          },
+          {
+            "revision": 6,
+            "worldHash": "baf9a7ead82bab26c84599b014d485e1438bccda800675dd8fec87f40f966563",
+            "digest": "91a7c89ebc2377062557302d6dd9667ff43e5b762ccf625b6081a8e69bbe3499",
+            "documents": 1281
+          },
+          {
+            "revision": 7,
+            "worldHash": "8ab1cf7bbffe1e98de858c2c7ca6ecdd711ffe04d02a91debeab7b4c7ef13fc6",
+            "digest": "6b2a6c2df049ba3b697ccaa9f12aa6bdf33d8d26c562822d96eab6bc59bea15e",
+            "documents": 1281
+          },
+          {
+            "revision": 8,
+            "worldHash": "3aeb61ff6f710520b77ef2cde89acb4ec6e6761a59ed1e23a19b446ef59b02cd",
+            "digest": "88ccc6a41c40b08f1c21e72406d6b79774d3388722b6a947c042e4994ae50085",
+            "documents": 1281
+          },
+          {
+            "revision": 9,
+            "worldHash": "69bedc4bb43d24e447b80d80788b3c6b09353bf87c5825a80f193ab0275f173e",
+            "digest": "0a7f502cb63614bcd6486941ab14e5d0cda934f78a76f2cfc1d02074d9e4f1ea",
+            "documents": 1281
+          },
+          {
+            "revision": 10,
+            "worldHash": "5b84d3439f002aa86304e379f18eca1bcab170445c52b882ba62067cdf4cadf4",
+            "digest": "984b5381eab157039144f0bf3741d0e2d8d6ddd9dfa15a347fb4cee825712a6e",
+            "documents": 1281
+          },
+          {
+            "revision": 11,
+            "worldHash": "b3033d5cea97ecf56a44baa937c153d57f289d3306bdb91723d58e9cc198c416",
+            "digest": "c92088f67c992bd58b486cd20dbcd3acae7ae5dcef744420b6e66d5e31b98eb9",
+            "documents": 1281
+          },
+          {
+            "revision": 12,
+            "worldHash": "7550f87f7731ff37a44192f678fb04d9b42b9b853ceec33da19eceb50a0958a6",
+            "digest": "9a9498f83a1684460b2c0e49abffec1c23736ea668f9d741bceee449dc316350",
+            "documents": 1281
+          },
+          {
+            "revision": 13,
+            "worldHash": "d06040e51700ae5bc775cd2d1ae18b905c28d8b55875cf3b226241fc45abb736",
+            "digest": "161876bd9abf8056f0bb72af44c4195d17cdda2ba7e8d922883704be9a31cfba",
+            "documents": 1281
+          },
+          {
+            "revision": 14,
+            "worldHash": "b000175c1c761eb5217f95063ec880888e1bc2c3c2fa7eddb6c488fe71209d35",
+            "digest": "5691021a11a77415407bf2c16f6df98c4cc0a7e404c2c26062aed61f63b47bd8",
+            "documents": 1281
+          },
+          {
+            "revision": 15,
+            "worldHash": "de21f446fab1600e372e329d771ac0664c5008ba9a083a1959b4d0eeaa01a929",
+            "digest": "cadff9f42661109c745baa03a3d79dd39c86c91ae9495d9ea4f7419d3d76bc6e",
+            "documents": 1281
+          },
+          {
+            "revision": 16,
+            "worldHash": "f3a526f47b20b29a7a4d5dd722fd8c824dec69f7333328dd6a15da96dd08e148",
+            "digest": "9f5648914132e7d2b28dec537e69c7dc3c9a2a731f385780bf0c2124a2ed5960",
+            "documents": 1281
+          },
+          {
+            "revision": 17,
+            "worldHash": "b5e73f4c8601bb2cb4169bd59e48edccf4b412faf516317ca12a603502843813",
+            "digest": "8a15e31da56d46211b293577a7e692513d7182649f741b83ef88d09ab7418eb8",
+            "documents": 1281
+          },
+          {
+            "revision": 18,
+            "worldHash": "4791a1b0a3feb466bcc94ed069461e4524bbdd76e5bae4e295b92f79c3ec31b9",
+            "digest": "df026c9000849451912ac36948d2dd08a83de8cb1c791cd4072c159e72ad4353",
+            "documents": 1281
+          },
+          {
+            "revision": 19,
+            "worldHash": "be79d2c7c154b6f0ae7e6351161b4f579970368d758ece4b1b158761876dfe19",
+            "digest": "56bdbc482f597207b3c6e4ad3d3c7fad95039a1885753c52e30ec93aa0522277",
+            "documents": 1281
+          },
+          {
+            "revision": 20,
+            "worldHash": "809015382ee3058b9616e75bdad8776a7315b966268c308ba008b253c9e44cbb",
+            "digest": "e3abb999302bc2cb15e94117bdfd3f7c90029336cb8ff7957f3b52cc6ffe6cdf",
+            "documents": 1281
+          },
+          {
+            "revision": 21,
+            "worldHash": "5ad7622f1b093ec5db4c35902b8f8b42bf860c89b17dd4ed9de50382497c6376",
+            "digest": "d0d6271c6e7fe8ed3ae07c369209a062f0cd3ec033759287975fe804ea379f35",
+            "documents": 1281
+          }
+        ]
+      },
+      {
+        "variant": "baseline",
+        "profiles": 10000,
+        "coldMs": 431.87049999999977,
+        "warmMs": 2077.7042999999994,
+        "cpuMs": 3265,
+        "reusedDocuments": 0,
+        "memory": {
+          "rss": 283512832,
+          "heapTotal": 178446336,
+          "heapUsed": 22011808,
+          "external": 5881070,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 316816,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "b5a1652f67abe9809d4bd0bec54ce11a609166b700efe8b8e07537797b24f975",
+            "digest": "c30a30c884631c43ea97604a49d2eb1bf4a3471501255454100518fda84a4bca",
+            "documents": 10001
+          },
+          {
+            "revision": 2,
+            "worldHash": "a9ae0c7167a53b87bf9a873e1ab4ac1f68342b4575da07ec08d88f0ae9862350",
+            "digest": "2b041c7a74e3925ac83e062d68e35177aa7dc8e4eadfe1921542909d250ed9fb",
+            "documents": 10001
+          },
+          {
+            "revision": 3,
+            "worldHash": "b47b81aa02b97389c0273ae00d5aee6f326938f34a7a6531dd89a51d473bb321",
+            "digest": "bb702cedde142c4c3a7bd54a641ced433cb8d32e41b9fe011acbdc198d2bd38b",
+            "documents": 10001
+          },
+          {
+            "revision": 4,
+            "worldHash": "fec4d901156dc4aae1093e357396e34442bd9f3be783a930c4e15a56cfda8af9",
+            "digest": "c57e2501252168fe66a9799faa661f0f29271b16b01ba6f2c81961a5b63d82f2",
+            "documents": 10001
+          },
+          {
+            "revision": 5,
+            "worldHash": "a4e0045b7d1e194a764cb7439e0e8b50e797191ef88614ff5d0bc214fa132d42",
+            "digest": "caa9f7ce56da9e8e7c4ea27c1ff8304fcc186777f7b6e91d351e0087a9decbf0",
+            "documents": 10001
+          },
+          {
+            "revision": 6,
+            "worldHash": "0f719d932fa08a57dcfd9c28b0e81956985e4f363b05a1658f408dbf0a71fc75",
+            "digest": "5cd1fba49ebb00e9880e12bb94555af92607d8eed2ab814242e93efe8701bd6d",
+            "documents": 10001
+          },
+          {
+            "revision": 7,
+            "worldHash": "d1f3bc5601a44863990c28c9960e33da76aae9aa8d1347b350864623415ce4d8",
+            "digest": "7111e49a1c41299d28a79b26c9af3d7aef0bcc4a0bb176fab44f370b3ba04acc",
+            "documents": 10001
+          },
+          {
+            "revision": 8,
+            "worldHash": "41037b1e44de569f17ebdb46e12299dd74e0fba5b324edc99dd64355fef09a79",
+            "digest": "605c48dc6a41616fc84e24868c60a6e43530f2d5ae7ee49f036ce9709d1e9ed5",
+            "documents": 10001
+          },
+          {
+            "revision": 9,
+            "worldHash": "5d064851aa066598c802c9f30566aae683968e15ccc20ec4da2e11438a3ac614",
+            "digest": "6bf44b01389548ddec3ea0a4ab458967981cb87a0b7a9b7da38cfd413b29cdb2",
+            "documents": 10001
+          },
+          {
+            "revision": 10,
+            "worldHash": "dbf3a12ca4b4a432fb959f0366f341194e22166c85764a96ac93087e53bf698e",
+            "digest": "cbb280ff306ad6e553492c27e545d751676cbea25447441886a342187844b3a8",
+            "documents": 10001
+          },
+          {
+            "revision": 11,
+            "worldHash": "06520508850ef2cd8417cac6ca5ecc67ae6b38f71f15b57ae0eef2775b5a7df1",
+            "digest": "bd32ba780fe494d795f893d6f5c58af44f8e246a6a8951db1b1115703a56f52e",
+            "documents": 10001
+          },
+          {
+            "revision": 12,
+            "worldHash": "b9622dd30d62defb60fb72d4d7a1e5eaf071cb439f595d93d583eef5a5c043f6",
+            "digest": "348b6bf8526310007a6a4bf92d0d138f04be49b6566f4e93bcadf5af1b2c1ac1",
+            "documents": 10001
+          },
+          {
+            "revision": 13,
+            "worldHash": "4573e596696138d188ff748c46303404f2a675ec335d458085f07e544d2cf9d5",
+            "digest": "97af2b1ce194275eddf251d1083a569bbfd0f1501dc266e3107923c80c40b82f",
+            "documents": 10001
+          },
+          {
+            "revision": 14,
+            "worldHash": "0a1702ccc9b8c15b68fcdf9f1d97bccf3f3593e181529ac258f807e85ce00b71",
+            "digest": "6b99116e3ed66d9357eb8fbd3509ed8b348f1dcdbe8ef7aea171997eb37132e9",
+            "documents": 10001
+          },
+          {
+            "revision": 15,
+            "worldHash": "8cb14920eaa2e01c7c0e60748c42926fe9120efabbfdfaf765f30ca398ae1d69",
+            "digest": "eb4f57be153755402054ccca23e375d3a5c1b4e9f13c3d9607fda860dba5ba7c",
+            "documents": 10001
+          },
+          {
+            "revision": 16,
+            "worldHash": "5a654f9347850cd4197f575a8be176b8283bb4cec348d45bf782a1351920dd8d",
+            "digest": "348deebb81ed7735297fc982a9600077bbba20b46e93edb678e4c8356fe20920",
+            "documents": 10001
+          },
+          {
+            "revision": 17,
+            "worldHash": "8302247d5fdd9903102b32d1ee3009742da216724618706d5b311391411d910d",
+            "digest": "ea664e3249ea56da6cd59cc3ef447f0aa3998fe5561168f5bb35f1fd9ee01544",
+            "documents": 10001
+          },
+          {
+            "revision": 18,
+            "worldHash": "df15fe134ec8139d4799b0b23639fedc10ceab3359bfd9b4ed8e40fe97b20099",
+            "digest": "208b4518d13c745de2a8624cd89ca2f1f16f1f23e52de39b2dcb96fdf7165757",
+            "documents": 10001
+          },
+          {
+            "revision": 19,
+            "worldHash": "a967a74f320657be67b636a29de4b1269c3f8916da897d1f6523769fb9b6d75b",
+            "digest": "89c3097aa75f7b293dc12eb1a7a800b4fb5e288611930631fb0bcb2a3b0dc858",
+            "documents": 10001
+          },
+          {
+            "revision": 20,
+            "worldHash": "020e2c2ad05ea09ea49d5333bbab4ff96b2dab4c4060816379f56f41c91c8eeb",
+            "digest": "0753b08d97337930161ed55f34222b4ec0b3451fc9be71a90ec2584b025ca912",
+            "documents": 10001
+          },
+          {
+            "revision": 21,
+            "worldHash": "bf4e95c6a3bb3087a69a40a4439561683ad2bccb1f403c6161ff08edd39d1966",
+            "digest": "e4298acb607b7bcb81af008015a0b983b640b59bd3d13fdd815344a38036b63f",
+            "documents": 10001
+          }
+        ]
+      },
+      {
+        "variant": "candidate",
+        "profiles": 10000,
+        "coldMs": 435.8687,
+        "warmMs": 1416.0202000000008,
+        "cpuMs": 2155,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 283791360,
+          "heapTotal": 176357376,
+          "heapUsed": 22402736,
+          "external": 5815534,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 316816,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "b5a1652f67abe9809d4bd0bec54ce11a609166b700efe8b8e07537797b24f975",
+            "digest": "c30a30c884631c43ea97604a49d2eb1bf4a3471501255454100518fda84a4bca",
+            "documents": 10001
+          },
+          {
+            "revision": 2,
+            "worldHash": "a9ae0c7167a53b87bf9a873e1ab4ac1f68342b4575da07ec08d88f0ae9862350",
+            "digest": "2b041c7a74e3925ac83e062d68e35177aa7dc8e4eadfe1921542909d250ed9fb",
+            "documents": 10001
+          },
+          {
+            "revision": 3,
+            "worldHash": "b47b81aa02b97389c0273ae00d5aee6f326938f34a7a6531dd89a51d473bb321",
+            "digest": "bb702cedde142c4c3a7bd54a641ced433cb8d32e41b9fe011acbdc198d2bd38b",
+            "documents": 10001
+          },
+          {
+            "revision": 4,
+            "worldHash": "fec4d901156dc4aae1093e357396e34442bd9f3be783a930c4e15a56cfda8af9",
+            "digest": "c57e2501252168fe66a9799faa661f0f29271b16b01ba6f2c81961a5b63d82f2",
+            "documents": 10001
+          },
+          {
+            "revision": 5,
+            "worldHash": "a4e0045b7d1e194a764cb7439e0e8b50e797191ef88614ff5d0bc214fa132d42",
+            "digest": "caa9f7ce56da9e8e7c4ea27c1ff8304fcc186777f7b6e91d351e0087a9decbf0",
+            "documents": 10001
+          },
+          {
+            "revision": 6,
+            "worldHash": "0f719d932fa08a57dcfd9c28b0e81956985e4f363b05a1658f408dbf0a71fc75",
+            "digest": "5cd1fba49ebb00e9880e12bb94555af92607d8eed2ab814242e93efe8701bd6d",
+            "documents": 10001
+          },
+          {
+            "revision": 7,
+            "worldHash": "d1f3bc5601a44863990c28c9960e33da76aae9aa8d1347b350864623415ce4d8",
+            "digest": "7111e49a1c41299d28a79b26c9af3d7aef0bcc4a0bb176fab44f370b3ba04acc",
+            "documents": 10001
+          },
+          {
+            "revision": 8,
+            "worldHash": "41037b1e44de569f17ebdb46e12299dd74e0fba5b324edc99dd64355fef09a79",
+            "digest": "605c48dc6a41616fc84e24868c60a6e43530f2d5ae7ee49f036ce9709d1e9ed5",
+            "documents": 10001
+          },
+          {
+            "revision": 9,
+            "worldHash": "5d064851aa066598c802c9f30566aae683968e15ccc20ec4da2e11438a3ac614",
+            "digest": "6bf44b01389548ddec3ea0a4ab458967981cb87a0b7a9b7da38cfd413b29cdb2",
+            "documents": 10001
+          },
+          {
+            "revision": 10,
+            "worldHash": "dbf3a12ca4b4a432fb959f0366f341194e22166c85764a96ac93087e53bf698e",
+            "digest": "cbb280ff306ad6e553492c27e545d751676cbea25447441886a342187844b3a8",
+            "documents": 10001
+          },
+          {
+            "revision": 11,
+            "worldHash": "06520508850ef2cd8417cac6ca5ecc67ae6b38f71f15b57ae0eef2775b5a7df1",
+            "digest": "bd32ba780fe494d795f893d6f5c58af44f8e246a6a8951db1b1115703a56f52e",
+            "documents": 10001
+          },
+          {
+            "revision": 12,
+            "worldHash": "b9622dd30d62defb60fb72d4d7a1e5eaf071cb439f595d93d583eef5a5c043f6",
+            "digest": "348b6bf8526310007a6a4bf92d0d138f04be49b6566f4e93bcadf5af1b2c1ac1",
+            "documents": 10001
+          },
+          {
+            "revision": 13,
+            "worldHash": "4573e596696138d188ff748c46303404f2a675ec335d458085f07e544d2cf9d5",
+            "digest": "97af2b1ce194275eddf251d1083a569bbfd0f1501dc266e3107923c80c40b82f",
+            "documents": 10001
+          },
+          {
+            "revision": 14,
+            "worldHash": "0a1702ccc9b8c15b68fcdf9f1d97bccf3f3593e181529ac258f807e85ce00b71",
+            "digest": "6b99116e3ed66d9357eb8fbd3509ed8b348f1dcdbe8ef7aea171997eb37132e9",
+            "documents": 10001
+          },
+          {
+            "revision": 15,
+            "worldHash": "8cb14920eaa2e01c7c0e60748c42926fe9120efabbfdfaf765f30ca398ae1d69",
+            "digest": "eb4f57be153755402054ccca23e375d3a5c1b4e9f13c3d9607fda860dba5ba7c",
+            "documents": 10001
+          },
+          {
+            "revision": 16,
+            "worldHash": "5a654f9347850cd4197f575a8be176b8283bb4cec348d45bf782a1351920dd8d",
+            "digest": "348deebb81ed7735297fc982a9600077bbba20b46e93edb678e4c8356fe20920",
+            "documents": 10001
+          },
+          {
+            "revision": 17,
+            "worldHash": "8302247d5fdd9903102b32d1ee3009742da216724618706d5b311391411d910d",
+            "digest": "ea664e3249ea56da6cd59cc3ef447f0aa3998fe5561168f5bb35f1fd9ee01544",
+            "documents": 10001
+          },
+          {
+            "revision": 18,
+            "worldHash": "df15fe134ec8139d4799b0b23639fedc10ceab3359bfd9b4ed8e40fe97b20099",
+            "digest": "208b4518d13c745de2a8624cd89ca2f1f16f1f23e52de39b2dcb96fdf7165757",
+            "documents": 10001
+          },
+          {
+            "revision": 19,
+            "worldHash": "a967a74f320657be67b636a29de4b1269c3f8916da897d1f6523769fb9b6d75b",
+            "digest": "89c3097aa75f7b293dc12eb1a7a800b4fb5e288611930631fb0bcb2a3b0dc858",
+            "documents": 10001
+          },
+          {
+            "revision": 20,
+            "worldHash": "020e2c2ad05ea09ea49d5333bbab4ff96b2dab4c4060816379f56f41c91c8eeb",
+            "digest": "0753b08d97337930161ed55f34222b4ec0b3451fc9be71a90ec2584b025ca912",
+            "documents": 10001
+          },
+          {
+            "revision": 21,
+            "worldHash": "bf4e95c6a3bb3087a69a40a4439561683ad2bccb1f403c6161ff08edd39d1966",
+            "digest": "e4298acb607b7bcb81af008015a0b983b640b59bd3d13fdd815344a38036b63f",
+            "documents": 10001
+          }
+        ]
+      },
+      {
+        "variant": "candidate",
+        "profiles": 10000,
+        "coldMs": 429.40869999999995,
+        "warmMs": 1622.2533999999969,
+        "cpuMs": 2469,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 283652096,
+          "heapTotal": 174784512,
+          "heapUsed": 22414728,
+          "external": 5881070,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 316816,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "b5a1652f67abe9809d4bd0bec54ce11a609166b700efe8b8e07537797b24f975",
+            "digest": "c30a30c884631c43ea97604a49d2eb1bf4a3471501255454100518fda84a4bca",
+            "documents": 10001
+          },
+          {
+            "revision": 2,
+            "worldHash": "a9ae0c7167a53b87bf9a873e1ab4ac1f68342b4575da07ec08d88f0ae9862350",
+            "digest": "2b041c7a74e3925ac83e062d68e35177aa7dc8e4eadfe1921542909d250ed9fb",
+            "documents": 10001
+          },
+          {
+            "revision": 3,
+            "worldHash": "b47b81aa02b97389c0273ae00d5aee6f326938f34a7a6531dd89a51d473bb321",
+            "digest": "bb702cedde142c4c3a7bd54a641ced433cb8d32e41b9fe011acbdc198d2bd38b",
+            "documents": 10001
+          },
+          {
+            "revision": 4,
+            "worldHash": "fec4d901156dc4aae1093e357396e34442bd9f3be783a930c4e15a56cfda8af9",
+            "digest": "c57e2501252168fe66a9799faa661f0f29271b16b01ba6f2c81961a5b63d82f2",
+            "documents": 10001
+          },
+          {
+            "revision": 5,
+            "worldHash": "a4e0045b7d1e194a764cb7439e0e8b50e797191ef88614ff5d0bc214fa132d42",
+            "digest": "caa9f7ce56da9e8e7c4ea27c1ff8304fcc186777f7b6e91d351e0087a9decbf0",
+            "documents": 10001
+          },
+          {
+            "revision": 6,
+            "worldHash": "0f719d932fa08a57dcfd9c28b0e81956985e4f363b05a1658f408dbf0a71fc75",
+            "digest": "5cd1fba49ebb00e9880e12bb94555af92607d8eed2ab814242e93efe8701bd6d",
+            "documents": 10001
+          },
+          {
+            "revision": 7,
+            "worldHash": "d1f3bc5601a44863990c28c9960e33da76aae9aa8d1347b350864623415ce4d8",
+            "digest": "7111e49a1c41299d28a79b26c9af3d7aef0bcc4a0bb176fab44f370b3ba04acc",
+            "documents": 10001
+          },
+          {
+            "revision": 8,
+            "worldHash": "41037b1e44de569f17ebdb46e12299dd74e0fba5b324edc99dd64355fef09a79",
+            "digest": "605c48dc6a41616fc84e24868c60a6e43530f2d5ae7ee49f036ce9709d1e9ed5",
+            "documents": 10001
+          },
+          {
+            "revision": 9,
+            "worldHash": "5d064851aa066598c802c9f30566aae683968e15ccc20ec4da2e11438a3ac614",
+            "digest": "6bf44b01389548ddec3ea0a4ab458967981cb87a0b7a9b7da38cfd413b29cdb2",
+            "documents": 10001
+          },
+          {
+            "revision": 10,
+            "worldHash": "dbf3a12ca4b4a432fb959f0366f341194e22166c85764a96ac93087e53bf698e",
+            "digest": "cbb280ff306ad6e553492c27e545d751676cbea25447441886a342187844b3a8",
+            "documents": 10001
+          },
+          {
+            "revision": 11,
+            "worldHash": "06520508850ef2cd8417cac6ca5ecc67ae6b38f71f15b57ae0eef2775b5a7df1",
+            "digest": "bd32ba780fe494d795f893d6f5c58af44f8e246a6a8951db1b1115703a56f52e",
+            "documents": 10001
+          },
+          {
+            "revision": 12,
+            "worldHash": "b9622dd30d62defb60fb72d4d7a1e5eaf071cb439f595d93d583eef5a5c043f6",
+            "digest": "348b6bf8526310007a6a4bf92d0d138f04be49b6566f4e93bcadf5af1b2c1ac1",
+            "documents": 10001
+          },
+          {
+            "revision": 13,
+            "worldHash": "4573e596696138d188ff748c46303404f2a675ec335d458085f07e544d2cf9d5",
+            "digest": "97af2b1ce194275eddf251d1083a569bbfd0f1501dc266e3107923c80c40b82f",
+            "documents": 10001
+          },
+          {
+            "revision": 14,
+            "worldHash": "0a1702ccc9b8c15b68fcdf9f1d97bccf3f3593e181529ac258f807e85ce00b71",
+            "digest": "6b99116e3ed66d9357eb8fbd3509ed8b348f1dcdbe8ef7aea171997eb37132e9",
+            "documents": 10001
+          },
+          {
+            "revision": 15,
+            "worldHash": "8cb14920eaa2e01c7c0e60748c42926fe9120efabbfdfaf765f30ca398ae1d69",
+            "digest": "eb4f57be153755402054ccca23e375d3a5c1b4e9f13c3d9607fda860dba5ba7c",
+            "documents": 10001
+          },
+          {
+            "revision": 16,
+            "worldHash": "5a654f9347850cd4197f575a8be176b8283bb4cec348d45bf782a1351920dd8d",
+            "digest": "348deebb81ed7735297fc982a9600077bbba20b46e93edb678e4c8356fe20920",
+            "documents": 10001
+          },
+          {
+            "revision": 17,
+            "worldHash": "8302247d5fdd9903102b32d1ee3009742da216724618706d5b311391411d910d",
+            "digest": "ea664e3249ea56da6cd59cc3ef447f0aa3998fe5561168f5bb35f1fd9ee01544",
+            "documents": 10001
+          },
+          {
+            "revision": 18,
+            "worldHash": "df15fe134ec8139d4799b0b23639fedc10ceab3359bfd9b4ed8e40fe97b20099",
+            "digest": "208b4518d13c745de2a8624cd89ca2f1f16f1f23e52de39b2dcb96fdf7165757",
+            "documents": 10001
+          },
+          {
+            "revision": 19,
+            "worldHash": "a967a74f320657be67b636a29de4b1269c3f8916da897d1f6523769fb9b6d75b",
+            "digest": "89c3097aa75f7b293dc12eb1a7a800b4fb5e288611930631fb0bcb2a3b0dc858",
+            "documents": 10001
+          },
+          {
+            "revision": 20,
+            "worldHash": "020e2c2ad05ea09ea49d5333bbab4ff96b2dab4c4060816379f56f41c91c8eeb",
+            "digest": "0753b08d97337930161ed55f34222b4ec0b3451fc9be71a90ec2584b025ca912",
+            "documents": 10001
+          },
+          {
+            "revision": 21,
+            "worldHash": "bf4e95c6a3bb3087a69a40a4439561683ad2bccb1f403c6161ff08edd39d1966",
+            "digest": "e4298acb607b7bcb81af008015a0b983b640b59bd3d13fdd815344a38036b63f",
+            "documents": 10001
+          }
+        ]
+      },
+      {
+        "variant": "baseline",
+        "profiles": 10000,
+        "coldMs": 491.4295999999995,
+        "warmMs": 2564.3119000000006,
+        "cpuMs": 3515,
+        "reusedDocuments": 0,
+        "memory": {
+          "rss": 288833536,
+          "heapTotal": 180289536,
+          "heapUsed": 22441584,
+          "external": 5881070,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 316816,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "b5a1652f67abe9809d4bd0bec54ce11a609166b700efe8b8e07537797b24f975",
+            "digest": "c30a30c884631c43ea97604a49d2eb1bf4a3471501255454100518fda84a4bca",
+            "documents": 10001
+          },
+          {
+            "revision": 2,
+            "worldHash": "a9ae0c7167a53b87bf9a873e1ab4ac1f68342b4575da07ec08d88f0ae9862350",
+            "digest": "2b041c7a74e3925ac83e062d68e35177aa7dc8e4eadfe1921542909d250ed9fb",
+            "documents": 10001
+          },
+          {
+            "revision": 3,
+            "worldHash": "b47b81aa02b97389c0273ae00d5aee6f326938f34a7a6531dd89a51d473bb321",
+            "digest": "bb702cedde142c4c3a7bd54a641ced433cb8d32e41b9fe011acbdc198d2bd38b",
+            "documents": 10001
+          },
+          {
+            "revision": 4,
+            "worldHash": "fec4d901156dc4aae1093e357396e34442bd9f3be783a930c4e15a56cfda8af9",
+            "digest": "c57e2501252168fe66a9799faa661f0f29271b16b01ba6f2c81961a5b63d82f2",
+            "documents": 10001
+          },
+          {
+            "revision": 5,
+            "worldHash": "a4e0045b7d1e194a764cb7439e0e8b50e797191ef88614ff5d0bc214fa132d42",
+            "digest": "caa9f7ce56da9e8e7c4ea27c1ff8304fcc186777f7b6e91d351e0087a9decbf0",
+            "documents": 10001
+          },
+          {
+            "revision": 6,
+            "worldHash": "0f719d932fa08a57dcfd9c28b0e81956985e4f363b05a1658f408dbf0a71fc75",
+            "digest": "5cd1fba49ebb00e9880e12bb94555af92607d8eed2ab814242e93efe8701bd6d",
+            "documents": 10001
+          },
+          {
+            "revision": 7,
+            "worldHash": "d1f3bc5601a44863990c28c9960e33da76aae9aa8d1347b350864623415ce4d8",
+            "digest": "7111e49a1c41299d28a79b26c9af3d7aef0bcc4a0bb176fab44f370b3ba04acc",
+            "documents": 10001
+          },
+          {
+            "revision": 8,
+            "worldHash": "41037b1e44de569f17ebdb46e12299dd74e0fba5b324edc99dd64355fef09a79",
+            "digest": "605c48dc6a41616fc84e24868c60a6e43530f2d5ae7ee49f036ce9709d1e9ed5",
+            "documents": 10001
+          },
+          {
+            "revision": 9,
+            "worldHash": "5d064851aa066598c802c9f30566aae683968e15ccc20ec4da2e11438a3ac614",
+            "digest": "6bf44b01389548ddec3ea0a4ab458967981cb87a0b7a9b7da38cfd413b29cdb2",
+            "documents": 10001
+          },
+          {
+            "revision": 10,
+            "worldHash": "dbf3a12ca4b4a432fb959f0366f341194e22166c85764a96ac93087e53bf698e",
+            "digest": "cbb280ff306ad6e553492c27e545d751676cbea25447441886a342187844b3a8",
+            "documents": 10001
+          },
+          {
+            "revision": 11,
+            "worldHash": "06520508850ef2cd8417cac6ca5ecc67ae6b38f71f15b57ae0eef2775b5a7df1",
+            "digest": "bd32ba780fe494d795f893d6f5c58af44f8e246a6a8951db1b1115703a56f52e",
+            "documents": 10001
+          },
+          {
+            "revision": 12,
+            "worldHash": "b9622dd30d62defb60fb72d4d7a1e5eaf071cb439f595d93d583eef5a5c043f6",
+            "digest": "348b6bf8526310007a6a4bf92d0d138f04be49b6566f4e93bcadf5af1b2c1ac1",
+            "documents": 10001
+          },
+          {
+            "revision": 13,
+            "worldHash": "4573e596696138d188ff748c46303404f2a675ec335d458085f07e544d2cf9d5",
+            "digest": "97af2b1ce194275eddf251d1083a569bbfd0f1501dc266e3107923c80c40b82f",
+            "documents": 10001
+          },
+          {
+            "revision": 14,
+            "worldHash": "0a1702ccc9b8c15b68fcdf9f1d97bccf3f3593e181529ac258f807e85ce00b71",
+            "digest": "6b99116e3ed66d9357eb8fbd3509ed8b348f1dcdbe8ef7aea171997eb37132e9",
+            "documents": 10001
+          },
+          {
+            "revision": 15,
+            "worldHash": "8cb14920eaa2e01c7c0e60748c42926fe9120efabbfdfaf765f30ca398ae1d69",
+            "digest": "eb4f57be153755402054ccca23e375d3a5c1b4e9f13c3d9607fda860dba5ba7c",
+            "documents": 10001
+          },
+          {
+            "revision": 16,
+            "worldHash": "5a654f9347850cd4197f575a8be176b8283bb4cec348d45bf782a1351920dd8d",
+            "digest": "348deebb81ed7735297fc982a9600077bbba20b46e93edb678e4c8356fe20920",
+            "documents": 10001
+          },
+          {
+            "revision": 17,
+            "worldHash": "8302247d5fdd9903102b32d1ee3009742da216724618706d5b311391411d910d",
+            "digest": "ea664e3249ea56da6cd59cc3ef447f0aa3998fe5561168f5bb35f1fd9ee01544",
+            "documents": 10001
+          },
+          {
+            "revision": 18,
+            "worldHash": "df15fe134ec8139d4799b0b23639fedc10ceab3359bfd9b4ed8e40fe97b20099",
+            "digest": "208b4518d13c745de2a8624cd89ca2f1f16f1f23e52de39b2dcb96fdf7165757",
+            "documents": 10001
+          },
+          {
+            "revision": 19,
+            "worldHash": "a967a74f320657be67b636a29de4b1269c3f8916da897d1f6523769fb9b6d75b",
+            "digest": "89c3097aa75f7b293dc12eb1a7a800b4fb5e288611930631fb0bcb2a3b0dc858",
+            "documents": 10001
+          },
+          {
+            "revision": 20,
+            "worldHash": "020e2c2ad05ea09ea49d5333bbab4ff96b2dab4c4060816379f56f41c91c8eeb",
+            "digest": "0753b08d97337930161ed55f34222b4ec0b3451fc9be71a90ec2584b025ca912",
+            "documents": 10001
+          },
+          {
+            "revision": 21,
+            "worldHash": "bf4e95c6a3bb3087a69a40a4439561683ad2bccb1f403c6161ff08edd39d1966",
+            "digest": "e4298acb607b7bcb81af008015a0b983b640b59bd3d13fdd815344a38036b63f",
+            "documents": 10001
+          }
+        ]
+      }
+    ],
+    "scope": "Canonical immutable snapshot preparation only, excluding filesystem, network, PostgreSQL and game simulation; not measured CCU"
+  },
+  "linux": {
+    "at": "2026-11-24T18:46:28.659Z",
+    "node": "v24.22.3",
+    "platform": "linux",
+    "unchangedReceiptFields": true,
+    "exactFrameComparisons": 126,
+    "results": [
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "coldMs": 194.393716,
+        "warmMs": 687.863453,
+        "cpuMs": 874.755,
+        "reusedDocuments": 0,
+        "memory": {
+          "rss": 117022720,
+          "heapTotal": 45670400,
+          "heapUsed": 7506280,
+          "external": 2651893,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 115612,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "926b444d267accd80041c5ad734504a65c0e8ea64fe53586ebf29d8dbbd47e93",
+            "digest": "2b6155e7168f4b67257f5c81cad9310e549efbf84a9364001dfbbc34840f6e9d",
+            "documents": 1281
+          },
+          {
+            "revision": 2,
+            "worldHash": "99af6a7c67b2d8130cacb97d6e501fbed8c0eb2ced4af5b9ec04c6bc5757e96b",
+            "digest": "e0f141c442bc2896d60c97e9fb9df1352b5c901e70a2ada66d0baf125bb438e1",
+            "documents": 1281
+          },
+          {
+            "revision": 3,
+            "worldHash": "f2e4df62414091dd134ff3ee207439f2b7e8f6adf1e2bb1773a305236bb9fb0a",
+            "digest": "17bbde49cd6d8a7c3fda8d376e143bdb4d50083fc800f8e0e40504345590ca07",
+            "documents": 1281
+          },
+          {
+            "revision": 4,
+            "worldHash": "4dd5a1504ce304a225f954c61fd8e25d405598e3a798f0cb48472f809ce951a9",
+            "digest": "3e3a8748ff5cc56932dce97cc64e509820190aff86f837084a4de063099c545c",
+            "documents": 1281
+          },
+          {
+            "revision": 5,
+            "worldHash": "99c058242144fae2614153b764efa6606a65aab2f857de816cfa5205e2b2a775",
+            "digest": "1a5aca1eb0483ce9acf394da375c74b89d15202ff5fafeb5a0a0dc2d439cdd80",
+            "documents": 1281
+          },
+          {
+            "revision": 6,
+            "worldHash": "baf9a7ead82bab26c84599b014d485e1438bccda800675dd8fec87f40f966563",
+            "digest": "91a7c89ebc2377062557302d6dd9667ff43e5b762ccf625b6081a8e69bbe3499",
+            "documents": 1281
+          },
+          {
+            "revision": 7,
+            "worldHash": "8ab1cf7bbffe1e98de858c2c7ca6ecdd711ffe04d02a91debeab7b4c7ef13fc6",
+            "digest": "6b2a6c2df049ba3b697ccaa9f12aa6bdf33d8d26c562822d96eab6bc59bea15e",
+            "documents": 1281
+          },
+          {
+            "revision": 8,
+            "worldHash": "3aeb61ff6f710520b77ef2cde89acb4ec6e6761a59ed1e23a19b446ef59b02cd",
+            "digest": "88ccc6a41c40b08f1c21e72406d6b79774d3388722b6a947c042e4994ae50085",
+            "documents": 1281
+          },
+          {
+            "revision": 9,
+            "worldHash": "69bedc4bb43d24e447b80d80788b3c6b09353bf87c5825a80f193ab0275f173e",
+            "digest": "0a7f502cb63614bcd6486941ab14e5d0cda934f78a76f2cfc1d02074d9e4f1ea",
+            "documents": 1281
+          },
+          {
+            "revision": 10,
+            "worldHash": "5b84d3439f002aa86304e379f18eca1bcab170445c52b882ba62067cdf4cadf4",
+            "digest": "984b5381eab157039144f0bf3741d0e2d8d6ddd9dfa15a347fb4cee825712a6e",
+            "documents": 1281
+          },
+          {
+            "revision": 11,
+            "worldHash": "b3033d5cea97ecf56a44baa937c153d57f289d3306bdb91723d58e9cc198c416",
+            "digest": "c92088f67c992bd58b486cd20dbcd3acae7ae5dcef744420b6e66d5e31b98eb9",
+            "documents": 1281
+          },
+          {
+            "revision": 12,
+            "worldHash": "7550f87f7731ff37a44192f678fb04d9b42b9b853ceec33da19eceb50a0958a6",
+            "digest": "9a9498f83a1684460b2c0e49abffec1c23736ea668f9d741bceee449dc316350",
+            "documents": 1281
+          },
+          {
+            "revision": 13,
+            "worldHash": "d06040e51700ae5bc775cd2d1ae18b905c28d8b55875cf3b226241fc45abb736",
+            "digest": "161876bd9abf8056f0bb72af44c4195d17cdda2ba7e8d922883704be9a31cfba",
+            "documents": 1281
+          },
+          {
+            "revision": 14,
+            "worldHash": "b000175c1c761eb5217f95063ec880888e1bc2c3c2fa7eddb6c488fe71209d35",
+            "digest": "5691021a11a77415407bf2c16f6df98c4cc0a7e404c2c26062aed61f63b47bd8",
+            "documents": 1281
+          },
+          {
+            "revision": 15,
+            "worldHash": "de21f446fab1600e372e329d771ac0664c5008ba9a083a1959b4d0eeaa01a929",
+            "digest": "cadff9f42661109c745baa03a3d79dd39c86c91ae9495d9ea4f7419d3d76bc6e",
+            "documents": 1281
+          },
+          {
+            "revision": 16,
+            "worldHash": "f3a526f47b20b29a7a4d5dd722fd8c824dec69f7333328dd6a15da96dd08e148",
+            "digest": "9f5648914132e7d2b28dec537e69c7dc3c9a2a731f385780bf0c2124a2ed5960",
+            "documents": 1281
+          },
+          {
+            "revision": 17,
+            "worldHash": "b5e73f4c8601bb2cb4169bd59e48edccf4b412faf516317ca12a603502843813",
+            "digest": "8a15e31da56d46211b293577a7e692513d7182649f741b83ef88d09ab7418eb8",
+            "documents": 1281
+          },
+          {
+            "revision": 18,
+            "worldHash": "4791a1b0a3feb466bcc94ed069461e4524bbdd76e5bae4e295b92f79c3ec31b9",
+            "digest": "df026c9000849451912ac36948d2dd08a83de8cb1c791cd4072c159e72ad4353",
+            "documents": 1281
+          },
+          {
+            "revision": 19,
+            "worldHash": "be79d2c7c154b6f0ae7e6351161b4f579970368d758ece4b1b158761876dfe19",
+            "digest": "56bdbc482f597207b3c6e4ad3d3c7fad95039a1885753c52e30ec93aa0522277",
+            "documents": 1281
+          },
+          {
+            "revision": 20,
+            "worldHash": "809015382ee3058b9616e75bdad8776a7315b966268c308ba008b253c9e44cbb",
+            "digest": "e3abb999302bc2cb15e94117bdfd3f7c90029336cb8ff7957f3b52cc6ffe6cdf",
+            "documents": 1281
+          },
+          {
+            "revision": 21,
+            "worldHash": "5ad7622f1b093ec5db4c35902b8f8b42bf860c89b17dd4ed9de50382497c6376",
+            "digest": "d0d6271c6e7fe8ed3ae07c369209a062f0cd3ec033759287975fe804ea379f35",
+            "documents": 1281
+          }
+        ]
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "coldMs": 122.952497,
+        "warmMs": 430.09772399999974,
+        "cpuMs": 545.735,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 146518016,
+          "heapTotal": 81059840,
+          "heapUsed": 7997704,
+          "external": 2814477,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 143620,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "926b444d267accd80041c5ad734504a65c0e8ea64fe53586ebf29d8dbbd47e93",
+            "digest": "2b6155e7168f4b67257f5c81cad9310e549efbf84a9364001dfbbc34840f6e9d",
+            "documents": 1281
+          },
+          {
+            "revision": 2,
+            "worldHash": "99af6a7c67b2d8130cacb97d6e501fbed8c0eb2ced4af5b9ec04c6bc5757e96b",
+            "digest": "e0f141c442bc2896d60c97e9fb9df1352b5c901e70a2ada66d0baf125bb438e1",
+            "documents": 1281
+          },
+          {
+            "revision": 3,
+            "worldHash": "f2e4df62414091dd134ff3ee207439f2b7e8f6adf1e2bb1773a305236bb9fb0a",
+            "digest": "17bbde49cd6d8a7c3fda8d376e143bdb4d50083fc800f8e0e40504345590ca07",
+            "documents": 1281
+          },
+          {
+            "revision": 4,
+            "worldHash": "4dd5a1504ce304a225f954c61fd8e25d405598e3a798f0cb48472f809ce951a9",
+            "digest": "3e3a8748ff5cc56932dce97cc64e509820190aff86f837084a4de063099c545c",
+            "documents": 1281
+          },
+          {
+            "revision": 5,
+            "worldHash": "99c058242144fae2614153b764efa6606a65aab2f857de816cfa5205e2b2a775",
+            "digest": "1a5aca1eb0483ce9acf394da375c74b89d15202ff5fafeb5a0a0dc2d439cdd80",
+            "documents": 1281
+          },
+          {
+            "revision": 6,
+            "worldHash": "baf9a7ead82bab26c84599b014d485e1438bccda800675dd8fec87f40f966563",
+            "digest": "91a7c89ebc2377062557302d6dd9667ff43e5b762ccf625b6081a8e69bbe3499",
+            "documents": 1281
+          },
+          {
+            "revision": 7,
+            "worldHash": "8ab1cf7bbffe1e98de858c2c7ca6ecdd711ffe04d02a91debeab7b4c7ef13fc6",
+            "digest": "6b2a6c2df049ba3b697ccaa9f12aa6bdf33d8d26c562822d96eab6bc59bea15e",
+            "documents": 1281
+          },
+          {
+            "revision": 8,
+            "worldHash": "3aeb61ff6f710520b77ef2cde89acb4ec6e6761a59ed1e23a19b446ef59b02cd",
+            "digest": "88ccc6a41c40b08f1c21e72406d6b79774d3388722b6a947c042e4994ae50085",
+            "documents": 1281
+          },
+          {
+            "revision": 9,
+            "worldHash": "69bedc4bb43d24e447b80d80788b3c6b09353bf87c5825a80f193ab0275f173e",
+            "digest": "0a7f502cb63614bcd6486941ab14e5d0cda934f78a76f2cfc1d02074d9e4f1ea",
+            "documents": 1281
+          },
+          {
+            "revision": 10,
+            "worldHash": "5b84d3439f002aa86304e379f18eca1bcab170445c52b882ba62067cdf4cadf4",
+            "digest": "984b5381eab157039144f0bf3741d0e2d8d6ddd9dfa15a347fb4cee825712a6e",
+            "documents": 1281
+          },
+          {
+            "revision": 11,
+            "worldHash": "b3033d5cea97ecf56a44baa937c153d57f289d3306bdb91723d58e9cc198c416",
+            "digest": "c92088f67c992bd58b486cd20dbcd3acae7ae5dcef744420b6e66d5e31b98eb9",
+            "documents": 1281
+          },
+          {
+            "revision": 12,
+            "worldHash": "7550f87f7731ff37a44192f678fb04d9b42b9b853ceec33da19eceb50a0958a6",
+            "digest": "9a9498f83a1684460b2c0e49abffec1c23736ea668f9d741bceee449dc316350",
+            "documents": 1281
+          },
+          {
+            "revision": 13,
+            "worldHash": "d06040e51700ae5bc775cd2d1ae18b905c28d8b55875cf3b226241fc45abb736",
+            "digest": "161876bd9abf8056f0bb72af44c4195d17cdda2ba7e8d922883704be9a31cfba",
+            "documents": 1281
+          },
+          {
+            "revision": 14,
+            "worldHash": "b000175c1c761eb5217f95063ec880888e1bc2c3c2fa7eddb6c488fe71209d35",
+            "digest": "5691021a11a77415407bf2c16f6df98c4cc0a7e404c2c26062aed61f63b47bd8",
+            "documents": 1281
+          },
+          {
+            "revision": 15,
+            "worldHash": "de21f446fab1600e372e329d771ac0664c5008ba9a083a1959b4d0eeaa01a929",
+            "digest": "cadff9f42661109c745baa03a3d79dd39c86c91ae9495d9ea4f7419d3d76bc6e",
+            "documents": 1281
+          },
+          {
+            "revision": 16,
+            "worldHash": "f3a526f47b20b29a7a4d5dd722fd8c824dec69f7333328dd6a15da96dd08e148",
+            "digest": "9f5648914132e7d2b28dec537e69c7dc3c9a2a731f385780bf0c2124a2ed5960",
+            "documents": 1281
+          },
+          {
+            "revision": 17,
+            "worldHash": "b5e73f4c8601bb2cb4169bd59e48edccf4b412faf516317ca12a603502843813",
+            "digest": "8a15e31da56d46211b293577a7e692513d7182649f741b83ef88d09ab7418eb8",
+            "documents": 1281
+          },
+          {
+            "revision": 18,
+            "worldHash": "4791a1b0a3feb466bcc94ed069461e4524bbdd76e5bae4e295b92f79c3ec31b9",
+            "digest": "df026c9000849451912ac36948d2dd08a83de8cb1c791cd4072c159e72ad4353",
+            "documents": 1281
+          },
+          {
+            "revision": 19,
+            "worldHash": "be79d2c7c154b6f0ae7e6351161b4f579970368d758ece4b1b158761876dfe19",
+            "digest": "56bdbc482f597207b3c6e4ad3d3c7fad95039a1885753c52e30ec93aa0522277",
+            "documents": 1281
+          },
+          {
+            "revision": 20,
+            "worldHash": "809015382ee3058b9616e75bdad8776a7315b966268c308ba008b253c9e44cbb",
+            "digest": "e3abb999302bc2cb15e94117bdfd3f7c90029336cb8ff7957f3b52cc6ffe6cdf",
+            "documents": 1281
+          },
+          {
+            "revision": 21,
+            "worldHash": "5ad7622f1b093ec5db4c35902b8f8b42bf860c89b17dd4ed9de50382497c6376",
+            "digest": "d0d6271c6e7fe8ed3ae07c369209a062f0cd3ec033759287975fe804ea379f35",
+            "documents": 1281
+          }
+        ]
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "coldMs": 126.005402,
+        "warmMs": 271.14477599999896,
+        "cpuMs": 403.895,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 147906560,
+          "heapTotal": 80801792,
+          "heapUsed": 10583232,
+          "external": 2748941,
+          "arrayBuffers": 604419
+        },
+        "maxRSSKiB": 144440,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "926b444d267accd80041c5ad734504a65c0e8ea64fe53586ebf29d8dbbd47e93",
+            "digest": "2b6155e7168f4b67257f5c81cad9310e549efbf84a9364001dfbbc34840f6e9d",
+            "documents": 1281
+          },
+          {
+            "revision": 2,
+            "worldHash": "99af6a7c67b2d8130cacb97d6e501fbed8c0eb2ced4af5b9ec04c6bc5757e96b",
+            "digest": "e0f141c442bc2896d60c97e9fb9df1352b5c901e70a2ada66d0baf125bb438e1",
+            "documents": 1281
+          },
+          {
+            "revision": 3,
+            "worldHash": "f2e4df62414091dd134ff3ee207439f2b7e8f6adf1e2bb1773a305236bb9fb0a",
+            "digest": "17bbde49cd6d8a7c3fda8d376e143bdb4d50083fc800f8e0e40504345590ca07",
+            "documents": 1281
+          },
+          {
+            "revision": 4,
+            "worldHash": "4dd5a1504ce304a225f954c61fd8e25d405598e3a798f0cb48472f809ce951a9",
+            "digest": "3e3a8748ff5cc56932dce97cc64e509820190aff86f837084a4de063099c545c",
+            "documents": 1281
+          },
+          {
+            "revision": 5,
+            "worldHash": "99c058242144fae2614153b764efa6606a65aab2f857de816cfa5205e2b2a775",
+            "digest": "1a5aca1eb0483ce9acf394da375c74b89d15202ff5fafeb5a0a0dc2d439cdd80",
+            "documents": 1281
+          },
+          {
+            "revision": 6,
+            "worldHash": "baf9a7ead82bab26c84599b014d485e1438bccda800675dd8fec87f40f966563",
+            "digest": "91a7c89ebc2377062557302d6dd9667ff43e5b762ccf625b6081a8e69bbe3499",
+            "documents": 1281
+          },
+          {
+            "revision": 7,
+            "worldHash": "8ab1cf7bbffe1e98de858c2c7ca6ecdd711ffe04d02a91debeab7b4c7ef13fc6",
+            "digest": "6b2a6c2df049ba3b697ccaa9f12aa6bdf33d8d26c562822d96eab6bc59bea15e",
+            "documents": 1281
+          },
+          {
+            "revision": 8,
+            "worldHash": "3aeb61ff6f710520b77ef2cde89acb4ec6e6761a59ed1e23a19b446ef59b02cd",
+            "digest": "88ccc6a41c40b08f1c21e72406d6b79774d3388722b6a947c042e4994ae50085",
+            "documents": 1281
+          },
+          {
+            "revision": 9,
+            "worldHash": "69bedc4bb43d24e447b80d80788b3c6b09353bf87c5825a80f193ab0275f173e",
+            "digest": "0a7f502cb63614bcd6486941ab14e5d0cda934f78a76f2cfc1d02074d9e4f1ea",
+            "documents": 1281
+          },
+          {
+            "revision": 10,
+            "worldHash": "5b84d3439f002aa86304e379f18eca1bcab170445c52b882ba62067cdf4cadf4",
+            "digest": "984b5381eab157039144f0bf3741d0e2d8d6ddd9dfa15a347fb4cee825712a6e",
+            "documents": 1281
+          },
+          {
+            "revision": 11,
+            "worldHash": "b3033d5cea97ecf56a44baa937c153d57f289d3306bdb91723d58e9cc198c416",
+            "digest": "c92088f67c992bd58b486cd20dbcd3acae7ae5dcef744420b6e66d5e31b98eb9",
+            "documents": 1281
+          },
+          {
+            "revision": 12,
+            "worldHash": "7550f87f7731ff37a44192f678fb04d9b42b9b853ceec33da19eceb50a0958a6",
+            "digest": "9a9498f83a1684460b2c0e49abffec1c23736ea668f9d741bceee449dc316350",
+            "documents": 1281
+          },
+          {
+            "revision": 13,
+            "worldHash": "d06040e51700ae5bc775cd2d1ae18b905c28d8b55875cf3b226241fc45abb736",
+            "digest": "161876bd9abf8056f0bb72af44c4195d17cdda2ba7e8d922883704be9a31cfba",
+            "documents": 1281
+          },
+          {
+            "revision": 14,
+            "worldHash": "b000175c1c761eb5217f95063ec880888e1bc2c3c2fa7eddb6c488fe71209d35",
+            "digest": "5691021a11a77415407bf2c16f6df98c4cc0a7e404c2c26062aed61f63b47bd8",
+            "documents": 1281
+          },
+          {
+            "revision": 15,
+            "worldHash": "de21f446fab1600e372e329d771ac0664c5008ba9a083a1959b4d0eeaa01a929",
+            "digest": "cadff9f42661109c745baa03a3d79dd39c86c91ae9495d9ea4f7419d3d76bc6e",
+            "documents": 1281
+          },
+          {
+            "revision": 16,
+            "worldHash": "f3a526f47b20b29a7a4d5dd722fd8c824dec69f7333328dd6a15da96dd08e148",
+            "digest": "9f5648914132e7d2b28dec537e69c7dc3c9a2a731f385780bf0c2124a2ed5960",
+            "documents": 1281
+          },
+          {
+            "revision": 17,
+            "worldHash": "b5e73f4c8601bb2cb4169bd59e48edccf4b412faf516317ca12a603502843813",
+            "digest": "8a15e31da56d46211b293577a7e692513d7182649f741b83ef88d09ab7418eb8",
+            "documents": 1281
+          },
+          {
+            "revision": 18,
+            "worldHash": "4791a1b0a3feb466bcc94ed069461e4524bbdd76e5bae4e295b92f79c3ec31b9",
+            "digest": "df026c9000849451912ac36948d2dd08a83de8cb1c791cd4072c159e72ad4353",
+            "documents": 1281
+          },
+          {
+            "revision": 19,
+            "worldHash": "be79d2c7c154b6f0ae7e6351161b4f579970368d758ece4b1b158761876dfe19",
+            "digest": "56bdbc482f597207b3c6e4ad3d3c7fad95039a1885753c52e30ec93aa0522277",
+            "documents": 1281
+          },
+          {
+            "revision": 20,
+            "worldHash": "809015382ee3058b9616e75bdad8776a7315b966268c308ba008b253c9e44cbb",
+            "digest": "e3abb999302bc2cb15e94117bdfd3f7c90029336cb8ff7957f3b52cc6ffe6cdf",
+            "documents": 1281
+          },
+          {
+            "revision": 21,
+            "worldHash": "5ad7622f1b093ec5db4c35902b8f8b42bf860c89b17dd4ed9de50382497c6376",
+            "digest": "d0d6271c6e7fe8ed3ae07c369209a062f0cd3ec033759287975fe804ea379f35",
+            "documents": 1281
+          }
+        ]
+      },
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "coldMs": 117.61634200000026,
+        "warmMs": 390.37086000000045,
+        "cpuMs": 478.929,
+        "reusedDocuments": 0,
+        "memory": {
+          "rss": 149803008,
+          "heapTotal": 81321984,
+          "heapUsed": 7806696,
+          "external": 2814477,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 146632,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "926b444d267accd80041c5ad734504a65c0e8ea64fe53586ebf29d8dbbd47e93",
+            "digest": "2b6155e7168f4b67257f5c81cad9310e549efbf84a9364001dfbbc34840f6e9d",
+            "documents": 1281
+          },
+          {
+            "revision": 2,
+            "worldHash": "99af6a7c67b2d8130cacb97d6e501fbed8c0eb2ced4af5b9ec04c6bc5757e96b",
+            "digest": "e0f141c442bc2896d60c97e9fb9df1352b5c901e70a2ada66d0baf125bb438e1",
+            "documents": 1281
+          },
+          {
+            "revision": 3,
+            "worldHash": "f2e4df62414091dd134ff3ee207439f2b7e8f6adf1e2bb1773a305236bb9fb0a",
+            "digest": "17bbde49cd6d8a7c3fda8d376e143bdb4d50083fc800f8e0e40504345590ca07",
+            "documents": 1281
+          },
+          {
+            "revision": 4,
+            "worldHash": "4dd5a1504ce304a225f954c61fd8e25d405598e3a798f0cb48472f809ce951a9",
+            "digest": "3e3a8748ff5cc56932dce97cc64e509820190aff86f837084a4de063099c545c",
+            "documents": 1281
+          },
+          {
+            "revision": 5,
+            "worldHash": "99c058242144fae2614153b764efa6606a65aab2f857de816cfa5205e2b2a775",
+            "digest": "1a5aca1eb0483ce9acf394da375c74b89d15202ff5fafeb5a0a0dc2d439cdd80",
+            "documents": 1281
+          },
+          {
+            "revision": 6,
+            "worldHash": "baf9a7ead82bab26c84599b014d485e1438bccda800675dd8fec87f40f966563",
+            "digest": "91a7c89ebc2377062557302d6dd9667ff43e5b762ccf625b6081a8e69bbe3499",
+            "documents": 1281
+          },
+          {
+            "revision": 7,
+            "worldHash": "8ab1cf7bbffe1e98de858c2c7ca6ecdd711ffe04d02a91debeab7b4c7ef13fc6",
+            "digest": "6b2a6c2df049ba3b697ccaa9f12aa6bdf33d8d26c562822d96eab6bc59bea15e",
+            "documents": 1281
+          },
+          {
+            "revision": 8,
+            "worldHash": "3aeb61ff6f710520b77ef2cde89acb4ec6e6761a59ed1e23a19b446ef59b02cd",
+            "digest": "88ccc6a41c40b08f1c21e72406d6b79774d3388722b6a947c042e4994ae50085",
+            "documents": 1281
+          },
+          {
+            "revision": 9,
+            "worldHash": "69bedc4bb43d24e447b80d80788b3c6b09353bf87c5825a80f193ab0275f173e",
+            "digest": "0a7f502cb63614bcd6486941ab14e5d0cda934f78a76f2cfc1d02074d9e4f1ea",
+            "documents": 1281
+          },
+          {
+            "revision": 10,
+            "worldHash": "5b84d3439f002aa86304e379f18eca1bcab170445c52b882ba62067cdf4cadf4",
+            "digest": "984b5381eab157039144f0bf3741d0e2d8d6ddd9dfa15a347fb4cee825712a6e",
+            "documents": 1281
+          },
+          {
+            "revision": 11,
+            "worldHash": "b3033d5cea97ecf56a44baa937c153d57f289d3306bdb91723d58e9cc198c416",
+            "digest": "c92088f67c992bd58b486cd20dbcd3acae7ae5dcef744420b6e66d5e31b98eb9",
+            "documents": 1281
+          },
+          {
+            "revision": 12,
+            "worldHash": "7550f87f7731ff37a44192f678fb04d9b42b9b853ceec33da19eceb50a0958a6",
+            "digest": "9a9498f83a1684460b2c0e49abffec1c23736ea668f9d741bceee449dc316350",
+            "documents": 1281
+          },
+          {
+            "revision": 13,
+            "worldHash": "d06040e51700ae5bc775cd2d1ae18b905c28d8b55875cf3b226241fc45abb736",
+            "digest": "161876bd9abf8056f0bb72af44c4195d17cdda2ba7e8d922883704be9a31cfba",
+            "documents": 1281
+          },
+          {
+            "revision": 14,
+            "worldHash": "b000175c1c761eb5217f95063ec880888e1bc2c3c2fa7eddb6c488fe71209d35",
+            "digest": "5691021a11a77415407bf2c16f6df98c4cc0a7e404c2c26062aed61f63b47bd8",
+            "documents": 1281
+          },
+          {
+            "revision": 15,
+            "worldHash": "de21f446fab1600e372e329d771ac0664c5008ba9a083a1959b4d0eeaa01a929",
+            "digest": "cadff9f42661109c745baa03a3d79dd39c86c91ae9495d9ea4f7419d3d76bc6e",
+            "documents": 1281
+          },
+          {
+            "revision": 16,
+            "worldHash": "f3a526f47b20b29a7a4d5dd722fd8c824dec69f7333328dd6a15da96dd08e148",
+            "digest": "9f5648914132e7d2b28dec537e69c7dc3c9a2a731f385780bf0c2124a2ed5960",
+            "documents": 1281
+          },
+          {
+            "revision": 17,
+            "worldHash": "b5e73f4c8601bb2cb4169bd59e48edccf4b412faf516317ca12a603502843813",
+            "digest": "8a15e31da56d46211b293577a7e692513d7182649f741b83ef88d09ab7418eb8",
+            "documents": 1281
+          },
+          {
+            "revision": 18,
+            "worldHash": "4791a1b0a3feb466bcc94ed069461e4524bbdd76e5bae4e295b92f79c3ec31b9",
+            "digest": "df026c9000849451912ac36948d2dd08a83de8cb1c791cd4072c159e72ad4353",
+            "documents": 1281
+          },
+          {
+            "revision": 19,
+            "worldHash": "be79d2c7c154b6f0ae7e6351161b4f579970368d758ece4b1b158761876dfe19",
+            "digest": "56bdbc482f597207b3c6e4ad3d3c7fad95039a1885753c52e30ec93aa0522277",
+            "documents": 1281
+          },
+          {
+            "revision": 20,
+            "worldHash": "809015382ee3058b9616e75bdad8776a7315b966268c308ba008b253c9e44cbb",
+            "digest": "e3abb999302bc2cb15e94117bdfd3f7c90029336cb8ff7957f3b52cc6ffe6cdf",
+            "documents": 1281
+          },
+          {
+            "revision": 21,
+            "worldHash": "5ad7622f1b093ec5db4c35902b8f8b42bf860c89b17dd4ed9de50382497c6376",
+            "digest": "d0d6271c6e7fe8ed3ae07c369209a062f0cd3ec033759287975fe804ea379f35",
+            "documents": 1281
+          }
+        ]
+      },
+      {
+        "variant": "baseline",
+        "profiles": 10000,
+        "coldMs": 624.0034310000001,
+        "warmMs": 3280.765044999999,
+        "cpuMs": 4142.872,
+        "reusedDocuments": 0,
+        "memory": {
+          "rss": 249860096,
+          "heapTotal": 116322304,
+          "heapUsed": 21677696,
+          "external": 5698061,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 266860,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "b5a1652f67abe9809d4bd0bec54ce11a609166b700efe8b8e07537797b24f975",
+            "digest": "c30a30c884631c43ea97604a49d2eb1bf4a3471501255454100518fda84a4bca",
+            "documents": 10001
+          },
+          {
+            "revision": 2,
+            "worldHash": "a9ae0c7167a53b87bf9a873e1ab4ac1f68342b4575da07ec08d88f0ae9862350",
+            "digest": "2b041c7a74e3925ac83e062d68e35177aa7dc8e4eadfe1921542909d250ed9fb",
+            "documents": 10001
+          },
+          {
+            "revision": 3,
+            "worldHash": "b47b81aa02b97389c0273ae00d5aee6f326938f34a7a6531dd89a51d473bb321",
+            "digest": "bb702cedde142c4c3a7bd54a641ced433cb8d32e41b9fe011acbdc198d2bd38b",
+            "documents": 10001
+          },
+          {
+            "revision": 4,
+            "worldHash": "fec4d901156dc4aae1093e357396e34442bd9f3be783a930c4e15a56cfda8af9",
+            "digest": "c57e2501252168fe66a9799faa661f0f29271b16b01ba6f2c81961a5b63d82f2",
+            "documents": 10001
+          },
+          {
+            "revision": 5,
+            "worldHash": "a4e0045b7d1e194a764cb7439e0e8b50e797191ef88614ff5d0bc214fa132d42",
+            "digest": "caa9f7ce56da9e8e7c4ea27c1ff8304fcc186777f7b6e91d351e0087a9decbf0",
+            "documents": 10001
+          },
+          {
+            "revision": 6,
+            "worldHash": "0f719d932fa08a57dcfd9c28b0e81956985e4f363b05a1658f408dbf0a71fc75",
+            "digest": "5cd1fba49ebb00e9880e12bb94555af92607d8eed2ab814242e93efe8701bd6d",
+            "documents": 10001
+          },
+          {
+            "revision": 7,
+            "worldHash": "d1f3bc5601a44863990c28c9960e33da76aae9aa8d1347b350864623415ce4d8",
+            "digest": "7111e49a1c41299d28a79b26c9af3d7aef0bcc4a0bb176fab44f370b3ba04acc",
+            "documents": 10001
+          },
+          {
+            "revision": 8,
+            "worldHash": "41037b1e44de569f17ebdb46e12299dd74e0fba5b324edc99dd64355fef09a79",
+            "digest": "605c48dc6a41616fc84e24868c60a6e43530f2d5ae7ee49f036ce9709d1e9ed5",
+            "documents": 10001
+          },
+          {
+            "revision": 9,
+            "worldHash": "5d064851aa066598c802c9f30566aae683968e15ccc20ec4da2e11438a3ac614",
+            "digest": "6bf44b01389548ddec3ea0a4ab458967981cb87a0b7a9b7da38cfd413b29cdb2",
+            "documents": 10001
+          },
+          {
+            "revision": 10,
+            "worldHash": "dbf3a12ca4b4a432fb959f0366f341194e22166c85764a96ac93087e53bf698e",
+            "digest": "cbb280ff306ad6e553492c27e545d751676cbea25447441886a342187844b3a8",
+            "documents": 10001
+          },
+          {
+            "revision": 11,
+            "worldHash": "06520508850ef2cd8417cac6ca5ecc67ae6b38f71f15b57ae0eef2775b5a7df1",
+            "digest": "bd32ba780fe494d795f893d6f5c58af44f8e246a6a8951db1b1115703a56f52e",
+            "documents": 10001
+          },
+          {
+            "revision": 12,
+            "worldHash": "b9622dd30d62defb60fb72d4d7a1e5eaf071cb439f595d93d583eef5a5c043f6",
+            "digest": "348b6bf8526310007a6a4bf92d0d138f04be49b6566f4e93bcadf5af1b2c1ac1",
+            "documents": 10001
+          },
+          {
+            "revision": 13,
+            "worldHash": "4573e596696138d188ff748c46303404f2a675ec335d458085f07e544d2cf9d5",
+            "digest": "97af2b1ce194275eddf251d1083a569bbfd0f1501dc266e3107923c80c40b82f",
+            "documents": 10001
+          },
+          {
+            "revision": 14,
+            "worldHash": "0a1702ccc9b8c15b68fcdf9f1d97bccf3f3593e181529ac258f807e85ce00b71",
+            "digest": "6b99116e3ed66d9357eb8fbd3509ed8b348f1dcdbe8ef7aea171997eb37132e9",
+            "documents": 10001
+          },
+          {
+            "revision": 15,
+            "worldHash": "8cb14920eaa2e01c7c0e60748c42926fe9120efabbfdfaf765f30ca398ae1d69",
+            "digest": "eb4f57be153755402054ccca23e375d3a5c1b4e9f13c3d9607fda860dba5ba7c",
+            "documents": 10001
+          },
+          {
+            "revision": 16,
+            "worldHash": "5a654f9347850cd4197f575a8be176b8283bb4cec348d45bf782a1351920dd8d",
+            "digest": "348deebb81ed7735297fc982a9600077bbba20b46e93edb678e4c8356fe20920",
+            "documents": 10001
+          },
+          {
+            "revision": 17,
+            "worldHash": "8302247d5fdd9903102b32d1ee3009742da216724618706d5b311391411d910d",
+            "digest": "ea664e3249ea56da6cd59cc3ef447f0aa3998fe5561168f5bb35f1fd9ee01544",
+            "documents": 10001
+          },
+          {
+            "revision": 18,
+            "worldHash": "df15fe134ec8139d4799b0b23639fedc10ceab3359bfd9b4ed8e40fe97b20099",
+            "digest": "208b4518d13c745de2a8624cd89ca2f1f16f1f23e52de39b2dcb96fdf7165757",
+            "documents": 10001
+          },
+          {
+            "revision": 19,
+            "worldHash": "a967a74f320657be67b636a29de4b1269c3f8916da897d1f6523769fb9b6d75b",
+            "digest": "89c3097aa75f7b293dc12eb1a7a800b4fb5e288611930631fb0bcb2a3b0dc858",
+            "documents": 10001
+          },
+          {
+            "revision": 20,
+            "worldHash": "020e2c2ad05ea09ea49d5333bbab4ff96b2dab4c4060816379f56f41c91c8eeb",
+            "digest": "0753b08d97337930161ed55f34222b4ec0b3451fc9be71a90ec2584b025ca912",
+            "documents": 10001
+          },
+          {
+            "revision": 21,
+            "worldHash": "bf4e95c6a3bb3087a69a40a4439561683ad2bccb1f403c6161ff08edd39d1966",
+            "digest": "e4298acb607b7bcb81af008015a0b983b640b59bd3d13fdd815344a38036b63f",
+            "documents": 10001
+          }
+        ]
+      },
+      {
+        "variant": "candidate",
+        "profiles": 10000,
+        "coldMs": 629.8655159999998,
+        "warmMs": 2305.1638870000024,
+        "cpuMs": 3153.802,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 254988288,
+          "heapTotal": 112922624,
+          "heapUsed": 22076184,
+          "external": 5632525,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 272584,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "b5a1652f67abe9809d4bd0bec54ce11a609166b700efe8b8e07537797b24f975",
+            "digest": "c30a30c884631c43ea97604a49d2eb1bf4a3471501255454100518fda84a4bca",
+            "documents": 10001
+          },
+          {
+            "revision": 2,
+            "worldHash": "a9ae0c7167a53b87bf9a873e1ab4ac1f68342b4575da07ec08d88f0ae9862350",
+            "digest": "2b041c7a74e3925ac83e062d68e35177aa7dc8e4eadfe1921542909d250ed9fb",
+            "documents": 10001
+          },
+          {
+            "revision": 3,
+            "worldHash": "b47b81aa02b97389c0273ae00d5aee6f326938f34a7a6531dd89a51d473bb321",
+            "digest": "bb702cedde142c4c3a7bd54a641ced433cb8d32e41b9fe011acbdc198d2bd38b",
+            "documents": 10001
+          },
+          {
+            "revision": 4,
+            "worldHash": "fec4d901156dc4aae1093e357396e34442bd9f3be783a930c4e15a56cfda8af9",
+            "digest": "c57e2501252168fe66a9799faa661f0f29271b16b01ba6f2c81961a5b63d82f2",
+            "documents": 10001
+          },
+          {
+            "revision": 5,
+            "worldHash": "a4e0045b7d1e194a764cb7439e0e8b50e797191ef88614ff5d0bc214fa132d42",
+            "digest": "caa9f7ce56da9e8e7c4ea27c1ff8304fcc186777f7b6e91d351e0087a9decbf0",
+            "documents": 10001
+          },
+          {
+            "revision": 6,
+            "worldHash": "0f719d932fa08a57dcfd9c28b0e81956985e4f363b05a1658f408dbf0a71fc75",
+            "digest": "5cd1fba49ebb00e9880e12bb94555af92607d8eed2ab814242e93efe8701bd6d",
+            "documents": 10001
+          },
+          {
+            "revision": 7,
+            "worldHash": "d1f3bc5601a44863990c28c9960e33da76aae9aa8d1347b350864623415ce4d8",
+            "digest": "7111e49a1c41299d28a79b26c9af3d7aef0bcc4a0bb176fab44f370b3ba04acc",
+            "documents": 10001
+          },
+          {
+            "revision": 8,
+            "worldHash": "41037b1e44de569f17ebdb46e12299dd74e0fba5b324edc99dd64355fef09a79",
+            "digest": "605c48dc6a41616fc84e24868c60a6e43530f2d5ae7ee49f036ce9709d1e9ed5",
+            "documents": 10001
+          },
+          {
+            "revision": 9,
+            "worldHash": "5d064851aa066598c802c9f30566aae683968e15ccc20ec4da2e11438a3ac614",
+            "digest": "6bf44b01389548ddec3ea0a4ab458967981cb87a0b7a9b7da38cfd413b29cdb2",
+            "documents": 10001
+          },
+          {
+            "revision": 10,
+            "worldHash": "dbf3a12ca4b4a432fb959f0366f341194e22166c85764a96ac93087e53bf698e",
+            "digest": "cbb280ff306ad6e553492c27e545d751676cbea25447441886a342187844b3a8",
+            "documents": 10001
+          },
+          {
+            "revision": 11,
+            "worldHash": "06520508850ef2cd8417cac6ca5ecc67ae6b38f71f15b57ae0eef2775b5a7df1",
+            "digest": "bd32ba780fe494d795f893d6f5c58af44f8e246a6a8951db1b1115703a56f52e",
+            "documents": 10001
+          },
+          {
+            "revision": 12,
+            "worldHash": "b9622dd30d62defb60fb72d4d7a1e5eaf071cb439f595d93d583eef5a5c043f6",
+            "digest": "348b6bf8526310007a6a4bf92d0d138f04be49b6566f4e93bcadf5af1b2c1ac1",
+            "documents": 10001
+          },
+          {
+            "revision": 13,
+            "worldHash": "4573e596696138d188ff748c46303404f2a675ec335d458085f07e544d2cf9d5",
+            "digest": "97af2b1ce194275eddf251d1083a569bbfd0f1501dc266e3107923c80c40b82f",
+            "documents": 10001
+          },
+          {
+            "revision": 14,
+            "worldHash": "0a1702ccc9b8c15b68fcdf9f1d97bccf3f3593e181529ac258f807e85ce00b71",
+            "digest": "6b99116e3ed66d9357eb8fbd3509ed8b348f1dcdbe8ef7aea171997eb37132e9",
+            "documents": 10001
+          },
+          {
+            "revision": 15,
+            "worldHash": "8cb14920eaa2e01c7c0e60748c42926fe9120efabbfdfaf765f30ca398ae1d69",
+            "digest": "eb4f57be153755402054ccca23e375d3a5c1b4e9f13c3d9607fda860dba5ba7c",
+            "documents": 10001
+          },
+          {
+            "revision": 16,
+            "worldHash": "5a654f9347850cd4197f575a8be176b8283bb4cec348d45bf782a1351920dd8d",
+            "digest": "348deebb81ed7735297fc982a9600077bbba20b46e93edb678e4c8356fe20920",
+            "documents": 10001
+          },
+          {
+            "revision": 17,
+            "worldHash": "8302247d5fdd9903102b32d1ee3009742da216724618706d5b311391411d910d",
+            "digest": "ea664e3249ea56da6cd59cc3ef447f0aa3998fe5561168f5bb35f1fd9ee01544",
+            "documents": 10001
+          },
+          {
+            "revision": 18,
+            "worldHash": "df15fe134ec8139d4799b0b23639fedc10ceab3359bfd9b4ed8e40fe97b20099",
+            "digest": "208b4518d13c745de2a8624cd89ca2f1f16f1f23e52de39b2dcb96fdf7165757",
+            "documents": 10001
+          },
+          {
+            "revision": 19,
+            "worldHash": "a967a74f320657be67b636a29de4b1269c3f8916da897d1f6523769fb9b6d75b",
+            "digest": "89c3097aa75f7b293dc12eb1a7a800b4fb5e288611930631fb0bcb2a3b0dc858",
+            "documents": 10001
+          },
+          {
+            "revision": 20,
+            "worldHash": "020e2c2ad05ea09ea49d5333bbab4ff96b2dab4c4060816379f56f41c91c8eeb",
+            "digest": "0753b08d97337930161ed55f34222b4ec0b3451fc9be71a90ec2584b025ca912",
+            "documents": 10001
+          },
+          {
+            "revision": 21,
+            "worldHash": "bf4e95c6a3bb3087a69a40a4439561683ad2bccb1f403c6161ff08edd39d1966",
+            "digest": "e4298acb607b7bcb81af008015a0b983b640b59bd3d13fdd815344a38036b63f",
+            "documents": 10001
+          }
+        ]
+      },
+      {
+        "variant": "candidate",
+        "profiles": 10000,
+        "coldMs": 654.5871119999993,
+        "warmMs": 2250.792390999999,
+        "cpuMs": 3086.511,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 258121728,
+          "heapTotal": 112660480,
+          "heapUsed": 22081240,
+          "external": 5698061,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 275620,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "b5a1652f67abe9809d4bd0bec54ce11a609166b700efe8b8e07537797b24f975",
+            "digest": "c30a30c884631c43ea97604a49d2eb1bf4a3471501255454100518fda84a4bca",
+            "documents": 10001
+          },
+          {
+            "revision": 2,
+            "worldHash": "a9ae0c7167a53b87bf9a873e1ab4ac1f68342b4575da07ec08d88f0ae9862350",
+            "digest": "2b041c7a74e3925ac83e062d68e35177aa7dc8e4eadfe1921542909d250ed9fb",
+            "documents": 10001
+          },
+          {
+            "revision": 3,
+            "worldHash": "b47b81aa02b97389c0273ae00d5aee6f326938f34a7a6531dd89a51d473bb321",
+            "digest": "bb702cedde142c4c3a7bd54a641ced433cb8d32e41b9fe011acbdc198d2bd38b",
+            "documents": 10001
+          },
+          {
+            "revision": 4,
+            "worldHash": "fec4d901156dc4aae1093e357396e34442bd9f3be783a930c4e15a56cfda8af9",
+            "digest": "c57e2501252168fe66a9799faa661f0f29271b16b01ba6f2c81961a5b63d82f2",
+            "documents": 10001
+          },
+          {
+            "revision": 5,
+            "worldHash": "a4e0045b7d1e194a764cb7439e0e8b50e797191ef88614ff5d0bc214fa132d42",
+            "digest": "caa9f7ce56da9e8e7c4ea27c1ff8304fcc186777f7b6e91d351e0087a9decbf0",
+            "documents": 10001
+          },
+          {
+            "revision": 6,
+            "worldHash": "0f719d932fa08a57dcfd9c28b0e81956985e4f363b05a1658f408dbf0a71fc75",
+            "digest": "5cd1fba49ebb00e9880e12bb94555af92607d8eed2ab814242e93efe8701bd6d",
+            "documents": 10001
+          },
+          {
+            "revision": 7,
+            "worldHash": "d1f3bc5601a44863990c28c9960e33da76aae9aa8d1347b350864623415ce4d8",
+            "digest": "7111e49a1c41299d28a79b26c9af3d7aef0bcc4a0bb176fab44f370b3ba04acc",
+            "documents": 10001
+          },
+          {
+            "revision": 8,
+            "worldHash": "41037b1e44de569f17ebdb46e12299dd74e0fba5b324edc99dd64355fef09a79",
+            "digest": "605c48dc6a41616fc84e24868c60a6e43530f2d5ae7ee49f036ce9709d1e9ed5",
+            "documents": 10001
+          },
+          {
+            "revision": 9,
+            "worldHash": "5d064851aa066598c802c9f30566aae683968e15ccc20ec4da2e11438a3ac614",
+            "digest": "6bf44b01389548ddec3ea0a4ab458967981cb87a0b7a9b7da38cfd413b29cdb2",
+            "documents": 10001
+          },
+          {
+            "revision": 10,
+            "worldHash": "dbf3a12ca4b4a432fb959f0366f341194e22166c85764a96ac93087e53bf698e",
+            "digest": "cbb280ff306ad6e553492c27e545d751676cbea25447441886a342187844b3a8",
+            "documents": 10001
+          },
+          {
+            "revision": 11,
+            "worldHash": "06520508850ef2cd8417cac6ca5ecc67ae6b38f71f15b57ae0eef2775b5a7df1",
+            "digest": "bd32ba780fe494d795f893d6f5c58af44f8e246a6a8951db1b1115703a56f52e",
+            "documents": 10001
+          },
+          {
+            "revision": 12,
+            "worldHash": "b9622dd30d62defb60fb72d4d7a1e5eaf071cb439f595d93d583eef5a5c043f6",
+            "digest": "348b6bf8526310007a6a4bf92d0d138f04be49b6566f4e93bcadf5af1b2c1ac1",
+            "documents": 10001
+          },
+          {
+            "revision": 13,
+            "worldHash": "4573e596696138d188ff748c46303404f2a675ec335d458085f07e544d2cf9d5",
+            "digest": "97af2b1ce194275eddf251d1083a569bbfd0f1501dc266e3107923c80c40b82f",
+            "documents": 10001
+          },
+          {
+            "revision": 14,
+            "worldHash": "0a1702ccc9b8c15b68fcdf9f1d97bccf3f3593e181529ac258f807e85ce00b71",
+            "digest": "6b99116e3ed66d9357eb8fbd3509ed8b348f1dcdbe8ef7aea171997eb37132e9",
+            "documents": 10001
+          },
+          {
+            "revision": 15,
+            "worldHash": "8cb14920eaa2e01c7c0e60748c42926fe9120efabbfdfaf765f30ca398ae1d69",
+            "digest": "eb4f57be153755402054ccca23e375d3a5c1b4e9f13c3d9607fda860dba5ba7c",
+            "documents": 10001
+          },
+          {
+            "revision": 16,
+            "worldHash": "5a654f9347850cd4197f575a8be176b8283bb4cec348d45bf782a1351920dd8d",
+            "digest": "348deebb81ed7735297fc982a9600077bbba20b46e93edb678e4c8356fe20920",
+            "documents": 10001
+          },
+          {
+            "revision": 17,
+            "worldHash": "8302247d5fdd9903102b32d1ee3009742da216724618706d5b311391411d910d",
+            "digest": "ea664e3249ea56da6cd59cc3ef447f0aa3998fe5561168f5bb35f1fd9ee01544",
+            "documents": 10001
+          },
+          {
+            "revision": 18,
+            "worldHash": "df15fe134ec8139d4799b0b23639fedc10ceab3359bfd9b4ed8e40fe97b20099",
+            "digest": "208b4518d13c745de2a8624cd89ca2f1f16f1f23e52de39b2dcb96fdf7165757",
+            "documents": 10001
+          },
+          {
+            "revision": 19,
+            "worldHash": "a967a74f320657be67b636a29de4b1269c3f8916da897d1f6523769fb9b6d75b",
+            "digest": "89c3097aa75f7b293dc12eb1a7a800b4fb5e288611930631fb0bcb2a3b0dc858",
+            "documents": 10001
+          },
+          {
+            "revision": 20,
+            "worldHash": "020e2c2ad05ea09ea49d5333bbab4ff96b2dab4c4060816379f56f41c91c8eeb",
+            "digest": "0753b08d97337930161ed55f34222b4ec0b3451fc9be71a90ec2584b025ca912",
+            "documents": 10001
+          },
+          {
+            "revision": 21,
+            "worldHash": "bf4e95c6a3bb3087a69a40a4439561683ad2bccb1f403c6161ff08edd39d1966",
+            "digest": "e4298acb607b7bcb81af008015a0b983b640b59bd3d13fdd815344a38036b63f",
+            "documents": 10001
+          }
+        ]
+      },
+      {
+        "variant": "baseline",
+        "profiles": 10000,
+        "coldMs": 620.3704580000012,
+        "warmMs": 3196.171720999995,
+        "cpuMs": 3973.651,
+        "reusedDocuments": 0,
+        "memory": {
+          "rss": 264839168,
+          "heapTotal": 106106880,
+          "heapUsed": 21067016,
+          "external": 5694540,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 280176,
+        "frames": [
+          {
+            "revision": 1,
+            "worldHash": "b5a1652f67abe9809d4bd0bec54ce11a609166b700efe8b8e07537797b24f975",
+            "digest": "c30a30c884631c43ea97604a49d2eb1bf4a3471501255454100518fda84a4bca",
+            "documents": 10001
+          },
+          {
+            "revision": 2,
+            "worldHash": "a9ae0c7167a53b87bf9a873e1ab4ac1f68342b4575da07ec08d88f0ae9862350",
+            "digest": "2b041c7a74e3925ac83e062d68e35177aa7dc8e4eadfe1921542909d250ed9fb",
+            "documents": 10001
+          },
+          {
+            "revision": 3,
+            "worldHash": "b47b81aa02b97389c0273ae00d5aee6f326938f34a7a6531dd89a51d473bb321",
+            "digest": "bb702cedde142c4c3a7bd54a641ced433cb8d32e41b9fe011acbdc198d2bd38b",
+            "documents": 10001
+          },
+          {
+            "revision": 4,
+            "worldHash": "fec4d901156dc4aae1093e357396e34442bd9f3be783a930c4e15a56cfda8af9",
+            "digest": "c57e2501252168fe66a9799faa661f0f29271b16b01ba6f2c81961a5b63d82f2",
+            "documents": 10001
+          },
+          {
+            "revision": 5,
+            "worldHash": "a4e0045b7d1e194a764cb7439e0e8b50e797191ef88614ff5d0bc214fa132d42",
+            "digest": "caa9f7ce56da9e8e7c4ea27c1ff8304fcc186777f7b6e91d351e0087a9decbf0",
+            "documents": 10001
+          },
+          {
+            "revision": 6,
+            "worldHash": "0f719d932fa08a57dcfd9c28b0e81956985e4f363b05a1658f408dbf0a71fc75",
+            "digest": "5cd1fba49ebb00e9880e12bb94555af92607d8eed2ab814242e93efe8701bd6d",
+            "documents": 10001
+          },
+          {
+            "revision": 7,
+            "worldHash": "d1f3bc5601a44863990c28c9960e33da76aae9aa8d1347b350864623415ce4d8",
+            "digest": "7111e49a1c41299d28a79b26c9af3d7aef0bcc4a0bb176fab44f370b3ba04acc",
+            "documents": 10001
+          },
+          {
+            "revision": 8,
+            "worldHash": "41037b1e44de569f17ebdb46e12299dd74e0fba5b324edc99dd64355fef09a79",
+            "digest": "605c48dc6a41616fc84e24868c60a6e43530f2d5ae7ee49f036ce9709d1e9ed5",
+            "documents": 10001
+          },
+          {
+            "revision": 9,
+            "worldHash": "5d064851aa066598c802c9f30566aae683968e15ccc20ec4da2e11438a3ac614",
+            "digest": "6bf44b01389548ddec3ea0a4ab458967981cb87a0b7a9b7da38cfd413b29cdb2",
+            "documents": 10001
+          },
+          {
+            "revision": 10,
+            "worldHash": "dbf3a12ca4b4a432fb959f0366f341194e22166c85764a96ac93087e53bf698e",
+            "digest": "cbb280ff306ad6e553492c27e545d751676cbea25447441886a342187844b3a8",
+            "documents": 10001
+          },
+          {
+            "revision": 11,
+            "worldHash": "06520508850ef2cd8417cac6ca5ecc67ae6b38f71f15b57ae0eef2775b5a7df1",
+            "digest": "bd32ba780fe494d795f893d6f5c58af44f8e246a6a8951db1b1115703a56f52e",
+            "documents": 10001
+          },
+          {
+            "revision": 12,
+            "worldHash": "b9622dd30d62defb60fb72d4d7a1e5eaf071cb439f595d93d583eef5a5c043f6",
+            "digest": "348b6bf8526310007a6a4bf92d0d138f04be49b6566f4e93bcadf5af1b2c1ac1",
+            "documents": 10001
+          },
+          {
+            "revision": 13,
+            "worldHash": "4573e596696138d188ff748c46303404f2a675ec335d458085f07e544d2cf9d5",
+            "digest": "97af2b1ce194275eddf251d1083a569bbfd0f1501dc266e3107923c80c40b82f",
+            "documents": 10001
+          },
+          {
+            "revision": 14,
+            "worldHash": "0a1702ccc9b8c15b68fcdf9f1d97bccf3f3593e181529ac258f807e85ce00b71",
+            "digest": "6b99116e3ed66d9357eb8fbd3509ed8b348f1dcdbe8ef7aea171997eb37132e9",
+            "documents": 10001
+          },
+          {
+            "revision": 15,
+            "worldHash": "8cb14920eaa2e01c7c0e60748c42926fe9120efabbfdfaf765f30ca398ae1d69",
+            "digest": "eb4f57be153755402054ccca23e375d3a5c1b4e9f13c3d9607fda860dba5ba7c",
+            "documents": 10001
+          },
+          {
+            "revision": 16,
+            "worldHash": "5a654f9347850cd4197f575a8be176b8283bb4cec348d45bf782a1351920dd8d",
+            "digest": "348deebb81ed7735297fc982a9600077bbba20b46e93edb678e4c8356fe20920",
+            "documents": 10001
+          },
+          {
+            "revision": 17,
+            "worldHash": "8302247d5fdd9903102b32d1ee3009742da216724618706d5b311391411d910d",
+            "digest": "ea664e3249ea56da6cd59cc3ef447f0aa3998fe5561168f5bb35f1fd9ee01544",
+            "documents": 10001
+          },
+          {
+            "revision": 18,
+            "worldHash": "df15fe134ec8139d4799b0b23639fedc10ceab3359bfd9b4ed8e40fe97b20099",
+            "digest": "208b4518d13c745de2a8624cd89ca2f1f16f1f23e52de39b2dcb96fdf7165757",
+            "documents": 10001
+          },
+          {
+            "revision": 19,
+            "worldHash": "a967a74f320657be67b636a29de4b1269c3f8916da897d1f6523769fb9b6d75b",
+            "digest": "89c3097aa75f7b293dc12eb1a7a800b4fb5e288611930631fb0bcb2a3b0dc858",
+            "documents": 10001
+          },
+          {
+            "revision": 20,
+            "worldHash": "020e2c2ad05ea09ea49d5333bbab4ff96b2dab4c4060816379f56f41c91c8eeb",
+            "digest": "0753b08d97337930161ed55f34222b4ec0b3451fc9be71a90ec2584b025ca912",
+            "documents": 10001
+          },
+          {
+            "revision": 21,
+            "worldHash": "bf4e95c6a3bb3087a69a40a4439561683ad2bccb1f403c6161ff08edd39d1966",
+            "digest": "e4298acb607b7bcb81af008015a0b983b640b59bd3d13fdd815344a38036b63f",
+            "documents": 10001
+          }
+        ]
+      }
+    ],
+    "scope": "Canonical immutable snapshot preparation only, excluding filesystem, network, PostgreSQL and game simulation; not measured CCU"
+  },
+  "limitations": [
+    "Component benchmark excludes filesystem, PostgreSQL, network and gameplay",
+    "Full combined regression, real PostgreSQL and sustained mixed load remain required",
+    "This experiment does not prove an online-player capacity increase"
+  ]
+}

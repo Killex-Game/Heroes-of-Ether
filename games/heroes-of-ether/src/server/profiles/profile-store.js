@@ -154,6 +154,10 @@ function arenaDraft(current, cast = false, sharedActivityValues = false) {
   // object first forced a dictionary layout and a second full property copy.
   for (const key of Object.keys(current)) {
     if (arenaSharedFields.has(key)) continue;
+    // Audited passive batches cannot write Easter collections or completed
+    // roulette achievements. Life boundaries, pickups, casts and unknown
+    // events keep private archives; future event writers therefore opt in.
+    if (!cast && sharedActivityValues && (key === 'easter' || key === 'eventAchievements')) continue;
     // Progress only earns/settles counters and unopened prizes. Inventory writes
     // happen in separate cast/claim transactions, which still detach this map.
     if (!cast && key === "inventory") continue;
@@ -249,6 +253,7 @@ class ProfileStore {
     filePath = null,
     journal = false,
     arenaProgressWorker = false,
+    arenaProgressShards = 0,
     incrementalSettlement = false,
     clanDailyQuests = false,
     residentRoomExperiment = false,
@@ -257,6 +262,9 @@ class ProfileStore {
     unlockLeagueFrames = false,
     unlockClanCrests = false,
   } = {}) {
+    if(!Number.isInteger(arenaProgressShards)||arenaProgressShards<0||arenaProgressShards>8||
+       (arenaProgressShards&&(!journal||!filePath||arenaProgressWorker)))
+      throw Error('Addressed progress requires one journaled backend and 0–8 workers');
     this.petEvents = pets.validateEvents(petEvents);
     this.rouletteConfig = roulette.configuration(rouletteConfig);
     this.promotionConfig = promotions.configuration(promotionConfig);
@@ -623,7 +631,9 @@ class ProfileStore {
       this.journal = new persistence.ProfileJournal(filePath, { intervalMs: 300000 });
       this.data = require('./recovery-sharing').share(this.journal.previous,this.data);
     }
-    if (arenaProgressWorker && this.journal)
+    if(arenaProgressShards)
+      this.arenaPreparer=new (require('./clan-arena-progress-shards').ClanArenaProgressShards)({count:arenaProgressShards});
+    else if (arenaProgressWorker && this.journal)
       this.arenaPreparer = new (require("./arena-progress-preparer").ArenaProgressPreparer)();
   }
   prepareSnapshot(next, at = this.now(), context, previous = this.data) {
@@ -1077,41 +1087,8 @@ class ProfileStore {
     };
   }
   arenaAppearance(profile) {
-    // Profiles are replaced on committed mutations. Do not rebuild lobby account
-    // bonuses and appearance grants at 20 Hz for an unchanged profile. Expiry
-    // boundaries are exact, including account login-day rollover and clock rewind.
-    this.arenaAppearanceCache ||= new WeakMap();
-    const at = this.now(),
-      cached = this.arenaAppearanceCache.get(profile);
-    if (
-      cached &&
-      cached.revision === profile.revision &&
-      cached.clan === this.data.clans[profile.clanId] &&
-      cached.testBackgrounds === this.unlockLeagueBackgrounds &&
-      cached.testFrames === this.unlockLeagueFrames &&
-      at >= cached.from &&
-      at < cached.until
-    )
-      return cached.value;
-    const { account, skinId, appearance: selected } = this.identity(profile);
-    let until = account.currencyBonusResetAt;
-    for (const end of [
-      account.vipUntil,
-      account.premiumUntil,
-      ...Object.values(profile.appearance?.grants || {}),
-    ])
-      if (Number.isFinite(end) && end > at) until = Math.min(until, end);
-    const value = { account, skinId, appearance: selected };
-    this.arenaAppearanceCache.set(profile, {
-      value,
-      from: at,
-      until,
-      revision: profile.revision,
-      clan: this.data.clans[profile.clanId],
-      testBackgrounds: this.unlockLeagueBackgrounds,
-      testFrames: this.unlockLeagueFrames,
-    });
-    return value;
+    this.arenaAppearanceCache ||= new (require("./arena-appearance-cache").ArenaAppearanceCache)();
+    return this.arenaAppearanceCache.get(this, profile, this.now());
   }
   publicPlayer(id) {
     this.refreshCompetition();

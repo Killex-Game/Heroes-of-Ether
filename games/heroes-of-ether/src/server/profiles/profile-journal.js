@@ -173,6 +173,9 @@ function arenaProfileEdit(old, row) {
 }
 function recover(file, includeActive = true, sealedFiles = null) {
   const data = fs.existsSync(file) ? require("./checkpoint-json").readCheckpoint(file) : {};
+  return replay(data, file, includeActive, sealedFiles);
+}
+function replay(data, file, includeActive, sealedFiles) {
   let revision = data[REVISION] || 0,
     activeBytes = 0;
   if (!Number.isSafeInteger(revision) || revision < 0)
@@ -203,14 +206,38 @@ function recover(file, includeActive = true, sealedFiles = null) {
   if (revision) data[REVISION] = revision;
   return { data, revision, activeBytes };
 }
-function checkpoint(file) {
+function checkpointIdentity(file) {
+  try {
+    const s = fs.statSync(file, { bigint: true });
+    return [s.dev, s.ino, s.size, s.mtimeNs].join(":");
+  } catch (error) {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  }
+}
+function checkpoint(file, files = null) { return writeCheckpoint(file, null, files); }
+// Private to a single checkpoint worker. No mutable world crosses the worker
+// boundary. Retirement drops this cache; a replacement starts from disk.
+function createCheckpointWriter(file) {
+  const cache = { value: null };
+  return files => writeCheckpoint(file, cache, files);
+}
+function writeCheckpoint(file, cache, selected = null) {
   // Only sealed files: the arena can append to a new active WAL concurrently.
-  const files = segments(file);
+  const files = selected || segments(file);
   if (!files.length) return { revision: 0, bytes: 0 };
   // Take one immutable set of sealed files. A booster may publish a newer
   // segment while this checkpoint is being reconstructed in another worker.
-  const { data, revision } = recover(file, false, files);
+  const previous = cache?.value;
+  // Invalidate before any replay or I/O: even a partially applied invalid WAL
+  // must never become the next base. Only an acknowledged complete checkpoint
+  // is reusable, with identity checked against the actual atomically written file.
+  if (cache) cache.value = null;
+  const { data, revision } = previous && previous.identity === checkpointIdentity(file)
+    ? replay(previous.data, file, false, files) : recover(file, false, files);
   atomicSnapshot(file, data, true);
+  const identity = cache ? checkpointIdentity(file) : null;
+  if (cache && identity === null) throw Error("Checkpoint disappeared before journal cleanup");
   let bytes = 0;
   try {
     for (const source of files) {
@@ -224,6 +251,7 @@ function checkpoint(file) {
     error.removedBytes = bytes;
     throw error;
   }
+  if (cache) cache.value = { data, identity };
   return { revision, bytes, removedBytes: bytes };
 }
 function difference(next, previous) {
@@ -267,7 +295,7 @@ function difference(next, previous) {
   return change;
 }
 class ProfileJournal {
-  constructor(file, { intervalMs = 30000, maxPendingBytes = 64 * 1024 * 1024, checkpointIdleMs = 60000 } = {}) {
+  constructor(file, { intervalMs = 30000, maxPendingBytes = 64 * 1024 * 1024, checkpointIdleMs = 60000, readWindow = {} } = {}) {
     if (!Number.isFinite(checkpointIdleMs) || checkpointIdleMs < 1)
       throw new RangeError("Invalid checkpoint idle interval");
     this.checkpointIdleMs = checkpointIdleMs;
@@ -277,6 +305,7 @@ class ProfileJournal {
     // The store has exclusive writer ownership before opening its journal.
     // Remove only flat read-link directories left by a previous process crash.
     require("./profile-read-snapshot").cleanup(file);
+    this.readWindow = readWindow === false ? null : new (require("./profile-read-window").ProfileReadWindow)(file, readWindow);
     this.revision = restored.revision;
     this.maxPendingBytes = maxPendingBytes;
     this.pendingBytes =
@@ -465,7 +494,7 @@ class ProfileJournal {
     return Math.min(4 * 1024 * 1024, this.maxPendingBytes / 4);
   }
   queueCheckpoint() {
-    if (this.running || this.checkpointQueued) return;
+    if (this.running || this.checkpointCapture || this.checkpointQueued) return;
     this.checkpointQueued = setImmediate(() => {
       this.checkpointQueued = null;
       this.requestCheckpoint().catch((error) => this.reportCheckpointError(error));
@@ -486,17 +515,21 @@ class ProfileJournal {
   }
   async pinSnapshot() {
     if (this.closed || this.fault) throw Error("Profile journal unavailable");
+    if (this.checkpointCapture) { await this.checkpointCapture; return this.pinSnapshot(); }
     if (this.running) { await this.running; return this.pinSnapshot(); }
     if (this.arenaFlush) { await this.arenaFlush.catch(() => {}); return this.pinSnapshot(); }
     // No await between sealing and linking: a checkpoint cannot start/delete
     // segments in this turn. Hard links keep immutable bytes alive afterwards.
     // The active append is never read or copied by the PostgreSQL worker.
     this.sealActive();
-    return require("./profile-read-snapshot").pin(this.file, segments(this.file), this.revision);
+    const files = segments(this.file);
+    return this.readWindow ? this.readWindow.pin(files, this.revision)
+      : require("./profile-read-snapshot").pin(this.file, files, this.revision);
   }
   async requestCheckpoint() {
     if (this.running) return this.running;
     if (this.closed) return Promise.resolve();
+    if (this.checkpointCapture) { await this.checkpointCapture; return this.requestCheckpoint(); }
     // Keep the active descriptor open until its off-thread fsync returns,
     // including when a different transaction superseded that append.
     if (this.arenaFlush) {
@@ -504,7 +537,10 @@ class ProfileJournal {
       return this.requestCheckpoint();
     }
     this.sealActive();
-    if (!segments(this.file).length) return Promise.resolve();
+    const files = segments(this.file);
+    if (!files.length) return Promise.resolve();
+    // Capture exactly the set sent to this checkpoint. A later staged action
+    // must not be deleted before its segment enters the retained read window.
     clearTimeout(this.workerIdleTimer);
     this.sealedBatches = 0;
     if (!this.worker) {
@@ -552,7 +588,20 @@ class ProfileJournal {
       this.resolve = resolve;
       this.reject = reject;
     });
-    this.worker.postMessage("checkpoint");
+    // Link the closed WAL set without blocking the arena thread. The worker
+    // cannot checkpoint/delete a source segment until every retained link is
+    // ready (or the disposable cache has safely fallen back). New commits may
+    // continue; they are outside this captured file set.
+    const job = this.running, worker = this.worker;
+    const capture = this.readWindow?.captureAsync(files) || Promise.resolve();
+    this.checkpointCapture = capture;
+    capture.then(() => {
+      if (this.worker === worker && this.running === job) worker.postMessage({ files });
+    }).catch(error => {
+      if (this.running === job) { worker.unref(); this.workerFailed(error); }
+    }).finally(() => {
+      if (this.checkpointCapture === capture) this.checkpointCapture = null;
+    });
     return this.running;
   }
   retireCheckpointWorker() {
@@ -560,7 +609,8 @@ class ProfileJournal {
     const worker = this.worker;
     if (!worker) return Promise.resolve();
     // The acknowledgement follows atomicSnapshot/fsync and segment cleanup.
-    // An idle worker owns no live state; its next job recovers from disk.
+    // An idle worker retains only its acknowledged checkpoint, never live
+    // arena state. The replacement worker recovers its next job from disk.
     this.worker = null;
     const done = worker.terminate();
     this.retiringWorkers.add(done);
@@ -587,10 +637,12 @@ class ProfileJournal {
         this.fd = null;
       }
       await this.retireCheckpointWorker();
+      this.readWindow?.reset();
+      await this.readWindow?.drainCleanup();
       await Promise.all(this.retiringWorkers);
       if (this.boosterWorker) await this.boosterWorker.terminate();
       fs.rmSync(this.file + ".booster-pending", { force: true });
     }
   }
 }
-module.exports = { ProfileJournal, recover, checkpoint, atomicSnapshot, segments, REVISION, difference };
+module.exports = { ProfileJournal, recover, checkpoint, createCheckpointWriter, atomicSnapshot, segments, REVISION, difference };

@@ -14,13 +14,14 @@ function copyArenaData(value) {
           : value
       : value;
   if (Array.isArray(value)) {
-    const result = new Array(value.length);
+    const result = [];
     for (let i = 0; i < value.length; i++) {
       const item = value[i];
-      result[i] =
+      result.push(
         item === undefined || typeof item === "function" || typeof item === "symbol"
           ? null
-          : copyArenaData(item);
+          : copyArenaData(item),
+      );
     }
     return result;
   }

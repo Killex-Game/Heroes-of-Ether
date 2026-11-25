@@ -115,7 +115,8 @@ function validateWorld(data, { allowRetiredSkins = false } = {}) {
     throw Error("Повреждены профили или кланы. Файл сохранений не перезаписан.");
   };
   if (!data.clans || typeof data.clans !== "object" || Array.isArray(data.clans)) broken();
-  const profiles = new Map(Object.values(data.profiles).map((p) => [p.id, p]));
+  const profiles = new Map();
+  for (const p of Object.values(data.profiles)) profiles.set(p.id, p);
   if (profiles.size !== Object.keys(data.profiles).length) broken();
   for (const p of profiles.values()) {
     if (

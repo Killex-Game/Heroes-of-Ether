@@ -1,0 +1,160 @@
+{
+  "at": "2026-11-24T21:08:55.751Z",
+  "installed": false,
+  "base": "3ae36ad",
+  "changes": [
+    "Reuse private document ID/hash pairs and ordering when the complete incoming key sequence is unchanged",
+    "Hash the already-canonical string pairs directly without cloning another manifest tree",
+    "Preserve insertion order for localeCompare-equal Unicode keys; mutated hashes, removals, aliases and failed packs are covered"
+  ],
+  "tests": {
+    "targetedWindows": 19,
+    "fullWindows": "pending",
+    "fullLinux": "pending",
+    "realPostgresql": "pending",
+    "mixed": "pending"
+  },
+  "benchmark": {
+    "at": "2026-11-24T21:07:07.612Z",
+    "node": "v24.22.3",
+    "platform": "win32",
+    "unchangedReceiptFields": true,
+    "exactFrameComparisons": 126,
+    "results": [
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "coldMs": 89.34429999999999,
+        "warmMs": 192.25400000000002,
+        "cpuMs": 500,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 80510976,
+          "heapTotal": 29147136,
+          "heapUsed": 7463048,
+          "external": 2833817,
+          "arrayBuffers": 211203
+        },
+        "maxRSSKiB": 82744
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "coldMs": 55.254399999999976,
+        "warmMs": 154.86730000000023,
+        "cpuMs": 327,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 98295808,
+          "heapTotal": 46448640,
+          "heapUsed": 7967240,
+          "external": 2997486,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 97516
+      },
+      {
+        "variant": "candidate",
+        "profiles": 1280,
+        "coldMs": 60.74470000000008,
+        "warmMs": 182.98599999999965,
+        "cpuMs": 281,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 100388864,
+          "heapTotal": 46714880,
+          "heapUsed": 10779704,
+          "external": 2997486,
+          "arrayBuffers": 669955
+        },
+        "maxRSSKiB": 98228
+      },
+      {
+        "variant": "baseline",
+        "profiles": 1280,
+        "coldMs": 67.44490000000008,
+        "warmMs": 194.51749999999947,
+        "cpuMs": 360,
+        "reusedDocuments": 25000,
+        "memory": {
+          "rss": 134242304,
+          "heapTotal": 77905920,
+          "heapUsed": 7732488,
+          "external": 3063022,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 132924
+      },
+      {
+        "variant": "baseline",
+        "profiles": 10000,
+        "coldMs": 414.73249999999985,
+        "warmMs": 1311.2886,
+        "cpuMs": 1984,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 239017984,
+          "heapTotal": 173993984,
+          "heapUsed": 18383128,
+          "external": 5946606,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 266296
+      },
+      {
+        "variant": "candidate",
+        "profiles": 10000,
+        "coldMs": 374.6126999999997,
+        "warmMs": 1252.5669999999982,
+        "cpuMs": 2016,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 241139712,
+          "heapTotal": 171642880,
+          "heapUsed": 18774336,
+          "external": 5881070,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 268164
+      },
+      {
+        "variant": "candidate",
+        "profiles": 10000,
+        "coldMs": 374.9508000000005,
+        "warmMs": 1283.2882,
+        "cpuMs": 2093,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 241553408,
+          "heapTotal": 170332160,
+          "heapUsed": 18805704,
+          "external": 5946606,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 271792
+      },
+      {
+        "variant": "baseline",
+        "profiles": 10000,
+        "coldMs": 399.0562,
+        "warmMs": 1438.5627000000004,
+        "cpuMs": 2203,
+        "reusedDocuments": 199400,
+        "memory": {
+          "rss": 242126848,
+          "heapTotal": 169807872,
+          "heapUsed": 18777248,
+          "external": 5946606,
+          "arrayBuffers": 276739
+        },
+        "maxRSSKiB": 271792
+      }
+    ],
+    "scope": "Canonical immutable snapshot preparation only, excluding filesystem, network, PostgreSQL and game simulation; not measured CCU"
+  },
+  "limitations": [
+    "Existing world SHA-256 still processes all canonical bytes; this does not introduce addressed commits or distributed ownership",
+    "Component timing excludes disk, PostgreSQL and simulation; CPU improvement of the whole game is not established",
+    "Private cache is bounded by the current manifest; obsolete document keys are weak references"
+  ]
+}

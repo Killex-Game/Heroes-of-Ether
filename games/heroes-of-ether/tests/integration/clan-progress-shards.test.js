@@ -10,13 +10,14 @@ const {recover}=require('../../src/server/profiles/profile-journal');
 const start=Date.parse('2026-11-15T05:00:00Z');
 function comparable(data){const copy=structuredClone(data);for(const p of Object.values(copy.profiles))
   p.transactions.entries.forEach((e,i)=>{e.id='entry-'+i;});return copy;}
-function fixture(t,pipeline=false,day=start){
+function fixture(t,pipeline=false,day=start,poolOptions={}){
  let cleanup,now=day-86400000;
  const dir=temporary({after:fn=>{cleanup=fn;}},'clan-progress-shards');
- const store=new ProfileStore({filePath:path.join(dir,'profiles.json'),journal:true,now:()=>now,
+ const constructorBackend=!pipeline&&!Object.keys(poolOptions).length;
+ const store=new ProfileStore({filePath:path.join(dir,'profiles.json'),journal:true,now:()=>now,arenaProgressShards:constructorBackend?3:0,
    clanDailyQuests:true,incrementalSettlement:true});
  const serial=new ProfileStore({now:()=>now,clanDailyQuests:true,incrementalSettlement:true});
- const pool=pipeline?new ArenaProgressPreparer({parallelism:3,computeBudgetMs:100}):new ClanArenaProgressShards({count:3});
+ const pool=pipeline?new ArenaProgressPreparer({parallelism:3,computeBudgetMs:100}):store.arenaPreparer||new ClanArenaProgressShards({count:3,...poolOptions});
  store.arenaPreparer=pool;
  t.after(async()=>{await store.close();await serial.close();cleanup();});
  const users=Array.from({length:12},()=>store.open()),api=new ClanService(store);
@@ -45,6 +46,17 @@ function fixture(t,pipeline=false,day=start){
  return {store,serial,pool,users,batch};
 }
 
+for(const failStartup of [false,true])test('prestarted clan calculators retain exact rewards and recovery, failedStartup='+failStartup,async t=>{
+ const f=fixture(t),before=structuredClone(f.store.data),ready=f.pool.warm();
+ if(failStartup)f.pool.fail('test-startup');
+ assert.equal(await ready,!failStartup);assert.deepEqual(f.store.data,before,'readiness does not save or change any game data');
+ for(let n=1;n<=2;n++){
+  const b=f.batch(n);await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
+  assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+ }
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+ assert.deepEqual(recover(f.store.filePath).data.clans,f.store.data.clans);
+});
 for(const pipeline of [false,true])test(`clan progress respects an owner-scheduled extra quest season, pipeline=${pipeline}`,async t=>{
  const day=Date.parse('2027-01-15T05:00:00Z'),f=fixture(t,pipeline,day);
  const schedule=[{start:Date.parse('2026-12-31T21:00:00Z'),mode:'quests'}];
@@ -108,4 +120,100 @@ test('concurrent clan membership and wallet change invalidates all shard output'
  assert.equal(await pending,null);assert.equal(f.pool.stats.conflicts,1);
  await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
  assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+});
+
+test('direct clan calculations transfer only participating profiles and their clan, without a world replica',async t=>{
+ const f=fixture(t),participants=new Set(f.users.slice(0,2).map(u=>u.profile.id));
+ const batch=f.batch(1);batch.progress=batch.progress.filter(e=>participants.has(e.profileId));
+ const before=f.store.data,requests=[],submit=f.pool.submit.bind(f.pool);
+ f.pool.submit=(lane,input,events,ctx)=>{requests.push(input);return submit(lane,input,events,ctx);};
+ await f.store.applyArenaGroup([batch]);f.serial.applyArenaProgress(batch.id,batch.progress,batch.at);
+ assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+ assert.equal(requests.length,1,'members of the same clan must share one calculation lane');
+ assert.deepEqual(new Set(Object.values(requests[0].profiles).map(p=>p.id)),participants);
+ assert.equal(Object.keys(requests[0].clans).length,1);
+ assert.equal(f.pool.lanes.filter(Boolean).length,1);
+ assert.equal(Object.keys(f.pool.lanes.find(Boolean).base.profiles).length,2);
+ for(const [key,p]of Object.entries(before.profiles))if(!participants.has(p.id))assert.equal(f.store.data.profiles[key],p);
+ assert.equal(f.pool.stats.failures,0);assert.equal(f.pool.stats.conflicts,0);
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+});
+
+test('clan calculation replicas remain bounded across player churn and restore exact rewards after eviction',async t=>{
+ const f=fixture(t,false,start,{count:1,maxResidentProfiles:2,maxResidentClans:1});
+ for(let n=1;n<=25;n++){
+   const actor=f.users[(n-1)%f.users.length],b=f.batch(n);
+   b.progress=b.progress.filter(e=>e.profileId===actor.profile.id);
+   if(n===13){
+     const before=f.store.data,fault=t.mock.method(fs,'fsync',(fd,done)=>setImmediate(()=>done(Error('evicted replica flush failure'))));
+     await assert.rejects(f.store.applyArenaGroup([b]),/evicted replica flush failure/);fault.mock.restore();
+     assert.equal(f.store.data,before);assert.deepEqual(recover(f.store.filePath).data.profiles,before.profiles);
+   }
+   if(n===17){
+     const pending=f.store.applyArenaGroup([b]);
+     for(const store of [f.store,f.serial])store.transact(actor.token,'eviction-concurrent-wallet','fixture',p=>{p.wallet.coins+=17;});
+     assert.equal(await pending,null);
+   }
+   await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
+   assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+   const lane=f.pool.lanes[0];
+   assert(Object.keys(lane.base.profiles).length<=2);assert(Object.keys(lane.base.clans).length<=1);
+   assert.equal(lane.recentProfiles.size,Object.keys(lane.base.profiles).length);
+   assert.equal(lane.recentClans.size,Object.keys(lane.base.clans).length);
+ }
+ assert(f.pool.stats.evictedProfiles>0);assert(f.pool.stats.evictedClans>0);
+ assert.equal(f.pool.stats.failures,0);assert.equal(f.pool.stats.conflicts,1);
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+ assert.deepEqual(recover(f.store.filePath).data.clans,f.store.data.clans);
+});
+
+test('calculation lanes reuse event context, propagate stop/config changes, and preserve canonical rewards',async t=>{
+ const f=fixture(t),{EventManager}=require('../../src/server/events/event-manager'),E=require('../../src/server/events/easter-hunt');
+ const events=new EventManager({now:()=>start});
+ events.apply('fixture','start',{eventId:E.manifest.id,revision:events.data.revision,requestId:randomUUID()});
+ f.store.events=events;f.serial.events=events;
+ const run=events.active(),messages=[],seen=new WeakSet(),lane=f.pool.lane.bind(f.pool);
+ f.pool.lane=index=>{const result=lane(index);if(!seen.has(result.worker)){
+   seen.add(result.worker);const post=result.worker.postMessage.bind(result.worker);
+   result.worker.postMessage=message=>{messages.push({lane:index,context:Object.hasOwn(message,'context')});return post(message);};
+ }return result;};
+ let lanes=0;
+ for(let n=1;n<=5;n++){
+   if(n===3)events.apply('fixture','stop',{runId:run.id,revision:events.data.revision,requestId:randomUUID()});
+   if(n===4)for(const store of [f.store,f.serial])store.petEvents={...store.petEvents};
+   const b=f.batch(n);
+   for(const [i,u]of f.users.entries()){
+     b.progress.push({type:'easterPickup',profileId:u.profile.id,lifeId:'life-'+i,runId:run.id,eggType:0});
+   }
+   const from=messages.length;await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
+   assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+   const current=messages.slice(from);if(n===1)lanes=current.length;
+   assert.equal(current.length,lanes);assert.equal(current.filter(m=>m.context).length,[1,3,4].includes(n)?lanes:0);
+ }
+ assert.equal(f.pool.stats.contextTransfers,lanes*3);assert.equal(f.pool.stats.failures,0);
+ assert.equal(f.pool.stats.conflicts,0);
+ for(const u of f.users)assert.deepEqual(f.store.find(u.token).easter.runs[run.id].found,[2,0,0,0]);
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+});
+
+test('reused event context still expires at its exact time boundary',async t=>{
+ const f=fixture(t),{EventManager}=require('../../src/server/events/event-manager'),E=require('../../src/server/events/easter-hunt');
+ const events=new EventManager({now:()=>start});
+ events.apply('fixture','start',{eventId:E.manifest.id,revision:events.data.revision,requestId:randomUUID()});
+ const runId=events.active().id;
+ events.apply('fixture','reschedule',{runId,endsAt:start+60000,revision:events.data.revision,requestId:randomUUID()});
+ f.store.events=events;f.serial.events=events;
+ let transfers;
+ for(const [index,elapsed]of [1000,59999,60000,60001].entries()){
+  const b={id:'context-expiry-'+index,at:start+elapsed,progress:f.users.map((u,i)=>({
+   type:'easterPickup',profileId:u.profile.id,lifeId:'life-'+i,runId,eggType:0,
+  }))};
+  await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
+  assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+  if(index===0)transfers=f.pool.stats.contextTransfers;
+  assert.equal(f.pool.stats.contextTransfers,transfers);
+ }
+ for(const u of f.users)assert.deepEqual(f.store.find(u.token).easter.runs[runId].found,[2,0,0,0]);
+ assert.equal(f.pool.stats.failures,0);assert.equal(f.pool.stats.conflicts,0);
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
 });

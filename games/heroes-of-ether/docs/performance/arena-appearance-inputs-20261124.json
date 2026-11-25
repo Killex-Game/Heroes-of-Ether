@@ -1,0 +1,65 @@
+{
+  "at": "2026-11-24T18:07:08.674Z",
+  "installed": false,
+  "base": "4e5f310872ea9bcf5885a6b0ad84848666422c3c",
+  "targeted": {
+    "pass": 27,
+    "fail": 0,
+    "firstAttempt": "Four files failed because sparse checkout omitted public/assets/boosters/boosters.json; original log preserved; full public checkout restored"
+  },
+  "windowsAbba": [
+    {
+      "runtime": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\.cache\\sync-journal-window-20261124\\games\\heroes-of-ether",
+      "node": "v24.22.3",
+      "iterations": 1000,
+      "profiles": 60,
+      "calls": 60000,
+      "elapsedMs": 1107.2236999999998,
+      "cpuMs": 1407,
+      "hash": "b01353a1fe47b6eef5eef9a8a2bb9562629d3d41707a5a2df640a5d469f62427",
+      "rssMiB": 236.12890625,
+      "scope": "Offline immutable profile replacement/appearance projection, not complete server capacity or frame time"
+    },
+    {
+      "runtime": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\.cache\\arena-appearance-inputs-20261124\\games\\heroes-of-ether",
+      "node": "v24.22.3",
+      "iterations": 1000,
+      "profiles": 60,
+      "calls": 60000,
+      "elapsedMs": 402.2746999999997,
+      "cpuMs": 469,
+      "hash": "b01353a1fe47b6eef5eef9a8a2bb9562629d3d41707a5a2df640a5d469f62427",
+      "rssMiB": 161.82421875,
+      "scope": "Offline immutable profile replacement/appearance projection, not complete server capacity or frame time"
+    },
+    {
+      "runtime": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\.cache\\arena-appearance-inputs-20261124\\games\\heroes-of-ether",
+      "node": "v24.22.3",
+      "iterations": 1000,
+      "profiles": 60,
+      "calls": 60000,
+      "elapsedMs": 383.8858,
+      "cpuMs": 469,
+      "hash": "b01353a1fe47b6eef5eef9a8a2bb9562629d3d41707a5a2df640a5d469f62427",
+      "rssMiB": 162.2734375,
+      "scope": "Offline immutable profile replacement/appearance projection, not complete server capacity or frame time"
+    },
+    {
+      "runtime": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\.cache\\sync-journal-window-20261124\\games\\heroes-of-ether",
+      "node": "v24.22.3",
+      "iterations": 1000,
+      "profiles": 60,
+      "calls": 60000,
+      "elapsedMs": 1078.1593,
+      "cpuMs": 1328,
+      "hash": "b01353a1fe47b6eef5eef9a8a2bb9562629d3d41707a5a2df640a5d469f62427",
+      "rssMiB": 223.98828125,
+      "scope": "Offline immutable profile replacement/appearance projection, not complete server capacity or frame time"
+    }
+  ],
+  "limitations": [
+    "Offline hot projection only, not whole-game CPU or capacity",
+    "Full Windows/Linux and mixed load remain required",
+    "Inherited checkpoint cache and read-window candidates are not installed"
+  ]
+}

@@ -81,18 +81,18 @@ test("Explicitly enabled bot supplies survive a failed save once, broadcast norm
   profiles.save = save;
   at += 50;
   app.tick();
-  await new Promise((r) => setTimeout(r, 25));
+  const receivedBooster = () => client.messages.some((m) => m.type === "state" &&
+    m.events?.some((e) => e.type === "boosterUsed" && e.playerId === bot.id));
+  // Receiving a socket event is asynchronous. Under a CPU quota the timer can
+  // run before the readable callback; await this exact packet with a deadline.
+  // Do not tick again: that could conceal a lost event behind a later state.
+  for (let attempt = 0; !receivedBooster() && attempt < 200; attempt++)
+    await new Promise((r) => setTimeout(r, 10));
   const credited = profiles.byId(bot.profileId);
   assert.equal(credited.progress.boosterUses, profileBefore.progress.boosterUses + 1);
   assert.deepEqual(credited.inventory, profileBefore.inventory);
   assert.deepEqual(credited.wallet, profileBefore.wallet);
-  assert.ok(
-    client.messages.some(
-      (m) =>
-        m.type === "state" &&
-        m.events?.some((e) => e.type === "boosterUsed" && e.playerId === bot.id),
-    ),
-  );
+  assert.ok(receivedBooster());
   at += 50;
   app.tick();
   assert.equal(state.used, 1);

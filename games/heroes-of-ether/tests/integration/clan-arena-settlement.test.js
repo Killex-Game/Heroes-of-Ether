@@ -25,16 +25,17 @@ async function fixture(t,{worker=false,battle=false}={}) {
   const id=store.find(users[0].token).clanId;
   if(!battle){const d=structuredClone(store.data);d.clans[id].dailyQuests.board.quests=['xp','kills','food','shieldUses','arenaMs'].map(metric=>({
     ...catalog.items.find(q=>q.metric===metric),target:1000000,progress:0,completedAt:null}));store.save(d);}
-  if(worker)store.arenaPreparer=new(require('../../src/server/profiles/arena-progress-preparer').ArenaProgressPreparer)({parallelism:3});
+  if(worker==='direct')store.arenaPreparer=new(require('../../src/server/profiles/clan-arena-progress-shards').ClanArenaProgressShards)({count:3});
+  else if(worker)store.arenaPreparer=new(require('../../src/server/profiles/arena-progress-preparer').ArenaProgressPreparer)({parallelism:3});
   const send=async(events,time=at,batch=randomUUID())=>{at=time;return store.applyArenaGroup([{id:batch,at,progress:events}]);};
   const event=(i,type,fields={})=>({profileId:users[i].profile.id,type,lifeId:'exit-life-'+i,...fields});
   const natural=(i,sequence=1)=>event(i,'massAccrual',{sequence,ruleVersion:2,xpUnits:10*accrual.XP_DENOMINATOR,baseXpUnits:10*accrual.XP_DENOMINATOR,killUnits:3*accrual.KILL_DENOMINATOR});
   const board=()=>store.data.clans[id].dailyQuests.board;
   return {store,users,id,file,start,end,send,event,natural,board,action,open,at:n=>{at=n;}};
 }
-for (const [vip,premium] of [[false,false],[true,false],[false,true],[true,true]])
-test('VIP XP / Premium kills: real account expiry, durable retry and deferred clan credit '+vip+'/'+premium,async t=>{
-  const f=await fixture(t),u=f.users[0];
+for (const worker of [false,'direct'])for (const [vip,premium] of [[false,false],[true,false],[false,true],[true,true]])
+test('VIP XP / Premium kills: real account expiry, durable retry and deferred clan credit '+vip+'/'+premium+', worker='+worker,async t=>{
+  const f=await fixture(t,{worker}),u=f.users[0];
   f.store.transact(u.token,randomUUID(),'fixture-status',p=>{
     p.account=require('../../src/server/accounts/account-benefits').fresh();
     p.account.vipUntil=vip?f.start+45000:0;p.account.premiumUntil=premium?f.start+45000:0;
@@ -64,7 +65,7 @@ test('VIP XP / Premium kills: real account expiry, durable retry and deferred cl
   assert.deepEqual(f.board().quests.slice(0,2).map(q=>q.progress),[xp+50,kills+7]);
   assert.deepEqual(recover(f.file).data.profiles,f.store.data.profiles);assert.deepEqual(recover(f.file).data.clans,f.store.data.clans);
 });
-for(const worker of [false,true])test('exit publishes bounded quest totals exactly once; personal XP remains live, worker='+worker,async t=>{
+for(const worker of [false,true,'direct'])test('exit publishes bounded quest totals exactly once; personal XP remains live, worker='+worker,async t=>{
   const f=await fixture(t,{worker});
   await f.send([f.event(0,'lifeStarted')],f.start);
   await f.send([f.natural(0),f.event(0,'questSample',{food:7,rank:1}),
@@ -80,10 +81,10 @@ for(const worker of [false,true])test('exit publishes bounded quest totals exact
   await f.send(events,f.start+30050,'exit-replay');assert.deepEqual(f.board().quests.map(q=>q.progress),[10,3,8,1,30050]);
   assert.equal(f.store.find(f.users[0].token).clanArenaPending,null);
   assert.deepEqual(recover(f.file).data.clans,f.store.data.clans);
-  if(worker){assert.equal(f.store.arenaPreparer.stats.failures,0);assert.equal(f.store.arenaPreparer.stats.shards.failures,0);}
+  if(worker){assert.equal(f.store.arenaPreparer.stats.failures,0);assert(f.store.arenaPreparer.stats.jobs>0);if(worker!=='direct')assert.equal(f.store.arenaPreparer.stats.shards.failures,0);}
 });
-for(const offset of [-1,0,1])test('quest deadline is strict for the whole life, exit offset='+offset,async t=>{
-  const f=await fixture(t);await f.send([f.event(0,'lifeStarted')],f.end-60000);
+for(const worker of [false,'direct'])for(const offset of [-1,0,1])test('quest deadline is strict for the whole life, exit offset='+offset+', worker='+worker,async t=>{
+  const f=await fixture(t,{worker});await f.send([f.event(0,'lifeStarted')],f.end-60000);
   await f.send([f.natural(0)],f.end-30000);
   await f.send([f.event(0,'lifeEnded',{durationSeconds:60,reason:'left'})],f.end+offset);
   const q=f.board().quests;assert.equal(q.find(q=>q.metric==='xp').progress,offset<0?10:0);assert.equal(q.find(q=>q.metric==='kills').progress,offset<0?3:0);
@@ -98,7 +99,7 @@ for(const late of [false,true])test('restart settles saved pending totals withou
   restarted.save(restarted.data);await restarted.close();const again=f.open();
   assert.deepEqual(again.data.clans[f.id].dailyQuests.board,restarted.data.clans[f.id].dailyQuests.board);
 });
-for(const worker of [false,true])test('battle credits natural kills only at exit, with matching serial and lane results, worker='+worker,async t=>{
+for(const worker of [false,true,'direct'])test('battle credits natural kills only at exit, with matching serial and lane results, worker='+worker,async t=>{
   const f=await fixture(t,{battle:true,worker});
   assert(f.store.data.competition.day.rosters[f.id].includes(f.users[0].profile.id));
   await f.send([f.event(0,'lifeStarted')],f.start);
@@ -112,7 +113,7 @@ for(const worker of [false,true])test('battle credits natural kills only at exit
     {...end,lifeId:'third'}],f.start+60000);
   assert.equal(f.store.data.competition.day.scores[f.id].kills,9,'two exits in one durable batch are both counted');
   assert.deepEqual(recover(f.file).data.competition,f.store.data.competition);
-  if(worker){assert.equal(f.store.arenaPreparer.stats.failures,0);assert.equal(f.store.arenaPreparer.stats.shards.failures,0);}
+  if(worker){assert.equal(f.store.arenaPreparer.stats.failures,0);assert(f.store.arenaPreparer.stats.jobs>0);if(worker!=='direct')assert.equal(f.store.arenaPreparer.stats.shards.failures,0);}
 });
 test('arena gifts wait for exit, lobby gifts remain immediate, leaving the clan forfeits the pending contribution',async t=>{
   const f=await fixture(t),service=require('../../src/server/clans/daily-quests/service');
