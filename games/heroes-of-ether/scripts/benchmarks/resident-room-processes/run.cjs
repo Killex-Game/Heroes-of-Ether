@@ -146,15 +146,26 @@ async function run(){
     peer.send({type:'connect',urls:urls.filter((_,j)=>j%peerCount===i)});await ready;peerProcesses.push(peer);
   }
   const start=performance.now(),cpu=process.cpuUsage();let peakRss=process.memoryUsage().rss,minFree=os.freemem();
-  let windowAt=start,windowAck=0,windowCast=0;
+  let windowAt=start,windowAck=0,windowCast=0,sampling=null;const windows=[];
+  async function takeWindow(){
+    const [shardWindows,peerWindows,lobby]=await Promise.all([
+      Promise.all(shards.map(async s=>{const done=wait(s.child,'window');s.child.send({type:'sample'});return(await done).rooms;})),
+      Promise.all(peerProcesses.map(async peer=>{const done=wait(peer,'window');peer.send({type:'sample'});return(await done).peer;})),services.sample()]);
+    const castSamples=casts?.metrics.latency||[];
+    const row={window:windows.length+1,throughSeconds:(performance.now()-start)/1000,rooms:shardWindows.flat(),peers:peerWindows,lobby,
+      writerDelay:summary(delays.slice(windowAck)),castLatency:summary(castSamples.slice(windowCast)),
+      progressPending:sink.pending.size,castsPending:casts?.queue.waiting.length||0,
+      writerRssMiB:Math.round(process.memoryUsage().rss/1048576),freeMiB:Math.round(os.freemem()/1048576),errors};
+    row.partial=Math.min(...row.rooms.map(r=>r.elapsedMs),...row.peers.map(p=>p.elapsedMs))<55000;
+    row.assessment=require('./window-sampler.cjs').assessWindow(row);windows.push(row);
+    fs.appendFileSync(path.join(output,'windows.ndjson'),JSON.stringify(row)+'\n');
+    console.log(JSON.stringify({window:row.window,throughSeconds:row.throughSeconds,assessment:row.assessment,
+      minHz:Math.min(...row.rooms.map(r=>r.updatesHz)),stateGapP99:Math.max(...row.peers.map(p=>p.gapMs.p99))}));
+    windowAck=delays.length;windowCast=castSamples.length;
+  }
   const monitor=setInterval(()=>{peakRss=Math.max(peakRss,process.memoryUsage().rss);minFree=Math.min(minFree,os.freemem());
-    if(performance.now()-windowAt>=60000){
-      const castSamples=casts?.metrics.latency||[];
-      console.log(JSON.stringify({windowSeconds:Math.round((performance.now()-start)/1000),
-        writerDelay:summary(delays.slice(windowAck)),castLatency:summary(castSamples.slice(windowCast)),
-        progressPending:sink.pending.size,castsPending:casts?.queue.waiting.length||0,
-        writerRssMiB:Math.round(process.memoryUsage().rss/1048576),freeMiB:Math.round(os.freemem()/1048576),errors}));
-      windowAt=performance.now();windowAck=delays.length;windowCast=castSamples.length;
+    if(!sampling&&performance.now()-windowAt>=60000){
+      windowAt=performance.now();sampling=takeWindow().catch(error=>{console.error(error);aborted=true;}).finally(()=>{sampling=null;});
     }
     if(minFree<2000*1048576)aborted=true;},1000);
   for(const s of shards)s.child.send({type:'start'});
@@ -162,6 +173,8 @@ async function run(){
   await services.start();
   console.log(JSON.stringify({started:true,rooms:count,players:count*perRoom,processes:workers,seconds,output}));
   while(!aborted&&performance.now()-start<seconds*1000)await new Promise(r=>setTimeout(r,250));
+  clearInterval(monitor);await sampling;
+  if(!aborted&&(!windows.length||performance.now()-windowAt>=1000))await takeWindow();
   if(process.env.ROOM_BENCH_INPUTS==='socket')await Promise.all(peerProcesses.map(async peer=>{
     const done=wait(peer,'inputsStopped');peer.send({type:'stopInputs'});await done;
   }));
@@ -179,7 +192,10 @@ async function run(){
       (durableCasts?' + real inventory/WAL casts':' (casts bypass inventory)')+
       (full?' + 1280 synthetic profiles/128 clans/5 real HTTP lobby clients':'')+
       (serviceResults.database?' + PostgreSQL verified':'')+'; no production arena admission in this run',
-    rooms:count,perRoom,players:count*perRoom,processes:workers,seconds,aborted,shards:reports,peers:peerReports,
+    rooms:count,perRoom,players:count*perRoom,processes:workers,seconds,aborted,shards:reports,peers:peerReports,windows,
+    windowAssessment:{meetsTargets:!aborted&&windows.some(w=>!w.partial)&&windows.filter(w=>!w.partial).every(w=>w.assessment.meetsTargets),
+      qualifiedWindows:windows.filter(w=>!w.partial).length,partialWindows:windows.filter(w=>w.partial).length,
+      scope:'Sampled intervals before final drain. Intervals shorter than 55 seconds are retained as partial and do not prove a sustained window.'},
     gameClock,startingSeed:seed?.proof,projections:projections.metrics,
     notCovered:['production room admission','durable room state before effect publication','potions and pet ability inputs','external payments and VK','browser FPS'],
     scenario:{inputs:process.env.ROOM_BENCH_INPUTS||'in-process tick-based',layout:process.env.ROOM_BENCH_SCENARIO||'mixed-mass',event:eventKind||null,

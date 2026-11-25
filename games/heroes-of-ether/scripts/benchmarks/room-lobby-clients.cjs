@@ -169,13 +169,16 @@ process.on("message", (m) => {
       );
     }
   } else if (m.type === "stats") {
-    const sorted = [...stats.latencies].sort((a, b) => a - b);
+    const offset=m.fromLatency===undefined?0:m.fromLatency;
+    if(!Number.isSafeInteger(offset)||offset<0||offset>stats.latencies.length)throw Error('Invalid latency sample cursor');
+    const sorted = stats.latencies.slice(offset).sort((a, b) => a - b);
     result = {
       clients: clients.length,
       mode: idleLobby ? "visible-idle-lobby" : "active-lobby-actions",
       ipMode: process.env.LOAD_LOBBY_DISTINCT_IPS === "1" ? "distinct-synthetic-proxy-addresses" : "single-generator-address",
       ...stats,
       pending: stats.requests - stats.latencies.length,
+      ...(m.fromLatency===undefined?{}:{latencySampleCount:stats.latencies.length,measuredLatencySamples:sorted.length}),
       latencies: undefined,
       latencyMs: {
         p50: sorted[Math.floor(sorted.length * 0.5)] || 0,

@@ -7,6 +7,7 @@ const stateWorkerCount=Number(process.env.ROOM_BENCH_STATE_WORKERS||0);
 if(!Number.isInteger(stateWorkerCount)||stateWorkerCount<0||stateWorkerCount>2)
   throw Error('Invalid diagnostic state worker count');
 const roomClocks = new Map();
+const samples=new (require('./window-sampler.cjs').RoomWindowSampler)();
 const send=m=>{if(process.connected)process.send(m);};
 process.on('disconnect',()=>process.exit(1)); // Never advance an orphaned room.
 process.on('message',async m=>{
@@ -42,6 +43,7 @@ process.on('message',async m=>{
   }
   else if(m.type==='start'){
     if(timer)return;started=performance.now();cpuStart=process.cpuUsage();
+    for(const room of rooms.values())samples.sample(room,started);
     if(process.env.ROOM_BENCH_RESUME_CLOCK==='1'){
       for(const room of rooms.values())roomClocks.set(room.id,startTickClock(()=>{
         const result=room.tick(performance.now());
@@ -52,6 +54,8 @@ process.on('message',async m=>{
       timer=startTickClock(()=>{const at=performance.now();for(const room of rooms.values())room.tick(at);
         peakRss=Math.max(peakRss,process.memoryUsage().rss);},50);
     }
+  }else if(m.type==='sample'){
+    const at=performance.now();send({type:'window',rooms:[...rooms.values()].map(room=>samples.sample(room,at))});
   }else if(m.type==='stop'&&!ending){
     ending=true;timer?.();
     const elapsed=performance.now()-started,cpu=process.cpuUsage(cpuStart),deadline=Date.now()+30000;

@@ -6,7 +6,7 @@ const {fork}=require('node:child_process');
 const {loadConfig,safeError}=require('../../../src/server/persistence/postgresql-config');
 const {PostgreSQLState}=require('../../../src/server/persistence/postgresql-state');
 async function startServices(store,root,lobbyTokens,externalBoosterQueue){
-  let app,peer,database,config,chat,sequence=0,closePromise,databaseClosed=false;
+  let app,peer,database,config,chat,sequence=0,closePromise,databaseClosed=false,latencyCursor=0;
   const ask=payload=>new Promise((resolve,reject)=>{
     const id=++sequence,timer=setTimeout(()=>{peer.off('message',receive);reject(Error('Lobby driver timeout'));},30000);
     const receive=m=>{if(m.id!==id)return;clearTimeout(timer);peer.off('message',receive);m.error?reject(Error(m.error)):resolve(m.result);};
@@ -36,6 +36,7 @@ async function startServices(store,root,lobbyTokens,externalBoosterQueue){
     }
     return {
       start:async()=>{if(peer)await ask({type:'phase'});},
+      sample:async()=>{if(!peer)return null;const row=await ask({type:'stats',fromLatency:latencyCursor});latencyCursor=row.latencySampleCount;return row;},
       close(){
         return closePromise ||= (async()=>{
         let lobby;
