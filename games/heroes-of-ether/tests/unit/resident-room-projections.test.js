@@ -50,8 +50,23 @@ test('context-only event changes and removals reach the room; failed IPC is term
   assert.equal(f.sent.at(-1).updates.length,0);applyProjection(f.room,f.sent.at(-1));
   assert.deepEqual(f.room.profiles.events.data,f.store.events.data);
   delete f.store.events;f.projection.flush();applyProjection(f.room,f.sent.at(-1));assert.equal(f.room.profiles.events,undefined);
-  f.child.send=(m,callback)=>callback(Error('IPC closed'));f.profiles.set('a',{...f.profiles.get('a'),revision:2});
+  f.child.send=(m,callback)=>callback(Error('IPC closed'));f.profiles.set('a',{...f.profiles.get('a'),revision:2,name:'Changed'});
   f.projection.flush();assert.throws(()=>f.projection.flush(),/IPC closed/);
+});
+
+test('wallet and progress revisions retain the room image while later real input changes arrive',()=>{
+  const f=fixture();f.projection.flush();applyProjection(f.room,f.sent.at(-1));
+  for(let revision=2;revision<=101;revision++){
+    const p=f.profiles.get('a');f.profiles.set('a',{...p,revision,wallet:{bucks:revision},progress:{total:revision}});
+    f.store.data.clans.c={...f.store.data.clans.c,treasury:revision};f.projection.flush();
+  }
+  assert.equal(f.sent.length,1);assert.equal(f.projection.metrics.equivalentProfiles,200);
+  assert.equal(f.room.lookup.get('a').revision,1);
+  const p=f.profiles.get('a');f.profiles.set('a',{...p,revision:102,level:21,quickSlots:['meat'],pets:{equipped:'dragon',owned:{dragon:{level:2}}}});
+  f.projection.flush();assert.equal(f.sent.length,2);assert.equal(f.sent[1].updates.length,1);
+  applyProjection(f.room,f.sent[1]);assert.equal(f.room.lookup.get('a').revision,102);
+  assert.equal(f.room.lookup.get('a').level,21);assert.deepEqual(f.room.lookup.get('a').quickSlots,['meat']);
+  assert.deepEqual(f.room.lookup.get('a').pets,{equipped:'dragon',owned:{dragon:{level:2}}});
 });
 test('only authoritative equipped accessory entitlements enter the projected outfit',()=>{
   const item=require('../../public/shared/accessory-catalog').items.find(item=>item.slot==='hat'&&item.price);

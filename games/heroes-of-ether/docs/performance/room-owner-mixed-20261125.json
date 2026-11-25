@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-25T00:26:11.585Z",
+  "at": "2026-11-25T00:41:32.852Z",
   "installed": false,
   "scope": "Prototype benchmark only; no production room ownership or admission change",
   "changes": [
@@ -177,9 +177,310 @@
     }
   ],
   "limitations": [
-    "No PostgreSQL in this smoke run.",
-    "Final accepted-input counters and realistic audit metadata were added after r4 and have not yet been exercised in another mixed run.",
+    "No PostgreSQL in these local smoke runs.",
+    "R4–r6 measured peer gaps between all packet kinds, so their interval statistic is not an isolated state-delivery latency. State-only window counters are the next correction.",
     "Room crash after durable inventory debit but before effect publication remains unresolved in this old benchmark protocol. Modern resident outbox/frame gate is not integrated here.",
-    "No full event matrix, potion/pet ability inputs, production authentication/admission or browser FPS. No maximum CCU or 300000 claim."
-  ]
+    "No full event matrix, potion/pet ability inputs, production authentication/admission or browser FPS. No maximum CCU or 300000 claim.",
+    "R5 and r6 have different live timing/random fight outcomes; they are not a causal whole-server A/B. Component comparison checks every gameplay field/identity; revision fences intentionally need not advance on invisible-only commits."
+  ],
+  "subsequentSmokes": [
+    {
+      "label": "room-owner-smoke-r5",
+      "seconds": 60,
+      "players": 30,
+      "postgresql": false,
+      "updatesHz": [
+        [
+          19.62372114548024
+        ]
+      ],
+      "writerDelay": {
+        "n": 1120,
+        "p50": 3.8945999999996275,
+        "p95": 24.188999999998487,
+        "p99": 46.552999999999884,
+        "max": 71.59449999999924
+      },
+      "acceptedInputs": [
+        {
+          "feed": 2377,
+          "split": 376
+        }
+      ],
+      "lobby": {
+        "clients": 5,
+        "mode": "active-lobby-actions",
+        "ipMode": "single-generator-address",
+        "requests": 209,
+        "success": 209,
+        "errors": {},
+        "actions": {
+          "profile": 10,
+          "rankings": 10,
+          "loadout": 10,
+          "purchase": 10,
+          "account-bonus": 10,
+          "social-view": 20,
+          "gift": 10,
+          "gift-read": 10,
+          "clan-create": 3,
+          "clan-view": 22,
+          "clan-deposit": 10,
+          "clan-buy": 10,
+          "clan-edit": 10,
+          "roulette-prepare": 10,
+          "roulette-spin": 10,
+          "pet-buy": 5,
+          "pet-food": 10,
+          "chat": 10,
+          "news": 9,
+          "presence": 5,
+          "pet-equip": 5
+        },
+        "pending": 0,
+        "latencyMs": {
+          "p50": 11.25619999999617,
+          "p95": 24.674099999999726,
+          "max": 105.57550000000083
+        }
+      },
+      "projections": {
+        "messages": 806,
+        "profiles": 5762,
+        "eventContexts": 1
+      },
+      "ack": {
+        "acknowledged": 674,
+        "recovered": 674,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:mine": 19,
+          "booster:knuckles": 19,
+          "booster:cake": 19,
+          "booster:hook": 17,
+          "booster:sphere": 20,
+          "booster:harpoon": 19,
+          "booster:mega_poison": 19,
+          "booster:vortex": 19,
+          "booster:candy": 20,
+          "booster:donut": 19,
+          "booster:stone": 19,
+          "booster:easter_egg": 20,
+          "booster:clan_shield": 20,
+          "booster:freeze": 15,
+          "booster:glove": 18,
+          "booster:colorful_shield": 19,
+          "booster:web": 15,
+          "booster:lock": 19,
+          "booster:golden_shield": 19,
+          "booster:warheads": 19,
+          "booster:ice_cream": 19,
+          "booster:poison": 17,
+          "booster:axe": 16,
+          "booster:awl": 14,
+          "booster:rocket": 16,
+          "booster:speed": 18,
+          "booster:meat": 18,
+          "booster:fire": 16,
+          "booster:fire_sword": 17,
+          "booster:sponge": 17,
+          "lobby:loadout": 10,
+          "lobby:purchase": 10,
+          "lobby:account-bonus": 10,
+          "lobby:gift": 10,
+          "lobby:gift-read": 10,
+          "lobby:clan-create": 3,
+          "lobby:clan-deposit": 10,
+          "lobby:clan-buy": 10,
+          "lobby:clan-edit": 10,
+          "lobby:roulette-prepare": 10,
+          "lobby:roulette-spin": 10,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 10,
+          "lobby:chat": 10,
+          "lobby:pet-equip": 5
+        },
+        "gifts": 10,
+        "notices": 10,
+        "deposits": 10,
+        "created": 3,
+        "appliedEffects": 541,
+        "validInventoriesAndTransactions": true
+      }
+    },
+    {
+      "label": "room-owner-smoke-r6",
+      "seconds": 60,
+      "players": 30,
+      "postgresql": false,
+      "updatesHz": [
+        [
+          19.515829412975528
+        ]
+      ],
+      "writerDelay": {
+        "n": 1114,
+        "p50": 3.65230000000156,
+        "p95": 18.036700000004203,
+        "p99": 31.76339999999982,
+        "max": 149.9903000000013
+      },
+      "acceptedInputs": [
+        {
+          "feed": 2334,
+          "split": 391
+        }
+      ],
+      "lobby": {
+        "clients": 5,
+        "mode": "active-lobby-actions",
+        "ipMode": "single-generator-address",
+        "requests": 209,
+        "success": 209,
+        "errors": {},
+        "actions": {
+          "profile": 10,
+          "rankings": 10,
+          "loadout": 10,
+          "purchase": 10,
+          "account-bonus": 10,
+          "social-view": 20,
+          "gift": 10,
+          "gift-read": 10,
+          "clan-create": 3,
+          "clan-view": 22,
+          "clan-deposit": 10,
+          "clan-buy": 10,
+          "clan-edit": 10,
+          "roulette-prepare": 10,
+          "roulette-spin": 10,
+          "pet-buy": 5,
+          "pet-food": 10,
+          "chat": 10,
+          "news": 9,
+          "presence": 5,
+          "pet-equip": 5
+        },
+        "pending": 0,
+        "latencyMs": {
+          "p50": 10.550199999999677,
+          "p95": 25.658699999999953,
+          "max": 124.28349999999955
+        }
+      },
+      "projections": {
+        "messages": 19,
+        "profiles": 64,
+        "eventContexts": 1,
+        "equivalentProfiles": 5811
+      },
+      "ack": {
+        "acknowledged": 671,
+        "recovered": 671,
+        "duplicates": 0,
+        "profiles": 1280,
+        "types": {
+          "booster:mine": 18,
+          "booster:knuckles": 19,
+          "booster:cake": 19,
+          "booster:hook": 19,
+          "booster:sphere": 20,
+          "booster:harpoon": 19,
+          "booster:mega_poison": 17,
+          "booster:vortex": 20,
+          "booster:candy": 20,
+          "booster:donut": 20,
+          "booster:stone": 17,
+          "booster:easter_egg": 20,
+          "booster:clan_shield": 20,
+          "booster:freeze": 17,
+          "booster:glove": 17,
+          "booster:colorful_shield": 19,
+          "booster:web": 17,
+          "booster:lock": 17,
+          "booster:warheads": 16,
+          "booster:golden_shield": 19,
+          "booster:ice_cream": 19,
+          "booster:poison": 18,
+          "booster:axe": 16,
+          "booster:awl": 16,
+          "booster:rocket": 15,
+          "booster:speed": 18,
+          "booster:meat": 18,
+          "booster:fire": 16,
+          "booster:fire_sword": 16,
+          "booster:sponge": 16,
+          "lobby:loadout": 10,
+          "lobby:purchase": 10,
+          "lobby:account-bonus": 10,
+          "lobby:gift": 10,
+          "lobby:gift-read": 10,
+          "lobby:clan-create": 3,
+          "lobby:clan-deposit": 10,
+          "lobby:clan-buy": 10,
+          "lobby:clan-edit": 10,
+          "lobby:roulette-prepare": 10,
+          "lobby:roulette-spin": 10,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 10,
+          "lobby:chat": 10,
+          "lobby:pet-equip": 5
+        },
+        "gifts": 10,
+        "notices": 10,
+        "deposits": 10,
+        "created": 3,
+        "appliedEffects": 538,
+        "validInventoriesAndTransactions": true
+      }
+    }
+  ],
+  "equivalentProjectionComponent": {
+    "scope": "Component only: 30 profiles / 1000 rounds; simulated IPC structuredClone and receiver, no actual network/OS IPC or game simulation. CPU timings include signature and payload encoding, exclude fixture changes and equality assertions.",
+    "exact": true,
+    "results": [
+      {
+        "variant": "every-profile-revision",
+        "ms": 570.0303999999993,
+        "messages": 1000,
+        "profiles": 30000,
+        "equivalentProfiles": 0,
+        "payloadBytes": 11987387,
+        "sha256": "016f17d739796acd5d4dca044feb890a55102126e239ddc4a0c588ef5d730538"
+      },
+      {
+        "variant": "changed-gameplay-only",
+        "ms": 167.51579999999922,
+        "messages": 13,
+        "profiles": 390,
+        "equivalentProfiles": 29610,
+        "payloadBytes": 155613,
+        "sha256": "016f17d739796acd5d4dca044feb890a55102126e239ddc4a0c588ef5d730538"
+      },
+      {
+        "variant": "changed-gameplay-only",
+        "ms": 149.9136999999996,
+        "messages": 13,
+        "profiles": 390,
+        "equivalentProfiles": 29610,
+        "payloadBytes": 155613,
+        "sha256": "016f17d739796acd5d4dca044feb890a55102126e239ddc4a0c588ef5d730538"
+      },
+      {
+        "variant": "every-profile-revision",
+        "ms": 572.0420999999974,
+        "messages": 1000,
+        "profiles": 30000,
+        "equivalentProfiles": 0,
+        "payloadBytes": 11987387,
+        "sha256": "016f17d739796acd5d4dca044feb890a55102126e239ddc4a0c588ef5d730538"
+      }
+    ]
+  },
+  "equivalentProjectionTests": {
+    "label": "room-projection-equivalent-r1",
+    "pass": 6,
+    "fail": 0
+  }
 }

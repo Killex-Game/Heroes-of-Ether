@@ -3,7 +3,7 @@
 // bound to this roster; no complete profiles, wallets or history cross the IPC.
 const {roomProfile}=require('./room-profile.cjs');
 class RoomProjections {
-  constructor(store){this.store=store;this.rooms=new Map();this.error=null;this.metrics={messages:0,profiles:0,eventContexts:0};}
+  constructor(store,{coalesceEquivalent=true}={}){this.store=store;this.rooms=new Map();this.error=null;this.coalesceEquivalent=coalesceEquivalent;this.metrics={messages:0,profiles:0,eventContexts:0,equivalentProfiles:0};}
   bind(config,child){
     if(this.rooms.has(config.id)||!child||!Array.isArray(config.profiles)||config.profiles.length>30||
       new Set(config.profiles.map(p=>p.id)).size!==config.profiles.length)throw Error('Invalid projection owner');
@@ -18,11 +18,16 @@ class RoomProjections {
         const profile=this.store.byId(id);if(!profile)throw Error('Owned projection profile disappeared');
         const clan=this.store.data.clans[profile.clanId],appearance=this.store.arenaAppearance(profile),old=room.previous.get(id);
         if(old?.profile===profile&&old.clan===clan&&old.appearance===appearance)continue;
-        updates.push({profile:roomProfile(profile),identity:this.store.identity(profile)});
-        remember.push([id,{profile,clan,appearance}]);
+        const projected=roomProfile(profile),identity=this.store.identity(profile);
+        // Revision fences stale messages; it is not simulation input. Wallet,
+        // quest and receipt commits must not resend an identical arena image.
+        const signature=this.coalesceEquivalent?JSON.stringify({profile:{...projected,revision:0},identity}):null;
+        remember.push([id,{profile,clan,appearance,signature}]);
+        if(this.coalesceEquivalent&&old?.signature===signature){this.metrics.equivalentProfiles++;continue;}
+        updates.push({profile:projected,identity});
       }
       const events=this.store.events?.data,changedEvents=!room.initialized||room.events!==events;
-      if(!updates.length&&!changedEvents)continue;
+      if(!updates.length&&!changedEvents){for(const [id,value]of remember)room.previous.set(id,value);continue;}
       room.child.send({type:'roomProjection',roomId,epoch:room.epoch,sequence:++room.sequence,updates,
         ...(changedEvents?{events:events||null}:{})},error=>{if(error)this.error=error;});
       for(const [id,value]of remember)room.previous.set(id,value);
