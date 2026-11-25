@@ -1,0 +1,314 @@
+{
+  "at": "2026-11-25T00:26:11.727Z",
+  "installed": false,
+  "source": "34175cca924a79ba86823a770260be3cf6906d4f",
+  "scope": "Oversized active profile exercises immutable fragment path; synthetic starting history only, existing history retained exactly.",
+  "label": "candidate36-r1-30-3m-history-alchemy-cpu6",
+  "players": 30,
+  "lobby": 5,
+  "minutes": 3,
+  "cpuQuota": 6,
+  "includesGenerators": true,
+  "assessment": {
+    "targets": {
+      "updatesHz": 19,
+      "tickP95Ms": 100,
+      "stateGapP99Ms": 150,
+      "lobbyP95Ms": 1000,
+      "actionP95Ms": 500
+    },
+    "shortRunMeetsTargets": true,
+    "problems": [],
+    "phases": [
+      {
+        "phase": "combined",
+        "window": 1,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 2,
+        "meetsTargets": true,
+        "issues": []
+      },
+      {
+        "phase": "combined",
+        "window": 3,
+        "meetsTargets": true,
+        "issues": []
+      }
+    ],
+    "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+  },
+  "retained": {
+    "active": 35,
+    "activeReceipts": 15000,
+    "dormantReceipts": 2000,
+    "total": 3180000,
+    "oversized": {
+      "profiles": 1,
+      "receipts": 180000,
+      "minimumProfileBytes": 9905488
+    }
+  },
+  "fixtureSha256": "acbc3defafe46c681bb6484fba8dfa4ffb51be8eafdfaf71a07a89b255e89268",
+  "startingSeed": {
+    "sha256": "ac77eb0950ea3cfe93df25c5181a3a85fbd1353e5daa0b42049a08c98cd0035a",
+    "gameStartAt": "2026-11-24T09:00:00.000Z",
+    "scope": "Identical starting profiles, clans and calendar only; live timing and combat remain nondeterministic"
+  },
+  "updatesHz": {
+    "min": 20.00097174757068,
+    "max": 20.144747772330156
+  },
+  "tickWorkP95Ms": {
+    "min": 15.048515000002226,
+    "max": 17.1017439999996
+  },
+  "tickWorkMaxMs": 280.9560990000027,
+  "actionP95Ms": {
+    "min": null,
+    "max": null
+  },
+  "stateGapMaxMs": null,
+  "rssMiB": {
+    "min": 2588.1796875,
+    "max": 2951.578125
+  },
+  "ack": {
+    "acknowledged": 3182,
+    "recovered": 3182,
+    "duplicates": 0,
+    "profiles": 1280,
+    "types": {
+      "booster:alchemy_strength": 16,
+      "booster:alchemy_swiftness": 14,
+      "booster:alchemy_satiety": 17,
+      "booster:alchemy_knowledge": 14,
+      "booster:alchemy_steadiness": 16,
+      "booster:alchemy_reach": 14,
+      "booster:alchemy_vigor": 16,
+      "booster:alchemy_longevity": 20,
+      "booster:alchemy_clarity": 14,
+      "booster:alchemy_precision": 20,
+      "booster:alchemy_magnetism": 18,
+      "booster:alchemy_gatherer": 21,
+      "booster:alchemy_tempest": 18,
+      "booster:alchemy_fortitude": 11,
+      "booster:alchemy_prosperity": 5,
+      "booster:alchemy_archmage": 10,
+      "booster:hook": 87,
+      "booster:cake": 86,
+      "booster:candy": 89,
+      "booster:vortex": 85,
+      "booster:clan_shield": 90,
+      "booster:glove": 86,
+      "booster:sphere": 90,
+      "booster:donut": 90,
+      "booster:freeze": 81,
+      "booster:mine": 87,
+      "booster:harpoon": 85,
+      "booster:stone": 82,
+      "booster:knuckles": 90,
+      "booster:mega_poison": 87,
+      "booster:easter_egg": 89,
+      "booster:colorful_shield": 90,
+      "booster:ice_cream": 90,
+      "booster:web": 88,
+      "booster:fire": 76,
+      "booster:poison": 83,
+      "booster:rocket": 84,
+      "booster:fire_sword": 83,
+      "booster:speed": 90,
+      "booster:lock": 80,
+      "booster:axe": 78,
+      "booster:meat": 90,
+      "booster:golden_shield": 89,
+      "booster:sponge": 80,
+      "booster:warheads": 81,
+      "booster:awl": 74,
+      "lobby:loadout": 30,
+      "lobby:purchase": 30,
+      "lobby:account-bonus": 30,
+      "lobby:gift": 30,
+      "lobby:gift-read": 30,
+      "lobby:clan-create": 3,
+      "lobby:clan-deposit": 25,
+      "lobby:clan-buy": 25,
+      "lobby:clan-edit": 25,
+      "lobby:alchemy-brew": 25,
+      "lobby:pet-buy": 5,
+      "lobby:pet-food": 25,
+      "lobby:chat": 25,
+      "lobby:alchemy-exchange": 25,
+      "lobby:alchemy-equip": 25,
+      "lobby:pet-equip": 20
+    },
+    "gifts": 30,
+    "notices": 30,
+    "deposits": 25,
+    "created": 3,
+    "validInventoriesAndTransactions": true,
+    "alchemy": {
+      "version": 1,
+      "casts": 244,
+      "brews": 25,
+      "exchanges": 25,
+      "profiles": 1280,
+      "exactInventories": true,
+      "exactLobbyIngredientsAndNatural": true
+    },
+    "retainedHistory": {
+      "matched": true,
+      "profiles": 1280,
+      "historicalReceipts": 3180000
+    }
+  },
+  "database": {
+    "matched": true,
+    "localRevision": 6119,
+    "databaseRevision": 6119,
+    "profiles": 1280,
+    "clans": 131,
+    "samples": [
+      {
+        "revision": 37,
+        "generation": 2,
+        "changedDocuments": 0,
+        "payloadBytes": 0,
+        "syncedAt": 1795565476102,
+        "prepareMs": 6668,
+        "writeMs": 110,
+        "pinnedRead": {
+          "cacheHit": false,
+          "incremental": false,
+          "replayed": 0,
+          "readFiles": 1
+        },
+        "durationMs": 6787.8874649999925,
+        "final": false
+      },
+      {
+        "revision": 1030,
+        "generation": 3,
+        "changedDocuments": 77,
+        "payloadBytes": 2762291,
+        "syncedAt": 1795565501505,
+        "prepareMs": 1713,
+        "writeMs": 380,
+        "pinnedRead": {
+          "cacheHit": false,
+          "incremental": true,
+          "replayed": 993,
+          "readFiles": 772
+        },
+        "durationMs": 2191.167165000006,
+        "final": false
+      },
+      {
+        "revision": 2054,
+        "generation": 4,
+        "changedDocuments": 70,
+        "payloadBytes": 2798541,
+        "syncedAt": 1795565531246,
+        "prepareMs": 1550,
+        "writeMs": 351,
+        "pinnedRead": {
+          "cacheHit": false,
+          "incremental": true,
+          "replayed": 1024,
+          "readFiles": 781
+        },
+        "durationMs": 1923.1697719999938,
+        "final": false
+      },
+      {
+        "revision": 3046,
+        "generation": 5,
+        "changedDocuments": 68,
+        "payloadBytes": 2823964,
+        "syncedAt": 1795565566719,
+        "prepareMs": 6166,
+        "writeMs": 316,
+        "pinnedRead": {
+          "cacheHit": false,
+          "incremental": false,
+          "replayed": 69,
+          "readFiles": 50
+        },
+        "durationMs": 7395.864016999985,
+        "final": false
+      },
+      {
+        "revision": 4043,
+        "generation": 6,
+        "changedDocuments": 74,
+        "payloadBytes": 2737259,
+        "syncedAt": 1795565590886,
+        "prepareMs": 1217,
+        "writeMs": 316,
+        "pinnedRead": {
+          "cacheHit": false,
+          "incremental": true,
+          "replayed": 997,
+          "readFiles": 758
+        },
+        "durationMs": 1562.575410999998,
+        "final": false
+      },
+      {
+        "revision": 5064,
+        "generation": 7,
+        "changedDocuments": 77,
+        "payloadBytes": 2876049,
+        "syncedAt": 1795565620878,
+        "prepareMs": 1234,
+        "writeMs": 304,
+        "pinnedRead": {
+          "cacheHit": false,
+          "incremental": true,
+          "replayed": 1021,
+          "readFiles": 797
+        },
+        "durationMs": 1553.3752239999885,
+        "final": false
+      },
+      {
+        "revision": 6085,
+        "generation": 8,
+        "changedDocuments": 77,
+        "payloadBytes": 2904896,
+        "syncedAt": 1795565656195,
+        "prepareMs": 6531,
+        "writeMs": 324,
+        "pinnedRead": {
+          "cacheHit": false,
+          "incremental": false,
+          "replayed": 265,
+          "readFiles": 197
+        },
+        "durationMs": 6909.320037999947,
+        "final": false
+      },
+      {
+        "revision": 6119,
+        "generation": 9,
+        "changedDocuments": 53,
+        "payloadBytes": 2572312,
+        "syncedAt": 1795565668602,
+        "prepareMs": 11954,
+        "writeMs": 408,
+        "pinnedRead": null,
+        "durationMs": 12368.073514999996,
+        "final": true
+      }
+    ]
+  },
+  "testSchemaRemoved": true,
+  "limitations": [
+    "Three-minute run only, no matched baseline yet.",
+    "Rare state gap about399ms and tick work spike about281ms remain unresolved.",
+    "No maximum CCU, browser FPS, whole-game acceleration or 300000 claim."
+  ]
+}

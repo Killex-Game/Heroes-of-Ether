@@ -1,0 +1,172 @@
+{
+  "at": "2026-11-25T00:33:17.570Z",
+  "files": 8,
+  "freedBytes": 232213856,
+  "localVerified": true,
+  "remoteVerified": true,
+  "manifest": {
+    "at": "2026-11-25T00:32:45.000Z",
+    "scope": "Eight completed synthetic component benchmark profiles only. Summaries, WAL, histories, live data and backups are unchanged.",
+    "files": [
+      {
+        "file": "/srv/heroether-test/play/results/world-copy-20261124/read-lease-window-linux-1/profiles.json",
+        "summary": "/srv/heroether-test/play/results/world-copy-20261124/read-lease-window-linux-1/summary.json",
+        "sha256": "bb7d01a65a8b5241ddbf7a3aceb3274975b109f2346fe063f86507d789f6a7fc",
+        "bytes": 31456736,
+        "mode": 33152,
+        "uid": 0,
+        "gid": 0,
+        "mtimeMs": 1795542118891.1357,
+        "archive": "/srv/heroether-test/play/results/world-copy-20261124/closed-micro-20261125/000.json.gz",
+        "compressed": {
+          "sha256": "859377bd0f927e29a66e70474117d5b49f6aa79bc87a0e14a9b5bf244c137d69",
+          "bytes": 2433073
+        }
+      },
+      {
+        "file": "/srv/heroether-test/play/results/world-copy-20261124/read-lease-window-linux-2/profiles.json",
+        "summary": "/srv/heroether-test/play/results/world-copy-20261124/read-lease-window-linux-2/summary.json",
+        "sha256": "bb7d01a65a8b5241ddbf7a3aceb3274975b109f2346fe063f86507d789f6a7fc",
+        "bytes": 31456736,
+        "mode": 33152,
+        "uid": 0,
+        "gid": 0,
+        "mtimeMs": 1795542135535.0776,
+        "archive": "/srv/heroether-test/play/results/world-copy-20261124/closed-micro-20261125/001.json.gz",
+        "compressed": {
+          "sha256": "859377bd0f927e29a66e70474117d5b49f6aa79bc87a0e14a9b5bf244c137d69",
+          "bytes": 2433073
+        }
+      },
+      {
+        "file": "/srv/heroether-test/play/results/world-copy-20261124/read-lease-baseline-linux-1/profiles.json",
+        "summary": "/srv/heroether-test/play/results/world-copy-20261124/read-lease-baseline-linux-1/summary.json",
+        "sha256": "bb7d01a65a8b5241ddbf7a3aceb3274975b109f2346fe063f86507d789f6a7fc",
+        "bytes": 31456736,
+        "mode": 33152,
+        "uid": 0,
+        "gid": 0,
+        "mtimeMs": 1795542101558.196,
+        "archive": "/srv/heroether-test/play/results/world-copy-20261124/closed-micro-20261125/002.json.gz",
+        "compressed": {
+          "sha256": "859377bd0f927e29a66e70474117d5b49f6aa79bc87a0e14a9b5bf244c137d69",
+          "bytes": 2433073
+        }
+      },
+      {
+        "file": "/srv/heroether-test/play/results/world-copy-20261124/read-lease-baseline-linux-2/profiles.json",
+        "summary": "/srv/heroether-test/play/results/world-copy-20261124/read-lease-baseline-linux-2/summary.json",
+        "sha256": "bb7d01a65a8b5241ddbf7a3aceb3274975b109f2346fe063f86507d789f6a7fc",
+        "bytes": 31456736,
+        "mode": 33152,
+        "uid": 0,
+        "gid": 0,
+        "mtimeMs": 1795542162737.9827,
+        "archive": "/srv/heroether-test/play/results/world-copy-20261124/closed-micro-20261125/003.json.gz",
+        "compressed": {
+          "sha256": "859377bd0f927e29a66e70474117d5b49f6aa79bc87a0e14a9b5bf244c137d69",
+          "bytes": 2433073
+        }
+      },
+      {
+        "file": "/srv/heroether-test/play/results/world-copy-20261124/checkpoint-v7-cold-linux-1/profiles.json",
+        "summary": "/srv/heroether-test/play/results/world-copy-20261124/checkpoint-v7-cold-linux-1/summary.json",
+        "sha256": "7969d67aac67699ea8f2bd4392b7ee08b14cf557177e141a5bdcdb9ef09e9e16",
+        "bytes": 31463336,
+        "mode": 33152,
+        "uid": 0,
+        "gid": 0,
+        "mtimeMs": 1795539275616.2063,
+        "archive": "/srv/heroether-test/play/results/world-copy-20261124/closed-micro-20261125/004.json.gz",
+        "compressed": {
+          "sha256": "08a0ddc699048365b6cb84a1a8f86e81632e755befa6eb1ddc983cf0eb61dee7",
+          "bytes": 2433535
+        }
+      },
+      {
+        "file": "/srv/heroether-test/play/results/world-copy-20261124/checkpoint-v7-cold-linux-2/profiles.json",
+        "summary": "/srv/heroether-test/play/results/world-copy-20261124/checkpoint-v7-cold-linux-2/summary.json",
+        "sha256": "7969d67aac67699ea8f2bd4392b7ee08b14cf557177e141a5bdcdb9ef09e9e16",
+        "bytes": 31463336,
+        "mode": 33152,
+        "uid": 0,
+        "gid": 0,
+        "mtimeMs": 1795539319757.0532,
+        "archive": "/srv/heroether-test/play/results/world-copy-20261124/closed-micro-20261125/005.json.gz",
+        "compressed": {
+          "sha256": "08a0ddc699048365b6cb84a1a8f86e81632e755befa6eb1ddc983cf0eb61dee7",
+          "bytes": 2433535
+        }
+      },
+      {
+        "file": "/srv/heroether-test/play/results/world-copy-20261124/checkpoint-v7-cached-linux-1/profiles.json",
+        "summary": "/srv/heroether-test/play/results/world-copy-20261124/checkpoint-v7-cached-linux-1/summary.json",
+        "sha256": "7969d67aac67699ea8f2bd4392b7ee08b14cf557177e141a5bdcdb9ef09e9e16",
+        "bytes": 31463336,
+        "mode": 33152,
+        "uid": 0,
+        "gid": 0,
+        "mtimeMs": 1795539283912.1775,
+        "archive": "/srv/heroether-test/play/results/world-copy-20261124/closed-micro-20261125/006.json.gz",
+        "compressed": {
+          "sha256": "08a0ddc699048365b6cb84a1a8f86e81632e755befa6eb1ddc983cf0eb61dee7",
+          "bytes": 2433535
+        }
+      },
+      {
+        "file": "/srv/heroether-test/play/results/world-copy-20261124/checkpoint-v7-cached-linux-2/profiles.json",
+        "summary": "/srv/heroether-test/play/results/world-copy-20261124/checkpoint-v7-cached-linux-2/summary.json",
+        "sha256": "7969d67aac67699ea8f2bd4392b7ee08b14cf557177e141a5bdcdb9ef09e9e16",
+        "bytes": 31463336,
+        "mode": 33152,
+        "uid": 0,
+        "gid": 0,
+        "mtimeMs": 1795539292597.1475,
+        "archive": "/srv/heroether-test/play/results/world-copy-20261124/closed-micro-20261125/007.json.gz",
+        "compressed": {
+          "sha256": "08a0ddc699048365b6cb84a1a8f86e81632e755befa6eb1ddc983cf0eb61dee7",
+          "bytes": 2433535
+        }
+      }
+    ],
+    "originalBytes": 251680288
+  },
+  "verification": {
+    "at": "2026-11-25T00:33:09.386Z",
+    "manifestSha256": "47676d38131c07417996d3b34a101d6349f840839737f9bccc2062140054c303",
+    "archives": [
+      {
+        "sha256": "859377bd0f927e29a66e70474117d5b49f6aa79bc87a0e14a9b5bf244c137d69",
+        "bytes": 2433073
+      },
+      {
+        "sha256": "859377bd0f927e29a66e70474117d5b49f6aa79bc87a0e14a9b5bf244c137d69",
+        "bytes": 2433073
+      },
+      {
+        "sha256": "859377bd0f927e29a66e70474117d5b49f6aa79bc87a0e14a9b5bf244c137d69",
+        "bytes": 2433073
+      },
+      {
+        "sha256": "859377bd0f927e29a66e70474117d5b49f6aa79bc87a0e14a9b5bf244c137d69",
+        "bytes": 2433073
+      },
+      {
+        "sha256": "08a0ddc699048365b6cb84a1a8f86e81632e755befa6eb1ddc983cf0eb61dee7",
+        "bytes": 2433535
+      },
+      {
+        "sha256": "08a0ddc699048365b6cb84a1a8f86e81632e755befa6eb1ddc983cf0eb61dee7",
+        "bytes": 2433535
+      },
+      {
+        "sha256": "08a0ddc699048365b6cb84a1a8f86e81632e755befa6eb1ddc983cf0eb61dee7",
+        "bytes": 2433535
+      },
+      {
+        "sha256": "08a0ddc699048365b6cb84a1a8f86e81632e755befa6eb1ddc983cf0eb61dee7",
+        "bytes": 2433535
+      }
+    ]
+  }
+}

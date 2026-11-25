@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-25T00:17:38.174Z",
+  "files": 4,
+  "freedBytes": 189233029,
+  "allArchivesVerified": true,
+  "localVerified": true,
+  "manifestSha256": "38d7d79d914eb33c2aaf31580f81d5df7b061152472f6d4ccb0ea299157be1d7",
+  "scope": "Four closed synthetic initial worlds compressed losslessly. Both compressed and decompressed SHA checked on VPS and local machine. Live saves, runtime WAL/history, backups and results untouched."
+}

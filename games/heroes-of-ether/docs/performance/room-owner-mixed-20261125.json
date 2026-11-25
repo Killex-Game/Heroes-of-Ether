@@ -1,0 +1,185 @@
+{
+  "at": "2026-11-25T00:26:11.585Z",
+  "installed": false,
+  "scope": "Prototype benchmark only; no production room ownership or admission change",
+  "changes": [
+    "30 players per room",
+    "Only small simulation projections enter each owned room; no wallets or operation histories",
+    "Lobby changes, account expiry and event context refreshed without sending a world",
+    "Synthetic game clock, same migration path as whole-server benchmark",
+    "Realistic move/split/W/30 boosters; five lobby actors, two linked and three creating clans",
+    "Large initial masses seeded once; respawn uses canonical spawn mass and protection",
+    "Durable chat WAL alongside profile WAL"
+  ],
+  "targeted": {
+    "earlierIntegration81": "room-owner-integration-r1",
+    "subsequent67": "room-owner-projection-r2",
+    "finalProjectionAndRespawn9": "room-owner-respawn-r1"
+  },
+  "smoke": {
+    "label": "room-owner-smoke-r4",
+    "players": 30,
+    "rooms": 1,
+    "seconds": 60,
+    "postgresql": false,
+    "updatesHz": [
+      [
+        19.496543991165225
+      ]
+    ],
+    "lobby": {
+      "clients": 5,
+      "mode": "active-lobby-actions",
+      "ipMode": "single-generator-address",
+      "requests": 208,
+      "success": 208,
+      "errors": {},
+      "actions": {
+        "profile": 10,
+        "rankings": 10,
+        "loadout": 10,
+        "purchase": 10,
+        "account-bonus": 10,
+        "social-view": 20,
+        "gift": 10,
+        "gift-read": 10,
+        "clan-create": 3,
+        "clan-view": 22,
+        "clan-deposit": 10,
+        "clan-buy": 10,
+        "clan-edit": 10,
+        "roulette-prepare": 10,
+        "roulette-spin": 10,
+        "pet-buy": 5,
+        "pet-food": 10,
+        "chat": 10,
+        "news": 8,
+        "presence": 5,
+        "pet-equip": 5
+      },
+      "pending": 0,
+      "latencyMs": {
+        "p50": 11.46179999999731,
+        "p95": 29.013500000000022,
+        "max": 118.57709999999997
+      }
+    },
+    "projections": {
+      "messages": 859,
+      "profiles": 6168,
+      "eventContexts": 1
+    },
+    "ack": {
+      "acknowledged": 670,
+      "recovered": 670,
+      "duplicates": 0,
+      "profiles": 1280,
+      "types": {
+        "booster:mine": 18,
+        "booster:knuckles": 18,
+        "booster:cake": 18,
+        "booster:sphere": 19,
+        "booster:harpoon": 19,
+        "booster:mega_poison": 19,
+        "booster:vortex": 19,
+        "booster:candy": 19,
+        "booster:donut": 19,
+        "booster:stone": 19,
+        "booster:easter_egg": 19,
+        "booster:clan_shield": 19,
+        "booster:freeze": 18,
+        "booster:glove": 17,
+        "booster:colorful_shield": 19,
+        "booster:web": 17,
+        "booster:lock": 18,
+        "booster:golden_shield": 19,
+        "booster:warheads": 17,
+        "booster:ice_cream": 17,
+        "booster:poison": 18,
+        "booster:axe": 13,
+        "booster:awl": 17,
+        "booster:rocket": 18,
+        "booster:speed": 18,
+        "booster:meat": 18,
+        "booster:fire": 16,
+        "booster:fire_sword": 17,
+        "booster:hook": 18,
+        "booster:sponge": 17,
+        "lobby:loadout": 10,
+        "lobby:purchase": 10,
+        "lobby:account-bonus": 10,
+        "lobby:gift": 10,
+        "lobby:gift-read": 10,
+        "lobby:clan-create": 3,
+        "lobby:clan-deposit": 10,
+        "lobby:clan-buy": 10,
+        "lobby:clan-edit": 10,
+        "lobby:roulette-prepare": 10,
+        "lobby:roulette-spin": 10,
+        "lobby:pet-buy": 5,
+        "lobby:pet-food": 10,
+        "lobby:chat": 10,
+        "lobby:pet-equip": 5
+      },
+      "gifts": 10,
+      "notices": 10,
+      "deposits": 10,
+      "created": 3,
+      "appliedEffects": 537,
+      "validInventoriesAndTransactions": true
+    },
+    "boosters": [
+      "awl",
+      "axe",
+      "cake",
+      "candy",
+      "clan_shield",
+      "colorful_shield",
+      "donut",
+      "easter_egg",
+      "fire",
+      "fire_sword",
+      "freeze",
+      "glove",
+      "golden_shield",
+      "harpoon",
+      "hook",
+      "ice_cream",
+      "knuckles",
+      "lock",
+      "meat",
+      "mega_poison",
+      "mine",
+      "poison",
+      "rocket",
+      "speed",
+      "sphere",
+      "sponge",
+      "stone",
+      "vortex",
+      "warheads",
+      "web"
+    ],
+    "freeMemoryMinimumMiB": 2749
+  },
+  "firstAttempts": [
+    {
+      "label": "room-owner-smoke-r1",
+      "cause": "Lobby fixture lacked ether/crystals/tickets; repeated respawn restored artificial large mass. Not valid capacity evidence."
+    },
+    {
+      "label": "room-owner-smoke-r2",
+      "cause": "Direct initial-world save treated moved lobby members as recruits. Eight permission rejections; not accepted."
+    },
+    {
+      "label": "room-owner-smoke-r3",
+      "cause": "Raw initial file had updated synthetic funds without transaction-history sync; recovery correctly refused it before load."
+    }
+  ],
+  "limitations": [
+    "No PostgreSQL in this smoke run.",
+    "Final accepted-input counters and realistic audit metadata were added after r4 and have not yet been exercised in another mixed run.",
+    "Room crash after durable inventory debit but before effect publication remains unresolved in this old benchmark protocol. Modern resident outbox/frame gate is not integrated here.",
+    "No full event matrix, potion/pet ability inputs, production authentication/admission or browser FPS. No maximum CCU or 300000 claim."
+  ]
+}

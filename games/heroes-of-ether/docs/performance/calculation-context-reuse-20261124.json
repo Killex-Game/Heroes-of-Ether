@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-25T00:10:17.224Z",
+  "at": "2026-11-25T00:34:53.390Z",
   "installed": false,
   "change": "Calculation lanes send immutable event/configuration context only when the owning references change. Worker event availability still expires at the batch timestamp. Shared clan input projection is built once per lane per batch.",
   "validation": {
@@ -76,7 +76,11 @@
   },
   "fullLinux": {
     "label": "calculation-context-full-linux",
-    "pending": true
+    "code": 0,
+    "tests": 2492,
+    "pass": 2489,
+    "fail": 0,
+    "skipped": 3
   },
   "firstAttempts": [
     {
@@ -93,7 +97,7 @@
     }
   ],
   "limitations": [
-    "Linux regressions and realistic mixed load remain pending.",
+    "Full Windows and Linux regressions passed. Realistic mixed load remains pending; its first admission was deferred when live-host disk reserve fell below 2000 MiB.",
     "Component benchmark uses 30 profiles, three real worker threads, 64 archived events and 200 measured batches after 20 warmup batches.",
     "Both compared variants use the candidate code; the old context-send policy is forced for the baseline. Context byte counts are IPC payload estimates, not network traffic.",
     "No whole-game CPU, maximum CCU, browser FPS or 300000-player claim."
