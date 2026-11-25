@@ -154,6 +154,10 @@ function arenaDraft(current, cast = false, sharedActivityValues = false) {
   // object first forced a dictionary layout and a second full property copy.
   for (const key of Object.keys(current)) {
     if (arenaSharedFields.has(key)) continue;
+    // Audited passive batches cannot write Easter collections or completed
+    // roulette achievements. Life boundaries, pickups, casts and unknown
+    // events keep private archives; future event writers therefore opt in.
+    if (!cast && sharedActivityValues && (key === 'easter' || key === 'eventAchievements')) continue;
     // Progress only earns/settles counters and unopened prizes. Inventory writes
     // happen in separate cast/claim transactions, which still detach this map.
     if (!cast && key === "inventory") continue;
@@ -249,6 +253,7 @@ class ProfileStore {
     filePath = null,
     journal = false,
     arenaProgressWorker = false,
+    arenaProgressShards = 0,
     incrementalSettlement = false,
     clanDailyQuests = false,
     residentRoomExperiment = false,
@@ -257,6 +262,9 @@ class ProfileStore {
     unlockLeagueFrames = false,
     unlockClanCrests = false,
   } = {}) {
+    if(!Number.isInteger(arenaProgressShards)||arenaProgressShards<0||arenaProgressShards>8||
+       (arenaProgressShards&&(!journal||!filePath||arenaProgressWorker)))
+      throw Error('Addressed progress requires one journaled backend and 0–8 workers');
     this.petEvents = pets.validateEvents(petEvents);
     this.rouletteConfig = roulette.configuration(rouletteConfig);
     this.promotionConfig = promotions.configuration(promotionConfig);
@@ -623,7 +631,9 @@ class ProfileStore {
       this.journal = new persistence.ProfileJournal(filePath, { intervalMs: 300000 });
       this.data = require('./recovery-sharing').share(this.journal.previous,this.data);
     }
-    if (arenaProgressWorker && this.journal)
+    if(arenaProgressShards)
+      this.arenaPreparer=new (require('./clan-arena-progress-shards').ClanArenaProgressShards)({count:arenaProgressShards});
+    else if (arenaProgressWorker && this.journal)
       this.arenaPreparer = new (require("./arena-progress-preparer").ArenaProgressPreparer)();
   }
   prepareSnapshot(next, at = this.now(), context, previous = this.data) {

@@ -47,6 +47,12 @@ function loadServerSettings(root, env = process.env, parallelism = os.availableP
   integer(stateWorkers.maxWorkers, "arena-state-workers.maxWorkers", 0, STATE_WORKER_LIMITS.MAX_WORKERS);
   integer(stateWorkers.maxRooms, "arena-state-workers.maxRooms", 1);
   if (stateWorkers.enabled && !stateWorkers.maxWorkers) invalid("arena-state-workers.maxWorkers", "для включённых потоков нужно хотя бы 1");
+  // An older installation without this optional file keeps canonical progress.
+  const progressWorkers=fs.existsSync(path.join(root,'config/arena-progress-workers.json'))
+    ?readConfig(root,'arena-progress-workers'):{enabled:false,maxWorkers:3};
+  keys(progressWorkers,['enabled','maxWorkers'],'arena-progress-workers');
+  boolean(progressWorkers.enabled,'arena-progress-workers.enabled');integer(progressWorkers.maxWorkers,'arena-progress-workers.maxWorkers',0,8);
+  if(progressWorkers.enabled&&!progressWorkers.maxWorkers)invalid('arena-progress-workers.maxWorkers','для включённых потоков нужно хотя бы 1');
   const appearance = readConfig(root, "appearance-testing");
   keys(appearance, ["unlockLeagueBackgrounds", "unlockLeagueFrames", "unlockClanCrests", "allPersonalAppearanceProfileIds", "allAppearanceProfileIds"], "appearance-testing");
   for (const field of ["unlockLeagueBackgrounds", "unlockLeagueFrames", "unlockClanCrests"]) boolean(appearance[field], "appearance-testing." + field);
@@ -68,8 +74,9 @@ function loadServerSettings(root, env = process.env, parallelism = os.availableP
     ["promotions", () => require("../shop/promotion-offers").configuration(promotions)],
   ]) { try { validate(); } catch { invalid("config/" + name + ".json", "настройки не прошли проверку правил"); } }
   const stateWorkerCount = stateWorkers.enabled ? Math.min(stateWorkers.maxWorkers, Math.max(1, parallelism - 2)) : 0;
+  const progressWorkerCount=progressWorkers.enabled?Math.min(progressWorkers.maxWorkers,Math.max(1,parallelism-2)):0;
   return { root, dataDir: path.join(root, "data"), publicDir: path.join(root, "public"),
     port, host, trustLoopbackProxy: env.TRUST_LOOPBACK_PROXY === "1", arena, stateWorkers, stateWorkerCount,
-    appearance, owner, petEvents, roulette, promotions };
+    progressWorkers,progressWorkerCount,appearance, owner, petEvents, roulette, promotions };
 }
 module.exports = { loadServerSettings, ARENA_FIELDS };
