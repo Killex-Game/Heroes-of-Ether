@@ -6,9 +6,6 @@ const fixture=require('../helpers/black-friday-fixture'),f=fixture({journal:fals
 const {xpForLevel}=require('../../src/server/progression/experience-progression');
 p.personal.introPending=false;p.name='Проверка';p.level=12;p.progress.xp=xpForLevel(12);p.wallet.coins=100000;p.wallet.crystals=1000;p.wallet.bucks=500;
 const clans=new ClanService(f.store);clans.mutate(f.user.token,{action:'create',name:'Проверка герба',prefix:'TEST',privacy:'open',emblem:'astral',requestId:randomUUID()});
-const B=require('../../src/server/events/black-friday'),book=require('../../src/server/events/black-friday-orders');
-B.rewardCurrencyPack(f.p(),f.run,0,f.now());const day=book.ensure(f.p(),f.p().blackFriday.runs[f.run.id],B.day(f.now()),f.now());fixture.forceOrder(day,book.templates.findIndex(t=>t.metric==='shieldUses'));
-const secret=day.slots.find(s=>s.tier==='secret');if(secret)secret.current.template=book.templates.findIndex(t=>t.metric==='clanUses');
 const app=createGameServer({profiles:f.store,clans,events:f.manager,arena:new Arena({etherCount:0}),autoTick:false,wallNow:f.now,now:f.now,rateNow:()=>performance.now(),testBots:{enabled:false}});
 const out=process.env.OWNER_BROWSER_OUT||path.resolve(__dirname,'../artifacts/friday-shields-crest',engine);fs.mkdirSync(out,{recursive:true});
 let browser,page;const errors=[],results=[];
