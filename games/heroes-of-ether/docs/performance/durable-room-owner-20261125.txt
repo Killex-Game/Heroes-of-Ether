@@ -1,0 +1,41 @@
+Experimental benchmark adapter only. Not installed or connected to live admission.
+
+RoomFixture can now capture private frame progress, paid outcomes, snapshots and
+socket responses. DurableRoomOwner publishes economic frames only after RoomOutbox
+fsync; a disk/simulation/publication failure fences that owner. Position-only
+frames remain ephemeral and do not create empty journal writes. Player inputs
+wait at the same frame boundary. Durability is not a saved physics snapshot.
+
+DurableRoomCasts sends reversible inventory holds to the one profile writer.
+It applies or cancels the reserved operation in a later private frame. There is
+no whole-room lock while a reservation is travelling. A departed life or expired
+reserved lot cancels the operation; its refund is committed by RoomProfileLedger.
+Repeated IDs retain the original result and never reapply an effect.
+
+DurableRoomCoordinator binds process/epoch/profile and routes reservations and
+checked frames through the existing ledger. A real child-process/WebSocket test
+kills an owner after successful client acknowledgement while withholding the
+applied frame from the profile writer: recovery reads the durable room outbox,
+credits the applied booster once, preserves its one debit and closes the epoch.
+The corresponding already-accepted-frame crash also passes without a duplicate.
+
+Targeted Windows checks: 20 pass for owner, real IPC, prior cast adapter and
+canonical respawn, then two explicit IPC crash variants pass. A position-only
+journal regression passes in the final targeted run: 55/55, including ledger,
+frame gate, outbox and retained legacy adapter tests. Full regression pending.
+
+Preserved first attempts:
+- durable-room-owner-r1: 6 pass / 1 fail. The test reset a life without emitting
+  its end event; corrected fixture emits the ordered end/start pair. R2: 7 pass.
+- durable-room-owner-ipc-r1: failed because the test guessed spawnSerial=1.
+  Corrected test reads spawnSerial from the real wire decoder; R2 and R3 pass.
+
+Limits: no full mixed benchmark integration yet, no production authentication or
+room routing, no PG acceptance for this adapter, no integrated deadline boundary
+sender or promotion of potions/pet inputs. Fixed outcome capacity requires epoch
+rotation before exhaustion. Existing ledger/deadline/recovery unit coverage is
+not a substitute for complete process load and fault injection. No capacity gain
+or 300000-online readiness is claimed. The existing legacy resident benchmark
+remains available separately and retains its prior crash-publication limitation.
+
+Full Windows: 2520 total / 2517 pass / 0 fail / 3 skip, 556488.5609ms. Source 8c7cc5d0bf83d5547dc8d8169a899fac34794905. Linux full running; no mixed capacity evidence for this adapter.
