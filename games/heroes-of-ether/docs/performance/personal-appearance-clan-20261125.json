@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-25T00:23:08.405Z",
+  "at": "2026-11-25T00:34:52.648Z",
   "installed": false,
   "change": "Personal arena appearance cache no longer invalidates on clan economy/membership/crest objects. Existing appearance access reads personal grants; clan identity remains independently published.",
   "validation": {
@@ -91,6 +91,20 @@
       }
     ]
   },
+  "fullWindows": {
+    "label": "personal-appearance-clan-full-windows",
+    "code": 0,
+    "signal": null,
+    "at": "2026-11-25T00:32:47.783Z",
+    "tests": 2493,
+    "pass": 2490,
+    "fail": 0,
+    "skipped": 3
+  },
+  "fullLinux": {
+    "label": "personal-appearance-clan-full-linux",
+    "pending": true
+  },
   "firstAttempts": [
     {
       "label": "personal-appearance-clan-r1",
@@ -102,7 +116,7 @@
     }
   ],
   "limitations": [
-    "Full regressions and whole-server mixed load remain pending.",
+    "Full Windows passed; Linux and whole-server mixed load remain pending.",
     "Component benchmark uses 30 profiles and repeated synthetic clan changes; no whole-game CPU/FPS/CCU claim.",
     "With no clan changes the timings overlap; no reliable improvement claimed there."
   ]
