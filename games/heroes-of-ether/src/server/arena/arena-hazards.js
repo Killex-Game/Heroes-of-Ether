@@ -302,6 +302,10 @@ class ArenaHazards {
                 };
               }),
           );
+        // No part can consume any remaining hazard in this pass. Contacts
+        // were already published above. Still run the final replenishment,
+        // including clearing hazards after the last player has departed.
+        if (!records.length) break;
         index =
           a.spatialIndex && records.length >= RULES.SPATIAL_MIN_BODIES
             ? new CircleIndex(records, RULES.SPATIAL_CELL_SIZE)

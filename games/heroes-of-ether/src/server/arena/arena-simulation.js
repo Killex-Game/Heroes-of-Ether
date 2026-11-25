@@ -988,6 +988,13 @@ class Arena {
     }
   }
   collectEther(now = 0) {
+    // Idle rooms, departed bodies and locked players cannot collect anything.
+    // Keep food motion/expiry/replenishment in the normal step, but do not build
+    // a full particle index until there is a living collector for this pass.
+    const ordered = [...this.players.values()].filter((p) => !p.dead && !p.isRemnant);
+    if (!ordered.some((p) => !(p.effects.lock > now))) return;
+    // Larger players still win contested particles in exactly the same order.
+    ordered.sort((a, b) => b.mass - a.mass || a.id.localeCompare(b.id));
     const food = this.ether;
     const removed = new Uint8Array(food.length);
     let removedCount = 0;
@@ -1000,10 +1007,6 @@ class Arena {
             RULES.SPATIAL_CELL_SIZE,
           )
         : null;
-    // Более крупные проверяются первыми: порядок прихода соединений не решает спор о частице.
-    const ordered = [...this.players.values()]
-      .filter((p) => !p.dead && !p.isRemnant)
-      .sort((a, b) => b.mass - a.mass || a.id.localeCompare(b.id));
     const candidateBuffer = [];
     for (const p of ordered) {
       if (p.effects.lock > now) continue;
