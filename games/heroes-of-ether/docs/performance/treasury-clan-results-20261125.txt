@@ -1,0 +1,35 @@
+Сокровищница, клановые итоги и VIP — установлен 25.11.2026
+
+Источник 4a6321dbc3e2187820e2c379f8700428c6631271, тег release/20261125-treasury-clan-results. Вход открыт 2026-11-25T06:57:34.620Z.
+
+VIP costs 14 votes for 7 days in the shared authoritative product catalogue; Premium price and existing entitlements unchanged.
+
+Chests opens the unified Treasury. Closed title chests occupy normal slots; overflow waits indefinitely and is automatically promoted. Existing prepared rewards remain redeemable.
+
+Clan navigation is a compact two-column group in the banner on all sections, including applications and settings.
+
+Daily battle/task results and weekly/season awards use a persistent ceremonial dialog, acknowledged without duplicate rewards.
+
+Stone lasts 5 seconds: camera rotation plus independent translations of scene layers, bodies and HUD. Reduced motion is respected; authoritative movement and collisions unchanged.
+
+Actual natural and absorption kills, Premium multiplier, personal cap, arena exit, retry and WAL recovery were checked for daily/weekly clan battles. No missing-credit runtime defect was reproduced.
+
+Проверки: 2526 уникальных passed на каждой ОС, 3 skip; real PostgreSQL 12; браузеры 3 × 2 экрана.
+
+Данные: 1723 профилей, 137 кланов, rev 4963877 → 4963878. Полный мир/auxiliary/PG сверены с точным повторением календаря и размещения сундуков.
+
+Backup обеих сторон SHA 19b68365b8a33d2c88ccb9d987b11dd6fc8626dc35c87d76d3e8792704628a8e. Все копии сохранять; hardlink-файлы заменять атомарно.
+
+Full Windows/Linux suites each had one new fixture expectation failure (2525 passed, 1 failed, 3 skipped): an unrelated daily leaderboard prize settled at the first post-restart action. Only the fixture was corrected; its entire file passed 34/34 on each OS. Unique coverage is 2526 passed + 3 skipped, not a falsely relabelled clean full run.
+
+The stone render probe is a five-second headless callback-cost sample with one player, not FPS or capacity. Final p95 old/new: Chrome 0.6/0.6 ms, Firefox 8/11 ms, WebKit 1/5 ms. Initial contended measurements and the more costly per-body rotation candidate are retained.
+
+No real VK payment was initiated. Browser catalog and authoritative purchase tests verify the new price.
+
+Season switching and result examples were tested only on isolated fixtures; the live season was not changed.
+
+Capacity optimization/load ladder remains paused by the owner. No new CCU, 300000-player or lag-free claim.
+
+Воспроизведение: node scripts/testing/run-tests.js; node --test tests/integration/clan-arena-settlement.test.js. PG-тесты используют отдельные случайные схемы, сохраняют и проверяют ACK/WAL/PG.
+
+Подробные числа и ограничения: одноимённый JSON. Локальные сырые журналы и снимки: artifacts/treasury-clan-results-20261125.
