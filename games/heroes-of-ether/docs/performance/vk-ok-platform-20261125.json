@@ -5,6 +5,7 @@
   "branch": "codex/20261125-vk-ok-platform",
   "ownerDecisions": {
     "applicationsExist": false,
+    "okPricing": "Owner will set separate OK prices later; no automatic conversion or enabled OK checkout until then",
     "profileMigration": "new social profiles; leave existing test profiles intact"
   },
   "implemented": [
