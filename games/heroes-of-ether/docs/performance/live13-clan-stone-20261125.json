@@ -532,8 +532,15 @@
       "pass": 13
     },
     "linuxFull": {
-      "status": "running",
-      "candidate": "V1 indexed effect lookup, no specialized root fast path"
+      "status": "passed",
+      "total": 2549,
+      "pass": 2545,
+      "fail": 0,
+      "skip": 4,
+      "durationMs": 664796.995754,
+      "logSha256": "c028924ee85bc8705e6e93ffd61cf3c5c6616eadcff8834ea6a6202b94373666",
+      "candidate": "V1 indexed effect lookup, no specialized root fast path; final UI and revised no-spin tests",
+      "skips": "Four tests requiring an explicit isolated real PostgreSQL configuration. Production PG was observed healthy but is not used by this suite."
     },
     "httpFiles": 6,
     "rootHttpFiles": 6,
@@ -2675,12 +2682,54 @@
       }
     },
     "scope": "Snapshot generation only. Deterministic frame hashes equal within each fixture; these percentages are not whole-game gains.",
-    "next": "Keep this candidate outside main/runtime; profile effect enumeration in real room snapshots and resolve empty-case cost before a realistic mixed load comparison."
+    "next": "Keep this candidate outside main/runtime; profile effect enumeration in real room snapshots and resolve empty-case cost before a realistic mixed load comparison.",
+    "candidateBranch": "codex/20261125-effect-lookup-candidate",
+    "candidateSource": "af015b4990394545ceddb10adf9e5e2578bb01e2",
+    "hashComparisonFrames": 240
   },
   "limits": [
     "No claim that all bugs are absent.",
     "Real payments, VK/OK launch and physical mobile devices were not tested here.",
     "No production progress was modified for the tests.",
     "No historical compensation or 300000-player capacity claim."
-  ]
+  ],
+  "liveAfterUi": {
+    "at": "2026-11-25T17:16:49.846Z",
+    "online": {
+      "arena": 9,
+      "lobby": 4,
+      "total": 13
+    },
+    "tick": {
+      "count": 1194,
+      "p50": 16.85,
+      "p95": 41.68,
+      "p99": 57.09,
+      "max": 118.93
+    },
+    "interval": {
+      "count": 1194,
+      "p50": 50.02,
+      "p95": 53.82,
+      "p99": 69.4,
+      "max": 261.98
+    },
+    "persistence": {
+      "arenaBatches": 0,
+      "queuedActions": 0,
+      "paused": false,
+      "staging": false,
+      "walRevision": 5362812,
+      "pendingWalBytes": 1494645,
+      "maxWalBytes": 67108864
+    },
+    "database": {
+      "connected": true,
+      "error": null,
+      "syncAgeMs": 13163,
+      "revision": 5362549
+    },
+    "load": "1.96 1.26 1.24 2/364 977949",
+    "comparison": "Different arena population (9 vs 11); no inference of server CPU improvement. Server code unchanged."
+  }
 }
