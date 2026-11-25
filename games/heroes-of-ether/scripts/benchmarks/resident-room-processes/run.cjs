@@ -13,6 +13,8 @@ const gameClock=require('../game-clock.cjs').fromStart(process.env.CAPACITY_GAME
 process.env.ROOM_BENCH_GAME_OFFSET_MS=String(gameClock.offsetMs);
 const gameNow=require('../game-clock.cjs').clock(gameClock.offsetMs),perRoom=30;
 const durableCasts=process.env.ROOM_BENCH_DURABLE_CASTS==='1';
+const durableOwner=process.env.ROOM_BENCH_DURABLE_OWNER==='1';
+if(durableOwner&&(!durableCasts||process.env.ROOM_BENCH_INPUTS!=='socket'))throw Error('Durable owner requires inventory-backed socket inputs');
 const {summary}=require('./room-fixture.cjs');
 const count=Number(process.argv[2]||3),workers=Number(process.argv[3]||3),seconds=Number(process.argv[4]||30);
 const peerCount=Math.max(1,Math.min(count,Number(process.env.ROOM_BENCH_PEERS)||1));
@@ -83,7 +85,7 @@ async function run(){
   const initial=require('../../../src/server/profiles/transaction-history').syncWorld(world,gameNow(),
     {kind:'synthetic-fixture',label:'Изолированный запас нагрузочного стенда'});
   fs.writeFileSync(filePath,JSON.stringify(initial),{flag:'wx'});
-  store=new ProfileStore({filePath,journal:true,incrementalSettlement:true,clanDailyQuests:true,now:gameNow});
+  store=new ProfileStore({filePath,journal:true,incrementalSettlement:true,clanDailyQuests:true,residentRoomExperiment:durableOwner,now:gameNow});
   const eventKind=process.env.ROOM_BENCH_EVENT||(process.env.LOAD_REALISTIC==='1'?'lucky-week':null);
   if(eventKind){
     if(!['black-friday','easter-hunt','lucky-week','ether-alchemy'].includes(eventKind))throw Error('Invalid fixture event');
@@ -118,22 +120,27 @@ async function run(){
     journalStats.peakPendingBytes=Math.max(journalStats.peakPendingBytes,store.journal.pendingBytes+buffer.length);return buffer;};
   store.journal.requestCheckpoint=async()=>{const started=performance.now(),already=store.journal.running;
     await checkpoint();if(!already)journalStats.checkpoints.push(performance.now()-started);};
-  const sink=new RoomProgressSink(store,{maxBatchSize:Number(process.env.ROOM_BENCH_WRITER_BATCH||64)}),all=Object.values(store.data.profiles),key=randomBytes(24).toString('hex');
-  const casts=durableCasts?new DurableCasts(store,sink,tokens):null;
+  const sink=durableOwner?null:new RoomProgressSink(store,{maxBatchSize:Number(process.env.ROOM_BENCH_WRITER_BATCH||64)}),all=Object.values(store.data.profiles),key=randomBytes(24).toString('hex');
+  const casts=durableCasts&&!durableOwner?new DurableCasts(store,sink,tokens):null;
+  const coordinator=durableOwner?new (require('./durable-room-coordinator.cjs').DurableRoomCoordinator)(store,tokens):null;
   const projections=new RoomProjections(store);
   services=await require('./services.cjs').startServices(store,output,lobbyTokens,casts?.queue);
-  const configs=Array.from({length:count},(_,i)=>({id:'room-'+i,epoch:randomUUID(),profiles:all.slice(i*perRoom,i*perRoom+perRoom)}));
-  for(const c of configs)sink.claim(c.id,c.epoch,c.profiles.map(p=>p.id));
+  const configs=Array.from({length:count},(_,i)=>({id:'room-'+i,epoch:randomUUID(),profiles:all.slice(i*perRoom,i*perRoom+perRoom),
+    ...(durableOwner?{outboxFile:path.join(output,'data','room-'+i+'.json')}:{})}));
+  for(const c of configs)sink?.claim(c.id,c.epoch,c.profiles.map(p=>p.id));
   let ipcBytes=0,acks=0,errors=0;const delays=[];
   const shards=[];
   for(let i=0;i<workers;i++){
     const child=spawn('child.cjs'),subset=configs.filter((_,n)=>n%workers===i);
-    for(const config of subset){sink.bind(config.id,config.epoch,child);casts?.claim(child,config);projections.bind(config,child);}
-    child.on('message',m=>{if(m.type!=='progress'){casts?.receive(child,m);return;}
+    for(const config of subset){sink?.bind(config.id,config.epoch,child);casts?.claim(child,config);if(coordinator)await coordinator.claim(child,config);projections.bind(config,child);}
+    child.on('message',m=>{
+      if(m.type==='fault'){errors++;aborted=true;console.error(m.message);return;}
+      if(coordinator){try{if(m.type==='residentFrame')ipcBytes+=Buffer.byteLength(JSON.stringify(m));coordinator.receive(child,m);}catch(error){errors++;aborted=true;console.error(error.stack);}return;}
+      if(m.type!=='progress'){casts?.receive(child,m);return;}
       const at=performance.now();ipcBytes+=Buffer.byteLength(JSON.stringify(m));
       sink.commitFrom(child,m.batch).then(ack=>{acks++;delays.push(performance.now()-at);if(child.connected)child.send({type:'ack',...ack});},error=>{if(errors++<3)console.error(error.stack);});
     });
-    const ready=wait(child,'ready');child.send({type:'init',rooms:subset.map(c=>({...c,profiles:c.profiles.map(roomProfile)})),key,durableCasts});
+    const ready=wait(child,'ready');child.send({type:'init',rooms:subset.map(c=>({...c,profiles:c.profiles.map(roomProfile)})),key,durableCasts,durableOwner});
     shards.push({child,subset,...await ready});
   }
   projections.flush();
@@ -153,15 +160,15 @@ async function run(){
       Promise.all(peerProcesses.map(async peer=>{const done=wait(peer,'window');peer.send({type:'sample'});return(await done).peer;})),services.sample()]);
     const castSamples=casts?.metrics.latency||[];
     const row={window:windows.length+1,throughSeconds:(performance.now()-start)/1000,rooms:shardWindows.flat(),peers:peerWindows,lobby,
-      writerDelay:summary(delays.slice(windowAck)),castLatency:summary(castSamples.slice(windowCast)),
-      progressPending:sink.pending.size,castsPending:casts?.queue.waiting.length||0,
+      writerDelay:summary((coordinator?.metrics.latency||delays).slice(windowAck)),castLatency:summary(castSamples.slice(windowCast)),
+      progressPending:coordinator?coordinator.ledger.pending:sink.pending.size,castsPending:casts?.queue.waiting.length||0,
       writerRssMiB:Math.round(process.memoryUsage().rss/1048576),freeMiB:Math.round(os.freemem()/1048576),errors};
     row.partial=Math.min(...row.rooms.map(r=>r.elapsedMs),...row.peers.map(p=>p.elapsedMs))<55000;
     row.assessment=require('./window-sampler.cjs').assessWindow(row);windows.push(row);
     fs.appendFileSync(path.join(output,'windows.ndjson'),JSON.stringify(row)+'\n');
     console.log(JSON.stringify({window:row.window,throughSeconds:row.throughSeconds,assessment:row.assessment,
       minHz:Math.min(...row.rooms.map(r=>r.updatesHz)),stateGapP99:Math.max(...row.peers.map(p=>p.gapMs.p99))}));
-    windowAck=delays.length;windowCast=castSamples.length;
+    windowAck=(coordinator?.metrics.latency||delays).length;windowCast=castSamples.length;
   }
   const monitor=setInterval(()=>{peakRss=Math.max(peakRss,process.memoryUsage().rss);minFree=Math.min(minFree,os.freemem());
     if(!sampling&&performance.now()-windowAt>=60000){
@@ -182,12 +189,28 @@ async function run(){
   const peerReports=await Promise.all(peerProcesses.map(async peer=>{
     const done=wait(peer,'report');peer.send({type:'stop'});return(await done).report;
   }));
+  if(coordinator){
+    // Each stopped owner releases its exclusive journal before recovery closes
+    // the epoch. The parent reconciles every durable frame before PG shutdown.
+    const {once}=require('node:events'),{RoomOutbox}=require('../../../src/server/arena/resident/room-outbox');
+    for(const shard of shards){
+      if(shard.child.exitCode===null&&shard.child.signalCode===null)await once(shard.child,'exit');
+      await coordinator.idle();
+      for(const config of shard.subset){
+        await coordinator.ledger.fenceStopped({roomId:config.id,epoch:config.epoch},shard.child);
+        const outbox=await RoomOutbox.openExisting({roomId:config.id,epoch:config.epoch,file:config.outboxFile});
+        try{await coordinator.ledger.recoverStopped(outbox,shard.child);}finally{await outbox.close();}
+      }
+    }
+    await coordinator.idle();acks=coordinator.metrics.frames;
+  }
   clearInterval(monitor);clearInterval(projectionTimer);const used=process.cpuUsage(cpu);
   const progressWorker=store.arenaPreparer?.stats;
   const serviceResults=await services.close();store=null;
   serviceResults.testDatabaseRemoved=await services.removeSyntheticDatabase();services=null;
   const saved=recover(filePath).data;
-  const cursors=Object.values(saved.roomProgress);const rooms=reports.flatMap(r=>r.rooms);
+  const cursors=Object.values((durableOwner?saved.residentRooms:saved.roomProgress)||{});const rooms=reports.flatMap(r=>r.rooms);
+  const residentAckAudit=durableOwner?require('./audit-resident-acks.cjs').auditResidentAcks(saved,configs,peerReports,rooms):undefined;
   const report={scope:'isolated resident simulation + direct WebSocket state + local durable progress'+
       (durableCasts?' + real inventory/WAL casts':' (casts bypass inventory)')+
       (full?' + 1280 synthetic profiles/128 clans/5 real HTTP lobby clients':'')+
@@ -197,7 +220,7 @@ async function run(){
       qualifiedWindows:windows.filter(w=>!w.partial).length,partialWindows:windows.filter(w=>w.partial).length,
       scope:'Sampled intervals before final drain. Intervals shorter than 55 seconds are retained as partial and do not prove a sustained window.'},
     gameClock,startingSeed:seed?.proof,projections:projections.metrics,
-    notCovered:['production room admission','durable room state before effect publication','potions and pet ability inputs','external payments and VK','browser FPS'],
+    notCovered:['production room admission',...(!durableOwner?['durable room state before effect publication']:[]),'potions and pet ability inputs','deadline boundary sender','external payments and VK','browser FPS'],
     scenario:{inputs:process.env.ROOM_BENCH_INPUTS||'in-process tick-based',layout:process.env.ROOM_BENCH_SCENARIO||'mixed-mass',event:eventKind||null,
       realistic:process.env.LOAD_REALISTIC==='1',linkedLobby:process.env.LOAD_REALISTIC==='1'?2:0,lobby:lobbyCount,
       mixedSocial:process.env.LOAD_REALISTIC==='1'||process.env.LOAD_MIXED_SOCIAL==='1',
@@ -205,7 +228,10 @@ async function run(){
     viewMode:process.env.ROOM_BENCH_VIEWS==='camera'?'synthetic moving mass-dependent cameras':
       process.env.ROOM_BENCH_INPUTS==='socket'?'socket-reported cameras':'whole room',peerProcesses:peerCount,
     peerCpuAffinity:process.env.ROOM_BENCH_PEER_CPUS||null,
-    writer:{cpuMs:(used.user+used.system)/1000,peakRss,ipcBytes,acks,errors,delayMs:summary(delays),queueWaitMs:summary(sink.queueWaitMs),...sink.metrics},
+    writer:{cpuMs:(used.user+used.system)/1000,peakRss,ipcBytes,acks,errors,delayMs:summary(coordinator?.metrics.latency||delays),queueWaitMs:summary(sink?.queueWaitMs||[]),...(coordinator?coordinator.ledger.metrics:sink.metrics)},
+    durableOwner,
+    residentAckAudit,
+    ...(coordinator?{residentRooms:cursors.map(r=>({roomId:r.roomId,status:r.status,sequence:r.sequence})),residentReservations:coordinator.metrics.reservations}:{}),
     journal:{...journalStats,encodes:summary(journalStats.encodes),checkpoints:summary(journalStats.checkpoints)},
     progressWorker,
     ...serviceResults,

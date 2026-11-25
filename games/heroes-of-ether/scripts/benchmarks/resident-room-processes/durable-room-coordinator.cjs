@@ -1,7 +1,7 @@
 'use strict';
 const {RoomProfileLedger}=require('../../../src/server/arena/resident/room-profile-ledger');
 class DurableRoomCoordinator {
-  constructor(store,tokens){this.store=store;this.tokens=tokens;this.ledger=new RoomProfileLedger(store);this.owners=new Map();this.pending=new Set();this.errors=[];}
+  constructor(store,tokens){this.store=store;this.tokens=tokens;this.ledger=new RoomProfileLedger(store);this.owners=new Map();this.pending=new Set();this.errors=[];this.metrics={frames:0,reservations:0,latency:[]};}
   async claim(child,config){
     if(this.owners.has(config.id))throw Error('Room already claimed');
     const players=new Map(config.profiles.map((p,i)=>['room-'+config.id+'-player-'+i,p.id]));
@@ -16,13 +16,14 @@ class DurableRoomCoordinator {
     const epoch=message.type==='residentFrame'?message.entry?.frame?.epoch:message.epoch;
     const owner=this.owners.get(roomId);
     if(!owner || owner.child!==child || owner.epoch!==epoch)throw Error('Unowned resident message');
-    let operation;
+    let operation;const started=performance.now();
     if(message.type==='residentFrame'){
-      operation=this.ledger.accept(child,message.entry).then(ack=>this.send(child,{type:'residentAck',...ack}));
+      operation=this.ledger.accept(child,message.entry).then(ack=>{this.metrics.frames++;this.metrics.latency.push(performance.now()-started);this.send(child,{type:'residentAck',...ack});});
     }else{
       if(owner.players.get(message.playerId)!==message.profileId || message.txId!==message.profileId+'_'+message.requestId)
         throw Error('Unowned resident request');
       const envelope={roomId,epoch,requestId:message.requestId,txId:message.txId};
+      this.metrics.reservations++;
       operation=this.ledger.reserve(child,this.tokens.get(message.profileId),message)
         .then(reservation=>this.send(child,{type:'residentReserved',...envelope,reservation}),
           error=>this.send(child,{type:'residentRejected',...envelope,message:error.message}));

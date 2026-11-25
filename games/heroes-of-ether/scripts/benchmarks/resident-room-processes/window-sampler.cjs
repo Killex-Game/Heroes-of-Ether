@@ -13,7 +13,7 @@ class RoomWindowSampler {
    workMs:summary(room.times.slice(old.times)),intervalMs:summary(room.intervals.slice(old.intervals)),
    accepted:delta(now.accepted,old.accepted),boosters:delta(now.boosters,old.boosters),
    actionMs:summary((room.casts?.ackLatencies||[]).slice(old.ack)),
-   applyMs:summary((room.casts?.applyLatencies||[]).slice(old.apply)),pending:room.outbox.length};
+   applyMs:summary((room.casts?.applyLatencies||[]).slice(old.apply)),pending:room.frameOwner?room.frameOwner.outbox.frames.size:room.outbox.length};
  }
 }
 class PeerWindowSampler {

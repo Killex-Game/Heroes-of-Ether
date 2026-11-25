@@ -9,6 +9,7 @@ class PeerInputs {
     this.inputProjection = inputProjection;
     this.clients = []; this.timer = null; this.requests = 0; this.success = 0;
     this.failed = {}; this.latencies = []; this.successLatencies = []; this.offered = {};
+    this.confirmed=process.env.ROOM_BENCH_DURABLE_OWNER==='1'?[]:null;
     this.loop = monitorEventLoopDelay({ resolution: 10 }); this.loop.enable();
   }
   add(ws) {
@@ -21,7 +22,8 @@ class PeerInputs {
       const request = c.pending.get(m.requestId);
       if (!request) return;
       c.pending.delete(m.requestId); this.latencies.push(at - request.at);
-      if (m.ok) { this.success++; this.successLatencies.push(at - request.at); }
+      if (m.ok) { this.success++; this.successLatencies.push(at - request.at);
+        this.confirmed?.push({playerId:c.id,requestId:m.requestId,boosterId:request.boosterId}); }
       else this.failed[m.message] = (this.failed[m.message] || 0) + 1;
     }
     if (m.type !== "state") return;
@@ -72,6 +74,7 @@ class PeerInputs {
     return { inputState: this.inputProjection ? 'headless-projection' : 'browser-decoder', offered: this.offered, requests: this.requests, successful: this.success, failures: this.failed,
       pending: this.clients.reduce((n,c)=>n+c.pending.size,0), latencyMs: summary(this.latencies),
       successfulLatencyMs: summary(this.successLatencies), driverLoopP95Ms: this.loop.percentile(95)/1e6,
+      ...(this.confirmed?{confirmed:this.confirmed}:{}),
       driverLoopMaxMs: this.loop.max/1e6 };
   }
 }

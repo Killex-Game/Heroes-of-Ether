@@ -7,15 +7,34 @@ const stateWorkerCount=Number(process.env.ROOM_BENCH_STATE_WORKERS||0);
 if(!Number.isInteger(stateWorkerCount)||stateWorkerCount<0||stateWorkerCount>2)
   throw Error('Invalid diagnostic state worker count');
 const roomClocks = new Map();
+const durableOwners = new Map(), pendingProjections = new Map();
+function fault(error){if(!process.connected)return;send({type:'fault',message:error.message});timer?.();process.exitCode=1;process.disconnect();}
+function advance(room,at){
+  const owner=durableOwners.get(room.id);
+  if(!owner)return room.tick(at);
+  if(owner.gate.blocked){owner.resend(at);return false;}
+  for(const projection of pendingProjections.get(room.id)||[])require('./room-projections.cjs').applyProjection(room,projection);
+  pendingProjections.delete(room.id);
+  const result=owner.tick(at);
+  if(result&&typeof result.then==='function')result.then(()=>roomClocks.get(room.id)?.resume(),fault);
+  return result===false?false:undefined;
+}
 const samples=new (require('./window-sampler.cjs').RoomWindowSampler)();
 const send=m=>{if(process.connected)process.send(m);};
-process.on('disconnect',()=>process.exit(1)); // Never advance an orphaned room.
+process.on('disconnect',()=>process.exit(ending?0:1)); // Never advance an orphaned room.
 process.on('message',async m=>{
   if(m.type==='init'){
     if(rooms)throw Error('Already initialized');
     const at=performance.now();
     rooms=new Map(m.rooms.map(c=>[c.id,new RoomFixture(c.id,c.profiles,at,b=>send({type:'progress',batch:b}),c.epoch,
-      m.durableCasts?send:null)]));
+      m.durableCasts&&!m.durableOwner?send:null)]));
+    if(m.durableOwner){
+      const {DurableRoomOwner}=require('./durable-room-owner.cjs'),{DurableRoomCasts}=require('./durable-room-casts.cjs');
+      for(const config of m.rooms){
+        const room=rooms.get(config.id),owner=await DurableRoomOwner.open(room,config.outboxFile,send,{onFault:fault});
+        room.casts=new DurableRoomCasts(room,send);durableOwners.set(room.id,owner);
+      }
+    }
     if(stateWorkerCount){
       stateWorkers=new (require('../../../src/server/arena/state-workers').ArenaStateWorkers)({
         maxWorkers:stateWorkerCount,maxRooms:0,packedFood:false,packedParts:false});
@@ -32,10 +51,18 @@ process.on('message',async m=>{
   }else if(m.type==='ack'){
     rooms?.get(m.roomId)?.ack(m);roomClocks.get(m.roomId)?.resume();
   }
+  else if(m.type==='residentAck'){
+    durableOwners.get(m.roomId)?.acknowledge(m);roomClocks.get(m.roomId)?.resume();
+  }
+  else if(m.type==='residentReserved'||m.type==='residentRejected')rooms?.get(m.roomId)?.casts.receive(m);
   else if(m.type==='roomProjection'){
     const room=rooms?.get(m.roomId);
     if(!room)throw Error('Unknown projection room');
-    require('./room-projections.cjs').applyProjection(room,m);
+    if(durableOwners.has(room.id)){
+      const queue=pendingProjections.get(room.id)||[];
+      if(queue.length>=256)throw Error('Pending room projection limit');
+      queue.push(m);pendingProjections.set(room.id,queue);
+    }else require('./room-projections.cjs').applyProjection(room,m);
   }
   else if(m.type.startsWith('cast')){
     const room = rooms?.get(m.roomId);
@@ -44,9 +71,9 @@ process.on('message',async m=>{
   else if(m.type==='start'){
     if(timer)return;started=performance.now();cpuStart=process.cpuUsage();
     for(const room of rooms.values())samples.sample(room,started);
-    if(process.env.ROOM_BENCH_RESUME_CLOCK==='1'){
+    if(process.env.ROOM_BENCH_RESUME_CLOCK==='1'||durableOwners.size){
       for(const room of rooms.values())roomClocks.set(room.id,startTickClock(()=>{
-        const result=room.tick(performance.now());
+        const result=advance(room,performance.now());
         peakRss=Math.max(peakRss,process.memoryUsage().rss);return result;
       },50));
       timer=()=>{for(const stop of roomClocks.values())stop();};
@@ -64,14 +91,15 @@ process.on('message',async m=>{
     // the final room reports still prove all accepted work was settled.
     const measuredRooms = [...rooms.values()].map(r => structuredClone(r.report()));
     const measuredStateWorkers=stateWorkers&&{...stateWorkers.stats,workers:stateWorkers.lanes.length};
-    while([...rooms.values()].some(r=>r.outbox.length||r.casts?.requests.size||r.socketInputs?.actions.length)&&Date.now()<deadline){
+    while([...rooms.values()].some(r=>r.frameOwner?.pending||r.frameOwner?.outbox.frames.size||r.outbox.length||r.casts?.requests.size||r.socketInputs?.actions.length)&&Date.now()<deadline){
       for(const r of rooms.values()){
-        if(r.socketInputs?.actions.length&&!r.casts?.locked)r.tick(performance.now());
+        if((r.socketInputs?.actions.length||(r.frameOwner&&r.casts?.requests.size))&&!r.casts?.locked)advance(r,performance.now());
         else r.resend(performance.now());
       }await new Promise(r=>setTimeout(r,20));
     }
     const report={elapsed,cpuMs:(cpu.user+cpu.system)/1000,peakRss,measuredRooms,measuredStateWorkers,
       drainMs:performance.now()-started-elapsed,rooms:[...rooms.values()].map(r=>r.report())};
+    for(const owner of durableOwners.values())await owner.close();
     await stateWorkers?.close();
     for(const ws of server.clients)ws.close();await new Promise(resolve=>server.close(resolve));
     send({type:'report',report});process.disconnect();

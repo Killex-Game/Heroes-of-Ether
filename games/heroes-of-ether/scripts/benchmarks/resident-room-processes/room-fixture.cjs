@@ -204,7 +204,8 @@ class RoomFixture {
     }
     this.updateBarrier(performance.now());
   }
-  report(){return {id:this.id,...this.metrics,outbox:this.outbox.length,clients:this.clients.size,networkEvery:this.networkEvery,
+  report(){return {id:this.id,...this.metrics,outbox:this.frameOwner?this.frameOwner.outbox.frames.size:this.outbox.length,clients:this.clients.size,networkEvery:this.networkEvery,
+    ...(this.frameOwner?{durableFrames:this.frameOwner.frames,durableFrameMs:summary(this.frameOwner.durableFrameMs),frameFault:this.frameOwner.gate.fault?.message}:{}),
     barrierMs:this.barrierReport(),
     inputs:this.socketInputs&&{...this.socketInputs.metrics,pending:this.socketInputs.actions.length},
     meanParts:this.partSamples/Math.max(1,this.metrics.ticks),meanFullySplit:this.fullSplitSamples/Math.max(1,this.metrics.ticks),

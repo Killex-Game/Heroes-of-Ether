@@ -10,7 +10,7 @@ class DurableRoomOwner {
   }
   constructor(room,outbox,send,onFault){
     this.room=room;this.outbox=outbox;this.send=send;this.capturing=null;this.inFlight=new Map();
-    this.gate=new RoomFrameGate(outbox,{onFault});this.pending=null;this.frames=0;this.fsyncMs=[];
+    this.gate=new RoomFrameGate(outbox,{onFault});this.pending=null;this.frames=0;this.durableFrameMs=[];
     room.frameOwner=this;
   }
   defer(publish){if(!this.capturing)throw Error('Publication outside private frame');this.capturing.publish.push(publish);}
@@ -33,7 +33,7 @@ class DurableRoomOwner {
     const result=this.gate.advance({at:this.room.wallNow(),kind,boundaryAt},()=>captured,entry=>{
       // The next frame remains blocked while these values are published.
       for(const publish of captured.publish)publish();
-      this.frames++;this.fsyncMs.push(performance.now()-started);
+      this.frames++;this.durableFrameMs.push(performance.now()-started);
       this.send({type:'residentFrame',entry});this.inFlight.set(entry.frame.sequence,performance.now());
     });
     this.pending=result.finally(()=>{this.pending=null;});
