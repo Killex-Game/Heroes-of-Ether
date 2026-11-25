@@ -7,6 +7,12 @@ const turbo = require("./turbo-ability"),
   massAccrual = require("./mass-accrual");
 const { randomUUID } = require("node:crypto");
 const { BOOSTERS, BOOSTER_RULES, BoosterError } = require("../boosters/booster-catalog");
+const effectIdsByKind = new Map();
+for (const [id, booster] of BOOSTERS) {
+  if (!effectIdsByKind.has(booster.kind)) effectIdsByKind.set(booster.kind, []);
+  effectIdsByKind.get(booster.kind).push(id);
+}
+const onlyWebRoot = effectIdsByKind.get("root")?.length === 1 && effectIdsByKind.get("root")[0] === "web";
 const arenaPets = require("../pets/arena-pets");
 const giftEffects = require("../profiles/gift-effects");
 const alchemy = require("./alchemy-effects");
@@ -759,8 +765,14 @@ class Arena {
     return timerEffects(p.effects || {}, now, true);
   }
   hasEffect(p, kind, now) {
-    for (const id in p.effects)
-      if (p.effects[id] > now && BOOSTERS.get(id)?.kind === kind) return true;
+    if (kind === "root" && onlyWebRoot) return p.effects?.web > now;
+    const ids = effectIdsByKind.get(kind);
+    if (ids) {
+      for (const id of ids) if (p.effects?.[id] > now) return true;
+    } else {
+      for (const id in p.effects)
+        if (p.effects[id] > now && BOOSTERS.get(id)?.kind === kind) return true;
+    }
     return false;
   }
   prepareBooster(id, message, now, { accessory = false } = {}) {
