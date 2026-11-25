@@ -52,3 +52,6 @@ parentPort.on("message", message => {
     parentPort.postMessage({ id: message.id, failed: true });
   }
 });
+// Signal only after loading the complete calculator and installing its handler.
+// No profile/world input is copied merely to make an empty lane ready.
+parentPort.postMessage({type:'ready'});

@@ -30,15 +30,40 @@ class ArenaProgressShards {
     this.maxResidentProfiles = maxResidentProfiles; this.maxResidentClans = maxResidentClans;
     this.count = count; this.timeoutMs = timeoutMs; this.sequence = 0; this.lanes = [];
     this.stats = { jobs: 0, conflicts: 0, failures: 0, computeMs: 0, transferMs: 0, roundTripMs: 0,
-      residentProfiles: 0, residentClans: 0, evictedProfiles: 0, evictedClans: 0, contextTransfers: 0 };
+      residentProfiles: 0, residentClans: 0, evictedProfiles: 0, evictedClans: 0, contextTransfers: 0,
+      warmupMs: 0, warmedLanes: 0 };
+  }
+  warm() {
+    if(this.failed || this.closed)return Promise.resolve(false);
+    return this.warmPromise ||= (async()=>{
+      const started=performance.now();let timer;
+      try {
+        const lanes=Array.from({length:this.count},(_,index)=>this.lane(index));
+        for(const lane of lanes)lane.worker.ref();
+        timer=setTimeout(()=>this.fail('warmup-timeout'),this.timeoutMs);
+        const ready=await Promise.all(lanes.map(lane=>lane.ready));
+        const complete=ready.every(Boolean)&&!this.failed&&!this.closed;
+        if(complete)this.stats.warmedLanes=lanes.length;
+        return complete;
+      }catch{this.fail('warmup');return false;}
+      finally{
+        clearTimeout(timer);this.stats.warmupMs=performance.now()-started;
+        for(const lane of this.lanes.filter(Boolean))if(!lane.pending)lane.worker.unref();
+      }
+    })();
   }
   lane(index) {
     if (this.lanes[index]) return this.lanes[index];
     const worker = new Worker(path.join(__dirname, "arena-progress-shard-worker.js"));
     const lane = { worker, base: { profiles: {}, clans: {} }, recentProfiles: new Map(), recentClans: new Map(),
       residentProfiles: 0, residentClans: 0 };
+    lane.ready=new Promise(resolve=>{lane.resolveReady=resolve;});
     this.lanes[index] = lane;
     worker.on("message", m => {
+      if(m.type==='ready'){
+        lane.resolveReady?.(!this.failed&&!this.closed);lane.resolveReady=null;
+        return;
+      }
       if (!lane.pending || m.id !== lane.pending.id) return;
       const { resolve, reject, timer } = lane.pending;
       clearTimeout(timer); lane.pending = null; worker.unref();
@@ -185,6 +210,7 @@ class ArenaProgressShards {
     if (this.failed || this.closed) return;
     this.failed = true; this.stats.failures++; this.stats.failureReason = reason;
     for (const lane of this.lanes.filter(Boolean)) {
+      lane.resolveReady?.(false);lane.resolveReady=null;
       if (lane.pending) {
         clearTimeout(lane.pending.timer); lane.pending.reject(Error("Profile shard unavailable")); lane.pending = null;
       }
@@ -195,6 +221,7 @@ class ArenaProgressShards {
     if (this.closed) return;
     this.closed = true;
     for (const lane of this.lanes.filter(Boolean)) {
+      lane.resolveReady?.(false);lane.resolveReady=null;
       if (lane.pending) {
         clearTimeout(lane.pending.timer); lane.pending.reject(Error("Profile shard closed")); lane.pending = null;
       }

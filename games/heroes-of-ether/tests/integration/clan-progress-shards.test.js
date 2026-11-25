@@ -46,6 +46,17 @@ function fixture(t,pipeline=false,day=start,poolOptions={}){
  return {store,serial,pool,users,batch};
 }
 
+for(const failStartup of [false,true])test('prestarted clan calculators retain exact rewards and recovery, failedStartup='+failStartup,async t=>{
+ const f=fixture(t),before=structuredClone(f.store.data),ready=f.pool.warm();
+ if(failStartup)f.pool.fail('test-startup');
+ assert.equal(await ready,!failStartup);assert.deepEqual(f.store.data,before,'readiness does not save or change any game data');
+ for(let n=1;n<=2;n++){
+  const b=f.batch(n);await f.store.applyArenaGroup([b]);f.serial.applyArenaProgress(b.id,b.progress,b.at);
+  assert.deepEqual(comparable(f.store.data),comparable(f.serial.data));
+ }
+ assert.deepEqual(recover(f.store.filePath).data.profiles,f.store.data.profiles);
+ assert.deepEqual(recover(f.store.filePath).data.clans,f.store.data.clans);
+});
 for(const pipeline of [false,true])test(`clan progress respects an owner-scheduled extra quest season, pipeline=${pipeline}`,async t=>{
  const day=Date.parse('2027-01-15T05:00:00Z'),f=fixture(t,pipeline,day);
  const schedule=[{start:Date.parse('2026-12-31T21:00:00Z'),mode:'quests'}];
