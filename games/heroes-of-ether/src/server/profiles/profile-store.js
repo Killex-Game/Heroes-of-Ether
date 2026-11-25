@@ -1751,7 +1751,8 @@ class ProfileStore {
     if (writeSet?.clanIds) {
       next.clans = copyRecord(this.data.clans);
       for (const id of writeSet.clanIds)
-        if (Object.hasOwn(this.data.clans, id)) next.clans[id] = clone(this.data.clans[id]);
+        if (Object.hasOwn(this.data.clans, id)) next.clans[id] = writeSet.profileDraft === "clan"
+          ? require("../clans/clan-draft").clanDraft(this.data.clans[id]) : clone(this.data.clans[id]);
     }
     const entries = selected ? [...selected].map(key => [key, next.profiles[key]]) : Object.entries(next.profiles);
     const participants = entries.map(([, p]) => p), draft = next.profiles[tokenHash(token)];

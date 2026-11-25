@@ -55,10 +55,8 @@ function messages(clan, lastBattle, now) {
 // Settlement may copy mutable clan state, but the append-only ledger is shared
 // until a completed battle adds a new array. No growing history clone per tick.
 function cloneClans(clans) {
-  return Object.fromEntries(Object.entries(clans).map(([id, clan]) => {
-    if (!clan.battleHistory) return [id, structuredClone(clan)];
-    const { battleHistory, ...mutable } = clan;
-    return [id, { ...structuredClone(mutable), battleHistory }];
-  }));
+  const { clanDraft } = require("./clan-draft");
+  return Object.fromEntries(Object.entries(clans).map(([id, clan]) =>
+    [id, clanDraft(clan, structuredClone)]));
 }
 module.exports = { append, validate, messages, cloneClans };

@@ -69,6 +69,15 @@ for (const [name, select] of Object.entries(scenarios)) {
     assert.equal(JSON.stringify(previous), before);
     assert.strictEqual(f.store.byId(f.idle.profile.id), outsider);
     assert.strictEqual(prepared.clans[f.unrelated], unrelated);
+    // Audited actions keep completed history entries by identity. Membership
+    // changes may append a new array, but never copy or mutate old entries.
+    for (const [id, clan] of Object.entries(previous.clans)) {
+      const updated = prepared.clans[id];
+      if (!updated) continue;
+      for (const field of ["memberHistory", "battleHistory"])
+        for (const [index, entry] of (clan[field] || []).entries())
+          assert.strictEqual(updated[field][index], entry, name + " " + field);
+    }
     // Membership changes can legitimately rebuild competition-derived clans
     // during save. The transaction itself must leave them shared and immutable.
     assert.deepEqual(f.store.data.clans[f.unrelated], unrelated);
@@ -122,6 +131,19 @@ test("clan write set is resolved after refresh, and joining refunds all other ap
   assert.equal(f.store.byId(f.d.profile.id).clanId, f.own);
   assert.ok(!f.store.data.clans[f.other].applications.includes(f.d.profile.id));
   assert.equal(f.store.data.clans[f.other].applicationFees[f.d.profile.id], undefined);
+});
+
+test("a generic world callback retains a fully private clan history", () => {
+  const f = fixture(), previous = freeze(f.store.data);
+  const original = previous.clans[f.own].memberHistory[0].actor.name;
+  const save = f.store.save;
+  f.store.save = () => { throw Error("injected write failure"); };
+  assert.throws(() => f.store.transactWorld(f.a.token, randomUUID(), "generic", (p, world) => {
+    world.clans[f.own].memberHistory[0].actor.name = "Private change";
+  }, () => ({ profileIds: [], clanIds: [f.own] })), /injected write failure/);
+  assert.strictEqual(f.store.data, previous);
+  assert.equal(previous.clans[f.own].memberHistory[0].actor.name, original);
+  f.store.save = save;
 });
 
 test("bounded clan deposits and purchases recover from fsync failure without duplicate awards", async t => {
