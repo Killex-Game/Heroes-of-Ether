@@ -191,13 +191,14 @@
         }
         this.game.updateProfile(data.profile);
         if (changedClan) this.mode = data.mine ? "home" : "welcome";
+        if (changedClan && !data.mine) {
+          this.dialog.close();
+          this.memberDialog.close();
+          this.battles.dialog.close();
+        }
         if (changed || !silent) {
           if (scope === "clan") this.render();
           if (scope === "rankings") this.tops.render();
-        }
-        if (changedClan && !data.mine && this.dialog.open && this.mode !== "create") {
-          this.dialog.close();
-          this.tops.open("clans");
         }
         if (!silent) this.message("");
         return true;
@@ -356,6 +357,11 @@
         }
         this.game.updateProfile(result.profile);
         this.confirmation.hidden = true;
+        if (["leave", "disband"].includes(action) && !result.profile.clanId) {
+          this.dialog.close();
+          this.memberDialog.close();
+          this.battles.dialog.close();
+        }
         if (["create", "edit"].includes(action)) this.mode = "home";
         await this.load();
         if (draft && this.data.mine?.id === fields.clanId)
@@ -454,8 +460,11 @@
           [row.dataset.memberId, row]),
       );
       this.content.replaceChildren();
+      const toolbar = this.dialog.querySelector(".interface-toolbar");
+      if (toolbar) toolbar.hidden = !!d.mine;
       if (d.mine) this.content.append(this.banner(d.mine));
-      else this.dialog.insertBefore(this.nav, this.status);
+      else if (toolbar) toolbar.append(this.nav);
+      else this.content.before(this.nav);
       if (this.mode === "create" || this.mode === "edit")
         this.form(this.mode === "edit" ? d.mine : null);
       else if (d.mine && this.mode === "armory") this.treasury(d.mine, d.mine.permissions.buy);

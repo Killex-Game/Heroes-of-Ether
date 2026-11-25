@@ -152,28 +152,20 @@
     camera.vx = velocity.x * ratio;
     camera.vy = velocity.y * ratio;
   }
-  function dizzyRotation(remainingMs, reducedMotion = false, state) {
+  function dizzyStrength(remainingMs, reducedMotion = false, state) {
     if (reducedMotion || !(remainingMs > 0)) {
-      if (state) state.dizzyRemaining = state.dizzyAngle = 0;
+      if (state) state.dizzyRemaining = 0;
       return 0;
     }
-    const turn = Math.PI * 2;
-    let from = 0, to = turn * 2, duration = 5000;
+    let duration = 5000;
     if (state) {
-      // A renewed hit extends the swirl from its current orientation instead
-      // of snapping the scene upright. Finish on a whole turn in either case.
       if (!(state.dizzyRemaining > 0) || remainingMs > state.dizzyRemaining + 150) {
-        state.dizzyFrom = state.dizzyRemaining > 0 ? state.dizzyAngle : 0;
-        state.dizzyTo = (Math.ceil(state.dizzyFrom / turn) + 2) * turn;
         state.dizzyDuration = remainingMs;
       }
-      from = state.dizzyFrom; to = state.dizzyTo; duration = state.dizzyDuration;
+      duration = state.dizzyDuration;
+      state.dizzyRemaining = remainingMs;
     }
-    const t = clamp(1 - remainingMs / duration, 0, 1);
-    const ease = t * t * (3 - 2 * t), envelope = Math.sin(Math.PI * t) ** 2;
-    const angle = from + (to - from) * ease + Math.sin(t * Math.PI * 6) * 0.32 * envelope;
-    if (state) { state.dizzyRemaining = remainingMs; state.dizzyAngle = angle; }
-    return angle;
+    return clamp(Math.min((duration - remainingMs) / 180, remainingMs / 350), 0, 1);
   }
   function dizzyOffset(seed, now, strength = 1) {
     const t = now / 1000, s = Number(seed) || 1, amount = clamp(strength,0,1);
@@ -290,7 +282,12 @@
   }
 
   return {
-    dizzyRotation,
+    dizzyStrength,
+    // A cached client may still call the previous camera API during an update.
+    dizzyRotation(remainingMs, reducedMotion, state) {
+      dizzyStrength(remainingMs, reducedMotion, state);
+      return 0;
+    },
     dizzyOffset,
     screenToWorld,
     desiredScale,

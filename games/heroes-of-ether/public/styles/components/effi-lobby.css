@@ -5,8 +5,8 @@
   padding-right: 0;
 }
 .effi-lobby {
-  position: absolute;
-  top: 40px;
+  position: relative;
+  top: auto;
   right: 0;
   display: flex;
   align-items: center;
@@ -14,12 +14,14 @@
   min-width: 0;
   gap: 0;
   padding-top: 0;
-  pointer-events: auto;
+  margin-top: 10px;
+  pointer-events: none;
   z-index: 2;
 }
-.lobby-generator-tools { position: relative; min-width: 0; min-height: 124px; align-self: start; padding-top: 18px; }
+.lobby-generator-tools { position: relative; min-width: 0; min-height: 0; align-self: start; padding-top: 0; }
 .lobby-generator-tools #etherGeneratorButton { width: 100%; min-height: 48px; margin: 0; padding-right: 42px; }
-.lobby-generator-reserved { min-height: 60px; }
+.lobby-generator-reserved { display: none; }
+.effi-lobby-dismiss { pointer-events: auto; }
 .effi-lobby-dismiss { position: absolute; top: 3px; right: 3px; display: grid; place-items: center; width: 28px; height: 28px; margin: 0; padding: 0; border: 0; border-radius: 7px; color: #567c69; background: transparent; font: 24px/1 sans-serif; cursor: pointer; }
 .effi-lobby-dismiss:hover, .effi-lobby-dismiss:focus-visible { background: #e8d9b5; outline: 2px solid #ba954f; outline-offset: 1px; }
 .effi-lobby-character {

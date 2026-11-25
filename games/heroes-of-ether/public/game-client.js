@@ -1788,7 +1788,7 @@
   }
   function frame(now) {
     if (phase !== "arena") {
-      camera.rotation = camera.dizzyRemaining = camera.dizzyAngle = 0;
+      camera.rotation = camera.dizzyRemaining = 0;
       document.body.removeAttribute("data-stone-chaos");
       frameId = null;
       return;
@@ -1858,9 +1858,8 @@
     }
     const stone = me?.effects?.find(effect => effect.id === 'stone');
     const stoneRemaining = (stone?.remainingMs || 0) - Math.max(0, now-lastStateAt);
-    camera.rotation = window.KillexArenaView.dizzyRotation(stoneRemaining, reducedMotion.matches, camera);
-    const chaosStrength = stoneRemaining > 0 && !reducedMotion.matches
-      ? clamp(Math.min((camera.dizzyDuration-stoneRemaining)/180,stoneRemaining/350),0,1) : 0;
+    camera.rotation = 0;
+    const chaosStrength = window.KillexArenaView.dizzyStrength(stoneRemaining, reducedMotion.matches, camera);
     const chaosActive = stoneRemaining > 0 && !reducedMotion.matches;
     if (!chaosActive && chaosSeeds.size) chaosSeeds.clear();
     if (document.body.hasAttribute("data-stone-chaos") !== chaosActive)
@@ -1871,11 +1870,7 @@
     const scale = camera.scale;
     const ox = width / 2 - camera.x * scale;
     const oy = height / 2 - camera.y * scale;
-    const cos = Math.abs(Math.cos(camera.rotation)), sin = Math.abs(Math.sin(camera.rotation));
-    const viewWidth = width*cos+height*sin, viewHeight = height*cos+width*sin;
-    // Request the complete rotation envelope while dizzy, so the next quarter
-    // turn cannot expose empty corners before the next viewport/network update.
-    const rotatingView = chaosActive ? Math.hypot(width, height)+80 : 0;
+    const viewWidth = width, viewHeight = height;
     const pad = chaosActive ? 40 : 0;
     const left = camera.x - (viewWidth / 2 + pad) / scale;
     const top = camera.y - (viewHeight / 2 + pad) / scale;
@@ -1887,8 +1882,8 @@
         type: "viewport",
         x: camera.x,
         y: camera.y,
-        width: (rotatingView || viewWidth) / scale,
-        height: (rotatingView || viewHeight) / scale,
+        width: (viewWidth + 2*pad) / scale,
+        height: (viewHeight + 2*pad) / scale,
       })
     )
       lastViewportAt = now;
@@ -1901,7 +1896,7 @@
     const distort = (seed) => {
       if (!chaosStrength) return;
       const d = window.KillexArenaView.dizzyOffset(seed,now,chaosStrength);
-      // Keep cached sprite orientation; the camera already supplies the spin.
+      // Reuse cached sprites while each object drifts independently.
       ctx.translate(d.x/scale,d.y/scale);
     };
     ctx.save();distort(1);

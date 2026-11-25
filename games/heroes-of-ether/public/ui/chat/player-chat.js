@@ -376,6 +376,10 @@
       this.panel.reset();
       this.resetHistory();
       this.panel.enable(false);
+      this.owner.dialog.close();
+      this.owner.memberDialog.close();
+      this.owner.battles.dialog.close();
+      void this.owner.load(true, "clan");
     }
     async load() {
       if (this.loading) return;
