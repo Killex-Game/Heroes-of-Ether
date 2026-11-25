@@ -1,0 +1,147 @@
+{
+  "release": "20261126-gifts-lobby",
+  "source": "3116db32062eee0387e0a43d674669227d26725a",
+  "installed": true,
+  "opened": {
+    "at": 1795638691545,
+    "gamePid": 1012306,
+    "adminPid": 1163,
+    "revision": 5498568,
+    "generation": 8743,
+    "entryOpened": true,
+    "backend": "postgresql",
+    "exactVerificationWhilePaused": true
+  },
+  "health": {
+    "at": "2026-11-25T20:32:21.571Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 5498573,
+    "gamePid": 1012306,
+    "adminPid": 1163,
+    "candidateInstalled": true
+  },
+  "comparison": {
+    "calendarReplayExact": true,
+    "approvedMigrationsExact": true,
+    "allOtherFieldsEqual": true,
+    "beforeRevision": 5498566,
+    "revision": 5498568,
+    "digest": "bc3476d6e3f4992b39ff2950d9818b0ef3101a106b556ae879dc381fa755bcd3",
+    "worldHash": "41468598af47e0d6f92ca29b6721c3956844773a5ec1130f5e7cf8b27d798828",
+    "profiles": 1728,
+    "clans": 138,
+    "at": 1795638194807,
+    "transitionTimes": [
+      1795638194807,
+      1795638307668
+    ],
+    "retiredAvatarProfiles": [],
+    "constructorChanges": [],
+    "questPayouts": 0,
+    "questChests": 0
+  },
+  "database": {
+    "ok": true,
+    "revision": 5498568,
+    "generation": 8743,
+    "digest": "bc3476d6e3f4992b39ff2950d9818b0ef3101a106b556ae879dc381fa755bcd3",
+    "worldHash": "41468598af47e0d6f92ca29b6721c3956844773a5ec1130f5e7cf8b27d798828",
+    "profiles": 1728,
+    "clans": 138,
+    "fullWorldAndAuxEqual": true,
+    "calendarComparisonRevalidated": true
+  },
+  "tests": {
+    "allRequiredChecksPassed": true,
+    "totalTests": 2560,
+    "totalPassed": 2554,
+    "totalSkipped": 6,
+    "full": {
+      "tests": 2560,
+      "pass": 2554,
+      "fail": 0,
+      "skipped": 6,
+      "code": 0
+    },
+    "focused": {
+      "tests": 55,
+      "pass": 54,
+      "fail": 1,
+      "skipped": 0,
+      "code": 1
+    },
+    "hall": {
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "code": 0
+    },
+    "realPostgreSQL": true,
+    "browsers": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "unresolvedFailures": 0,
+    "method": "One full Linux run; all six optional PostgreSQL suites executed against isolated schemas. Final focused run had one uninitialized social field in the new test fixture; fixture corrected, entire affected file rerun 4/4. No runtime changes for that correction. Initial failed logs retained. Three browsers verify portrait replacement, original restoration, lower-tier fallback, lobby layout and arena gift changes."
+  },
+  "http": {
+    "passed": true,
+    "checks": 62
+  },
+  "runtimeFiles": 37,
+  "unchangedSourceAndPublicFiles": 2601,
+  "productionCommentsRemoved": 323,
+  "local": {
+    "port": 3104,
+    "pid": 38228,
+    "isolatedData": true,
+    "synchronizedFiles": 46
+  },
+  "backup": {
+    "sha256": "b8e2cbd0582b397fe513addc9af3770cb1ba72fbbcb4eab594954839c65341e9",
+    "bytes": 120980329,
+    "verifiedBothSides": true
+  },
+  "retention": {
+    "ownerAuthorized": true,
+    "supersedesHistoricalKeepAllInstructions": true,
+    "activeDataWalHistoryUntouched": true,
+    "localFreedBytes": 12695519232,
+    "vpsDiskFreedBytes": 9707806720,
+    "vpsTmpfsFreedBytes": 3704283136,
+    "uniqueOriginalsArchivedBothSidesSha256": "8f566ef48ab50c4692193ac8ede3f1c9fd124c466a03a74d6b939c52a078c204"
+  },
+  "observations": {
+    "online": "13–14",
+    "arenaPlayers": 10,
+    "tickP95Ms": [
+      37.7,
+      38.96
+    ],
+    "intervalP95Ms": [
+      53.96,
+      54.6
+    ],
+    "queues": "0–1",
+    "databaseHealthy": true,
+    "mainThreadCpuProfileSeconds": 31.509566,
+    "samplingIntervalMicroseconds": 2000,
+    "hotPaths": [
+      "room simulation",
+      "arena progress",
+      "broadcast and snapshot IPC"
+    ],
+    "controlledAB": false,
+    "capacityClaim": false
+  },
+  "limitations": [
+    "Initial verification attempt could not connect before backend readiness; second lacked startup journal evidence. Both failed attempts retained; final full comparison passed before opening.",
+    "Named player evidence is private; no claim of cheating from cadence or stock counts alone.",
+    "Kill cadence expansion is pending a separate implementation.",
+    "The requested owner greatness award remains pending; no successful receipt established.",
+    "No proven whole-game speedup or 300000-player capacity."
+  ]
+}

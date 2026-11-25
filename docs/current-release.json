@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261125-alchemy-vip-hud",
-  "sourceTag": "release/20261125-alchemy-vip-hud",
-  "sourceCommit": "b23f3972de796204a4b420191e1adc38b193a2e1",
-  "branch": "codex/20261125-alchemy-vip-hud",
+  "gameRelease": "20261126-gifts-lobby",
+  "sourceTag": "release/20261126-gifts-lobby",
+  "sourceCommit": "3116db32062eee0387e0a43d674669227d26725a",
+  "branch": "codex/20261126-gifts-lobby-retention",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-25T18:58:05.616Z",
+  "entryReopenedAtUtc": "2026-11-25T20:31:31.545Z",
   "runtime": {
-    "gamePid": 996725,
+    "gamePid": 1012306,
     "adminPid": 1163,
     "restarts": 0,
     "entryOpen": true,
@@ -54,7 +54,7 @@
     "Space no longer toggles the focused arena chat button; typing spaces and Enter behavior retained.",
     "Seven clan booster icons and five personal achievement icons installed at four resolutions; all protected artwork retained.",
     "Approved VIP/Premium benefit matrix, 7/14-day purchases and separate chest greatness/currency factors",
-    "30-second current-mass rewards: VIP doubles final XP after all bonuses; Premium doubles all credited kills; alive humans include self and exclude bots; exact half rounds down",
+    "30-second current-mass rewards: VIP triples final XP after all bonuses; Premium doubles all credited kills; alive humans include self and exclude bots; exact half rounds down",
     "VIP pet supply and Manya positive mass bonus",
     "Mobile emote taps with existing 5-second cooldown; desktop pointer passthrough",
     "Equal visible status icon height; Winged Guardian placement only; corrected Drakosha banner crest",
@@ -108,7 +108,10 @@
     "Owner editor for all 26 weekly Friday offers: name, votes, currency/exact booster composition, per-occurrence purchase limit; ordered subset, Moscow start time, duration, repeat and pause. Defaults unchanged until edited.",
     "Durable immutable configuration branch and audit with optimistic revision and request receipts; no full-world or player-table clone. Compiled settings cache is keyed by branch identity.",
     "Server-authoritative contents and quote revision; stale confirmation rejected, successful replay retains original payment price and cannot grant twice. Existing purchase and achievement transactions retained.",
-    "Correct Russian vote labels, including 2 голоса, in currency packages, promotion buttons and payment confirmation."
+    "Correct Russian vote labels, including 2 голоса, in currency packages, promotion buttons and payment confirmation.",
+    "Negative gifts 5%; three strongest-only timed sets and dedicated temporary curse portrait; inventory, identity and expiry preserved.",
+    "Effi floats independently; generator precedes promo; unique clan victory artwork.",
+    "Owner-authorized obsolete backup cleanup; latest verified recovery and unique original artwork retained."
   ],
   "data": {
     "before": {
@@ -33928,5 +33931,7 @@
   "alchemyVipHudUpdate": {
     "report": "games/heroes-of-ether/docs/performance/alchemy-vip-hud-20261125.json",
     "sourceCommit": "b23f3972de796204a4b420191e1adc38b193a2e1"
-  }
+  },
+  "latestReport": "games/heroes-of-ether/docs/performance/gifts-lobby-retention-20261126.json",
+  "backupRetention": "Latest verified recovery and previous verified recovery plus unique originals. Historical keep-all statements superseded by owner request."
 }
