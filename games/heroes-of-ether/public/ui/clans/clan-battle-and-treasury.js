@@ -735,7 +735,7 @@
       close.setAttribute("aria-label", "Закрыть итоги");
       heading.append(title, close);
       const stage = el("div", "clan-result-stage"), badge = art(
-        window.KillexProgressionArt.leagueMedal(result.positive ? "gold" : "silver",256),
+        result.positive ? "assets/clans/results-v1/512/clan-victory.webp" : window.KillexProgressionArt.leagueMedal("silver",256),
         "clan-result-art");
       stage.append(badge, el("small","clan-result-clan",result.clanName),
         el("h3","clan-result-headline",result.headline),

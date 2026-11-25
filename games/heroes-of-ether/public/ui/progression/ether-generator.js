@@ -9,9 +9,8 @@
       this.owner = owner; this.busy = false; this.visit = 0;
       this.trigger = button("", () => this.open(), "menu-tile sf-button sf-secondary alchemy-permanent"); this.trigger.id = "etherGeneratorButton";
       const icon = el("img", "menu-icon"); icon.src = "assets/menu-icons/avatar-style-v1/128/generator.webp?art=20261123-interface-art"; icon.alt = ""; this.trigger.append(icon, el("strong", "", "Эфирный генератор"));
-      let tools = document.querySelector(".lobby-generator-tools");
-      if (!tools) { tools = el("div", "lobby-generator-tools"); document.querySelector("#lobby .lobby-header").append(tools); }
-      tools.prepend(this.trigger); this.trigger.setAttribute("aria-haspopup", "dialog"); this.trigger.setAttribute("aria-controls", "etherGeneratorDialog");
+      document.getElementById("promoCodeSection").before(this.trigger);
+      this.trigger.setAttribute("aria-haspopup", "dialog"); this.trigger.setAttribute("aria-controls", "etherGeneratorDialog");
       this.dialog = el("dialog", "alchemy-lab ether-generator-dialog"); this.dialog.id = "etherGeneratorDialog"; this.dialog.setAttribute("aria-labelledby", "etherGeneratorTitle");
       const head = el("header", "alchemy-heading"), title = el("h1", "", "Эфирный генератор"); title.id = "etherGeneratorTitle";
       const close = button("×", () => this.dialog.close(), "booster-close"); close.setAttribute("aria-label", "Вернуться в лобби"); head.append(title, close);

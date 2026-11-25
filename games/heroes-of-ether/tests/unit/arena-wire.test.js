@@ -147,6 +147,18 @@ const state = (tick, players, ether = []) => ({
   audioEvents: [],
   visualEvents: [],
 });
+
+test("gift avatar extensions switch and expire through v8 and v10 deltas without changing equipped skin", () => {
+  for (const protocol of [wire.PROTOCOL, wire.PLAYER_SCHEMA_PROTOCOL]) {
+    const c=client(protocol);let tick=0;
+    for (const visual of ["hex","curse","hex",""]) {
+      const player={id:"hero",x:100,y:100,radius:20,mass:100,skinId:"moon-dragon",...(visual?{giftVisual:visual}:{})};
+      c.stream.publish(state(++tick,[player]));c.stream.acknowledge(c.stream.sequence);
+      const decoded=c.packets.at(-1).players.find(p=>p.id==="hero");
+      assert.equal(decoded.giftVisual,visual||undefined);assert.equal(decoded.skinId,"moon-dragon");
+    }
+  }
+});
 test("v5 decodes the same formations and moving projectiles as v4 after stalls and reorders", () => {
   const current = client(), old = client(wire.PRESENTATION_PROTOCOL);
   let sawParts = false, sawShots = false;

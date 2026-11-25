@@ -928,7 +928,7 @@
         contentKey = JSON.stringify([p, readOnly, competitionMode, battle?.kills ?? 0, reward, canJoin]);
       if (previousRow?.memberContentKey === contentKey) return previousRow;
       const signature = JSON.stringify([p.skinId, p.appearance?.avatarFrame,
-        !!p.account?.premium, !!p.account?.vip, p.role]);
+        !!p.account?.premium, !!p.account?.vip, p.role, p.giftAppearance]);
       const previous = previousRow?.querySelector(".clan-member-avatar");
       const row = el("div", "clan-member"),
         avatar = previous?.dataset.memberAppearance === signature ? previous

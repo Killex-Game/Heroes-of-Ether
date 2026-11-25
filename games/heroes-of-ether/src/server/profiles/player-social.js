@@ -58,7 +58,7 @@ function validate(p) {
       (typeof s.giftEffects !== "object" ||
         Array.isArray(s.giftEffects) ||
         Object.entries(s.giftEffects).some(
-          ([id, until]) => !gifts.some((g) => g.id === id && g.stat) || !integer(until),
+          ([id, until]) => !gifts.some((g) => g.id === id && (g.stat || g.bundlePercent)) || !integer(until),
         ))) ||
     (s.marriage &&
       (typeof s.marriage.partnerId !== "string" ||
@@ -85,7 +85,7 @@ function view(store, p, privateView = false) {
       ? { at: s.marriage.at, partner: { id: partner.id, ...store.identity(partner) } }
       : null,
     effects: gifts
-      .filter((g) => g.stat && s?.giftEffects?.[g.id] > at)
+      .filter((g) => (g.stat || g.bundlePercent) && s?.giftEffects?.[g.id] > at)
       .map((g) => ({
         id: g.id,
         name: g.name,
@@ -93,6 +93,8 @@ function view(store, p, privateView = false) {
         description: g.description,
         stat: g.stat,
         percent: g.percent,
+        ...(g.bundlePercent ? { bundlePercent: g.bundlePercent,
+          active: require("./gift-effects").modifiers(p, at).visual === g.id } : {}),
         until: s.giftEffects[g.id],
       })),
     gifts: overview.gifts,
@@ -278,7 +280,7 @@ function mutate(store, token, input) {
       if (!Number.isSafeInteger(entry.count + 1)) fail("Достигнут предел подарков.");
       sender.wallet[gift.currency] -= gift.price;
       require("../progression/activity-achievements").spend(sender, gift.currency, gift.price, at);
-      if (gift.stat) {
+      if (gift.stat || gift.bundlePercent) {
         const effects = (data(target).giftEffects ||= {});
         const until = Math.max(at, effects[gift.id] || 0) + gift.durationMs;
         if (!Number.isSafeInteger(until)) fail("Достигнут предел срока подарка.");

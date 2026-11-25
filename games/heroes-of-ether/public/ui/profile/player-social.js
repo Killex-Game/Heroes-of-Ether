@@ -430,7 +430,7 @@
           el(
             "p",
             "social-gift-effect",
-            item.description + (item.durationMs ? ". Действует 1 час." : ""),
+            item.description + (item.durationMs ? ` Действует ${item.durationMs / 60000} мин.` : ""),
           ),
           el("p", "", "Получатель: " + player.name),
           cost,

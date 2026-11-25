@@ -26,7 +26,7 @@ test("arena profile, gift catalogue and named or anonymous gifts work with exact
  const publicProfile=(await f.request("/api/players/"+f.b.profile.id)).body.player;
  const history=publicProfile.social.gifts.find(g=>g.id==="skull").history;assert(history.some(h=>h.anonymous&&!h.fromId&&!h.fromName));
  assert.equal((await f.request("/api/social/gifts?playerId="+f.b.profile.id+"&giftId=skull")).status,200);
- f.app.tick();assert.equal(f.app.arena.players.get(f.target).giftModifiers.xp,0.75);
+ f.app.tick();assert.equal(f.app.arena.players.get(f.target).giftModifiers.xp,0.95);
  assert.equal(f.app.arena.players.get(f.sender).dead,false);
  const saved=Object.values(f.saved().profiles);assert.equal(saved.find(p=>p.id===f.a.profile.id).wallet.bucks,90);assert.equal(saved.find(p=>p.id===f.b.profile.id).social.gifts.find(g=>g.id==="skull").count,2);
  assert.equal((await f.request("/api/profile/loadout",{skinId:"forest-spirit",quickSlots:[],requestId:randomUUID()})).status,409);
@@ -37,6 +37,17 @@ test("failed arena gift write changes neither participant and the same request c
  const mock=t.mock.method(f.store,"save",()=>{throw Error("test disk failure");});
  assert.equal((await f.request("/api/social/action",body)).status,500);assert.deepEqual(f.store.data,before);mock.mock.restore();
  assert.equal((await f.request("/api/social/action",body)).status,200);assert.equal(f.store.find(f.a.token).wallet.bucks,95);
+});
+
+test("set delivered to an active arena changes its modifiers and visible snapshot without changing equipped skin",async t=>{
+ const f=await fixture(t),target=f.app.arena.players.get(f.target),skin=target.skinId;
+ for(const id of ["hex","curse","shackles"]){assert.equal((await f.request("/api/social/action",f.gift({giftId:id}))).status,200);f.app.tick();}
+ assert.deepEqual([target.giftModifiers.xp,target.giftModifiers.speed,target.giftModifiers.visual],[.75,.7,"curse"]);
+ assert.equal(target.skinId,skin);
+ assert.equal(f.app.arena.snapshot(1000).players.find(p=>p.id===target.id).giftVisual,"curse");
+ const before=f.store.find(f.b.token).social.giftEffects;
+ f.store.transact(f.b.token,randomUUID(),"test-expiry",p=>{p.social.giftEffects={...before,curse:1,shackles:1};});f.app.tick();
+ assert.equal(target.giftModifiers.visual,"hex");assert.equal(target.giftModifiers.speed,.9);
 });
 test("gift during a pending booster write preserves both transfers and the booster rebase",async t=>{
  const f=await fixture(t);let entered,release;

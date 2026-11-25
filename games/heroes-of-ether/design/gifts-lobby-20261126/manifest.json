@@ -1,0 +1,95 @@
+{
+  "generator": "Built-in image_gen",
+  "outputs": [
+    {
+      "id": "hex",
+      "size": 128,
+      "bytes": 7910,
+      "sha256": "7a87538d9878158f1cd5797638cbbd14468a2a2a9e370c78cf5d8893711b77cb"
+    },
+    {
+      "id": "hex",
+      "size": 256,
+      "bytes": 19444,
+      "sha256": "75140b69ee3b33d86612eed4fa4e48f2af10037382243875c331f66f1921b913"
+    },
+    {
+      "id": "hex",
+      "size": 512,
+      "bytes": 49394,
+      "sha256": "a5d3b14d36b4399276ac2282cd7c9118ab110ef60306856a8e041eb9882dbb6d"
+    },
+    {
+      "id": "infection",
+      "size": 128,
+      "bytes": 5544,
+      "sha256": "c24d03b18fba9d906971c5377e84bbc19a37068f16bee26b15f63ae431740505"
+    },
+    {
+      "id": "infection",
+      "size": 256,
+      "bytes": 12366,
+      "sha256": "30ca2294fdda8adf830f0d0a3902da9add22f48374993a3a290abbc734f01515"
+    },
+    {
+      "id": "infection",
+      "size": 512,
+      "bytes": 28200,
+      "sha256": "20373d23f9c8bc41e5ba0fbae634b22e69258af34eab3b9c8a191e378d862926"
+    },
+    {
+      "id": "curse",
+      "size": 128,
+      "bytes": 5988,
+      "sha256": "2797469711f0342692ecfde63b5ddad82554a83617a24f250cfe83ddbb83e6e1"
+    },
+    {
+      "id": "curse",
+      "size": 256,
+      "bytes": 13616,
+      "sha256": "b3f8a559c076f7133c9f6047a70a78d5f1359aa2c19b04f91a13df0d8f20fabd"
+    },
+    {
+      "id": "curse",
+      "size": 512,
+      "bytes": 31230,
+      "sha256": "4c7062d9aac69e475fa47230693073c20ed06242492a2bd39524a7c4575020de"
+    },
+    {
+      "id": "clan-victory",
+      "size": 128,
+      "bytes": 9286,
+      "sha256": "1b87038498b9b9185364b30ccd2a2b73793ff7ef8a05dec4b728552804cb7ea8"
+    },
+    {
+      "id": "clan-victory",
+      "size": 256,
+      "bytes": 22576,
+      "sha256": "598913379734c08b42621c442ed12b5f8a2f79f45cc8a430841783200bd4a071"
+    },
+    {
+      "id": "clan-victory",
+      "size": 512,
+      "bytes": 56234,
+      "sha256": "bc89a1b55f4a127a514bf5773ca020c23db702a56e020bebb5c669cc5624705f"
+    },
+    {
+      "id": "curse-pig",
+      "size": 128,
+      "bytes": 4896,
+      "sha256": "47e3f70ad6092b70be860b1c43906419b5ddea9240579f607804f1b453a7cc27"
+    },
+    {
+      "id": "curse-pig",
+      "size": 512,
+      "bytes": 32132,
+      "sha256": "5501066ef08ca7e326836cd5bdb596a27acbfb3a900418fd8937da2442e5793f"
+    },
+    {
+      "id": "curse-pig",
+      "size": 1024,
+      "bytes": 84298,
+      "sha256": "e2afbd1c6ffbf9a1ab0e43bf30ab5d5422ed5d2bd9e2f3041af69fb27e205f67"
+    }
+  ]
+}

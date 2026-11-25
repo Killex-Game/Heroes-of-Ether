@@ -1,29 +1,17 @@
-/* The greeting has its own header column, above the right navigation. */
-#lobby .lobby-header:has(.lobby-generator-tools) {
-  grid-template-columns: minmax(280px, min(540px, 37cqw)) minmax(260px, 1fr) clamp(220px, 21cqw, 300px);
-  gap: 16px;
-  padding-right: 0;
-  align-items: end;
-}
-#lobby .lobby-header .profile-card { align-self: end; }
 .effi-lobby {
-  position: relative;
-  top: auto;
-  right: 0;
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
   display: flex;
   align-items: center;
-  width: 100%;
+  width: min(330px, calc(100vw - 32px));
   min-width: 0;
   gap: 0;
   padding-top: 0;
-  margin-top: 10px;
+  margin: 0;
   pointer-events: none;
-  z-index: 2;
+  z-index: 60;
 }
-.lobby-generator-tools { position: relative; min-width: 0; min-height: 0; align-self: start; padding-top: 0; }
-.lobby-generator-tools #etherGeneratorButton { width: 100%; height: 48px; min-height: 48px; margin: 0; padding: 4px 42px 4px 8px; }
-#lobby .lobby-generator-tools #etherGeneratorButton .menu-icon { width: 38px; height: 38px; flex-basis: 38px; }
-.lobby-generator-reserved { display: none; }
 .effi-lobby-dismiss { pointer-events: auto; }
 .effi-lobby-dismiss { position: absolute; top: 3px; right: 3px; display: grid; place-items: center; width: 28px; height: 28px; margin: 0; padding: 0; border: 0; border-radius: 7px; color: #567c69; background: transparent; font: 24px/1 sans-serif; cursor: pointer; }
 .effi-lobby-dismiss:hover, .effi-lobby-dismiss:focus-visible { background: #e8d9b5; outline: 2px solid #ba954f; outline-offset: 1px; }
@@ -77,8 +65,6 @@
   .effi-lobby-bubble p { font-size: 14px; }
 }
 @media (max-width: 960px) {
-  #lobby .lobby-header:has(.lobby-generator-tools) { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  .lobby-generator-tools { justify-self: end; width: min(300px, 100%); }
   .effi-lobby { justify-self: end; width: min(300px, 100%); padding-top: 0; }
   .effi-lobby-character { flex-basis: 66px; height: 99px; }
   .effi-lobby-bubble { margin-top: 0; }

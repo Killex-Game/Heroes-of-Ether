@@ -1387,6 +1387,7 @@ class Arena {
           outfit: accessories.outfit(p.outfit),
           account: p.account || null,
           arenaFrame: p.appearance?.arenaFrame || "default",
+          ...(p.giftModifiers?.visual ? { giftVisual: p.giftModifiers.visual } : {}),
           turbo: turbo.view(p, now),
           level: p.level,
           clanPrefix: p.clanPrefix,

@@ -33,7 +33,7 @@ test("Эффекты подарков: атомарность, продлени�
   assert.equal(store.find(b.token).social.giftEffects.clover, until);
   assert.equal(effects.modifiers(store.find(b.token), at).xp, 1.25);
   send("skull");
-  assert.equal(effects.modifiers(store.find(b.token), at).xp, 1);
+  assert.equal(effects.modifiers(store.find(b.token), at).xp, 1.2);
   const before = structuredClone(store.data),
     save = store.save;
   store.save = () => {

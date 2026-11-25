@@ -1619,6 +1619,7 @@
       density: pixelRatio,
       skin,
       skinId: player.skinId,
+      giftVisual: player.giftVisual,
       color,
       drawSkin: window.KillexIdentity.drawSkin,
     });

@@ -31,6 +31,7 @@ function view(store, requestedPage = 1) {
         clanPrefix: identity.clanPrefix,
         level: identity.level,
         skinId: identity.skinId,
+        ...(identity.giftAppearance ? { giftAppearance: identity.giftAppearance } : {}),
         greatness: item.profile.greatness,
         awardedAt: item.awardedAt,
         rank: index + 1,

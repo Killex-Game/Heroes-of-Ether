@@ -1,0 +1,26 @@
+{
+  "tool": "Built-in image_gen",
+  "prompts": [
+    [
+      "clan-victory",
+      "A unique triumphant CLAN VICTORY illustration for a friendly fantasy browser game. A compact royal blue and turquoise victory banner on a short pedestal, two crossed ivory-and-gold ceremonial swords behind it, a small warm golden five-point star at the banner centre and a simple two-branch laurel. This is a free-standing trophy arrangement, NOT a round medal, NOT a shield, NOT a league badge. Bold readable silhouette and very few large details. Hand-painted polished fantasy game asset, softly shaded volumes, saturated gold, restrained highlights, no sparkles, no busy engraving. No words, letters, border or background. Entire object centred with generous transparent margin, square canvas. True transparent background."
+    ],
+    [
+      "hex",
+      "Single game gift icon named Чары, WITHOUT writing its name: a small violet spellbook tied with one simple purple ribbon, a large amethyst teardrop emblem on the cover and a short crooked magic wand resting diagonally on it. Friendly ominous fantasy, hand-painted softly shaded material, large simple readable shapes, clean silhouette, low detail, restrained gold edging, no sparkles. Match softly illustrated fantasy avatar game item canon, not photorealistic or vector. Isolated entire object, centered, square canvas, generous transparent margin. True transparent background. No text, no frame."
+    ],
+    [
+      "infection",
+      "Single game gift icon named Заражение, WITHOUT writing its name: a squat dark green stoppered alchemical flask with luminous lime green contents, three large rounded dark green spots on its surface and a simple ivory leaf-shaped stopper seal. Clearly different from a standard poison skull flask: no skull, no extra bottles. Softly hand-painted fantasy game style, bold readable silhouette, very few large details, smooth shaded volumes, restrained highlights, minimal gold. Entire object centered on square transparent canvas with margin. True transparent background. No text, no frame, no scattered particles."
+    ],
+    [
+      "curse",
+      "Single game gift icon named Проклятье, WITHOUT text: a small charming yet ominous dark plum cursed idol with a stylized boar face, two short ivory tusks, amber eyes and a single violet diamond on its forehead, sitting on a simple low stone base. No violence or gore. Premium softly hand-painted fantasy avatar-game item style, bold rounded silhouette, clean large shapes and very few details, restrained highlights and gold accents, no particles, no glow cloud. Entire object centered in a square canvas with generous transparent margin. True transparent background. No writing, no enclosing badge or frame."
+    ],
+    [
+      "curse-pig",
+      "Use case: stylized-concept. Create a standalone temporary player avatar skin for the fantasy browser game Heroes of Ether. Subject: a comically grumpy muddy pink pig character, upright chest-and-head portrait, facing viewer, expressive small determined eyebrows, clearly pig ears and round snout, dark brown dried mud smears on cheeks and shoulders. Charming polished hand-painted 3D cartoon game illustration, clean big shapes, low detail, rounded volumes, soft highlights, matching premium fantasy character avatars. This is an actual pig character, NOT a mask, NOT a statue, NOT an item icon. Framing: square canvas, centered face, large head occupying upper two thirds, broad shoulders fill lower edge, ears fully inside square with modest margin, no circular frame, no jewelry, no text, no props. Background is opaque soft dark plum gradient, fills entire square edge to edge; suitable for circle-clipping by game. Full high quality avatar, no transparency."
+    ]
+  ],
+  "victoryCleanup": "Edit the provided victory trophy icon. Remove ALL white cloudy background above and between swords, all smoke, all haze, all outer glow and floor shadow. Make every pixel outside the exact silhouette of the blue banner, crossed swords and pedestal truly transparent. Preserve the actual object, colors, proportions and crisp edges. No replacement backdrop. Isolated clean game UI cutout."
+}

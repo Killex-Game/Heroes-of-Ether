@@ -1060,6 +1060,7 @@ class ProfileStore {
     const account = accounts.publicAccount(profile, this.now());
     return {
       name: profile.name,
+      giftAppearance: require("./gift-effects").appearance(profile, this.now()),
       online: this.isOnline?.(profile.id) || false,
       skinId: playerIdentity.skinAllowed(
         profile.skinId,

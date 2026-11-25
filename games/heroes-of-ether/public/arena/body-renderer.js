@@ -86,7 +86,7 @@
       this.rasterPixels = 0;
     }
   }
-  function paintBody(paint, size, skin, skinId, color, drawSkin, ready) {
+  function paintBody(paint, size, skin, skinId, color, drawSkin, ready, giftVisual, overlay) {
     const r = size / 2;
     const gradient = paint.createRadialGradient(r * 0.7, r * 0.65, r * 0.04, r, r, r * 1.15);
     gradient.addColorStop(0, "#f3eafa");
@@ -97,7 +97,8 @@
     paint.arc(r, r, r, 0, Math.PI * 2);
     paint.clip();
     paint.fill();
-    if (ready) drawSkin(paint, skin, skinId, 0, 0, size, 1.13);
+    if (ready && !(giftVisual === "curse" && overlay)) drawSkin(paint, skin, skinId, 0, 0, size, 1.13);
+    globalThis.KillexGiftAppearance?.draw(paint, giftVisual, overlay, size);
   }
   class Renderer {
     constructor() {
@@ -112,20 +113,21 @@
       if (this.fadeCanvas) this.fadeCanvas.width = this.fadeCanvas.height = 0;
       this.fadeCanvas = null;
     }
-    body(ctx, { x, y, radius, scale, density, skin, skinId, color, drawSkin }) {
+    body(ctx, { x, y, radius, scale, density, skin, skinId, color, drawSkin, giftVisual }) {
       const ready = skin?.complete && skin.naturalWidth;
+      const overlay = globalThis.KillexGiftAppearance?.image(giftVisual);
       // A small set of resolutions survives continuous camera zoom, unlike a
       // new clipped portrait for every interpolated radius and every part.
       const size = Math.min(
         2048,
         Math.max(64, 2 ** Math.ceil(Math.log2(radius * 2 * scale * density))),
       );
-      const key = JSON.stringify([ready ? skin.currentSrc || skin.src : "", skinId, color, size]);
+      const key = JSON.stringify([ready ? skin.currentSrc || skin.src : "", skinId, color, size, overlay ? giftVisual : ""]);
       const create = () => {
         const canvas = document.createElement("canvas");
         canvas.width = canvas.height = size;
         const paint = canvas.getContext("2d", { willReadFrequently: true });
-        paintBody(paint, size, skin, skinId, color, drawSkin, ready);
+        paintBody(paint, size, skin, skinId, color, drawSkin, ready, giftVisual, overlay);
         return { canvas };
       };
       const tile = size <= 512 ? this.bodies.acquire(key, size, create) : null;
@@ -139,7 +141,7 @@
         const paint = canvas.getContext("2d");
         paint.clearRect(0, 0, size, size);
         paint.save();
-        paintBody(paint, size, skin, skinId, color, drawSkin, ready);
+        paintBody(paint, size, skin, skinId, color, drawSkin, ready, giftVisual, overlay);
         paint.restore();
         ctx.drawImage(canvas, 0, 0, size, size, x - radius, y - radius, radius * 2, radius * 2);
       } else {
@@ -148,7 +150,7 @@
         ctx.save();
         ctx.translate(x - radius, y - radius);
         ctx.scale((radius * 2) / size, (radius * 2) / size);
-        paintBody(ctx, size, skin, skinId, color, drawSkin, ready);
+        paintBody(ctx, size, skin, skinId, color, drawSkin, ready, giftVisual, overlay);
         ctx.restore();
       }
     }

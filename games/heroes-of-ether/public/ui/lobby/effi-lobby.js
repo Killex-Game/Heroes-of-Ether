@@ -23,18 +23,12 @@
       </svg>
     </div>
     <div class="effi-lobby-bubble"><strong>Эффи</strong><p></p><button class="effi-lobby-dismiss" type="button" aria-label="Скрыть Эффи" title="Скрыть Эффи">×</button></div>`;
-  const tools = document.querySelector(".lobby-generator-tools") || document.createElement("div");
-  tools.className = "lobby-generator-tools";
-  const reserved = document.createElement("div");
-  reserved.className = "lobby-generator-reserved";
-  reserved.setAttribute("aria-hidden", "true");
-  tools.append(reserved, root);
-  header.append(tools);
+  document.body.append(root);
   const copy = root.querySelector("p"), words = greeting.split(" ");
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   let timer = null, position = 0, away = false, visible = false, dismissed = false;
   root.querySelector(".effi-lobby-dismiss").addEventListener("click", () => {
-    dismissed = true; sync(); tools.querySelector("#etherGeneratorButton")?.focus();
+    dismissed = true; sync(); document.getElementById("etherGeneratorButton")?.focus({preventScroll:true});
   });
   function word() {
     timer = null;

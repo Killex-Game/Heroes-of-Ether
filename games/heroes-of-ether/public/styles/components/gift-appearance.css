@@ -1,0 +1,8 @@
+[data-gift-visual] > img.gift-avatar-overlay {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  max-width: none; max-height: none; margin: 0; object-fit: contain;
+  border: 0; border-radius: 50%; clip-path: circle(50%); transform: none;
+  pointer-events: none; z-index: 2;
+}
+[data-gift-visual="curse"] > img.gift-avatar-overlay { background: #30233c; }
+[data-gift-visual="curse"] > img:not(.gift-avatar-overlay) { visibility: hidden; }

@@ -239,6 +239,7 @@
       img.alt = "";
       img.draggable = false;
       disc.append(img);
+      window.KillexGiftAppearance?.bind(disc, hero);
       return disc;
     }
     theme(profile = this.owner.getProfile()) {

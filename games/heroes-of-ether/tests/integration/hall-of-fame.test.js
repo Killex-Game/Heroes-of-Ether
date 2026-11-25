@@ -62,6 +62,14 @@ test("Зал: только заслуженные Герои, текущий р�
   assert.equal(JSON.stringify(store.data), before);
 });
 
+test("Hall carries active gift appearance without changing the earned hero skin", () => {
+  let at=10000;const store=new ProfileStore({now:()=>at}),p=add(store,2000000,1000).p;
+  const original=p.skinId;p.social={giftEffects:{curse:11000,hex:12000}};
+  assert.deepEqual(view(store).heroes[0].giftAppearance,{curse:11000,hex:12000});
+  at=11000;assert.deepEqual(view(store).heroes[0].giftAppearance,{hex:12000});
+  at=12000;assert.equal(view(store).heroes[0].giftAppearance,undefined);assert.equal(p.skinId,original);
+});
+
 test("Зал не пишет прогресс: повторы, недоступный диск и загрузка сохранения не меняют награды", (t) => {
   const filePath = path.join(temporary(t, "hall"), "profiles.json");
   const store = new ProfileStore({ filePath });

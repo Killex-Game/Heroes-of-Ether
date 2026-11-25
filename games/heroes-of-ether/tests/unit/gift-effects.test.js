@@ -49,10 +49,10 @@ test("Подарки: независимые сроки, компенсация 
       giftEffects: { clover: 100, skull: 200, swift_boot: 300, ward_shield: 100, black_mark: 100 },
     },
   };
-  assert.equal(gifts.modifiers(p, 0).xp, 1);
+  assert.equal(gifts.modifiers(p, 0).xp, 1.2);
   assert.equal(gifts.modifiers(p, 0).speed, 1.25);
-  assert.equal(gifts.modifiers(p, 0).incoming, 1);
-  assert.equal(gifts.modifiers(p, 100).xp, 0.75);
+  assert.equal(gifts.modifiers(p, 0).incoming, 0.8);
+  assert.equal(gifts.modifiers(p, 100).xp, 0.95);
   assert.equal(gifts.modifiers(p, 200).xp, 1);
   assert.equal(gifts.modifiers(p, 300).speed, 1);
   const next = { ...p, social: { giftEffects: { ...p.social.giftEffects, clover: 400 } } };

@@ -25,6 +25,7 @@
     else img.src = skin.arena;
     img.alt = "";
     disc.append(img);
+    window.KillexGiftAppearance?.bind(disc, p);
     box.append(disc);
     window.KillexAppearance?.paintFrame(box, p.appearance?.avatarFrame, p.account);
     const tier = p.account?.premium ? "premium" : p.account?.vip ? "vip" : null;
@@ -69,6 +70,7 @@
           "eventRegalia",
           "seasonTrophies",
           "social",
+          "giftAppearance",
           "easter",
         ];
         if (
@@ -185,6 +187,7 @@
       }
       window.KillexSocial?.giftButton(hero, p);
       const activeGifts = (p.social?.effects || []).filter((e) => e.until > now);
+      const strongestSet = Math.max(0, ...activeGifts.map(e => e.bundlePercent || 0));
       const effects = el("div", "public-gift-effects");
       if (activeGifts.length) {
         effects.setAttribute("aria-label", "Действующие подарки");
@@ -196,7 +199,8 @@
           const cancelled = activeGifts.some(
             (other) => other.stat === e.stat && other.percent === -e.percent,
           );
-          item.append(image, el("span", "", e.name + (cancelled ? ": компенсирован" : "")));
+          const waiting = e.bundlePercent && e.bundlePercent < strongestSet;
+          item.append(image, el("span", "", e.name + (waiting ? ": после сильного набора" : cancelled ? ": компенсирован" : "")));
           item.title = `${e.description}. До ${new Date(e.until).toLocaleString("ru-RU")}`;
           effects.append(item);
         }
