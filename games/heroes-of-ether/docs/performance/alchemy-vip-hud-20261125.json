@@ -1,0 +1,3733 @@
+{
+  "release": "20261125-alchemy-vip-hud",
+  "sourceCommit": "b23f3972de796204a4b420191e1adc38b193a2e1",
+  "installed": true,
+  "runtime": {
+    "at": "2026-11-25T19:01:25.027Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 5439647,
+    "gamePid": 996725,
+    "adminPid": 1163,
+    "releaseInstalled": true
+  },
+  "openedAt": "2026-11-25T18:58:05.616Z",
+  "changes": [
+    "VIP arena XP x3 after bonuses; Premium kills x2 and chest bonuses unchanged",
+    "20 event-run alchemy achievements with canonical badge layers and fixed greatness; ingredient/potion/brew/spouse progress and restart recovery",
+    "Persistent normal/large arena booster switch; stable slot sizes",
+    "Used potion modifiers below lobby button; mobile emotes below modifiers",
+    "Space on chat toggle splits; typing spaces in input retained",
+    "Currency number fit and tighter lobby header",
+    "Stone range 720 to 648, flight 4000 to 3600 ms; speed180 and effect5000ms unchanged",
+    "Supported owner-only idempotent greatness award"
+  ],
+  "grant": {
+    "installedAction": true,
+    "completed": false,
+    "id": "74828b37-3124-4af0-be49-b931f6528b54",
+    "requested": 2000000,
+    "requestId": "owner-20261125-greatness-74828b37-2m",
+    "reason": "POST returned HTTP401 before mutation; browser automation stopped because URL could not be verified as allowed. Do not report awarded. Before retry inspect audit then refresh profile revision if no receipt."
+  },
+  "grantDatabase": {
+    "verified": false,
+    "reason": "No award was acknowledged; no grant verification claimed."
+  },
+  "verification": {
+    "fullLinux": {
+      "total": 2557,
+      "passed": 2553,
+      "failed": 0,
+      "skipped": 4,
+      "note": "Included subsequently deferred root lookup candidate; original simulation restored before final focused validation"
+    },
+    "finalLinux": {
+      "passed": 108,
+      "failed": 0,
+      "skipped": 0,
+      "isolatedPostgreSQL": true
+    },
+    "windows": {
+      "initial": {
+        "total": 2555,
+        "passed": 2526,
+        "failed": 25,
+        "skipped": 4
+      },
+      "resolvedFocused": {
+        "passed": 209,
+        "failed": 0
+      },
+      "note": "Initial failures retained: fixed first alchemy-state creation and null-session access, updated old VIP and Stone expectations"
+    },
+    "browsers": [
+      {
+        "engine": "chromium",
+        "errors": [],
+        "missing": [],
+        "checks": [
+          {
+            "case": "lobby geometry",
+            "width": 1366,
+            "profile": {
+              "x": 20,
+              "y": 76.5,
+              "width": 490.609375,
+              "height": 98,
+              "top": 76.5,
+              "right": 510.609375,
+              "bottom": 174.5,
+              "left": 20
+            },
+            "wallet": {
+              "x": 526.609375,
+              "y": 48.5,
+              "width": 176.9375,
+              "height": 126,
+              "top": 48.5,
+              "right": 703.546875,
+              "bottom": 174.5,
+              "left": 526.609375
+            },
+            "header": {
+              "x": 20,
+              "y": 16,
+              "width": 1326,
+              "height": 158.5,
+              "top": 16,
+              "right": 1346,
+              "bottom": 174.5,
+              "left": 20
+            },
+            "progress": {
+              "x": 435.796875,
+              "y": 184.5,
+              "width": 592.203125,
+              "height": 69,
+              "top": 184.5,
+              "right": 1028,
+              "bottom": 253.5,
+              "left": 435.796875
+            },
+            "effi": {
+              "x": 1067.546875,
+              "y": 75.5,
+              "width": 278.453125,
+              "height": 99,
+              "top": 75.5,
+              "right": 1346,
+              "bottom": 174.5,
+              "left": 1067.546875
+            },
+            "generator": {
+              "x": 1067.546875,
+              "y": 16,
+              "width": 278.453125,
+              "height": 48,
+              "top": 16,
+              "right": 1346,
+              "bottom": 64,
+              "left": 1067.546875
+            },
+            "amounts": [
+              {
+                "font": "13.2244px",
+                "box": {
+                  "x": 573.921875,
+                  "y": 58.5,
+                  "width": 87.875,
+                  "height": 17.1875,
+                  "top": 58.5,
+                  "right": 661.796875,
+                  "bottom": 75.6875,
+                  "left": 573.921875
+                },
+                "parent": {
+                  "x": 526.609375,
+                  "y": 48.5,
+                  "width": 146.9375,
+                  "height": 40,
+                  "top": 48.5,
+                  "right": 673.546875,
+                  "bottom": 88.5,
+                  "left": 526.609375
+                }
+              },
+              {
+                "font": "13.2244px",
+                "box": {
+                  "x": 573.921875,
+                  "y": 101.5,
+                  "width": 87.875,
+                  "height": 17.1875,
+                  "top": 101.5,
+                  "right": 661.796875,
+                  "bottom": 118.6875,
+                  "left": 573.921875
+                },
+                "parent": {
+                  "x": 526.609375,
+                  "y": 91.5,
+                  "width": 146.9375,
+                  "height": 40,
+                  "top": 91.5,
+                  "right": 673.546875,
+                  "bottom": 131.5,
+                  "left": 526.609375
+                }
+              },
+              {
+                "font": "13.2244px",
+                "box": {
+                  "x": 573.921875,
+                  "y": 144.5,
+                  "width": 87.875,
+                  "height": 17.1875,
+                  "top": 144.5,
+                  "right": 661.796875,
+                  "bottom": 161.6875,
+                  "left": 573.921875
+                },
+                "parent": {
+                  "x": 526.609375,
+                  "y": 134.5,
+                  "width": 146.9375,
+                  "height": 40,
+                  "top": 134.5,
+                  "right": 673.546875,
+                  "bottom": 174.5,
+                  "left": 526.609375
+                }
+              }
+            ]
+          },
+          {
+            "case": "lobby geometry",
+            "width": 1920,
+            "profile": {
+              "x": 240,
+              "y": 76.5,
+              "width": 532.796875,
+              "height": 98,
+              "top": 76.5,
+              "right": 772.796875,
+              "bottom": 174.5,
+              "left": 240
+            },
+            "wallet": {
+              "x": 788.796875,
+              "y": 48.5,
+              "width": 212,
+              "height": 126,
+              "top": 48.5,
+              "right": 1000.796875,
+              "bottom": 174.5,
+              "left": 788.796875
+            },
+            "header": {
+              "x": 240,
+              "y": 16,
+              "width": 1440,
+              "height": 158.5,
+              "top": 16,
+              "right": 1680,
+              "bottom": 174.5,
+              "left": 240
+            },
+            "progress": {
+              "x": 668,
+              "y": 184.5,
+              "width": 694,
+              "height": 69,
+              "top": 184.5,
+              "right": 1362,
+              "bottom": 253.5,
+              "left": 668
+            },
+            "effi": {
+              "x": 1380,
+              "y": 75.5,
+              "width": 300,
+              "height": 99,
+              "top": 75.5,
+              "right": 1680,
+              "bottom": 174.5,
+              "left": 1380
+            },
+            "generator": {
+              "x": 1380,
+              "y": 16,
+              "width": 300,
+              "height": 48,
+              "top": 16,
+              "right": 1680,
+              "bottom": 64,
+              "left": 1380
+            },
+            "amounts": [
+              {
+                "font": "16px",
+                "box": {
+                  "x": 847.390625,
+                  "y": 58.5,
+                  "width": 108.859375,
+                  "height": 17.1875,
+                  "top": 58.5,
+                  "right": 956.25,
+                  "bottom": 75.6875,
+                  "left": 847.390625
+                },
+                "parent": {
+                  "x": 788.796875,
+                  "y": 48.5,
+                  "width": 182,
+                  "height": 40,
+                  "top": 48.5,
+                  "right": 970.796875,
+                  "bottom": 88.5,
+                  "left": 788.796875
+                }
+              },
+              {
+                "font": "16px",
+                "box": {
+                  "x": 847.390625,
+                  "y": 101.5,
+                  "width": 108.859375,
+                  "height": 17.1875,
+                  "top": 101.5,
+                  "right": 956.25,
+                  "bottom": 118.6875,
+                  "left": 847.390625
+                },
+                "parent": {
+                  "x": 788.796875,
+                  "y": 91.5,
+                  "width": 182,
+                  "height": 40,
+                  "top": 91.5,
+                  "right": 970.796875,
+                  "bottom": 131.5,
+                  "left": 788.796875
+                }
+              },
+              {
+                "font": "16px",
+                "box": {
+                  "x": 847.390625,
+                  "y": 144.5,
+                  "width": 108.859375,
+                  "height": 17.1875,
+                  "top": 144.5,
+                  "right": 956.25,
+                  "bottom": 161.6875,
+                  "left": 847.390625
+                },
+                "parent": {
+                  "x": 788.796875,
+                  "y": 134.5,
+                  "width": 182,
+                  "height": 40,
+                  "top": 134.5,
+                  "right": 970.796875,
+                  "bottom": 174.5,
+                  "left": 788.796875
+                }
+              }
+            ]
+          },
+          {
+            "case": "lobby geometry",
+            "width": 390,
+            "profile": {
+              "x": 10,
+              "y": 8,
+              "width": 326,
+              "height": 84.5,
+              "top": 8,
+              "right": 336,
+              "bottom": 92.5,
+              "left": 10
+            },
+            "wallet": {
+              "x": 10,
+              "y": 102.5,
+              "width": 370,
+              "height": 28,
+              "top": 102.5,
+              "right": 380,
+              "bottom": 130.5,
+              "left": 10
+            },
+            "header": {
+              "x": 10,
+              "y": 8,
+              "width": 370,
+              "height": 237.5,
+              "top": 8,
+              "right": 380,
+              "bottom": 245.5,
+              "left": 10
+            },
+            "progress": {
+              "x": 10,
+              "y": 251.5,
+              "width": 370,
+              "height": 42.59375,
+              "top": 251.5,
+              "right": 380,
+              "bottom": 294.09375,
+              "left": 10
+            },
+            "effi": {
+              "x": 66,
+              "y": 200.5,
+              "width": 314,
+              "height": 45,
+              "top": 200.5,
+              "right": 380,
+              "bottom": 245.5,
+              "left": 66
+            },
+            "generator": {
+              "x": 10,
+              "y": 196,
+              "width": 48,
+              "height": 44,
+              "top": 196,
+              "right": 58,
+              "bottom": 240,
+              "left": 10
+            },
+            "amounts": [
+              {
+                "font": "12px",
+                "box": {
+                  "x": 39.296875,
+                  "y": 109.5,
+                  "width": 54.4375,
+                  "height": 12.03125,
+                  "top": 109.5,
+                  "right": 93.734375,
+                  "bottom": 121.53125,
+                  "left": 39.296875
+                },
+                "parent": {
+                  "x": 10,
+                  "y": 102.5,
+                  "width": 91,
+                  "height": 28,
+                  "top": 102.5,
+                  "right": 101,
+                  "bottom": 130.5,
+                  "left": 10
+                }
+              },
+              {
+                "font": "12px",
+                "box": {
+                  "x": 164.296875,
+                  "y": 109.5,
+                  "width": 54.4375,
+                  "height": 12.03125,
+                  "top": 109.5,
+                  "right": 218.734375,
+                  "bottom": 121.53125,
+                  "left": 164.296875
+                },
+                "parent": {
+                  "x": 135,
+                  "y": 102.5,
+                  "width": 91,
+                  "height": 28,
+                  "top": 102.5,
+                  "right": 226,
+                  "bottom": 130.5,
+                  "left": 135
+                }
+              },
+              {
+                "font": "12px",
+                "box": {
+                  "x": 289.296875,
+                  "y": 109.5,
+                  "width": 54.4375,
+                  "height": 12.03125,
+                  "top": 109.5,
+                  "right": 343.734375,
+                  "bottom": 121.53125,
+                  "left": 289.296875
+                },
+                "parent": {
+                  "x": 260,
+                  "y": 102.5,
+                  "width": 91,
+                  "height": 28,
+                  "top": 102.5,
+                  "right": 351,
+                  "bottom": 130.5,
+                  "left": 260
+                }
+              }
+            ]
+          },
+          {
+            "case": "persistent booster size, stable slots, potion panel, Space and input",
+            "small": {
+              "x": 402.5,
+              "y": 811,
+              "width": 64,
+              "height": 64
+            },
+            "large": {
+              "x": 338.5,
+              "y": 795,
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "passed": true
+      },
+      {
+        "engine": "firefox",
+        "errors": [],
+        "missing": [],
+        "checks": [
+          {
+            "case": "lobby geometry",
+            "width": 1366,
+            "profile": {
+              "x": 20,
+              "y": 75.75,
+              "width": 490.6166687011719,
+              "height": 98,
+              "top": 75.75,
+              "right": 510.6166687011719,
+              "bottom": 173.75,
+              "left": 20
+            },
+            "wallet": {
+              "x": 526.61669921875,
+              "y": 47.75,
+              "width": 176.9166717529297,
+              "height": 126,
+              "top": 47.75,
+              "right": 703.5333709716797,
+              "bottom": 173.75,
+              "left": 526.61669921875
+            },
+            "header": {
+              "x": 20,
+              "y": 16,
+              "width": 1326,
+              "height": 157.75,
+              "top": 16,
+              "right": 1346,
+              "bottom": 173.75,
+              "left": 20
+            },
+            "progress": {
+              "x": 435.79998779296875,
+              "y": 183.75,
+              "width": 592.2000122070312,
+              "height": 69,
+              "top": 183.75,
+              "right": 1028,
+              "bottom": 252.75,
+              "left": 435.79998779296875
+            },
+            "effi": {
+              "x": 1067.5333251953125,
+              "y": 74.75,
+              "width": 278.4666748046875,
+              "height": 99,
+              "top": 74.75,
+              "right": 1346,
+              "bottom": 173.75,
+              "left": 1067.5333251953125
+            },
+            "generator": {
+              "x": 1067.5333251953125,
+              "y": 16,
+              "width": 278.4666748046875,
+              "height": 48,
+              "top": 16,
+              "right": 1346,
+              "bottom": 64,
+              "left": 1067.5333251953125
+            },
+            "amounts": [
+              {
+                "font": "13.2225px",
+                "box": {
+                  "x": 573.9166870117188,
+                  "y": 57.75,
+                  "width": 87.86666870117188,
+                  "height": 17.199996948242188,
+                  "top": 57.75,
+                  "right": 661.7833557128906,
+                  "bottom": 74.94999694824219,
+                  "left": 573.9166870117188
+                },
+                "parent": {
+                  "x": 526.61669921875,
+                  "y": 47.75,
+                  "width": 146.9166717529297,
+                  "height": 40,
+                  "top": 47.75,
+                  "right": 673.5333709716797,
+                  "bottom": 87.75,
+                  "left": 526.61669921875
+                }
+              },
+              {
+                "font": "13.2225px",
+                "box": {
+                  "x": 573.9166870117188,
+                  "y": 100.75,
+                  "width": 87.86666870117188,
+                  "height": 17.199996948242188,
+                  "top": 100.75,
+                  "right": 661.7833557128906,
+                  "bottom": 117.94999694824219,
+                  "left": 573.9166870117188
+                },
+                "parent": {
+                  "x": 526.61669921875,
+                  "y": 90.75,
+                  "width": 146.9166717529297,
+                  "height": 40,
+                  "top": 90.75,
+                  "right": 673.5333709716797,
+                  "bottom": 130.75,
+                  "left": 526.61669921875
+                }
+              },
+              {
+                "font": "13.2225px",
+                "box": {
+                  "x": 573.9166870117188,
+                  "y": 143.75,
+                  "width": 87.86666870117188,
+                  "height": 17.199996948242188,
+                  "top": 143.75,
+                  "right": 661.7833557128906,
+                  "bottom": 160.9499969482422,
+                  "left": 573.9166870117188
+                },
+                "parent": {
+                  "x": 526.61669921875,
+                  "y": 133.75,
+                  "width": 146.9166717529297,
+                  "height": 40,
+                  "top": 133.75,
+                  "right": 673.5333709716797,
+                  "bottom": 173.75,
+                  "left": 526.61669921875
+                }
+              }
+            ]
+          },
+          {
+            "case": "lobby geometry",
+            "width": 1920,
+            "profile": {
+              "x": 240,
+              "y": 75.75,
+              "width": 532.7999877929688,
+              "height": 98,
+              "top": 75.75,
+              "right": 772.7999877929688,
+              "bottom": 173.75,
+              "left": 240
+            },
+            "wallet": {
+              "x": 788.7999877929688,
+              "y": 47.75,
+              "width": 212,
+              "height": 126,
+              "top": 47.75,
+              "right": 1000.7999877929688,
+              "bottom": 173.75,
+              "left": 788.7999877929688
+            },
+            "header": {
+              "x": 240,
+              "y": 16,
+              "width": 1440,
+              "height": 157.75,
+              "top": 16,
+              "right": 1680,
+              "bottom": 173.75,
+              "left": 240
+            },
+            "progress": {
+              "x": 668,
+              "y": 183.75,
+              "width": 694,
+              "height": 69,
+              "top": 183.75,
+              "right": 1362,
+              "bottom": 252.75,
+              "left": 668
+            },
+            "effi": {
+              "x": 1380,
+              "y": 74.75,
+              "width": 300,
+              "height": 99,
+              "top": 74.75,
+              "right": 1680,
+              "bottom": 173.75,
+              "left": 1380
+            },
+            "generator": {
+              "x": 1380,
+              "y": 16,
+              "width": 300,
+              "height": 48,
+              "top": 16,
+              "right": 1680,
+              "bottom": 64,
+              "left": 1380
+            },
+            "amounts": [
+              {
+                "font": "16px",
+                "box": {
+                  "x": 847.4000244140625,
+                  "y": 57.75,
+                  "width": 108.85000610351562,
+                  "height": 17.199996948242188,
+                  "top": 57.75,
+                  "right": 956.2500305175781,
+                  "bottom": 74.94999694824219,
+                  "left": 847.4000244140625
+                },
+                "parent": {
+                  "x": 788.7999877929688,
+                  "y": 47.75,
+                  "width": 182,
+                  "height": 40,
+                  "top": 47.75,
+                  "right": 970.7999877929688,
+                  "bottom": 87.75,
+                  "left": 788.7999877929688
+                }
+              },
+              {
+                "font": "16px",
+                "box": {
+                  "x": 847.4000244140625,
+                  "y": 100.75,
+                  "width": 108.85000610351562,
+                  "height": 17.199996948242188,
+                  "top": 100.75,
+                  "right": 956.2500305175781,
+                  "bottom": 117.94999694824219,
+                  "left": 847.4000244140625
+                },
+                "parent": {
+                  "x": 788.7999877929688,
+                  "y": 90.75,
+                  "width": 182,
+                  "height": 40,
+                  "top": 90.75,
+                  "right": 970.7999877929688,
+                  "bottom": 130.75,
+                  "left": 788.7999877929688
+                }
+              },
+              {
+                "font": "16px",
+                "box": {
+                  "x": 847.4000244140625,
+                  "y": 143.75,
+                  "width": 108.85000610351562,
+                  "height": 17.199996948242188,
+                  "top": 143.75,
+                  "right": 956.2500305175781,
+                  "bottom": 160.9499969482422,
+                  "left": 847.4000244140625
+                },
+                "parent": {
+                  "x": 788.7999877929688,
+                  "y": 133.75,
+                  "width": 182,
+                  "height": 40,
+                  "top": 133.75,
+                  "right": 970.7999877929688,
+                  "bottom": 173.75,
+                  "left": 788.7999877929688
+                }
+              }
+            ]
+          },
+          {
+            "case": "lobby geometry",
+            "width": 390,
+            "profile": {
+              "x": 10,
+              "y": 8,
+              "width": 326,
+              "height": 84.5,
+              "top": 8,
+              "right": 336,
+              "bottom": 92.5,
+              "left": 10
+            },
+            "wallet": {
+              "x": 10,
+              "y": 102.5,
+              "width": 370,
+              "height": 28,
+              "top": 102.5,
+              "right": 380,
+              "bottom": 130.5,
+              "left": 10
+            },
+            "header": {
+              "x": 10,
+              "y": 8,
+              "width": 370,
+              "height": 237.5,
+              "top": 8,
+              "right": 380,
+              "bottom": 245.5,
+              "left": 10
+            },
+            "progress": {
+              "x": 10,
+              "y": 251.5,
+              "width": 370,
+              "height": 42.600006103515625,
+              "top": 251.5,
+              "right": 380,
+              "bottom": 294.1000061035156,
+              "left": 10
+            },
+            "effi": {
+              "x": 66,
+              "y": 200.5,
+              "width": 314,
+              "height": 45,
+              "top": 200.5,
+              "right": 380,
+              "bottom": 245.5,
+              "left": 66
+            },
+            "generator": {
+              "x": 10,
+              "y": 196,
+              "width": 48,
+              "height": 44,
+              "top": 196,
+              "right": 58,
+              "bottom": 240,
+              "left": 10
+            },
+            "amounts": [
+              {
+                "font": "12px",
+                "box": {
+                  "x": 39.30000305175781,
+                  "y": 109.5,
+                  "width": 54.43333435058594,
+                  "height": 12.033340454101562,
+                  "top": 109.5,
+                  "right": 93.73333740234375,
+                  "bottom": 121.53334045410156,
+                  "left": 39.30000305175781
+                },
+                "parent": {
+                  "x": 10,
+                  "y": 102.5,
+                  "width": 91,
+                  "height": 28,
+                  "top": 102.5,
+                  "right": 101,
+                  "bottom": 130.5,
+                  "left": 10
+                }
+              },
+              {
+                "font": "12px",
+                "box": {
+                  "x": 164.3000030517578,
+                  "y": 109.5,
+                  "width": 54.43333435058594,
+                  "height": 12.033340454101562,
+                  "top": 109.5,
+                  "right": 218.73333740234375,
+                  "bottom": 121.53334045410156,
+                  "left": 164.3000030517578
+                },
+                "parent": {
+                  "x": 135,
+                  "y": 102.5,
+                  "width": 91,
+                  "height": 28,
+                  "top": 102.5,
+                  "right": 226,
+                  "bottom": 130.5,
+                  "left": 135
+                }
+              },
+              {
+                "font": "12px",
+                "box": {
+                  "x": 289.29998779296875,
+                  "y": 109.5,
+                  "width": 54.43333435058594,
+                  "height": 12.033340454101562,
+                  "top": 109.5,
+                  "right": 343.7333221435547,
+                  "bottom": 121.53334045410156,
+                  "left": 289.29998779296875
+                },
+                "parent": {
+                  "x": 260,
+                  "y": 102.5,
+                  "width": 91,
+                  "height": 28,
+                  "top": 102.5,
+                  "right": 351,
+                  "bottom": 130.5,
+                  "left": 260
+                }
+              }
+            ]
+          },
+          {
+            "case": "persistent booster size, stable slots, potion panel, Space and input",
+            "small": {
+              "x": 402.5,
+              "y": 811,
+              "width": 64,
+              "height": 64
+            },
+            "large": {
+              "x": 338.5,
+              "y": 795,
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "errors": [],
+        "missing": [],
+        "checks": [
+          {
+            "case": "lobby geometry",
+            "width": 1366,
+            "profile": {
+              "x": 20,
+              "y": 75.75,
+              "width": 490.609375,
+              "height": 98,
+              "top": 75.75,
+              "right": 510.609375,
+              "bottom": 173.75,
+              "left": 20
+            },
+            "wallet": {
+              "x": 526.609375,
+              "y": 47.75,
+              "width": 176.9375,
+              "height": 126,
+              "top": 47.75,
+              "right": 703.546875,
+              "bottom": 173.75,
+              "left": 526.609375
+            },
+            "header": {
+              "x": 20,
+              "y": 16,
+              "width": 1326,
+              "height": 157.75,
+              "top": 16,
+              "right": 1346,
+              "bottom": 173.75,
+              "left": 20
+            },
+            "progress": {
+              "x": 435.796875,
+              "y": 183.75,
+              "width": 592.203125,
+              "height": 69,
+              "top": 183.75,
+              "right": 1028,
+              "bottom": 252.75,
+              "left": 435.796875
+            },
+            "effi": {
+              "x": 1067.546875,
+              "y": 74.75,
+              "width": 278.453125,
+              "height": 99,
+              "top": 74.75,
+              "right": 1346,
+              "bottom": 173.75,
+              "left": 1067.546875
+            },
+            "generator": {
+              "x": 1067.546875,
+              "y": 16,
+              "width": 278.453125,
+              "height": 48,
+              "top": 16,
+              "right": 1346,
+              "bottom": 64,
+              "left": 1067.546875
+            },
+            "amounts": [
+              {
+                "font": "13.224375px",
+                "box": {
+                  "x": 573.921875,
+                  "y": 57.75,
+                  "width": 87.875,
+                  "height": 17.1875,
+                  "top": 57.75,
+                  "right": 661.796875,
+                  "bottom": 74.9375,
+                  "left": 573.921875
+                },
+                "parent": {
+                  "x": 526.609375,
+                  "y": 47.75,
+                  "width": 146.9375,
+                  "height": 40,
+                  "top": 47.75,
+                  "right": 673.546875,
+                  "bottom": 87.75,
+                  "left": 526.609375
+                }
+              },
+              {
+                "font": "13.224375px",
+                "box": {
+                  "x": 573.921875,
+                  "y": 100.75,
+                  "width": 87.875,
+                  "height": 17.1875,
+                  "top": 100.75,
+                  "right": 661.796875,
+                  "bottom": 117.9375,
+                  "left": 573.921875
+                },
+                "parent": {
+                  "x": 526.609375,
+                  "y": 90.75,
+                  "width": 146.9375,
+                  "height": 40,
+                  "top": 90.75,
+                  "right": 673.546875,
+                  "bottom": 130.75,
+                  "left": 526.609375
+                }
+              },
+              {
+                "font": "13.224375px",
+                "box": {
+                  "x": 573.921875,
+                  "y": 143.75,
+                  "width": 87.875,
+                  "height": 17.1875,
+                  "top": 143.75,
+                  "right": 661.796875,
+                  "bottom": 160.9375,
+                  "left": 573.921875
+                },
+                "parent": {
+                  "x": 526.609375,
+                  "y": 133.75,
+                  "width": 146.9375,
+                  "height": 40,
+                  "top": 133.75,
+                  "right": 673.546875,
+                  "bottom": 173.75,
+                  "left": 526.609375
+                }
+              }
+            ]
+          },
+          {
+            "case": "lobby geometry",
+            "width": 1920,
+            "profile": {
+              "x": 240,
+              "y": 75.75,
+              "width": 532.796875,
+              "height": 98,
+              "top": 75.75,
+              "right": 772.796875,
+              "bottom": 173.75,
+              "left": 240
+            },
+            "wallet": {
+              "x": 788.796875,
+              "y": 47.75,
+              "width": 212,
+              "height": 126,
+              "top": 47.75,
+              "right": 1000.796875,
+              "bottom": 173.75,
+              "left": 788.796875
+            },
+            "header": {
+              "x": 240,
+              "y": 16,
+              "width": 1440,
+              "height": 157.75,
+              "top": 16,
+              "right": 1680,
+              "bottom": 173.75,
+              "left": 240
+            },
+            "progress": {
+              "x": 668,
+              "y": 183.75,
+              "width": 694,
+              "height": 69,
+              "top": 183.75,
+              "right": 1362,
+              "bottom": 252.75,
+              "left": 668
+            },
+            "effi": {
+              "x": 1380,
+              "y": 74.75,
+              "width": 300,
+              "height": 99,
+              "top": 74.75,
+              "right": 1680,
+              "bottom": 173.75,
+              "left": 1380
+            },
+            "generator": {
+              "x": 1380,
+              "y": 16,
+              "width": 300,
+              "height": 48,
+              "top": 16,
+              "right": 1680,
+              "bottom": 64,
+              "left": 1380
+            },
+            "amounts": [
+              {
+                "font": "16px",
+                "box": {
+                  "x": 847.390625,
+                  "y": 57.75,
+                  "width": 108.859375,
+                  "height": 17.1875,
+                  "top": 57.75,
+                  "right": 956.25,
+                  "bottom": 74.9375,
+                  "left": 847.390625
+                },
+                "parent": {
+                  "x": 788.796875,
+                  "y": 47.75,
+                  "width": 182,
+                  "height": 40,
+                  "top": 47.75,
+                  "right": 970.796875,
+                  "bottom": 87.75,
+                  "left": 788.796875
+                }
+              },
+              {
+                "font": "16px",
+                "box": {
+                  "x": 847.390625,
+                  "y": 100.75,
+                  "width": 108.859375,
+                  "height": 17.1875,
+                  "top": 100.75,
+                  "right": 956.25,
+                  "bottom": 117.9375,
+                  "left": 847.390625
+                },
+                "parent": {
+                  "x": 788.796875,
+                  "y": 90.75,
+                  "width": 182,
+                  "height": 40,
+                  "top": 90.75,
+                  "right": 970.796875,
+                  "bottom": 130.75,
+                  "left": 788.796875
+                }
+              },
+              {
+                "font": "16px",
+                "box": {
+                  "x": 847.390625,
+                  "y": 143.75,
+                  "width": 108.859375,
+                  "height": 17.1875,
+                  "top": 143.75,
+                  "right": 956.25,
+                  "bottom": 160.9375,
+                  "left": 847.390625
+                },
+                "parent": {
+                  "x": 788.796875,
+                  "y": 133.75,
+                  "width": 182,
+                  "height": 40,
+                  "top": 133.75,
+                  "right": 970.796875,
+                  "bottom": 173.75,
+                  "left": 788.796875
+                }
+              }
+            ]
+          },
+          {
+            "case": "lobby geometry",
+            "width": 390,
+            "profile": {
+              "x": 10,
+              "y": 8,
+              "width": 326,
+              "height": 84.5,
+              "top": 8,
+              "right": 336,
+              "bottom": 92.5,
+              "left": 10
+            },
+            "wallet": {
+              "x": 10,
+              "y": 102.5,
+              "width": 370,
+              "height": 28,
+              "top": 102.5,
+              "right": 380,
+              "bottom": 130.5,
+              "left": 10
+            },
+            "header": {
+              "x": 10,
+              "y": 8,
+              "width": 370,
+              "height": 237.5,
+              "top": 8,
+              "right": 380,
+              "bottom": 245.5,
+              "left": 10
+            },
+            "progress": {
+              "x": 10,
+              "y": 251.5,
+              "width": 370,
+              "height": 42.59375,
+              "top": 251.5,
+              "right": 380,
+              "bottom": 294.09375,
+              "left": 10
+            },
+            "effi": {
+              "x": 66,
+              "y": 200.5,
+              "width": 314,
+              "height": 45,
+              "top": 200.5,
+              "right": 380,
+              "bottom": 245.5,
+              "left": 66
+            },
+            "generator": {
+              "x": 10,
+              "y": 196,
+              "width": 48,
+              "height": 44,
+              "top": 196,
+              "right": 58,
+              "bottom": 240,
+              "left": 10
+            },
+            "amounts": [
+              {
+                "font": "12px",
+                "box": {
+                  "x": 39.296875,
+                  "y": 109.5,
+                  "width": 54.4375,
+                  "height": 12.03125,
+                  "top": 109.5,
+                  "right": 93.734375,
+                  "bottom": 121.53125,
+                  "left": 39.296875
+                },
+                "parent": {
+                  "x": 10,
+                  "y": 102.5,
+                  "width": 91,
+                  "height": 28,
+                  "top": 102.5,
+                  "right": 101,
+                  "bottom": 130.5,
+                  "left": 10
+                }
+              },
+              {
+                "font": "12px",
+                "box": {
+                  "x": 164.296875,
+                  "y": 109.5,
+                  "width": 54.4375,
+                  "height": 12.03125,
+                  "top": 109.5,
+                  "right": 218.734375,
+                  "bottom": 121.53125,
+                  "left": 164.296875
+                },
+                "parent": {
+                  "x": 135,
+                  "y": 102.5,
+                  "width": 91,
+                  "height": 28,
+                  "top": 102.5,
+                  "right": 226,
+                  "bottom": 130.5,
+                  "left": 135
+                }
+              },
+              {
+                "font": "12px",
+                "box": {
+                  "x": 289.296875,
+                  "y": 109.5,
+                  "width": 54.4375,
+                  "height": 12.03125,
+                  "top": 109.5,
+                  "right": 343.734375,
+                  "bottom": 121.53125,
+                  "left": 289.296875
+                },
+                "parent": {
+                  "x": 260,
+                  "y": 102.5,
+                  "width": 91,
+                  "height": 28,
+                  "top": 102.5,
+                  "right": 351,
+                  "bottom": 130.5,
+                  "left": 260
+                }
+              }
+            ]
+          },
+          {
+            "case": "persistent booster size, stable slots, potion panel, Space and input",
+            "small": {
+              "x": 402.5,
+              "y": 811,
+              "width": 64,
+              "height": 64
+            },
+            "large": {
+              "x": 338.5,
+              "y": 795,
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "passed": true
+      }
+    ],
+    "achievementBadges": {
+      "passed": true,
+      "results": [
+        {
+          "id": "alchemy_ingredients",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            50,
+            150,
+            400,
+            1000,
+            2500
+          ]
+        },
+        {
+          "id": "alchemy_potion_strength",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_swiftness",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_satiety",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_knowledge",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_steadiness",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_reach",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_vigor",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_longevity",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_clarity",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_precision",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_magnetism",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_gatherer",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_tempest",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_fortitude",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_prosperity",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_potion_archmage",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            5,
+            15,
+            40,
+            100,
+            250
+          ]
+        },
+        {
+          "id": "alchemy_brews",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            1,
+            5,
+            15,
+            40,
+            100
+          ]
+        },
+        {
+          "id": "alchemy_marriage_levels",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            1,
+            3,
+            10,
+            25,
+            50
+          ]
+        },
+        {
+          "id": "alchemy_marriage_games",
+          "rewards": [
+            10,
+            20,
+            40,
+            80,
+            150
+          ],
+          "thresholds": [
+            1,
+            5,
+            15,
+            40,
+            100
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "http": {
+      "passed": true,
+      "rows": [
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/game-client.js",
+          "hash": "d5e6adec8aa644190a5bb9b74d323436f94a7bb971b3e066ab44d1fb61d0d47f"
+        },
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/index.html",
+          "hash": "5b399f5b0f01947c973dc668f851d25369051d1cc16d67e7897e00c0ad841041"
+        },
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/shared/progression-asset-paths.js",
+          "hash": "0ecdaab3e850cd064d4796356137f89a525d30feb768ceb1d9b005092f14ef1d"
+        },
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/shared/release-notes.js",
+          "hash": "53040c378119a4abf318ea39dd9e9984503a4144d3d1b04961e650b0b1ca071a"
+        },
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/styles/components/effi-lobby.css",
+          "hash": "f801e2ceefd177c8e49952b3da8b454259e4e8ae662989efa6cff40669c9a790"
+        },
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/styles/components/lobby-wallet-accessories.css",
+          "hash": "a5fbad1428daaa605983053a77474ffbd76640cadc7bbeac218b1724e6fa1831"
+        },
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/styles/components/quick-slot-editor.css",
+          "hash": "4740a61e71e95318be59118bebee9c8fc6aa7c6c51f252656f2b1946f63a3af7"
+        },
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/ui/accounts/account-dialog.js",
+          "hash": "11e571607f6e71470ec7145ac02d42fec4bf9f4903f4523a81beb29f5b807cdc"
+        },
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+          "hash": "3a8188b9c7bb2567a22ee78cbeb892d3de87d69654b91d374a18a3d5eb1a51ca"
+        },
+        {
+          "target": "https://195.208.123.221",
+          "file": "public/ui/chat/player-chat.js",
+          "hash": "0b5f54a3ef345c9806ff6e495cefe056a0a113c1e3de0c4ac0deb7e4aaaa2331"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/game-client.js",
+          "hash": "32a34be95c626fe7b3abad8cb3eccce4f0d898d381824b8dc64abbeb1d38543d"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/index.html",
+          "hash": "5b399f5b0f01947c973dc668f851d25369051d1cc16d67e7897e00c0ad841041"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/shared/progression-asset-paths.js",
+          "hash": "6f5c0f49a75f43e72a8740322f44e479f42c011b6fb43627dac4a6a18f68f56d"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/shared/release-notes.js",
+          "hash": "0f26153bd73957c5a76681c8f830ac1226e449e4ebd2c4a075f17273363fe32f"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/styles/components/effi-lobby.css",
+          "hash": "9dd17f78c2301541b8ce5864693e36eb0db5c6718d8ba2b37efe397c04a7832f"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/styles/components/lobby-wallet-accessories.css",
+          "hash": "b9b8e7d44f6d6c0d4a7aab02458352f6e492aa0b842c1fcfc1fd4ae407b331f3"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/styles/components/quick-slot-editor.css",
+          "hash": "1515dd931afeb93e2917bc6b4a5bfee4944a350fb52fcad0d025c67488b1eb5d"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/ui/accounts/account-dialog.js",
+          "hash": "0751b2f801df72e29f6f2a63712bcae1db31aa2675d3e275b11e2eed16789410"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+          "hash": "8394a892723b566380ef4b73ae3a400021dcccf0c11e10f28c56625dfad4ac50"
+        },
+        {
+          "target": "http://127.0.0.1:3104",
+          "file": "public/ui/chat/player-chat.js",
+          "hash": "3e79c688aa55ed339c60dd3d18666231903401ebbbed6296faf3c30e5717f0d8"
+        }
+      ]
+    }
+  },
+  "data": {
+    "before": {
+      "at": 1795632377514,
+      "revision": 5439576,
+      "digest": "b6492969152fb2c3ec9e3e17b3d4835976640f13c15215ca5b417100d01a0268",
+      "worldHash": "b6eb8ded840e0b1180d6a58fd68015769553d2fca917fbc1e0ffdac4fda8830c",
+      "profiles": 1728,
+      "clans": 138,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/run/heroether-alchemy-hud-backup-20261125/alchemy-vip-hud-20261125",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/alchemy-vip-hud-20261125/data-before.tar.gz"
+    },
+    "after": {
+      "calendarReplayExact": true,
+      "approvedMigrationsExact": true,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 5439576,
+      "revision": 5439577,
+      "digest": "47640260d49752485616a87b7dec5a5a5dbdfcc5bb8f9ca17b9037ef79bd4167",
+      "worldHash": "c583b9a7b0ebeb1270118a2174b4bd6cb2acc74185b9c0509669496219c19e87",
+      "profiles": 1728,
+      "clans": 138,
+      "at": 1795632778190,
+      "transitionTimes": [
+        1795632778190
+      ],
+      "retiredAvatarProfiles": [],
+      "constructorChanges": [],
+      "questPayouts": 0,
+      "questChests": 0
+    },
+    "database": {
+      "ok": true,
+      "revision": 5439577,
+      "generation": 8587,
+      "digest": "47640260d49752485616a87b7dec5a5a5dbdfcc5bb8f9ca17b9037ef79bd4167",
+      "worldHash": "c583b9a7b0ebeb1270118a2174b4bd6cb2acc74185b9c0509669496219c19e87",
+      "profiles": 1728,
+      "clans": 138,
+      "fullWorldAndAuxEqual": true,
+      "calendarComparisonRevalidated": true
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "7886c9abe3d0d77ebc68a3bdba23ef822fa645f98b79b00140ed3838a71f2e42",
+      "revision": 5439576,
+      "digest": "b6492969152fb2c3ec9e3e17b3d4835976640f13c15215ca5b417100d01a0268",
+      "worldHash": "b6eb8ded840e0b1180d6a58fd68015769553d2fca917fbc1e0ffdac4fda8830c",
+      "profiles": 1728,
+      "clans": 138,
+      "postgresqlArchiveVerified": true
+    }
+  },
+  "runtimeDiff": {
+    "changed": 20,
+    "unchanged": 2599,
+    "commentsRemoved": 247,
+    "protectedGraphicsUnchanged": true
+  },
+  "liveBefore": {
+    "root": "/srv/heroether-test/play/releases/20261125-friday-constructor",
+    "pid": 968323,
+    "cgroup": "/system.slice/heroether-play.service",
+    "rows": [
+      {
+        "at": "2026-11-25T18:26:31.489Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1187,
+          "advancedTicks": 1187,
+          "updatesHz": 19.78,
+          "tickWorkMs": {
+            "count": 1187,
+            "p50": 11.97,
+            "p95": 28.21,
+            "p99": 46.9,
+            "max": 293.7
+          },
+          "tickIntervalMs": {
+            "count": 1187,
+            "p50": 50.02,
+            "p95": 57.94,
+            "p99": 69.99,
+            "max": 296.63
+          },
+          "eventLoop": {
+            "windowMs": 10001.35,
+            "resolutionMs": 20,
+            "samples": 368,
+            "p95Ms": 45.29,
+            "p99Ms": 64.23,
+            "maxMs": 80.35
+          },
+          "capturedAt": 1795631191485,
+          "uptimeSeconds": 13945,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 59,
+            "parts": 147,
+            "connections": 12
+          },
+          "online": {
+            "arena": 12,
+            "lobby": 2,
+            "total": 14
+          },
+          "memoryMiB": {
+            "resident": 3788,
+            "heapUsed": 790,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5422260,
+            "pendingWalBytes": 1039509,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 1016054,
+            "replaced": 103,
+            "workerMs": 1604608.0384906274,
+            "cloneMs": 405424.0334814375,
+            "turnaroundMs": 6197754.799548999,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 37,
+            "drained": 0,
+            "delivered": 2148291,
+            "deliveryMs": 109335.45684267773
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 23512,
+          "revision": 5421813
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 634091
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 95448
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 95611
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 95310
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 95166
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 184028
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 984
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 966
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 971
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 972
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 163
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 654
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 115053
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 61257
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 95651
+          },
+          {
+            "id": 985671,
+            "name": "WorkerThread",
+            "cpu": 76
+          },
+          {
+            "id": 985947,
+            "name": "WorkerThread",
+            "cpu": 11923
+          }
+        ],
+        "host": {
+          "load": "2.50 1.99 1.61 2/353 987871",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5239852 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184836 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 16613687156\nuser_usec 15793496302\nsystem_usec 820190854\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 137750\nnr_throttled 1269\nthrottled_usec 68643184\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=11.06 avg60=6.90 avg300=3.94 total=7093654605\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551029\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604291",
+            "io": "some avg10=0.32 avg60=0.40 avg300=0.16 total=561939654\nfull avg10=0.31 avg60=0.34 avg300=0.12 total=473047769"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79063674880 1077866496  99% /"
+        }
+      },
+      {
+        "at": "2026-11-25T18:26:41.524Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1187,
+          "advancedTicks": 1187,
+          "updatesHz": 19.78,
+          "tickWorkMs": {
+            "count": 1187,
+            "p50": 13.25,
+            "p95": 29.25,
+            "p99": 51.3,
+            "max": 293.7
+          },
+          "tickIntervalMs": {
+            "count": 1187,
+            "p50": 50.02,
+            "p95": 57.11,
+            "p99": 69.59,
+            "max": 296.63
+          },
+          "eventLoop": {
+            "windowMs": 9999.35,
+            "resolutionMs": 20,
+            "samples": 372,
+            "p95Ms": 42.6,
+            "p99Ms": 64.88,
+            "maxMs": 94.7
+          },
+          "capturedAt": 1795631201522,
+          "uptimeSeconds": 13955,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 60,
+            "parts": 158,
+            "connections": 12
+          },
+          "online": {
+            "arena": 12,
+            "lobby": 2,
+            "total": 14
+          },
+          "memoryMiB": {
+            "resident": 3772,
+            "heapUsed": 862,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": true,
+            "walRevision": 5422440,
+            "pendingWalBytes": 1996581,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 1017490,
+            "replaced": 103,
+            "workerMs": 1606034.3229076494,
+            "cloneMs": 405801.56936842366,
+            "turnaroundMs": 6203954.32788198,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 37,
+            "drained": 0,
+            "delivered": 2150502,
+            "deliveryMs": 109425.57826962328
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 2771,
+          "revision": 5422316
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 634582
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 95569
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 95732
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 95421
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 95281
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 184405
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 985
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 966
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 972
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 973
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 163
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 655
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 115115
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 61303
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 95783
+          },
+          {
+            "id": 985671,
+            "name": "WorkerThread",
+            "cpu": 76
+          },
+          {
+            "id": 985947,
+            "name": "WorkerThread",
+            "cpu": 11923
+          }
+        ],
+        "host": {
+          "load": "3.12 2.14 1.66 2/355 987908",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5194452 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184836 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 16629491318\nuser_usec 15808637396\nsystem_usec 820853921\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 137851\nnr_throttled 1270\nthrottled_usec 68651235\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=14.52 avg60=8.46 avg300=4.39 total=7095440289\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551029\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604291",
+            "io": "some avg10=0.11 avg60=0.34 avg300=0.15 total=561988528\nfull avg10=0.11 avg60=0.29 avg300=0.12 total=473083718"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79064756224 1076785152  99% /"
+        }
+      },
+      {
+        "at": "2026-11-25T18:26:51.537Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1187,
+          "advancedTicks": 1187,
+          "updatesHz": 19.78,
+          "tickWorkMs": {
+            "count": 1187,
+            "p50": 14.13,
+            "p95": 32.04,
+            "p99": 53.92,
+            "max": 293.7
+          },
+          "tickIntervalMs": {
+            "count": 1187,
+            "p50": 50.02,
+            "p95": 57.11,
+            "p99": 69.59,
+            "max": 296.63
+          },
+          "eventLoop": {
+            "windowMs": 9999.7,
+            "resolutionMs": 20,
+            "samples": 369,
+            "p95Ms": 45.09,
+            "p99Ms": 68.16,
+            "maxMs": 85.66
+          },
+          "capturedAt": 1795631211535,
+          "uptimeSeconds": 13965,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 54,
+            "parts": 163,
+            "connections": 11
+          },
+          "online": {
+            "arena": 11,
+            "lobby": 4,
+            "total": 15
+          },
+          "memoryMiB": {
+            "resident": 3770,
+            "heapUsed": 904,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5422613,
+            "pendingWalBytes": 4405861,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 1018961,
+            "replaced": 103,
+            "workerMs": 1607377.3673116458,
+            "cloneMs": 406174.7771564496,
+            "turnaroundMs": 6210198.550723984,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 37,
+            "drained": 0,
+            "delivered": 2152546,
+            "deliveryMs": 109519.18497461086
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 12784,
+          "revision": 5422316
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 635089
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 95596
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 95758
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 95454
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 95306
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 184406
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 985
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 968
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 973
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 973
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 163
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 657
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 115180
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 61344
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 95900
+          },
+          {
+            "id": 985671,
+            "name": "WorkerThread",
+            "cpu": 76
+          },
+          {
+            "id": 985947,
+            "name": "WorkerThread",
+            "cpu": 12015
+          }
+        ],
+        "host": {
+          "load": "2.94 2.14 1.67 6/347 987951",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5376708 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184836 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 16638853810\nuser_usec 15817567435\nsystem_usec 821286375\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 137951\nnr_throttled 1270\nthrottled_usec 68651235\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=10.88 avg60=8.48 avg300=4.53 total=7096340545\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551029\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604291",
+            "io": "some avg10=0.12 avg60=0.31 avg300=0.15 total=562023697\nfull avg10=0.04 avg60=0.24 avg300=0.11 total=473114280"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79116709888 1024831488  99% /"
+        }
+      },
+      {
+        "at": "2026-11-25T18:27:01.556Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1189,
+          "advancedTicks": 1189,
+          "updatesHz": 19.82,
+          "tickWorkMs": {
+            "count": 1189,
+            "p50": 14.88,
+            "p95": 33.9,
+            "p99": 54,
+            "max": 293.7
+          },
+          "tickIntervalMs": {
+            "count": 1189,
+            "p50": 50.01,
+            "p95": 56.61,
+            "p99": 68.59,
+            "max": 296.63
+          },
+          "eventLoop": {
+            "windowMs": 9999.64,
+            "resolutionMs": 20,
+            "samples": 374,
+            "p95Ms": 45.06,
+            "p99Ms": 56.03,
+            "maxMs": 78.32
+          },
+          "capturedAt": 1795631221554,
+          "uptimeSeconds": 13975,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 56,
+            "parts": 188,
+            "connections": 9
+          },
+          "online": {
+            "arena": 9,
+            "lobby": 6,
+            "total": 15
+          },
+          "memoryMiB": {
+            "resident": 3828,
+            "heapUsed": 950,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 1,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5422776,
+            "pendingWalBytes": 967560,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 1020350,
+            "replaced": 103,
+            "workerMs": 1608710.6142936521,
+            "cloneMs": 406522.2911714872,
+            "turnaroundMs": 6215664.249145978,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 37,
+            "drained": 0,
+            "delivered": 2154256,
+            "deliveryMs": 109601.9467776083
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 22803,
+          "revision": 5422316
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 635559
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 95626
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 95782
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 95480
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 95333
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 184406
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 986
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 969
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 973
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 974
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 163
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 657
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 115247
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 61382
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 96014
+          },
+          {
+            "id": 985671,
+            "name": "WorkerThread",
+            "cpu": 76
+          },
+          {
+            "id": 985947,
+            "name": "WorkerThread",
+            "cpu": 12311
+          }
+        ],
+        "host": {
+          "load": "2.79 2.13 1.67 2/349 988028",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    4996328 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184836 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 16649799601\nuser_usec 15827509771\nsystem_usec 822289830\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 138051\nnr_throttled 1270\nthrottled_usec 68651235\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=7.78 avg60=8.13 avg300=4.59 total=7097000868\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551029\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604291",
+            "io": "some avg10=0.04 avg60=0.26 avg300=0.14 total=562052723\nfull avg10=0.01 avg60=0.20 avg300=0.11 total=473140818"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79067996160 1073545216  99% /"
+        }
+      }
+    ]
+  },
+  "liveAfter": [
+    {
+      "at": 1795633132624,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 925,
+        "advancedTicks": 828,
+        "updatesHz": 13.8,
+        "tickWorkMs": {
+          "count": 925,
+          "p50": 0.61,
+          "p95": 0.86,
+          "p99": 1.14,
+          "max": 15.8
+        },
+        "tickIntervalMs": {
+          "count": 925,
+          "p50": 50.08,
+          "p95": 51.21,
+          "p99": 65.04,
+          "max": 251867.9
+        },
+        "eventLoop": {
+          "windowMs": 10000.89,
+          "resolutionMs": 20,
+          "samples": 486,
+          "p95Ms": 21.02,
+          "p99Ms": 26.36,
+          "maxMs": 112.98
+        },
+        "capturedAt": 1795633132618,
+        "uptimeSeconds": 463,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2658,
+          "heapUsed": 497,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 5439587,
+          "pendingWalBytes": 19675,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 15384
+      }
+    },
+    {
+      "at": 1795633142631,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1125,
+        "advancedTicks": 1028,
+        "updatesHz": 17.13,
+        "tickWorkMs": {
+          "count": 1125,
+          "p50": 0.61,
+          "p95": 0.85,
+          "p99": 1.12,
+          "max": 15.8
+        },
+        "tickIntervalMs": {
+          "count": 1125,
+          "p50": 50.09,
+          "p95": 51.17,
+          "p99": 67.33,
+          "max": 251867.9
+        },
+        "eventLoop": {
+          "windowMs": 10000.69,
+          "resolutionMs": 20,
+          "samples": 485,
+          "p95Ms": 21.05,
+          "p99Ms": 34.11,
+          "maxMs": 43.75
+        },
+        "capturedAt": 1795633142629,
+        "uptimeSeconds": 473,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2660,
+          "heapUsed": 499,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 5439590,
+          "pendingWalBytes": 27323,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 25391
+      }
+    },
+    {
+      "at": 1795633152636,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1196,
+        "advancedTicks": 1196,
+        "updatesHz": 19.93,
+        "tickWorkMs": {
+          "count": 1196,
+          "p50": 0.62,
+          "p95": 0.84,
+          "p99": 1.06,
+          "max": 11.85
+        },
+        "tickIntervalMs": {
+          "count": 1196,
+          "p50": 50.13,
+          "p95": 51.05,
+          "p99": 63.6,
+          "max": 117.13
+        },
+        "eventLoop": {
+          "windowMs": 10000.67,
+          "resolutionMs": 20,
+          "samples": 490,
+          "p95Ms": 21.07,
+          "p99Ms": 21.3,
+          "maxMs": 27.67
+        },
+        "capturedAt": 1795633152635,
+        "uptimeSeconds": 483,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2690,
+          "heapUsed": 503,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 5439593,
+          "pendingWalBytes": 34002,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 5317
+      }
+    },
+    {
+      "at": 1795633162643,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1193,
+        "advancedTicks": 1193,
+        "updatesHz": 19.88,
+        "tickWorkMs": {
+          "count": 1193,
+          "p50": 0.61,
+          "p95": 0.81,
+          "p99": 0.94,
+          "max": 11.85
+        },
+        "tickIntervalMs": {
+          "count": 1193,
+          "p50": 50.14,
+          "p95": 51.26,
+          "p99": 63.47,
+          "max": 285.12
+        },
+        "eventLoop": {
+          "windowMs": 9999.46,
+          "resolutionMs": 20,
+          "samples": 476,
+          "p95Ms": 21.09,
+          "p99Ms": 30.23,
+          "maxMs": 241.3
+        },
+        "capturedAt": 1795633162642,
+        "uptimeSeconds": 493,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2687,
+          "heapUsed": 510,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 5439596,
+          "pendingWalBytes": 45383,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 15324
+      }
+    },
+    {
+      "at": 1795633172658,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1192,
+        "advancedTicks": 1192,
+        "updatesHz": 19.87,
+        "tickWorkMs": {
+          "count": 1192,
+          "p50": 0.59,
+          "p95": 0.8,
+          "p99": 0.92,
+          "max": 1.52
+        },
+        "tickIntervalMs": {
+          "count": 1192,
+          "p50": 50.14,
+          "p95": 51.34,
+          "p99": 61.99,
+          "max": 285.12
+        },
+        "eventLoop": {
+          "windowMs": 9999.85,
+          "resolutionMs": 20,
+          "samples": 488,
+          "p95Ms": 21.17,
+          "p99Ms": 25.3,
+          "maxMs": 39.78
+        },
+        "capturedAt": 1795633172656,
+        "uptimeSeconds": 503,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2066,
+          "heapUsed": 508,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 5439598,
+          "pendingWalBytes": 53839,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 25339
+      }
+    },
+    {
+      "at": 1795633182663,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1193,
+        "advancedTicks": 1193,
+        "updatesHz": 19.88,
+        "tickWorkMs": {
+          "count": 1193,
+          "p50": 0.59,
+          "p95": 0.8,
+          "p99": 0.92,
+          "max": 1.19
+        },
+        "tickIntervalMs": {
+          "count": 1193,
+          "p50": 50.14,
+          "p95": 51.37,
+          "p99": 64.58,
+          "max": 285.12
+        },
+        "eventLoop": {
+          "windowMs": 10000.19,
+          "resolutionMs": 20,
+          "samples": 482,
+          "p95Ms": 21.22,
+          "p99Ms": 29.51,
+          "maxMs": 117.96
+        },
+        "capturedAt": 1795633182661,
+        "uptimeSeconds": 513,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2085,
+          "heapUsed": 511,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 5439601,
+          "pendingWalBytes": 93816,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 4518
+      }
+    },
+    {
+      "at": 1795633192670,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 1190,
+        "advancedTicks": 1190,
+        "updatesHz": 19.83,
+        "tickWorkMs": {
+          "count": 1190,
+          "p50": 0.59,
+          "p95": 0.79,
+          "p99": 0.96,
+          "max": 1.21
+        },
+        "tickIntervalMs": {
+          "count": 1190,
+          "p50": 50.15,
+          "p95": 51.4,
+          "p99": 69.06,
+          "max": 285.12
+        },
+        "eventLoop": {
+          "windowMs": 9999.91,
+          "resolutionMs": 20,
+          "samples": 486,
+          "p95Ms": 21.17,
+          "p99Ms": 27.49,
+          "maxMs": 66.75
+        },
+        "capturedAt": 1795633192668,
+        "uptimeSeconds": 523,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 4,
+          "total": 4
+        },
+        "memoryMiB": {
+          "resident": 2091,
+          "heapUsed": 521,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 5439606,
+          "pendingWalBytes": 163748,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 14525
+      }
+    }
+  ],
+  "profile": {
+    "durationMs": 32255.421,
+    "samples": 13929,
+    "self": [
+      {
+        "ms": 13758,
+        "pct": 42.65,
+        "name": "(idle)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 2530,
+        "pct": 7.85,
+        "name": "(program)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 1375,
+        "pct": 4.26,
+        "name": "(garbage collector)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 750,
+        "pct": 2.33,
+        "name": "postMessage",
+        "file": "node:internal/worker",
+        "line": 462
+      },
+      {
+        "ms": 590,
+        "pct": 1.83,
+        "name": "step",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1254
+      },
+      {
+        "ms": 521,
+        "pct": 1.61,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1354
+      },
+      {
+        "ms": 359,
+        "pct": 1.11,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1444
+      },
+      {
+        "ms": 344,
+        "pct": 1.07,
+        "name": "copyRecord",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/copy-record.js",
+        "line": 6
+      },
+      {
+        "ms": 310,
+        "pct": 0.96,
+        "name": "collectEther",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 990
+      },
+      {
+        "ms": 300,
+        "pct": 0.93,
+        "name": "arenaProgressDraft",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 1202
+      },
+      {
+        "ms": 299,
+        "pct": 0.93,
+        "name": "encode",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/worker-food-transfer.js",
+        "line": 70
+      },
+      {
+        "ms": 237,
+        "pct": 0.74,
+        "name": "update",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/testing/arena-test-bots.js",
+        "line": 298
+      },
+      {
+        "ms": 220,
+        "pct": 0.68,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/rankings/event-leaderboards.js",
+        "line": 74
+      },
+      {
+        "ms": 210,
+        "pct": 0.65,
+        "name": "moveFeed",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 576
+      },
+      {
+        "ms": 198,
+        "pct": 0.61,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 1319
+      },
+      {
+        "ms": 177,
+        "pct": 0.55,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/rankings/event-leaderboards.js",
+        "line": 74
+      },
+      {
+        "ms": 170,
+        "pct": 0.53,
+        "name": "writev",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 153,
+        "pct": 0.48,
+        "name": "resolveAbsorptions",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1091
+      },
+      {
+        "ms": 146,
+        "pct": 0.45,
+        "name": "postMessage",
+        "file": "node:internal/worker",
+        "line": 462
+      },
+      {
+        "ms": 146,
+        "pct": 0.45,
+        "name": "separateParts",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 621
+      },
+      {
+        "ms": 131,
+        "pct": 0.41,
+        "name": "moveParts",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 685
+      },
+      {
+        "ms": 131,
+        "pct": 0.41,
+        "name": "arenaDraft",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 148
+      },
+      {
+        "ms": 130,
+        "pct": 0.4,
+        "name": "CircleIndex",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/spatial-collision-index.js",
+        "line": 7
+      },
+      {
+        "ms": 129,
+        "pct": 0.4,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/admin/moderation.js",
+        "line": 75
+      },
+      {
+        "ms": 122,
+        "pct": 0.38,
+        "name": "fillEther",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 967
+      },
+      {
+        "ms": 117,
+        "pct": 0.36,
+        "name": "snapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1351
+      },
+      {
+        "ms": 116,
+        "pct": 0.36,
+        "name": "beginStep",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-hazards.js",
+        "line": 112
+      },
+      {
+        "ms": 116,
+        "pct": 0.36,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/state-workers.js",
+        "line": 203
+      },
+      {
+        "ms": 115,
+        "pct": 0.36,
+        "name": "encodeChange",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-journal.js",
+        "line": 337
+      },
+      {
+        "ms": 114,
+        "pct": 0.35,
+        "name": "get",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/arena-appearance-cache.js",
+        "line": 13
+      }
+    ],
+    "inclusive": [
+      {
+        "ms": 32255,
+        "pct": 100,
+        "name": "(root)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 13758,
+        "pct": 42.65,
+        "name": "(idle)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 10973,
+        "pct": 34.02,
+        "name": "processTimers",
+        "file": "node:internal/timers",
+        "line": 603
+      },
+      {
+        "ms": 10969,
+        "pct": 34.01,
+        "name": "listOnTimeout",
+        "file": "node:internal/timers",
+        "line": 623
+      },
+      {
+        "ms": 10927,
+        "pct": 33.88,
+        "name": "run",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/tick-clock.js",
+        "line": 15
+      },
+      {
+        "ms": 10902,
+        "pct": 33.8,
+        "name": "tick",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 2120
+      },
+      {
+        "ms": 10898,
+        "pct": 33.79,
+        "name": "tickOnce",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 2125
+      },
+      {
+        "ms": 4764,
+        "pct": 14.77,
+        "name": "stepRoom",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 2111
+      },
+      {
+        "ms": 4757,
+        "pct": 14.75,
+        "name": "stepRoom",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/room-step.js",
+        "line": 6
+      },
+      {
+        "ms": 3256,
+        "pct": 10.09,
+        "name": "step",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1254
+      },
+      {
+        "ms": 3250,
+        "pct": 10.08,
+        "name": "writeArenaBatches",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 2056
+      },
+      {
+        "ms": 3242,
+        "pct": 10.05,
+        "name": "applyArenaProgress",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 1142
+      },
+      {
+        "ms": 2832,
+        "pct": 8.78,
+        "name": "broadcast",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 1927
+      },
+      {
+        "ms": 2530,
+        "pct": 7.85,
+        "name": "(program)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 1971,
+        "pct": 6.11,
+        "name": "arenaProgressDraft",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 1202
+      },
+      {
+        "ms": 1400,
+        "pct": 4.34,
+        "name": "arenaSnapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 314
+      },
+      {
+        "ms": 1393,
+        "pct": 4.32,
+        "name": "snapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1351
+      },
+      {
+        "ms": 1385,
+        "pct": 4.29,
+        "name": "dispatch",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/state-workers.js",
+        "line": 164
+      },
+      {
+        "ms": 1385,
+        "pct": 4.29,
+        "name": "flush",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/state-workers.js",
+        "line": 373
+      },
+      {
+        "ms": 1375,
+        "pct": 4.26,
+        "name": "(garbage collector)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 1341,
+        "pct": 4.16,
+        "name": "prepareRoomStep",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/room-step.js",
+        "line": 10
+      },
+      {
+        "ms": 1052,
+        "pct": 3.26,
+        "name": "update",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/testing/arena-test-bots.js",
+        "line": 298
+      },
+      {
+        "ms": 970,
+        "pct": 3.01,
+        "name": "drain",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/arena-booster-queue.js",
+        "line": 282
+      },
+      {
+        "ms": 812,
+        "pct": 2.52,
+        "name": "postMessage",
+        "file": "node:internal/worker",
+        "line": 462
+      },
+      {
+        "ms": 770,
+        "pct": 2.39,
+        "name": "commit",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/arena-booster-queue.js",
+        "line": 129
+      },
+      {
+        "ms": 749,
+        "pct": 2.32,
+        "name": "prepareSnapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 640
+      },
+      {
+        "ms": 747,
+        "pct": 2.32,
+        "name": "prepare",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/arena-booster-queue.js",
+        "line": 93
+      },
+      {
+        "ms": 734,
+        "pct": 2.28,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1354
+      },
+      {
+        "ms": 684,
+        "pct": 2.12,
+        "name": "onStreamRead",
+        "file": "node:internal/stream_base_commons",
+        "line": 171
+      },
+      {
+        "ms": 668,
+        "pct": 2.07,
+        "name": "collectEther",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 990
+      }
+    ],
+    "stacks": [
+      {
+        "ms": 13758,
+        "stack": "(idle) @ :0 <- (root) @ :0"
+      },
+      {
+        "ms": 2530,
+        "stack": "(program) @ :0 <- (root) @ :0"
+      },
+      {
+        "ms": 1375,
+        "stack": "(garbage collector) @ :0 <- (root) @ :0"
+      },
+      {
+        "ms": 750,
+        "stack": "postMessage @ worker:462 <- dispatch @ state-workers.js:164 <- flush @ state-workers.js:373 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 590,
+        "stack": "step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 521,
+        "stack": "<anonymous> @ arena-simulation.js:1354 <- snapshot @ arena-simulation.js:1351 <- arenaSnapshot @ game-server.js:314 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 359,
+        "stack": "<anonymous> @ arena-simulation.js:1444 <- snapshot @ arena-simulation.js:1351 <- arenaSnapshot @ game-server.js:314 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 344,
+        "stack": "copyRecord @ copy-record.js:6 <- arenaProgressDraft @ profile-store.js:1202 <- applyArenaProgress @ profile-store.js:1142 <- writeArenaBatches @ game-server.js:2056 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 310,
+        "stack": "collectEther @ arena-simulation.js:990 <- step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 300,
+        "stack": "arenaProgressDraft @ profile-store.js:1202 <- applyArenaProgress @ profile-store.js:1142 <- writeArenaBatches @ game-server.js:2056 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 299,
+        "stack": "encode @ worker-food-transfer.js:70 <- <anonymous> @ state-workers.js:203 <- <anonymous> @ state-workers.js:175 <- dispatch @ state-workers.js:164 <- flush @ state-workers.js:373 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 237,
+        "stack": "update @ arena-test-bots.js:298 <- prepareRoomStep @ room-step.js:10 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 220,
+        "stack": "<anonymous> @ event-leaderboards.js:74 <- pendingPeriods @ event-leaderboards.js:72 <- due @ event-leaderboards.js:65 <- competitionDue @ profile-store.js:1893 <- refreshCompetition @ profile-store.js:1917 <- prepare @ arena-booster-queue.js:93 <- commit @ arena-booster-queue.js:129 <- drain @ arena-booster-queue.js:282 <- (root) @ :0"
+      },
+      {
+        "ms": 210,
+        "stack": "moveFeed @ arena-simulation.js:576 <- step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 198,
+        "stack": "<anonymous> @ game-server.js:1319 <- emit @ node:events:489 <- receiverOnMessage @ websocket.js:1281 <- emit @ node:events:489 <- dataMessage @ receiver.js:585 <- getData @ receiver.js:480 <- startLoop @ receiver.js:172 <- _write @ receiver.js:96 <- writeOrBuffer @ writable:550 <- _write @ writable:452 <- Writable.write @ writable:506 <- socketOnData @ websocket.js:1437 <- emit @ node:events:489 <- addChunk @ readable:558 <- readableAddChunkPushByteMode @ readable:471 <- Readable.push @ readable:395 <- onStreamRead @ stream_base_commons:171 <- (root) @ :0"
+      },
+      {
+        "ms": 177,
+        "stack": "<anonymous> @ event-leaderboards.js:74 <- pendingPeriods @ event-leaderboards.js:72 <- settle @ event-leaderboards.js:148 <- prepareSnapshot @ profile-store.js:640 <- prepare @ arena-booster-queue.js:93 <- commit @ arena-booster-queue.js:129 <- drain @ arena-booster-queue.js:282 <- (root) @ :0"
+      },
+      {
+        "ms": 170,
+        "stack": "writev @ :0 <- writevGeneric @ stream_base_commons:72 <- Socket._writeGeneric @ node:net:1293 <- Socket._writev @ node:net:1330 <- doWrite @ writable:589 <- clearBuffer @ writable:746 <- Writable.uncork @ writable:522 <- sendFrame @ sender.js:566 <- dispatch @ sender.js:506 <- send @ sender.js:354 <- send @ websocket.js:476 <- safeSend @ game-server.js:1221 <- complete @ state-workers.js:234 <- <anonymous> @ state-workers.js:137 <- <anonymous> @ event_target:814 <- <anonymous> @ messageport:19 <- (root) @ :0"
+      },
+      {
+        "ms": 153,
+        "stack": "resolveAbsorptions @ arena-simulation.js:1091 <- step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 146,
+        "stack": "postMessage @ worker:462 <- dispatch @ state-workers.js:164 <- <anonymous> @ state-workers.js:149 <- processImmediate @ timers:525 <- (root) @ :0"
+      },
+      {
+        "ms": 146,
+        "stack": "separateParts @ arena-simulation.js:621 <- moveParts @ arena-simulation.js:685 <- step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      }
+    ]
+  },
+  "optimization": {
+    "installed": false,
+    "candidate": "Root-only effect lookup V4",
+    "identicalFrames": true,
+    "warmPairs": [
+      {
+        "emptyPercent": 5.9095,
+        "mixedPercent": -10.8132
+      },
+      {
+        "emptyPercent": -1.0177,
+        "mixedPercent": -38.5941
+      }
+    ],
+    "reason": "Mixed-effect benefit but empty-case uncertainty; no whole-game CPU or capacity proof",
+    "rawEvidence": "artifacts/alchemy-vip-hud-20261125/deferred-effect-v4"
+  },
+  "limitations": [
+    "No new maximum CCU or 300000-player proof",
+    "Live before/after populations differ; not a controlled performance comparison",
+    "No live synthetic load while human testers played",
+    "Real VK payments and physical mobile devices not exercised"
+  ],
+  "artifacts": "artifacts/alchemy-vip-hud-20261125"
+}

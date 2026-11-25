@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261125-friday-constructor",
-  "sourceTag": "release/20261125-friday-constructor",
-  "sourceCommit": "ae0ed92f20fe479cea116a0c7a02fd129d7d92e0",
-  "branch": "codex/20261125-friday-constructor",
+  "gameRelease": "20261125-alchemy-vip-hud",
+  "sourceTag": "release/20261125-alchemy-vip-hud",
+  "sourceCommit": "b23f3972de796204a4b420191e1adc38b193a2e1",
+  "branch": "codex/20261125-alchemy-vip-hud",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-25T14:40:01.250Z",
+  "entryReopenedAtUtc": "2026-11-25T18:58:05.616Z",
   "runtime": {
-    "gamePid": 968323,
+    "gamePid": 996725,
     "adminPid": 1163,
     "restarts": 0,
     "entryOpen": true,
@@ -33924,5 +33924,9 @@
     "release": "20261125-idle-pickup",
     "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json",
     "sourceCommit": "a14a3408e98c3aa0a233830247c316e56628e3d0"
+  },
+  "alchemyVipHudUpdate": {
+    "report": "games/heroes-of-ether/docs/performance/alchemy-vip-hud-20261125.json",
+    "sourceCommit": "b23f3972de796204a4b420191e1adc38b193a2e1"
   }
 }
