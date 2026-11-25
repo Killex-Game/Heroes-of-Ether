@@ -5,7 +5,7 @@
   else root.KillexGiftAppearance = api;
 })(typeof window !== "undefined" ? window : globalThis, root => {
   "use strict";
-  const paths = Object.freeze({hex:"assets/gifts/sets-v1/hex-overlay.svg", infection:"assets/gifts/sets-v1/infection-overlay.svg", curse:"assets/skins/negative-sets-v1/1024/curse-pig.webp"});
+  const paths = Object.freeze({hex:"assets/gifts/sets-v2/hex-overlay.svg", infection:"assets/gifts/sets-v2/infection-overlay.svg", curse:"assets/skins/negative-sets-v2/1024/curse-pig.webp"});
   function selected(ends, at = Date.now()) {
     for (const id of ["curse", "infection", "hex"]) if (ends?.[id] > at) return id;
     return "";

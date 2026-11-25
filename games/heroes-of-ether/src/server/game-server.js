@@ -1371,7 +1371,8 @@ function createGameServer({
         return;
       }
       if (message?.type === "stateAck") return;
-      if (profile && !p.dead) kill.observe(killSession,profile.id,message,receivedAt,{stalled:receivedAt-stalledAt<2000});
+      if (profile && !p.dead) kill.observe(killSession,profile.id,message,receivedAt,{
+        stalled:receivedAt-stalledAt<2000,spawn:p.spawnSerial,width:arena.world.width,height:arena.world.height});
       if (message?.type === "emote") {
         emotes.send(room, p, message, receivedAt, safeSend,
           (profiles.byId(p.profileId)?.account?.premiumUntil || 0) > wallNow());

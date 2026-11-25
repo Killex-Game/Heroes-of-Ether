@@ -476,8 +476,9 @@
       const locked = item.unlocked === false;
       window.KillexControls.state(choose, locked || (own?.wallet?.[item.currency] || 0) < item.price);
       if (choose.disabled) choose.title = locked ? item.unlockHint : "Недостаточно валюты";
-      card.append(img, el("strong", "", item.name), el("small", "", item.description), choose);
-      card.title = item.description;
+      card.append(img, el("strong", "", item.name), el("small", "", item.durationMs ? `${item.durationMs / 60000} мин.` : "Без срока"), choose);
+      window.KillexBoosterTooltip.attach(card, { name: item.name,
+        usage: item.description + (item.durationMs ? ` Действует ${item.durationMs / 60000} мин.` : "") });
       grid.append(card);
     }
   }

@@ -187,7 +187,6 @@
       }
       window.KillexSocial?.giftButton(hero, p);
       const activeGifts = (p.social?.effects || []).filter((e) => e.until > now);
-      const strongestSet = Math.max(0, ...activeGifts.map(e => e.bundlePercent || 0));
       const effects = el("div", "public-gift-effects");
       if (activeGifts.length) {
         effects.setAttribute("aria-label", "Действующие подарки");
@@ -199,9 +198,8 @@
           const cancelled = activeGifts.some(
             (other) => other.stat === e.stat && other.percent === -e.percent,
           );
-          const waiting = e.bundlePercent && e.bundlePercent < strongestSet;
-          item.append(image, el("span", "", e.name + (waiting ? ": после сильного набора" : cancelled ? ": компенсирован" : "")));
-          item.title = `${e.description}. До ${new Date(e.until).toLocaleString("ru-RU")}`;
+          item.append(image, el("span", "", e.name + (!e.bundlePercent && cancelled ? ": компенсирован" : "")));
+          window.KillexBoosterTooltip.attach(item, { name: e.name, usage: e.description, until: e.until });
           effects.append(item);
         }
       }

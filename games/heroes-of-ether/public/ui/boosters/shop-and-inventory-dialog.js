@@ -753,7 +753,7 @@
           }
         } else if (item.tier === "potion") {
           const rules = window.KillexAlchemyRules, id = rules.get(item.id).id;
-          const queue = [...rules.equipped(this.profile.alchemy)], index = queue.indexOf(id);
+          const queue = rules.availableQueue(this.profile), index = queue.indexOf(id);
           action = make("div", "potion-order-controls");
           const choose = button("booster-action sf-button", index < 0 ? "В очередь Z" : `Z: ${index + 1}, Убрать`,
             () => this.savePotionQueue(index < 0 ? [...queue, id] : queue.filter(key => key !== id)));

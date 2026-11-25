@@ -6,6 +6,7 @@ const { replaceBatchProfile } = require('../profiles/profile-batch');
 const { copyRecord } = require('../profiles/copy-record');
 const deltas = require('../profiles/immutable-table-delta');
 const model = require('./kill-model');
+const patterns = require('./kill-patterns');
 const WINDOW=15000, RETRY=3600000;
 function fresh(at) { return {start:at,last:at,n:0,short:0,same:0,sum:0,square:0,lastKey:null,kinds:new Set(),burst:0,maxBurst:0}; }
 function features(w,at) {
@@ -21,8 +22,11 @@ class KillDetector {
   }
   retrain() { this.model=model.train(this.profiles.data.administration?.audit); }
   session() { return {window:null,hits:0,windows:[],seen:new Set(),recent:[],quietUntil:0,gate:null,armedUntil:0}; }
-  observe(s,id,message,at,{stalled=false}={}) {
+  observe(s,id,message,at,{stalled=false,spawn=null,width,height}={}) {
     at=Math.trunc(at);
+    s.patterns ||= patterns.session();
+    const repeated = patterns.observe(s.patterns,message,at,{stalled,spawn,width,height,wallAt:this.now()});
+    if(repeated)this.report(id,repeated).catch(this.onError);
     if(message?.type!=='useBooster'||!BOOSTERS.has(message.boosterId)||
         typeof message.requestId!=='string'||!/^[a-zA-Z0-9_-]{16,80}$/.test(message.requestId))return;
     if(stalled){s.window=null;s.hits=0;s.windows=[];s.gate=null;s.armedUntil=0;s.quietUntil=at+2000;return;}
@@ -89,6 +93,7 @@ class KillDetector {
 }
 function validate(c) {
   if(c===undefined)return;
+  if(c?.reason==='arena-repeated-patterns')return require('./kill-pattern-evidence').validate(c);
   if(c?.reason==='lobby-repeated-actions')return require('./kill-lobby-evidence').validate(c);
   if(c?.reason==='owner-reported-automation')return require('./kill-owner-evidence').validate(c);
   if(c?.reason==='gift-dispatch-pattern')return require('./kill-gift-evidence').validate(c);

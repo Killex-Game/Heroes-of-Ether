@@ -11,12 +11,15 @@
   let anchor = null;
   let nativeTitle = null;
   let hideTimer;
+  let countdownTimer;
   const onArena = () => document.body.dataset.screen === "arena";
   const observer = new MutationObserver(() => {
     if (anchor && !anchor.isConnected) hide();
   });
   function hide() {
     clearTimeout(hideTimer);
+    clearInterval(countdownTimer);
+    countdownTimer = null;
     observer.disconnect();
     if (anchor) {
       anchor.removeAttribute("aria-describedby");
@@ -54,6 +57,19 @@
       name.textContent = node.dataset.boosterHintName;
       text.textContent = node.dataset.boosterHint;
       tip.replaceChildren(name, text);
+      const until = Number(node.dataset.tooltipUntil);
+      if (Number.isFinite(until) && until > 0) {
+        const clock = document.createElement("p");
+        clock.className = "tooltip-effect-countdown";
+        const update = () => {
+          const seconds = Math.max(0, Math.ceil((until - Date.now()) / 1000));
+          clock.textContent = "Осталось: " + [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60]
+            .map(n => String(n).padStart(2, "0")).join(":");
+        };
+        update();tip.insertBefore(clock, text);
+        // Only the single visible tooltip owns a timer, never every gift card.
+        countdownTimer = setInterval(update, 1000);
+      }
       if (node.dataset.tooltipRecipe) {
         try {
           const recipe = JSON.parse(node.dataset.tooltipRecipe),
@@ -149,6 +165,7 @@
     true,
   );
   window.addEventListener("resize", hide);
+  document.addEventListener("visibilitychange", () => { if (document.hidden) hide(); });
   new MutationObserver(() => {
     if (!onArena()) return;
     hide();
@@ -159,6 +176,8 @@
   }).observe(document.body, { attributes: true, attributeFilter: ["data-screen"] });
   window.KillexBoosterTooltip = {
     attach(node, item) {
+      if (item.until) node.dataset.tooltipUntil = String(item.until);
+      else delete node.dataset.tooltipUntil;
       if (item.recipe) node.dataset.tooltipRecipe = JSON.stringify(item.recipe);
       node.dataset.boosterHintName = item.name;
       node.dataset.boosterHint = item.usage || item.effect || "";

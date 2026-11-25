@@ -58,7 +58,7 @@ const gifts = Object.freeze(
   ...[["hex", "Чары", 10, 15, 30], ["infection", "Заражение", 20, 25, 45],
     ["curse", "Проклятье", 25, 35, 60]].map(([id, name, bundlePercent, price, minutes]) => Object.freeze({
       id, name, bundlePercent, currency: "bucks", price, durationMs: minutes * 60000, category: "debuff",
-      description: `−${bundlePercent}% к опыту и скорости; −${bundlePercent}% к силе и длительности своих бустеров; +${bundlePercent}% к урону и длительности вражеских бустеров. Действует самый сильный набор. Одиночные негативные подарки добавляют свои 5%. Повтор продлевает срок, не усиливая эффект.`,
+      description: `−${bundlePercent}% к опыту\n−${bundlePercent}% к скорости\n−${bundlePercent}% к силе и длительности своих бустеров\n+${bundlePercent}% к урону и длительности вражеских бустеров`,
       icon: `assets/gifts/sets-v1/128/${id}.webp`,
     })),
   Object.freeze({ id: "golden_lucky_cat", name: "Золотой счастливчик", currency: "crystals", price: 100,

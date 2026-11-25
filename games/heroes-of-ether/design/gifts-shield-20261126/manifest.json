@@ -1,0 +1,25 @@
+{
+  "tool": "built-in image_gen",
+  "outputs": [
+    {
+      "file": "public/assets/skins/negative-sets-v2/128/curse-pig.webp",
+      "bytes": 4126,
+      "sha256": "a354e16d66a5bdb5e435d1c5dedbc4246e44e37fc23e02a6f11e27245177e397"
+    },
+    {
+      "file": "public/assets/skins/negative-sets-v2/512/curse-pig.webp",
+      "bytes": 24786,
+      "sha256": "b714947822224a8c62aad51be97d2febee97ec43fefada2ebe8941b664487793"
+    },
+    {
+      "file": "public/assets/skins/negative-sets-v2/1024/curse-pig.webp",
+      "bytes": 67396,
+      "sha256": "6643fe9175f8a648aee7f1e34987e5be142097d1061ce3b67607723b55a79700"
+    },
+    {
+      "file": "public/assets/shields/sphere-static-v2.webp",
+      "bytes": 240038,
+      "sha256": "923e38a6ccd04d0c473ab1705b4190900c57202b6906cee92b506b789cd8762c"
+    }
+  ]
+}

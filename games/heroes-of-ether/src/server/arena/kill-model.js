@@ -7,7 +7,7 @@ function train(audit = []) {
   const latest = new Map();
   for (let i = audit.length - 1; i >= 0 && latest.size < 512; i--) {
     const e = audit[i], c = e?.action === 'killReview' && e.after?.case;
-    if (!c || ['gift-dispatch-pattern','owner-reported-automation','lobby-repeated-actions'].includes(c.reason) || !['confirmed','dismissed'].includes(c.status) || latest.has(e.targetId) ||
+    if (!c || ['gift-dispatch-pattern','owner-reported-automation','lobby-repeated-actions','arena-repeated-patterns'].includes(c.reason) || !['confirmed','dismissed'].includes(c.status) || latest.has(e.targetId) ||
         !Array.isArray(c.features) || c.features.length !== 5 || !c.features.every(v => Number.isFinite(v) && v >= 0 && v <= 1)) continue;
     latest.set(e.targetId, { x:c.features, y:c.status === 'confirmed' ? 1 : 0 });
   }

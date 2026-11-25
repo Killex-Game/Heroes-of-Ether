@@ -110,6 +110,15 @@ body.account-premium #previewName {
 
 /* Active status is legible at the approved small crown size. */
 #lobby #accountMarks .profile-account.vip[data-active="true"] img {
-  filter: url(#killex-saturated-gold) saturate(1.2) brightness(1.08) drop-shadow(0 1px 1px #9b480055);
+  filter: url(#killex-saturated-gold) saturate(1.2) brightness(1.08) drop-shadow(0 0 3px #ffcf26) drop-shadow(0 0 7px #ffc21fbb);
+  opacity: 1;
+}
+#lobby #accountMarks .profile-account.premium[data-active="true"] img,
+body.account-premium #lobby #accountButton .status-icon.premium img {
+  filter: url(#killex-saturated-gold) saturate(1.7) brightness(1.13) drop-shadow(0 0 3px #ef7bff) drop-shadow(0 0 7px #ce48ffbb);
+  opacity: 1;
+}
+body.account-vip #lobby #accountButton .status-icon.vip img {
+  filter: url(#killex-saturated-gold) saturate(1.2) brightness(1.08) drop-shadow(0 0 3px #ffcf26) drop-shadow(0 0 7px #ffc21fbb);
   opacity: 1;
 }

@@ -10,10 +10,11 @@ const empty = Object.freeze({ version: 1, natural: 0, ingredients: Object.freeze
 const runAt = (manager, at) => findRunAt(manager, at, rules.manifest.contentPack);
 function view(profile, manager, at) {
   const saved = profile.alchemy || empty, run = runAt(manager, at);
+  const queue = rules.availableQueue(profile);
   return { active: !!run, runId: run?.id || null, endsAt: run ? Math.min(run.endsAt, run.stoppedAt ?? Infinity) : null,
     natural: saved.natural, exchangeCount: Math.floor(saved.natural / rules.NATURAL_PER_EXCHANGE),
-    ingredients: { ...saved.ingredients }, learned: [...saved.learned], equipped: saved.equipped,
-    queue: [...rules.equipped(saved)],
+    ingredients: { ...saved.ingredients }, learned: [...saved.learned], equipped: queue[0] || null,
+    queue,
     potions: Object.fromEntries(rules.potions.map(p => [p.id, profile.inventory[p.boosterId] || 0])),
   };
 }
@@ -77,7 +78,11 @@ function mutate(store, token, input, batch) {
       p.wallet.bucks = add(p.wallet.bucks, rules.CONCENTRATED_PER_EXCHANGE);
       next.natural -= rules.NATURAL_PER_EXCHANGE;
     } else if (input.action === "equip") {
-      const selected = queue ? [...queue] : potion ? [potion.id] : [];
+      // A cached client can retain a previously equipped, now exhausted potion.
+      // Remove only those stale entries; never accept a new unowned selection.
+      const previous = rules.equipped(next);
+      const selected = (queue ? [...queue] : potion ? [potion.id] : []).filter(id =>
+        p.inventory[rules.get(id).boosterId] > 0 || !previous.includes(id));
       if (selected.some(id => !(p.inventory[rules.get(id).boosterId] > 0)))
         throw new BoosterError("Этого зелья нет в запасе.", 409);
       next.queue = selected;

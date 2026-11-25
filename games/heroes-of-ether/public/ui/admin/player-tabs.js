@@ -126,8 +126,17 @@
         for(const w of e.samples)details.append(el('span',stamp(w.start)+' по '+stamp(w.end)+': '+w.count+' действий, медианный интервал '+w.medianIntervalMs+' мс, близкие интервалы '+Math.round(w.regularFraction*100)+'%'));
         details.append(el('span',e.modelReady?'Отдельная модель этого вида действий использует рассмотренные примеры. Оценка не назначает наказание.':'Сработало правило похожих повторяющихся серий. Для обучения отдельной модели ещё недостаточно подтверждённых и отклонённых примеров.'));
       }
+      if(c.reason==='arena-repeated-patterns'){
+        const e=c.patternEvidence;
+        details.append(el('strong',e.kind==='manual-cadence'?'Повторяющийся ритм команд':'Повторяющийся маршрут'));
+        if(e.kind==='manual-cadence'){
+          details.append(el('span','Команда: '+e.command));
+          for(const w of e.samples)details.append(el('span',stamp(w.start)+' — '+stamp(w.end)+': '+w.count+' команд; интервал '+w.medianIntervalMs+' мс ±'+w.toleranceMs+' мс; совпадение '+Math.round(w.regularFraction*100)+'%.'));
+        }else details.append(el('span',stamp(e.start)+' — '+stamp(e.end)+': '+e.cycles+' повторения маршрута по '+e.pointsPerCycle+' точкам; цикл '+e.cycleMs+' мс; совпадение ритма '+Math.round(e.regularFraction*100)+'%.'));
+        details.append(el('span','Это повод для проверки, а не доказательство автоматизации. Записаны входящие команды, успешное применение проверяется отдельно. Штатные таймеры движения, W и удержания кормящих бустеров не считаются кликером. Автоматической блокировки по этому сигналу нет.'));
+      }
       for(const w of c.windows)details.append(el('span',`${Math.round((w.end-w.start)/1000)} с: ${w.count} команд, ${w.kinds} видов бустеров, ${w.rate}/с; короткие интервалы ${Math.round(w.shortFraction*100)}%.`));
-      if(!['gift-dispatch-pattern','owner-reported-automation','lobby-repeated-actions'].includes(c.reason))details.append(el('span',c.modelReady?'Сигнал локальной модели и серверной телеметрии. Оценка не является доказательством.':'Сбор обучающих примеров. Локальная модель ещё не обучена.'));
+      if(!['gift-dispatch-pattern','owner-reported-automation','lobby-repeated-actions','arena-repeated-patterns'].includes(c.reason))details.append(el('span',c.modelReady?'Сигнал локальной модели и серверной телеметрии. Оценка не является доказательством.':'Сбор обучающих примеров. Локальная модель ещё не обучена.'));
       if(c.status!=='new'){details.append(el('p',c.reviewReason));row.append(details);return row;}
       const reason=el('textarea');reason.maxLength=500;reason.rows=2;reason.placeholder='Основание решения: что проверено';reason.setAttribute('aria-label','Основание решения Kill');
       const result=el('p');result.setAttribute('role','status');let pending=null,busy=false;
