@@ -1,0 +1,24 @@
+Герои Эфира: Kill, зелья и интерфейс — 26.11.2026
+
+Установлено: 20261126-kill-potions; source 028cce3b4d86993400c293ee3f4ad68d3887ac96.
+Вход открыт 2026-11-25T21:54:07.517Z; game 1025914, admin 1163.
+
+Изменения
+- New gift potions remain equipable with an exhausted prior potion queue; newly requested unavailable potions are still rejected.
+- Premium emotes retain their desktop position independent of the potion panel; mobile controls remain usable.
+- Negative set cards use hover details; active effects show countdown and four ordered modifiers only.
+- Static VIP/Premium glow restored; new soft silly pig, native infection/hex overlays and a thin static mint Sphere shield.
+- Kill records bounded manual-cadence and repeated-route evidence for owner review; no automatic ban or punishment; ordinary move/W/feeding timers excluded.
+
+Проверки
+Linux: 2565 pass, 0 fail, 7 optional PG skips. Отдельно focused61/61 и final13/13 с изолированной PostgreSQL. Windows11/11. Три браузера; 38 HTTP-хешей. Исходные ошибки фикстур и перекрытия свечения сохранены.
+Полные поля мира, auxiliary и PostgreSQL сверены до/после с точным воспроизведением календаря. Резервная копия обеих сторон SHA 3fd09514facb6e32b2853ed75ae80c25533dc9b08aad6024e81b861aab86cc50.
+
+Kill
+Только обращение для проверки владельцем. Не банит автоматически. Хранение ограничено, на каждую команду мир не копируется. Бенчмарк детектора добавляет 0.159–0.461 мкс/команду; это не выигрыш всей игры и не оценка вместимости. Обычный сетевой такт, удержание W и кормящих бустеров исключены. Редкие/слишком быстрые/джиттерные паттерны могут не выявляться. Материалы относятся к входящим командам, а не подтверждённым успешным применениям.
+
+Нагрузка остаётся
+При 14 реальных игроках: 7 комнат, 54 активных персонажа с ботами. Tick p95 50.68–62.42 мс. CPU-профиль указывает на расчёты комнат, снимки/IPC и обработку прогресса; отдельные inclusive значения пересекаются, их нельзя складывать. Нет доказательства виновности конкретного игрока и нет доказанного снижения общего серверного CPU этим выпуском. Следующий кандидат — адресная подготовка снимков/пакетов при точном сохранении состояний и ACK/WAL/PG.
+
+Материалы владельцу
+docs/artwork/style-canon/STYLE_CANON.md; docs/game-description-20261126.txt. Лор — предложенный редакционный текст, не найденный ранее утверждённый сюжет. Исходники и промпты встроенного image_gen: design/gifts-shield-20261126. Частные игровые журналы в репозиторий не входят.

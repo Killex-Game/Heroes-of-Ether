@@ -1,0 +1,1230 @@
+{
+  "release": "20261126-kill-potions",
+  "source": "028cce3b4d86993400c293ee3f4ad68d3887ac96",
+  "installed": true,
+  "opened": {
+    "at": 1795643647517,
+    "gamePid": 1025914,
+    "adminPid": 1163,
+    "revision": 5549818,
+    "generation": 8880,
+    "entryOpened": true,
+    "backend": "postgresql",
+    "exactVerificationWhilePaused": true
+  },
+  "health": {
+    "at": "2026-11-25T21:54:48.673Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 5549818,
+    "gamePid": 1025914,
+    "adminPid": 1163,
+    "candidateInstalled": true
+  },
+  "comparison": {
+    "calendarReplayExact": true,
+    "approvedMigrationsExact": true,
+    "allOtherFieldsEqual": true,
+    "beforeRevision": 5549817,
+    "revision": 5549818,
+    "digest": "5fe43c106119b74223f07906b2bffdbae317c560b4eccda5e4fcf72b88d28dd4",
+    "worldHash": "082a42713bb4947620ab1b23cc70db2f3d5ebf022675d6a5a5c44c5432cd9d4f",
+    "profiles": 1728,
+    "clans": 138,
+    "at": 1795643333209,
+    "transitionTimes": [
+      1795643333209
+    ],
+    "retiredAvatarProfiles": [],
+    "constructorChanges": [],
+    "questPayouts": 0,
+    "questChests": 0
+  },
+  "database": {
+    "ok": true,
+    "revision": 5549818,
+    "generation": 8880,
+    "digest": "5fe43c106119b74223f07906b2bffdbae317c560b4eccda5e4fcf72b88d28dd4",
+    "worldHash": "082a42713bb4947620ab1b23cc70db2f3d5ebf022675d6a5a5c44c5432cd9d4f",
+    "profiles": 1728,
+    "clans": 138,
+    "fullWorldAndAuxEqual": true,
+    "calendarComparisonRevalidated": true
+  },
+  "tests": {
+    "at": "2026-11-25T21:37:15.600Z",
+    "allRequiredChecksPassed": true,
+    "totalPassed": 2565,
+    "totalSkipped": 7,
+    "sets": {
+      "linux-focused": {
+        "tests": 61,
+        "pass": 61,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "linux-refined": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "linux-full": {
+        "tests": 2572,
+        "pass": 2565,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 7
+      }
+    },
+    "limitations": [
+      "WebKit automation is not a real-device Safari test.",
+      "No new whole-game maximum CCU or long mixed-load run in this UI/detection update."
+    ],
+    "browsers": [
+      {
+        "engine": "chromium",
+        "hudChecks": 4,
+        "giftChecks": 3,
+        "shieldChecks": 3,
+        "errors": 0
+      },
+      {
+        "engine": "firefox",
+        "hudChecks": 4,
+        "giftChecks": 3,
+        "shieldChecks": 3,
+        "errors": 0
+      },
+      {
+        "engine": "webkit",
+        "hudChecks": 4,
+        "giftChecks": 3,
+        "shieldChecks": 3,
+        "errors": 0
+      }
+    ],
+    "windowsFocused": {
+      "pass": 11,
+      "fail": 0
+    },
+    "initialFailuresPreserved": [
+      "Browser fixtures initially did not dismiss an actual gift notice or initialize social state.",
+      "A mobile account-button rule overrode crown glow; fixed with scoped specificity and checked in three engines."
+    ]
+  },
+  "runtime": {
+    "release": "/srv/heroether-test/play/releases/20261126-kill-potions",
+    "sourceCommit": "028cce3b4d86993400c293ee3f4ad68d3887ac96",
+    "files": 2669,
+    "changed": 26,
+    "previousReleaseUnchanged": true,
+    "protectedGraphicsUnchanged": true,
+    "commentsRemoved": 145,
+    "unchangedSourceFiles": 2620
+  },
+  "http": {
+    "passed": true,
+    "rows": [
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/admin.html",
+        "hash": "317605921072647dde1ab6ecb1ababdf8e5fd4e4838f0911f90b4594bf8be786"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/arena/shield-renderer.js",
+        "hash": "9722949917edd8af36886bb62e08aae4aa29e135fb750e695125154e2e15b012"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/gifts/sets-v2/hex-overlay.svg",
+        "hash": "0a68a61354d2b1c11070fba47e52d46cf894eb0154e7183518f50a47b5b11ea3"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/gifts/sets-v2/infection-overlay.svg",
+        "hash": "0b6fb6963370514096c29609b27bd6dddfd70399d1c754d6010adec556c305c2"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/shields/sphere-static-v2.webp",
+        "hash": "923e38a6ccd04d0c473ab1705b4190900c57202b6906cee92b506b789cd8762c"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/skins/negative-sets-v2/1024/curse-pig.webp",
+        "hash": "6643fe9175f8a648aee7f1e34987e5be142097d1061ce3b67607723b55a79700"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/skins/negative-sets-v2/128/curse-pig.webp",
+        "hash": "a354e16d66a5bdb5e435d1c5dedbc4246e44e37fc23e02a6f11e27245177e397"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/skins/negative-sets-v2/512/curse-pig.webp",
+        "hash": "b714947822224a8c62aad51be97d2febee97ec43fefada2ebe8941b664487793"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/index.html",
+        "hash": "ff16ed9007e831e94f14b4daf4797dc8845bffaab432ddd897884d5a0791a103"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/shared/alchemy-rules.js",
+        "hash": "bd3e93cc9cd77504ee98b39295a73519a69a28105590907c9143990c67351f27"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/shared/gift-appearance.js",
+        "hash": "1f5b2e33053decfab4fc453f95f0e8e0de9c92f472706d394b39ef0469ac931b"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/shared/release-notes.js",
+        "hash": "ae9ab0bcff2f4d45f73047653f448f238d0fc9ca6ac2738b13a503569ee8684a"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/styles/components/quick-slot-editor.css",
+        "hash": "32abf54741618d55e89c298d0368d75c740ebfa4cd68749c511b272ebd2f3aca"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/styles/theme/account-colors.css",
+        "hash": "a5f44e7653d50afeff6c62f8897558725abf863c64b0b6d0cd28c55de79d8a86"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/ui/admin/player-tabs.js",
+        "hash": "69f66ae96f098dac94cd82377969fa013cc199be02a5f0a9e879520eab3fbca6"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/ui/boosters/booster-tooltip.js",
+        "hash": "d08170f9c348894cdc23601ce9af43cd0c6c7bb378f915eac1ed5d4426412a67"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+        "hash": "1bf017ad30510c485fa14556341c9a30c843114572de4d0259cedab7ae6f23b1"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/ui/profile/player-social.js",
+        "hash": "d0ee16e1b5e6a5f5487c7bba89ba2358c4faa3576528d399654aaad41ce4f1f2"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/ui/profile/public-player-dialog.js",
+        "hash": "e494d1541ddcf563bc550f8e26f81829f3cf64c7ea06bc0c237dcc21ad754efc"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/admin.html",
+        "hash": "317605921072647dde1ab6ecb1ababdf8e5fd4e4838f0911f90b4594bf8be786"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/arena/shield-renderer.js",
+        "hash": "8cd3f2478da9e33a1d7e92eebcb4616c009068d4c60a962985f2c5789376fa04"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/gifts/sets-v2/hex-overlay.svg",
+        "hash": "0a68a61354d2b1c11070fba47e52d46cf894eb0154e7183518f50a47b5b11ea3"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/gifts/sets-v2/infection-overlay.svg",
+        "hash": "0b6fb6963370514096c29609b27bd6dddfd70399d1c754d6010adec556c305c2"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/shields/sphere-static-v2.webp",
+        "hash": "923e38a6ccd04d0c473ab1705b4190900c57202b6906cee92b506b789cd8762c"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/skins/negative-sets-v2/1024/curse-pig.webp",
+        "hash": "6643fe9175f8a648aee7f1e34987e5be142097d1061ce3b67607723b55a79700"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/skins/negative-sets-v2/128/curse-pig.webp",
+        "hash": "a354e16d66a5bdb5e435d1c5dedbc4246e44e37fc23e02a6f11e27245177e397"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/skins/negative-sets-v2/512/curse-pig.webp",
+        "hash": "b714947822224a8c62aad51be97d2febee97ec43fefada2ebe8941b664487793"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/index.html",
+        "hash": "ff16ed9007e831e94f14b4daf4797dc8845bffaab432ddd897884d5a0791a103"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/shared/alchemy-rules.js",
+        "hash": "bd3e93cc9cd77504ee98b39295a73519a69a28105590907c9143990c67351f27"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/shared/gift-appearance.js",
+        "hash": "993731ea651d1e4c168f50624ab7a9f1a39872adf92823c81ee4b0c44dc266f3"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/shared/release-notes.js",
+        "hash": "04cd880204db77a8145ec356eb09f5e5df471e2556aaafb881796d09dd068734"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/styles/components/quick-slot-editor.css",
+        "hash": "74fbda9048a13732ecf251ce666359cb5997db5a4a1f0f6a4512735fb3b7b9cc"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/styles/theme/account-colors.css",
+        "hash": "0769d75d6f5d84f7375590e5ebbefe8463dd76b7c9dbca034409da3cd34380a2"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/ui/admin/player-tabs.js",
+        "hash": "69f66ae96f098dac94cd82377969fa013cc199be02a5f0a9e879520eab3fbca6"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/ui/boosters/booster-tooltip.js",
+        "hash": "2ed08d9c409717a2074676be65e632fddf507d0e8a85d58065e4db8723fd2a3c"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+        "hash": "9ca6caa2704171c639c6e2cbdeff645d6737c0649cdcf86579f2303275b4b353"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/ui/profile/player-social.js",
+        "hash": "88a8726c774dfb5b3e518d40c320866bec46e8087a315d7121a71b5bc6ea2dbf"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/ui/profile/public-player-dialog.js",
+        "hash": "38423455f0b16dc11cf87ef7c871571de77cfa5ca7f342addf930237b0609e02"
+      }
+    ]
+  },
+  "backup": {
+    "verified": true,
+    "archiveSha256": "3fd09514facb6e32b2853ed75ae80c25533dc9b08aad6024e81b861aab86cc50",
+    "revision": 5549817,
+    "digest": "49f09c925c71616d83025898a6ff66c590c5003698796769422b8efd902922cc",
+    "worldHash": "57e8e63d1835587ab06922929cc8a08ecca6aeb50fb18ec7032ff1b5ba701138",
+    "profiles": 1728,
+    "clans": 138,
+    "postgresqlArchiveVerified": true
+  },
+  "changes": [
+    "New gift potions remain equipable with an exhausted prior potion queue; newly requested unavailable potions are still rejected.",
+    "Premium emotes retain their desktop position independent of the potion panel; mobile controls remain usable.",
+    "Negative set cards use hover details; active effects show countdown and four ordered modifiers only.",
+    "Static VIP/Premium glow restored; new soft silly pig, native infection/hex overlays and a thin static mint Sphere shield.",
+    "Kill records bounded manual-cadence and repeated-route evidence for owner review; no automatic ban or punishment; ordinary move/W/feeding timers excluded."
+  ],
+  "kill": {
+    "historyLimit": 256,
+    "manualChannels": 8,
+    "reportQuietMs": 3600000,
+    "reviewOnly": true,
+    "automaticSanctions": false,
+    "perInputWorldCopy": false,
+    "detectionLimits": [
+      "No universal script detection claim. Network timing alone does not establish cheating.",
+      "Samples are incoming accepted commands, not proof each gameplay action succeeded.",
+      "Fast, jittered or interrupted patterns may evade this conservative detector; previous burst detector remains."
+    ],
+    "cpu": {
+      "scope": "CPU of detector only, synthetic 5 minutes per player at 20 Hz; not full game, real online capacity or browser FPS",
+      "rows": [
+        {
+          "mode": "straight",
+          "players": 30,
+          "trial": 0,
+          "before": {
+            "ms": 4.925866999999997,
+            "commands": 180000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 87.88043,
+            "commands": 180000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.4608586833333334
+        },
+        {
+          "mode": "straight",
+          "players": 30,
+          "trial": 1,
+          "before": {
+            "ms": 5.4725819999999885,
+            "commands": 180000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 58.91105999999999,
+            "commands": 180000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.29688043333333336
+        },
+        {
+          "mode": "straight",
+          "players": 30,
+          "trial": 2,
+          "before": {
+            "ms": 5.401902000000007,
+            "commands": 180000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 34.10100399999999,
+            "commands": 180000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.15943945555555544
+        },
+        {
+          "mode": "straight",
+          "players": 120,
+          "trial": 0,
+          "before": {
+            "ms": 18.205714999999998,
+            "commands": 720000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 148.02680200000003,
+            "commands": 720000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.18030706527777782
+        },
+        {
+          "mode": "straight",
+          "players": 120,
+          "trial": 1,
+          "before": {
+            "ms": 17.514157999999952,
+            "commands": 720000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 138.80284999999998,
+            "commands": 720000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.1684565166666667
+        },
+        {
+          "mode": "straight",
+          "players": 120,
+          "trial": 2,
+          "before": {
+            "ms": 17.399159999999938,
+            "commands": 720000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 211.57747300000005,
+            "commands": 720000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.26969210138888905
+        },
+        {
+          "mode": "loop",
+          "players": 30,
+          "trial": 0,
+          "before": {
+            "ms": 10.895322999999962,
+            "commands": 180000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 52.71460999999999,
+            "commands": 180000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.2323293722222224
+        },
+        {
+          "mode": "loop",
+          "players": 30,
+          "trial": 1,
+          "before": {
+            "ms": 6.639894000000027,
+            "commands": 180000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 62.45624099999998,
+            "commands": 180000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.3100908166666664
+        },
+        {
+          "mode": "loop",
+          "players": 30,
+          "trial": 2,
+          "before": {
+            "ms": 7.334402999999952,
+            "commands": 180000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 39.983469000000014,
+            "commands": 180000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.18138370000000034
+        },
+        {
+          "mode": "loop",
+          "players": 120,
+          "trial": 0,
+          "before": {
+            "ms": 24.064542999999958,
+            "commands": 720000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 164.68259899999998,
+            "commands": 720000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.19530285555555557
+        },
+        {
+          "mode": "loop",
+          "players": 120,
+          "trial": 1,
+          "before": {
+            "ms": 13.762864000000036,
+            "commands": 720000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 144.29870600000004,
+            "commands": 720000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.18129978055555557
+        },
+        {
+          "mode": "loop",
+          "players": 120,
+          "trial": 2,
+          "before": {
+            "ms": 18.572030999999924,
+            "commands": 720000,
+            "maxRoute": 0
+          },
+          "after": {
+            "ms": 152.42201099999988,
+            "commands": 720000,
+            "maxRoute": 256
+          },
+          "addedMicrosecondsPerCommand": 0.18590274999999992
+        }
+      ],
+      "minAddedMicroseconds": 0.15943945555555544,
+      "maxAddedMicroseconds": 0.4608586833333334
+    }
+  },
+  "liveLoadBefore": {
+    "scope": "Read-only 30-second main-thread sampling, with its own overhead; not an A/B comparison.",
+    "rows": [
+      {
+        "at": "2026-11-25T21:05:49.517Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1180,
+          "advancedTicks": 1180,
+          "updatesHz": 19.67,
+          "tickWorkMs": {
+            "count": 1180,
+            "p50": 24.25,
+            "p95": 62.42,
+            "p99": 88.57,
+            "max": 253.86
+          },
+          "tickIntervalMs": {
+            "count": 1180,
+            "p50": 49.98,
+            "p95": 71.54,
+            "p99": 97.94,
+            "max": 255.58
+          },
+          "eventLoop": {
+            "windowMs": 10018.35,
+            "resolutionMs": 20,
+            "samples": 283,
+            "p95Ms": 71.7,
+            "p99Ms": 98.44,
+            "maxMs": 160.17
+          },
+          "capturedAt": 1795640749510,
+          "uptimeSeconds": 2670,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 54,
+            "parts": 226,
+            "connections": 8
+          },
+          "online": {
+            "arena": 8,
+            "lobby": 6,
+            "total": 14
+          },
+          "memoryMiB": {
+            "resident": 3491,
+            "heapUsed": 705,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 1,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5526104,
+            "pendingWalBytes": 3036262,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 109174,
+            "replaced": 8,
+            "workerMs": 233199.72608991864,
+            "cloneMs": 55399.3242450885,
+            "turnaroundMs": 900759.4048950411,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 7,
+            "drained": 0,
+            "delivered": 304088,
+            "deliveryMs": 16867.066467042896
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 13907,
+          "revision": 5525810
+        }
+      },
+      {
+        "at": "2026-11-25T21:05:59.533Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1182,
+          "advancedTicks": 1182,
+          "updatesHz": 19.7,
+          "tickWorkMs": {
+            "count": 1182,
+            "p50": 23.86,
+            "p95": 52.63,
+            "p99": 86.9,
+            "max": 253.86
+          },
+          "tickIntervalMs": {
+            "count": 1182,
+            "p50": 49.97,
+            "p95": 70.04,
+            "p99": 92.64,
+            "max": 255.58
+          },
+          "eventLoop": {
+            "windowMs": 10013.81,
+            "resolutionMs": 20,
+            "samples": 316,
+            "p95Ms": 58.26,
+            "p99Ms": 88.6,
+            "maxMs": 274.73
+          },
+          "capturedAt": 1795640759531,
+          "uptimeSeconds": 2680,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 58,
+            "parts": 234,
+            "connections": 9
+          },
+          "online": {
+            "arena": 9,
+            "lobby": 5,
+            "total": 14
+          },
+          "memoryMiB": {
+            "resident": 3492,
+            "heapUsed": 734,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5526258,
+            "pendingWalBytes": 4012770,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 109838,
+            "replaced": 8,
+            "workerMs": 234574.86010891304,
+            "cloneMs": 55729.77986309328,
+            "turnaroundMs": 906417.8204930434,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 7,
+            "drained": 0,
+            "delivered": 305857,
+            "deliveryMs": 16961.312124047778
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 23922,
+          "revision": 5525810
+        }
+      },
+      {
+        "at": "2026-11-25T21:06:09.545Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1171,
+          "advancedTicks": 1171,
+          "updatesHz": 19.52,
+          "tickWorkMs": {
+            "count": 1171,
+            "p50": 23.43,
+            "p95": 52.63,
+            "p99": 88.57,
+            "max": 306.66
+          },
+          "tickIntervalMs": {
+            "count": 1171,
+            "p50": 49.98,
+            "p95": 68.2,
+            "p99": 97.94,
+            "max": 310.14
+          },
+          "eventLoop": {
+            "windowMs": 9999.9,
+            "resolutionMs": 20,
+            "samples": 333,
+            "p95Ms": 48.82,
+            "p99Ms": 76.22,
+            "maxMs": 307.49
+          },
+          "capturedAt": 1795640769544,
+          "uptimeSeconds": 2690,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 56,
+            "parts": 250,
+            "connections": 8
+          },
+          "online": {
+            "arena": 8,
+            "lobby": 6,
+            "total": 14
+          },
+          "memoryMiB": {
+            "resident": 3523,
+            "heapUsed": 614,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5526417,
+            "pendingWalBytes": 2038291,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 110456,
+            "replaced": 8,
+            "workerMs": 236224.95556491578,
+            "cloneMs": 56106.33378009382,
+            "turnaroundMs": 913926.0687410422,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 7,
+            "drained": 0,
+            "delivered": 307436,
+            "deliveryMs": 17055.872423045686
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 33934,
+          "revision": 5525810
+        }
+      },
+      {
+        "at": "2026-11-25T21:06:19.587Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1176,
+          "advancedTicks": 1176,
+          "updatesHz": 19.6,
+          "tickWorkMs": {
+            "count": 1176,
+            "p50": 22.58,
+            "p95": 50.68,
+            "p99": 80.67,
+            "max": 306.66
+          },
+          "tickIntervalMs": {
+            "count": 1176,
+            "p50": 49.98,
+            "p95": 66.52,
+            "p99": 87.45,
+            "max": 310.14
+          },
+          "eventLoop": {
+            "windowMs": 10004.63,
+            "resolutionMs": 20,
+            "samples": 331,
+            "p95Ms": 52.13,
+            "p99Ms": 71.5,
+            "maxMs": 333.97
+          },
+          "capturedAt": 1795640779585,
+          "uptimeSeconds": 2700,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 54,
+            "parts": 212,
+            "connections": 8
+          },
+          "online": {
+            "arena": 8,
+            "lobby": 6,
+            "total": 14
+          },
+          "memoryMiB": {
+            "resident": 3518,
+            "heapUsed": 704,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 1,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5526597,
+            "pendingWalBytes": 3199030,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 111078,
+            "replaced": 8,
+            "workerMs": 237625.37415791594,
+            "cloneMs": 56452.857978092274,
+            "turnaroundMs": 919553.9397610449,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 7,
+            "drained": 0,
+            "delivered": 309044,
+            "deliveryMs": 17142.29660004133
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 1904,
+          "revision": 5526361
+        }
+      }
+    ],
+    "profileSummary": {
+      "self": [
+        {
+          "ms": 13682,
+          "name": "(idle)",
+          "file": "",
+          "line": 0
+        },
+        {
+          "ms": 1772,
+          "name": "(program)",
+          "file": "",
+          "line": 0
+        },
+        {
+          "ms": 1100,
+          "name": "",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 1354
+        },
+        {
+          "ms": 898,
+          "name": "postMessage",
+          "file": "node:internal/worker",
+          "line": 462
+        },
+        {
+          "ms": 812,
+          "name": "step",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 1254
+        },
+        {
+          "ms": 571,
+          "name": "(garbage collector)",
+          "file": "",
+          "line": 0
+        },
+        {
+          "ms": 562,
+          "name": "snapshot",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 1351
+        },
+        {
+          "ms": 379,
+          "name": "arenaProgressDraft",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/profiles/profile-store.js",
+          "line": 1206
+        },
+        {
+          "ms": 336,
+          "name": "copyRecord",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/profiles/copy-record.js",
+          "line": 6
+        },
+        {
+          "ms": 322,
+          "name": "encode",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/worker-food-transfer.js",
+          "line": 70
+        },
+        {
+          "ms": 284,
+          "name": "beginStep",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-hazards.js",
+          "line": 112
+        },
+        {
+          "ms": 271,
+          "name": "moveFeed",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 576
+        },
+        {
+          "ms": 238,
+          "name": "collectEther",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 990
+        },
+        {
+          "ms": 222,
+          "name": "resolveAbsorptions",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 1091
+        },
+        {
+          "ms": 209,
+          "name": "writev",
+          "file": "",
+          "line": 0
+        },
+        {
+          "ms": 190,
+          "name": "get",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/profiles/arena-appearance-cache.js",
+          "line": 13
+        },
+        {
+          "ms": 180,
+          "name": "",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/state-workers.js",
+          "line": 203
+        },
+        {
+          "ms": 178,
+          "name": "",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/game-server.js",
+          "line": 1319
+        },
+        {
+          "ms": 175,
+          "name": "moveParts",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 685
+        },
+        {
+          "ms": 173,
+          "name": "update",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/testing/arena-test-bots.js",
+          "line": 298
+        },
+        {
+          "ms": 145,
+          "name": "act",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/testing/arena-bot-brain.js",
+          "line": 395
+        },
+        {
+          "ms": 140,
+          "name": "fillEther",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 967
+        },
+        {
+          "ms": 136,
+          "name": "arenaDraft",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/profiles/profile-store.js",
+          "line": 148
+        },
+        {
+          "ms": 127,
+          "name": "separateParts",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 621
+        },
+        {
+          "ms": 111,
+          "name": "feed",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-hazards.js",
+          "line": 216
+        }
+      ],
+      "inclusive": [
+        {
+          "ms": 31492,
+          "name": "(root)",
+          "file": "",
+          "line": 0
+        },
+        {
+          "ms": 13682,
+          "name": "(idle)",
+          "file": "",
+          "line": 0
+        },
+        {
+          "ms": 12671,
+          "name": "processTimers",
+          "file": "node:internal/timers",
+          "line": 603
+        },
+        {
+          "ms": 12664,
+          "name": "listOnTimeout",
+          "file": "node:internal/timers",
+          "line": 623
+        },
+        {
+          "ms": 12602,
+          "name": "run",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/tick-clock.js",
+          "line": 15
+        },
+        {
+          "ms": 12579,
+          "name": "tick",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/game-server.js",
+          "line": 2120
+        },
+        {
+          "ms": 12575,
+          "name": "tickOnce",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/game-server.js",
+          "line": 2125
+        },
+        {
+          "ms": 5365,
+          "name": "stepRoom",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/game-server.js",
+          "line": 2111
+        },
+        {
+          "ms": 5354,
+          "name": "stepRoom",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/room-step.js",
+          "line": 6
+        },
+        {
+          "ms": 3861,
+          "name": "broadcast",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/game-server.js",
+          "line": 1927
+        },
+        {
+          "ms": 3685,
+          "name": "step",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 1254
+        },
+        {
+          "ms": 3296,
+          "name": "writeArenaBatches",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/game-server.js",
+          "line": 2056
+        },
+        {
+          "ms": 3266,
+          "name": "applyArenaProgress",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/profiles/profile-store.js",
+          "line": 1146
+        },
+        {
+          "ms": 2031,
+          "name": "arenaSnapshot",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/game-server.js",
+          "line": 314
+        },
+        {
+          "ms": 1982,
+          "name": "snapshot",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 1351
+        },
+        {
+          "ms": 1883,
+          "name": "arenaProgressDraft",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/profiles/profile-store.js",
+          "line": 1206
+        },
+        {
+          "ms": 1772,
+          "name": "(program)",
+          "file": "",
+          "line": 0
+        },
+        {
+          "ms": 1769,
+          "name": "flush",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/state-workers.js",
+          "line": 373
+        },
+        {
+          "ms": 1767,
+          "name": "dispatch",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/state-workers.js",
+          "line": 164
+        },
+        {
+          "ms": 1484,
+          "name": "prepareRoomStep",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/room-step.js",
+          "line": 10
+        },
+        {
+          "ms": 1313,
+          "name": "",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/arena-simulation.js",
+          "line": 1354
+        },
+        {
+          "ms": 1046,
+          "name": "update",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/testing/arena-test-bots.js",
+          "line": 298
+        },
+        {
+          "ms": 999,
+          "name": "postMessage",
+          "file": "node:internal/worker",
+          "line": 462
+        },
+        {
+          "ms": 730,
+          "name": "prepareSnapshot",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/profiles/profile-store.js",
+          "line": 640
+        },
+        {
+          "ms": 729,
+          "name": "",
+          "file": "file:///srv/heroether-test/play/releases/20261126-gifts-lobby/src/server/arena/state-workers.js",
+          "line": 175
+        }
+      ]
+    },
+    "mainBottlenecks": [
+      "room simulation",
+      "snapshot and worker message serialization",
+      "arena progress batches"
+    ],
+    "serverLagResolved": false
+  },
+  "privateReview": {
+    "profilesReviewed": 3,
+    "publishedPlayerData": false,
+    "conclusion": "No confirmed evidence of unlimited boosters or attribution of load to a named player. Two reviewed inventory intervals reconcile exactly. The third matches the aggregate rarity counts of two recorded Friday chests and one recorded small quest chest, after known title/roulette rewards and uses. The exact random per-item draws are no longer stored, so item-level attribution is incomplete. Historical receipts do not contain complete command timing."
+  },
+  "remaining": [
+    "Measure targeted snapshot/IPC and progress-copy improvements on an isolated same-input replay and realistic mixed load.",
+    "300000 simultaneous players is not demonstrated.",
+    "VK/OK integration remains an uninstalled separate candidate.",
+    "The earlier requested owner greatness grant remains unperformed; prior authorization/session failure must be resolved through the owner flow."
+  ],
+  "localReview": {
+    "port": 3104,
+    "pid": 28496,
+    "isolatedData": true,
+    "rootSyncedFiles": 37
+  },
+  "cleanup": {
+    "remoteStaging": {
+      "keep": [
+        [
+          "kill-patterns-ui-20261126",
+          "3fd09514facb6e32b2853ed75ae80c25533dc9b08aad6024e81b861aab86cc50"
+        ],
+        [
+          "gifts-lobby-retention-20261126",
+          "b8e2cbd0582b397fe513addc9af3770cb1ba72fbbcb4eab594954839c65341e9"
+        ]
+      ],
+      "removed": [
+        {
+          "path": "/run/heroether-kill-potions-backup-20261126",
+          "bytes": 553179187,
+          "reason": "Validated archives retained on both machines; restart comparison finished"
+        },
+        {
+          "path": "/run/heroether-gifts-lobby-backup-20261125",
+          "bytes": 549364147,
+          "reason": "Validated archives retained on both machines; restart comparison finished"
+        }
+      ]
+    },
+    "localStaging": {
+      "path": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\artifacts\\kill-patterns-ui-20261126\\backup-extracted",
+      "archiveRetained": true,
+      "removedBytes": 431413938
+    },
+    "archivesPreserved": true
+  }
+}
