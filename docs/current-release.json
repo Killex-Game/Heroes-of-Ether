@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261124-world-copy",
-  "sourceTag": "release/20261124-world-copy",
-  "sourceCommit": "416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8",
+  "gameRelease": "20261125-world-copy-reuse",
+  "sourceTag": "release/20261125-world-copy-reuse",
+  "sourceCommit": "f07d382c5ed629b1e78a64af8174c574d9709732",
   "branch": "codex/20261124-profile-field-bytes",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-24T17:27:00.914Z",
+  "entryReopenedAtUtc": "2026-11-25T02:50:53.469Z",
   "runtime": {
-    "gamePid": 714287,
+    "gamePid": 880050,
     "adminPid": 1163,
     "restarts": 0,
     "entryOpen": true,
@@ -75,68 +75,96 @@
     "Pinned verified WAL replay reuses immutable records and detaches only changed ancestors",
     "Canonical field and receipt-bucket bytes reused between database snapshots",
     "PostgreSQL compresses canonical bytes without JSON parse/stringify round trips",
-    "Bounded Windows atomic-rename retry and safe worker failure categories"
+    "Bounded Windows atomic-rename retry and safe worker failure categories",
+    "Reuse verified immutable document fragments and canonical bytes across checkpoints without removing integrity checks.",
+    "Use bounded WAL read windows and checkpoint caches; retain prior history and exact full-world hashes.",
+    "Reuse immutable event archives, appearance inputs and profile indexes instead of repeating deep copies.",
+    "Optional progress calculators are configured off; canonical processing is selected. Independent room prototypes are excluded."
   ],
   "data": {
     "before": {
-      "at": 1795540209185,
-      "revision": 4617419,
-      "digest": "6910c5e5fa7ca6a18d09e1543e9711b7d7747bfec73732a6123b7f185b820c9c",
-      "worldHash": "d14fa48de6450d3d343a6a4d1c1ae8b50cb1a7269341ec5ceaf299c904778d3e",
+      "at": 1795574485719,
+      "revision": 4878134,
+      "digest": "762cc3d02ace2033017f842164f8310ea2cd31ef14a9c8cda8e237a11c353ef0",
+      "worldHash": "a1a52f265e25ab69374402aab0e16e324d66779c94dc0eab5f1fc1339ebc40c3",
       "profiles": 1723,
       "clans": 137,
       "fullWorldAndAuxEqual": true,
-      "backup": "/dev/shm/heroether-world-copy-backup-20261124/world-copy-release-20261124",
+      "backup": "/dev/shm/heroether-world-copy-backup-20261125/world-copy-release-20261125",
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/world-copy-release-20261124/data-before.tar.gz"
+      "durableBackup": "/srv/heroether-test/play/backups/world-copy-release-20261125/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
-      "approvedMigrationsExact": true,
+      "noCalendarChange": true,
+      "expiredChat": 0,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 4617419,
-      "revision": 4617422,
-      "digest": "bbec62e346d586dcd2273d42f599dd457b2b4b5dbdde3d933fe7d0f21bddac79",
-      "worldHash": "55eebf6eacf2b8c7700c3393a2859feace3e00204ae06c89304dd20a2b50e9b9",
+      "beforeRevision": 4878134,
+      "revision": 4878134,
+      "digest": "762cc3d02ace2033017f842164f8310ea2cd31ef14a9c8cda8e237a11c353ef0",
+      "worldHash": "a1a52f265e25ab69374402aab0e16e324d66779c94dc0eab5f1fc1339ebc40c3",
       "profiles": 1723,
-      "clans": 137,
-      "at": 1795540540040,
-      "transitionTimes": [
-        1795540540040,
-        1795540560015,
-        1795540980580
-      ],
-      "retiredAvatarProfiles": [],
-      "constructorChanges": [],
-      "questPayouts": 0,
-      "questChests": 0
+      "clans": 137
     },
     "backup": {
       "verified": true,
-      "archiveSha256": "590fe3d9620f8d9ee9b3e37a4838758a7967a36efdcb15df6cf23e4bed67be67",
-      "revision": 4617419,
-      "digest": "6910c5e5fa7ca6a18d09e1543e9711b7d7747bfec73732a6123b7f185b820c9c",
-      "worldHash": "d14fa48de6450d3d343a6a4d1c1ae8b50cb1a7269341ec5ceaf299c904778d3e",
+      "archiveSha256": "890fc01a93f505012f2f928b8ced857e49021da459a91caa06eb8245018a2dc5",
+      "revision": 4878134,
+      "digest": "762cc3d02ace2033017f842164f8310ea2cd31ef14a9c8cda8e237a11c353ef0",
+      "worldHash": "a1a52f265e25ab69374402aab0e16e324d66779c94dc0eab5f1fc1339ebc40c3",
       "profiles": 1723,
       "clans": 137,
       "postgresqlArchiveVerified": true
+    },
+    "storage": {
+      "archive": "/srv/heroether-test/play/backups/world-copy-release-20261125/data-before.tar.gz",
+      "sha256": "890fc01a93f505012f2f928b8ced857e49021da459a91caa06eb8245018a2dc5",
+      "bytes": 111028168,
+      "checkpointReserve": 629145600,
+      "rawStagingRetained": "/dev/shm/heroether-world-copy-backup-20261125",
+      "durableArchiveVerified": true
     }
   },
   "verification": {
-    "source": "2f3fe01",
+    "source": "f07d382c5ed629b1e78a64af8174c574d9709732",
     "allRequiredChecksPassed": true,
-    "totalTests": 2415,
-    "totalPassed": 2413,
-    "totalSkipped": 2,
+    "totalTests": 2504,
+    "totalPassed": 2501,
+    "totalSkipped": 3,
     "failed": 0,
-    "realPostgreSQLPassed": 11,
-    "windowsPassed": 2413,
-    "windowsSkipped": 2,
-    "scope": "Full runtime source checks; mixed-load acceptance recorded separately",
+    "realPostgreSQLPassed": 12,
+    "windowsPassed": 2501,
+    "windowsSkipped": 3,
+    "rows": [
+      {
+        "label": "progress-readiness-full-windows",
+        "pass": 2501,
+        "skip": 3,
+        "sha256": "e7c4ec2c2aab2fab973642bb3a6efcc0ad0e73c8b1c688a8cfc117e7dd0d6f3f"
+      },
+      {
+        "label": "progress-readiness-full-linux",
+        "pass": 2501,
+        "skip": 3,
+        "sha256": "d428bd31d69692884e13c5794454ef2802192faafd5c2f780bc0c429b19e2056"
+      },
+      {
+        "label": "release-read-reuse-real-pg",
+        "pass": 11,
+        "skip": 0,
+        "sha256": "140cc766367ffaba42e5d577eefd090a631231d9eda91d03f7959742df7ff47b"
+      },
+      {
+        "label": "release-read-reuse-fragments-pg",
+        "pass": 1,
+        "skip": 0,
+        "sha256": "d010b062f19abc6fb3ca3706a1e6aaf3d6f31199d17b89cf362f2f54e1e6557d"
+      }
+    ],
     "browserContexts": 18,
     "http": {
-      "at": "2026-11-24T17:27:54.316Z",
+      "at": "2026-11-25T02:51:17.458Z",
       "checks": [
         {
           "origin": "http://127.0.0.1:3000",
@@ -146,8 +174,14 @@
         },
         {
           "origin": "http://127.0.0.1:3000",
-          "file": "public/shared/release-notes.js",
-          "bytes": 21490,
+          "file": "public/shared/arena-wire.js",
+          "bytes": 17618,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/player-identity.js",
+          "bytes": 20150,
           "exact": true
         },
         {
@@ -158,16 +192,22 @@
         },
         {
           "origin": "http://195.208.123.221",
-          "file": "public/shared/release-notes.js",
-          "bytes": 21490,
+          "file": "public/shared/arena-wire.js",
+          "bytes": 17618,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/player-identity.js",
+          "bytes": 20150,
           "exact": true
         }
       ]
     },
     "localHttp": {
-      "at": "2026-11-24T17:28:24.482Z",
+      "at": "2026-11-25T02:51:51.742Z",
       "port": 3104,
-      "checks": 2,
+      "checks": 3,
       "exact": true,
       "files": [
         {
@@ -178,19 +218,25 @@
         },
         {
           "origin": "http://127.0.0.1:3104",
-          "file": "public/shared/release-notes.js",
-          "bytes": 21490,
+          "file": "public/shared/arena-wire.js",
+          "bytes": 17618,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/player-identity.js",
+          "bytes": 20595,
           "exact": true
         }
       ],
       "experimentalPort3000Untouched": true
     }
   },
-  "report": "games/heroes-of-ether/docs/performance/world-copy-installed-20261124.json",
-  "previousRelease": "20261124-status-copy",
-  "notes": "Current release includes compact lobby/accessories, atomic achievement artwork, link filtering, approved spending counters and pet artwork. Capacity limits and unfinished architecture work remain unchanged.",
+  "report": "games/heroes-of-ether/docs/performance/world-copy-reuse-installed-20261125.json",
+  "previousRelease": "20261124-world-copy",
+  "notes": "Verified stable immutable world reuse installed at the owner request. Further optimization is deferred; current task is bug fixes.",
   "performance": {
-    "status": "installed; collecting live samples and capacity ladder",
+    "status": "Verified stable release installed; further optimization deferred by owner",
     "controlledSnapshotBenchmark": {
       "inputBytes": 197039882,
       "profiles": 1706,
@@ -32929,5 +32975,12 @@
       "Checkpoint worker cache and retained WAL-window leases are separate uninstalled candidates",
       "No new browser-rendering or real-device capacity proof"
     ]
+  },
+  "worldCopyReuseUpdate": {
+    "installed": true,
+    "sourceCommit": "f07d382c5ed629b1e78a64af8174c574d9709732",
+    "report": "games/heroes-of-ether/docs/performance/world-copy-reuse-installed-20261125.json",
+    "optionalProgressWorkers": false,
+    "independentRoomsInstalled": false
   }
 }

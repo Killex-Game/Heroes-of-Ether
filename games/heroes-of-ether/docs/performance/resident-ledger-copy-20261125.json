@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-25T02:15:06.141Z",
+  "at": "2026-11-25T02:44:24.871Z",
   "installed": false,
   "foundation": {
     "source": "8c7cc5d0bf83d5547dc8d8169a899fac34794905",
@@ -3586,7 +3586,17 @@
         }
       ]
     },
-    "full": "Windows running; Linux pending"
+    "full": {
+      "windows": {
+        "tests": 2525,
+        "pass": 2522,
+        "fail": 0,
+        "skip": 3,
+        "at": "2026-11-25T02:22:21.400Z",
+        "sourceLog": "room-ledger-cow-full-windows.txt"
+      },
+      "linux": "Deferred by owner; not run"
+    }
   },
   "stagingIncident": {
     "candidate47": "First hardlink clone raced temporary test-file removal during candidate45 Linux full suite. Partial tree and error preserved; retry after full completion succeeded. No production mutation.",
@@ -3599,5 +3609,23 @@
     "Mixed adapter lacks potion/pet-ability inputs and deadline boundary sender.",
     "The isolated frame calculation is not a full-game CPU, FPS or CCU measurement.",
     "No 300000-online readiness claim."
-  ]
+  ],
+  "questBoundary": {
+    "source": "be1a6a5aa490bd7bc004d2d21f0249df94b4020b",
+    "targetedPass": 31,
+    "windows": {
+      "tests": 2531,
+      "pass": 2528,
+      "fail": 0,
+      "skip": 3,
+      "at": "2026-11-25T02:35:24.930Z",
+      "sourceLog": "resident-boundary-full-windows.txt"
+    },
+    "linux": "Deferred by owner; not run",
+    "installed": false,
+    "change": "Resident owner anchors observed ticks across clan schedule boundaries; undelivered life recovery uses actual recovery time rather than inventing an earlier exit.",
+    "remaining": "Full Linux, real PostgreSQL and mixed durable-room admission verification remain required before installation."
+  },
+  "deferredByOwner": true,
+  "currentProductionUsesCanonicalProgress": true
 }

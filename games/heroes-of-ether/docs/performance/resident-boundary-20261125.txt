@@ -1,0 +1,26 @@
+Experimental room owner only; not installed or imported by live game-server.
+
+Before consuming inputs across a daily clan-quest boundary, the owner journals
+the previous completed state. A position-only prefix receives one empty time
+anchor at that boundary, then the food sample, then a post-cutoff watermark.
+Ordinary position-only frames still do not write empty journal records. The
+boundary path cannot advance physics or publish snapshots/paid ACKs before its
+durable prefix. A backwards or multi-window clock jump fences the room.
+
+An unobserved exit during recovery is dated at recovery time, not the last
+observed tick: recovering after the cutoff must not manufacture a timely exit.
+Explicit durable life-ended events retain their recorded timestamps. This
+preserves the owner's current exit-only clan rule; the historical immediate
+credit mode remains covered separately.
+
+Targeted Windows:31 tests passed,0 failed. Includes actual owner frame capture,
+real child-process/WebSocket crash after successful client ACK, ledger retry,
+disk failure, two-room settlement barrier, late explicit exit and late recovered
+exit. Tests use the existing canonical clan-quest engine, not inferred rewards.
+Full Windows/Linux and committed mixed PostgreSQL acceptance remain pending.
+
+Remaining limits: no production authentication/admission/room routing, no potion
+or pet-ability input adapter yet, main writer/PG mirror still own the whole world.
+This is not a CCU or browser-FPS result.
+
+Owner deferred further optimization on25.11.2026. Windows full2531/2528pass/0fail/3skip finished; Linux/mixed/PG not run. This prototype is not installed.

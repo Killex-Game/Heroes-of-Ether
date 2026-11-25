@@ -1,0 +1,1295 @@
+{
+  "at": "2026-11-25T02:52:05.763Z",
+  "installed": true,
+  "release": "20261125-world-copy-reuse",
+  "sourceCommit": "f07d382c5ed629b1e78a64af8174c574d9709732",
+  "previousRelease": "20261124-world-copy",
+  "entryOpenedAtUtc": "2026-11-25T02:50:53.469Z",
+  "runtime": {
+    "at": "2026-11-25T02:51:37.893Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 4878136,
+    "gamePid": 880050,
+    "adminPid": 1163,
+    "candidateInstalled": true
+  },
+  "changes": [
+    "Reuse verified immutable document fragments and canonical bytes across checkpoints without removing integrity checks.",
+    "Use bounded WAL read windows and checkpoint caches; retain prior history and exact full-world hashes.",
+    "Reuse immutable event archives, appearance inputs and profile indexes instead of repeating deep copies.",
+    "Optional progress calculators are configured off; canonical processing is selected. Independent room prototypes are excluded."
+  ],
+  "runtimeFiles": 26,
+  "productionCommentsRemoved": 410,
+  "manifestFiles": 2620,
+  "protectedGraphicsUnchanged": true,
+  "gameplayRulesUnchanged": true,
+  "privateConfigurationUnchanged": true,
+  "data": {
+    "before": {
+      "at": 1795574485719,
+      "revision": 4878134,
+      "digest": "762cc3d02ace2033017f842164f8310ea2cd31ef14a9c8cda8e237a11c353ef0",
+      "worldHash": "a1a52f265e25ab69374402aab0e16e324d66779c94dc0eab5f1fc1339ebc40c3",
+      "profiles": 1723,
+      "clans": 137,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/dev/shm/heroether-world-copy-backup-20261125/world-copy-release-20261125",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/world-copy-release-20261125/data-before.tar.gz"
+    },
+    "after": {
+      "calendarReplayExact": true,
+      "noCalendarChange": true,
+      "expiredChat": 0,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 4878134,
+      "revision": 4878134,
+      "digest": "762cc3d02ace2033017f842164f8310ea2cd31ef14a9c8cda8e237a11c353ef0",
+      "worldHash": "a1a52f265e25ab69374402aab0e16e324d66779c94dc0eab5f1fc1339ebc40c3",
+      "profiles": 1723,
+      "clans": 137
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "890fc01a93f505012f2f928b8ced857e49021da459a91caa06eb8245018a2dc5",
+      "revision": 4878134,
+      "digest": "762cc3d02ace2033017f842164f8310ea2cd31ef14a9c8cda8e237a11c353ef0",
+      "worldHash": "a1a52f265e25ab69374402aab0e16e324d66779c94dc0eab5f1fc1339ebc40c3",
+      "profiles": 1723,
+      "clans": 137,
+      "postgresqlArchiveVerified": true
+    },
+    "storage": {
+      "archive": "/srv/heroether-test/play/backups/world-copy-release-20261125/data-before.tar.gz",
+      "sha256": "890fc01a93f505012f2f928b8ced857e49021da459a91caa06eb8245018a2dc5",
+      "bytes": 111028168,
+      "checkpointReserve": 629145600,
+      "rawStagingRetained": "/dev/shm/heroether-world-copy-backup-20261125",
+      "durableArchiveVerified": true
+    }
+  },
+  "verification": {
+    "source": "f07d382c5ed629b1e78a64af8174c574d9709732",
+    "allRequiredChecksPassed": true,
+    "totalTests": 2504,
+    "totalPassed": 2501,
+    "totalSkipped": 3,
+    "failed": 0,
+    "realPostgreSQLPassed": 12,
+    "windowsPassed": 2501,
+    "windowsSkipped": 3,
+    "rows": [
+      {
+        "label": "progress-readiness-full-windows",
+        "pass": 2501,
+        "skip": 3,
+        "sha256": "e7c4ec2c2aab2fab973642bb3a6efcc0ad0e73c8b1c688a8cfc117e7dd0d6f3f"
+      },
+      {
+        "label": "progress-readiness-full-linux",
+        "pass": 2501,
+        "skip": 3,
+        "sha256": "d428bd31d69692884e13c5794454ef2802192faafd5c2f780bc0c429b19e2056"
+      },
+      {
+        "label": "release-read-reuse-real-pg",
+        "pass": 11,
+        "skip": 0,
+        "sha256": "140cc766367ffaba42e5d577eefd090a631231d9eda91d03f7959742df7ff47b"
+      },
+      {
+        "label": "release-read-reuse-fragments-pg",
+        "pass": 1,
+        "skip": 0,
+        "sha256": "d010b062f19abc6fb3ca3706a1e6aaf3d6f31199d17b89cf362f2f54e1e6557d"
+      }
+    ],
+    "browserContexts": 18,
+    "http": {
+      "at": "2026-11-25T02:51:17.458Z",
+      "checks": [
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/index.html",
+          "bytes": 42837,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/arena-wire.js",
+          "bytes": 17618,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3000",
+          "file": "public/shared/player-identity.js",
+          "bytes": 20150,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/index.html",
+          "bytes": 42837,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/arena-wire.js",
+          "bytes": 17618,
+          "exact": true
+        },
+        {
+          "origin": "http://195.208.123.221",
+          "file": "public/shared/player-identity.js",
+          "bytes": 20150,
+          "exact": true
+        }
+      ]
+    },
+    "localHttp": {
+      "at": "2026-11-25T02:51:51.742Z",
+      "port": 3104,
+      "checks": 3,
+      "exact": true,
+      "files": [
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/index.html",
+          "bytes": 42837,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/arena-wire.js",
+          "bytes": 17618,
+          "exact": true
+        },
+        {
+          "origin": "http://127.0.0.1:3104",
+          "file": "public/shared/player-identity.js",
+          "bytes": 20595,
+          "exact": true
+        }
+      ],
+      "experimentalPort3000Untouched": true
+    }
+  },
+  "sourceSync": {
+    "count": 89,
+    "port": 3104,
+    "isolatedData": true
+  },
+  "mixed": {
+    "scope": "Synthetic PostgreSQL schema and loopback WebSocket clients; no browser FPS or long-run guarantee",
+    "source": "f07d382c5ed629b1e78a64af8174c574d9709732",
+    "progressBackend": "canonical",
+    "players": 30,
+    "lobby": 5,
+    "minutes": 10,
+    "historyReceipts": 3015000,
+    "sourceSummarySha256": "e72777627168201f08cdcec85f6ce0348999b36e448997072be13b6de43e5315",
+    "assessment": {
+      "targets": {
+        "updatesHz": 19,
+        "tickP95Ms": 100,
+        "stateGapP99Ms": 150,
+        "lobbyP95Ms": 1000,
+        "actionP95Ms": 500
+      },
+      "shortRunMeetsTargets": true,
+      "problems": [],
+      "phases": [
+        {
+          "phase": "combined",
+          "window": 1,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 2,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 3,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 4,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 5,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 6,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 7,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 8,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 9,
+          "meetsTargets": true,
+          "issues": []
+        },
+        {
+          "phase": "combined",
+          "window": 10,
+          "meetsTargets": true,
+          "issues": []
+        }
+      ],
+      "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+    },
+    "ack": 9747,
+    "recovered": 9747,
+    "duplicates": 0,
+    "database": {
+      "matched": true,
+      "localRevision": 19544,
+      "databaseRevision": 19544,
+      "profiles": 1280,
+      "clans": 131,
+      "samples": [
+        {
+          "revision": 37,
+          "generation": 2,
+          "changedDocuments": 0,
+          "payloadBytes": 0,
+          "syncedAt": 1795572252128,
+          "prepareMs": 5377,
+          "writeMs": 88,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": false,
+            "replayed": 0,
+            "readFiles": 1
+          },
+          "durationMs": 5472.805139999997,
+          "final": false
+        },
+        {
+          "revision": 1047,
+          "generation": 3,
+          "changedDocuments": 58,
+          "payloadBytes": 2124860,
+          "syncedAt": 1795572278188,
+          "prepareMs": 1167,
+          "writeMs": 237,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 1010,
+            "readFiles": 775
+          },
+          "durationMs": 1537.5171739999932,
+          "final": false
+        },
+        {
+          "revision": 2080,
+          "generation": 4,
+          "changedDocuments": 52,
+          "payloadBytes": 2160796,
+          "syncedAt": 1795572307962,
+          "prepareMs": 1033,
+          "writeMs": 235,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 1033,
+            "readFiles": 797
+          },
+          "durationMs": 1313.3643020000018,
+          "final": false
+        },
+        {
+          "revision": 3064,
+          "generation": 5,
+          "changedDocuments": 49,
+          "payloadBytes": 2183965,
+          "syncedAt": 1795572341888,
+          "prepareMs": 4929,
+          "writeMs": 295,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": false,
+            "replayed": 146,
+            "readFiles": 117
+          },
+          "durationMs": 5232.649433000013,
+          "final": false
+        },
+        {
+          "revision": 4091,
+          "generation": 6,
+          "changedDocuments": 58,
+          "payloadBytes": 2207364,
+          "syncedAt": 1795572368643,
+          "prepareMs": 872,
+          "writeMs": 238,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 1027,
+            "readFiles": 798
+          },
+          "durationMs": 1985.845039000007,
+          "final": false
+        },
+        {
+          "revision": 5027,
+          "generation": 7,
+          "changedDocuments": 58,
+          "payloadBytes": 2233172,
+          "syncedAt": 1795572397830,
+          "prepareMs": 897,
+          "writeMs": 228,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 936,
+            "readFiles": 696
+          },
+          "durationMs": 1178.1675950000063,
+          "final": false
+        },
+        {
+          "revision": 6022,
+          "generation": 8,
+          "changedDocuments": 58,
+          "payloadBytes": 2261265,
+          "syncedAt": 1795572431966,
+          "prepareMs": 5041,
+          "writeMs": 232,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": false,
+            "replayed": 227,
+            "readFiles": 178
+          },
+          "durationMs": 5312.015031999996,
+          "final": false
+        },
+        {
+          "revision": 7017,
+          "generation": 9,
+          "changedDocuments": 58,
+          "payloadBytes": 2289445,
+          "syncedAt": 1795572458695,
+          "prepareMs": 1067,
+          "writeMs": 238,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 995,
+            "readFiles": 766
+          },
+          "durationMs": 2038.550900000031,
+          "final": false
+        },
+        {
+          "revision": 7956,
+          "generation": 10,
+          "changedDocuments": 58,
+          "payloadBytes": 2314239,
+          "syncedAt": 1795572487962,
+          "prepareMs": 1026,
+          "writeMs": 244,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 939,
+            "readFiles": 734
+          },
+          "durationMs": 1299.141437000013,
+          "final": false
+        },
+        {
+          "revision": 8953,
+          "generation": 11,
+          "changedDocuments": 58,
+          "payloadBytes": 2337807,
+          "syncedAt": 1795572522563,
+          "prepareMs": 5638,
+          "writeMs": 234,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": false,
+            "replayed": 557,
+            "readFiles": 433
+          },
+          "durationMs": 5899.168514000019,
+          "final": false
+        },
+        {
+          "revision": 9919,
+          "generation": 12,
+          "changedDocuments": 58,
+          "payloadBytes": 2359388,
+          "syncedAt": 1795572547881,
+          "prepareMs": 875,
+          "writeMs": 312,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 966,
+            "readFiles": 698
+          },
+          "durationMs": 1214.91935500002,
+          "final": false
+        },
+        {
+          "revision": 10909,
+          "generation": 13,
+          "changedDocuments": 58,
+          "payloadBytes": 2381741,
+          "syncedAt": 1795572578029,
+          "prepareMs": 877,
+          "writeMs": 325,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 990,
+            "readFiles": 729
+          },
+          "durationMs": 1364.095689000038,
+          "final": false
+        },
+        {
+          "revision": 11897,
+          "generation": 14,
+          "changedDocuments": 52,
+          "payloadBytes": 2402163,
+          "syncedAt": 1795572612191,
+          "prepareMs": 5259,
+          "writeMs": 231,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": false,
+            "replayed": 448,
+            "readFiles": 305
+          },
+          "durationMs": 5517.248475000029,
+          "final": false
+        },
+        {
+          "revision": 12889,
+          "generation": 15,
+          "changedDocuments": 49,
+          "payloadBytes": 2422342,
+          "syncedAt": 1795572637856,
+          "prepareMs": 857,
+          "writeMs": 313,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 992,
+            "readFiles": 722
+          },
+          "durationMs": 1180.628281000012,
+          "final": false
+        },
+        {
+          "revision": 13847,
+          "generation": 16,
+          "changedDocuments": 58,
+          "payloadBytes": 2446835,
+          "syncedAt": 1795572668096,
+          "prepareMs": 1071,
+          "writeMs": 316,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 958,
+            "readFiles": 704
+          },
+          "durationMs": 1420.5538129999768,
+          "final": false
+        },
+        {
+          "revision": 14785,
+          "generation": 17,
+          "changedDocuments": 58,
+          "payloadBytes": 2469199,
+          "syncedAt": 1795572702388,
+          "prepareMs": 5439,
+          "writeMs": 240,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": false,
+            "replayed": 140,
+            "readFiles": 104
+          },
+          "durationMs": 5716.542933000019,
+          "final": false
+        },
+        {
+          "revision": 15693,
+          "generation": 18,
+          "changedDocuments": 57,
+          "payloadBytes": 2489170,
+          "syncedAt": 1795572728039,
+          "prepareMs": 992,
+          "writeMs": 326,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 908,
+            "readFiles": 715
+          },
+          "durationMs": 1373.6835920000449,
+          "final": false
+        },
+        {
+          "revision": 16589,
+          "generation": 19,
+          "changedDocuments": 58,
+          "payloadBytes": 2511065,
+          "syncedAt": 1795572757932,
+          "prepareMs": 906,
+          "writeMs": 329,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 896,
+            "readFiles": 709
+          },
+          "durationMs": 1255.5826019999804,
+          "final": false
+        },
+        {
+          "revision": 17521,
+          "generation": 20,
+          "changedDocuments": 58,
+          "payloadBytes": 2531597,
+          "syncedAt": 1795572792041,
+          "prepareMs": 5087,
+          "writeMs": 260,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": false,
+            "replayed": 156,
+            "readFiles": 132
+          },
+          "durationMs": 5365.820973999915,
+          "final": false
+        },
+        {
+          "revision": 18517,
+          "generation": 21,
+          "changedDocuments": 58,
+          "payloadBytes": 2552650,
+          "syncedAt": 1795572817915,
+          "prepareMs": 866,
+          "writeMs": 345,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 996,
+            "readFiles": 709
+          },
+          "durationMs": 1238.8510340000503,
+          "final": false
+        },
+        {
+          "revision": 19495,
+          "generation": 22,
+          "changedDocuments": 58,
+          "payloadBytes": 2574088,
+          "syncedAt": 1795572847970,
+          "prepareMs": 960,
+          "writeMs": 308,
+          "pinnedRead": {
+            "cacheHit": false,
+            "incremental": true,
+            "replayed": 978,
+            "readFiles": 704
+          },
+          "durationMs": 1294.5166660000104,
+          "final": false
+        },
+        {
+          "revision": 19544,
+          "generation": 23,
+          "changedDocuments": 34,
+          "payloadBytes": 2188835,
+          "syncedAt": 1795572861958,
+          "prepareMs": 12055,
+          "writeMs": 237,
+          "pinnedRead": null,
+          "durationMs": 12295.977950000088,
+          "final": true
+        }
+      ]
+    },
+    "testSchemaRemoved": true,
+    "windows": [
+      {
+        "window": 1,
+        "hz": 20.00944832500033,
+        "work": {
+          "n": 1190,
+          "p50": 9.79461500000616,
+          "p95": 16.492577999990317,
+          "p99": 19.684687999993912,
+          "max": 192.0387109999865
+        },
+        "action": {
+          "p50": 10.275127999993856,
+          "p95": 82.58411999999953,
+          "p99": 174.2994189999954,
+          "max": 287.05715199999395
+        },
+        "rssMiB": 2706.875,
+        "stateGaps": {
+          "p50": 49.8296149999951,
+          "p95": 57.55476299999282,
+          "p99": 65.38384799999767,
+          "max": 335.70158400000946
+        }
+      },
+      {
+        "window": 2,
+        "hz": 20.236168447577917,
+        "work": {
+          "n": 1201,
+          "p50": 10.190604000003077,
+          "p95": 15.886777000006987,
+          "p99": 19.543479999992996,
+          "max": 27.53763700000127
+        },
+        "action": {
+          "p50": 9.133247999998275,
+          "p95": 20.432005999988178,
+          "p99": 58.67509699999937,
+          "max": 168.24999599999865
+        },
+        "rssMiB": 2680.80859375,
+        "stateGaps": {
+          "p50": 49.854544000001624,
+          "p95": 57.26992500000051,
+          "p99": 63.469974999985425,
+          "max": 84.05845899999258
+        }
+      },
+      {
+        "window": 3,
+        "hz": 20.10736715623548,
+        "work": {
+          "n": 1202,
+          "p50": 11.022966999997152,
+          "p95": 16.784203000017442,
+          "p99": 19.037590000021737,
+          "max": 28.70559399999911
+        },
+        "action": {
+          "p50": 9.78338999999687,
+          "p95": 21.19442699998035,
+          "p99": 65.10516199999256,
+          "max": 165.55669300002046
+        },
+        "rssMiB": 2684.0546875,
+        "stateGaps": {
+          "p50": 49.95532899998943,
+          "p95": 56.4150850000151,
+          "p99": 63.19509600001038,
+          "max": 91.52714500000002
+        }
+      },
+      {
+        "window": 4,
+        "hz": 20.123042554141975,
+        "work": {
+          "n": 1195,
+          "p50": 11.162050000042655,
+          "p95": 18.226378999999724,
+          "p99": 22.687503000022843,
+          "max": 47.47173299995484
+        },
+        "action": {
+          "p50": 11.389698999992106,
+          "p95": 31.432150000007823,
+          "p99": 146.84560499998042,
+          "max": 252.63761400000658
+        },
+        "rssMiB": 2340.9375,
+        "stateGaps": {
+          "p50": 49.95922199997585,
+          "p95": 58.35641399997985,
+          "p99": 67.520072000043,
+          "max": 256.5804430000135
+        }
+      },
+      {
+        "window": 5,
+        "hz": 20.181646915338213,
+        "work": {
+          "n": 1201,
+          "p50": 11.14478400000371,
+          "p95": 17.48117399995681,
+          "p99": 21.38115699996706,
+          "max": 30.969172000011895
+        },
+        "action": {
+          "p50": 9.768690999946557,
+          "p95": 25.068915999960154,
+          "p99": 43.859070000005886,
+          "max": 175.54627300001448
+        },
+        "rssMiB": 2460.5234375,
+        "stateGaps": {
+          "p50": 49.9987770000007,
+          "p95": 57.838686000031885,
+          "p99": 64.20064400002593,
+          "max": 95.02303199999733
+        }
+      },
+      {
+        "window": 6,
+        "hz": 20.1262381363259,
+        "work": {
+          "n": 1196,
+          "p50": 11.585502000001725,
+          "p95": 18.0349780000397,
+          "p99": 20.917941999970935,
+          "max": 31.47303799999645
+        },
+        "action": {
+          "p50": 8.632412999984808,
+          "p95": 25.150540000002366,
+          "p99": 56.4573940000264,
+          "max": 208.21217299997807
+        },
+        "rssMiB": 2764.515625,
+        "stateGaps": {
+          "p50": 49.89497399999527,
+          "p95": 56.748826000024565,
+          "p99": 62.283496999996714,
+          "max": 240.34297499997774
+        }
+      },
+      {
+        "window": 7,
+        "hz": 20.159303408710237,
+        "work": {
+          "n": 1201,
+          "p50": 11.780557000020053,
+          "p95": 18.124066000047605,
+          "p99": 20.88631799997529,
+          "max": 30.480186000000685
+        },
+        "action": {
+          "p50": 12.427697999984957,
+          "p95": 28.614306000003126,
+          "p99": 75.02663400000893,
+          "max": 176.52953200001502
+        },
+        "rssMiB": 2709.5859375,
+        "stateGaps": {
+          "p50": 49.837547999981325,
+          "p95": 57.017198999994434,
+          "p99": 64.32120599999325,
+          "max": 106.29541299998527
+        }
+      },
+      {
+        "window": 8,
+        "hz": 20.07655821075996,
+        "work": {
+          "n": 1199,
+          "p50": 11.763846999965608,
+          "p95": 18.44509900000412,
+          "p99": 21.858663999999408,
+          "max": 26.99858600005973
+        },
+        "action": {
+          "p50": 9.101849000086077,
+          "p95": 21.96073199994862,
+          "p99": 56.47813199996017,
+          "max": 155.12842099997215
+        },
+        "rssMiB": 2710.96484375,
+        "stateGaps": {
+          "p50": 49.94856500008609,
+          "p95": 57.51769799995236,
+          "p99": 62.50284900004044,
+          "max": 177.15020500001265
+        }
+      },
+      {
+        "window": 9,
+        "hz": 20.094588773743045,
+        "work": {
+          "n": 1197,
+          "p50": 11.29821300006006,
+          "p95": 17.560235999990255,
+          "p99": 24.047552000032738,
+          "max": 256.54747099999804
+        },
+        "action": {
+          "p50": 9.926804999937303,
+          "p95": 28.800738999969326,
+          "p99": 115.29443500004709,
+          "max": 277.69716199999675
+        },
+        "rssMiB": 2798.8515625,
+        "stateGaps": {
+          "p50": 49.84761099994648,
+          "p95": 56.75143599999137,
+          "p99": 61.989917999948375,
+          "max": 299.1889690000098
+        }
+      },
+      {
+        "window": 10,
+        "hz": 20.119380388123076,
+        "work": {
+          "n": 1200,
+          "p50": 11.995397999999113,
+          "p95": 18.442003999953158,
+          "p99": 20.255175999947824,
+          "max": 30.597700000042096
+        },
+        "action": {
+          "p50": 8.209217000054196,
+          "p95": 22.53368600003887,
+          "p99": 45.444917000015266,
+          "max": 139.2645950000733
+        },
+        "rssMiB": 2715.6015625,
+        "stateGaps": {
+          "p50": 49.88583100005053,
+          "p95": 56.825366000062786,
+          "p99": 61.90540300006978,
+          "max": 175.70786600001156
+        }
+      }
+    ]
+  },
+  "liveAfter": [
+    {
+      "at": 1795575077629,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 476,
+        "advancedTicks": 377,
+        "updatesHz": 6.28,
+        "tickWorkMs": {
+          "count": 476,
+          "p50": 0.74,
+          "p95": 1.1,
+          "p99": 1.46,
+          "max": 14.45
+        },
+        "tickIntervalMs": {
+          "count": 476,
+          "p50": 49.98,
+          "p95": 51.73,
+          "p99": 62.9,
+          "max": 104178.33
+        },
+        "eventLoop": {
+          "windowMs": 10000.33,
+          "resolutionMs": 20,
+          "samples": 485,
+          "p95Ms": 21.43,
+          "p99Ms": 22,
+          "maxMs": 57.51
+        },
+        "capturedAt": 1795575077624,
+        "uptimeSeconds": 275,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "memoryMiB": {
+          "resident": 1821,
+          "heapUsed": 458,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4878135,
+          "pendingWalBytes": 1027049,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 23740
+      }
+    },
+    {
+      "at": 1795575082634,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 577,
+        "advancedTicks": 478,
+        "updatesHz": 7.97,
+        "tickWorkMs": {
+          "count": 577,
+          "p50": 0.74,
+          "p95": 1.09,
+          "p99": 1.46,
+          "max": 14.45
+        },
+        "tickIntervalMs": {
+          "count": 577,
+          "p50": 49.98,
+          "p95": 51.71,
+          "p99": 60.15,
+          "max": 104178.33
+        },
+        "eventLoop": {
+          "windowMs": 10000.33,
+          "resolutionMs": 20,
+          "samples": 485,
+          "p95Ms": 21.43,
+          "p99Ms": 22,
+          "maxMs": 57.51
+        },
+        "capturedAt": 1795575082633,
+        "uptimeSeconds": 280,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "memoryMiB": {
+          "resident": 1851,
+          "heapUsed": 462,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4878136,
+          "pendingWalBytes": 1027449,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 28745
+      }
+    },
+    {
+      "at": 1795575087638,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 677,
+        "advancedTicks": 578,
+        "updatesHz": 9.63,
+        "tickWorkMs": {
+          "count": 677,
+          "p50": 0.72,
+          "p95": 1.08,
+          "p99": 1.41,
+          "max": 14.45
+        },
+        "tickIntervalMs": {
+          "count": 677,
+          "p50": 50.04,
+          "p95": 51.67,
+          "p99": 53.6,
+          "max": 104178.33
+        },
+        "eventLoop": {
+          "windowMs": 10000.35,
+          "resolutionMs": 20,
+          "samples": 470,
+          "p95Ms": 21.43,
+          "p99Ms": 21.77,
+          "maxMs": 311.95
+        },
+        "capturedAt": 1795575087637,
+        "uptimeSeconds": 285,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "memoryMiB": {
+          "resident": 1873,
+          "heapUsed": 460,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4878137,
+          "pendingWalBytes": 1028615,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 3199
+      }
+    },
+    {
+      "at": 1795575092645,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 777,
+        "advancedTicks": 678,
+        "updatesHz": 11.3,
+        "tickWorkMs": {
+          "count": 777,
+          "p50": 0.72,
+          "p95": 1.07,
+          "p99": 1.26,
+          "max": 14.45
+        },
+        "tickIntervalMs": {
+          "count": 777,
+          "p50": 50.07,
+          "p95": 51.62,
+          "p99": 52.61,
+          "max": 104178.33
+        },
+        "eventLoop": {
+          "windowMs": 10000.35,
+          "resolutionMs": 20,
+          "samples": 470,
+          "p95Ms": 21.43,
+          "p99Ms": 21.77,
+          "maxMs": 311.95
+        },
+        "capturedAt": 1795575092643,
+        "uptimeSeconds": 290,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "memoryMiB": {
+          "resident": 1873,
+          "heapUsed": 461,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4878137,
+          "pendingWalBytes": 1028615,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 8206
+      }
+    },
+    {
+      "at": 1795575097650,
+      "metrics": {
+        "windowMs": 60000,
+        "ticks": 877,
+        "advancedTicks": 778,
+        "updatesHz": 12.97,
+        "tickWorkMs": {
+          "count": 877,
+          "p50": 0.71,
+          "p95": 1.05,
+          "p99": 1.26,
+          "max": 14.45
+        },
+        "tickIntervalMs": {
+          "count": 877,
+          "p50": 50.13,
+          "p95": 51.58,
+          "p99": 52.1,
+          "max": 104178.33
+        },
+        "eventLoop": {
+          "windowMs": 10000.2,
+          "resolutionMs": 20,
+          "samples": 492,
+          "p95Ms": 21.14,
+          "p99Ms": 21.38,
+          "maxMs": 22.05
+        },
+        "capturedAt": 1795575097648,
+        "uptimeSeconds": 295,
+        "targetTickMs": 50,
+        "arena": {
+          "rooms": 3,
+          "activePlayers": 0,
+          "parts": 0,
+          "connections": 0
+        },
+        "online": {
+          "arena": 0,
+          "lobby": 1,
+          "total": 1
+        },
+        "memoryMiB": {
+          "resident": 1873,
+          "heapUsed": 465,
+          "limit": 5120
+        },
+        "persistence": {
+          "arenaBatches": 0,
+          "queuedActions": 0,
+          "paused": false,
+          "staging": false,
+          "walRevision": 4878138,
+          "pendingWalBytes": 1029777,
+          "maxWalBytes": 67108864
+        },
+        "stateWorkers": {
+          "jobs": 0,
+          "replaced": 0,
+          "workerMs": 0,
+          "cloneMs": 0,
+          "turnaroundMs": 0,
+          "failures": 0,
+          "overflowStreams": 0,
+          "retiredRooms": 0,
+          "drained": 0,
+          "delivered": 0,
+          "deliveryMs": 0
+        }
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 13211
+      }
+    }
+  ],
+  "initialIssues": [
+    "Local package preparation initially lacked NODE_PATH for Acorn; no payload was written. Rerun with the existing pinned dependency tree succeeded.",
+    "The first real-PG command named a nonexistent third test file. Node ran the two existing files:11 pass. The evidence total rejected12. The actual immutable-fragments test then ran separately:1 pass; all12 are explicitly evidenced.",
+    "Maintenance preflight refused a generic2GiB tmpfs reserve before changing live state. Measured data346MB and available tmpfs1.7GiB permitted a conservative3x-data plus160MiB archive plus256MiB reserve; physical memory was checked separately. No old copies removed.",
+    "Early stop/backup polls ran before graceful shutdown completed and refused to proceed. The service subsequently stopped normally with exit0.",
+    "Two40-second readiness windows expired during cold startup. The first final verifier refused automatic maintenance before the initial PG sync completed, before pausing or opening entry. The next readiness check passed with manual maintenance and healthyPG; final verification was retried. Initial error remains in final-verify.txt.",
+    "Five documentation merge conflicts retained the newer detailed results; all runtime/config/public files exactly match tested source."
+  ],
+  "limitations": [
+    "Not maximum CCU or300000-player readiness; ten minutes is not24-hour stability.",
+    "Rare state gaps remain (335.70ms in the retained canonical run); no lag-free guarantee.",
+    "Optional workers90+5 failed the first action-latency window. They remain disabled.",
+    "Resident room prototypes and their remaining Linux,PG,admission,cutoff coverage are deferred by the owner.",
+    "Live health samples have actual small online counts and do not establish performance under high load."
+  ]
+}
