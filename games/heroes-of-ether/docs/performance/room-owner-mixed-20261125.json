@@ -791,5 +791,16 @@
     "label": "room-projection-equivalent-r1",
     "pass": 6,
     "fail": 0
+  },
+  "combinedFullWindows": {
+    "source": "cfaa619b05e3d0208eef52a96753c7dea75be04a",
+    "label": "room-owner-full-windows",
+    "code": 0,
+    "signal": null,
+    "at": "2026-11-25T01:13:28.216Z",
+    "tests": 2508,
+    "pass": 2505,
+    "fail": 0,
+    "skipped": 3
   }
 }

@@ -15,6 +15,13 @@ fallback. This is not independent simulation ownership or a distributed writer.
 Twenty targeted Windows checks passed: startup configuration validation, lazy
 construction without a complete-world replica, clan order/rewards/calendar,
 rollback and durable recovery. Full Windows and Linux each passed 2495 tests,
-with zero failures and three skipped (2498 total). Mixed load of this combined
-candidate is running. Earlier V38 90+5/10min failed first-window action delay.
+with zero failures and three skipped (2498 total). Mixed 60+5/3min passed all
+windows: 5881 ACK recovered, no duplicates, PostgreSQL=WAL revision7338.
+Mixed 90+5/10min failed first-window action delay; nine later windows passed.
+All27464ACK recovered, no duplicates, PostgreSQL=WAL23503; schema removed.
+Work p95 30.29–34.40ms, rare work max94.62ms/state gap308.95ms remain.
 It cannot be presented as sustainable capacity or an installed speedup.
+
+Queue diagnosis isolates cold first preparation. The V44 candidate starts empty
+calculator lanes before listen and keeps canonical fallback on startup failure.
+Windows full2504/2501pass/0fail/3skip; Linux/mixed pending as of01:24UTC.
