@@ -103,6 +103,7 @@ class RoomFixture {
     if(this.outbox.length>=64){this.metrics.pauses++;return false;}
     if(this.lastTick!=null)this.intervals.push(at-this.lastTick);this.lastTick=at;
     const started=performance.now(), tick=this.tickNo++;
+    this.casts?.beforeFrame?.(at);
     this.socketInputs?.drain(at);
     for(let i=0;i<this.players.length;i++){
       const p=this.players[i],target=this.players[(i+1)%this.players.length];
@@ -135,7 +136,8 @@ class RoomFixture {
     this.phases.physics.push(performance.now()-physicsAt);
     const progress=result.progress.filter(e=>this.lookup.has(e.profileId));
     for (const event of progress) this.metrics.progressTypes[event.type]=(this.metrics.progressTypes[event.type]||0)+1;
-    if(progress.length){this.outbox.push({roomId:this.id,epoch:this.epoch,sequence:++this.seq,at:wallAt,progress});
+    if(this.frameOwner)this.frameOwner.recordProgress(progress);
+    else if(progress.length){this.outbox.push({roomId:this.id,epoch:this.epoch,sequence:++this.seq,at:wallAt,progress});
       this.metrics.maxOutbox=Math.max(this.metrics.maxOutbox,this.outbox.length);}
     this.networkEvents.events.push(...result.events);
     this.networkEvents.audioEvents.push(...this.arena.audioEvents);
@@ -148,14 +150,15 @@ class RoomFixture {
     this.networkEvents={events:[],audioEvents:[],visualEvents:[]};
     this.phases.snapshot.push(performance.now()-snapshotAt);
     const broadcastAt=performance.now();
-    for(const stream of this.clients){
+    const publish=()=>{for(const stream of this.clients){
       if(process.env.ROOM_BENCH_VIEWS==='camera'){
         const p=this.arena.players.get(stream.ws.playerId);
         const width=Math.min(this.arena.world.width,Math.max(1280,1280*Math.sqrt(p.mass/15000)));
         stream.viewport={x:p.x,y:p.y,width,height:width*9/16};
       }
       stream.publish(snapshot);
-    }
+    }};
+    if(this.frameOwner)this.frameOwner.defer(publish);else publish();
     this.phases.broadcast.push(performance.now()-broadcastAt);
     }
     this.resend(at);
@@ -180,6 +183,7 @@ class RoomFixture {
   }
   resend(at) {
     this.casts?.retryPending(at);
+    if(this.frameOwner){this.frameOwner.resend(at);return;}
     const requested=Number(process.env.ROOM_BENCH_PROGRESS_WINDOW);
     const window=[1,2,4].includes(requested)?requested:4;
     for(const batch of this.outbox.slice(0,window)){

@@ -14,6 +14,12 @@ class SocketInputs {
       boosters: p.quickSlots, roomId: this.room.id }), { binary: false });
   }
   result(playerId, requestId, ok, message) {
+    if(this.room.frameOwner?.capturing){
+      this.room.frameOwner.defer(()=>this.sendResult(playerId,requestId,ok,message));return;
+    }
+    this.sendResult(playerId,requestId,ok,message);
+  }
+  sendResult(playerId, requestId, ok, message) {
     const ws = this.room.connectionsByPlayer.get(playerId)?.ws;
     if (ws?.readyState === 1) ws.send(JSON.stringify({ type: "boosterResult", requestId, ok,
       ...(message ? { message } : {}) }), { binary: false });
