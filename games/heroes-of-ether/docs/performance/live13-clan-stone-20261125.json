@@ -1,0 +1,2686 @@
+{
+  "date": "2026-11-25",
+  "installed": {
+    "at": "2026-11-25T17:13:54.394Z",
+    "source": "30f1894",
+    "release": "/srv/heroether-test/play/releases/20261125-friday-constructor",
+    "pid": 968323,
+    "changes": [
+      {
+        "file": "public/ui/clans/clan-dialog.js",
+        "before": "7cc3c33722e582a794c30de88c687a8c7f7e761a2738e0af4e063b521ae81b06",
+        "after": "324bd204f48171f7028312ac943300a935353a76ad2b9ce154d1ceafad0ce68b",
+        "bytes": 53573,
+        "commentsRemoved": 6
+      },
+      {
+        "file": "public/ui/chat/player-chat.js",
+        "before": "e609cb34e331451cd886702a48e73cd2ac9ee0ddc1b3f7d9b4091b21a7788eec",
+        "after": "d26e07518b78aeb5292c1cdd797aa7c73b3db2b354179ea4d7c8de6d0f3e167d",
+        "bytes": 21171,
+        "commentsRemoved": 2
+      },
+      {
+        "file": "public/shared/arena-camera-and-layout.js",
+        "before": "53f2b9786bf55fc33984aa2666dfb5c3d241c8a2f4a44fbcd2556b582f1af9f1",
+        "after": "e7eee1c0109018e4f7ef32b72af52bddc077c33d3939e2a59ae0de3304388f9d",
+        "bytes": 14164,
+        "commentsRemoved": 38
+      },
+      {
+        "file": "public/game-client.js",
+        "before": "ebeaed0a313ba8ef362cebd4fcb30558e99b00e6bba7a871078aec8a2d49737e",
+        "after": "10dec937492804057c8c7b1241385b055f011822e3dab3962c784a1ea1e5a5de",
+        "bytes": 86836,
+        "commentsRemoved": 56
+      },
+      {
+        "file": "public/styles/components/effi-lobby.css",
+        "before": "2d67be15c2e02a977db8d1fdd0c17e454efd7c92f04f6ecc60b23157adc45eed",
+        "after": "2ab3bc3b862f5d07b068ab2bf546a8dd5b1c4e086188f746730b433f9ee25238",
+        "bytes": 2843,
+        "commentsRemoved": 1
+      },
+      {
+        "file": "public/index.html",
+        "before": "f1e9505ba8ec67d5f8c7b50b0aa2c19b76d36df6d6784f1a0fe1a0371c864203",
+        "after": "9322ab2ffd1700ac84314d03664abb4d65ff39180db82b08fab47a43c1943e5a",
+        "bytes": 43326,
+        "urlRevisionsOnly": true
+      }
+    ],
+    "worldWrites": false,
+    "restart": false,
+    "backupArchiveSha256": "9620d6a531a404648b4fe00bca9c46c4df419f4e313837d0827db55296ee4739"
+  },
+  "root": {
+    "at": "2026-11-25T17:14:37.819Z",
+    "changes": [
+      {
+        "file": "public/ui/clans/clan-dialog.js",
+        "before": "c1fb64a36e957197410e962700d22ab6c168fbfa2ccafc0bd239864fbb7ff3f3",
+        "after": "075f99c57ee5a464c223976624388bde8328bb0ed0b6c90cc096b44c4302a5ee"
+      },
+      {
+        "file": "public/ui/chat/player-chat.js",
+        "before": "9f03e7ab12fa84e02ee912ea0983a07905ebd26dd5e9cd5ee76c6b5c87c1f4a6",
+        "after": "fc033398197c4886f748b2180b9ec48bcd4ee854eb26ae0ed441dad511590a5d"
+      },
+      {
+        "file": "public/shared/arena-camera-and-layout.js",
+        "before": "2bd63e2df30101d16a955c46953db86b0016df8a49eb62970308a088c8e021a9",
+        "after": "f86edca82fb62f213aa2253a6fe1d04993cbba56c2c1a2a3e02c707d351b847e"
+      },
+      {
+        "file": "public/game-client.js",
+        "before": "90214dffa8f8c6b2d6535a49a8b6e8c158f8df6f16dc54dc27330a4699c819d1",
+        "after": "7d782afd235c3576288dcbfefae964916059f3041c20b32ff6fd81e3c8e33de4"
+      },
+      {
+        "file": "public/styles/components/effi-lobby.css",
+        "before": "cc0620d55284ccd6f1fa07bfb1ef964a8515dccc260ba2287200f05d4a312549",
+        "after": "2af27f5d197f4ee2fcde7572197aca1e310e046bf2334ef4b15533d9a095230a"
+      },
+      {
+        "file": "public/index.html",
+        "before": "f1e9505ba8ec67d5f8c7b50b0aa2c19b76d36df6d6784f1a0fe1a0371c864203",
+        "after": "9322ab2ffd1700ac84314d03664abb4d65ff39180db82b08fab47a43c1943e5a"
+      }
+    ],
+    "port": 3104,
+    "restart": false
+  },
+  "bugs": [
+    {
+      "id": "clan-navigation-parent",
+      "cause": "viewport-layout reparents clan-status into a footer; insertBefore used the former direct-child relationship",
+      "fix": "Place navigation in its actual toolbar, or before the owned content before layout. Close clan windows on successful leave/disband before refresh."
+    },
+    {
+      "id": "kicked-open-chat",
+      "cause": "Clan chat stopped input on HTTP 403 but never refreshed membership or closed the clan window",
+      "fix": "Close clan portals and reload membership when access is revoked."
+    },
+    {
+      "id": "effi-generator-overlap",
+      "cause": "Absolutely positioned greeting overlapped the Ether generator; pointer hit the greeting instead of the button",
+      "fix": "Keep greeting in document flow after the generator; only its dismiss button takes pointer input."
+    }
+  ],
+  "stone": {
+    "cameraSpinRemoved": true,
+    "remainingEffectsUnchanged": [
+      "server confused movement",
+      "five-second duration",
+      "per-object translations",
+      "HUD drift",
+      "reduced-motion behavior"
+    ],
+    "viewport": "Only the existing 40 px drift padding is requested; the full diagonal rotation envelope is no longer needed.",
+    "cachedClientCompatibility": true
+  },
+  "tests": {
+    "browsers": [
+      {
+        "engine": "chromium",
+        "clans": {
+          "engine": "chromium",
+          "checks": [
+            "leave-closes-immediately",
+            "create-1",
+            "member-tabs-1366",
+            "member-tabs-390",
+            "disband-closes",
+            "create-2",
+            "kicked-closes-Мой клан",
+            "kicked-closes-Чат",
+            "reopen-shopSection",
+            "reopen-wardrobeSection",
+            "reopen-inventorySection",
+            "reopen-achievementsButton",
+            "reopen-questsSection",
+            "reopen-rankingsButton"
+          ],
+          "errors": []
+        },
+        "game": {
+          "engine": "chromium",
+          "errors": [],
+          "missing": [],
+          "checks": [
+            {
+              "case": "delayed food purchase",
+              "before": {
+                "color": "rgb(41, 62, 80)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": false,
+                "pending": false
+              },
+              "during": {
+                "color": "rgb(41, 62, 80)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": true,
+                "pending": true
+              },
+              "locked": {
+                "color": "rgb(120, 114, 104)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": true,
+                "pending": false
+              },
+              "requests": 1
+            },
+            {
+              "case": "delayed wardrobe selection",
+              "before": {
+                "color": "rgb(255, 255, 255)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": false,
+                "pending": false
+              },
+              "during": {
+                "color": "rgb(255, 255, 255)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": true,
+                "pending": true
+              }
+            },
+            {
+              "case": "Effi and generator do not overlap",
+              "widths": [
+                1366,
+                1920,
+                390
+              ]
+            },
+            {
+              "case": "Stone retains chaos for five seconds with no scene spin",
+              "frames": 1351,
+              "rotationMax": 0,
+              "strengthMax": 1
+            },
+            {
+              "case": "menu navigation and arena round trip",
+              "menus": 13
+            }
+          ],
+          "motion": {
+            "before": {
+              "x": 1920.8776607173295,
+              "y": 180.18421386148069
+            },
+            "after": {
+              "x": 1974.1827005598004,
+              "y": 180.18353544508074,
+              "targetX": 2277.111453476185,
+              "targetY": 180.18,
+              "dead": false
+            },
+            "ui": {
+              "dialogs": [],
+              "screen": "arena",
+              "transition": false,
+              "settingsHidden": true,
+              "pointerTarget": "<canvas id=\"game\" tabindex=\"0\" aria-label=\"Арена. Управление мышью или касанием; пробел - деление; W - кормление из каждого шара.\" width=\"1366\" height=\"900\" data-background=\"slate\"></canvas>",
+              "canvas": {
+                "x": 0,
+                "y": 0,
+                "width": 1366,
+                "height": 900,
+                "top": 0,
+                "right": 1366,
+                "bottom": 900,
+                "left": 0
+              }
+            }
+          },
+          "passed": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "clans": {
+          "engine": "firefox",
+          "checks": [
+            "leave-closes-immediately",
+            "create-1",
+            "member-tabs-1366",
+            "member-tabs-390",
+            "disband-closes",
+            "create-2",
+            "kicked-closes-Мой клан",
+            "kicked-closes-Чат",
+            "reopen-shopSection",
+            "reopen-wardrobeSection",
+            "reopen-inventorySection",
+            "reopen-achievementsButton",
+            "reopen-questsSection",
+            "reopen-rankingsButton"
+          ],
+          "errors": []
+        },
+        "game": {
+          "engine": "firefox",
+          "errors": [],
+          "missing": [],
+          "checks": [
+            {
+              "case": "delayed food purchase",
+              "before": {
+                "color": "rgb(41, 62, 80)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": false,
+                "pending": false
+              },
+              "during": {
+                "color": "rgb(41, 62, 80)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": true,
+                "pending": true
+              },
+              "locked": {
+                "color": "rgb(120, 114, 104)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": true,
+                "pending": false
+              },
+              "requests": 1
+            },
+            {
+              "case": "delayed wardrobe selection",
+              "before": {
+                "color": "rgb(255, 255, 255)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": false,
+                "pending": false
+              },
+              "during": {
+                "color": "rgb(255, 255, 255)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": true,
+                "pending": true
+              }
+            },
+            {
+              "case": "Effi and generator do not overlap",
+              "widths": [
+                1366,
+                1920,
+                390
+              ]
+            },
+            {
+              "case": "Stone retains chaos for five seconds with no scene spin",
+              "frames": 194,
+              "rotationMax": 0,
+              "strengthMax": 1
+            },
+            {
+              "case": "menu navigation and arena round trip",
+              "menus": 13
+            }
+          ],
+          "motion": {
+            "before": {
+              "x": 4834.249248764388,
+              "y": 1497.9370936143564
+            },
+            "after": {
+              "x": 4890.353363185541,
+              "y": 1497.9376381729116,
+              "targetX": 5191.426930313748,
+              "targetY": 1497.94,
+              "dead": false
+            },
+            "ui": {
+              "dialogs": [],
+              "screen": "arena",
+              "transition": false,
+              "settingsHidden": true,
+              "pointerTarget": "<canvas id=\"game\" tabindex=\"0\" aria-label=\"Арена. Управление мышью или касанием; пробел - деление; W - кормление из каждого шара.\" width=\"1366\" height=\"900\" data-background=\"meadow\"></canvas>",
+              "canvas": {
+                "x": 0,
+                "y": 0,
+                "width": 1366,
+                "height": 900,
+                "top": 0,
+                "right": 1366,
+                "bottom": 900,
+                "left": 0
+              }
+            }
+          },
+          "passed": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "clans": {
+          "engine": "webkit",
+          "checks": [
+            "leave-closes-immediately",
+            "create-1",
+            "member-tabs-1366",
+            "member-tabs-390",
+            "disband-closes",
+            "create-2",
+            "kicked-closes-Мой клан",
+            "kicked-closes-Чат",
+            "reopen-shopSection",
+            "reopen-wardrobeSection",
+            "reopen-inventorySection",
+            "reopen-achievementsButton",
+            "reopen-questsSection",
+            "reopen-rankingsButton"
+          ],
+          "errors": []
+        },
+        "game": {
+          "engine": "webkit",
+          "errors": [],
+          "missing": [],
+          "checks": [
+            {
+              "case": "delayed food purchase",
+              "before": {
+                "color": "rgb(41, 62, 80)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": false,
+                "pending": false
+              },
+              "during": {
+                "color": "rgb(41, 62, 80)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": true,
+                "pending": true
+              },
+              "locked": {
+                "color": "rgb(120, 114, 104)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": true,
+                "pending": false
+              },
+              "requests": 1
+            },
+            {
+              "case": "delayed wardrobe selection",
+              "before": {
+                "color": "rgb(255, 255, 255)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": false,
+                "pending": false
+              },
+              "during": {
+                "color": "rgb(255, 255, 255)",
+                "background": "none",
+                "border": "none",
+                "filter": "none",
+                "opacity": "1",
+                "disabled": true,
+                "pending": true
+              }
+            },
+            {
+              "case": "Effi and generator do not overlap",
+              "widths": [
+                1366,
+                1920,
+                390
+              ]
+            },
+            {
+              "case": "Stone retains chaos for five seconds with no scene spin",
+              "frames": 61,
+              "rotationMax": 0,
+              "strengthMax": 1
+            },
+            {
+              "case": "menu navigation and arena round trip",
+              "menus": 13
+            }
+          ],
+          "motion": {
+            "before": {
+              "x": 1170.099070865102,
+              "y": 1273.0208700467142
+            },
+            "after": {
+              "x": 1251.462095321779,
+              "y": 1273.0206001791805,
+              "targetX": 1552.5079362147126,
+              "targetY": 1273.02,
+              "dead": false
+            },
+            "ui": {
+              "dialogs": [],
+              "screen": "arena",
+              "transition": false,
+              "settingsHidden": true,
+              "pointerTarget": "<canvas id=\"game\" tabindex=\"0\" aria-label=\"Арена. Управление мышью или касанием; пробел - деление; W - кормление из каждого шара.\" width=\"1366\" height=\"900\" data-background=\"slate\"></canvas>",
+              "canvas": {
+                "x": 0,
+                "y": 0,
+                "width": 1366,
+                "height": 900,
+                "top": 0,
+                "right": 1366,
+                "bottom": 900,
+                "left": 0
+              }
+            }
+          },
+          "passed": true
+        }
+      }
+    ],
+    "windowsFull": {
+      "total": 2549,
+      "pass": 2542,
+      "fail": 3,
+      "skip": 4,
+      "note": "Three obsolete spin assertions ran while the owner changed the requirement; updated stone/poison suite subsequently passed 13/13. Original failures retained."
+    },
+    "narrowEffectsV1": {
+      "pass": 64
+    },
+    "narrowEffectsV2": {
+      "pass": 64
+    },
+    "stoneFinal": {
+      "pass": 13
+    },
+    "linuxFull": {
+      "status": "running",
+      "candidate": "V1 indexed effect lookup, no specialized root fast path"
+    },
+    "httpFiles": 6,
+    "rootHttpFiles": 6,
+    "initialFailures": [
+      "Baseline clan leave reproduced insertBefore (caught in UI), closing timed out.",
+      "First three-browser run assumed the underlying ranking dialog was closed; fixed the harness navigation.",
+      "Kick fixture initially lacked clanId; next run was covered by an unclaimed daily reward. Both setup failures retained.",
+      "With correct fixture home kick closes; chat kick still timed out. Fixed chat revoke.",
+      "Existing smoke test reproduced Effi intercepting the generator click.",
+      "First isolated Linux benchmark lacked booster assets; second lacked accessory config. Neither is a valid performance result."
+    ]
+  },
+  "liveMeasurement": {
+    "root": "/srv/heroether-test/play/releases/20261125-friday-constructor",
+    "pid": 968323,
+    "cgroup": "/system.slice/heroether-play.service",
+    "rows": [
+      {
+        "at": "2026-11-25T16:44:03.459Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1195,
+          "advancedTicks": 1195,
+          "updatesHz": 19.92,
+          "tickWorkMs": {
+            "count": 1195,
+            "p50": 18.73,
+            "p95": 44.9,
+            "p99": 64.09,
+            "max": 192.23
+          },
+          "tickIntervalMs": {
+            "count": 1195,
+            "p50": 49.99,
+            "p95": 53.56,
+            "p99": 70.48,
+            "max": 214.2
+          },
+          "eventLoop": {
+            "windowMs": 10016.61,
+            "resolutionMs": 20,
+            "samples": 362,
+            "p95Ms": 46.63,
+            "p99Ms": 81,
+            "maxMs": 106.69
+          },
+          "capturedAt": 1795625043453,
+          "uptimeSeconds": 7797,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 59,
+            "parts": 184,
+            "connections": 11
+          },
+          "online": {
+            "arena": 11,
+            "lobby": 3,
+            "total": 14
+          },
+          "memoryMiB": {
+            "resident": 3567,
+            "heapUsed": 705,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5334281,
+            "pendingWalBytes": 2046256,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 425078,
+            "replaced": 10,
+            "workerMs": 821267.7791651454,
+            "cloneMs": 213283.46462412062,
+            "turnaroundMs": 3161732.839261175,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 20,
+            "drained": 0,
+            "delivered": 980873,
+            "deliveryMs": 53362.599082946836
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 27882,
+          "revision": 5333800
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 335313
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 49229
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 49433
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 49134
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 48921
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 88637
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 514
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 517
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 510
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 518
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 94
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 278
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 75623
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 29426
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 36569
+          },
+          {
+            "id": 973601,
+            "name": "WorkerThread",
+            "cpu": 12002
+          },
+          {
+            "id": 973650,
+            "name": "WorkerThread",
+            "cpu": 46
+          }
+        ],
+        "host": {
+          "load": "1.85 1.57 1.29 2/321 974187",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5734748 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184828 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 8676225073\nuser_usec 8263735164\nsystem_usec 412489908\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 76270\nnr_throttled 591\nthrottled_usec 28452116\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=0.39 avg60=0.30 avg300=0.33 total=6969047099\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551028\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604290",
+            "io": "some avg10=0.09 avg60=0.11 avg300=0.08 total=546633832\nfull avg10=0.05 avg60=0.07 avg300=0.06 total=459896992"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79046025216 1095516160  99% /"
+        }
+      },
+      {
+        "at": "2026-11-25T16:44:13.489Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1197,
+          "advancedTicks": 1197,
+          "updatesHz": 19.95,
+          "tickWorkMs": {
+            "count": 1197,
+            "p50": 18.76,
+            "p95": 44.09,
+            "p99": 65.11,
+            "max": 128.4
+          },
+          "tickIntervalMs": {
+            "count": 1197,
+            "p50": 49.99,
+            "p95": 51.85,
+            "p99": 73.53,
+            "max": 129.68
+          },
+          "eventLoop": {
+            "windowMs": 10002.52,
+            "resolutionMs": 20,
+            "samples": 364,
+            "p95Ms": 45.65,
+            "p99Ms": 61.28,
+            "maxMs": 83.1
+          },
+          "capturedAt": 1795625053487,
+          "uptimeSeconds": 7807,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 59,
+            "parts": 174,
+            "connections": 11
+          },
+          "online": {
+            "arena": 11,
+            "lobby": 3,
+            "total": 14
+          },
+          "memoryMiB": {
+            "resident": 3558,
+            "heapUsed": 600,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 1,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5334430,
+            "pendingWalBytes": 2829051,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 425719,
+            "replaced": 10,
+            "workerMs": 822821.2530941622,
+            "cloneMs": 213645.9343041142,
+            "turnaroundMs": 3167263.9742551614,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 20,
+            "drained": 0,
+            "delivered": 983035,
+            "deliveryMs": 53461.21859593323
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 7962,
+          "revision": 5334274
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 335870
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 49322
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 49531
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 49232
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 49031
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 88814
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 515
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 518
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 511
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 518
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 94
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 278
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 75758
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 29491
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 36610
+          },
+          {
+            "id": 973601,
+            "name": "WorkerThread",
+            "cpu": 12002
+          },
+          {
+            "id": 973650,
+            "name": "WorkerThread",
+            "cpu": 46
+          }
+        ],
+        "host": {
+          "load": "1.72 1.56 1.29 3/323 974194",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5753408 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184828 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 8689981673\nuser_usec 8277137622\nsystem_usec 412844051\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 76370\nnr_throttled 591\nthrottled_usec 28452116\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=0.59 avg60=0.37 avg300=0.35 total=6969172947\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551028\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604290",
+            "io": "some avg10=0.03 avg60=0.09 avg300=0.07 total=546639648\nfull avg10=0.02 avg60=0.05 avg300=0.06 total=459901533"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79046885376 1094656000  99% /"
+        }
+      },
+      {
+        "at": "2026-11-25T16:44:23.500Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1196,
+          "advancedTicks": 1196,
+          "updatesHz": 19.93,
+          "tickWorkMs": {
+            "count": 1196,
+            "p50": 18.45,
+            "p95": 44.67,
+            "p99": 66.79,
+            "max": 128.4
+          },
+          "tickIntervalMs": {
+            "count": 1196,
+            "p50": 49.98,
+            "p95": 51.74,
+            "p99": 74.93,
+            "max": 129.68
+          },
+          "eventLoop": {
+            "windowMs": 9999.54,
+            "resolutionMs": 20,
+            "samples": 361,
+            "p95Ms": 43.75,
+            "p99Ms": 85.26,
+            "maxMs": 130.81
+          },
+          "capturedAt": 1795625063498,
+          "uptimeSeconds": 7817,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 59,
+            "parts": 171,
+            "connections": 11
+          },
+          "online": {
+            "arena": 11,
+            "lobby": 3,
+            "total": 14
+          },
+          "memoryMiB": {
+            "resident": 3558,
+            "heapUsed": 668,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5334569,
+            "pendingWalBytes": 3630812,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 426358,
+            "replaced": 10,
+            "workerMs": 824251.714405158,
+            "cloneMs": 213985.73739709402,
+            "turnaroundMs": 3172165.1241761455,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 20,
+            "drained": 0,
+            "delivered": 985222,
+            "deliveryMs": 53555.87901393423
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 17973,
+          "revision": 5334274
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 336377
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 49353
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 49556
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 49257
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 49058
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 88814
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 515
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 519
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 512
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 520
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 94
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 278
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 75886
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 29553
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 36649
+          },
+          {
+            "id": 973601,
+            "name": "WorkerThread",
+            "cpu": 12002
+          },
+          {
+            "id": 973650,
+            "name": "WorkerThread",
+            "cpu": 46
+          }
+        ],
+        "host": {
+          "load": "1.45 1.50 1.27 1/323 974200",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5772620 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184828 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 8698451020\nuser_usec 8285336155\nsystem_usec 413114864\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 76470\nnr_throttled 591\nthrottled_usec 28452116\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=0.44 avg60=0.38 avg300=0.35 total=6969265382\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551028\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604290",
+            "io": "some avg10=0.01 avg60=0.07 avg300=0.07 total=546649386\nfull avg10=0.00 avg60=0.04 avg300=0.05 total=459908662"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79047798784 1093742592  99% /"
+        }
+      },
+      {
+        "at": "2026-11-25T16:44:33.530Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1197,
+          "advancedTicks": 1197,
+          "updatesHz": 19.95,
+          "tickWorkMs": {
+            "count": 1197,
+            "p50": 18.39,
+            "p95": 44.39,
+            "p99": 66.06,
+            "max": 128.4
+          },
+          "tickIntervalMs": {
+            "count": 1197,
+            "p50": 49.98,
+            "p95": 52.03,
+            "p99": 74.93,
+            "max": 129.68
+          },
+          "eventLoop": {
+            "windowMs": 9999.88,
+            "resolutionMs": 20,
+            "samples": 371,
+            "p95Ms": 42.37,
+            "p99Ms": 61.21,
+            "maxMs": 96.86
+          },
+          "capturedAt": 1795625073528,
+          "uptimeSeconds": 7827,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 58,
+            "parts": 200,
+            "connections": 11
+          },
+          "online": {
+            "arena": 11,
+            "lobby": 2,
+            "total": 13
+          },
+          "memoryMiB": {
+            "resident": 3576,
+            "heapUsed": 718,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 1,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5334721,
+            "pendingWalBytes": 797187,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 426979,
+            "replaced": 10,
+            "workerMs": 825731.3513211556,
+            "cloneMs": 214330.82532808627,
+            "turnaroundMs": 3177191.4521941403,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 20,
+            "drained": 0,
+            "delivered": 987422,
+            "deliveryMs": 53653.40744493535
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 28003,
+          "revision": 5334274
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 336884
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 49377
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 49581
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 49286
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 49081
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 88850
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 516
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 520
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 513
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 521
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 94
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 278
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 76016
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 29615
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 36689
+          },
+          {
+            "id": 973601,
+            "name": "WorkerThread",
+            "cpu": 12404
+          },
+          {
+            "id": 973650,
+            "name": "WorkerThread",
+            "cpu": 48
+          }
+        ],
+        "host": {
+          "load": "1.38 1.49 1.27 2/320 974208",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5691960 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184828 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 8711287719\nuser_usec 8297100200\nsystem_usec 414187518\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 76571\nnr_throttled 591\nthrottled_usec 28452116\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=0.39 avg60=0.38 avg300=0.35 total=6969361184\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551028\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604290",
+            "io": "some avg10=0.15 avg60=0.09 avg300=0.07 total=546705315\nfull avg10=0.15 avg60=0.07 avg300=0.06 total=459961449"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79049240576 1092300800  99% /"
+        }
+      },
+      {
+        "at": "2026-11-25T16:44:43.543Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1195,
+          "advancedTicks": 1195,
+          "updatesHz": 19.92,
+          "tickWorkMs": {
+            "count": 1195,
+            "p50": 18.43,
+            "p95": 44.39,
+            "p99": 66.06,
+            "max": 128.4
+          },
+          "tickIntervalMs": {
+            "count": 1195,
+            "p50": 49.99,
+            "p95": 52.05,
+            "p99": 74.71,
+            "max": 129.68
+          },
+          "eventLoop": {
+            "windowMs": 10000.43,
+            "resolutionMs": 20,
+            "samples": 372,
+            "p95Ms": 43.02,
+            "p99Ms": 65.6,
+            "maxMs": 86.84
+          },
+          "capturedAt": 1795625083541,
+          "uptimeSeconds": 7837,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 58,
+            "parts": 200,
+            "connections": 11
+          },
+          "online": {
+            "arena": 11,
+            "lobby": 2,
+            "total": 13
+          },
+          "memoryMiB": {
+            "resident": 3558,
+            "heapUsed": 600,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5334877,
+            "pendingWalBytes": 1882153,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 427598,
+            "replaced": 10,
+            "workerMs": 827181.5684861591,
+            "cloneMs": 214666.67147008772,
+            "turnaroundMs": 3182434.0526071414,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 20,
+            "drained": 0,
+            "delivered": 989607,
+            "deliveryMs": 53747.47526194906
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 8022,
+          "revision": 5334715
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 337440
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 49473
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 49679
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 49385
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 49178
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 89017
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 517
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 520
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 513
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 522
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 94
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 279
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 76154
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 29677
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 36731
+          },
+          {
+            "id": 973601,
+            "name": "WorkerThread",
+            "cpu": 12404
+          },
+          {
+            "id": 973650,
+            "name": "WorkerThread",
+            "cpu": 48
+          }
+        ],
+        "host": {
+          "load": "1.17 1.44 1.26 2/320 974215",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5727972 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184828 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 8724849480\nuser_usec 8310290569\nsystem_usec 414558911\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 76671\nnr_throttled 592\nthrottled_usec 28460527\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=0.47 avg60=0.41 avg300=0.36 total=6969468463\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551028\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604290",
+            "io": "some avg10=0.05 avg60=0.08 avg300=0.07 total=546715134\nfull avg10=0.05 avg60=0.05 avg300=0.06 total=459968445"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79050395648 1091145728  99% /"
+        }
+      },
+      {
+        "at": "2026-11-25T16:44:53.559Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1197,
+          "advancedTicks": 1197,
+          "updatesHz": 19.95,
+          "tickWorkMs": {
+            "count": 1197,
+            "p50": 18.62,
+            "p95": 44.39,
+            "p99": 63.77,
+            "max": 128.4
+          },
+          "tickIntervalMs": {
+            "count": 1197,
+            "p50": 49.99,
+            "p95": 52.03,
+            "p99": 73.88,
+            "max": 129.68
+          },
+          "eventLoop": {
+            "windowMs": 9998.39,
+            "resolutionMs": 20,
+            "samples": 363,
+            "p95Ms": 47.42,
+            "p99Ms": 68.49,
+            "maxMs": 98.89
+          },
+          "capturedAt": 1795625093558,
+          "uptimeSeconds": 7847,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 59,
+            "parts": 218,
+            "connections": 11
+          },
+          "online": {
+            "arena": 11,
+            "lobby": 2,
+            "total": 13
+          },
+          "memoryMiB": {
+            "resident": 3558,
+            "heapUsed": 677,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5335032,
+            "pendingWalBytes": 2731800,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 428204,
+            "replaced": 10,
+            "workerMs": 828672.7542141568,
+            "cloneMs": 215003.02299508615,
+            "turnaroundMs": 3187513.1041851407,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 20,
+            "drained": 0,
+            "delivered": 991807,
+            "deliveryMs": 53860.43062094232
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 18038,
+          "revision": 5334715
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 337978
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 49500
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 49706
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 49410
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 49204
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 89017
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 517
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 521
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 515
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 522
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 94
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 279
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 76290
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 29740
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 36772
+          },
+          {
+            "id": 973601,
+            "name": "WorkerThread",
+            "cpu": 12404
+          },
+          {
+            "id": 973650,
+            "name": "WorkerThread",
+            "cpu": 48
+          }
+        ],
+        "host": {
+          "load": "1.28 1.46 1.26 1/320 974222",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5769832 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184828 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 8733733773\nuser_usec 8318952255\nsystem_usec 414781518\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 76771\nnr_throttled 592\nthrottled_usec 28460527\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=0.72 avg60=0.47 avg300=0.37 total=6969567895\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551028\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604290",
+            "io": "some avg10=0.01 avg60=0.06 avg300=0.06 total=546725056\nfull avg10=0.01 avg60=0.04 avg300=0.05 total=459977183"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79051264000 1090277376  99% /"
+        }
+      },
+      {
+        "at": "2026-11-25T16:45:03.589Z",
+        "metrics": {
+          "windowMs": 60000,
+          "ticks": 1197,
+          "advancedTicks": 1197,
+          "updatesHz": 19.95,
+          "tickWorkMs": {
+            "count": 1197,
+            "p50": 18.83,
+            "p95": 44.48,
+            "p99": 64.38,
+            "max": 128.4
+          },
+          "tickIntervalMs": {
+            "count": 1197,
+            "p50": 50,
+            "p95": 52.04,
+            "p99": 73.53,
+            "max": 129.68
+          },
+          "eventLoop": {
+            "windowMs": 10000.76,
+            "resolutionMs": 20,
+            "samples": 363,
+            "p95Ms": 46.37,
+            "p99Ms": 64.98,
+            "maxMs": 87.95
+          },
+          "capturedAt": 1795625103587,
+          "uptimeSeconds": 7857,
+          "targetTickMs": 50,
+          "arena": {
+            "rooms": 7,
+            "activePlayers": 58,
+            "parts": 218,
+            "connections": 11
+          },
+          "online": {
+            "arena": 11,
+            "lobby": 2,
+            "total": 13
+          },
+          "memoryMiB": {
+            "resident": 3567,
+            "heapUsed": 725,
+            "limit": 5120
+          },
+          "persistence": {
+            "arenaBatches": 0,
+            "queuedActions": 0,
+            "paused": false,
+            "staging": false,
+            "walRevision": 5335176,
+            "pendingWalBytes": 3824664,
+            "maxWalBytes": 67108864
+          },
+          "stateWorkers": {
+            "jobs": 428962,
+            "replaced": 10,
+            "workerMs": 830107.7037331577,
+            "cloneMs": 215368.15123008634,
+            "turnaroundMs": 3192774.9251461523,
+            "failures": 0,
+            "overflowStreams": 0,
+            "retiredRooms": 20,
+            "drained": 0,
+            "delivered": 993970,
+            "deliveryMs": 53966.13610094978
+          }
+        },
+        "database": {
+          "connected": true,
+          "error": null,
+          "syncAgeMs": 28068,
+          "revision": 5334715
+        },
+        "threads": [
+          {
+            "id": 968323,
+            "name": "MainThread",
+            "cpu": 338524
+          },
+          {
+            "id": 968325,
+            "name": "DelayedTaskSche",
+            "cpu": 0
+          },
+          {
+            "id": 968326,
+            "name": "V8Worker",
+            "cpu": 49527
+          },
+          {
+            "id": 968327,
+            "name": "V8Worker",
+            "cpu": 49733
+          },
+          {
+            "id": 968328,
+            "name": "V8Worker",
+            "cpu": 49436
+          },
+          {
+            "id": 968329,
+            "name": "V8Worker",
+            "cpu": 49230
+          },
+          {
+            "id": 968330,
+            "name": "SignalInspector",
+            "cpu": 0
+          },
+          {
+            "id": 968333,
+            "name": "WorkerThread",
+            "cpu": 89057
+          },
+          {
+            "id": 968336,
+            "name": "libuv-worker",
+            "cpu": 519
+          },
+          {
+            "id": 968337,
+            "name": "libuv-worker",
+            "cpu": 522
+          },
+          {
+            "id": 968338,
+            "name": "libuv-worker",
+            "cpu": 515
+          },
+          {
+            "id": 968339,
+            "name": "libuv-worker",
+            "cpu": 523
+          },
+          {
+            "id": 968534,
+            "name": "WorkerThread",
+            "cpu": 94
+          },
+          {
+            "id": 969310,
+            "name": "WorkerThread",
+            "cpu": 279
+          },
+          {
+            "id": 969413,
+            "name": "WorkerThread",
+            "cpu": 76423
+          },
+          {
+            "id": 970141,
+            "name": "WorkerThread",
+            "cpu": 29802
+          },
+          {
+            "id": 970270,
+            "name": "WorkerThread",
+            "cpu": 36813
+          },
+          {
+            "id": 973601,
+            "name": "WorkerThread",
+            "cpu": 12404
+          },
+          {
+            "id": 973650,
+            "name": "WorkerThread",
+            "cpu": 49
+          }
+        ],
+        "host": {
+          "load": "1.16 1.42 1.26 7/320 974231",
+          "memory": [
+            "MemTotal:       24631576 kB",
+            "MemAvailable:    5770016 kB",
+            "SwapCached:            0 kB",
+            "SwapTotal:             0 kB",
+            "SwapFree:              0 kB",
+            "Shmem:          14184828 kB",
+            "ShmemHugePages:        0 kB",
+            "ShmemPmdMapped:        0 kB"
+          ],
+          "cpu": "usage_usec 8743047343\nuser_usec 8327988462\nsystem_usec 415058881\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 76871\nnr_throttled 592\nthrottled_usec 28460527\nnr_bursts 0\nburst_usec 0",
+          "cpuMax": "600000 100000",
+          "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+          "pressure": {
+            "cpu": "some avg10=0.69 avg60=0.49 avg300=0.38 total=6969688556\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+            "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551028\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604290",
+            "io": "some avg10=0.00 avg60=0.05 avg300=0.06 total=546732252\nfull avg10=0.00 avg60=0.04 avg300=0.05 total=459983107"
+          },
+          "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 79052390400 1089150976  99% /"
+        }
+      }
+    ],
+    "note": "Read-only observation of real testers. No synthetic players added. CPU profile sampling perturbs timings; this is not an A/B or capacity/FPS proof."
+  },
+  "cpuProfile": {
+    "durationMs": 31393.848,
+    "samples": 14021,
+    "self": [
+      {
+        "ms": 14505,
+        "pct": 46.2,
+        "name": "(idle)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 1393,
+        "pct": 4.44,
+        "name": "hasEffect",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 761
+      },
+      {
+        "ms": 862,
+        "pct": 2.74,
+        "name": "postMessage",
+        "file": "node:internal/worker",
+        "line": 462
+      },
+      {
+        "ms": 782,
+        "pct": 2.49,
+        "name": "step",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1254
+      },
+      {
+        "ms": 749,
+        "pct": 2.39,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1354
+      },
+      {
+        "ms": 691,
+        "pct": 2.2,
+        "name": "snapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1351
+      },
+      {
+        "ms": 655,
+        "pct": 2.09,
+        "name": "(garbage collector)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 403,
+        "pct": 1.28,
+        "name": "encode",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/worker-food-transfer.js",
+        "line": 70
+      },
+      {
+        "ms": 359,
+        "pct": 1.14,
+        "name": "copyRecord",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/copy-record.js",
+        "line": 6
+      },
+      {
+        "ms": 291,
+        "pct": 0.93,
+        "name": "arenaProgressDraft",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 1202
+      },
+      {
+        "ms": 284,
+        "pct": 0.9,
+        "name": "collectEther",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 990
+      },
+      {
+        "ms": 282,
+        "pct": 0.9,
+        "name": "(program)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 235,
+        "pct": 0.75,
+        "name": "update",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/testing/arena-test-bots.js",
+        "line": 298
+      },
+      {
+        "ms": 231,
+        "pct": 0.74,
+        "name": "moveFeed",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 576
+      },
+      {
+        "ms": 226,
+        "pct": 0.72,
+        "name": "writev",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 208,
+        "pct": 0.66,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 1319
+      },
+      {
+        "ms": 207,
+        "pct": 0.66,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/state-workers.js",
+        "line": 203
+      },
+      {
+        "ms": 196,
+        "pct": 0.62,
+        "name": "moveParts",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 685
+      },
+      {
+        "ms": 189,
+        "pct": 0.6,
+        "name": "beginStep",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-hazards.js",
+        "line": 112
+      },
+      {
+        "ms": 176,
+        "pct": 0.56,
+        "name": "resolveAbsorptions",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1091
+      },
+      {
+        "ms": 158,
+        "pct": 0.5,
+        "name": "get",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/arena-appearance-cache.js",
+        "line": 13
+      },
+      {
+        "ms": 139,
+        "pct": 0.44,
+        "name": "fillEther",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 967
+      },
+      {
+        "ms": 131,
+        "pct": 0.42,
+        "name": "prepareRoomStep",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/room-step.js",
+        "line": 10
+      },
+      {
+        "ms": 123,
+        "pct": 0.39,
+        "name": "collect",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-hazards.js",
+        "line": 274
+      },
+      {
+        "ms": 120,
+        "pct": 0.38,
+        "name": "arenaDraft",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 148
+      },
+      {
+        "ms": 116,
+        "pct": 0.37,
+        "name": "act",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/testing/arena-bot-brain.js",
+        "line": 395
+      },
+      {
+        "ms": 114,
+        "pct": 0.36,
+        "name": "CircleIndex",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/spatial-collision-index.js",
+        "line": 7
+      },
+      {
+        "ms": 114,
+        "pct": 0.36,
+        "name": "separateParts",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 621
+      },
+      {
+        "ms": 110,
+        "pct": 0.35,
+        "name": "remainingTimers",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/snapshot-timers.js",
+        "line": 4
+      },
+      {
+        "ms": 100,
+        "pct": 0.32,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1006
+      }
+    ],
+    "inclusive": [
+      {
+        "ms": 31394,
+        "pct": 100,
+        "name": "(root)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 14505,
+        "pct": 46.2,
+        "name": "(idle)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 13461,
+        "pct": 42.88,
+        "name": "processTimers",
+        "file": "node:internal/timers",
+        "line": 603
+      },
+      {
+        "ms": 13457,
+        "pct": 42.86,
+        "name": "listOnTimeout",
+        "file": "node:internal/timers",
+        "line": 623
+      },
+      {
+        "ms": 13382,
+        "pct": 42.63,
+        "name": "run",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/tick-clock.js",
+        "line": 15
+      },
+      {
+        "ms": 13368,
+        "pct": 42.58,
+        "name": "tick",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 2120
+      },
+      {
+        "ms": 13360,
+        "pct": 42.56,
+        "name": "tickOnce",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 2125
+      },
+      {
+        "ms": 5335,
+        "pct": 16.99,
+        "name": "stepRoom",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 2111
+      },
+      {
+        "ms": 5314,
+        "pct": 16.93,
+        "name": "stepRoom",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/room-step.js",
+        "line": 6
+      },
+      {
+        "ms": 4957,
+        "pct": 15.79,
+        "name": "broadcast",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 1927
+      },
+      {
+        "ms": 3562,
+        "pct": 11.35,
+        "name": "step",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1254
+      },
+      {
+        "ms": 3126,
+        "pct": 9.96,
+        "name": "arenaSnapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 314
+      },
+      {
+        "ms": 3080,
+        "pct": 9.81,
+        "name": "snapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1351
+      },
+      {
+        "ms": 2996,
+        "pct": 9.54,
+        "name": "writeArenaBatches",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/game-server.js",
+        "line": 2056
+      },
+      {
+        "ms": 2979,
+        "pct": 9.49,
+        "name": "applyArenaProgress",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 1142
+      },
+      {
+        "ms": 2305,
+        "pct": 7.34,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 1354
+      },
+      {
+        "ms": 1745,
+        "pct": 5.56,
+        "name": "dispatch",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/state-workers.js",
+        "line": 164
+      },
+      {
+        "ms": 1745,
+        "pct": 5.56,
+        "name": "flush",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/state-workers.js",
+        "line": 373
+      },
+      {
+        "ms": 1665,
+        "pct": 5.3,
+        "name": "arenaProgressDraft",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 1202
+      },
+      {
+        "ms": 1586,
+        "pct": 5.05,
+        "name": "prepareRoomStep",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/room-step.js",
+        "line": 10
+      },
+      {
+        "ms": 1393,
+        "pct": 4.44,
+        "name": "hasEffect",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 761
+      },
+      {
+        "ms": 1176,
+        "pct": 3.75,
+        "name": "update",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/testing/arena-test-bots.js",
+        "line": 298
+      },
+      {
+        "ms": 922,
+        "pct": 2.94,
+        "name": "postMessage",
+        "file": "node:internal/worker",
+        "line": 462
+      },
+      {
+        "ms": 777,
+        "pct": 2.47,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/state-workers.js",
+        "line": 175
+      },
+      {
+        "ms": 749,
+        "pct": 2.39,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/state-workers.js",
+        "line": 203
+      },
+      {
+        "ms": 682,
+        "pct": 2.17,
+        "name": "prepareSnapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/profiles/profile-store.js",
+        "line": 640
+      },
+      {
+        "ms": 670,
+        "pct": 2.13,
+        "name": "onStreamRead",
+        "file": "node:internal/stream_base_commons",
+        "line": 171
+      },
+      {
+        "ms": 655,
+        "pct": 2.09,
+        "name": "(garbage collector)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 637,
+        "pct": 2.03,
+        "name": "collectEther",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-constructor/src/server/arena/arena-simulation.js",
+        "line": 990
+      },
+      {
+        "ms": 618,
+        "pct": 1.97,
+        "name": "Readable.push",
+        "file": "node:internal/streams/readable",
+        "line": 395
+      }
+    ],
+    "stacks": [
+      {
+        "ms": 14505,
+        "stack": "(idle) @ :0 <- (root) @ :0"
+      },
+      {
+        "ms": 1393,
+        "stack": "hasEffect @ arena-simulation.js:761 <- <anonymous> @ arena-simulation.js:1354 <- snapshot @ arena-simulation.js:1351 <- arenaSnapshot @ game-server.js:314 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 862,
+        "stack": "postMessage @ worker:462 <- dispatch @ state-workers.js:164 <- flush @ state-workers.js:373 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 782,
+        "stack": "step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 749,
+        "stack": "<anonymous> @ arena-simulation.js:1354 <- snapshot @ arena-simulation.js:1351 <- arenaSnapshot @ game-server.js:314 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 691,
+        "stack": "snapshot @ arena-simulation.js:1351 <- arenaSnapshot @ game-server.js:314 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 655,
+        "stack": "(garbage collector) @ :0 <- (root) @ :0"
+      },
+      {
+        "ms": 403,
+        "stack": "encode @ worker-food-transfer.js:70 <- <anonymous> @ state-workers.js:203 <- <anonymous> @ state-workers.js:175 <- dispatch @ state-workers.js:164 <- flush @ state-workers.js:373 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 359,
+        "stack": "copyRecord @ copy-record.js:6 <- arenaProgressDraft @ profile-store.js:1202 <- applyArenaProgress @ profile-store.js:1142 <- writeArenaBatches @ game-server.js:2056 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 291,
+        "stack": "arenaProgressDraft @ profile-store.js:1202 <- applyArenaProgress @ profile-store.js:1142 <- writeArenaBatches @ game-server.js:2056 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 284,
+        "stack": "collectEther @ arena-simulation.js:990 <- step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 282,
+        "stack": "(program) @ :0 <- (root) @ :0"
+      },
+      {
+        "ms": 235,
+        "stack": "update @ arena-test-bots.js:298 <- prepareRoomStep @ room-step.js:10 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 231,
+        "stack": "moveFeed @ arena-simulation.js:576 <- step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 226,
+        "stack": "writev @ :0 <- writevGeneric @ stream_base_commons:72 <- Socket._writeGeneric @ node:net:1293 <- Socket._writev @ node:net:1330 <- doWrite @ writable:589 <- clearBuffer @ writable:746 <- Writable.uncork @ writable:522 <- sendFrame @ sender.js:566 <- dispatch @ sender.js:506 <- send @ sender.js:354 <- send @ websocket.js:476 <- safeSend @ game-server.js:1221 <- complete @ state-workers.js:234 <- <anonymous> @ state-workers.js:137 <- <anonymous> @ event_target:814 <- <anonymous> @ messageport:19 <- (root) @ :0"
+      },
+      {
+        "ms": 208,
+        "stack": "<anonymous> @ game-server.js:1319 <- emit @ node:events:489 <- receiverOnMessage @ websocket.js:1281 <- emit @ node:events:489 <- dataMessage @ receiver.js:585 <- getData @ receiver.js:480 <- startLoop @ receiver.js:172 <- _write @ receiver.js:96 <- writeOrBuffer @ writable:550 <- _write @ writable:452 <- Writable.write @ writable:506 <- socketOnData @ websocket.js:1437 <- emit @ node:events:489 <- addChunk @ readable:558 <- readableAddChunkPushByteMode @ readable:471 <- Readable.push @ readable:395 <- onStreamRead @ stream_base_commons:171 <- (root) @ :0"
+      },
+      {
+        "ms": 207,
+        "stack": "<anonymous> @ state-workers.js:203 <- <anonymous> @ state-workers.js:175 <- dispatch @ state-workers.js:164 <- flush @ state-workers.js:373 <- broadcast @ game-server.js:1927 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 196,
+        "stack": "moveParts @ arena-simulation.js:685 <- step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 189,
+        "stack": "beginStep @ arena-hazards.js:112 <- step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      },
+      {
+        "ms": 176,
+        "stack": "resolveAbsorptions @ arena-simulation.js:1091 <- step @ arena-simulation.js:1254 <- stepRoom @ room-step.js:6 <- stepRoom @ game-server.js:2111 <- tickOnce @ game-server.js:2125 <- tick @ game-server.js:2120 <- run @ tick-clock.js:15 <- listOnTimeout @ timers:623 <- processTimers @ timers:603 <- (root) @ :0"
+      }
+    ]
+  },
+  "optimization": {
+    "installed": false,
+    "decision": "Do not promote: faster with churned/active effects, slower on an empty effects set. V2 reduces the regression but the warmed comparison still regresses approximately 10% in the empty snapshot microbenchmark.",
+    "linuxV1": [
+      {
+        "baseline": true,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 6000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          149.38801899999999,
+          150.68774399999995,
+          146.61836900000003,
+          141.6821769999999,
+          136.90844700000002
+        ],
+        "medianMs": 146.61836900000003
+      },
+      {
+        "baseline": false,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 6000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          117.66439700000001,
+          124.7446030000001,
+          129.51821200000006,
+          122.43794100000014,
+          111.49937399999999
+        ],
+        "medianMs": 122.43794100000014
+      },
+      {
+        "baseline": true,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 6000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          163.58238899999998,
+          154.62655000000007,
+          152.64177199999995,
+          150.77562899999987,
+          139.35448400000018
+        ],
+        "medianMs": 152.64177199999995
+      },
+      {
+        "baseline": false,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 6000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          112.43947799999995,
+          114.69460700000002,
+          108.53140199999996,
+          112.39183300000002,
+          123.31681100000003
+        ],
+        "medianMs": 112.43947799999995
+      },
+      {
+        "baseline": true,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 6000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          140.11331799999994,
+          196.67305,
+          153.0431910000001,
+          145.8177189999999,
+          144.76645699999995
+        ],
+        "medianMs": 145.8177189999999
+      },
+      {
+        "baseline": false,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 6000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          114.14436899999998,
+          127.64023999999995,
+          146.64420999999993,
+          130.05246699999998,
+          119.65966600000013
+        ],
+        "medianMs": 127.64023999999995
+      }
+    ],
+    "windows": {
+      "bench-baseline.json": {
+        "baseline": true,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 6000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          125.24530000000004,
+          130.9239,
+          137.36540000000002,
+          127.12339999999995,
+          169.2808
+        ],
+        "medianMs": 130.9239
+      },
+      "bench-candidate.json": {
+        "baseline": false,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 6000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          137.7889,
+          96.81270000000006,
+          106.05270000000007,
+          94.99940000000004,
+          93.90419999999995
+        ],
+        "medianMs": 96.81270000000006
+      },
+      "bench-empty-baseline.json": {
+        "baseline": true,
+        "fixture": "60 entities, 400 food, split parts, empty effects",
+        "frames": 6000,
+        "framesHash": "5e826bc4c4c7dc2bbcb6e8c83ce3e6c3432cc3584766d4bd78487a5b72f22be4",
+        "samplesMs": [
+          75.07,
+          68.4334,
+          65.82450000000006,
+          68.71780000000001,
+          77.55550000000005
+        ],
+        "medianMs": 68.71780000000001
+      },
+      "bench-empty-candidate.json": {
+        "baseline": false,
+        "fixture": "60 entities, 400 food, split parts, empty effects",
+        "frames": 6000,
+        "framesHash": "5e826bc4c4c7dc2bbcb6e8c83ce3e6c3432cc3584766d4bd78487a5b72f22be4",
+        "samplesMs": [
+          97.77250000000004,
+          98.87520000000006,
+          81.09849999999994,
+          101.66890000000001,
+          95.07560000000001
+        ],
+        "medianMs": 97.77250000000004
+      },
+      "bench-empty-v2.json": {
+        "baseline": false,
+        "fixture": "60 entities, 400 food, split parts, empty effects",
+        "frames": 6000,
+        "framesHash": "5e826bc4c4c7dc2bbcb6e8c83ce3e6c3432cc3584766d4bd78487a5b72f22be4",
+        "samplesMs": [
+          90.87549999999993,
+          84.67879999999991,
+          83.23659999999995,
+          75.3546,
+          71.19389999999999
+        ],
+        "medianMs": 83.23659999999995
+      },
+      "bench-mixed-v2.json": {
+        "baseline": false,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 6000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          101.71089999999998,
+          102.36130000000003,
+          108.08619999999996,
+          108.1911,
+          99.68529999999998
+        ],
+        "medianMs": 102.36130000000003
+      },
+      "warm-empty-baseline.json": {
+        "baseline": true,
+        "fixture": "60 entities, 400 food, split parts, empty effects",
+        "frames": 25000,
+        "framesHash": "5e826bc4c4c7dc2bbcb6e8c83ce3e6c3432cc3584766d4bd78487a5b72f22be4",
+        "samplesMs": [
+          296.5437999999999,
+          260.0371,
+          225.22129999999993,
+          222.3816999999999,
+          241.6456000000003
+        ],
+        "medianMs": 241.6456000000003
+      },
+      "warm-empty-v2.json": {
+        "baseline": false,
+        "fixture": "60 entities, 400 food, split parts, empty effects",
+        "frames": 25000,
+        "framesHash": "5e826bc4c4c7dc2bbcb6e8c83ce3e6c3432cc3584766d4bd78487a5b72f22be4",
+        "samplesMs": [
+          276.97530000000006,
+          266.22389999999996,
+          245.55089999999996,
+          267.0360000000003,
+          255.76710000000003
+        ],
+        "medianMs": 266.22389999999996
+      },
+      "warm-mixed-baseline.json": {
+        "baseline": true,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 25000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          461.33460000000014,
+          446.25840000000017,
+          438.97350000000006,
+          424.08140000000003,
+          426.14779999999973
+        ],
+        "medianMs": 438.97350000000006
+      },
+      "warm-mixed-v2.json": {
+        "baseline": false,
+        "fixture": "60 entities, 400 food, split parts, mixed/churned effects and expiration",
+        "frames": 25000,
+        "framesHash": "0a791f873cdb85606fe719a14e99588889b09ae16b7315a21a11668e66512363",
+        "samplesMs": [
+          464.6168,
+          372.21169999999984,
+          308.93200000000024,
+          394.2658999999999,
+          427.4513000000002
+        ],
+        "medianMs": 394.2658999999999
+      }
+    },
+    "scope": "Snapshot generation only. Deterministic frame hashes equal within each fixture; these percentages are not whole-game gains.",
+    "next": "Keep this candidate outside main/runtime; profile effect enumeration in real room snapshots and resolve empty-case cost before a realistic mixed load comparison."
+  },
+  "limits": [
+    "No claim that all bugs are absent.",
+    "Real payments, VK/OK launch and physical mobile devices were not tested here.",
+    "No production progress was modified for the tests.",
+    "No historical compensation or 300000-player capacity claim."
+  ]
+}
