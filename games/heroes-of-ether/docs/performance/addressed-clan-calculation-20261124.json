@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T23:50:56.554Z",
+  "at": "2026-11-25T00:07:49.626Z",
   "installed": false,
   "source": "ad3fe82b2e7c1d60a00682e3af8e11b8eb6b2993",
   "change": "Explicit benchmark backend uses ClanArenaProgressShards directly without the full-world preparation replica. Default remains canonical. Real requested worker activity/failures are acceptance criteria.",
@@ -171,12 +171,131 @@
         "revision": 7249
       },
       "testSchemaRemoved": true
+    },
+    "mixed90": {
+      "label": "candidate35-r2-90-10m-alchemy-cpu6",
+      "passed": false,
+      "windows": 10,
+      "assessment": {
+        "targets": {
+          "updatesHz": 19,
+          "tickP95Ms": 100,
+          "stateGapP99Ms": 150,
+          "lobbyP95Ms": 1000,
+          "actionP95Ms": 500
+        },
+        "shortRunMeetsTargets": false,
+        "problems": [],
+        "phases": [
+          {
+            "phase": "combined",
+            "window": 1,
+            "meetsTargets": false,
+            "issues": [
+              "action-delay"
+            ]
+          },
+          {
+            "phase": "combined",
+            "window": 2,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 3,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 4,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 5,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 6,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 7,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 8,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 9,
+            "meetsTargets": true,
+            "issues": []
+          },
+          {
+            "phase": "combined",
+            "window": 10,
+            "meetsTargets": true,
+            "issues": []
+          }
+        ],
+        "scope": "Server and WebSocket clients only; no browser rendering or long-duration guarantee."
+      },
+      "updatesHz": {
+        "min": 19.933594254757978,
+        "max": 20.221475091175027
+      },
+      "tickWorkP95Ms": {
+        "min": 30.038549999997485,
+        "max": 33.72406600002432
+      },
+      "tickWorkMaxMs": 65.23020799999358,
+      "actionP95Ms": {
+        "min": 97.04298800000106,
+        "max": 597.8262099999993
+      },
+      "stateGapMaxMs": 272.8939140000002,
+      "rssMiB": {
+        "min": 1429.79296875,
+        "max": 1798.40234375
+      },
+      "worker": {
+        "jobs": 11894,
+        "conflicts": 0,
+        "failures": 0,
+        "computeMs": 60649.430334999226,
+        "transferMs": 27595.587837006802,
+        "roundTripMs": 101987.86751300111,
+        "residentProfiles": 90,
+        "residentClans": 9,
+        "evictedProfiles": 0,
+        "evictedClans": 0
+      },
+      "acknowledged": 27666,
+      "recovered": 27666,
+      "duplicates": 0,
+      "database": {
+        "matched": true,
+        "revision": 25360
+      },
+      "testSchemaRemoved": true
     }
   },
   "limits": [
     "Direct-clan mixed30+5 and bounded60+5 passed only three minutes each. No paired whole-game speedup or sustained high capacity established.",
     "The authoritative writer and pinned persistence reader still keep complete worlds.",
-    "Bounded60 load did not evict replicas; churn and durable retry are covered by integration tests. Longer mixed90 load is in progress.",
+    "Bounded60 and mixed90 did not evict replicas; churn and durable retry are covered by integration tests. Mixed90 failed the first window action-delay criterion.",
     "No maximum CCU, browser FPS or 300000-player claim."
   ]
 }

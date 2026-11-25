@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-24T23:50:56.818Z",
+  "at": "2026-11-25T00:10:17.224Z",
   "installed": false,
   "change": "Calculation lanes send immutable event/configuration context only when the owning references change. Worker event availability still expires at the batch timestamp. Shared clan input projection is built once per lane per batch.",
   "validation": {
@@ -64,6 +64,20 @@
       }
     ]
   },
+  "fullWindows": {
+    "label": "calculation-context-full-windows",
+    "code": 0,
+    "signal": null,
+    "at": "2026-11-25T00:08:26.729Z",
+    "tests": 2492,
+    "pass": 2489,
+    "fail": 0,
+    "skipped": 3
+  },
+  "fullLinux": {
+    "label": "calculation-context-full-linux",
+    "pending": true
+  },
   "firstAttempts": [
     {
       "label": "calculation-context-r1",
@@ -79,7 +93,7 @@
     }
   ],
   "limitations": [
-    "Full Windows/Linux regressions and realistic mixed load remain pending.",
+    "Linux regressions and realistic mixed load remain pending.",
     "Component benchmark uses 30 profiles, three real worker threads, 64 archived events and 200 measured batches after 20 warmup batches.",
     "Both compared variants use the candidate code; the old context-send policy is forced for the baseline. Context byte counts are IPC payload estimates, not network traffic.",
     "No whole-game CPU, maximum CCU, browser FPS or 300000-player claim."
