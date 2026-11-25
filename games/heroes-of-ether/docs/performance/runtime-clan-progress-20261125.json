@@ -1,0 +1,58 @@
+{
+  "at": "2026-11-25T01:05:43.264Z",
+  "installed": false,
+  "source": "9e09758e04960b7263b6a17960b8e35eb39cd731",
+  "changes": [
+    "Reuses immutable calculation context and shared clan inputs",
+    "Omits repeated copies of passive event archives in arena drafts",
+    "Keeps personal appearance cache independent of clan economy mutations",
+    "Exposes direct addressed clan progress lanes through validated optional startup configuration; supplied default disabled"
+  ],
+  "windows": {
+    "label": "runtime-clan-full-windows",
+    "code": 0,
+    "signal": null,
+    "at": "2026-11-25T01:01:26.029Z",
+    "tests": 2498,
+    "pass": 2495,
+    "fail": 0,
+    "skipped": 3
+  },
+  "linux": {
+    "label": "runtime-clan-full-linux",
+    "code": 0,
+    "tests": 2498,
+    "pass": 2495,
+    "fail": 0,
+    "skipped": 3
+  },
+  "combinedPriorWindows": {
+    "label": "combined-copy-full-windows",
+    "code": 0,
+    "signal": null,
+    "at": "2026-11-25T00:49:53.364Z",
+    "tests": 2495,
+    "pass": 2492,
+    "fail": 0,
+    "skipped": 3
+  },
+  "targeted": {
+    "label": "runtime-clan-config-r1",
+    "pass": 20
+  },
+  "limits": [
+    "Mixed acceptance pending for this combined candidate",
+    "Main writer and PostgreSQL mirror still own a complete world",
+    "No independent room ownership or 300000 CCU claim",
+    "V38 predecessor failed first-minute action delay with 90+5"
+  ],
+  "firstAttempts": [
+    {
+      "label": "combined-copy-targeted-r1",
+      "phase": "launcher",
+      "testExecuted": false,
+      "artifact": "combined-copy-targeted-r1-initialization-failure.json",
+      "reason": "New no-checkout worktree index was empty; initial test launcher failed before tests. Correctly initialized fresh tree before successful rerun."
+    }
+  ]
+}

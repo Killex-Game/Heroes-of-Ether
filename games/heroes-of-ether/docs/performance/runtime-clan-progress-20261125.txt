@@ -14,6 +14,7 @@ fallback. This is not independent simulation ownership or a distributed writer.
 
 Twenty targeted Windows checks passed: startup configuration validation, lazy
 construction without a complete-world replica, clan order/rewards/calendar,
-rollback and durable recovery. Full regressions and mixed load of this combined
-candidate remain pending. Earlier V38 90+5/10min failed first-window action delay.
+rollback and durable recovery. Full Windows and Linux each passed 2495 tests,
+with zero failures and three skipped (2498 total). Mixed load of this combined
+candidate is running. Earlier V38 90+5/10min failed first-window action delay.
 It cannot be presented as sustainable capacity or an installed speedup.
