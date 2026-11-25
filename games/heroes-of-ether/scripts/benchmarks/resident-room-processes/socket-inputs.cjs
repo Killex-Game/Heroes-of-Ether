@@ -5,7 +5,8 @@ const { BoosterError } = require("../../../src/server/boosters/booster-catalog")
 class SocketInputs {
   constructor(room) {
     this.room = room; this.moves = new Map(); this.actions = [];
-    this.metrics = { moves: 0, feed: 0, split: 0, booster: 0, rejected: 0, maxQueue: 0 };
+    this.metrics = { moves: 0, feed: 0, split: 0, booster: 0, rejected: 0, maxQueue: 0,
+      accepted:{feed:0,split:0} };
   }
   connect(ws, index) {
     const p = this.room.players[index];
@@ -49,7 +50,10 @@ class SocketInputs {
     this.moves.clear();
     for (const { playerId, message } of this.actions.splice(0)) {
       try {
-        if (message.type !== "booster") { arena.handleInput(playerId, message, at); continue; }
+        if (message.type !== "booster") {
+          if(arena.handleInput(playerId, message, at))this.metrics.accepted[message.type]++;
+          continue;
+        }
         const p = arena.players.get(playerId);
         if (!p || p.dead || !this.room.readyLives.has(p.lifeId)) throw new BoosterError("Life not committed", 409);
         if (!casts) throw Error("Socket benchmark requires durable casts");

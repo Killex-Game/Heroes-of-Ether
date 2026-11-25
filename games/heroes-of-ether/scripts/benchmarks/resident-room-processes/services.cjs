@@ -6,29 +6,33 @@ const {fork}=require('node:child_process');
 const {loadConfig,safeError}=require('../../../src/server/persistence/postgresql-config');
 const {PostgreSQLState}=require('../../../src/server/persistence/postgresql-state');
 async function startServices(store,root,lobbyTokens,externalBoosterQueue){
-  let app,peer,database,config,sequence=0,closePromise,databaseClosed=false;
+  let app,peer,database,config,chat,sequence=0,closePromise,databaseClosed=false;
   const ask=payload=>new Promise((resolve,reject)=>{
     const id=++sequence,timer=setTimeout(()=>{peer.off('message',receive);reject(Error('Lobby driver timeout'));},30000);
     const receive=m=>{if(m.id!==id)return;clearTimeout(timer);peer.off('message',receive);m.error?reject(Error(m.error)):resolve(m.result);};
     peer.on('message',receive);peer.send({...payload,id});
   });
   try{
+    chat=new (require('../../../src/server/chat/chat-service').ChatService)({now:store.now,
+      filePath:path.join(root,'data/clan-chat.json'),journal:true});
     if(process.env.ROOM_BENCH_DATABASE_ROOT){
       const source=loadConfig(process.env.ROOM_BENCH_DATABASE_ROOT);
       if(!source)throw Error('Missing PostgreSQL source configuration');
       config={...source,enabled:true,schema:'heroether_test_'+randomBytes(10).toString('hex'),sourceId:randomUUID()};
       fs.mkdirSync(path.join(root,'config'),{recursive:true});
       fs.writeFileSync(path.join(root,'config/postgresql.local.json'),JSON.stringify(config),{mode:0o600});
-      database=await require('../database-load-store.cjs').attachTestDatabase(root,store);
+      database=await require('../database-load-store.cjs').attachTestDatabase(root,store,chat);
     }
     if(lobbyTokens.length){
-      app=require('../../../src/server/game-server').createGameServer({profiles:store,events:store.events,autoTick:false,externalBoosterQueue,
+      app=require('../../../src/server/game-server').createGameServer({profiles:store,events:store.events,chat,wallNow:store.now,autoTick:false,externalBoosterQueue,
         maxPlayers:lobbyTokens.length,testBots:{enabled:false,lobbyEnabled:false,
           configPath:path.join(root,'disabled-bots.json'),sessionsPath:path.join(root,'disabled-sessions.json')}});
       app.httpServer.listen(0,'127.0.0.1');await once(app.httpServer,'listening');
       peer=fork(path.join(__dirname,'../room-lobby-clients.cjs'),[],{execArgv:[],stdio:['ignore','ignore','pipe','ipc']});
       peer.stderr.on('data',b=>process.stderr.write(b));
-      await ask({type:'setup',base:'http://127.0.0.1:'+app.httpServer.address().port,tokens:lobbyTokens,profileIds:lobbyTokens.map(token=>store.find(token).id)});
+      await ask({type:'setup',base:'http://127.0.0.1:'+app.httpServer.address().port,tokens:lobbyTokens,
+        profileIds:lobbyTokens.map(token=>store.find(token).id),clanIds:lobbyTokens.map(token=>store.find(token).clanId),
+        alchemyRunId:store.events?.active()?.id});
     }
     return {
       start:async()=>{if(peer)await ask({type:'phase'});},
@@ -41,13 +45,13 @@ async function startServices(store,root,lobbyTokens,externalBoosterQueue){
             if(lobby.pending)throw Error('Pending lobby operations at shutdown');}
           database?.sync.pause();
           await database?.sync.running;
-          if(app)await app.close();else await store.close();
+          if(app)await app.close();else {await store.close();await chat.close();}
           let verification;
           if(database){await database.sync.close();databaseClosed=true;verification=await database.verify();}
           return {lobby,database:verification};
         }finally{
           peer?.kill();database?.sync.pause();
-          if(app)await app.close();else if(!store.journal?.closed)await store.close();
+          if(app)await app.close();else {if(!store.journal?.closed)await store.close();await chat.close();}
           if(database&&!databaseClosed){await database.sync.close(false);databaseClosed=true;}
         }
         })();
@@ -63,7 +67,7 @@ async function startServices(store,root,lobbyTokens,externalBoosterQueue){
         }finally{await db.close();}
       }
     };
-  }catch(error){peer?.kill();database?.sync.pause();if(app)await app.close();await database?.sync.close(false);
+  }catch(error){peer?.kill();database?.sync.pause();if(app)await app.close();else await chat?.close();await database?.sync.close(false);
     throw Error('Isolated services: '+safeError(error));}
 }
 module.exports={startServices};

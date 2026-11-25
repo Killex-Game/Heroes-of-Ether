@@ -38,8 +38,8 @@ class PeerInputs {
   start() {
     if (this.timer) return;
     this.started = performance.now(); this.loop.reset();
-    for (const c of this.clients) { c.feedAt = this.started + 250; c.splitAt = this.started + 1000; c.boosterAt = this.started + 5000 + c.index * 10; }
-    this.timer = setInterval(() => this.tick(performance.now()), 50);
+    for (const c of this.clients) { c.feedAt = this.started + 700; c.splitAt = this.started + 3700; c.boosterAt = this.started + 2000 + c.index * 10; }
+    this.timer = setInterval(() => this.tick(performance.now()), 100);
   }
   tick(at) {
     for (const c of this.clients) {
@@ -49,15 +49,15 @@ class PeerInputs {
       const y = 500 + Math.floor(c.index / 7) * 630 + Math.sin(angle) * 160;
       const common = { spawnSerial: p.spawnSerial };
       this.send(c, { ...common, type: "move", x, y });
-      // Match the browser's 250 ms camera reporting cadence; movement stays 20 Hz.
+      // Camera reports use 250 ms; movement follows the mixed-load 10 Hz canon.
       if (at >= (c.viewportAt || 0)) {
         c.viewportAt = at + 250;
         this.send(c, { type: "viewport", x: p.x, y: p.y, width: 1800, height: 1200 });
       }
-      if (at >= c.feedAt) { c.feedAt = at + 250; this.send(c, { ...common, type: "feed", sequence: ++c.sequence, x, y }); }
-      if (at >= c.splitAt) { c.splitAt = at + 1000; this.send(c, { ...common, type: "split", sequence: ++c.sequence, x, y }); }
+      if (at >= c.feedAt) { c.feedAt = at + 700; this.send(c, { ...common, type: "feed", sequence: ++c.sequence, x, y }); }
+      if (at >= c.splitAt) { c.splitAt = at + 3700; this.send(c, { ...common, type: "split", sequence: ++c.sequence, x, y }); }
       if (at < c.boosterAt || c.pending.size) continue;
-      c.boosterAt = at + 5000;
+      c.boosterAt = at + 2000;
       const other = [...c.players.values()].filter(o => o.id !== p.id && !o.dead && !o.departure)
         .sort((a,b) => Math.hypot(a.x-p.x,a.y-p.y)-Math.hypot(b.x-p.x,b.y-p.y))[0];
       const requestId = randomUUID(), boosterId = c.boosters[c.ordinal++ % c.boosters.length];

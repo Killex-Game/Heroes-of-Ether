@@ -31,6 +31,11 @@ process.on('message',async m=>{
   }else if(m.type==='ack'){
     rooms?.get(m.roomId)?.ack(m);roomClocks.get(m.roomId)?.resume();
   }
+  else if(m.type==='roomProjection'){
+    const room=rooms?.get(m.roomId);
+    if(!room)throw Error('Unknown projection room');
+    require('./room-projections.cjs').applyProjection(room,m);
+  }
   else if(m.type.startsWith('cast')){
     const room = rooms?.get(m.roomId);
     room?.casts?.receive(m);room?.updateBarrier(performance.now());roomClocks.get(m.roomId)?.resume();

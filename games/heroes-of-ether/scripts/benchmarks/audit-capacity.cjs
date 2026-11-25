@@ -14,7 +14,8 @@ function audit(directory) {
     assert(resident.scope.startsWith("isolated resident simulation"), "Unknown report");
     assert.equal(resident.aborted, false); assert.equal(resident.pending, 0);
     assert.equal(resident.writer.errors, 0); assert.equal(resident.casts.failures, 0);
-    summary = { code: 0, evidence: output, mixedSocial: resident.scenario.mixedSocial };
+    summary = { code: 0, evidence: output, mixedSocial: resident.scenario.mixedSocial,
+      realistic:resident.scenario.realistic,lobby:resident.scenario.lobby,scenario:resident.scenario };
   } else {
     assert.equal(runs.length, 1, "Select an output containing exactly one load run");
     summary = JSON.parse(fs.readFileSync(path.join(output, runs[0], "summary.json")));

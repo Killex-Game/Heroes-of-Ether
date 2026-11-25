@@ -1,13 +1,13 @@
 "use strict";
 // Load fixture, not a replacement for authenticated production joins/purchases.
-const { Arena, radiusForMass } = require('../../../src/server/arena/arena-simulation');
+const { Arena, radiusForMass, massLimitForLevel } = require('../../../src/server/arena/arena-simulation');
 const { stepRoom } = require('../../../src/server/arena/room-step');
 const { BOOSTERS, BoosterError } = require('../../../src/server/boosters/booster-catalog');
 const { ArenaStateStream, RoomFoodEncoder } = require('../../../src/server/arena/state-stream');
 const accounts = require('../../../src/server/accounts/account-benefits');
 const { RoomCasts } = require('./room-casts.cjs');
 const readyBoosters = [...BOOSTERS.values()].filter(b=>b.ready).map(b=>b.id);
-const masses = [50,150,5000,15000,30000,65000,125000];
+const masses = [20,50,150,1000,4000,15000,25000,40000,75000,120000];
 function summary(values) {
   const a=[...values].sort((x,y)=>x-y),n=a.length;
   return { n, p50:a[Math.floor(n*.5)]||0,p95:a[Math.floor(n*.95)]||0,p99:a[Math.floor(n*.99)]||0,max:a[n-1]||0 };
@@ -17,10 +17,13 @@ class RoomFixture {
     let seed=907+Number(id.split('-').at(-1));
     const random=()=> (seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296;
     this.id=id;this.epoch=epoch;this.sendProgress=sendProgress;
+    this.wallNow=require('../game-clock.cjs').clock(process.env.ROOM_BENCH_GAME_OFFSET_MS||'0');
+    this.identities=new Map();
     this.arena=new Arena({random,backgroundRandom:random});
     this.lookup=new Map(profiles.map(p=>[p.id,p]));
-    this.profiles={byId:id=>this.lookup.get(id),arenaAppearance:p=>({skinId:p.skinId,appearance:p.appearance,
-      account:accounts.publicAccount(p,Date.now())})};
+    this.profiles={byId:id=>this.lookup.get(id),arenaAppearance:p=>({
+      ...(this.identities.get(p.id)||{skinId:p.skinId,appearance:p.appearance}),
+      account:accounts.publicAccount(p,this.wallNow())})};
     this.pendingLives=[];
     this.respawnDelay=Math.max(0,Number(process.env.ROOM_BENCH_RESPAWN_DELAY_MS)||0);
     this.deadSince=new Map();
@@ -28,9 +31,9 @@ class RoomFixture {
     this.bots={events:[],update:()=>this.pendingLives.splice(0),clearIfIdle:()=>[]};
     this.players=profiles.map((profile,i)=>{
       const p=this.arena.addPlayer(now,'room-'+id+'-player-'+i);
-      Object.assign(p,{profileId:profile.id,name:profile.name,skinId:profile.skinId,level:600,
-        quickSlots:profile.quickSlots,account:accounts.publicAccount(profile,Date.now())});
-      this.populate(p,i,now);return p;
+      Object.assign(p,{profileId:profile.id,name:profile.name,skinId:profile.skinId,level:profile.level,
+        quickSlots:profile.quickSlots,account:accounts.publicAccount(profile,this.wallNow())});
+      this.populate(p,i,now,true);return p;
     });
     this.clients=new Set();this.connectionsByPlayer=new Map();this.encoder=new RoomFoodEncoder();this.outbox=[];this.seq=0;this.tickNo=0;
     this.metrics={ticks:0,pauses:0,boosters:{},progressTypes:{},rejected:0,bytes:0,states:0,maxOutbox:0,respawns:0,reconnections:0,aliveSamples:0,minAlive:profiles.length,maxAlive:0};
@@ -43,15 +46,21 @@ class RoomFixture {
     this.partSamples=0;this.fullSplitSamples=0;
     this.barrier = { reason: null, since: now, casts: 0, progress: 0 };
   }
-  populate(p,i,at) {
+  populate(p,i,at,initial=false) {
+    if(initial){
     const balanced=process.env.ROOM_BENCH_SCENARIO==='balanced-split';
-    const total=balanced?4000:masses[i%masses.length], n=balanced?16:total>=5000 ? (i%2?16:4) : 1;
-    const x=500+i%7*650,y=500+Math.floor(i/7)*630;
+    const total=Math.min(balanced?4000:masses[i%masses.length],massLimitForLevel(p.level)*this.arena.maxParts);
+    const x=250+i%7*480,y=200+Math.floor(i/7)*440;
     Object.assign(p,{protectedUntil:0,x,y,targetX:x,targetY:y});
-    p.parts=Array.from({length:n},(_,j)=>{const mass=Math.floor(total/n)+(j<total%n?1:0);
+    if(balanced){const n=16;p.parts=Array.from({length:n},(_,j)=>{const mass=Math.floor(total/n)+(j<total%n?1:0);
       return {id:p.id+'-s'+p.spawnSerial+'-'+j,mass,
       radius:radiusForMass(mass),x:x+(j%4)*40,y:y+Math.floor(j/4)*40,vx:0,vy:0,mergeAt:at+30000};});
     p.mainPartId=p.parts[0].id;this.arena.syncParts(p);
+    }else require('../seed-arena-parts.cjs').seedParts(this.arena,p,total,p.level);
+    }
+    const profile=this.lookup.get(p.profileId);
+    if(profile){Object.assign(p,this.identities.get(p.profileId));
+      require('../../../src/server/pets/arena-pets').start(p,profile,at,this.wallNow());}
     this.pendingLives.push({type:'lifeStarted',profileId:p.profileId,lifeId:p.lifeId});
   }
   connect(ws,index) {
@@ -122,7 +131,7 @@ class RoomFixture {
       }catch(error){if(!(error instanceof BoosterError))throw error;this.metrics.rejected++;}
     }
     const physicsAt=performance.now();
-    const wallAt=Date.now(), result=stepRoom(this,at,wallAt,this.profiles,35);
+    const wallAt=this.wallNow(), result=stepRoom(this,at,wallAt,this.profiles,30);
     this.phases.physics.push(performance.now()-physicsAt);
     const progress=result.progress.filter(e=>this.lookup.has(e.profileId));
     for (const event of progress) this.metrics.progressTypes[event.type]=(this.metrics.progressTypes[event.type]||0)+1;
