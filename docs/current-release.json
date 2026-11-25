@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261125-clan-layout-copy",
-  "sourceTag": "release/20261125-clan-layout-copy",
-  "sourceCommit": "85cf88dca20dc2f2f958dde45568d998666d39cf",
-  "branch": "codex/20261125-clan-layout",
+  "gameRelease": "20261125-idle-pickup",
+  "sourceTag": "release/20261125-idle-pickup",
+  "sourceCommit": "a14a3408e98c3aa0a233830247c316e56628e3d0",
+  "branch": "codex/20261125-live-load-optimization",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-25T08:13:52.766Z",
+  "entryReopenedAtUtc": "2026-11-25T09:59:20.279Z",
   "runtime": {
-    "gamePid": 928234,
+    "gamePid": 939112,
     "adminPid": 1163,
     "restarts": 0,
     "entryOpen": true,
@@ -96,248 +96,186 @@
     "Actual natural and absorption kills, Premium multiplier, personal cap, arena exit, retry and WAL recovery were checked for daily/weekly clan battles. No missing-credit runtime defect was reproduced.",
     "Clan banner occupies its own row in every view; chat input and settings Save remain reachable. Rounded chat/tables and themed panels follow the home view. Treasury deposits wrap on small screens.",
     "Audited clan transactions and calendar settlement share immutable member/battle ledgers via clan-draft. Every other and unknown future field remains private. Generic callbacks retain full isolation.",
-    "New static boundary check requires explicit affected profiles for production transactWorld callers; development contract documents atomic writes and proportional verification."
+    "New static boundary check requires explicit affected profiles for production transactWorld callers; development contract documents atomic writes and proportional verification.",
+    "Build the ether particle index only when a living non-remnant unlocked player can collect. Preserve mass/ID ordering.",
+    "Stop hazard candidate scans when no eligible body remains, while still publishing contacts and performing the final refill/empty-room cleanup.",
+    "Food motion, expiry, replenishment, all mechanics, progress persistence, graphic assets and private configuration unchanged."
   ],
   "data": {
     "before": {
-      "at": 1795593836482,
-      "revision": 5006132,
-      "digest": "e88a12ad7cd110b032656bd6d5d6b7b72d301a9a0a69745d3f087d23076164a1",
-      "worldHash": "4dc4dde0d97ad266781081c2d135c4312ca495351600df5093714e240ae613e3",
-      "profiles": 1723,
+      "at": 1795600156767,
+      "revision": 5073797,
+      "digest": "f3b2838dbb6fabf4e8f8f20cd3f9128dec341d93add714e0c1a05b2f668e7a0f",
+      "worldHash": "ed167a6e300dcbb31512297deef2e9ad09997d26a7d8c2e447e44db01f66e1ff",
+      "profiles": 1725,
       "clans": 137,
       "fullWorldAndAuxEqual": true,
-      "backup": "/run/heroether-clan-layout-backup-20261125/clan-layout-20261125",
+      "backup": "/run/heroether-load-opt-backup-20261125/load-opt-20261125",
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/clan-layout-20261125/data-before.tar.gz"
+      "durableBackup": "/srv/heroether-test/play/backups/load-opt-20261125/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
       "noCalendarChange": true,
       "expiredChat": 0,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 5006132,
-      "revision": 5006132,
-      "digest": "e88a12ad7cd110b032656bd6d5d6b7b72d301a9a0a69745d3f087d23076164a1",
-      "worldHash": "4dc4dde0d97ad266781081c2d135c4312ca495351600df5093714e240ae613e3",
-      "profiles": 1723,
+      "beforeRevision": 5073797,
+      "revision": 5073797,
+      "digest": "f3b2838dbb6fabf4e8f8f20cd3f9128dec341d93add714e0c1a05b2f668e7a0f",
+      "worldHash": "ed167a6e300dcbb31512297deef2e9ad09997d26a7d8c2e447e44db01f66e1ff",
+      "profiles": 1725,
       "clans": 137
     },
     "backup": {
-      "archive": "/srv/heroether-test/play/backups/clan-layout-20261125/data-before.tar.gz",
-      "sha256": "be34a0368e3f5dc9a082ec19a22693fa4c47070c67b3fecd5d4072bfae9182b4",
-      "bytes": 113225229,
-      "checkpointReserve": 629145600,
-      "rawStagingRetained": "/run/heroether-clan-layout-backup-20261125",
-      "durableArchiveVerified": true
+      "verified": true,
+      "archiveSha256": "54020c6d959636948c340c402c5d78a11c8b22cd9da55c30c2305172fe1da858",
+      "revision": 5073797,
+      "digest": "f3b2838dbb6fabf4e8f8f20cd3f9128dec341d93add714e0c1a05b2f668e7a0f",
+      "worldHash": "ed167a6e300dcbb31512297deef2e9ad09997d26a7d8c2e447e44db01f66e1ff",
+      "profiles": 1725,
+      "clans": 137,
+      "postgresqlArchiveVerified": true
     },
     "storage": {
-      "archive": "/srv/heroether-test/play/backups/clan-layout-20261125/data-before.tar.gz",
-      "sha256": "be34a0368e3f5dc9a082ec19a22693fa4c47070c67b3fecd5d4072bfae9182b4",
-      "bytes": 113225229,
+      "archive": "/srv/heroether-test/play/backups/load-opt-20261125/data-before.tar.gz",
+      "sha256": "54020c6d959636948c340c402c5d78a11c8b22cd9da55c30c2305172fe1da858",
+      "bytes": 113912721,
       "checkpointReserve": 629145600,
-      "rawStagingRetained": "/run/heroether-clan-layout-backup-20261125",
+      "rawStagingRetained": "/run/heroether-load-opt-backup-20261125",
       "durableArchiveVerified": true
     }
   },
   "verification": {
-    "source": "85cf88dca20dc2f2f958dde45568d998666d39cf",
+    "source": "a14a3408e98c3aa0a233830247c316e56628e3d0",
     "allRequiredChecksPassed": true,
-    "totalTests": 2532,
-    "totalPassed": 2529,
+    "totalTests": 2535,
+    "totalPassed": 2532,
     "totalSkipped": 3,
     "unresolvedFailures": 0,
-    "realPostgreSQLPassed": 12,
-    "windowsPassed": 2529,
-    "method": "One full suite on each OS; final generic-callback isolation guard and added test verified by 52-test focused reruns. Linux full source predates the one added generic callback test. Runtime diff restricted to audited draft selection; no full suite rerun.",
-    "rows": [
+    "windowsPassed": 63,
+    "replayFrames": 14400,
+    "mixedAcknowledged": 1852,
+    "mixedRecovered": 1852,
+    "mixedDuplicates": 0,
+    "method": "One full Linux regression on final code; targeted Windows physics tests; deterministic identical replay; mixed local HTTP/WS and WAL recovery. No repeated full suite or unrelated UI tests.",
+    "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json"
+  },
+  "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json",
+  "previousRelease": "20261125-clan-layout-copy",
+  "notes": "Оптимизация продолжается. Убраны пустые поиски подбора. Точный replay14400 кадров, смешанная нагрузка30+5/2мин и сохранность1852 ACK проверены. Полные данные/PG сверены при установке. 300000CCU и устранение всех лагов не доказаны. Все резервные копии сохранять.",
+  "performance": {
+    "status": "Measured live baseline; exact deterministic physics replay and short local mixed load. No maximum CCU or overall production speedup established.",
+    "beforeInstall": [
       {
-        "name": "windows-full",
-        "tests": 2532,
-        "pass": 2529,
-        "skip": 3,
-        "fail": 0,
-        "sha256": "f0b223e52ecb5946d00fea53c2c756cb91708556d44cb43348006abba6ee48b7"
+        "at": "2026-11-25T09:25:57.188Z",
+        "online": {
+          "arena": 9,
+          "lobby": 3,
+          "total": 12
+        },
+        "arena": {
+          "rooms": 7,
+          "activePlayers": 52,
+          "parts": 211,
+          "connections": 9
+        },
+        "tickP95Ms": 39.95
       },
       {
-        "name": "linux-full-1",
-        "tests": 2531,
-        "pass": 2528,
-        "skip": 3,
-        "fail": 0,
-        "sha256": "265f8a038f9c04dd0d2bedd5296ca9ef97912648548a9eaa4b33abbc9d745987"
+        "at": "2026-11-25T09:26:07.218Z",
+        "online": {
+          "arena": 9,
+          "lobby": 4,
+          "total": 13
+        },
+        "arena": {
+          "rooms": 7,
+          "activePlayers": 51,
+          "parts": 195,
+          "connections": 9
+        },
+        "tickP95Ms": 41.18
       },
       {
-        "name": "copy-final-2",
-        "tests": 52,
-        "pass": 52,
-        "skip": 0,
-        "fail": 0,
-        "sha256": "5d1caf0c3290cab27da52906a531a44cec5f6fde490f6f7ed7615f7ad2340e12"
+        "at": "2026-11-25T09:26:17.233Z",
+        "online": {
+          "arena": 9,
+          "lobby": 4,
+          "total": 13
+        },
+        "arena": {
+          "rooms": 7,
+          "activePlayers": 52,
+          "parts": 195,
+          "connections": 9
+        },
+        "tickP95Ms": 42.16
       },
       {
-        "name": "copy-final-linux",
-        "tests": 52,
-        "pass": 52,
-        "skip": 0,
-        "fail": 0,
-        "sha256": "f064fd062e0ad4e63fed513c09d69c95aa3e74b0252c1ae598a75fd2afbc7834"
+        "at": "2026-11-25T09:26:27.260Z",
+        "online": {
+          "arena": 9,
+          "lobby": 4,
+          "total": 13
+        },
+        "arena": {
+          "rooms": 7,
+          "activePlayers": 53,
+          "parts": 189,
+          "connections": 9
+        },
+        "tickP95Ms": 43.25
       },
       {
-        "name": "real-pg",
-        "tests": 12,
-        "pass": 12,
-        "skip": 0,
-        "fail": 0,
-        "sha256": "aec3e643b6677247e749b1687a65cad4ab3b18a8987e323dc522e30364637f7a"
+        "at": "2026-11-25T09:26:37.274Z",
+        "online": {
+          "arena": 9,
+          "lobby": 4,
+          "total": 13
+        },
+        "arena": {
+          "rooms": 7,
+          "activePlayers": 52,
+          "parts": 163,
+          "connections": 9
+        },
+        "tickP95Ms": 43.98
       },
       {
-        "name": "browser",
-        "contexts": 12,
-        "sha256": "ea726be26171f6a6719273308abf42b87d8ed9d7aea84d07c590bf841e933e6f"
+        "at": "2026-11-25T09:26:47.308Z",
+        "online": {
+          "arena": 9,
+          "lobby": 4,
+          "total": 13
+        },
+        "arena": {
+          "rooms": 7,
+          "activePlayers": 52,
+          "parts": 173,
+          "connections": 9
+        },
+        "tickP95Ms": 43.87
+      },
+      {
+        "at": "2026-11-25T09:26:57.321Z",
+        "online": {
+          "arena": 9,
+          "lobby": 4,
+          "total": 13
+        },
+        "arena": {
+          "rooms": 7,
+          "activePlayers": 53,
+          "parts": 164,
+          "connections": 9
+        },
+        "tickP95Ms": 43.12
       }
     ],
-    "browserContexts": 12,
-    "httpExactChecks": 8,
-    "localHttpExactChecks": 4,
-    "report": "games/heroes-of-ether/docs/performance/clan-layout-copy-20261125.json"
-  },
-  "report": "games/heroes-of-ether/docs/performance/clan-layout-copy-20261125.json",
-  "previousRelease": "20261125-gameplay-fixes",
-  "notes": "Optimization resumed by owner. Bounded-copy audit and clan layout fixes installed; immutable ledger sharing, regression, PostgreSQL and full live data equality verified. No capacity ladder or 300000 CCU claim.",
-  "performance": {
-    "status": "No capacity tests for this correctness release; remaining measurements below belong to the prior optimized release.",
-    "controlledSnapshotBenchmark": {
-      "inputBytes": 197039882,
-      "profiles": 1706,
-      "clans": 135,
-      "linuxCpuQuota": 1,
-      "baselineMs": [
-        17283.36,
-        16543.34,
-        16601.14,
-        16741.93
-      ],
-      "cachedMs": [
-        18296.3,
-        3674.56,
-        3252.55,
-        4677.91
-      ],
-      "allFourManifestsEqual": true,
-      "scope": "Packing only, not game tick or capacity"
-    },
-    "beforeInstall": {
-      "windowMs": 60000,
-      "ticks": 1200,
-      "advancedTicks": 1200,
-      "updatesHz": 20,
-      "tickWorkMs": {
-        "count": 1200,
-        "p50": 15.38,
-        "p95": 37.93,
-        "p99": 56.33,
-        "max": 71.35
-      },
-      "tickIntervalMs": {
-        "count": 1200,
-        "p50": 50.01,
-        "p95": 52.73,
-        "p99": 62.49,
-        "max": 93.73
-      },
-      "eventLoop": {
-        "windowMs": 9999.3,
-        "resolutionMs": 20,
-        "samples": 379,
-        "p95Ms": 42.47,
-        "p99Ms": 64.95,
-        "maxMs": 87.36
-      },
-      "capturedAt": 1795423467616,
-      "uptimeSeconds": 29963,
-      "targetTickMs": 50,
-      "arena": {
-        "rooms": 3,
-        "activePlayers": 51,
-        "parts": 167,
-        "connections": 5
-      },
-      "online": {
-        "arena": 5,
-        "lobby": 1,
-        "total": 6
-      },
-      "memoryMiB": {
-        "resident": 3729,
-        "heapUsed": 460,
-        "limit": 5120
-      },
-      "persistence": {
-        "arenaBatches": 1,
-        "queuedActions": 0,
-        "paused": false,
-        "staging": false,
-        "walRevision": 3688872,
-        "pendingWalBytes": 4250980,
-        "maxWalBytes": 67108864
-      },
-      "stateWorkers": {
-        "jobs": 538169,
-        "replaced": 17,
-        "workerMs": 951223.7041085772,
-        "cloneMs": 283138.9335595635,
-        "turnaroundMs": 3261406.312270548,
-        "failures": 0,
-        "overflowStreams": 0,
-        "retiredRooms": 46,
-        "drained": 0,
-        "delivered": 755277,
-        "deliveryMs": 71408.42383400878
-      }
-    },
     "capacityVerified": false,
-    "fullSamples": "artifacts/runtime-optimization-20261123",
-    "previousReleaseMeasurement": {
-      "before": {
-        "p95": 20.67,
-        "hz": 19.98,
-        "arena": {
-          "rooms": 3,
-          "activePlayers": 22,
-          "parts": 66,
-          "connections": 4
-        },
-        "online": {
-          "arena": 4,
-          "lobby": 0,
-          "total": 4
-        }
-      },
-      "settledSamples": 8,
-      "settledP95Range": [
-        12.14,
-        14.1
-      ],
-      "afterLast": {
-        "hz": 20,
-        "arena": {
-          "rooms": 3,
-          "activePlayers": 21,
-          "parts": 49,
-          "connections": 1
-        },
-        "online": {
-          "arena": 1,
-          "lobby": 1,
-          "total": 2
-        },
-        "queuedActions": 0
-      },
-      "fullSamples": "artifacts/avatar-bottom-fit-20261123/performance-after.json",
-      "comparableControlledBenchmark": false
-    }
+    "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json",
+    "previousReleaseMeasurement": "games/heroes-of-ether/docs/performance/clan-layout-copy-20261125.json"
   },
   "staticPortraitUpdate": {
     "at": "2026-11-23T00:51:37.226Z",
@@ -1086,398 +1024,16 @@
     "foodTransferInstalled": false
   },
   "latestObservation": {
-    "source": "clan-layout-20261125/live-after.json",
-    "samples": [
-      {
-        "at": 1795594473062,
-        "metrics": {
-          "windowMs": 60000,
-          "ticks": 793,
-          "advancedTicks": 696,
-          "updatesHz": 11.6,
-          "tickWorkMs": {
-            "count": 793,
-            "p50": 0.84,
-            "p95": 1.26,
-            "p99": 2.86,
-            "max": 23.76
-          },
-          "tickIntervalMs": {
-            "count": 793,
-            "p50": 49.92,
-            "p95": 50.96,
-            "p99": 51.77,
-            "max": 123454.23
-          },
-          "eventLoop": {
-            "windowMs": 10009.73,
-            "resolutionMs": 20,
-            "samples": 491,
-            "p95Ms": 20.73,
-            "p99Ms": 21.33,
-            "maxMs": 35.29
-          },
-          "capturedAt": 1795594473054,
-          "uptimeSeconds": 322,
-          "targetTickMs": 50,
-          "arena": {
-            "rooms": 3,
-            "activePlayers": 0,
-            "parts": 0,
-            "connections": 0
-          },
-          "online": {
-            "arena": 0,
-            "lobby": 2,
-            "total": 2
-          },
-          "memoryMiB": {
-            "resident": 1844,
-            "heapUsed": 475,
-            "limit": 5120
-          },
-          "persistence": {
-            "arenaBatches": 0,
-            "queuedActions": 0,
-            "paused": false,
-            "staging": false,
-            "walRevision": 5006136,
-            "pendingWalBytes": 1128382,
-            "maxWalBytes": 67108864
-          },
-          "stateWorkers": {
-            "jobs": 0,
-            "replaced": 0,
-            "workerMs": 0,
-            "cloneMs": 0,
-            "turnaroundMs": 0,
-            "failures": 0,
-            "overflowStreams": 0,
-            "retiredRooms": 0,
-            "drained": 0,
-            "delivered": 0,
-            "deliveryMs": 0
-          }
-        },
-        "database": {
-          "connected": true,
-          "error": null,
-          "syncAgeMs": 9069
-        }
-      },
-      {
-        "at": 1795594478071,
-        "metrics": {
-          "windowMs": 60000,
-          "ticks": 893,
-          "advancedTicks": 796,
-          "updatesHz": 13.27,
-          "tickWorkMs": {
-            "count": 893,
-            "p50": 0.83,
-            "p95": 1.22,
-            "p99": 2.46,
-            "max": 23.76
-          },
-          "tickIntervalMs": {
-            "count": 893,
-            "p50": 49.92,
-            "p95": 50.93,
-            "p99": 51.69,
-            "max": 123454.23
-          },
-          "eventLoop": {
-            "windowMs": 10009.73,
-            "resolutionMs": 20,
-            "samples": 491,
-            "p95Ms": 20.73,
-            "p99Ms": 21.33,
-            "maxMs": 35.29
-          },
-          "capturedAt": 1795594478069,
-          "uptimeSeconds": 327,
-          "targetTickMs": 50,
-          "arena": {
-            "rooms": 3,
-            "activePlayers": 0,
-            "parts": 0,
-            "connections": 0
-          },
-          "online": {
-            "arena": 0,
-            "lobby": 2,
-            "total": 2
-          },
-          "memoryMiB": {
-            "resident": 1845,
-            "heapUsed": 473,
-            "limit": 5120
-          },
-          "persistence": {
-            "arenaBatches": 0,
-            "queuedActions": 0,
-            "paused": false,
-            "staging": false,
-            "walRevision": 5006137,
-            "pendingWalBytes": 1130847,
-            "maxWalBytes": 67108864
-          },
-          "stateWorkers": {
-            "jobs": 0,
-            "replaced": 0,
-            "workerMs": 0,
-            "cloneMs": 0,
-            "turnaroundMs": 0,
-            "failures": 0,
-            "overflowStreams": 0,
-            "retiredRooms": 0,
-            "drained": 0,
-            "delivered": 0,
-            "deliveryMs": 0
-          }
-        },
-        "database": {
-          "connected": true,
-          "error": null,
-          "syncAgeMs": 14078
-        }
-      },
-      {
-        "at": 1795594483076,
-        "metrics": {
-          "windowMs": 60000,
-          "ticks": 993,
-          "advancedTicks": 896,
-          "updatesHz": 14.93,
-          "tickWorkMs": {
-            "count": 993,
-            "p50": 0.82,
-            "p95": 1.21,
-            "p99": 1.81,
-            "max": 23.76
-          },
-          "tickIntervalMs": {
-            "count": 993,
-            "p50": 49.91,
-            "p95": 50.93,
-            "p99": 51.77,
-            "max": 123454.23
-          },
-          "eventLoop": {
-            "windowMs": 10004.5,
-            "resolutionMs": 20,
-            "samples": 491,
-            "p95Ms": 21.12,
-            "p99Ms": 21.4,
-            "maxMs": 31.47
-          },
-          "capturedAt": 1795594483075,
-          "uptimeSeconds": 332,
-          "targetTickMs": 50,
-          "arena": {
-            "rooms": 3,
-            "activePlayers": 0,
-            "parts": 0,
-            "connections": 0
-          },
-          "online": {
-            "arena": 0,
-            "lobby": 2,
-            "total": 2
-          },
-          "memoryMiB": {
-            "resident": 1846,
-            "heapUsed": 478,
-            "limit": 5120
-          },
-          "persistence": {
-            "arenaBatches": 0,
-            "queuedActions": 0,
-            "paused": false,
-            "staging": false,
-            "walRevision": 5006138,
-            "pendingWalBytes": 1131266,
-            "maxWalBytes": 67108864
-          },
-          "stateWorkers": {
-            "jobs": 0,
-            "replaced": 0,
-            "workerMs": 0,
-            "cloneMs": 0,
-            "turnaroundMs": 0,
-            "failures": 0,
-            "overflowStreams": 0,
-            "retiredRooms": 0,
-            "drained": 0,
-            "delivered": 0,
-            "deliveryMs": 0
-          }
-        },
-        "database": {
-          "connected": true,
-          "error": null,
-          "syncAgeMs": 19084
-        }
-      },
-      {
-        "at": 1795594488082,
-        "metrics": {
-          "windowMs": 60000,
-          "ticks": 1093,
-          "advancedTicks": 996,
-          "updatesHz": 16.6,
-          "tickWorkMs": {
-            "count": 1093,
-            "p50": 0.82,
-            "p95": 1.21,
-            "p99": 1.63,
-            "max": 23.76
-          },
-          "tickIntervalMs": {
-            "count": 1093,
-            "p50": 49.9,
-            "p95": 50.92,
-            "p99": 51.77,
-            "max": 123454.23
-          },
-          "eventLoop": {
-            "windowMs": 10004.5,
-            "resolutionMs": 20,
-            "samples": 491,
-            "p95Ms": 21.12,
-            "p99Ms": 21.4,
-            "maxMs": 31.47
-          },
-          "capturedAt": 1795594488081,
-          "uptimeSeconds": 337,
-          "targetTickMs": 50,
-          "arena": {
-            "rooms": 3,
-            "activePlayers": 0,
-            "parts": 0,
-            "connections": 0
-          },
-          "online": {
-            "arena": 0,
-            "lobby": 2,
-            "total": 2
-          },
-          "memoryMiB": {
-            "resident": 1846,
-            "heapUsed": 475,
-            "limit": 5120
-          },
-          "persistence": {
-            "arenaBatches": 0,
-            "queuedActions": 0,
-            "paused": false,
-            "staging": false,
-            "walRevision": 5006139,
-            "pendingWalBytes": 1132450,
-            "maxWalBytes": 67108864
-          },
-          "stateWorkers": {
-            "jobs": 0,
-            "replaced": 0,
-            "workerMs": 0,
-            "cloneMs": 0,
-            "turnaroundMs": 0,
-            "failures": 0,
-            "overflowStreams": 0,
-            "retiredRooms": 0,
-            "drained": 0,
-            "delivered": 0,
-            "deliveryMs": 0
-          }
-        },
-        "database": {
-          "connected": true,
-          "error": null,
-          "syncAgeMs": 24089
-        }
-      },
-      {
-        "at": 1795594493088,
-        "metrics": {
-          "windowMs": 60000,
-          "ticks": 1188,
-          "advancedTicks": 1096,
-          "updatesHz": 18.27,
-          "tickWorkMs": {
-            "count": 1188,
-            "p50": 0.81,
-            "p95": 1.19,
-            "p99": 1.62,
-            "max": 23.76
-          },
-          "tickIntervalMs": {
-            "count": 1188,
-            "p50": 49.89,
-            "p95": 50.9,
-            "p99": 51.58,
-            "max": 410.81
-          },
-          "eventLoop": {
-            "windowMs": 10000.48,
-            "resolutionMs": 20,
-            "samples": 490,
-            "p95Ms": 21.17,
-            "p99Ms": 21.41,
-            "maxMs": 28.54
-          },
-          "capturedAt": 1795594493087,
-          "uptimeSeconds": 342,
-          "targetTickMs": 50,
-          "arena": {
-            "rooms": 3,
-            "activePlayers": 0,
-            "parts": 0,
-            "connections": 0
-          },
-          "online": {
-            "arena": 0,
-            "lobby": 3,
-            "total": 3
-          },
-          "memoryMiB": {
-            "resident": 1852,
-            "heapUsed": 475,
-            "limit": 5120
-          },
-          "persistence": {
-            "arenaBatches": 0,
-            "queuedActions": 0,
-            "paused": false,
-            "staging": false,
-            "walRevision": 5006139,
-            "pendingWalBytes": 1132450,
-            "maxWalBytes": 67108864
-          },
-          "stateWorkers": {
-            "jobs": 0,
-            "replaced": 0,
-            "workerMs": 0,
-            "cloneMs": 0,
-            "turnaroundMs": 0,
-            "failures": 0,
-            "overflowStreams": 0,
-            "retiredRooms": 0,
-            "drained": 0,
-            "delivered": 0,
-            "deliveryMs": 0
-          }
-        },
-        "database": {
-          "connected": true,
-          "error": null,
-          "syncAgeMs": 29095
-        }
-      }
-    ],
-    "scope": "Post-install health only, 0 arena players; not capacity or an A/B comparison."
+    "source": "a14a3408e98c3aa0a233830247c316e56628e3d0",
+    "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json",
+    "scope": "Live 60-second baseline and post-deploy health observations; changed room/player mix, not a controlled whole-game speedup."
   },
-  "previousInstalledRelease": "20261125-treasury-clan-results",
-  "backendSourceCommit": "85cf88dca20dc2f2f958dde45568d998666d39cf",
+  "previousInstalledRelease": {
+    "release": "20261125-clan-layout-copy",
+    "sourceCommit": "85cf88dca20dc2f2f958dde45568d998666d39cf",
+    "report": "games/heroes-of-ether/docs/performance/clan-layout-copy-20261125.json"
+  },
+  "backendSourceCommit": "a14a3408e98c3aa0a233830247c316e56628e3d0",
   "calendarIndexUpdate": {
     "installed": true,
     "published": true,
@@ -3221,39 +2777,12 @@
     }
   },
   "latestCapacityValidation": {
-    "sourceCommit": "416cef4c3784b5fdf11df8d0b4fa78ec0642f5e8",
-    "scope": "Three ten-minute mixed scenarios on stated platforms, not maximum CCU",
-    "runs": [
-      {
-        "scenario": "Historical 30 arena + 5 lobby; 10 minutes; 3 CPU including generators",
-        "platform": "Linux VPS",
-        "allWindowsPassed": true,
-        "ack": 9545,
-        "pgMatched": true
-      },
-      {
-        "scenario": "60 arena + 5 lobby; 10 minutes; 6 CPU including generators",
-        "platform": "Linux VPS",
-        "allWindowsPassed": true,
-        "ack": 17407,
-        "pgMatched": true
-      },
-      {
-        "scenario": "Alchemy 30 arena + 5 lobby; 10 minutes; real separate PostgreSQL schema",
-        "platform": "Windows local",
-        "allWindowsPassed": true,
-        "ack": 9531,
-        "pgMatched": true
-      }
-    ],
-    "limitations": [
-      "Not maximum CCU and not 300000-player readiness",
-      "Linux quotas include load generators; Windows alchemy result is not Linux capacity evidence",
-      "Ten-minute runs are not 24-hour stability evidence",
-      "60-player tick p95 still above 25 ms optimization target",
-      "Checkpoint worker cache and retained WAL-window leases are separate uninstalled candidates",
-      "No new browser-rendering or real-device capacity proof"
-    ]
+    "sourceCommit": "a14a3408e98c3aa0a233830247c316e56628e3d0",
+    "scope": "Local Windows mixed 30+5, two minutes; not max CCU",
+    "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json",
+    "acknowledged": 1852,
+    "recovered": 1852,
+    "duplicates": 0
   },
   "swordStabilityUpdate": {
     "installed": true,
@@ -34374,5 +33903,10 @@
     ],
     "artifactDirectory": "artifacts/clan-layout-20261125",
     "developmentContract": "docs/world-mutation-contract.txt"
+  },
+  "idlePickupUpdate": {
+    "release": "20261125-idle-pickup",
+    "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json",
+    "sourceCommit": "a14a3408e98c3aa0a233830247c316e56628e3d0"
   }
 }
