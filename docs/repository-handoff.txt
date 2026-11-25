@@ -1,3 +1,10 @@
+Установлен 20261125-friday-constructor
+Source ae0ed92f20fe479cea116a0c7a02fd129d7d92e0; tag release/20261125-friday-constructor.
+Отчёт: games/heroes-of-ether/docs/performance/friday-constructor-20261125.json.
+Админка: конструктор недельных пятничных акций. Текущие данные и расписание прежние; новые правки версионируются и сохраняются с журналом. Все backup сохранять.
+
+Предыдущие выпуски:
+
 Установлено 20261125-friday-shields
 Source 1398289b4e991666c8fa9de2b9df38f273feb48c; tag release/20261125-friday-shields.
 Отчёт: games/heroes-of-ether/docs/performance/friday-shields-20261125.json.

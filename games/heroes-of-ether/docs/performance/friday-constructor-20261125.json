@@ -1,0 +1,220 @@
+{
+  "date": "2026-11-25",
+  "status": "installed",
+  "release": "20261125-friday-constructor",
+  "sourceCommit": "ae0ed92f20fe479cea116a0c7a02fd129d7d92e0",
+  "changes": [
+    "Owner editor for all 26 weekly Friday offers: name, votes, currency/exact booster composition, per-occurrence purchase limit; ordered subset, Moscow start time, duration, repeat and pause. Defaults unchanged until edited.",
+    "Durable immutable configuration branch and audit with optimistic revision and request receipts; no full-world or player-table clone. Compiled settings cache is keyed by branch identity.",
+    "Server-authoritative contents and quote revision; stale confirmation rejected, successful replay retains original payment price and cannot grant twice. Existing purchase and achievement transactions retained.",
+    "Correct Russian vote labels, including 2 голоса, in currency packages, promotion buttons and payment confirmation."
+  ],
+  "verification": {
+    "source": "ae0ed92f20fe479cea116a0c7a02fd129d7d92e0",
+    "allRequiredChecksPassed": true,
+    "totalTests": 2546,
+    "totalPassed": 2543,
+    "totalSkipped": 3,
+    "focused": {
+      "tests": 24,
+      "pass": 24,
+      "skipped": 0
+    },
+    "realPostgreSQL": true,
+    "browsers": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "independent-admin-save",
+          "admin-layout-1440",
+          "admin-layout-390",
+          "pause-resume",
+          "player-dynamic-offer-mobile-checkout",
+          "ether-pack-2-votes"
+        ],
+        "errors": [],
+        "missing": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "independent-admin-save",
+          "admin-layout-1440",
+          "admin-layout-390",
+          "pause-resume",
+          "player-dynamic-offer-mobile-checkout",
+          "ether-pack-2-votes"
+        ],
+        "errors": [],
+        "missing": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "independent-admin-save",
+          "admin-layout-1440",
+          "admin-layout-390",
+          "pause-resume",
+          "player-dynamic-offer-mobile-checkout",
+          "ether-pack-2-votes"
+        ],
+        "errors": [],
+        "missing": []
+      }
+    ],
+    "browserChecks": 18,
+    "unresolvedFailures": 0,
+    "method": "One full Linux regression; targeted final runtime refinement and isolated real PostgreSQL rollback/read; three browser engines via independent control server. Initial fixture and browser setup failures retained.",
+    "windowsFocused": {
+      "tests": 26,
+      "pass": 26
+    },
+    "windowsRefinement": {
+      "tests": 20,
+      "pass": 20
+    },
+    "initialFailures": [
+      "New test expected obsolete base price 3 instead of existing 7; corrected assertion only.",
+      "WAL test cleanup removed the temporary directory before closing the journal; final test closes before cleanup.",
+      "Chromium headless-shell was absent; used installed Chrome.",
+      "Browser fixture encountered automatic offer/daily reward dialogs; seeded already-viewed/current-day state. Original logs retained."
+    ]
+  },
+  "deployment": {
+    "staged": {
+      "release": "/srv/heroether-test/play/releases/20261125-friday-constructor",
+      "sourceCommit": "ae0ed92f20fe479cea116a0c7a02fd129d7d92e0",
+      "files": 2641,
+      "changed": 16,
+      "previousReleaseUnchanged": true,
+      "protectedGraphicsUnchanged": true,
+      "commentsRemoved": 211
+    },
+    "opened": {
+      "at": 1795617601250,
+      "gamePid": 968323,
+      "adminPid": 1163,
+      "revision": 5242724,
+      "generation": 8095,
+      "entryOpened": true,
+      "backend": "postgresql",
+      "exactVerificationWhilePaused": true
+    },
+    "health": {
+      "at": "2026-11-25T14:41:25.033Z",
+      "entryOpen": true,
+      "databaseHealthy": true,
+      "revision": 5242735,
+      "gamePid": 968323,
+      "adminPid": 1163,
+      "candidateInstalled": true
+    },
+    "sourceVerification": {
+      "unchanged": 2602,
+      "mismatches": []
+    },
+    "before": {
+      "at": 1795616908370,
+      "revision": 5242724,
+      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
+      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
+      "profiles": 1726,
+      "clans": 137,
+      "fullWorldAndAuxEqual": true,
+      "backup": "/run/heroether-friday-constructor-backup-20261125/friday-constructor-20261125",
+      "backupEqual": true,
+      "preservedFormatVerified": true,
+      "durableBackup": "/srv/heroether-test/play/backups/friday-constructor-20261125/data-before.tar.gz"
+    },
+    "after": {
+      "calendarReplayExact": true,
+      "noCalendarChange": true,
+      "expiredChat": 0,
+      "allOtherFieldsEqual": true,
+      "beforeRevision": 5242724,
+      "revision": 5242724,
+      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
+      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
+      "profiles": 1726,
+      "clans": 137
+    },
+    "backup": {
+      "verified": true,
+      "archiveSha256": "ccee7b49c55824c8271baada649eaa55ad7a9042d06dfa5bf795eb69e2aac91a",
+      "revision": 5242724,
+      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
+      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
+      "profiles": 1726,
+      "clans": 137,
+      "postgresqlArchiveVerified": true
+    },
+    "storage": {
+      "archive": "/srv/heroether-test/play/backups/friday-constructor-20261125/data-before.tar.gz",
+      "sha256": "ccee7b49c55824c8271baada649eaa55ad7a9042d06dfa5bf795eb69e2aac91a",
+      "bytes": 116759934,
+      "checkpointReserve": 629145600,
+      "rawStagingRetained": "/run/heroether-friday-constructor-backup-20261125",
+      "durableArchiveVerified": true
+    },
+    "database": {
+      "ok": true,
+      "revision": 5242724,
+      "generation": 8095,
+      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
+      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
+      "profiles": 1726,
+      "clans": 137,
+      "fullWorldAndAuxEqual": true,
+      "calendarComparisonRevalidated": true
+    },
+    "http": {
+      "at": "2026-11-25T14:41:24.979Z",
+      "httpFiles": [
+        "public/admin.html",
+        "public/index.html",
+        "public/shared/virtual-product-catalog.js",
+        "public/styles/owner-promotions.css",
+        "public/ui/admin/owner-dashboard.js",
+        "public/ui/admin/owner-panel.js",
+        "public/ui/admin/weekend-promotions.js",
+        "public/ui/shop/currency-purchase-dialog.js",
+        "public/ui/shop/mock-payment-dialog.js",
+        "public/ui/shop/promotion-dialog.js"
+      ],
+      "ownerEditorReachable": true,
+      "unauthorizedStatus": 401,
+      "offers": 26,
+      "settingsRevision": 0,
+      "externalHttpsVerified": true
+    }
+  },
+  "localhost": {
+    "pid": 10812,
+    "port": 3104,
+    "dataIsolated": true,
+    "fullWorldEqual": true,
+    "auxiliaryEqual": true,
+    "revision": 25,
+    "entryOpen": true,
+    "experimentalPort3000Untouched": true,
+    "httpFiles": [
+      "public/admin.html",
+      "public/index.html",
+      "public/shared/virtual-product-catalog.js",
+      "public/styles/owner-promotions.css",
+      "public/ui/admin/owner-dashboard.js",
+      "public/ui/admin/owner-panel.js",
+      "public/ui/admin/weekend-promotions.js",
+      "public/ui/shop/currency-purchase-dialog.js",
+      "public/ui/shop/mock-payment-dialog.js",
+      "public/ui/shop/promotion-dialog.js"
+    ]
+  },
+  "limitations": [
+    "Editor covers the weekly 26-slot cycle, not the Black Friday event.",
+    "Uses existing mock purchase mechanism; no real VK charges tested or new payment provider added.",
+    "One full Linux suite has three explicitly skipped real-database suites; final focused run includes an isolated real PostgreSQL test for the new branch and purchases.",
+    "No new maximum-online or FPS claim; protected artwork and existing arena optimizations retained.",
+    "Pause does not shift the calendar; changing first Friday starts a new occurrence identity."
+  ]
+}

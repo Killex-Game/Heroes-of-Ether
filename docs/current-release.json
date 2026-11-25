@@ -1,16 +1,16 @@
 {
   "repository": "https://github.com/Killex-Game/Heroes-of-Ether.git",
-  "gameRelease": "20261125-friday-shields",
-  "sourceTag": "release/20261125-friday-shields",
-  "sourceCommit": "1398289b4e991666c8fa9de2b9df38f273feb48c",
-  "branch": "codex/20261125-friday-shields-economy",
+  "gameRelease": "20261125-friday-constructor",
+  "sourceTag": "release/20261125-friday-constructor",
+  "sourceCommit": "ae0ed92f20fe479cea116a0c7a02fd129d7d92e0",
+  "branch": "codex/20261125-friday-constructor",
   "activeCheckout": ".cache/arena-fixes-20261121",
   "independentAdminRelease": "20261117-player-feedback",
   "localRunningGameUpdated": true,
   "rootSourceSynchronized": true,
-  "entryReopenedAtUtc": "2026-11-25T12:54:38.757Z",
+  "entryReopenedAtUtc": "2026-11-25T14:40:01.250Z",
   "runtime": {
-    "gamePid": 953254,
+    "gamePid": 968323,
     "adminPid": 1163,
     "restarts": 0,
     "entryOpen": true,
@@ -104,85 +104,82 @@
     "Actual pet shield grants advance personal/event shield metrics through a durable per-life sequence. Duplicate/stale events and failed saves do not double-credit. Existing clan shield handling remains in place.",
     "Arena view expanded another 5%, bounded by the existing maximum visible world area. Clan level costs and per-level XP accounting unchanged.",
     "Black Friday success footer removed; exchange success is a short nonblocking overlay. Current clan booster artwork also used by event preload. Clan battle explanatory footer removed.",
-    "Crest tabs show all their choices in rows. CSS stacked panels reserve the tallest category; switching tabs only toggles visibility. Removed pagination and resize measurement loop. Narrow layouts remain scrollable through normal dialog scrolling."
+    "Crest tabs show all their choices in rows. CSS stacked panels reserve the tallest category; switching tabs only toggles visibility. Removed pagination and resize measurement loop. Narrow layouts remain scrollable through normal dialog scrolling.",
+    "Owner editor for all 26 weekly Friday offers: name, votes, currency/exact booster composition, per-occurrence purchase limit; ordered subset, Moscow start time, duration, repeat and pause. Defaults unchanged until edited.",
+    "Durable immutable configuration branch and audit with optimistic revision and request receipts; no full-world or player-table clone. Compiled settings cache is keyed by branch identity.",
+    "Server-authoritative contents and quote revision; stale confirmation rejected, successful replay retains original payment price and cannot grant twice. Existing purchase and achievement transactions retained.",
+    "Correct Russian vote labels, including 2 голоса, in currency packages, promotion buttons and payment confirmation."
   ],
   "data": {
     "before": {
-      "at": 1795609761588,
-      "revision": 5179711,
-      "digest": "e96960cf47cc4176e91e31ecc9b08be2ed56977c2997923a5da9e510fa74fa8c",
-      "worldHash": "41bc7b81c32ba990d94af3ba8b1c0c044712d122c9fc0ba0a06e03780f2485e6",
-      "profiles": 1724,
+      "at": 1795616908370,
+      "revision": 5242724,
+      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
+      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
+      "profiles": 1726,
       "clans": 137,
       "fullWorldAndAuxEqual": true,
-      "backup": "/run/heroether-friday-shields-backup-20261125/friday-shields-20261125",
+      "backup": "/run/heroether-friday-constructor-backup-20261125/friday-constructor-20261125",
       "backupEqual": true,
       "preservedFormatVerified": true,
-      "durableBackup": "/srv/heroether-test/play/backups/friday-shields-20261125/data-before.tar.gz"
+      "durableBackup": "/srv/heroether-test/play/backups/friday-constructor-20261125/data-before.tar.gz"
     },
     "after": {
       "calendarReplayExact": true,
-      "approvedMigrationsExact": true,
+      "noCalendarChange": true,
+      "expiredChat": 0,
       "allOtherFieldsEqual": true,
-      "beforeRevision": 5179711,
-      "revision": 5179713,
-      "digest": "2e85a4d7e9694275164b95aac9628b59fe46439233cca5f856e0e5304d32115d",
-      "worldHash": "7942e37ddea9a39319c6295f62f0ae93444be707b16bbdfeac29c985810c6959",
-      "profiles": 1724,
-      "clans": 137,
-      "at": 1795610109102,
-      "transitionTimes": [
-        1795610109102,
-        1795610319474
-      ],
-      "retiredAvatarProfiles": [],
-      "constructorChanges": [],
-      "questPayouts": 0,
-      "questChests": 0
+      "beforeRevision": 5242724,
+      "revision": 5242724,
+      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
+      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
+      "profiles": 1726,
+      "clans": 137
     },
     "backup": {
       "verified": true,
-      "archiveSha256": "7068838c4e309601e2641755f005a2768395861ce919d3eeb42e37b2ec781391",
-      "revision": 5179711,
-      "digest": "e96960cf47cc4176e91e31ecc9b08be2ed56977c2997923a5da9e510fa74fa8c",
-      "worldHash": "41bc7b81c32ba990d94af3ba8b1c0c044712d122c9fc0ba0a06e03780f2485e6",
-      "profiles": 1724,
+      "archiveSha256": "ccee7b49c55824c8271baada649eaa55ad7a9042d06dfa5bf795eb69e2aac91a",
+      "revision": 5242724,
+      "digest": "5558bb9c911f41f0ce021d7d7be5d5350e15462cdf15fef11f88b1f539842c2b",
+      "worldHash": "98523ae5a6f83a77eb577260e443adcfb304cedb94e868f8fcd7906f59dd0d84",
+      "profiles": 1726,
       "clans": 137,
       "postgresqlArchiveVerified": true
     },
     "storage": {
-      "archive": "/srv/heroether-test/play/backups/friday-shields-20261125/data-before.tar.gz",
-      "sha256": "7068838c4e309601e2641755f005a2768395861ce919d3eeb42e37b2ec781391",
-      "bytes": 116049014,
+      "archive": "/srv/heroether-test/play/backups/friday-constructor-20261125/data-before.tar.gz",
+      "sha256": "ccee7b49c55824c8271baada649eaa55ad7a9042d06dfa5bf795eb69e2aac91a",
+      "bytes": 116759934,
       "checkpointReserve": 629145600,
-      "rawStagingRetained": "/run/heroether-friday-shields-backup-20261125",
+      "rawStagingRetained": "/run/heroether-friday-constructor-backup-20261125",
       "durableArchiveVerified": true
     }
   },
   "verification": {
-    "source": "1398289b4e991666c8fa9de2b9df38f273feb48c",
+    "source": "ae0ed92f20fe479cea116a0c7a02fd129d7d92e0",
     "allRequiredChecksPassed": true,
-    "totalTests": 2538,
-    "totalPassed": 2535,
+    "totalTests": 2546,
+    "totalPassed": 2543,
     "totalSkipped": 3,
-    "unresolvedFailures": 0,
-    "browserEngines": [
+    "focused": {
+      "tests": 24,
+      "pass": 24,
+      "skipped": 0
+    },
+    "realPostgreSQL": true,
+    "browsers": [
       "chromium",
       "firefox",
       "webkit"
     ],
-    "viewportSizes": [
-      1920,
-      1280,
-      390
-    ],
-    "tabCases": 45,
-    "method": "One full Linux mechanics regression, followed by focused catalog/HTTP checks after the icon URL correction; targeted Windows geometry, transactions and pet shield WAL recovery. Browser failures and fixture corrections retained.",
-    "report": "games/heroes-of-ether/docs/performance/friday-shields-20261125.json"
+    "browserChecks": 18,
+    "unresolvedFailures": 0,
+    "method": "One full Linux regression; targeted final runtime refinement and isolated real PostgreSQL rollback/read; three browser engines via independent control server. Initial fixture and browser setup failures retained.",
+    "report": "games/heroes-of-ether/docs/performance/friday-constructor-20261125.json"
   },
-  "report": "games/heroes-of-ether/docs/performance/friday-shields-20261125.json",
-  "previousRelease": "20261125-idle-pickup",
-  "notes": "Установлены новые цены эфира, зачёт щитов питомцев, обзор +5%, стабильный редактор герба и компактная обратная связь Чёрной пятницы. Пороги уровней клана сохранены. Предыдущие оптимизации арены сохранены. Нового максимума CCU этот выпуск не устанавливает. Все резервные копии сохранять.",
+  "report": "games/heroes-of-ether/docs/performance/friday-constructor-20261125.json",
+  "previousRelease": "20261125-friday-shields",
+  "notes": "Установлен конструктор недельных пятничных наборов и исправлены склонения голосов. Существующие цены/составы/расписание сохранены до правки владельцем. Все backups сохранять. Новый максимум CCU не измерялся.",
   "performance": {
     "status": "Measured live baseline; exact deterministic physics replay and short local mixed load. No maximum CCU or overall production speedup established.",
     "beforeInstall": [
@@ -1048,11 +1045,11 @@
     "scope": "Live 60-second baseline and post-deploy health observations; changed room/player mix, not a controlled whole-game speedup."
   },
   "previousInstalledRelease": {
-    "release": "20261125-idle-pickup",
-    "sourceCommit": "a14a3408e98c3aa0a233830247c316e56628e3d0",
-    "report": "games/heroes-of-ether/docs/performance/idle-pickup-20261125.json"
+    "release": "20261125-friday-shields",
+    "sourceCommit": "1398289b4e991666c8fa9de2b9df38f273feb48c",
+    "report": "games/heroes-of-ether/docs/performance/friday-shields-20261125.json"
   },
-  "backendSourceCommit": "1398289b4e991666c8fa9de2b9df38f273feb48c",
+  "backendSourceCommit": "ae0ed92f20fe479cea116a0c7a02fd129d7d92e0",
   "calendarIndexUpdate": {
     "installed": true,
     "published": true,
