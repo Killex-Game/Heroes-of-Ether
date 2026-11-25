@@ -74,3 +74,17 @@ test('Russian vote prices use grammatical singular, paucal and plural',()=>{
  const {votesLabel}=require('../../public/shared/virtual-product-catalog');
  for(const [n,label] of [[1,'1 голос'],[2,'2 голоса'],[4,'4 голоса'],[5,'5 голосов'],[11,'11 голосов'],[12,'12 голосов'],[14,'14 голосов'],[21,'21 голос'],[22,'22 голоса'],[112,'112 голосов']])assert.equal(votesLabel(n),label);
 });
+test('real PostgreSQL atomically retains edited offers, purchase receipt, inventory and audit',{skip:!process.env.HEROETHER_PG_TEST_CONFIG},async t=>{
+ const fs=require('node:fs'),{PostgreSQLState}=require('../../src/server/persistence/postgresql-state'),{pack}=require('../../src/server/persistence/state-snapshot');
+ const cfg={...JSON.parse(fs.readFileSync(process.env.HEROETHER_PG_TEST_CONFIG,'utf8')),schema:'heroether_test_'+randomUUID().replaceAll('-','')};
+ const state=new PostgreSQLState(cfg),f=fixture(t);
+ try{
+   const beforeWorld={...f.store.data,_journalRevision:1},before=pack(beforeWorld,{});await state.initialize(before);await state.acquire(before);
+   edit(f);const order=purchase({promotionRevision:1});f.store.confirmMockPurchase(f.auth.token,order);
+   const world={...f.store.data,_journalRevision:2},next=pack(world,{}),put=state.put;
+   state.put=async function(client,docs){await put.call(this,client,docs.slice(0,1));throw Error('injected Friday write failure');};
+   await assert.rejects(state.sync(next),/injected Friday/);state.put=put;assert.deepEqual((await state.read()).world,beforeWorld);
+   await state.sync(next);const read=await state.read();assert.deepEqual(read.world,world);assert.equal(read.world.weekendPromotions.offers['promotion:weekend:01'].votes,2);
+   assert.equal(f.store.confirmMockPurchase(f.auth.token,order).replay,true);assert.deepEqual(f.p(),read.world.profiles[Object.keys(read.world.profiles)[0]]);
+ }finally{assert(/^heroether_test_[a-f0-9]{32}$/.test(cfg.schema));await state.pool.query(`DROP SCHEMA ${state.table} CASCADE`);state.manifestValue=null;await state.close();}
+});
