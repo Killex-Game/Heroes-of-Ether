@@ -698,15 +698,14 @@
         slot.dataset.tier = item.tier;
         slot.dataset.locked = String(!item.ready);
         slot.dataset.selected = String(this.mode === "inventory" && this.slots.includes(item.id));
-        slot.append(img, make("span", "booster-art-count", String(count)));
+        slot.append(img);
+        if (this.mode !== "shop") slot.append(make("span", "booster-art-count", String(count)));
         const head = make("div", "booster-card-head");
         head.append(make("span", "booster-tier", this.catalog.tiers[item.tier].name));
         if (this.mode === "shop") {
-          const quantity = make("span", "booster-pack", `${item.price.quantity} шт.`);
-          quantity.title =
-            item.tier === "clan"
-              ? "Каждому участнику за одну покупку главы"
-              : "Количество за одну покупку";
+          const quantity = make("span", "booster-pack", `${count.toLocaleString("ru-RU")} шт.`);
+          quantity.title = "В запасе";
+          quantity.setAttribute("aria-label", `В запасе: ${count} шт.`);
           head.append(quantity);
         }
         card.append(head, slot, make("h3", "", item.name));

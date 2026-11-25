@@ -1780,6 +1780,7 @@
   }
   function frame(now) {
     if (phase !== "arena") {
+      camera.rotation = camera.dizzyRemaining = camera.dizzyAngle = 0;
       frameId = null;
       return;
     }
@@ -1847,7 +1848,8 @@
       );
     }
     const stone = me?.effects?.find(effect => effect.id === 'stone');
-    camera.rotation = window.KillexArenaView.dizzyRotation((stone?.remainingMs || 0) - Math.max(0, now-lastStateAt), reducedMotion.matches);
+    const stoneRemaining = (stone?.remainingMs || 0) - Math.max(0, now-lastStateAt);
+    camera.rotation = window.KillexArenaView.dizzyRotation(stoneRemaining, reducedMotion.matches, camera);
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     ctx.fillStyle = backgroundView.theme.outside;
     ctx.fillRect(0, 0, width, height);
@@ -1856,6 +1858,9 @@
     const oy = height / 2 - camera.y * scale;
     const cos = Math.abs(Math.cos(camera.rotation)), sin = Math.abs(Math.sin(camera.rotation));
     const viewWidth = width*cos+height*sin, viewHeight = height*cos+width*sin;
+    // Request the complete rotation envelope while dizzy, so the next quarter
+    // turn cannot expose empty corners before the next viewport/network update.
+    const rotatingView = stoneRemaining > 0 && !reducedMotion.matches ? Math.hypot(width, height) : 0;
     const left = camera.x - viewWidth / 2 / scale;
     const top = camera.y - viewHeight / 2 / scale;
     const right = left + viewWidth / scale;
@@ -1866,8 +1871,8 @@
         type: "viewport",
         x: camera.x,
         y: camera.y,
-        width: viewWidth / scale,
-        height: viewHeight / scale,
+        width: (rotatingView || viewWidth) / scale,
+        height: (rotatingView || viewHeight) / scale,
       })
     )
       lastViewportAt = now;

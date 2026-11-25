@@ -52,7 +52,11 @@
       copy.append(el("h3", "", t.name), el("p", "", t.chestName));
       const state = t.state === "opened" ? "Сундук открыт" : earned ? "Сундук доступен" : "Впереди";
       copy.append(el("span", "title-road-state", state));
-      header.append(art(window.KillexProgressionArt.chest(t.id, 128), "title-road-chest", 80), copy);
+      const chestArt = art(window.KillexProgressionArt.chest(t.id, 256), "title-road-chest", 160);
+      chestArt.srcset = [128, 256, 512].map(size =>
+        `${window.KillexArtRevision.url(window.KillexProgressionArt.chest(t.id, size))} ${size}w`).join(", ");
+      chestArt.sizes = "(max-width: 650px) 128px, 160px";
+      header.append(chestArt, copy);
       const rewards = el("div", "title-road-rewards");
       for (const [currency, label] of [["coins", "монет"], ["crystals", "кристаллов"], ["bucks", "эфира"]])
         rewards.append(prize(`assets/menu-icons/64/currency_${currency}.webp?art=20261123-interface-art`, number(t[currency]), label));

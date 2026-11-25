@@ -143,7 +143,9 @@
     chest: (id, size = 128) =>
       ["pro", "prince", "king", "emperor"].includes(id)
         ? `assets/chests/prism-unified-v4/${[64, 128, 256, 512].includes(size) ? size : 128}/${id}.webp?art=20261123-interface-art`
-        : url("rank_chests", ranks[id], size),
+        : size === 512 && ranks[id]
+          ? `assets/progression/webp/512/rank_chests/${ranks[id]}.webp?art=20261125-chest-resolution`
+          : url("rank_chests", ranks[id], size),
     questChest: (art) =>
       `assets/chests/prism-unified-v4/256/quest-${art === "expert" ? "large" : art === "experienced" ? "medium" : "small"}.webp?art=20261123-interface-art`,
     clanChest: (tier) =>
