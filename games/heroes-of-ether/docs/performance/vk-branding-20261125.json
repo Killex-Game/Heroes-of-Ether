@@ -1,0 +1,106 @@
+{
+  "sourceCommit": "3c56ee94583ac9c1a9c9ca0266f75ec4c61d481d",
+  "at": "2026-11-25T16:24:15.809Z",
+  "release": "/srv/heroether-test/play/releases/20261125-friday-constructor",
+  "changedExistingFiles": [
+    "public/index.html"
+  ],
+  "newFiles": [
+    "public/assets/branding/natural-ether-32-v1.png"
+  ],
+  "beforeSha256": "2a4c84e1477e9c2671d697fe38dc65f7352c6ec29adb66d49bb8070db13803ce",
+  "afterSha256": "f1e9505ba8ec67d5f8c7b50b0aa2c19b76d36df6d6784f1a0fe1a0371c864203",
+  "faviconSha256": "7f776ccf66a277ecf47be04a5ff2e52b13e724e9fd2e0be9125b46068a64b5c3",
+  "backup": "/srv/heroether-test/play/backups/vk-branding-20261125",
+  "htmlMinusNewLinkExactlyUnchanged": true,
+  "worldWrites": false,
+  "restart": false,
+  "backupVerifiedLocally": true,
+  "browser": {
+    "source": "Actual game renderer with isolated in-memory demonstration profiles; no production data",
+    "viewport": {
+      "width": 1200,
+      "height": 600
+    },
+    "errors": [],
+    "screenshots": [
+      "screenshot-01-lobby-1200x600.png",
+      "screenshot-02-shop-1200x600.png",
+      "screenshot-03-arena-1200x600.png"
+    ],
+    "favicon": {
+      "path": "assets/branding/natural-ether-32-v1.png",
+      "status": 200
+    }
+  },
+  "runtime": "Friday constructor unchanged; PID 968323, NRestarts 0",
+  "socialPlatformCandidateDeployed": false,
+  "graphics": "Prepared for VK, not uploaded to VK",
+  "assetFiles": [
+    {
+      "name": "game-icon-576.png",
+      "width": 576,
+      "height": 576,
+      "bytes": 593049,
+      "sha256": "d1a223d5b12871449c51ced23138f7174c2617c93d1961711be1383b77c69751",
+      "source": {
+        "name": "exec-f9b35d20-b4a3-423e-87bf-d919cb9a7a00.png",
+        "width": 1254,
+        "height": 1254,
+        "sha256": "d7e0c6ca3d3944fe47e9ab44690879afda5be955d757edf4e0b921aec6e44a05"
+      }
+    },
+    {
+      "name": "game-icon-278.png",
+      "width": 278,
+      "height": 278,
+      "bytes": 147455,
+      "sha256": "2234c25de9167836565c2b5ba2b39eb970eb4906421667f8f892573727a83874",
+      "source": {
+        "name": "exec-f9b35d20-b4a3-423e-87bf-d919cb9a7a00.png",
+        "width": 1254,
+        "height": 1254,
+        "sha256": "d7e0c6ca3d3944fe47e9ab44690879afda5be955d757edf4e0b921aec6e44a05"
+      }
+    },
+    {
+      "name": "game-icon-150.png",
+      "width": 150,
+      "height": 150,
+      "bytes": 48457,
+      "sha256": "da04b02d3dbc5a5751b58c7f24809e88bb7e635ff918028bfb3e16a05a90bdbc",
+      "source": {
+        "name": "exec-f9b35d20-b4a3-423e-87bf-d919cb9a7a00.png",
+        "width": 1254,
+        "height": 1254,
+        "sha256": "d7e0c6ca3d3944fe47e9ab44690879afda5be955d757edf4e0b921aec6e44a05"
+      }
+    },
+    {
+      "name": "vk-snippet-1120x630.png",
+      "width": 1120,
+      "height": 630,
+      "bytes": 1271699,
+      "sha256": "2801f96b02a5861905d185dbb899c60921b8a35ec4d48b6b67fc357d87f65b41",
+      "source": {
+        "name": "exec-2e74dec3-8220-4d87-978b-cea3da70a18b.png",
+        "width": 1672,
+        "height": 941,
+        "sha256": "9ef23665f980f9bff51f6ce60920c943bef491c82a2f2e83e877a5749255a690"
+      }
+    },
+    {
+      "name": "natural-ether-favicon-32.png",
+      "width": 32,
+      "height": 32,
+      "bytes": 2306,
+      "sha256": "7f776ccf66a277ecf47be04a5ff2e52b13e724e9fd2e0be9125b46068a64b5c3",
+      "source": {
+        "name": "ether-drop-v1.webp",
+        "width": 128,
+        "height": 128,
+        "sha256": "50728b643f96f26204b88e58a1a4867280f331b179250c0b477fccff3ba46fad"
+      }
+    }
+  ]
+}

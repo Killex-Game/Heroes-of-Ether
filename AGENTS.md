@@ -1,3 +1,9 @@
+## Графика VK и фавикон — 25.11.2026
+
+- Source 3c56ee94583ac9c1a9c9ca0266f75ec4c61d481d. Три иконки 576/278/150, сниппет1120×630 и три настоящих скриншота1200×600 подготовлены в docs/artwork/vk-branding-20261125. Встроенный image_gen, запросы сохранены. Канон упрощён, рамка и золотые шарики убраны. В VK не опубликовано.
+- УСТАНОВЛЕН только favicon: исходная капля ПРИРОДНОГО Эфира,32×32 PNG,2306байт. Одно добавление в index.html и новый PNG, HTML без новой строки точно прежний. Backend Friday constructor/PID968323/NRestarts0 прежний; игровые данные не записывались. HTTPS-хеш и браузер проверены, localhost3104 синхронизирован.
+- Backup index.html обеих сторон SHA 2a4c84e1477e9c2671d697fe38dc65f7352c6ec29adb66d49bb8070db13803ce, сохранять. Отчёт games/heroes-of-ether/docs/performance/vk-branding-20261125.json. Социальный кандидат остаётся в codex/20261125-vk-ok-platform, НЕ внедрён.
+
 ## Конструктор пятничных акций — УСТАНОВЛЕНО 25.11.2026
 
 - Current 20261125-friday-constructor, source ae0ed92f20fe479cea116a0c7a02fd129d7d92e0, game968323/admin1163/NRestarts0. Вход открыт 2026-11-25T14:40:01.250Z, PG healthy.
