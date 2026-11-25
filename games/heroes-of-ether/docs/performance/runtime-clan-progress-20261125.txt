@@ -1,0 +1,20 @@
+Candidate only; not installed.
+
+The normal server startup can select addressed clan progress calculation through
+optional config/arena-progress-workers.json. The supplied file is disabled.
+Missing configuration preserves canonical calculation. Enabled worker counts
+are strictly bounded to 1–8 and the host parallelism limit; current actors stay
+resident and idle calculation copies retain the existing 256-record limits.
+
+ProfileStore creates the same backend used by the mixed benchmark directly.
+It rejects a competing full-world preparer and non-journaled configurations
+before opening data. Snapshot validation, FIFO retry, WAL and publication stay
+with the authoritative writer. Worker failure retains the existing canonical
+fallback. This is not independent simulation ownership or a distributed writer.
+
+Twenty targeted Windows checks passed: startup configuration validation, lazy
+construction without a complete-world replica, clan order/rewards/calendar,
+rollback and durable recovery. Full Windows and Linux each passed 2495 tests,
+with zero failures and three skipped (2498 total). Mixed load of this combined
+candidate is running. Earlier V38 90+5/10min failed first-window action delay.
+It cannot be presented as sustainable capacity or an installed speedup.
