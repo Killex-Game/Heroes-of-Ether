@@ -150,18 +150,29 @@ class RoomProfileLedger {
     questBoundary.validate(room,f);
     if(f.progress.some(e=>!room.profiles.includes(e?.profileId) || e.type==='boosterUsed'))
       throw Error('Unowned progress or duplicate booster credit');
-    let next=base;const used=new Set(),events=[];
+    let next=base;const used=new Set(),events=[],drafts=new Map();
     for(const [casts,status] of [[f.applied,'APPLIED'],[f.cancelled || [],'REFUNDED']])for(const cast of casts) {
       if(!room.profiles.includes(cast?.profileId) || used.has(cast.txId))throw Error('Unowned or duplicated resident cast');
       used.add(cast.txId);
-      const p=this.store.byId(cast.profileId,next),tx=records.read(p,cast.txId);
+      const p=drafts.get(cast.profileId) || this.store.byId(cast.profileId,base),tx=records.read(p,cast.txId);
       if(!tx || tx.status!=='RESERVED' || !identity(room,tx) || tx.lifeId!==cast.lifeId || tx.boosterId!==cast.boosterId ||
           (status==='APPLIED' && tx.boosterId==='easter_egg' && tx.expiresAt<=f.at) ||
           (status==='APPLIED' && p.progress.session?.id!==cast.lifeId) ||
           (cast.mass!==undefined && (!Number.isSafeInteger(cast.mass) || cast.mass<0)))
         throw Error('Resident applied cast conflicts with its reservation');
-      next=this.editProfile(next,cast.profileId,draft=>records.resolve(draft,tx,status,f.at));
+      // Several paid outcomes can belong to the same profile in one private
+      // frame. Own its mutable fields once, retain each revision increment,
+      // and copy the global profile table once for the whole accepted frame.
+      const draft=drafts.get(cast.profileId) || arenaCastDraft(p);
+      records.resolve(draft,tx,status,f.at);draft.revision++;
+      drafts.set(cast.profileId,draft);
       if(status==='APPLIED')events.push({type:'boosterUsed',profileId:cast.profileId,lifeId:cast.lifeId,...(cast.mass===undefined?{}:{mass:cast.mass})});
+    }
+    if(drafts.size){
+      const keys=indexes.profileKeys(base.profiles),profiles=copyRecord(base.profiles),changed=[];
+      for(const [id,draft]of drafts){const key=keys.get(id);profiles[key]=draft;changed.push(key);}
+      tables.remember(profiles,base.profiles,changed,true);indexes.remember(profiles,keys);
+      next={...base,profiles};
     }
     // Exactly one successful-use credit per confirmed reservation, before the
     // physical consequences/death in the same private frame.

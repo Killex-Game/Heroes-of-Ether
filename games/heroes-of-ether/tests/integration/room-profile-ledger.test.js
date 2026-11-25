@@ -194,3 +194,28 @@ test('recovery refunds a durable cancellation not yet received by the profile le
  await f.ledger.recoverStopped(evidence,f.child);await f.ledger.recoverStopped(evidence,f.child);
  assert.equal(f.store.byId(f.id).inventory.meat,5);assert.equal(f.store.byId(f.id).progress.boosterUses,0);
 });
+
+test('one frame retains every repeated-owner outcome and revision without mutating a retained world',async t=>{
+ const f=await fixture(t),transactions=await Promise.all(Array.from({length:3},()=>f.ledger.reserve(f.child,f.auth.token,f.input())));
+ const before=f.store.data,old=f.store.byId(f.id),exact=JSON.stringify(before),box=await f.open();
+ const entry=await box.append({at:f.at(),applied:transactions.slice(0,2).map(f.cast),cancelled:[f.cast(transactions[2])]});
+ await f.ledger.accept(f.child,entry);const p=f.store.byId(f.id);
+ assert.equal(p.inventory.meat,3);assert.equal(p.progress.boosterUses,old.progress.boosterUses+2);
+ assert.equal(p.revision,old.revision+4);assert.deepEqual(p.residentCasts,{});
+ assert.deepEqual(transactions.map(tx=>records.read(p,tx.txId).status),['APPLIED','APPLIED','REFUNDED']);
+ assert.equal(JSON.stringify(before),exact);assert.strictEqual(before.profiles[Object.keys(before.profiles)[0]],old);
+ await f.ledger.accept(f.child,entry);assert.equal(f.store.byId(f.id).revision,p.revision);
+ assert.equal(records.read(Object.values(recover(f.filePath).data.profiles)[0],transactions[2].txId).status,'REFUNDED');
+});
+
+test('a late invalid outcome discards all earlier drafts in its private frame',async t=>{
+ const f=await fixture(t),transactions=await Promise.all(Array.from({length:2},()=>f.ledger.reserve(f.child,f.auth.token,f.input())));
+ const before=f.store.data,exact=JSON.stringify(before),box=await f.open();
+ const entry=await box.append({at:f.at(),applied:transactions.map(f.cast)}),bad=structuredClone(entry);
+ bad.frame.applied[1].txId=f.id+'_'+randomUUID();
+ bad.digest=require('node:crypto').createHash('sha256').update(JSON.stringify(bad.frame)).digest('hex');
+ await assert.rejects(f.ledger.accept(f.child,bad),/conflicts/);
+ assert.strictEqual(f.store.data,before);assert.equal(JSON.stringify(before),exact);
+ assert(transactions.every(tx=>records.read(f.store.byId(f.id),tx.txId).status==='RESERVED'));
+ await f.ledger.accept(f.child,entry);assert.equal(f.store.byId(f.id).progress.boosterUses,2);
+});
