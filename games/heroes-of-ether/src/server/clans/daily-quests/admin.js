@@ -13,15 +13,21 @@ function view(store){
 }
 function apply(store,access,actor,input){
   if(!access.isOwner(actor))fail('Сезонами кланов управляет владелец.',403);
-  if(store.data.clanQuests?.calendarVersion===1 && input?.action!=='schedule')fail('Текущий сезон уже идёт. Изменить можно расписание будущих сезонов.',409);
+  if(store.data.clanQuests?.calendarVersion===1 && !['schedule','switch'].includes(input?.action))fail('Выбери изменение расписания или досрочную смену сезона.',409);
   if(!input || !/^[a-zA-Z0-9_-]{16,80}$/.test(input.requestId) || !Number.isSafeInteger(input.revision) || typeof input.reason!=='string' || input.reason.trim().length<3 || input.reason.length>500)fail('Укажи версию и причину изменения.');
   const signature=createHash('sha256').update(JSON.stringify(['clan-season',input])).digest('hex');
   const log=store.data.administration||{version:1,audit:[],receipts:{}};
   if(log.receipts[input.requestId]){if(log.receipts[input.requestId].signature!==signature)fail('Номер операции уже использован.',409);return {replay:true,...view(store)};}
-  const at=store.now(), data=service.initialize(store.data,at), before=data.clanQuests;
+  const at=store.now(); let data=service.initialize(store.data,at); const before=data.clanQuests;
   if(input.revision!==before.revision)fail('Расписание изменилось. Обнови список.',409);
   let next, schedule;
-  if(input.action==='schedule'){
+  if(input.action==='switch'){
+    const current=calendar.season(at,before.calendarSchedule);
+    if(before.calendarVersion!==1 || input.seasonId!==current.id)fail('Текущий сезон изменился. Обнови список.',409);
+    try { data=require('./early-switch').prepare(data,at,input.mode); }
+    catch(error) { fail(error.message,409); }
+    schedule=data.clanQuests.calendarSchedule; next=before.seasons;
+  } else if(input.action==='schedule'){
     if(!Array.isArray(input.changes)||!input.changes.length||input.changes.length>12)fail('Выбери будущие сезоны.');
     const allowed=new Set(view(store).upcoming.map(s=>s.start)),seen=new Set(),entries=new Map((before.calendarSchedule||[]).map(row=>[row.start,row]));
     for(const row of input.changes){
@@ -38,8 +44,9 @@ function apply(store,access,actor,input){
     if(!selected)fail('Сезон уже завершён или отменён.',409);
     next=before.seasons.map(s=>s!==selected?s:s.startsAt>=at?{...s,cancelled:true}:{...s,endsAt:at});
   }else fail('Неизвестное действие сезона.');
-  const after={...before,revision:before.revision+1,seasons:next,...(schedule?{calendarSchedule:schedule}:{}),nextAt:0};
+  const after={...data.clanQuests,revision:before.revision+1,seasons:next,...(schedule?{calendarSchedule:schedule}:{}),nextAt:0};
   const event={id:randomUUID(),at,actorId:actor.id,targetId:'clanSeasons',targetName:'Сезоны кланов',action:'clanSeason',label:schedule?'Изменение расписания сезонов':input.action==='announce'?'Объявление сезона кланов':'Завершение сезона кланов',reason:input.reason.trim(),before:schedule?before.calendarSchedule||[]:before.seasons,after:schedule||next,requestId:input.requestId};
+  if(input.action==='switch')event.label='Досрочные итоги и запуск нового сезона';
   store.save({...data,clanQuests:after,administration:{...log,audit:[...log.audit,event],receipts:{...log.receipts,[input.requestId]:{signature,eventId:event.id,targetId:'clanSeasons'}}}},at);
   return {replay:false,...view(store)};
 }

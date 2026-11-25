@@ -35,7 +35,7 @@ const transactions = require("./transaction-history");
 const roulette = require("../roulette/roulette-service");
 const lite = require("../accounts/lite-account");
 const clanAppearance = require("../clans/clan-appearance");
-const { trophyBenefits } = require("../../../public/shared/clan-competition-rules");
+const { trophyBenefits, discountedPrice } = require("../../../public/shared/clan-competition-rules");
 const path = require("node:path");
 const { randomBytes, randomUUID, createHash } = require("node:crypto");
 const { BOOSTERS, BOOSTER_RULES, BoosterError } = require("../boosters/booster-catalog");
@@ -832,7 +832,7 @@ class ProfileStore {
       throw new BoosterError("Профиль владельца не найден. Восстановление остановлено.", 409);
     const [oldKey, profile] = entries[0];
     if (profile.progress?.session)
-      throw new BoosterError("Сначала заверши текущую жизнь владельца на арене.", 409);
+      throw new BoosterError("Сначала выйди в лобби на профиле владельца.", 409);
     const token = randomBytes(32).toString("hex"),
       key = tokenHash(token);
     if (this.data.profiles[key]) throw Error("Session collision");
@@ -1366,7 +1366,8 @@ class ProfileStore {
       JSON.stringify(["buy-skin-collection", item.id]),
       (p) => {
         if (p.purchasedSkinCollections?.includes(item.id)) return;
-        if (p.wallet[item.currency] < item.price)
+        const at = this.now(), amount = discountedPrice(item.price, trophyBenefits((batch?.next || this.data).clans[p.clanId], at).discount);
+        if (p.wallet[item.currency] < amount)
           throw new BoosterError(
             {
               coins: "Недостаточно монет.",
@@ -1375,8 +1376,8 @@ class ProfileStore {
             }[item.currency],
             409,
           );
-        p.wallet[item.currency] -= item.price;
-        activity.spend(p, item.currency, item.price, this.now());
+        p.wallet[item.currency] -= amount;
+        activity.spend(p, item.currency, amount, at);
         p.purchasedSkinCollections = [...(p.purchasedSkinCollections || []), item.id];
       },
       undefined,
@@ -1395,13 +1396,14 @@ class ProfileStore {
         JSON.stringify(["buy-accessory", item.id]),
         (p) => {
           if (p.purchasedAccessories?.includes(item.id)) return;
-          if (p.wallet[item.currency] < item.price)
+          const at = this.now(), amount = discountedPrice(item.price, trophyBenefits(this.data.clans[p.clanId], at).discount);
+          if (p.wallet[item.currency] < amount)
             throw new BoosterError(
               item.currency === "coins" ? "Недостаточно монет." : "Недостаточно кристаллов.",
               409,
             );
-          p.wallet[item.currency] -= item.price;
-          activity.spend(p, item.currency, item.price, this.now());
+          p.wallet[item.currency] -= amount;
+          activity.spend(p, item.currency, amount, at);
           p.purchasedAccessories = [...(p.purchasedAccessories || []), item.id];
         },
       );
@@ -2018,7 +2020,7 @@ class ProfileStore {
       prepareChest(p, id, this.now()),
     );
   }
-  buy(token, id, requestId, batch) {
+  buy(token, id, requestId, batch, requestedQuantity) {
     if (BOOSTERS.get(id)?.tier === "potion")
       throw new BoosterError("Зелья создаются в лаборатории.", 409);
     if (BOOSTERS.get(id)?.tier === "event")
@@ -2030,17 +2032,22 @@ class ProfileStore {
       throw new BoosterError(booster?.unavailableReason || "Такого бустера нет в магазине.");
     if (booster.tier === "rare" && !BOOSTER_RULES.RARE_SHOP_ENABLED)
       throw new BoosterError("Редкие бустеры доступны на ярмарках.");
+    const quantity = requestedQuantity === undefined ? booster.price.quantity : requestedQuantity;
+    if (![10,100].includes(quantity) || quantity % booster.price.quantity !== 0)
+      throw new BoosterError("Выбери набор из 10 или 100 бустеров.");
+    const amount = booster.price.amount * (quantity / booster.price.quantity);
+    if (!Number.isSafeInteger(amount) || amount < 0) throw new BoosterError("Некорректная цена набора.");
     return this.transactProfile(
       token,
       requestId,
-      "buy:" + id,
+      "buy:" + id + (quantity === booster.price.quantity ? "" : ":" + quantity),
       (p) => {
         if (p.level < booster.purchaseLevel)
           throw new BoosterError(
             `Этот бустер доступен для покупки с ${booster.purchaseLevel} уровня.`,
             409,
           );
-        const { currency, amount, quantity } = booster.price;
+        const { currency } = booster.price;
         if (p.wallet[currency] < amount)
           throw new BoosterError(
             "Недостаточно " + (currency === "coins" ? "монет." : "кристаллов."),
@@ -2080,11 +2087,11 @@ class ProfileStore {
         const prepared = validate(); // Ошибка цели или эффекта не расходует предмет.
         if (BOOSTERS.get(id).kind === "potion") {
           if (!prepared?.lifeId || p.progress.session?.id !== prepared.lifeId)
-            throw new BoosterError("Эта жизнь уже завершена. Зелье сохранено.", 409);
+            throw new BoosterError("Этот вход на арену уже завершён. Зелье сохранено.", 409);
           const potionId = alchemy.rules.get(id).id;
           const used = p.alchemy?.active?.lifeId === prepared.lifeId ? alchemy.rules.activeIds(p.alchemy.active) : [];
           if (used.includes(potionId) || used.length >= alchemy.rules.MAX_ACTIVE)
-            throw new BoosterError("Можно применить только три разных зелья за жизнь.", 409);
+            throw new BoosterError("Можно применить только три разных зелья за вход на арену.", 409);
           const next = alchemy.rules.equipped(p.alchemy).find(key =>
             !used.includes(key) && p.inventory[alchemy.rules.get(key).boosterId] > 0);
           if (next !== potionId) throw new BoosterError("Используй следующее зелье из выбранного набора.", 409);

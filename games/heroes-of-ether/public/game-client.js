@@ -326,7 +326,7 @@
   let lifeLobbyTimer = null, lifeLobbyDeadline = 0, lifeLobbyId = null;
   function autoLifeLobby() {
     if (lifeResult?.id === lifeLobbyId && lifeLobbyDeadline && Date.now() >= lifeLobbyDeadline)
-      leaveArena("Ты в лобби. Опыт завершённой жизни сохранён.");
+      leaveArena("Ты в лобби. Опыт за вход на арену сохранён.");
   }
   document.addEventListener("visibilitychange", autoLifeLobby);
   function showLifeResult(message) {
@@ -515,7 +515,7 @@
     }, 8000);
   });
   $("lifeLobby").addEventListener("click", () =>
-    leaveArena("Ты в лобби. Опыт завершённой жизни сохранён."),
+    leaveArena("Ты в лобби. Опыт за вход на арену сохранён."),
   );
   function clearArena() {
     emoteView.clear();
@@ -1047,7 +1047,7 @@
     );
     $("arenaKills").parentElement.setAttribute(
       "aria-label",
-      "Киллы за жизнь: после «макс» счётчик растёт только визуально. Зачтено: " +
+      "Киллы за вход на арену: после «макс» счётчик растёт только визуально. Зачтено: " +
         formatMass(lifeResult?.kills ?? boosterUI?.profile?.progress?.arenaCreditedKills ?? 0),
     );
     updateLifeClock();
@@ -1220,8 +1220,7 @@
     if (phase !== "arena" || !ui.settings.hidden) return;
     aimPointer = event.pointerType === "mouse" ? { x: event.clientX, y: event.clientY } : null;
     if (boosterUI?.targeting) {
-      const x = camera.x + (event.clientX - width / 2) / camera.scale;
-      const y = camera.y + (event.clientY - height / 2) / camera.scale;
+      const {x,y} = window.KillexArenaView.screenToWorld(event.clientX,event.clientY,camera,width,height);
       if (boosterUI.targeting.target === "direction") {
         boosterUI.selectAim(x, y);
         return;
@@ -1294,8 +1293,9 @@
     const point = input.kind !== "none" ? input : aimPointer;
     const stick = stickId !== null && Math.hypot(stickVector.x, stickVector.y) >= 0.1
       ? stickVector : null;
-    const x = stick ? me.x + stick.x * 220 : point ? camera.x + (point.x - width / 2) / camera.scale : me.x + 220;
-    const y = stick ? me.y + stick.y * 220 : point ? camera.y + (point.y - height / 2) / camera.scale : me.y;
+    const aim = point ? window.KillexArenaView.screenToWorld(point.x,point.y,camera,width,height) : null;
+    const x = stick ? me.x + stick.x * 220 : aim ? aim.x : me.x + 220;
+    const y = stick ? me.y + stick.y * 220 : aim ? aim.y : me.y;
     if (
       send({
         type: "feed",
@@ -1687,6 +1687,7 @@
     const y = (d.y - camera.y) * scale + height / 2 + d.radius * scale * 0.28;
     ctx.save();
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    rotateScreen();
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     let nameSize = 0;
@@ -1753,6 +1754,7 @@
       y = (displayed.y - camera.y) * scale + height / 2 + displayed.radius * scale * 0.28;
     ctx.save();
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    rotateScreen();
     const nameSize = bodyNameLayout(player, displayed, x, scale).layout.size;
     const massSize = Math.max(
       8,
@@ -1770,6 +1772,12 @@
     ctx.restore();
   }
   let lastViewportAt = -Infinity;
+  function rotateScreen() {
+    if (!camera.rotation) return;
+    ctx.translate(width / 2, height / 2);
+    ctx.rotate(camera.rotation);
+    ctx.translate(-width / 2, -height / 2);
+  }
   function frame(now) {
     if (phase !== "arena") {
       frameId = null;
@@ -1838,28 +1846,33 @@
         view.minimumScale(width, height, world),
       );
     }
+    const stone = me?.effects?.find(effect => effect.id === 'stone');
+    camera.rotation = window.KillexArenaView.dizzyRotation((stone?.remainingMs || 0) - Math.max(0, now-lastStateAt), reducedMotion.matches);
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     ctx.fillStyle = backgroundView.theme.outside;
     ctx.fillRect(0, 0, width, height);
     const scale = camera.scale;
     const ox = width / 2 - camera.x * scale;
     const oy = height / 2 - camera.y * scale;
-    const left = camera.x - width / 2 / scale;
-    const top = camera.y - height / 2 / scale;
-    const right = left + width / scale;
-    const bottom = top + height / scale;
+    const cos = Math.abs(Math.cos(camera.rotation)), sin = Math.abs(Math.sin(camera.rotation));
+    const viewWidth = width*cos+height*sin, viewHeight = height*cos+width*sin;
+    const left = camera.x - viewWidth / 2 / scale;
+    const top = camera.y - viewHeight / 2 / scale;
+    const right = left + viewWidth / scale;
+    const bottom = top + viewHeight / scale;
     if (
       now - lastViewportAt >= 250 &&
       send({
         type: "viewport",
         x: camera.x,
         y: camera.y,
-        width: width / scale,
-        height: height / scale,
+        width: viewWidth / scale,
+        height: viewHeight / scale,
       })
     )
       lastViewportAt = now;
     ctx.save();
+    rotateScreen();
     ctx.translate(ox, oy);
     ctx.scale(scale, scale);
     backgroundView.draw(ctx, world, { left, top, right, bottom, scale });
@@ -2125,10 +2138,7 @@
           y: clamp(me.y + stickVector.y * 220, 0, world.height),
         };
       const point = input.kind === "touch" ? input : aimPointer;
-      return point ? {
-        x: camera.x + (point.x - width / 2) / camera.scale,
-        y: camera.y + (point.y - height / 2) / camera.scale,
-      } : null;
+      return point ? window.KillexArenaView.screenToWorld(point.x,point.y,camera,width,height) : null;
     },
     getAppearance: () => ({ skinId: preferences.previewSkin }),
     waitForCosmetics: () => cosmeticsUI?.pending,

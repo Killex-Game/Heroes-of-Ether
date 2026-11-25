@@ -1103,7 +1103,7 @@ function createGameServer({
           // Recheck lobby access both before preparation and after durable staging.
           const lobbyObservedAt = wallNow();
           const result = await durableLobbyAction(token, (batch) =>
-            profiles.buy(token, body.boosterId, body.requestId, batch),
+            profiles.buy(token, body.boosterId, body.requestId, batch, body.quantity),
           );
           observeLobbyAction(token, req.url, body, result, lobbyObservedAt);
           return reply(200, result);
@@ -1242,7 +1242,7 @@ function createGameServer({
       try {
         profiles.startLife(profile.id, p.lifeId);
       } catch (error) {
-        console.error("Не удалось начать жизнь:", error.message);
+        console.error("Не удалось войти на арену:", error.message);
         arena.removePlayer(p.id);
         arenaRooms.release(profile.id);
         ws.close(1011, "Cannot save life");
@@ -1427,7 +1427,7 @@ function createGameServer({
           if (closing || removed) return;
           t = now();
           if (!Number.isInteger(message.spawnSerial) || message.spawnSerial !== p.spawnSerial)
-            throw new BoosterError("Эта жизнь уже завершена или продолжена.", 409);
+            throw new BoosterError("Этот вход на арену уже завершён или продолжена.", 409);
           if (pendingProgress && !commitProgress())
             throw new BoosterError(
               "Не удалось сохранить прогресс. Повтори подтверждение выхода.",
@@ -1483,7 +1483,7 @@ function createGameServer({
               message:
                 error instanceof BoosterError
                   ? error.message
-                  : "Не удалось завершить жизнь. Повтори подтверждение выхода.",
+                  : "Не удалось завершить вход на арену. Повтори подтверждение выхода.",
             }),
           );
         }
@@ -1516,7 +1516,7 @@ function createGameServer({
             return;
           }
           if (!p.dead || p.lifeId !== message.lifeId)
-            throw new BoosterError("Эта жизнь уже завершена или продолжена.", 409);
+            throw new BoosterError("Этот вход на арену уже завершён или продолжена.", 409);
           if (
             (pendingProgress && !commitProgress()) ||
             (profile &&
@@ -1556,7 +1556,7 @@ function createGameServer({
                       arenaRooms.group(profile.id)) &&
                   (!profile || !activeBan(profiles.byId(profile.id), wallNow()));
                 if (!valid())
-                  throw new BoosterError("Эта жизнь уже завершена или недоступна.", 409);
+                  throw new BoosterError("Этот вход на арену уже завершён или недоступна.", 409);
                 if (profile) profiles.startLife(profile.id, lifeId, false, batch);
                 return {
                   valid,
@@ -1600,7 +1600,7 @@ function createGameServer({
               message:
                 error instanceof BoosterError
                   ? error.message
-                  : "Не удалось начать новую жизнь. Попробуй позже.",
+                  : "Не удалось снова войти на арену. Попробуй позже.",
             }),
           );
         } finally {

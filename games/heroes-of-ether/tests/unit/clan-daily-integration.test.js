@@ -7,6 +7,37 @@ const service=require('../../src/server/clans/daily-quests/service'),engine=requ
 const admin=require('../../src/server/clans/daily-quests/admin');
 const {temporary}=require('../temp');
 const start=Date.parse('2026-11-14T04:00:00Z'),end=start+15*3600000;
+
+test('early season settlement is atomic, repeatable and separates same-day quest cycles',async t=>{
+  const f=fixture(t,true);f.task('xp',1);
+  let next=structuredClone(f.store.data),b=next.clans[f.id].dailyQuests.board;
+  b.quests[0].progress=1;b.quests[0].completedAt=start;b.contributors={[f.a.profile.id]:{firstAt:start,questIds:[b.quests[0].id]}};
+  f.store.save(next);f.at(start+1000);
+  const access={isOwner:p=>p.id==='owner'},owner={id:'owner'};
+  const input=()=>({action:'switch',mode:admin.view(f.store).current.mode==='quests'?'battle':'quests',seasonId:admin.view(f.store).current.id,
+    revision:admin.view(f.store).revision,requestId:randomUUID(),reason:'Досрочно по решению владельца'});
+  const first=input(),original=f.store.data,oldWallet={...f.store.find(f.a.token).wallet};
+  const commit=f.store.journal.commit;f.store.journal.commit=()=>{throw Error('switch fsync failure');};
+  assert.throws(()=>admin.apply(f.store,access,owner,first),/switch fsync failure/);assert.equal(f.store.data,original);f.store.journal.commit=commit;
+  assert.throws(()=>admin.apply(f.store,access,{id:'moderator'},first),/владелец/);
+  const result=admin.apply(f.store,access,owner,first);assert.equal(result.current.mode,'battle');
+  assert.equal(result.current.start,start+1000);assert.equal(result.current.end,Date.parse('2026-12-31T21:00:00Z'));
+  const p=f.store.find(f.a.token);assert.equal(p.wallet.coins-oldWallet.coins,3000);assert.equal(p.wallet.crystals-oldWallet.crystals,750);
+  assert.equal(p.clanQuestMedals.length,1);assert.equal(f.board().settledAt,start+1000);
+  const after=f.store.data;assert.equal(admin.apply(f.store,access,owner,first).replay,true);assert.equal(f.store.data,after);
+  assert.throws(()=>admin.apply(f.store,access,owner,{...first,requestId:randomUUID()}),/Расписание изменилось/);
+  f.at(start+2000);const back=admin.apply(f.store,access,owner,input());assert.equal(back.current.mode,'quests');
+  assert(f.store.data.competition.season.settled);assert.equal(f.board().start,start+2000);assert(f.board().quests.every(q=>q.progress===0));
+  f.task('xp',1);next=structuredClone(f.store.data);b=next.clans[f.id].dailyQuests.board;
+  b.quests[0].progress=1;b.quests[0].completedAt=start+2000;b.contributors={[f.a.profile.id]:{firstAt:start+2000,questIds:[b.quests[0].id]}};
+  f.store.save(next);f.at(start+3000);admin.apply(f.store,access,owner,input());
+  assert.equal(f.store.find(f.a.token).clanQuestMedals.length,2);
+  assert.equal(Object.keys(f.store.data.clanQuestRewards).length,2);
+  assert.equal(Object.keys(f.store.data.clanQuests.questSeasonHistory).length,2);
+  const recovered=require('../../src/server/profiles/profile-journal').recover(f.file).data;service.validate(recovered);
+  assert.deepEqual(recovered.profiles,f.store.data.profiles);assert.deepEqual(recovered.clanQuests,f.store.data.clanQuests);
+  assert.equal(recovered.administration.audit.filter(e=>e.action==='clanSeason').length,3);
+});
 test('season reward uses the durable store barrier, survives restart, pays current contributors exactly once',async t=>{
   const f=fixture(t,true);f.task('xp',1);
   const next=structuredClone(f.store.data),board=next.clans[f.id].dailyQuests.board;

@@ -160,7 +160,7 @@ test("Три заряда бабочки расходуются перед ша�
   arena.resetPlayer(actor, 15000);
   A.start(actor, p);
   assert.deepEqual(counts(), [3, 3]);
-  assert.throws(() => A.use(arena, actor, bow, 16000), /этой жизни/);
+  assert.throws(() => A.use(arena, actor, bow, 16000), /этот вход на арену/);
   p.outfit = { hat: "captain_tricorn", bow: "novice_bow" };
   const hatOnly = {};
   A.start(hatOnly, p);

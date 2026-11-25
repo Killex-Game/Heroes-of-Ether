@@ -552,7 +552,7 @@ function validate(p) {
             !s.life.pendingBonusEggs.every(integer) ||
             s.life.pendingBonusEggs.some((n, i) => n > s.life.eggs[i] * 2))))
     )
-      throw Error("Повреждён счётчик яиц за жизнь.");
+      throw Error("Повреждён счётчик яиц за вход на арену.");
     if (
       s.fragmentCounts !== undefined &&
       (!Array.isArray(s.fragmentCounts) ||

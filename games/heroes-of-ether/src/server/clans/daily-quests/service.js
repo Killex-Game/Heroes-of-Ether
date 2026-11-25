@@ -118,7 +118,7 @@ function capture(next, previous, at, {canSettle=true} = {}) {
         assign({...state,board:{...board,eligible:keep}});
       if (board.end <= at && !canSettle) { deferredEnd=Math.min(deferredEnd,board.end);continue; }
       if (board.end <= at) {
-        const receipt = board.day + ':' + id;
+        const receipt = engine.receiptKey(board);
         const grants = ledger?.[receipt] ? [] : engine.rewardPlan(board, at, clan.members), awarded = new Set();
         for (const grant of grants) {
           const p = writable(grant.playerId);
@@ -143,7 +143,7 @@ function capture(next, previous, at, {canSettle=true} = {}) {
         if(awarded.size) {
           for (const pid of awarded) awardTitles(writable(pid),board.end);
           if(ledger===next.clanQuestRewards)ledger={...(ledger||{})};
-          ledger[receipt]={clanId:id,day:board.day,earnedAt:board.end,issuedAt:at,
+          ledger[receipt]={clanId:id,day:board.day,...(board.cycle===undefined?{}:{cycle:board.cycle}),earnedAt:board.end,issuedAt:at,
             members:[...awarded],quests:board.quests.filter(q=>q.completedAt!==null).map(q=>({id:q.id,name:q.name,reward:structuredClone(q.reward),greatness:engine.questGreatness(q.metric),completedAt:q.completedAt}))};
         }
         for (const pid of Object.keys(board.contributors)) {
@@ -206,12 +206,9 @@ function progress(data, clanDrafts, p, event, at, changes, earned, before) {
   if (board && !blocked(data,board,at) && (data.clanQuests.calendarVersion!==1 || engine.period(at).active) && at >= board.start && at < board.end && Object.hasOwn(board.eligible,p.id)) {
     // Kill cooldowns remain authoritative. Mass uses the independent physics
     // cursor; legacy events without that cursor retain their previous rules.
-    deltas.kills = Math.max(0,p.progress.absorptionKills-before.kills);
-    // Natural rewards use the same accepted, capped personal credit. Their
-    // life sequence has already rejected retries; visual kills after the cap
-    // and the later life settlement must never create another contribution.
-    if (event.type === 'massAccrual' || event.type === 'massBonus')
-      deltas.kills += Math.max(0,p.progress.kills-before.creditedKills);
+    // Every source uses accepted personal credit, including Premium absorption
+    // rewards. Display-only kills beyond the cap cannot enter clan progress.
+    deltas.kills = Math.max(0,p.progress.kills-before.creditedKills);
     if(event.absorptionSequence===undefined && event.eaterLifeId===undefined)
       deltas.absorbedMass = Math.max(0,p.progress.absorbedMass-before.mass);
     deltas.xp = Math.max(0,earned);
@@ -268,6 +265,7 @@ function validate(data) {
   let history=[];
   for(const s of state.seasons) {history=seasons.announce(history,s,{role:'owner'}); history.at(-1).cancelled=!!s.cancelled;}
   for(const c of Object.values(data.clans)) for(const b of [c.dailyQuests?.board].filter(Boolean)) {
+    if(b.cycle!==undefined && (!Number.isSafeInteger(b.cycle) || b.cycle!==b.start || b.start>=b.end))throw Error('Invalid clan quest cycle');
     if(b.clanId!==c.id || !b.eligible || b.quests.length>5 || b.quests.some(q=>!Number.isSafeInteger(q.progress)||q.progress<0||q.progress>q.target || (q.completedAt!==null && (q.progress!==q.target || q.completedAt<b.start || q.completedAt>=b.end)))) throw Error('Invalid clan quest board');
     engine.validateCatalog({version:b.catalogVersion,items:[...catalog.items.filter(q=>!b.quests.some(r=>r.id===q.id)),...b.quests]});
     for (const contribution of Object.values(b.contributors || {})) {
@@ -278,7 +276,8 @@ function validate(data) {
   }
   for(const [key,r] of Object.entries(data.clanQuestRewards||{})) {
     if(r.quests?.some(q=>q.greatness!==undefined && (!Number.isSafeInteger(q.greatness)||q.greatness<0)))throw Error('Invalid clan quest greatness');
-    if(key!==r.day+':'+r.clanId || !Number.isSafeInteger(r.issuedAt) || r.issuedAt<r.earnedAt || !Array.isArray(r.members) || new Set(r.members).size!==r.members.length || r.members.some(id=>typeof id!=='string') || !Array.isArray(r.quests) || r.quests.length>5)throw Error('Invalid clan quest reward ledger');
+    if(r.cycle!==undefined && (!Number.isSafeInteger(r.cycle) || r.cycle>=r.earnedAt))throw Error('Invalid clan quest receipt cycle');
+    if(key!==engine.receiptKey(r) || !Number.isSafeInteger(r.issuedAt) || r.issuedAt<r.earnedAt || !Array.isArray(r.members) || new Set(r.members).size!==r.members.length || r.members.some(id=>typeof id!=='string') || !Array.isArray(r.quests) || r.quests.length>5)throw Error('Invalid clan quest reward ledger');
   }
 }
 module.exports={initialize,capture,progress,gift,due,active,view,validate,catalog,availableDuration};

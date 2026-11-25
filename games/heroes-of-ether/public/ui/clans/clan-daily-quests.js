@@ -61,7 +61,7 @@
     time.setAttribute('role','timer');time.setAttribute('aria-live','off');
     if(data.active)time.append(el('span','clan-daily-clock-label','До окончания'),el('strong','clan-daily-clock-value'));
     else {time.classList.add('is-finished');time.append(el('strong','clan-daily-clock-value',data.settled?'Итоги дня':'Задания завершены'));}
-    root.append(time,el('p','clan-muted','Вклад арены засчитывается после завершения жизни или выхода в лобби. Успей выйти до окончания заданий: более поздний выход не засчитывает накопленный вклад.'));
+    root.append(time);
     updateCountdown(root);
     for(const q of data.quests){
       const row=el('article','clan-daily-row'); if(q.completedAt!==null) row.classList.add('completed');

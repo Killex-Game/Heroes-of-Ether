@@ -65,6 +65,23 @@ function setup(count = 16, filePath = null) {
     c: (u) => store.data.clans[store.find(u.token).clanId],
   };
 }
+
+test('owner early battle finish settles actual fights and season cups once before opening quests',()=>{
+  const f=setup(10);f.set('2026-10-19T06:00:00Z');
+  let data=require('../../src/server/clans/daily-quests/service').initialize(f.store.data,f.now());
+  data={...data,clanQuests:{...data.clanQuests,arenaSettlementVersion:0}};f.store.save(data,f.now());
+  f.kill(f.heads[0]);f.set(f.now()+1000);
+  const admin=require('../../src/server/clans/daily-quests/admin'),before=admin.view(f.store);
+  const input={action:'switch',mode:'quests',seasonId:before.current.id,revision:before.revision,requestId:randomUUID(),reason:'Проверка завершения битв'};
+  const saved=admin.apply(f.store,{isOwner:()=>true},{id:'owner'},input);
+  assert.equal(saved.current.mode,'quests');assert.equal(f.store.data.competition.season.settled,true);
+  assert.equal(f.store.data.competition.day,null);
+  for(const u of f.heads){const trophies=f.c(u).competition.trophies.filter(t=>t.seasonId===before.current.id);assert.equal(trophies.length,1);assert.equal(trophies[0].awardedAt,f.now());}
+  const wallets=f.heads.map(u=>structuredClone(f.p(u).wallet));
+  assert(admin.apply(f.store,{isOwner:()=>true},{id:'owner'},input).replay);
+  f.set(f.now()+1000);assert.deepEqual(f.heads.map(u=>f.p(u).wallet),wallets);
+  assert(f.c(f.heads[0]).dailyQuests.board.quests.length>0);
+});
 test("Booster transactions preserve unchanged clan state; scored kills and day settlement still run", () => {
   const f = setup(10),
     u = f.heads[0];
@@ -228,6 +245,7 @@ test("Поражение: каждый текущий участник теря�
   f.kill(loser);
   f.kill(winner);
   f.kill(winner);
+  f.kill(winner); // Premium doubles the loser's one absorption: the opponent needs three kills.
   const honors = structuredClone(f.p(idle).honors),
     progress = structuredClone(f.p(idle).progress);
   const revision = f.p(idle).revision,

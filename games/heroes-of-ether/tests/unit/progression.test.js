@@ -46,6 +46,24 @@ function setup() {
   });
   return { store, a, b, events, kill, p: () => store.find(a.token) };
 }
+
+test('Premium doubles absorption kills immediately, without multiplying XP or actual defeat counters',()=>{
+  for(const [vip,premium,multiplier] of [[false,false,1],[true,false,1],[false,true,2],[true,true,2]]) {
+    const {store,a,b,p}=setup(),at=1000000;
+    p().account=require('../../src/server/accounts/account-benefits').fresh();
+    p().account.vipUntil=vip?at+1000:0;p().account.premiumUntil=premium?at+1000:0;
+    store.startLife(a.profile.id,'premium-kill');
+    const batch=[{type:'absorbed',profileId:a.profile.id,victimProfileId:b.profile.id,gain:40,finalDefeat:true}];
+    store.applyArenaProgress('premium-absorption',batch,at);
+    assert.equal(p().progress.kills,multiplier);assert.equal(p().progress.session.kills,multiplier);
+    assert.equal(p().progress.session.xp,vip?6:3);assert.equal(p().progress.absorptionKills,1);
+    store.applyArenaProgress('premium-absorption',batch,at);
+    assert.equal(p().progress.kills,multiplier);
+    store.applyArenaProgress('same-victim',batch,at+1);assert.equal(p().progress.kills,multiplier);
+    store.applyArenaProgress('expiry',[{...batch[0],victimProfileId:randomUUID()}],at+1000);
+    assert.equal(p().progress.kills,multiplier+1);
+  }
+});
 test("Все границы уровней: стоимость относится к текущему уровню, остаток сохраняется", () => {
   for (const [level, cost] of [
     [1, 500],

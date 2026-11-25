@@ -75,14 +75,14 @@ const implementations = {
     durationMs: 7000,
   },
   stone: {
-    kind: "root",
+    kind: "dizzy",
     target: "direction",
     flightMs: 4000,
     flightSpeed: 180,
     maxDistance: 720,
     trap: true,
     flightImpact: true,
-    durationMs: 10000,
+    durationMs: 5000,
   },
   rocket: {
     kind: "rocket",
@@ -232,7 +232,7 @@ const usage = {
   harpoon: "Притягивает вас к сопернику.",
   web: "Обездвиживает соперника на 7 секунд.",
   stone:
-    "Обездвиживает соперника на 10 с при попадании в полёте. После приземления остаётся ловушкой, которая действует и на вас.",
+    "Вызывает головокружение на 5 с: движение становится спутанным, арена покачивается. После приземления остаётся ловушкой, которая действует и на вас.",
 };
 Object.assign(usage, {
   colorful_shield: "Защита от негативных бустеров на 20 секунд.",

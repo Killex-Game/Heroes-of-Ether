@@ -162,14 +162,14 @@ function validateProgress(p) {
     s.session !== null &&
     (!s.session || typeof s.session.id !== "string" || !s.session.id || !integer(s.session.xp))
   )
-    throw Error("Повреждён опыт текущей жизни.");
+    throw Error("Повреждён опыт текущего входа на арену.");
   if (s.session?.kills !== undefined && !integer(s.session.kills))
-    throw Error("Повреждён счётчик киллов текущей жизни.");
+    throw Error("Повреждён счётчик киллов текущего входа на арену.");
   if (
     s.session?.creditedKills !== undefined &&
     (!integer(s.session.creditedKills) || s.session.creditedKills > s.session.kills)
   )
-    throw Error("Повреждён зачёт киллов текущей жизни.");
+    throw Error("Повреждён зачёт киллов текущего входа на арену.");
   if (s.session?.massBonusSequence !== undefined && !integer(s.session.massBonusSequence))
     throw Error("Повреждён счётчик бонусов за массу.");
   for (const [key, limit] of [
@@ -208,7 +208,7 @@ function validateProgress(p) {
       !integer(s.lastLife.earnedXp) ||
       !integer(s.lastLife.durationSeconds))
   )
-    throw Error("Повреждён итог жизни.");
+    throw Error("Повреждён итог входа на арену.");
 }
 function awardAchievements(p, at = Date.now(), extraCurrent = false) {
   migrateKingProgress(p);
@@ -312,16 +312,19 @@ function finishLife(p, event, at) {
 function awardKills(p, count, xp, at, accountXpPercent, absorption = false) {
   const s = p.progress,
     session = s.session;
+  // Natural packets already include Premium. Only credited absorption kills
+  // need the status here; their XP and real-defeat counters stay independent.
+  const kills = count * (absorption && accounts.benefits(p, at).premium ? 2 : 1);
   // Старые жизни до обновления уже зачислили все показанные киллы.
   if (session) {
     session.creditedKills ??= session.kills || 0;
-    session.kills = add(session.kills || 0, count);
+    session.kills = add(session.kills || 0, kills);
   }
   // Проверяем ДО начисления опыта: событие, достигшее лимита, засчитывается целиком.
   const capped = s.arenaXpTarget != null && s.xp + (session?.xp || 0) >= s.arenaXpTarget;
   if (!capped) {
-    s.kills = add(s.kills, count);
-    if (session) session.creditedKills = add(session.creditedKills, count);
+    s.kills = add(s.kills, kills);
+    if (session) session.creditedKills = add(session.creditedKills, kills);
     earnXp(p, xp, count, at, accountXpPercent, absorption);
   }
   return !capped;
@@ -333,7 +336,7 @@ function applyEvent(p, event, at) {
   stages.ensure(s, ACHIEVEMENTS, (a) => s[a.stat]);
   if (event.type === "lifeStarted") {
     if (s.session?.id === event.lifeId) return;
-    if (s.session) throw Error("Предыдущая жизнь ещё не завершена.");
+    if (s.session) throw Error("Предыдущий вход на арену ещё не завершён.");
     if (event.newArena !== false || s.arenaXpTarget == null) {
       const progress = levelProgress(s.xp);
       s.arenaXpTarget = add(s.xp, progress.nextLevelXp - progress.levelXp);

@@ -75,7 +75,7 @@ test("E использует отдельный запас без лимита �
   arena.resetPlayer(p, 34000);
   A.start(p, profile);
   assert.equal(A.snapshot(p)[0].count, 3);
-  assert.throws(() => A.use(arena, p, message, 34000), /этой жизни/);
+  assert.throws(() => A.use(arena, p, message, 34000), /этот вход на арену/);
   assert.equal(A.use(arena, p, { ...message, spawnSerial: p.spawnSerial }, 34000).remaining, 2);
 });
 test("ошибка применения не забирает заряд; каждая часть получает 50 раз в 2 секунды, всего пять раз", () => {
@@ -83,7 +83,7 @@ test("ошибка применения не забирает заряд; каж
   arena.gainMass(p, 1000 - p.mass);
   arena.boosterEffects.split(p, arena.mainBody(p), 2, 0);
   p.effects.easter_egg = 1000;
-  assert.throws(() => A.use(arena, p, {...message, spawnSerial: 999}, 0), /жизни/);
+  assert.throws(() => A.use(arena, p, {...message, spawnSerial: 999}, 0), /вход/);
   assert.equal(A.snapshot(p)[0].count, 3);
   delete p.effects.easter_egg;
   const before = arena.bodies(p).map((b) => b.mass);

@@ -1,13 +1,15 @@
 "use strict";
 const test = require("node:test"), assert = require("node:assert/strict"), path = require("node:path");
 const { randomUUID } = require("node:crypto");
-const { stripLinks } = require("../../src/server/chat/chat-links");
+const { stripLinks, canSend } = require("../../src/server/chat/chat-links");
 const { ChatService } = require("../../src/server/chat/chat-service");
 const { ChatModeration } = require("../../src/server/chat/chat-moderation");
 const { ProfileStore } = require("../../src/server/profiles/profile-store");
 const { temporary } = require("../temp");
 
 test("links disappear while plain text, decimals and labels remain", () => {
+  for (const text of ["https://example.com", "http://127.0.0.1:3102/", "https://example.com!", "   "]) assert.equal(canSend(text), false);
+  for (const text of ["Привет https://example.com", "!!!", "🙂 https://example.com", "Масса 10.5"]) assert.equal(canSend(text), true);
   for (const link of ["https://example.com/a?q=1", "HTTP://example.com", "www.example.com",
     "example.com/a", "пример.рф", "xn--e1afmkfd.xn--p1ai", "https://127.0.0.1:8080/a",
     "192.168.1.1:1234", "tg://resolve?domain=test", "mailto:a@example.com", "a@example.com",

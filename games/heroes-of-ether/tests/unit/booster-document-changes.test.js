@@ -82,16 +82,18 @@ test("Камень срабатывает в полёте, Паутина и К�
   const { arena, a, b } = scene();
   use(arena, a, "stone");
   arena.combat.update(5500);
-  assert.equal(b.effects.stone, 15500);
+  assert.equal(b.effects.stone, 10500);
   assert.equal(arena.combat.shots.length, 0);
   delete b.effects.stone;
   hit(arena, a, b, "web", 6000);
   hit(arena, a, b, "stone", 6500);
   hit(arena, a, b, "web", 7000);
-  assert.equal(b.effects.stone, 16500);
+  assert.equal(b.effects.stone, 11500);
   assert.equal(b.effects.web, 14000);
-  assert.equal(arena.hasEffect(b, "root", 16499), true);
-  assert.equal(arena.hasEffect(b, "root", 16500), false);
+  assert.equal(arena.hasEffect(b, "dizzy", 11499), true);
+  assert.equal(arena.hasEffect(b, "dizzy", 11500), false);
+  assert.equal(arena.hasEffect(b, "root", 13999), true);
+  assert.equal(arena.hasEffect(b, "root", 14000), false);
 });
 
 test("Ракета делит 20 на 16/2/2, не создаёт части ниже минимума и не действует на 19", () => {

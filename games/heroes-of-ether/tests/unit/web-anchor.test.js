@@ -27,7 +27,8 @@ for (const id of ["hook", "glove"]) test(`stone permits ${id}; web blocks it unt
     const before = b.x;
     b.moveDirection = { x: 1000, y: 0 };
     arena.step(5050);
-    assert.equal(b.x, before);
+    if (root === "web") assert.equal(b.x, before);
+    else assert.notEqual(b.x, before, "Stone permits confused movement");
     hit(arena, a, b, id, 5100);
     arena.step(5300);
     if (root === "stone") assert.ok(id === "hook" ? b.x < before : b.x > before);
@@ -93,7 +94,7 @@ test("growth at the wall preserves web anchors without losing the received mass"
   arena.step(b.effects.web); assert.ok(b.x > x);
 });
 test("overlapping stone and web keep the web anchor until its own deadline", () => {
-  const { arena, a, b } = scene(); hit(arena, a, b, "web"); hit(arena, a, b, "stone", 5100);
+  const { arena, a, b } = scene(); hit(arena, a, b, "web"); hit(arena, a, b, "stone", 9000);
   hit(arena, a, b, "glove", 5200); arena.step(5400); assert.equal(b.x, 1400);
   const expiry = b.effects.web; assert.ok(b.effects.stone > expiry);
   hit(arena, a, b, "glove", expiry); arena.step(expiry + 200); assert.ok(b.x > 1400);

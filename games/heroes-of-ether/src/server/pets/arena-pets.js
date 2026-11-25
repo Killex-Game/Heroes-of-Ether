@@ -113,7 +113,7 @@ function tick(arena, p, now) {
 function use(arena, p, message, now) {
   const pet = p.pet;
   if (!pet || p.dead || message.spawnSerial !== p.spawnSerial)
-    throw new BoosterError("Питомец недоступен в этой жизни.", 409);
+    throw new BoosterError("Питомец недоступен за этот вход на арену.", 409);
   const { requestId, sequence, ability } = message;
   if (
     typeof requestId !== "string" ||

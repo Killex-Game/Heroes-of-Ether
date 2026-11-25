@@ -52,10 +52,10 @@
       !!p.quests?.pending?.length ||
       !!p.easter?.chests?.length ||
       !!p.fridayChests?.length ||
-      !!p.clanChests?.items?.some((c) => c.stored);
+      !!p.clanChests?.items?.length;
     return {
       clan:
-        p.menuNotifications?.clanApplications > 0 || !!p.clanChests?.items?.some((c) => !c.stored),
+        p.menuNotifications?.clanApplications > 0,
       inventory: titleChests || treasury,
       chests: titleChests || treasury,
       titleChests,

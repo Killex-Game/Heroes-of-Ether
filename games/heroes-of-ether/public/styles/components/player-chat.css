@@ -159,6 +159,10 @@
 .arena-chat .chat-status:empty {
   display: none;
 }
+@media (min-width: 901px) and (min-height: 501px) and (pointer: fine) {
+  .arena-chat { width: min(350px, calc(100vw - 24px)); }
+  .arena-chat .chat-log { height: min(210px, 29dvh); }
+}
 @media (max-width: 1100px), (pointer: coarse) {
   .arena-chat {
     bottom: max(120px, calc(env(safe-area-inset-bottom) + 108px));

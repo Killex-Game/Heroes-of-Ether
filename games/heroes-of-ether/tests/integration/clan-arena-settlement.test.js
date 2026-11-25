@@ -33,6 +33,21 @@ async function fixture(t,{worker=false,battle=false}={}) {
   const board=()=>store.data.clans[id].dailyQuests.board;
   return {store,users,id,file,start,end,send,event,natural,board,action,open,at:n=>{at=n;}};
 }
+for(const worker of [false,'direct'])test('Premium absorption credits two clan kills at exit; cap and duplicate packets add none, worker='+worker,async t=>{
+  const f=await fixture(t,{worker}),u=f.users[0];
+  f.store.transact(u.token,randomUUID(),'premium-fixture',p=>{p.account=require('../../src/server/accounts/account-benefits').fresh();p.account.premiumUntil=f.end;});
+  await f.send([f.event(0,'lifeStarted')],f.start);
+  const absorption=f.event(0,'absorbed',{victimProfileId:randomUUID(),gain:100});
+  await f.send([absorption],f.start+1000,'premium-kill');await f.send([absorption],f.start+1000,'premium-kill');
+  assert.equal(f.store.find(u.token).progress.kills,2);assert.equal(f.board().quests.find(q=>q.metric==='kills').progress,0);
+  f.store.transact(u.token,randomUUID(),'cap-fixture',p=>{p.progress.arenaXpTarget=p.progress.xp+p.progress.session.xp;});
+  await f.send([f.event(0,'absorbed',{victimProfileId:randomUUID(),gain:100})],f.start+2000);
+  assert.equal(f.store.find(u.token).progress.kills,2);assert.equal(f.store.find(u.token).progress.absorptionKills,2);
+  await f.send([f.event(0,'lifeEnded',{durationSeconds:3,reason:'left'})],f.start+3000,'premium-exit');
+  await f.send([f.event(0,'lifeEnded',{durationSeconds:3,reason:'left'})],f.start+3000,'premium-exit-retry');
+  assert.equal(f.board().quests.find(q=>q.metric==='kills').progress,2);
+  assert.deepEqual(recover(f.file).data.clans,f.store.data.clans);
+});
 for (const worker of [false,'direct'])for (const [vip,premium] of [[false,false],[true,false],[false,true],[true,true]])
 test('VIP XP / Premium kills: real account expiry, durable retry and deferred clan credit '+vip+'/'+premium+', worker='+worker,async t=>{
   const f=await fixture(t,{worker}),u=f.users[0];

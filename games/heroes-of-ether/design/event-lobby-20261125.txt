@@ -1,0 +1,7 @@
+Tool: built-in image_gen, generated 2026-11-25.
+Selected asset: public/assets/events/lobby/easter-pattern-20261125.png
+Scope: ordinary Easter lobby only. Arena backgrounds, named appearance themes, news banners, clan crests, title medals remain unchanged.
+Black Friday candidate was already generating when the owner excluded it; it is NOT installed or referenced. The latest owner instruction instead restores the first recorded Black Friday pattern, from commit 6fbba37 (2026-11-21); original backdrop gradients already match it.
+Original output: exec-33024082-828e-4282-b350-84a32b26c1a9.png
+Prompt:
+Use case: stylized-concept. Produce one square 1024x1024 flat seamless repeating wallpaper tile for the ordinary lobby of a polished fantasy browser game. Very simple quiet pale warm ivory background, sparse tiny tasteful hand-painted Easter motifs evenly distributed with large empty gaps: pink egg with five-petal white daisies, blue egg with white daisies, green egg with small pale leaf sprigs, golden yellow egg with white zigzag bands; tiny spring leaves and simple flowers. ALL eggs have identical elegant oval proportions and equal size. Motifs soft low contrast pastel, occupying less than 12 percent of total area, about 10 small motifs across tile in total, not dense. Painterly smooth clean fantasy illustration, not sketch, no glitter, no strong highlights, no characters, no animals, no castles, no landscape, no vignette, no text, no UI, no frame. This is an unobtrusive backdrop under buttons and text, not a scene or banner. Edges repeat seamlessly.

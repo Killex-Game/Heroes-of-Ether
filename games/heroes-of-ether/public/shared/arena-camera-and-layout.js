@@ -148,6 +148,16 @@
     camera.vx = velocity.x * ratio;
     camera.vy = velocity.y * ratio;
   }
+  function dizzyRotation(remainingMs, reducedMotion = false) {
+    if (reducedMotion || !(remainingMs > 0)) return 0;
+    const elapsed = Math.max(0, 5000 - remainingMs);
+    return Math.sin(elapsed * 0.003) * 0.14 * Math.min(1, elapsed / 250, remainingMs / 250);
+  }
+  function screenToWorld(x, y, camera, width, height) {
+    const dx = x-width/2, dy = y-height/2, angle = camera.rotation || 0;
+    const cos = Math.cos(angle), sin = Math.sin(angle);
+    return {x:camera.x+(dx*cos+dy*sin)/camera.scale,y:camera.y+(-dx*sin+dy*cos)/camera.scale};
+  }
   function movementTarget(player, pointer, camera, width, height, world) {
     const edge = Math.min(96, Math.min(width, height) * 0.12);
     const directional = pointer.x <= edge || pointer.x >= width - edge ||
@@ -156,7 +166,8 @@
     if (directional) {
       // The screen edge is an intent to travel, not a wall or a destination.
       // Anchor the ray at the player so crossing the cursor cannot reverse it.
-      const dx = pointer.x - width / 2, dy = pointer.y - height / 2;
+      const target = screenToWorld(pointer.x, pointer.y, camera, width, height);
+      const dx = target.x - camera.x, dy = target.y - camera.y;
       const length = Math.hypot(dx, dy) || 1;
       const nx = dx / length, ny = dy / length;
       const reach = Math.max(0, Math.min(
@@ -166,8 +177,7 @@
       x = player.x + nx * reach;
       y = player.y + ny * reach;
     } else {
-      x = camera.x + (pointer.x - width / 2) / camera.scale;
-      y = camera.y + (pointer.y - height / 2) / camera.scale;
+      ({x, y} = screenToWorld(pointer.x, pointer.y, camera, width, height));
     }
     return { x: clamp(x, 0, world.width), y: clamp(y, 0, world.height),
       keepDirection: directional };
@@ -250,6 +260,8 @@
   }
 
   return {
+    dizzyRotation,
+    screenToWorld,
     desiredScale,
     groupFrame,
     movementTarget,

@@ -52,38 +52,37 @@
       this.input.autocomplete = "off";
       this.button = el("button", "sf-button chat-send", "Отправить");
       this.button.type = "submit";
-      this.status = el("p", "chat-status");
-      this.status.setAttribute("role", "status");
       this.form.append(this.input, this.button);
-      this.root.append(this.log, this.form, this.status);
+      this.root.append(this.log, this.form);
       this.input.addEventListener("focus", onFocus);
       this.form.addEventListener("submit", (event) => {
         event.preventDefault();
         this.submit();
       });
-      this.input.addEventListener("input", () => this.lock());
+      this.input.addEventListener("input", () => { this.input.removeAttribute("aria-invalid"); this.lock(); });
       this.lock();
     }
     reset(preserveDraft = false) {
       clearTimeout(this.muteTimer);
       this.mutedUntil = 0;
+      this.input.placeholder = "Написать сообщение…";
       this.generation++;
       this.messages = [];
       this.log.replaceChildren(this.empty);
       if (!preserveDraft) this.input.value = "";
       this.retry = null;
       this.busy = false;
-      this.status.textContent = "";
       this.lock();
     }
     lock() {
       const muted = this.mutedUntil > Date.now();
+      const valid = window.KillexChatLinks.canSend(this.input.value);
       window.KillexControls.state(this.input, !this.enabled || muted);
       this.input.readOnly = !!this.busy;
       window.KillexControls.state(
         this.button,
-        !this.enabled || muted || !!this.busy || !this.input.value.trim(),
-        !this.enabled || muted || !this.input.value.trim(),
+        !this.enabled || muted || !!this.busy || !valid,
+        !this.enabled || muted || !valid,
       );
     }
     moderation(state) {
@@ -92,15 +91,13 @@
       const remaining = Math.max(0, (state.until || 0) - state.serverNow);
       this.mutedUntil = remaining ? Date.now() + remaining : 0;
       if (remaining) {
-        this.status.textContent = `${state.reason}. Чат недоступен до ${new Date(state.until).toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" })}.`;
+        this.input.placeholder = `Чат недоступен до ${new Date(state.until).toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" })}`;
         this.muteTimer = setTimeout(() => {
           this.mutedUntil = 0;
-          this.muteNotice = false;
-          this.status.textContent = "";
+          this.input.placeholder = "Написать сообщение…";
           this.lock();
         }, remaining + 25);
-      } else if (this.muteNotice) this.status.textContent = "";
-      this.muteNotice = !!remaining;
+      } else this.input.placeholder = "Написать сообщение…";
       this.lock();
     }
     enable(value) {
@@ -178,7 +175,7 @@
       if (!bottom) this.log.scrollTop = top;
     }
     async submit() {
-      if (!this.enabled || this.busy || this.mutedUntil > Date.now() || !this.input.value.trim()) return;
+      if (!this.enabled || this.busy || this.mutedUntil > Date.now() || !window.KillexChatLinks.canSend(this.input.value)) return;
       const text = this.input.value,
         generation = this.generation;
       const request =
@@ -188,21 +185,17 @@
       this.retry = request;
       this.busy = true;
       this.lock();
-      this.status.textContent = "";
       try {
         const result = await this.send(request);
         if (generation !== this.generation) return;
         this.append([result.message]);
         this.input.value = "";
         this.retry = null;
-        this.status.textContent = "Отправлено";
+        this.input.removeAttribute("aria-invalid");
       } catch (error) {
         if (generation === this.generation) {
           if (["CHAT_MUTED", "CHAT_REJECTED"].includes(error.code)) this.retry = null;
-          this.status.textContent =
-            error.name === "AbortError"
-              ? "Ответ задерживается. Повтори отправку."
-              : error.message || "Нет связи с чатом. Повтори отправку.";
+          this.input.setAttribute("aria-invalid", "true");
           this.moderation(error.chatModeration);
         }
       } finally {
@@ -220,7 +213,6 @@
         send: (request) => this.post(request),
         onFocus,
       });
-      this.panel.form.before(this.panel.status);
       this.root = el("aside", "arena-chat");
       this.root.id = "arenaChat";
       this.toggle = el("button", "sf-button arena-chat-toggle");
@@ -345,13 +337,10 @@
       this.older.type = "button";
       this.older.hidden = true;
       this.older.addEventListener("click", () => this.loadOlder());
-      this.historyStatus = el("p", "chat-status");
-      this.historyStatus.setAttribute("role", "status");
       this.historyLog.append(this.historyEmpty, this.historyItems, this.older);
       this.history.append(
         el("h3", "clan-history-heading", "История участников"),
         this.historyLog,
-        this.historyStatus,
       );
       this.root.append(this.panel.root, this.history);
       this.entries = new Map();
@@ -387,7 +376,6 @@
       this.panel.reset();
       this.resetHistory();
       this.panel.enable(false);
-      this.panel.status.textContent = error.message;
     }
     async load() {
       if (this.loading) return;
@@ -413,7 +401,6 @@
       } catch (error) {
         if (clanId !== this.clanId || !this.active()) return;
         if ([401, 403].includes(error.status)) this.revoke(error);
-        else this.panel.status.textContent = "Нет связи с чатом.";
       } finally {
         this.loading = false;
       }
@@ -425,7 +412,6 @@
       this.historyItems.replaceChildren();
       this.historyEmpty.hidden = false;
       this.older.hidden = true;
-      this.historyStatus.textContent = "";
     }
     historyText(row) {
       const a = row.actor.name,
@@ -486,7 +472,6 @@
       // New records must not displace someone reading an older event.
       this.historyLog.scrollTop =
         older || scrollTop < 8 ? scrollTop : scrollTop + this.historyLog.scrollHeight - height;
-      this.historyStatus.textContent = "";
     }
     async loadOlder() {
       if (this.olderBusy || !this.oldest || !this.active()) return;
@@ -508,7 +493,6 @@
       } catch (error) {
         if (this.active() && clanId === this.clanId && generation === this.historyGeneration) {
           if ([401, 403].includes(error.status)) this.revoke(error);
-          else this.historyStatus.textContent = "Не удалось загрузить историю. Попробуй ещё раз.";
         }
       } finally {
         this.olderBusy = false;

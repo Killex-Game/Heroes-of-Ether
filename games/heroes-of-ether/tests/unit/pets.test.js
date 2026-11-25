@@ -646,7 +646,7 @@ test("Q fire applies level damage at swept boundary; replay and stale lives neve
   assert.equal(arena.combatEvents.filter(e => e.type === "burned").length, 1);
   assert.throws(
     () => pets.use(arena, p, { ...message(p, "fire", 2), spawnSerial: 99 }, 2000),
-    /жизни/,
+    /вход на арену/,
   );
   assert.throws(() => pets.use(arena, p, message(p, "fire", 1), 2000), /обработан/);
 });

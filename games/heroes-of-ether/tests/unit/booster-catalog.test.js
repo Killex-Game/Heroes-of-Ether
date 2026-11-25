@@ -75,6 +75,7 @@ test("Карточки сохраняют правила каталога; де�
   const source = readCatalog(path.join(directory, "catalog.html"));
   // Исходный лист рисунков хранит старые подписи; утверждённый баланс живёт в JSON.
   const revisedEffects = {
+    stone: "Вызывает головокружение на 5 секунд: движение становится спутанным, арена покачивается. После приземления действует и на владельца. Повтор продлевает головокружение.",
     glove: "Отталкивает соперника",
     poison:
       "Сжигает 35% общей массы на момент попадания за 10 секунд. Из потерянной массы 15% выбрасывается эфиром.",
@@ -92,7 +93,7 @@ test("Карточки сохраняют правила каталога; де�
     assert.equal(actual.effect, revisedEffects[item.id] || item.effect);
     if (["web", "stone"].includes(item.id)) {
       assert.equal(actual.flightMs, item.params.flight_seconds * 1000);
-      assert.equal(BOOSTERS.get(item.id).durationMs, item.params.immobilize_seconds * 1000);
+      assert.equal(BOOSTERS.get(item.id).durationMs, item.id === 'stone' ? 5000 : item.params.immobilize_seconds * 1000);
     }
     const iconPath = actual.icon.split("?")[0];
     assert.equal(iconPath, `assets/boosters/png/${item.id}.png`);
@@ -295,7 +296,6 @@ test("Ускорение даёт ровно +50% и заканчивается 
 });
 for (const [id, flight, duration] of [
   ["web", 1000, 7000],
-  ["stone", 4000, 10000],
 ]) {
   test(`${id}: цель неподвижна ${duration / 1000} секунд, затем снова движется`, () => {
     const { arena, a, b } = scene();

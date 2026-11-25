@@ -155,7 +155,7 @@ test("Снаряды исчезают по времени, у границы и 
 });
 for (const [id, flight, duration] of [
   ["web", 1000, 7000],
-  ["stone", 4000, 10000],
+  ["stone", 4000, 5000],
 ])
   test(
     id +
@@ -188,7 +188,7 @@ for (const [id, flight, duration] of [
       assert.equal(arena.combat.shots.length, 0);
       arena.combat.update(impact + 500);
       assert.equal(b.effects[id], impact + duration);
-      assert.equal(arena.hasEffect(b, "root", impact + duration - 1), true);
+      assert.equal(arena.hasEffect(b, id === "stone" ? "dizzy" : "root", impact + duration - 1), true);
       assert.equal(arena.hasEffect(b, "root", impact + duration), false);
     },
   );
@@ -310,7 +310,7 @@ test("Камень не прибавляет оставшееся время П�
   b.effects.web = 10000;
   arena.combat.update(9100);
   assert.equal(b.effects.web, 10000);
-  assert.equal(b.effects.stone, 19100);
+  assert.equal(b.effects.stone, 14100);
   assert.equal(arena.combat.shots.length, 0);
 });
 test("48 ловушек на профиль: общий предел двух типов, новых жизней и переподключений; чужие ловушки не мешают", () => {

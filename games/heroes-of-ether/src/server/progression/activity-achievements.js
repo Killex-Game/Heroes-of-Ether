@@ -302,7 +302,7 @@ const EXTRA_ACHIEVEMENTS = Object.freeze([
     "for_clan",
     "За клан",
     "clan",
-    "жизней",
+    "входов на арену",
     [5, 30, 50, 100],
     COMMON,
     "Завершить игру на арене длительностью от минуты, состоя в одном клане от начала до конца игры.",
@@ -547,7 +547,7 @@ function validateActivity(p, previous) {
         p.progress.session.activityClan !== null &&
         typeof p.progress.session.activityClan !== "string"))
   )
-    throw Error("Повреждён учёт времени жизни.");
+    throw Error("Повреждён учёт времени на арене.");
 }
 // Called only for committed server competition events, within the same draft as its rewards.
 function leagueEvent(p, event, amount, at) {
@@ -688,7 +688,7 @@ function lifeTime(p, lifeId, seconds, at = Date.now()) {
   const s = p.progress.session,
     a = p.activity;
   if (!a || !s || s.id !== lifeId) return;
-  if (!integer(seconds)) throw Error("Неверное время жизни.");
+  if (!integer(seconds)) throw Error("Неверное время на арене.");
   const previous = s.activitySeconds || 0;
   if (seconds > previous) {
     a.arenaSeconds = sum(a.arenaSeconds, seconds - previous);

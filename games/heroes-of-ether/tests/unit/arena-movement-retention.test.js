@@ -36,7 +36,7 @@ test("После потери фокуса сохраняется направл
 test("Сохранённое направление соблюдает обездвиживание, границы мира и номер жизни", () => {
   const { arena, p } = scene();
   arena.handleInput(p.id, { type: "move", x: 9000, y: 5000, keepDirection: true }, 5000);
-  p.effects.stone = 9000;
+  p.effects.web = 9000;
   p.stopped = true;
   const x = p.x;
   arena.step(6000);

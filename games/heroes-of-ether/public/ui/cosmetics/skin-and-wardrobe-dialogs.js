@@ -50,7 +50,7 @@
     }
     for (const ability of abilities) {
       const line = el("span", "accessory-charge");
-      line.setAttribute("aria-label", `Клавиша E: ${ability.name}, ${ability.count} за жизнь`);
+      line.setAttribute("aria-label", `Клавиша E: ${ability.name}, ${ability.count} за вход на арену`);
       const icon = el("img", "accessory-booster-icon");
       icon.src = ability.icon;
       icon.alt = "";
@@ -95,20 +95,6 @@
     mark.append(el("span", "", "✦"));
     return mark;
   }
-  function discountNote() {
-    const node = el("p", "cosmetics-season-discount");
-    node.hidden = true;
-    return node;
-  }
-  function updateDiscounts(profile) {
-    const discount = profile?.seasonBenefits?.discount || 0;
-    for (const note of document.querySelectorAll(".cosmetics-season-discount")) {
-      note.hidden = !discount;
-      note.textContent = discount
-        ? `Кубок клана: скидка ${discount}% на покупки скинов, бабочек и шапок.`
-        : "";
-    }
-  }
   class CosmeticsUI {
     constructor(owner) {
       this.owner = owner;
@@ -126,13 +112,11 @@
       document.addEventListener("killex:profile", (event) => {
         this.profile = event.detail;
         if (this.owner.isLobby()) {
-          updateDiscounts(this.profile);
           this.renderWardrobe();
         }
       });
       this.renderSelection();
       this.renderWardrobe();
-      updateDiscounts(this.profile);
     }
     buildSkins() {
       this.skins = dialog("skinsDialog", "Гардероб", "Закрыть гардероб", "wardrobeSection");
@@ -196,7 +180,7 @@
         }),
         button("sf-button", "Готово", () => this.skins.close()),
       );
-      this.skins.append(tabs, discountNote(), layout, actions);
+      this.skins.append(tabs, layout, actions);
       this.skins.addEventListener("close", () => this.appearance.previewArena(false));
       this.renderFilter();
     }
@@ -561,27 +545,29 @@
         icon.alt = { coins: "монет", crystals: "кристаллов", bucks: "эфира" }[collection.currency];
         action.append(text, icon);
         footer.append(note, action);
-        controls.push((profile, pending, blocked) => {
+        controls.push((profile, pending, blocked, at) => {
+          const discount = window.KillexClanRules.currentDiscount(profile?.seasonBenefits, at);
+          const price = window.KillexClanRules.discountedPrice(collection.price, discount);
           owned = !!profile?.purchasedSkinCollections?.includes(collection.id);
           text.textContent = owned
             ? "В гардероб"
-            : "Купить " + collection.price.toLocaleString("ru-RU");
+            : "Купить " + price.toLocaleString("ru-RU");
           icon.hidden = owned;
           note.textContent = owned ? "Куплено навсегда" : "";
           window.KillexControls.state(
             action,
             blocked ||
               (!owned &&
-                (!!pending || !profile || profile.wallet[collection.currency] < collection.price)),
+                (!!pending || !profile || profile.wallet[collection.currency] < price)),
             blocked ||
-              (!owned && (!profile || profile.wallet[collection.currency] < collection.price)),
+              (!owned && (!profile || profile.wallet[collection.currency] < price)),
           );
         });
         card.append(heading, stage, footer);
         root.append(card);
       }
-      root.update = (profile, pending, blocked) =>
-        controls.forEach((update) => update(profile, pending, blocked));
+      root.update = (profile, pending, blocked, at = Date.now()) =>
+        controls.forEach((update) => update(profile, pending, blocked, at));
       return root;
     }
   }

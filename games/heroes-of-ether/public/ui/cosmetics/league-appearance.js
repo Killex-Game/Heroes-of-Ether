@@ -693,12 +693,13 @@
             image = card.querySelector("img"),
             ctx = canvas.getContext("2d");
           ctx.clearRect(0, 0, 160, 160);
-          ctx.fillStyle = "#201931";
-          ctx.fillRect(0, 0, 160, 160);
           ctx.save();
           ctx.beginPath();
           ctx.arc(80, 80, 52, 0, Math.PI * 2);
           ctx.clip();
+          const disc = ctx.createRadialGradient(59, 54, 0, 80, 80, 70);
+          disc.addColorStop(0, "#f3eafa"); disc.addColorStop(.22, "#8cafd2"); disc.addColorStop(1, "#2a2447");
+          ctx.fillStyle = disc; ctx.fillRect(28, 28, 104, 104);
           if (image.complete && image.naturalWidth)
             window.KillexIdentity.drawSkin(ctx, image, image.dataset.skinId, 28, 28, 104);
           ctx.restore();

@@ -157,7 +157,7 @@ const app = createGameServer({
                   assert.equal(
                     c.src,
                     currency === "bucks"
-                      ? `assets/currency-packs/ether-v1/${c.id}.webp`
+                      ? `assets/currency-packs/ether-original/${c.id}.png`
                       : `assets/currency-packs/v1/${currency}-${c.id}.webp`,
                   );
               }

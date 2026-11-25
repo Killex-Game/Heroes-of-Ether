@@ -11,28 +11,47 @@
     const date = new Date(at + OFFSET), year = date.getUTCFullYear();
     const block = Math.floor(date.getUTCMonth() / 2), month = block * 2;
     const start = Date.UTC(year, month, 1) - OFFSET;
-    const mode = schedule.find(row => row.start === start)?.mode || (block % 2 ? "quests" : "battle");
+    const entry = schedule.find(row => row.start === start);
+    const baseMode = entry?.mode || (block % 2 ? "quests" : "battle");
+    const switches = entry?.switches || [];
+    const passed = switches.filter(row => row.at <= at);
+    const mode = passed.at(-1)?.mode || baseMode;
+    const segmentStart = passed.at(-1)?.at || start;
+    const end = switches.find(row => row.at > at)?.at || Date.UTC(year, month + 2, 1) - OFFSET;
     let number = (year - 2026) * 3 + (mode === 'quests' ? Math.floor(block / 2) : Math.ceil(block / 2)) + 1;
     for (const row of schedule) if (row.start < start) {
       const original = Math.floor(new Date(row.start + OFFSET).getUTCMonth() / 2) % 2 ? 'quests' : 'battle';
       number += Number(row.mode === mode) - Number(original === mode);
+      number += (row.switches || []).filter(s => s.mode === mode).length;
     }
+    if (passed.length) number += Number(baseMode === mode) + passed.slice(0, -1).filter(s => s.mode === mode).length;
     return {
-      id: `clan-${mode}-${year}-${String(month + 1).padStart(2, "0")}`,
+      id: `clan-${mode}-${year}-${String(month + 1).padStart(2, "0")}` + (passed.length ? `-${segmentStart}` : ""),
       mode, name: mode === "quests" ? "Сезон клановых заданий" : "Сезон клановых битв",
       number,
-      start,
-      end: Date.UTC(year, month + 2, 1) - OFFSET,
+      start: segmentStart,
+      end,
     };
   }
   function validateSchedule(schedule) {
     if (!Array.isArray(schedule) || schedule.length > 1200) throw Error('Invalid clan calendar schedule');
     let previous = -Infinity;
     for (const row of schedule) {
-      if (!row || Object.keys(row).sort().join(',') !== 'mode,start' || !['quests','battle'].includes(row.mode) ||
+      if (!row || !['mode,start','mode,start,switches'].includes(Object.keys(row).sort().join(',')) || !['quests','battle'].includes(row.mode) ||
           !Number.isSafeInteger(row.start) || row.start < Date.UTC(2026,0,1)-OFFSET || row.start <= previous ||
           season(row.start).start !== row.start) throw Error('Invalid clan calendar schedule');
       previous = row.start;
+      if (row.switches !== undefined) {
+        if (!Array.isArray(row.switches) || row.switches.length > 120) throw Error('Invalid clan calendar switches');
+        let last = row.start, mode = row.mode;
+        const end = season(row.start).end;
+        for (const s of row.switches) {
+          if (!s || Object.keys(s).sort().join(',') !== 'at,mode' ||
+              !Number.isSafeInteger(s.at) || s.at <= last || s.at >= end ||
+              !['quests','battle'].includes(s.mode) || s.mode === mode) throw Error('Invalid clan calendar switches');
+          last = s.at; mode = s.mode;
+        }
+      }
     }
   }
   function daily(at, mode = "battle") {

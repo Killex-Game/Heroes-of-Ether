@@ -4,6 +4,18 @@ const calendar=require('../../public/shared/clan-season-calendar'),admin=require
 const ranking=require('../../src/server/clans/daily-quests/season-ranking'),service=require('../../src/server/clans/daily-quests/service');
 const {ProfileStore}=require('../../src/server/profiles/profile-store'),{temporary}=require('../temp');
 const at=Date.parse('2026-11-22T12:00:00Z'),jan=calendar.season(Date.parse('2027-01-01T12:00:00Z')).start,mar=calendar.season(Date.parse('2027-03-01T12:00:00Z')).start,may=calendar.season(Date.parse('2027-05-01T12:00:00Z')).start;
+
+test('calendar segments preserve historical identities, exact deadlines and separate ordinals',()=>{
+ const base=calendar.season(at),schedule=[{start:base.start,mode:'quests',switches:[{at,mode:'battle'},{at:at+1000,mode:'quests'}]}];
+ calendar.validateSchedule(schedule);
+ const old=calendar.season(at-1,schedule),battle=calendar.season(at,schedule),next=calendar.season(at+1000,schedule);
+ assert.equal(old.id,base.id);assert.equal(old.end,at);assert.equal(old.number,3);
+ assert.equal(battle.end,at+1000);assert.equal(battle.number,4);
+ assert.equal(next.end,base.end);assert.equal(next.number,4);assert.notEqual(next.id,old.id);
+ assert.equal(calendar.season(jan,schedule).number,5);assert.equal(calendar.season(mar,schedule).number,5);
+ for(const switches of [[{at:base.start,mode:'battle'}],[{at,mode:'quests'}],[{at:base.end,mode:'battle'}]])
+   assert.throws(()=>calendar.validateSchedule([{start:base.start,mode:'quests',switches}]),/Invalid/);
+});
 test('consecutive quest seasons retain distinct ids and ordered numbers without changing historical dates',()=>{
  const schedule=[{start:jan,mode:'quests'}];calendar.validateSchedule(schedule);
  assert.equal(calendar.season(at,schedule).number,3);

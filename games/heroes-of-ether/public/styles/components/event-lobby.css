@@ -17,7 +17,7 @@ body[data-screen="lobby"] #lobby[data-event-background="black-friday"]:not(.has-
   background-color: #111d24;
   background-image:
     radial-gradient(ellipse at 52% 49%, #254b50d9 0%, #1a3239a6 28%, #10182100 66%),
-    url("../../assets/events/lobby/black-friday-pattern.svg?art=20261123-interface-art"),
+    url("../../assets/events/lobby/black-friday-pattern.svg?art=20261125-original"),
     radial-gradient(ellipse at 94% 3%, #74522d66, #74522d00 48%),
     radial-gradient(ellipse at 2% 98%, #976b2833, #976b2800 52%),
     linear-gradient(135deg, #0c171e, #17272c 49%, #11141d);

@@ -17,7 +17,8 @@
       const close = button("×", () => this.dialog.close(), "booster-close"); close.setAttribute("aria-label", "Вернуться в лобби"); head.append(title, close);
       const main = el("main", "ether-generator-body"), art = el("img", "ether-generator-art"); art.src = R.asset("generator"); art.alt = ""; art.draggable = false;
       const gauge = el("section", "alchemy-gauge"); this.amount = el("strong", "alchemy-natural"); this.bar = el("progress"); this.bar.max = R.NATURAL_PER_EXCHANGE; this.bar.setAttribute("aria-label", "Природный эфир");
-      this.exchange = button("Создать 10 концентрированного эфира", () => this.convert()); this.exchange.id = "alchemyExchange";
+      this.exchange = button("Создать 10 ", () => this.convert()); this.exchange.id = "alchemyExchange";
+      const currency = el("img", "ether-generator-currency"); currency.src = "assets/menu-icons/128/currency_bucks.webp"; currency.alt = "эфира"; currency.width = currency.height = 24; this.exchange.append(currency);
       gauge.append(el("span", "", "Природный эфир"), this.amount, this.bar, this.exchange); main.append(art, gauge);
       this.notice = el("p", "ether-generator-notice"); this.notice.setAttribute("role", "status"); this.dialog.append(head, main, this.notice); document.body.append(this.dialog);
       this.dialog.addEventListener("close", () => { this.visit++; this.trigger.focus({preventScroll:true}); });
@@ -46,7 +47,7 @@
         this.requestId = null;
         if (this.owner.getProfile()?.id !== profileId) return;
         this.owner.updateProfile(data.profile);
-        if (this.dialog.open && visit === this.visit) this.notice.textContent = "Получено 10 концентрированного эфира.";
+        if (this.dialog.open && visit === this.visit) { this.notice.replaceChildren(document.createTextNode("Получено 10 "), this.exchange.querySelector("img").cloneNode()); }
       } catch (error) {
         if (this.dialog.open && visit === this.visit) this.notice.textContent = error.name === "TimeoutError" || error instanceof TypeError ? "Ответ задерживается. Повтори обмен: повторного списания не будет." : error.message;
       } finally { this.busy = false; this.sync(); }

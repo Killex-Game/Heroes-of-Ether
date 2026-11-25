@@ -197,7 +197,7 @@
       description: `${(item.base + item.bonus).toLocaleString("ru-RU")} ${catalog.label}`,
       icon:
         currency === "bucks"
-          ? `assets/currency-packs/ether-v1/${item.id}.webp?art=20261123-interface-art`
+          ? `assets/currency-packs/ether-original/${item.id}.png?art=20261125-original`
           : `assets/currency-packs/v1/${currency}-${item.id}.webp?art=20261123-interface-art`,
     })),
   );

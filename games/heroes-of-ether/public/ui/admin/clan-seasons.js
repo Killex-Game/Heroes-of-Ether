@@ -10,7 +10,8 @@
     renderSchedule(data){
       const range=s=>new Date(s.start+10800000).toLocaleDateString('ru-RU',{timeZone:'UTC'})+' - '+new Date(s.end-1+10800000).toLocaleDateString('ru-RU',{timeZone:'UTC'});
       this.root.append(node('p','Сейчас '+data.current.name.toLowerCase()+' с '+range(data.current)));
-      this.root.append(node('p','Каждый сезон длится 2 месяца. Выбирай задания или битвы отдельно для каждого периода. Текущий сезон и заработанные награды сохраняются.'));
+      this.root.append(node('p','В расписании выбирай тип будущих двухмесячных периодов. Досрочная смена ниже завершает текущий сезон и запускает новый до конца этого периода.'));
+      this.renderSwitch(data);
       if(data.readiness)this.root.append(node('p','Кланов с составом от '+data.readiness.minimumMembers+' участников: '+data.readiness.eligibleClans+' из '+data.readiness.clans+'. Для группы лиги нужно от 10 кланов.'));
       const form=node('form'),table=node('div'),inputs=[];form.className='clan-schedule-form';table.className='clan-schedule-grid';
       for(const season of data.upcoming){
@@ -33,6 +34,25 @@
         try{const next=await this.api('clan-seasons',{...payload,requestId:this.pending.requestId});if(generation===this.generation){this.pending=null;this.render(next);this.root.append(node('p','Расписание сохранено'));}}
         catch(error){if(generation===this.generation)status.textContent=error.message;}
         finally{this.busy=false;submit.disabled=false;}
+      };
+    }
+    renderSwitch(data){
+      const form=node('form');form.className='clan-schedule-form clan-season-switch';
+      const mode=data.current.mode==='quests'?'battle':'quests',name=mode==='battle'?'Сезон клановых битв':'Сезон клановых заданий';
+      form.append(node('h3','Досрочная смена сезона'),node('p','Завершится: '+data.current.name+'. Заработанные награды будут выданы сразу.'),
+        node('p','Начнётся: '+name+'. Окончание: '+date(data.current.end)+'. Вклад ещё не вышедших с арены игроков в завершённый сезон не попадёт.'));
+      const label=node('label','Причина для журнала'),reason=node('input');reason.required=true;reason.minLength=3;reason.maxLength=500;label.append(reason);
+      const confirmation=node('label','Подвести итоги текущего сезона и начать новый'),check=node('input');check.type='checkbox';check.required=true;confirmation.prepend(check);
+      const button=node('button','Подвести итоги и начать: '+name),status=node('p');button.type='submit';status.setAttribute('role','status');
+      form.append(label,confirmation,button,status);this.root.append(form);
+      form.onsubmit=async event=>{
+        event.preventDefault();if(this.busy || !check.checked)return;
+        const payload={action:'switch',revision:data.revision,seasonId:data.current.id,mode,reason:reason.value.trim()},signature=JSON.stringify(payload);
+        if(this.pending?.signature!==signature)this.pending={signature,requestId:KillexRequestIds.create()};
+        const generation=this.generation;this.busy=true;button.disabled=true;
+        try{const next=await this.api('clan-seasons',{...payload,requestId:this.pending.requestId});if(generation===this.generation){this.pending=null;this.render(next);this.root.append(node('p','Итоги подведены. Новый сезон начался.'));}}
+        catch(error){if(generation===this.generation)status.textContent=error.message;}
+        finally{this.busy=false;button.disabled=false;}
       };
     }
     render(data){

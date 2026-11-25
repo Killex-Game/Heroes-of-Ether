@@ -206,6 +206,11 @@ dialog :is(.booster-close, .personal-close, .chest-modal-close) {
 #boosterDialog.interface-window .shop-categories {
   grid-template-columns: repeat(5, minmax(0, calc((var(--shop-nav-width) - 16px) / 3)));
 }
+#boosterDialog .shop-season-discount {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
 #boosterDialog.interface-window :is(.booster-tabs, .shop-categories) .sf-tab {
   height: 40px;
   min-height: 40px !important;
@@ -608,6 +613,32 @@ body[data-screen="lobby"] #settingsMenu {
   font-size: 12px;
   line-height: 1.4;
 }
+#accountDialog .account-footnote {
+  margin: 12px 0 0;
+  padding: 0 3px;
+}
+#accountDialog .account-message:empty {
+  display: none;
+  margin: 0;
+  min-height: 0;
+}
+.interface-window .booster-purchase-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: auto;
+}
+.interface-window .booster-purchase-options .booster-pack-buy {
+  min-width: 0;
+  min-height: 52px;
+  padding: 5px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+}
+.booster-pack-size { align-self: flex-end; font-size: 11px; line-height: 1; }
+.booster-pack-price { display: flex; align-items: center; justify-content: center; gap: 3px; }
 #accountDialog .account-plans {
   margin: 0;
   gap: 12px;

@@ -152,7 +152,7 @@ const previousTargets = { common: [60, 1], important: [120, 2], secret: [240, 3]
 const previousWatch = {
   metric: "survival",
   name: "Ночной дозор",
-  text: n => `Проведи ${n} секунд на арене за одну жизнь.`,
+  text: n => `Проведи ${n} секунд на арене за вход на арену.`,
   icon: "assets/events/black-friday/shop.webp",
 };
 const templateFor = c => c.catalogVersion === undefined && c.template === 1 ? previousWatch : templates[c.template];

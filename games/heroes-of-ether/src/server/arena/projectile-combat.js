@@ -645,7 +645,7 @@ class Combat {
         applied: 0,
       });
     } else {
-      if (booster.kind !== "root" && arena.hasEffect(target, booster.kind, now)) return;
+      if (!["root", "dizzy"].includes(booster.kind) && arena.hasEffect(target, booster.kind, now)) return;
       const until =
         now +
         Math.floor(

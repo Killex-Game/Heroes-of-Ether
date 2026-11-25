@@ -40,7 +40,7 @@ const orders = [
   {
     id: "life",
     name: "Верный помощник",
-    description: "Заверши жизнь на арене длительностью от минуты.",
+    description: "Заверши вход на арену длительностью от минуты.",
     target: 1,
     tokens: 10,
     icon: art + "shop.webp",

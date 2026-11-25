@@ -16,6 +16,16 @@ function storage() {
   const data = new Map();
   return { getItem: (id) => data.get(id), setItem: (id, value) => data.set(id, value) };
 }
+
+test('Clan chest notification follows Treasury, while clan applications stay in Clan',()=>{
+  const n=new Notices(storage()),p=base();n.update(p);
+  p.clanChests={items:[{id:'quest-prize',stored:false}]};n.update(p);
+  assert.equal(n.attention().clan,false);
+  for(const key of ['inventory','chests','treasury'])assert.equal(n.attention()[key],true);
+  p.clanChests.items[0].stored=true;n.update(p);assert.equal(n.attention().treasury,true);
+  p.menuNotifications={clanApplications:1};n.update(p);assert.equal(n.attention().clan,true);
+  p.clanChests.items=[];n.update(p);assert.equal(n.attention().treasury,false);assert.equal(n.attention().clan,true);
+});
 test("Старые предметы не создают индикаторов, новые сохраняются до просмотра нужного окна", () => {
   const disk = storage(),
     n = new Notices(disk),

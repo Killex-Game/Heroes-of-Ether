@@ -107,7 +107,7 @@
     $("arenaXp").textContent = p.arenaXpMax ? "макс" : number(p.arenaXp || 0);
     $("arenaXp").setAttribute("aria-label", p.arenaXpMax
       ? "Достигнут порог следующего уровня. Чтобы снова получать опыт, выйдите в лобби и нажмите «Играть»."
-      : "Опыт будет зачислен при завершении жизни.");
+      : "Опыт будет зачислен после выхода с арены.");
   }
   function renderLobby(profile, p) {
     $("progressLevel").textContent = `Уровень ${number(profile.level)}`;

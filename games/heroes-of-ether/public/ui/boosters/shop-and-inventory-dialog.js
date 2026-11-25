@@ -70,6 +70,15 @@
           this.slots = saved.slice(0, 7).map((id) => (typeof id === "string" ? id : null));
       } catch (_) {}
       this.build();
+      document.addEventListener("killex:server-time", ({ detail }) => {
+        if (Number.isFinite(detail)) this.shopClock = { at: detail, seen: performance.now() };
+      });
+      window.KillexActivity.every(() => {
+        if (!this.dialog.open || document.hidden || this.mode !== "shop") return;
+        const discount = window.KillexClanRules.currentDiscount(this.profile?.seasonBenefits, this.shopNow());
+        if (discount !== this.shopDiscount) this.render();
+        else this.renderDiscount();
+      }, 1000, () => this.dialog.open && this.mode === "shop");
       this.donation = new window.KillexDonationUI(this);
       document.getElementById("shopSection").addEventListener("click", () => this.open("shop"));
       document
@@ -148,6 +157,8 @@
         this.accessoryCategories.append(tab);
       }
       this.shopCategories.append(this.accessoryCategories);
+      this.discountNote = make("p", "cosmetics-season-discount shop-season-discount");
+      this.discountNote.hidden = true;
       this.skinShop = window.KillexCosmeticsUI.createShop(
         () => {
           this.dialog.close();
@@ -192,6 +203,7 @@
         tabs,
         this.inventoryRack,
         this.shopCategories,
+        this.discountNote,
         this.shopLock,
         this.message,
         this.chestCategories,
@@ -619,6 +631,8 @@
       const chestsMode = this.mode === "chests";
       const skinsMode = this.mode === "shop" && this.shopCategory === "skins";
       const accessoriesMode = this.mode === "shop" && this.shopCategory === "accessories";
+      this.shopDiscount = window.KillexClanRules.currentDiscount(this.profile?.seasonBenefits, this.shopNow());
+      this.renderDiscount();
       this.accessoryShop.hidden = !accessoriesMode;
       this.accessoryCategories.hidden = !accessoriesMode;
       for (const [id, tab] of this.accessoryCategoryButtons)
@@ -642,7 +656,7 @@
       this.shopLock.hidden = !this.purchasesBlocked();
       this.shopLock.textContent =
         "Покупки, открытие сундуков и смена слотов недоступны, пока профиль на арене. Вернись в лобби в игровой вкладке.";
-      this.skinShop.update(this.profile, this.skinCollectionPurchase, this.purchasesBlocked());
+      this.skinShop.update(this.profile, this.skinCollectionPurchase, this.purchasesBlocked(), this.shopNow());
       if (accessoriesMode) this.renderAccessories();
       if (chestsMode || skinsMode || accessoriesMode) return;
       const gridKey = JSON.stringify([this.mode, this.catalog, this.profile.inventory, this.profile.level,
@@ -722,43 +736,28 @@
         let action;
         if (this.mode === "shop") {
           const levelLocked = this.profile.level < item.purchaseLevel;
-          const { amount, currency, quantity } = item.price;
-          const price = `${amount} ${currency === "bucks" ? "эфира" : currency === "coins" ? "монет" : amount === 1 ? "кристалл" : "кристаллов"}`;
-          action = button(
-            "booster-action sf-button",
-            levelLocked
-              ? `С ${item.purchaseLevel} уровня`
-              : item.purchasable
-                ? `Купить ${amount}`
-                : item.tier === "clan"
-                  ? "В магазине клана"
-                  : "Пока недоступен",
-            () => this.buy(item),
-          );
-          if (item.purchasable) {
-            const currencyIcon = make("img", "booster-price-icon");
-            currencyIcon.src = `assets/menu-icons/64/currency_${currency}.webp?art=20261123-interface-art`;
-            currencyIcon.alt = "";
-            currencyIcon.width = 24;
-            currencyIcon.height = 24;
-            action.append(currencyIcon);
-            action.setAttribute("aria-label", `Купить ${item.name}: ${quantity} шт. за ${price}`);
+          const { amount, currency, quantity: baseQuantity } = item.price;
+          if (item.purchasable && !levelLocked) {
+            action = make("div", "booster-purchase-options");
+            for (const quantity of [10,100]) {
+              const total = amount * quantity / baseQuantity;
+              const buy = button("booster-action booster-pack-buy sf-button", "", () => this.buy(item, quantity));
+              buy.dataset.action = "shop"; buy.dataset.quantity = quantity;
+              const size = make("span", "booster-pack-size", "×" + quantity);
+              const price = make("span", "booster-pack-price", total.toLocaleString("ru-RU"));
+              const icon = make("img", "booster-price-icon");icon.alt="";icon.width=24;icon.height=24;
+              icon.src=`assets/menu-icons/64/currency_${currency}.webp?art=20261123-interface-art`;
+              price.append(icon);buy.append(size,price);
+              buy.setAttribute("aria-label", `Купить ${item.name}: ${quantity} шт. за ${total} ${currency==='coins'?'монет':currency==='bucks'?'эфира':'кристаллов'}`);
+              const blocked=this.purchasesBlocked() || this.profile.wallet[currency]<total;
+              window.KillexControls.state(buy,blocked || !!this.purchase,blocked);
+              if(blocked)buy.title=this.purchasesBlocked()?"Покупки доступны только вне арены":"Недостаточно валюты";
+              action.append(buy);
+            }
+          } else {
+            action=button("booster-action sf-button",levelLocked?`С ${item.purchaseLevel} уровня`:item.tier==='clan'?"В магазине клана":"Пока недоступен");
+            window.KillexControls.state(action,true,true);
           }
-          window.KillexControls.state(
-            action,
-            this.purchasesBlocked() ||
-              !item.purchasable ||
-              levelLocked ||
-              !!this.purchase ||
-              this.profile.wallet[currency] < amount,
-            this.purchasesBlocked() ||
-              !item.purchasable ||
-              levelLocked ||
-              this.profile.wallet[currency] < amount,
-          );
-          if (item.purchasable && this.profile.wallet[currency] < amount)
-            action.title = "Недостаточно валюты";
-          if (this.purchasesBlocked()) action.title = "Покупки доступны только вне арены";
         } else if (item.tier === "potion") {
           const rules = window.KillexAlchemyRules, id = rules.get(item.id).id;
           const queue = [...rules.equipped(this.profile.alchemy)], index = queue.indexOf(id);
@@ -830,9 +829,23 @@
         );
       this.grid.replaceChildren(fragment);
     }
+    shopNow() {
+      return this.shopClock ? this.shopClock.at + performance.now() - this.shopClock.seen : Date.now();
+    }
+    renderDiscount() {
+      const now = this.shopNow(), benefits = this.profile?.seasonBenefits;
+      const discount = window.KillexClanRules.currentDiscount(benefits, now);
+      this.discountNote.hidden = !(discount && this.mode === "shop" && ["skins", "accessories"].includes(this.shopCategory));
+      if (this.discountNote.hidden) return;
+      const until = Math.max(0, ...(benefits.periods || []).filter(p => p.discount === discount && p.start <= now && now < p.until).map(p => p.until));
+      const seconds = Math.max(0, Math.ceil((until - now) / 1000));
+      const days = Math.floor(seconds / 86400), hours = Math.floor(seconds / 3600) % 24;
+      const timer = `${days ? days + " д. " : ""}${String(hours).padStart(2, "0")}:${String(Math.floor(seconds / 60) % 60).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
+      setText(this.discountNote, `Кубок клана: скидка ${discount}% на скины, бабочки и шапки. Осталось: ${timer}`);
+    }
     renderAccessories() {
       const key = JSON.stringify([this.accessoryCategory, this.profile.wardrobe?.owned, this.profile.wallet,
-        this.purchasesBlocked(), !!this.accessoryPurchase]);
+        this.purchasesBlocked(), !!this.accessoryPurchase, this.shopDiscount]);
       if (key === this.accessoryRenderKey) return;
       this.accessoryRenderKey = key;
       const fragment = document.createDocumentFragment();
@@ -840,6 +853,7 @@
         .filter((item) => item.price && item.slot === this.accessoryCategory)
         .sort(window.KillexSkinCollections.comparePrice)) {
         const owned = this.profile.wardrobe?.owned?.includes(item.id);
+        const price = window.KillexClanRules.discountedPrice(item.price, this.shopDiscount);
         const card = make("article", "booster-card accessory-card");
         card.dataset.accessoryId = item.id;
         card.dataset.boosterHintName = item.name;
@@ -851,7 +865,7 @@
         image.width = image.height = 112;
         const action = button(
           "booster-action",
-          owned ? "В Гардероб" : "Купить " + item.price.toLocaleString("ru-RU"),
+          owned ? "В Гардероб" : "Купить " + price.toLocaleString("ru-RU"),
           () => {
             if (owned) {
               this.dialog.close();
@@ -869,8 +883,8 @@
           action,
           this.purchasesBlocked() ||
             !!this.accessoryPurchase ||
-            (!owned && this.profile.wallet[item.currency] < item.price),
-          this.purchasesBlocked() || (!owned && this.profile.wallet[item.currency] < item.price),
+            (!owned && this.profile.wallet[item.currency] < price),
+          this.purchasesBlocked() || (!owned && this.profile.wallet[item.currency] < price),
         );
         card.append(
           make("small", "booster-tier", item.slot === "hat" ? "Шапка" : "Бабочка"),
@@ -879,7 +893,7 @@
           make(
             "p",
             "accessory-shop-note",
-            "Наведи чтобы узнать подробнее",
+            "Наведи для подробностей",
           ),
           action,
         );
@@ -948,9 +962,9 @@
         this.render();
       }
     }
-    async buy(item) {
+    async buy(item, quantity = item.price.quantity) {
       if (this.purchase || this.purchasesBlocked()) return;
-      const operation = { boosterId: item.id, requestId: requestId() };
+      const operation = { boosterId: item.id, quantity, requestId: requestId() };
       this.purchase = operation;
       this.render();
       this.status("");
@@ -970,7 +984,7 @@
           }
         }
         this.updateProfile(data.profile);
-        this.status(`Куплено: ${item.name}, ${item.price.quantity} шт. Предметы в инвентаре.`);
+        this.status(`Куплено: ${item.name}, ${quantity} шт. Предметы в инвентаре.`);
       } catch (error) {
         if (error.code === "ARENA_ACTIVE") this.serverInArena = true;
         this.status(
@@ -1142,7 +1156,7 @@
               control.cooldownText = text;
               control.setAttribute(
                 "aria-label",
-                `${window.KillexLoadout.keys[i]}. ${item.name}, доступно за жизнь ${count}`,
+                `${window.KillexLoadout.keys[i]}. ${item.name}, доступно за вход на арену ${count}`,
               );
             } else {
               control.cooldownOverlay = null;
@@ -1162,7 +1176,7 @@
           }
           if (item) {
             control.querySelector(".booster-slot-count").textContent = String(count);
-            if (!locked) control.setAttribute("aria-label", `${window.KillexLoadout.keys[i]}. ${item.name}, доступно за жизнь ${count}`);
+            if (!locked) control.setAttribute("aria-label", `${window.KillexLoadout.keys[i]}. ${item.name}, доступно за вход на арену ${count}`);
           }
           window.KillexControls.state(
             control,
@@ -1228,7 +1242,7 @@
         this.potionButton.querySelector(".booster-slot-count").textContent = next ? String(owned) : "✓";
         this.potionButton.title = (next ? "Следующее: " + potion.name + ". " + potion.effect + "\n" : "") +
           "Действуют: " + (used.map(id => window.KillexAlchemyRules.get(id).name).join(", ") || "нет");
-        this.potionButton.setAttribute("aria-label", next ? potion.name + ", клавиша Z" : "Все выбранные зелья действуют до конца жизни");
+        this.potionButton.setAttribute("aria-label", next ? potion.name + ", клавиша Z" : "Все выбранные зелья действуют до выхода с арены");
       }
       const disabled = !me || !next || !owned || pending || this.game.inputBlocked();
       if (this.potionButton.disabled !== disabled) this.potionButton.disabled = disabled;
@@ -1256,7 +1270,7 @@
       if (!item || this.activations.has(item.id)) return;
       const me = this.game.getMe();
       if (!this.slotCount(item, me)) {
-        this.showArenaMessage("В этом слоте больше нет применений на эту жизнь.");
+        this.showArenaMessage("В этом слоте больше нет применений за этот вход на арену.");
         return;
       }
       if (this.slotBlocked(item, me)) return;

@@ -124,10 +124,10 @@ test("Опыт: лучший аккаунт для поглощений, пре�
   applyEvent(p(), { type: "survivalMinute", mass: 200000, minutes: 1 }, NOW);
   assert.equal(p().progress.session.xp, 500);
   applyEvent(p(), { type: "massBonus", lifeId: "life", sequence: 2, kills: 20 }, NOW);
-  assert.equal(p().progress.kills, 3);
+  assert.equal(p().progress.kills, 4);
   assert.equal(p().progress.claimed.king, 0);
-  assert.equal(p().progress.session.kills, 23);
-  assert.equal(p().progress.session.creditedKills, 3);
+  assert.equal(p().progress.session.kills, 24);
+  assert.equal(p().progress.session.creditedKills, 4);
   assert.equal(p().progress.session.xp, 500);
 });
 test("Поглощение: база 3 XP, VIP и оба ×2, Premium ×1; срок проверяется в момент события", () => {
@@ -147,7 +147,7 @@ test("Поглощение: база 3 XP, VIP и оба ×2, Premium ×1; ср�
       applyEvent(p(), { type: "absorbed", victimProfileId: "victim" + index, gain }, NOW);
       assert.equal(p().progress.session.xp, expected * (index + 1));
     }
-    assert.equal(p().progress.kills, 2);
+    assert.equal(p().progress.kills, premiumUntil > NOW ? 4 : 2);
     assert.equal(accounts.publicAccount(p(), NOW).absorptionXpMultiplier, expected / 3);
   }
 });
@@ -179,12 +179,12 @@ test("Поглощение с VIP и Premium: сбой записи, потер�
   // Повтор после потерянного подтверждения, в том числе за пределами защиты жертвы.
   store.applyArenaProgress(packet, events, NOW + 180001);
   assert.equal(p().progress.session.xp, 6);
-  assert.equal(p().progress.kills, 1);
+  assert.equal(p().progress.kills, 2);
   let disk = new ProfileStore({ filePath, now: () => NOW + 180001 });
   assert.equal(disk.find(a.token).progress.xp, 6);
   assert.equal(disk.find(a.token).progress.session, null);
   disk.applyArenaProgress(packet, events, NOW + 180001);
-  assert.equal(disk.find(a.token).progress.kills, 1);
+  assert.equal(disk.find(a.token).progress.kills, 2);
   disk.startLife(a.profile.id, "next-life");
   // После начала новой жизни запоздалый итог старой не должен начислять опыт повторно.
   disk.applyArenaProgress(
@@ -201,7 +201,7 @@ test("Поглощение с VIP и Premium: сбой записи, потер�
     NOW + 180001,
   );
   assert.equal(disk.find(a.token).progress.session.xp, 0);
-  assert.equal(disk.find(a.token).progress.kills, 1);
+  assert.equal(disk.find(a.token).progress.kills, 2);
   disk = new ProfileStore({ filePath, now: () => NOW + 180001 });
   assert.equal(disk.find(a.token).progress.xp, 6);
 });

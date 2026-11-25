@@ -79,6 +79,32 @@ function use(ws, payload) {
   });
 }
 
+test('10/100 booster purchase uses authoritative prices, spending counters and idempotent receipts',async t=>{
+  const f=await setup(t),a=await f.session(),token=a.cookie.split('=')[1];
+  const item=require('../../src/server/boosters/booster-catalog').BOOSTERS.get('candy');
+  const p=f.app.profiles.find(token);p.wallet[item.price.currency]=100000;
+  const initial=structuredClone(p),id=randomUUID();
+  const response=await f.buy(a.cookie,'candy',id,{quantity:100,price:0});assert.equal(response.status,200);
+  let saved=f.app.profiles.find(token);
+  const price=item.price.amount*10;
+  assert.equal(saved.inventory.candy-(initial.inventory.candy||0),100);
+  assert.equal(initial.wallet[item.price.currency]-saved.wallet[item.price.currency],price);
+  const spent=item.price.currency==='coins'?'spendthrift':'spendthrift_i';
+  assert.equal(saved.activity.values[spent]-initial.activity.values[spent],price);
+  const after=structuredClone(saved);
+  assert.equal((await f.buy(a.cookie,'candy',id,{quantity:100})).status,200);
+  assert.deepEqual(f.app.profiles.find(token),after);
+  assert.equal((await f.buy(a.cookie,'candy',id,{quantity:10})).status,409);
+  for(const quantity of [0,-10,11,1000,'100',null,1.5])assert.equal((await f.buy(a.cookie,'candy',randomUUID(),{quantity})).status,400);
+  assert.deepEqual(f.app.profiles.find(token),after);
+  assert.equal((await f.buy(a.cookie,'candy',randomUUID(),{quantity:10})).status,200);
+  assert.equal(f.app.profiles.find(token).inventory.candy-after.inventory.candy,10);
+  saved=f.app.profiles.find(token);saved.wallet[item.price.currency]=item.price.amount;
+  const insufficient=structuredClone(saved);
+  assert.equal((await f.buy(a.cookie,'candy',randomUUID(),{quantity:100})).status,409);
+  assert.deepEqual(f.app.profiles.find(token),insufficient);
+});
+
 test("Дополнительный слот проверяет срок аккаунта на сервере; запрет не расходует предмет", async (t) => {
   const { app, session, connect, advance } = await setup(t);
   let accountNow = Date.now();
@@ -211,7 +237,7 @@ test("Загрузка профиля и покупка в лобби не со�
   assert.equal(app.arena.players.size, 0);
   const response = await buy(a.cookie, "candy", randomUUID(), {
     price: 0,
-    quantity: 999999,
+    quantity: 10,
     mass: 100000,
   });
   const result = await response.json();

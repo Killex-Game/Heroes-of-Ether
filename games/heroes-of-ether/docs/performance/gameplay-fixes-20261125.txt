@@ -1,0 +1,30 @@
+Gameplay fixes — 25 November 2026
+
+Candidate for installation; final deployment proof will be added after installation.
+Base installed source: f07d382c5ed629b1e78a64af8174c574d9709732.
+Optimization and capacity ladders remain paused by the owner. These are correctness checks, not new capacity claims.
+
+Owner decisions implemented
+- Premium multiplies credited absorption kills by two immediately. Natural kills were already multiplied and are not multiplied again. Actual defeated-player achievements remain based on actual defeats. VIP XP multiplication remains after accessory bonuses.
+- Clan kill quests now use the actual credited personal kill delta for every source, including Premium absorption. Personal-cap display counters do not become clan progress. Existing exit-only settlement and strict exit-before-deadline rule remain unchanged.
+- Booster purchases accept 10 or 100 units, computed and validated on the server, with independent idempotency signatures. Legacy omitted quantity remains 10. Costs, inventory, spending achievements and event purchase counts commit together.
+- Trophy discounts now apply to personal skin sets and hats/bows at transaction time. The shop uses the same calculation and receives dated trophy periods; the strongest active discount can expire into a weaker one. Membership departure and exact expiry remove entitlement. All ordinary spending achievements use actual debits. Pending batch purchases use the pending clan state.
+- The discount note moved from wardrobe to the shop below its category tabs, with remaining days/hours/minutes/seconds. Its timer only runs while the shop is open; a second does not rebuild the product grid.
+- Owner administration can settle the current quest/battle season early and start the other mode until the calendar period end. Revision/season id, request id, reason, ownership and durable audit are required. Same-day quest cycles have distinct receipt keys. No live season is switched by deployment.
+- Stone causes five seconds of confused movement and a mild rotating world view, with inverse aim transformation and reduced-motion support. Web anchoring, shields and reflection retain their own rules.
+- Clan quest chests notify Inventory/Treasury, not Clan. Clan applications still notify Clan.
+- Remove under-timer explanatory copy without changing settlement rules. Status layout, title plaques, compact purchase buttons, wider PC arena chat, full accessory hints and entrance wording updated. Chat strips links, silently rejects URL-only content, keeps failed drafts and retry; technical send/history statuses removed.
+- Preview frame squares removed; the portrait retains a circular shaded disc. Six owner-provided original ether purchase PNGs restored byte-for-byte. Ether generator button and success receipt show the currency icon; exchange remains 100000 natural -> 10 wallet ether.
+- Easter lobby uses a simple static repeating generated pattern. Black Friday restores the earliest recorded pattern (6fbba37). Arena backgrounds, avatars, crests, title medals, news banners and named appearance themes are unchanged.
+
+Economy / progress audit
+Central activity-achievements.spend accounts for the actual paid currency, not advertised base prices. Checked purchase paths: ProfileStore booster/skin/accessory methods; lite-account ticket purchase; Easter multiplier; Black Friday currency/token exchange, ether chest and paid order replacement; personal-quest replacement; pet-service; league-appearance theme purchases; player-social gifts; profile-validation rename; clan-service create/edit/paid application acceptance; treasury contribution. Treasury's subsequent clan spending is not counted a second time as personal spending. Free operations and event tokens do not count as ether/coin/crystal expenditures.
+Coverage includes cosmetic-cup-discount.test.js (every sold skin/accessory, forged discount, actual spend, duplicate request, restore, failed save, expiry, membership and batch state), booster-server.test.js (10/100/invalid quantity/funds/replay), clan-arena-settlement.test.js (Premium/cap/exit/WAL), clan-daily-integration and clan-competition (early settlement/atomic failure/replay), lite-account, black-friday-economy/recovery, easter-hunt, global-transactions and pet/clan metric tests in the full suite.
+Read-only live Killex audit: the two completed 24 November tasks had targets 3000 and 850 and contributed two points; earlier three points yield five total. No missing point or historical compensation was inferred.
+
+Evidence and known first failures
+Local detailed logs/screenshots/packaging scripts: artifacts/gameplay-fixes-20261125 (outside developer source).
+Windows full-1: 2511 total / 2495 pass / 13 fail / 3 skip; stale assertions about old stone, life wording and kill rules were corrected. Full-2: 2514 total / 2511 pass / 0 fail / 3 skip; targeted clan credit 61/61; final discount batch coverage 4/4. Final Windows and Linux results will be recorded separately.
+Linux full-1: 2516 total / 2512 pass / 1 fail / 3 skip. The source exporter incorrectly decoded a PNG news test fixture as UTF-8; corrected binary copying, not weakened validation. Full-2 reruns the suite, followed by actual PostgreSQL tests in isolated disposable schemas.
+Browser harness first attempts had ambiguous/incorrect selectors, undismissed achievement/news/guide overlays, an uninitialized calendar fixture and asynchronous close lifetime; these are retained as failures. Final commerce proof checks actual server debit and achievements, discount clock/expiry, removed wardrobe note, rounded titles and both season directions in Chromium/Firefox/WebKit. General UI checks use those three engines on desktop and touch viewports, including actual 100+10 purchase, silent URL chat and expiring dizziness.
+No test purchases, clans or season switches are performed on live players. Real VK payment authorization is not part of these local tests.

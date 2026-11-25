@@ -127,7 +127,7 @@ async function until(check) {
       assert.ok(
         (
           await purchase.locator(".donation-card[data-package-id] img").first().getAttribute("src")
-        ).includes("ether-v1/change.webp"),
+        ).includes("ether-original/change.png"),
       );
       await purchase.screenshot({ path: path.join(out, `${engine}-ether-purchase.png`) });
       await page.getByRole("button", { name: "Закрыть покупку эфира" }).click();

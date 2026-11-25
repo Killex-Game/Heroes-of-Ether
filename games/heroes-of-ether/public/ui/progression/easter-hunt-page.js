@@ -194,7 +194,7 @@
         const icon = el("img");
         icon.src = egg.image;
         icon.alt = egg.name;
-        row.setAttribute("aria-label", egg.name + ": собрано за эту жизнь");
+        row.setAttribute("aria-label", egg.name + ": собрано за этот вход на арену");
         row.append(icon, el("b", "", "0"));
         this.hud.append(row);
       }

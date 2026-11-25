@@ -21,7 +21,7 @@ function snapshot(player) {
 }
 function use(arena, player, message, now) {
   if (player.dead || player.isRemnant || message.spawnSerial !== player.spawnSerial)
-    throw new BoosterError("Бустер аксессуара недоступен в этой жизни.", 409);
+    throw new BoosterError("Бустер аксессуара недоступен за этот вход на арену.", 409);
   const state = player.accessoryAbilities;
   if (
     !state ||
@@ -37,7 +37,7 @@ function use(arena, player, message, now) {
   }
   const stock = state.stock.find((item) => item.accessoryId === message.accessoryId && item.count > 0);
   if (!stock?.count)
-    throw new BoosterError("Бустер аксессуара на эту жизнь уже использован или недоступен.", 409);
+    throw new BoosterError("Бустер аксессуара за этот вход на арену уже использован или недоступен.", 409);
   if (state.stock.find((item) => item.count > 0) !== stock)
     throw new BoosterError("Сначала используй бустеры бабочки, затем шапки.", 409);
   // Этот запас принадлежит жизни. Он не попадает в инвентарь и не расходует обычный слот.

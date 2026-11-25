@@ -691,8 +691,17 @@ class Arena {
     }
     const main = this.mainBody(p);
     // При остановке малые части собираются к главной, а не тянут её к общему центру.
-    const targetX = p.stopped && p.parts ? main.x : p.targetX,
+    let targetX = p.stopped && p.parts ? main.x : p.targetX,
       targetY = p.stopped && p.parts ? main.y : p.targetY;
+    // Rotate the original command, never the saved target: sending more input
+    // cannot bypass dizziness or compound it into a speed increase.
+    if (!p.stopped && p.effects.stone > now) {
+      const angle = 0.9 + Math.sin((p.effects.stone - now) * 0.004) * 1.1;
+      const dx = targetX - p.x, dy = targetY - p.y;
+      const cos = Math.cos(angle), sin = Math.sin(angle);
+      targetX = p.x + dx * cos - dy * sin;
+      targetY = p.y + dx * sin + dy * cos;
+    }
     for (const part of this.bodies(p)) {
       const dx = targetX - part.x,
         dy = targetY - part.y,
@@ -758,7 +767,7 @@ class Arena {
     const p = this.players.get(id);
     let booster = BOOSTERS.get(message.boosterId);
     if (!p || p.dead || p.isRemnant)
-      throw new BoosterError("Бустеры можно применять только во время жизни на арене.");
+      throw new BoosterError("Бустеры можно применять только во время пребывания на арене.");
     if (!booster?.ready)
       throw new BoosterError(booster?.unavailableReason || "Неизвестный бустер.");
     if (p.level < booster.useLevel)
@@ -769,7 +778,7 @@ class Arena {
       const rules = require("../../../public/shared/alchemy-rules"), id = rules.get(booster.id).id;
       const ids = rules.activeIds(p.potion);
       if (ids.includes(id)) throw new BoosterError("Это зелье уже действует.", 409);
-      if (ids.length >= rules.MAX_ACTIVE) throw new BoosterError("В этой жизни уже действуют три зелья.", 409);
+      if (ids.length >= rules.MAX_ACTIVE) throw new BoosterError("За этот вход на арену уже действуют три зелья.", 409);
       return () => {
         // Close the observed interval before activation: earlier time must not
         // receive a newly drunk potion's bonus in the next 30-second payout.
@@ -789,7 +798,7 @@ class Arena {
       (p.boosterUses[booster.id] || 0) >=
         boosterLimitForLevel(p.level) + (p.account?.slotBonus || 0)
     )
-      throw new BoosterError("Лимит этого слота на эту жизнь исчерпан.", 409);
+      throw new BoosterError("Лимит этого слота за этот вход на арену исчерпан.", 409);
     if (booster.kind === "mass" && this.mainBody(p).mass >= massLimitForLevel(p.level))
       throw new BoosterError(
         "Достигнут предел массы главного шара для вашего уровня. Предмет сохранён.",

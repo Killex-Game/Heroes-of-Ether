@@ -32,7 +32,7 @@ test('reconciled activity validation agrees with full checks for changed and sha
 });
 test('changed session still fails when the entire activity object is shared',()=>{
  const p=base(),q={...p,progress:{...p.progress,session:{...p.progress.session,activitySeconds:Infinity}}};
- assert.throws(()=>validateActivity(q,p),/времени жизни/);
+ assert.throws(()=>validateActivity(q,p),/времени на арене/);
 });
 test('ordinary callers and accidental self-comparison retain full validation',()=>{
  const p=base();p.activity.values.fan=-1;

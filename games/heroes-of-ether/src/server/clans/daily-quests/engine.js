@@ -96,11 +96,12 @@ function rewardPlan(board, at, members = null) {
   // atomically. Re-running this pure function intentionally returns the same IDs.
   return Object.keys(board.contributors).filter(id => (!board.eligible || Object.hasOwn(board.eligible,id)) && (!members || members.includes(id))).sort().flatMap(playerId => board.quests
     .filter(q => q.completedAt !== null).map(q => ({
-      id: hash(`clan-quest:${board.day}:${board.clanId}:${q.id}:${playerId}`),
+      id: hash(`clan-quest:${receiptKey(board)}:${q.id}:${playerId}`),
       playerId, clanId: board.clanId, day: board.day, questId: q.id,
       reward: structuredClone(q.reward), greatness: questGreatness(q.metric), earnedAt: board.end,
     })));
 }
+function receiptKey(board) { return `${board.day}:${board.clanId}` + (board.cycle === undefined ? '' : `:${board.cycle}`); }
 function ranking(clans, boards, at) {
   const day = period(at).id;
   const rows = clans.map(c => {
@@ -111,4 +112,4 @@ function ranking(clans, boards, at) {
   rows.sort((a,b) => b.completed-a.completed || (a.reachedAt??Infinity)-(b.reachedAt??Infinity) || b.level-a.level || a.id.localeCompare(b.id));
   return rows.map((row,i)=>({...row,rank:i+1}));
 }
-module.exports = { period, createBoard, record, rewardPlan, ranking, dailySelection, validateCatalog, questGreatness, WINDOW_VERSION, ACTIVE_MS, RESULTS_MS, GROUPS, METRICS };
+module.exports = { period, createBoard, record, rewardPlan, receiptKey, ranking, dailySelection, validateCatalog, questGreatness, WINDOW_VERSION, ACTIVE_MS, RESULTS_MS, GROUPS, METRICS };

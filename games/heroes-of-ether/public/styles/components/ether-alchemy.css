@@ -75,6 +75,7 @@ body:has(#alchemyDialog[open]) #lobby *::after { animation-play-state:paused!imp
 .ether-generator-body .alchemy-gauge { width:min(500px,100%); }
 .ether-generator-notice { margin:12px 0 0; text-align:center; font-size:14px; }
 .ether-generator-notice:empty { display:none; }
+.ether-generator-currency { display:inline-block; width:24px; height:24px; vertical-align:middle; object-fit:contain; }
 .alchemy-cauldron { position:relative; width:100%; max-width:510px; aspect-ratio:1; }
 .alchemy-cauldron>img { display:block; width:100%; height:100%; object-fit:contain; }
 .alchemy-cauldron .alchemy-generator-glow { width:70%; left:15%; top:10%; }

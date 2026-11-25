@@ -72,7 +72,16 @@
   function trophyBenefits(clan, at = Date.now()) {
     const trophies = (clan?.competition?.trophies || []).filter(t => t.awardedAt <= at && at < t.awardedAt + 30 * DAY),
       league = trophies.reduce((best, trophy) => Math.max(best, trophy.league), -1);
-    return { league: LEAGUES[league]?.id || null, discount: SEASON_PRIZES[league]?.discount || 0 };
+    const active = trophies.filter(t => t.league === league);
+    return { league: LEAGUES[league]?.id || null, discount: SEASON_PRIZES[league]?.discount || 0,
+      until: active.reduce((end, t) => Math.max(end, t.awardedAt + 30 * DAY), 0),
+      periods: trophies.map(t => ({ discount: SEASON_PRIZES[t.league].discount, start: t.awardedAt, until: t.awardedAt + 30 * DAY })),
+    };
+  }
+  function currentDiscount(benefits, at = Date.now()) {
+    if (Array.isArray(benefits?.periods))
+      return benefits.periods.reduce((best, p) => p.start <= at && at < p.until ? Math.max(best, p.discount) : best, 0);
+    return benefits?.until > at ? benefits.discount : 0;
   }
   function discountedPrice(amount, discount) {
     if (
@@ -175,6 +184,7 @@
     SEASON_PRIZES,
     trophyLabel,
     trophyBenefits,
+    currentDiscount,
     discountedPrice,
     dayStart,
     season,
