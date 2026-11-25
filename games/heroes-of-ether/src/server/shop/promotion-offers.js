@@ -49,7 +49,7 @@ function product(config,id) {
 }
 function definitions(profile,config,at) {
   if(!config.weekendOffers)return undefined;
-  const selected=[...view(profile,config,at),...(config.preview?config.weekend.offerIds:[])];
+  const selected=[...(config.enabled?ids(profile,config,at):[]),...(config.preview?config.weekend.offerIds:[])];
   return Object.fromEntries(selected.filter(id=>products.get(id)?.weekendId).map(id=>[id,product(config,id)]));
 }
 function deadline(profile, product) {
@@ -131,11 +131,10 @@ function acknowledge(profile, config, input, at) {
 }
 function view(profile, config, at) {
   if (!config.enabled) return [];
-  return ids(profile, config, at).filter(
-    (id) =>
-      inTime(profile, product(config,id), at) &&
-      purchased(profile, product(config,id)) < product(config,id).purchaseLimit,
-  );
+  return ids(profile, config, at).filter(id => {
+    const offer=product(config,id);
+    return inTime(profile,offer,at) && purchased(profile,offer)<offer.purchaseLimit;
+  });
 }
 function add(a, b) {
   const result = a + b;

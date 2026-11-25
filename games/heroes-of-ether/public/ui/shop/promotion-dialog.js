@@ -7,7 +7,9 @@
     return node;
   };
   const number = value => value.toLocaleString("ru-RU");
-  const isClanBundle = offer => !offer.promotionRevision && offer.weekendId === "promotion:weekend:23";
+  const isClanBundle = offer => offer.weekendId === "promotion:weekend:23" && offer.rewards?.length === 7 &&
+    Object.entries(window.KillexWeekendProducts.get("promotion:weekend:23").exactBoosters)
+      .every(([id,amount])=>offer.exactBoosters?.[id]===amount);
   const clanBundleIcon = "assets/boosters/bundles-v1/256/clan.webp?art=20261123-interface-art";
   function rewards(offer) {
     if (isClanBundle(offer)) return [{id:"clan",name:"Клановые бустеры*",icon:clanBundleIcon,
