@@ -1,0 +1,8 @@
+{
+  "enabled": false,
+  "requirePlatform": true,
+  "vkAppId": "REPLACE_WITH_VK_GAME_ID_AS_STRING",
+  "okAppId": null,
+  "appSecret": "STORE_ONLY_IN_PRIVATE_SERVER_DATA_DIRECTORY",
+  "sessionSecret": "GENERATE_ONCE_32_RANDOM_BYTES_HEX_BACK_UP_DO_NOT_ROTATE"
+}

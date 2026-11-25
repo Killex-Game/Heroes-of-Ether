@@ -32,7 +32,7 @@ const loadout = require("../../public/shared/quick-slot-rules"),
   accounts = require("./accounts/account-benefits");
 
 const { sessionCookie } = require("../../public/shared/platform-contract");
-function sessionToken(req) {
+function cookieToken(req) {
   return (req.headers.cookie || "")
     .split(";")
     .map((s) => s.trim())
@@ -96,7 +96,10 @@ function createGameServer({
   monitorDirectory = null,
   databaseMonitor = () => null,
   databaseMetrics = () => {},
+  socialConfig = null,
 } = {}) {
+  const social = new (require('./platform/sessions').PlatformSessions)(socialConfig, { now:wallNow });
+  const sessionToken = req => social.token(req, cookieToken);
   // Construct the first grouped room at its actual size before food is spawned.
   // Explicit Arena instances remain a fixture/embedding override.
   arena ||= new Arena({ world: arenaPolicy && arenaPolicy.levelGroups !== false
@@ -429,6 +432,7 @@ function createGameServer({
     if (ownerAccess.relay && (req.url.startsWith('/api/admin/') || req.url === '/admin.html' || req.url === '/admin.htm') && !req.headers['x-killex-control'])
       return ownerAccess.relay(req, res);
     res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("Referrer-Policy", "no-referrer");
     res.setHeader("Cache-Control", "no-store"); // обновления прототипа не застревают в кэше
     let pathname;
     try {
@@ -483,6 +487,17 @@ function createGameServer({
           throw new BoosterError("Запрос разрешён только со страницы игры.", 403);
         limitRequest(req, "api");
         if (req.method === "POST") limitRequest(req, "mutation");
+        if (pathname === '/api/platform/session' && req.method === 'POST') {
+          limitRequest(req, 'registration');
+          if (!(req.headers['content-type'] || '').startsWith('application/json'))
+            throw new BoosterError('Нужен JSON-запрос.',415);
+          const body = await playableBody(req, 12288);
+          const identity = social.authenticate(body.launch);
+          if (!arenaRooms.hasLobbySpace()) throw new BoosterError('Сервер заполнен, попробуйте позже',503);
+          const opened = social.issue(identity, profiles);
+          requirePlayable(profiles.byId(opened.profile.id), wallNow());
+          return reply(200, { ticket:opened.ticket, expiresAt:opened.expiresAt, network:opened.network });
+        }
         const visitor = profiles.find(sessionToken(req));
         const adminUrl = new URL(req.url, "http://localhost");
         if (adminUrl.pathname.startsWith("/api/admin/")) {
@@ -842,6 +857,8 @@ function createGameServer({
             arenas: arenaRooms.list(),
           });
         if (req.url === "/api/profile" && req.method === "GET") {
+          if (!visitor && (social.config?.requirePlatform || social.requested(req)))
+            throw new BoosterError('Открой игру заново из VK или Одноклассников.',401);
           if (!visitor && req.headers["x-killex-profile"])
             throw new BoosterError("Не удалось восстановить сеанс. Разреши cookie для игры и обнови страницу.", 401);
           if (!profiles.find(sessionToken(req))) limitRequest(req, "registration");
@@ -1063,6 +1080,8 @@ function createGameServer({
             );
           const lobbyObservedAt = wallNow();
           if (req.url === '/api/mock-payments/confirm') {
+            if (profiles.find(token)?.platformIdentity)
+              throw new BoosterError('Покупки на площадке пока недоступны.',403);
             try { lobbyKill.currencyAttempt(profiles.find(token), body, lobbyObservedAt,
               { stalled: rateNow() - stalledAt < 2000 }); }
             catch (error) { console.error('Не удалось обработать сигнал покупок Kill:', error.message); }
@@ -1155,6 +1174,7 @@ function createGameServer({
   });
   const wss = new WebSocket.Server({
     noServer: true,
+    handleProtocols: protocols => [...protocols].find(p=>!p.startsWith('killex-session.')) || false,
     maxPayload: 2048,
     perMessageDeflate: false,
   });
@@ -2433,6 +2453,7 @@ async function startServer() {
   let app;
   try {
     app = createGameServer({
+      socialConfig:require('./platform/config').read(dataDir),
       monitorDirectory:path.join(dataDir,'monitoring'),
       databaseMonitor:()=>database?.monitoring()||null,
       databaseMetrics:enabled=>database?.setMetrics(enabled),

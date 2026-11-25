@@ -858,9 +858,25 @@ class ProfileStore {
       ? world.profiles[tokenHash(token)]
       : undefined;
   }
-  open(token) {
+  openPlatform(identity, secret) {
+    const auth = require('../platform/launch');
+    const token = auth.profileToken(identity, secret), key = tokenHash(token);
+    const subject = auth.identityKey(identity);
+    // Build once at first social login after startup; progress never changes bindings.
+    if (!this.socialBindings) this.socialBindings = new Map(Object.entries(this.data.profiles)
+      .filter(([,p])=>p.platformIdentity).map(([k,p])=>[auth.identityKey(p.platformIdentity),k]));
+    if (this.socialBindings.has(subject) && this.socialBindings.get(subject) !== key)
+      throw new BoosterError('Не удалось восстановить профиль. Обратись в поддержку.',503);
+    const opened = this.open(token, identity);
+    this.socialBindings.set(subject, key);
+    return opened;
+  }
+  open(token, platformIdentity = null) {
+    if (platformIdentity) require('../platform/launch').requireVerified(platformIdentity);
     this.refreshCompetition();
     const existing = this.find(token);
+    if (platformIdentity && existing && require('../platform/launch').identityKey(existing.platformIdentity) !== require('../platform/launch').identityKey(platformIdentity))
+      throw new BoosterError('Не удалось восстановить профиль. Обратись в поддержку.',503);
     if (existing) {
       const draft = lobbyDraft(existing),
         at = this.now();
@@ -878,9 +894,10 @@ class ProfileStore {
       }
       return { token, profile: this.view(this.find(token)), created: false };
     }
-    const freshToken = randomBytes(32).toString("hex");
+    const freshToken = platformIdentity ? token : randomBytes(32).toString("hex");
     const profile = {
       id: randomUUID(),
+      ...(platformIdentity ? { platformIdentity } : {}),
       wallet: { coins: 100, crystals: 10, bucks: 0 },
       inventory: {},
       receipts: {},
@@ -916,6 +933,7 @@ class ProfileStore {
     const easterPictures = easter.albumPictures(profile);
     return {
       id: profile.id,
+      ...(profile.platformIdentity ? { platform: profile.platformIdentity.network } : {}),
       dailyLoginAvailable: dailyLogin.due(profile, this.now()),
       dailyLoginReward: dailyLogin.preview(profile, this.now()),
       wallet: { ...profile.wallet },
@@ -1532,6 +1550,7 @@ class ProfileStore {
   promotionSettings() { return require("../shop/weekend-editor").settings(this); }
   virtualProduct(id) { return promotions.product(this.promotionSettings(), id); }
   confirmMockPurchase(token, input) {
+    if (this.find(token)?.platformIdentity) throw new BoosterError('Покупки на площадке пока недоступны.',403);
     const product = this.virtualProduct(input.productId);
     if (!product) throw new BoosterError("Этот игровой продукт не найден.");
     if (input.confirmed !== true) throw new BoosterError("Сначала подтверди тестовую покупку.");
@@ -1701,6 +1720,7 @@ class ProfileStore {
     );
   }
   activateAccount(token, input) {
+    if (this.find(token)?.platformIdentity) throw new BoosterError('Покупки на площадке пока недоступны.',403);
     if (!["vip", "premium"].includes(input.kind)) throw new BoosterError("Выбери VIP или Premium.");
     return this.transactProfile(
       token,

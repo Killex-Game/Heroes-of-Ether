@@ -69,6 +69,20 @@
     }
     open(productId, owner) {
       const profile = owner.getProfile();
+      if (profile?.platform) {
+        var unavailable = document.getElementById('platformPurchasesUnavailable');
+        if (!unavailable) {
+          unavailable = el('dialog', 'clan-dialog mock-payment-dialog');
+          unavailable.id = 'platformPurchasesUnavailable';
+          var title = el('h2', '', 'Покупки');
+          var text = el('p', '', 'Покупки станут доступны после подключения магазина на площадке.');
+          var close = el('button', 'sf-button', 'Понятно');
+          close.onclick = function () { unavailable.close(); };
+          unavailable.append(title, text, close); document.body.append(unavailable);
+        }
+        window.KillexWindows.open(unavailable);
+        return;
+      }
       const product = window.KillexVirtualProducts.get(productId, profile);
       if (!product || !profile || owner.unavailable() || this.dialog.open) return;
       this.owner = owner;

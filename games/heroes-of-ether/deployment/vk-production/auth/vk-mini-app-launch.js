@@ -1,6 +1,7 @@
 "use strict";
-// Preparation only. No route in the running game imports this module.
-// VK Mini Apps format; this is NOT a VK Games / OK / payment verifier.
+// Shared vk_* signature primitive. src/server/platform/launch adds current
+// VK Games / OK identity validation. The old helper below remains a sandbox API.
+// Neither helper verifies payment callbacks.
 const { createHmac, timingSafeEqual } = require("node:crypto");
 const verifiedIdentities = new WeakSet();
 const positiveId = (value) => typeof value === "string" && /^[1-9][0-9]{0,19}$/.test(value);

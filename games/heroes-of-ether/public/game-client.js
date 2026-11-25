@@ -680,6 +680,7 @@
         window.KillexArenaWire.MOTION_PROTOCOL,
         window.KillexPlatform.stateProtocol(1),
         `ticket.${reservation.ticket}`,
+        ...(window.KillexSocial?.socketProtocols() || []),
       ]);
     } catch (_) {
       arenaPicker.cancelPending();
