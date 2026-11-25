@@ -16,6 +16,8 @@ if (process.env.LOAD_CLIENT === "1") {
   const { ProfileStore } = require("../../src/server/profiles/profile-store");
   let queueTiming = {};
   let profileTiming = {};
+  const queueTimeline = process.env.LOAD_QUEUE_TIMELINE === '1'
+    ? require('./queue-timeline.cjs').install(require('../../src/server/profiles/arena-booster-queue').ArenaBoosterQueue) : null;
   const ioProbe = process.env.LOAD_SYNC_IO_PROBE === "1" ? require("./slow-io-probe.cjs").install() : null;
   if (process.env.LOAD_PROFILE_TIMING === "1") {
     for (const [name, file, methods] of [
@@ -628,6 +630,7 @@ if (process.env.LOAD_CLIENT === "1") {
       stageMeter?.reset();
       ioProbe?.reset();
       queueTiming = {};
+      queueTimeline?.reset();
       profileTiming = {};
       persistence = {};
       applied = {};
@@ -745,6 +748,7 @@ if (process.env.LOAD_CLIENT === "1") {
         ...(ioProbe?{syncIo:ioProbe.snapshot()}:{}),
         persistence,
         ...(process.env.LOAD_QUEUE_TIMING === "1" ? { queueTiming } : {}),
+        ...(queueTimeline ? { queueTimeline: queueTimeline.snapshot() } : {}),
         ...(process.env.LOAD_PROFILE_TIMING === "1" ? { profileTiming } : {}),
         ...(database ? { database: database.samples.slice() } : {}),
         stateWorkers: { ...app.stateWorkers.stats, lanes: app.stateWorkers.lanes.length },

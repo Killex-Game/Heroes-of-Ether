@@ -87,6 +87,11 @@ async function main(){
       caveat:'Extra client serialization and bounded capture affect timing; not a capacity or A/B run.'};
     Object.assign(env,{LOAD_WIRE_DIAG:'1',LOAD_CAPTURE_WIRE:path.join(out,'wire')});
   }
+  if(process.env.CAPACITY_QUEUE_DIAGNOSTICS==='1'){
+    summary.diagnosticOnly=true;
+    summary.queueDiagnostics='Bounded queue timeline and phase timings add overhead; not capacity acceptance.';
+    Object.assign(env,{LOAD_QUEUE_TIMELINE:'1',LOAD_QUEUE_TIMING:'1'});
+  }
   const child=fork(path.join(__dirname,'room-input-load.cjs'),[],{cwd:root,execArgv:['--max-old-space-size=2048'],env,
     stdio:['ignore',stdout,stderr,'ipc']});
   child.on('message',message=>{
