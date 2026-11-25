@@ -1427,7 +1427,7 @@ function createGameServer({
           if (closing || removed) return;
           t = now();
           if (!Number.isInteger(message.spawnSerial) || message.spawnSerial !== p.spawnSerial)
-            throw new BoosterError("Этот вход на арену уже завершён или продолжена.", 409);
+            throw new BoosterError("Этот вход на арену уже завершён или продолжен.", 409);
           if (pendingProgress && !commitProgress())
             throw new BoosterError(
               "Не удалось сохранить прогресс. Повтори подтверждение выхода.",
@@ -1516,7 +1516,7 @@ function createGameServer({
             return;
           }
           if (!p.dead || p.lifeId !== message.lifeId)
-            throw new BoosterError("Этот вход на арену уже завершён или продолжена.", 409);
+            throw new BoosterError("Этот вход на арену уже завершён или продолжен.", 409);
           if (
             (pendingProgress && !commitProgress()) ||
             (profile &&
@@ -1556,7 +1556,7 @@ function createGameServer({
                       arenaRooms.group(profile.id)) &&
                   (!profile || !activeBan(profiles.byId(profile.id), wallNow()));
                 if (!valid())
-                  throw new BoosterError("Этот вход на арену уже завершён или недоступна.", 409);
+                  throw new BoosterError("Этот вход на арену уже завершён или недоступен.", 409);
                 if (profile) profiles.startLife(profile.id, lifeId, false, batch);
                 return {
                   valid,
