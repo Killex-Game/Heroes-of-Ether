@@ -55,6 +55,9 @@ function finish(data, season, byId) {
       activity.leagueEvent(p, "cup", league, season.end);
       chests.award(p, prize.reward, season.end, {
         multiply: false,
+        result:{kind:"season",sourceId:"battle-season:"+season.id+":"+clan.id,
+          title:"Сезон клановых битв завершён",headline:rules.trophyLabel(trophy),
+          detail:"Сезонная награда получена",clanName:clan.name,positive:true},
         label: `${rules.trophyLabel(trophy)}. Награда: ${prize.reward.coins} монет, ${prize.reward.crystals} кристаллов, ${prize.reward.bucks} эфира. Скидка клана: ${prize.discount}%.`,
       });
       if (!Number.isSafeInteger(p.revision + 1)) throw Error("Превышен номер версии профиля.");

@@ -16,6 +16,37 @@ function grantReceived(p, tier, at) {
 const AT = Date.UTC(2026, 9, 25, 12);
 const DAY = 86400000;
 const HOUR = DAY / 24;
+test("title chests occupy free slots, wait forever and enter automatically after space is freed", () => {
+  const p = queueProfile();
+  for (let i=0;i<7;i++) grantReceived(p,"low",AT);
+  p.honors={chests:{novice:"closed",experienced:"closed",expert:"opened"},medals:{novice:AT-1,experienced:AT}};
+  const previous=p.honors;
+  assert.equal(T.fill(p,AT+1),true);
+  assert.equal(previous.storage,undefined,"published honors remain untouched");
+  assert.equal(T.stored(p),7);
+  assert.equal(p.honors.storage.novice.stored,false);
+  assert.equal(p.honors.storage.novice.expiresAt,null);
+  assert.equal(T.needsFill(p,AT+365*DAY),false);
+  const before=p.honors;
+  p.clanChests.items.shift();T.fill(p,AT+365*DAY);
+  assert.equal(p.honors.storage.novice.stored,true);
+  assert.equal(before.storage.novice.stored,false,"storage rows detach before mutation");
+  assert.equal(p.honors.storage.experienced.stored,false);
+  p.honors.chests.novice="opened";T.fill(p,AT+366*DAY);
+  assert.equal(p.honors.storage.novice,undefined);
+  assert.equal(p.honors.storage.experienced.stored,true);
+  assert.equal(T.stored(p),7);
+});
+test("capacity loss moves the newest title chest outside without adding an expiry", () => {
+  const p=queueProfile(true);
+  for(let i=0;i<7;i++)grantReceived(p,"low",AT);
+  p.honors={chests:{novice:"closed"},medals:{novice:AT+1}};
+  T.fill(p,AT+1);assert.equal(T.stored(p),8);
+  p.account.vipUntil=AT+2;T.fill(p,AT+2);
+  assert.equal(p.honors.storage.novice.stored,false);
+  assert.equal(p.honors.storage.novice.expiresAt,null);
+  assert.equal(T.expired(p.honors.storage.novice,AT+365*DAY),false);
+});
 function queueProfile(vip = false, premium = false) {
   return {
     account: { vipUntil: vip ? AT + 4 * DAY : 0, premiumUntil: premium ? AT + 4 * DAY : 0 },

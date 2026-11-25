@@ -202,7 +202,7 @@
     })),
   );
   for (const [kind, name, votes] of [
-    ["vip", "VIP", 10],
+    ["vip", "VIP", 14],
     ["premium", "Premium", 30],
   ]) {
     products.push({

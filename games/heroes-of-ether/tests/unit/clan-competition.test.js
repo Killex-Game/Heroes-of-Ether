@@ -257,7 +257,7 @@ test("Поражение: каждый текущий участник теря�
   for (const u of [poor, empty]) assert.equal(f.p(u).greatness, 0);
   assert.equal(f.p(winner).greatness, 33); // +3 за первое место и +10 за первую степень «Топ».
   assert.equal(f.p(left).greatness, 20);
-  assert.equal(f.p(idle).revision, revision + 1);
+  assert.equal(f.p(idle).revision, revision + 2); // Defeat and the persisted result notice.
   assert.deepEqual(f.p(idle).honors, honors);
   assert.deepEqual(f.p(idle).progress, progress);
   assert.deepEqual(f.p(loser).wallet, {

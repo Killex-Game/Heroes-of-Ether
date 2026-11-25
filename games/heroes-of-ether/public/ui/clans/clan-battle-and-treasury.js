@@ -608,6 +608,13 @@
       this.toast.setAttribute("role", "status");
       this.toast.setAttribute("aria-label", "Клановые награды");
       document.body.append(this.toast);
+      this.resultDialog = el("dialog", "title-earned-dialog clan-result-dialog");
+      this.resultDialog.id = "clanResultDialog";
+      this.resultDialog.setAttribute("aria-labelledby", "clanResultHeading");
+      document.body.append(this.resultDialog);
+      document.addEventListener("killex:arena-profile", () => {
+        if (this.resultDialog.open) this.resultDialog.close();
+      });
       document.addEventListener("killex:profile", (e) => this.notify(e.detail));
       document.addEventListener(
         "close",
@@ -618,6 +625,8 @@
       );
     }
     notify(profile) {
+      if (this.noticeProfile && this.noticeProfile !== profile.id && this.resultDialog.open)
+        this.resultDialog.close();
       if (this.noticeProfile && this.noticeProfile !== profile.id) this.toast.hidePopover();
       this.noticeProfile = profile.id;
       this.queuedNoticeProfile = profile;
@@ -676,6 +685,17 @@
         this.saveRewardNotices(profile);
         return;
       }
+      const celebration = fresh.find(n => n.result);
+      if (celebration) {
+        this.toast.hidePopover();
+        this.seen.add(celebration.noticeKey);
+        const group = remembered.clan;
+        group.ids.add(celebration.id);
+        try { localStorage.setItem(group.storageKey, JSON.stringify([...group.ids])); } catch (_) {}
+        this.showResult(celebration);
+        this.saveRewardNotices(profile);
+        return;
+      }
       const title = fresh.every((n) => n.kind === "quest")
         ? "Ежедневные сундуки"
         : fresh.some((n) => n.kind === "quest")
@@ -705,6 +725,30 @@
         } catch (_) {}
       }
       this.saveRewardNotices(profile);
+    }
+    showResult(notice) {
+      const result = notice.result, dialog = this.resultDialog;
+      const heading = el("header", "clan-heading"), title = el("h2", "", result.title);
+      title.id = "clanResultHeading";
+      const close = button("×", () => dialog.close());
+      close.className = "booster-close";
+      close.setAttribute("aria-label", "Закрыть итоги");
+      heading.append(title, close);
+      const stage = el("div", "clan-result-stage"), badge = art(
+        window.KillexProgressionArt.leagueMedal(result.positive ? "gold" : "silver",256),
+        "clan-result-art");
+      stage.append(badge, el("small","clan-result-clan",result.clanName),
+        el("h3","clan-result-headline",result.headline),
+        el("p","clan-result-detail",result.detail),
+        el("p","clan-result-prize",notice.text));
+      const actions = el("div","title-earned-actions"), done = button("Продолжить",() => dialog.close());
+      actions.append(done);
+      dialog.dataset.positive = String(result.positive);
+      dialog.replaceChildren(heading,stage,actions);
+      window.KillexUITheme.inherit(dialog,document.body);
+      window.KillexWindows.open(dialog);
+      if (result.positive) window.KillexAudio?.play?.("title");
+      done.focus();
     }
     saveRewardNotices(profile) {
       this.saveNoticeGroup(profile, "quest", profile.quests?.pending || []);
@@ -827,7 +871,7 @@
       const c = this.owner.profile?.clanChests;
       if (!c) return;
       const profile = this.owner.profile;
-      const key = JSON.stringify([c, profile.quests?.pending, profile.easter?.chests, profile.fridayChests,
+      const key = JSON.stringify([c, profile.honors, profile.quests?.pending, profile.easter?.chests, profile.fridayChests,
         (profile.account?.vipUntil || 0) > Date.now(), (profile.account?.premiumUntil || 0) > Date.now(),
         this.busy, this.owner.purchasesBlocked()]);
       if (key === this.renderKey) return;
@@ -838,6 +882,9 @@
       const easterChests = easter.filter((item) => item.stored);
       const friday = this.owner.profile?.fridayChests || [];
       const fridayChests = friday.filter((item) => item.stored);
+      const titles = (profile.honors?.tiers || []).filter(item => item.state === "closed");
+      const titleChests = titles.filter(item => item.stored);
+      const queuedTitles = titles.filter(item => !item.stored);
       const queuedClans = c.items.filter((item) => !item.stored);
       const waiting =
         pending.length -
@@ -846,7 +893,7 @@
         easterChests.length +
         queuedClans.length +
         friday.length -
-        fridayChests.length;
+        fridayChests.length + queuedTitles.length;
       const storedChests = c.items.filter((item) => item.stored);
       const head = el("div", "clan-chest-inventory-heading");
       head.append(
@@ -858,6 +905,20 @@
         ),
       );
       const grid = el("div", "clan-owned-chests");
+      for (const item of titleChests) {
+        const card = el("article", "clan-owned-chest title-treasury-chest");
+        card.dataset.chestId = item.id;
+        const image = art(window.KillexProgressionArt.chest(item.id,256), "clan-prize-art");
+        image.srcset = [128,256,512].map(size=>window.KillexArtRevision.url(window.KillexProgressionArt.chest(item.id,size))+" "+size+"w").join(", ");
+        image.sizes = "96px";
+        card.append(image,
+          el("strong", "", item.chestName), el("small", "", "За титул «"+item.name+"»"),
+          el("small", "", "Без срока открытия"));
+        const open = button(profile.honors.pending?.id === item.id ? "Забрать награду" : "Открыть",
+          () => this.owner.chests.open(item.id));
+        window.KillexControls.state(open,this.busy || this.owner.purchasesBlocked(),this.owner.purchasesBlocked());
+        card.append(open);grid.append(card);
+      }
       for (const item of fridayChests) {
         const card = el("article", "clan-owned-chest friday-treasury-chest");
         card.dataset.chestId = item.id;
@@ -947,13 +1008,14 @@
         !storedChests.length &&
         !questChests.length &&
         !easterChests.length &&
-        !fridayChests.length
+        !fridayChests.length &&
+        !titleChests.length
       )
         grid.append(
           el(
             "p",
             "clan-muted",
-            "Здесь хранятся сундуки за задания, события и клановые битвы. Сундуки в Сокровищнице не сгорают.",
+            "Здесь хранятся сундуки за титулы, задания, события и клановые битвы. Сундуки в Сокровищнице не сгорают.",
           ),
         );
       const wasOpen = !!this.root.querySelector(".clan-reward-notices")?.open;
@@ -965,11 +1027,14 @@
           el(
             "p",
             "",
-            "Нажми «Получить», чтобы забрать сундук. Вне Сокровищницы все сундуки сгорают: без статусов через 3 ч, с VIP или Premium через 24 ч, с обоими через 48 ч. Срок пересчитывается при изменении статусов. Последние добавленные сундуки выходят в очередь при уменьшении вместимости.",
+            "Титульные сундуки ждут бессрочно и занимают освободившиеся места автоматически. Остальные сундуки вне Сокровищницы сгорают: без статусов через 3 ч, с VIP или Premium через 24 ч, с обоими через 48 ч.",
           ),
         );
         const groups = new Map();
         const rows = [
+          ...queuedTitles.map(c => ({id:c.id,kind:"title",name:c.chestName,
+            prepared:profile.honors.pending?.id===c.id,
+            art:window.KillexProgressionArt.chest(c.id,256),until:null})),
           ...friday
             .filter((c) => !c.stored)
             .map((c) => ({
@@ -1013,7 +1078,7 @@
           row.append(
             art(item.art, ""),
             el("strong", "", item.name + " ×" + item.count),
-            el("span", "", item.until ? "Сгорит " + date(item.until) : ""),
+            el("span", "", item.until ? "Сгорит " + date(item.until) : "Без срока ожидания"),
           );
           if (item.unreceived) {
             const receive = button("Получить", () =>
@@ -1026,6 +1091,7 @@
             );
             row.append(receive);
           }
+          if (item.prepared) row.append(button("Забрать награду", () => this.owner.chests.open(item.id)));
           queue.append(row);
         }
         this.root.append(queue);

@@ -91,7 +91,10 @@ function capture(data, at, boards, {canSettle=true}={}) {
         const p = profiles[key] = copyProfile(original);
         p.clanQuestMedals = [...(p.clanQuestMedals || []),medal];
         require('../../progression/clan-quest-achievements').season(p, state.end);
-        chests.award(p,prize.reward,state.end,{multiply:false,label:
+        chests.award(p,prize.reward,state.end,{multiply:false,
+          result:{kind:"season",sourceId:"quest-season:"+state.id+":"+clan.id,
+            title:"Сезон клановых заданий завершён",headline:"Место "+row.rank,
+            detail:prize.name+" медаль",clanName:clan.name,positive:true},label:
           `${prize.name} медаль за сезон клановых заданий. Место ${row.rank}. ${prize.reward.bucks} эфира, ${prize.reward.coins} монет, ${prize.reward.crystals} кристаллов, ${prize.reward.greatness} величия.`});
         p.revision++; changed.push(key); members.push(id);
       }

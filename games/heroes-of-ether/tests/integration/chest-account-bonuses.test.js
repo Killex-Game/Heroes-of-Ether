@@ -120,6 +120,8 @@ test("Сохранения v9: старые подготовленные сун�
     f = fixture(true, true, filePath);
   f.p().greatness = 2000000;
   titles.awardTitles(f.p(), NOW);
+  for (const title of titles.TITLES) if (title.id !== "novice") f.p().honors.chests[title.id] = "opened";
+  require("../../src/server/progression/treasury-capacity").fill(f.p(),NOW);
   f.store.prepareChest(f.auth.token, "novice", randomUUID());
   const expectedTitle = structuredClone(f.p().honors.pending);
   for (const [index, [, vip, premium]] of statuses.entries()) {

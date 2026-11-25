@@ -177,22 +177,11 @@
       this.grid.id = "boosterGrid";
       this.chests = new window.KillexChestUI(this);
       this.clanChests = new window.KillexClanChestInventory(this);
-      this.chestCategory = "titles";
+      this.chestCategory = "treasury";
       this.chestCategories = make("nav", "cosmetics-tabs chest-categories");
       this.chestCategories.setAttribute("aria-label", "Разделы сундуков");
       this.chestCategoryButtons = new Map();
-      for (const [id, label] of [
-        ["titles", "Сундуки титулов"],
-        ["treasury", "Сокровищница"],
-      ]) {
-        const tab = button("sf-tab", label, () => {
-          this.chestCategory = id;
-          this.setMode("chests");
-        });
-        tab.dataset.noticeGroup = id === "titles" ? "titleChests" : "treasury";
-        this.chestCategories.append(tab);
-        this.chestCategoryButtons.set(id, tab);
-      }
+      this.chestCategories.hidden = true;
       this.inventoryRack = make("section", "inventory-loadout lobby-loadout");
       this.inventoryRack.id = "inventoryLoadout";
       this.inventoryRack.hidden = true;
@@ -580,7 +569,7 @@
       if (!this.dialog.open) {
         this.shopCategory = category || "boosters";
         this.accessoryCategory = "hat";
-        if (mode !== "chests") this.chestCategory = "titles";
+        this.chestCategory = "treasury";
       }
       this.game.stop();
       this.cancelTarget();
@@ -592,14 +581,13 @@
     }
     setMode(mode) {
       if (mode === "shop" && this.game.isArena()) return;
+      this.chestCategory = "treasury";
       this.mode = mode;
       this.title.textContent =
         mode === "shop"
           ? "Магазин"
           : mode === "chests"
-            ? this.chestCategory === "treasury"
-              ? "Сокровищница"
-              : "Сундуки титулов"
+            ? "Сокровищница"
             : "Инвентарь";
       this.dialog.dataset.mode = mode;
       this.shopTab.setAttribute("aria-pressed", String(mode === "shop"));
@@ -642,13 +630,12 @@
       for (const [id, tab] of this.categoryButtons)
         tab.setAttribute("aria-pressed", String(id === this.shopCategory));
       this.grid.hidden = chestsMode || skinsMode || accessoriesMode;
-      this.chests.root.hidden = !chestsMode || this.chestCategory !== "titles";
-      this.chestCategories.hidden = !chestsMode;
+      this.chests.root.hidden = true;
+      this.chestCategories.hidden = true;
       for (const [id, tab] of this.chestCategoryButtons)
         tab.setAttribute("aria-pressed", String(id === this.chestCategory));
       this.message.hidden = !this.message.textContent;
       this.note.hidden = skinsMode || accessoriesMode;
-      if (chestsMode) this.chests.render();
       if (!this.catalog || !this.profile) {
         this.grid.replaceChildren(make("p", "booster-empty", ""));
         return;

@@ -567,7 +567,8 @@ test("общая вместимость, очередь и сохранение 
   for (let i = 0; i < 60; i++) action(f, "exchange");
   for (let i = 0; i < 48; i++) openFragment(f, i);
   assert.equal(T.stored(f.get(), f.now()), 7);
-  assert.equal(f.get().easter.chests.filter((c) => !c.stored).length, 5);
+  assert.equal(f.get().easter.chests.filter((c) => !c.stored).length, 6);
+  assert.equal(Object.values(f.get().honors.storage).filter(c=>c.stored).length,1);
   assert.ok(f.store.view(f.get()).wardrobe.owned.includes("rabbit_ears"));
   const old = f.run();
   f.set(f.events.active().endsAt);
@@ -592,7 +593,7 @@ test("общая вместимость, очередь и сохранение 
   assert.equal(T.stored(f.get(), f.now()), 6);
   assert.equal(
     f.get().easter.chests.length,
-    6,
+    5,
     "очередь сгорела; хранимые сундуки пережили окончание события",
   );
   assert.equal(f.get().greatness, greatness + 5);

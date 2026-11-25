@@ -122,6 +122,7 @@ test("Закрытые и незаслуженные сундуки, невер�
   assert.deepEqual(p(), before);
   p().greatness = 2000000;
   awardTitles(p());
+  store.refreshCompetition();
   const full = structuredClone(p());
   for (const t of TITLES.slice(1))
     assert.throws(

@@ -3,6 +3,14 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const {Arena,speedForMass}=require('../../src/server/arena/arena-simulation');
 const {BOOSTERS}=require('../../src/server/boosters/booster-catalog');
 const view=require('../../public/shared/arena-camera-and-layout');
+test('Chaotic display trajectories differ per object, stay bounded and do not survive zero strength',()=>{
+  for(let t=0;t<5000;t+=17)for(const seed of [1,7,19,100,999]){
+    const d=view.dizzyOffset(seed,t,1);
+    assert(Math.abs(d.x)<=28&&Math.abs(d.y)<=26&&Math.abs(d.angle)<=.16);
+    const off=view.dizzyOffset(seed,t,0);assert.equal(off.x===0&&off.y===0&&off.angle===0,true);
+  }
+  assert.notDeepEqual(view.dizzyOffset(1,2000),view.dizzyOffset(7,2000));
+});
 test('Stone allows authoritative confused movement for five seconds and leaves Web immobilization intact',()=>{
   const arena=new Arena({etherCount:0,world:{width:10000,height:10000}}),p=arena.addPlayer(0,'p');
   Object.assign(p,{x:5000,y:5000,targetX:9000,targetY:5000,stopped:false,protectedUntil:0});

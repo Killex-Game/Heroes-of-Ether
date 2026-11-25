@@ -32,6 +32,11 @@ function fixture(vip = false, premium = false, withLite = true, filePath) {
   if (withLite) lite.activate(p(), store.rouletteConfig, at, runId);
   function chest(kind, tier) {
     let id;
+    // Test one promised reward at a time; unrelated title chests now occupy
+    // ordinary Treasury slots and must not fill this bonus fixture.
+    for (const title of T.TITLES)
+      if (kind !== "title" || title.id !== tier) p().honors.chests[title.id] = "opened";
+    require("../../src/server/progression/treasury-capacity").fill(p(),at);
     if (kind === "title") id = tier;
     else if (kind === "clan") id = C.grant(p(), tier, at).id;
     else if (kind === "quest") {

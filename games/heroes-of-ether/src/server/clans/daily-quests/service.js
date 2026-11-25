@@ -153,6 +153,24 @@ function capture(next, previous, at, {canSettle=true} = {}) {
           require('../../progression/clan-quest-achievements').daily(p, board);
           awardTitles(p, board.end);
         }
+        const completed = board.quests.filter(q => q.completedAt !== null).length;
+        if (board.quests.length) for (const pid of Object.keys(board.eligible)) {
+          const p = writable(pid);
+          if (!p || p.clanId !== id || !clan.members.includes(pid)) continue;
+          const own = grants.filter(g => g.playerId === pid), totals = {};
+          for (const g of own) {
+            totals[g.reward.kind] = (totals[g.reward.kind] || 0) + g.reward.amount;
+            totals.greatness = (totals.greatness || 0) + g.greatness;
+          }
+          const labels = {coins:"монет",crystals:"кристаллов",bucks:"эфира",greatness:"величия",clanChest:"сундуков"};
+          const prize = Object.entries(totals).filter(([,n]) => n > 0)
+            .map(([key,n]) => n+" "+labels[key]).join(", ");
+          chests.resultNotice(p, {
+            kind:"quests",sourceId:"quests:"+receipt,title:"Итоги клановых заданий",
+            headline:"Выполнено "+completed+" из "+board.quests.length,
+            detail:"Спасибо за общий вклад!",clanName:clan.name,positive:completed>0
+          },prize ? "Получено: "+prize+"." : "Сегодня личная награда не заработана.",board.end);
+        }
         assign({...state,board:{...board,settledAt:at,...(ledger?.[receipt]?{rewardReceipt:receipt}:{})}});
       }
     }

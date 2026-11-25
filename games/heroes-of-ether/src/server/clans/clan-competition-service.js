@@ -201,6 +201,25 @@ function finishDay(data, at, byId) {
         };
         p.revision++;
       }
+      for (const id of day.rosters[c.id] || []) {
+        const p = byId.get(id);
+        if (!p || p.clanId !== c.id) continue;
+        const own = c === left ? a : b, enemy = c === left ? b : a;
+        const awarded = people.find(entry => entry.id === id);
+        const tier = winner === c.id && awarded ? awarded.tier : "fixed";
+        const fixed = awarded && tier === "fixed" ? rules.battleFixedReward(winner === c.id) : null;
+        const prize = !awarded ? "Нет личной награды: вклад в эту битву не зачислен." :
+          fixed ? "Получено: "+fixed.coins+" монет, "+fixed.crystals+" кристаллов"+
+            (fixed.greatness ? ", "+fixed.greatness+" величия" : "")+"." :
+          rules.CHESTS[tier].name+" ждёт получения.";
+        chests.resultNotice(p, {
+          kind:"battle",sourceId:"battle:"+day.start+":"+c.id,title:"Итоги клановой битвы",
+          headline:!winner ? "Ничья" : winner===c.id ? "Победа!" : "Битва завершена",
+          detail:c.name+"  "+own+" : "+enemy+"  "+(c===left?right.name:left.name),
+          clanName:c.name,positive:winner===c.id
+        },prize,at);
+        p.revision++;
+      }
       state.lastBattle[c.id] = {
         endedAt: at,
         own: a,
@@ -281,6 +300,9 @@ function finishWeek(data, at, byId) {
           const p = byId.get(id);
           if (p?.clanId !== c.id) continue;
           chests.award(p, reward, at, {
+            result:{kind:"league",sourceId:"league:"+w.start+":"+c.id,title:"Итоги недели",
+              headline:"Место "+(position+1),detail:LEAGUES[group.league].name,
+              clanName:c.name,positive:!!prizePlace},
             label:
               "Награда за неделю: " +
               LEAGUES[group.league].name +

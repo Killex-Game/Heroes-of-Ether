@@ -251,6 +251,9 @@ function awardTitles(p, at = Date.now()) {
     if (p.honors.claimed < TITLES.length && p.greatness >= TITLES[p.honors.claimed].threshold)
       awardTitles(p, at);
   }
+  // A newly earned title enters storage in this same durable transaction.
+  // Arena drafts can still share the other chest collections with readers.
+  require("./treasury-capacity").fillDetached(p, at);
 }
 // Однократный переход старых профилей на новые пороги. История открытий
 // предотвращает повторную выдачу наград при повторном достижении титула.
@@ -262,6 +265,7 @@ function rebalanceTitles(p) {
   for (const title of TITLES.slice(claimed, h.claimed)) {
     (h.deferredChests ||= {})[title.id] = h.chests[title.id];
     delete h.chests[title.id];
+    if (h.storage) delete h.storage[title.id];
   }
   h.claimed = claimed;
   if (h.pending && !Object.hasOwn(h.chests, h.pending.id)) delete h.pending;
@@ -285,6 +289,14 @@ function validateHonors(p) {
     )
   )
     throw Error("Повреждены титулы, сундуки или баланс эфира. Сохранение не перезаписано.");
+  if (h.storage !== undefined && (!h.storage || typeof h.storage !== "object" || Array.isArray(h.storage) ||
+      Object.entries(h.storage).some(([id,c]) => !c || h.chests[id] !== "closed" ||
+        c.id !== "title-"+id || c.titleId !== id || typeof c.stored !== "boolean" ||
+        c.expiresAt !== null || c.waitingHours !== undefined ||
+        ![c.earnedAt,c.receivedAt,c.waitingSince].every(integer) ||
+        c.storedAt !== undefined && !integer(c.storedAt) ||
+        c.storageOrder !== undefined && (!integer(c.storageOrder) || c.storageOrder < 1))))
+    throw Error("Повреждено размещение титульных сундуков. Сохранение не перезаписано.");
   if (
     h.deferredChests !== undefined &&
     (!h.deferredChests ||
@@ -401,6 +413,7 @@ function publicHonors(p) {
       return {
         ...t,
         state: p.honors.chests[t.id] || "unearned",
+        stored: p.honors.storage?.[t.id]?.stored === true,
         coins: reward.coins,
         crystals: reward.crystals,
         bucks: reward.bucks,
@@ -465,6 +478,9 @@ function prepareChest(p, id, at = Date.now()) {
     p.honors.pending = unmultipliedReward(p.honors.pending);
     return;
   }
+  require("./treasury-capacity").fill(p, at);
+  if (!p.honors.storage?.[id]?.stored)
+    throw new BoosterError("Освободи место в Сокровищнице. Титульный сундук ждёт бессрочно.", 409);
   p.honors.pending = chestReward(title, 1, randomItems(title));
 }
 function openChest(p, id, at = Date.now()) {
@@ -484,6 +500,7 @@ function openChest(p, id, at = Date.now()) {
   // Награда не является заказом недели для достижений VIP/Premium.
   p.honors.chests[id] = "opened";
   delete p.honors.pending;
+  require("./treasury-capacity").fill(p, at);
 }
 module.exports = {
   TITLES,

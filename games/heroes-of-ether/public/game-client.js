@@ -105,6 +105,14 @@
   const projectileView = new window.KillexProjectiles.Renderer();
   const foodView = new window.KillexArenaArt.FoodRenderer();
   const effectsView = new window.KillexEffects.Renderer();
+  const chaosSeeds = new Map();
+  function distortionSeed(key) {
+    if (chaosSeeds.has(key)) return chaosSeeds.get(key);
+    let seed = 0;
+    for (const c of String(key)) seed = (seed*31+c.charCodeAt(0)) >>> 0;
+    if (chaosSeeds.size >= 1024) chaosSeeds.clear();
+    chaosSeeds.set(key,seed % 1000);return seed % 1000;
+  }
   const backgroundView = new window.KillexArenaBackgrounds.Renderer();
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   let smoothPlayers = new Map();
@@ -1781,6 +1789,7 @@
   function frame(now) {
     if (phase !== "arena") {
       camera.rotation = camera.dizzyRemaining = camera.dizzyAngle = 0;
+      document.body.removeAttribute("data-stone-chaos");
       frameId = null;
       return;
     }
@@ -1850,6 +1859,12 @@
     const stone = me?.effects?.find(effect => effect.id === 'stone');
     const stoneRemaining = (stone?.remainingMs || 0) - Math.max(0, now-lastStateAt);
     camera.rotation = window.KillexArenaView.dizzyRotation(stoneRemaining, reducedMotion.matches, camera);
+    const chaosStrength = stoneRemaining > 0 && !reducedMotion.matches
+      ? clamp(Math.min((camera.dizzyDuration-stoneRemaining)/180,stoneRemaining/350),0,1) : 0;
+    const chaosActive = stoneRemaining > 0 && !reducedMotion.matches;
+    if (!chaosActive && chaosSeeds.size) chaosSeeds.clear();
+    if (document.body.hasAttribute("data-stone-chaos") !== chaosActive)
+      document.body.toggleAttribute("data-stone-chaos",chaosActive);
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     ctx.fillStyle = backgroundView.theme.outside;
     ctx.fillRect(0, 0, width, height);
@@ -1860,11 +1875,12 @@
     const viewWidth = width*cos+height*sin, viewHeight = height*cos+width*sin;
     // Request the complete rotation envelope while dizzy, so the next quarter
     // turn cannot expose empty corners before the next viewport/network update.
-    const rotatingView = stoneRemaining > 0 && !reducedMotion.matches ? Math.hypot(width, height) : 0;
-    const left = camera.x - viewWidth / 2 / scale;
-    const top = camera.y - viewHeight / 2 / scale;
-    const right = left + viewWidth / scale;
-    const bottom = top + viewHeight / scale;
+    const rotatingView = chaosActive ? Math.hypot(width, height)+80 : 0;
+    const pad = chaosActive ? 40 : 0;
+    const left = camera.x - (viewWidth / 2 + pad) / scale;
+    const top = camera.y - (viewHeight / 2 + pad) / scale;
+    const right = left + (viewWidth + 2*pad) / scale;
+    const bottom = top + (viewHeight + 2*pad) / scale;
     if (
       now - lastViewportAt >= 250 &&
       send({
@@ -1880,9 +1896,21 @@
     rotateScreen();
     ctx.translate(ox, oy);
     ctx.scale(scale, scale);
+    // Display-only disorientation: authoritative positions and collisions stay
+    // untouched. Each layer/body has a different smooth, bounded trajectory.
+    const distort = (seed) => {
+      if (!chaosStrength) return;
+      const d = window.KillexArenaView.dizzyOffset(seed,now,chaosStrength);
+      // Keep cached sprite orientation; the camera already supplies the spin.
+      ctx.translate(d.x/scale,d.y/scale);
+    };
+    ctx.save();distort(1);
     backgroundView.draw(ctx, world, { left, top, right, bottom, scale });
+    ctx.restore();
+    ctx.save();distort(7);
     foodView.drawVisible(ctx, { left, top, right, bottom });
     foodView.drawMoving(ctx, movingFood, { left, top, right, bottom });
+    ctx.restore();
     const drawRadius = (body) =>
       body.kind === "hazard"
         ? body.part.radius
@@ -1924,15 +1952,20 @@
     };
     // Physical contact is server-authoritative. Larger readable sprite fringes
     // must not cover a ball; only penetrating fire is drawn above the players.
+    ctx.save();distort(13);
     projectileView.draw(ctx, { ...projectileOptions, shots: groundShots });
+    ctx.restore();
     if (emoteView.active.size) emoteView.prune(now);
     for (const { player: p, part, key, elapsed, opacity, kind, position } of ordered) {
       if (kind === "hazard") {
+        ctx.save();distort(part.x*.01+part.y*.013);
         if (part.alchemyIngredient) {
           window.KillexAlchemyArt.draw(ctx, part, position.x, position.y, position.radius ?? part.radius, now);
+          ctx.restore();
           continue;
         }
         window.KillexEasterRenderer.draw(ctx, [{ ...part, ...position }]);
+        ctx.restore();
         continue;
       }
       const d = smoothParts.get(key);
@@ -1944,6 +1977,7 @@
         d.y - d.radius * 1.9 <= bottom
       ) {
         ctx.save();
+        if (chaosStrength) distort(distortionSeed(key));
         ctx.globalAlpha *= opacity;
         if (p.departure)
           ctx.globalAlpha *= clamp((p.departure.remainingMs - elapsed) / p.departure.fadeMs, 0, 1);
@@ -1957,7 +1991,9 @@
         ctx.restore();
       }
     }
+    ctx.save();distort(19);
     projectileView.draw(ctx, { ...projectileOptions, shots: throughShots });
+    ctx.restore();
     ctx.restore();
     frameId = requestAnimationFrame(frame);
   }

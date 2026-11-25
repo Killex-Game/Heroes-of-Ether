@@ -97,7 +97,8 @@ class SettlementCache {
         shared.premiumUntil === profile.account?.premiumUntil &&
         shared.pending === profile.quests?.pending &&
         shared.easter === profile.easter?.chests &&
-        shared.friday === profile.blackFriday?.chests) {
+        shared.friday === profile.blackFriday?.chests &&
+        shared.honors === profile.honors) {
       this.treasuries.set(profile, shared);
       return false;
     }
@@ -116,7 +117,8 @@ class SettlementCache {
     for (const notice of profile.clanChests?.notices || []) include(notice.at + 86400000);
     const result = {from:range.from, until:range.until,
       vipUntil:profile.account?.vipUntil, premiumUntil:profile.account?.premiumUntil,
-      pending:profile.quests?.pending, easter:profile.easter?.chests, friday:profile.blackFriday?.chests};
+      pending:profile.quests?.pending, easter:profile.easter?.chests, friday:profile.blackFriday?.chests,
+      honors:profile.honors};
     this.treasuries.set(profile, result);
     this.treasuryInputs.set(anchor, result);
     return false;

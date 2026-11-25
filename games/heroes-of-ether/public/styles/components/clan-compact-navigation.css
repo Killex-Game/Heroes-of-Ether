@@ -1,0 +1,51 @@
+/* Compact clan controls stay with the identity on every clan tab. */
+#boosterDialog.interface-window .title-treasury-chest { height: 264px; gap: 6px; }
+#boosterDialog.interface-window .title-treasury-chest > img { width: 96px; height: 96px; object-fit: contain; }
+.clan-result-stage { display: grid; justify-items: center; gap: 10px; padding: 18px 24px; text-align: center; }
+.clan-result-art { width: 136px; height: 136px; object-fit: contain; }
+.clan-result-headline { margin: 0; font-size: 30px; }
+.clan-result-dialog[data-positive="true"] .clan-result-headline { color: var(--ui-c-8d5b13, #8d5b13); }
+.clan-result-detail { margin: 0; font-size: 16px; line-height: 1.5; }
+.clan-result-prize { margin: 4px 0 0; padding: 14px 20px; border-radius: 14px; background: rgba(220,178,66,.14); line-height: 1.5; }
+.clan-result-dialog .title-earned-actions { justify-content: center; padding: 0 20px 18px; }
+.clan-result-dialog .title-earned-actions button { min-width: 150px; }
+.clan-result-dialog[open] .clan-result-art { animation: clan-result-arrive .5s ease-out both; }
+@keyframes clan-result-arrive { from { opacity: 0; transform: scale(.75) translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .clan-result-dialog[open] .clan-result-art { animation: none; } }
+body #clanDialog .clan-banner {
+  grid-template-columns: minmax(210px, 1fr) minmax(260px, auto) 310px;
+  align-items: center;
+  gap: 12px;
+}
+body #clanDialog .clan-banner-actions,
+body #clanDialog .clan-banner-actions-with-exit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 310px;
+  max-width: 100%;
+  gap: 7px;
+}
+body #clanDialog .clan-banner-actions .clan-nav {
+  display: contents;
+}
+body #clanDialog .clan-banner-actions :is(.sf-button, .sf-tab) {
+  grid-row: auto;
+  min-width: 0;
+  width: 100%;
+  min-height: 34px;
+  height: auto;
+  padding: 7px 9px;
+  font-size: 12px;
+  line-height: 1.15;
+  white-space: normal;
+}
+@media (max-width: 1150px) {
+  body #clanDialog .clan-banner { grid-template-columns: minmax(0, 1fr) 290px; }
+  body #clanDialog .clan-banner-actions { grid-column: 2; grid-row: 1; width: 290px; }
+  body #clanDialog .clan-award-showcases { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (max-width: 650px) {
+  body #clanDialog .clan-banner { grid-template-columns: minmax(0, 1fr); padding: 10px; }
+  body #clanDialog .clan-banner-actions { grid-column: 1; grid-row: 2; justify-self: start; width: 100%; }
+  body #clanDialog .clan-award-showcases { grid-column: 1; grid-row: 3; }
+}

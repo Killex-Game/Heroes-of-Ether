@@ -17,6 +17,7 @@ function entries(p) {
     ...(p.quests?.pending || []).map((chest) => ({ chest, kind: "quest" })),
     ...(p.easter?.chests || []).map((chest) => ({ chest, kind: "easter" })),
     ...(p.blackFriday?.chests || []).map((chest) => ({ chest, kind: "friday" })),
+    ...Object.values(p.honors?.storage || {}).map((chest) => ({ chest, kind: "title" })),
   ];
 }
 function isStored({ chest, kind }) {
@@ -32,6 +33,11 @@ function stored(p) {
 function queue(p, chest, at) {
   chest.stored = false;
   chest.waitingSince = at;
+  if (chest.titleId) {
+    chest.expiresAt = null;
+    delete chest.waitingHours;
+    return;
+  }
   chest.waitingHours = waitingHours(p, at);
   chest.expiresAt = at + chest.waitingHours * HOUR;
 }
@@ -48,14 +54,34 @@ function validStorage(c) {
   );
 }
 function expired(c, at) {
-  return c.stored === false && Number.isFinite(c.expiresAt) && c.expiresAt <= at;
+  return !c.titleId && c.stored === false && Number.isFinite(c.expiresAt) && c.expiresAt <= at;
+}
+function titleStorageDue(p) {
+  const h = p.honors;
+  if (!h) return false;
+  return Object.entries(h.chests).some(([id,state]) =>
+    state === "closed" ? !h.storage?.[id] : !!h.storage?.[id]) ||
+    Object.keys(h.storage || {}).some(id => h.chests[id] !== "closed");
+}
+function syncTitles(p, at) {
+  if (!p.honors) return;
+  // Honors may be shared with a published arena profile. Detach every mutable
+  // storage row before the shared treasury changes its placement.
+  const h = p.honors;
+  if (!h.storage && !Object.values(h.chests).includes("closed")) return;
+  p.honors = {...h, storage:Object.fromEntries(Object.entries(h.chests)
+    .filter(([,state]) => state === "closed")
+    .map(([id]) => [id, h.storage?.[id] ? {...h.storage[id]} :
+      {id:"title-"+id,titleId:id,earnedAt:h.medals?.[id] ?? at,
+        receivedAt:at,stored:false,waitingSince:at,expiresAt:null}]))};
 }
 function fill(p, at) {
   // Most arena updates do not change storage. Inspect the existing rows before
   // allocating/sorting migration and queue lists; deadlines are still checked
   // on every call, including account expiry and newly completed quests.
   if (!needsFill(p, at)) return false;
-  let changed = false;
+  let changed = titleStorageDue(p);
+  syncTitles(p, at);
   let all = entries(p);
   const hours = waitingHours(p, at);
   let sequence = all.reduce((n, { chest }) => Math.max(n, chest.storageOrder || 0), 0);
@@ -74,6 +100,13 @@ function fill(p, at) {
         changed = true;
       }
     } else {
+      if (entry.kind === "title") {
+        if (c.waitingSince === undefined) c.waitingSince = at;
+        if (c.expiresAt !== null || c.waitingHours !== undefined) changed = true;
+        c.expiresAt = null;
+        delete c.waitingHours;
+        continue;
+      }
       if (c.waitingSince === undefined) {
         // Finite legacy clan queues retain their original start; formerly
         // endless quest/event queues get a full window at migration.
@@ -129,7 +162,8 @@ function fill(p, at) {
   }
   const waiting = all
     .filter(
-      (entry) => !isStored(entry) && entry.chest.receivedAt !== null && entry.chest.expiresAt > at,
+      (entry) => !isStored(entry) && entry.chest.receivedAt !== null &&
+        (entry.kind === "title" || entry.chest.expiresAt > at),
     )
     .sort(
       (a, b) =>
@@ -159,7 +193,9 @@ function fill(p, at) {
   return changed;
 }
 function needsFill(p, at) {
-  const sources = [p.clanChests?.items, p.quests?.pending, p.easter?.chests, p.blackFriday?.chests];
+  if (titleStorageDue(p)) return true;
+  const sources = [p.clanChests?.items, p.quests?.pending, p.easter?.chests, p.blackFriday?.chests,
+    Object.values(p.honors?.storage || {})];
   if (!sources.some(rows => rows?.length)) return false;
   const a = accounts.benefits(p, at),
     limit = a.premium ? 12 : a.vip ? 10 : 7,
@@ -171,6 +207,11 @@ function needsFill(p, at) {
       if (inside) {
         if (!c.storageOrder || c.expiresAt !== null || ++count > limit) return true;
       } else {
+        if (source === 4) {
+          if (c.waitingSince === undefined || c.expiresAt !== null || c.waitingHours !== undefined) return true;
+          receivedWaiting = true;
+          continue;
+        }
         if (c.waitingSince === undefined || c.waitingHours !== hours ||
             c.expiresAt !== c.waitingSince + hours * HOUR || expired(c, at)) return true;
         if (c.receivedAt !== null && c.expiresAt > at) receivedWaiting = true;
@@ -186,4 +227,11 @@ function needsFill(p, at) {
       battle.expiresAt !== chest.expiresAt)
   );
 }
-module.exports = { capacity, stored, fill, needsFill, waitingHours, queue, expired, validStorage };
+function fillDetached(p, at) {
+  if (!needsFill(p, at)) return false;
+  for (const [field, rows] of [["clanChests","items"],["quests","pending"],["easter","chests"],["blackFriday","chests"]])
+    if (p[field]?.[rows]) p[field] = {...p[field], [rows]:p[field][rows].map(c=>({...c}))};
+  if (p.clanChests?.battleReward) p.clanChests.battleReward = {...p.clanChests.battleReward};
+  return fill(p, at);
+}
+module.exports = { capacity, stored, fill, fillDetached, needsFill, waitingHours, queue, expired, validStorage };

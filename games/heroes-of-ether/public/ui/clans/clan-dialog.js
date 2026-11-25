@@ -454,6 +454,8 @@
           [row.dataset.memberId, row]),
       );
       this.content.replaceChildren();
+      if (d.mine) this.content.append(this.banner(d.mine));
+      else this.dialog.insertBefore(this.nav, this.status);
       if (this.mode === "create" || this.mode === "edit")
         this.form(this.mode === "edit" ? d.mine : null);
       else if (d.mine && this.mode === "armory") this.treasury(d.mine, d.mine.permissions.buy);
@@ -795,6 +797,7 @@
       copy.append(level);
       if (clan.frame === "champion") copy.querySelector("h3").classList.add("clan-champion-name");
       const actions = el("div", "clan-banner-actions");
+      actions.append(this.nav);
       if (clan.permissions?.recruit) {
         const applications = button(
           "Заявки",
@@ -837,7 +840,7 @@
         );
         leave.dataset.busy = "true";
         if (actions.childElementCount) actions.classList.add("clan-banner-actions-with-exit");
-        actions.prepend(leave);
+        actions.append(leave);
       }
       const identity = el("div", "clan-banner-identity");
       identity.append(crest(clan), copy);
@@ -1051,7 +1054,6 @@
     }
     home() {
       const clan = this.data.mine;
-      this.content.append(this.banner(clan));
       const layout = el("div", "clan-home-grid clan-battle-layout"),
         members = el("section", "clan-panel clan-battle-members");
       members.append(el("h3", "", "Участники"));
@@ -1097,7 +1099,7 @@
         list,
         button("Назад к клану", () => this.go("home")),
       );
-      this.content.append(this.banner(clan), panel);
+      this.content.append(panel);
     }
     treasury(clan, owner) {
       const panel = el("section", "clan-panel clan-armory"),

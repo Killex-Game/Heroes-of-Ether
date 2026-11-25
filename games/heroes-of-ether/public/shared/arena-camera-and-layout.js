@@ -171,6 +171,14 @@
     if (state) { state.dizzyRemaining = remainingMs; state.dizzyAngle = angle; }
     return angle;
   }
+  function dizzyOffset(seed, now, strength = 1) {
+    const t = now / 1000, s = Number(seed) || 1, amount = clamp(strength,0,1);
+    return {
+      x: (Math.sin(t*3.7+s*1.13)*19 + Math.sin(t*8.3+s*.71)*9)*amount,
+      y: (Math.sin(t*4.9+s*1.79)*17 + Math.cos(t*7.1+s*.43)*9)*amount,
+      angle: (Math.sin(t*3.1+s)*.11 + Math.cos(t*6.7+s*.3)*.05)*amount,
+    };
+  }
   function screenToWorld(x, y, camera, width, height) {
     const dx = x-width/2, dy = y-height/2, angle = camera.rotation || 0;
     const cos = Math.cos(angle), sin = Math.sin(angle);
@@ -279,6 +287,7 @@
 
   return {
     dizzyRotation,
+    dizzyOffset,
     screenToWorld,
     desiredScale,
     groupFrame,

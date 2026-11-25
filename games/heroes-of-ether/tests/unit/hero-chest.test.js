@@ -20,6 +20,9 @@ function fixture(t, name) {
   const p = () => store.find(auth.token);
   p().greatness = 2000000;
   awardTitles(p(), NOW);
+  // Three earlier title rewards were already opened, leaving a normal slot
+  // for the Hero chest even without a paid status.
+  for (const id of ["novice","experienced","expert"]) p().honors.chests[id] = "opened";
   return { filePath, store, auth, p };
 }
 

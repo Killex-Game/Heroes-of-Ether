@@ -33,6 +33,54 @@ async function fixture(t,{worker=false,battle=false}={}) {
   const board=()=>store.data.clans[id].dailyQuests.board;
   return {store,users,id,file,start,end,send,event,natural,board,action,open,at:n=>{at=n;}};
 }
+for(const worker of [false,true,'direct'])for(const premium of [false,true])
+test('battle receives all actual natural and absorption kills, never capped or replayed kills: '+worker+'/'+premium,async t=>{
+  const f=await fixture(t,{worker,battle:true}),u=f.users[0];
+  f.store.transact(u.token,randomUUID(),'battle-status',p=>{p.account=require('../../src/server/accounts/account-benefits').fresh();p.account.premiumUntil=premium?f.end:0;});
+  await f.send([f.event(0,'lifeStarted')],f.start);
+  const actor={id:u.profile.id,lifeId:'exit-life-0',mass:50000,account:f.store.arenaAppearance(f.store.find(u.token)).account};
+  accrual.reset(actor,f.start);let natural;
+  for(let at=f.start+50;at<=f.start+30000;at+=50)natural=accrual.sample(actor,at,false,2)||natural;
+  await f.send([{...natural,profileId:u.profile.id},f.event(0,'absorbed',{victimProfileId:randomUUID(),gain:100})],f.start+30000,'mixed-battle');
+  const total=premium?16:8;
+  assert.equal(f.store.find(u.token).progress.kills,total);
+  assert.equal(f.store.data.competition.day.scores[f.id]?.kills||0,0);
+  f.store.transact(u.token,randomUUID(),'battle-cap',p=>{p.progress.arenaXpTarget=p.progress.xp+p.progress.session.xp;});
+  await f.send([f.natural(0,2),f.event(0,'absorbed',{victimProfileId:randomUUID(),gain:100})],f.start+60000);
+  assert.equal(f.store.find(u.token).progress.kills,total);
+  const end=f.event(0,'lifeEnded',{durationSeconds:60,reason:'left'});
+  const previous=f.store.data,fault=t.mock.method(fs,'fsync',(fd,done)=>setImmediate(()=>done(Error('battle fsync failure'))));
+  await assert.rejects(f.send([end],f.start+60001,'battle-exit'),/battle fsync failure/);fault.mock.restore();assert.equal(f.store.data,previous);
+  await f.send([end],f.start+60001,'battle-exit');await f.send([end],f.start+60001,'battle-exit-replay');
+  for(const period of [f.store.data.competition.day,f.store.data.competition.week]){
+    assert.equal(period.scores[f.id].kills,total);assert.equal(period.scores[f.id].members[u.profile.id].kills,total);
+  }
+  assert.deepEqual(recover(f.file).data.competition,f.store.data.competition);
+  f.at(f.end);f.store.refreshCompetition();
+  const result=f.store.find(u.token).clanChests.notices.filter(n=>n.result?.kind==='battle');
+  assert.equal(result.length,1);assert.equal(result[0].result.headline,'Победа!');assert(result[0].result.detail.includes(String(total)));
+  f.store.refreshCompetition();assert.equal(f.store.find(u.token).clanChests.notices.filter(n=>n.result?.kind==='battle').length,1);
+});
+test('quest result matches earned prizes, persists unseen across restart, and acknowledgement cannot repeat rewards',async t=>{
+  const f=await fixture(t),u=f.users[0],copy=structuredClone(f.store.data);
+  copy.clans[f.id].dailyQuests.board.quests=copy.clans[f.id].dailyQuests.board.quests.slice(0,2).map(q=>({...q,target:1}));f.store.save(copy);
+  await f.send([f.event(0,'lifeStarted')],f.start);
+  await f.send([f.natural(0),f.event(0,'lifeEnded',{durationSeconds:30,reason:'left'})],f.start+30000);
+  const wallet=structuredClone(f.store.find(u.token).wallet);
+  f.at(f.end);f.store.refreshCompetition();
+  const p=f.store.find(u.token),notice=p.clanChests.notices.find(n=>n.result?.kind==='quests');
+  assert.equal(notice.result.headline,'Выполнено 2 из 2');assert.match(notice.text,/Получено:/);assert.notDeepEqual(p.wallet,wallet);
+  const rewarded=structuredClone(p.wallet),id=notice.id;
+  f.store.refreshCompetition();assert.deepEqual(f.store.find(u.token).wallet,rewarded);
+  await f.store.close();f.at(f.end+2*86400000);const restarted=f.open();
+  assert(restarted.view(restarted.find(u.token)).clanChests.notices.some(n=>n.id===id));
+  // Unrelated daily leaderboard prizes can settle during this two-day gap.
+  restarted.refreshCompetition();
+  const afterCalendar=structuredClone(restarted.find(u.token).wallet);
+  const input={action:'notice',ids:[id],requestId:randomUUID()};restarted.clanChestAction(u.token,input);restarted.clanChestAction(u.token,input);
+  assert.deepEqual(restarted.find(u.token).wallet,afterCalendar);assert(!restarted.view(restarted.find(u.token)).clanChests.notices.some(n=>n.id===id));
+  assert.deepEqual(recover(f.file).data.profiles,restarted.data.profiles);
+});
 for(const worker of [false,'direct'])test('Premium absorption credits two clan kills at exit; cap and duplicate packets add none, worker='+worker,async t=>{
   const f=await fixture(t,{worker}),u=f.users[0];
   f.store.transact(u.token,randomUUID(),'premium-fixture',p=>{p.account=require('../../src/server/accounts/account-benefits').fresh();p.account.premiumUntil=f.end;});

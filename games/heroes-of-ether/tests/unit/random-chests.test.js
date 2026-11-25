@@ -71,6 +71,8 @@ test("Число бустеров всех десяти сундуков уме�
       assert.equal(publicHonors(p(), NOW).tiers[i].boosters, NEW_TOTALS[i] * multiplier);
       validateHonors(p());
       delete p().honors.pending;
+      p().honors.chests[title.id] = "opened";
+      require("../../src/server/progression/treasury-capacity").fill(p(), NOW);
     }
   }
 });

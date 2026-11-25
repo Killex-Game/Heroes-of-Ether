@@ -17,7 +17,7 @@ test('Approved four-status matrix, separate greatness/currency factors and exact
  assert.equal(slots.unlocked(3,{},11),false);assert.equal(slots.unlocked(4,{},1),true);assert.equal(slots.unlocked(5,{premium:true},50),false);assert.equal(slots.unlocked(5,{vip:true},50),true);
 });
 test('Server purchase duration follows catalog; retries do not extend twice',()=>{
- for(const [kind,days,votes] of [['vip',7,10],['premium',14,30]]){
+ for(const [kind,days,votes] of [['vip',7,14],['premium',14,30]]){
   const store=new ProfileStore({now:()=>now}),{token}=store.open(),order={productId:'account:'+kind,confirmed:true,requestId:randomUUID()};
   assert.equal(products.get(order.productId).votes,votes);store.confirmMockPurchase(token,order);
   assert.equal(store.find(token).account[kind+'Until'],now+days*day);store.confirmMockPurchase(token,order);

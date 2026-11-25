@@ -92,7 +92,7 @@
         art.src = window.KillexProgressionArt.rank(next.id, 256);
         art.alt = next.name;
         name.textContent = next.name;
-        reward.textContent = `Тебе доступен «${next.chestName}». Забери его в разделе «Сундуки титулов».`;
+        reward.textContent = `Тебе доступен «${next.chestName}». Забери награду в Сокровищнице.`;
         if (next.id === "boss") reward.textContent += " Героическая тема и фон лобби открыты навсегда.";
         prizes.replaceChildren();
         const item = (src, label, note) => {

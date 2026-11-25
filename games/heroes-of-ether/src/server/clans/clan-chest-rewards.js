@@ -1,6 +1,6 @@
 /* Выдача, получение, хранение и открытие клановых сундуков. */
 "use strict";
-const { randomInt, randomUUID } = require("node:crypto");
+const { randomInt, randomUUID, createHash } = require("node:crypto");
 const { BoosterError, BOOSTERS } = require("../boosters/booster-catalog");
 const accounts = require("../accounts/account-benefits"),
   { randomItems, awardTitles, POOLS } = require("../progression/title-chest-rewards");
@@ -41,11 +41,23 @@ function notice(p, text, at, kind = "reward") {
   c.notices.push({ id: randomUUID(), text, at, kind });
   c.notices = c.notices.slice(-40);
 }
+function resultNotice(p, result, text, at) {
+  const c = inventory(p);
+  if (c.notices.some(n => n.result?.sourceId === result.sourceId)) return;
+  notice(p, text, at);
+  // Stable UUIDv5: identical settlement/recovery paths produce identical data.
+  const bytes = createHash("sha1").update(Buffer.alloc(16)).update(JSON.stringify([p.id,result.sourceId])).digest().subarray(0,16);
+  bytes[6]=(bytes[6]&15)|80;bytes[8]=(bytes[8]&63)|128;
+  const hex=bytes.toString("hex");
+  c.notices[c.notices.length - 1].id=[hex.slice(0,8),hex.slice(8,12),hex.slice(12,16),hex.slice(16,20),hex.slice(20)].join("-");
+  c.notices[c.notices.length - 1].result = {...result};
+}
+const liveNotice = (n, at) => (n.result && n.notifiedAt === undefined) || n.at + DAY > at;
 function needsExpiry(p, at) {
-  return treasury.needsFill(p, at) || !!p.clanChests?.notices.some((n) => n.at + DAY <= at);
+  return treasury.needsFill(p, at) || !!p.clanChests?.notices.some((n) => !liveNotice(n, at));
 }
 function expire(p, at) {
-  const notices = (p.clanChests?.notices || []).filter((n) => n.at + DAY > at);
+  const notices = (p.clanChests?.notices || []).filter((n) => liveNotice(n, at));
   const noticesChanged = notices.length !== (p.clanChests?.notices.length || 0);
   if (noticesChanged) p.clanChests.notices = notices;
   return treasury.fill(p, at) || noticesChanged;
@@ -75,7 +87,7 @@ function grant(p, tier, at, { clanId = null } = {}) {
   c.notices[c.notices.length - 1].chestId = item.id;
   return item;
 }
-function award(p, reward, at, { multiply = true, label = "" } = {}) {
+function award(p, reward, at, { multiply = true, label = "", result = null } = {}) {
   const before = history.snapshot(p);
   const benefits = accounts.benefits(p, at),
     factor = multiply ? benefits.weeklyRewardMultiplier : 1;
@@ -87,7 +99,10 @@ function award(p, reward, at, { multiply = true, label = "" } = {}) {
   );
   awardTitles(p, at);
   history.record(p, before, at, { kind: "reward", label: label || "Награда клана" });
-  if (label) notice(p, label, at);
+  if (label) {
+    if (result) resultNotice(p, result, label, at);
+    else notice(p, label, at);
+  }
 }
 function chestNotice(n) {
   return n.kind !== "expired" && n.text.startsWith("Клановый сундук");
@@ -131,7 +146,7 @@ function view(p, at, config, manager) {
     battleReward: structuredClone(c.battleReward || null),
     notices: c.notices
       // Availability is not history: an old notice cannot advertise a consumed chest.
-      .filter((n) => n.at + DAY > at && (!chestNotice(n) || noticeChest(n, available)))
+      .filter((n) => liveNotice(n, at) && (!chestNotice(n) || noticeChest(n, available)))
       .map((n) => ({
         ...structuredClone(n),
         text: noticeText(n, available),
@@ -331,7 +346,12 @@ function validate(p) {
       typeof n.id !== "string" ||
       typeof n.text !== "string" ||
       !integer(n.at) ||
-      (n.notifiedAt !== undefined && !integer(n.notifiedAt))
+      (n.notifiedAt !== undefined && !integer(n.notifiedAt)) ||
+      (n.result !== undefined && (!n.result || typeof n.result !== "object" ||
+        !["battle","quests","season","league"].includes(n.result.kind) ||
+        typeof n.result.positive !== "boolean" ||
+        ["sourceId","title","headline","detail","clanName"].some(key =>
+          typeof n.result[key] !== "string" || n.result[key].length > 500)))
     )
       broken();
 }
@@ -339,6 +359,7 @@ module.exports = {
   inventory,
   capacity,
   notice,
+  resultNotice,
   needsExpiry,
   expire,
   grant,
