@@ -99,7 +99,7 @@ VK/ОК, Referrer-Policy:no-referrer, журнал доступа без query/s
 
 Новые игры ОК поддерживают VKWebAppShowOrderBox. На сервере схемы callback
 различаются: VK get_item/order_status_change; ОК get_item приходит на URL VK
-с site=ok, подтверждение ОК — GET на отдельный URL. Указать в кабинете URL
+с site=OK, подтверждение ОК — GET на отдельный URL. Указать в кабинете URL
 можно лишь после реализации и проверки соответствующих обработчиков.
 Планируемые адреса: /api/platform/payments/vk и /api/platform/payments/ok.
 СЕЙЧАС ЭТИ МАРШРУТЫ НЕ РЕАЛИЗОВАНЫ. Не указывать их как рабочие и не включать

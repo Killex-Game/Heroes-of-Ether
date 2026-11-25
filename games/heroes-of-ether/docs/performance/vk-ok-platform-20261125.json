@@ -1,0 +1,172 @@
+{
+  "date": "2026-11-25",
+  "status": "candidate-not-installed",
+  "sourceCommit": "3a7d63a23f19e3b9477cea3af1f96e33da6c756c",
+  "branch": "codex/20261125-vk-ok-platform",
+  "ownerDecisions": {
+    "applicationsExist": false,
+    "profileMigration": "new social profiles; leave existing test profiles intact"
+  },
+  "implemented": [
+    "Current VK Games/linked OK signed launch; stable OK LongID; separate namespaces",
+    "Server-side signature/app/site/age checks and addressable durable profile binding",
+    "Bounded 12h opaque API/WS tickets, no third-party cookie requirement; iframe reload",
+    "Local pinned VK Bridge 3.0.2; no SDK or auth requests for ordinary site launch",
+    "Fail-closed social mock-payment/legacy status activation; registration guide"
+  ],
+  "validation": {
+    "windowsFull": {
+      "tests": 2555,
+      "pass": 2550,
+      "fail": 0,
+      "skip": 5,
+      "logSha256": "e1cb2dd535f542a45117fd8632f9996438af5a578ea1e00a2a3162a9459864f2",
+      "note": "One full run; final identity-key refinement separately covered by focused tests and real PostgreSQL."
+    },
+    "linuxFocused": {
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skip": 0,
+      "realPostgresql": true,
+      "isolatedSchemaDropped": true,
+      "productionDataUnchanged": true,
+      "logSha256": "ee1f559d8ece3dd7682bdd011f962282fd45e4589ebddc9da4289157cdc9d3e1"
+    },
+    "browsers": {
+      "engines": [
+        "Chrome",
+        "Firefox",
+        "WebKit"
+      ],
+      "pass": 3,
+      "fail": 0,
+      "sites": [
+        "vk",
+        "ok"
+      ],
+      "sdkHost": "mocked; actual embedded browser frame and real game HTTP",
+      "checks": [
+        "no ordinary SDK requests",
+        "signed login without cookies",
+        "reload same identity",
+        "URL object fetch",
+        "expired/invalid ticket no guest fallback"
+      ],
+      "logSha256": "fe3a51f09849d9927980429bc7e62c00c9a78a8e9672753931a80b42d7e27647"
+    }
+  },
+  "firstFailures": [
+    {
+      "stage": "browser fixture",
+      "count": 3,
+      "reason": "Incorrect expected profile count 0 versus actual two independent VK/OK profiles; corrected expectation and added actual cross-site iframe."
+    },
+    {
+      "stage": "real PostgreSQL",
+      "count": 1,
+      "reason": "JSONB key order changed identity comparison; replaced object serialization equality with canonical field tuple, added reordered-key regression.",
+      "logSha256": "e0e9c311d6424c9ce77e56d16a8b2109f25d4b0de66a0a949cf3705703d7c5e7"
+    }
+  ],
+  "production": {
+    "release": "20261125-friday-constructor",
+    "gamePid": 968323,
+    "restarts": 0,
+    "changed": false,
+    "socialConfigExists": false,
+    "publicHttps": "https://195.208.123.221",
+    "tlsVerified": true
+  },
+  "remaining": [
+    "Create owner-controlled VK game and link OK ID; obtain IDs/private app key",
+    "Implement authenticated VK/OK payment callbacks, frozen order quotes, durable provider receipts and real payment tests",
+    "Agree separate OK prices; currency labels per network",
+    "Publisher/support/privacy/terms information and moderation",
+    "Test actual VK/OK shells and mobile clients; enable only after registration and deployment verification"
+  ],
+  "limitations": [
+    "No real VK/OK identity, payment or moderation proof without applications",
+    "No production installation or localhost3104 replacement; no capacity/FPS claim",
+    "Session-secret rotation needs explicit binding migration; app-secret rotation tested",
+    "Existing test profiles not deleted or merged"
+  ],
+  "files": [
+    {
+      "file": "games/heroes-of-ether/config/social-platforms.example.json",
+      "sha256": "7571244065cbd9fb2fb95938d57fc8f45ca2916d49ab029046a232398aad0793"
+    },
+    {
+      "file": "games/heroes-of-ether/deployment/vk-production/README.md",
+      "sha256": "1033379b25c95f8968c26388609f7e1c1b260942e137bac29f05e8d5348555f0"
+    },
+    {
+      "file": "games/heroes-of-ether/deployment/vk-production/auth/vk-mini-app-launch.js",
+      "sha256": "26c228f7dec20b825c9febcab0c1b88ba9840954369123180f22e668aef72484"
+    },
+    {
+      "file": "games/heroes-of-ether/deployment/vk-production/social-signup-design.md",
+      "sha256": "bedafab7047f2313742c79a604bcea9921643669cfd999b1151c003520997327"
+    },
+    {
+      "file": "games/heroes-of-ether/docs/vk-ok-registration-20261125.txt",
+      "sha256": "24751520d500a499022e87ad52504c72f8baa7e1ef83eeef579eeca0a5da28da"
+    },
+    {
+      "file": "games/heroes-of-ether/public/game-client.js",
+      "sha256": "5567f961afb2ab8ece00b51cbd11b1223cd2a425ee6e32c38834d8f43a14d4e2"
+    },
+    {
+      "file": "games/heroes-of-ether/public/index.html",
+      "sha256": "d8ddaf884682d5b6b1c8eecba6981be23505e3b3d2fbb36e345ba0e1adbc8869"
+    },
+    {
+      "file": "games/heroes-of-ether/public/shared/social-platform.js",
+      "sha256": "3f66dd41460ea49e8654617c96e3bee7460609ee9c07993d6b7270c39e903a10"
+    },
+    {
+      "file": "games/heroes-of-ether/public/ui/shop/mock-payment-dialog.js",
+      "sha256": "2946d5de29f2c411f0d0bd77267627efd2c5e34f84aec72a55df07cac76a7736"
+    },
+    {
+      "file": "games/heroes-of-ether/public/vendor/vk-bridge/LICENSE",
+      "sha256": "15752ef20d62ef8f9b56deb04f8afbcb05d63823215ef2a2325da0890c940ab9"
+    },
+    {
+      "file": "games/heroes-of-ether/public/vendor/vk-bridge/browser.min.js",
+      "sha256": "827ba6f457cd9e73519b58b2c66564caf138645202f1bba37dca0b567f601bb4"
+    },
+    {
+      "file": "games/heroes-of-ether/public/vendor/vk-bridge/provenance.json",
+      "sha256": "dd04f414bdace5dc406e910f1afd4065e2b54d5d79e2e72a855ffcf4838cab11"
+    },
+    {
+      "file": "games/heroes-of-ether/src/server/game-server.js",
+      "sha256": "600eef7eed2a40d1b5262e071afea1d5d9189521364d83bd6e201751740de9e5"
+    },
+    {
+      "file": "games/heroes-of-ether/src/server/platform/config.js",
+      "sha256": "502a687539dedd0ceb1497ebb72d4baf00f97c4420c3fddfcda310ffd1789fe9"
+    },
+    {
+      "file": "games/heroes-of-ether/src/server/platform/launch.js",
+      "sha256": "8d8800fdb3c2e1797aff63308544a6700d7282111043ff92c49c3e421aba88e0"
+    },
+    {
+      "file": "games/heroes-of-ether/src/server/platform/sessions.js",
+      "sha256": "3e668a5553332258293823180992d84ae40c66a8c8e2e64ee545fb9e023e5dab"
+    },
+    {
+      "file": "games/heroes-of-ether/src/server/profiles/profile-store.js",
+      "sha256": "52b769692ec0e5e9eacadea7afd5930b2af8e3166c25b9dd99089f0dbaf0f3c7"
+    },
+    {
+      "file": "games/heroes-of-ether/tests/browser/social-platform.test.cjs",
+      "sha256": "19d17f74f09e380d2e8deaa7a82f073d9e8bddafe951e34e044fc99abfd916af"
+    },
+    {
+      "file": "games/heroes-of-ether/tests/integration/social-platform.test.js",
+      "sha256": "270b46fbb88a53baba7282ad5e6036fbc30b8a1e0d92268429d015ea873a6683"
+    }
+  ]
+}
