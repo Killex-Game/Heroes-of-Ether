@@ -256,7 +256,10 @@ class RoomProfileLedger {
         const session=this.store.byId(profileId,next).progress.session;
         return session?[{type:'lifeEnded',profileId,lifeId:session.id,durationSeconds:session.activitySeconds || 0,reason:'recovered'}]:[];
       });
-      if(endings.length)next=this.store.arenaProgressDraft(next,`resident-end:${room.roomId}:${room.epoch}`,endings,cursor.at || at)?.next || next;
+      // A missing end event cannot be backdated to the last observed tick.
+      // Recovery after a quest cutoff must not manufacture a timely exit and
+      // award a life that was still active when its durable prefix ended.
+      if(endings.length)next=this.store.arenaProgressDraft(next,`resident-end:${room.roomId}:${room.epoch}`,endings,at)?.next || next;
       cursor={...cursor,status:'CLOSED'};
       next={...next,residentRooms:{...next.residentRooms,[room.roomId]:cursor}};
       return {next,result:cursor};

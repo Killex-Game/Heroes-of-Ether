@@ -8,7 +8,7 @@ const {RoomProfileLedger}=require('../../src/server/arena/resident/room-profile-
 const {RoomOutbox}=require('../../src/server/arena/resident/room-outbox');
 const boundary=require('../../src/server/arena/resident/room-quest-boundary');
 const start=Date.parse('2026-11-15T04:00:00Z'),end=start+15*3600000;
-async function fixture(t){
+async function fixture(t,{legacy=true}={}){
  let cleanup,at=start-86400000,child,ledger;const boxes=[];
  const root=temporary({after:f=>cleanup=f},'resident-clan-boundary');
  const store=new ProfileStore({filePath:path.join(root,'profiles.json'),journal:true,clanDailyQuests:true,
@@ -24,7 +24,8 @@ async function fixture(t){
  const clanId=store.find(users[0].token).clanId;
  act(users[1],'apply',{clanId});if(!store.find(users[1].token).clanId)act(users[0],'accept',{clanId,memberId:users[1].profile.id});
  at=start;store.refreshCompetition();
- const data=structuredClone(store.data);data.clanQuests.arenaSettlementVersion=0; // Historical immediate-credit boundary.
+ const data=structuredClone(store.data);
+ if(legacy)data.clanQuests.arenaSettlementVersion=0; // Historical immediate-credit boundary.
  data.clans[clanId].dailyQuests.board.quests=[{
   ...service.catalog.items.find(q=>q.metric==='food'),target:4,progress:0,completedAt:null,reward:{kind:'crystals',amount:500}}];
  store.save(data);at=end-1000;
@@ -89,4 +90,34 @@ test('pending boundary and post-cutoff frames recover before prizes; failed prof
  f.store.refreshCompetition();assert.equal(f.board().quests[0].progress,4);
  assert.equal(f.store.byId(a.profileId).wallet.crystals,wallet+500);
  assert.equal(f.store.byId(b.profileId).wallet.crystals,10);
+});
+
+test('current exit-only rules never award accumulated food to a life ending after the cutoff',async t=>{
+ const f=await fixture(t,{legacy:false}),wallet=f.store.byId(f.rooms[0].profileId).wallet.crystals;
+ for(const room of f.rooms){
+  await f.send(room,{at:end-25,progress:[{type:'questSample',profileId:room.profileId,lifeId:room.lifeId,food:0,clanFood:8,rank:1}]});
+  assert.equal(f.board().quests[0].progress,0);
+  await f.send(room,{at:end-25,kind:'boundary',boundaryAt:end,progress:[{type:'clanFoodSample',profileId:room.profileId,lifeId:room.lifeId,clanFood:8}]});
+ }
+ f.at(end+5);
+ for(const room of f.rooms)await f.send(room,{at:end+5,progress:[{type:'lifeEnded',profileId:room.profileId,lifeId:room.lifeId,
+  durationSeconds:1,durationMs:1005,food:0,clanFood:8,reason:'exit'}]});
+ f.store.refreshCompetition();
+ assert.equal(f.board().quests[0].progress,0);assert.equal(f.store.byId(f.rooms[0].profileId).wallet.crystals,wallet);
+ assert(f.board().settledAt);
+});
+
+test('recovery after the cutoff cannot backdate an unobserved exit to the last durable tick',async t=>{
+ const f=await fixture(t,{legacy:false}),wallet=f.store.byId(f.rooms[0].profileId).wallet.crystals;
+ for(const room of f.rooms)await f.send(room,{at:end-25,progress:[{type:'questSample',profileId:room.profileId,lifeId:room.lifeId,food:0,clanFood:8,rank:1}]});
+ assert.equal(f.board().quests[0].progress,0);f.at(end+5);await f.stop();
+ for(const room of f.rooms){
+  await room.box.close();await f.ledger.fenceStopped(room,f.child);
+  const copy=await RoomOutbox.openExisting({...room,file:room.file});f.boxes.push(copy);
+  await f.ledger.recoverStopped(copy,f.child);
+ }
+ f.store.refreshCompetition();
+ assert.equal(f.board().quests[0].progress,0);
+ assert.equal(f.store.byId(f.rooms[0].profileId).wallet.crystals,wallet);
+ for(const room of f.rooms)assert.equal(f.store.byId(room.profileId).progress.session,null);
 });

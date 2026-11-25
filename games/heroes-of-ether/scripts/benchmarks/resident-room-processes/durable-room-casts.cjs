@@ -56,7 +56,7 @@ class DurableRoomCasts {
       const p=this.room.arena.players.get(request.playerId);
       let applied=false,message;
       try{
-        if(!p || p.dead || p.lifeId!==request.lifeId || (tx.expiresAt!==undefined && tx.expiresAt<=this.room.wallNow()))
+        if(!p || p.dead || p.lifeId!==request.lifeId || (tx.expiresAt!==undefined && tx.expiresAt<=(this.room.frameOwner.currentWallAt??this.room.wallNow())))
           throw new BoosterError('Life or reserved lot ended',409);
         this.room.arena.prepareBooster(request.playerId,request.command,at)();applied=true;
       }catch(error){if(!(error instanceof BoosterError))throw error;message=error.message;}

@@ -60,7 +60,7 @@ class RoomFixture {
     }
     const profile=this.lookup.get(p.profileId);
     if(profile){Object.assign(p,this.identities.get(p.profileId));
-      require('../../../src/server/pets/arena-pets').start(p,profile,at,this.wallNow());}
+      require('../../../src/server/pets/arena-pets').start(p,profile,at,this.frameOwner?.currentWallAt??this.wallNow());}
     this.pendingLives.push({type:'lifeStarted',profileId:p.profileId,lifeId:p.lifeId});
   }
   connect(ws,index) {
@@ -132,7 +132,7 @@ class RoomFixture {
       }catch(error){if(!(error instanceof BoosterError))throw error;this.metrics.rejected++;}
     }
     const physicsAt=performance.now();
-    const wallAt=this.wallNow(), result=stepRoom(this,at,wallAt,this.profiles,30);
+    const wallAt=this.frameOwner?.currentWallAt??this.wallNow(), result=stepRoom(this,at,wallAt,this.profiles,30);
     this.phases.physics.push(performance.now()-physicsAt);
     const progress=result.progress.filter(e=>this.lookup.has(e.profileId));
     for (const event of progress) this.metrics.progressTypes[event.type]=(this.metrics.progressTypes[event.type]||0)+1;

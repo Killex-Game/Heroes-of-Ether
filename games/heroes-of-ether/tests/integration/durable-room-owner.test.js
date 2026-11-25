@@ -8,8 +8,8 @@ const {DurableRoomOwner}=require('../../scripts/benchmarks/resident-room-process
 const {DurableRoomCasts}=require('../../scripts/benchmarks/resident-room-processes/durable-room-casts.cjs');
 const {SocketInputs}=require('../../scripts/benchmarks/resident-room-processes/socket-inputs.cjs');
 const records=require('../../src/server/arena/resident/room-cast-records');
-async function fixture(t){
- let cleanup;const dir=temporary({after:f=>cleanup=f},'durable-room-owner'),now=Date.parse('2026-11-25T09:00:00Z');
+async function fixture(t,{wall=Date.parse('2026-11-25T09:00:00Z')}={}){
+ let cleanup,now=wall;const dir=temporary({after:f=>cleanup=f},'durable-room-owner');
  const store=new ProfileStore({filePath:path.join(dir,'profiles.json'),journal:true,residentRoomExperiment:true,now:()=>now});
  const auth=store.open();store.transact(auth.token,randomUUID(),'fixture',p=>{
   p.level=600;p.progress=require('../../src/server/progression/experience-progression').freshProgress(600);p.inventory.meat=5;p.quickSlots=['meat'];
@@ -32,7 +32,7 @@ async function fixture(t){
   room.casts.receive({type:'residentReserved',roomId:room.id,epoch:room.epoch,requestId:input.requestId,txId:m.txId,reservation:tx});
   return tx;
  }
- return {store,auth,room,p,ws,owner,ledger,child,network,sent,commands,flush,command,reserve};
+ return {store,auth,room,p,ws,owner,ledger,child,network,sent,commands,flush,command,reserve,setNow:value=>{now=value;}};
 }
 test('actual room buffers effects, snapshots and successful socket ACK until room fsync; ledger credit occurs once',async t=>{
  const f=await fixture(t),command=f.command(),tx=await f.reserve(command),before=f.store.find(f.auth.token).progress.boosterUses;
@@ -74,4 +74,56 @@ test('position-only room frames publish without manufacturing empty progress jou
  const mock=t.mock.method(fs,'fsync',()=>{throw Error('Empty frame must not fsync');});
  for(let i=0;i<100;i++)assert.equal(await owner.tick(1000+i*50),null);
  mock.mock.restore();assert.equal(publications,100);assert.equal(owner.outbox.sequence,0);assert.equal(owner.gate.fault,null);
+});
+
+test('owner journals the completed pre-cutoff state before consuming post-cutoff inputs',async t=>{
+ const end=Date.parse('2026-11-25T19:00:00Z'),f=await fixture(t,{wall:end-1000});
+ // Complete an ordinary real room tick shortly before the cutoff. It may be
+ // position-only: that state must still be anchored before its boundary sample.
+ f.setNow(end-25);await f.flush(1100);f.p.clanFoodCount=7;
+ const ticks=f.room.metrics.ticks,sequence=f.owner.outbox.sequence;
+ f.sent.length=0;f.network.length=0;f.setNow(end);
+ const boundary=await f.owner.tick(1200);
+ assert.equal(f.room.metrics.ticks,ticks);assert.deepEqual(f.network,[]);
+ assert.equal(boundary.frame.kind,'boundary');assert.equal(boundary.frame.at,end-25);
+ assert.equal(boundary.frame.boundaryAt,end);
+ assert.deepEqual(boundary.frame.progress,[{type:'clanFoodSample',profileId:f.p.profileId,lifeId:f.p.lifeId,clanFood:7}]);
+ const entries=f.sent.map(m=>m.entry);
+ assert(entries.length>=1&&entries.length<=2);
+ for(let i=0;i<entries.length;i++){
+  assert.equal(entries[i].frame.sequence,sequence+i+1);
+  f.owner.acknowledge(await f.ledger.accept(f.child,entries[i]));
+ }
+ assert.equal(f.store.data.residentRooms[f.room.id].at,end-25);
+ // A post-cutoff watermark must be durable even if its physical tick emits
+ // no progress, so settlement cannot wait indefinitely for the next reward.
+ f.room.tick=()=>{f.room.metrics.ticks++;};f.setNow(end+1);
+ const post=await f.flush(1250);assert.equal(post.frame.kind,'tick');assert.equal(post.frame.at,end+1);
+ assert.equal(f.store.data.residentRooms[f.room.id].at,end+1);
+ assert.equal(await f.owner.tick(1300),null);assert.equal(f.owner.outbox.sequence,post.frame.sequence);
+});
+
+test('clock discontinuity fails before room mutation or a public response',async t=>{
+ const f=await fixture(t);const ticks=f.room.metrics.ticks;f.network.length=0;
+ f.setNow(Date.parse('2026-11-27T09:00:00Z'));
+ await assert.rejects(f.owner.tick(1200),/multiple quest windows/);
+ assert.equal(f.room.metrics.ticks,ticks);assert.deepEqual(f.network,[]);
+ assert(f.owner.gate.fault);assert.equal(f.owner.tick(1300),false);
+});
+
+test('boundary write failure fences the room before post-cutoff simulation or publication',async t=>{
+ const end=Date.parse('2026-11-25T19:00:00Z'),f=await fixture(t,{wall:end-1000});
+ const ticks=f.room.metrics.ticks;f.network.length=0;f.setNow(end);
+ const mock=t.mock.method(fs,'fsync',(_fd,callback)=>setImmediate(()=>callback(Error('boundary disk failure'))));
+ await assert.rejects(f.owner.tick(1200),/boundary disk failure/);mock.mock.restore();
+ assert.equal(f.room.metrics.ticks,ticks);assert.deepEqual(f.network,[]);
+ assert.equal(f.owner.tick(1300),false);assert(f.owner.gate.fault);
+});
+
+test('backwards clock fails even after an ephemeral frame with no journal write',async t=>{
+ const f=await fixture(t),wall=Date.parse('2026-11-25T09:00:00Z');
+ f.room.tick=()=>{f.room.metrics.ticks++;};f.setNow(wall+100);await f.owner.tick(1200);
+ const ticks=f.room.metrics.ticks;f.setNow(wall+50);
+ await assert.rejects(f.owner.tick(1250),/clock moved backwards/);
+ assert.equal(f.room.metrics.ticks,ticks);assert(f.owner.gate.fault);
 });
