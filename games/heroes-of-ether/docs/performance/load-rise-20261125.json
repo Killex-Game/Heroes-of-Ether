@@ -1,0 +1,1475 @@
+{
+  "date": "2026-11-25",
+  "status": "diagnosis-only",
+  "release": "20261125-friday-shields",
+  "sourceCommit": "1398289b4e991666c8fa9de2b9df38f273feb48c",
+  "conclusion": "Elevated tick cost is reproduced under active arena population, including bots. A new regression relative to the earlier active-game observation is not demonstrated: current p95 36.97–38.67 ms vs earlier 39.95–43.98 ms. Different rooms, participants, parts and timing prevent causal A/B claims. Low post-restart figures were collected with no active arena players and are not comparable.",
+  "observed": {
+    "utcWindow": [
+      "2026-11-25T13:09:22.417Z",
+      "2026-11-25T13:10:22.570Z"
+    ],
+    "localTimeZone": "Asia/Yekaterinburg",
+    "online": [
+      9,
+      9
+    ],
+    "humansArena": [
+      5,
+      7
+    ],
+    "activeEntitiesIncludingBots": [
+      51,
+      54
+    ],
+    "activeParts": [
+      128,
+      167
+    ],
+    "rooms": [
+      3,
+      3
+    ],
+    "tickP95Ms": [
+      36.97,
+      38.67
+    ],
+    "updatesHz": [
+      19.92,
+      19.98
+    ],
+    "maxObservedTickMs": 237.47,
+    "rssMiB": [
+      3328,
+      3369
+    ],
+    "queueMax": 0,
+    "databaseErrors": [],
+    "cpuSeconds": 61.926494,
+    "observedSeconds": 60.153,
+    "averageCpuCores": 1.029483051551876,
+    "cpuQuotaCores": 6,
+    "throttledMs": 0.039
+  },
+  "interpretation": [
+    "The online badge excludes bots, whereas arena.activePlayers includes alive bots and humans and excludes dead players/remnants. 51–54 entities and 128–167 parts are simulated for 5–7 human arena connections.",
+    "Main-thread sampling identifies room simulation, preparing/dispatching network snapshots, and arena-progress transactions as principal costs. Worker postMessage and record copies remain visible. Pet-shield changes and UI code are not identified as dominant hotspots in this sample; that is not proof of zero overhead.",
+    "No sustained CPU quota, memory-pressure, disk-I/O or database backlog bottleneck was observed. The game used about one CPU core in total from its six-core quota during this minute. Spare cores do not eliminate work serialized on the main thread.",
+    "RSS is comparable to the previous active-game observation; this short sample cannot prove absence of a memory leak. Disk reserve remains small (~1.26 GB), but observed I/O pressure is low.",
+    "The +5% camera change can increase visible objects and packet size, up to about 10.25% area for an uncapped two-dimensional view; actual traffic impact was not measured and must not be presented as the proven cause.",
+    "The public test-mode activeBots value describes only the legacy primary bot instance, while humanPlayers is summed across rooms. Do not treat activeBots=0 there as proof that all room bots are disabled."
+  ],
+  "nextTargets": [
+    "Reduce arena-progress draft/table copies with exact WAL, duplicate/retry and clan/achievement equivalence checks; keep reliable acknowledgements after durable storage.",
+    "Reduce repeated room snapshot preparation and worker serialization while preserving per-peer event/sequence continuity.",
+    "Measure independent room execution with the same captured workload; preserve bot split/W/booster behavior rather than hiding load by disabling bots."
+  ],
+  "current": [
+    {
+      "at": "2026-11-25T13:09:22.417Z",
+      "online": {
+        "arena": 6,
+        "lobby": 3,
+        "total": 9
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 53,
+        "parts": 163,
+        "connections": 6
+      },
+      "hz": 19.92,
+      "tick": {
+        "count": 1195,
+        "p50": 14.86,
+        "p95": 38.67,
+        "p99": 51.94,
+        "max": 237.47
+      },
+      "interval": {
+        "count": 1195,
+        "p50": 49.99,
+        "p95": 54.02,
+        "p99": 77.71,
+        "max": 240.32
+      },
+      "memory": {
+        "resident": 3328,
+        "heapUsed": 603,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 3808,
+        "revision": 5186837
+      }
+    },
+    {
+      "at": "2026-11-25T13:09:32.432Z",
+      "online": {
+        "arena": 6,
+        "lobby": 3,
+        "total": 9
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 54,
+        "parts": 154,
+        "connections": 6
+      },
+      "hz": 19.98,
+      "tick": {
+        "count": 1199,
+        "p50": 14.74,
+        "p95": 37.89,
+        "p99": 52.01,
+        "max": 76.49
+      },
+      "interval": {
+        "count": 1199,
+        "p50": 49.99,
+        "p95": 53,
+        "p99": 77.04,
+        "max": 100.72
+      },
+      "memory": {
+        "resident": 3340,
+        "heapUsed": 696,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 13823,
+        "revision": 5186837
+      }
+    },
+    {
+      "at": "2026-11-25T13:09:42.442Z",
+      "online": {
+        "arena": 7,
+        "lobby": 2,
+        "total": 9
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 54,
+        "parts": 164,
+        "connections": 7
+      },
+      "hz": 19.98,
+      "tick": {
+        "count": 1199,
+        "p50": 14.76,
+        "p95": 37.59,
+        "p99": 52.01,
+        "max": 64.62
+      },
+      "interval": {
+        "count": 1199,
+        "p50": 49.99,
+        "p95": 53.94,
+        "p99": 73.17,
+        "max": 106.2
+      },
+      "memory": {
+        "resident": 3353,
+        "heapUsed": 550,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 23833,
+        "revision": 5186837
+      }
+    },
+    {
+      "at": "2026-11-25T13:09:52.452Z",
+      "online": {
+        "arena": 7,
+        "lobby": 2,
+        "total": 9
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 54,
+        "parts": 167,
+        "connections": 7
+      },
+      "hz": 19.98,
+      "tick": {
+        "count": 1199,
+        "p50": 14.81,
+        "p95": 37.59,
+        "p99": 50.67,
+        "max": 64.62
+      },
+      "interval": {
+        "count": 1199,
+        "p50": 49.99,
+        "p95": 54.54,
+        "p99": 73.17,
+        "max": 106.2
+      },
+      "memory": {
+        "resident": 3355,
+        "heapUsed": 635,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 9090,
+        "revision": 5187271
+      }
+    },
+    {
+      "at": "2026-11-25T13:10:02.544Z",
+      "online": {
+        "arena": 6,
+        "lobby": 3,
+        "total": 9
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 51,
+        "parts": 145,
+        "connections": 6
+      },
+      "hz": 19.98,
+      "tick": {
+        "count": 1199,
+        "p50": 14.71,
+        "p95": 37.26,
+        "p99": 50.35,
+        "max": 61.71
+      },
+      "interval": {
+        "count": 1199,
+        "p50": 50,
+        "p95": 54.34,
+        "p99": 73.17,
+        "max": 106.2
+      },
+      "memory": {
+        "resident": 3360,
+        "heapUsed": 605,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 19182,
+        "revision": 5187271
+      }
+    },
+    {
+      "at": "2026-11-25T13:10:12.558Z",
+      "online": {
+        "arena": 5,
+        "lobby": 4,
+        "total": 9
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 53,
+        "parts": 142,
+        "connections": 5
+      },
+      "hz": 19.98,
+      "tick": {
+        "count": 1199,
+        "p50": 14.62,
+        "p95": 37.09,
+        "p99": 50.32,
+        "max": 61.71
+      },
+      "interval": {
+        "count": 1199,
+        "p50": 49.99,
+        "p95": 54.75,
+        "p99": 72.94,
+        "max": 106.2
+      },
+      "memory": {
+        "resident": 3369,
+        "heapUsed": 663,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 1241,
+        "revision": 5187681
+      }
+    },
+    {
+      "at": "2026-11-25T13:10:22.570Z",
+      "online": {
+        "arena": 5,
+        "lobby": 4,
+        "total": 9
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 52,
+        "parts": 128,
+        "connections": 5
+      },
+      "hz": 19.97,
+      "tick": {
+        "count": 1198,
+        "p50": 14.37,
+        "p95": 36.97,
+        "p99": 50.24,
+        "max": 61.71
+      },
+      "interval": {
+        "count": 1198,
+        "p50": 49.99,
+        "p95": 54.54,
+        "p99": 72.19,
+        "max": 106.2
+      },
+      "memory": {
+        "resident": 3367,
+        "heapUsed": 560,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 11253,
+        "revision": 5187681
+      }
+    }
+  ],
+  "previousActive": [
+    {
+      "at": "2026-11-25T09:25:57.188Z",
+      "online": {
+        "arena": 9,
+        "lobby": 3,
+        "total": 12
+      },
+      "arena": {
+        "rooms": 7,
+        "activePlayers": 52,
+        "parts": 211,
+        "connections": 9
+      },
+      "hz": 20,
+      "tick": {
+        "count": 1200,
+        "p50": 16.89,
+        "p95": 39.95,
+        "p99": 57.29,
+        "max": 74.43
+      },
+      "interval": {
+        "count": 1200,
+        "p50": 50.01,
+        "p95": 56.02,
+        "p99": 71.21,
+        "max": 97.93
+      },
+      "memory": {
+        "resident": 3286,
+        "heapUsed": 596,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "syncAgeMs": 827,
+        "revision": 5054773
+      }
+    },
+    {
+      "at": "2026-11-25T09:26:07.218Z",
+      "online": {
+        "arena": 9,
+        "lobby": 4,
+        "total": 13
+      },
+      "arena": {
+        "rooms": 7,
+        "activePlayers": 51,
+        "parts": 195,
+        "connections": 9
+      },
+      "hz": 20,
+      "tick": {
+        "count": 1200,
+        "p50": 16.94,
+        "p95": 41.18,
+        "p99": 57.48,
+        "max": 74.43
+      },
+      "interval": {
+        "count": 1200,
+        "p50": 50.01,
+        "p95": 56.62,
+        "p99": 72.13,
+        "max": 97.93
+      },
+      "memory": {
+        "resident": 3285,
+        "heapUsed": 636,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "syncAgeMs": 10856,
+        "revision": 5054773
+      }
+    },
+    {
+      "at": "2026-11-25T09:26:17.233Z",
+      "online": {
+        "arena": 9,
+        "lobby": 4,
+        "total": 13
+      },
+      "arena": {
+        "rooms": 7,
+        "activePlayers": 52,
+        "parts": 195,
+        "connections": 9
+      },
+      "hz": 19.97,
+      "tick": {
+        "count": 1198,
+        "p50": 17.19,
+        "p95": 42.16,
+        "p99": 61.01,
+        "max": 126.84
+      },
+      "interval": {
+        "count": 1198,
+        "p50": 50,
+        "p95": 56.61,
+        "p99": 73.78,
+        "max": 134.35
+      },
+      "memory": {
+        "resident": 3295,
+        "heapUsed": 584,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "syncAgeMs": 20871,
+        "revision": 5054773
+      }
+    },
+    {
+      "at": "2026-11-25T09:26:27.260Z",
+      "online": {
+        "arena": 9,
+        "lobby": 4,
+        "total": 13
+      },
+      "arena": {
+        "rooms": 7,
+        "activePlayers": 53,
+        "parts": 189,
+        "connections": 9
+      },
+      "hz": 19.97,
+      "tick": {
+        "count": 1198,
+        "p50": 17.16,
+        "p95": 43.25,
+        "p99": 61.01,
+        "max": 126.84
+      },
+      "interval": {
+        "count": 1198,
+        "p50": 49.99,
+        "p95": 56.28,
+        "p99": 72.95,
+        "max": 134.35
+      },
+      "memory": {
+        "resident": 3286,
+        "heapUsed": 630,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "syncAgeMs": 30898,
+        "revision": 5054773
+      }
+    },
+    {
+      "at": "2026-11-25T09:26:37.274Z",
+      "online": {
+        "arena": 9,
+        "lobby": 4,
+        "total": 13
+      },
+      "arena": {
+        "rooms": 7,
+        "activePlayers": 52,
+        "parts": 163,
+        "connections": 9
+      },
+      "hz": 19.97,
+      "tick": {
+        "count": 1198,
+        "p50": 17.17,
+        "p95": 43.98,
+        "p99": 61.01,
+        "max": 126.84
+      },
+      "interval": {
+        "count": 1198,
+        "p50": 49.99,
+        "p95": 56.78,
+        "p99": 73.78,
+        "max": 134.35
+      },
+      "memory": {
+        "resident": 3400,
+        "heapUsed": 652,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "syncAgeMs": 2010,
+        "revision": 5055228
+      }
+    },
+    {
+      "at": "2026-11-25T09:26:47.308Z",
+      "online": {
+        "arena": 9,
+        "lobby": 4,
+        "total": 13
+      },
+      "arena": {
+        "rooms": 7,
+        "activePlayers": 52,
+        "parts": 173,
+        "connections": 9
+      },
+      "hz": 19.93,
+      "tick": {
+        "count": 1196,
+        "p50": 17.08,
+        "p95": 43.87,
+        "p99": 62.28,
+        "max": 138.98
+      },
+      "interval": {
+        "count": 1196,
+        "p50": 49.99,
+        "p95": 56.78,
+        "p99": 73.78,
+        "max": 140.45
+      },
+      "memory": {
+        "resident": 3365,
+        "heapUsed": 539,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "syncAgeMs": 12044,
+        "revision": 5055228
+      }
+    },
+    {
+      "at": "2026-11-25T09:26:57.321Z",
+      "online": {
+        "arena": 9,
+        "lobby": 4,
+        "total": 13
+      },
+      "arena": {
+        "rooms": 7,
+        "activePlayers": 53,
+        "parts": 164,
+        "connections": 9
+      },
+      "hz": 19.93,
+      "tick": {
+        "count": 1196,
+        "p50": 16.94,
+        "p95": 43.12,
+        "p99": 62.28,
+        "max": 138.98
+      },
+      "interval": {
+        "count": 1196,
+        "p50": 49.98,
+        "p95": 55.99,
+        "p99": 73.78,
+        "max": 140.45
+      },
+      "memory": {
+        "resident": 3326,
+        "heapUsed": 629,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "syncAgeMs": 1177,
+        "revision": 5055660
+      }
+    }
+  ],
+  "previousIdle": [
+    {
+      "at": 1795600783386,
+      "online": {
+        "arena": 0,
+        "lobby": 0,
+        "total": 0
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 0,
+        "parts": 0,
+        "connections": 0
+      },
+      "hz": 6.02,
+      "tick": {
+        "count": 461,
+        "p50": 0.59,
+        "p95": 0.89,
+        "p99": 1.55,
+        "max": 12.33
+      },
+      "interval": {
+        "count": 461,
+        "p50": 50.07,
+        "p95": 51.71,
+        "p99": 52.38,
+        "max": 133670.46
+      },
+      "memory": {
+        "resident": 1777,
+        "heapUsed": 463,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 22564
+      }
+    },
+    {
+      "at": 1795600793392,
+      "online": {
+        "arena": 0,
+        "lobby": 0,
+        "total": 0
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 0,
+        "parts": 0,
+        "connections": 0
+      },
+      "hz": 9.35,
+      "tick": {
+        "count": 661,
+        "p50": 0.58,
+        "p95": 0.86,
+        "p99": 1.33,
+        "max": 12.33
+      },
+      "interval": {
+        "count": 661,
+        "p50": 50.09,
+        "p95": 51.67,
+        "p99": 52.27,
+        "max": 133670.46
+      },
+      "memory": {
+        "resident": 1778,
+        "heapUsed": 463,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 2919
+      }
+    },
+    {
+      "at": 1795600803399,
+      "online": {
+        "arena": 0,
+        "lobby": 0,
+        "total": 0
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 0,
+        "parts": 0,
+        "connections": 0
+      },
+      "hz": 12.68,
+      "tick": {
+        "count": 861,
+        "p50": 0.56,
+        "p95": 0.83,
+        "p99": 1.28,
+        "max": 15.59
+      },
+      "interval": {
+        "count": 861,
+        "p50": 50.12,
+        "p95": 51.68,
+        "p99": 52.19,
+        "max": 133670.46
+      },
+      "memory": {
+        "resident": 1778,
+        "heapUsed": 464,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 12926
+      }
+    },
+    {
+      "at": 1795600813407,
+      "online": {
+        "arena": 0,
+        "lobby": 2,
+        "total": 2
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 0,
+        "parts": 0,
+        "connections": 0
+      },
+      "hz": 16.02,
+      "tick": {
+        "count": 1061,
+        "p50": 0.56,
+        "p95": 0.81,
+        "p99": 1.24,
+        "max": 15.59
+      },
+      "interval": {
+        "count": 1061,
+        "p50": 50.12,
+        "p95": 51.69,
+        "p99": 52.17,
+        "max": 133670.46
+      },
+      "memory": {
+        "resident": 1780,
+        "heapUsed": 466,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 22934
+      }
+    },
+    {
+      "at": 1795600823415,
+      "online": {
+        "arena": 0,
+        "lobby": 2,
+        "total": 2
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 0,
+        "parts": 0,
+        "connections": 0
+      },
+      "hz": 19.23,
+      "tick": {
+        "count": 1193,
+        "p50": 0.57,
+        "p95": 0.83,
+        "p99": 1.24,
+        "max": 15.59
+      },
+      "interval": {
+        "count": 1193,
+        "p50": 50.13,
+        "p95": 51.69,
+        "p99": 52,
+        "max": 381.05
+      },
+      "memory": {
+        "resident": 1799,
+        "heapUsed": 477,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 2844
+      }
+    },
+    {
+      "at": 1795600833420,
+      "online": {
+        "arena": 0,
+        "lobby": 2,
+        "total": 2
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 0,
+        "parts": 0,
+        "connections": 0
+      },
+      "hz": 19.87,
+      "tick": {
+        "count": 1192,
+        "p50": 0.56,
+        "p95": 0.77,
+        "p99": 1.1,
+        "max": 15.59
+      },
+      "interval": {
+        "count": 1192,
+        "p50": 50.12,
+        "p95": 51.69,
+        "p99": 52.22,
+        "max": 381.05
+      },
+      "memory": {
+        "resident": 1841,
+        "heapUsed": 480,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 12849
+      }
+    },
+    {
+      "at": 1795600843425,
+      "online": {
+        "arena": 0,
+        "lobby": 2,
+        "total": 2
+      },
+      "arena": {
+        "rooms": 3,
+        "activePlayers": 0,
+        "parts": 0,
+        "connections": 0
+      },
+      "hz": 19.83,
+      "tick": {
+        "count": 1190,
+        "p50": 0.56,
+        "p95": 0.76,
+        "p99": 1.1,
+        "max": 15.59
+      },
+      "interval": {
+        "count": 1190,
+        "p50": 50.07,
+        "p95": 51.73,
+        "p99": 64.83,
+        "max": 381.05
+      },
+      "memory": {
+        "resident": 1849,
+        "heapUsed": 494,
+        "limit": 5120
+      },
+      "database": {
+        "connected": true,
+        "error": null,
+        "syncAgeMs": 22854
+      }
+    }
+  ],
+  "cpuProfile": {
+    "durationMs": 31368.868,
+    "samples": 14108,
+    "self": [
+      {
+        "ms": 16414,
+        "pct": 52.33,
+        "name": "(idle)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 1566,
+        "pct": 4.99,
+        "name": "(program)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 808,
+        "pct": 2.57,
+        "name": "postMessage",
+        "file": "node:internal/worker",
+        "line": 462
+      },
+      {
+        "ms": 730,
+        "pct": 2.33,
+        "name": "(garbage collector)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 667,
+        "pct": 2.13,
+        "name": "step",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 1254
+      },
+      {
+        "ms": 593,
+        "pct": 1.89,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 1354
+      },
+      {
+        "ms": 331,
+        "pct": 1.06,
+        "name": "copyRecord",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/profiles/copy-record.js",
+        "line": 6
+      },
+      {
+        "ms": 295,
+        "pct": 0.94,
+        "name": "arenaProgressDraft",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/profiles/profile-store.js",
+        "line": 1200
+      },
+      {
+        "ms": 287,
+        "pct": 0.92,
+        "name": "snapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 1351
+      },
+      {
+        "ms": 261,
+        "pct": 0.83,
+        "name": "encode",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/worker-food-transfer.js",
+        "line": 70
+      },
+      {
+        "ms": 233,
+        "pct": 0.74,
+        "name": "collectEther",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 990
+      },
+      {
+        "ms": 218,
+        "pct": 0.7,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/state-workers.js",
+        "line": 203
+      },
+      {
+        "ms": 196,
+        "pct": 0.62,
+        "name": "moveParts",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 685
+      },
+      {
+        "ms": 194,
+        "pct": 0.62,
+        "name": "update",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/testing/arena-test-bots.js",
+        "line": 298
+      },
+      {
+        "ms": 181,
+        "pct": 0.58,
+        "name": "resolveAbsorptions",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 1091
+      },
+      {
+        "ms": 177,
+        "pct": 0.56,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/game-server.js",
+        "line": 1309
+      },
+      {
+        "ms": 169,
+        "pct": 0.54,
+        "name": "separateParts",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 621
+      },
+      {
+        "ms": 140,
+        "pct": 0.45,
+        "name": "writev",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 139,
+        "pct": 0.44,
+        "name": "scan",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/testing/arena-bot-brain.js",
+        "line": 64
+      },
+      {
+        "ms": 130,
+        "pct": 0.42,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 1444
+      },
+      {
+        "ms": 120,
+        "pct": 0.38,
+        "name": "beginStep",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-hazards.js",
+        "line": 112
+      },
+      {
+        "ms": 114,
+        "pct": 0.36,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/testing/arena-test-bots.js",
+        "line": 308
+      },
+      {
+        "ms": 113,
+        "pct": 0.36,
+        "name": "moveFeed",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 576
+      },
+      {
+        "ms": 110,
+        "pct": 0.35,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/admin/moderation.js",
+        "line": 75
+      },
+      {
+        "ms": 108,
+        "pct": 0.34,
+        "name": "arenaDraft",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/profiles/profile-store.js",
+        "line": 148
+      },
+      {
+        "ms": 103,
+        "pct": 0.33,
+        "name": "get",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/profiles/arena-appearance-cache.js",
+        "line": 13
+      },
+      {
+        "ms": 99,
+        "pct": 0.32,
+        "name": "act",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/testing/arena-bot-brain.js",
+        "line": 395
+      },
+      {
+        "ms": 90,
+        "pct": 0.29,
+        "name": "stepRoom",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/room-step.js",
+        "line": 6
+      },
+      {
+        "ms": 87,
+        "pct": 0.28,
+        "name": "remainingTimers",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/snapshot-timers.js",
+        "line": 4
+      },
+      {
+        "ms": 87,
+        "pct": 0.28,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-hazards.js",
+        "line": 293
+      }
+    ],
+    "inclusive": [
+      {
+        "ms": 31369,
+        "pct": 100,
+        "name": "(root)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 16414,
+        "pct": 52.33,
+        "name": "(idle)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 10245,
+        "pct": 32.66,
+        "name": "processTimers",
+        "file": "node:internal/timers",
+        "line": 603
+      },
+      {
+        "ms": 10242,
+        "pct": 32.65,
+        "name": "listOnTimeout",
+        "file": "node:internal/timers",
+        "line": 623
+      },
+      {
+        "ms": 10190,
+        "pct": 32.48,
+        "name": "run",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/tick-clock.js",
+        "line": 15
+      },
+      {
+        "ms": 10173,
+        "pct": 32.43,
+        "name": "tick",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/game-server.js",
+        "line": 2110
+      },
+      {
+        "ms": 10160,
+        "pct": 32.39,
+        "name": "tickOnce",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/game-server.js",
+        "line": 2115
+      },
+      {
+        "ms": 4412,
+        "pct": 14.07,
+        "name": "stepRoom",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/game-server.js",
+        "line": 2101
+      },
+      {
+        "ms": 4408,
+        "pct": 14.05,
+        "name": "stepRoom",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/room-step.js",
+        "line": 6
+      },
+      {
+        "ms": 2964,
+        "pct": 9.45,
+        "name": "step",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 1254
+      },
+      {
+        "ms": 2878,
+        "pct": 9.18,
+        "name": "broadcast",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/game-server.js",
+        "line": 1917
+      },
+      {
+        "ms": 2817,
+        "pct": 8.98,
+        "name": "writeArenaBatches",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/game-server.js",
+        "line": 2046
+      },
+      {
+        "ms": 2789,
+        "pct": 8.89,
+        "name": "applyArenaProgress",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/profiles/profile-store.js",
+        "line": 1140
+      },
+      {
+        "ms": 1604,
+        "pct": 5.11,
+        "name": "arenaProgressDraft",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/profiles/profile-store.js",
+        "line": 1200
+      },
+      {
+        "ms": 1566,
+        "pct": 4.99,
+        "name": "(program)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 1516,
+        "pct": 4.83,
+        "name": "flush",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/state-workers.js",
+        "line": 373
+      },
+      {
+        "ms": 1514,
+        "pct": 4.83,
+        "name": "dispatch",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/state-workers.js",
+        "line": 164
+      },
+      {
+        "ms": 1323,
+        "pct": 4.22,
+        "name": "arenaSnapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/game-server.js",
+        "line": 314
+      },
+      {
+        "ms": 1283,
+        "pct": 4.09,
+        "name": "snapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 1351
+      },
+      {
+        "ms": 1264,
+        "pct": 4.03,
+        "name": "prepareRoomStep",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/room-step.js",
+        "line": 10
+      },
+      {
+        "ms": 1044,
+        "pct": 3.33,
+        "name": "update",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/testing/arena-test-bots.js",
+        "line": 298
+      },
+      {
+        "ms": 867,
+        "pct": 2.76,
+        "name": "postMessage",
+        "file": "node:internal/worker",
+        "line": 462
+      },
+      {
+        "ms": 757,
+        "pct": 2.41,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/arena-simulation.js",
+        "line": 1354
+      },
+      {
+        "ms": 730,
+        "pct": 2.33,
+        "name": "(garbage collector)",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 706,
+        "pct": 2.25,
+        "name": "processTicksAndRejections",
+        "file": "node:internal/process/task_queues",
+        "line": 72
+      },
+      {
+        "ms": 683,
+        "pct": 2.18,
+        "name": "prepareSnapshot",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/profiles/profile-store.js",
+        "line": 639
+      },
+      {
+        "ms": 668,
+        "pct": 2.13,
+        "name": "runMicrotasks",
+        "file": "",
+        "line": 0
+      },
+      {
+        "ms": 643,
+        "pct": 2.05,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/game-server.js",
+        "line": 425
+      },
+      {
+        "ms": 612,
+        "pct": 1.95,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/state-workers.js",
+        "line": 175
+      },
+      {
+        "ms": 587,
+        "pct": 1.87,
+        "name": "",
+        "file": "file:///srv/heroether-test/play/releases/20261125-friday-shields/src/server/arena/state-workers.js",
+        "line": 203
+      }
+    ],
+    "artifact": "artifacts/load-rise-20261125/live-current.cpuprofile",
+    "samplingIntervalUs": 2000,
+    "limitation": "One main-thread sample. Sampling adds overhead; it is not a repeatable A/B, worker profile or capacity benchmark."
+  },
+  "host": {
+    "last": {
+      "load": "1.85 1.57 1.17 2/319 958210",
+      "memory": [
+        "MemTotal:       24631576 kB",
+        "MemAvailable:    6518240 kB",
+        "SwapCached:            0 kB",
+        "SwapTotal:             0 kB",
+        "SwapFree:              0 kB",
+        "Shmem:          13658856 kB",
+        "ShmemHugePages:        0 kB",
+        "ShmemPmdMapped:        0 kB"
+      ],
+      "cpu": "usage_usec 989804676\nuser_usec 933021207\nsystem_usec 56783469\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 16845\nnr_throttled 39\nthrottled_usec 1009787\nnr_bursts 0\nburst_usec 0",
+      "cpuMax": "600000 100000",
+      "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "pressure": {
+        "cpu": "some avg10=0.08 avg60=0.10 avg300=0.31 total=6785006650\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=32551028\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=31604290",
+        "io": "some avg10=0.05 avg60=0.11 avg300=0.07 total=519366727\nfull avg10=0.05 avg60=0.11 avg300=0.07 total=435607167"
+      },
+      "disk": "Filesystem       1B-blocks        Used  Available Use% Mounted on\n/dev/vda1      84453171200 78877499392 1264041984  99% /"
+    },
+    "threadCpuSeconds": [
+      {
+        "id": 953254,
+        "name": "MainThread",
+        "seconds": 27.32
+      },
+      {
+        "id": 957996,
+        "name": "WorkerThread",
+        "seconds": 7.78
+      },
+      {
+        "id": 957974,
+        "name": "WorkerThread",
+        "seconds": 5.14
+      },
+      {
+        "id": 958025,
+        "name": "WorkerThread",
+        "seconds": 4.34
+      },
+      {
+        "id": 953266,
+        "name": "WorkerThread",
+        "seconds": 3.22
+      },
+      {
+        "id": 953258,
+        "name": "V8Worker",
+        "seconds": 3
+      },
+      {
+        "id": 953259,
+        "name": "V8Worker",
+        "seconds": 2.99
+      },
+      {
+        "id": 953260,
+        "name": "V8Worker",
+        "seconds": 2.88
+      },
+      {
+        "id": 953257,
+        "name": "V8Worker",
+        "seconds": 2.78
+      },
+      {
+        "id": 958018,
+        "name": "WorkerThread",
+        "seconds": 2.25
+      },
+      {
+        "id": 953268,
+        "name": "libuv-worker",
+        "seconds": 0.04
+      },
+      {
+        "id": 953269,
+        "name": "libuv-worker",
+        "seconds": 0.04
+      },
+      {
+        "id": 953270,
+        "name": "libuv-worker",
+        "seconds": 0.04
+      },
+      {
+        "id": 953271,
+        "name": "libuv-worker",
+        "seconds": 0.03
+      },
+      {
+        "id": 953695,
+        "name": "WorkerThread",
+        "seconds": 0.02
+      },
+      {
+        "id": 957339,
+        "name": "WorkerThread",
+        "seconds": 0.02
+      },
+      {
+        "id": 958034,
+        "name": "WorkerThread",
+        "seconds": 0.02
+      },
+      {
+        "id": 953256,
+        "name": "DelayedTaskSche",
+        "seconds": 0
+      },
+      {
+        "id": 953261,
+        "name": "SignalInspector",
+        "seconds": 0
+      }
+    ]
+  },
+  "finalHealth": {
+    "at": "2026-11-25T13:13:12.685Z",
+    "pid": 953254,
+    "entryOpen": true,
+    "inspectorClosed": true,
+    "restarts": 0,
+    "database": {
+      "connected": true,
+      "error": null,
+      "syncAgeMs": 1699
+    }
+  },
+  "changes": {
+    "runtime": false,
+    "settings": false,
+    "gameplayData": false,
+    "botsDisabled": false,
+    "artwork": false
+  },
+  "limitations": [
+    "Overlapping one-minute p95 windows are not independent samples.",
+    "No load generators, payment actions, save changes or server restart were used.",
+    "No new maximum CCU, 300000-player capacity, client FPS or historical progress-loss conclusion is supported."
+  ]
+}
