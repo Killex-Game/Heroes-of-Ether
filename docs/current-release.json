@@ -84,7 +84,10 @@
     "10/100 booster purchases, actual spending achievements, server-side trophy cosmetic discounts and expiry timer",
     "Early clan season settlement in administration, five-second stone dizziness, silent chat and compact UI",
     "Original ether purchase artwork restored, circular preview backgrounds, ether generator currency icon",
-    "Simple Easter lobby pattern, earliest Black Friday pattern restored"
+    "Simple Easter lobby pattern, earliest Black Friday pattern restored",
+    "Stone display makes two eased whole turns over its existing five seconds; a repeated hit continues from current orientation. Authoritative movement confusion unchanged. Reduced-motion mode supported.",
+    "Shop stock replaces the pack-size badge at upper right; no duplicated icon count in shop, inventory retains its count. Both 10/100 purchase buttons remain.",
+    "Title catalog uses 128/256/512 srcset with real 512 assets for every title. Six missing exports rebuilt from original approved masters with exact existing crop and placement; 256 re-exports verified byte-identical. All pre-existing artwork files unchanged."
   ],
   "data": {
     "before": {
@@ -32903,5 +32906,12 @@
     "sourceCommit": "af4817f5d93c9662b326ece8aec1cfeb6f1722d0",
     "report": "games/heroes-of-ether/docs/performance/gameplay-fixes-20261125.json",
     "openedAtUtc": "2026-11-25T04:26:59.599Z"
+  },
+  "staticStoneStockChestsUpdate": {
+    "sourceCommit": "adb93a3786d270325a8bf1e33a145e1c0f362f63",
+    "sourceTag": "release/20261125-stone-swirl",
+    "installedAt": "2026-11-25T04:51:26.060Z",
+    "report": "games/heroes-of-ether/docs/performance/stone-swirl-20261125.json",
+    "backupSha256": "5ee5077ad1b52b5faf83856f7e80d711c066c966779e0cc70c8dd214beab11aa"
   }
 }

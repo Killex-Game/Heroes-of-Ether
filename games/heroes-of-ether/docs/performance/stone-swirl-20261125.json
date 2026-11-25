@@ -1,0 +1,603 @@
+{
+  "kind": "stone-swirl-stock-chests",
+  "installed": true,
+  "sourceCommit": "adb93a3786d270325a8bf1e33a145e1c0f362f63",
+  "sourceTag": "release/20261125-stone-swirl",
+  "backendSourceCommit": "af4817f5d93c9662b326ece8aec1cfeb6f1722d0",
+  "runtime": {
+    "at": "2026-11-25T04:51:26.060Z",
+    "release": "/srv/heroether-test/play/releases/20261125-gameplay-fixes",
+    "sourceCommit": "adb93a3786d270325a8bf1e33a145e1c0f362f63",
+    "backup": "/srv/heroether-test/play/backups/stone-swirl-20261125",
+    "backupSha256": "5ee5077ad1b52b5faf83856f7e80d711c066c966779e0cc70c8dd214beab11aa",
+    "files": 12,
+    "added": 6,
+    "unchangedPublic": 2365,
+    "gamePid": 903342,
+    "adminPid": 1163,
+    "noProcessRestart": true,
+    "noWorldWrites": true,
+    "databaseHealthy": true,
+    "entryOpen": true
+  },
+  "changes": [
+    "Stone display makes two eased whole turns over its existing five seconds; a repeated hit continues from current orientation. Authoritative movement confusion unchanged. Reduced-motion mode supported.",
+    "Shop stock replaces the pack-size badge at upper right; no duplicated icon count in shop, inventory retains its count. Both 10/100 purchase buttons remain.",
+    "Title catalog uses 128/256/512 srcset with real 512 assets for every title. Six missing exports rebuilt from original approved masters with exact existing crop and placement; 256 re-exports verified byte-identical. All pre-existing artwork files unchanged."
+  ],
+  "checks": {
+    "unit": {
+      "total": 24,
+      "pass": 24,
+      "fail": 0
+    },
+    "browser": [
+      {
+        "engine": "chromium",
+        "width": 1398,
+        "height": 766,
+        "maxAngle": 12.566360949785723,
+        "frames": 998,
+        "frameIntervalP95": 3.8999998569488525,
+        "renewedWithoutSnap": true,
+        "reducedMotion": true,
+        "expiresUpright": true,
+        "errors": []
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "maxAngle": 12.566366039908283,
+        "frames": 999,
+        "frameIntervalP95": 3.5999999046325684,
+        "renewedWithoutSnap": true,
+        "reducedMotion": true,
+        "expiresUpright": true,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "width": 1398,
+        "height": 766,
+        "maxAngle": 12.566138136769963,
+        "frames": 268,
+        "frameIntervalP95": 25,
+        "renewedWithoutSnap": true,
+        "reducedMotion": true,
+        "expiresUpright": true,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "width": 390,
+        "height": 844,
+        "maxAngle": 12.56635081116887,
+        "frames": 571,
+        "frameIntervalP95": 13,
+        "renewedWithoutSnap": true,
+        "reducedMotion": true,
+        "expiresUpright": true,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "width": 1398,
+        "height": 766,
+        "maxAngle": 12.566368237899235,
+        "frames": 63,
+        "frameIntervalP95": 90,
+        "renewedWithoutSnap": true,
+        "reducedMotion": true,
+        "expiresUpright": true,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "maxAngle": 12.566247999436255,
+        "frames": 163,
+        "frameIntervalP95": 34,
+        "renewedWithoutSnap": true,
+        "reducedMotion": true,
+        "expiresUpright": true,
+        "errors": []
+      }
+    ],
+    "shop": [
+      {
+        "engine": "chromium",
+        "width": 1398,
+        "height": 766,
+        "dpr": 1,
+        "stockBefore": 647,
+        "stockAfter": 757,
+        "images": [
+          {
+            "src": "http://127.0.0.1:57425/assets/progression/webp/256/rank_chests/boss_of_bosses.webp?art=20261123-interface-art",
+            "width": 160,
+            "height": 160,
+            "dpr": 1,
+            "resolution": 256
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/256/emperor.webp?art=20261123-interface-art",
+            "width": 160,
+            "height": 160,
+            "dpr": 1,
+            "resolution": 256
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/256/king.webp?art=20261123-interface-art",
+            "width": 160,
+            "height": 160,
+            "dpr": 1,
+            "resolution": 256
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "dpr": 3,
+        "stockBefore": 647,
+        "stockAfter": 757,
+        "images": [
+          {
+            "src": "http://127.0.0.1:57425/assets/progression/webp/512/rank_chests/boss_of_bosses.webp?art=20261122b",
+            "width": 128,
+            "height": 128,
+            "dpr": 3,
+            "resolution": 512
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/512/emperor.webp?art=20261123-interface-art",
+            "width": 128,
+            "height": 128,
+            "dpr": 3,
+            "resolution": 512
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/512/king.webp?art=20261123-interface-art",
+            "width": 128,
+            "height": 128,
+            "dpr": 3,
+            "resolution": 512
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "width": 1398,
+        "height": 766,
+        "dpr": 1,
+        "stockBefore": 647,
+        "stockAfter": 757,
+        "images": [
+          {
+            "src": "http://127.0.0.1:57425/assets/progression/webp/256/rank_chests/boss_of_bosses.webp?art=20261123-interface-art",
+            "width": 160,
+            "height": 160,
+            "dpr": 1,
+            "resolution": 256
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/256/emperor.webp?art=20261123-interface-art",
+            "width": 160,
+            "height": 160,
+            "dpr": 1,
+            "resolution": 256
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/256/king.webp?art=20261123-interface-art",
+            "width": 160,
+            "height": 160,
+            "dpr": 1,
+            "resolution": 256
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "width": 390,
+        "height": 844,
+        "dpr": 3,
+        "stockBefore": 647,
+        "stockAfter": 757,
+        "images": [
+          {
+            "src": "http://127.0.0.1:57425/assets/progression/webp/512/rank_chests/boss_of_bosses.webp?art=20261122b",
+            "width": 128,
+            "height": 128,
+            "dpr": 3,
+            "resolution": 512
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/512/emperor.webp?art=20261123-interface-art",
+            "width": 128,
+            "height": 128,
+            "dpr": 3,
+            "resolution": 512
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/512/king.webp?art=20261123-interface-art",
+            "width": 128,
+            "height": 128,
+            "dpr": 3,
+            "resolution": 512
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "width": 1398,
+        "height": 766,
+        "dpr": 1,
+        "stockBefore": 647,
+        "stockAfter": 757,
+        "images": [
+          {
+            "src": "http://127.0.0.1:57425/assets/progression/webp/256/rank_chests/boss_of_bosses.webp?art=20261123-interface-art",
+            "width": 160,
+            "height": 160,
+            "dpr": 1,
+            "resolution": 256
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/256/emperor.webp?art=20261123-interface-art",
+            "width": 160,
+            "height": 160,
+            "dpr": 1,
+            "resolution": 256
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/256/king.webp?art=20261123-interface-art",
+            "width": 160,
+            "height": 160,
+            "dpr": 1,
+            "resolution": 256
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "dpr": 3,
+        "stockBefore": 647,
+        "stockAfter": 757,
+        "images": [
+          {
+            "src": "http://127.0.0.1:57425/assets/progression/webp/512/rank_chests/boss_of_bosses.webp?art=20261122b",
+            "width": 128,
+            "height": 128,
+            "dpr": 3,
+            "resolution": 512
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/512/emperor.webp?art=20261123-interface-art",
+            "width": 128,
+            "height": 128,
+            "dpr": 3,
+            "resolution": 512
+          },
+          {
+            "src": "http://127.0.0.1:57425/assets/chests/prism-unified-v4/512/king.webp?art=20261123-interface-art",
+            "width": 128,
+            "height": 128,
+            "dpr": 3,
+            "resolution": 512
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "render": [
+      {
+        "engine": "chromium",
+        "variant": "old",
+        "samples": 2290,
+        "callbackP50": 0.39999985694885254,
+        "callbackP95": 0.7000000476837158,
+        "callbackMax": 5.300000190734863,
+        "errors": []
+      },
+      {
+        "engine": "chromium",
+        "variant": "new",
+        "samples": 2246,
+        "callbackP50": 0.5,
+        "callbackP95": 0.7000000476837158,
+        "callbackMax": 1.9000000953674316,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "variant": "old",
+        "samples": 410,
+        "callbackP50": 12,
+        "callbackP95": 16,
+        "callbackMax": 24,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "variant": "new",
+        "samples": 313,
+        "callbackP50": 16,
+        "callbackP95": 20,
+        "callbackMax": 27,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "variant": "old",
+        "samples": 63,
+        "callbackP50": 1,
+        "callbackP95": 1,
+        "callbackMax": 26,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "variant": "new",
+        "samples": 81,
+        "callbackP50": 1,
+        "callbackP95": 14,
+        "callbackMax": 18,
+        "errors": []
+      }
+    ],
+    "productionHttp": 36,
+    "localHttp": 12,
+    "rootSourceFiles": 13,
+    "backupFiles": 7,
+    "commentsRemoved": 115
+  },
+  "chestExports": [
+    {
+      "id": "novice",
+      "size": 256,
+      "visibleHeight": 76,
+      "w": 141,
+      "h": 122,
+      "sha256": "9b535f65ea0fa8481d4b7262c04240c8712730342b6f8a6076930c08d0b53698",
+      "bytes": 10552,
+      "verifiedExisting": true
+    },
+    {
+      "id": "novice",
+      "size": 512,
+      "visibleHeight": 76,
+      "w": 281,
+      "h": 243,
+      "sha256": "c061639b1a143a96649a267067c116948ce9625455a4bedffc4a4c72ab8d5935",
+      "bytes": 26802,
+      "verifiedExisting": false
+    },
+    {
+      "id": "experienced",
+      "size": 256,
+      "visibleHeight": 79,
+      "w": 155,
+      "h": 126,
+      "sha256": "1c4227e7a81e2318358c308a3553a60103ca9511bd5a79c3de21a7511e16e441",
+      "bytes": 11678,
+      "verifiedExisting": true
+    },
+    {
+      "id": "experienced",
+      "size": 512,
+      "visibleHeight": 79,
+      "w": 311,
+      "h": 253,
+      "sha256": "1ac3a96985e199dbfa23760c144359996e9112beb5faccd3dde9b6d51b294d3c",
+      "bytes": 29260,
+      "verifiedExisting": false
+    },
+    {
+      "id": "expert",
+      "size": 256,
+      "visibleHeight": 82,
+      "w": 152,
+      "h": 131,
+      "sha256": "118a8c96655e73751ca02e859b1196b6eb06c44863c9e43ec584a9a236c01128",
+      "bytes": 11552,
+      "verifiedExisting": true
+    },
+    {
+      "id": "expert",
+      "size": 512,
+      "visibleHeight": 82,
+      "w": 303,
+      "h": 262,
+      "sha256": "d82cf2b22666477a7a2fb3d8556a23e514fa26fe7e9ad303a5508450c4c4d385",
+      "bytes": 28632,
+      "verifiedExisting": false
+    },
+    {
+      "id": "sage",
+      "size": 256,
+      "visibleHeight": 85,
+      "w": 161,
+      "h": 136,
+      "sha256": "bcdc06cd37a46c70a222168e9055e1b6c13c607c489120ff9618371e72823da1",
+      "bytes": 12744,
+      "verifiedExisting": true
+    },
+    {
+      "id": "sage",
+      "size": 512,
+      "visibleHeight": 85,
+      "w": 322,
+      "h": 272,
+      "sha256": "917a26df432e44e4b26993f447255c537488bdd16e853cf8fa0ec058ade4294d",
+      "bytes": 32088,
+      "verifiedExisting": false
+    },
+    {
+      "id": "master",
+      "size": 256,
+      "visibleHeight": 88,
+      "w": 158,
+      "h": 141,
+      "sha256": "7a2f6013bf27a25def7b0901d211a1226cc5289bcf7fd4e3e8ac44ea329cbeec",
+      "bytes": 12740,
+      "verifiedExisting": true
+    },
+    {
+      "id": "master",
+      "size": 512,
+      "visibleHeight": 88,
+      "w": 315,
+      "h": 282,
+      "sha256": "09eae297f7c4e58f9f80268186c78ad5b077148642dc70380e4a15c179eb37a2",
+      "bytes": 30734,
+      "verifiedExisting": false
+    },
+    {
+      "id": "boss",
+      "size": 256,
+      "visibleHeight": 103,
+      "w": 211,
+      "h": 165,
+      "sha256": "73c2dc360b2c9ec0d3dfc9fff835ce051ea0719b885d52079301e0f33a53f917",
+      "bytes": 17686,
+      "verifiedExisting": true
+    },
+    {
+      "id": "boss",
+      "size": 512,
+      "visibleHeight": 103,
+      "w": 423,
+      "h": 330,
+      "sha256": "f19370817e7c5f349f4bf63b8706042fcb1808e54f0df99b7ebea92c6ecf0a91",
+      "bytes": 41672,
+      "verifiedExisting": false
+    }
+  ],
+  "files": [
+    {
+      "file": "public/assets/progression/webp/512/rank_chests/boss_of_bosses.webp",
+      "before": null,
+      "beforeBytes": 0,
+      "sha256": "f19370817e7c5f349f4bf63b8706042fcb1808e54f0df99b7ebea92c6ecf0a91",
+      "sourceSha256": "f19370817e7c5f349f4bf63b8706042fcb1808e54f0df99b7ebea92c6ecf0a91",
+      "bytes": 41672,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/progression/webp/512/rank_chests/experienced.webp",
+      "before": null,
+      "beforeBytes": 0,
+      "sha256": "1ac3a96985e199dbfa23760c144359996e9112beb5faccd3dde9b6d51b294d3c",
+      "sourceSha256": "1ac3a96985e199dbfa23760c144359996e9112beb5faccd3dde9b6d51b294d3c",
+      "bytes": 29260,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/progression/webp/512/rank_chests/expert.webp",
+      "before": null,
+      "beforeBytes": 0,
+      "sha256": "d82cf2b22666477a7a2fb3d8556a23e514fa26fe7e9ad303a5508450c4c4d385",
+      "sourceSha256": "d82cf2b22666477a7a2fb3d8556a23e514fa26fe7e9ad303a5508450c4c4d385",
+      "bytes": 28632,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/progression/webp/512/rank_chests/master.webp",
+      "before": null,
+      "beforeBytes": 0,
+      "sha256": "09eae297f7c4e58f9f80268186c78ad5b077148642dc70380e4a15c179eb37a2",
+      "sourceSha256": "09eae297f7c4e58f9f80268186c78ad5b077148642dc70380e4a15c179eb37a2",
+      "bytes": 30734,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/progression/webp/512/rank_chests/novice.webp",
+      "before": null,
+      "beforeBytes": 0,
+      "sha256": "c061639b1a143a96649a267067c116948ce9625455a4bedffc4a4c72ab8d5935",
+      "sourceSha256": "c061639b1a143a96649a267067c116948ce9625455a4bedffc4a4c72ab8d5935",
+      "bytes": 26802,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/assets/progression/webp/512/rank_chests/sage.webp",
+      "before": null,
+      "beforeBytes": 0,
+      "sha256": "917a26df432e44e4b26993f447255c537488bdd16e853cf8fa0ec058ade4294d",
+      "sourceSha256": "917a26df432e44e4b26993f447255c537488bdd16e853cf8fa0ec058ade4294d",
+      "bytes": 32088,
+      "commentsRemoved": 0
+    },
+    {
+      "file": "public/game-client.js",
+      "before": "809433c55a176b8a7230463279344cf5e079bf6afc4fa7d61c0ab42a1cecaf1f",
+      "beforeBytes": 85319,
+      "sha256": "fe9aa6aca539df188703a7208153b9b87a718fc53aa008f294e100c2ff79cd01",
+      "sourceSha256": "8c7047b4f5a882e9114355899dd6fe5da5b362496810e3df09afc034f67ee85d",
+      "bytes": 85740,
+      "commentsRemoved": 55
+    },
+    {
+      "file": "public/shared/arena-camera-and-layout.js",
+      "before": "22f9489d878aa5c7c2b2c49c85882db79b003df981f6774589b5bba62767aa2b",
+      "beforeBytes": 13085,
+      "sha256": "eb1893e37dc661f50e1d28796517dbd97c7bfc1ad556198890dff53605b9e8f3",
+      "sourceSha256": "4b62460faaf9e146528157ab146910022fb5434e740e9a9c5294dc843d7a5a54",
+      "bytes": 13969,
+      "commentsRemoved": 38
+    },
+    {
+      "file": "public/shared/progression-asset-paths.js",
+      "before": "cc380d9ba230380a871913450bce2acd85b4418a4a60a981ff7b43adf0973cac",
+      "beforeBytes": 5516,
+      "sha256": "b1cd77e9317140b58001ebcb937ace2a6c88e2e1ea64ae86500c22ef8e69356b",
+      "sourceSha256": "0c8eddec27f77f2af92932d5be8599961c5ce83b745e4789db292684e31286e0",
+      "bytes": 5656,
+      "commentsRemoved": 3
+    },
+    {
+      "file": "public/ui/boosters/shop-and-inventory-dialog.js",
+      "before": "220d87030eb379d0b8840067e10a07fc8c40825d157d2ae40999c57b0fc153a1",
+      "beforeBytes": 70201,
+      "sha256": "58cbb91c512fcc13ceebafde43aa15b84c3e05ac60b2a01e2d8d938b4180a59b",
+      "sourceSha256": "493b0543273c51d3646199bf7e9d89343c01df9e6f081dcb6e156544d8794487",
+      "bytes": 70165,
+      "commentsRemoved": 18
+    },
+    {
+      "file": "public/ui/progression/titles-catalog.js",
+      "before": "173ec61f115623b974b5c2b440fc4c29a95bad40c411f044dace5aa5d01816ee",
+      "beforeBytes": 6141,
+      "sha256": "0b4519d90c6ae2e0341d9335978d42eddf2aa54d5ee3c06c7aab6b13968e9acb",
+      "sourceSha256": "8bb265fb4b8385a003d13175192a3dcdf810a6480f498a5e111d064336222446",
+      "bytes": 6396,
+      "commentsRemoved": 1
+    },
+    {
+      "file": "public/index.html",
+      "before": "ebb2f11b6762d06be4cfc08be44a6d2838f8bc7ae994f40c14f21bc95580a5fd",
+      "beforeBytes": 42963,
+      "sha256": "e66af9fd7baf2f74192432b6bc11ba12de7ab5f4b01193579421f5ae2b4ac5b5",
+      "sourceSha256": "e66af9fd7baf2f74192432b6bc11ba12de7ab5f4b01193579421f5ae2b4ac5b5",
+      "bytes": 42950,
+      "commentsRemoved": 0
+    }
+  ],
+  "limitations": [
+    "No full capacity ladder or full server suite rerun for this static-only change. Optimization remains paused by owner instruction.",
+    "Headless five-second renderer callback timings use one player and no screenshots. Not FPS, GPU performance, maximum CCU, or proof of no regression: Chrome p95 0.7 to 0.7ms, Firefox 16 to 20ms, WebKit 1 to 14ms. Rotating viewport covers a larger area during the five-second effect.",
+    "Initial visual-run frame intervals included screenshot overhead; excluded from performance conclusions.",
+    "First shop harness failed to open the mobile Title tab; corrected in harness. Second run discovered missing 512 variants with a 128 fallback; fixed with actual 512 exports. Both failures retained locally."
+  ],
+  "backupSha256": "5ee5077ad1b52b5faf83856f7e80d711c066c966779e0cc70c8dd214beab11aa"
+}

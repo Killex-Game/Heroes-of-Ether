@@ -1,3 +1,5 @@
+Статическое дополнение 25.11.2026: adb93a3786d270325a8bf1e33a145e1c0f362f63, tag release/20261125-stone-swirl. Камень/запас Магазина/чёткость сундуков установлены; backend af4817f прежний. Отчёт games/heroes-of-ether/docs/performance/stone-swirl-20261125.json.
+
 Актуальная передача 25.11.2026
 
 VPS: 20261125-gameplay-fixes, source af4817f5d93c9662b326ece8aec1cfeb6f1722d0, tag release/20261125-gameplay-fixes.
