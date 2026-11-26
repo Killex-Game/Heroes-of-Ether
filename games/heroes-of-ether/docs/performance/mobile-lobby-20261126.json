@@ -1,0 +1,49 @@
+{
+  "source": "1333fe0",
+  "appliedAt": "2026-11-26T12:46:58.555Z",
+  "scope": [
+    "public/styles/layout/mobile-game-layout.css",
+    "public/index.html"
+  ],
+  "runtime": {
+    "release": "20261126-sphere-profile-ui",
+    "mainPID": 1057882,
+    "restarts": 0
+  },
+  "verification": {
+    "isolatedGame": true,
+    "browsers": [
+      "Chromium",
+      "Firefox",
+      "WebKit"
+    ],
+    "viewports": [
+      "320x568",
+      "390x844",
+      "667x375",
+      "844x390",
+      "768x1024",
+      "1280x597",
+      "1366x900"
+    ],
+    "flows": [
+      "generator",
+      "shop",
+      "statuses",
+      "hat slot",
+      "arena picker",
+      "arena entry"
+    ],
+    "assertions": [
+      "no horizontal overflow",
+      "all mobile menu labels visible in 44px or larger targets",
+      "play within initial mobile viewport",
+      "mobile menu and arena group in orientation order"
+    ],
+    "httpHashMatches": 4,
+    "physicalDevices": false,
+    "loadBenchmark": false,
+    "initialFixture": "First Firefox run with the simulation timer disabled hit the service-unavailable modal. Final touch suite used the normal game tick and passed on all three engines."
+  },
+  "rollbackArchiveSHA256": "fbcd9ea20ba9183846af7ddaa712112163f733fc8cc3149643978b0e8bc91e93"
+}
