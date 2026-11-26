@@ -1,0 +1,282 @@
+{
+  "release": "20261126-sphere-profile-ui",
+  "sourceCommit": "04b0592bffc338a0785ed8a2a2e5d8f6901cb7f4",
+  "version": "Alfa-test 0.0.51",
+  "installedAt": "2026-11-26T11:42:54.523Z",
+  "changes": [
+    "Centre the static Sphere shield against the painted ring and the outer frame",
+    "Rename negative gifts",
+    "Display active bans below the public mini-profile portrait",
+    "Show daily currency bonus dots only beside eligible currencies"
+  ],
+  "scope": {
+    "changedRuntime": 8,
+    "unchangedSourceOrPublic": 2644,
+    "changedFiles": [
+      "public/arena/shield-renderer.js",
+      "public/index.html",
+      "public/shared/release-notes.js",
+      "public/styles/theme/profile-and-clan-details.css",
+      "public/ui/lobby/promotion-banners.js",
+      "public/ui/profile/player-social.js",
+      "public/ui/profile/public-player-dialog.js",
+      "src/server/profiles/profile-store.js"
+    ]
+  },
+  "tests": {
+    "windowsFocused": 24,
+    "linux": {
+      "allRequiredChecksPassed": true,
+      "totalPassed": 24,
+      "totalSkipped": 0,
+      "totalFailed": 0,
+      "scope": "public-player-ban, news-release-order, account-currency-bonuses, player-social"
+    },
+    "engines": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "Only currency buttons show available daily bonuses; claiming coins clears only that indicator",
+          "Permanent, expired, timed and removed bans; badge below portrait on desktop and mobile",
+          "Gift section renamed",
+          "Static Sphere is centred and hugs the border at six radii/frame combinations"
+        ],
+        "geometry": [
+          {
+            "radius": 32,
+            "framed": false,
+            "same": true,
+            "minGap": -0.6499999999999986,
+            "medianGap": 0.10000000000000142,
+            "maxGap": 1.1000000000000014,
+            "shift": 0.054914933046176506,
+            "complete": true
+          },
+          {
+            "radius": 35.47741162058264,
+            "framed": true,
+            "same": true,
+            "minGap": -0.5954823241165315,
+            "medianGap": 0.40451767588346854,
+            "maxGap": 1.1545176758834685,
+            "shift": 0.12723419011623324,
+            "complete": true
+          },
+          {
+            "radius": 100,
+            "framed": false,
+            "same": true,
+            "minGap": -1,
+            "medianGap": 0.5,
+            "maxGap": 1.75,
+            "shift": 0.19519972640274913,
+            "complete": true
+          },
+          {
+            "radius": 105.2232053026532,
+            "framed": true,
+            "same": true,
+            "minGap": -1.0446410605306369,
+            "medianGap": 0.4553589394693631,
+            "maxGap": 1.9553589394693631,
+            "shift": 0.2661675017350683,
+            "complete": true
+          },
+          {
+            "radius": 240,
+            "framed": false,
+            "same": true,
+            "minGap": -2.25,
+            "medianGap": 0.75,
+            "maxGap": 4,
+            "shift": 0.5289337416376986,
+            "complete": true
+          },
+          {
+            "radius": 247.05228276885137,
+            "framed": true,
+            "same": true,
+            "minGap": -2.160456553770274,
+            "medianGap": 1.089543446229726,
+            "maxGap": 4.339543446229726,
+            "shift": 0.5181878095836281,
+            "complete": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "Only currency buttons show available daily bonuses; claiming coins clears only that indicator",
+          "Permanent, expired, timed and removed bans; badge below portrait on desktop and mobile",
+          "Gift section renamed",
+          "Static Sphere is centred and hugs the border at six radii/frame combinations"
+        ],
+        "geometry": [
+          {
+            "radius": 32,
+            "framed": false,
+            "same": true,
+            "minGap": -0.6499999999999986,
+            "medianGap": 0.10000000000000142,
+            "maxGap": 0.8500000000000014,
+            "shift": 0.052369642207686785,
+            "complete": true
+          },
+          {
+            "radius": 35.47741162058264,
+            "framed": true,
+            "same": true,
+            "minGap": -0.5954823241165315,
+            "medianGap": 0.40451767588346854,
+            "maxGap": 0.6545176758834685,
+            "shift": 0.08094593452552577,
+            "complete": true
+          },
+          {
+            "radius": 100,
+            "framed": false,
+            "same": true,
+            "minGap": -1,
+            "medianGap": 0.5,
+            "maxGap": 1.75,
+            "shift": 0.1934222599417188,
+            "complete": true
+          },
+          {
+            "radius": 105.2232053026532,
+            "framed": true,
+            "same": true,
+            "minGap": -1.0446410605306369,
+            "medianGap": 0.4553589394693631,
+            "maxGap": 1.9553589394693631,
+            "shift": 0.2414273816709796,
+            "complete": true
+          },
+          {
+            "radius": 240,
+            "framed": false,
+            "same": true,
+            "minGap": -2.25,
+            "medianGap": 0.75,
+            "maxGap": 4,
+            "shift": 0.5289337416377333,
+            "complete": true
+          },
+          {
+            "radius": 247.05228276885137,
+            "framed": true,
+            "same": true,
+            "minGap": -2.160456553770274,
+            "medianGap": 1.089543446229726,
+            "maxGap": 4.339543446229726,
+            "shift": 0.5181878095836282,
+            "complete": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "Only currency buttons show available daily bonuses; claiming coins clears only that indicator",
+          "Permanent, expired, timed and removed bans; badge below portrait on desktop and mobile",
+          "Gift section renamed",
+          "Static Sphere is centred and hugs the border at six radii/frame combinations"
+        ],
+        "geometry": [
+          {
+            "radius": 32,
+            "framed": false,
+            "same": true,
+            "minGap": -0.6499999999999986,
+            "medianGap": 0.10000000000000142,
+            "maxGap": 0.8500000000000014,
+            "shift": 0.0738816924898792,
+            "complete": true
+          },
+          {
+            "radius": 35.47741162058264,
+            "framed": true,
+            "same": true,
+            "minGap": -0.5954823241165315,
+            "medianGap": 0.40451767588346854,
+            "maxGap": 0.6545176758834685,
+            "shift": 0.07423640956705722,
+            "complete": true
+          },
+          {
+            "radius": 100,
+            "framed": false,
+            "same": true,
+            "minGap": -1,
+            "medianGap": 0.5,
+            "maxGap": 1.75,
+            "shift": 0.17188856432426575,
+            "complete": true
+          },
+          {
+            "radius": 105.2232053026532,
+            "framed": true,
+            "same": true,
+            "minGap": -0.5446410605306369,
+            "medianGap": 0.4553589394693631,
+            "maxGap": 1.9553589394693631,
+            "shift": 0.21553614648064454,
+            "complete": true
+          },
+          {
+            "radius": 240,
+            "framed": false,
+            "same": true,
+            "minGap": -2.25,
+            "medianGap": 0.75,
+            "maxGap": 4,
+            "shift": 0.49499932276343817,
+            "complete": true
+          },
+          {
+            "radius": 247.05228276885137,
+            "framed": true,
+            "same": true,
+            "minGap": -2.160456553770274,
+            "medianGap": 1.089543446229726,
+            "maxGap": 4.339543446229726,
+            "shift": 0.4894261462576924,
+            "complete": true
+          }
+        ]
+      }
+    ],
+    "previousShieldAndStatusBrowserTest": "passed (Chromium)",
+    "httpChecks": 14,
+    "fullSuiteRun": false
+  },
+  "previousAttempts": [
+    "Chromium setup initially had the news dialog above the shop",
+    "First Firefox and WebKit launches used a different local browser directory",
+    "The initial radius fit overlapped the avatar more than the previous 2% limit; the final fit also passed the previous test",
+    "Two concurrent Chromium navigations timed out; both final tests passed sequentially",
+    "The first backup launch waited only 30 seconds for graceful shutdown; the job guard rejected it before writing and the backup started after the service stopped completely",
+    "The 176416539-byte archive exceeded the initial 160 MiB reservation. The server had more than 9 GiB free. Reserved 176 MiB and verified the full archive on both machines.",
+    "At the first frozen comparison the calendar state matched at revision 5978075 while PostgreSQL still held 5978074. The service resumed behind maintenance. The next check required matching journal and PostgreSQL revisions both before and immediately after pausing."
+  ],
+  "persistence": {
+    "profiles": 1732,
+    "clans": 138,
+    "revisionBefore": 5978074,
+    "revisionAfter": 5978076,
+    "allOtherFieldsEqual": true,
+    "calendarReplayExact": true,
+    "postgresqlHealthy": true,
+    "archiveSha256": "d70c2061598df0b5c4d72e05500abc29c83204987b2569a25fe8354d8af432cb"
+  },
+  "review": {
+    "port": 3104,
+    "pid": 22560
+  },
+  "production": {
+    "gamePid": 1057882,
+    "adminPid": 1163
+  },
+  "performanceBenchmarkRun": false
+}
