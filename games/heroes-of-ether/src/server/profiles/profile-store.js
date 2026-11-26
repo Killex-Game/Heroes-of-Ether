@@ -1100,12 +1100,14 @@ class ProfileStore {
     this.refreshCompetition();
     const p = this.byId(id);
     if (!p) throw new BoosterError("Игрок не найден.", 404);
+    const ban = require("../admin/moderation").activeBan(p, this.now());
     const leaders = Object.values(this.data.profiles).sort(
       (a, b) => b.greatness - a.greatness || a.id.localeCompare(b.id),
     );
     return {
       id: p.id,
       ...this.identity(p),
+      ban: ban ? { until: ban.until } : null,
       greatness: p.greatness,
       titleMedals: publicTitleMedals(p),
       rank: leaders.findIndex((row) => row.id === id) + 1,

@@ -22,10 +22,11 @@
   function drawSphere(ctx, { x, y, radius }) {
     const img = sphere();
     if (!img?.complete || !img.naturalWidth) return;
-    // This thin texture has wider transparent margins than the other shields:
-    // its opaque band occupies 70–75% of the canvas radius.
-    const edge = radius * 1.46;
-    ctx.drawImage(img, x - edge, y - edge, edge * 2, edge * 2);
+    // The painted ring is not centred on the 1024px canvas. Fit its measured
+    // inner edge to the frame, rather than scaling the transparent canvas.
+    // Leave 1.5 source pixels of clearance for the irregular inner highlights.
+    const fit = radius / 357.5;
+    ctx.drawImage(img, x - 506.68 * fit, y - 514.39 * fit, 1024 * fit, 1024 * fit);
   }
   class Renderer {
     constructor() {

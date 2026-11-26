@@ -121,22 +121,6 @@
   const accountLabel = document.createElement("span");
   accountLabel.textContent = "Статусы";
   account.replaceChildren(icons, accountLabel);
-  const bonusDot = document.createElement("span");
-  bonusDot.className = "menu-notification-dot";
-  bonusDot.hidden = true;
-  bonusDot.setAttribute("aria-label", "Доступен ежедневный бонус статуса");
-  account.classList.add("menu-notification-target");
-  account.append(bonusDot);
-  document.addEventListener("killex:profile", ({ detail }) => {
-    const a = detail.account;
-    bonusDot.hidden = !["vip", "premium"].some(
-      (kind) => a?.[kind] && Object.values(a.currencyBonuses?.[kind] || {}).some((b) => !b.claimed),
-    );
-    account.setAttribute(
-      "aria-label",
-      bonusDot.hidden ? "Статусы: VIP и Premium" : "Статусы: доступен ежедневный бонус",
-    );
-  });
   account.setAttribute("aria-label", "Статусы: VIP и Premium");
   account.title = "Статусы: VIP и Premium";
 })();

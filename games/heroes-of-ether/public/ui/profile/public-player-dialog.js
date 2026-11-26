@@ -147,6 +147,7 @@
       clearTimeout(this.giftExpiryTimer);
       const now = Date.now(),
         nextExpiry = Math.min(
+          ...(p.ban?.until > now ? [p.ban.until] : []),
           ...(p.social?.effects || []).map((e) => e.until).filter((expiry) => expiry > now),
           ...(p.social?.gifts || []).flatMap((gift) =>
               [gift.nextExpiry, ...gift.history.map((received) => received.expiresAt)].filter((expiry) => expiry > now),
@@ -175,6 +176,8 @@
         hero.append(glow);
       }
       hero.append(avatar(p, "public-player-avatar", { showPresence: false }));
+      if (p.ban && (p.ban.until === null || p.ban.until > now))
+        hero.append(el("span", "public-player-ban", "Забанен"));
       if (ownProfile?.id === p.id) {
         const edit = el("button", "public-background-edit");
         edit.type = "button";
