@@ -36,13 +36,29 @@ test("Manual launch at the wall keeps both circles inside and resolves their ove
   assert(a.x >= arena.bodyBounds(a).minX);
   assert(Math.hypot(a.x-b.x,a.y-b.y) >= a.radius+b.radius-0.01);
 });
-test("Camera frames the source during launch and eases back to the group, keeping full zoom bounds", () => {
-  const original = {localId:"p", x:100, y:100, mass:50, radius:24};
-  const child = {localId:"c", birth:{parentId:"p"}, x:240, y:100, mass:50, radius:24};
-  const frame = age => view.groupFrame({parts:[original,{...child, launchAge:age}]});
-  assert.equal(frame(150).x,100);
-  assert(frame(425).x > 100 && frame(425).x < 170);
-  assert.equal(frame(650).x,170);
-  assert.equal(frame(150).width,frame(650).width);
-  assert.equal(view.groupFrame({parts:[original,{...child,birth:{},launchAge:1}]}).x,170);
+test("Camera follows the displayed split immediately and protects both ends of a vertical chain", () => {
+  for (const [width,height] of [[1888,944],[844,390],[390,844]]) for (const fps of [30,60,144]) {
+    const camera = {x:1000, y:1000, scale:1};
+    const original = {id:"p", x:1000, y:1000, radius:60, mass:500};
+    const minimum = view.minimumScale(width,height,{width:6120,height:4080});
+    for (let frame=0; frame<=fps*2; frame++) {
+      const time=frame/fps;
+      const child = {...original, id:"c", y:1000+Math.min(750,time*1200),
+        birth:time<1 ? {parentId:"p"} : undefined, launchAge:time*1000};
+      const parts = [original,child];
+      const group = view.groupFrame({parts});
+      assert.equal(group.y,(original.y+child.y)/2);
+      view.followCenter(camera,group,1/fps,false,parts);
+      view.updateZoom(camera,1,1/fps,minimum,group,width,height);
+      if (frame===1) assert(camera.y>original.y);
+      if (time>=0.1 && time<0.65) assert(Math.abs(group.y-camera.y)<45);
+      for (const part of parts)
+        assert((Math.abs(part.y-camera.y)+part.radius)*camera.scale <= height*0.36+1e-8);
+      assert(camera.scale>=minimum);
+    }
+    const spreadScale=camera.scale;
+    view.updateZoom(camera,1,1/fps,minimum,view.groupFrame({parts:[original]}),width,height);
+    assert.equal(camera.framingSplit,false);
+    assert(camera.scale>=spreadScale && Math.log(camera.scale/spreadScale)<=0.18/fps+1e-8);
+  }
 });

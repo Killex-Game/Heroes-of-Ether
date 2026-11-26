@@ -38,30 +38,19 @@
     const relevant = parts.filter((p) => (p.mass || 0) >= mass * 0.03);
     const group = relevant.length ? relevant : parts;
     let left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
-    let focusLeft = Infinity, focusRight = -Infinity, focusTop = Infinity, focusBottom = -Infinity;
+    let launching = false;
     for (const p of group) {
       left = Math.min(left, p.x - p.radius);
       right = Math.max(right, p.x + p.radius);
       top = Math.min(top, p.y - p.radius);
       bottom = Math.max(bottom, p.y + p.radius);
-      let x = p.x, y = p.y;
-      if (p.launchAge < 650 && p.birth?.parentId) {
-        const parent = parts.find(part => part.localId === p.birth.parentId);
-        if (parent) {
-          const t = clamp((p.launchAge - 200) / 450, 0, 1);
-          const weight = t * t * (3 - 2 * t);
-          x = parent.x + (x - parent.x) * weight;
-          y = parent.y + (y - parent.y) * weight;
-        }
-      }
-      focusLeft = Math.min(focusLeft, x - p.radius);
-      focusRight = Math.max(focusRight, x + p.radius);
-      focusTop = Math.min(focusTop, y - p.radius);
-      focusBottom = Math.max(focusBottom, y + p.radius);
+      if (p.birth?.parentId && p.launchAge >= 0 && p.launchAge < 650) launching = true;
     }
     return {
-      x: (focusLeft + focusRight) / 2,
-      y: (focusTop + focusBottom) / 2,
+      x: (left + right) / 2,
+      y: (top + bottom) / 2,
+      launching,
+      count: group.length,
       width: right - left,
       height: bottom - top,
       area: parts.reduce((sum, p) => sum + Math.PI * p.radius * p.radius, 0),
@@ -144,7 +133,7 @@
     camera.fastFollowMs = forcedMovement
       ? 250
       : Math.max(0, (camera.fastFollowMs || 0) - dt * 1000);
-    const fast = camera.fastFollowMs > 0;
+    const fast = camera.fastFollowMs > 0 || target?.launching;
     const time = Math.max(0, dt),
       omega = fast ? 28 : 8 + 16 * clamp(screenSpeed / 500, 0, 1),
       decay = Math.exp(-omega * time);
@@ -271,7 +260,7 @@
       displayed.radiusVelocity = 0;
     }
   }
-  function updateZoom(camera, target, dt, minimum = 0) {
+  function updateZoom(camera, target, dt, minimum = 0, group, width, height, bottomInset = 0) {
     const previous = camera.zoomTarget > 0 ? camera.zoomTarget : camera.scale;
     // Сначала плавно меняется сама цель: начисление большого бустера не
     // включает максимальную скорость отдаления одним кадром.
@@ -279,6 +268,18 @@
       Math.log(target) + (Math.log(previous) - Math.log(target)) * Math.exp(-5 * Math.max(0, dt)),
     );
     camera.scale = approachScale(camera.scale, camera.zoomTarget, dt, minimum);
+    // Follow the interpolated outer circles through a manual split. Keep room for
+    // the HUD even when the camera centre is still catching up. Zoom back normally.
+    if (group?.launching) camera.framingSplit = true;
+    if (!group || group.count < 2) camera.framingSplit = false;
+    if (camera.framingSplit && width > 0 && height > 0) {
+      const spanX = group.width + 2 * Math.abs(group.x - camera.x);
+      const spanY = group.height + 2 * Math.abs(group.y - camera.y);
+      const visibleHeight = Math.max(1, Math.min(height * 0.72, height - 2 * (bottomInset + 8)));
+      const fit = Math.max(minimum, Math.min(width * 0.86 / spanX, visibleHeight / spanY));
+      camera.scale = Math.min(camera.scale, fit);
+      camera.zoomTarget = Math.min(camera.zoomTarget, fit);
+    }
   }
   function nameSize(radius, scale) {
     return clamp(2 * Math.sqrt(Math.max(0, radius * scale)), 6, 26);

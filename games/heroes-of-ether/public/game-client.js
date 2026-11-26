@@ -147,6 +147,7 @@
     );
   }
   let width = innerWidth;
+  let boosterInset = 0;
   let height = innerHeight;
   let pixelRatio = 1;
   let camera = { x: 1200, y: 800, scale: 1 };
@@ -919,6 +920,7 @@
           camera.vx = camera.vy = 0;
           camera.scale = desiredScale(p);
           camera.zoomTarget = camera.scale;
+          camera.framingSplit = false;
         }
       } else {
         previous.lastMass = p.mass;
@@ -1567,6 +1569,10 @@
   });
 
   // Отрисовка арены; никакой клиентской симуляции массы.
+  function measureBoosterInset() {
+    const bar = phase === "arena" && boosterUI?.quick.getBoundingClientRect();
+    boosterInset = bar?.height > 0 ? Math.max(0, height - bar.top) : 0;
+  }
   function resizeCanvas() {
     // При обрыве сохраняем последний кадр и при повороте экрана.
     if (phase === "disconnected") return;
@@ -1574,6 +1580,7 @@
       previousHeight = height;
     width = innerWidth;
     height = innerHeight;
+    measureBoosterInset();
     pixelRatio = Math.min(devicePixelRatio || 1, 2);
     ui.canvas.width = Math.round(width * pixelRatio);
     ui.canvas.height = Math.round(height * pixelRatio);
@@ -1829,7 +1836,6 @@
       if (player.id === myId && !body.retiring)
         ownParts.push({
           id: key,
-          localId: part.id,
           birth: part.birth,
           launchAge: part.birth ? bodyMotion.cursor - part.birth.tick * bodyMotion.tickMs : Infinity,
           x: displayed.x,
@@ -1860,6 +1866,7 @@
         view.desiredScale(subject, width, height, world, group),
         dt,
         view.minimumScale(width, height, world),
+        group, width, height, boosterInset,
       );
     }
     const stone = me?.effects?.find(effect => effect.id === 'stone');
@@ -2271,6 +2278,7 @@
     updateProfile: (profile) => boosterUI.updateProfile(profile),
   });
   addEventListener("resize", resizeCanvas);
+  if (boosterUI && window.ResizeObserver) new ResizeObserver(measureBoosterInset).observe(boosterUI.quick);
   applyMassPreference();
   syncFullscreen();
   refreshJoinControls();

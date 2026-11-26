@@ -1,0 +1,52 @@
+{
+  "installedAt": "2026-11-26T16:00:27.263Z",
+  "release": "20261126-mobile-navigation",
+  "clientRevision": "20261126-split-camera",
+  "gamePid": 1075804,
+  "serverRestart": false,
+  "changedStaticFiles": [
+    "public/shared/arena-camera-and-layout.js",
+    "public/game-client.js",
+    "public/index.html"
+  ],
+  "backupSha256": "8fd3d7bcf2f50b4da48d163e2e075f427a4dd1b60065f7f2e214ee6e49e0c230",
+  "verification": {
+    "windowsUnit": 41,
+    "linuxUnit": 41,
+    "publicAndLocalGameEntry": true,
+    "matchedStaticHashes": 6,
+    "scenario": "Two manual downward splits, 9722 initial mass. Edges measured in CSS pixels during playback, relative to viewport and actual booster bar. Browser test used isolated profiles.",
+    "browser": [
+      {
+        "engine": "Chromium",
+        "viewport": [
+          1888,
+          944
+        ],
+        "beforeMinBottom": -124,
+        "afterMinBottom": 132,
+        "afterMinBoosterClearance": 36
+      },
+      {
+        "engine": "WebKit",
+        "viewport": [
+          844,
+          390
+        ],
+        "afterMinBoosterClearance": 8
+      },
+      {
+        "engine": "Firefox",
+        "viewport": [
+          390,
+          844
+        ],
+        "afterMinBoosterClearance": 8
+      }
+    ],
+    "notes": [
+      "Early fixture attempts encountered randomly placed hazards or failed to intercept versioned baseline scripts. Final comparison used the previous Git revision, explicit match on URL pathname, and a field clear of hazards.",
+      "Current world view limit still applies. These runs measure camera framing, not throughput or device FPS."
+    ]
+  }
+}
