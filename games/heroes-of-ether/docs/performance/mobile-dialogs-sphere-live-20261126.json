@@ -1,0 +1,97 @@
+{
+  "sourceMobile": "ad38676a9fa4749ede9261aa4e9a3ad7c33d20e8",
+  "sourceSphere": "8dbc985c947512421bcba3f7b60f236b9b5396a4",
+  "installedUtc": "2026-11-26T13:29:11.541Z",
+  "staticFilesVerified": [
+    "index.html",
+    "styles/layout/mobile-game-layout.css",
+    "game-client.js",
+    "arena/shield-renderer.js"
+  ],
+  "gamePID": 1057882,
+  "restart": false,
+  "worldWrites": false,
+  "backupsSHA256": [
+    "ae7e4f7bd21601c84c144f212c05b862449d1bba7b29020d66553919518737cb",
+    "196bdc39895063c6ad82615ae920ce9f0f5e50086414db96e63acbb277189a51"
+  ],
+  "mobile": {
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "sizes": [
+      "320x568",
+      "390x844",
+      "568x320",
+      "667x375",
+      "844x390",
+      "1280x597"
+    ],
+    "dialogs": 7,
+    "checks": 126,
+    "actualPhone": false,
+    "legacySuites": "Four historical standalone suites failed. Two use the same responsive suite; onboarding intercepted shop/settings taps. Interface menu expects 12, actual 13."
+  },
+  "sphere": {
+    "texture": "sphere-static-v2.webp",
+    "paintedCenter": [
+      506.68,
+      514.39
+    ],
+    "paintedMidRadius": 372.5,
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "comparisons": [
+      "golden_shield",
+      "colorful_shield",
+      "clan_shield",
+      "premium"
+    ],
+    "radii": [
+      32,
+      100,
+      240
+    ],
+    "framedAndPlain": true
+  },
+  "live": {
+    "utcStart": "2026-11-26T13:23:07.341Z",
+    "utcEnd": "2026-11-26T13:24:07.423Z",
+    "samples": 7,
+    "online": [
+      12,
+      14
+    ],
+    "rooms": 7,
+    "entities": [
+      51,
+      54
+    ],
+    "parts": [
+      182,
+      226
+    ],
+    "tickWorkP95Ms": [
+      41.45,
+      44.67
+    ],
+    "maxTickIntervalMs": 245.37,
+    "pgConnectedAll": true,
+    "actionQueueMax": 0,
+    "profileMs": 31545.429,
+    "inclusiveWallPercent": {
+      "stepRoom": 20.11,
+      "broadcast": 10.56,
+      "writeArenaBatches": 10.41
+    },
+    "selfWallPercent": {
+      "boosterEffectsTick": 5.04
+    },
+    "limitations": "Overlapping 60-second windows. Profile sampled separately. Not a causal attribution of an individual stall or a capacity test."
+  }
+}
