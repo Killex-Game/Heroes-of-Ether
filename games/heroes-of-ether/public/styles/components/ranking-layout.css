@@ -106,12 +106,10 @@ body #topsDialog.interface-window[open] {
   --rank-edge: color-mix(in srgb, var(--prism-edge, #c9a15b) 64%, transparent);
   --rank-wash: color-mix(in srgb, var(--prism-mid, #eee4cd) 52%, transparent);
   display: grid; width: min(1400px, 94vw); height: min(900px, 94dvh);
-  grid-template: "head head" auto "rail page" minmax(0,1fr) "foot foot" auto / var(--rail-width) minmax(0,1fr);
+  grid-template: "head head" auto "rail page" minmax(0,1fr) / var(--rail-width) minmax(0,1fr);
   gap: 8px 14px; padding: 10px; overflow: hidden;
 }
-body #topsDialog.interface-window[open]:has(.interface-footer .clan-status:empty) {
-  grid-template-areas:"head head" "rail page";grid-template-rows:auto minmax(0,1fr);
-}
+
 #topsDialog .interface-header {grid-area: head}
 #topsDialog .clan-heading {display:flex; align-items:center; gap:9px}
 #topsDialog .clan-heading .ranking-title-icon {width:32px;height:32px;object-fit:contain}
@@ -119,8 +117,7 @@ body #topsDialog.interface-window[open]:has(.interface-footer .clan-status:empty
 #topsDialog .interface-toolbar {grid-area:rail;display:flex;min-height:0;min-width:0;align-items:stretch;overflow:auto;
   padding:8px;border:1px solid var(--rank-edge);border-radius:10px;background:var(--rank-wash);scrollbar-width:thin}
 #topsDialog .interface-content {grid-area:page;min-height:0;min-width:0;overflow:hidden;padding:0}
-#topsDialog .interface-footer {grid-area:foot}
-#topsDialog .interface-footer:has(.clan-status:empty) {display:none}
+#topsDialog .interface-footer {display:none}
 #topsDialog .interface-page, #topsDialog .tops-content {min-height:0;width:100%;height:100%;overflow:hidden}
 #topsDialog .tops-nav, #topsDialog .tops-nav .tops-sort {display:flex;flex-direction:column;align-items:stretch;
   justify-content:flex-start;flex-wrap:nowrap;gap:4px;min-width:0;margin:0;width:100%;height:auto}

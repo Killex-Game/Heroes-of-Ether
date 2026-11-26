@@ -40,9 +40,7 @@
       this.nav = el("nav", "clan-nav tops-nav");
       this.nav.setAttribute("aria-label", "Разделы топов");
       this.content = el("div", "tops-content");
-      this.status = el("p", "clan-status");
-      this.status.setAttribute("role", "status");
-      this.dialog.append(heading, this.nav, this.content, this.status);
+      this.dialog.append(heading, this.nav, this.content);
       document.body.append(this.dialog);
       document
         .getElementById("rankingsButton")
@@ -75,19 +73,21 @@
         this.content.replaceChildren(); this.nav.replaceChildren();
       }
       this.section = section;
-      this.status.textContent = "";
       window.KillexWindows.open(this.dialog);
       if (!fresh) this.render();
       if (loaded && !fresh) return;
       this.opening = true;
       this.lock();
-      this.status.textContent = "";
+      const retry = () => {
+        if (this.dialog.open && visit === this.visit && !this.content.querySelector(".ranking-board"))
+          this.content.replaceChildren(button("Попробовать снова", () => this.open(section), "sf-button"));
+      };
       try {
         await this.owner.game.beforeOpen();
         if (!this.dialog.open || visit !== this.visit) return;
-        await this.owner.load();
-      } catch (error) {
-        this.status.textContent = error.message || "Не удалось загрузить топы.";
+        if (!(await this.owner.load())) retry();
+      } catch {
+        retry();
       } finally {
         this.opening = false;
         this.lock();
@@ -411,12 +411,9 @@
         this.pager(this.playerPage, data.playerPages, "игроков", (page) => {
           this.playerPage = page;
         }),
-        el(
-          "p",
-          "clan-my-rank",
-          data.myRank ? "Твоё место: " + number(data.myRank) + " из " + number(data.playerTotal) : "У тебя пока нет рекорда.",
-        ),
       );
+      if (data.myRank) panel.append(el("p", "clan-my-rank",
+        "Твоё место: " + number(data.myRank) + " из " + number(data.playerTotal)));
       this.content.append(panel);
     }
     event(data) {

@@ -163,7 +163,6 @@ const rects = (page) =>
         for (const selector of [
           "#boosterDialog .booster-message",
           "#accountDialog .account-message",
-          "#topsDialog .clan-status",
           ".wardrobe-status",
           ".personal-status",
           ".chest-modal-message",

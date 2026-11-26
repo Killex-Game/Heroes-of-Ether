@@ -122,10 +122,9 @@
       return this.preview.open(id);
     }
     message(text = "Оформление клана обновлено.", error = false) {
-      const status =
-        window.KillexWindows.top() === this.tops.dialog ? this.tops.status : this.status;
-      status.textContent = error ? text : "";
-      status.dataset.error = String(error);
+      if (window.KillexWindows.top() === this.tops.dialog) return;
+      this.status.textContent = error ? text : "";
+      this.status.dataset.error = String(error);
     }
     async open() {
       if (!this.game.isLobby() || this.busy) return;

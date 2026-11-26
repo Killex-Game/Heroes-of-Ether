@@ -25,6 +25,8 @@ module.exports = async function verifyNavigation(page, directory, engine) {
   await page.setViewportSize({width:1366,height:768});
   await screenshot("desktop-clans");
   assert.equal(await rows.count(),10);
+  assert.equal(await tops.locator(".clan-status,[role=status]").count(),0);
+  assert(!await tops.locator(".interface-footer").isVisible());
   await tops.getByRole("button",{name:"Казна",exact:true}).click();
   await tops.locator(".ranking-columns").getByText("Казна").waitFor();
   await tops.getByRole("button",{name:"Топ игроков",exact:true}).click();
@@ -38,6 +40,17 @@ module.exports = async function verifyNavigation(page, directory, engine) {
   await screenshot("desktop-records");
   await tops.getByRole("button",{name:"Топ исполнителей",exact:true}).click();
   await tops.locator(".event-ranking-prizes").waitFor();
+  await tops.locator(".booster-close").click();
+  const failedRead = route => route.fulfill({status:503,json:{error:"Внутренняя ошибка"}});
+  await page.route("**/api/clans?*",failedRead);
+  await page.locator("#rankingsButton").click();
+  const retry = tops.getByRole("button",{name:"Попробовать снова"});
+  await retry.waitFor();
+  assert.equal(await tops.locator(".clan-status,[role=status]").count(),0);
+  assert(!await tops.getByText("Внутренняя ошибка").count());
+  await page.unroute("**/api/clans?*",failedRead);
+  await retry.click();
+  await tops.getByRole("button",{name:"Рекорды",exact:true}).waitFor();
   await tops.locator(".booster-close").click();
   await page.setViewportSize({width:844,height:320});
   await page.locator("#newsSection").tap();
