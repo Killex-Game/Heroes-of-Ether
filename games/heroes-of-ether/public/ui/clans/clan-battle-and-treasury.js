@@ -506,7 +506,7 @@
         return root;
       }
       const z = state.group.zones;
-      const rows = el("ol", "clan-league-table");
+      const rows = el("ol", "clan-league-table leaderboard");
       const zones = [
         {
           id: "promote",
@@ -541,7 +541,8 @@
           rows.append(heading);
           previousZone = zone.id;
         }
-        const li = el("li", "clan-league-row");
+        const li = el("li", "clan-league-row leaderboard-row");
+        li.dataset.place = row.place;
         li.dataset.outcome = row.outcome;
         li.dataset.zone = zone?.id || "stay";
         li.dataset.mine = String(row.id === clan.id);

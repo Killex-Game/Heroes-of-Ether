@@ -19,6 +19,11 @@ async function test() {
   player.greatness = 835;
   Object.assign(player.progress, {maxMass: 2630, humanAbsorptions: 18});
   player.progress.xp = xpForLevel(16);
+  for (const [i,name] of ["Лира","Север","Астер","Вега","Тея","Эхо","Орион","Мира","Янтарь","Искра"].entries()) {
+    const session = fixture.store.open(), challenger = fixture.store.find(session.token);
+    challenger.name = name; challenger.greatness = 1400 - 110*i;
+    Object.assign(challenger.progress,{maxMass:3900-200*i,humanAbsorptions:25-i});
+  }
   Object.assign(player.inventory, { freeze: 16, hook: 6, candy: 19 });
   player.loginReward = { date: benefits.loginRewardDay(fixture.now()), day: 1 };
   const game = createGameServer({ profiles: fixture.store, events: fixture.manager, wallNow: fixture.now, autoTick: true, testBots: { enabled: false } });

@@ -12,6 +12,16 @@ module.exports = async function verifyNavigation(page, directory, engine) {
   await tops.getByRole("button",{name:"Топ кланов",exact:true}).click();
   const rows = tops.locator(".clan-ranking-row");
   await rows.first().waitFor();
+  const assertRowStyle = async () => {
+    const row = tops.locator(".leaderboard > .leaderboard-row").first();
+    await row.waitFor();
+    const style = await row.evaluate(node => {
+      const css = getComputedStyle(node), table = getComputedStyle(node.parentElement);
+      return [css.borderRadius, css.backgroundImage, css.borderTopWidth, table.rowGap, table.borderRadius];
+    });
+    assert.deepEqual(style,["0px","none","0px","0px","9px"]);
+  };
+  await assertRowStyle();
   const sidebar = await box(tops.locator(".tops-nav")), table = await box(tops.locator(".ranking-clans-table"));
   assert(sidebar.x+sidebar.width <= table.x+1 && table.width > 3*sidebar.width,"desktop sidebar proportion");
   const last = await box(rows.last());
@@ -30,13 +40,17 @@ module.exports = async function verifyNavigation(page, directory, engine) {
   await tops.getByRole("button",{name:"Казна",exact:true}).click();
   await tops.locator(".ranking-columns").getByText("Казна").waitFor();
   await tops.getByRole("button",{name:"Топ игроков",exact:true}).click();
+  await assertRowStyle();
+  await screenshot("desktop-players");
   await tops.getByRole("button",{name:"Киллы за день",exact:true}).click();
   await tops.locator(".daily-ranking-prizes").waitFor();
+  await assertRowStyle();
   await tops.getByRole("button",{name:"Рекорды",exact:true}).click();
   await tops.getByRole("button",{name:"Масса",exact:true}).waitFor();
   await tops.locator(".clan-ranking-player .ranking-score").filter({hasText:/2\s?630/}).first().waitFor();
   await tops.getByRole("button",{name:"Поглощения игроков",exact:true}).click();
   await tops.locator(".clan-ranking-player .ranking-score").filter({hasText:/^18$/}).first().waitFor();
+  await assertRowStyle();
   await screenshot("desktop-records");
   await tops.getByRole("button",{name:"Топ исполнителей",exact:true}).click();
   await tops.locator(".event-ranking-prizes").waitFor();

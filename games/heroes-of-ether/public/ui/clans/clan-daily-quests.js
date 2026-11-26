@@ -85,7 +85,7 @@
     owner.questRankingCleanup?.();
     const root=el('section','clan-panel clan-daily-ranking'),head=el('div','clan-quest-ranking-heading'),help=el('button','sf-button sf-tertiary','О заданиях');help.type='button';help.onclick=()=>info(state);head.append(help);root.append(el('h3','','Лидеры по заданиям'),head);
     if(state.calendarSeason)head.append(el('span','clan-quest-season-dates',calendar.seasonRange(state.calendarSeason)));
-    const rows=state.dailyRanking||[], list=el('div','clan-daily-ranking-list');
+    const rows=state.dailyRanking||[], list=el('div','clan-daily-ranking-list leaderboard');
     const pageSize=10; let pages=1;
     const controls=el('div','clan-daily-pager'), pageLabel=el('span'), buttons=[];
     for(const [label,step] of [['‹',-1],['›',1]]){
@@ -98,7 +98,8 @@
       owner.questRankingPage=Math.max(1,Math.min(pages,owner.questRankingPage||1));
       owner.questRankingPageSize=pageSize;
       const items=rows.slice((owner.questRankingPage-1)*pageSize,owner.questRankingPage*pageSize).map(r=>{
-        const row=el('button','clan-daily-rank');row.type='button';const tier=calendar.questPrize(r.rank)?.id;if(tier)row.dataset.tier=tier;
+        const row=el('button','clan-daily-rank leaderboard-row');row.type='button';row.dataset.place=r.rank;
+        const tier=calendar.questPrize(r.rank)?.id;if(tier)row.dataset.tier=tier;
         row.setAttribute('aria-label',`Посмотреть клан [${r.prefix}] ${r.name}`);
         row.title=`[${r.prefix}] ${r.name}`;
         row.onclick=()=>owner.openClan(r.id);if(r.id===clan.id)row.classList.add('own');

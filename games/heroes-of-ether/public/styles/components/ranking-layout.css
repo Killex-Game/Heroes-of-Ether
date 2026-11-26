@@ -32,11 +32,7 @@
 }
 #topsDialog .ranking-board .player-account-badge { width: 60%; height: 60%; top: -15%; right: -15%; }
 #topsDialog .ranking-board .player-online-indicator { width: 28%; height: 28%; right: -8%; bottom: -5%; border-width: 1px; }
-#topsDialog .ranking-board button.clan-ranking-self {
-  background: linear-gradient(105deg, #fff0c4, #fff8e8 60%, #e2f1f8);
-  box-shadow: inset 0 0 0 1px #c49a48, inset 4px 0 #bd8a28;
-  border-radius: 9px;
-}
+
 #topsDialog .clan-rank-name.name-vip {
   color: #a75600; font-weight: 750;
   text-shadow: 0 0 5px #ffcc5080;
@@ -157,14 +153,55 @@ body #topsDialog.interface-window[open] {
 #topsDialog .ranking-results .ranking-table {
   grid-area:auto;align-self:stretch;display:grid;min-height:0;min-width:0;height:auto;margin:0;padding:0;
   gap:0;grid-template-rows:repeat(10,minmax(41px,1fr));grid-auto-rows:minmax(41px,max-content);align-content:start;
-  overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;border:1px solid var(--rank-edge);border-radius:9px}
+  overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
 #topsDialog .ranking-results .ranking-table > :is(.clan-ranking-row,.clan-ranking-player) {
-  min-height:0;height:auto;font-size:14px;line-height:1.2;border:0;border-bottom:1px solid var(--rank-edge);border-radius:0;
-  text-align:left;background:transparent;container-type:normal}
-#topsDialog .ranking-results .ranking-table > :nth-child(even) {background-color:var(--rank-wash)}
-#topsDialog .ranking-results .ranking-table > [data-place="1"] {box-shadow:inset 3px 0 #bc892c;background-color:color-mix(in srgb,#e7bb53 18%,transparent)}
-#topsDialog .ranking-results .ranking-table > .clan-ranking-self {box-shadow:inset 3px 0 var(--prism-strong,#315f7c);background-color:color-mix(in srgb,var(--prism-strong,#315f7c) 13%,transparent)}
-#topsDialog .ranking-results .ranking-table > :is(.clan-ranking-row,.clan-ranking-player):hover {background-color:color-mix(in srgb,var(--prism-edge,#c9a15b) 20%,transparent)}
+  min-height:0;height:auto;font-size:14px;line-height:1.2;text-align:left;container-type:normal}
+/* All ranking sections share one table surface, including the two clan season standings. */
+body :is(#topsDialog,#clanDialog) .leaderboard {
+  --table-line:color-mix(in srgb,var(--prism-edge,#c9a15b) 48%,transparent);
+  --table-accent:var(--prism-strong,#315f7c);
+  border:1px solid var(--table-line);border-radius:9px;gap:0;
+  background:color-mix(in srgb,var(--prism-light,#fffaf0) 56%,transparent);
+}
+body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row {
+  appearance:none;box-sizing:border-box;margin:0;border:0;border-radius:0;
+  border-block-end:1px solid var(--table-line);outline:none;box-shadow:none;
+  background:transparent;color:inherit;filter:none;text-shadow:none;transform:none;
+}
+body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:last-child {border-block-end:0}
+body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:nth-child(even) {
+  background:color-mix(in srgb,var(--prism-edge,#c9a15b) 7%,transparent);
+}
+body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:is(.clan-ranking-self,.own,[data-mine="true"]) {
+  box-shadow:inset 3px 0 var(--table-accent);
+}
+@media (hover:hover) {
+  body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:hover {
+    background:color-mix(in srgb,var(--prism-edge,#c9a15b) 16%,transparent);
+  }
+}
+body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:focus-visible {
+  outline:2px solid var(--table-accent);outline-offset:-2px;
+}
+body :is(#topsDialog,#clanDialog) .leaderboard-row > :is(.clan-rank,b:first-child):not(.daily-rank-medal) {
+  display:inline-grid;place-items:center;justify-self:center;min-width:22px;height:24px;
+  padding:0 3px;border:1px solid transparent;border-radius:6px;background:transparent;
+  color:inherit;font-variant-numeric:tabular-nums;font-weight:700;
+}
+.leaderboard-row[data-place="1"] {--place-color:#bd8b28}
+.leaderboard-row[data-place="2"] {--place-color:#8c9da6}
+.leaderboard-row[data-place="3"] {--place-color:#b88761}
+body :is(#topsDialog,#clanDialog) .leaderboard-row:is([data-place="1"],[data-place="2"],[data-place="3"]) > :is(.clan-rank,b:first-child):not(.daily-rank-medal) {
+  background:color-mix(in srgb,var(--place-color) 21%,transparent);
+  border-color:color-mix(in srgb,var(--place-color) 64%,transparent);
+}
+body #clanDialog .clan-daily-rank[data-tier] > strong {
+  border-bottom:2px solid var(--tier-color,#be9b56);font-variant-numeric:tabular-nums;
+}
+.clan-daily-rank[data-tier="diamond"] {--tier-color:#65adc8}
+.clan-daily-rank[data-tier="platinum"] {--tier-color:#88afa7}
+.clan-daily-rank[data-tier="silver"] {--tier-color:#9da5aa}
+.clan-daily-rank[data-tier="bronze"] {--tier-color:#b88761}
 #topsDialog .ranking-results .clan-rank {justify-self:start;text-align:center;min-width:22px}
 #topsDialog .ranking-results .ranking-score {white-space:nowrap;justify-self:end;font-variant-numeric:tabular-nums}
 #topsDialog .ranking-results :is(.clan-crest,.player-avatar) {width:32px;height:32px;align-self:center}

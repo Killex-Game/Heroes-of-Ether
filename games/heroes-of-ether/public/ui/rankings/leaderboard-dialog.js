@@ -225,6 +225,7 @@
         panel.prepend(bar);
         const results = el("div", "ranking-results");
         const table = panel.querySelector(".ranking-table");
+        table.classList.add("leaderboard");
         const labels = el("div", "ranking-columns");
         labels.setAttribute("aria-hidden", "true");
         const unit = sort?.querySelector('[aria-pressed="true"]')?.textContent || data.eventRanking?.unit || "";
@@ -362,7 +363,7 @@
       if (!data.playerLeaders.length) rows.append(el("p", "clan-muted",
         records && !this.playerSearch ? "Пока нет рекордов." : "Игроков не найдено."));
       for (const player of data.playerLeaders) {
-        const row = el("button", "clan-ranking-player");
+        const row = el("button", "clan-ranking-player leaderboard-row");
         row.type = "button";
         row.dataset.playerId = player.id;
         row.dataset.place = player.rank;
@@ -477,7 +478,8 @@
       panel.append(prizeList);
       const rows = el("div", "ranking-table ranking-players-table");
       for (const player of board.rows) {
-        const row = el("button", "clan-ranking-player");
+        const row = el("button", "clan-ranking-player leaderboard-row");
+        row.dataset.place = player.rank;
         row.type = "button";
         row.dataset.playerId = player.id;
         row.onclick = () => window.KillexPlayerProfile.open(player.id);
@@ -572,7 +574,8 @@
       const rows = el("div", "ranking-table ranking-clans-table");
       if (!data.clans.length) rows.append(el("p", "clan-muted", "Кланов не найдено."));
       for (const clan of data.clans) {
-        const row = el("article", "clan-ranking-row");
+        const row = el("article", "clan-ranking-row leaderboard-row");
+        row.classList.toggle("clan-ranking-self", clan.id === data.mine?.id);
         row.dataset.clanId = clan.id;
         row.dataset.place = clan.rank;
         const crest = el("img", "clan-crest");
