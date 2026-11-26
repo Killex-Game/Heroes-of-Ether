@@ -7,7 +7,7 @@
     if (text !== undefined) node.textContent = text;
     return node;
   };
-  const button = (text, action, cls = "sf-tab") => {
+  const button = (text, action, cls = "ranking-nav-button") => {
     const node = el("button", cls, text);
     node.type = "button";
     node.onclick = action;
@@ -19,6 +19,7 @@
       this.owner = owner;
       this.section = "players";
       this.playerOrder = "greatness";
+      this.recordOrder = "maxMass";
       this.playerPage = 1;
       this.clanOrder = "greatness";
       this.page = 1;
@@ -32,7 +33,10 @@
       title.id = "topsTitle";
       const close = button("×", () => this.dialog.close(), "booster-close");
       close.setAttribute("aria-label", "Закрыть топы");
-      heading.append(title, close);
+      const mark = el("img", "ranking-title-icon");
+      mark.src = "assets/menu-icons/64/nav_hall.webp";
+      mark.alt = "";
+      heading.append(mark, title, close);
       this.nav = el("nav", "clan-nav tops-nav");
       this.nav.setAttribute("aria-label", "Разделы топов");
       this.content = el("div", "tops-content");
@@ -52,7 +56,7 @@
       return new URLSearchParams({
         search: this.search,
         page: this.page,
-        players: this.playerOrder,
+        players: this.section === "records" ? this.recordOrder : this.playerOrder,
         playerPage: this.playerPage,
         playerSearch: this.playerSearch,
         clans: this.clanOrder,
@@ -64,6 +68,7 @@
       const visit = this.visit = (this.visit || 0) + 1;
       if (fresh) {
         this.playerOrder = this.clanOrder = "greatness";
+        this.recordOrder = "maxMass";
         this.playerPage = this.page = 1;
         this.search = this.playerSearch = "";
         this.owner.invalidate?.();
@@ -164,6 +169,7 @@
       if (!this.dialog.open) return;
       const data = this.owner.getData();
       if (!data?.playerLeaders || data.page !== this.page ||
+        data.playerOrder !== (this.section === "records" ? this.recordOrder : this.playerOrder) ||
         (data.playerSearch || "") !== this.playerSearch ||
         (this.section !== "event" && data.playerPage !== this.playerPage)) return;
       this.page = data.page;
@@ -173,12 +179,23 @@
       for (const [id, label] of [
         ["players", "Топ игроков"],
         ["clans", "Топ кланов"],
+        ["records", "Рекорды"],
         ["event", data.eventRanking?.title || "Топ событий"],
       ]) {
         const control = button(label, () => {
+          if (this.section === id) return;
+          const reload = this.section === "records" || id === "records" || this.playerPage !== 1;
           this.section = id;
-          this.render();
+          this.playerPage = 1;
+          if (reload) {
+            this.playerSearch = "";
+            this.owner.load();
+          } else this.render();
         });
+        const icon = el("img");
+        icon.alt = "";
+        icon.src = `assets/menu-icons/64/nav_${{ players: "hall", clans: "clan", event: "events", records: "achievements" }[id]}.webp`;
+        control.prepend(icon);
         control.setAttribute("aria-pressed", String(this.section === id));
         control.dataset.busy = "true";
         control.dataset.unavailable = String(id === "event" && !data.eventRanking);
@@ -188,15 +205,33 @@
       }
       if (this.section === "clans" && !data.mine) {
         const create = button("Создать клан", () => this.owner.create());
+        create.classList.add("ranking-create");
         create.dataset.busy = "true";
         this.nav.append(create);
       }
       this.content.replaceChildren();
-      if (this.section === "players") this.players(data);
+      if (this.section === "players" || this.section === "records") this.players(data);
       else if (this.section === "event") this.event(data);
       else this.clans(data);
       const panel = this.content.querySelector(".ranking-board");
       if (panel) {
+        const selected = this.nav.querySelector('[aria-pressed="true"]');
+        const sort = panel.querySelector(".tops-sort");
+        if (sort) selected.after(sort);
+        const bar = el("div", "ranking-board-bar");
+        bar.append(el("h3", "", selected.textContent));
+        const search = panel.querySelector(".clan-search");
+        if (search) bar.append(search);
+        panel.prepend(bar);
+        const results = el("div", "ranking-results");
+        const table = panel.querySelector(".ranking-table");
+        const labels = el("div", "ranking-columns");
+        labels.setAttribute("aria-hidden", "true");
+        const unit = sort?.querySelector('[aria-pressed="true"]')?.textContent || data.eventRanking?.unit || "";
+        labels.append(el("span", "", "Место"), el("span", "", this.section === "clans" ? "Клан" : "Игрок"), el("span", "", unit));
+        results.classList.toggle("with-actions", this.section === "clans" && !data.mine);
+        table.before(results);
+        results.append(labels, table);
         const footer = el("footer", "ranking-footer");
         footer.append(
           ...panel.querySelectorAll(
@@ -208,7 +243,9 @@
       this.lock();
     }
     tabs(orders, current, change) {
-      const nav = el("nav", "clan-nav tops-sort");
+      const nav = el("div", "tops-sort");
+      nav.setAttribute("role", "group");
+      nav.setAttribute("aria-label", "Показатель рейтинга");
       for (const [id, label] of orders) {
         const control = button(label, () => {
           change(id);
@@ -245,21 +282,24 @@
     }
     players(data) {
       const panel = el("section", "clan-panel ranking-board");
-      const daily = this.playerOrder.startsWith("daily");
+      const records = this.section === "records";
+      const order = records ? this.recordOrder : this.playerOrder;
+      const daily = order.startsWith("daily");
       panel.classList.toggle("daily-ranking-board", daily);
       this.dialog.classList.toggle("has-daily-ranking", daily);
       panel.append(
         this.tabs(
-          [
+          records ? [["maxMass", "Масса"], ["humanAbsorptions", "Поглощения игроков"]] : [
             ["greatness", "Величие"],
             ["level", "Уровень"],
             ["dailyKills", "Киллы за день"],
             ["dailyTime", "Время за день"],
             ["dailyGreatness", "Величие за день"],
           ],
-          this.playerOrder,
+          order,
           (id) => {
-            this.playerOrder = id;
+            if (records) this.recordOrder = id;
+            else this.playerOrder = id;
             this.playerPage = 1;
           },
         ),
@@ -319,18 +359,20 @@
         panel.append(prizes);
       }
       const rows = el("div", "ranking-table ranking-players-table");
-      if (!data.playerLeaders.length) rows.append(el("p", "clan-muted", "Игроков не найдено."));
+      if (!data.playerLeaders.length) rows.append(el("p", "clan-muted",
+        records && !this.playerSearch ? "Пока нет рекордов." : "Игроков не найдено."));
       for (const player of data.playerLeaders) {
         const row = el("button", "clan-ranking-player");
         row.type = "button";
         row.dataset.playerId = player.id;
+        row.dataset.place = player.rank;
         row.onclick = () => window.KillexPlayerProfile.open(player.id);
         row.setAttribute("aria-label", "Открыть профиль: " + player.name);
         if (player.id === data.profile.id) row.classList.add("clan-ranking-self");
         const name = el("span", "clan-rank-name", window.KillexIdentity.label(player));
         name.classList.toggle("name-premium", !!player.account?.premium);
         name.classList.toggle("name-vip", !player.account?.premium && !!player.account?.vip);
-        const score = daily
+        const score = records ? number(player.recordScore) : daily
           ? this.playerOrder === "dailyTime"
             ? window.KillexIdentity.formatDuration(player.dailyScore)
             : number(player.dailyScore)
@@ -357,7 +399,7 @@
           rankNode.tabIndex = -1;
         }
         scoreNode.append(
-          ["greatness", "dailyGreatness"].includes(this.playerOrder)
+          ["greatness", "dailyGreatness"].includes(order)
             ? window.KillexGreatnessUI.value(score)
             : document.createTextNode(score),
         );
@@ -372,7 +414,7 @@
         el(
           "p",
           "clan-my-rank",
-          "Твоё место: " + number(data.myRank) + " из " + number(data.playerTotal),
+          data.myRank ? "Твоё место: " + number(data.myRank) + " из " + number(data.playerTotal) : "У тебя пока нет рекорда.",
         ),
       );
       this.content.append(panel);
@@ -530,11 +572,12 @@
         this.owner.load();
       };
       panel.append(search);
-      if (!data.clans.length) panel.append(el("p", "", "Кланов не найдено."));
       const rows = el("div", "ranking-table ranking-clans-table");
+      if (!data.clans.length) rows.append(el("p", "clan-muted", "Кланов не найдено."));
       for (const clan of data.clans) {
         const row = el("article", "clan-ranking-row");
         row.dataset.clanId = clan.id;
+        row.dataset.place = clan.rank;
         const crest = el("img", "clan-crest");
         window.KillexClanCrests.paintImage(crest, clan.crest, clan.emblem);
         crest.alt = "";

@@ -17,6 +17,7 @@ async function test() {
   player.personal = { nameSet: true, introPending: false, gender: "male", vkUrl: "" };
   player.level = 16;
   player.greatness = 835;
+  Object.assign(player.progress, {maxMass: 2630, humanAbsorptions: 18});
   player.progress.xp = xpForLevel(16);
   Object.assign(player.inventory, { freeze: 16, hook: 6, candy: 19 });
   player.loginReward = { date: benefits.loginRewardDay(fixture.now()), day: 1 };
@@ -47,7 +48,8 @@ async function test() {
     await page.route("**/api/clans?*", async route => {
       const response = await route.fetch(), data = await response.json();
       data.clans = Array.from({ length: 10 }, (_, i) => ({
-        id: "layout-" + i, rank: i + 1, prefix: "ЛЕС", name: "Стражи изумрудной рощи", emblem: "lion",
+        id: "layout-" + i, rank: i + 1, prefix: ["KILL","X","H4te","Бот","S1","WWW","DiSH","ОРЦ","LSD","Z"][i],
+        name: ["Killex","Хулиганы","Хейт","Бот","Север","Wednesday","DISH","Союз клана","Агарные игры","Зигзаг удачи"][i], emblem: "lion",
         progress: { level: 5 }, greatness: 2959079 - i, treasury: 5000, privacy: i % 2 ? "open" : "closed", count: 5, capacity: 15
       }));
       Object.assign(data, { mine: null, applications: [], page: 1, pages: 2 });
@@ -133,6 +135,9 @@ async function test() {
         await dialog.locator("button.booster-close,button.manya-close,button.personal-close").first().tap();
       }
     }
+    fixture.store.confirmMockPurchase(fixture.user.token, { productId: "account:lite", confirmed: true,
+      requestId: require("node:crypto").randomUUID(), eventId: fixture.store.view(fixture.p()).roulette.lite.eventId });
+    await require("./ranking-navigation-checks.cjs")(page, directory, engine);
     assert.deepEqual(errors, []);
     console.log(engine + ": all seven dialogs checked at six sizes.");
   } finally {

@@ -99,3 +99,118 @@
     overflow: auto;
   }
 }
+
+/* The active ranking owns its filters. The table keeps its own scroll position. */
+body #topsDialog.interface-window[open] {
+  --rail-width: clamp(175px, 17vw, 216px);
+  --rank-edge: color-mix(in srgb, var(--prism-edge, #c9a15b) 64%, transparent);
+  --rank-wash: color-mix(in srgb, var(--prism-mid, #eee4cd) 52%, transparent);
+  display: grid; width: min(1400px, 94vw); height: min(900px, 94dvh);
+  grid-template: "head head" auto "rail page" minmax(0,1fr) "foot foot" auto / var(--rail-width) minmax(0,1fr);
+  gap: 8px 14px; padding: 10px; overflow: hidden;
+}
+body #topsDialog.interface-window[open]:has(.interface-footer .clan-status:empty) {
+  grid-template-areas:"head head" "rail page";grid-template-rows:auto minmax(0,1fr);
+}
+#topsDialog .interface-header {grid-area: head}
+#topsDialog .clan-heading {display:flex; align-items:center; gap:9px}
+#topsDialog .clan-heading .ranking-title-icon {width:32px;height:32px;object-fit:contain}
+#topsDialog .clan-heading .booster-close {margin-left:auto}
+#topsDialog .interface-toolbar {grid-area:rail;display:flex;min-height:0;min-width:0;align-items:stretch;overflow:auto;
+  padding:8px;border:1px solid var(--rank-edge);border-radius:10px;background:var(--rank-wash);scrollbar-width:thin}
+#topsDialog .interface-content {grid-area:page;min-height:0;min-width:0;overflow:hidden;padding:0}
+#topsDialog .interface-footer {grid-area:foot}
+#topsDialog .interface-footer:has(.clan-status:empty) {display:none}
+#topsDialog .interface-page, #topsDialog .tops-content {min-height:0;width:100%;height:100%;overflow:hidden}
+#topsDialog .tops-nav, #topsDialog .tops-nav .tops-sort {display:flex;flex-direction:column;align-items:stretch;
+  justify-content:flex-start;flex-wrap:nowrap;gap:4px;min-width:0;margin:0;width:100%;height:auto}
+#topsDialog .tops-nav {flex:1;min-height:min-content}
+#topsDialog .tops-nav > button, #topsDialog .tops-nav .tops-sort > button {
+  background:transparent;box-shadow:none;border:1px solid transparent;border-radius:7px;
+  display:flex;align-items:center;justify-content:flex-start;text-align:left;font-size:14px;line-height:1.2;
+  white-space:normal;flex:none;width:100%;min-width:0;min-height:40px;height:auto;gap:8px;padding:6px 8px;color:inherit;text-shadow:none}
+#topsDialog .tops-nav > button img {width:26px;height:26px;object-fit:contain}
+#topsDialog .tops-nav > button[aria-pressed="true"] {
+  background:linear-gradient(var(--prism-strong,#315f7c),var(--prism-deep,#20465f));color:white;border-color:var(--prism-edge,#c9a15b)}
+#topsDialog .tops-nav .tops-sort {width:auto;margin:0 4px 5px 18px;border-left:1px solid var(--rank-edge);padding-left:8px}
+#topsDialog .tops-nav .tops-sort > button {font-size:13px;min-height:29px;padding:4px 8px}
+#topsDialog .tops-nav .tops-sort > button[aria-pressed="true"], #topsDialog .tops-nav button:hover:not(:disabled) {
+  background-color:color-mix(in srgb,var(--prism-edge,#c9a15b) 24%,transparent)}
+#topsDialog .tops-nav > button.ranking-create {margin-top:auto;border-color:var(--rank-edge);justify-content:center}
+#topsDialog .ranking-board, #topsDialog .ranking-board:has(.clan-ranking-row) {
+  display:grid;width:100%;max-width:none;height:100%;min-height:0;grid-template:"bar" auto "results" minmax(0,1fr) "footer" auto / minmax(0,1fr);
+  align-items:stretch;gap:6px;padding:0;margin:0;overflow:hidden}
+#topsDialog .ranking-board:is(.daily-ranking-board,.event-ranking-board) {
+  grid-template:"bar bar" auto "meta meta" auto "results prizes" minmax(0,1fr) "footer footer" auto / minmax(0,1fr) minmax(150px,25%)}
+#topsDialog .ranking-board-bar {grid-area:bar;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
+#topsDialog .ranking-board-bar h3 {margin:3px auto 3px 0;color:inherit;font:700 22px/1.2 Georgia,serif}
+#topsDialog .ranking-board .ranking-board-bar .clan-search {display:flex;flex-wrap:wrap;min-width:0;align-items:center;gap:4px;margin:0}
+#topsDialog .clan-search input {width:clamp(110px,16vw,200px);height:34px;min-width:0;max-width:100%;font-size:13px}
+#topsDialog .ranking-board .clan-search button {min-height:34px;height:auto;padding:4px 10px}
+#topsDialog .ranking-board .event-ranking-intro {grid-area:meta;margin:0}
+#topsDialog .ranking-board :is(.daily-ranking-prizes,.event-ranking-prizes) {grid-area:prizes;min-width:0;min-height:0;overflow:auto;align-content:start}
+#topsDialog .ranking-results {grid-area:results;min-width:0;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr);
+ --rank-cols: 44px 34px minmax(0,1fr) minmax(64px,auto)}
+#topsDialog .ranking-results.with-actions {--rank-cols: 44px 34px minmax(0,1fr) 110px 120px}
+#topsDialog .ranking-columns, #topsDialog .ranking-results .ranking-table > :is(.clan-ranking-row,.clan-ranking-player) {
+  display:grid;grid-template-columns:var(--rank-cols);align-items:center;column-gap:8px;padding-inline:10px}
+#topsDialog .ranking-columns {min-height:28px;font-size:12px;color:var(--sf-muted,#655c4e)}
+#topsDialog .ranking-columns > :nth-child(2) {grid-column:2/4}
+#topsDialog .ranking-columns > :nth-child(3) {text-align:right}
+#topsDialog .ranking-results .ranking-table {
+  grid-area:auto;align-self:stretch;display:grid;min-height:0;min-width:0;height:auto;margin:0;padding:0;
+  gap:0;grid-template-rows:repeat(10,minmax(41px,1fr));grid-auto-rows:minmax(41px,max-content);align-content:start;
+  overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;border:1px solid var(--rank-edge);border-radius:9px}
+#topsDialog .ranking-results .ranking-table > :is(.clan-ranking-row,.clan-ranking-player) {
+  min-height:0;height:auto;font-size:14px;line-height:1.2;border:0;border-bottom:1px solid var(--rank-edge);border-radius:0;
+  text-align:left;background:transparent;container-type:normal}
+#topsDialog .ranking-results .ranking-table > :nth-child(even) {background-color:var(--rank-wash)}
+#topsDialog .ranking-results .ranking-table > [data-place="1"] {box-shadow:inset 3px 0 #bc892c;background-color:color-mix(in srgb,#e7bb53 18%,transparent)}
+#topsDialog .ranking-results .ranking-table > .clan-ranking-self {box-shadow:inset 3px 0 var(--prism-strong,#315f7c);background-color:color-mix(in srgb,var(--prism-strong,#315f7c) 13%,transparent)}
+#topsDialog .ranking-results .ranking-table > :is(.clan-ranking-row,.clan-ranking-player):hover {background-color:color-mix(in srgb,var(--prism-edge,#c9a15b) 20%,transparent)}
+#topsDialog .ranking-results .clan-rank {justify-self:start;text-align:center;min-width:22px}
+#topsDialog .ranking-results .ranking-score {white-space:nowrap;justify-self:end;font-variant-numeric:tabular-nums}
+#topsDialog .ranking-results :is(.clan-crest,.player-avatar) {width:32px;height:32px;align-self:center}
+#topsDialog .ranking-results .clan-join {justify-self:end;width:min(100%,114px);min-width:0;min-height:30px;padding:3px 5px;font-size:12px}
+#topsDialog .ranking-board .ranking-footer {grid-area:footer;min-height:36px;height:auto;margin:0}
+#topsDialog .ranking-footer .clan-pager button {width:36px;min-height:32px;height:32px}
+@media (min-width:961px) and (min-height:651px) {
+  #topsDialog .ranking-results .ranking-table > :is(.clan-ranking-row,.clan-ranking-player) {font-size:16px}
+  #topsDialog .ranking-results :is(.clan-crest,.player-avatar) {width:36px;height:36px}
+  #topsDialog .ranking-board-bar input[type="search"] {padding:4px 10px;border:1px solid var(--rank-edge);background:var(--prism-light,#fffaf0);border-radius:7px}
+}
+@media (max-width:960px), (pointer:coarse) and (max-height:650px) {
+  body #topsDialog.interface-window[open] {--rail-width:clamp(96px,19vw,166px);width:100vw;height:100dvh;gap:4px 6px;padding:6px}
+  #topsDialog .interface-toolbar {padding:4px}
+  #topsDialog .tops-nav > button {min-height:34px;gap:4px;padding:3px 4px;font-size:12px}
+  #topsDialog .tops-nav > button img {width:21px;height:21px}
+  #topsDialog .tops-nav .tops-sort {margin:0 0 3px 7px;padding-left:4px}
+  #topsDialog .tops-nav .tops-sort > button {min-height:31px;font-size:12px}
+  #topsDialog .ranking-board-bar h3 {font-size:16px}
+  #topsDialog .ranking-results {--rank-cols:24px 28px minmax(0,1fr) minmax(44px,auto)}
+  #topsDialog .ranking-results.with-actions {--rank-cols:24px 28px minmax(0,1fr) minmax(54px,auto) 90px}
+  #topsDialog .ranking-results .ranking-table {grid-template-rows:none;grid-auto-rows:minmax(44px,max-content)}
+  #topsDialog .ranking-results .ranking-table > :is(.clan-ranking-row,.clan-ranking-player) {font-size:12px;padding:3px 5px;gap:4px}
+  #topsDialog .ranking-results :is(.clan-crest,.player-avatar) {width:26px;height:26px}
+  #topsDialog .ranking-results .clan-join {min-height:36px}
+}
+@media (max-width:760px) {
+  #topsDialog .ranking-results .ranking-clans-table .clan-ranking-row:has(.clan-join) {
+    grid-template:"rank crest name action" auto "rank crest score action" auto / 19px 24px minmax(0,1fr) 80px;gap:1px 4px}
+  #topsDialog .ranking-results .clan-ranking-row .ranking-score {justify-self:start}
+  #topsDialog .ranking-columns {display:none}
+  #topsDialog .ranking-results {grid-template-rows:minmax(0,1fr)}
+}
+@media (max-width:550px) {
+  body #topsDialog.interface-window[open] {--rail-width:clamp(76px,22vw,103px)}
+  #topsDialog .tops-nav > button img {display:none}
+  #topsDialog .ranking-board-bar {align-content:start}
+  #topsDialog .ranking-board-bar .clan-search input {width:0;min-width:70px;flex:1}
+  #topsDialog .ranking-board-bar .clan-search {width:100%}
+  #topsDialog .ranking-results .ranking-clans-table .clan-ranking-row:has(.clan-join) {
+    grid-template:"rank crest name name" auto "score score score action" auto / 19px 24px minmax(0,1fr) 78px;padding:4px}
+  #topsDialog .ranking-board:is(.daily-ranking-board,.event-ranking-board) {
+    grid-template:"bar" auto "meta" auto "results" minmax(160px,1fr) "prizes" auto "footer" auto / minmax(0,1fr);
+    overflow:auto}
+  #topsDialog .ranking-board :is(.daily-ranking-prizes,.event-ranking-prizes) {max-height:110px}
+}

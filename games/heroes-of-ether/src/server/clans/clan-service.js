@@ -446,31 +446,27 @@ class ClanService {
       currentPage = Math.max(1, Math.min(pages, Number.isInteger(Number(page)) ? Number(page) : 1));
     const daily = require("../rankings/daily-leaderboards"),
       at = this.profiles.now();
-    const order = Object.hasOwn(daily.METRICS, playerOrder)
-      ? playerOrder
-      : playerOrder === "level"
-        ? "level"
-        : "greatness";
+    const record = playerOrder === "maxMass" || playerOrder === "humanAbsorptions";
+    const order = record || playerOrder === "level" || Object.hasOwn(daily.METRICS, playerOrder)
+      ? playerOrder : "greatness";
     const metric = daily.METRICS[order];
-    const scores = new Map(
-      Object.values(this.profiles.data.profiles).map((p) => [
-        p.id,
-        metric ? daily.current(p, at)[metric] : order === "level" ? p.level : p.greatness,
-      ]),
-    );
-    const players = Object.values(this.profiles.data.profiles).sort(
+    const players = Object.values(this.profiles.data.profiles);
+    const eligible = record ? players.filter(p => !p.testBot && (p.progress[order] || 0) > 0) : players;
+    const scores = new Map(eligible.map(p => [p.id, record ? p.progress[order] :
+      metric ? daily.current(p, at)[metric] : order === "level" ? p.level : p.greatness]));
+    eligible.sort(
       (a, b) =>
         scores.get(b.id) - scores.get(a.id) ||
-        (!metric && b.progress.xp - a.progress.xp) ||
+        (!metric && !record && b.progress.xp - a.progress.xp) ||
         a.id.localeCompare(b.id),
     );
     const playerQuery = String(playerSearch).trim().slice(0, 64);
     const needle = playerQuery.normalize("NFC").toLocaleLowerCase("ru");
     const matchingRanks = [];
-    if (needle) players.forEach((p, i) => {
+    if (needle) eligible.forEach((p, i) => {
       if (p.name.normalize("NFC").toLocaleLowerCase("ru").includes(needle)) matchingRanks.push(i);
     });
-    const playerMatches = needle ? matchingRanks.length : players.length;
+    const playerMatches = needle ? matchingRanks.length : eligible.length;
     const playerPages = Math.max(1, Math.ceil(playerMatches / 10));
     const currentPlayerPage = Math.max(
       1,
@@ -498,7 +494,7 @@ class ClanService {
       playerPages,
       playerSearch: playerQuery,
       playerMatches,
-      playerTotal: players.length,
+      playerTotal: eligible.length,
       eventRanking: require("../rankings/event-leaderboards").view(
         this.profiles,
         profile,
@@ -506,13 +502,14 @@ class ClanService {
       ),
       dailyResetAt: daily.nextReset(at),
       dailyPrizeTickets: daily.eventDay(this.profiles.events, daily.dayAt(at)),
-      myRank: players.findIndex((p) => p.id === profile.id) + 1,
+      myRank: eligible.findIndex((p) => p.id === profile.id) + 1,
       playerLeaders: (needle ? matchingRanks.slice((currentPlayerPage - 1) * 10, currentPlayerPage * 10)
-        : Array.from({ length: Math.min(10, Math.max(0, players.length - (currentPlayerPage - 1) * 10)) },
+        : Array.from({ length: Math.min(10, Math.max(0, eligible.length - (currentPlayerPage - 1) * 10)) },
           (_, i) => (currentPlayerPage - 1) * 10 + i))
         .map((rank) => ({
-          ...this.player(players[rank]),
-          dailyScore: metric ? scores.get(players[rank].id) : undefined,
+          ...this.player(eligible[rank]),
+          dailyScore: metric ? scores.get(eligible[rank].id) : undefined,
+          recordScore: record ? scores.get(eligible[rank].id) : undefined,
           rank: rank + 1,
         })),
     };

@@ -13,9 +13,15 @@ fs.mkdirSync(output, { recursive: true });
     let time = 5000,
       timer,
       browser;
+    const profiles = new (require("../../src/server/profiles/profile-store").ProfileStore)();
+    const session = profiles.open();
+    const profile = profiles.find(session.token);
+    profile.name = "Проверка деления";
+    profile.loginReward = {date:require("../../src/server/accounts/account-benefits").loginRewardDay(Date.now()), day:1};
+    profile.personal = { nameSet: true, introPending: false, gender: "male", vkUrl: "" };
     const arena = new Arena({ etherCount: 0 }),
       app = createGameServer({
-        arena,
+        arena, profiles,
         autoTick: false,
         now: () => time,
         testBots: { enabled: false },
@@ -30,7 +36,10 @@ fs.mkdirSync(output, { recursive: true });
       const page = await browser.newPage({ viewport: { width: 1366, height: 900 } }),
         errors = [];
       page.on("pageerror", (e) => errors.push(e.message));
-      await page.goto(`http://127.0.0.1:${app.httpServer.address().port}`);
+      const url = `http://127.0.0.1:${app.httpServer.address().port}`;
+      await page.context().addCookies([{name:"sferorumiya_session",value:session.token,url}]);
+      await page.addLocatorHandler(page.locator("#releaseNotesDialog[open]"), d => d.getByRole("button",{name:"Закрыть новости"}).click());
+      await page.goto(url);
       await page.waitForFunction(() => !document.getElementById("playButton").disabled);
       await page.locator("#playButton").click();
       await page.locator("#arena").waitFor({ state: "visible" });
@@ -68,7 +77,8 @@ fs.mkdirSync(output, { recursive: true });
         const food = KillexArenaArt.FoodRenderer.prototype,
           draw = food.drawMoving;
         food.drawMoving = function (ctx, orbs, bounds) {
-          foodDraws.push(orbs.map((o) => ({ id: o.id, x: o.x, y: o.y })));
+          foodDraws.push(orbs.map(item => ({ id: (item.part || item).id,
+            x: (item.position || item).x, y: (item.position || item).y })));
           return draw.call(this, ctx, orbs, bounds);
         };
       });
@@ -104,10 +114,19 @@ fs.mkdirSync(output, { recursive: true });
         Math.hypot(early[0].x - child.birth.x, early[0].y - child.birth.y) < child.radius,
         "появление внутри исходной части",
       );
-      await page.keyboard.press("KeyW");
-      await page.waitForFunction(() => foodDraws.filter((orbs) => orbs.length).length >= 10);
-      const orb = arena.ether.find((o) => o.ejected);
-      assert.ok(orb);
+      // Aim across the split path so the leading cell cannot immediately eat the test pellet.
+      await page.mouse.move(220, 120);
+      await page.keyboard.down("w");
+      let orb;
+      try {
+        await page.waitForFunction(() => foodDraws.some(orbs => orbs.length));
+        const id = await page.evaluate(() => foodDraws.find(orbs => orbs.length)[0].id);
+        orb = { id };
+        await page.waitForFunction(id => new Set(foodDraws.flat().filter(o => o.id === id)
+          .map(o => o.x.toFixed(2))).size > 6, id);
+      } finally {
+        await page.keyboard.up("w");
+      }
       const draws = (await page.evaluate(() => foodDraws)).flat().filter((o) => o.id === orb.id);
       fs.writeFileSync(
         path.join(output, engine + "-debug.json"),

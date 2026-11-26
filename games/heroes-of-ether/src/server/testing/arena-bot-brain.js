@@ -85,7 +85,7 @@ class BotBrain {
           vy: dt > 0 ? clamp((part.y - old.y) / dt, -200, 200) : 0,
         };
         seen.set(key, { x: part.x, y: part.y, at });
-        if (p.clanId && other.clanId === p.clanId) {
+        if (other.clanId && (other.clanId === p.clanId || other.clanPrefix === "KILL")) {
           allies.push(entry);
           continue;
         }
@@ -108,6 +108,7 @@ class BotBrain {
     const ally = allies
       .filter(
         (e) =>
+          e.player.clanId === p.clanId &&
           e.player.protectedUntil <= at &&
           body.mass >= 60 &&
           e.body.mass < body.mass * 0.7 &&
@@ -222,7 +223,8 @@ class BotBrain {
       body.mass < 20 ||
       !canAbsorbSize(half, prey.body) ||
       prey.distance < body.radius - prey.body.radius / 3 + 20 ||
-      prey.distance > half.radius + prey.body.radius + 110
+      prey.distance > half.radius + prey.body.radius + 110 ||
+      !this.clearShot(p, ctx, prey.body, half.radius)
     )
       return;
     // Splitting affects every eligible part. Do not expose any half to a nearby enemy.

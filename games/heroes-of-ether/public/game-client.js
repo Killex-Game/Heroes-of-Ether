@@ -1829,6 +1829,9 @@
       if (player.id === myId && !body.retiring)
         ownParts.push({
           id: key,
+          localId: part.id,
+          birth: part.birth,
+          launchAge: part.birth ? bodyMotion.cursor - part.birth.tick * bodyMotion.tickMs : Infinity,
           x: displayed.x,
           y: displayed.y,
           radius: displayed.radius,

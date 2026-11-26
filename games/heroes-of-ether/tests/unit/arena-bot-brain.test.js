@@ -55,6 +55,29 @@ test("Боты по умолчанию двигаются, но не приме�
   assert.equal(arena.combat.shots.length, 0);
 });
 
+test("Bots bypass KILL members for pursuit, split and aimed boosters without feeding another clan", () => {
+  const { arena, bot, enemy, brain, state } = setup();
+  place(bot, 400, 700);
+  place(enemy, 20, 844);
+  Object.assign(enemy,{clanId:"killex", clanPrefix:"KILL"});
+  let ctx = brain.scan(bot,3000,state);
+  assert.equal(ctx.prey,undefined);
+  assert.equal(ctx.ally,undefined);
+  assert.equal(ctx.enemies.length,0);
+  assert.equal(brain.choice(bot,BOOSTERS.get("hook"),ctx,state,3000,bot),null);
+  const target = arena.addPlayer(0,"[KILL] nickname");
+  place(target,20,855);
+  ctx = brain.scan(bot,3000,state);
+  assert.equal(ctx.prey.player.id,target.id);
+  assert.equal(brain.clearShot(bot,ctx,target),false);
+  brain.split(bot,ctx,state,3000);
+  assert.equal(bot.parts,null);
+  enemy.clanId=null;
+  enemy.clanPrefix="";
+  ctx=brain.scan(bot,3050,state);
+  assert.equal(ctx.prey.player.id,enemy.id);
+});
+
 test("Every life has twenty personal supplies; all 22 personal boosters are available across loadouts", () => {
   const f = setup(),
     seen = new Set();

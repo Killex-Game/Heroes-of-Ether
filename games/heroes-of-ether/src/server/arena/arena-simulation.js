@@ -488,7 +488,7 @@ class Arena {
       const childId = randomUUID();
       p.parts.push({
         id: childId,
-        birth: { tick: this.tick, x: part.x, y: part.y },
+        birth: { tick: this.tick, x: part.x, y: part.y, parentId: part.id },
         splitStartedAt: now,
         mass,
         radius: radiusForMass(mass),
@@ -665,6 +665,25 @@ class Arena {
           if (overlap <= 0) continue;
           const nx = distance > 0.001 ? dx / distance : 1,
             ny = distance > 0.001 ? dy / distance : 0;
+          // Space launches the child. Only a wall can transfer the blocked displacement back to its parent.
+          const child = b.spaceSplitUntil > now && b.birth?.parentId === a.id ? b
+            : a.spaceSplitUntil > now && a.birth?.parentId === b.id ? a : null;
+          if (child) {
+            const parent = child === b ? a : b;
+            const direction = child === b ? 1 : -1;
+            const wantedX = child.x + direction * nx * overlap;
+            const wantedY = child.y + direction * ny * overlap;
+            child.x = wantedX;
+            child.y = wantedY;
+            this.clampPlayer(child);
+            if (child.x !== wantedX || child.y !== wantedY) {
+              parent.x += child.x - wantedX;
+              parent.y += child.y - wantedY;
+              this.clampPlayer(parent);
+            }
+            adjusted = true;
+            continue;
+          }
           // Собирающиеся части не отталкивают выбранный центр сборки.
           const share =
             anchorMain && a.id === p.mainPartId
@@ -1235,7 +1254,10 @@ class Arena {
         p.dead = true;
         p.endedAt = now;
         const last = events.findLast((event) => event.victimId === p.id);
-        if (last) last.victimDefeated = true;
+        if (last) {
+          last.victimDefeated = true;
+          last.humanDefeat = Boolean(p.profileId && !p.isTestBot && !p.isRemnant);
+        }
       } else if (p.parts) {
         p.parts = remaining;
         this.syncParts(p);

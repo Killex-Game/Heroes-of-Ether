@@ -72,6 +72,9 @@
         tab.setAttribute("aria-pressed", String(id === "wheel"));
         this.viewTabs.append(tab);
       }
+      const back = button("← Назад", () => this.selectPanel("wheel"), "roulette-panel-tab roulette-back");
+      back.setAttribute("aria-label", "Вернуться к вращению");
+      this.viewTabs.prepend(back);
       this.mobileTickets = el("small", "roulette-mobile-balance");
       this.viewTabs.append(this.mobileTickets);
       const layout = el("div", "roulette-layout"),
@@ -250,7 +253,7 @@
     }
     selectPanel(id) {
       this.dialog.dataset.panel = id;
-      for (const tab of this.viewTabs.querySelectorAll("button"))
+      for (const tab of this.viewTabs.querySelectorAll("button[data-panel]"))
         tab.setAttribute("aria-pressed", String(tab.dataset.panel === id));
     }
     selectInfo(id) {

@@ -94,6 +94,7 @@ function freshProgress(level = 1) {
     xp: xpForLevel(level),
     kills: 0,
     absorptionKills: 0,
+    humanAbsorptions: 0,
     absorptionVictims: {},
     kingLegacyDegrees: 0,
     absorbedMass: 0,
@@ -154,6 +155,8 @@ function validateProgress(p) {
     throw Error("Повреждён учёт поглощений для достижения Царь.");
   stages.validate(s, ACHIEVEMENTS, (a) => s[a.stat]);
   if (
+    (s.humanAbsorptions !== undefined && !integer(s.humanAbsorptions)) ||
+    (s.session?.humanDefeatSequence !== undefined && !integer(s.session.humanDefeatSequence)) ||
     (s.bestAbsorptions !== undefined && !integer(s.bestAbsorptions)) ||
     (s.session?.realAbsorptions !== undefined && !integer(s.session.realAbsorptions))
   )
@@ -359,6 +362,12 @@ function applyEvent(p, event, at) {
     finishLife(p, event, at);
   } else if (event.type === "absorbed") {
     if (!event.victimProfileId || event.victimProfileId === p.id) return;
+    if (event.humanDefeat === true && event.victimDefeated === true && !p.testBot &&
+        s.session && s.session.id === event.eaterLifeId && integer(event.absorptionSequence) &&
+        event.absorptionSequence > (s.session.humanDefeatSequence || 0)) {
+      s.session.humanDefeatSequence = event.absorptionSequence;
+      s.humanAbsorptions = add(s.humanAbsorptions || 0, 1);
+    }
     // Count final defeats, not individual fragments or passive mass rewards.
     // Keep the established three-minute protection against farming one victim.
     if (event.victimDefeated !== false && !(s.absorptionVictims[event.victimProfileId] > at)) {

@@ -37,13 +37,31 @@
     // включая все 16, участвуют; выбор главного шара на центр не влияет.
     const relevant = parts.filter((p) => (p.mass || 0) >= mass * 0.03);
     const group = relevant.length ? relevant : parts;
-    const left = Math.min(...group.map((p) => p.x - p.radius)),
-      right = Math.max(...group.map((p) => p.x + p.radius));
-    const top = Math.min(...group.map((p) => p.y - p.radius)),
-      bottom = Math.max(...group.map((p) => p.y + p.radius));
+    let left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
+    let focusLeft = Infinity, focusRight = -Infinity, focusTop = Infinity, focusBottom = -Infinity;
+    for (const p of group) {
+      left = Math.min(left, p.x - p.radius);
+      right = Math.max(right, p.x + p.radius);
+      top = Math.min(top, p.y - p.radius);
+      bottom = Math.max(bottom, p.y + p.radius);
+      let x = p.x, y = p.y;
+      if (p.launchAge < 650 && p.birth?.parentId) {
+        const parent = parts.find(part => part.localId === p.birth.parentId);
+        if (parent) {
+          const t = clamp((p.launchAge - 200) / 450, 0, 1);
+          const weight = t * t * (3 - 2 * t);
+          x = parent.x + (x - parent.x) * weight;
+          y = parent.y + (y - parent.y) * weight;
+        }
+      }
+      focusLeft = Math.min(focusLeft, x - p.radius);
+      focusRight = Math.max(focusRight, x + p.radius);
+      focusTop = Math.min(focusTop, y - p.radius);
+      focusBottom = Math.max(focusBottom, y + p.radius);
+    }
     return {
-      x: (left + right) / 2,
-      y: (top + bottom) / 2,
+      x: (focusLeft + focusRight) / 2,
+      y: (focusTop + focusBottom) / 2,
       width: right - left,
       height: bottom - top,
       area: parts.reduce((sum, p) => sum + Math.PI * p.radius * p.radius, 0),
