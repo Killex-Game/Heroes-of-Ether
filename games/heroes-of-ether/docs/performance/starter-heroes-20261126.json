@@ -1,0 +1,768 @@
+{
+  "source": "95329732928ca7954b8c34094014305ae1dbeadb",
+  "catalog": {
+    "free": 10,
+    "retainedSelectionIds": 8,
+    "redrawn": 4,
+    "additional": [
+      "ether-cartographer",
+      "sky-weaver"
+    ],
+    "testedLoadout": 10,
+    "variantsPerSkin": 5
+  },
+  "visualChecks": {
+    "wardrobe": [
+      {
+        "engine": "chromium",
+        "width": 1366,
+        "height": 900,
+        "free": [
+          [
+            150.390625,
+            197.1875
+          ],
+          [
+            136,
+            136
+          ]
+        ],
+        "set": [
+          [
+            150.390625,
+            197.1875
+          ],
+          [
+            136,
+            136
+          ]
+        ]
+      },
+      {
+        "engine": "chromium",
+        "width": 844,
+        "height": 390,
+        "free": [
+          [
+            102,
+            150
+          ],
+          [
+            88,
+            88
+          ]
+        ],
+        "set": [
+          [
+            102,
+            150
+          ],
+          [
+            88,
+            88
+          ]
+        ]
+      },
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "free": [
+          [
+            142,
+            189.1875
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "set": [
+          [
+            142,
+            189.1875
+          ],
+          [
+            128,
+            128
+          ]
+        ]
+      },
+      {
+        "engine": "firefox",
+        "width": 1366,
+        "height": 900,
+        "free": [
+          [
+            150.39999389648438,
+            197.1999969482422
+          ],
+          [
+            136,
+            136
+          ]
+        ],
+        "set": [
+          [
+            150.39999389648438,
+            197.1999969482422
+          ],
+          [
+            136,
+            136
+          ]
+        ]
+      },
+      {
+        "engine": "firefox",
+        "width": 844,
+        "height": 390,
+        "free": [
+          [
+            102,
+            150
+          ],
+          [
+            88,
+            88
+          ]
+        ],
+        "set": [
+          [
+            102,
+            150
+          ],
+          [
+            88,
+            88
+          ]
+        ]
+      },
+      {
+        "engine": "firefox",
+        "width": 390,
+        "height": 844,
+        "free": [
+          [
+            142,
+            189.1999969482422
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "set": [
+          [
+            142,
+            189.1999969482422
+          ],
+          [
+            128,
+            128
+          ]
+        ]
+      },
+      {
+        "engine": "webkit",
+        "width": 1366,
+        "height": 900,
+        "free": [
+          [
+            150.390625,
+            197.1875
+          ],
+          [
+            136,
+            136
+          ]
+        ],
+        "set": [
+          [
+            150.390625,
+            197.1875
+          ],
+          [
+            136,
+            136
+          ]
+        ]
+      },
+      {
+        "engine": "webkit",
+        "width": 844,
+        "height": 390,
+        "free": [
+          [
+            101.984375,
+            150
+          ],
+          [
+            87.984375,
+            87.984375
+          ]
+        ],
+        "set": [
+          [
+            101.984375,
+            150
+          ],
+          [
+            87.984375,
+            87.984375
+          ]
+        ]
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "free": [
+          [
+            142,
+            189.1875
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "set": [
+          [
+            142,
+            189.1875
+          ],
+          [
+            128,
+            128
+          ]
+        ]
+      }
+    ],
+    "shields": [
+      {
+        "engine": "chromium",
+        "radii": 6,
+        "maxCentreShift": 0.5219927471968029
+      },
+      {
+        "engine": "firefox",
+        "radii": 6,
+        "maxCentreShift": 0.5219927471967938
+      },
+      {
+        "engine": "webkit",
+        "radii": 6,
+        "maxCentreShift": 0.48153251762383986
+      }
+    ]
+  },
+  "tests": {
+    "windowsFocused": 70,
+    "linuxFocused": 70
+  },
+  "performance": {
+    "baselineVps": [
+      {
+        "at": "2026-11-26T13:23:07.341Z",
+        "online": {
+          "arena": 6,
+          "lobby": 7,
+          "total": 13
+        },
+        "tick": {
+          "count": 1193,
+          "p50": 16.31,
+          "p95": 41.45,
+          "p99": 58.66,
+          "max": 196.67
+        },
+        "interval": {
+          "count": 1193,
+          "p50": 50.01,
+          "p95": 54.36,
+          "p99": 67.08,
+          "max": 212.74
+        }
+      },
+      {
+        "at": "2026-11-26T13:23:17.358Z",
+        "online": {
+          "arena": 6,
+          "lobby": 6,
+          "total": 12
+        },
+        "tick": {
+          "count": 1192,
+          "p50": 16.46,
+          "p95": 41.45,
+          "p99": 58.38,
+          "max": 196.67
+        },
+        "interval": {
+          "count": 1192,
+          "p50": 50.01,
+          "p95": 54.26,
+          "p99": 68.94,
+          "max": 212.74
+        }
+      },
+      {
+        "at": "2026-11-26T13:23:27.373Z",
+        "online": {
+          "arena": 7,
+          "lobby": 6,
+          "total": 13
+        },
+        "tick": {
+          "count": 1192,
+          "p50": 16.36,
+          "p95": 41.45,
+          "p99": 58.51,
+          "max": 196.67
+        },
+        "interval": {
+          "count": 1192,
+          "p50": 50.01,
+          "p95": 54.92,
+          "p99": 70.08,
+          "max": 212.74
+        }
+      },
+      {
+        "at": "2026-11-26T13:23:37.385Z",
+        "online": {
+          "arena": 7,
+          "lobby": 7,
+          "total": 14
+        },
+        "tick": {
+          "count": 1190,
+          "p50": 16.28,
+          "p95": 41.45,
+          "p99": 58.38,
+          "max": 229.97
+        },
+        "interval": {
+          "count": 1190,
+          "p50": 50.02,
+          "p95": 53.3,
+          "p99": 67.2,
+          "max": 245.37
+        }
+      },
+      {
+        "at": "2026-11-26T13:23:47.401Z",
+        "online": {
+          "arena": 7,
+          "lobby": 7,
+          "total": 14
+        },
+        "tick": {
+          "count": 1189,
+          "p50": 16.42,
+          "p95": 43.28,
+          "p99": 59.33,
+          "max": 229.97
+        },
+        "interval": {
+          "count": 1189,
+          "p50": 50,
+          "p95": 53.51,
+          "p99": 70.54,
+          "max": 245.37
+        }
+      },
+      {
+        "at": "2026-11-26T13:23:57.412Z",
+        "online": {
+          "arena": 7,
+          "lobby": 7,
+          "total": 14
+        },
+        "tick": {
+          "count": 1188,
+          "p50": 16.53,
+          "p95": 44.67,
+          "p99": 59.33,
+          "max": 229.97
+        },
+        "interval": {
+          "count": 1188,
+          "p50": 50.02,
+          "p95": 54.04,
+          "p99": 70.54,
+          "max": 245.37
+        }
+      },
+      {
+        "at": "2026-11-26T13:24:07.423Z",
+        "online": {
+          "arena": 8,
+          "lobby": 6,
+          "total": 14
+        },
+        "tick": {
+          "count": 1194,
+          "p50": 16.53,
+          "p95": 44.28,
+          "p99": 55.45,
+          "max": 229.97
+        },
+        "interval": {
+          "count": 1194,
+          "p50": 50.02,
+          "p95": 54.44,
+          "p99": 66.77,
+          "max": 245.37
+        }
+      }
+    ],
+    "windowsMixed": {
+      "mixed-old": {
+        "players": 30,
+        "lobby": 5,
+        "minutes": 2,
+        "acknowledged": 1825,
+        "recovered": 1825,
+        "duplicates": 0,
+        "types": {
+          "lobby:loadout": 20,
+          "lobby:purchase": 20,
+          "lobby:account-bonus": 20,
+          "lobby:gift": 20,
+          "lobby:gift-read": 20,
+          "lobby:clan-create": 3,
+          "lobby:clan-deposit": 20,
+          "lobby:clan-buy": 20,
+          "lobby:clan-edit": 20,
+          "lobby:roulette-prepare": 20,
+          "lobby:roulette-spin": 20,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 15,
+          "lobby:chat": 15,
+          "lobby:pet-equip": 12,
+          "booster:candy": 54,
+          "booster:clan_shield": 55,
+          "booster:vortex": 54,
+          "booster:glove": 51,
+          "booster:freeze": 53,
+          "booster:donut": 54,
+          "booster:hook": 54,
+          "booster:mine": 51,
+          "booster:stone": 47,
+          "booster:knuckles": 52,
+          "booster:mega_poison": 54,
+          "booster:easter_egg": 56,
+          "booster:colorful_shield": 56,
+          "booster:ice_cream": 55,
+          "booster:awl": 45,
+          "booster:web": 54,
+          "booster:speed": 56,
+          "booster:lock": 49,
+          "booster:fire_sword": 48,
+          "booster:axe": 55,
+          "booster:meat": 56,
+          "booster:golden_shield": 56,
+          "booster:sponge": 49,
+          "booster:cake": 52,
+          "booster:sphere": 55,
+          "booster:harpoon": 49,
+          "booster:warheads": 52,
+          "booster:rocket": 52,
+          "booster:fire": 49,
+          "booster:poison": 52
+        },
+        "minutesMeasured": [
+          {
+            "tickWorkP95": 16.8,
+            "longestInterval": 202.5,
+            "rate": 20
+          },
+          {
+            "tickWorkP95": 16.75,
+            "longestInterval": 894.51,
+            "rate": 19.79
+          }
+        ]
+      },
+      "mixed-new": {
+        "players": 30,
+        "lobby": 5,
+        "minutes": 2,
+        "acknowledged": 1834,
+        "recovered": 1834,
+        "duplicates": 0,
+        "types": {
+          "booster:candy": 58,
+          "booster:clan_shield": 58,
+          "booster:sphere": 57,
+          "booster:donut": 58,
+          "booster:vortex": 52,
+          "booster:glove": 56,
+          "booster:freeze": 51,
+          "booster:hook": 55,
+          "booster:mine": 52,
+          "booster:easter_egg": 55,
+          "booster:knuckles": 54,
+          "booster:mega_poison": 48,
+          "booster:colorful_shield": 55,
+          "booster:ice_cream": 56,
+          "booster:poison": 50,
+          "booster:rocket": 51,
+          "booster:web": 51,
+          "booster:speed": 56,
+          "booster:lock": 55,
+          "booster:fire_sword": 50,
+          "booster:axe": 45,
+          "booster:meat": 56,
+          "booster:golden_shield": 56,
+          "booster:sponge": 47,
+          "booster:cake": 53,
+          "booster:harpoon": 53,
+          "booster:stone": 50,
+          "booster:warheads": 52,
+          "booster:fire": 51,
+          "booster:awl": 41,
+          "lobby:loadout": 20,
+          "lobby:purchase": 20,
+          "lobby:account-bonus": 20,
+          "lobby:gift": 20,
+          "lobby:gift-read": 20,
+          "lobby:clan-create": 3,
+          "lobby:clan-deposit": 20,
+          "lobby:clan-buy": 20,
+          "lobby:clan-edit": 20,
+          "lobby:roulette-prepare": 20,
+          "lobby:roulette-spin": 20,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 15,
+          "lobby:chat": 15,
+          "lobby:pet-equip": 14
+        },
+        "minutesMeasured": [
+          {
+            "tickWorkP95": 19.85,
+            "longestInterval": 249.5,
+            "rate": 19.93
+          },
+          {
+            "tickWorkP95": 15.87,
+            "longestInterval": 96.4,
+            "rate": 20.14
+          }
+        ]
+      },
+      "repeat-old": {
+        "players": 30,
+        "lobby": 5,
+        "minutes": 2,
+        "acknowledged": 1857,
+        "recovered": 1857,
+        "duplicates": 0,
+        "types": {
+          "booster:candy": 58,
+          "booster:glove": 55,
+          "booster:clan_shield": 57,
+          "booster:sphere": 58,
+          "booster:donut": 57,
+          "booster:vortex": 51,
+          "booster:freeze": 54,
+          "booster:hook": 55,
+          "booster:mine": 52,
+          "booster:easter_egg": 56,
+          "booster:knuckles": 54,
+          "booster:mega_poison": 52,
+          "booster:colorful_shield": 56,
+          "booster:ice_cream": 55,
+          "booster:web": 53,
+          "booster:awl": 48,
+          "booster:speed": 56,
+          "booster:lock": 51,
+          "booster:fire_sword": 50,
+          "booster:axe": 53,
+          "booster:meat": 56,
+          "booster:golden_shield": 56,
+          "booster:sponge": 55,
+          "booster:cake": 52,
+          "booster:harpoon": 50,
+          "booster:stone": 53,
+          "booster:warheads": 52,
+          "booster:rocket": 50,
+          "booster:fire": 49,
+          "booster:poison": 51,
+          "lobby:loadout": 20,
+          "lobby:purchase": 20,
+          "lobby:account-bonus": 20,
+          "lobby:gift": 20,
+          "lobby:gift-read": 20,
+          "lobby:clan-create": 3,
+          "lobby:clan-deposit": 20,
+          "lobby:clan-buy": 20,
+          "lobby:clan-edit": 20,
+          "lobby:roulette-prepare": 20,
+          "lobby:roulette-spin": 20,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 15,
+          "lobby:chat": 15,
+          "lobby:pet-equip": 14
+        },
+        "minutesMeasured": [
+          {
+            "tickWorkP95": 19.93,
+            "longestInterval": 178.75,
+            "rate": 19.99
+          },
+          {
+            "tickWorkP95": 18.17,
+            "longestInterval": 155.98,
+            "rate": 19.89
+          }
+        ]
+      },
+      "repeat-new": {
+        "players": 30,
+        "lobby": 5,
+        "minutes": 2,
+        "acknowledged": 1851,
+        "recovered": 1851,
+        "duplicates": 0,
+        "types": {
+          "lobby:loadout": 20,
+          "lobby:purchase": 20,
+          "lobby:account-bonus": 20,
+          "lobby:gift": 20,
+          "lobby:gift-read": 20,
+          "lobby:clan-create": 3,
+          "lobby:clan-deposit": 20,
+          "lobby:clan-buy": 20,
+          "lobby:clan-edit": 20,
+          "lobby:roulette-prepare": 20,
+          "lobby:roulette-spin": 20,
+          "lobby:pet-buy": 5,
+          "lobby:pet-food": 15,
+          "lobby:chat": 15,
+          "lobby:pet-equip": 13,
+          "booster:hook": 55,
+          "booster:candy": 57,
+          "booster:glove": 53,
+          "booster:clan_shield": 57,
+          "booster:sphere": 58,
+          "booster:vortex": 55,
+          "booster:freeze": 56,
+          "booster:donut": 55,
+          "booster:mine": 56,
+          "booster:mega_poison": 48,
+          "booster:easter_egg": 55,
+          "booster:knuckles": 50,
+          "booster:colorful_shield": 56,
+          "booster:ice_cream": 55,
+          "booster:web": 54,
+          "booster:fire": 53,
+          "booster:awl": 47,
+          "booster:fire_sword": 54,
+          "booster:speed": 56,
+          "booster:lock": 53,
+          "booster:axe": 43,
+          "booster:meat": 56,
+          "booster:golden_shield": 56,
+          "booster:sponge": 50,
+          "booster:cake": 52,
+          "booster:harpoon": 54,
+          "booster:stone": 55,
+          "booster:warheads": 49,
+          "booster:rocket": 52,
+          "booster:poison": 50
+        },
+        "minutesMeasured": [
+          {
+            "tickWorkP95": 21.03,
+            "longestInterval": 192.86,
+            "rate": 19.76
+          },
+          {
+            "tickWorkP95": 20.97,
+            "longestInterval": 115.5,
+            "rate": 19.91
+          }
+        ]
+      }
+    },
+    "functionOnly": {
+      "calls": 162000,
+      "ms": [
+        {
+          "label": "effect-0-before",
+          "idle": 46.33119999999997,
+          "waiting": 58.58529999999996,
+          "mixed": 51.219899999999825
+        },
+        {
+          "label": "effect-1-after",
+          "idle": 5.81140000000002,
+          "waiting": 12.0659,
+          "mixed": 4.750800000000027
+        },
+        {
+          "label": "effect-2-after",
+          "idle": 6.077799999999996,
+          "waiting": 12.54849999999999,
+          "mixed": 5.532699999999977
+        },
+        {
+          "label": "effect-3-before",
+          "idle": 40.4446999999999,
+          "waiting": 65.50420000000008,
+          "mixed": 57.78950000000009
+        }
+      ]
+    },
+    "exactReplay": {
+      "scenarios": 152,
+      "ticks": 9320
+    },
+    "profileEvents": {
+      "batches": 50,
+      "identical": true
+    },
+    "limits": "Whole-server latency did not consistently improve across mixed trials. Live measurements across different player counts are observational. No new CCU ceiling established.",
+    "afterOpenVps": {
+      "at": "2026-11-26T14:18:58.022Z",
+      "seconds": 30.038,
+      "arenaHumans": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "averageCpuCores": 0.15587509155070245,
+      "databaseHealthy": true,
+      "serviceRestarts": 0
+    }
+  },
+  "deployment": {
+    "release": "20261126-starter-heroes",
+    "health": {
+      "at": "2026-11-26T14:18:50.588Z",
+      "entryOpen": true,
+      "databaseHealthy": true,
+      "revision": 6090184,
+      "gamePid": 1068123,
+      "adminPid": 1163,
+      "candidateInstalled": true
+    },
+    "filesChanged": 41,
+    "manifest": 2706,
+    "httpsAndLocalHashes": 76,
+    "profiles": 1733,
+    "clans": 138,
+    "revisionBefore": 6090183,
+    "revisionAfter": 6090184,
+    "fullWorldAndAuxEqual": true,
+    "backupSha256": "4d15973c21b0022ab58850fa46b354c4f38212c7300999012149e0837bdecf16"
+  },
+  "validationNotes": [
+    "A first parallel Firefox smoke run timed out at onboarding; the isolated retry passed. Mobile card-height and portrait-transform differences found by the first browser assertions were corrected and all nine final cases passed.",
+    "The initial startup check ignored rotated .wal-N files. The deployment verifier now uses the journal's own segments() enumerator and confirms the revision again while paused. Full before/after world and auxiliary data matched PostgreSQL."
+  ]
+}
