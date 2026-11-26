@@ -282,7 +282,7 @@ test("VIP multiplies the complete accessory, gift and potion reward once; Premiu
     const giftFactor=gift==='clover'?1.25:gift==='skull'?.95:1,factor=vip?3:1;
     progression.applyEvent(p,event,30000);
     assert.equal(p.progress.session.xp,Math.ceil(12.345*1.15*giftFactor*1.4*factor-.5));
-    assert.equal(p.progress.session.kills,Math.ceil((1.2345+4)*(premium?2:1)-.5));
+    assert.equal(p.progress.session.kills,Math.ceil((1.2345+2)*(premium?2:1)-.5));
     const before=p.progress.session.xp;
     for(let i=0;i<10;i++)progression.applyEvent(p,{type:'absorbed',victimProfileId:'v'+i,lifeId:'v'+i,gain:20},31000+i);
     assert.equal(p.progress.session.xp-before,Math.floor(30*1.1*giftFactor*1.4*factor+1e-9));

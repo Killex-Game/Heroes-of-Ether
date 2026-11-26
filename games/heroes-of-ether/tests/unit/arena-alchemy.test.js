@@ -113,7 +113,7 @@ test("XP potion uses the effect active at payout, never bonus kills or unplayed 
   for(let at=15050;at<=30000;at+=50)arena.accrueMass(p,at);
   const first=arena.progressEvents.find(e=>e.type==="massAccrual");
   assert.equal(first.xpUnits/accrual.XP_DENOMINATOR,11.5);
-  assert.equal(first.killUnits/accrual.KILL_DENOMINATOR,2);
+  assert.equal(first.killUnits/accrual.KILL_DENOMINATOR,1.5);
   arena.progressEvents=[];
   for(let at=30050;at<=60000;at+=50)arena.accrueMass(p,at);
   assert.equal(arena.progressEvents[0].xpUnits/accrual.XP_DENOMINATOR,11.5);

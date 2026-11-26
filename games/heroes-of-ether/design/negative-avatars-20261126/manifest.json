@@ -1,0 +1,35 @@
+{
+  "tool": "built-in image_gen",
+  "outputs": [
+    {
+      "file": "public/assets/skins/negative-sets-v3/128/hex-witch.webp",
+      "bytes": 7844,
+      "sha256": "6542360322913150df5dc61b8ef0ef08fa83b9d895bf23a4ef3b6de9cbaed5b7"
+    },
+    {
+      "file": "public/assets/skins/negative-sets-v3/512/hex-witch.webp",
+      "bytes": 46482,
+      "sha256": "c31f3a3ddff14696e2313cabad5e7cc64afd6edb3712510be735132cacd9e64d"
+    },
+    {
+      "file": "public/assets/skins/negative-sets-v3/1024/hex-witch.webp",
+      "bytes": 117916,
+      "sha256": "de1826e2c8051714e89904e7e4901a59953d4a4f2a44199a4af018cf5181bad6"
+    },
+    {
+      "file": "public/assets/skins/negative-sets-v3/128/infection-zombie.webp",
+      "bytes": 6872,
+      "sha256": "f7ff2d89d8c108dc474f9bf190d72d76db9a8bbd8ed97852245d48bfff252ff2"
+    },
+    {
+      "file": "public/assets/skins/negative-sets-v3/512/infection-zombie.webp",
+      "bytes": 39584,
+      "sha256": "9eaf0e231b94a4a460bcac9776ad8ec19a497ea6e65ae95b7581d161008e47f4"
+    },
+    {
+      "file": "public/assets/skins/negative-sets-v3/1024/infection-zombie.webp",
+      "bytes": 106818,
+      "sha256": "d0f6b2fe51eb190af01139822b052fd001c7a65d608fc4bdb75ce69f074f2560"
+    }
+  ]
+}

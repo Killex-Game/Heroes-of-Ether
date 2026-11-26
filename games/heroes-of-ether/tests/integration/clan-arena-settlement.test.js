@@ -42,7 +42,7 @@ test('battle receives all actual natural and absorption kills, never capped or r
   accrual.reset(actor,f.start);let natural;
   for(let at=f.start+50;at<=f.start+30000;at+=50)natural=accrual.sample(actor,at,false,2)||natural;
   await f.send([{...natural,profileId:u.profile.id},f.event(0,'absorbed',{victimProfileId:randomUUID(),gain:100})],f.start+30000,'mixed-battle');
-  const total=premium?16:8;
+  const total=premium?14:7;
   assert.equal(f.store.find(u.token).progress.kills,total);
   assert.equal(f.store.data.competition.day.scores[f.id]?.kills||0,0);
   f.store.transact(u.token,randomUUID(),'battle-cap',p=>{p.progress.arenaXpTarget=p.progress.xp+p.progress.session.xp;});
@@ -113,7 +113,7 @@ test('VIP XP / Premium kills: real account expiry, durable retry and deferred cl
     }
     return {...event,profileId:u.profile.id};
   };
-  const first=sample(f.start,f.start+30000),xp=vip?150:50,kills=premium?14:7;
+  const first=sample(f.start,f.start+30000),xp=vip?150:50,kills=premium?12:6;
   const before=f.store.data,fault=t.mock.method(fs,'fsync',(fd,done)=>setImmediate(()=>done(Error('status fsync failure'))));
   await assert.rejects(f.send([first],f.start+30000,'status-first'),/status fsync failure/);
   fault.mock.restore();assert.equal(f.store.data,before);
@@ -121,11 +121,11 @@ test('VIP XP / Premium kills: real account expiry, durable retry and deferred cl
   let p=f.store.find(u.token);assert.equal(p.progress.session.xp,xp);assert.equal(p.progress.kills,kills);
   assert.deepEqual(f.board().quests.slice(0,2).map(q=>q.progress),[0,0]);
   await f.send([sample(f.start+30000,f.start+60000)],f.start+60000);
-  p=f.store.find(u.token);assert.equal(p.progress.session.xp,xp+50);assert.equal(p.progress.kills,kills+7);
+  p=f.store.find(u.token);assert.equal(p.progress.session.xp,xp+50);assert.equal(p.progress.kills,kills+6);
   assert.deepEqual(f.store.arenaAppearance(p).account.vip,false);assert.deepEqual(f.store.arenaAppearance(p).account.premium,false);
   const end=f.event(0,'lifeEnded',{durationSeconds:60,reason:'left'});
   await f.send([end],f.start+60001,'status-end');await f.send([end],f.start+60001,'status-end-repeat');
-  assert.deepEqual(f.board().quests.slice(0,2).map(q=>q.progress),[xp+50,kills+7]);
+  assert.deepEqual(f.board().quests.slice(0,2).map(q=>q.progress),[xp+50,kills+6]);
   assert.deepEqual(recover(f.file).data.profiles,f.store.data.profiles);assert.deepEqual(recover(f.file).data.clans,f.store.data.clans);
 });
 for(const worker of [false,true,'direct'])test('exit publishes bounded quest totals exactly once; personal XP remains live, worker='+worker,async t=>{

@@ -22,7 +22,9 @@
   function drawSphere(ctx, { x, y, radius }) {
     const img = sphere();
     if (!img?.complete || !img.naturalWidth) return;
-    const edge = radius * 1.24;
+    // This thin texture has wider transparent margins than the other shields:
+    // its opaque band occupies 70–75% of the canvas radius.
+    const edge = radius * 1.46;
     ctx.drawImage(img, x - edge, y - edge, edge * 2, edge * 2);
   }
   class Renderer {

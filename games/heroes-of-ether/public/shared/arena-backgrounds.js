@@ -8,29 +8,12 @@
   const THEMES = Object.freeze([
     Object.freeze({ id: "astral", fill: "#171a40", outside: "#0c1533", border: "#a18dcc" }),
     Object.freeze({
-      id: "cobblestone",
-      source: "assets/arena/cobblestone.png?art=20261123-interface-art",
-      tileSize: 640,
-      fill: "#c4a878",
-      outside: "#766044",
-      border: "#997239",
-      saturation: 1.3,
-    }),
-    Object.freeze({
       id: "meadow",
       source: "assets/arena/meadow.webp?art=20261123-interface-art",
       tileSize: 640,
       fill: "#728642",
       outside: "#3e4d2c",
       border: "#a5b76e",
-    }),
-    Object.freeze({
-      id: "clearing",
-      source: "assets/arena/clearing.webp?art=20261123-interface-art",
-      tileSize: 640,
-      fill: "#82904a",
-      outside: "#4e5630",
-      border: "#b9ac70",
     }),
     Object.freeze({
       id: "sandstone",

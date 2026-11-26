@@ -403,9 +403,9 @@ function applyEvent(p, event, at) {
     )
       return;
     if (
-      (event.ruleVersion !== undefined && ![2, 3, 4].includes(event.ruleVersion)) ||
+      (event.ruleVersion !== undefined && ![2, 3, 4, 5].includes(event.ruleVersion)) ||
       (event.ruleVersion === 3 && ![1, 2].includes(event.xpMultiplier)) ||
-      (event.ruleVersion === 4 && ![1, 3].includes(event.xpMultiplier)) ||
+      ([4, 5].includes(event.ruleVersion) && ![1, 3].includes(event.xpMultiplier)) ||
       !integer(event.xpUnits) ||
       !integer(event.killUnits) ||
       (event.baseXpUnits !== undefined &&
@@ -413,7 +413,7 @@ function applyEvent(p, event, at) {
     )
       throw Error("Неверное накопление за массу.");
     const denominator = massAccrual.XP_DENOMINATOR * 100;
-    const currentRule = [2, 3, 4].includes(event.ruleVersion);
+    const currentRule = [2, 3, 4, 5].includes(event.ruleVersion);
     const xpUnits = add(
       currentRule ? 0 : session.massXpRemainder || 0,
       event.xpUnits * (100 + accessories.bonus(accessoryAccess.outfit(p), "xp")) +

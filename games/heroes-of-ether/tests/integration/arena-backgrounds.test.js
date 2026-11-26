@@ -123,3 +123,7 @@ test("Сеть: общий фон в welcome/state, повторный вход 
   assert.notEqual(arena.backgroundId, first);
   assert.equal(d.messages.find((m) => m.type === "state").backgroundId, arena.backgroundId);
 });
+
+test('Retired cobblestone and clearing are never selected, preloaded or rendered',()=>{
+  for(const id of ['cobblestone','clearing']){assert(!THEMES.some(t=>t.id===id));assert.equal(themeFor(id).id,DEFAULT_ID);for(let i=0;i<=100;i++)assert.notEqual(choose(null,()=>i/100),id);}
+});

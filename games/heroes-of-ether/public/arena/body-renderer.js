@@ -97,7 +97,7 @@
     paint.arc(r, r, r, 0, Math.PI * 2);
     paint.clip();
     paint.fill();
-    if (ready && !(giftVisual === "curse" && overlay)) drawSkin(paint, skin, skinId, 0, 0, size, 1.13);
+    if (ready && !overlay) drawSkin(paint, skin, skinId, 0, 0, size, 1.13);
     globalThis.KillexGiftAppearance?.draw(paint, giftVisual, overlay, size);
   }
   class Renderer {

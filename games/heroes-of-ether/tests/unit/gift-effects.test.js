@@ -223,7 +223,7 @@ test("Опыт подарков: 30-секундные пакеты, компе�
     if (e) progression.applyEvent(p, e, at);
   }
   assert.equal(p.progress.session.xp, 186);
-  assert.equal(p.progress.session.kills, 18);
+  assert.equal(p.progress.session.kills, 15);
   for (let at = 90050; at <= 95000; at += 50) assert.equal(accrual.sample(actor, at), null);
   accrual.sample(actor, 95000, true);
   assert.equal(actor.massAccrual.xpUnits, 0);

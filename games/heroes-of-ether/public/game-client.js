@@ -1639,19 +1639,19 @@
       camera.scale,
       performance.now(),
     );
+    const shieldRadius = framed
+      ? window.KillexArenaArt.frameOuterRadius(radius, camera.scale)
+      : radius;
     if (player.effects?.some((effect) => effect.id === "sphere" && effect.remainingMs > elapsed)) {
       window.KillexShields.drawSphere(
         ctx,
-        displayed,
+        { x, y, radius: shieldRadius },
         performance.now(),
         camera.scale,
         reducedMotion.matches,
         pixelRatio,
       );
     }
-    const shieldRadius = framed
-      ? window.KillexArenaArt.frameOuterRadius(radius, camera.scale)
-      : radius;
     shieldView.draw(ctx, player, { x, y, radius: shieldRadius }, elapsed);
     if (part.burnMs > elapsed)
       window.KillexEffects.drawBurn(

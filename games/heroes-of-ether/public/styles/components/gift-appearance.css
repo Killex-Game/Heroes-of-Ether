@@ -4,5 +4,5 @@
   border: 0; border-radius: 50%; clip-path: circle(50%); transform: none;
   pointer-events: none; z-index: 2;
 }
-[data-gift-visual="curse"] > img.gift-avatar-overlay { background: #30233c; }
-[data-gift-visual="curse"] > img:not(.gift-avatar-overlay) { visibility: hidden; }
+:is([data-gift-visual="curse"], [data-gift-visual="hex"], [data-gift-visual="infection"]) > img.gift-avatar-overlay { background: #30233c; }
+:is([data-gift-visual="curse"], [data-gift-visual="hex"], [data-gift-visual="infection"]) > img:not(.gift-avatar-overlay) { visibility: hidden; }
