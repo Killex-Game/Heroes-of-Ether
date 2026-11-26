@@ -61,6 +61,7 @@
       this.eventLabel = el("p", "roulette-event");
       this.viewTabs = el("nav", "roulette-view-tabs");
       this.viewTabs.setAttribute("aria-label", "Разделы рулетки");
+      this.landscape = matchMedia("(orientation: landscape) and (max-width: 960px), (orientation: landscape) and (pointer: coarse) and (max-width: 1366px) and (max-height: 650px)");
       this.dialog.dataset.panel = "wheel";
       for (const [id, label] of [
         ["wheel", "Колесо"],
@@ -197,6 +198,21 @@
       aside.append(tickets, infoTabs, this.result, odds);
       layout.append(this.ticketShop, stage, aside);
       this.dialog.append(head, this.eventLabel, this.viewTabs, layout);
+      const arrangeControls = () => {
+        if (this.landscape.matches) {
+          head.insertBefore(spins, this.liteButton);
+          this.viewTabs.append(fastLabel);
+        } else {
+          stage.insertBefore(spins, this.status);
+          extraSpins.append(fastLabel);
+        }
+        this.selectPanel(this.dialog.dataset.panel);
+      };
+      arrangeControls();
+      this.landscape.addEventListener("change", () => {
+        arrangeControls();
+        this.update();
+      });
       document.body.append(this.dialog);
       document.getElementById("rouletteButton").onclick = () => this.open();
       document.addEventListener("killex:profile", (e) => {
@@ -252,6 +268,7 @@
       return window.KillexPlatform.storageKey(".roulette.pending.") + this.profile.id;
     }
     selectPanel(id) {
+      if (id === "wheel" && this.landscape.matches) id = "info";
       this.dialog.dataset.panel = id;
       for (const tab of this.viewTabs.querySelectorAll("button[data-panel]"))
         tab.setAttribute("aria-pressed", String(tab.dataset.panel === id));
@@ -321,7 +338,7 @@
         !!this.busy || !!pending || !enabled || r.tickets < 5 || this.owner.inArena(),
         !enabled || r.tickets < 5 || this.owner.inArena(),
       );
-      this.fiveButton.textContent = "Крутить рулетку x5";
+      this.fiveButton.textContent = this.landscape.matches ? "Крутить ×5" : "Крутить рулетку x5";
       window.KillexControls.state(
         this.fastSpin,
         !activeLite || !!this.busy || !!pending,
@@ -344,7 +361,7 @@
         ? "Вращаем…"
         : pending
           ? "Восстановить результат"
-          : "Крутить рулетку";
+          : this.landscape.matches ? "Крутить" : "Крутить рулетку";
       if (!this.busy && !pending && r.tickets < 1)
         this.status.textContent = "Повысь уровень, чтобы получить билет.";
     }

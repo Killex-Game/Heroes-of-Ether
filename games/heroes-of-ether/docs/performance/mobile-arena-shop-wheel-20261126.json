@@ -1,0 +1,64 @@
+{
+  "installedAt": "2026-11-26T16:28:10.029Z",
+  "release": "20261126-mobile-navigation",
+  "clientRevision": "20261126-mobile-arena-shop-wheel",
+  "gamePid": 1075804,
+  "serverRestart": false,
+  "changedStaticFiles": [
+    "public/styles/layout/mobile-game-layout.css",
+    "public/ui/progression/arena-objectives.js",
+    "public/ui/roulette/roulette-dialog.js",
+    "public/index.html"
+  ],
+  "backupSha256": "b6c5f99ebac4dbd754914f22dc1dc508c51c1f3d7d6cb1feea5b323b7ec18ae1",
+  "verification": {
+    "browsers": [
+      "Chromium",
+      "Firefox",
+      "WebKit"
+    ],
+    "viewports": [
+      [
+        320,
+        568
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        568,
+        320
+      ],
+      [
+        667,
+        375
+      ],
+      [
+        844,
+        390
+      ],
+      [
+        1280,
+        597
+      ]
+    ],
+    "landscapeInteractionViewport": [
+      844,
+      320
+    ],
+    "testedWithIsolatedAccounts": true,
+    "scenarios": [
+      "Two inventory columns in portrait. Card names, five-digit stock and both purchase prices stay inside landscape shop cards.",
+      "Open arena leaderboard, leave, confirm, return to lobby and enter again. The leaderboard starts closed and opens on tap. All nine emotes lie beside the exit button.",
+      "Purchase a ticket, spin once and five times, verify ticket balance and five visible rewards, rotate to portrait and back."
+    ],
+    "earlierFindings": [
+      "In an intermediate short-screen layout the wheel overlapped the header and event text. The final layout reserves space for both.",
+      "Firefox returned 209.999992 CSS pixels for a 210-pixel wheel. The size assertion allows half a CSS pixel."
+    ],
+    "targetedTestsPassed": 19,
+    "publicAndLocalGameEntry": true,
+    "matchedStaticHashes": 8
+  }
+}

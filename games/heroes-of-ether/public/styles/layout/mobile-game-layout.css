@@ -150,9 +150,9 @@
 
 /* Arena controls stay at the edges in both phone orientations. */
 @media (pointer: coarse), (max-width: 760px) {
-  #arena .arena-top { top: max(8px, env(safe-area-inset-top)); left: max(8px, env(safe-area-inset-left)); }
+  #arena .arena-top { top: max(8px, env(safe-area-inset-top)); left: max(8px, env(safe-area-inset-left)); max-width: calc(100% - 80px - env(safe-area-inset-left) - env(safe-area-inset-right)); align-items: flex-start; gap: 6px; }
   #arena #leaveButton { font-size: 12px; height: 36px; min-height: 36px; padding: 5px 10px; }
-  #arena .arena-emote-hotkeys { top: 78px; gap: 2px; }
+  #arena .arena-emote-hotkeys { position: static; flex: 0 1 auto; flex-wrap: wrap; align-self: center; min-width: 0; gap: 2px; }
   #arena .arena-emote-key { width: 25px; height: 35px; }
   #arena .arena-emote-key img { width: 25px; height: 25px; }
   #arena .arena-emote-key kbd { font-size: 9px; line-height: 11px; min-width: 12px; }
@@ -188,7 +188,6 @@
   #arena .arena-chat-toggle .arena-chat-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
 }
 @media (pointer: coarse) and (orientation: landscape), (max-width: 960px) and (max-height: 500px) {
-  #arena .arena-emote-hotkeys { top: 44px; }
   #arenaTouchControls { left: 8px; bottom: max(124px, calc(env(safe-area-inset-bottom) + 116px)); width: 101px; }
   #arena .booster-quick { left: 206px; right: 120px; bottom: max(10px, env(safe-area-inset-bottom)); width: auto; }
   #arena .arena-support-hud { left: 8px; top: 93px; bottom: auto; }
@@ -249,7 +248,7 @@
   #boosterDialog[data-mode="inventory"] .interface-toolbar { gap: 4px 8px; }
   #boosterDialog[data-mode="inventory"] .booster-tabs { grid-template-columns: repeat(3,minmax(0,1fr)); margin: 0; gap: 4px; }
   #boosterDialog[data-mode="inventory"] #inventoryLoadout { margin: 0; padding: 3px; }
-  #boosterDialog[data-mode="inventory"] #boosterGrid { grid-template-columns: repeat(auto-fit,minmax(min(128px,100%),164px)); justify-content: center; gap: 6px; padding: 4px; }
+  #boosterDialog[data-mode="inventory"] #boosterGrid { grid-template-columns: repeat(auto-fill,minmax(min(126px,100%),1fr)); justify-content: stretch; gap: 6px; padding: 4px; }
   #boosterDialog[data-mode="inventory"] .booster-card { height: auto; min-height: 0; padding: 6px 8px; gap: 3px; }
   #boosterDialog[data-mode="inventory"] .booster-card-head { min-height: 0; }
   #boosterDialog[data-mode="inventory"] .booster-art-slot { align-self: center; width: 48px; height: 48px; margin: 0 auto; }
@@ -411,33 +410,51 @@
   #rouletteDialog .roulette-view-tabs [data-panel="wheel"] {display:none}
   #rouletteDialog:not([data-panel="wheel"]) .roulette-back {display:block}
   #boosterDialog[data-mode="shop"] #boosterGrid:not([hidden]) {
-    grid-template-columns:repeat(auto-fit,minmax(min(128px,100%),1fr));justify-content:stretch;gap:6px;padding:4px}
+    grid-template-columns:repeat(auto-fill,minmax(min(155px,100%),1fr));justify-content:stretch;gap:6px;padding:4px}
   #boosterDialog[data-mode="shop"] #boosterGrid .booster-card {height:auto;min-height:0;gap:3px;padding:6px}
   #boosterDialog[data-mode="shop"] #boosterGrid .booster-art-slot {width:46px;height:46px;margin:0 auto}
   #boosterDialog[data-mode="shop"] #boosterGrid h3 {font-size:14px;min-height:0;margin:1px 0}
   #boosterDialog[data-mode="shop"] #boosterGrid .booster-purchase-options {gap:3px}
   #boosterDialog[data-mode="shop"] #boosterGrid .booster-pack-buy {min-width:0;padding:1px 4px;min-height:36px}
+  #boosterDialog[data-mode="shop"] #boosterGrid .booster-card-head {flex-wrap:wrap;gap:2px 4px;min-width:0}
+  #boosterDialog[data-mode="shop"] #boosterGrid .booster-tier {font-size:10px;line-height:1.2}
+  #boosterDialog[data-mode="shop"] #boosterGrid .booster-pack {margin-left:auto;padding:2px 4px;font-size:11px;line-height:1.2}
+  #boosterDialog[data-mode="shop"] #boosterGrid .booster-pack-size {font-size:10px}
+  #boosterDialog[data-mode="shop"] #boosterGrid .booster-pack-price {font-size:12px;line-height:1;gap:2px;white-space:nowrap}
+  #boosterDialog[data-mode="shop"] #boosterGrid .booster-price-icon {width:16px;height:16px;flex-basis:16px}
   #arena .arena-chat {width:min(340px,calc(100vw - 20px));pointer-events:none}
   #arena .arena-chat > * {pointer-events:auto}
   #arena .arena-chat .chat-log {height:clamp(95px,24dvh,170px)}
 }
 @media (orientation:landscape) and (max-width:960px), (orientation:landscape) and (pointer:coarse) and (max-width:1366px) and (max-height:650px) {
-  body #rouletteDialog[open] {display:grid;width:min(840px,calc(100vw - 12px));height:min(478px,calc(100dvh - 12px));overflow:hidden;
-    grid-template:"heading heading" auto "wheel event" auto "wheel tabs" auto "wheel body" minmax(0,1fr) / minmax(0,1fr) minmax(0,1fr);gap:4px 10px}
+  body #rouletteDialog[open] {display:grid;width:min(840px,calc(100vw - 12px));height:min(478px,calc(100dvh - 12px));max-height:calc(100dvh - 12px);padding:5px 8px;overflow:hidden;
+    grid-template:"heading heading" auto "wheel tabs" auto "wheel body" minmax(0,1fr) "event status" auto / minmax(0,.92fr) minmax(0,1.08fr);gap:3px 8px}
   #rouletteDialog .roulette-heading {grid-area:heading}
-  #rouletteDialog .roulette-event {grid-area:event}
-  #rouletteDialog .roulette-view-tabs {grid-area:tabs;align-items:center;flex-wrap:wrap}
-  #rouletteDialog .roulette-mobile-balance {flex:1 0 100%;font-size:12px}
+  #rouletteDialog .roulette-event {grid-area:event;align-self:center;margin:0;line-height:1.15}
+  #rouletteDialog .roulette-lite-button span {gap:2px;line-height:1.15}
+  #rouletteDialog .roulette-view-tabs {grid-area:tabs;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;gap:3px}
+  #rouletteDialog:not([data-panel="wheel"]) .roulette-back {display:none}
+  #rouletteDialog .roulette-mobile-balance {font-size:12px}
+  #rouletteDialog:not(.has-lite-shop) .roulette-view-tabs [data-panel="info"] {grid-column:1/-1}
   #rouletteDialog .roulette-layout, #rouletteDialog[data-panel] .roulette-stage {display:contents}
-  #rouletteDialog .roulette-wheel-frame {grid-area:wheel;place-self:center;margin:0;padding:12px;width:min(94%,calc(100dvh - 100px),360px)}
+  #rouletteDialog .roulette-wheel-frame {grid-area:wheel;place-self:center;margin:0;padding:12px;width:min(92%,calc(100dvh - 110px),350px)}
   #rouletteDialog .roulette-info, #rouletteDialog .roulette-ticket-shop {grid-area:body;width:100%;max-width:100%;min-height:0;overflow:auto;overscroll-behavior:contain}
   #rouletteDialog .roulette-ticket-offers {grid-template-columns:minmax(0,1fr)}
-  #rouletteDialog .roulette-spin-actions {grid-area:body;align-self:start;display:grid;align-content:start;gap:4px}
-  #rouletteDialog .roulette-extra-spins {display:grid;justify-content:stretch;justify-items:stretch}
-  #rouletteDialog .roulette-spin {min-height:35px;max-width:none;width:100%;padding:4px}
-  #rouletteDialog .roulette-fast-label {padding:4px;justify-content:center}
-  #rouletteDialog .roulette-status {grid-area:body;align-self:end;pointer-events:none}
-  #rouletteDialog:not([data-panel="wheel"]) :is(.roulette-spin-actions,.roulette-status) {display:none}
+  #rouletteDialog .roulette-heading .roulette-spin-actions {display:flex;align-self:center;flex:1 1 auto;flex-wrap:nowrap;justify-content:center;gap:4px;min-width:0}
+  #rouletteDialog .roulette-extra-spins {display:contents}
+  #rouletteDialog .roulette-spin {flex:0 1 145px;min-width:0;min-height:36px;padding:3px 6px;font-size:clamp(11px,1.55vw,14px);line-height:1.12}
+  #rouletteDialog .roulette-fast-label {padding:2px;justify-content:center;font-size:11px}
+  #rouletteDialog .roulette-status {grid-area:status;align-self:end;min-height:0;margin:0;pointer-events:none}
+  #rouletteDialog .roulette-info {height:100%;display:flex;flex-direction:column;align-items:stretch;gap:4px}
+  #rouletteDialog[data-panel="tickets"] .roulette-info {display:none}
+  #rouletteDialog .roulette-info :is(.roulette-result,.roulette-odds) {height:auto;min-height:0;overflow:visible}
+  #rouletteDialog .roulette-info-tabs {min-height:32px}
+  #rouletteDialog .roulette-info-tabs button {min-height:32px;padding:3px 5px}
+  #rouletteDialog .roulette-result {padding:5px 7px}
+  #rouletteDialog .roulette-result-batch ol {grid-template-columns:repeat(auto-fit,minmax(min(106px,100%),1fr));gap:3px 6px;margin:3px 0 0}
+  #rouletteDialog .roulette-result-batch li {min-width:0;padding:2px 0;gap:4px}
+  #rouletteDialog .roulette-result-batch li img {width:22px;height:22px}
+  #rouletteDialog .roulette-result-batch li strong {font-size:11px;line-height:1.15}
   #arena .arena-chat:has(.arena-chat-toggle[aria-expanded="true"]) {right:max(60px,env(safe-area-inset-right));width:min(330px,47vw)}
   #arena .arena-chat:has(.arena-chat-toggle[aria-expanded="true"]) .arena-chat-toggle {position:absolute;left:calc(100% + 3px);bottom:0;margin:0}
 }
@@ -448,7 +465,7 @@
   #boosterDialog[data-mode="shop"] #boosterGrid .booster-card {display:grid;grid-template-columns:36px minmax(0,1fr);align-items:center;gap:2px 5px;padding:5px}
   #boosterDialog[data-mode="shop"] #boosterGrid :is(.booster-card-head,.booster-purchase-options,.booster-action) {grid-column:1/-1}
   #boosterDialog[data-mode="shop"] #boosterGrid .booster-art-slot {width:36px;height:36px}
-  #boosterDialog[data-mode="shop"] #boosterGrid h3 {font-size:12px;line-height:1.15;overflow-wrap:anywhere}
+  #boosterDialog[data-mode="shop"] #boosterGrid h3 {font-size:13px;line-height:1.15;overflow-wrap:break-word}
   #boosterDialog[data-mode="shop"] #boosterGrid .booster-purchase-options {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-self:start;margin:0}
   #boosterDialog[data-mode="shop"] #boosterGrid .booster-purchase-options .booster-pack-buy {grid-column:auto;min-height:36px;height:36px;justify-content:center;gap:1px}
 }

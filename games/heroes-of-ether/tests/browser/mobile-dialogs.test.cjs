@@ -24,7 +24,8 @@ async function test() {
     challenger.name = name; challenger.greatness = 1400 - 110*i;
     Object.assign(challenger.progress,{maxMass:3900-200*i,humanAbsorptions:25-i});
   }
-  Object.assign(player.inventory, { freeze: 16, hook: 6, candy: 19 });
+  Object.assign(player.inventory, { freeze: 2242, hook: 10810, candy: 31577 });
+  player.wallet.coins = 1742506;
   player.loginReward = { date: benefits.loginRewardDay(fixture.now()), day: 1 };
   const game = createGameServer({ profiles: fixture.store, events: fixture.manager, wallNow: fixture.now, autoTick: true, testBots: { enabled: false } });
   let browser;
@@ -111,6 +112,11 @@ async function test() {
           assert(wheel[2] >= 144 && wheel[1] + wheel[3] <= top + h, "wheel clipped or too small");
           await dialog.getByRole("button", { name: "Призы", exact: true }).tap();
           await dialog.locator(".roulette-info").waitFor();
+        }
+        if (id === "boosterDialog" && width < height) {
+          const cards = dialog.locator("#boosterGrid .booster-card");
+          const first = await cards.nth(0).boundingBox(), second = await cards.nth(1).boundingBox();
+          assert(first.y === second.y && second.x > first.x, "two inventory columns in portrait");
         }
         if (id === "etherGeneratorDialog" || id === "boosterDialog") {
           const button = boxes[id === "etherGeneratorDialog" ? "#alchemyExchange" : ".booster-action"];

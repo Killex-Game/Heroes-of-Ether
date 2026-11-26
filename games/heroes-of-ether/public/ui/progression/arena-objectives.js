@@ -51,8 +51,12 @@
     panel.prepend(toggle);
     mobile.addEventListener("change", () => { refresh(); position(); });
     refresh();
+    return () => {
+      collapsed = true;
+      refresh();
+    };
   }
-  collapsible(top, "Топ игроков и кланов", "leaderList arenaClanList");
+  const closeRanking = collapsible(top, "Топ игроков и кланов", "leaderList arenaClanList");
   collapsible(host, "Задания и заказы", "arenaDailyObjective arenaEventObjective");
   let timer, offset = 0, model;
   function render() {
@@ -117,5 +121,8 @@
   }
   new ResizeObserver(position).observe(top);
   window.addEventListener("resize", position);
-  new MutationObserver(() => { position(); }).observe(arena, { attributes: true, attributeFilter: ["hidden"] });
+  new MutationObserver(() => {
+    closeRanking();
+    position();
+  }).observe(arena, { attributes: true, attributeFilter: ["hidden"] });
 })();
