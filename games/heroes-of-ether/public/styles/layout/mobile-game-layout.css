@@ -1,5 +1,6 @@
 /* Responsive geometry uses CSS pixels and safe insets, never scales the whole game. */
 .mobile-control-icon { display: none; }
+.mobile-menu-heading { display: none; }
 #playerProfileDialog[open] {
   display: flex;
   flex-direction: column;
@@ -15,136 +16,136 @@
   #playerProfileDialog .public-player-stats { gap: 7px; padding: 10px; }
 }
 
-@media (max-width: 960px) {
-  body[data-screen="lobby"] { height: auto; min-height: 100dvh; }
-  #lobby { padding: max(8px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left)); }
-  #lobby .lobby-inner { gap: 6px; }
-  #lobby .lobby-header { gap: 6px; grid-template-columns: minmax(0, 1fr); padding: 0; }
+/* Phones can rotate while the lobby is open. Use the same controls and reading order in both layouts. */
+@media (max-width: 960px), (pointer: coarse) and (max-width: 1366px) and (max-height: 650px) {
+  body[data-screen="lobby"] { height: auto; min-height: 100dvh; overflow-y: auto; }
+  #lobby {
+    --lobby-gap: 10px;
+    --lobby-edge: max(10px, env(safe-area-inset-left), env(safe-area-inset-right));
+    --lobby-panel: linear-gradient(150deg, #213849f5, #152636f5);
+    display: block; height: auto; min-height: 100dvh; overflow: visible;
+    padding: max(8px, env(safe-area-inset-top)) var(--lobby-edge) max(14px, env(safe-area-inset-bottom));
+  }
+  #lobby .lobby-inner {
+    display: grid; grid-template-rows: auto auto; gap: var(--lobby-gap);
+    max-width: 1100px; height: auto; container-type: inline-size;
+  }
+  #lobby .lobby-header { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 0; }
   #lobby .profile-card {
-    width: calc(100% - 44px); max-width: none; min-height: 64px; height: auto;
-    grid-template-columns: 50px minmax(0, 1fr) auto; grid-template-rows: auto;
-    gap: 6px; padding: 8px; border-radius: 14px;
+    width: calc(100% - 52px); max-width: none; min-height: 66px; height: auto; padding: 8px 12px;
+    grid-template: auto / 48px minmax(0, 1fr) auto; gap: 8px; border-radius: 14px;
   }
-  #lobby .profile-card .profile-circle { width: 38px; height: 38px; }
-  #lobby .profile-card #previewName { font-size: 14px; }
-  #lobby .profile-copy small { font-size: 9px; }
-  #lobby .profile-insignia { grid-column: auto; gap: 3px; }
-  #lobby #profileMedal:empty { display: none; }
-  #lobby #accountMarks { gap: 2px; }
-  #lobby #accountMarks img { width: 18px; height: 18px; }
-  #lobby .profile-account time { display: none; }
-  #lobby .profile-account strong { font-size: 9px; }
-  #lobby .lobby-wallet-tools { width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; }
-  #lobby .lobby-balances { grid-column: 1 / -1; }
-  #lobby #walletStatus { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
-  #lobby .sf-currency-wallet .sf-currency { height: 28px; }
-  #lobby .sf-currency-value { font-size: 12px; }
-  #lobby .currency-add { width: 25px; height: 28px; flex-basis: 25px; font-size: 16px; }
-  #lobby .lobby-wallet-actions, #lobby .lobby-event-actions { display: flex; flex-direction: row; min-height: 0; gap: 5px; grid-column: auto; }
-  #lobby .lobby-wallet-actions > button, #lobby .lobby-event-actions > button { flex: 1; width: auto; min-width: 0; height: 34px; min-height: 34px; padding: 3px 5px; font-size: 10px; gap: 3px; }
-  #lobby .lobby-wallet-actions #accountButton, #lobby .lobby-wallet-actions #promotionsButton,
-  #lobby .lobby-event-actions #rouletteButton, #lobby .lobby-event-actions #blackFridayButton,
-  #lobby .lobby-event-actions #alchemyButton { height: 34px; min-height: 34px; font-size: 10px; }
-  #lobby .lobby-wallet-actions button img, #lobby .lobby-event-actions button img { width: 22px; height: 22px; }
-  #lobby .lobby-event-actions #rouletteButton .roulette-lock { width: 22px; height: 22px; }
-  #lobby .lobby-generator-tools { position: relative; width: 100%; min-height: 0; padding: 0; margin: 0; }
-  #lobby .lobby-generator-reserved { display: none; }
-  #lobby .effi-lobby { position: static; width: 100%; min-height: 0; }
-  #lobby .effi-lobby[data-active="false"] { display: none; }
-  #lobby .effi-lobby-character { flex-basis: 34px; height: 45px; }
-  #lobby .effi-lobby-bubble { padding: 4px 28px 4px 8px; margin: 2px 0 0; }
-  #lobby .effi-lobby-bubble strong { display: none; }
-  #lobby .effi-lobby-bubble p { font-size: 10px; line-height: 14px; min-height: 0; margin: 0; }
-  #lobby #etherGeneratorButton { width: 100%; height: 36px; min-height: 36px; padding: 3px 8px; gap: 7px; }
-  #lobby #etherGeneratorButton strong { font-size: 12px; }
-  #lobby #etherGeneratorButton .menu-icon { width: 34px; height: 34px; flex-basis: 34px; }
-  #lobby .showcase-grid { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; gap: 9px; }
-  #lobby .showcase { grid-column: 1; grid-row: 1; height: auto; grid-template-rows: auto 106px auto auto auto; gap: 4px; }
-  #lobby .player-progress { width: 100%; height: auto; min-height: 0; padding: 0; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto; gap: 6px; }
-  #lobby .progress-experience { grid-column: 1; grid-row: 1; padding: 5px 8px; gap: 3px; grid-template-rows: auto 8px; }
-  #lobby .progress-experience .xp-track { height: 8px; }
-  #lobby .progress-summary { font-size: 10px; gap: 5px; }
-  #lobby .progress-greatness { position: static; grid-column: 2; grid-row: 1; padding: 4px 8px; }
-  #lobby #progressGreatness { font-size: 12px; }
-  #lobby .progress-greatness > span { font-size: 8px; }
-  #lobby .skin-stage { min-height: 0; height: 100%; padding: 0; }
-  #lobby .skin-art { width: 92px; height: 92px; transform: none; }
-  #lobby .skin-arrow { width: 34px; height: 34px; transform: none; }
-  #lobby .lobby-accessory-slots { min-height: 32px; height: 32px; gap: 6px; margin: 0; }
-  #lobby .lobby-accessory-slot { min-height: 32px; padding: 2px 8px; }
-  #lobby .lobby-accessory-slot img { width: 24px; height: 24px; }
-  #lobby .lobby-accessory-slot strong { font-size: 10px; }
-  #lobby .lobby-accessory-slot small { font-size: 9px; }
-  #lobby .lobby-loadout { width: 100%; padding: 3px 6px; }
-  #lobby .loadout-heading { font-size: 9px; margin-bottom: 2px; }
-  #lobby .loadout-slots { gap: 5px; }
-  #lobby .loadout-slot { min-height: 36px; height: 36px; }
-  #lobby .entry-area { padding: 0; margin: 0; }
-  #lobby #joinForm { gap: 5px; margin: 0; }
-  #lobby #playButton { height: 44px; min-height: 44px; font-size: 22px; }
-  #lobby .lobby-sections { grid-column: 1; grid-row: 2; padding: 0; gap: 0; }
-  #lobby .side-nav { grid-column: auto; grid-row: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: 34px; height: auto; gap: 5px; }
-  #lobby .side-nav .menu-tile { height: 34px; min-height: 34px; padding: 4px 5px; gap: 4px; }
-  #lobby .menu-tile strong { font-size: 11px; line-height: 1.1; }
-  #lobby .menu-icon { width: 23px; height: 23px; flex-basis: 23px; }
-  #lobby .promo-column { grid-column: 1; grid-row: 3; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto; gap: 5px; }
-  #lobby .promo-slot { height: 54px; min-height: 54px; padding: 6px; }
-  #lobby .promo-slot h2 { font-size: 13px; }
-  #lobby .promo-slot p, #lobby .promo-slot .promo-eyebrow { display: none; }
-  #lobby .side-nav { grid-template-columns: repeat(6, 48px); grid-auto-rows: 48px; justify-content: center; gap: 7px; }
-  #lobby .side-nav .menu-tile { width: 48px; height: 48px; min-height: 48px; padding: 6px; justify-content: center; }
-  #lobby .side-nav .menu-icon { width: 34px; height: 34px; flex-basis: 34px; }
-  #lobby .menu-tile strong, #lobby .lobby-accessory-slot > span,
-  #lobby #accountButton > span:not(.account-button-icons):not(.menu-notification-dot),
-  #lobby #promotionsButton > strong, #lobby #rouletteButton > span:not(.roulette-lock),
-  #lobby #blackFridayButton > span, #lobby #alchemyButton > span {
-    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  #lobby .profile-card .profile-circle { width: 40px; height: 40px; }
+  #lobby .profile-copy, #lobby .profile-name-row { min-width: 0; }
+  #lobby .profile-card #previewName { font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #lobby .profile-copy small { font-size: 11px; }
+  #lobby .profile-insignia { grid-column: auto; gap: 4px; }
+  #lobby #profileMedal { width: auto; max-width: 38px; }
+  #lobby #profileMedal:empty, #lobby .profile-account time { display: none; }
+  #lobby #accountMarks { min-width: 0; gap: 1px; }
+  #lobby #accountMarks .profile-account { gap: 3px; }
+  #lobby .profile-account strong { font-size: 10px; }
+  body[data-screen="lobby"] .settings-area {
+    top: max(10px, env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right)); left: auto; bottom: auto;
   }
-  #lobby .lobby-wallet-tools { grid-template-columns: max-content max-content; justify-content: center; }
-  #lobby .lobby-balances { width: calc(100vw - 20px); }
-  #lobby .lobby-wallet-actions { justify-content: flex-end; }
-  #lobby .lobby-event-actions { justify-content: flex-start; }
-  #lobby .lobby-wallet-actions > button, #lobby .lobby-event-actions > button {
-    flex: 0 0 48px; width: 48px; min-width: 48px; height: 44px; min-height: 44px; padding: 4px;
+  body[data-screen="lobby"] #settingsButton { width: 44px; height: 44px; }
+
+  #lobby .lobby-wallet-tools {
+    display: flex; flex-flow: row wrap; width: 100%; max-width: none; min-width: 0;
+    justify-content: flex-start; align-items: center; gap: 4px 6px; margin: 0; padding: 0;
   }
-  #lobby .lobby-wallet-actions #accountButton, #lobby .lobby-wallet-actions #promotionsButton,
-  #lobby .lobby-event-actions #rouletteButton, #lobby .lobby-event-actions #blackFridayButton,
-  #lobby .lobby-event-actions #alchemyButton { height: 44px; min-height: 44px; }
-  #lobby .lobby-wallet-actions button img, #lobby .lobby-event-actions button img { width: 30px; height: 30px; }
-  #lobby #accountButton .account-button-icons { gap: 0; }
-  #lobby #accountButton .account-button-icons img { width: 22px; height: 26px; }
-  #lobby .lobby-generator-tools { display: flex; align-items: center; gap: 8px; }
-  #lobby #etherGeneratorButton { flex: 0 0 48px; width: 48px; height: 44px; min-height: 44px; padding: 3px; }
-  #lobby .effi-lobby { flex: 1; }
-  #lobby .lobby-accessory-slot { width: 44px; padding: 2px; justify-content: center; }
-  #lobby #joinForm { justify-content: center; grid-template-columns: 88px 48px; }
-  #lobby #joinForm #playButton { flex: 0 0 88px; width: 88px; font-size: 0; }
-  #lobby #playButton::after { content: "▶"; font-size: 24px; line-height: 1; }
-  body[data-screen="lobby"] .settings-area { top: max(14px, env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right)); left: auto; bottom: auto; }
-}
-@media (max-width: 960px) and (orientation: landscape) {
-  #lobby .lobby-header, #lobby .lobby-header:has(.lobby-generator-tools) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: start; }
-  #lobby .profile-card { width: 100%; grid-column: 1; grid-row: 1; align-self: stretch; }
-  #lobby .lobby-wallet-tools { grid-column: 2; grid-row: 1; padding-right: 42px; box-sizing: border-box; }
-  #lobby .lobby-generator-tools { grid-column: 2; grid-row: 1; align-self: end; justify-self: end; width: 48px; margin-right: 42px; padding: 0; }
-  #lobby .effi-lobby { display: none; }
-  #lobby .showcase-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto; gap: 8px; }
-  #lobby .showcase { grid-column: 1; grid-row: 1 / 3; grid-template-rows: auto 74px 28px 40px auto; gap: 3px; }
-  #lobby .skin-art { width: 64px; height: 64px; }
-  #lobby .lobby-accessory-slots, #lobby .lobby-accessory-slot { min-height: 28px; height: 28px; }
-  #lobby .loadout-heading { display: none; }
-  #lobby .entry-area #lobbyStatus { margin: 2px 0; font-size: 9px; min-height: 0; }
-  #lobby .lobby-sections { grid-column: 2; grid-row: 1; }
-  #lobby .promo-column { grid-column: 2; grid-row: 2; }
-  #lobby .promo-slot { height: 58px; min-height: 58px; }
-  #lobby .lobby-wallet-tools { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  #lobby .lobby-wallet-actions { justify-content: flex-start; }
-  #lobby .lobby-event-actions { justify-content: flex-start; padding-right: 54px; }
   #lobby .lobby-balances { width: 100%; }
-  #lobby .lobby-generator-tools { justify-content: center; }
-  #lobby .side-nav { grid-template-columns: repeat(6, 44px); grid-auto-rows: 44px; gap: 5px; }
-  #lobby .side-nav .menu-tile { width: 44px; height: 44px; min-height: 44px; }
+  #lobby #walletStatus { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+  #lobby .sf-currency-wallet { gap: 2px; align-items: center; }
+  #lobby .sf-currency-wallet .sf-currency { height: 32px; }
+  #lobby .sf-currency-value { font-size: clamp(10px, 9cqw, 16px); line-height: 1; }
+  #lobby .currency-add { width: 26px; height: 32px; flex-basis: 26px; font-size: 16px; }
+  #lobby .lobby-wallet-actions, #lobby .lobby-event-actions { display: contents; }
+  #lobby .lobby-wallet-tools :is(#accountButton, #promotionsButton, #rouletteButton, #blackFridayButton, #alchemyButton):not([hidden]) {
+    display: inline-flex; flex: 1 1 82px; align-items: center; justify-content: center;
+    height: auto; min-height: 44px; width: auto; max-width: none; padding: 5px 7px; gap: 4px; margin: 0;
+    font-size: 11px; line-height: 1.1; white-space: normal;
+  }
+  #lobby :is(.lobby-wallet-actions,.lobby-event-actions) > button img { width: 24px; height: 24px; }
+  #lobby #accountButton .account-button-icons { gap: 0; }
+  #lobby #accountButton .status-icon { --status-visible: 17px; flex-basis: 19px; width: 19px; height: 22px; }
+  #lobby #rouletteButton .roulette-lock { width: 22px; height: 22px; }
+  #lobby #promotionsButton .promotions-countdown { font-size: 9px; }
+  #lobby .showcase-grid {
+    display: grid; grid-template: "arena" auto "menu" auto "offers" auto / minmax(0, 1fr);
+    align-items: start; gap: var(--lobby-gap); height: auto;
+  }
+  #lobby .showcase, #lobby .lobby-sections {
+    min-width: 0; height: auto; padding: 10px; border: 1px solid #d4b67891; border-radius: 16px;
+    background: var(--lobby-panel); box-shadow: 0 3px 12px #0b172834;
+  }
+  #lobby .showcase {
+    grid-area: arena; align-self: start; align-content: start;
+    grid-template: "progress progress" auto "skin accessories" auto "boosters boosters" auto "entry entry" auto / minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+  #lobby .player-progress { grid-area: progress; position: static; width: 100%; height: auto; min-height: 0; padding: 0; grid-template: auto / minmax(0, 1fr) auto; gap: 6px; }
+  #lobby .progress-experience { grid-area: 1/1; grid-template-rows: auto 7px; align-content: center; gap: 4px; padding: 5px 9px; height: 100%; }
+  #lobby .progress-experience .xp-track { height: 7px; }
+  #lobby .progress-summary { justify-content: space-between; font-size: 11px; gap: 4px; }
+  #lobby .progress-greatness { position: static; grid-area: 1/2; padding: 4px 9px; }
+  #lobby .progress-greatness > span { font-size: 9px; }
+  #lobby #progressGreatness { font-size: 13px; }
+  #lobby .skin-stage { grid-area: skin; height: auto; min-height: 100px; grid-template-columns: 44px minmax(0, 96px) 44px; justify-content: center; gap: 4px; container-type: normal; padding: 0; }
+  #lobby .skin-art { width: min(100%, 82px); height: auto; aspect-ratio: 1; transform: none; justify-self: center; }
+  #lobby .skin-arrow { width: 44px; height: 44px; transform: none; }
+  #lobby .lobby-accessory-slots { grid-area: accessories; display: grid; grid-template-columns: minmax(0, 1fr); align-self: center; width: clamp(78px, 20cqw, 124px); height: auto; min-height: 0; margin: 0; gap: 4px; }
+  #lobby .lobby-accessory-slot { width: 100%; min-height: 44px; height: auto; padding: 3px 5px; gap: 3px; justify-content: center; }
+  #lobby .lobby-accessory-slot strong { font-size: 11px; line-height: 1.1; }
+  #lobby .lobby-accessory-slot small { font-size: 9px; }
+  #lobby .lobby-accessory-slot img { width: 25px; height: 25px; }
+  #lobby .lobby-loadout { grid-area: boosters; width: 100%; padding: 0; }
+  #lobby .loadout-heading { margin: 0 0 4px; font-size: 11px; line-height: 1.15; }
+  #lobby .loadout-slots { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 4px; }
+  #lobby .loadout-slot { min-height: 44px; width: 100%; height: 44px; aspect-ratio: auto; }
+  #lobby .entry-area { grid-area: entry; max-width: none; padding: 0; margin: 0; }
+  #lobby #joinForm { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  #lobby #joinForm #playButton { flex: 1; width: auto; min-width: 0; height: 46px; min-height: 46px; font-size: 18px; }
+  #lobby #arenaPickerButton { width: 48px; min-width: 48px; height: 46px; }
+  #lobby #cancelJoin:not([hidden]) { flex-basis: 100%; }
+  #lobby #lobbyStatus { margin: 4px 0 0; min-height: 0; font-size: 11px; line-height: 1.25; }
+  #lobby .lobby-sections { grid-area: menu; align-self: start; gap: 7px; }
+  #lobby .mobile-menu-heading { display: block; margin: 0 2px; color: #fff2d9; font-size: 15px; line-height: 1.15; text-align: left; }
+  #lobby .side-nav {
+    grid-area: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(78px, 100%), 1fr));
+    grid-template-rows: none; grid-auto-rows: minmax(56px, auto); width: 100%; height: auto; gap: 5px;
+  }
+  #lobby .side-nav .menu-tile {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    width: 100%; min-width: 0; height: 100%; min-height: 56px; margin: 0; padding: 5px 2px; gap: 3px;
+  }
+  #lobby .side-nav .menu-tile strong, #lobby #etherGeneratorButton strong { display: block; font-size: 11.5px; font-weight: 650; line-height: 1.1; text-align: center; white-space: normal; }
+  #lobby .side-nav .menu-icon, #lobby #etherGeneratorButton .menu-icon { width: 26px; height: 26px; flex: 0 0 26px; object-fit: contain; }
+  #lobby .promo-column { grid-area: offers; align-self: start; height: auto; grid-template-columns: repeat(3,minmax(0,1fr)); grid-template-rows: auto; gap: 6px; }
+  #lobby .promo-slot { height: clamp(60px, 11vw, 90px); min-height: 0; padding: 7px; }
+  #lobby .promo-slot h2 { font-size: clamp(12px, 2.7vw, 18px); line-height: 1.1; }
+  #lobby .promo-slot p, #lobby .promo-slot .promo-eyebrow { display: none; }
+  body[data-screen="lobby"] > .effi-lobby {
+    top: auto; bottom: max(8px, env(safe-area-inset-bottom)); right: max(8px, env(safe-area-inset-right));
+    width: min(224px, 74vw); align-items: end;
+  }
+  .effi-lobby .effi-lobby-character { height: 54px; flex-basis: 36px; }
+  .effi-lobby .effi-lobby-bubble { padding: 6px 38px 6px 10px; }
+  .effi-lobby .effi-lobby-bubble strong { font-size: 11px; }
+  .effi-lobby .effi-lobby-bubble p { margin: 2px 0 0; min-height: 0; font-size: 12px; line-height: 1.2; }
+  .effi-lobby .effi-lobby-dismiss { width: 36px; height: 100%; top: 0; }
+}
+
+@media (min-width: 650px) and (max-width: 960px) and (orientation: landscape),
+       (min-width: 650px) and (max-width: 1366px) and (max-height: 650px) and (orientation: landscape) and (pointer: coarse) {
+  #lobby .lobby-header { grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr); align-items: center; padding-right: 52px; }
+  #lobby .profile-card { width: 100%; height: 100%; }
+  #lobby .showcase-grid { grid-template: "arena menu" auto "arena offers" auto / minmax(0, .9fr) minmax(0, 1.25fr); align-content: start; }
+  #lobby .lobby-inner { gap: 7px; }
+  #lobby .showcase { gap: 5px; }
+  #lobby .skin-stage { min-height: 88px; }
+  #lobby .lobby-accessory-slots { gap: 2px; width: clamp(80px, 11cqw, 112px); }
+  #lobby .promo-slot { height: 66px; }
 }
 
 /* Arena controls stay at the edges in both phone orientations. */
