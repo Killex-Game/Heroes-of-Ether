@@ -225,7 +225,7 @@
         panel.prepend(bar);
         const results = el("div", "ranking-results");
         const table = panel.querySelector(".ranking-table");
-        table.classList.add("leaderboard");
+        table.classList.add("standings-table");
         const labels = el("div", "ranking-columns");
         labels.setAttribute("aria-hidden", "true");
         const unit = sort?.querySelector('[aria-pressed="true"]')?.textContent || data.eventRanking?.unit || "";

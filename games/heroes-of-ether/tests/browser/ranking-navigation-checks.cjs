@@ -13,7 +13,7 @@ module.exports = async function verifyNavigation(page, directory, engine) {
   const rows = tops.locator(".clan-ranking-row");
   await rows.first().waitFor();
   const assertRowStyle = async () => {
-    const row = tops.locator(".leaderboard > .leaderboard-row").first();
+    const row = tops.locator(".standings-table > .leaderboard-row").first();
     await row.waitFor();
     const style = await row.evaluate(node => {
       const css = getComputedStyle(node), table = getComputedStyle(node.parentElement);

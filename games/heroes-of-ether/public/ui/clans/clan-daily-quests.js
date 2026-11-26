@@ -85,7 +85,7 @@
     owner.questRankingCleanup?.();
     const root=el('section','clan-panel clan-daily-ranking'),head=el('div','clan-quest-ranking-heading'),help=el('button','sf-button sf-tertiary','О заданиях');help.type='button';help.onclick=()=>info(state);head.append(help);root.append(el('h3','','Лидеры по заданиям'),head);
     if(state.calendarSeason)head.append(el('span','clan-quest-season-dates',calendar.seasonRange(state.calendarSeason)));
-    const rows=state.dailyRanking||[], list=el('div','clan-daily-ranking-list leaderboard');
+    const rows=state.dailyRanking||[], list=el('div','clan-daily-ranking-list standings-table');
     const pageSize=10; let pages=1;
     const controls=el('div','clan-daily-pager'), pageLabel=el('span'), buttons=[];
     for(const [label,step] of [['‹',-1],['›',1]]){

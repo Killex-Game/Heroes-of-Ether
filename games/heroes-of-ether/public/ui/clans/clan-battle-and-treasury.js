@@ -506,7 +506,7 @@
         return root;
       }
       const z = state.group.zones;
-      const rows = el("ol", "clan-league-table leaderboard");
+      const rows = el("ol", "clan-league-table standings-table");
       const zones = [
         {
           id: "promote",

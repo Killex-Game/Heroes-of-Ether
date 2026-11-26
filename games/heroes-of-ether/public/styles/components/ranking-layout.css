@@ -157,30 +157,30 @@ body #topsDialog.interface-window[open] {
 #topsDialog .ranking-results .ranking-table > :is(.clan-ranking-row,.clan-ranking-player) {
   min-height:0;height:auto;font-size:14px;line-height:1.2;text-align:left;container-type:normal}
 /* All ranking sections share one table surface, including the two clan season standings. */
-body :is(#topsDialog,#clanDialog) .leaderboard {
+body :is(#topsDialog,#clanDialog) .standings-table {
   --table-line:color-mix(in srgb,var(--prism-edge,#c9a15b) 48%,transparent);
   --table-accent:var(--prism-strong,#315f7c);
   border:1px solid var(--table-line);border-radius:9px;gap:0;
   background:color-mix(in srgb,var(--prism-light,#fffaf0) 56%,transparent);
 }
-body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row {
+body :is(#topsDialog,#clanDialog) .standings-table > .leaderboard-row {
   appearance:none;box-sizing:border-box;margin:0;border:0;border-radius:0;
   border-block-end:1px solid var(--table-line);outline:none;box-shadow:none;
   background:transparent;color:inherit;filter:none;text-shadow:none;transform:none;
 }
-body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:last-child {border-block-end:0}
-body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:nth-child(even) {
+body :is(#topsDialog,#clanDialog) .standings-table > .leaderboard-row:last-child {border-block-end:0}
+body :is(#topsDialog,#clanDialog) .standings-table > .leaderboard-row:nth-child(even) {
   background:color-mix(in srgb,var(--prism-edge,#c9a15b) 7%,transparent);
 }
-body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:is(.clan-ranking-self,.own,[data-mine="true"]) {
+body :is(#topsDialog,#clanDialog) .standings-table > .leaderboard-row:is(.clan-ranking-self,.own,[data-mine="true"]) {
   box-shadow:inset 3px 0 var(--table-accent);
 }
 @media (hover:hover) {
-  body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:hover {
+  body :is(#topsDialog,#clanDialog) .standings-table > .leaderboard-row:hover {
     background:color-mix(in srgb,var(--prism-edge,#c9a15b) 16%,transparent);
   }
 }
-body :is(#topsDialog,#clanDialog) .leaderboard > .leaderboard-row:focus-visible {
+body :is(#topsDialog,#clanDialog) .standings-table > .leaderboard-row:focus-visible {
   outline:2px solid var(--table-accent);outline-offset:-2px;
 }
 body :is(#topsDialog,#clanDialog) .leaderboard-row > :is(.clan-rank,b:first-child):not(.daily-rank-medal) {
