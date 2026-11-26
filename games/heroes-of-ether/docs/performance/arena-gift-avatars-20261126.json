@@ -1,0 +1,386 @@
+{
+  "release": "20261126-arena-gift-avatars",
+  "source": "8489ad3b369c3137abdf5e1c6a4be407db784331",
+  "installed": true,
+  "opened": {
+    "at": 1795654491714,
+    "gamePid": 1040818,
+    "adminPid": 1163,
+    "revision": 5613227,
+    "generation": 9220,
+    "entryOpened": true,
+    "backend": "postgresql",
+    "exactVerificationWhilePaused": true
+  },
+  "health": {
+    "at": "2026-11-26T00:55:38.855Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 5613231,
+    "gamePid": 1040818,
+    "adminPid": 1163,
+    "candidateInstalled": true
+  },
+  "comparison": {
+    "calendarReplayExact": true,
+    "noCalendarChange": true,
+    "expiredChat": 0,
+    "allOtherFieldsEqual": true,
+    "beforeRevision": 5613227,
+    "revision": 5613227,
+    "digest": "bee1e5b02bfc9cc2c5f18be05fbc0c572407d3edd808c4eea6a94a4cc6317d17",
+    "worldHash": "6ac024c8c35fd360d89d175396c4b775e3c41fc40b4dcae7c1fa1e7771d1ae14",
+    "profiles": 1729,
+    "clans": 138
+  },
+  "database": {
+    "ok": true,
+    "revision": 5613227,
+    "generation": 9220,
+    "digest": "bee1e5b02bfc9cc2c5f18be05fbc0c572407d3edd808c4eea6a94a4cc6317d17",
+    "worldHash": "6ac024c8c35fd360d89d175396c4b775e3c41fc40b4dcae7c1fa1e7771d1ae14",
+    "profiles": 1729,
+    "clans": 138,
+    "fullWorldAndAuxEqual": true,
+    "calendarComparisonRevalidated": true
+  },
+  "backup": {
+    "verified": true,
+    "archiveSha256": "b96530c6b27cceba824e59221e2005b04a3ddd4a9e2acf75b4f2f2e0ae82787b",
+    "revision": 5613227,
+    "digest": "bee1e5b02bfc9cc2c5f18be05fbc0c572407d3edd808c4eea6a94a4cc6317d17",
+    "worldHash": "6ac024c8c35fd360d89d175396c4b775e3c41fc40b4dcae7c1fa1e7771d1ae14",
+    "profiles": 1729,
+    "clans": 138,
+    "postgresqlArchiveVerified": true
+  },
+  "runtime": {
+    "release": "/srv/heroether-test/play/releases/20261126-arena-gift-avatars",
+    "sourceCommit": "8489ad3b369c3137abdf5e1c6a4be407db784331",
+    "files": 2675,
+    "changed": 16,
+    "previousReleaseUnchanged": true,
+    "protectedGraphicsUnchanged": true,
+    "commentsRemoved": 112,
+    "unchangedSourceFiles": 2636
+  },
+  "tests": {
+    "at": "2026-11-26T00:40:36.667Z",
+    "allRequiredChecksPassed": true,
+    "totalPassed": 2567,
+    "totalSkipped": 8,
+    "sets": {
+      "linux-focused": {
+        "tests": 122,
+        "pass": 121,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "exit": 1
+      },
+      "linux-full": {
+        "tests": 2575,
+        "pass": 2566,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 8,
+        "exit": 1
+      },
+      "linux-pg-final": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "exit": 0
+      },
+      "linux-progression-final": {
+        "tests": 23,
+        "pass": 23,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "exit": 0
+      }
+    },
+    "initialFailures": [
+      {
+        "suite": "linux-focused",
+        "test": "mass-accrual-v5-pg",
+        "cause": "New in-memory fixture called async disk commit without a disk adapter",
+        "correction": "Use in-memory applyArenaProgress; PostgreSQL rollback/commit/replay test passed 1/1"
+      },
+      {
+        "suite": "linux-full",
+        "test": "progression-server:death at 59950ms",
+        "cause": "Expected old population bonus 7; new specified formula returns 6",
+        "correction": "Only assertion changed; complete file passed23/23"
+      }
+    ],
+    "limitations": [
+      "Full suite has eight opt-in skips. Focused tests separately cover real isolated PostgreSQL.",
+      "No new CCU or whole-server performance claim."
+    ],
+    "browsers": [
+      {
+        "engine": "chromium",
+        "avatarsPassed": true,
+        "shieldPassed": true,
+        "errors": 0
+      },
+      {
+        "engine": "firefox",
+        "avatarsPassed": true,
+        "shieldPassed": true,
+        "errors": 0
+      },
+      {
+        "engine": "webkit",
+        "avatarsPassed": true,
+        "shieldPassed": true,
+        "errors": 0
+      }
+    ],
+    "windowsFocused": {
+      "pass": 24,
+      "fail": 0
+    },
+    "initialBrowserFailures": [
+      "New Premium fixture omitted required account fields; corrected with account-benefits.fresh().",
+      "New framed-shield fixture selected an incorrect profile field; corrected appearance.arenaFrame."
+    ],
+    "limits": [
+      "Full suite initially2566pass/1 outdated expectation/8 opt-in skips; corrected file23/23, not a repeated full suite.",
+      "WebKit automation does not replace physical iOS testing."
+    ]
+  },
+  "http": {
+    "passed": true,
+    "rows": [
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/arena/body-renderer.js",
+        "hash": "698d85348acf1f845934481f839512dce8ee4b539eb239c066508b7df4ce1ffa"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/arena/shield-renderer.js",
+        "hash": "aa9a1143be475c31801d57d908cf14f365cfe129f9efca0fa9a4c2aced68d080"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/skins/negative-sets-v3/1024/hex-witch.webp",
+        "hash": "de1826e2c8051714e89904e7e4901a59953d4a4f2a44199a4af018cf5181bad6"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/skins/negative-sets-v3/1024/infection-zombie.webp",
+        "hash": "d0f6b2fe51eb190af01139822b052fd001c7a65d608fc4bdb75ce69f074f2560"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/skins/negative-sets-v3/128/hex-witch.webp",
+        "hash": "6542360322913150df5dc61b8ef0ef08fa83b9d895bf23a4ef3b6de9cbaed5b7"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/skins/negative-sets-v3/128/infection-zombie.webp",
+        "hash": "f7ff2d89d8c108dc474f9bf190d72d76db9a8bbd8ed97852245d48bfff252ff2"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/skins/negative-sets-v3/512/hex-witch.webp",
+        "hash": "c31f3a3ddff14696e2313cabad5e7cc64afd6edb3712510be735132cacd9e64d"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/assets/skins/negative-sets-v3/512/infection-zombie.webp",
+        "hash": "9eaf0e231b94a4a460bcac9776ad8ec19a497ea6e65ae95b7581d161008e47f4"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/game-client.js",
+        "hash": "556de346c34caee164bd65a89504709154ba729739847b6b9b695c2beb703490"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/index.html",
+        "hash": "1b6a0fafef434fa5a50023298bdb10fe8abb1df725505ad79374436dec16671f"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/shared/arena-backgrounds.js",
+        "hash": "553a9aa6f6f681f1e22cd62505d4d5cf7493a1e4cd0d30dd33ae036f9c58da52"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/shared/gift-appearance.js",
+        "hash": "e719056ec7bbf6d44bbf427ed36af4611aa7c9a0f4be36e6e179f030b0f4a98e"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/shared/release-notes.js",
+        "hash": "5161dc7512652a781c5cd55653a3e14846a20f1da17a74418bcd278ed4d72c35"
+      },
+      {
+        "target": "https://195.208.123.221",
+        "file": "public/styles/components/gift-appearance.css",
+        "hash": "f812376119b3d8f7077ddf0a688205c0133ae24986a026aff945aa0e8abd701d"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/arena/body-renderer.js",
+        "hash": "b3783b3375368925fa9467a5035e15e461a98b0c585ed618e7216dc9456608b5"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/arena/shield-renderer.js",
+        "hash": "9e670434fd81e94281a4c9c4f5a19182b3d774a188a968b458c7fc6424314b95"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/skins/negative-sets-v3/1024/hex-witch.webp",
+        "hash": "de1826e2c8051714e89904e7e4901a59953d4a4f2a44199a4af018cf5181bad6"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/skins/negative-sets-v3/1024/infection-zombie.webp",
+        "hash": "d0f6b2fe51eb190af01139822b052fd001c7a65d608fc4bdb75ce69f074f2560"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/skins/negative-sets-v3/128/hex-witch.webp",
+        "hash": "6542360322913150df5dc61b8ef0ef08fa83b9d895bf23a4ef3b6de9cbaed5b7"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/skins/negative-sets-v3/128/infection-zombie.webp",
+        "hash": "f7ff2d89d8c108dc474f9bf190d72d76db9a8bbd8ed97852245d48bfff252ff2"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/skins/negative-sets-v3/512/hex-witch.webp",
+        "hash": "c31f3a3ddff14696e2313cabad5e7cc64afd6edb3712510be735132cacd9e64d"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/assets/skins/negative-sets-v3/512/infection-zombie.webp",
+        "hash": "9eaf0e231b94a4a460bcac9776ad8ec19a497ea6e65ae95b7581d161008e47f4"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/game-client.js",
+        "hash": "0b7b67096c619dbdb39ebc9488eac69a9b9638189b772ea3d9593217a8b4a35b"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/index.html",
+        "hash": "1b6a0fafef434fa5a50023298bdb10fe8abb1df725505ad79374436dec16671f"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/shared/arena-backgrounds.js",
+        "hash": "f0c4a0239e30d3d17cba535635dd8b250051a03967522369d4d1723a303a97bf"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/shared/gift-appearance.js",
+        "hash": "e05072c468efe335c01359bda6e78ffc9ad81862ad3cf0a8dca188e7f5162df3"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/shared/release-notes.js",
+        "hash": "10f6b3af54e767cd1b72d424dbc52b85ec4fad0a52ba3c8f7cc8f4e034a44b83"
+      },
+      {
+        "target": "http://127.0.0.1:3104",
+        "file": "public/styles/components/gift-appearance.css",
+        "hash": "f812376119b3d8f7077ddf0a688205c0133ae24986a026aff945aa0e8abd701d"
+      }
+    ]
+  },
+  "localReview": {
+    "port": 3104,
+    "pid": 32228,
+    "isolatedData": true,
+    "synchronized": 30
+  },
+  "changes": [
+    "Natural kills now R((m×0.0001+i/2)×P); current mass and live humans sampled at each30seconds, Premium×2 retained.",
+    "New ruleVersion5; persisted v1–v4 retain their exact values. XP VIP×3 after bonuses, personal caps, credited clan totals and deadlines unchanged.",
+    "Sphere receives frameOuterRadius and uses1.46scale to compensate measured transparent margins; static sprite unchanged.",
+    "Cobblestone and clearing removed from active catalogue and preloading; legacy IDs fall back to astral. Original assets preserved.",
+    "Hex and Infection temporarily replace portrait with old witch and silly zombie; strongest set wins, original choice retained and restored; pig unchanged."
+  ],
+  "artwork": {
+    "mode": "built-in image_gen",
+    "directory": "design/negative-avatars-20261126",
+    "prompts": "design/negative-avatars-20261126/prompts.json",
+    "manifest": {
+      "tool": "built-in image_gen",
+      "outputs": [
+        {
+          "file": "public/assets/skins/negative-sets-v3/128/hex-witch.webp",
+          "bytes": 7844,
+          "sha256": "6542360322913150df5dc61b8ef0ef08fa83b9d895bf23a4ef3b6de9cbaed5b7"
+        },
+        {
+          "file": "public/assets/skins/negative-sets-v3/512/hex-witch.webp",
+          "bytes": 46482,
+          "sha256": "c31f3a3ddff14696e2313cabad5e7cc64afd6edb3712510be735132cacd9e64d"
+        },
+        {
+          "file": "public/assets/skins/negative-sets-v3/1024/hex-witch.webp",
+          "bytes": 117916,
+          "sha256": "de1826e2c8051714e89904e7e4901a59953d4a4f2a44199a4af018cf5181bad6"
+        },
+        {
+          "file": "public/assets/skins/negative-sets-v3/128/infection-zombie.webp",
+          "bytes": 6872,
+          "sha256": "f7ff2d89d8c108dc474f9bf190d72d76db9a8bbd8ed97852245d48bfff252ff2"
+        },
+        {
+          "file": "public/assets/skins/negative-sets-v3/512/infection-zombie.webp",
+          "bytes": 39584,
+          "sha256": "9eaf0e231b94a4a460bcac9776ad8ec19a497ea6e65ae95b7581d161008e47f4"
+        },
+        {
+          "file": "public/assets/skins/negative-sets-v3/1024/infection-zombie.webp",
+          "bytes": 106818,
+          "sha256": "d0f6b2fe51eb190af01139822b052fd001c7a65d608fc4bdb75ce69f074f2560"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "No new maximumCCU or measured whole-game speedup. Existing snapshot/IPC/physics/progress load remains.",
+    "Previous owner greatness grant remains unperformed; do not bypass prior review/session block."
+  ],
+  "cleanup": {
+    "local": {
+      "path": "C:\\Users\\semen\\Documents\\ChatGPT\\Killex\\artifacts\\arena-gift-avatars-20261126\\backup-extracted",
+      "archiveRetained": true,
+      "removedBytes": 434888687
+    },
+    "remote": {
+      "keep": [
+        [
+          "arena-gift-avatars-20261126",
+          "b96530c6b27cceba824e59221e2005b04a3ddd4a9e2acf75b4f2f2e0ae82787b"
+        ],
+        [
+          "kill-patterns-ui-20261126",
+          "3fd09514facb6e32b2853ed75ae80c25533dc9b08aad6024e81b861aab86cc50"
+        ]
+      ],
+      "removed": [
+        {
+          "path": "/run/heroether-arena-avatars-backup-20261126",
+          "bytes": 557804995,
+          "reason": "Full restart comparison complete; verified archives retained on both machines"
+        }
+      ]
+    },
+    "archivesRetained": true
+  }
+}

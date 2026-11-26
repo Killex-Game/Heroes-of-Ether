@@ -1,3 +1,7 @@
+Установлен20261126-arena-gift-avatars,source8489ad3b369c3137abdf5e1c6a4be407db784331.
+Отчёт:games/heroes-of-ether/docs/performance/arena-gift-avatars-20261126.json. Подробности:games/heroes-of-ether/docs/arena-gift-avatars-20261126.txt.
+Формула природных киллов i/2, ruleVersion5; старые пакеты точны. Текущие backup обеих сторон сохранять вместе с предыдущим и уникальными оригиналами.300000CCU не доказаны.
+
 Установлен 20261126-kill-potions
 Source 028cce3b4d86993400c293ee3f4ad68d3887ac96; tag release/20261126-kill-potions.
 Отчёт: games/heroes-of-ether/docs/performance/kill-potions-ui-20261126.json.
