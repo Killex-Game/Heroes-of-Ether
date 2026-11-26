@@ -1,0 +1,93 @@
+{
+  "source": "685ddc7d14fcb5c592a48cd67b4944c2ccb2d7c9",
+  "release": "20261126-mobile-navigation",
+  "installedAt": "2026-11-26T15:42:21.545Z",
+  "gamePid": 1075804,
+  "adminPid": 1163,
+  "changedRuntime": [
+    "public/game-client.js",
+    "public/index.html",
+    "public/shared/arena-camera-and-layout.js",
+    "public/styles/components/ranking-layout.css",
+    "public/styles/layout/mobile-game-layout.css",
+    "public/ui/clans/clan-battle-and-treasury.js",
+    "public/ui/clans/clan-daily-quests.js",
+    "public/ui/clans/clan-dialog.js",
+    "public/ui/rankings/leaderboard-dialog.js",
+    "public/ui/roulette/roulette-dialog.js",
+    "src/server/arena/arena-simulation.js",
+    "src/server/clans/clan-service.js",
+    "src/server/progression/experience-progression.js",
+    "src/server/testing/arena-bot-brain.js"
+  ],
+  "unchangedRuntimeSources": 2669,
+  "arenaPlayersBeforeNotice": 8,
+  "offlineProtection": {
+    "profiles": 1734,
+    "clans": 138,
+    "revisionBefore": 6133592,
+    "revisionCompared": 6133592,
+    "archiveSha256": "66b43919a75a3476c1f40ccd3bb393502b5f668f6d7724e72fd8dc3116855bd4",
+    "fullStateVerified": true
+  },
+  "tests": {
+    "windows": 76,
+    "linux": 76,
+    "engines": [
+      "Chromium",
+      "Firefox",
+      "WebKit"
+    ],
+    "mobileDialogSizes": [
+      [
+        568,
+        320
+      ],
+      [
+        844,
+        390
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        667,
+        375
+      ],
+      [
+        320,
+        568
+      ],
+      [
+        1280,
+        597
+      ]
+    ],
+    "desktopTables": [
+      [
+        1366,
+        768
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "checkedStaticResponses": 20,
+    "seasonStandings": "Chromium: league and quest rows and own-clan accent",
+    "motion": "Space and W tested in three engines"
+  },
+  "changes": {
+    "rankings": "Shared table design, left navigation, mass record and lifetime complete human absorptions; no notification line or error toast in rankings.",
+    "records": "Existing maximum mass retained. Legacy absorption counters include bot victims. Human-only total starts at the first tagged final defeat after installation, counts once irrespective of reward multipliers, cap or cooldown.",
+    "mobile": "Landscape wheel and separate actions, news sidebar, rankings sidebar, compact shop and taller arena chat.",
+    "mechanics": "Space child moves forward instead of pushing its parent back on launch in open space. Bots exclude clan KILL from deliberate attack targets; no immunity to ordinary physics."
+  },
+  "verificationNotes": [
+    "A browser suite loaded a previous page revision while tests changed; final focused checks and the fresh six-size WebKit run passed.",
+    "An initial shared class inherited the in-arena HUD position; the released class is scoped to standings.",
+    "Measurements are browser layout and mechanic checks, not a server load benchmark.",
+    "The first post-restart PostgreSQL prepare timed out. Automatic protection temporarily returned HTTP 503. The worker recovered, acknowledged revision 6133596, and the public and local HTTP checks passed."
+  ]
+}
