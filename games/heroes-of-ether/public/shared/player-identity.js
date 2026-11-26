@@ -94,26 +94,6 @@
   "x": 0,
   "y": 0.1735
 },
-  "moon-dragon": {
-    "scale": 1.0133,
-    "x": 0.001,
-    "y": 0.0231
-  },
-  "forest-spirit": {
-    "scale": 1.0008,
-    "x": 0.001,
-    "y": 0.029
-  },
-  "sun-phoenix": {
-    "scale": 1.18,
-    "x": 0.0081,
-    "y": 0.06
-  },
-  "crystal-guardian": {
-    "scale": 1.0327,
-    "x": 0,
-    "y": 0.03
-  },
   "amber-fox": {
     "scale": 0.9689,
     "x": -0.0104,
@@ -513,10 +493,6 @@
   // Precomputed from the opaque lower contour, with a small overlap behind the rim.
   // Scaling and vertical placement are independent so a smaller portrait still meets the ball.
   const portraitBottomAnchors = Object.freeze({
-  "moon-dragon": 0.0707,
-  "forest-spirit": 0.094,
-  "sun-phoenix": 0.1183,
-  "crystal-guardian": 0.0985,
   "amber-fox": 0.0713,
   "snow-leopard": 0.0349,
   "little-owl": 0.0507,
@@ -608,7 +584,7 @@
     })])));
   // Единый актуальный каталог портретов для всех поверхностей.
   function transparentSkin(skin) {
-    const directory = skin.tier === "premium" ? "premium-v2" : "transparent-v2";
+    const directory = skin.portraitPack || (skin.tier === "premium" ? "premium-v2" : "transparent-v2");
     const variants = Object.freeze(
       Object.fromEntries(
         [64, 128, 256, 512, 1024].map((size) => [
@@ -621,34 +597,16 @@
   }
   const skins = Object.freeze(
     [
-      {
-        id: "moon-dragon",
-        name: "Лунный дракон",
-        file: "moon-dragon.png",
-
-      },
-      {
-        id: "forest-spirit",
-        name: "Лесной дух",
-        file: "forest-spirit.png",
-
-      },
-      {
-        id: "sun-phoenix",
-        name: "Солнечный феникс",
-        file: "sun-phoenix.png",
-
-      },
-      {
-        id: "crystal-guardian",
-        name: "Кристальный страж",
-        file: "crystal-guardian.png",
-
-      },
+      { id: "moon-dragon", name: "Лунный чародей", portraitPack: "starter-heroes-v1" },
+      { id: "forest-spirit", name: "Лесная хранительница", portraitPack: "starter-heroes-v1" },
+      { id: "sun-phoenix", name: "Вестница рассвета", portraitPack: "starter-heroes-v1" },
+      { id: "crystal-guardian", name: "Кристальный страж", portraitPack: "starter-heroes-v1" },
       { id: "amber-fox", name: "Янтарная лиса", file: "amber-fox.webp" },
       { id: "snow-leopard", name: "Снежный барс", file: "snow-leopard.webp" },
       { id: "little-owl", name: "Совёнок", file: "little-owl.webp" },
       { id: "sea-dragon", name: "Морской дракончик", file: "sea-dragon.webp" },
+      { id: "ether-cartographer", name: "Картограф Эфира", portraitPack: "starter-heroes-v1" },
+      { id: "sky-weaver", name: "Ткачиха облаков", portraitPack: "starter-heroes-v1" },
     ].map(transparentSkin),
   );
   // Идентификаторы сохраняются в профилях. Имена файлов описывают реальные изображения.

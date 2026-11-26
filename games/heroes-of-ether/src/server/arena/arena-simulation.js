@@ -10,6 +10,7 @@ const { BOOSTERS, BOOSTER_RULES, BoosterError } = require("../boosters/booster-c
 const arenaPets = require("../pets/arena-pets");
 const giftEffects = require("../profiles/gift-effects");
 const alchemy = require("./alchemy-effects");
+const alchemyRules = require("../../../public/shared/alchemy-rules");
 const alchemyField = require("./alchemy-field");
 const accessoryAbilities = require("./accessory-abilities");
 const { CircleIndex } = require("./spatial-collision-index");
@@ -775,17 +776,17 @@ class Arena {
     if (message.spawnSerial !== p.spawnSerial)
       throw new BoosterError("После возрождения выбери бустер заново.");
     if (booster.kind === "potion") {
-      const rules = require("../../../public/shared/alchemy-rules"), id = rules.get(booster.id).id;
-      const ids = rules.activeIds(p.potion);
+      const id = alchemyRules.get(booster.id).id;
+      const ids = alchemyRules.activeIds(p.potion);
       if (ids.includes(id)) throw new BoosterError("Это зелье уже действует.", 409);
-      if (ids.length >= rules.MAX_ACTIVE) throw new BoosterError("За этот вход на арену уже действуют три зелья.", 409);
+      if (ids.length >= alchemyRules.MAX_ACTIVE) throw new BoosterError("За этот вход на арену уже действуют три зелья.", 409);
       return () => {
         // Close the observed interval before activation: earlier time must not
         // receive a newly drunk potion's bonus in the next 30-second payout.
         this.accrueMass(p, now);
         const active = [...ids, id];
         p.potion = { id: active[0], ids: active, readyAt: p.potion?.readyAt ?? now,
-          modifiers: rules.combine(active) };
+          modifiers: alchemyRules.combine(active) };
         if (p.massAccrual) p.massAccrual.potionXpPercent = 100 + Math.round((alchemy.modifiers(p).xp || 0) * 100);
         p.boostersUsed++;
         p.boosterUses[booster.id] = 1;
@@ -1408,7 +1409,7 @@ class Arena {
           lifeSeconds: Math.max(0, Math.floor((now - p.lifeStartedAt) / 1000)),
           lifeElapsedMs: Math.max(0, now - p.lifeStartedAt),
           pet: arenaPets.snapshot(p, now),
-          potion: p.potion ? { id: p.potion.id, ids: [...require("../../../public/shared/alchemy-rules").activeIds(p.potion)],
+          potion: p.potion ? { id: p.potion.id, ids: [...alchemyRules.activeIds(p.potion)],
             readyInMs: Math.max(0, p.potion.readyAt - now) } : null,
           accessoryAbilities: accessoryAbilities.snapshot(p),
           boostersUsed: p.boostersUsed,

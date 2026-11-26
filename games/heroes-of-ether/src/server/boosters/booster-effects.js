@@ -189,13 +189,16 @@ class BoosterEffects {
     this.tickSwordBurns(p, now);
     if (p.dead) return;
     // Обрабатываем секунды по порядку: результат не зависит от частоты тиков.
-    const damage = p.damageTicks || [];
+    const damage = p.damageTicks ||= [];
+    if (!damage.length &&
+        !(p.nextCakeAt <= now && p.nextCakeAt <= p.effects.cake) &&
+        !(p.nextEasterAt <= now && p.nextEasterAt <= p.effects.easter_egg)) return;
     while (true) {
-      const next = Math.min(
-        ...damage.map((e) => e.next),
+      let next = Math.min(
         p.nextCakeAt <= p.effects.cake ? p.nextCakeAt : Infinity,
         p.nextEasterAt <= p.effects.easter_egg ? p.nextEasterAt : Infinity,
       );
+      for (const effect of damage) next = Math.min(next, effect.next);
       if (!Number.isFinite(next) || next > now) break;
       for (const e of damage)
         if (e.next === next) {
@@ -229,7 +232,7 @@ class BoosterEffects {
         p.nextEasterAt += BOOSTERS.get("easter_egg").tickMs;
       }
     }
-    p.damageTicks = damage.filter((e) => Number.isFinite(e.next));
+    if (damage.length) p.damageTicks = damage.filter((e) => Number.isFinite(e.next));
   }
   ejectPoisonFood(p, before, now) {
     const a = this.arena;
@@ -299,7 +302,7 @@ class BoosterEffects {
   tickSwordBurns(p, now) {
     if (!p.swordBurns?.length) {
       p.swordBurns ||= [];
-      delete p.effects.fire_sword;
+      if ("fire_sword" in p.effects) delete p.effects.fire_sword;
       return;
     }
     const a = this.arena;

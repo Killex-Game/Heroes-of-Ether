@@ -13,7 +13,7 @@
   function sphere() {
     if (!sphereImage && typeof Image !== "undefined") {
       sphereImage = new Image();
-      sphereImage.src = "assets/shields/sphere-static-v2.webp";
+      sphereImage.src = "assets/shields/sphere-static-v3.webp";
     }
     return sphereImage;
   }

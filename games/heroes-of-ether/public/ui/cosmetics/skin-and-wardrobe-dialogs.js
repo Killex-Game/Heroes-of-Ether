@@ -14,6 +14,17 @@
     return node;
   };
   const setSkinImage = window.KillexIdentity.setSkinImage;
+  function avatarButton(skin) {
+    const control = button("account-avatar", "", () => {
+      document.dispatchEvent(new CustomEvent("killex:choose-skin", { detail: skin.id }));
+    });
+    control.dataset.skinId = skin.id;
+    const img = el("img");
+    setSkinImage(img, skin, 128);
+    img.alt = "";
+    control.append(img, el("span", "", skin.name));
+    return control;
+  }
   function accessorySummary(item) {
     const b = item.bonus || {};
     if (b.generatorFactor) return `Эфир генератора ×${b.generatorFactor}, +${b.xp || 0}% опыта`;
@@ -158,7 +169,11 @@
           "Текущие скины по умолчанию. Нажми на понравившийся, чтобы выбрать.",
         ),
       );
-      this.defaults.append(document.getElementById("skinList"));
+      const freeGrid = document.getElementById("skinList");
+      freeGrid.replaceChildren(...window.KillexIdentity.skins.map(avatarButton));
+      const freeShowcase = el("div", "avatar-set-showcase");
+      freeShowcase.append(freeGrid);
+      this.defaults.append(freeShowcase);
       this.sets = el("section", "skin-owned-sets");
       this.emptySets = el(
         "p",
@@ -210,7 +225,7 @@
       if (!skin) return;
       this.selectedName.textContent = skin.name;
       if (this.wardrobeImage) setSkinImage(this.wardrobeImage, skin, 512);
-      for (const control of this.accountSets.querySelectorAll("[data-skin-id]"))
+      for (const control of this.skins.querySelectorAll("button.account-avatar[data-skin-id]"))
         control.setAttribute("aria-pressed", String(control.dataset.skinId === skin.id));
     }
     openSkins() {
@@ -361,18 +376,7 @@
           showcase.dataset.setId = set.id;
           showcase.append(el("h4", "", set.name));
           const grid = el("div", "account-avatar-grid");
-          for (const skin of set.skins) {
-            const control = button("account-avatar", "", () => {
-              document.dispatchEvent(new CustomEvent("killex:choose-skin", { detail: skin.id }));
-            });
-            control.dataset.skinId = skin.id;
-            control.setAttribute("aria-pressed", String(this.owner.getSkin() === skin.id));
-            const img = el("img");
-            setSkinImage(img, skin, 128);
-            img.alt = "";
-            control.append(img, el("span", "", skin.name));
-            grid.append(control);
-          }
+          grid.append(...set.skins.map(avatarButton));
           showcase.append(grid);
           this.accountSets.append(showcase);
         }

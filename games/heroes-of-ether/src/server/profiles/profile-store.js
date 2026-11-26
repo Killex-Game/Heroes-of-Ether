@@ -46,6 +46,7 @@ const wardrobeState = require("./wardrobe-state");
 const activity = require("../progression/activity-achievements");
 const quests = require("../progression/personal-quests");
 const clanQuests = require("../clans/daily-quests/service");
+const clanSettlement = require("../clans/arena-settlement");
 const easter = require("../events/easter-hunt");
 const eventAlbum = require("../events/event-album");
 const blackFriday = require("../events/black-friday");
@@ -551,14 +552,14 @@ class ProfileStore {
       let recoveredClanContribution=false;
       for (const [profileKey,p] of Object.entries(data.profiles))
         if (p.progress.session && !this.residentRecoveryProfiles.has(p.id)) {
-          if(p.clanArenaPending && require('../clans/arena-settlement').enabled(data)) {
+          if(p.clanArenaPending && clanSettlement.enabled(data)) {
             clanRecoveryBefore.profiles[profileKey]=structuredClone(p);
             const event={type:'lifeEnded',lifeId:p.progress.session.id,reason:'recovered'},drafts=new Map();
-            require('../clans/arena-settlement').observe(data,p,event,clanRecoveryAt,p.progress.kills);
+            clanSettlement.observe(data,p,event,clanRecoveryAt,p.progress.kills);
             clanQuests.progress(data,drafts,p,event,clanRecoveryAt,{},0,
               {kills:p.progress.absorptionKills,mass:p.progress.absorbedMass,creditedKills:p.progress.kills});
             if(drafts.size)data.clans={...data.clans,...Object.fromEntries(drafts)};
-            require('../clans/arena-settlement').finish(p,event);
+            clanSettlement.finish(p,event);
             recoveredClanContribution=true;
           } else if(p.clanQuestSession) p.clanQuestSession=null;
           easter.settleLife(p, p.progress.session.id);
@@ -1268,7 +1269,6 @@ class ProfileStore {
         detail: p.level > previousLevel ? `Уровень ${previousLevel} → ${p.level}` : event.type,
       });
       const earned = p.progress.xp + (p.progress.session?.xp || 0) - before;
-      const clanSettlement=require('../clans/arena-settlement');
       clanSettlement.observe(previous,p,event,at,clanBefore.creditedKills);
       clanQuests.progress(previous, clanDrafts, p, event, at, questChanges, earned, clanBefore);
       clanSettlement.finish(p,event);

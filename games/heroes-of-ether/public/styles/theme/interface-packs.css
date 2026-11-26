@@ -84,7 +84,7 @@ body[data-screen="lobby"]
     margin: 0 0 10px;
     font-size: 19px;
   }
-  #skinsDialog .account-avatar-grid {
+  #skinsDialog .skin-library :is(#skinList, .account-avatar-grid) {
     gap: 6px;
     margin-top: 8px;
   }
@@ -111,6 +111,13 @@ body[data-screen="lobby"]
 }
 
 /* Each avatar collection is a complete showcase, without a horizontal picker. */
+#skinsDialog .skin-defaults {
+  padding-inline: 18px;
+  border-inline: 1px solid transparent;
+}
+@media (max-width: 540px) {
+  #skinsDialog .skin-defaults { padding-inline: 4px; }
+}
 #skinsDialog .account-skin-sets {
   display: grid;
   gap: 16px;
@@ -126,7 +133,7 @@ body[data-screen="lobby"]
   margin: 0 0 10px;
   font-size: 15px;
 }
-#skinsDialog .account-avatar-grid {
+#skinsDialog .skin-library :is(#skinList, .account-avatar-grid) {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   justify-content: start;
@@ -148,11 +155,14 @@ body[data-screen="lobby"]
 #skinsDialog .account-avatar img {
   width: min(100%, 136px);
   height: auto;
+  transform: none;
   aspect-ratio: 1;
   object-fit: contain;
 }
 #skinsDialog .account-avatar span {
-  min-height: 30px;
+  height: 3.6em;
+  line-height: 1.2;
+  text-align: center;
   display: flex;
   align-items: center;
   font-size: 12px;
@@ -190,8 +200,8 @@ html[data-page-visible="true"] body[data-screen="lobby"] dialog[open] .heroic-ma
 @keyframes heroic-aura { to { transform:rotate(7deg); opacity:.8; } }
 @media(prefers-reduced-motion:reduce) { .heroic-magic i,.heroic-magic::before { animation:none!important; } }
 
-@media(max-width:600px) { #skinsDialog .account-avatar-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } #skinsDialog .account-avatar { min-height:112px; } }
-@media(max-width:420px) { #skinsDialog .account-avatar-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { #skinsDialog .skin-library :is(#skinList, .account-avatar-grid) { grid-template-columns:repeat(3,minmax(0,1fr)); } #skinsDialog .account-avatar { min-height:112px; } }
+@media(max-width:420px) { #skinsDialog .skin-library :is(#skinList, .account-avatar-grid) { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 
 html[data-page-visible="true"] body[data-screen="lobby"] #lobby[data-scene-covered="true"] > .heroic-magic i,
 html[data-page-visible="true"] body[data-screen="lobby"] #lobby[data-scene-covered="true"] > .heroic-magic::before { animation-play-state:paused; }

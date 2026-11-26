@@ -50,8 +50,17 @@ test("Смена VIP-портрета на обычный заменяет вс�
   );
   identity.setSkinImage(image, "moon-dragon", 64);
   assert.match(attributes.get("srcset"), /64\/moon-dragon\.webp\?art=20261122b 1x, .*128\/moon-dragon\.webp\?art=20261122b 2x$/);
-  assert.equal(attributes.get("src"), "assets/skins/transparent-v2/64/moon-dragon.webp?art=20261122b");
+  assert.equal(attributes.get("src"), "assets/skins/starter-heroes-v1/64/moon-dragon.webp?art=20261122b");
   assert.equal(image.dataset.skinId, "moon-dragon");
   identity.setSkinImage(image, "unknown-skin");
   assert.equal(image.dataset.skinId, "moon-dragon");
+});
+
+test("Десять стартовых аватаров доступны без покупки во всех пяти размерах", () => {
+  assert.equal(new Set(identity.skins.map(skin => skin.id)).size, 10);
+  for (const skin of identity.skins) {
+    assert.equal(identity.skinAllowed(skin.id), true);
+    for (const url of Object.values(skin.variants))
+      assert.ok(fs.existsSync(path.resolve(__dirname, "../../public", url.split("?")[0])), url);
+  }
 });

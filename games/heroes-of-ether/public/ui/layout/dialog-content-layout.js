@@ -3,7 +3,7 @@
 (() => {
   // Showcases scroll inside the window; headers and loadout controls stay fixed.
   const collections = [
-    ["#skinList", 4],
+    ["#skinList", 5],
     [".chest-reward-grid", chestRewardPageSize],
     [".chest-items", 5],
     [".clan-applications-list", 6],

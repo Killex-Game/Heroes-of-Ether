@@ -221,7 +221,7 @@ async function noOverlaps(page) {
     await page.locator("#wardrobeSection").click();
     await page
       .locator("#skinList")
-      .getByRole("button", { name: "Лесной дух", exact: true })
+      .getByRole("button", { name: "Лесная хранительница", exact: true })
       .click();
     await page.getByRole("button", { name: "Закрыть гардероб" }).click();
     const profileA = (await (await contextA.request.get(url + "/api/profile")).json()).profile;
@@ -251,7 +251,7 @@ async function noOverlaps(page) {
     await other.locator("#wardrobeSection").click();
     await other
       .locator("#skinList")
-      .getByRole("button", { name: "Солнечный феникс", exact: true })
+      .getByRole("button", { name: "Вестница рассвета", exact: true })
       .click();
     await other.getByRole("button", { name: "Закрыть гардероб" }).click();
     await other.locator("#shopSection").click();

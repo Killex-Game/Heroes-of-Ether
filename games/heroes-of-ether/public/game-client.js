@@ -4,8 +4,6 @@
   "use strict";
 
   const SKINS = window.KillexIdentity.allSkins;
-  const skinImages = new Map();
-  const skinButtons = new Map();
   const STORAGE_KEY = window.KillexPlatform.storageKey(".preferences.v1");
   const CONNECT_TIMEOUT_MS = 10000;
   const STATE_TIMEOUT_MS = 10000;
@@ -2057,11 +2055,6 @@
   function showSkin(id, save = true) {
     const selected = SKINS.find((s) => s.id === id) || SKINS[0];
     preferences.previewSkin = selected.id;
-    for (const s of SKINS)
-      skinButtons.get(s.id)?.setAttribute("aria-pressed", String(s.id === selected.id));
-    const source = skinImages.get(selected.id);
-    if (source && !source.getAttribute("src"))
-      window.KillexIdentity.setSkinImage(source, selected, 256);
     const portraitLoads = [];
     for (const target of [$("lobbySkin"), $("profileSkin")]) {
       if (!target.getAttribute("src")) target.hidden = true;
@@ -2080,44 +2073,6 @@
     $("artEmpty").hidden = !$("lobbySkin").hidden;
     if (save) persistPreferences();
     document.dispatchEvent(new CustomEvent("killex:skin-selected", { detail: selected.id }));
-  }
-  for (const s of SKINS) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "skin-option";
-    button.setAttribute("aria-label", s.name);
-    button.setAttribute("aria-pressed", "false");
-    const thumb = document.createElement("span");
-    thumb.className = "thumb";
-    const missing = document.createElement("span");
-    missing.textContent = "PNG";
-    const img = new Image();
-    img.hidden = true;
-    img.alt = "";
-    thumb.append(missing, img);
-    button.append(thumb, document.createTextNode(s.name));
-    button.addEventListener("click", () => showSkin(s.id));
-    if (!s.tier && !s.set && !s.collection && !s.ownerGift) $("skinList").append(button);
-    skinButtons.set(s.id, button);
-    skinImages.set(s.id, img);
-    let triedFallback = false;
-    img.addEventListener("load", () => {
-      img.hidden = false;
-      missing.hidden = true;
-      showSkin(preferences.previewSkin, false);
-    });
-    img.addEventListener("error", () => {
-      if (!triedFallback) {
-        triedFallback = true;
-        img.removeAttribute("srcset");
-        img.src = window.KillexIdentity.skinSource(SKINS[0], 256);
-        return;
-      }
-      img.hidden = true;
-      missing.hidden = false;
-      showSkin(preferences.previewSkin, false);
-    });
-    if (!s.collection && !s.ownerGift) window.KillexIdentity.setSkinImage(img, s, 256);
   }
   function cycleSkin(delta) {
     const available = SKINS.filter((s) =>

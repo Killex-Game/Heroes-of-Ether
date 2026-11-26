@@ -150,7 +150,7 @@ const app = require("../../src/server/game-server").createGameServer({
       const shields = new KillexShields.Renderer();
       await Promise.all([...shields.images.values()].map(image => image.decode()));
       const img = new Image();
-      img.src = "assets/shields/sphere-static-v2.webp";
+      img.src = "assets/shields/sphere-static-v3.webp";
       await img.decode();
       await new Promise((r) => setTimeout(r, 100));
       const rows = [];

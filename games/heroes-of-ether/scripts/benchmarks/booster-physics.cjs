@@ -22,13 +22,13 @@ function equipPet(p, kind, now) {
     stock: { ...stats.start, carrot: id === "zaya" ? 1 : 0 }, readyAt: {}, receipts: new Map(), sequence: 0 };
 }
 
-function replay(id, count, partCount, opponent) {
+function replay(id, count, partCount, opponent, kindOffset = 0) {
   serial = 0; seed = 439;
   const arena = new Arena({ random, backgroundRandom: random, etherCount: 200 });
   arena.hazards = new ArenaHazards(arena);
   const now = 20000, players = [], kinds = [...catalog, ...specials];
   const mixed = id === "mixed";
-  const kindOf = i => mixed ? kinds[i % kinds.length] : (i === 1 && opponent) || id;
+  const kindOf = i => mixed ? kinds[(i + kindOffset) % kinds.length] : (i === 1 && opponent) || id;
   const populate = (p, i, time) => {
     const x = 420 + i % 7 * (opponent ? 230 : 340), y = 500 + Math.floor(i / 7) * 330;
     Object.assign(p, { level: 600, protectedUntil: 0, nextMassDecayAt: Infinity,
@@ -102,7 +102,7 @@ function replay(id, count, partCount, opponent) {
       assert.ok(parts.every(b => Number.isFinite(b.x) && Number.isFinite(b.y) && Number.isFinite(b.mass) && b.mass > 0));
     }
   } else {
-    const expected = mixed ? kinds : [id];
+    const expected = mixed ? players.map((_, i) => kindOf(i)) : [id];
     assert.deepEqual(expected.filter(kind => !ok[kind]), [], JSON.stringify({ id, rejected }));
   }
   samples.sort((a,b) => a-b);
@@ -115,7 +115,10 @@ if (selected && ![...catalog, ...specials, "mixed", "pairs"].includes(selected))
 for (const [players, parts] of [[2,1],[35,1],[35,16]]) {
   for (const id of [...catalog, ...specials]) if (!selected || selected === id) replay(id, players, parts);
 }
-if (!selected || selected === "mixed") replay("mixed", 35, 16);
+if (!selected || selected === "mixed") {
+  for (let offset = 0; offset < catalog.length + specials.length; offset += 30)
+    replay("mixed", 30, 16, undefined, offset);
+}
 if (selected === "pairs") {
   const actions = [...catalog, ...specials];
   for (const first of actions) for (const second of actions) replay(first, 2, 2, second);

@@ -33,16 +33,16 @@ let browser;
     const saved = JSON.stringify(app.profiles.data);
     assert.equal(await page.locator(".showcase .skin-list").count(), 0);
     await page.locator("#wardrobeSection").click();
-    assert.equal(await page.locator("#skinsDialog .skin-option").count(), 4);
+    assert.equal(await page.locator("#skinList .account-avatar").count(), 10);
     await page
       .locator("#skinList")
-      .getByRole("button", { name: "Лесной дух", exact: true })
+      .getByRole("button", { name: "Лесная хранительница", exact: true })
       .click();
-    assert.equal(await page.locator(".collection-selection").textContent(), "Лесной дух");
+    assert.equal(await page.locator(".collection-selection").textContent(), "Лесная хранительница");
     assert.equal(
       await page
         .locator("#skinList")
-        .getByRole("button", { name: "Лесной дух", exact: true })
+        .getByRole("button", { name: "Лесная хранительница", exact: true })
         .getAttribute("aria-pressed"),
       "true",
     );
@@ -138,7 +138,7 @@ let browser;
     );
     await page.reload();
     await page.waitForFunction(() => !document.getElementById("playButton").disabled);
-    assert.equal(await page.locator("#lobbySkin").getAttribute("alt"), "Лесной дух");
+    assert.equal(await page.locator("#lobbySkin").getAttribute("alt"), "Лесная хранительница");
     await page.locator("#playButton").click();
     await page.locator("#arena").waitFor({ state: "visible" });
     assert.equal(
