@@ -147,7 +147,8 @@ const app = require("../../src/server/game-server").createGameServer({
     });
     await page.setViewportSize({ width: 1366, height: 900 });
     report.geometry = await page.evaluate(async () => {
-      new KillexShields.Renderer();
+      const shields = new KillexShields.Renderer();
+      await Promise.all([...shields.images.values()].map(image => image.decode()));
       const img = new Image();
       img.src = "assets/shields/sphere-static-v2.webp";
       await img.decode();
@@ -163,7 +164,7 @@ const app = require("../../src/server/game-server").createGameServer({
             ctx = c.getContext("2d", { willReadFrequently: true });
           const paint = (t) => {
             ctx.clearRect(0, 0, size, size);
-            KillexShields.drawSphere(ctx, { x: center, y: center, radius: r }, t);
+            KillexShields.drawSphere(ctx, { x: center, y: center, radius }, t);
             return c.toDataURL();
           };
           const first = paint(0),
@@ -178,13 +179,38 @@ const app = require("../../src/server/game-server").createGameServer({
               if (alpha(center + Math.cos(t) * d, center + Math.sin(t) * d) >= 128) hits.push(d);
             samples.push({ t, inner: hits[0], outer: hits.at(-1) });
           }
-          const sorted = samples.map((v) => v.inner - r).sort((a, b) => a - b),
+          const sorted = samples.map((v) => (v.inner + v.outer) / 2 - radius).sort((a, b) => a - b),
             shiftX =
               (2 * samples.reduce((n, v) => n + ((v.inner + v.outer) / 2) * Math.cos(v.t), 0)) / 72,
             shiftY =
               (2 * samples.reduce((n, v) => n + ((v.inner + v.outer) / 2) * Math.sin(v.t), 0)) / 72;
+          const crossSection = (pixels, theta) => {
+            const distances = [];
+            for (let d = radius * .6; d < r * 1.4; d += .5) {
+              const x = Math.floor(center + Math.cos(theta) * d);
+              const y = Math.floor(center + Math.sin(theta) * d);
+              if (pixels[(y * size + x) * 4 + 3] >= 128) distances.push(d);
+            }
+            return distances;
+          };
+          const references = [];
+          for (const id of shields.images.keys()) {
+            ctx.clearRect(0, 0, size, size);
+            shields.draw(ctx, { effects: [{ id, remainingMs: 5000 }] }, { x: center, y: center, radius: r });
+            const reference = ctx.getImageData(0, 0, size, size).data;
+            const overlap = samples.filter(v => crossSection(reference, v.t).some(d => d >= v.inner - 1 && d <= v.outer + 1));
+            references.push({ id, overlap: overlap.length / samples.length });
+          }
+          if (framed) {
+            ctx.clearRect(0, 0, size, size);
+            KillexArenaArt.selectedFrame(ctx, "premium", { premium: true }, center, center, radius, 1, 0);
+            const frame = ctx.getImageData(0, 0, size, size).data;
+            const covered = samples.filter(v => crossSection(frame, v.t).some(d => d >= v.inner - 1 && d <= v.outer + 1));
+            references.push({ id: "premium", overlap: covered.length / samples.length });
+          }
           rows.push({
             radius: r,
+            references,
             framed,
             same: first === last,
             minGap: sorted[0],
@@ -217,12 +243,10 @@ const app = require("../../src/server/game-server").createGameServer({
         ctx.fill();
         ctx.drawImage(skin, x - r, y - r, r * 2, r * 2);
         ctx.restore();
-        let edge = r;
         if (i) {
           KillexArenaArt.selectedFrame(ctx, "premium", { premium: true }, x, y, r, 1, 0);
-          edge = KillexArenaArt.frameOuterRadius(r, 1);
         }
-        KillexShields.drawSphere(ctx, { x, y, radius: edge });
+        KillexShields.drawSphere(ctx, { x, y, radius: r });
         ctx.fillStyle = "#fff";
         ctx.font = "24px Arial";
         ctx.textAlign = "center";
@@ -232,6 +256,9 @@ const app = require("../../src/server/game-server").createGameServer({
     });
     for (const row of report.geometry) {
       assert(row.complete && row.same, JSON.stringify(row));
+      for (const reference of row.references) {
+        assert(reference.overlap >= (reference.id === "premium" ? .97 : .70), JSON.stringify(row));
+      }
       assert(Math.abs(row.medianGap) < row.radius * 0.008 + 1, JSON.stringify(row));
       assert(
         row.minGap > -row.radius * 0.022 - 1 && row.maxGap < row.radius * 0.022 + 1,

@@ -1643,14 +1643,7 @@
       ? window.KillexArenaArt.frameOuterRadius(radius, camera.scale)
       : radius;
     if (player.effects?.some((effect) => effect.id === "sphere" && effect.remainingMs > elapsed)) {
-      window.KillexShields.drawSphere(
-        ctx,
-        { x, y, radius: shieldRadius },
-        performance.now(),
-        camera.scale,
-        reducedMotion.matches,
-        pixelRatio,
-      );
+      window.KillexShields.drawSphere(ctx, { x, y, radius });
     }
     shieldView.draw(ctx, player, { x, y, radius: shieldRadius }, elapsed);
     if (part.burnMs > elapsed)

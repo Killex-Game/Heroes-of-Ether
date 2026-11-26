@@ -22,10 +22,8 @@
   function drawSphere(ctx, { x, y, radius }) {
     const img = sphere();
     if (!img?.complete || !img.naturalWidth) return;
-    // The painted ring is not centred on the 1024px canvas. Fit its measured
-    // inner edge to the frame, rather than scaling the transparent canvas.
-    // Leave 1.5 source pixels of clearance for the irregular inner highlights.
-    const fit = radius / 357.5;
+    // The middle of the painted band lies 372.5 source pixels from its own centre.
+    const fit = radius / 372.5;
     ctx.drawImage(img, x - 506.68 * fit, y - 514.39 * fit, 1024 * fit, 1024 * fit);
   }
   class Renderer {
