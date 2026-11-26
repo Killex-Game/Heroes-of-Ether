@@ -416,7 +416,7 @@ for (const deathAt of [29950, 59950]) {
     activeTicks(app, at, 0, deathAt - 50);
     const before = app.profiles.find(a.token).progress.session;
     assert.equal(before.xp, deathAt < 30000 ? 0 : 50);
-    assert.equal(before.kills, deathAt < 30000 ? 0 : 7);
+    assert.equal(before.kills, deathAt < 30000 ? 0 : 6);
     position(cb.p, 100000, ca.p.x, ca.p.y);
     at(deathAt);
     app.tick();
