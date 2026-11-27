@@ -1,0 +1,271 @@
+{
+  "release": "20261127-arena-snapshot-cost",
+  "source": "656754cf8b182f1b9203bc52b2f7aa10abcbd466",
+  "deployedAt": "2026-11-27T17:10:24.029Z",
+  "archiveSHA": "a985760f2c4347b4c07a78aeeb5fb43efe8fbf97598346f4bd0286b17125ae3b",
+  "profiles": 1747,
+  "clans": 138,
+  "revisionBefore": 6962912,
+  "revisionAfter": 6962914,
+  "completeWorldAndAuxiliaryVerified": true,
+  "databaseHealthy": true,
+  "previousRestartCount": 0,
+  "gamePid": 1119860,
+  "adminPid": 1163,
+  "changedFiles": 5,
+  "verifiedRuntimeFiles": 2706,
+  "baseline": {
+    "from": "2026-11-27T16:32:01.294Z",
+    "to": "2026-11-27T16:32:11.314Z",
+    "count": 2,
+    "humans": [
+      4,
+      4
+    ],
+    "rooms": [
+      7,
+      7
+    ],
+    "actors": [
+      51,
+      52
+    ],
+    "parts": [
+      190,
+      195
+    ],
+    "hz": [
+      19.8,
+      19.82
+    ],
+    "workP95": [
+      44.11,
+      44.31
+    ],
+    "intervalP95": [
+      52.03,
+      52.21
+    ],
+    "intervalMax": [
+      281.24,
+      281.24
+    ],
+    "rssMiB": [
+      4398,
+      4414
+    ],
+    "saveQueue": [
+      0,
+      1
+    ],
+    "actionQueue": [
+      0,
+      0
+    ],
+    "pgHealthy": true
+  },
+  "queueObservation": {
+    "from": "2026-11-27T16:43:40.333Z",
+    "to": "2026-11-27T16:44:24.984Z",
+    "count": 45,
+    "humans": [
+      4,
+      4
+    ],
+    "rooms": [
+      7,
+      7
+    ],
+    "actors": [
+      50,
+      52
+    ],
+    "parts": [
+      166,
+      200
+    ],
+    "hz": [
+      19.65,
+      19.88
+    ],
+    "workP95": [
+      42.98,
+      44.9
+    ],
+    "intervalP95": [
+      51.92,
+      53.38
+    ],
+    "intervalMax": [
+      236.27,
+      253.46
+    ],
+    "rssMiB": [
+      4352,
+      4499
+    ],
+    "saveQueue": [
+      0,
+      2
+    ],
+    "actionQueue": [
+      0,
+      0
+    ],
+    "pgHealthy": true,
+    "distribution": {
+      "0": 33,
+      "1": 11,
+      "2": 1
+    }
+  },
+  "after": {
+    "from": "2026-11-27T17:11:21.436Z",
+    "to": "2026-11-27T17:12:21.524Z",
+    "count": 7,
+    "humans": [
+      0,
+      0
+    ],
+    "rooms": [
+      3,
+      3
+    ],
+    "actors": [
+      0,
+      0
+    ],
+    "parts": [
+      0,
+      0
+    ],
+    "hz": [
+      19.52,
+      20
+    ],
+    "workP95": [
+      0.72,
+      0.85
+    ],
+    "intervalP95": [
+      51.38,
+      51.52
+    ],
+    "intervalMax": [
+      73.69,
+      1242.38
+    ],
+    "rssMiB": [
+      2617,
+      3456
+    ],
+    "saveQueue": [
+      0,
+      0
+    ],
+    "actionQueue": [
+      0,
+      0
+    ],
+    "pgHealthy": true
+  },
+  "linuxIsolatedSnapshot": [
+    {
+      "characters": 1,
+      "recipients": 1,
+      "legacy": false,
+      "parts": 1,
+      "iterationsPerPair": 8000,
+      "pairs": 13,
+      "oldUs": 10.942840500000045,
+      "newUs": 10.248623749999979,
+      "pairedMedianRatio": 0.9374183003533322,
+      "oldSerializedBytes": 15245,
+      "newSerializedBytes": 15245
+    },
+    {
+      "characters": 12,
+      "recipients": 1,
+      "legacy": false,
+      "parts": 43,
+      "iterationsPerPair": 666,
+      "pairs": 13,
+      "oldUs": 40.707797297297496,
+      "newUs": 28.190539039039045,
+      "pairedMedianRatio": 0.6709101971402553,
+      "oldSerializedBytes": 31359,
+      "newSerializedBytes": 26391
+    },
+    {
+      "characters": 24,
+      "recipients": 4,
+      "legacy": false,
+      "parts": 90,
+      "iterationsPerPair": 333,
+      "pairs": 13,
+      "oldUs": 67.00188888888832,
+      "newUs": 48.99572972973029,
+      "pairedMedianRatio": 0.7482163421542067,
+      "oldSerializedBytes": 48247,
+      "newSerializedBytes": 39327
+    },
+    {
+      "characters": 12,
+      "recipients": 1,
+      "legacy": true,
+      "parts": 43,
+      "iterationsPerPair": 666,
+      "pairs": 13,
+      "oldUs": 33.98903603603641,
+      "newUs": 32.8841081081072,
+      "pairedMedianRatio": 0.9593559187197965,
+      "oldSerializedBytes": 31861,
+      "newSerializedBytes": 31359
+    }
+  ],
+  "tests": {
+    "linux": {
+      "totalPassed": 218,
+      "totalFailed": 0,
+      "totalSkipped": 0,
+      "allRequiredChecksPassed": true
+    },
+    "windowsUniquePassed": 218,
+    "windowsEarlier": [
+      "Preexisting XP-cap expectation corrected to the installed four credited kills instead of 24.",
+      "One socket polling timeout in combined Windows run; the same 12-test file passed separately."
+    ],
+    "rankings": [
+      "Chromium, Firefox, WebKit; 1500x960, 844x390, 390x844",
+      "Desktop board 1148px, results 990px, rewards 152px, gap 6px; no overflow."
+    ]
+  },
+  "notes": [
+    "Paired microbenchmark measures snapshot construction; IPC serialized bytes are not network traffic.",
+    "The pre-release CPU-profiler launch itself caused an additional two-second spike; excluded from the unprofiled baseline.",
+    "Queue length includes work waiting for durable acknowledgment. In the unprofiled one-second series a peak of two drained in two seconds.",
+    "Live sample populations and room occupancy can change across a restart.",
+    "With three to four people back on the arena, a separate service-status poll measured local handler latency and cgroup CPU. It does not measure simulation tick time or client frame rate."
+  ],
+  "operations": {
+    "maintenanceBehavior": "The existing client shows the maintenance dialog as entry closes. This deployment did not send an advance countdown or collect per-tab display acknowledgments.",
+    "restartValidation": "After a calendar change during the verification window, calendar replay and PostgreSQL contents were compared. The equal world and auxiliary digest was checked again against local data, the PostgreSQL manifest and identical input byte fingerprints at reopening."
+  },
+  "activeHttpObservation": {
+    "at": 1795799681885,
+    "until": 1795799742668,
+    "samples": 31,
+    "humans": [
+      3,
+      4
+    ],
+    "cpuCores": 1.38,
+    "httpLocalMs": {
+      "p50": 2.58,
+      "p95": 98.59,
+      "max": 115.2
+    },
+    "pgHealthy": true,
+    "entryOpen": true
+  }
+}
