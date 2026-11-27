@@ -351,7 +351,7 @@ if (process.env.LOAD_CLIENT === "1") {
       for (const key of ["moveFeed", "moveParts", "separateParts", "collectEther", "resolveAbsorptions"])
         measure(simulation, key);
       measure(simulation.combat, "update", "combatUpdate");
-      for (const key of ["hit", "vortex", "planKnuckles", "rememberKnuckleContacts", "updateSwords"])
+      for (const key of ["hit", "vortex", "planKnuckles", "rememberKnuckleContacts", "resolveBladeCrossings"])
         measure(simulation.combat, key);
     }
   }

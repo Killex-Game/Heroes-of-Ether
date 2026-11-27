@@ -33,7 +33,7 @@ function use(arena, p, id, now = 5000) {
     now,
   )();
 }
-function hit(arena, a, b, id, now = 5000) {
+function hit(arena, a, b, id, now = 5000, part = arena.mainBody(b)) {
   return arena.combat.impact(
     {
       boosterId: id,
@@ -48,6 +48,7 @@ function hit(arena, a, b, id, now = 5000) {
     },
     b,
     now,
+    part,
   );
 }
 
@@ -365,29 +366,13 @@ test("Боеголовки сохраняют массу при исключен
   assert.equal(b.mass, 10);
 });
 
-test("Меч наносит 20% за секунду, складывает отдельные удары и повторяет контакт раз в 2 с", () => {
+test("Меч делит повторно только новым снарядом", () => {
   const { arena, a, b } = scene(1000);
-  b.x = a.x + a.radius + 80;
-  a.targetX = 9000;
-  use(arena, a, "fire_sword");
-  arena.combat.updateSwords(5000);
-  arena.boosterEffects.tick(b, 5500);
-  assert.equal(b.mass, 900);
-  arena.combat.updateSwords(5500);
-  assert.equal(b.swordBurns.length, 1);
-  arena.boosterEffects.tick(b, 6000);
-  assert.equal(b.mass, 800);
-  arena.combat.updateSwords(6999);
-  assert.equal(b.swordBurns.length, 0);
-  arena.combat.updateSwords(7000);
-  assert.equal(b.swordBurns.length, 1);
-  arena.boosterEffects.tick(b, 8000);
-  assert.equal(b.mass, 640);
-  const separate = scene(1000);
-  hit(separate.arena, separate.a, separate.b, "fire_sword");
-  hit(separate.arena, separate.a, separate.b, "fire_sword");
-  separate.arena.boosterEffects.tick(separate.b, 6000);
-  assert.equal(separate.b.mass, 600);
+  hit(arena, a, b, "fire_sword");
+  assert.deepEqual(b.parts.map(part => part.mass), [300, 700]);
+  hit(arena, a, b, "fire_sword", 6000, b.parts[1]);
+  assert.deepEqual(b.parts.map(part => part.mass).sort((x,y) => x-y), [210, 300, 490]);
+  assert.equal(b.mass, 1000);
 });
 
 test("Клановый щит поглощает лежащую ловушку без нового полёта", () => {

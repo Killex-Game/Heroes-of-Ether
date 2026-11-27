@@ -20,10 +20,10 @@ class BoosterEffects {
     splitLimitDamage = 0,
     pieceShare = null,
     settle = true,
+    launch = null,
   ) {
     const a = this.arena,
       id = a.bodyId(p, body);
-    this.tickSwordBurns(p, now);
     body = a.bodies(p).find((part) => a.bodyId(p, part) === id);
     if (p.dead || !body) return false;
     const capped = a.bodies(p).length >= a.maxParts;
@@ -62,34 +62,32 @@ class BoosterEffects {
       ];
     body = p.parts.find((b) => b.id === id);
     delete p.effects.sponge;
-    const piece = Math.max(
-      RULES.MIN_PART_MASS,
-      Math.floor(body.mass * (pieceShare ?? 1 / (rocket ? 10 : count))),
-    );
+    const piece = launch
+      ? Math.max(RULES.MIN_PART_MASS, Math.min(body.mass - RULES.MIN_PART_MASS, Math.round(body.mass * pieceShare)))
+      : Math.max(RULES.MIN_PART_MASS, Math.floor(body.mass * (pieceShare ?? 1 / (rocket ? 10 : count))));
     body.mass -= piece * (count - 1);
     body.radius = radius(body.mass);
     body.mergeAt = now + RULES.MERGE_DELAY_MS;
-    const children = [body];
     const anchored = p.effects.web > now;
     for (let i = 1; i < count; i++) {
-      const angle =
+      const angle = launch ? Math.atan2(launch.dy, launch.dx) :
         Math.atan2(p.targetY - body.y, p.targetX - body.x) + (i / (count - 1) - 0.5) * Math.PI;
+      const impulse = launch ? RULES.SPLIT_IMPULSE : 18;
       p.parts.push({
         id: randomUUID(),
-        birth: { tick: a.tick, x: body.x, y: body.y },
+        birth: { tick: a.tick, x: body.x, y: body.y, ...(launch ? { parentId: id } : {}) },
+        ...(launch && !anchored ? { spaceSplitUntil: now + RULES.TICK_MS * 13 } : {}),
         splitStartedAt: now,
         mass: piece,
         radius: radius(piece),
         x: body.x + (anchored ? 0 : Math.cos(angle)),
         y: body.y + (anchored ? 0 : Math.sin(angle)),
-        vx: anchored ? 0 : Math.cos(angle) * 18,
-        vy: anchored ? 0 : Math.sin(angle) * 18,
+        vx: anchored ? 0 : Math.cos(angle) * impulse,
+        vy: anchored ? 0 : Math.sin(angle) * impulse,
         mergeVersion: 0,
         mergeAt: body.mergeAt,
       });
-      children.push(p.parts[p.parts.length - 1]);
     }
-    this.splitSwordBurn(p, id, children, now);
     if (settle) {
       a.refreshMergeTimer(p);
       a.separateParts(p, now);
@@ -98,7 +96,6 @@ class BoosterEffects {
     return true;
   }
   splitToLimit(p, now, onSplit) {
-    this.tickSwordBurns(p, now);
     if (p.dead) return false;
     const groups = this.arena.bodies(p).map((body) => ({ body, count: 1 }));
     let slots = this.arena.maxParts - groups.length,
@@ -134,34 +131,12 @@ class BoosterEffects {
   halve(p, now) {
     for (const body of [...this.arena.bodies(p)]) this.split(p, body, 2, now);
   }
-  apply(p, b, now, body = this.arena.mainBody(p)) {
-    if (b.kind === "sword") {
-      const id = this.arena.bodyId(p, body);
-      this.tickSwordBurns(p, now);
-      body = this.arena.bodies(p).find(part => this.arena.bodyId(p, part) === id);
-      if (p.dead || !body) return;
-      if (body.mass <= BOOSTERS.get("fire").destroyAtOrBelowMass) {
-        this.removeBurnedBody(p, body, now);
-        return;
-      }
-      const partId = this.arena.bodyId(p, body);
-      p.swordBurns.push({
-        partId,
-        start: now,
-        until: now + b.durationMs,
-        budget: Math.floor(body.mass * b.fraction * arenaPets.damageFactor(p)),
-        applied: 0,
-      });
-      this.refreshSwordEffect(p);
-      return;
-    }
+  apply(p, b, now) {
     if (b.kind === "poison") {
       delete p.effects.poison;
       delete p.effects.mega_poison;
       p.damageTicks = (p.damageTicks || []).filter((e) => e.kind !== "poison");
-    }
-    if (b.kind === "poison") {
-      (p.damageTicks ||= []).push({
+      p.damageTicks.push({
         kind: b.kind,
         id: b.id,
         // Multiply the percentage before dividing: 700 * 35% must be 245,
@@ -186,7 +161,6 @@ class BoosterEffects {
   }
   tick(p, now) {
     const a = this.arena;
-    this.tickSwordBurns(p, now);
     if (p.dead) return;
     // Обрабатываем секунды по порядку: результат не зависит от частоты тиков.
     const damage = p.damageTicks ||= [];
@@ -293,81 +267,6 @@ class BoosterEffects {
         });
       }
     }
-  }
-  refreshSwordEffect(p) {
-    const until = Math.max(0, ...p.swordBurns.map((e) => e.until));
-    if (until) p.effects.fire_sword = until;
-    else delete p.effects.fire_sword;
-  }
-  tickSwordBurns(p, now) {
-    if (!p.swordBurns?.length) {
-      p.swordBurns ||= [];
-      if ("fire_sword" in p.effects) delete p.effects.fire_sword;
-      return;
-    }
-    const a = this.arena;
-    p.swordBurns = (p.swordBurns || []).filter((e) => {
-      // Removing a part can collapse the final part back into the player model.
-      // Resolve its stable id again, rather than retaining the removed object.
-      const part = a.bodies(p).find((body) => a.bodyId(p, body) === e.partId);
-      if (p.dead || !part) return false; // Поглощённый шар не передаёт огонь остальным.
-      const due = Math.floor(
-        e.budget * Math.min(1, Math.max(0, now - e.start) / (e.until - e.start)),
-      );
-      const loss = Math.max(0, due - e.applied);
-      part.mass = Math.max(RULES.MIN_PART_MASS, part.mass - loss);
-      part.radius = radius(part.mass);
-      e.applied = due;
-      if (loss > 0 && part.mass <= BOOSTERS.get("fire").destroyAtOrBelowMass) {
-        this.removeBurnedBody(p, part, now);
-        return false;
-      }
-      return now < e.until;
-    });
-    a.syncParts(p);
-    this.refreshSwordEffect(p);
-  }
-  splitSwordBurn(p, id, children, now) {
-    const burns = p.swordBurns.filter((e) => e.partId === id);
-    p.swordBurns = p.swordBurns.filter((e) => e.partId !== id);
-    const total = children.reduce((sum, b) => sum + b.mass, 0);
-    for (const e of burns) {
-      const remaining = e.budget - e.applied;
-      const shares = children.map((part) => ({
-        part,
-        raw: (remaining * part.mass) / total,
-      }));
-      let rest = remaining;
-      for (const s of shares) {
-        s.budget = Math.floor(s.raw);
-        rest -= s.budget;
-      }
-      shares.sort((a, b) => (b.raw % 1) - (a.raw % 1));
-      for (const s of shares) if (rest-- > 0) s.budget++;
-      for (const s of shares)
-        p.swordBurns.push({
-          partId: s.part.id,
-          start: now,
-          until: e.until,
-          budget: s.budget,
-          applied: 0,
-        });
-    }
-  }
-  mergeSwordBurns(p, ids, survivor, now) {
-    this.tickSwordBurns(p, now);
-    const burns = p.swordBurns.filter((e) => ids.includes(e.partId));
-    if (!burns.length) return;
-    p.swordBurns = p.swordBurns.filter((e) => !ids.includes(e.partId));
-    for (const e of burns)
-      p.swordBurns.push({
-        partId: survivor,
-        start: now,
-        until: e.until,
-        budget: e.budget - e.applied,
-        applied: 0,
-      });
-    this.refreshSwordEffect(p);
   }
   grow(p, amount, giftFactor = 1, now = Infinity) {
     const a = this.arena,

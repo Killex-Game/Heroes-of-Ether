@@ -147,14 +147,7 @@ const implementations = {
   vortex: { kind: "vortex", target: "self", durationMs: 10000 },
   awl: { kind: "awl", flightSpeed: 200, maxDistance: 400 },
   clan_shield: { kind: "shield", target: "self", durationMs: 30000 },
-  fire_sword: {
-    kind: "sword",
-    fraction: 0.2,
-    durationMs: 1000,
-    heldMs: 5000,
-    cooldownMs: 500,
-    contactIntervalMs: 2000,
-  },
+  fire_sword: { kind: "sword", flightSpeed: 200, maxDistance: 400 },
 };
 for (const id of [
   "rocket",
@@ -214,9 +207,9 @@ const clanCatalog = [
   ],
   [
     "fire_sword",
-    "Огненный меч",
+    "Меч",
     300,
-    "Меч действует 5 с у крупнейшего шара. При касании и каждые 2 с непрерывного контакта поджигает шар: 20% его массы за 1 с. Поджоги складываются. При 300 массы и меньше часть сгорает. Щит защищает.",
+    "Делит задетый шар на 30% и 70% массы. Большая часть отлетает по ходу удара. Проходит сквозь обычные щиты, клановый щит отражает меч.",
   ],
 ].map(([id, name, amount, effect]) => ({
   id,
@@ -251,7 +244,7 @@ Object.assign(usage, {
   fire: "Сжигает 50% текущей массы задетой части, с активным боевым питомцем — его процент. Усиления и сопротивление изменяют урон. При 300 массы и меньше часть сгорает.",
   vortex:
     "Все ваши части притягивают игроков и еду вокруг. Захваченного соперника плавно переносит к более крупным частям, до самого большого шара.",
-  fire_sword: "Поджигает соперника, от огня он теряет 20% от массы.",
+  fire_sword: "Делит шар на 30% и 70%. Большая часть отлетает вперёд. Клановый щит отражает меч.",
 });
 // Event is an acquisition category; every present and future event item is rare.
 function boosterRarity(item) { return item.tier === "event" ? "rare" : item.tier; }

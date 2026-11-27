@@ -51,20 +51,17 @@ test("Single hit: low and high masses preserve every mass unit, unique IDs and l
     if (parts.length > 1) assert.ok(parts.every((b) => b.mergeAt === 5000 + RULES.MERGE_DELAY_MS));
   }
 });
-test("A hit during sword burn keeps the remaining damage budget and other effects", () => {
+test("Knuckles preserve total mass and active effects after a sword split", () => {
   const { arena, p } = scene(16000);
-  arena.boosterEffects.apply(p, BOOSTERS.get("fire_sword"), 4000);
+  arena.combat.impact({ boosterId: "fire_sword", ownerId: "other", dx: 1, dy: 0 }, p, 4000);
+  assert.deepEqual(p.parts.map(body => body.mass), [4800, 11200]);
   p.effects.lock = 20000;
   p.effects.freeze = 18000;
   arena.boosterEffects.splitToLimit(p, 4500);
-  const mass = p.mass,
-    remaining = p.swordBurns.reduce((s, b) => s + b.budget - b.applied, 0);
   assert.equal(p.parts.length, 16);
   assert.equal(p.effects.lock, 20000);
   assert.equal(p.effects.freeze, 18000);
-  arena.boosterEffects.tickSwordBurns(p, 20000);
-  assert.equal(p.mass, mass - remaining);
-  assert.equal(p.swordBurns.length, 0);
+  assert.equal(p.mass, 16000);
 });
 test("Many simultaneous Knuckles cannot exceed the cap or drain mass", () => {
   const { arena, p } = scene(40000);

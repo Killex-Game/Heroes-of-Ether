@@ -30,41 +30,31 @@ function scene() {
     });
   return { arena, a, b };
 }
-test("Меч удерживается 5 секунд, следует курсору и крупнейшей части, не летит", () => {
-  const { arena, a } = scene();
+test("Брошенный Меч сохраняет направление при смене цели и заканчивает полёт по дальности", () => {
+  const { arena, a, b } = scene();
+  b.y += 1000;
   arena.combat.prepare(a, BOOSTERS.get("fire_sword"), { aimX: 9000, aimY: 2000 }, 5000)();
-  assert.equal(arena.combat.shots.length, 0);
-  assert.equal(arena.combat.snapshot()[0].held, true);
-  const r = radiusForMass(1000);
-  assert.ok(arena.combat.snapshot()[0].x > a.x + r);
-  a.targetX = 2000;
+  const [start] = arena.combat.snapshot();
   a.targetY = 9000;
+  a.targetX = a.x;
   arena.combat.update(5100);
-  assert.equal(arena.combat.snapshot()[0].dx, 0);
-  assert.equal(arena.combat.snapshot()[0].dy, 1);
-  a.parts = [
-    { id: "part1", mass: 100, radius: radiusForMass(100), x: 2000, y: 2000 },
-    { id: "part2", mass: 2000, radius: radiusForMass(2000), x: 4000, y: 4000 },
-  ];
-  arena.syncParts(a);
-  arena.combat.update(9999);
-  assert.equal(arena.combat.snapshot()[0].partId, "part2");
-  arena.combat.update(10000);
+  const [moving] = arena.combat.snapshot();
+  assert.equal(moving.x, start.x + 20);
+  assert.equal(moving.y, start.y);
+  arena.combat.update(7000);
   assert.equal(arena.combat.snapshot().length, 0);
 });
-test("Непрерывное касание мечом ждёт повторного удара; щит и смерть работают", () => {
+test("Один бросок делит шар под Золотым щитом только один раз", () => {
   const { arena, a, b } = scene();
   b.x = a.x + a.radius + 80;
   arena.combat.prepare(a, BOOSTERS.get("fire_sword"), { aimX: 9000, aimY: 2000 }, 5000)();
   b.effects.golden_shield = 6000;
   arena.combat.update(5500);
-  assert.equal(b.swordBurns.length, 0);
+  assert.deepEqual(b.parts.map(part => part.mass), [300, 700]);
+  assert.equal(b.effects.golden_shield, 6000);
   arena.combat.update(6001);
-  assert.equal(b.swordBurns.length, 1);
-  arena.combat.update(6100);
-  assert.equal(b.swordBurns[0].until, 7001);
-  a.dead = true;
-  arena.combat.update(6200);
+  assert.equal(b.mass, 1000);
+  assert.equal(b.parts.length, 2);
   assert.equal(arena.combat.snapshot().length, 0);
 });
 test("Размер и глубина поглощения применяются к полному кругу каждой части", () => {

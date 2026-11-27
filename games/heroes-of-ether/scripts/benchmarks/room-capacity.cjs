@@ -80,7 +80,7 @@ async function stage(count) {
             if (process.env.LOAD_COLLISION_TIMING === "1")
               sample.collisionMsPerTick = Object.fromEntries(["moveFeed", "moveParts", "separateParts", "collectEther",
                 "resolveAbsorptions", "combatUpdate", "collectHazards", "hit", "vortex", "planKnuckles",
-                "rememberKnuckleContacts", "updateSwords"]
+                "rememberKnuckleContacts", "resolveBladeCrossings"]
                 .map(key => [key, Math.round((row.stats[key]?.ms || 0) * 10 / ticks) / 10]));
           }
           results.push(sample);

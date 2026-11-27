@@ -115,10 +115,13 @@ async function observe(page) {
     browser = await chromium.launch({ headless: true, channel: "chrome" });
     const context = await browser.newContext({ viewport: { width: 1280, height: 900 } }),
       page = await context.newPage();
+    await page.addInitScript(() => performance.setResourceTimingBufferSize(6000));
     await page.goto(url);
     await page.waitForFunction(() => !document.getElementById("playButton").disabled);
     const profile = (await (await context.request.get(url + "/api/profile")).json()).profile;
     const stored = app.profiles.byId(profile.id);
+    stored.personal = { nameSet: true, introPending: false, gender: "male", vkUrl: "" };
+    stored.loginReward = {date: require("../../src/server/accounts/account-benefits").loginRewardDay(Date.now()), day: 1};
     stored.inventory.rocket = 5;
     stored.quickSlots = ["rocket", null, null, null];
     stored.revision++;
@@ -126,6 +129,7 @@ async function observe(page) {
     await page.waitForFunction(() => !document.getElementById("playButton").disabled);
     await observe(page);
     app.arena.chooseSpawn = () => ({ x: 1200, y: 800 });
+    await page.getByRole("button", {name: "Закрыть новости", exact: true}).click();
     await page.locator("#playButton").click();
     await page.locator("#arena").waitFor({ state: "visible" });
     const owner = [...app.arena.players.values()].find((p) => p.profileId === profile.id);
@@ -175,9 +179,15 @@ async function observe(page) {
       );
     const otherContext = await browser.newContext({ viewport: { width: 1280, height: 900 } }),
       other = await otherContext.newPage();
+    const guest = app.profiles.open(), guestProfile = app.profiles.find(guest.token);
+    guestProfile.personal = { nameSet: true, introPending: false, gender: "male", vkUrl: "" };
+    guestProfile.loginReward = {date: require("../../src/server/accounts/account-benefits").loginRewardDay(Date.now()), day: 1};
+    await otherContext.addCookies([{name: "sferorumiya_session", value: guest.token, url}]);
     await other.goto(url);
     await other.waitForFunction(() => !document.getElementById("playButton").disabled);
     await observe(other);
+    if (await other.locator("#releaseNotesDialog").isVisible())
+      await other.getByRole("button", {name: "Закрыть новости", exact: true}).click();
     await other.locator("#playButton").click();
     await other.locator("#arena").waitFor({ state: "visible" });
     const spectator = [...app.arena.players.values()].find((p) => p.id !== owner.id);
@@ -194,25 +204,25 @@ async function observe(page) {
     const types = [...BOOSTERS.values()].filter(
       (b) => b.target === "direction" || b.kind === "vortex",
     );
-    assert.equal(types.length, 19);
+    assert.ok(types.includes(BOOSTERS.get("fire_sword")));
     for (const item of types)
       app.arena.combat.prepare(owner, item, { aimX: 2000, aimY: 500 }, now)();
     app.arena.combat.shots.forEach((s, i) => {
       s.x = 875 + (i % 7) * 105;
       s.y = 560 + Math.floor(i / 7) * 100;
     });
-    assert.equal(app.arena.combat.shots.length, 24);
-    assert.equal(app.arena.combat.swords.length, 1);
+    const renderedCount = app.arena.combat.shots.filter(s => s.boosterId !== "vortex").length;
+    assert.equal(app.arena.combat.shots.filter(s => s.boosterId === "fire_sword").length, 1);
     app.broadcast();
     broadcastTimer = setInterval(() => app.broadcast(), 50);
     await until(
       () =>
-        page.evaluate(() => window.flightFrame?.loaded && window.flightFrame.paths.length === 24),
-      "24 миниатюры без большой иконки Вихря",
+        page.evaluate(count => window.flightFrame?.loaded && window.flightFrame.paths.length === count, renderedCount),
+      "Миниатюры без большой иконки Вихря",
     );
     await until(
       () =>
-        other.evaluate(() => window.flightFrame?.loaded && window.flightFrame.paths.length === 24),
+        other.evaluate(count => window.flightFrame?.loaded && window.flightFrame.paths.length === count, renderedCount),
       "другой игрок видит все снаряды",
     );
     const frame = await page.evaluate(() => window.flightFrame);
@@ -249,11 +259,11 @@ async function observe(page) {
     assert.ok(layers.at(-1).includes("fire"));
     assert.ok(layers.at(-1).every((id) => ["fire", "pet_fire", "held"].includes(id)));
     assert.equal(frame.curves, 0);
-    assert.equal(new Set(frame.samples.map((s) => s.boosterId)).size, 19);
+    assert.equal(new Set(frame.samples.map((s) => s.boosterId)).size, types.length);
     assert.equal(
       frame.paths.filter((p) => p.url === BOOSTERS.get("rocket").icon).length,
-      8,
-      "одна Ракета и 7 ракет веера",
+      BOOSTERS.get("warheads").fan + 1,
+      "одна Ракета и ракеты веера",
     );
     assert.ok(
       frame.paths
@@ -352,7 +362,6 @@ async function observe(page) {
     assert.ok((await page.evaluate(() => window.flightFrame.paths.length)) > 0);
     await page.screenshot({ path: path.join(artifacts, "projectiles-mobile.png") });
     app.arena.combat.shots = [];
-    app.arena.combat.swords = [];
     app.broadcast();
     for (const p of [page, other])
       await until(
@@ -367,7 +376,7 @@ async function observe(page) {
       );
     assert.deepEqual(errors, []);
     console.log(
-      "Projectile browser OK: real slot launch/cost, fixed cursor trajectory, smooth frames, 19 booster types / 24 images, Vortex zone without duplicate icon, 7 single rockets, landing/boundary, reflection on two clients, mobile and reduced motion, cleanup.",
+      "Projectile browser OK: real slot launch/cost, fixed cursor trajectory, smooth frames, directional boosters, Vortex zone without duplicate icon, individual fan rockets, landing/boundary, reflection on two clients, mobile and reduced motion, cleanup.",
     );
   } finally {
     clearInterval(broadcastTimer);

@@ -25,7 +25,7 @@ npm.cmd start
 | Массу, поглощение, деление, кормление    | [Симуляция арены](src/server/arena/arena-simulation.js)                                                                         |
 | Цены, длительности и описание бустеров   | [Каталог бустеров](src/server/boosters/booster-catalog.js)                                                                      |
 | Поджог, потерю массы и действие бустеров | [Эффекты бустеров](src/server/boosters/booster-effects.js)                                                                      |
-| Полёт, попадания, щиты и огненный меч    | [Боевые столкновения](src/server/arena/projectile-combat.js)                                                                    |
+| Полёт, попадания, щиты и Меч             | [Боевые столкновения](src/server/arena/projectile-combat.js)                                                                    |
 | Лиги, клановые битвы и выдачу наград     | [Клановые соревнования](src/server/clans/clan-competition-service.js), [общие правила](public/shared/clan-competition-rules.js) |
 | Сундуки и их содержимое                  | [Клановые сундуки](src/server/clans/clan-chest-rewards.js), [сундуки званий](src/server/progression/title-chest-rewards.js)     |
 | Опыт и уровни                            | [Прогресс опыта](src/server/progression/experience-progression.js)                                                              |

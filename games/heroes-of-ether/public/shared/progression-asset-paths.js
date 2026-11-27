@@ -63,7 +63,6 @@
     vortex: "whirlwind",
     awl: "awl",
     clan_shield: "clan_shield",
-    fire_sword: "flaming_sword",
   });
   const leagues = Object.freeze({
     bronze: "bronze",
@@ -157,7 +156,8 @@
         ? `assets/chests/prism-unified-v4/256/clan-${tier}.webp?art=20261123-interface-art`
         : null,
     booster: (id, size = 256) =>
-      ["fire","fire_sword","cake","warheads","vortex","awl","clan_shield"].includes(id)
+      id === "fire_sword" ? `assets/boosters/clan-v2/${[64,128,256,512].includes(size) ? size : 256}/sword.webp` :
+      ["fire","cake","warheads","vortex","awl","clan_shield"].includes(id)
         ? `assets/boosters/clan-v2/${[64,128,256,512].includes(size)?size:256}/${id}.webp?art=20261124-clan-art`
         : ["rocket"].includes(id)
         ? `assets/boosters/png/${id}.png?art=20261123-interface-art`

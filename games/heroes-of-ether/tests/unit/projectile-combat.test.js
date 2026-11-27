@@ -133,7 +133,7 @@ test("Щит поглощает выстрел, защита появления 
   assert.equal(arena.combat.shots.length, 0);
   assert.equal(b.effects.freeze, undefined);
 });
-test("Снаряды исчезают по времени, у границы и при окончании жизни отправителя", () => {
+test("Снаряды отражаются от границы и исчезают по времени или при окончании жизни отправителя", () => {
   for (const id of ["freeze", "hook", "harpoon"]) {
     const { arena, a, b } = scene();
     b.y = 1000;
@@ -151,7 +151,8 @@ test("Снаряды исчезают по времени, у границы и 
   b.y = 1000;
   launch(arena, a, "hook", 5000, { x: 10000, y: 5000 });
   arena.combat.update(5100);
-  assert.equal(arena.combat.shots.length, 0);
+  assert.equal(arena.combat.shots[0].dx, -1);
+  assert.equal(arena.combat.shots[0].x, 9980);
 });
 for (const [id, flight, duration] of [
   ["web", 1000, 7000],
@@ -285,19 +286,19 @@ test("Поглощение/новая жизнь прекращают притя
   arena.combat.update(8200);
   assert.equal(arena.combat.pulls.size, 0);
 });
-test("Ловушка у границы прекращает движение по обеим осям, не скользит вдоль стены", () => {
+test("Паутина отскакивает от стены по диагонали и остаётся там, где закончился полёт", () => {
   const { arena, a, b } = scene();
   b.y = 1000;
   a.x = 9950;
   launch(arena, a, "web", 5000, { x: 10000, y: 5050 });
+  const shot = arena.combat.shots[0], startX = shot.x, startY = shot.y;
+  const travelX = shot.dx * shot.speed, travelY = shot.dy * shot.speed;
   arena.combat.update(6000);
-  const shot = arena.combat.shots[0];
-  assert.equal(shot.x, 10000);
-  assert.ok(Math.abs(shot.y - 5050) < 1e-8);
-  const stoppedY = shot.y;
+  const finalX = 20000 - startX - travelX, finalY = startY + travelY;
+  assert.ok(Math.abs(shot.x - finalX) < 1e-7 && Math.abs(shot.y - finalY) < 1e-7);
+  assert.ok(shot.landed);
   arena.combat.update(8000);
-  assert.equal(shot.x, 10000);
-  assert.equal(shot.y, stoppedY);
+  assert.ok(Math.abs(shot.x - finalX) < 1e-7 && Math.abs(shot.y - finalY) < 1e-7);
 });
 test("Камень не прибавляет оставшееся время Паутины", () => {
   const { arena, a, b } = scene();

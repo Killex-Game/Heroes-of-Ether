@@ -168,19 +168,15 @@ test("Яды: сроки 15/10 с, обновление текущей базо�
   arena.boosterEffects.tick(b, 60000);
   assert.equal(b.mass, 555);
 });
-test("Меч складывает поджоги, яд действует независимо, шар до 300 сгорает", () => {
+test("Меч сохраняет массу, наложенный ранее Яд продолжает действовать", () => {
   const { arena, a, b } = scene(1000);
   hit(arena, a, b, "poison");
   hit(arena, a, b, "fire_sword");
-  hit(arena, a, b, "fire_sword");
-  arena.boosterEffects.tick(b, 12000);
-  assert.equal(b.mass, 390); // Два удара по 200 и 210 от яда за четыре шага.
+  assert.equal(b.mass, 1000);
+  assert.deepEqual(b.parts.map(part => part.mass), [300, 700]);
   arena.boosterEffects.tick(b, 25000);
-  assert.equal(b.mass, 250);
-  for (let i = 0; i < 5; i++) hit(arena, a, b, "fire_sword", 26000);
-  arena.boosterEffects.tick(b, 27000);
-  assert.equal(b.dead, true);
-  assert.equal(arena.combatEvents.filter(e=>e.type==="burned").length, 1);
+  assert.equal(b.mass, 650);
+  assert.equal(b.dead, false);
 });
 test("Замок продлевается, блокирует еду и поглощение, разрешает собственную массу", () => {
   const { arena, a, b } = scene(1000);

@@ -1,4 +1,4 @@
-/* Браузерный сценарий: fire sword burn. */
+/* Браузерный сценарий: бросок Меча. */
 "use strict";
 // Isolated profiles and arena; never touches live saves.
 const fs = require("node:fs"),
@@ -40,18 +40,22 @@ async function until(fn) {
     page.on("response", (r) => {
       if (r.status() >= 400) errors.push(r.status() + " " + r.url());
     });
+    await page.addInitScript(() => performance.setResourceTimingBufferSize(6000));
     await page.goto(url);
     await page.waitForFunction(() => !document.getElementById("playButton").disabled);
     const profile = (await (await context.request.get(url + "/api/profile")).json()).profile,
       stored = app.profiles.byId(profile.id);
     stored.level = 121;
     stored.progress.xp = xpForLevel(121);
+    stored.personal = { nameSet: true, introPending: false, gender: "male", vkUrl: "" };
+    stored.loginReward = {date: require("../../src/server/accounts/account-benefits").loginRewardDay(Date.now()), day: 1};
     stored.inventory.fire_sword = 10;
     stored.quickSlots = ["fire_sword"];
     stored.revision++;
     await page.reload();
     await page.waitForFunction(() => !document.getElementById("playButton").disabled);
     app.arena.chooseSpawn = () => ({ x: 1200, y: 900 });
+    await page.getByRole("button", {name: "Закрыть новости", exact: true}).click();
     await page.locator("#playButton").click();
     await page.locator("#arena").waitFor({ state: "visible" });
     const a = [...app.arena.players.values()].find((p) => p.profileId === profile.id),
@@ -72,105 +76,38 @@ async function until(fn) {
       targetY: 900,
       protectedUntil: 0,
       skinId: "moon-dragon",
-      name: "Горящий шар",
+      name: "Цель",
     });
     b.parts = [
       { id: b.mainPartId, x: 1400, y: 900, mass: 1000, radius: radiusForMass(1000) },
       { id: "safe-part", x: 1450, y: 1200, mass: 500, radius: radiusForMass(500) },
     ];
     app.arena.syncParts(b);
-    await page.evaluate(() => {
-      const draw = window.KillexEffects.drawBurn;
-      window.burnDraws = 0;
-      window.KillexEffects.drawBurn = (...args) => {
-        window.burnDraws++;
-        return draw(...args);
-      };
-      const drawShots = window.KillexProjectiles.Renderer.prototype.draw;
-      window.windPaths = 0;
-      window.KillexProjectiles.Renderer.prototype.draw = function (ctx, ...args) {
-        const curve = ctx.quadraticCurveTo;
-        ctx.quadraticCurveTo = function (...a) {
-          window.windPaths++;
-          return curve.apply(this, a);
-        };
-        try {
-          return drawShots.call(this, ctx, ...args);
-        } finally {
-          ctx.quadraticCurveTo = curve;
-        }
-      };
-    });
     app.broadcast();
     timer = setInterval(() => app.broadcast(), 50);
     await page.mouse.move(1100, 450);
     await page.waitForTimeout(150);
     await page.keyboard.press("KeyA");
-    await until(() => app.arena.combat.swords.length === 1);
+    await until(() => app.arena.combat.shots.some(s => s.boosterId === "fire_sword"));
     assert.equal(app.profiles.byId(profile.id).inventory.fire_sword, 9);
-    // Freeze aim exactly along the target; server movement is disabled in this fixture.
-    a.targetX = 2200;
-    a.targetY = 900;
-    app.arena.combat.updateSwords(now);
+    const shot = app.arena.combat.shots.find(s => s.boosterId === "fire_sword");
+    // Position the first target on the actual aiming vector sent by the browser.
+    b.parts[0].x = shot.x + shot.dx * 180;
+    b.parts[0].y = shot.y + shot.dy * 180;
+    app.arena.syncParts(b);
     app.broadcast();
-    assert.equal(b.swordBurns.length, 1);
-    await page.waitForFunction(() => window.burnDraws > 0);
-    await page.waitForFunction(
-      () => document.querySelector(".booster-cooldown-seconds")?.textContent === "5",
-    );
-    now = 7000;
-    app.arena.boosterEffects.tick(b, now);
-    app.arena.combat.updateSwords(now);
+    await page.waitForFunction(() => performance.getEntriesByType("resource").some(r => r.name.includes("/sword.webp")));
+    now = 6500;
+    app.arena.combat.update(now);
     app.broadcast();
-    assert.deepEqual(
-      b.parts.map((p) => p.mass),
-      [800, 500],
-    );
-    await page.screenshot({ path: path.join(artifacts, "fire-sword-burning-part.png") });
-    a.targetY = 1900;
-    a.targetX = 1200;
-    app.arena.combat.updateSwords(7100);
-    a.targetY = 900;
-    a.targetX = 2200;
-    now = 7500;
-    app.arena.combat.updateSwords(now);
-    app.broadcast();
-    assert.deepEqual(
-      b.swordBurns.map((burn) => burn.until),
-      [8000, 8500],
-    );
-    assert.equal(b.swordBurns.length, 2);
-    app.arena.combat.prepare(
-      a,
-      require("../../src/server/boosters/booster-catalog").BOOSTERS.get("rocket"),
-      { aimX: 1200, aimY: 1600 },
-      now,
-    )();
-    app.broadcast();
-    await page.waitForTimeout(100);
-    assert.equal(await page.evaluate(() => window.windPaths), 0);
-    now = 15000;
-    app.arena.boosterEffects.tick(b, now);
-    app.arena.combat.updateSwords(now);
-    app.broadcast();
-    assert.equal(app.arena.combat.swords.length, 0);
-    assert.equal(b.swordBurns.length, 0);
-    assert.equal(b.parts[0].mass, 236);
-    assert.equal(b.parts[1].mass, 500);
-    await page.emulateMedia({ reducedMotion: "reduce" });
-    app.arena.boosterEffects.apply(
-      b,
-      require("../../src/server/boosters/booster-catalog").BOOSTERS.get("fire_sword"),
-      now,
-      b.parts[0],
-    );
-    app.broadcast();
-    const previous = await page.evaluate(() => window.burnDraws);
-    await page.waitForFunction((n) => window.burnDraws > n, previous);
+    assert.deepEqual(b.parts.map(p => p.mass), [300, 500, 700]);
+    assert.equal(b.mass, 1500);
+    assert.equal(app.arena.combat.shots.length, 0);
+    const packet = app.arena.snapshot(now).players.find(p => p.id === b.id);
+    assert.ok(packet.parts.every(p => !p.burnMs));
+    await page.screenshot({ path: path.join(artifacts, "sword-split.png") });
     assert.deepEqual(errors, []);
-    console.log(
-      "PASS: real sword activation/inventory, 5s cooldown, 20% single-part burn in 1s, stacked hits, 2s continuous contact, 10s held lifetime, no wind paths, reduced motion.",
-    );
+    console.log("PASS: activation from saved inventory, one charge consumed, sword sprite loaded, hit part split 30/70.");
   } finally {
     clearInterval(timer);
     await browser?.close();

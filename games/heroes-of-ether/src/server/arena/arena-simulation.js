@@ -253,7 +253,6 @@ class Arena {
     p.instantEffects = {};
     p.damageTicks = [];
     p.poisonFoodRemainder = 0;
-    p.swordBurns = [];
     p.nextCakeAt = Infinity;
     p.nextEasterAt = Infinity;
     p.nextKnucklesAt = Infinity;
@@ -310,7 +309,6 @@ class Arena {
         part.id = ids.get(part.id);
         part.vx = part.vy = 0;
       }
-    for (const burn of remnant.swordBurns) burn.partId = ids.get(burn.partId);
     remnant.departedProfileId = p.profileId;
     delete remnant.profileId;
     remnant.isRemnant = true;
@@ -457,7 +455,6 @@ class Arena {
       !bodies.some((part) => part.mass >= RULES.MIN_SPLIT_MASS)
     )
       return false;
-    this.boosterEffects.tickSwordBurns(p, now);
     if (p.dead) return false;
     this.prepareMergeTimers(p);
     if (!p.parts)
@@ -500,7 +497,6 @@ class Arena {
         mergeVersion: 0,
         mergeAt: part.mergeAt,
       });
-      this.boosterEffects.splitSwordBurn(p, part.id, [part, p.parts[p.parts.length - 1]], now);
     }
     this.refreshMergeTimer(p);
     this.separateParts(p, now);
@@ -753,7 +749,6 @@ class Arena {
           )
             continue;
           const survivor = b.mass > a.mass || (b.mass === a.mass && b.id === p.mainPartId) ? b : a;
-          this.boosterEffects.mergeSwordBurns(p, [a.id, b.id], survivor.id, now);
           // Поглощённая часть добавляет массу к большей без скачка её центра.
           const x = survivor.x,
             y = survivor.y;
@@ -1327,7 +1322,9 @@ class Arena {
             ? (p.effectStrengths?.freeze ?? BOOSTERS.get("freeze").multiplier)
             : 1) *
           giftEffects.arena(p, "speed");
+      const partCount = this.combat.captureBladeTargets(p);
       if (!this.combat.movePull(p, now)) this.moveParts(p, now, multiplier);
+      if (partCount) this.combat.resolveBladeCrossings(p, partCount, now);
     }
     this.hazards?.collect(now);
     this.alchemyField.tick(now);
@@ -1378,14 +1375,6 @@ class Arena {
       const includeHud = hudOwners === null || hudOwners.has(p.id);
       const bodies = this.bodies(p), parts = [];
       let viewRadius = -Infinity, splittable = false, canFeed = false;
-      // A sword may leave several burns on one part. Resolve their maximum
-      // once instead of filtering/allocating two arrays for every body.
-      let burns;
-      if (p.swordBurns.length) {
-        burns = new Map();
-        for (const burn of p.swordBurns)
-          burns.set(burn.partId, Math.max(burns.get(burn.partId) || 0, burn.until - now));
-      }
       for (const part of bodies) {
         const id = this.bodyId(p, part);
         // Keep the wire field order, but avoid object spread (and its
@@ -1396,7 +1385,7 @@ class Arena {
         };
         if (part.birth && now - part.splitStartedAt < 1000) row.birth = part.birth;
         row.mergeMs = Math.max(0, this.partMergeAt(p, part) - now);
-        row.burnMs = burns?.get(id) || 0;
+        row.burnMs = 0;
         parts.push(row);
         viewRadius = Math.max(viewRadius, Math.hypot(part.x - p.x, part.y - p.y) + part.radius);
         if (includeHud) {

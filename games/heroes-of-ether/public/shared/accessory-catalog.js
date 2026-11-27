@@ -68,7 +68,7 @@
     prince: "v3", king: "v3", emperor: "v2", boss: "v2",
   });
   const extraAbilities = {
-    viking_hat: [["fire_sword", 3, "Огненный меч"], ["meat", 3, "Мясо"]],
+    viking_hat: [["fire_sword", 3, "Меч"], ["meat", 3, "Мясо"]],
     sombrero_hat: [["sponge", 3, "Губка"]],
     mushroom_hat: [["poison", 3, "Яд"], ["mega_poison", 3, "Мега яд"]],
     star_pilot: [], velvet_trick: [],
@@ -546,12 +546,12 @@
     if (Object.hasOwn(extraAbilities, original.id)) {
       const abilities = Object.freeze(extraAbilities[original.id].map(([boosterId, count, name]) => Object.freeze({
         boosterId, count, name, icon: boosterId === "fire_sword"
-          ? "assets/boosters/clan-v2/256/fire_sword.webp?art=20261124-clan-art"
+          ? "assets/boosters/clan-v2/256/sword.webp"
           : "assets/boosters/png/" + boosterId + ".png?art=20261123-interface-art",
       })));
       accessory = {...original, abilities, ability: abilities[0]};
     }
-    const mapped = abilityList(accessory).map(a => ["fire","fire_sword","cake","warheads","vortex","awl","clan_shield"].includes(a.boosterId)
+    const mapped = abilityList(accessory).map(a => ["fire","cake","warheads","vortex","awl","clan_shield"].includes(a.boosterId)
       ? Object.freeze({...a, icon: `assets/boosters/clan-v2/256/${a.boosterId}.webp?art=20261124-clan-art`}) : a);
     if (mapped.some((a,i) => a !== abilityList(accessory)[i])) accessory = {...accessory, abilities: Object.freeze(mapped), ability: mapped[0]};
     const buff = provisionalBuffs[accessory.id];

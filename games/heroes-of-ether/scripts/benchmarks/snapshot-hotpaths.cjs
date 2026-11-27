@@ -34,7 +34,6 @@ for (let i = 0; i < 35; i++) {
   p.shieldReadyAt = {clan_shield:1700,golden_shield:3000};
   p.boosterItemReadyAt = {meat:900,fire:2500};
   p.instantEffects = {meat:1800};
-  p.swordBurns = i%2?[]:[{partId:`part-${i}-0`,until:1800},{partId:`part-${i}-0`,until:2800}];
 }
 function snapshots(iterations, verify) {
   const hash=createHash("sha256"), rawHash=createHash("sha256");

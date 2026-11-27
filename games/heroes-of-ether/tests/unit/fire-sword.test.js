@@ -1,181 +1,141 @@
-/* Модульные проверки игровых правил. */
+
 "use strict";
-const test = require("node:test"),
-  assert = require("node:assert/strict");
-const { Arena, radiusForMass } = require("../../src/server/arena/arena-simulation"),
-  { BOOSTERS, publicCatalog } = require("../../src/server/boosters/booster-catalog");
-const { cooldown } = require("../../public/shared/booster-cooldowns");
-const sword = BOOSTERS.get("fire_sword");
-function scene() {
-  const arena = new Arena({ etherCount: 0 }),
-    a = arena.addPlayer(0, "a"),
-    b = arena.addPlayer(0, "b");
-  for (const p of [a, b])
-    Object.assign(p, {
-      mass: 1000,
-      radius: radiusForMass(1000),
-      x: 1000,
-      y: 1000,
-      targetX: 2000,
-      targetY: 1000,
-      protectedUntil: 0,
-      level: 121,
-    });
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const { Arena, radiusForMass } = require("../../src/server/arena/arena-simulation");
+const { BOOSTERS, publicCatalog } = require("../../src/server/boosters/booster-catalog");
+
+function fixture(mass = 1000) {
+  const arena = new Arena({ etherCount: 0, world: { width: 4000, height: 4000 } });
+  const a = arena.addPlayer(0, "thrower"), b = arena.addPlayer(0, "target");
+  for (const [p, x] of [[a, 1000], [b, 1280]])
+    Object.assign(p, { x, y: 1000, targetX: 2500, targetY: 1000, level: 121,
+      mass, radius: radiusForMass(mass), stopped: true, protectedUntil: 0 });
   return { arena, a, b };
 }
-function parts(arena, p) {
-  p.parts = [
-    { id: p.mainPartId, mass: 1000, x: 1000, y: 1000, radius: radiusForMass(1000) },
-    { id: "other", mass: 500, x: 1500, y: 1500, radius: radiusForMass(500) },
-  ];
-  arena.syncParts(p);
-  return p.parts;
+function fire(arena, owner, id = "fire_sword", aimX = 3000, aimY = 1000) {
+  arena.prepareBooster(owner.id, { boosterId: id, spawnSerial: owner.spawnSerial, aimX, aimY }, 5000)();
+  return arena.combat.shots.at(-1);
 }
-test("Поджог снимает ровно 20% начальной массы за 1 секунду только с задетого шара", () => {
-  const { arena, b } = scene(),
-    [hit, other] = parts(arena, b);
-  arena.boosterEffects.apply(b, sword, 5000, hit);
-  assert.equal(hit.mass, 1000);
-  arena.boosterEffects.tick(b, 5500);
-  assert.equal(hit.mass, 900);
-  assert.equal(other.mass, 500);
-  const packet = arena.snapshot(5500).players.find((p) => p.id === b.id);
-  assert.deepEqual(
-    packet.parts.map((p) => p.burnMs),
-    [500, 0],
-  );
-  arena.boosterEffects.tick(b, 12000);
-  assert.equal(hit.mass, 800);
-  assert.equal(other.mass, 500);
-  assert.equal(b.mass, 1300);
-  assert.equal(b.effects.fire_sword, undefined);
-  arena.boosterEffects.tick(b, 20000);
-  assert.equal(b.mass, 1300);
-});
-test("Повторный удар добавляет новый секундный поджог от текущей массы", () => {
-  const { arena, b } = scene();
-  arena.boosterEffects.apply(b, sword, 5000);
-  arena.boosterEffects.apply(b, sword, 5500);
-  assert.equal(b.mass, 900);
-  assert.equal(b.swordBurns.length, 2);
-  assert.equal(b.swordBurns[1].until, 6500);
-  arena.boosterEffects.tick(b, 6500);
-  assert.equal(b.mass, 620);
+
+test("Меч в существующем слоте использует полёт Секиры и прежнюю перезарядку", () => {
+  const { arena, a } = fixture();
+  const sword = BOOSTERS.get("fire_sword"), axe = BOOSTERS.get("axe");
+  for (const key of ["flightMs", "flightSpeed", "maxDistance"]) assert.equal(sword[key], axe[key]);
+  const visible = publicCatalog().items.find(item => item.id === sword.id);
+  assert.equal(visible.name, "Меч");
+  assert.match(visible.icon, /\/sword\.webp/);
+  fire(arena, a);
+  const message = { boosterId: sword.id, spawnSerial: a.spawnSerial, aimX: 3000, aimY: 1000 };
+  assert.throws(() => arena.prepareBooster(a.id, message, 5499), /Подожди/);
+  arena.prepareBooster(a.id, message, 5500)();
+  assert.equal(arena.combat.shots.length, 2);
 });
 
-test("Меч снова поджигает тот же шар после выхода лезвия и нового касания", () => {
-  const { arena, a, b } = scene();
-  b.x = a.x + a.radius + 80;
-  arena.combat.prepare(a, sword, { aimX: 2000, aimY: 1000 }, 5000)();
-  arena.combat.updateSwords(5000);
-  assert.equal(b.swordBurns[0].until, 6000);
-  arena.combat.updateSwords(5500);
-  assert.equal(b.swordBurns[0].until, 6000);
-  a.targetX = 1000;
-  a.targetY = 2000;
-  arena.combat.updateSwords(6000);
-  a.targetX = 2000;
-  a.targetY = 1000;
-  arena.combat.updateSwords(6500);
-  assert.equal(b.swordBurns.length, 1);
-  assert.equal(b.swordBurns[0].until, 7500);
-  arena.combat.updateSwords(15000);
-  assert.equal(arena.combat.swords.length, 0);
-  arena.boosterEffects.tick(b, 16000);
-  assert.equal(b.swordBurns.length, 0);
-});
-test("Повтор меча после 0,5 секунды обновляет единственный клинок", () => {
-  const { arena, a } = scene(),
-    message = { boosterId: sword.id, spawnSerial: a.spawnSerial, aimX: 2000, aimY: 1000 };
-  const commit = arena.prepareBooster(a.id, message, 5000);
-  assert.equal(a.boosterItemReadyAt.fire_sword, undefined);
-  commit();
-  assert.throws(() => arena.prepareBooster(a.id, message, 5499),/Подожди/);
-  assert.doesNotThrow(() => arena.prepareBooster(a.id, message, 5500));
-  assert.doesNotThrow(() => arena.prepareBooster(a.id, { ...message, boosterId: "rocket" }, 6000));
-  const me = arena.snapshot(6000).players.find((p) => p.id === a.id);
-  const item = publicCatalog().items.find((b) => b.id === sword.id);
-  assert.equal(cooldown(item, me, 500, publicCatalog().rules).ms, 0);
-  assert.equal(item.heldMs, 5000);
-  arena.prepareBooster(a.id, message, 10000)();
-  assert.equal(arena.combat.swords.length, 1);
-  assert.equal(arena.combat.swords[0].until, 15000);
-  arena.resetPlayer(a, 11000);
-  assert.deepEqual(a.boosterItemReadyAt, {});
-});
-test("Разделение горящего шара сохраняет остаток урона и срок между его потомками", () => {
-  for (const kind of ["space", "rocket"]) {
-    const { arena, b } = scene();
-    b.mass=10000; b.radius=radiusForMass(b.mass);
-    arena.boosterEffects.apply(b, sword, 5000);
-    if (kind === "space") arena.splitPlayer(b, { spawnSerial: b.spawnSerial, sequence: 1 }, 5500);
-    else arena.boosterEffects.split(b, b, 3, 5500, true);
-    assert.equal(b.mass, 9000);
-    assert.ok(b.swordBurns.length >= 2);
-    arena.boosterEffects.tick(b, 6000);
-    assert.equal(b.mass, 8000);
-    assert.ok(arena.bodies(b).every((p) => p.mass > 300));
-  }
-});
-test("Слияние сохраняет остаток поджога, не начисляя 20% от общей массы заново", () => {
-  const { arena, b } = scene(),
-    [hit, other] = parts(arena, b);
-  arena.boosterEffects.apply(b, sword, 5000, hit);
-  arena.boosterEffects.tick(b, 5500);
-  other.x = hit.x;
-  other.y = hit.y;
-  other.vx = other.vy = hit.vx = hit.vy = 0;
-  b.mergeAt = 0;
-  b.stopped = true;
-  b.targetX = hit.x;
-  b.targetY = hit.y;
-  arena.moveParts(b, 5500, 0);
+for (const shield of [null, "colorful_shield", "golden_shield", "sphere"])
+  test("Меч сохраняет массу и запускает 70% по направлению удара, защита " + shield, () => {
+    const { arena, a, b } = fixture(1001);
+    if (shield) b.effects[shield] = 12000;
+    fire(arena, a);
+    arena.combat.update(5700);
+    assert.deepEqual(b.parts.map(part => part.mass), [300, 701]);
+    assert.ok(b.parts[1].vx > 0 && Math.abs(b.parts[1].vy) < 1e-8);
+    assert.equal(b.parts[0].vx, 0);
+    assert.equal(b.parts[1].birth.parentId, b.parts[0].id);
+    if (shield) assert.equal(b.effects[shield], 12000);
+    arena.boosterEffects.tick(b, 18000);
+    assert.equal(b.mass, 1001);
+    assert.equal(arena.combat.shots.length, 0);
+  });
+
+test("Клановый щит возвращает Меч бросившему, разлёт идёт в обратную сторону", () => {
+  const { arena, a, b } = fixture();
+  b.effects.clan_shield = 15000;
+  const shot = fire(arena, a);
+  arena.combat.update(5800);
+  assert.equal(shot.ownerId, b.id);
+  assert.ok(shot.dx < 0);
+  assert.equal(b.mass, 1000);
   assert.equal(arena.bodies(b).length, 1);
-  arena.boosterEffects.tick(b, 6000);
-  assert.equal(b.mass, 1300);
+  arena.combat.update(6500);
+  assert.deepEqual(a.parts.map(p => p.mass), [300, 700]);
+  assert.ok(a.parts[1].vx < 0);
+  assert.equal(arena.combat.shots.length, 0);
 });
-test("Поглощение горящей части не переносит поджог на оставшийся шар, возрождение очищает огонь", () => {
-  const { arena, b } = scene(),
-    [hit, other] = parts(arena, b);
-  arena.boosterEffects.apply(b, sword, 5000, hit);
-  b.parts = [other];
-  arena.syncParts(b);
-  arena.boosterEffects.tick(b, 7000);
-  assert.equal(b.mass, 500);
-  assert.equal(b.swordBurns.length, 0);
-  arena.boosterEffects.apply(b, sword, 8000);
-  arena.resetPlayer(b, 9000);
-  assert.equal(b.swordBurns.length, 0);
-  assert.equal(b.effects.fire_sword, undefined);
+
+test("Клановый щит и защита появления не пробиваются при одновременном обычном щите", () => {
+  const { arena, a, b } = fixture();
+  b.protectedUntil = 5900;
+  b.effects.golden_shield = b.effects.clan_shield = 11000;
+  fire(arena, a);
+  arena.combat.update(5800);
+  assert.equal(arena.combat.shots.length, 0);
+  assert.equal(arena.bodies(b).length, 1);
 });
-test("Частота обновления не меняет итог поджога; малый горящий шар исчезает", () => {
-  for (const step of [16, 50, 1000, 5000]) {
-    const { arena, b } = scene();
-    arena.boosterEffects.apply(b, sword, 5000);
-    for (let at = 5000; at < 12000; at += step) arena.boosterEffects.tick(b, at);
-    arena.boosterEffects.tick(b, 12000);
-    assert.equal(b.mass, 800);
-    arena.boosterEffects.apply(b, sword, 13000);
-    b.mass = 2;
-    b.radius = radiusForMass(2);
-    arena.boosterEffects.tick(b, 20000);
-    assert.equal(b.mass, 2);
-    assert.equal(b.dead, true);
+
+test("Меч не превышает лимит частей, минимальная масса сохраняется", () => {
+  for (const [mass, maxParts, expected] of [[1000,1,[1000]], [3,16,[3]], [4,16,[2,2]], [7,16,[2,5]]]) {
+    const { arena, a, b } = fixture(mass);
+    arena.maxParts = maxParts;
+    fire(arena, a);
+    arena.combat.update(6800);
+    assert.deepEqual(arena.bodies(b).map(p => p.mass), expected);
   }
 });
 
-test("Меч погибшего в этом такте владельца исчезает до его удара", () => {
-  const { arena, a, b } = scene();
-  b.mass = 2;
-  b.radius = radiusForMass(b.mass);
-  b.x = a.x + a.radius + 40;
-  b.targetX = a.x;
-  arena.combat.prepare(a, sword, { aimX: 2000, aimY: 1000 }, 5000)();
-  arena.combat.prepare(b, sword, { aimX: a.x, aimY: a.y }, 5000)();
-  assert.equal(arena.combat.swords.length, 2);
-  assert.doesNotThrow(() => arena.combat.updateSwords(5000));
-  assert.equal(b.dead, true);
-  assert.equal(a.swordBurns.length, 0);
-  assert.deepEqual(arena.combat.swords.map(s => s.ownerId), [a.id]);
-  assert.doesNotThrow(() => arena.combat.updateSwords(5050));
+test("Деление пробелом поперёк летящей Секиры бота срабатывает в такте прыжка", () => {
+  const { arena, a, b } = fixture(1000);
+  a.isTestBot = true;
+  b.nextMassDecayAt = 10000;
+  assert.equal(arena.splitPlayer(b, { sequence: 1, spawnSerial: b.spawnSerial }, 5000), true);
+  const child = b.parts[1];
+  const endX = child.x + 18, endY = child.y - child.radius - 9.4;
+  a.x = endX; a.y = endY - a.radius - 20;
+  const shot = fire(arena, a, "axe", endX, endY + 200);
+  assert.ok(Math.hypot(endX - child.x, endY - child.y) > child.radius + 10);
+  const before = b.mass;
+  arena.step(5050);
+  assert.ok(!arena.combat.shots.includes(shot));
+  assert.equal(b.parts.length, 5);
+  assert.equal(b.mass, before);
+});
+
+test("Летящая Секира продолжает путь после поглощения бросившего бота", () => {
+  const { arena, a, b } = fixture();
+  fire(arena, a, "axe");
+  a.dead = true;
+  arena.combat.update(5800);
+  assert.equal(arena.bodies(b).length, 4);
+  assert.equal(b.mass, 1000);
+});
+
+test("У границы все направленные бустеры отражаются с сохранением пути и срока", () => {
+  for (const item of BOOSTERS.values()) {
+    if (item.target !== "direction") continue;
+    const { arena, a, b } = fixture();
+    b.y = 2300; a.x = 3940;
+    const aimX = item.id === "mine" ? 0 : 4000;
+    const shot = fire(arena, a, item.id, aimX);
+    // Centre of a fan, or the single shot. Keep clear of the thrower's body while testing walls.
+    const central = arena.combat.shots[Math.floor(arena.combat.shots.length / 2)];
+    a.x = 1000;
+    const { landsAt, speed, x } = central;
+    assert.ok(central.dx > 0.99, item.id);
+    arena.combat.update(5050);
+    assert.ok(central.dx < 0, item.id);
+    assert.ok(Math.abs(central.x - (8000 - x - speed * 0.05)) < 1e-7, item.id);
+    assert.equal(central.landsAt, landsAt);
+    assert.equal(shot.ownerId, a.id);
+  }
+});
+
+test("Угол отражает обе координаты, последующее попадание возможно в том же такте", () => {
+  const {arena, a, b} = fixture(20);
+  a.x = a.y = 3970;
+  const shot = fire(arena, a, "freeze", 4000, 4000);
+  a.x = a.y = 1000;
+  b.x = b.y = 3920;
+  arena.combat.update(5800);
+  assert.ok(shot.dx < 0 && shot.dy < 0);
+  assert.equal(b.effects.freeze, 15800);
 });

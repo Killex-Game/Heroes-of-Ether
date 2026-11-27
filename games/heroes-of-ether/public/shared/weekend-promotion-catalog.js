@@ -705,9 +705,9 @@
       {
         "kind": "booster",
         "id": "fire_sword",
-        "name": "Огненный меч",
+        "name": "Меч",
         "amount": 200,
-        "icon": "assets/boosters/clan-v2/256/fire_sword.webp?art=20261124-clan-art"
+        "icon": "assets/boosters/clan-v2/256/sword.webp"
       }
     ]
   },

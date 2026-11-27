@@ -1,4 +1,4 @@
-/* Полёт и столкновения бустеров, отражения, ловушки и удерживаемый меч. */
+/* Полёт и столкновения бустеров, отражения, ловушки. */
 "use strict";
 const { randomUUID } = require("node:crypto");
 const { BOOSTERS, BOOSTER_RULES: R, BoosterError } = require("../boosters/booster-catalog");
@@ -41,7 +41,8 @@ class Combat {
     this.pulls = new Map();
     this.completedPulls = new Map();
     this.contacts = [];
-    this.swords = [];
+    this.flyingBlades = [];
+    this.partStarts = [];
     this.hitBounds = null;
   }
   prepare(player, booster, message, now) {
@@ -88,25 +89,6 @@ class Combat {
     const world = this.arena.world;
     const aimX = clamp(message.aimX, 0, world.width),
       aimY = clamp(message.aimY, 0, world.height);
-    if (booster.kind === "sword") {
-      return () => {
-        // A fresh use replaces the held blade, keeping a bounded per-player list.
-        this.swords = this.swords.filter((s) => s.ownerId !== player.id);
-        const sword = {
-          id: randomUUID(),
-          boosterId: booster.id,
-          effectBooster: booster,
-          ownerId: player.id,
-          ownerLife: player.lifeId,
-          until: now + booster.heldMs,
-          dx: 1,
-          dy: 0,
-          contacts: new Map(),
-        };
-        this.positionSword(sword, player, aimX, aimY);
-        this.swords.push(sword);
-      };
-    }
     // Mines are thrown behind movement; standing still uses the opposite aim direction.
     // Flight, arming, collision and lifetime rules below are shared and unchanged.
     let rear = null;
@@ -213,70 +195,6 @@ class Combat {
   alive(id, life) {
     const p = this.arena.players.get(id);
     return p && !p.dead && p.lifeId === life ? p : null;
-  }
-  positionSword(sword, owner, aimX = owner.targetX, aimY = owner.targetY) {
-    const body = this.arena.mainBody(owner),
-      dx = aimX - body.x,
-      dy = aimY - body.y,
-      length = Math.hypot(dx, dy);
-    if (length > 0.01) {
-      sword.dx = dx / length;
-      sword.dy = dy / length;
-    }
-    sword.partId = this.arena.bodyId(owner, body);
-    sword.imageSize = clamp(body.radius * 0.85, 38, 160) * 1.35;
-    // The visible handle-to-tip diagonal spans 1.1 image widths.
-    sword.length = sword.imageSize * 1.1;
-    sword.x = body.x + sword.dx * (body.radius + sword.length * 0.5);
-    sword.y = body.y + sword.dy * (body.radius + sword.length * 0.5);
-    return body;
-  }
-  updateSwords(now) {
-    for (const sword of this.swords) {
-      if (sword.until <= now) continue;
-      const owner = this.alive(sword.ownerId, sword.ownerLife);
-      // An earlier sword can kill this owner during the same update.
-      if (!owner) continue;
-      const body = this.positionSword(sword, owner);
-      const ax = body.x + sword.dx * body.radius,
-        ay = body.y + sword.dy * body.radius;
-      const bx = ax + sword.dx * sword.length,
-        by = ay + sword.dy * sword.length;
-      const contacts = new Map();
-      for (const target of this.arena.players.values()) {
-        if (
-          target.dead ||
-          target.id === owner.id ||
-          target.protectedUntil > now ||
-          this.arena.hasEffect(target, "shield", now)
-        )
-          continue;
-        for (const part of this.arena.bodies(target)) {
-          if (
-            intersection(ax, ay, bx, by, part.x, part.y, part.radius + sword.length * 0.07) === null
-          )
-            continue;
-          const key = target.lifeId + ":" + this.arena.bodyId(target, part);
-          const lastHit = sword.contacts.get(key);
-          const strike =
-            lastHit === undefined ||
-            now - lastHit >= BOOSTERS.get(sword.boosterId).contactIntervalMs;
-          contacts.set(key, strike ? now : lastHit);
-          if (strike)
-            this.arena.boosterEffects.apply(
-              target,
-              require("./alchemy-effects").incoming(target, gifts.adjust(
-                sword.effectBooster || BOOSTERS.get(sword.boosterId),
-                gifts.arena(target, "incoming"),
-              )),
-              now,
-              part,
-            );
-        }
-      }
-      sword.contacts = contacts;
-    }
-    this.swords = this.swords.filter((s) => s.until > now && this.alive(s.ownerId, s.ownerLife));
   }
   pullToPoint(shot, x, y, now) {
     const owner = this.alive(shot.ownerId, shot.ownerLife);
@@ -481,7 +399,8 @@ class Combat {
           delete target.effects[id];
       accessoryPassives.shieldBroken(target, now, shot.ownerId);
     }
-    if (booster.kind !== "cake" && arena.hasEffect(target, "shield", shieldAt)) {
+    if (booster.kind !== "cake" && (booster.kind !== "sword" || target.effects.clan_shield > shieldAt) &&
+        arena.hasEffect(target, "shield", shieldAt)) {
       this.shieldSound(shot, target, part);
       // Гарпун цепляется за щит: тяга принадлежит бросившему игроку.
       // Не передавать снаряд владельцу кланового щита при таком попадании.
@@ -501,20 +420,20 @@ class Combat {
                   .find((body) => arena.bodyId(sender, body) === shot.sourcePartId)) ||
               arena.mainBody(sender)
             : null;
-        let dx = anchor ? anchor.x - shot.x : -(shot.dx || 1),
-          dy = anchor ? anchor.y - shot.y : -(shot.dy || 0);
-        if (booster.id === "stone" && Math.hypot(dx, dy) < 1e-7) {
-          dx = -(shot.dx || 1);
-          dy = -(shot.dy || 0);
+        let dx = anchor ? anchor.x - shot.x : -(shot.dx ?? 1),
+          dy = anchor ? anchor.y - shot.y : -(shot.dy ?? 0);
+        if (Math.hypot(dx, dy) < 1e-7) {
+          dx = -(shot.dx ?? 1);
+          dy = -(shot.dy ?? 0);
         }
         const length = Math.hypot(dx, dy) || 1;
         shot.dx = dx / length;
         shot.dy = dy / length;
         if (
-          booster.id === "stone" &&
+          (booster.id === "stone" || booster.kind === "sword") &&
           Math.hypot(shot.x - part.x, shot.y - part.y) < part.radius + R.PROJECTILE_RADIUS
         ) {
-          // Moving shields may overlap a flying stone between steps. Return
+          // Moving shields may overlap a flying projectile between steps. Return
           // it from the sender-facing edge, never through the shield interior.
           const offset = part.radius + R.PROJECTILE_RADIUS;
           shot.x = clamp(part.x + shot.dx * offset, 0, arena.world.width);
@@ -557,6 +476,11 @@ class Combat {
       }
       return;
     }
+    if (booster.kind === "sword") {
+      if (arena.boosterEffects.split(target, part, 2, now, false, 0, 0, 0.7, true, shot) && target.id !== shot.ownerId)
+        require("./quest-actions").record(arena, this.alive(shot.ownerId, shot.ownerLife), "splitParts", target, null, 2);
+      return;
+    }
     if (booster.kind === "rocket" || booster.kind === "divide") {
       if (booster.id === "rocket" && target.id !== shot.ownerId)
         require("./quest-actions").record(arena, this.alive(shot.ownerId, shot.ownerLife), "rocketHits", target);
@@ -583,7 +507,7 @@ class Combat {
         require('./quest-actions').record(arena,this.alive(shot.ownerId,shot.ownerLife),'splitParts',target,null,arena.bodies(target).length-beforeParts+1);
       return;
     }
-    if (["poison", "sword", "lock", "cake"].includes(booster.kind)) {
+    if (["poison", "lock", "cake"].includes(booster.kind)) {
       arena.boosterEffects.apply(target, booster, now, part);
       if(booster.kind==='poison' && target.id!==shot.ownerId)
         require('./quest-actions').record(arena,this.alive(shot.ownerId,shot.ownerLife),'clanPoisonHits',target);
@@ -717,9 +641,8 @@ class Combat {
   updateProjectiles(now) {
     this.completedPulls.clear();
     this.contacts = [];
-    this.updateSwords(now);
-    const world = this.arena.world,
-      keep = [];
+    this.flyingBlades.length = 0;
+    const keep = [];
     for (const shot of this.shots) {
       const booster = shot.effectBooster || shot.petBooster || BOOSTERS.get(shot.boosterId);
       if (booster.kind === "vortex") {
@@ -735,114 +658,118 @@ class Combat {
         continue;
       }
       if (shot.ricochetUntil && now >= shot.ricochetUntil) continue;
-      if (!booster.trap && !this.alive(shot.ownerId, shot.ownerLife)) continue;
-      const ax = shot.x,
-        ay = shot.y,
-        stepStart = shot.lastAt;
-      const until = Math.min(now, shot.landsAt),
-        elapsed = Math.max(0, until - shot.lastAt) / 1000;
-      const dx = shot.boundary ? 0 : shot.dx * (shot.speed || R.FLIGHT_SPEED) * elapsed,
-        dy = shot.boundary ? 0 : shot.dy * (shot.speed || R.FLIGHT_SPEED) * elapsed;
-      const fraction = Math.min(
-        1,
-        dx > 0 ? (world.width - ax) / dx : dx < 0 ? -ax / dx : 1,
-        dy > 0 ? (world.height - ay) / dy : dy < 0 ? -ay / dy : 1,
-        Math.hypot(dx, dy) > 0
-          ? Math.max(0, (shot.maxDistance ?? Infinity) - (shot.distanceTravelled || 0)) /
-              Math.hypot(dx, dy)
-          : 1,
-      );
-      shot.x = clamp(ax + dx * fraction, 0, world.width);
-      shot.y = clamp(ay + dy * fraction, 0, world.height);
-      shot.lastAt = until;
-      shot.distanceTravelled = (shot.distanceTravelled || 0) + Math.hypot(shot.x - ax, shot.y - ay);
-      if (fraction < 1) shot.boundary = true;
-      const rangeEnded = shot.distanceTravelled + 1e-7 >= (shot.maxDistance ?? Infinity);
-      const hazardHit = this.arena.hazards?.projectileHit(
-        shot,
-        ax,
-        ay,
-        shot.x,
-        shot.y,
-        shot.landed ? R.TRAP_RADIUS : R.PROJECTILE_RADIUS,
-      );
-      if (hazardHit) {
-        // Resolve the nearest boundary across players and hazards together.
-        const playerHit = this.hit(shot, ax, ay, shot.x, shot.y, now);
-        if (!playerHit || hazardHit.t < playerHit.t) {
-          shot.x = ax + (shot.x - ax) * hazardHit.t;
-          shot.y = ay + (shot.y - ay) * hazardHit.t;
-          this.arena.hazards.impact(shot, hazardHit, now);
-          this.recordContact(shot);
-          continue;
-        }
-      }
-      if (booster.trap) {
-        if (booster.flightImpact && !shot.landed) {
-          const hit = this.hit(shot, ax, ay, shot.x, shot.y, now);
-          if (hit) {
-            shot.distanceTravelled -= Math.hypot(shot.x - ax, shot.y - ay) * (1 - hit.t);
-            shot.x = ax + (shot.x - ax) * hit.t;
-            shot.y = ay + (shot.y - ay) * hit.t;
-            if (this.impact(shot, hit.player, now, hit.part) === "reflected") keep.push(shot);
-            else this.recordContact(shot, hit.player);
-            continue;
-          }
-        }
-        shot.landed = now >= shot.landsAt;
-        if (shot.landed) {
-          const hit = this.hit(shot, shot.x, shot.y, shot.x, shot.y, now);
-          if (hit) {
-            if (this.impact(shot, hit.player, now, hit.part) === "reflected") keep.push(shot);
-            else this.recordContact(shot, hit.player);
-            continue;
-          }
-        }
-        keep.push(shot); // Ловушка переживает смерть/выход отправителя, до первого попадания.
-      } else {
-        let hit = this.hit(shot, ax, ay, shot.x, shot.y, now);
-        if (booster.kind === "fire") {
-          while (hit) {
-            shot.hitParts.add(hit.player.lifeId + ":" + this.arena.bodyId(hit.player, hit.part));
-            this.impact(shot, hit.player, now, hit.part);
-            hit = this.hit(shot, ax, ay, shot.x, shot.y, now);
-          }
-        } else if (hit) {
-          shot.distanceTravelled -= Math.hypot(shot.x - ax, shot.y - ay) * (1 - hit.t);
-          shot.x = ax + (shot.x - ax) * hit.t;
-          shot.y = ay + (shot.y - ay) * hit.t;
-          const result = this.impact(
-                  shot,
-                  hit.player,
-                  now,
-                  hit.part,
-                  hit.contacts,
-                  booster.kind === "push" ? stepStart + elapsed * 1000 * fraction * hit.t : now,
-                );
-          if (
-            result === "reflected" &&
-            now < shot.landsAt &&
-            shot.distanceTravelled < (shot.maxDistance ?? Infinity)
-          )
-            keep.push(shot);
-          else this.recordContact(shot, hit.player);
-          continue;
-        }
-        if (booster.kind === "knuckles" && shot.ricochetUntil && shot.boundary) {
-          if (shot.x <= 0 || shot.x >= world.width) shot.dx *= -1;
-          if (shot.y <= 0 || shot.y >= world.height) shot.dy *= -1;
-          shot.boundary = false;
-          shot.route = [];
-          shot.motionVersion = (shot.motionVersion || 0) + 1;
-        }
-        if (now < shot.landsAt && !shot.boundary && !rangeEnded) keep.push(shot);
-        else if (booster.pullOnMiss) this.pullToPoint(shot, shot.x, shot.y, now);
+      const blade = shot.boosterId === "axe" || booster.kind === "sword";
+      if (!blade && !booster.trap && !this.alive(shot.ownerId, shot.ownerLife)) continue;
+      if (this.advanceShot(shot, booster, now)) {
+        keep.push(shot);
+        if (blade) this.flyingBlades.push(shot);
       }
     }
     this.shots = keep;
     for (const [id, pull] of this.pulls)
       if (!this.alive(id, pull.life) || (pull.anchor && !this.alive(pull.anchor, pull.anchorLife)))
         this.pulls.delete(id);
+  }
+  advanceShot(shot, booster, now) {
+    const until = Math.min(now, shot.landsAt);
+    const speed = shot.speed || R.FLIGHT_SPEED;
+    const limit = shot.maxDistance ?? Infinity;
+    let segmentAt = shot.lastAt;
+    let remaining = shot.landed ? 0 : Math.min(Math.max(0, until - segmentAt) * speed / 1000,
+      Math.max(0, limit - (shot.distanceTravelled || 0)));
+    shot.lastAt = until;
+    const { width, height } = this.arena.world;
+    do {
+      const ax = shot.x, ay = shot.y;
+      const wallX = shot.dx > 0 ? (width - ax) / shot.dx : shot.dx < 0 ? -ax / shot.dx : Infinity;
+      const wallY = shot.dy > 0 ? (height - ay) / shot.dy : shot.dy < 0 ? -ay / shot.dy : Infinity;
+      const distance = Math.max(0, Math.min(remaining, wallX, wallY));
+      const bx = clamp(ax + shot.dx * distance, 0, width);
+      const by = clamp(ay + shot.dy * distance, 0, height);
+      const hazard = this.arena.hazards?.projectileHit(shot, ax, ay, bx, by,
+        shot.landed ? R.TRAP_RADIUS : R.PROJECTILE_RADIUS);
+      const checksPlayers = !booster.trap || booster.flightImpact || shot.landed;
+      let hit = checksPlayers ? this.hit(shot, ax, ay, bx, by, now) : null;
+      while (hit && (!hazard || hit.t <= hazard.t) && booster.kind === "fire") {
+        shot.hitParts.add(hit.player.lifeId + ":" + this.arena.bodyId(hit.player, hit.part));
+        this.impact(shot, hit.player, now, hit.part);
+        hit = this.hit(shot, ax, ay, bx, by, now);
+      }
+      const hazardFirst = hazard && (!hit || hazard.t < hit.t);
+      const contact = hazardFirst ? hazard : hit;
+      const t = contact ? contact.t : 1;
+      shot.x = ax + (bx - ax) * t;
+      shot.y = ay + (by - ay) * t;
+      shot.distanceTravelled = (shot.distanceTravelled || 0) + distance * t;
+      if (hazardFirst) {
+        this.arena.hazards.impact(shot, hazard, now);
+        this.recordContact(shot);
+        return false;
+      }
+      if (hit) {
+        const shieldAt = booster.kind === "push" ? segmentAt + distance * t * 1000 / speed : now;
+        const result = this.impact(shot, hit.player, now, hit.part, hit.contacts, shieldAt);
+        if (result === "reflected" && now < shot.landsAt && shot.distanceTravelled < (shot.maxDistance ?? Infinity)) return true;
+        this.recordContact(shot, hit.player);
+        return false;
+      }
+      if (!shot.landed && remaining > 0 && (wallX <= distance + 1e-9 || wallY <= distance + 1e-9)) {
+        if (wallX <= distance + 1e-9) shot.dx *= -1;
+        if (wallY <= distance + 1e-9) shot.dy *= -1;
+        shot.motionVersion = (shot.motionVersion || 0) + 1;
+      }
+      remaining -= distance;
+      segmentAt += distance * 1000 / speed;
+    } while (remaining > 1e-7);
+    if (booster.trap) {
+      if (!shot.landed && (now >= shot.landsAt || shot.distanceTravelled + 1e-7 >= limit)) {
+        shot.landed = true;
+        const hit = this.hit(shot, shot.x, shot.y, shot.x, shot.y, now);
+        if (hit) {
+          this.impact(shot, hit.player, now, hit.part);
+          this.recordContact(shot, hit.player);
+          return false;
+        }
+      }
+      return true;
+    }
+    if (now < shot.landsAt && shot.distanceTravelled + 1e-7 < limit) return true;
+    if (booster.pullOnMiss) this.pullToPoint(shot, shot.x, shot.y, now);
+    return false;
+  }
+  captureBladeTargets(player) {
+    if (!this.flyingBlades.length || (this.flyingBlades.length === 1 && this.flyingBlades[0].ownerId === player.id)) return 0;
+    // Reused for one player's move. Store coordinates and IDs only, so removed parts can be collected.
+    const parts = this.arena.bodies(player);
+    for (let i = 0; i < parts.length; i++) {
+      const start = this.partStarts[i] ??= {};
+      start.id = this.arena.bodyId(player, parts[i]);
+      start.x = parts[i].x;
+      start.y = parts[i].y;
+    }
+    return parts.length;
+  }
+  resolveBladeCrossings(player, startCount, now) {
+    for (let i = 0; i < this.flyingBlades.length; i++) {
+      const shot = this.flyingBlades[i];
+      if (shot.ownerId === player.id) continue;
+      let first = Infinity, target;
+      const parts = this.arena.bodies(player);
+      for (let j = 0; j < startCount; j++) {
+        const { id, x, y } = this.partStarts[j];
+        const part = parts[j] && this.arena.bodyId(player, parts[j]) === id ? parts[j] :
+          parts.find(body => this.arena.bodyId(player, body) === id);
+        if (!part) continue;
+        const t = intersection(x, y, part.x, part.y, shot.x, shot.y, part.radius + R.PROJECTILE_RADIUS);
+        if (t !== null && t < first) { first = t; target = part; }
+      }
+      if (!target) continue;
+      if (this.impact(shot, player, now, target) !== "reflected") {
+        this.recordContact(shot, player);
+        this.shots.splice(this.shots.indexOf(shot), 1);
+        this.flyingBlades.splice(i--, 1);
+      }
+    }
   }
   continuePullAfterAbsorption(playerId, otherId, now, kind) {
     // Крюк сохраняет оставшуюся тягу, но поглощение не добавляет ему путь.
@@ -1049,68 +976,52 @@ class Combat {
     for (const food of this.arena.ether) move(food, nearestSource(food));
   }
   snapshot() {
-    return [
-      ...this.shots.flatMap(
-        ({
-          id,
-          boosterId,
-          ownerId,
-          ownerLife,
-          x,
-          y,
-          dx,
-          dy,
-          landed,
-          boundary,
-          motionVersion = 0,
-        }) => {
-          const owner = boosterId === "vortex" ? this.alive(ownerId, ownerLife) : null;
-          if (boosterId === "vortex" && !owner) return [];
-          if (owner)
-            return this.arena.bodies(owner).map((part) => ({
-              id: id + ":" + this.arena.bodyId(owner, part),
-              boosterId,
-              ownerId,
-              partId: this.arena.bodyId(owner, part),
-              followPart: true,
-              x: part.x,
-              y: part.y,
-              dx: 0,
-              dy: 0,
-              landed: true,
-              moving: false,
-              areaRadius: vortexRadius(part),
-            }));
-          return [
-            {
-              id,
-              motionVersion,
-              boosterId,
-              x: owner ? owner.x : x,
-              y: owner ? owner.y : y,
-              dx,
-              dy,
-              landed,
-              moving: !landed && !boundary,
-            },
-          ];
-        },
-      ),
-      ...this.swords.map(({ id, boosterId, ownerId, partId, x, y, dx, dy, length, imageSize }) => ({
+    return this.shots.flatMap(
+      ({
         id,
         boosterId,
         ownerId,
-        partId,
+        ownerLife,
         x,
         y,
         dx,
         dy,
-        length,
-        imageSize,
-        held: true,
-        moving: false,
-      })),
-    ];
+        landed,
+        boundary,
+        motionVersion = 0,
+      }) => {
+        const owner = boosterId === "vortex" ? this.alive(ownerId, ownerLife) : null;
+        if (boosterId === "vortex" && !owner) return [];
+        if (owner)
+          return this.arena.bodies(owner).map((part) => ({
+            id: id + ":" + this.arena.bodyId(owner, part),
+            boosterId,
+            ownerId,
+            partId: this.arena.bodyId(owner, part),
+            followPart: true,
+            x: part.x,
+            y: part.y,
+            dx: 0,
+            dy: 0,
+            landed: true,
+            moving: false,
+            areaRadius: vortexRadius(part),
+          }));
+        return [
+          {
+            id,
+            motionVersion,
+            boosterId,
+            x,
+            y,
+            dx,
+            dy,
+            landed,
+            moving: !landed && !boundary,
+          },
+        ];
+      },
+    );
   }
 }
 module.exports = { Combat, intersection, vortexRadius };
