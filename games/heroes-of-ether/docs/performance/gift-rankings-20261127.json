@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-27T07:29:31.646Z",
+  "sourceCommit": "85134f24aa5568f9b9b3c3de3ee136a3704d5b4d",
+  "release": "20261127-gift-rankings",
+  "backupSha256": "2a4b1545491f361b5a519e5e2c3ed1fb599b73df3bf417fa63d1b549a6784c0f",
+  "profiles": 1741,
+  "clans": 138,
+  "revisionBefore": 6587788,
+  "revisionAfter": 6587788,
+  "allFieldsVerified": true,
+  "gamePid": 1102125,
+  "adminPid": 1163,
+  "changedRuntimeFiles": 8,
+  "verifiedRuntimeFiles": 2706,
+  "windowsPassed": 145,
+  "linuxPassed": 145,
+  "desktopRightGapPx": 0,
+  "viewportChecks": [
+    "1500×960",
+    "844×390",
+    "390×844"
+  ],
+  "browserEngines": [
+    "Chromium",
+    "Firefox",
+    "WebKit"
+  ],
+  "checks": [
+    "An XP-capped run freezes the two records and displayed kills. Normal mass changes remain possible. A new entry from the lobby restores scoring.",
+    "Gift and booster lifetime rankings use the existing cumulative successful counters. Gifts sent to oneself do not count; anonymous gifts to others count.",
+    "The new Moscow daily gifts board uses the same podium prize values as daily kills. Gift receipts retained for the day seed the board once. Duplicate sends and repeated prize settlements are covered.",
+    "Initial Windows integration expectation still allowed visual kills after MAX. Linux candidate initially lacked the ws dependency; verified with the deployed runtime dependency. First browser fixture raised an unrelated achievement modal. Final tests passed.",
+    "The initial PostgreSQL prepare timed out after the verification pause. The worker recovered automatically. The final public and local HTTP probes passed and a read-only PostgreSQL query confirmed that the new daily ranking was active for the current Moscow day."
+  ]
+}
