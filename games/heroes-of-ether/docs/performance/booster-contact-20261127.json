@@ -1,0 +1,156 @@
+{
+  "installedAt": "2026-11-27T18:37:42.126Z",
+  "source": "62975ad8e57ff04abd1e14d0b624b7691c3f04a6",
+  "patchedFiles": 13,
+  "release": "20261127-booster-contact",
+  "publicFilesVerified": [
+    {
+      "url": "http://127.0.0.1:3104",
+      "files": 9,
+      "entryOpen": true
+    },
+    {
+      "url": "https://195.208.123.221",
+      "files": 9,
+      "entryOpen": true
+    }
+  ],
+  "health": {
+    "at": "2026-11-27T18:38:03.674Z",
+    "entryOpen": true,
+    "databaseHealthy": true,
+    "revision": 7014114,
+    "gamePid": 1127262,
+    "adminPid": 1163,
+    "candidateInstalled": true
+  },
+  "save": {
+    "profiles": 1747,
+    "clans": 138,
+    "revisionBefore": 7014109,
+    "revisionAfter": 7014113,
+    "allOtherFieldsEqual": true,
+    "calendarReplayExact": true,
+    "backupSha256": "8b30867c0c211c1f0ce9c546bbc153dc5afaf31ef8080496c710b0a8d08f5e56"
+  },
+  "checks": {
+    "windows": 321,
+    "linux": 321,
+    "browsers": [
+      "Stock sword activated via its normal hotkey, one charge, 1000 split 300 / 700",
+      "Projectile rendering, reflection on two clients, mobile and reduced motion",
+      "Packaged camera and prior camera replayed against identical position and frame-time recordings in Chromium, WebKit and Firefox"
+    ],
+    "broadComparison": "Five previously failing tests also failed on the unmodified cfa4988 baseline (daily statistics, registration cleanup and pending roulette UI). Earlier missing-fixture and browser startup failures retained in the local verification logs."
+  },
+  "camera": [
+    {
+      "engine": "chromium",
+      "width": 1888,
+      "height": 944,
+      "frames": 992,
+      "before": {
+        "splits": {
+          "2": 6.587763002651581,
+          "4": 2.538194256918347
+        },
+        "start": 0.8181724917655046,
+        "lowest": 0.7098737682635576,
+        "peakDrop100ms": 6.587763002651581,
+        "peakPan100ms": 63.4240868320312,
+        "minBoosterClearance": 21.699962526482466,
+        "minimumTop": 187.65945008412194,
+        "minimumSide": 706.4547172854988
+      },
+      "after": {
+        "splits": {
+          "2": 3.968607955932202,
+          "4": 2.08644420700278
+        },
+        "start": 0.7682370814699573,
+        "lowest": 0.7019618059326513,
+        "peakDrop100ms": 3.968607955932202,
+        "peakPan100ms": 61.521789643710285,
+        "minBoosterClearance": 29.799449748132645,
+        "minimumTop": 192.14505253686093,
+        "minimumSide": 711.9921560906907
+      }
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "frames": 67,
+      "before": {
+        "splits": {
+          "2": 9.162141362464771,
+          "4": 7.097786614558988
+        },
+        "start": 0.34336516615147333,
+        "lowest": 0.23852604370219516,
+        "peakDrop100ms": 9.162141362464771,
+        "peakPan100ms": 24.509860035811695,
+        "minBoosterClearance": 8,
+        "minimumTop": 11.700000000000045,
+        "minimumSide": 332.77649471064353
+      },
+      "after": {
+        "splits": {
+          "2": 6.1667648280113285,
+          "4": 6.555695761464375
+        },
+        "start": 0.32240860671499844,
+        "lowest": 0.23591085831466596,
+        "peakDrop100ms": 6.555695761464375,
+        "peakPan100ms": 23.749003669691373,
+        "minBoosterClearance": 8,
+        "minimumTop": 11.700000000000017,
+        "minimumSide": 337.3721370363968
+      }
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "frames": 302,
+      "before": {
+        "splits": {
+          "2": 2.8022251597631165,
+          "4": 9.896415636154899
+        },
+        "start": 0.3786350584757485,
+        "lowest": 0.32609423783107455,
+        "peakDrop100ms": 9.896415636154899,
+        "peakPan100ms": 30.506260094682407,
+        "minBoosterClearance": 8,
+        "minimumTop": 190.49517144892187,
+        "minimumSide": 95.60829715011602
+      },
+      "after": {
+        "splits": {
+          "2": 1.0378990510263253,
+          "4": 6.535111994955689
+        },
+        "start": 0.3555258765030503,
+        "lowest": 0.32735697376093487,
+        "peakDrop100ms": 6.535111994955689,
+        "peakPan100ms": 28.973869685980326,
+        "minBoosterClearance": 8,
+        "minimumTop": 190.30761738213374,
+        "minimumSide": 101.6744574179493
+      }
+    }
+  ],
+  "maintenance": {
+    "notice": {
+      "observedAt": "2026-11-27T18:17:05.655Z",
+      "status": 503,
+      "title": "Техническое обновление",
+      "text": "Устанавливаем обновление игры.",
+      "observedAtPublicEntry": true
+    },
+    "staticFallbackRestored": true,
+    "nginxConfigurationValid": true,
+    "freshBuildIncludesOfflineFiles": true
+  }
+}
