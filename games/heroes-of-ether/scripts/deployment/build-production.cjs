@@ -8,7 +8,9 @@ function build(destination) {
   const target = path.resolve(destination);
   if (target === root || root.startsWith(target + path.sep) || fs.existsSync(target))
     throw Error('Production destination must be a NEW separate directory');
-  const tracked = cp.execFileSync('git', ['ls-files', '-z', '--', 'public', 'src', 'config', 'server.js', 'admin-control.js', 'package.json', 'package-lock.json'], { cwd: root }).toString().split('\0').filter(Boolean);
+  // The reverse proxy reads these from the selected release even when Node is stopped.
+  const offlineFiles = ['deployment/maintenance/maintenance.html', 'deployment/maintenance/nginx-offline-status.conf', 'deployment/admin/nginx-admin.conf'];
+  const tracked = cp.execFileSync('git', ['ls-files', '-z', '--', 'public', 'src', 'config', 'server.js', 'admin-control.js', 'package.json', 'package-lock.json', ...offlineFiles], { cwd: root }).toString().split('\0').filter(Boolean);
   // New runtime files are included only from the explicit source trees.
   function enumerate(directory) {
     return fs.readdirSync(path.join(root, directory), { withFileTypes: true }).flatMap(e => {
