@@ -2,6 +2,8 @@
 const test = require("node:test"), assert = require("node:assert/strict");
 const wire = require("../../public/shared/arena-wire");
 const { ArenaStateStream } = require("../../src/server/arena/state-stream");
+const { Arena } = require("../../src/server/arena/arena-simulation");
+const pets = require("../../src/server/pets/arena-pets");
 
 function peer(id, protocol = wire.PROTOCOL) {
   const ws = { playerId: id, protocol, readyState: 1, bufferedAmount: 0 };
@@ -33,6 +35,45 @@ function player(i, tick) {
 }
 const snapshot = (tick, players) => ({ type: "state", tick, world: { width: 5000, height: 4000 },
   players, ether: [], projectiles: [], hazards: [], events: [], audioEvents: [], visualEvents: [] });
+
+test("building private HUDs only for connected owners preserves decoded snapshots and deltas", () => {
+  const arena = new Arena({ etherCount: 0 });
+  const players = ["first", "second", "bot"].map(id => arena.addPlayer(0, id));
+  const owners = new Set(["first", "second"]);
+  for (const p of players) {
+    p.x = p.y = 500;
+    p.level = 16;
+    p.giftModifiers = { visual: "curse" };
+    pets.start(p, { level: 16, pets: { equipped: "manya", owned: {
+      manya: { games: 120, vitalityMs: 30000, refillAt: 3600000 },
+    } } }, 0, 0);
+  }
+  const protocols = [wire.HUD_PROTOCOL, wire.PRIVATE_STATE_PROTOCOL, wire.PROTOCOL,
+    wire.SCHEMA_PROTOCOL, wire.PLAYER_SCHEMA_PROTOCOL];
+  const peers = protocols.flatMap(protocol => [...owners].map(id => [peer(id, protocol), peer(id, protocol)]));
+  for (let tick = 1; tick <= 3; tick++) {
+    arena.tick = tick;
+    for (const p of players) {
+      p.boosterUses.meat = tick;
+      p.pet.stock.fire += tick;
+      p.shieldReadyAt.golden_shield = 10000;
+      p.x += tick;
+    }
+    const full = arena.snapshot(tick * 100);
+    const limited = arena.snapshot(tick * 100, [], true, owners);
+    const bot = limited.players.find(p => p.id === "bot");
+    assert.equal(bot.boosterUses, undefined);
+    assert.deepEqual(bot.pet, { id: "manya", level: 1, active: true });
+    assert.equal(full.players.find(p => p.id === "bot").boosterUses.meat, tick);
+    for (const [reference, current] of peers) {
+      reference.stream.acknowledge(reference.stream.sequence);
+      current.stream.acknowledge(current.stream.sequence);
+      reference.stream.publish(full);
+      current.stream.publish(limited);
+      assert.deepEqual(current.packets.at(-1), reference.packets.at(-1));
+    }
+  }
+});
 
 test("35 recipients retain their exact HUD while sharing only opponents' rendering fields", () => {
   const clients = Array.from({ length: 35 }, (_, i) => peer("p" + i));

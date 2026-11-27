@@ -4,8 +4,8 @@
 const natural=new WeakMap();
 function createNatural(row){natural.set(row,null);return row;}
 function snapshotNatural(row){
-  if(!natural.has(row))return structuredClone(row);
   const previous=natural.get(row);
+  if(previous===undefined)return structuredClone(row);
   if(previous && Object.is(previous.x,row.x) && Object.is(previous.y,row.y) &&
       Object.is(previous.id,row.id) && Object.is(previous.value,row.value) &&
       Object.is(previous.radius,row.radius) && Object.is(previous.color,row.color))return previous;

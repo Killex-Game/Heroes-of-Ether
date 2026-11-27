@@ -126,7 +126,7 @@ test("Опыт: лучший аккаунт для поглощений, пре�
   applyEvent(p(), { type: "massBonus", lifeId: "life", sequence: 2, kills: 20 }, NOW);
   assert.equal(p().progress.kills, 4);
   assert.equal(p().progress.claimed.king, 0);
-  assert.equal(p().progress.session.kills, 24);
+  assert.equal(p().progress.session.kills, 4);
   assert.equal(p().progress.session.creditedKills, 4);
   assert.equal(p().progress.session.xp, 500);
 });

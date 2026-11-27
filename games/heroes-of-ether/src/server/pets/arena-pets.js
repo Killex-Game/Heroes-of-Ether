@@ -7,6 +7,7 @@ const { benefits } = require("../accounts/account-benefits");
 const giftEffects = require("../profiles/gift-effects");
 const alchemy = require("../arena/alchemy-effects");
 const MAX_STOCK = 1000;
+const abilityKinds = Object.keys(rules.abilities);
 function start(player, profile, now, wallNow) {
   player.pet = null;
   if (!rules.isUnlocked(profile.level)) return;
@@ -182,27 +183,27 @@ function use(arena, p, message, now) {
 function readyAt(p, kind) {
   return Math.max(p.pet?.readyAt[kind] || 0, kind === "fire" ? p.boosterItemReadyAt.fire || 0 : 0);
 }
-function snapshot(p, now) {
+function snapshot(p, now, includeHud = true) {
   const pet = p.pet;
-  return pet
-    ? {
-        id: pet.id,
-        level: pet.stats.level,
-        active: active(p),
-        vitality: (pet.vitalityMs / pet.stats.capacityMs) * 100,
-        stock: { ...pet.stock },
-        sequence: pet.sequence,
-        firePercent: fireFraction(p) * 100,
-        thornMeals: pet.thornMeals,
-        thornRefillMs: pet.thornRefillAtMs === null ? 0 : Math.max(0, pet.thornRefillAtMs - pet.activeMs),
-        nextGiftMs: pet.nextGiftMs - pet.activeMs,
-        nextPremiumMs: pet.nextPremiumMs - pet.premiumMs,
-        cooldowns: Object.fromEntries(
-          Object.keys(rules.abilities).map((kind) => [kind, Math.max(0, readyAt(p, kind) - now)]),
-        ),
-        cooldownMs: Math.max(0, readyAt(p, pet.id === "zaya" ? "carrot" : "glove") - now),
-      }
-    : null;
+  if (!pet) return null;
+  if (!includeHud) return { id: pet.id, level: pet.stats.level, active: active(p) };
+  const cooldowns = {};
+  for (const kind of abilityKinds) cooldowns[kind] = Math.max(0, readyAt(p, kind) - now);
+  return {
+    id: pet.id,
+    level: pet.stats.level,
+    active: active(p),
+    vitality: (pet.vitalityMs / pet.stats.capacityMs) * 100,
+    stock: { ...pet.stock },
+    sequence: pet.sequence,
+    firePercent: fireFraction(p) * 100,
+    thornMeals: pet.thornMeals,
+    thornRefillMs: pet.thornRefillAtMs === null ? 0 : Math.max(0, pet.thornRefillAtMs - pet.activeMs),
+    nextGiftMs: pet.nextGiftMs - pet.activeMs,
+    nextPremiumMs: pet.nextPremiumMs - pet.premiumMs,
+    cooldowns,
+    cooldownMs: Math.max(0, readyAt(p, pet.id === "zaya" ? "carrot" : "glove") - now),
+  };
 }
 module.exports = {
   start,

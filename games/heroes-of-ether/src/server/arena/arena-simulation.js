@@ -1371,90 +1371,93 @@ class Arena {
     const event = massAccrual.sample(p, now, force, playerCount);
     if (event) this.progressEvents.push(event);
   }
-  snapshot(now, events = [], includeRankings = true) {
-    const players = [...this.players.values()]
-      .filter((p) => !p.dead)
-      .map((p) => {
-        const bodies = this.bodies(p), parts = [];
-        let viewRadius = -Infinity, splittable = false, canFeed = false;
-        // A sword may leave several burns on one part. Resolve their maximum
-        // once instead of filtering/allocating two arrays for every body.
-        let burns;
-        if (p.swordBurns.length) {
-          burns = new Map();
-          for (const burn of p.swordBurns)
-            burns.set(burn.partId, Math.max(burns.get(burn.partId) || 0, burn.until - now));
-        }
-        for (const part of bodies) {
-          const id = this.bodyId(p, part);
-          // Keep the wire field order, but avoid object spread (and its
-          // temporary object) for every part of every player on every tick.
-          const row = {
-            id, x: part.x, y: part.y, mass: part.mass, radius: part.radius,
-            mergeVersion: part.mergeVersion || 0,
-          };
-          if (part.birth && now - part.splitStartedAt < 1000) row.birth = part.birth;
-          row.mergeMs = Math.max(0, this.partMergeAt(p, part) - now);
-          row.burnMs = burns?.get(id) || 0;
-          parts.push(row);
-          viewRadius = Math.max(viewRadius, Math.hypot(part.x - p.x, part.y - p.y) + part.radius);
+  snapshot(now, events = [], includeRankings = true, hudOwners = null) {
+    const players = [];
+    for (const p of this.players.values()) {
+      if (p.dead) continue;
+      const includeHud = hudOwners === null || hudOwners.has(p.id);
+      const bodies = this.bodies(p), parts = [];
+      let viewRadius = -Infinity, splittable = false, canFeed = false;
+      // A sword may leave several burns on one part. Resolve their maximum
+      // once instead of filtering/allocating two arrays for every body.
+      let burns;
+      if (p.swordBurns.length) {
+        burns = new Map();
+        for (const burn of p.swordBurns)
+          burns.set(burn.partId, Math.max(burns.get(burn.partId) || 0, burn.until - now));
+      }
+      for (const part of bodies) {
+        const id = this.bodyId(p, part);
+        // Keep the wire field order, but avoid object spread (and its
+        // temporary object) for every part of every player on every tick.
+        const row = {
+          id, x: part.x, y: part.y, mass: part.mass, radius: part.radius,
+          mergeVersion: part.mergeVersion || 0,
+        };
+        if (part.birth && now - part.splitStartedAt < 1000) row.birth = part.birth;
+        row.mergeMs = Math.max(0, this.partMergeAt(p, part) - now);
+        row.burnMs = burns?.get(id) || 0;
+        parts.push(row);
+        viewRadius = Math.max(viewRadius, Math.hypot(part.x - p.x, part.y - p.y) + part.radius);
+        if (includeHud) {
           splittable ||= part.mass >= RULES.MIN_SPLIT_MASS;
           canFeed ||= part.mass >= RULES.MIN_PART_MASS + RULES.FEED_MASS;
         }
-        return {
-          id: p.id,
-          name: p.name,
-          x: p.x,
-          y: p.y,
-          skinId: p.skinId,
-          outfit: accessories.outfit(p.outfit),
-          account: p.account || null,
-          arenaFrame: p.appearance?.arenaFrame || "default",
-          ...(p.giftModifiers?.visual ? { giftVisual: p.giftModifiers.visual } : {}),
-          turbo: turbo.view(p, now),
-          level: p.level,
-          clanPrefix: p.clanPrefix,
-          clanId: p.clanId || null,
-          clanName: p.clanName || "",
-          clanEmblem: p.clanEmblem || "",
-          clanCrest: p.clanCrest || null,
-          clanFrame: p.clanFrame || null,
-          title: p.title || null,
-          radius: p.radius,
-          mass: p.mass,
-          color: p.color,
-          spawnSerial: p.spawnSerial,
-          departure: p.isRemnant ? {
-            remainingMs: Math.max(0, p.removeAt - now),
-            fadeMs: RULES.DEPARTURE_FADE_MS,
-          } : undefined,
-          lifeSeconds: Math.max(0, Math.floor((now - p.lifeStartedAt) / 1000)),
-          lifeElapsedMs: Math.max(0, now - p.lifeStartedAt),
-          pet: arenaPets.snapshot(p, now),
-          potion: p.potion ? { id: p.potion.id, ids: [...alchemyRules.activeIds(p.potion)],
-            readyInMs: Math.max(0, p.potion.readyAt - now) } : null,
-          accessoryAbilities: accessoryAbilities.snapshot(p),
-          boostersUsed: p.boostersUsed,
-          boosterUses: { ...p.boosterUses },
-          boosterLimit: boosterLimitForLevel(p.level) + (p.account?.slotBonus || 0),
-          massLimit: massLimitForLevel(p.level),
-          mainPartId: p.mainPartId,
-          parts,
-          viewRadius,
-          canSplit:
-            bodies.length < this.maxParts && splittable &&
-            !this.hasEffect(p, "root", now),
-          canFeed,
-          mergeMs: p.parts ? Math.max(0, p.mergeAt - now) : 0,
-          shieldCooldowns: remainingTimers(p.shieldReadyAt, now),
-          boosterCooldowns: remainingTimers(p.boosterItemReadyAt, now),
-          shieldMs: Math.max(0, p.protectedUntil - now),
-          effects: this.activeEffects(p, now),
-          instantEffects: timerEffects(p.instantEffects, now),
-          boosterCooldownMs: Math.max(0, p.boosterReadyAt - now),
-          forcedMovement: this.combat.pulls.has(p.id),
-        };
-      });
+      }
+      const lifeElapsedMs = Math.max(0, now - p.lifeStartedAt);
+      const hud = includeHud ? {
+        lifeElapsedMs, lifeSeconds: Math.floor(lifeElapsedMs / 1000),
+        potion: p.potion ? { id: p.potion.id, ids: [...alchemyRules.activeIds(p.potion)],
+          readyInMs: Math.max(0, p.potion.readyAt - now) } : null,
+        accessoryAbilities: accessoryAbilities.snapshot(p),
+        boostersUsed: p.boostersUsed, boosterUses: { ...p.boosterUses },
+        boosterLimit: boosterLimitForLevel(p.level) + (p.account?.slotBonus || 0),
+        massLimit: massLimitForLevel(p.level),
+        canSplit: bodies.length < this.maxParts && splittable && !this.hasEffect(p, "root", now),
+        canFeed, mergeMs: p.parts ? Math.max(0, p.mergeAt - now) : 0,
+        shieldCooldowns: remainingTimers(p.shieldReadyAt, now),
+        boosterCooldowns: remainingTimers(p.boosterItemReadyAt, now),
+        boosterCooldownMs: Math.max(0, p.boosterReadyAt - now),
+        forcedMovement: this.combat.pulls.has(p.id),
+      } : null;
+      const row = {
+        ...hud,
+        id: p.id,
+        name: p.name,
+        x: p.x,
+        y: p.y,
+        skinId: p.skinId,
+        outfit: accessories.outfit(p.outfit),
+        account: p.account || null,
+        arenaFrame: p.appearance?.arenaFrame || "default",
+        turbo: turbo.view(p, now),
+        level: p.level,
+        clanPrefix: p.clanPrefix,
+        clanId: p.clanId || null,
+        clanName: p.clanName || "",
+        clanEmblem: p.clanEmblem || "",
+        clanCrest: p.clanCrest || null,
+        clanFrame: p.clanFrame || null,
+        title: p.title || null,
+        radius: p.radius,
+        mass: p.mass,
+        color: p.color,
+        spawnSerial: p.spawnSerial,
+        departure: p.isRemnant ? {
+          remainingMs: Math.max(0, p.removeAt - now),
+          fadeMs: RULES.DEPARTURE_FADE_MS,
+        } : undefined,
+        pet: arenaPets.snapshot(p, now, includeHud),
+        mainPartId: p.mainPartId,
+        parts,
+        viewRadius,
+        shieldMs: Math.max(0, p.protectedUntil - now),
+        effects: this.activeEffects(p, now),
+        instantEffects: timerEffects(p.instantEffects, now),
+      };
+      if (p.giftModifiers?.visual) row.giftVisual = p.giftModifiers.visual;
+      players.push(row);
+    }
     const rankings = includeRankings ? this.rankings(players) : {};
     const hazards = this.hazards?.snapshot() || [], ingredients = this.alchemyField.snapshot();
     return {

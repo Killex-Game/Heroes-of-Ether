@@ -148,6 +148,23 @@ async function setup(t, stateWorkerCount = 0) {
   };
 }
 
+test("room snapshots include owners' HUDs and switch back to full rows for a legacy peer", async (t) => {
+  const { app, connect } = await setup(t);
+  const first = await connect(wire.PROTOCOL), second = await connect(wire.HUD_PROTOCOL);
+  const snapshot = t.mock.method(app.arena, "snapshot");
+  app.broadcast();
+  assert.equal(snapshot.mock.calls.length, 1);
+  assert.deepEqual(snapshot.mock.calls[0].arguments[3], new Set([first.player.id, second.player.id]));
+  const legacy = await connect(wire.MOTION_PROTOCOL);
+  app.broadcast();
+  assert.equal(snapshot.mock.calls.at(-1).arguments[3], null);
+  const disconnected = once(legacy.server, "close");
+  legacy.ws.close();
+  await disconnected;
+  app.broadcast();
+  assert.deepEqual(snapshot.mock.calls.at(-1).arguments[3], new Set([first.player.id, second.player.id]));
+});
+
 test("Slow client never blocks another player or reliable life result; retry cannot award twice", async (t) => {
   const { app, connect, advance } = await setup(t);
   const slow = await connect(),

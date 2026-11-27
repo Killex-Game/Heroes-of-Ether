@@ -1930,20 +1930,24 @@ function createGameServer({
     const at = now(),
       includeRankings = at - lastRankingsAt >= 1000;
     if (includeRankings) lastRankingsAt = at;
-    const snapshots = new Map();
+    const audiences = new Map();
     for (const ws of wss.clients) {
       if (!ws.arena || !ws.stateStream) continue;
-      if (!snapshots.has(ws.arenaId))
-        snapshots.set(
-          ws.arenaId,
-          arenaSnapshot(
-            ws.arena,
-            at,
-            events.filter((event) => (event.arenaId || "arena-1") === ws.arenaId),
-            includeRankings,
-          ),
-        );
-      ws.stateStream.publish(snapshots.get(ws.arenaId));
+      let audience = audiences.get(ws.arenaId);
+      if (!audience) {
+        audience = { arena: ws.arena, peers: [], hudOwners: new Set() };
+        audiences.set(ws.arenaId, audience);
+      }
+      audience.peers.push(ws);
+      // Older protocols receive the full player row for everyone in this room.
+      if (!ws.stateStream.privateHud) audience.hudOwners = null;
+      else audience.hudOwners?.add(ws.playerId);
+    }
+    for (const [arenaId, audience] of audiences) {
+      const snapshot = arenaSnapshot(audience.arena, at,
+        events.filter(event => (event.arenaId || "arena-1") === arenaId),
+        includeRankings, audience.hudOwners);
+      for (const ws of audience.peers) ws.stateStream.publish(snapshot);
     }
     stateWorkers.flush();
   }
