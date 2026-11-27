@@ -62,3 +62,43 @@ test("Camera follows the displayed split immediately and protects both ends of a
     assert(camera.scale>=spreadScale && Math.log(camera.scale/spreadScale)<=0.18/fps+1e-8);
   }
 });
+test("Consecutive splits keep their framing between launches, then smoothly return to normal", () => {
+  for (const fps of [30, 60, 144]) {
+    const dt = 1 / fps;
+    const camera = { x: 0, y: 0, scale: 0.8, zoomTarget: 1 };
+    const group = { x: 0, y: 0, width: 800, height: 800, count: 2, launching: true };
+    const step = () => view.updateZoom(camera, 1, dt, 0.2, group, 900, 700, 60);
+    step();
+    const first = camera.scale;
+    group.launching = false;
+    group.height = 400;
+    for (let i = 0; i < fps / 3; i++) step();
+    assert.equal(camera.scale, first);
+    group.count = 4;
+    group.height = 960;
+    group.launching = true;
+    step();
+    const second = camera.scale;
+    assert.ok(second < first);
+    group.height = 400;
+    group.launching = false;
+    for (let i = 0; i < fps / 3; i++) step();
+    assert.equal(camera.scale, second);
+    for (let i = 0; i < fps; i++) step();
+    assert.ok(camera.scale > second && camera.scale < 1);
+  }
+});
+test("A new manual launch eases out before the HUD boundary only when the group needs room", () => {
+  for (const fps of [30, 60, 144]) {
+    for (const span of [100, 600]) {
+      const camera = { x: 0, y: 0, scale: 0.8 };
+      const group = { x: 0, y: 0, width: 100, height: span, count: 2, launching: true, youngestSplitMs: 0 };
+      view.updateZoom(camera, 0.8, 1 / fps, 0.2, group, 900, 700, 60);
+      if (span === 100) assert.equal(camera.scale, 0.8);
+      else {
+        assert.ok(0.8 * span < 700 * 0.72);
+        assert.ok(camera.scale < 0.8 && camera.scale > 0.8 * 0.9);
+      }
+    }
+  }
+});

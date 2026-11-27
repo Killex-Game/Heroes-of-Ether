@@ -161,7 +161,7 @@ test("Камера плавно отдаляется с массой до пре
     height = 768,
     base = 768 / 650;
   const initial = view.desiredScale({ mass: 10 }, width, height, world);
-  assert(initial < base * 1.3 / 1.05 && initial >= base * 1.3 / 1.1025);
+  assert(initial < base * 1.3 / (1.05 * 1.18) && initial >= base * 1.3 / (1.1025 * 1.18));
   let last = base * 1.3;
   for (const mass of [100, 500, 1000, 5000, 10000, 25000, 50000, 75000, 100000, 200000, 480000]) {
     const next = view.desiredScale({ mass }, width, height, world);
@@ -175,7 +175,7 @@ test("Камера плавно отдаляется с массой до пре
   }
 });
 
-test("Маленький герой сохраняет приближение после двух расширений обзора на 5%", () => {
+test("Базовый обзор шире на 18% вплоть до предела карты, маленький герой сохраняет приближение", () => {
   const world = { width: 2400, height: 1600 };
   for (const [mass, previous] of [
     [50, 1.179785450512734],
@@ -190,7 +190,9 @@ test("Маленький герой сохраняет приближение п
     // Крупные тела дополнительно ограничиваются прежней геометрией группы.
     const scale = view.desiredScale({ mass }, 1366, 768, world);
     const previousScale = previous * (mass <= 150 ? 1.3 : 1);
-    assert(scale < previousScale && scale >= previousScale / 1.1025);
+    const minimum = view.minimumScale(1366, 768, world);
+    const previousView = (minimum + (previousScale - minimum) / 1.05) / 1.05;
+    assert.ok(Math.abs(scale - Math.max(minimum, previousView / 1.18)) < 1e-12);
     if (mass <= 150) assert.equal(view.desiredScale(player, 1366, 768, world), scale);
   }
 });
@@ -219,7 +221,7 @@ test("Приближение зависит от общей массы, разл
   }
   const parts = Array.from({ length: 16 }, () => ({ mass: 1000 / 16 }));
   const scale = view.desiredScale({ parts }, 1366, 768, world);
-  assert(scale < 0.9880727129912967 && scale >= 0.9880727129912967 / 1.1025);
+  assert(scale < 0.9880727129912967 / 1.18 && scale >= 0.9880727129912967 / (1.1025 * 1.18));
 });
 test("Число, площадь и габариты частей расширяют обзор даже до 25 000", () => {
   const world = { width: 2400, height: 1600 },
@@ -373,14 +375,14 @@ test("Вертикальная группа больших шаров не от�
     const scale = view.desiredScale(vertical, 1920, 960, world);
     const previousHeightFit = (960 * 0.72) / frame.height;
     assert.ok(
-      scale > previousHeightFit * 1.2 / 1.05,
+      scale > previousHeightFit * 1.2 / (1.05 * 1.18),
       "сохранено приближение вытянутой группы с небольшой общей прибавкой обзора",
     );
     assert.ok(scale >= view.desiredScale(horizontal, 1920, 960, world) * 0.7);
     assert.ok(frame.height * scale <= 960 * 0.9 + 1e-8, "основные части помещаются по высоте");
     assert.ok(frame.width * scale <= 1920 * 0.8 + 1e-8);
     if (mass === 65000)
-      assert.ok(view.desiredScale(horizontal, 1920, 960, world) > 0.5796996204474442, "горизонтальная группа тоже стала ближе");
+      assert.ok(view.desiredScale(horizontal, 1920, 960, world) > 0.5796996204474442 / 1.18, "горизонтальная группа тоже стала ближе");
   }
 });
 

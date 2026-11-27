@@ -8,7 +8,7 @@
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
   const CAMERA = Object.freeze({
     viewExpansion: 1.05,
-    extraViewExpansion: 1.05,
+    extraViewExpansion: 1.05 * 1.18,
     massStep: 25000,
     maxWorldFraction: 0.9,
     partStep: 0.075,
@@ -24,7 +24,7 @@
       width / (world.width * CAMERA.maxWorldFraction),
       height / (world.height * CAMERA.maxWorldFraction),
     );
-  // Widen the current view by another 5% without exceeding the world limit.
+  // Reserve space around the group before a split, up to the map view limit.
   const expandedScale = (scale, minimum) => Math.max(minimum,
     (minimum + (scale - minimum) / CAMERA.viewExpansion) / CAMERA.extraViewExpansion);
   function groupFrame(player) {
@@ -38,18 +38,19 @@
     const relevant = parts.filter((p) => (p.mass || 0) >= mass * 0.03);
     const group = relevant.length ? relevant : parts;
     let left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
-    let launching = false;
+    let youngestSplitMs = Infinity;
     for (const p of group) {
       left = Math.min(left, p.x - p.radius);
       right = Math.max(right, p.x + p.radius);
       top = Math.min(top, p.y - p.radius);
       bottom = Math.max(bottom, p.y + p.radius);
-      if (p.birth?.parentId && p.launchAge >= 0 && p.launchAge < 650) launching = true;
+      if (p.birth?.parentId && p.launchAge >= 0) youngestSplitMs = Math.min(youngestSplitMs, p.launchAge);
     }
     return {
       x: (left + right) / 2,
       y: (top + bottom) / 2,
-      launching,
+      launching: youngestSplitMs < 650,
+      youngestSplitMs,
       count: group.length,
       width: right - left,
       height: bottom - top,
@@ -261,7 +262,22 @@
     }
   }
   function updateZoom(camera, target, dt, minimum = 0, group, width, height, bottomInset = 0) {
-    const previous = camera.zoomTarget > 0 ? camera.zoomTarget : camera.scale;
+    // Keep the wider view between consecutive launches. Recover smoothly once the parts settle.
+    if (group?.launching) {
+      camera.framingSplit = true;
+      camera.splitHold = 0.45;
+    } else {
+      camera.splitHold = Math.max(0, (camera.splitHold || 0) - Math.max(0, dt));
+    }
+    if (!group || group.count < 2) {
+      camera.framingSplit = false;
+      camera.splitHold = 0;
+    }
+    let previous = camera.zoomTarget > 0 ? camera.zoomTarget : camera.scale;
+    if (camera.splitHold > 0) {
+      target = Math.min(target, camera.scale);
+      previous = Math.min(previous, camera.scale);
+    }
     // Сначала плавно меняется сама цель: начисление большого бустера не
     // включает максимальную скорость отдаления одним кадром.
     camera.zoomTarget = Math.exp(
@@ -270,13 +286,19 @@
     camera.scale = approachScale(camera.scale, camera.zoomTarget, dt, minimum);
     // Follow the interpolated outer circles through a manual split. Keep room for
     // the HUD even when the camera centre is still catching up. Zoom back normally.
-    if (group?.launching) camera.framingSplit = true;
-    if (!group || group.count < 2) camera.framingSplit = false;
     if (camera.framingSplit && width > 0 && height > 0) {
       const spanX = group.width + 2 * Math.abs(group.x - camera.x);
       const spanY = group.height + 2 * Math.abs(group.y - camera.y);
       const visibleHeight = Math.max(1, Math.min(height * 0.72, height - 2 * (bottomInset + 8)));
       const fit = Math.max(minimum, Math.min(width * 0.86 / spanX, visibleHeight / spanY));
+      if (group.youngestSplitMs < 350) {
+        // Start making room before the child covers its first screenful. The margin
+        // fades as it travels, so distant parts alone determine the final framing.
+        const margin = 1 + 0.4 * (1 - group.youngestSplitMs / 350);
+        const roomy = Math.max(minimum, fit / margin);
+        if (roomy < camera.scale)
+          camera.scale = roomy + (camera.scale - roomy) * Math.exp(-8 * Math.max(0, dt));
+      }
       camera.scale = Math.min(camera.scale, fit);
       camera.zoomTarget = Math.min(camera.zoomTarget, fit);
     }
