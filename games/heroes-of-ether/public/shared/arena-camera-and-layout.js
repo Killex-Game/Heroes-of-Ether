@@ -115,7 +115,7 @@
     const compact = Math.max(normalScale, Math.min(normalScale * compactZoom, fit));
     return expandedScale(Math.max(compact, Math.min(compact * nearZoom, fit)), minimum);
   }
-  function followCenter(camera, target, dt, forcedMovement = false, parts = []) {
+  function followCenter(camera, target, dt, forcedMovement = false, parts = [], height = 0, bottomInset = 0) {
     // Track real displacement of surviving parts, not changes to the group's
     // bounding box after a split, feeding or losing a part. At most 16 entries.
     const previous = camera.followParts || new Map(), current = new Map();
@@ -134,20 +134,30 @@
     camera.fastFollowMs = forcedMovement
       ? 250
       : Math.max(0, (camera.fastFollowMs || 0) - dt * 1000);
-    const fast = camera.fastFollowMs > 0 || target?.launching;
+    const forced = camera.fastFollowMs > 0;
+    const fast = forced || target?.launching;
     const time = Math.max(0, dt),
-      omega = fast ? 28 : 8 + 16 * clamp(screenSpeed / 500, 0, 1),
+      omega = forced ? 28 : target?.launching ? 18 : 8 + 16 * clamp(screenSpeed / 500, 0, 1),
       decay = Math.exp(-omega * time);
     if (!target || !Number.isFinite(target.x) || !Number.isFinite(target.y)) return;
+    // Move the focus toward the centre of the playable space as the group
+    // approaches the booster bar. Small groups keep the usual aim point.
+    let focusY = target.y;
+    if (target.count > 1 && (target.launching || camera.framingSplit) && bottomInset > 0 && height > 0) {
+      const availableBelow = Math.max(0, height / 2 - bottomInset - 8);
+      const offset = clamp(target.height * camera.scale / 2 - availableBelow * 0.78, 0, bottomInset / 4);
+      focusY += offset / camera.scale;
+    }
     // Отдельное затухание центра камеры: кормление любой части, смена главной,
     // разделение и слияние не перепрыгивают к новому центру одним кадром.
     let next = {},
       velocity = {};
     for (const axis of ["x", "y"]) {
-      const delta = camera[axis] - target[axis],
+      const focus = axis === "y" ? focusY : target.x;
+      const delta = camera[axis] - focus,
         v = camera["v" + axis] || 0,
         term = (v + omega * delta) * time;
-      next[axis] = target[axis] + (delta + term) * decay;
+      next[axis] = focus + (delta + term) * decay;
       velocity[axis] = (v - omega * term) * decay;
     }
     const dx = next.x - camera.x,
@@ -287,20 +297,20 @@
     // Follow the interpolated outer circles through a manual split. Keep room for
     // the HUD even when the camera centre is still catching up. Zoom back normally.
     if (camera.framingSplit && width > 0 && height > 0) {
-      const spanX = group.width + 2 * Math.abs(group.x - camera.x);
-      const spanY = group.height + 2 * Math.abs(group.y - camera.y);
-      const visibleHeight = Math.max(1, Math.min(height * 0.72, height - 2 * (bottomInset + 8)));
-      const fit = Math.max(minimum, Math.min(width * 0.86 / spanX, visibleHeight / spanY));
-      if (group.youngestSplitMs < 350) {
-        // Start making room before the child covers its first screenful. The margin
-        // fades as it travels, so distant parts alone determine the final framing.
-        const margin = 1 + 0.4 * (1 - group.youngestSplitMs / 350);
-        const roomy = Math.max(minimum, fit / margin);
-        if (roomy < camera.scale)
-          camera.scale = roomy + (camera.scale - roomy) * Math.exp(-8 * Math.max(0, dt));
+      const dx = group.x - camera.x, dy = group.y - camera.y;
+      const edgeLimit = Math.max(minimum, Math.min(
+        width * 0.47 / (group.width / 2 + Math.abs(dx)),
+        height * 0.47 / Math.max(1, group.height / 2 - dy),
+        Math.max(1, height / 2 - bottomInset - 8) / Math.max(1, group.height / 2 + dy),
+      ));
+      const lead = group.youngestSplitMs < 350 ? 1 - group.youngestSplitMs / 350 : 0;
+      const preferred = Math.max(minimum, edgeLimit * (0.9 - 0.24 * lead));
+      if (camera.scale > preferred) {
+        const blend = -Math.expm1(-3.5 * Math.max(0, dt));
+        camera.scale *= Math.exp(blend * Math.log(preferred / camera.scale));
       }
-      camera.scale = Math.min(camera.scale, fit);
-      camera.zoomTarget = Math.min(camera.zoomTarget, fit);
+      camera.scale = Math.min(camera.scale, edgeLimit);
+      camera.zoomTarget = Math.min(camera.zoomTarget, edgeLimit);
     }
   }
   function nameSize(radius, scale) {

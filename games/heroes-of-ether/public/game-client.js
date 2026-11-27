@@ -1860,7 +1860,7 @@
       const subject = { ...me, parts: ownParts };
       const view = window.KillexArenaView;
       const group = view.groupFrame(subject);
-      view.followCenter(camera, group, dt, me.forcedMovement === true, ownParts);
+      view.followCenter(camera, group, dt, me.forcedMovement === true, ownParts, height, boosterInset);
       view.updateZoom(
         camera,
         view.desiredScale(subject, width, height, world, group),

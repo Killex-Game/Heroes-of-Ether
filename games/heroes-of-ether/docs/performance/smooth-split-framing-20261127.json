@@ -1,0 +1,137 @@
+{
+  "installedAt": "2026-11-27T06:45:15.385Z",
+  "baseline": "9e5e6a4",
+  "clientFiles": [
+    {
+      "file": "public/shared/arena-camera-and-layout.js",
+      "before": "5336588ad6bf20f9a442fccebc198dea1a52eaeb0a5ea336a405daec884c5a21",
+      "after": "2fc81d5c9d56e4e296f8f41fe7d2acb0f22989cea95b2b74ce7ff6e1215b2b6c"
+    },
+    {
+      "file": "public/game-client.js",
+      "before": "03ccdd2a34fcfb1a019dd2bbdb42e2dd861b4037eafcf5c358d33c666ca540ff",
+      "after": "b853e6b4b41d4852cfa0d0f8db4445cfadce8a61af1dec6c0a7e5b17cdb5f1e5"
+    },
+    {
+      "file": "public/index.html",
+      "before": "eb52369ffb50974abd0fb76f53053c440016cb2ee8101b28848eee92abd830e3",
+      "after": "8def880f4117bacfac69682a835364b45bc945bbcc380a898929f4615bd167d2"
+    }
+  ],
+  "gamePid": 1075804,
+  "entryOpen": true,
+  "priorStaticBackupSha256": "a850b30774f5195f6dabb4dc1cf4eeec81d9c3f5e32baa4a5d14926e9b3e0ef2",
+  "checks": {
+    "focusedWindows": 53,
+    "focusedLinux": 53,
+    "sourceCameraFirstRun": "Existing symmetric 72% viewport expectation failed. Replaced with actual screen and booster edges across three refresh rates, retained immediate movement and added a reversed second-split case.",
+    "freshBrowserRuns": [
+      {
+        "engine": "chromium",
+        "width": 1888,
+        "height": 944,
+        "frames": 960,
+        "parts": 4,
+        "minimumBoosterClearancePx": 21
+      },
+      {
+        "engine": "webkit",
+        "width": 844,
+        "height": 390,
+        "frames": 36,
+        "parts": 4,
+        "minimumBoosterClearancePx": 39
+      },
+      {
+        "engine": "firefox",
+        "width": 390,
+        "height": 844,
+        "frames": 322,
+        "parts": 4,
+        "minimumBoosterClearancePx": 24
+      }
+    ],
+    "browserPageErrors": 0,
+    "clientFilesHashVerified": [
+      "production HTTPS",
+      "localhost:3104"
+    ]
+  },
+  "comparison": {
+    "inputs": "Same recorded part positions, frame timings and HUD geometry from three two-split runs. Pixel values use CSS pixels. Results describe these trajectories.",
+    "runs": [
+      {
+        "engine": "chromium",
+        "width": 1888,
+        "height": 944,
+        "frames": 992,
+        "before": {
+          "start": 0.8181724917655046,
+          "lowest": 0.6815841267123669,
+          "peakDrop100ms": 8.808630184094213,
+          "peakPan100ms": 71.72326613329045,
+          "minBoosterClearance": 57.611018338021495,
+          "minimumTop": 193.63267643705734,
+          "minimumSide": 714.2052147917477
+        },
+        "after": {
+          "start": 0.8181724917655046,
+          "lowest": 0.7098737682635576,
+          "peakDrop100ms": 6.587763002651581,
+          "peakPan100ms": 63.4240868320312,
+          "minBoosterClearance": 21.699962526482466,
+          "minimumTop": 187.65945008412194,
+          "minimumSide": 706.4547172854988
+        }
+      },
+      {
+        "engine": "webkit",
+        "width": 844,
+        "height": 390,
+        "frames": 67,
+        "before": {
+          "start": 0.34336516615147344,
+          "lowest": 0.20885111778800486,
+          "peakDrop100ms": 21.123270832251063,
+          "peakPan100ms": 25.459403466913184,
+          "minBoosterClearance": 10.374029821266902,
+          "minimumTop": 64,
+          "minimumSide": 331.8666438852382
+        },
+        "after": {
+          "start": 0.34336516615147344,
+          "lowest": 0.23852604370219518,
+          "peakDrop100ms": 9.162141362464805,
+          "peakPan100ms": 24.509860035811695,
+          "minBoosterClearance": 8,
+          "minimumTop": 11.700000000000045,
+          "minimumSide": 332.7764947106435
+        }
+      },
+      {
+        "engine": "firefox",
+        "width": 390,
+        "height": 844,
+        "frames": 302,
+        "before": {
+          "start": 0.3786350584757485,
+          "lowest": 0.323807947808711,
+          "peakDrop100ms": 13.326312108661432,
+          "peakPan100ms": 35.840944395020585,
+          "minBoosterClearance": 8,
+          "minimumTop": 235.93419147661973,
+          "minimumSide": 95.60829715011602
+        },
+        "after": {
+          "start": 0.3786350584757485,
+          "lowest": 0.32609423783107455,
+          "peakDrop100ms": 9.896415636154899,
+          "peakPan100ms": 30.506260094682407,
+          "minBoosterClearance": 8,
+          "minimumTop": 190.49517144892187,
+          "minimumSide": 95.60829715011602
+        }
+      }
+    ]
+  }
+}

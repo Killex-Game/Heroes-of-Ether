@@ -38,6 +38,7 @@ test("Manual launch at the wall keeps both circles inside and resolves their ove
 });
 test("Camera follows the displayed split immediately and protects both ends of a vertical chain", () => {
   for (const [width,height] of [[1888,944],[844,390],[390,844]]) for (const fps of [30,60,144]) {
+    const inset = 56;
     const camera = {x:1000, y:1000, scale:1};
     const original = {id:"p", x:1000, y:1000, radius:60, mass:500};
     const minimum = view.minimumScale(width,height,{width:6120,height:4080});
@@ -48,12 +49,15 @@ test("Camera follows the displayed split immediately and protects both ends of a
       const parts = [original,child];
       const group = view.groupFrame({parts});
       assert.equal(group.y,(original.y+child.y)/2);
-      view.followCenter(camera,group,1/fps,false,parts);
-      view.updateZoom(camera,1,1/fps,minimum,group,width,height);
+      view.followCenter(camera,group,1/fps,false,parts,height,inset);
+      view.updateZoom(camera,1,1/fps,minimum,group,width,height,inset);
       if (frame===1) assert(camera.y>original.y);
-      if (time>=0.1 && time<0.65) assert(Math.abs(group.y-camera.y)<45);
-      for (const part of parts)
-        assert((Math.abs(part.y-camera.y)+part.radius)*camera.scale <= height*0.36+1e-8);
+      if (time>=0.1 && time<0.65) assert(Math.abs(group.y-camera.y)*camera.scale < height*0.13);
+      for (const part of parts) {
+        const y = height/2 + (part.y-camera.y)*camera.scale;
+        assert(y-part.radius*camera.scale >= height*0.03-1e-8);
+        assert(y+part.radius*camera.scale <= height-inset-8+1e-8);
+      }
       assert(camera.scale>=minimum);
     }
     const spreadScale=camera.scale;
@@ -100,5 +104,16 @@ test("A new manual launch eases out before the HUD boundary only when the group 
         assert.ok(camera.scale < 0.8 && camera.scale > 0.8 * 0.9);
       }
     }
+  }
+});
+
+test("An upward split can use the space opposite the booster bar without a scale jump", () => {
+  const group = { x: 0, y: -60, width: 150, height: 400, count: 4, launching: true, youngestSplitMs: 50 };
+  for (const fps of [30, 60, 144]) {
+    const camera = { x: 0, y: 0, scale: 0.68 };
+    view.updateZoom(camera, 0.68, 1 / fps, 0.1, group, 844, 390, 56);
+    assert.ok(camera.scale <= 0.68 && camera.scale >= 0.68 * Math.exp(-2 / fps));
+    assert.ok(195 + (group.y - 200) * camera.scale >= 8);
+    assert.ok(195 + (group.y + 200) * camera.scale <= 390 - 56 - 8);
   }
 });
