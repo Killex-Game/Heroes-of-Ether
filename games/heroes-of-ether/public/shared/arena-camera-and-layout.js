@@ -8,7 +8,7 @@
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
   const CAMERA = Object.freeze({
     viewExpansion: 1.05,
-    extraViewExpansion: 1.05 * 1.18,
+    extraViewExpansion: 1.05 * 1.2567,
     massStep: 25000,
     maxWorldFraction: 0.9,
     partStep: 0.075,
@@ -307,7 +307,10 @@
       const preferred = Math.max(minimum, edgeLimit * (0.9 - 0.24 * lead));
       if (camera.scale > preferred) {
         const blend = -Math.expm1(-3.5 * Math.max(0, dt));
-        camera.scale *= Math.exp(blend * Math.log(preferred / camera.scale));
+        // Keep extra room before launch, then limit how fast the split can zoom out.
+        // The hard bound below still protects both ends of the group and the booster bar.
+        const logStep = Math.max(-0.4 * Math.max(0, dt), blend * Math.log(preferred / camera.scale));
+        camera.scale *= Math.exp(logStep);
       }
       camera.scale = Math.min(camera.scale, edgeLimit);
       camera.zoomTarget = Math.min(camera.zoomTarget, edgeLimit);

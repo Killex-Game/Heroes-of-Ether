@@ -117,3 +117,19 @@ test("An upward split can use the space opposite the booster bar without a scale
     assert.ok(195 + (group.y + 200) * camera.scale <= 390 - 56 - 8);
   }
 });
+
+test("Zooming out during a launch has a bounded logarithmic speed while both edges fit", () => {
+  for (const fps of [30, 60, 144]) {
+    const camera = { x: 0, y: 0, scale: 0.80, zoomTarget: 0.80 };
+    const group = { x: 0, y: 0, width: 100, height: 650, count: 2, launching: true, youngestSplitMs: 0 };
+    let before = camera.scale;
+    for (let i = 0; i < Math.floor(fps / 4); i++) {
+      group.youngestSplitMs = 1000 * i / fps;
+      view.updateZoom(camera, 0.8, 1 / fps, 0.2, group, 900, 700, 55);
+      assert.ok(camera.scale >= before * Math.exp(-0.4 / fps) - 1e-8);
+      assert.ok(camera.scale <= before + 1e-8);
+      before = camera.scale;
+    }
+    assert.ok(camera.scale < 0.79);
+  }
+});
