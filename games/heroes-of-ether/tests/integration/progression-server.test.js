@@ -237,7 +237,7 @@ test("Предел XP обрезает награду, сохраняется п
   at(183000);
   app.tick();
   assert.equal(progress().arenaXp, 2);
-  assert.equal(progress().arenaKills, 2, "Киллы продолжают учитываться после макс");
+  assert.equal(progress().arenaKills, 1, "После МАКС счётчик сохраняет последний зачтённый килл");
   await resume(cb);
   position(ca.p, 57);
   position(cb.p, 400);

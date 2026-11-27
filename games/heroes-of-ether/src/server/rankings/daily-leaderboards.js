@@ -11,7 +11,7 @@ const METRICS = Object.freeze(Object.fromEntries(rules.boards.map((b) => [b.id, 
 const dayAt = (at) => Math.floor((at + MOSCOW_OFFSET_MS) / DAY_MS);
 const startOfDay = (at) => dayAt(at) * DAY_MS - MOSCOW_OFFSET_MS;
 const integer = (n) => Number.isSafeInteger(n) && n >= 0;
-const empty = (at) => ({ day: dayAt(at), kills: 0, arenaSeconds: 0, greatness: 0 });
+const empty = (at) => ({ day: dayAt(at), kills: 0, arenaSeconds: 0, greatness: 0, giftsSent: 0 });
 function validate(profile) {
   notices.validate(profile);
   const daily = profile.daily;
@@ -19,7 +19,8 @@ function validate(profile) {
     daily !== undefined &&
     (!daily ||
       Array.isArray(daily) ||
-      ![daily.day, daily.kills, daily.arenaSeconds, daily.greatness].every(integer))
+      ![daily.day, daily.kills, daily.arenaSeconds, daily.greatness].every(integer) ||
+      (daily.giftsSent !== undefined && !integer(daily.giftsSent)))
   )
     throw Error("Повреждены дневные рейтинги. Сохранение не перезаписано.");
   if (
@@ -43,11 +44,12 @@ function validate(profile) {
 function validateWorld(data) {
   if (
     data.dailyPrizes !== undefined &&
-    (!data.dailyPrizes || Array.isArray(data.dailyPrizes) || !integer(data.dailyPrizes.day))
+    (!data.dailyPrizes || Array.isArray(data.dailyPrizes) || !integer(data.dailyPrizes.day) ||
+      (data.dailyPrizes.giftsEnabled !== undefined && typeof data.dailyPrizes.giftsEnabled !== "boolean"))
   )
     throw Error("Повреждён расчёт призов за день. Сохранение не перезаписано.");
 }
-const due = (data, at) => !data.dailyPrizes || data.dailyPrizes.day < dayAt(at);
+const due = (data, at) => !data.dailyPrizes?.giftsEnabled || data.dailyPrizes.day < dayAt(at);
 function add(a, b) {
   const value = a + b;
   if (!integer(value)) throw Error("Награда рейтинга превысила допустимое значение.");
@@ -68,9 +70,30 @@ function eventDay(events, day) {
 function settle(next, previous, at, events) {
   if (!due(previous, at)) return next;
   const day = previous.dailyPrizes?.day;
-  next = { ...next, dailyPrizes: { day: dayAt(at) }, profiles: { ...next.profiles } };
+  const today = dayAt(at);
+  next = { ...next, dailyPrizes: { day: Math.max(day ?? today, today), giftsEnabled: true }, profiles: { ...next.profiles } };
+  // Gift histories retain the entire current Moscow day (48 hours). Read them
+  // once on upgrade; same-transaction gifts are already in capture's delta.
+  if (!previous.dailyPrizes?.giftsEnabled) {
+    const counts = new Map();
+    for (const recipient of Object.values(previous.profiles)) {
+      for (const gift of recipient.social?.gifts || []) {
+        for (const row of gift.history) {
+          if (row.fromId !== recipient.id && dayAt(row.at) === today && row.at <= at)
+            counts.set(row.fromId, add(counts.get(row.fromId) || 0, 1));
+        }
+      }
+    }
+    for (const [key, p] of Object.entries(next.profiles)) {
+      const count = counts.get(p.id);
+      if (!count) continue;
+      const daily = current(p, at);
+      daily.giftsSent = add(daily.giftsSent, count);
+      next.profiles[key] = { ...p, daily, revision: add(p.revision, 1) };
+    }
+  }
   // При включении механики не раздаём призы за старые неполные дни.
-  if (day === undefined) return next;
+  if (day === undefined || day >= today) return next;
   const bonus = eventDay(events, day);
   const changed = new Map();
   for (const board of rules.boards) {
@@ -141,7 +164,7 @@ function publicRegalia(profile) {
     }));
 }
 function current(profile, at) {
-  return profile.daily?.day === dayAt(at) ? { ...profile.daily } : empty(at);
+  return profile.daily?.day === dayAt(at) ? { giftsSent: 0, ...profile.daily } : empty(at);
 }
 // Вызывается перед атомарным сохранением. Повтор операции не увеличивает счётчики.
 function capture(profile, previous, at) {
@@ -151,6 +174,7 @@ function capture(profile, previous, at) {
     const deltas = {
       kills: Math.max(0, profile.progress.kills - previous.progress.kills),
       greatness: Math.max(0, profile.greatness - previous.greatness),
+      giftsSent: Math.max(0, (profile.activity?.values.generous || 0) - (previous.activity?.values.generous || 0)),
       arenaSeconds: Math.max(
         0,
         (profile.activity?.arenaSeconds || 0) - (previous.activity?.arenaSeconds || 0),
@@ -169,7 +193,8 @@ function capture(profile, previous, at) {
   // every profile on the server and could exhaust the checkpoint backlog.
   if (
     profile.daily &&
-    ["day", "kills", "arenaSeconds", "greatness"].every((key) => profile.daily[key] === daily[key])
+    ["day", "kills", "arenaSeconds", "greatness"].every((key) => profile.daily[key] === daily[key]) &&
+    (profile.daily.giftsSent || 0) === daily.giftsSent
   )
     return profile;
   return { ...profile, daily };

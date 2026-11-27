@@ -7,6 +7,31 @@ const { temporary } = require("../temp");
 const { ProfileStore } = require("../../src/server/profiles/profile-store");
 const { ClanService } = require("../../src/server/clans/clan-service");
 const { Arena, radiusForMass } = require("../../src/server/arena/arena-simulation");
+const { applyEvent, successfulBooster } = require("../../src/server/progression/experience-progression");
+
+test("Рекорды поглощений и массы останавливаются на МАКС и снова растут в новом заходе", () => {
+  const store = new ProfileStore(), p = store.find(store.open().token), at = Date.now();
+  p.progress.xp = 499;
+  const send = e => applyEvent(p, e, at);
+  const hit = (life, n) => send({ type: "absorbed", eaterLifeId: life, absorptionSequence: n,
+    victimProfileId: randomUUID(), gain: 7, victimDefeated: true, humanDefeat: true });
+  send({ type: "lifeStarted", lifeId: "first" });
+  send({ type: "massPeak", mass: 900 });
+  hit("first", 1);
+  assert.equal(p.progress.xp + p.progress.session.xp, p.progress.arenaXpTarget);
+  hit("first", 2);
+  send({ type: "massPeak", mass: 1200 });
+  successfulBooster(p, 1800, at);
+  assert.equal(p.progress.humanAbsorptions, 1);
+  assert.equal(p.progress.maxMass, 900);
+  assert.equal(p.progress.boosterUses, 1);
+  send({ type: "lifeEnded", lifeId: "first", durationSeconds: 12, reason: "left" });
+  send({ type: "lifeStarted", lifeId: "second" });
+  hit("second", 1);
+  successfulBooster(p, 1100, at);
+  assert.equal(p.progress.maxMass, 1100);
+  assert.equal(p.progress.humanAbsorptions, 2);
+});
 
 test("Only the final contact with a human-controlled player marks a record event", () => {
   for (const kind of ["human","bot","remnant"]) {

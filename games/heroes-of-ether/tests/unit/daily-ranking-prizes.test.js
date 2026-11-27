@@ -27,6 +27,41 @@ function fixture(count = 4) {
     },
   };
 }
+test("Подарки другим игрокам попадают в оба топа, повтор и подарок себе их не меняют", () => {
+  const f = fixture(), [sender, target] = f.users;
+  f.p(0).wallet.coins = 100000;
+  const gift = { action: "gift", confirmed: true, giftId: "teddy", targetId: target.profile.id, requestId: randomUUID() };
+  f.store.socialAction(sender.token, gift);
+  f.store.socialAction(sender.token, gift);
+  f.store.socialAction(sender.token, { ...gift, requestId: randomUUID(), anonymous: true });
+  f.store.socialAction(sender.token, { ...gift, requestId: randomUUID(), targetId: sender.profile.id });
+  const leaders = order => new ClanService(f.store).state(sender.token, "", 1, "", order).playerLeaders;
+  assert.equal(leaders("giftsSent")[0].recordScore, 2);
+  assert.equal(leaders("dailyGifts")[0].dailyScore, 2);
+  f.p(0).progress.boosterUses = 19;
+  assert.equal(leaders("boosterUses")[0].recordScore, 19);
+  // Upgrade an old same-day save and repeat the calendar check.
+  delete f.store.data.dailyPrizes.giftsEnabled;
+  delete f.p(0).daily.giftsSent;
+  f.store.refreshCompetition();
+  assert.equal(leaders("dailyGifts")[0].dailyScore, 2);
+  f.store.refreshCompetition();
+  assert.equal(leaders("dailyGifts")[0].dailyScore, 2);
+  f.score(0, { giftsSent: 2, kills: 1, arenaSeconds: 60, greatness: 3 });
+  const coins = f.p(0).wallet.coins;
+  f.clock(MIDNIGHT);
+  f.store.refreshCompetition();
+  assert.equal(f.p(0).wallet.coins - coins, rules.prizes[0].coins * 4);
+  assert.deepEqual(f.p(0).dailyRankingRewards.find(n => n.medalId === "gifts-1").prize, rules.prizes[0]);
+  assert.equal(leaders("dailyGifts")[0].dailyScore, 0);
+  assert.equal(leaders("giftsSent")[0].recordScore, 2);
+  const ids = f.p(0).dailyRankingRewards.map(n => n.id);
+  assert.equal(ids.length, 4);
+  f.store.dismissDailyRankingRewards(sender.token, { ids, requestId: randomUUID() });
+  f.store.refreshCompetition();
+  assert.deepEqual(f.p(0).dailyRankingRewards, []);
+  assert.equal(f.p(0).regalia["gifts-1"].count, 1);
+});
 test("Три топа: точные призы, девять регалий, накопление наград и исключение нулевых результатов", () => {
   const f = fixture();
   for (let i = 0; i < 3; i++)
@@ -52,6 +87,7 @@ test("Три топа: точные призы, девять регалий, н�
       kills: 0,
       arenaSeconds: 0,
       greatness: 0,
+      giftsSent: 0,
     });
     const regalia = f.store.publicPlayer(p.id).regalia;
     const rewards = f.store.view(p).dailyRankingRewards;

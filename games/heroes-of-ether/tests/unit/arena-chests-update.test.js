@@ -29,7 +29,7 @@ function fixture(filePath) {
     p = () => store.find(a.token);
   return { store, a, p };
 }
-test("Килл, достигший XP-предела, зачтён; дальнейшие растут только визуально, с прежним антифармом", () => {
+test("Килл на границе XP зачтён, дальнейшие киллы заморожены до нового входа из лобби", () => {
   const { p } = fixture();
   p().progress.xp = 496;
   const send = (e) => applyEvent(p(), e, NOW);
@@ -41,17 +41,17 @@ test("Килл, достигший XP-предела, зачтён; дальне
   const v = publicProgress(p());
   assert.equal(v.arenaXp, 4);
   assert.equal(v.arenaXpMax, true);
-  assert.equal(v.arenaKills, 3);
+  assert.equal(v.arenaKills, 2);
   assert.equal(v.arenaCreditedKills, 2);
   assert.equal(p().progress.kills, 2);
   assert.equal(p().progress.absorbedMass, 60);
   validateProgress(p());
   send({ type: "lifeEnded", lifeId: "life", durationSeconds: 80, reason: "absorbed" });
   assert.equal(p().progress.lastLife.kills, 2);
-  assert.equal(p().progress.lastLife.visualKills, 3);
+  assert.equal(p().progress.lastLife.visualKills, 2);
   send({ type: "lifeStarted", lifeId: "continue", newArena: false });
   send({ type: "absorbed", victimProfileId: "d", gain: 20 });
-  assert.equal(publicProgress(p()).arenaKills, 1);
+  assert.equal(publicProgress(p()).arenaKills, 0);
   assert.equal(publicProgress(p()).arenaCreditedKills, 0);
   send({ type: "lifeEnded", lifeId: "continue", durationSeconds: 10, reason: "left" });
   send({ type: "lifeStarted", lifeId: "from-lobby" });
@@ -70,14 +70,14 @@ test("Минутный XP закрывает зачёт всех следующ�
   applyEvent(p(), { type: "massBonus", lifeId: "x", sequence: 2, kills: 20 }, NOW);
   applyEvent(p(), { type: "massBonus", lifeId: "x", sequence: 2, kills: 20 }, NOW);
   assert.equal(p().progress.kills, 10);
-  assert.equal(p().progress.session.kills, 30);
+  assert.equal(p().progress.session.kills, 10);
   const { p: q } = fixture();
   q().progress.xp = 499;
   applyEvent(q(), { type: "lifeStarted", lifeId: "q" }, NOW);
   applyEvent(q(), { type: "survivalMinute", mass: 500, minutes: 1 }, NOW);
   applyEvent(q(), { type: "absorbed", victimProfileId: "other", gain: 8 }, NOW);
   assert.equal(q().progress.kills, 0);
-  assert.equal(q().progress.session.kills, 1);
+  assert.equal(q().progress.session.kills, 0);
 });
 test("Перезапуск сохраняет зачтённый итог и старые жизни без нового поля", (t) => {
   const filePath = path.join(temporary(t, "kill-limit"), "profiles.json"),
@@ -92,10 +92,11 @@ test("Перезапуск сохраняет зачтённый итог и с�
     );
   const disk = new ProfileStore({ filePath, now: () => NOW });
   assert.equal(disk.find(a.token).progress.lastLife.kills, 1);
-  assert.equal(disk.find(a.token).progress.lastLife.visualKills, 3);
+  assert.equal(disk.find(a.token).progress.lastLife.visualKills, 1);
   const old = structuredClone(store.data),
     profile = Object.values(old.profiles)[0];
   delete profile.progress.session.creditedKills;
+  profile.progress.session.kills = 3;
   fs.writeFileSync(filePath, JSON.stringify(old));
   assert.equal(
     new ProfileStore({ filePath, now: () => NOW }).find(a.token).progress.lastLife.kills,

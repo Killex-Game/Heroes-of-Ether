@@ -446,14 +446,21 @@ class ClanService {
       currentPage = Math.max(1, Math.min(pages, Number.isInteger(Number(page)) ? Number(page) : 1));
     const daily = require("../rankings/daily-leaderboards"),
       at = this.profiles.now();
-    const record = playerOrder === "maxMass" || playerOrder === "humanAbsorptions";
+    const record = ["maxMass", "humanAbsorptions", "giftsSent", "boosterUses"].includes(playerOrder);
     const order = record || playerOrder === "level" || Object.hasOwn(daily.METRICS, playerOrder)
       ? playerOrder : "greatness";
     const metric = daily.METRICS[order];
+    const today = daily.dayAt(at);
     const players = Object.values(this.profiles.data.profiles);
-    const eligible = record ? players.filter(p => !p.testBot && (p.progress[order] || 0) > 0) : players;
-    const scores = new Map(eligible.map(p => [p.id, record ? p.progress[order] :
-      metric ? daily.current(p, at)[metric] : order === "level" ? p.level : p.greatness]));
+    const eligible = [];
+    const scores = new Map();
+    for (const p of players) {
+      const score = record ? (order === "giftsSent" ? p.activity?.values.generous : p.progress[order]) || 0 :
+        metric ? (p.daily?.day === today ? p.daily[metric] || 0 : 0) : order === "level" ? p.level : p.greatness;
+      if (record && (p.testBot || score === 0)) continue;
+      eligible.push(p);
+      scores.set(p.id, score);
+    }
     eligible.sort(
       (a, b) =>
         scores.get(b.id) - scores.get(a.id) ||

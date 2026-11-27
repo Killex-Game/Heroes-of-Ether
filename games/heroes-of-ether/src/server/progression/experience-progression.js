@@ -315,9 +315,13 @@ function finishLife(p, event, at) {
   s.xp = nextXp;
   s.session = null;
 }
-function awardKills(p, count, xp, at, accountXpPercent, absorption = false) {
+function arenaXpMax(s) {
+  return s.arenaXpTarget != null && s.xp + (s.session?.xp || 0) >= s.arenaXpTarget;
+}
+function awardKills(p, count, xp, at, accountXpPercent, absorption = false, capped = arenaXpMax(p.progress)) {
   const s = p.progress,
     session = s.session;
+  if (capped) return false;
   // Natural packets already include Premium. Only credited absorption kills
   // need the status here; their XP and real-defeat counters stay independent.
   const kills = count * (absorption && accounts.benefits(p, at).premium ? 2 : 1);
@@ -326,14 +330,10 @@ function awardKills(p, count, xp, at, accountXpPercent, absorption = false) {
     session.creditedKills ??= session.kills || 0;
     session.kills = add(session.kills || 0, kills);
   }
-  // Проверяем ДО начисления опыта: событие, достигшее лимита, засчитывается целиком.
-  const capped = s.arenaXpTarget != null && s.xp + (session?.xp || 0) >= s.arenaXpTarget;
-  if (!capped) {
-    s.kills = add(s.kills, kills);
-    if (session) session.creditedKills = add(session.creditedKills, kills);
-    earnXp(p, xp, count, at, accountXpPercent, absorption);
-  }
-  return !capped;
+  s.kills = add(s.kills, kills);
+  if (session) session.creditedKills = add(session.creditedKills, kills);
+  earnXp(p, xp, count, at, accountXpPercent, absorption);
+  return true;
 }
 function applyEvent(p, event, at) {
   migrateKingProgress(p);
@@ -362,11 +362,12 @@ function applyEvent(p, event, at) {
     finishLife(p, event, at);
   } else if (event.type === "absorbed") {
     if (!event.victimProfileId || event.victimProfileId === p.id) return;
+    const cappedBeforeContact = arenaXpMax(s);
     if (event.humanDefeat === true && event.victimDefeated === true && !p.testBot &&
         s.session && s.session.id === event.eaterLifeId && integer(event.absorptionSequence) &&
         event.absorptionSequence > (s.session.humanDefeatSequence || 0)) {
       s.session.humanDefeatSequence = event.absorptionSequence;
-      s.humanAbsorptions = add(s.humanAbsorptions || 0, 1);
+      if (!cappedBeforeContact) s.humanAbsorptions = add(s.humanAbsorptions || 0, 1);
     }
     // Count final defeats, not individual fragments or passive mass rewards.
     // Keep the established three-minute protection against farming one victim.
@@ -395,7 +396,7 @@ function applyEvent(p, event, at) {
     s.absorbedMass = add(s.absorbedMass, event.gain);
     // За поглощение действует лучший аккаунт; бонус экипировки добавляется как прежде.
     const accountXpPercent = (accounts.benefits(p, at).absorptionXpMultiplier - 1) * 100;
-    const credited = awardKills(p, 1, KILL_XP, at, accountXpPercent, true);
+    const credited = awardKills(p, 1, KILL_XP, at, accountXpPercent, true, cappedBeforeContact);
     // Only a real, credited defeat counts toward this public record; mass
     // rewards and kills shown after the experience cap never inflate it.
     if (credited && s.session) {
@@ -459,7 +460,7 @@ function applyEvent(p, event, at) {
     return true; // successfulBooster already settles the same achievements.
   } else if (event.type === "massPeak") {
     if (!integer(event.mass)) throw Error("Неверная масса для рекорда.");
-    s.maxMass = Math.max(s.maxMass, event.mass);
+    if (!arenaXpMax(s)) s.maxMass = Math.max(s.maxMass, event.mass);
   }
   awardAchievements(p, at, extraCurrent);
   return true;
@@ -470,7 +471,7 @@ function successfulBooster(p, mass, at = Date.now()) {
   p.progress.boosterUses = add(p.progress.boosterUses, 1);
   if (mass !== undefined) {
     if (!integer(mass)) throw Error("Неверная масса после бустера.");
-    p.progress.maxMass = Math.max(p.progress.maxMass, mass);
+    if (!arenaXpMax(p.progress)) p.progress.maxMass = Math.max(p.progress.maxMass, mass);
   }
   awardAchievements(p, at);
 }
@@ -480,9 +481,7 @@ function publicProgress(p, { achievements = true } = {}) {
     arenaXp: p.progress.session?.xp || 0,
     arenaKills: p.progress.session?.kills || 0,
     arenaCreditedKills: p.progress.session?.creditedKills ?? p.progress.session?.kills ?? 0,
-    arenaXpMax:
-      p.progress.arenaXpTarget != null &&
-      p.progress.xp + (p.progress.session?.xp || 0) >= p.progress.arenaXpTarget,
+    arenaXpMax: arenaXpMax(p.progress),
     lastLife: p.progress.lastLife ? JSON.parse(JSON.stringify(p.progress.lastLife)) : null,
     ...(achievements
       ? {

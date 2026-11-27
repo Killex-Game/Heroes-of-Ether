@@ -307,7 +307,7 @@ test("Зачёт: лимит XP исключает визуальные килл
   p.progress.session.xp = p.progress.arenaXpTarget - p.progress.xp;
   f.kill(u);
   assert.equal(f.store.data.competition.day.scores[f.c(u).id].kills, 21);
-  assert.equal(f.p(u).progress.session.kills, 22);
+  assert.equal(f.p(u).progress.session.kills, 21);
 });
 test("Новобранец не может дать киллы или получить роль, завтра участвует", () => {
   const f = setup(10),

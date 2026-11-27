@@ -290,12 +290,13 @@
       this.dialog.classList.toggle("has-daily-ranking", daily);
       panel.append(
         this.tabs(
-          records ? [["maxMass", "Масса"], ["humanAbsorptions", "Поглощения игроков"]] : [
+          records ? [
+            ["maxMass", "Масса"], ["humanAbsorptions", "Поглощения игроков"],
+            ["giftsSent", "Подарено подарков"], ["boosterUses", "Потрачено бустеров"],
+          ] : [
             ["greatness", "Величие"],
             ["level", "Уровень"],
-            ["dailyKills", "Киллы за день"],
-            ["dailyTime", "Время за день"],
-            ["dailyGreatness", "Величие за день"],
+            ...window.KillexDailyRankings.boards.map(board => [board.id, board.name]),
           ],
           order,
           (id) => {

@@ -28,8 +28,9 @@ function dismiss(profile, ids) {
   if (
     !Array.isArray(ids) ||
     !ids.length ||
-    ids.length > 3 ||
-    ids.some((id) => typeof id !== "string" || !/^\d+:(kills|time|greatness)-[1-3]$/.test(id))
+    ids.length > rules.boards.length ||
+    ids.some((id) => typeof id !== "string" || !/^\d+:/.test(id) ||
+      !rules.medals.some(m => m.id === id.slice(id.indexOf(":") + 1)))
   )
     throw new BoosterError("Неверное уведомление о награде топа.");
   profile.dailyRankingRewards = view(profile).filter((n) => !ids.includes(n.id));

@@ -27,6 +27,14 @@
       medal: "greatness",
       title: "Сияние величия",
     }),
+    Object.freeze({
+      id: "dailyGifts",
+      metric: "giftsSent",
+      name: "Подарки за день",
+      medal: "gifts",
+      medalArt: "kills",
+      title: "Щедрое сердце",
+    }),
   ]);
   const prizes = Object.freeze([
     Object.freeze({ greatness: 3, coins: 100, crystals: 10 }),
@@ -46,7 +54,7 @@
             "За " + (index + 1) + " место в рейтинге «" + board.name + "» по итогам дня.",
           image: "assets/regalia/daily/" +
             (board.medal === "greatness" && index > 0 ? "canonical-star-v2/" : "") +
-            board.medal + "-" + (index + 1) + ".webp?art=20261123-interface-art",
+            (board.medalArt || board.medal) + "-" + (index + 1) + ".webp?art=20261123-interface-art",
           prize,
         }),
       ),
