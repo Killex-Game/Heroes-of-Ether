@@ -136,7 +136,7 @@ body #topsDialog.interface-window[open] {
 #topsDialog .ranking-board:is(.daily-ranking-board,.event-ranking-board) {
   grid-template:"bar bar" auto "meta meta" auto "results prizes" minmax(0,1fr) "footer footer" auto / minmax(0,1fr) minmax(150px,25%)}
 #topsDialog .ranking-board-bar {grid-area:bar;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
-#topsDialog .ranking-board-bar h3 {margin:3px auto 3px 0;color:inherit;font:700 22px/1.2 Georgia,serif}
+#topsDialog .ranking-board-bar h3 {margin:3px auto 3px 0;color:inherit;font-family:inherit;font-size:22px;font-weight:700;line-height:1.2}
 #topsDialog .ranking-board .ranking-board-bar .clan-search {display:flex;flex-wrap:wrap;min-width:0;align-items:center;gap:4px;margin:0}
 #topsDialog .clan-search input {width:clamp(110px,16vw,200px);height:34px;min-width:0;max-width:100%;font-size:13px}
 #topsDialog .ranking-board .clan-search button {min-height:34px;height:auto;padding:4px 10px}
